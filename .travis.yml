@@ -1,0 +1,23 @@
+language: python
+python:
+  - "2.7"
+services:
+  - mongodb
+
+sudo: false
+
+before_install:
+  - pip install --upgrade pytest
+  - pip install coveralls
+
+# command to install dependencies
+install:
+  - pip install -r test_requirements.txt
+  - git submodule update --init --recursive
+
+# command to run tests
+script: python -m pytest -x
+
+# command to report coverage stats
+after_success:
+  - coveralls

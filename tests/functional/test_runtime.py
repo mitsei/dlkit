@@ -1,10 +1,9 @@
 from dlkit.runtime.primordium import Id
-from dlkit.runtime.proxy_example import TestRequest
 
-from .utilities.testing import DjangoTestCase
+from .utilities.testing import DLKitTestCase
 
 
-class ConfigurationTests(DjangoTestCase):
+class ConfigurationTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'

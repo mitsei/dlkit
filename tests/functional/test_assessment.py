@@ -19,7 +19,7 @@ from random import randint
 
 from urllib import unquote
 
-from .utilities.testing import DjangoTestCase, ABS_PATH, get_manager
+from .utilities.testing import DLKitTestCase, ABS_PATH, get_manager
 
 SIMPLE_SEQUENCE_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['simple-child-sequencing'])
 WORDIGNORECASE_STRING_MATCH_TYPE = Type(**String.get_type_data('WORDIGNORECASE'))
@@ -58,7 +58,7 @@ FBW_PHASE_I_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['fbw-phase-i'])
 FBW_PHASE_II_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['fbw-phase-ii'])
 
 
-class EdXTests(DjangoTestCase):
+class EdXTests(DLKitTestCase):
     def setUp(self):
         super(EdXTests, self).setUp()
 
@@ -624,7 +624,7 @@ class EdXMultiChoiceTests(EdXTests):
     #     )
 
 
-class MecQBankTests(DjangoTestCase):
+class MecQBankTests(DLKitTestCase):
     def setUp(self):
         super(MecQBankTests, self).setUp()
 
@@ -636,7 +636,7 @@ class MecQBankTests(DjangoTestCase):
         super(MecQBankTests, self).tearDown()
 
 
-class GeneralTests(DjangoTestCase):
+class GeneralTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'
@@ -1258,7 +1258,7 @@ class MecQBankItemTests(MecQBankTests):
         )
 
 
-class Ortho3DTests(DjangoTestCase):
+class Ortho3DTests(DLKitTestCase):
     def check_files(self, file1, file2):
         """ assumes file2 is a self.<file>, whereas file1 is from DLKit item/question
         :param file1:
@@ -1825,7 +1825,7 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self.assertRaises(errors.PermissionDenied, self._bank.create_assessment_taken, form)
 
 
-class QuestionLOTests(DjangoTestCase):
+class QuestionLOTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'
@@ -1871,7 +1871,7 @@ class QuestionLOTests(DjangoTestCase):
         )
 
 
-class QTITests(DjangoTestCase):
+class QTITests(DLKitTestCase):
     def setUp(self):
         super(QTITests, self).setUp()
 
@@ -1923,7 +1923,7 @@ class QTITests(DjangoTestCase):
         self.assertIn(self.right_answer_choice_id, choice_ids)
 
 
-class SearchItemPaginationTests(DjangoTestCase):
+class SearchItemPaginationTests(DLKitTestCase):
     def create_item(self, name="my new item"):
         form = self._bank.get_item_form_for_create([])
 
@@ -2774,7 +2774,7 @@ class AssessmentSectionLOTests(GeneralTests):
         )
 
 
-class ScaffoldDownTests(DjangoTestCase):
+class ScaffoldDownTests(DLKitTestCase):
     @staticmethod
     def _extract_item_id(id_str):
         # return unquote(Id(id_str).identifier).split('?')[0]
@@ -4278,7 +4278,7 @@ class ScaffoldDownTests(DjangoTestCase):
         self.assertFalse(number_identical_waypoints > 0)
 
 
-class MultiLanguageBaseTestCase(DjangoTestCase):
+class MultiLanguageBaseTestCase(DLKitTestCase):
     def _english(self):
         return DisplayText(display_text_map={
             'text': self._english_text,
@@ -7088,7 +7088,7 @@ class MultiLanguageTextInteractionTests(MultiLanguageBaseTestCase):
         )
 
 
-class LOScaffoldDownTests(DjangoTestCase):
+class LOScaffoldDownTests(DLKitTestCase):
     """Specify only the LO, but scaffold down
     """
     @staticmethod
@@ -7406,7 +7406,7 @@ class LOScaffoldDownTests(DjangoTestCase):
         )
 
 
-class FbWSpawnableAssessmentTests(DjangoTestCase):
+class FbWSpawnableAssessmentTests(DLKitTestCase):
     def setUp(self):
         super(FbWSpawnableAssessmentTests, self).setUp()
         self._bank = self._get_test_bank()

@@ -1,4 +1,4 @@
-from .utilities.testing import DjangoTestCase
+from .utilities.testing import DLKitTestCase
 
 from dlkit.runtime.primordium import DataInputStream, Type, Id
 from dlkit.records.registry import ANSWER_RECORD_TYPES, QUESTION_RECORD_TYPES, ITEM_GENUS_TYPES
@@ -18,7 +18,7 @@ FILE_COMMENT_RECORD_TYPE = Type(**{
 })
 
 
-class ResponseCommentingTests(DjangoTestCase):
+class ResponseCommentingTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'

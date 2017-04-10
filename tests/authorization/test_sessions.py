@@ -1,9 +1,9 @@
 """Unit tests of authorization sessions."""
 
 import unittest
-from dlkit_runtime import PROXY_SESSION, proxy_example
-from dlkit_runtime.managers import Runtime
-REQUEST = proxy_example.TestRequest()
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)

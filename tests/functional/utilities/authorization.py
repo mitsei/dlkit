@@ -5,9 +5,9 @@ from copy import deepcopy
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 
-import dlkit_runtime as dlkit_runtime  # or any runtime
-from dlkit_runtime import PROXY_SESSION, RUNTIME
-from dlkit_runtime.proxy_example import User
+from dlkit.runtime import PROXY_SESSION, RUNTIME
+from dlkit.runtime.proxy_example import User
+from dlkit.runtime import configs
 
 BOOTSTRAP_VAULT_GENUS = Type(**{
     'identifier': 'bootstrap-vault',
@@ -16,7 +16,7 @@ BOOTSTRAP_VAULT_GENUS = Type(**{
 })
 
 try:
-    CONFIGURED_AUTHORITY = dlkit_runtime.configs.JSON_1['parameters']['authority']['values'][0]['value']
+    CONFIGURED_AUTHORITY = configs.JSON_1['parameters']['authority']['values'][0]['value']
 except KeyError:
     CONFIGURED_AUTHORITY = ''
 
@@ -357,10 +357,10 @@ def get_vault(request):
     return authzm.get_vaults_by_genus_type(BOOTSTRAP_VAULT_GENUS).next()
 
 def open_up_services_config():
-    previous_version = deepcopy(dlkit_runtime.configs.SERVICE)
+    previous_version = deepcopy(configs.SERVICE)
 
-    dlkit_runtime.configs.SERVICE = {
-        'id': 'dlkit_runtime_bootstrap_configuration',
+    configs.SERVICE = {
+        'id': 'dlkit.runtime_bootstrap_configuration',
         'displayName': 'DLKit Runtime Bootstrap Configuration',
         'description': 'Bootstrap Configuration for DLKit Runtime',
         'parameters': {
@@ -450,7 +450,7 @@ def open_up_services_config():
     return previous_version
 
 def restore_services_config(original_version):
-    dlkit_runtime.configs.SERVICE = original_version
+    configs.SERVICE = original_version
 
 def set_session_data(request, item_type, data):
     request.session[item_type] = pickle.dumps(data)

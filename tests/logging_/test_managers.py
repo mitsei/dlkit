@@ -1,9 +1,9 @@
 """Unit tests of logging managers."""
 
 import unittest
-from dlkit_runtime import PROXY_SESSION, proxy_example
-from dlkit_runtime.managers import Runtime
-REQUEST = proxy_example.TestRequest()
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
@@ -83,7 +83,7 @@ class TestLoggingManager(unittest.TestCase):
         create_form.description = 'Test Log for logging manager tests'
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('LOGGING', 'TEST_MONGO_1', (3, 0, 0))
+        cls.mgr = Runtime().get_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -157,7 +157,7 @@ class TestLoggingProxyManager(unittest.TestCase):
         create_form.description = 'Test Log for logging proxy manager tests'
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('LOGGING', 'TEST_MONGO_1', (3, 0, 0))
+        cls.mgr = Runtime().get_proxy_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):

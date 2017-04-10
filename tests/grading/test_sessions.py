@@ -1,9 +1,9 @@
 """Unit tests of grading sessions."""
 
 import unittest
-from dlkit_runtime import PROXY_SESSION, proxy_example
-from dlkit_runtime.managers import Runtime
-REQUEST = proxy_example.TestRequest()
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
@@ -16,7 +16,7 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
 
-from dlkit.mongo.grading.objects import GradebookColumnSummary
+from dlkit.json_.grading.objects import GradebookColumnSummary
 from dlkit.abstract_osid.osid import errors
 
 

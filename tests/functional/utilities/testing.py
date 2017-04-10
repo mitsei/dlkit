@@ -7,7 +7,7 @@ from minimocktest import MockTestCase
 
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.primordium import Id, DataInputStream, Type
-from dlkit.runtime.proxy_example import TestRequest
+from dlkit.runtime.proxy_example import SimpleRequest
 from dlkit.records.registry import ASSESSMENT_RECORD_TYPES
 
 import dlkit.runtime.configs
@@ -27,12 +27,8 @@ TEST_OBJECTIVE_BANK_GENUS = Type('learning.ObjectiveBank%3Atest-catalog%40ODL.MI
 TEST_REPOSITORY_GENUS = Type('repository.Repository%3Atest-catalog%40ODL.MIT.EDU')
 
 
-@override_settings(DLKIT_TEST_MONGO_DB_PREFIX='test_dlkit_functional_')
-class DjangoTestCase(TestCase, MockTestCase):
+class DLKitTestCase(MockTestCase):
     """
-    A TestCase class that combines minimocktest and django.test.TestCase
-
-    http://pykler.github.io/MiniMockTest/
     """
     def _pre_setup(self):
         MockTestCase.setUp(self)
@@ -281,12 +277,12 @@ class DjangoTestCase(TestCase, MockTestCase):
         load_fixtures()
         self.url = '/api/v2/repository/'
         self.username = 'instructor@mit.edu'
-        self.instructor_req = TestRequest(self.username)
+        self.instructor_req = SimpleRequest(self.username)
 
         self.student_name = 'student@mit.edu'
-        self.student_req = TestRequest(self.student_name)
+        self.student_req = SimpleRequest(self.student_name)
 
-        self.unauthenticated_req = TestRequest(self.username, authenticated=False)
+        self.unauthenticated_req = SimpleRequest(self.username, authenticated=False)
 
         self.req = self.instructor_req
 
@@ -306,7 +302,7 @@ class DjangoTestCase(TestCase, MockTestCase):
         asset_content_type_list = []
         try:
             config = repo._runtime.get_configuration()
-            parameter_id = Id('parameter:assetContentRecordTypeForFiles@mongo')
+            parameter_id = Id('parameter:assetContentRecordTypeForFiles@json')
             asset_content_type_list.append(
                 config.get_value_by_parameter(parameter_id).get_type_value())
         except AttributeError:
@@ -383,10 +379,9 @@ def create_test_request(test_user):
 
 def get_agent_id(agent_id):
     """Not a great hack...depends too much on internal DLKit knowledge"""
-    # TODO: change this for FBW
     if '@mit.edu' not in agent_id:
         agent_id += '@mit.edu'
-    test_request = TestRequest(agent_id)
+    test_request = SimpleRequest(agent_id)
     condition = PROXY_SESSION.get_proxy_condition()
     condition.set_http_request(test_request)
     proxy = PROXY_SESSION.get_proxy(condition)

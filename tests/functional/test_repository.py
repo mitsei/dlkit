@@ -9,7 +9,7 @@ from dlkit.records.registry import COMPOSITION_GENUS_TYPES
 from dlkit.runtime import configs
 from dlkit.runtime.primordium import DataInputStream, Type, Id, DateTime
 
-from .utilities.testing import DjangoTestCase
+from .utilities.testing import DLKitTestCase
 
 
 WORDIGNORECASE_STRING_MATCH_TYPE = Type(**String.get_type_data('WORDIGNORECASE'))
@@ -34,7 +34,7 @@ ENCLOSED_ASSESSMENT_TYPE = Type(
        'namespace': 'assessment',
        'authority': 'OSID.ORG'})
 
-class AWSAdapterTests(DjangoTestCase):
+class AWSAdapterTests(DLKitTestCase):
     def create_asset_with_content(self):
         form = self._repo.get_asset_form_for_create([])
 
@@ -104,7 +104,7 @@ class AWSAdapterTests(DjangoTestCase):
         self.assertFalse(self.s3_file_exists(expected_filekey))
 
 
-class AssetContentTests(DjangoTestCase):
+class AssetContentTests(DLKitTestCase):
     def create_asset_with_content(self):
         form = self._repo.get_asset_form_for_create([])
 
@@ -230,7 +230,7 @@ class AssetContentTests(DjangoTestCase):
         )
 
 
-class CompositionTests(DjangoTestCase):
+class CompositionTests(DLKitTestCase):
     def create_asset_with_content(self):
         form = self._repo.get_asset_form_for_create([])
 
@@ -586,7 +586,7 @@ class EdXCompositionTests(CompositionTests):
             else:
                 self.fail('This should have thrown IllegalState().')
 
-class EnclosureTests(DjangoTestCase):
+class EnclosureTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'
@@ -736,7 +736,7 @@ class EnclosureTests(DjangoTestCase):
         self.assertEqual(asset_list.next().display_name.text, 'a test assessment')
 
 
-class SearchAssetPaginationTests(DjangoTestCase):
+class SearchAssetPaginationTests(DLKitTestCase):
     def create_asset(self, name="my new asset"):
         form = self._repo.get_asset_form_for_create([])
 
@@ -872,7 +872,7 @@ class SearchAssetPaginationTests(DjangoTestCase):
         )
 
 
-class SearchCompositionPaginationTests(DjangoTestCase):
+class SearchCompositionPaginationTests(DLKitTestCase):
     def create_composition(self, name="my new composition"):
         form = self._repo.get_composition_form_for_create([])
 

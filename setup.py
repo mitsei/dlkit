@@ -74,7 +74,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['numpy', 'pymongo', 'boto'],
+    install_requires=['numpy', 'pymongo', 'boto', 'inflection', 'bs4'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -82,7 +82,9 @@ setup(
     # $ pip install -e .[dev,test]
     extras_require={
         'dev': [],
-        'test': ['envoy', 'pytest', 'pytest-pep8', 'pytest-cov'],
+        'test': ['pymongo', 'numpy', 'envoy',
+                 'minimocktest', 'bs4',
+                 'pytest', 'pytest-pep8', 'pytest-cov'],
     },
 
     # If there are data files included in your packages that need to be

@@ -4,13 +4,13 @@ import json
 from dlkit.records.registry import LOG_ENTRY_RECORD_TYPES
 from dlkit.runtime.primordium import Type, DateTime
 
-from .utilities.testing import DjangoTestCase, get_agent_id
+from .utilities.testing import DLKitTestCase, get_agent_id
 
 
 TEXT_BLOB_LOG_ENTRY = Type(**LOG_ENTRY_RECORD_TYPES['text-blob'])
 
 
-class LogEntryTests(DjangoTestCase):
+class LogEntryTests(DLKitTestCase):
     def create_log_entry(self):
         form = self._log.get_log_entry_form_for_create([TEXT_BLOB_LOG_ENTRY])
         form.set_text(self._text_blob)

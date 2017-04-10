@@ -2,12 +2,12 @@ import numpy as np
 
 from decimal import Decimal
 
-from .utilities.testing import DjangoTestCase, get_manager
+from .utilities.testing import DLKitTestCase, get_manager
 
-from dlkit.runtime.proxy_example import TestRequest
+from dlkit.runtime.proxy_example import SimpleRequest
 
 
-class GradebookSummaryTests(DjangoTestCase):
+class GradebookSummaryTests(DLKitTestCase):
     def add_item(self, bank):
         form = bank.get_item_form_for_create([])
         form.display_name = 'a test item!'
@@ -48,7 +48,7 @@ class GradebookSummaryTests(DjangoTestCase):
         self._scores = []
         for num in range(0, 100):
             username = 'User_{0}'.format(num)
-            request = TestRequest(username=username)
+            request = SimpleRequest(username=username)
             gm = get_manager(request, 'grading')
             form = gradebook.get_grade_entry_form_for_create(column.ident,
                                                              gm.effective_agent_id,

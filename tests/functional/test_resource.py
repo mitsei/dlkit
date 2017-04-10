@@ -3,12 +3,12 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.locale.types import string as String
 from dlkit.primordium.type.primitives import Type
 
-from .utilities.testing import DjangoTestCase
+from .utilities.testing import DLKitTestCase
 
 WORDIGNORECASE_STRING_MATCH_TYPE = Type(**String.get_type_data('WORDIGNORECASE'))
 
 
-class SearchPaginationTests(DjangoTestCase):
+class SearchPaginationTests(DLKitTestCase):
     def create_resource(self, name="my new resource"):
         form = self._bin.get_resource_form_for_create([])
 

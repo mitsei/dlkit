@@ -4,10 +4,10 @@ from decimal import Decimal
 
 from dlkit.runtime.primordium import DateTime, Id
 
-from .utilities.testing import DjangoTestCase, serialize_date
+from .utilities.testing import DLKitTestCase, serialize_date
 
 
-class ProficiencyTests(DjangoTestCase):
+class ProficiencyTests(DLKitTestCase):
     def create_proficiency(self):
         form = self._bank.get_proficiency_form_for_create(self._test_obj_id,
                                                           self._test_kerb,

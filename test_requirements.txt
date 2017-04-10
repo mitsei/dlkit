@@ -1,0 +1,11 @@
+# Core project/common application testing requirements
+
+boto
+numpy
+pymongo
+bs4==0.0.1
+pytest
+pytest-pep8
+# pytest-pylint
+pytest-cov
+envoy==0.0.3

@@ -1,9 +1,9 @@
 """Unit tests of commenting managers."""
 
 import unittest
-from dlkit_runtime import PROXY_SESSION, proxy_example
-from dlkit_runtime.managers import Runtime
-REQUEST = proxy_example.TestRequest()
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
@@ -79,7 +79,7 @@ class TestCommentingManager(unittest.TestCase):
         create_form.description = 'Test Book for commenting manager tests'
         catalog = cls.svc_mgr.create_book(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('COMMENTING', 'TEST_MONGO_1', (3, 0, 0))
+        cls.mgr = Runtime().get_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -157,7 +157,7 @@ class TestCommentingProxyManager(unittest.TestCase):
         create_form.description = 'Test Book for commenting proxy manager tests'
         catalog = cls.svc_mgr.create_book(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('COMMENTING', 'TEST_MONGO_1', (3, 0, 0))
+        cls.mgr = Runtime().get_proxy_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):

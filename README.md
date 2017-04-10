@@ -45,4 +45,4 @@ Hand-written modules are:
   - aws_adapter
   - filesystem_adapter
   - handcar
-
+  - records
