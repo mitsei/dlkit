@@ -1,0 +1,644 @@
+"""Unit tests of assessment.authoring sessions."""
+
+import unittest
+from dlkit_runtime import PROXY_SESSION, proxy_example
+from dlkit_runtime.managers import Runtime
+REQUEST = proxy_example.TestRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+from dlkit.primordium.type.primitives import Type
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
+
+from dlkit.primordium.id.primitives import Id
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
+
+
+
+class TestAssessmentPartLookupSession(unittest.TestCase):
+    """Tests for AssessmentPartLookupSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.assessment_part_list = list()
+        cls.assessment_part_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form.display_name = 'Test Assessment'
+        assessment_form.description = 'Test Assessment for AssessmentPartLookupSession tests'
+        cls.assessment = cls.catalog.create_assessment(assessment_form)
+
+        for num in [0, 1, 2, 3]:
+            create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident,
+                                                                                         [])
+            create_form.display_name = 'Test AssessmentPart ' + str(num)
+            create_form.description = 'Test AssessmentPart for AssessmentPartLookupSession tests'
+            if num > 1:
+                create_form.sequestered = True
+            obj = cls.catalog.create_assessment_part_for_assessment(create_form)
+            cls.assessment_part_list.append(obj)
+            cls.assessment_part_ids.append(obj.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        #for obj in cls.catalog.get_assessment_parts():
+        #    cls.catalog.delete_assessment_part(obj.ident)
+        #for catalog in cls.catalogs:
+        #    cls.svc_mgr.delete_bank(catalog.ident)
+        cls.catalog.use_unsequestered_assessment_part_view()
+        for obj in cls.catalog.get_assessment_parts():
+            cls.catalog.delete_assessment_part(obj.ident)
+        cls.catalog.delete_assessment(cls.assessment.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
+    def test_get_assessment_id(self):
+        """tests get_assessment_id"""
+        self.assertEqual(str(self.assessment_part_list[0].get_assessment_id()),
+                         str(self.assessment.ident))
+
+    def test_get_assessment(self):
+        """tests get_assessment"""
+        self.assertEqual(self.assessment_part_list[0].get_assessment().object_map,
+                         self.assessment.object_map)
+
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        # this should not be here...
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    def test_can_lookup_assessment_parts(self):
+        """Tests can_lookup_assessment_parts"""
+        self.assertTrue(isinstance(self.catalog.can_lookup_assessment_parts(), bool))
+
+    def test_use_comparative_assessment_part_view(self):
+        """Tests use_comparative_assessment_part_view"""
+        self.catalog.use_comparative_assessment_part_view()
+
+    def test_use_plenary_assessment_part_view(self):
+        """Tests use_plenary_assessment_part_view"""
+        self.catalog.use_plenary_assessment_part_view()
+
+    def test_use_federated_bank_view(self):
+        """Tests use_federated_bank_view"""
+        self.catalog.use_federated_bank_view()
+
+    def test_use_isolated_bank_view(self):
+        """Tests use_isolated_bank_view"""
+        self.catalog.use_isolated_bank_view()
+
+    @unittest.skip('unimplemented test')
+    def test_use_active_assessment_part_view(self):
+        """Tests use_active_assessment_part_view"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_use_any_status_assessment_part_view(self):
+        """Tests use_any_status_assessment_part_view"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_use_sequestered_assessment_part_view(self):
+        """Tests use_sequestered_assessment_part_view"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_use_unsequestered_assessment_part_view(self):
+        """Tests use_unsequestered_assessment_part_view"""
+        pass
+
+    def test_get_assessment_part(self):
+        """Tests get_assessment_part"""
+        self.catalog.use_isolated_bank_view()
+        obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
+        self.assertEqual(obj.ident, self.assessment_part_list[0].ident)
+        self.catalog.use_federated_bank_view()
+        obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
+        self.assertEqual(obj.ident, self.assessment_part_list[0].ident)
+
+    def test_get_assessment_parts_by_ids(self):
+        """Tests get_assessment_parts_by_ids"""
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
+        objects = self.catalog.get_assessment_parts_by_ids(self.assessment_part_ids)
+        self.assertTrue(isinstance(objects, AssessmentPartList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_assessment_parts_by_ids(self.assessment_part_ids)
+
+    def test_get_assessment_parts_by_genus_type(self):
+        """Tests get_assessment_parts_by_genus_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
+        objects = self.catalog.get_assessment_parts_by_genus_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, AssessmentPartList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_assessment_parts_by_genus_type(DEFAULT_TYPE)
+
+    def test_get_assessment_parts_by_parent_genus_type(self):
+        """Tests get_assessment_parts_by_parent_genus_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
+        objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, AssessmentPartList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_TYPE)
+
+    def test_get_assessment_parts_by_record_type(self):
+        """Tests get_assessment_parts_by_record_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
+        objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, AssessmentPartList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
+
+    @unittest.skip('unimplemented test')
+    def test_get_assessment_parts_for_assessment(self):
+        """Tests get_assessment_parts_for_assessment"""
+        pass
+
+    def test_get_assessment_parts(self):
+        """Tests get_assessment_parts"""
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
+        objects = self.catalog.get_assessment_parts()
+        self.assertTrue(isinstance(objects, AssessmentPartList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_assessment_parts()
+
+    def test_get_assessment_part_with_alias(self):
+        self.catalog.alias_assessment_part(self.assessment_part_ids[0], ALIAS_ID)
+        obj = self.catalog.get_assessment_part(ALIAS_ID)
+        self.assertEqual(obj.get_id(), self.assessment_part_ids[0])
+
+
+class TestAssessmentPartAdminSession(unittest.TestCase):
+    """Tests for AssessmentPartAdminSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartAdminSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessment_parts():
+            cls.catalog.delete_assessment_part(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    def test_can_create_assessment_parts(self):
+        """Tests can_create_assessment_parts"""
+        self.assertTrue(isinstance(self.catalog.can_create_assessment_parts(), bool))
+
+    def test_can_create_assessment_part_with_record_types(self):
+        """Tests can_create_assessment_part_with_record_types"""
+        self.assertTrue(isinstance(self.catalog.can_create_assessment_part_with_record_types(DEFAULT_TYPE), bool))
+
+    @unittest.skip('unimplemented test')
+    def test_get_assessment_part_form_for_create_for_assessment(self):
+        """Tests get_assessment_part_form_for_create_for_assessment"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_create_assessment_part_for_assessment(self):
+        """Tests create_assessment_part_for_assessment"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_assessment_part_form_for_create_for_assessment_part(self):
+        """Tests get_assessment_part_form_for_create_for_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_create_assessment_part_for_assessment_part(self):
+        """Tests create_assessment_part_for_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_update_assessment_parts(self):
+        """Tests can_update_assessment_parts"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_assessment_part_form_for_update(self):
+        """Tests get_assessment_part_form_for_update"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_update_assessment_part(self):
+        """Tests update_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_delete_assessment_parts(self):
+        """Tests can_delete_assessment_parts"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_delete_assessment_part(self):
+        """Tests delete_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_manage_assessment_part_aliases(self):
+        """Tests can_manage_assessment_part_aliases"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_alias_assessment_part(self):
+        """Tests alias_assessment_part"""
+        pass
+
+
+class TestAssessmentPartItemSession(unittest.TestCase):
+    """Tests for AssessmentPartItemSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.item_list = list()
+        cls.item_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT_AUTHORING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartItemSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssetCompositionSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form.display_name = 'Test Assessment Part'
+        create_form.description = 'Test Assessment Part for AssetCompositionSession tests'
+        cls.assessment_part = cls.catalog.create_assessment_part_for_assessment(create_form)
+        for num in [0, 1, 2, 3]:
+            create_form = cls.catalog.get_item_form_for_create([])
+            create_form.display_name = 'Test Item ' + str(num)
+            create_form.description = 'Test Item for AssessmentPartItemSession tests'
+            obj = cls.catalog.create_item(create_form)
+            cls.item_list.append(obj)
+            cls.item_ids.append(obj.ident)
+            cls.catalog.add_item(obj.ident, cls.assessment_part.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_banks():
+            for obj in catalog.get_assessment_parts():
+                catalog.delete_assessment_part(obj.ident)
+            for obj in catalog.get_assessments():
+                catalog.delete_assessment(obj.ident)
+            for obj in catalog.get_items():
+                catalog.delete_item(obj.ident)
+            cls.svc_mgr.delete_bank(catalog.ident)
+
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_access_assessment_part_items(self):
+        """Tests can_access_assessment_part_items"""
+        pass
+
+    def test_use_comparative_asseessment_part_item_view(self):
+        """Tests use_comparative_asseessment_part_item_view"""
+        self.catalog.use_comparative_asseessment_part_item_view()
+
+    def test_use_plenary_assessment_part_item_view(self):
+        """Tests use_plenary_assessment_part_item_view"""
+        self.catalog.use_plenary_assessment_part_item_view()
+
+    def test_use_federated_bank_view(self):
+        """Tests use_federated_bank_view"""
+        self.catalog.use_federated_bank_view()
+
+    def test_use_isolated_bank_view(self):
+        """Tests use_isolated_bank_view"""
+        self.catalog.use_isolated_bank_view()
+
+    def test_get_assessment_part_items(self):
+        """Tests get_assessment_part_items"""
+        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 4)
+
+    def test_get_assessment_parts_by_item(self):
+        """Tests get_assessment_parts_by_item"""
+        self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available(), 1)
+        self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident, self.assessment_part.ident)
+
+
+class TestAssessmentPartItemDesignSession(unittest.TestCase):
+    """Tests for AssessmentPartItemDesignSession"""
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_design_assessment_parts(self):
+        """Tests can_design_assessment_parts"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_add_item(self):
+        """Tests add_item"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_move_item_ahead(self):
+        """Tests move_item_ahead"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_move_item_behind(self):
+        """Tests move_item_behind"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_order_items(self):
+        """Tests order_items"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_remove_item(self):
+        """Tests remove_item"""
+        pass
+
+
+class TestSequenceRuleLookupSession(unittest.TestCase):
+    """Tests for SequenceRuleLookupSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceLookupSession
+        cls.sequence_rule_list = list()
+        cls.sequence_rule_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for SequenceRuleLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_sequence_rule_form_for_create([])
+            create_form.display_name = 'Test SequenceRule ' + str(num)
+            create_form.description = 'Test SequenceRule for SequenceRuleLookupSession tests'
+            obj = cls.catalog.create_sequence_rule(create_form)
+            cls.sequence_rule_list.append(obj)
+            cls.sequence_rule_ids.append(obj.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceLookupSession
+        #for obj in cls.catalog.get_sequence_rules():
+        #    cls.catalog.delete_sequence_rule(obj.ident)
+        #for catalog in cls.catalogs:
+        #    cls.svc_mgr.delete_bank(catalog.ident)
+        for catalog in cls.svc_mgr.get_banks():
+            for obj in catalog.get_sequence_rules():
+                catalog.delete_sequence_rule(obj.ident)
+            cls.svc_mgr.delete_bank(catalog.ident)
+
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    def test_can_lookup_sequence_rules(self):
+        """Tests can_lookup_sequence_rules"""
+        self.assertTrue(isinstance(self.catalog.can_lookup_sequence_rules(), bool))
+
+    def test_use_comparative_sequence_rule_view(self):
+        """Tests use_comparative_sequence_rule_view"""
+        self.catalog.use_comparative_sequence_rule_view()
+
+    def test_use_plenary_sequence_rule_view(self):
+        """Tests use_plenary_sequence_rule_view"""
+        self.catalog.use_plenary_sequence_rule_view()
+
+    def test_use_federated_bank_view(self):
+        """Tests use_federated_bank_view"""
+        self.catalog.use_federated_bank_view()
+
+    def test_use_isolated_bank_view(self):
+        """Tests use_isolated_bank_view"""
+        self.catalog.use_isolated_bank_view()
+
+    @unittest.skip('unimplemented test')
+    def test_use_active_sequence_rule_view(self):
+        """Tests use_active_sequence_rule_view"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_use_any_status_sequence_rule_view(self):
+        """Tests use_any_status_sequence_rule_view"""
+        pass
+
+    def test_get_sequence_rule(self):
+        """Tests get_sequence_rule"""
+        self.catalog.use_isolated_bank_view()
+        obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
+        self.assertEqual(obj.ident, self.sequence_rule_list[0].ident)
+        self.catalog.use_federated_bank_view()
+        obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
+        self.assertEqual(obj.ident, self.sequence_rule_list[0].ident)
+
+    def test_get_sequence_rules_by_ids(self):
+        """Tests get_sequence_rules_by_ids"""
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
+        objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
+        self.assertTrue(isinstance(objects, SequenceRuleList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
+
+    def test_get_sequence_rules_by_genus_type(self):
+        """Tests get_sequence_rules_by_genus_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
+        objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, SequenceRuleList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_TYPE)
+
+    def test_get_sequence_rules_by_parent_genus_type(self):
+        """Tests get_sequence_rules_by_parent_genus_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
+        objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, SequenceRuleList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_TYPE)
+
+    def test_get_sequence_rules_by_record_type(self):
+        """Tests get_sequence_rules_by_record_type"""
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
+        objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(isinstance(objects, SequenceRuleList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rules_for_assessment_part(self):
+        """Tests get_sequence_rules_for_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rules_for_next_assessment_part(self):
+        """Tests get_sequence_rules_for_next_assessment_part"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rules_for_assessment_parts(self):
+        """Tests get_sequence_rules_for_assessment_parts"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rules_for_assessment(self):
+        """Tests get_sequence_rules_for_assessment"""
+        pass
+
+    def test_get_sequence_rules(self):
+        """Tests get_sequence_rules"""
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
+        objects = self.catalog.get_sequence_rules()
+        self.assertTrue(isinstance(objects, SequenceRuleList))
+        self.catalog.use_federated_bank_view()
+        objects = self.catalog.get_sequence_rules()
+
+    def test_get_sequence_rule_with_alias(self):
+        self.catalog.alias_sequence_rule(self.sequence_rule_ids[0], ALIAS_ID)
+        obj = self.catalog.get_sequence_rule(ALIAS_ID)
+        self.assertEqual(obj.get_id(), self.sequence_rule_ids[0])
+
+
+class TestSequenceRuleAdminSession(unittest.TestCase):
+    """Tests for SequenceRuleAdminSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for SequenceRuleAdminSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_sequence_rules():
+            cls.catalog.delete_sequence_rule(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    @unittest.skip('unimplemented test')
+    def test_get_bank(self):
+        """Tests get_bank"""
+        pass
+
+    def test_can_create_sequence_rule(self):
+        """Tests can_create_sequence_rule"""
+        self.assertTrue(isinstance(self.catalog.can_create_sequence_rule(), bool))
+
+    def test_can_create_sequence_rule_with_record_types(self):
+        """Tests can_create_sequence_rule_with_record_types"""
+        self.assertTrue(isinstance(self.catalog.can_create_sequence_rule_with_record_types(DEFAULT_TYPE), bool))
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rule_form_for_create(self):
+        """Tests get_sequence_rule_form_for_create"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_create_sequence_rule(self):
+        """Tests create_sequence_rule"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_update_sequence_rules(self):
+        """Tests can_update_sequence_rules"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_get_sequence_rule_form_for_update(self):
+        """Tests get_sequence_rule_form_for_update"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_update_sequence_rule(self):
+        """Tests update_sequence_rule"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_delete_sequence_rules(self):
+        """Tests can_delete_sequence_rules"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_delete_sequence_rule(self):
+        """Tests delete_sequence_rule"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_manage_sequence_rule_aliases(self):
+        """Tests can_manage_sequence_rule_aliases"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_alias_sequence_rule(self):
+        """Tests alias_sequence_rule"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_can_sequence_sequence_rules(self):
+        """Tests can_sequence_sequence_rules"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_move_sequence_rule_ahead(self):
+        """Tests move_sequence_rule_ahead"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_move_sequence_rule_behind(self):
+        """Tests move_sequence_rule_behind"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_order_sequence_rules(self):
+        """Tests order_sequence_rules"""
+        pass
+
+
