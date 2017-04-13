@@ -6,7 +6,7 @@ from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 
 from dlkit.runtime import PROXY_SESSION, RUNTIME
-from dlkit.runtime.proxy_example import User
+from dlkit.runtime.proxy_example import User, SimpleRequest
 from dlkit.runtime import configs
 
 BOOTSTRAP_VAULT_GENUS = Type(**{
@@ -314,16 +314,17 @@ def create_super_authz_authorizations(vault):
         create_authz(vault, agent_id, function, vault.ident)
 
 def create_test_request(test_user):
-    from django.http import HttpRequest
-    from django.conf import settings
-    from django.utils.importlib import import_module
-    #http://stackoverflow.com/questions/16865947/django-httprequest-object-has-no-attribute-session
-    test_request = HttpRequest()
-    engine = import_module(settings.SESSION_ENGINE)
-    session_key = None
-    test_request.user = test_user
-    test_request.session = engine.SessionStore(session_key)
-    return test_request
+    # from django.http import HttpRequest
+    # from django.conf import settings
+    # from django.utils.importlib import import_module
+    # #http://stackoverflow.com/questions/16865947/django-httprequest-object-has-no-attribute-session
+    # test_request = HttpRequest()
+    # engine = import_module(settings.SESSION_ENGINE)
+    # session_key = None
+    # test_request.user = test_user
+    # test_request.session = engine.SessionStore(session_key)
+    # return test_request
+    return SimpleRequest(username=test_user.username)
 
 def create_vault(request):
     authzm = get_session_data(request, 'authzm')
@@ -454,4 +455,4 @@ def restore_services_config(original_version):
 
 def set_session_data(request, item_type, data):
     request.session[item_type] = pickle.dumps(data)
-    request.session.modified = True
+    # request.session.modified = True

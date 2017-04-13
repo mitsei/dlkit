@@ -64,7 +64,7 @@ class AWSAdapterTests(DLKitTestCase):
         asset = self._repo.get_asset(new_asset.ident)
         return asset
 
-    def s3_file_exists(self, key):
+    def file_exists(self, key):
         connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
                                      configs.S3_TEST_PRIVATE_KEY)
         bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
@@ -87,21 +87,21 @@ class AWSAdapterTests(DLKitTestCase):
 
     def test_repository_assets_put_into_s3(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
-        self.assertTrue(self.s3_file_exists(expected_filekey))
+        self.assertTrue(self.file_exists(expected_filekey))
 
     def test_repository_assets_return_cloudfront_url_when_queried(self):
         asset_content = self._asset.get_asset_contents().next()
         url = asset_content.get_url()
-        self.is_cloudfront_url(url)
+        self.is_streamable_url(url)
 
     def test_s3_files_deleted_when_asset_content_deleted(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
-        self.assertTrue(self.s3_file_exists(expected_filekey))
+        self.assertTrue(self.file_exists(expected_filekey))
 
         asset_content = self._asset.get_asset_contents().next()
 
         self._repo.delete_asset_content(asset_content.ident)
-        self.assertFalse(self.s3_file_exists(expected_filekey))
+        self.assertFalse(self.file_exists(expected_filekey))
 
 
 class AssetContentTests(DLKitTestCase):
@@ -260,7 +260,7 @@ class CompositionTests(DLKitTestCase):
         asset = self._repo.get_asset(new_asset.ident)
         return asset
 
-    def s3_file_exists(self, key):
+    def file_exists(self, key):
         connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
                                      configs.S3_TEST_PRIVATE_KEY)
         bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
@@ -324,7 +324,7 @@ class CompositionTests(DLKitTestCase):
             1
         )
 
-        self.is_cloudfront_url(asset.get_asset_contents().next().get_url())
+        self.is_streamable_url(asset.get_asset_contents().next().get_url())
 
 class EdXCompositionTests(CompositionTests):
     def create_composition_of_type(self, comp_type):
@@ -636,7 +636,7 @@ class EnclosureTests(DLKitTestCase):
         asset = self._repo.get_asset(new_asset.ident)
         return asset
 
-    def s3_file_exists(self, key):
+    def file_exists(self, key):
         connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
                                      configs.S3_TEST_PRIVATE_KEY)
         bucket = connection.get_bucket(configs.S3_TEST_BUCKET)

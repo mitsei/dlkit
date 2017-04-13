@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import boto
 
 from boto.s3.key import Key
@@ -12,10 +12,9 @@ from dlkit.primordium.locale.types import string as String
 from dlkit.records.registry import ASSESSMENT_RECORD_TYPES, ITEM_RECORD_TYPES,\
     ANSWER_GENUS_TYPES, QUESTION_RECORD_TYPES, ANSWER_RECORD_TYPES,\
     ASSESSMENT_PART_RECORD_TYPES, ASSESSMENT_OFFERED_RECORD_TYPES,\
-    ASSESSMENT_TAKEN_RECORD_TYPES
+    ASSESSMENT_TAKEN_RECORD_TYPES, ASSET_CONTENT_GENUS_TYPES
 
 from random import randint
-
 
 from urllib import unquote
 
@@ -56,6 +55,9 @@ MULTI_LANGUAGE_TEXT_INTERACTION_RECORD = Type(**QUESTION_RECORD_TYPES['multi-lan
 
 FBW_PHASE_I_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['fbw-phase-i'])
 FBW_PHASE_II_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['fbw-phase-ii'])
+
+OV_SET_SMALL_ASSET_CONTENT_TYPE = Type(**ASSET_CONTENT_GENUS_TYPES['ortho-view-set-small'])
+OV_SET_LARGE_ASSET_CONTENT_TYPE = Type(**ASSET_CONTENT_GENUS_TYPES['ortho-view-set-large'])
 
 
 class EdXTests(DLKitTestCase):
@@ -209,7 +211,9 @@ class EdXMultiChoiceTests(EdXTests):
 
         self._bank.update_item(form)
 
-        item_files = self._bank.get_item(self._item.ident).get_files()
+        item = self._bank.get_item(self._item.ident)
+
+        item_files = item.get_files()
         self.assertEqual(
             len(item_files.keys()),
             1
@@ -218,9 +222,9 @@ class EdXMultiChoiceTests(EdXTests):
             item_files.keys()[0],
             'TopView'
         )
-        self.is_cloudfront_url(item_files['TopView'])
+        self.is_streamable_url(item_files['TopView'])
         self.assertIn(
-            self.filename(self.top),
+            item.object_map['fileIds']['TopView']['assetContentId'],
             item_files['TopView']
         )
 
@@ -785,15 +789,17 @@ class MecQBankItemTests(MecQBankTests):
                       asset_content_type=ac_genus,
                       asset_name='my file name')
         self._bank.update_item(form)
+        item = self._bank.get_item(self._item.ident)
 
-        item_files = self._bank.get_item(self._item.ident).get_files()
+        item_files = item.get_files()
         self.assertIn(
             label,
             item_files
         )
-        self.is_cloudfront_url(item_files[label])
+        self.is_streamable_url(item_files[label])
+
         self.assertIn(
-            self.filename(file_),
+            item.object_map['fileIds'][label]['assetContentId'],
             item_files[label]
         )
 
@@ -811,20 +817,43 @@ class MecQBankItemTests(MecQBankTests):
         form.add_preview(file_, name)
         execute(form)
 
+        item = self._bank.get_item(self._item.ident)
+
         if type_ == 'question':
-            files = self._bank.get_item(self._item.ident).get_question().get_files()
+            files = item.get_question().get_files()
+            expected_asset_content_id = item.object_map['question']['fileIds']['preview']['assetContentId']
         else:
-            files = self._bank.get_item(self._item.ident).get_answers().next().get_files()
+            files = item.get_answers().next().get_files()
+            expected_asset_content_id = item.object_map['answers'][0]['fileIds']['preview']['assetContentId']
 
         self.assertIn(
             'preview',
             files
         )
-        self.is_cloudfront_url(files['preview'])
+        self.is_streamable_url(files['preview'])
         self.assertIn(
-            self.filename(file_),
+            expected_asset_content_id,
             files['preview']
         )
+
+    def get_asset_content_full_path(self, item, label, source=None):
+        mgr = get_manager(self.req, 'repository')
+        repo = mgr.get_repository(self._bank.ident)
+        try:
+            if source == 'question':
+                ac_id_str = item.object_map['question']['fileIds'][label]['assetContentId']
+            elif source == 'answer':
+                ac_id_str = item.object_map['answers'][0]['fileIds'][label]['assetContentId']
+            else:
+                ac_id_str = item.object_map['fileIds'][label]['assetContentId']
+            ac = repo.get_asset_content(
+                Id(ac_id_str))
+        except errors.NotFound:
+            return None
+        else:
+            # this is super hacky
+            return os.path.join(ac._config_map['data_store_full_path'],
+                                ac._my_map['url'])
 
     def reset_files(self):
         self.solution_preview_file.seek(0)
@@ -837,13 +866,17 @@ class MecQBankItemTests(MecQBankTests):
         self.solution_image_file.seek(0)
         self.solution_with_image.seek(0)
 
-    def s3_file_exists(self, file_):
-        expected_filekey = self._bank.ident.identifier + '/' + file_.name.split('/')[-1]
-        connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                     configs.S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-        file_ = Key(bucket, expected_filekey)
-        return file_.exists()
+    def file_exists(self, file_):
+        if 'S3_TEST_PUBLIC_KEY' in os.environ and isinstance(file_, file):
+            expected_filekey = self._bank.ident.identifier + '/' + file_.name.split('/')[-1]
+            connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
+                                         configs.S3_TEST_PRIVATE_KEY)
+            bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
+            file_ = Key(bucket, expected_filekey)
+            return file_.exists()
+        else:
+            # check on the filesystem that the file is there
+            return os.path.isfile(file_)
 
     def setUp(self):
         super(MecQBankItemTests, self).setUp()
@@ -997,15 +1030,15 @@ class MecQBankItemTests(MecQBankTests):
                 'domain': 'assessment.Question'})
         }
 
-        self.solution_preview_file = open(ABS_PATH + '/files/2002_Library_Khalid/CONT0001_Sol.pdf')
-        self.solution_tex_file = open(ABS_PATH + '/files/2002_Library_Khalid/CONT0001_Sol.tex')
-        self.metadata_file = open(ABS_PATH + '/files/2002_Library_Khalid/CONT0001.meta')
-        self.question_preview_file = open(ABS_PATH + '/files/2002_Library_Khalid/CONT0001.pdf')
-        self.question_tex_file = open(ABS_PATH + '/files/2002_Library_Khalid/CONT0001.tex')
-        self.figure_file = open(ABS_PATH + '/files/2002_Library_Khalid/Flexure_structure_with_hints.pdf')
-        self.non_pdf_file = open(ABS_PATH + '/files/nonPDFFiles/CONT0002.docx')
-        self.solution_image_file = open(ABS_PATH + '/files/2002_Library_Khalid/balloon_soln_a.eps')
-        self.solution_with_image = open(ABS_PATH + '/files/2002_Library_Khalid/0002RBEL_Sol.tex')
+        self.solution_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.pdf')
+        self.solution_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.tex')
+        self.metadata_file = open(ABS_PATH + '/files/MecQBank/CONT0001.meta')
+        self.question_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001.pdf')
+        self.question_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001.tex')
+        self.figure_file = open(ABS_PATH + '/files/MecQBank/solution_with_image.pdf')
+        self.non_pdf_file = open(ABS_PATH + '/files/MecQBank/test_doc.docx')
+        self.solution_image_file = open(ABS_PATH + '/files/MecQBank/draggable.green.dot.png')
+        self.solution_with_image = open(ABS_PATH + '/files/MecQBank/solution_with_image.tex')
 
         self._item = self.add_item(self._bank)
 
@@ -1167,6 +1200,11 @@ class MecQBankItemTests(MecQBankTests):
         self.general_add_file_test(self.figure_file,
                                    self.pdf_genus_type,
                                    'image_file')
+        item = self._bank.get_item(self._item.ident)
+        original_file_location = self.get_asset_content_full_path(item,
+                                                                  'image_file')
+        self.assertTrue(self.file_exists(original_file_location))
+
         form = self._bank.get_item_form_for_update(self._item.ident)
         form.clear_file('image_file')
         self._bank.update_item(form)
@@ -1175,12 +1213,19 @@ class MecQBankItemTests(MecQBankTests):
             {},
             item_files
         )
-        self.assertFalse(self.s3_file_exists(self.figure_file))
+        self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_pdf_question_preview(self):
         self.general_add_preview_test('question',
                                       self.question_preview_file,
                                       'preview')
+
+        item = self._bank.get_item(self._item.ident)
+        original_file_location = self.get_asset_content_full_path(item,
+                                                                  'preview',
+                                                                  source='question')
+        self.assertTrue(self.file_exists(original_file_location))
+
         form = self._bank.get_question_form_for_update(self._item.ident)
         form.clear_file('preview')
         self._bank.update_question(form)
@@ -1189,12 +1234,19 @@ class MecQBankItemTests(MecQBankTests):
             {},
             question_files
         )
-        self.assertFalse(self.s3_file_exists(self.question_preview_file))
+        self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_pdf_answer_preview(self):
         self.general_add_preview_test('answer',
                                       self.solution_preview_file,
                                       'preview')
+
+        item = self._bank.get_item(self._item.ident)
+        original_file_location = self.get_asset_content_full_path(item,
+                                                                  'preview',
+                                                                  source='answer')
+        self.assertTrue(self.file_exists(original_file_location))
+
         form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
         form.clear_file('preview')
         self._bank.update_answer(form)
@@ -1203,12 +1255,18 @@ class MecQBankItemTests(MecQBankTests):
             {},
             answer_files
         )
-        self.assertFalse(self.s3_file_exists(self.solution_preview_file))
+        self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_non_pdf_question_preview(self):
         self.general_add_preview_test('question',
                                       self.non_pdf_file,
                                       'preview')
+        item = self._bank.get_item(self._item.ident)
+        original_file_location = self.get_asset_content_full_path(item,
+                                                                  'preview',
+                                                                  source='question')
+        self.assertTrue(self.file_exists(original_file_location))
+
         form = self._bank.get_question_form_for_update(self._item.ident)
         form.clear_file('preview')
         self._bank.update_question(form)
@@ -1217,12 +1275,19 @@ class MecQBankItemTests(MecQBankTests):
             {},
             question_files
         )
-        self.assertFalse(self.s3_file_exists(self.non_pdf_file))
+        self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_non_pdf_answer_preview(self):
         self.general_add_preview_test('answer',
                                       self.non_pdf_file,
                                       'preview')
+
+        item = self._bank.get_item(self._item.ident)
+        original_file_location = self.get_asset_content_full_path(item,
+                                                                  'preview',
+                                                                  source='answer')
+        self.assertTrue(self.file_exists(original_file_location))
+
         form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
         form.clear_file('preview')
         self._bank.update_answer(form)
@@ -1231,7 +1296,7 @@ class MecQBankItemTests(MecQBankTests):
             {},
             answer_files
         )
-        self.assertFalse(self.s3_file_exists(self.non_pdf_file))
+        self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_set_difficulty(self):
         difficulties = ['low', 'medium', 'hard']
@@ -1266,10 +1331,6 @@ class Ortho3DTests(DLKitTestCase):
         :return:
         """
         self.reset_files()
-        self.assertEqual(
-            file1.name.split('/')[-1],
-            file2.name.split('/')[-1]
-        )
         self.assertEqual(
             file1.read(),
             file2.read()
@@ -1451,10 +1512,6 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
         for case in test_cases:
             self.assertEqual(
-                case[1].name.split('/')[-1],
-                case[0].name
-            )
-            self.assertEqual(
                 case[1].read(),
                 case[0].read()
             )
@@ -1531,6 +1588,16 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         item = bank.get_item(new_item.ident)
         return item
 
+    def get_asset_content_by_genus_type(self, asset_id, genus_type):
+            mgr = get_manager(self.req, 'repository')
+            repo = mgr.get_repository(self._bank.ident)
+            asset = repo.get_asset(asset_id)
+            ac = None
+            for content in asset.get_asset_contents():
+                if content.genus_type == genus_type:
+                    return content
+            return ac
+
     def setUp(self):
         super(Ortho3DMultiChoiceTests, self).setUp()
 
@@ -1567,22 +1634,10 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
 
-        expected_contents = [self.filename(self.manip),
-                             self.filename(self.choice0sm),
-                             self.filename(self.choice0big)]
-
         self.assertEqual(
             manip_asset.get_asset_contents().available(),
             3
         )
-
-        for content in manip_asset.get_asset_contents():
-            content_url_file = self.filename(content.object_map['url'])
-            self.assertIn(
-                content_url_file,
-                expected_contents
-            )
-            expected_contents.remove(content_url_file)
 
     def test_can_set_manip_without_right_answer_choice_files(self):
         question_map = self._item.object_map['question']
@@ -1601,20 +1656,10 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
 
-        expected_contents = [self.filename(self.manip)]
-
         self.assertEqual(
             manip_asset.get_asset_contents().available(),
             1
         )
-
-        for content in manip_asset.get_asset_contents():
-            content_url_file = self.filename(content.object_map['url'])
-            self.assertIn(
-                content_url_file,
-                expected_contents
-            )
-            expected_contents.remove(content_url_file)
 
     def test_invalid_argument_thrown_if_non_datainputstream_passed_in(self):
         update_form = self._bank.get_question_form_for_update(self._item.ident)
@@ -1647,9 +1692,14 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
             len(choice_files['choices']),
             1
         )
+        asset_id = Id(question.object_map['choices'][0]['assetId'])
+        small_ac = self.get_asset_content_by_genus_type(asset_id,
+                                                        OV_SET_SMALL_ASSET_CONTENT_TYPE)
+        large_ac = self.get_asset_content_by_genus_type(asset_id,
+                                                        OV_SET_LARGE_ASSET_CONTENT_TYPE)
         choice = choice_files['choices'][0]
-        self.is_cloudfront_url(choice['largeOrthoViewSet'])
-        self.is_cloudfront_url(choice['smallOrthoViewSet'])
+        self.is_streamable_url(choice['largeOrthoViewSet'])
+        self.is_streamable_url(choice['smallOrthoViewSet'])
         self.assertNotEqual(
             choice['largeOrthoViewSet'],
             choice['smallOrthoViewSet']
@@ -1658,13 +1708,12 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
             choice['name'],
             'Choice 1'
         )
-
         self.assertIn(
-            self.filename(self.choice0big),
+            str(large_ac.ident),
             choice['largeOrthoViewSet']
         )
         self.assertIn(
-            self.filename(self.choice0sm),
+            str(small_ac.ident),
             choice['smallOrthoViewSet']
         )
 

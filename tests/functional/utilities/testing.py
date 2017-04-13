@@ -2,6 +2,7 @@
 import os
 import json
 import envoy
+import shutil
 
 from minimocktest import MockTestCase
 
@@ -18,6 +19,7 @@ SIMPLE_SEQUENCE_ASSESSMENT_RECORD = Type(**ASSESSMENT_RECORD_TYPES['simple-child
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 ABS_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
+TEST_DATA_STORE_PATH = os.path.join(ABS_PATH, '../../test_datastore')
 
 TEST_BANK_GENUS = Type('assessment.Bank%3Atest-catalog%40ODL.MIT.EDU')
 TEST_BIN_GENUS = Type('resource.Bin%3Atest-catalog%40ODL.MIT.EDU')
@@ -146,6 +148,8 @@ class DLKitTestCase(MockTestCase):
         return lm.get_objective_banks().next()
 
     def create_new_objective_bank(self):
+        import pdb
+        pdb.set_trace()
         lm = get_manager(self.req, 'learning')
         form = lm.get_objective_bank_form_for_create([])
         form.display_name = 'my new objective bank'
@@ -238,19 +242,22 @@ class DLKitTestCase(MockTestCase):
 
         return repo
 
-    def is_cloudfront_url(self, _url):
-        self.assertIn(
-            'https://{0}/'.format(settings.CLOUDFRONT_TEST_DISTRO),
-            _url
-        )
-
-        expected_params = ['?Expires=','&Signature=','&Key-Pair-Id={0}'.format(settings.CLOUDFRONT_TEST_SIGNING_KEYPAIR_ID)]
-
-        for param in expected_params:
+    def is_streamable_url(self, _url):
+        if 'CLOUDFRONT_TEST_DISTRO' in os.environ:
             self.assertIn(
-                param,
+                'https://{0}/'.format(settings.CLOUDFRONT_TEST_DISTRO),
                 _url
             )
+
+            expected_params = ['?Expires=','&Signature=','&Key-Pair-Id={0}'.format(settings.CLOUDFRONT_TEST_SIGNING_KEYPAIR_ID)]
+
+            for param in expected_params:
+                self.assertIn(
+                    param,
+                    _url
+                )
+        else:
+            self.assertIn('/stream', _url)
 
     def json(self, _req):
         return json.loads(_req.content)
@@ -262,17 +269,18 @@ class DLKitTestCase(MockTestCase):
         self.assertEqual(_req.status_code, 200)
 
     def setUp(self):
-        envoy.run('mongo test_dlkit_functional_assessment --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_assessment_authoring --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_authorization --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_commenting --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_hierarchy --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_learning --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_logging --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_grading --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_relationship --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_repository --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_resource --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_assessment --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_assessment_authoring --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_authorization --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_commenting --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_hierarchy --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_id --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_learning --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_logging --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_grading --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_relationship --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_repository --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_resource --eval "db.dropDatabase()"')
 
         load_fixtures()
         self.url = '/api/v2/repository/'
@@ -286,11 +294,30 @@ class DLKitTestCase(MockTestCase):
 
         self.req = self.instructor_req
 
-        self.test_file1 = open(ABS_PATH + '/files/Backstage_v2_quick_guide.docx')
-        self.test_file2 = open(ABS_PATH + '/files/ps_2015_beam_2gages.pdf')
+        self.test_file1 = open(ABS_PATH + '/files/test_file_1.txt')
+        self.test_file2 = open(ABS_PATH + '/files/test_file_2.txt')
+        if os.path.isdir(TEST_DATA_STORE_PATH):
+            shutil.rmtree(TEST_DATA_STORE_PATH)
+
+        if not os.path.isdir(TEST_DATA_STORE_PATH):
+            os.makedirs(TEST_DATA_STORE_PATH)
+        add_user_authz_to_settings('instructor',
+                                   self.username)
+        add_user_authz_to_settings('student',
+                                   self.student_name)
+
+        # import pdb
+        # pdb.set_trace()
+        # self.create_new_bank()
+        # self.create_new_bin()
+        # self.create_new_gradebook()
+        # self.create_new_log()
+        # self.create_new_objective_bank()
+        # self.create_new_repo()
+        # pdb.set_trace()
 
     def setup_asset(self, repository_id):
-        test_file = '/functional/files/Flexure_structure_with_hints.pdf'
+        test_file = '/functional/files/test_file_1.txt'
 
         repo = self.get_repo(repository_id)
         asset_form = repo.get_asset_form_for_create([])
@@ -321,20 +348,24 @@ class DLKitTestCase(MockTestCase):
         return new_asset.object_map
 
     def tearDown(self):
-        envoy.run('mongo test_dlkit_functional_assessment --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_assessment_authoring --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_authorization --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_commenting --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_hierarchy --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_learning --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_logging --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_grading --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_relationship --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_repository --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_functional_resource --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_assessment --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_assessment_authoring --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_authorization --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_commenting --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_hierarchy --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_id --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_learning --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_logging --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_grading --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_relationship --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_repository --eval "db.dropDatabase()"')
+        envoy.run('mongo test_dlkit_resource --eval "db.dropDatabase()"')
 
         self.test_file1.close()
         self.test_file2.close()
+
+        if os.path.isdir(TEST_DATA_STORE_PATH):
+            shutil.rmtree(TEST_DATA_STORE_PATH)
 
     def updated(self, _req):
         self.code(_req, 202)
@@ -344,13 +375,14 @@ def load_fixtures():
     """use test settings, not the production settings"""
     # create a super-user who can create authorizations
     # create_authz_superuser()
-    envoy.run('mongorestore --db test_dlkit_functional_assessment --drop dlkit_tests/functional/fixtures/test_dlkit_functional_assessment')
-    envoy.run('mongorestore --db test_dlkit_functional_authorization --drop dlkit_tests/functional/fixtures/test_dlkit_functional_authorization')
-    envoy.run('mongorestore --db test_dlkit_functional_grading --drop dlkit_tests/functional/fixtures/test_dlkit_functional_grading')
-    envoy.run('mongorestore --db test_dlkit_functional_learning --drop dlkit_tests/functional/fixtures/test_dlkit_functional_learning')
-    envoy.run('mongorestore --db test_dlkit_functional_logging --drop dlkit_tests/functional/fixtures/test_dlkit_functional_logging')
-    envoy.run('mongorestore --db test_dlkit_functional_repository --drop dlkit_tests/functional/fixtures/test_dlkit_functional_repository')
-    envoy.run('mongorestore --db test_dlkit_functional_resource --drop dlkit_tests/functional/fixtures/test_dlkit_functional_resource')
+    envoy.run('mongorestore --db test_dlkit_assessment --drop tests/functional/fixtures/test_dlkit_assessment')
+    envoy.run('mongorestore --db test_dlkit_authorization --drop tests/functional/fixtures/test_dlkit_authorization')
+    envoy.run('mongorestore --db test_dlkit_grading --drop tests/functional/fixtures/test_dlkit_functional_grading')
+    envoy.run('mongorestore --db test_dlkit_learning --drop tests/functional/fixtures/test_dlkit_functional_learning')
+    envoy.run('mongorestore --db test_dlkit_logging --drop tests/functional/fixtures/test_dlkit_functional_logging')
+    envoy.run('mongorestore --db test_dlkit_repository --drop tests/functional/fixtures/test_dlkit_functional_repository')
+    envoy.run('mongorestore --db test_dlkit_resource --drop tests/functional/fixtures/test_dlkit_functional_resource')
+
 
 def create_test_bank(test_instance):
     """
@@ -365,17 +397,20 @@ def create_test_bank(test_instance):
     req = test_instance.client.post(test_endpoint, payload, format='json')
     return json.loads(req.content)
 
+
 def create_test_request(test_user):
-    from django.http import HttpRequest
-    from django.conf import settings
-    from django.utils.importlib import import_module
-    #http://stackoverflow.com/questions/16865947/django-httprequest-object-has-no-attribute-session
-    test_request = HttpRequest()
-    engine = import_module(settings.SESSION_ENGINE)
-    session_key = None
-    test_request.user = test_user
-    test_request.session = engine.SessionStore(session_key)
-    return test_request
+    # from django.http import HttpRequest
+    # from django.conf import settings
+    # from django.utils.importlib import import_module
+    # #http://stackoverflow.com/questions/16865947/django-httprequest-object-has-no-attribute-session
+    # test_request = HttpRequest()
+    # engine = import_module(settings.SESSION_ENGINE)
+    # session_key = None
+    # test_request.user = test_user
+    # test_request.session = engine.SessionStore(session_key)
+    # return test_request
+    return SimpleRequest(username=test_user.username)
+
 
 def get_agent_id(agent_id):
     """Not a great hack...depends too much on internal DLKit knowledge"""
@@ -385,14 +420,20 @@ def get_agent_id(agent_id):
     condition = PROXY_SESSION.get_proxy_condition()
     condition.set_http_request(test_request)
     proxy = PROXY_SESSION.get_proxy(condition)
-    resm = RUNTIME.get_service_manager('RESOURCE', proxy=proxy)
+    resm = RUNTIME.get_service_manager('RESOURCE',
+                                       implementation='TEST_SERVICE',
+                                       proxy=proxy)
     return resm.effective_agent_id
+
 
 def get_manager(request, manager_type):
     condition = PROXY_SESSION.get_proxy_condition()
     condition.set_http_request(request)
     proxy = PROXY_SESSION.get_proxy(condition)
-    return RUNTIME.get_service_manager(manager_type.upper(), proxy=proxy)
+    return RUNTIME.get_service_manager(manager_type.upper(),
+                                       implementation='TEST_SERVICE',
+                                       proxy=proxy)
+
 
 def serialize_date(date):
     return {

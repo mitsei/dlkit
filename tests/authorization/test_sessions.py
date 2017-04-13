@@ -37,7 +37,7 @@ class TestAuthorizationSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.authz_mgr = Runtime().get_manager('AUTHORIZATION', implementation='MONGO_1')
+        cls.authz_mgr = Runtime().get_manager('AUTHORIZATION', implementation='JSON_1')
         cls.vault_admin_session = cls.authz_mgr.get_vault_admin_session()
         cls.vault_lookup_session = cls.authz_mgr.get_vault_lookup_session()
 
@@ -532,7 +532,11 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         create_form.description = 'Test Vault for AuthorizationQuerySession tests'
         cls.catalog = cls.svc_mgr.create_vault(create_form)
         for color in ['Orange', 'Blue', 'Green', 'orange']:
-            create_form = cls.catalog.get_authorization_form_for_create(AGENT_ID, [])
+            create_form = cls.catalog.get_authorization_form_for_create_for_agent(
+                AGENT_ID,
+                LOOKUP_RESOURCE_FUNCTION_ID,
+                Id(**{'identifier': str(color), 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU',}),
+                [])
             create_form.display_name = 'Test Authorization ' + color
             create_form.description = (
                 'Test Authorization for AuthorizationQuerySession tests, did I mention green')
