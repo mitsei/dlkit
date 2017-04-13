@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mitsei/dlkit.svg?branch=master)](https://travis-ci.org/mitsei/dlkit)  [![Coverage Status](https://coveralls.io/repos/github/mitsei/dlkit/badge.svg?branch=master)](https://coveralls.io/github/mitsei/dlkit?branch=master)
+
 # Introduction
 
 This documentation for the Digital Learning Toolkit (DLKit), like the toolkit itself, is still under development. It currently covers only a small handful of the 180 service packages and over 10,000 educational service APIs that have been defined by MIT’s Office of Digital Learning and its collaborators to date.
