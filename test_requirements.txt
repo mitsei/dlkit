@@ -4,6 +4,8 @@ boto
 numpy
 pymongo
 bs4==0.0.1
+lxml==3.7.3
+sympy==1.0
 pytest
 pytest-pep8
 # pytest-pylint
