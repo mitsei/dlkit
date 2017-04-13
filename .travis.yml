@@ -13,7 +13,6 @@ before_install:
 # command to install dependencies
 install:
   - pip install -r test_requirements.txt
-  - git submodule update --init --recursive
 
 # command to run tests
 script: python -m pytest -x
