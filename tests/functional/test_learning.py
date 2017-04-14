@@ -2,12 +2,19 @@ import datetime
 
 from decimal import Decimal
 
-from dlkit.runtime.primordium import DateTime, Id
+from dlkit.runtime.primordium import DateTime, Id, Type
 
 from .utilities.testing import DLKitTestCase, serialize_date
 
 
 class ProficiencyTests(DLKitTestCase):
+    def create_objective(self):
+        form = self._bank.get_objective_form_for_create([])
+        form.display_name = 'test objective'
+        form.set_genus_type(
+            Type('learning.Objective%3Amc3.learning.generic.outcome%40ODL.MIT.EDU'))
+        return self._bank.create_objective(form)
+
     def create_proficiency(self):
         form = self._bank.get_proficiency_form_for_create(self._test_obj_id,
                                                           self._test_kerb,
@@ -19,7 +26,8 @@ class ProficiencyTests(DLKitTestCase):
         super(ProficiencyTests, self).setUp()
 
         self._bank = self._get_test_objective_bank()
-        self._test_obj_id = Id('mc3-objective%3A3834%40MIT-OEIT')
+        self._test_obj = self.create_objective()
+        self._test_obj_id = self._test_obj.ident
         self._test_kerb = Id('fake%3Adlkit%2540mit.edu%40bazzim.MIT.EDU')
 
     def tearDown(self):
@@ -76,7 +84,7 @@ class ProficiencyTests(DLKitTestCase):
         )
         self.assertEqual(
             obj.object_map['genusTypeId'],
-            'mc3-objective%3Amc3.learning.generic.outcome%40MIT-OEIT'
+            'learning.Objective%3Amc3.learning.generic.outcome%40ODL.MIT.EDU'
         )
 
     def test_can_get_proficiencies_by_kerberos(self):

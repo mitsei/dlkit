@@ -111,7 +111,7 @@ class ResponseCommentingTests(DLKitTestCase):
         asset = repo.get_asset(Id(data['fileId']['assetId']))
 
         self.assertIn(
-            'amazonaws.com',
+            '/stream',
             asset.object_map['assetContents'][0]['url']
         )
 

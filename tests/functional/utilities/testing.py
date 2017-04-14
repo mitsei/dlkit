@@ -3,6 +3,7 @@ import os
 import json
 import envoy
 import shutil
+from pymongo import MongoClient
 
 from minimocktest import MockTestCase
 
@@ -32,6 +33,23 @@ TEST_REPOSITORY_GENUS = Type('repository.Repository%3Atest-catalog%40ODL.MIT.EDU
 class DLKitTestCase(MockTestCase):
     """
     """
+    dbs_to_delete = ['test_dlkit_assessment',
+                     'test_dlkit_assessment_authoring',
+                     'test_dlkit_authorization',
+                     'test_dlkit_commenting',
+                     'test_dlkit_hierarchy',
+                     'test_dlkit_id',
+                     'test_dlkit_learning',
+                     'test_dlkit_logging',
+                     'test_dlkit_grading',
+                     'test_dlkit_relationship',
+                     'test_dlkit_repository',
+                     'test_dlkit_resource']
+
+    @staticmethod
+    def _delete_database(db_name):
+        MongoClient().drop_database(db_name)
+
     def _pre_setup(self):
         MockTestCase.setUp(self)
 
@@ -148,8 +166,6 @@ class DLKitTestCase(MockTestCase):
         return lm.get_objective_banks().next()
 
     def create_new_objective_bank(self):
-        import pdb
-        pdb.set_trace()
         lm = get_manager(self.req, 'learning')
         form = lm.get_objective_bank_form_for_create([])
         form.display_name = 'my new objective bank'
@@ -269,18 +285,8 @@ class DLKitTestCase(MockTestCase):
         self.assertEqual(_req.status_code, 200)
 
     def setUp(self):
-        envoy.run('mongo test_dlkit_assessment --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_assessment_authoring --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_authorization --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_commenting --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_hierarchy --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_id --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_learning --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_logging --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_grading --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_relationship --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_repository --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_resource --eval "db.dropDatabase()"')
+        for db in self.dbs_to_delete:
+            self._delete_database(db)
 
         load_fixtures()
         self.url = '/api/v2/repository/'
@@ -301,11 +307,11 @@ class DLKitTestCase(MockTestCase):
 
         if not os.path.isdir(TEST_DATA_STORE_PATH):
             os.makedirs(TEST_DATA_STORE_PATH)
-        add_user_authz_to_settings('instructor',
-                                   self.username)
-        add_user_authz_to_settings('student',
-                                   self.student_name)
-
+        # add_user_authz_to_settings('instructor',
+        #                            self.username)
+        # add_user_authz_to_settings('student',
+        #                            self.student_name)
+        #
         # import pdb
         # pdb.set_trace()
         # self.create_new_bank()
@@ -348,18 +354,8 @@ class DLKitTestCase(MockTestCase):
         return new_asset.object_map
 
     def tearDown(self):
-        envoy.run('mongo test_dlkit_assessment --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_assessment_authoring --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_authorization --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_commenting --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_hierarchy --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_id --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_learning --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_logging --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_grading --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_relationship --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_repository --eval "db.dropDatabase()"')
-        envoy.run('mongo test_dlkit_resource --eval "db.dropDatabase()"')
+        for db in self.dbs_to_delete:
+            self._delete_database(db)
 
         self.test_file1.close()
         self.test_file2.close()
@@ -377,11 +373,11 @@ def load_fixtures():
     # create_authz_superuser()
     envoy.run('mongorestore --db test_dlkit_assessment --drop tests/functional/fixtures/test_dlkit_assessment')
     envoy.run('mongorestore --db test_dlkit_authorization --drop tests/functional/fixtures/test_dlkit_authorization')
-    envoy.run('mongorestore --db test_dlkit_grading --drop tests/functional/fixtures/test_dlkit_functional_grading')
-    envoy.run('mongorestore --db test_dlkit_learning --drop tests/functional/fixtures/test_dlkit_functional_learning')
-    envoy.run('mongorestore --db test_dlkit_logging --drop tests/functional/fixtures/test_dlkit_functional_logging')
-    envoy.run('mongorestore --db test_dlkit_repository --drop tests/functional/fixtures/test_dlkit_functional_repository')
-    envoy.run('mongorestore --db test_dlkit_resource --drop tests/functional/fixtures/test_dlkit_functional_resource')
+    envoy.run('mongorestore --db test_dlkit_grading --drop tests/functional/fixtures/test_dlkit_grading')
+    envoy.run('mongorestore --db test_dlkit_learning --drop tests/functional/fixtures/test_dlkit_learning')
+    envoy.run('mongorestore --db test_dlkit_logging --drop tests/functional/fixtures/test_dlkit_logging')
+    envoy.run('mongorestore --db test_dlkit_repository --drop tests/functional/fixtures/test_dlkit_repository')
+    envoy.run('mongorestore --db test_dlkit_resource --drop tests/functional/fixtures/test_dlkit_resource')
 
 
 def create_test_bank(test_instance):

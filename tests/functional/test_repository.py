@@ -1,4 +1,5 @@
-# let's make sure AWS adapter works -- files get sent there
+# let's make sure Filesystem adapter works -- files get sent there
+import os
 import boto
 
 from boto.s3.key import Key
@@ -34,7 +35,7 @@ ENCLOSED_ASSESSMENT_TYPE = Type(
        'namespace': 'assessment',
        'authority': 'OSID.ORG'})
 
-class AWSAdapterTests(DLKitTestCase):
+class FilesystemAdapterTests(DLKitTestCase):
     def create_asset_with_content(self):
         form = self._repo.get_asset_form_for_create([])
 
@@ -64,15 +65,19 @@ class AWSAdapterTests(DLKitTestCase):
         asset = self._repo.get_asset(new_asset.ident)
         return asset
 
-    def file_exists(self, key):
-        connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                     configs.S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-        file_ = Key(bucket, key)
-        return file_.exists()
+    def file_exists(self, filepath):
+        # check on the filesystem that the file is there
+        return os.path.isfile(filepath)
+
+    def get_asset_content_full_path(self, asset):
+        # For these tests, assume first assetContent
+        ac = asset.get_asset_contents().next()
+        # this is super hacky
+        return os.path.join(ac._config_map['data_store_full_path'],
+                            ac._my_map['url'])
 
     def setUp(self):
-        super(AWSAdapterTests, self).setUp()
+        super(FilesystemAdapterTests, self).setUp()
 
         self._repo = self._get_test_repository()
         self._asset = self.create_asset_with_content()
@@ -83,25 +88,25 @@ class AWSAdapterTests(DLKitTestCase):
         Start from the smallest groupId because need to
         remove "parental" roles like for DepartmentAdmin / DepartmentOfficer
         """
-        super(AWSAdapterTests, self).tearDown()
+        super(FilesystemAdapterTests, self).tearDown()
 
-    def test_repository_assets_put_into_s3(self):
-        expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
-        self.assertTrue(self.file_exists(expected_filekey))
+    def test_repository_assets_put_onto_disk(self):
+        filepath = self.get_asset_content_full_path(self._asset)
+        self.assertTrue(self.file_exists(filepath))
 
     def test_repository_assets_return_cloudfront_url_when_queried(self):
         asset_content = self._asset.get_asset_contents().next()
         url = asset_content.get_url()
         self.is_streamable_url(url)
 
-    def test_s3_files_deleted_when_asset_content_deleted(self):
-        expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
-        self.assertTrue(self.file_exists(expected_filekey))
+    def test_files_deleted_when_asset_content_deleted(self):
+        filepath = self.get_asset_content_full_path(self._asset)
+        self.assertTrue(self.file_exists(filepath))
 
         asset_content = self._asset.get_asset_contents().next()
 
         self._repo.delete_asset_content(asset_content.ident)
-        self.assertFalse(self.file_exists(expected_filekey))
+        self.assertFalse(self.file_exists(filepath))
 
 
 class AssetContentTests(DLKitTestCase):
@@ -259,13 +264,6 @@ class CompositionTests(DLKitTestCase):
 
         asset = self._repo.get_asset(new_asset.ident)
         return asset
-
-    def file_exists(self, key):
-        connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                     configs.S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-        file_ = Key(bucket, key)
-        return file_.exists()
 
     def setup_composition(self, repository_id):
         repo = self.get_repo(repository_id)
@@ -635,13 +633,6 @@ class EnclosureTests(DLKitTestCase):
 
         asset = self._repo.get_asset(new_asset.ident)
         return asset
-
-    def file_exists(self, key):
-        connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                     configs.S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-        file_ = Key(bucket, key)
-        return file_.exists()
 
     def setup_composition(self, repository_id):
         repo = self.get_repo(repository_id)
