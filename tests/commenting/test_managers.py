@@ -71,15 +71,16 @@ class TestCommentingProfile(unittest.TestCase):
 class TestCommentingManager(unittest.TestCase):
     """Tests for CommentingManager"""
 
+    # Implemented from resource.ResourceManager
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_book_form_for_create([])
         create_form.display_name = 'Test Book'
         create_form.description = 'Test Book for commenting manager tests'
         catalog = cls.svc_mgr.create_book(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -88,27 +89,39 @@ class TestCommentingManager(unittest.TestCase):
 
     def test_get_comment_lookup_session(self):
         """Tests get_comment_lookup_session"""
-        if self.mgr.supports_comment_lookup():
-            self.mgr.get_comment_lookup_session()
+        # if self.mgr.supports_comment_lookup():
+        #     self.mgr.get_comment_lookup_session()
+        if self.svc_mgr.supports_comment_lookup():
+            self.svc_mgr.get_comment_lookup_session()
 
     def test_get_comment_lookup_session_for_book(self):
         """Tests get_comment_lookup_session_for_book"""
-        if self.mgr.supports_comment_lookup():
-            self.mgr.get_comment_lookup_session_for_book(self.catalog_id)
+        # if self.mgr.supports_comment_lookup():
+        #     self.mgr.get_comment_lookup_session_for_book(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_lookup_session_for_book()
+        if self.svc_mgr.supports_comment_lookup():
+            self.svc_mgr.get_comment_lookup_session_for_book(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_lookup_session_for_book()
+            self.svc_mgr.get_comment_lookup_session_for_book()
 
     def test_get_comment_query_session(self):
         """Tests get_comment_query_session"""
-        if self.mgr.supports_comment_query():
-            self.mgr.get_comment_query_session()
+        # if self.mgr.supports_comment_query():
+        #     self.mgr.get_comment_query_session()
+        if self.svc_mgr.supports_comment_query():
+            self.svc_mgr.get_comment_query_session()
 
     def test_get_comment_query_session_for_book(self):
         """Tests get_comment_query_session_for_book"""
-        if self.mgr.supports_comment_query():
-            self.mgr.get_comment_query_session_for_book(self.catalog_id)
+        # if self.mgr.supports_comment_query():
+        #     self.mgr.get_comment_query_session_for_book(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_query_session_for_book()
+        if self.svc_mgr.supports_comment_query():
+            self.svc_mgr.get_comment_query_session_for_book(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_query_session_for_book()
+            self.svc_mgr.get_comment_query_session_for_book()
 
     @unittest.skip('unimplemented test')
     def test_get_comment_admin_session(self):
@@ -142,8 +155,10 @@ class TestCommentingManager(unittest.TestCase):
 
     def test_get_commenting_batch_manager(self):
         """Tests get_commenting_batch_manager"""
-        if self.mgr.supports_commenting_batch():
-            self.mgr.get_commenting_batch_manager()
+        # if self.mgr.supports_commenting_batch():
+        #     self.mgr.get_commenting_batch_manager()
+        if self.svc_mgr.supports_commenting_batch():
+            self.svc_mgr.get_commenting_batch_manager()
 
 
 class TestCommentingProxyManager(unittest.TestCase):
@@ -157,7 +172,7 @@ class TestCommentingProxyManager(unittest.TestCase):
         create_form.description = 'Test Book for commenting proxy manager tests'
         catalog = cls.svc_mgr.create_book(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('COMMENTING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -166,31 +181,47 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_comment_lookup_session(self):
         """Tests get_comment_lookup_session"""
-        if self.mgr.supports_comment_lookup():
-            self.mgr.get_comment_lookup_session(PROXY)
+        # if self.mgr.supports_comment_lookup():
+        #     self.mgr.get_comment_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_lookup_session()
+        if self.svc_mgr.supports_comment_lookup():
+            self.svc_mgr.get_comment_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_lookup_session()
+            self.svc_mgr.get_comment_lookup_session()
 
     def test_get_comment_lookup_session_for_book(self):
         """Tests get_comment_lookup_session_for_book"""
-        if self.mgr.supports_comment_lookup():
-            self.mgr.get_comment_lookup_session_for_book(self.catalog_id, PROXY)
+        # if self.mgr.supports_comment_lookup():
+        #     self.mgr.get_comment_lookup_session_for_book(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_lookup_session_for_book()
+        if self.svc_mgr.supports_comment_lookup():
+            self.svc_mgr.get_comment_lookup_session_for_book(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_lookup_session_for_book()
+            self.svc_mgr.get_comment_lookup_session_for_book()
 
     def test_get_comment_query_session(self):
         """Tests get_comment_query_session"""
-        if self.mgr.supports_comment_query():
-            self.mgr.get_comment_query_session(PROXY)
+        # if self.mgr.supports_comment_query():
+        #     self.mgr.get_comment_query_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_query_session()
+        if self.svc_mgr.supports_comment_query():
+            self.svc_mgr.get_comment_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_query_session()
+            self.svc_mgr.get_comment_query_session()
 
     def test_get_comment_query_session_for_book(self):
         """Tests get_comment_query_session_for_book"""
-        if self.mgr.supports_comment_query():
-            self.mgr.get_comment_query_session_for_book(self.catalog_id, PROXY)
+        # if self.mgr.supports_comment_query():
+        #     self.mgr.get_comment_query_session_for_book(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_comment_query_session_for_book()
+        if self.svc_mgr.supports_comment_query():
+            self.svc_mgr.get_comment_query_session_for_book(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_comment_query_session_for_book()
+            self.svc_mgr.get_comment_query_session_for_book()
 
     @unittest.skip('unimplemented test')
     def test_get_comment_admin_session(self):
@@ -224,7 +255,9 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_commenting_batch_proxy_manager(self):
         """Tests get_commenting_batch_proxy_manager"""
-        if self.mgr.supports_commenting_batch():
-            self.mgr.get_commenting_batch_proxy_manager()
+        # if self.mgr.supports_commenting_batch():
+        #     self.mgr.get_commenting_batch_proxy_manager()
+        if self.svc_mgr.supports_commenting_batch():
+            self.svc_mgr.get_commenting_batch_proxy_manager()
 
 

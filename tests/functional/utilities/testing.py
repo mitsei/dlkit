@@ -417,7 +417,7 @@ def get_agent_id(agent_id):
     condition.set_http_request(test_request)
     proxy = PROXY_SESSION.get_proxy(condition)
     resm = RUNTIME.get_service_manager('RESOURCE',
-                                       implementation='TEST_SERVICE',
+                                       implementation='TEST_SERVICE_FUNCTIONAL',
                                        proxy=proxy)
     return resm.effective_agent_id
 
@@ -427,7 +427,7 @@ def get_manager(request, manager_type):
     condition.set_http_request(request)
     proxy = PROXY_SESSION.get_proxy(condition)
     return RUNTIME.get_service_manager(manager_type.upper(),
-                                       implementation='TEST_SERVICE',
+                                       implementation='TEST_SERVICE_FUNCTIONAL',
                                        proxy=proxy)
 
 

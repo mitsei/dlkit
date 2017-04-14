@@ -91,15 +91,16 @@ class TestAuthorizationProfile(unittest.TestCase):
 class TestAuthorizationManager(unittest.TestCase):
     """Tests for AuthorizationManager"""
 
+    # Implemented from resource.ResourceManager
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_vault_form_for_create([])
         create_form.display_name = 'Test Vault'
         create_form.description = 'Test Vault for authorization manager tests'
         catalog = cls.svc_mgr.create_vault(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -118,27 +119,39 @@ class TestAuthorizationManager(unittest.TestCase):
 
     def test_get_authorization_lookup_session(self):
         """Tests get_authorization_lookup_session"""
-        if self.mgr.supports_authorization_lookup():
-            self.mgr.get_authorization_lookup_session()
+        # if self.mgr.supports_authorization_lookup():
+        #     self.mgr.get_authorization_lookup_session()
+        if self.svc_mgr.supports_authorization_lookup():
+            self.svc_mgr.get_authorization_lookup_session()
 
     def test_get_authorization_lookup_session_for_vault(self):
         """Tests get_authorization_lookup_session_for_vault"""
-        if self.mgr.supports_authorization_lookup():
-            self.mgr.get_authorization_lookup_session_for_vault(self.catalog_id)
+        # if self.mgr.supports_authorization_lookup():
+        #     self.mgr.get_authorization_lookup_session_for_vault(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_lookup_session_for_vault()
+        if self.svc_mgr.supports_authorization_lookup():
+            self.svc_mgr.get_authorization_lookup_session_for_vault(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_lookup_session_for_vault()
+            self.svc_mgr.get_authorization_lookup_session_for_vault()
 
     def test_get_authorization_query_session(self):
         """Tests get_authorization_query_session"""
-        if self.mgr.supports_authorization_query():
-            self.mgr.get_authorization_query_session()
+        # if self.mgr.supports_authorization_query():
+        #     self.mgr.get_authorization_query_session()
+        if self.svc_mgr.supports_authorization_query():
+            self.svc_mgr.get_authorization_query_session()
 
     def test_get_authorization_query_session_for_vault(self):
         """Tests get_authorization_query_session_for_vault"""
-        if self.mgr.supports_authorization_query():
-            self.mgr.get_authorization_query_session_for_vault(self.catalog_id)
+        # if self.mgr.supports_authorization_query():
+        #     self.mgr.get_authorization_query_session_for_vault(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_query_session_for_vault()
+        if self.svc_mgr.supports_authorization_query():
+            self.svc_mgr.get_authorization_query_session_for_vault(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_query_session_for_vault()
+            self.svc_mgr.get_authorization_query_session_for_vault()
 
     @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session(self):
@@ -167,13 +180,17 @@ class TestAuthorizationManager(unittest.TestCase):
 
     def test_get_authorization_batch_manager(self):
         """Tests get_authorization_batch_manager"""
-        if self.mgr.supports_authorization_batch():
-            self.mgr.get_authorization_batch_manager()
+        # if self.mgr.supports_authorization_batch():
+        #     self.mgr.get_authorization_batch_manager()
+        if self.svc_mgr.supports_authorization_batch():
+            self.svc_mgr.get_authorization_batch_manager()
 
     def test_get_authorization_rules_manager(self):
         """Tests get_authorization_rules_manager"""
-        if self.mgr.supports_authorization_rules():
-            self.mgr.get_authorization_rules_manager()
+        # if self.mgr.supports_authorization_rules():
+        #     self.mgr.get_authorization_rules_manager()
+        if self.svc_mgr.supports_authorization_rules():
+            self.svc_mgr.get_authorization_rules_manager()
 
 
 class TestAuthorizationProxyManager(unittest.TestCase):
@@ -187,7 +204,7 @@ class TestAuthorizationProxyManager(unittest.TestCase):
         create_form.description = 'Test Vault for authorization proxy manager tests'
         catalog = cls.svc_mgr.create_vault(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -206,31 +223,47 @@ class TestAuthorizationProxyManager(unittest.TestCase):
 
     def test_get_authorization_lookup_session(self):
         """Tests get_authorization_lookup_session"""
-        if self.mgr.supports_authorization_lookup():
-            self.mgr.get_authorization_lookup_session(PROXY)
+        # if self.mgr.supports_authorization_lookup():
+        #     self.mgr.get_authorization_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_lookup_session()
+        if self.svc_mgr.supports_authorization_lookup():
+            self.svc_mgr.get_authorization_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_lookup_session()
+            self.svc_mgr.get_authorization_lookup_session()
 
     def test_get_authorization_lookup_session_for_vault(self):
         """Tests get_authorization_lookup_session_for_vault"""
-        if self.mgr.supports_authorization_lookup():
-            self.mgr.get_authorization_lookup_session_for_vault(self.catalog_id, PROXY)
+        # if self.mgr.supports_authorization_lookup():
+        #     self.mgr.get_authorization_lookup_session_for_vault(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_lookup_session_for_vault()
+        if self.svc_mgr.supports_authorization_lookup():
+            self.svc_mgr.get_authorization_lookup_session_for_vault(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_lookup_session_for_vault()
+            self.svc_mgr.get_authorization_lookup_session_for_vault()
 
     def test_get_authorization_query_session(self):
         """Tests get_authorization_query_session"""
-        if self.mgr.supports_authorization_query():
-            self.mgr.get_authorization_query_session(PROXY)
+        # if self.mgr.supports_authorization_query():
+        #     self.mgr.get_authorization_query_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_query_session()
+        if self.svc_mgr.supports_authorization_query():
+            self.svc_mgr.get_authorization_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_query_session()
+            self.svc_mgr.get_authorization_query_session()
 
     def test_get_authorization_query_session_for_vault(self):
         """Tests get_authorization_query_session_for_vault"""
-        if self.mgr.supports_authorization_query():
-            self.mgr.get_authorization_query_session_for_vault(self.catalog_id, PROXY)
+        # if self.mgr.supports_authorization_query():
+        #     self.mgr.get_authorization_query_session_for_vault(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_authorization_query_session_for_vault()
+        if self.svc_mgr.supports_authorization_query():
+            self.svc_mgr.get_authorization_query_session_for_vault(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_authorization_query_session_for_vault()
+            self.svc_mgr.get_authorization_query_session_for_vault()
 
     @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session(self):
@@ -259,12 +292,16 @@ class TestAuthorizationProxyManager(unittest.TestCase):
 
     def test_get_authorization_batch_proxy_manager(self):
         """Tests get_authorization_batch_proxy_manager"""
-        if self.mgr.supports_authorization_batch():
-            self.mgr.get_authorization_batch_proxy_manager()
+        # if self.mgr.supports_authorization_batch():
+        #     self.mgr.get_authorization_batch_proxy_manager()
+        if self.svc_mgr.supports_authorization_batch():
+            self.svc_mgr.get_authorization_batch_proxy_manager()
 
     def test_get_authorization_rules_proxy_manager(self):
         """Tests get_authorization_rules_proxy_manager"""
-        if self.mgr.supports_authorization_rules():
-            self.mgr.get_authorization_rules_proxy_manager()
+        # if self.mgr.supports_authorization_rules():
+        #     self.mgr.get_authorization_rules_proxy_manager()
+        if self.svc_mgr.supports_authorization_rules():
+            self.svc_mgr.get_authorization_rules_proxy_manager()
 
 

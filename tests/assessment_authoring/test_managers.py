@@ -92,15 +92,21 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
 
     def test_get_assessment_part_lookup_session(self):
         """Tests get_assessment_part_lookup_session"""
-        if self.mgr.supports_assessment_part_lookup():
-            self.mgr.get_assessment_part_lookup_session()
+        # if self.mgr.supports_assessment_part_lookup():
+        #     self.mgr.get_assessment_part_lookup_session()
+        if self.svc_mgr.supports_assessment_part_lookup():
+            self.svc_mgr.get_assessment_part_lookup_session()
 
     def test_get_assessment_part_lookup_session_for_bank(self):
         """Tests get_assessment_part_lookup_session_for_bank"""
-        if self.mgr.supports_assessment_part_lookup():
-            self.mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id)
+        # if self.mgr.supports_assessment_part_lookup():
+        #     self.mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_assessment_part_lookup_session_for_bank()
+        if self.svc_mgr.supports_assessment_part_lookup():
+            self.svc_mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_assessment_part_lookup_session_for_bank()
+            self.svc_mgr.get_assessment_part_lookup_session_for_bank()
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session(self):
@@ -114,15 +120,21 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
 
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""
-        if self.mgr.supports_sequence_rule_lookup():
-            self.mgr.get_sequence_rule_lookup_session()
+        # if self.mgr.supports_sequence_rule_lookup():
+        #     self.mgr.get_sequence_rule_lookup_session()
+        if self.svc_mgr.supports_sequence_rule_lookup():
+            self.svc_mgr.get_sequence_rule_lookup_session()
 
     def test_get_sequence_rule_lookup_session_for_bank(self):
         """Tests get_sequence_rule_lookup_session_for_bank"""
-        if self.mgr.supports_sequence_rule_lookup():
-            self.mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id)
+        # if self.mgr.supports_sequence_rule_lookup():
+        #     self.mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_sequence_rule_lookup_session_for_bank()
+        if self.svc_mgr.supports_sequence_rule_lookup():
+            self.svc_mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_sequence_rule_lookup_session_for_bank()
+            self.svc_mgr.get_sequence_rule_lookup_session_for_bank()
 
     @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session(self):
@@ -146,7 +158,7 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
         create_form.description = 'Test Bank for assessment.authoring proxy manager tests'
         catalog = cls.svc_mgr.create_bank(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('ASSESSMENT', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('ASSESSMENT', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -155,17 +167,25 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
 
     def test_get_assessment_part_lookup_session(self):
         """Tests get_assessment_part_lookup_session"""
-        if self.mgr.supports_assessment_part_lookup():
-            self.mgr.get_assessment_part_lookup_session(PROXY)
+        # if self.mgr.supports_assessment_part_lookup():
+        #     self.mgr.get_assessment_part_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_assessment_part_lookup_session()
+        if self.svc_mgr.supports_assessment_part_lookup():
+            self.svc_mgr.get_assessment_part_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_assessment_part_lookup_session()
+            self.svc_mgr.get_assessment_part_lookup_session()
 
     def test_get_assessment_part_lookup_session_for_bank(self):
         """Tests get_assessment_part_lookup_session_for_bank"""
-        if self.mgr.supports_assessment_part_lookup():
-            self.mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id, PROXY)
+        # if self.mgr.supports_assessment_part_lookup():
+        #     self.mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_assessment_part_lookup_session_for_bank()
+        if self.svc_mgr.supports_assessment_part_lookup():
+            self.svc_mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_assessment_part_lookup_session_for_bank()
+            self.svc_mgr.get_assessment_part_lookup_session_for_bank()
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session(self):
@@ -179,17 +199,25 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
 
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""
-        if self.mgr.supports_sequence_rule_lookup():
-            self.mgr.get_sequence_rule_lookup_session(PROXY)
+        # if self.mgr.supports_sequence_rule_lookup():
+        #     self.mgr.get_sequence_rule_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_sequence_rule_lookup_session()
+        if self.svc_mgr.supports_sequence_rule_lookup():
+            self.svc_mgr.get_sequence_rule_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_sequence_rule_lookup_session()
+            self.svc_mgr.get_sequence_rule_lookup_session()
 
     def test_get_sequence_rule_lookup_session_for_bank(self):
         """Tests get_sequence_rule_lookup_session_for_bank"""
-        if self.mgr.supports_sequence_rule_lookup():
-            self.mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id, PROXY)
+        # if self.mgr.supports_sequence_rule_lookup():
+        #     self.mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_sequence_rule_lookup_session_for_bank()
+        if self.svc_mgr.supports_sequence_rule_lookup():
+            self.svc_mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_sequence_rule_lookup_session_for_bank()
+            self.svc_mgr.get_sequence_rule_lookup_session_for_bank()
 
     @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session(self):

@@ -107,15 +107,16 @@ class TestResourceProfile(unittest.TestCase):
 class TestResourceManager(unittest.TestCase):
     """Tests for ResourceManager"""
 
+    # Implemented from resource.ResourceManager
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test Bin'
         create_form.description = 'Test Bin for resource manager tests'
         catalog = cls.svc_mgr.create_bin(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -124,27 +125,39 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
-        if self.mgr.supports_resource_lookup():
-            self.mgr.get_resource_lookup_session()
+        # if self.mgr.supports_resource_lookup():
+        #     self.mgr.get_resource_lookup_session()
+        if self.svc_mgr.supports_resource_lookup():
+            self.svc_mgr.get_resource_lookup_session()
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
-        if self.mgr.supports_resource_lookup():
-            self.mgr.get_resource_lookup_session_for_bin(self.catalog_id)
+        # if self.mgr.supports_resource_lookup():
+        #     self.mgr.get_resource_lookup_session_for_bin(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_lookup_session_for_bin()
+        if self.svc_mgr.supports_resource_lookup():
+            self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_lookup_session_for_bin()
+            self.svc_mgr.get_resource_lookup_session_for_bin()
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
-        if self.mgr.supports_resource_query():
-            self.mgr.get_resource_query_session()
+        # if self.mgr.supports_resource_query():
+        #     self.mgr.get_resource_query_session()
+        if self.svc_mgr.supports_resource_query():
+            self.svc_mgr.get_resource_query_session()
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
-        if self.mgr.supports_resource_query():
-            self.mgr.get_resource_query_session_for_bin(self.catalog_id)
+        # if self.mgr.supports_resource_query():
+        #     self.mgr.get_resource_query_session_for_bin(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_query_session_for_bin()
+        if self.svc_mgr.supports_resource_query():
+            self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_query_session_for_bin()
+            self.svc_mgr.get_resource_query_session_for_bin()
 
     @unittest.skip('unimplemented test')
     def test_get_resource_search_session(self):
@@ -233,13 +246,17 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_batch_manager(self):
         """Tests get_resource_batch_manager"""
-        if self.mgr.supports_resource_batch():
-            self.mgr.get_resource_batch_manager()
+        # if self.mgr.supports_resource_batch():
+        #     self.mgr.get_resource_batch_manager()
+        if self.svc_mgr.supports_resource_batch():
+            self.svc_mgr.get_resource_batch_manager()
 
     def test_get_resource_demographic_manager(self):
         """Tests get_resource_demographic_manager"""
-        if self.mgr.supports_resource_demographic():
-            self.mgr.get_resource_demographic_manager()
+        # if self.mgr.supports_resource_demographic():
+        #     self.mgr.get_resource_demographic_manager()
+        if self.svc_mgr.supports_resource_demographic():
+            self.svc_mgr.get_resource_demographic_manager()
 
 
 class TestResourceProxyManager(unittest.TestCase):
@@ -253,7 +270,7 @@ class TestResourceProxyManager(unittest.TestCase):
         create_form.description = 'Test Bin for resource proxy manager tests'
         catalog = cls.svc_mgr.create_bin(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -262,31 +279,47 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
-        if self.mgr.supports_resource_lookup():
-            self.mgr.get_resource_lookup_session(PROXY)
+        # if self.mgr.supports_resource_lookup():
+        #     self.mgr.get_resource_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_lookup_session()
+        if self.svc_mgr.supports_resource_lookup():
+            self.svc_mgr.get_resource_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_lookup_session()
+            self.svc_mgr.get_resource_lookup_session()
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
-        if self.mgr.supports_resource_lookup():
-            self.mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
+        # if self.mgr.supports_resource_lookup():
+        #     self.mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_lookup_session_for_bin()
+        if self.svc_mgr.supports_resource_lookup():
+            self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_lookup_session_for_bin()
+            self.svc_mgr.get_resource_lookup_session_for_bin()
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
-        if self.mgr.supports_resource_query():
-            self.mgr.get_resource_query_session(PROXY)
+        # if self.mgr.supports_resource_query():
+        #     self.mgr.get_resource_query_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_query_session()
+        if self.svc_mgr.supports_resource_query():
+            self.svc_mgr.get_resource_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_query_session()
+            self.svc_mgr.get_resource_query_session()
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
-        if self.mgr.supports_resource_query():
-            self.mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
+        # if self.mgr.supports_resource_query():
+        #     self.mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_resource_query_session_for_bin()
+        if self.svc_mgr.supports_resource_query():
+            self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_resource_query_session_for_bin()
+            self.svc_mgr.get_resource_query_session_for_bin()
 
     @unittest.skip('unimplemented test')
     def test_get_resource_search_session(self):
@@ -380,12 +413,16 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_batch_proxy_manager(self):
         """Tests get_resource_batch_proxy_manager"""
-        if self.mgr.supports_resource_batch():
-            self.mgr.get_resource_batch_proxy_manager()
+        # if self.mgr.supports_resource_batch():
+        #     self.mgr.get_resource_batch_proxy_manager()
+        if self.svc_mgr.supports_resource_batch():
+            self.svc_mgr.get_resource_batch_proxy_manager()
 
     def test_get_resource_demographic_proxy_manager(self):
         """Tests get_resource_demographic_proxy_manager"""
-        if self.mgr.supports_resource_demographic():
-            self.mgr.get_resource_demographic_proxy_manager()
+        # if self.mgr.supports_resource_demographic():
+        #     self.mgr.get_resource_demographic_proxy_manager()
+        if self.svc_mgr.supports_resource_demographic():
+            self.svc_mgr.get_resource_demographic_proxy_manager()
 
 

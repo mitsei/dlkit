@@ -75,15 +75,16 @@ class TestLoggingProfile(unittest.TestCase):
 class TestLoggingManager(unittest.TestCase):
     """Tests for LoggingManager"""
 
+    # Implemented from resource.ResourceManager
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_log_form_for_create([])
         create_form.display_name = 'Test Log'
         create_form.description = 'Test Log for logging manager tests'
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -142,8 +143,10 @@ class TestLoggingManager(unittest.TestCase):
 
     def test_get_logging_batch_manager(self):
         """Tests get_logging_batch_manager"""
-        if self.mgr.supports_logging_batch():
-            self.mgr.get_logging_batch_manager()
+        # if self.mgr.supports_logging_batch():
+        #     self.mgr.get_logging_batch_manager()
+        if self.svc_mgr.supports_logging_batch():
+            self.svc_mgr.get_logging_batch_manager()
 
 
 class TestLoggingProxyManager(unittest.TestCase):
@@ -157,7 +160,7 @@ class TestLoggingProxyManager(unittest.TestCase):
         create_form.description = 'Test Log for logging proxy manager tests'
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -216,7 +219,9 @@ class TestLoggingProxyManager(unittest.TestCase):
 
     def test_get_logging_batch_proxy_manager(self):
         """Tests get_logging_batch_proxy_manager"""
-        if self.mgr.supports_logging_batch():
-            self.mgr.get_logging_batch_proxy_manager()
+        # if self.mgr.supports_logging_batch():
+        #     self.mgr.get_logging_batch_proxy_manager()
+        if self.svc_mgr.supports_logging_batch():
+            self.svc_mgr.get_logging_batch_proxy_manager()
 
 

@@ -153,7 +153,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_ids(self):
         """Tests get_log_entries_by_ids"""
-        from dlkit.abstract_osid.logging.objects import LogEntryList
+        from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
@@ -161,7 +161,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_genus_type(self):
         """Tests get_log_entries_by_genus_type"""
-        from dlkit.abstract_osid.logging.objects import LogEntryList
+        from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
@@ -169,7 +169,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_parent_genus_type(self):
         """Tests get_log_entries_by_parent_genus_type"""
-        from dlkit.abstract_osid.logging.objects import LogEntryList
+        from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
@@ -177,7 +177,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_record_type(self):
         """Tests get_log_entries_by_record_type"""
-        from dlkit.abstract_osid.logging.objects import LogEntryList
+        from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
@@ -215,7 +215,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries(self):
         """Tests get_log_entries"""
-        from dlkit.abstract_osid.logging.objects import LogEntryList
+        from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries()
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
@@ -484,14 +484,14 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_get_log_form_for_create(self):
         """Tests get_log_form_for_create"""
-        from dlkit.abstract_osid.logging.objects import LogForm
+        from dlkit.abstract_osid.logging_.objects import LogForm
         catalog_form = self.svc_mgr.get_log_form_for_create([])
         self.assertTrue(isinstance(catalog_form, LogForm))
         self.assertFalse(catalog_form.is_for_update())
 
     def test_create_log(self):
         """Tests create_log"""
-        from dlkit.abstract_osid.logging.objects import Log
+        from dlkit.abstract_osid.logging_.objects import Log
         catalog_form = self.svc_mgr.get_log_form_for_create([])
         catalog_form.display_name = 'Test Log'
         catalog_form.description = 'Test Log for LogAdminSession.create_log tests'
@@ -505,7 +505,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_get_log_form_for_update(self):
         """Tests get_log_form_for_update"""
-        from dlkit.abstract_osid.logging.objects import LogForm
+        from dlkit.abstract_osid.logging_.objects import LogForm
         catalog_form = self.svc_mgr.get_log_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, LogForm))
         self.assertTrue(catalog_form.is_for_update())

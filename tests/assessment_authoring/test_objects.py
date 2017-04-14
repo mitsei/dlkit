@@ -177,6 +177,8 @@ class TestSequenceRule(unittest.TestCase):
 class TestSequenceRuleForm(unittest.TestCase):
     """Tests for SequenceRuleForm"""
 
+
+
     @unittest.skip('unimplemented test')
     def test_get_minimum_score_metadata(self):
         """Tests get_minimum_score_metadata"""

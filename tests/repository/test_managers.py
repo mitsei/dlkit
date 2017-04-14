@@ -143,15 +143,16 @@ class TestRepositoryProfile(unittest.TestCase):
 class TestRepositoryManager(unittest.TestCase):
     """Tests for RepositoryManager"""
 
+    # Implemented from resource.ResourceManager
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test Repository'
         create_form.description = 'Test Repository for repository manager tests'
         catalog = cls.svc_mgr.create_repository(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_manager('REPOSITORY', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_manager('REPOSITORY', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -160,27 +161,39 @@ class TestRepositoryManager(unittest.TestCase):
 
     def test_get_asset_lookup_session(self):
         """Tests get_asset_lookup_session"""
-        if self.mgr.supports_asset_lookup():
-            self.mgr.get_asset_lookup_session()
+        # if self.mgr.supports_asset_lookup():
+        #     self.mgr.get_asset_lookup_session()
+        if self.svc_mgr.supports_asset_lookup():
+            self.svc_mgr.get_asset_lookup_session()
 
     def test_get_asset_lookup_session_for_repository(self):
         """Tests get_asset_lookup_session_for_repository"""
-        if self.mgr.supports_asset_lookup():
-            self.mgr.get_asset_lookup_session_for_repository(self.catalog_id)
+        # if self.mgr.supports_asset_lookup():
+        #     self.mgr.get_asset_lookup_session_for_repository(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_lookup_session_for_repository()
+        if self.svc_mgr.supports_asset_lookup():
+            self.svc_mgr.get_asset_lookup_session_for_repository(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_lookup_session_for_repository()
+            self.svc_mgr.get_asset_lookup_session_for_repository()
 
     def test_get_asset_query_session(self):
         """Tests get_asset_query_session"""
-        if self.mgr.supports_asset_query():
-            self.mgr.get_asset_query_session()
+        # if self.mgr.supports_asset_query():
+        #     self.mgr.get_asset_query_session()
+        if self.svc_mgr.supports_asset_query():
+            self.svc_mgr.get_asset_query_session()
 
     def test_get_asset_query_session_for_repository(self):
         """Tests get_asset_query_session_for_repository"""
-        if self.mgr.supports_asset_query():
-            self.mgr.get_asset_query_session_for_repository(self.catalog_id)
+        # if self.mgr.supports_asset_query():
+        #     self.mgr.get_asset_query_session_for_repository(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_query_session_for_repository()
+        if self.svc_mgr.supports_asset_query():
+            self.svc_mgr.get_asset_query_session_for_repository(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_query_session_for_repository()
+            self.svc_mgr.get_asset_query_session_for_repository()
 
     @unittest.skip('unimplemented test')
     def test_get_asset_search_session(self):
@@ -234,27 +247,39 @@ class TestRepositoryManager(unittest.TestCase):
 
     def test_get_composition_lookup_session(self):
         """Tests get_composition_lookup_session"""
-        if self.mgr.supports_composition_lookup():
-            self.mgr.get_composition_lookup_session()
+        # if self.mgr.supports_composition_lookup():
+        #     self.mgr.get_composition_lookup_session()
+        if self.svc_mgr.supports_composition_lookup():
+            self.svc_mgr.get_composition_lookup_session()
 
     def test_get_composition_lookup_session_for_repository(self):
         """Tests get_composition_lookup_session_for_repository"""
-        if self.mgr.supports_composition_lookup():
-            self.mgr.get_composition_lookup_session_for_repository(self.catalog_id)
+        # if self.mgr.supports_composition_lookup():
+        #     self.mgr.get_composition_lookup_session_for_repository(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_lookup_session_for_repository()
+        if self.svc_mgr.supports_composition_lookup():
+            self.svc_mgr.get_composition_lookup_session_for_repository(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_lookup_session_for_repository()
+            self.svc_mgr.get_composition_lookup_session_for_repository()
 
     def test_get_composition_query_session(self):
         """Tests get_composition_query_session"""
-        if self.mgr.supports_composition_query():
-            self.mgr.get_composition_query_session()
+        # if self.mgr.supports_composition_query():
+        #     self.mgr.get_composition_query_session()
+        if self.svc_mgr.supports_composition_query():
+            self.svc_mgr.get_composition_query_session()
 
     def test_get_composition_query_session_for_repository(self):
         """Tests get_composition_query_session_for_repository"""
-        if self.mgr.supports_composition_query():
-            self.mgr.get_composition_query_session_for_repository(self.catalog_id)
+        # if self.mgr.supports_composition_query():
+        #     self.mgr.get_composition_query_session_for_repository(self.catalog_id)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_query_session_for_repository()
+        if self.svc_mgr.supports_composition_query():
+            self.svc_mgr.get_composition_query_session_for_repository(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_query_session_for_repository()
+            self.svc_mgr.get_composition_query_session_for_repository()
 
     @unittest.skip('unimplemented test')
     def test_get_composition_search_session(self):
@@ -313,13 +338,17 @@ class TestRepositoryManager(unittest.TestCase):
 
     def test_get_repository_batch_manager(self):
         """Tests get_repository_batch_manager"""
-        if self.mgr.supports_repository_batch():
-            self.mgr.get_repository_batch_manager()
+        # if self.mgr.supports_repository_batch():
+        #     self.mgr.get_repository_batch_manager()
+        if self.svc_mgr.supports_repository_batch():
+            self.svc_mgr.get_repository_batch_manager()
 
     def test_get_repository_rules_manager(self):
         """Tests get_repository_rules_manager"""
-        if self.mgr.supports_repository_rules():
-            self.mgr.get_repository_rules_manager()
+        # if self.mgr.supports_repository_rules():
+        #     self.mgr.get_repository_rules_manager()
+        if self.svc_mgr.supports_repository_rules():
+            self.svc_mgr.get_repository_rules_manager()
 
 
 class TestRepositoryProxyManager(unittest.TestCase):
@@ -333,7 +362,7 @@ class TestRepositoryProxyManager(unittest.TestCase):
         create_form.description = 'Test Repository for repository proxy manager tests'
         catalog = cls.svc_mgr.create_repository(create_form)
         cls.catalog_id = catalog.get_id()
-        cls.mgr = Runtime().get_proxy_manager('REPOSITORY', 'TEST_JSON_1', (3, 0, 0))
+        # cls.mgr = Runtime().get_proxy_manager('REPOSITORY', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
@@ -342,31 +371,47 @@ class TestRepositoryProxyManager(unittest.TestCase):
 
     def test_get_asset_lookup_session(self):
         """Tests get_asset_lookup_session"""
-        if self.mgr.supports_asset_lookup():
-            self.mgr.get_asset_lookup_session(PROXY)
+        # if self.mgr.supports_asset_lookup():
+        #     self.mgr.get_asset_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_lookup_session()
+        if self.svc_mgr.supports_asset_lookup():
+            self.svc_mgr.get_asset_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_lookup_session()
+            self.svc_mgr.get_asset_lookup_session()
 
     def test_get_asset_lookup_session_for_repository(self):
         """Tests get_asset_lookup_session_for_repository"""
-        if self.mgr.supports_asset_lookup():
-            self.mgr.get_asset_lookup_session_for_repository(self.catalog_id, PROXY)
+        # if self.mgr.supports_asset_lookup():
+        #     self.mgr.get_asset_lookup_session_for_repository(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_lookup_session_for_repository()
+        if self.svc_mgr.supports_asset_lookup():
+            self.svc_mgr.get_asset_lookup_session_for_repository(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_lookup_session_for_repository()
+            self.svc_mgr.get_asset_lookup_session_for_repository()
 
     def test_get_asset_query_session(self):
         """Tests get_asset_query_session"""
-        if self.mgr.supports_asset_query():
-            self.mgr.get_asset_query_session(PROXY)
+        # if self.mgr.supports_asset_query():
+        #     self.mgr.get_asset_query_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_query_session()
+        if self.svc_mgr.supports_asset_query():
+            self.svc_mgr.get_asset_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_query_session()
+            self.svc_mgr.get_asset_query_session()
 
     def test_get_asset_query_session_for_repository(self):
         """Tests get_asset_query_session_for_repository"""
-        if self.mgr.supports_asset_query():
-            self.mgr.get_asset_query_session_for_repository(self.catalog_id, PROXY)
+        # if self.mgr.supports_asset_query():
+        #     self.mgr.get_asset_query_session_for_repository(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_asset_query_session_for_repository()
+        if self.svc_mgr.supports_asset_query():
+            self.svc_mgr.get_asset_query_session_for_repository(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_asset_query_session_for_repository()
+            self.svc_mgr.get_asset_query_session_for_repository()
 
     @unittest.skip('unimplemented test')
     def test_get_asset_search_session(self):
@@ -420,31 +465,47 @@ class TestRepositoryProxyManager(unittest.TestCase):
 
     def test_get_composition_lookup_session(self):
         """Tests get_composition_lookup_session"""
-        if self.mgr.supports_composition_lookup():
-            self.mgr.get_composition_lookup_session(PROXY)
+        # if self.mgr.supports_composition_lookup():
+        #     self.mgr.get_composition_lookup_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_lookup_session()
+        if self.svc_mgr.supports_composition_lookup():
+            self.svc_mgr.get_composition_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_lookup_session()
+            self.svc_mgr.get_composition_lookup_session()
 
     def test_get_composition_lookup_session_for_repository(self):
         """Tests get_composition_lookup_session_for_repository"""
-        if self.mgr.supports_composition_lookup():
-            self.mgr.get_composition_lookup_session_for_repository(self.catalog_id, PROXY)
+        # if self.mgr.supports_composition_lookup():
+        #     self.mgr.get_composition_lookup_session_for_repository(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_lookup_session_for_repository()
+        if self.svc_mgr.supports_composition_lookup():
+            self.svc_mgr.get_composition_lookup_session_for_repository(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_lookup_session_for_repository()
+            self.svc_mgr.get_composition_lookup_session_for_repository()
 
     def test_get_composition_query_session(self):
         """Tests get_composition_query_session"""
-        if self.mgr.supports_composition_query():
-            self.mgr.get_composition_query_session(PROXY)
+        # if self.mgr.supports_composition_query():
+        #     self.mgr.get_composition_query_session(PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_query_session()
+        if self.svc_mgr.supports_composition_query():
+            self.svc_mgr.get_composition_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_query_session()
+            self.svc_mgr.get_composition_query_session()
 
     def test_get_composition_query_session_for_repository(self):
         """Tests get_composition_query_session_for_repository"""
-        if self.mgr.supports_composition_query():
-            self.mgr.get_composition_query_session_for_repository(self.catalog_id, PROXY)
+        # if self.mgr.supports_composition_query():
+        #     self.mgr.get_composition_query_session_for_repository(self.catalog_id, PROXY)
+        # with self.assertRaises(errors.NullArgument):
+        #     self.mgr.get_composition_query_session_for_repository()
+        if self.svc_mgr.supports_composition_query():
+            self.svc_mgr.get_composition_query_session_for_repository(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
-            self.mgr.get_composition_query_session_for_repository()
+            self.svc_mgr.get_composition_query_session_for_repository()
 
     @unittest.skip('unimplemented test')
     def test_get_composition_search_session(self):
@@ -503,12 +564,16 @@ class TestRepositoryProxyManager(unittest.TestCase):
 
     def test_get_repository_batch_proxy_manager(self):
         """Tests get_repository_batch_proxy_manager"""
-        if self.mgr.supports_repository_batch():
-            self.mgr.get_repository_batch_proxy_manager()
+        # if self.mgr.supports_repository_batch():
+        #     self.mgr.get_repository_batch_proxy_manager()
+        if self.svc_mgr.supports_repository_batch():
+            self.svc_mgr.get_repository_batch_proxy_manager()
 
     def test_get_repository_rules_proxy_manager(self):
         """Tests get_repository_rules_proxy_manager"""
-        if self.mgr.supports_repository_rules():
-            self.mgr.get_repository_rules_proxy_manager()
+        # if self.mgr.supports_repository_rules():
+        #     self.mgr.get_repository_rules_proxy_manager()
+        if self.svc_mgr.supports_repository_rules():
+            self.svc_mgr.get_repository_rules_proxy_manager()
 
 
