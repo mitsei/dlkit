@@ -1,0 +1,128 @@
+
+from .impls.configuration.objects import Configuration
+try:
+    from django.conf import settings
+except ImportError:
+    from ..dlkit_runtime_project import settings
+
+
+handcar_mc3 = {
+    'id': 'handcar_mc3',
+    'displayName': 'Handcar MC3 Configuration',
+    'description': 'Configuration for Handcar MC3 Production Service',
+    'parameters':
+        {
+        'implKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Implementation Key',
+            'description': 'Implementation key used by Runtime for class loading',
+            'values':
+                [
+                    {'value': 'handcar', 'priority': 1}
+                ]
+           },
+        'hostName':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Host Name',
+            'description': 'Host Name for Handcar RESTFul Service Provider',
+            'values':
+                [
+                    {'value': 'mc3.mit.edu', 'priority': 1}
+                ]
+           },
+        'appKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'App Key',
+            'description': 'Agent Key for Handcar service provider',
+            'values':
+                [
+                    {'value': '', 'priority': 1}
+                ]
+            }
+        }
+    }
+
+
+handcar_mc3_demo = {
+    'id': 'handcar_mc3_demo',
+    'displayName': 'Handcar MC3 Demo Configuration',
+    'description': 'Configuration for Handcar MC3 Demo Service',
+    'parameters':
+        {
+        'implKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Implementation Key',
+            'description': 'Implementation key used by Runtime for class loading',
+            'values':
+                [
+                    {'value': 'handcar', 'priority': 1}
+                ]
+           },
+        'hostName':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Host Name',
+            'description': 'Host Name for Handcar RESTFul Service Provider',
+            'values':
+                [
+                    {'value': 'mc3-demo.mit.edu', 'priority': 1}
+                ]
+           },
+        'appKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'App Key',
+            'description': 'Agent Key for Handcar service provider',
+            'values':
+                [
+                    {'value': '', 'priority': 1}
+                ]
+            }
+        }
+    }
+
+handcar_oki_dev = {
+    'id': 'handcar_oki_dev',
+    'displayName': 'Handcar OKI Dev Configuration',
+    'description': 'Configuration for Handcar OKI Dev Service',
+    'parameters':
+        {
+        'implKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Implementation Key',
+            'description': 'Implementation key used by Runtime for class loading',
+            'values':
+                [
+                    {'value': 'handcar', 'priority': 1}
+                ]
+           },
+        'hostName':
+            {
+            'syntax': 'STRING',
+            'displayName': 'Host Name',
+            'description': 'Host Name for Handcar RESTFul Service Provider',
+            'values':
+                [
+                    {'value': 'oki-dev.mit.edu', 'priority': 1}
+                ]
+           },
+        'appKey':
+            {
+            'syntax': 'STRING',
+            'displayName': 'App Key',
+            'description': 'Agent Key for Handcar service provider',
+            'values':
+                [
+                    {'value': '', 'priority': 1}
+                ]
+            }
+        }
+    }
+
+
+

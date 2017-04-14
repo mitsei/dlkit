@@ -1,0 +1,35 @@
+
+manager_paths = {
+
+    'service': {
+        'ASSESSMENT': ('dlkit.services.assessment.AssessmentManager', 'dlkit.services.assessment.AssessmentManager'),
+        'REPOSITORY': ('dlkit.services.repository.RepositoryManager', 'dlkit.services.repository.RepositoryManager'),
+        'LEARNING': ('dlkit.services.learning.LearningManager', 'dlkit.services.learning.LearningManager')
+    },
+    'mongo': {
+        'ASSESSMENT': ('dlkit.mongo.assessment.managers.AssessmentManager', 'dlkit.mongo.assessment.managers.AssessmentProxyManager'),
+        'REPOSITORY': ('dlkit.mongo.repository.managers.RepositoryManager', 'dlkit.mongo.repository.managers.RepositoryProxyManager'),
+        'LEARNING': ('dlkit.mongo.learning.managers.LearningManager', 'dlkit.mongo.learning.managers.LearningProxyManager')
+    },
+    'authz_adapter': {
+        'ASSESSMENT': ('dlkit.authz_adapter.assessment.managers.AssessmentManager', 'dlkit.authz_adapter.assessment.managers.AssessmentProxyManager'),
+        'REPOSITORY': ('dlkit.authz_adapter.repository.managers.RepositoryManager', 'dlkit.authz_adapter.assessment.managers.RepositoryProxyManager'),
+        'LEARNING': ('dlkit.authz_adapter.learning.managers.LearningManager', 'dlkit.authz_adapter.assessment.managers.LearningProxyManager')
+    },
+    'time_based_authz': {
+        'AUTHORIZATION': ('dlkit.stupid_authz_impls.time_based_authz.AuthorizationManager', 'dlkit.stupid_authz_impls.time_based_authz.AuthorizationProxyManager')
+    },
+    'ask_me_authz': {
+        'AUTHORIZATION': ('dlkit.stupid_authz_impls.ask_me_authz.AuthorizationManager', 'dlkit.stupid_authz_impls.ask_me_authz.AuthorizationProxyManager')
+    },
+    'handcar': {
+        'LEARNING': ('dlkit.handcar.learning.managers.LearningManager', 'dlkit.handcar.learning.managers.LearningProxyManager')
+    },
+    'aws_adapter': {
+        'REPOSITORY': ('dlkit.aws_adapter.repository.managers.RepositoryManager', 'dlkit.aws_adapter.repository.managers.RepositoryProxyManager')
+    },
+    'qbank_authz': {
+        'REPOSITORY': ('qbank_authz.repository.managers.RepositoryManager', 'dlkit.aws_adapter.repository.managers.RepositoryProxyManager')
+    }
+}
+

@@ -1,0 +1,4 @@
+*.pyc
+
+# agent keys
+keys.py
