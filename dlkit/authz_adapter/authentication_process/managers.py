@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.authentication_process import managers as authentication_process_managers
 
 
-
-
 class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_process_managers.AuthenticationProcessProfile):
     """Adapts underlying AuthenticationProcessProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
             return self._provider_manager.get_agency_hierarchy_session()
         except Unimplemented:
             return None
-
     def get_authentication_record_types(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.get_resource_record_types
@@ -72,9 +68,10 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
     trust_types = property(fget=get_trust_types)
 
 
+
+
 class AuthenticationProcessManager(osid_managers.OsidManager, AuthenticationProcessProfile, authentication_process_managers.AuthenticationProcessManager):
     """Adapts underlying AuthenticationProcessManager methodswith authorization checks."""
-
     def __init__(self):
         AuthenticationProcessProfile.__init__(self)
 
@@ -92,7 +89,6 @@ class AuthenticationProcessManager(osid_managers.OsidManager, AuthenticationProc
 
 class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, AuthenticationProcessProfile, authentication_process_managers.AuthenticationProcessProxyManager):
     """Adapts underlying AuthenticationProcessProxyManager methodswith authorization checks."""
-
     def __init__(self):
         AuthenticationProcessProfile.__init__(self)
 
@@ -103,8 +99,3 @@ class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, Authenti
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('AUTHENTICATION_PROCESS', provider_impl)
         # need to add version argument
-
-
-
-
-

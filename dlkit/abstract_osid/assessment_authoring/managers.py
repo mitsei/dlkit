@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentAuthoringProfile:
     """The ``AssessmentAuthoringProfile`` describes the interoperability among assessment authoring services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_lookup(self):
@@ -48,7 +44,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_query(self):
@@ -61,7 +57,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_search(self):
@@ -74,7 +70,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_admin(self):
@@ -87,7 +83,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_notification(self):
@@ -100,7 +96,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_bank(self):
@@ -113,7 +109,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_bank_assignment(self):
@@ -126,7 +122,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_smart_bank(self):
@@ -139,7 +135,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_item(self):
@@ -152,7 +148,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_part_item_design(self):
@@ -165,7 +161,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_lookup(self):
@@ -178,7 +174,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_query(self):
@@ -191,7 +187,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_search(self):
@@ -204,7 +200,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_admin(self):
@@ -217,7 +213,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_notification(self):
@@ -230,7 +226,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_bank(self):
@@ -243,7 +239,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_bank_assignment(self):
@@ -256,7 +252,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_smart_bank(self):
@@ -269,7 +265,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_lookup(self):
@@ -282,7 +278,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_query(self):
@@ -295,7 +291,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_search(self):
@@ -308,7 +304,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_admin(self):
@@ -321,7 +317,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_notification(self):
@@ -334,7 +330,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_bank(self):
@@ -347,7 +343,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_bank_assignment(self):
@@ -360,7 +356,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_smart_bank(self):
@@ -373,7 +369,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_rule_lookup(self):
@@ -386,7 +382,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_sequence_rule_enabler_rule_application(self):
@@ -399,7 +395,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_record_types(self):
@@ -412,7 +408,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_part_record_types = property(fget=get_assessment_part_record_types)
 
@@ -429,7 +425,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_search_record_types(self):
@@ -442,7 +438,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_part_search_record_types = property(fget=get_assessment_part_search_record_types)
 
@@ -459,7 +455,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_record_types(self):
@@ -472,7 +468,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     sequence_rule_record_types = property(fget=get_sequence_rule_record_types)
 
@@ -489,7 +485,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_search_record_types(self):
@@ -502,7 +498,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     sequence_rule_search_record_types = property(fget=get_sequence_rule_search_record_types)
 
@@ -519,7 +515,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_record_types(self):
@@ -532,7 +528,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     sequence_rule_enabler_record_types = property(fget=get_sequence_rule_enabler_record_types)
 
@@ -549,7 +545,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_search_record_types(self):
@@ -562,7 +558,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     sequence_rule_enabler_search_record_types = property(fget=get_sequence_rule_enabler_search_record_types)
 
@@ -579,7 +575,7 @@ class AssessmentAuthoringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AssessmentAuthoringManager:
@@ -646,10 +642,8 @@ class AssessmentAuthoringManager:
       * ``SequenceRuleEnablerRuleApplicationSession:`` a session to
         apply sequence rule enablers
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_part_lookup_session(self):
@@ -664,7 +658,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartLookupSession
+        return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     assessment_part_lookup_session = property(fget=get_assessment_part_lookup_session)
 
@@ -686,7 +680,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartLookupSession
+        return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
     def get_assessment_part_query_session(self):
@@ -701,7 +695,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuerySession
+        return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     assessment_part_query_session = property(fget=get_assessment_part_query_session)
 
@@ -723,7 +717,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuerySession
+        return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
     def get_assessment_part_search_session(self):
@@ -738,7 +732,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchSession
+        return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     assessment_part_search_session = property(fget=get_assessment_part_search_session)
 
@@ -760,7 +754,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchSession
+        return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
     def get_assessment_part_admin_session(self):
@@ -775,7 +769,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartAdminSession
+        return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     assessment_part_admin_session = property(fget=get_assessment_part_admin_session)
 
@@ -797,7 +791,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartAdminSession
+        return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
     def get_assessment_part_notification_session(self, assessment_part_receiver):
@@ -815,7 +809,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartNotificationSession
+        return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
     def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id):
@@ -837,7 +831,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartNotificationSession
+        return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
     def get_assessment_part_bank_session(self):
@@ -852,7 +846,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartBankSession
+        return  # osid.assessment.authoring.AssessmentPartBankSession
 
     assessment_part_bank_session = property(fget=get_assessment_part_bank_session)
 
@@ -869,7 +863,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartBankAssignmentSession
+        return  # osid.assessment.authoring.AssessmentPartBankAssignmentSession
 
     assessment_part_bank_assignment_session = property(fget=get_assessment_part_bank_assignment_session)
 
@@ -890,7 +884,7 @@ class AssessmentAuthoringManager:
         ``supports_assessment_part_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSmartBankSession
+        return  # osid.assessment.authoring.AssessmentPartSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_lookup_session(self):
@@ -905,7 +899,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     sequence_rule_lookup_session = property(fget=get_sequence_rule_lookup_session)
 
@@ -927,7 +921,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_query_session(self):
@@ -942,7 +936,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuerySession
+        return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     sequence_rule_query_session = property(fget=get_sequence_rule_query_session)
 
@@ -964,7 +958,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuerySession
+        return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_search_session(self):
@@ -979,7 +973,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchSession
+        return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     sequence_rule_search_session = property(fget=get_sequence_rule_search_session)
 
@@ -1001,7 +995,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchSession
+        return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_admin_session(self):
@@ -1016,7 +1010,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleAdminSession
+        return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     sequence_rule_admin_session = property(fget=get_sequence_rule_admin_session)
 
@@ -1038,7 +1032,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleAdminSession
+        return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_notification_session(self, sequence_rule_receiver):
@@ -1056,7 +1050,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id):
@@ -1078,7 +1072,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_bank_session(self):
@@ -1093,7 +1087,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleBankSession
+        return  # osid.assessment.authoring.SequenceRuleBankSession
 
     sequence_rule_bank_session = property(fget=get_sequence_rule_bank_session)
 
@@ -1110,7 +1104,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleBankAssignmentSession
+        return  # osid.assessment.authoring.SequenceRuleBankAssignmentSession
 
     sequence_rule_bank_assignment_session = property(fget=get_sequence_rule_bank_assignment_session)
 
@@ -1131,7 +1125,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSmartBankSession
+        return  # osid.assessment.authoring.SequenceRuleSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_lookup_session(self):
@@ -1146,7 +1140,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     sequence_rule_enabler_lookup_session = property(fget=get_sequence_rule_enabler_lookup_session)
 
@@ -1168,7 +1162,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_query_session(self):
@@ -1183,7 +1177,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuerySession
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     sequence_rule_enabler_query_session = property(fget=get_sequence_rule_enabler_query_session)
 
@@ -1205,7 +1199,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuerySession
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_search_session(self):
@@ -1220,7 +1214,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     sequence_rule_enabler_search_session = property(fget=get_sequence_rule_enabler_search_session)
 
@@ -1242,7 +1236,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_admin_session(self):
@@ -1257,7 +1251,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerAdminSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     sequence_rule_enabler_admin_session = property(fget=get_sequence_rule_enabler_admin_session)
 
@@ -1279,7 +1273,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerAdminSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver):
@@ -1297,7 +1291,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id):
@@ -1319,7 +1313,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_bank_session(self):
@@ -1334,7 +1328,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerBankSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerBankSession
 
     sequence_rule_enabler_bank_session = property(fget=get_sequence_rule_enabler_bank_session)
 
@@ -1352,7 +1346,7 @@ class AssessmentAuthoringManager:
         ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerBankAssignmentSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerBankAssignmentSession
 
     sequence_rule_enabler_bank_assignment_session = property(fget=get_sequence_rule_enabler_bank_assignment_session)
 
@@ -1373,7 +1367,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_lookup_session(self):
@@ -1388,7 +1382,7 @@ class AssessmentAuthoringManager:
         ``supports_sequence_rule_enabler_rule_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     sequence_rule_enabler_rule_lookup_session = property(fget=get_sequence_rule_enabler_rule_lookup_session)
 
@@ -1410,7 +1404,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_application_session(self):
@@ -1426,7 +1420,7 @@ class AssessmentAuthoringManager:
         ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
 
     sequence_rule_enabler_rule_application_session = property(fget=get_sequence_rule_enabler_rule_application_session)
 
@@ -1448,7 +1442,7 @@ class AssessmentAuthoringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
 
 
 class AssessmentAuthoringProxyManager:
@@ -1516,10 +1510,8 @@ class AssessmentAuthoringProxyManager:
       * ``SequenceRuleEnablerRuleApplicationSession:`` a session to
         apply sequence rule enablers
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_part_lookup_session(self, proxy):
@@ -1537,7 +1529,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartLookupSession
+        return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
     def get_assessment_part_lookup_session_for_bank(self, bank_id, proxy):
@@ -1559,7 +1551,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartLookupSession
+        return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
     def get_assessment_part_query_session(self, proxy):
@@ -1577,7 +1569,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuerySession
+        return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
     def get_assessment_part_query_session_for_bank(self, bank_id, proxy):
@@ -1599,7 +1591,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuerySession
+        return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
     def get_assessment_part_search_session(self, proxy):
@@ -1617,7 +1609,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchSession
+        return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
     def get_assessment_part_search_session_for_bank(self, bank_id, proxy):
@@ -1639,7 +1631,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchSession
+        return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
     def get_assessment_part_admin_session(self, proxy):
@@ -1657,7 +1649,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartAdminSession
+        return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
     def get_assessment_part_admin_session_for_bank(self, bank_id, proxy):
@@ -1679,7 +1671,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartAdminSession
+        return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
     def get_assessment_part_notification_session(self, assessment_part_receiver, proxy):
@@ -1699,7 +1691,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartNotificationSession
+        return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
     def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id, proxy):
@@ -1723,7 +1715,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartNotificationSession
+        return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
     def get_assessment_part_bank_session(self, proxy):
@@ -1741,7 +1733,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartBankSession
+        return  # osid.assessment.authoring.AssessmentPartBankSession
 
     @abc.abstractmethod
     def get_assessment_part_bank_assignment_session(self, proxy):
@@ -1759,7 +1751,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartBankAssignmentSession
+        return  # osid.assessment.authoring.AssessmentPartBankAssignmentSession
 
     @abc.abstractmethod
     def get_assessment_part_smart_bank_session(self, bank_id, proxy):
@@ -1780,7 +1772,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_assessment_part_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSmartBankSession
+        return  # osid.assessment.authoring.AssessmentPartSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_lookup_session(self, proxy):
@@ -1798,7 +1790,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_lookup_session_for_bank(self, bank_id, proxy):
@@ -1820,7 +1812,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_query_session(self, proxy):
@@ -1838,7 +1830,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuerySession
+        return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_query_session_for_bank(self, bank_id, proxy):
@@ -1860,7 +1852,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuerySession
+        return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_search_session(self, proxy):
@@ -1878,7 +1870,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchSession
+        return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_search_session_for_bank(self, bank_id, proxy):
@@ -1900,7 +1892,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchSession
+        return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_admin_session(self, proxy):
@@ -1918,7 +1910,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleAdminSession
+        return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_admin_session_for_bank(self, bank_id, proxy):
@@ -1940,7 +1932,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleAdminSession
+        return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_notification_session(self, sequence_rule_receiver, proxy):
@@ -1960,7 +1952,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id, proxy):
@@ -1984,7 +1976,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_bank_session(self, proxy):
@@ -2002,7 +1994,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleBankSession
+        return  # osid.assessment.authoring.SequenceRuleBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_bank_assignment_session(self, proxy):
@@ -2020,7 +2012,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleBankAssignmentSession
+        return  # osid.assessment.authoring.SequenceRuleBankAssignmentSession
 
     @abc.abstractmethod
     def get_sequence_rule_smart_bank_session(self, bank_id, proxy):
@@ -2041,7 +2033,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSmartBankSession
+        return  # osid.assessment.authoring.SequenceRuleSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_lookup_session(self, proxy):
@@ -2059,7 +2051,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_lookup_session_for_bank(self, bank_id, proxy):
@@ -2081,7 +2073,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_query_session(self, proxy):
@@ -2099,7 +2091,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuerySession
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_query_session_for_bank(self, bank_id, proxy):
@@ -2121,7 +2113,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuerySession
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_search_session(self, proxy):
@@ -2139,7 +2131,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_search()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_search_session_for_bank(self, bank_id, proxy):
@@ -2161,7 +2153,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_admin_session(self, proxy):
@@ -2179,7 +2171,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerAdminSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_admin_session_for_bank(self, bank_id, proxy):
@@ -2201,7 +2193,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerAdminSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver, proxy):
@@ -2221,7 +2213,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id, proxy):
@@ -2245,7 +2237,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_bank_session(self, proxy):
@@ -2263,7 +2255,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerBankSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_bank_assignment_session(self, proxy):
@@ -2282,7 +2274,7 @@ class AssessmentAuthoringProxyManager:
         ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerBankAssignmentSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerBankAssignmentSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_smart_bank_session(self, bank_id, proxy):
@@ -2303,7 +2295,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_smart_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_lookup_session(self, proxy):
@@ -2321,7 +2313,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_sequence_rule_enabler_rule_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_lookup_session_for_bank(self, bank_id, proxy):
@@ -2343,7 +2335,7 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_application_session(self, proxy):
@@ -2362,7 +2354,7 @@ class AssessmentAuthoringProxyManager:
         ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_rule_application_session_for_bank(self, bank_id, proxy):
@@ -2384,6 +2376,4 @@ class AssessmentAuthoringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
-
-
+        return  # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession

@@ -17,6 +17,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAssetLookupSession(unittest.TestCase):
     """Tests for AssetLookupSession"""
 
@@ -146,6 +148,8 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.asset_ids[0])
 
 
+
+
 class TestAssetQuerySession(unittest.TestCase):
     """Tests for AssetQuerySession"""
 
@@ -217,6 +221,8 @@ class TestAssetQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assets_by_query(query).available(), 3)
 
 
+
+
 class TestAssetSearchSession(unittest.TestCase):
     """Tests for AssetSearchSession"""
 
@@ -239,6 +245,8 @@ class TestAssetSearchSession(unittest.TestCase):
     def test_get_asset_query_from_inspector(self):
         """Tests get_asset_query_from_inspector"""
         pass
+
+
 
 
 class TestAssetAdminSession(unittest.TestCase):
@@ -365,6 +373,8 @@ class TestAssetAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestAssetNotificationSession(unittest.TestCase):
     """Tests for AssetNotificationSession"""
 
@@ -477,6 +487,8 @@ class TestAssetNotificationSession(unittest.TestCase):
         pass
 
 
+
+
 class TestAssetRepositorySession(unittest.TestCase):
     """Tests for AssetRepositorySession"""
 
@@ -565,6 +577,8 @@ class TestAssetRepositorySession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     """Tests for AssetRepositoryAssignmentSession"""
 
@@ -597,6 +611,8 @@ class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     def test_unassign_asset_from_repository(self):
         """Tests unassign_asset_from_repository"""
         pass
+
+
 
 
 class TestAssetCompositionSession(unittest.TestCase):
@@ -672,6 +688,8 @@ class TestAssetCompositionSession(unittest.TestCase):
         """Tests get_compositions_by_asset"""
         self.assertEqual(self.catalog.get_compositions_by_asset(self.asset_ids[0]).available(), 1)
         self.assertEqual(self.catalog.get_compositions_by_asset(self.asset_ids[0]).next().ident, self.composition.ident)
+
+
 
 
 class TestAssetCompositionDesignSession(unittest.TestCase):
@@ -766,6 +784,8 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
             self.catalog.add_asset(asset_id, self.composition_ids[4])
         self.catalog.remove_asset(self.asset_ids[1], self.composition_ids[4])
         self.assertEqual(self.catalog.get_composition_assets(self.composition_ids[4]).available(), 3)
+
+
 
 
 class TestCompositionLookupSession(unittest.TestCase):
@@ -914,6 +934,8 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertEqual(self.catalog.get_compositions().available(), 2)
 
 
+
+
 class TestCompositionQuerySession(unittest.TestCase):
     """Tests for CompositionQuerySession"""
 
@@ -999,6 +1021,8 @@ class TestCompositionQuerySession(unittest.TestCase):
         self.catalog.update_composition(cfu)
 
 
+
+
 class TestCompositionSearchSession(unittest.TestCase):
     """Tests for CompositionSearchSession"""
 
@@ -1021,6 +1045,8 @@ class TestCompositionSearchSession(unittest.TestCase):
     def test_get_composition_query_from_inspector(self):
         """Tests get_composition_query_from_inspector"""
         pass
+
+
 
 
 class TestCompositionAdminSession(unittest.TestCase):
@@ -1138,6 +1164,8 @@ class TestCompositionAdminSession(unittest.TestCase):
 
 
 
+
+
 class TestCompositionRepositorySession(unittest.TestCase):
     """Tests for CompositionRepositorySession"""
 
@@ -1226,6 +1254,8 @@ class TestCompositionRepositorySession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
     """Tests for CompositionRepositoryAssignmentSession"""
 
@@ -1258,6 +1288,8 @@ class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
     def test_unassign_composition_from_repository(self):
         """Tests unassign_composition_from_repository"""
         pass
+
+
 
 
 class TestRepositoryLookupSession(unittest.TestCase):
@@ -1331,6 +1363,8 @@ class TestRepositoryLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_repositories()
 
 
+
+
 class TestRepositoryQuerySession(unittest.TestCase):
     """Tests for RepositoryQuerySession"""
 
@@ -1348,6 +1382,8 @@ class TestRepositoryQuerySession(unittest.TestCase):
     def test_get_repositories_by_query(self):
         """Tests get_repositories_by_query"""
         pass
+
+
 
 
 class TestRepositoryAdminSession(unittest.TestCase):
@@ -1445,6 +1481,8 @@ class TestRepositoryAdminSession(unittest.TestCase):
     def test_alias_repository(self):
         """Tests alias_repository"""
         pass
+
+
 
 
 class TestRepositoryHierarchySession(unittest.TestCase):
@@ -1579,6 +1617,8 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         """Tests get_repository_nodes"""
         nodes = self.svc_mgr.get_repository_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
         # add some tests on the returned node
+
+
 
 
 class TestRepositoryHierarchyDesignSession(unittest.TestCase):

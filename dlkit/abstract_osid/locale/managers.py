@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LocaleProfile:
     """The locale profile describes the interoperability of locale services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_translation(self):
@@ -48,7 +44,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_translation_admin(self):
@@ -61,7 +57,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_numeric_formatting(self):
@@ -74,7 +70,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_formatting(self):
@@ -87,7 +83,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_currency_formatting(self):
@@ -100,7 +96,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_coordinate_formatting(self):
@@ -113,7 +109,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_unit_conversion(self):
@@ -126,7 +122,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_currency_conversion(self):
@@ -139,7 +135,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_conversion(self):
@@ -152,7 +148,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_coordinate_conversion(self):
@@ -165,7 +161,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_spatial_unit_conversion(self):
@@ -178,7 +174,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_format_conversion(self):
@@ -191,7 +187,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_info(self):
@@ -204,7 +200,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_language_types_for_translation(self, source_language_type, source_script_type, target_language_type, target_script_type):
@@ -225,7 +221,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_language_types_for_source(self, source_language_type, source_script_type):
@@ -242,7 +238,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_language_types(self):
@@ -255,7 +251,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_language_types = property(fget=get_source_language_types)
 
@@ -272,7 +268,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def supports_numeric_format_types(self, numeric_format_type):
@@ -287,7 +283,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_numeric_format_types(self):
@@ -300,7 +296,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     numeric_format_types = property(fget=get_numeric_format_types)
 
@@ -323,7 +319,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_types_for_formatting(self):
@@ -336,7 +332,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     calendar_types_for_formatting = property(fget=get_calendar_types_for_formatting)
 
@@ -353,7 +349,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_time_types_for_formatting(self):
@@ -366,7 +362,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     time_types_for_formatting = property(fget=get_time_types_for_formatting)
 
@@ -383,7 +379,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def supports_currency_types_for_formatting(self, currency_type, numeric_format_type):
@@ -400,7 +396,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_currency_types_for_formatting(self):
@@ -413,7 +409,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     currency_types_for_formatting = property(fget=get_currency_types_for_formatting)
 
@@ -430,7 +426,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def supports_coordinate_types_for_formatting(self, coordinate_type, coordinate_format_type):
@@ -447,7 +443,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate_types_for_formatting(self):
@@ -460,7 +456,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     coordinate_types_for_formatting = property(fget=get_coordinate_types_for_formatting)
 
@@ -477,7 +473,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def supports_unit_types_for_conversion(self, source_unit_type, target_unit_type):
@@ -494,7 +490,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_unit_types_for_source(self, source_unit_type):
@@ -509,7 +505,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_unit_types(self):
@@ -522,7 +518,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_unit_types = property(fget=get_source_unit_types)
 
@@ -541,7 +537,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_currency_types_for_source(self, source_currency_type):
@@ -556,7 +552,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_currency_types(self):
@@ -569,7 +565,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_currency_types = property(fget=get_source_currency_types)
 
@@ -588,7 +584,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_types_for_source(self, source_calendar_type):
@@ -603,7 +599,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_calendar_types(self):
@@ -616,7 +612,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_calendar_types = property(fget=get_source_calendar_types)
 
@@ -635,7 +631,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_types_for_source(self, source_time_type):
@@ -650,7 +646,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_time_types(self):
@@ -663,7 +659,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_time_types = property(fget=get_source_time_types)
 
@@ -680,7 +676,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_calendar_types_for_time_type(self, time_type):
@@ -695,7 +691,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def supports_calendar_time_types(self, calendar_type, time_type):
@@ -712,7 +708,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_coordinate_types_for_conversion(self, source_coordinate_type, target_coordinate_type):
@@ -729,7 +725,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate_types_for_source(self, source_coordinate_type):
@@ -744,7 +740,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_coordinate_types(self):
@@ -757,7 +753,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_coordinate_types = property(fget=get_source_coordinate_types)
 
@@ -776,7 +772,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit_record_types_for_source(self, source_spatial_unit_record_type):
@@ -791,7 +787,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_spatial_unit_record_types(self):
@@ -804,7 +800,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_spatial_unit_record_types = property(fget=get_source_spatial_unit_record_types)
 
@@ -823,7 +819,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_format_types_for_source(self, source_format_type):
@@ -838,7 +834,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_format_types(self):
@@ -851,7 +847,7 @@ class LocaleProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     source_format_types = property(fget=get_source_format_types)
 
@@ -885,10 +881,8 @@ class LocaleManager:
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_translation_session(self):
@@ -903,7 +897,7 @@ class LocaleManager:
         ``supports_translation()`` is ``true``.*
 
         """
-        return # osid.locale.TranslationSession
+        return  # osid.locale.TranslationSession
 
     translation_session = property(fget=get_translation_session)
 
@@ -931,7 +925,7 @@ class LocaleManager:
         are ``true``.*
 
         """
-        return # osid.locale.TranslationSession
+        return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
     def get_translation_admin_session(self):
@@ -946,7 +940,7 @@ class LocaleManager:
         ``supports_translation_admin()`` is ``true``.*
 
         """
-        return # osid.locale.TranslationAdminSession
+        return  # osid.locale.TranslationAdminSession
 
     translation_admin_session = property(fget=get_translation_admin_session)
 
@@ -974,7 +968,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.TranslationAdminSession
+        return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
     def get_numeric_formatting_session(self):
@@ -989,7 +983,7 @@ class LocaleManager:
         ``supports_numeric_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.NumericFormattingSession
+        return  # osid.locale.NumericFormattingSession
 
     numeric_formatting_session = property(fget=get_numeric_formatting_session)
 
@@ -1011,7 +1005,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.NumericFormattingSession
+        return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
     def get_calendar_formatting_session(self):
@@ -1026,7 +1020,7 @@ class LocaleManager:
         ``supports_calendar_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarFormattingSession
+        return  # osid.locale.CalendarFormattingSession
 
     calendar_formatting_session = property(fget=get_calendar_formatting_session)
 
@@ -1054,7 +1048,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarFormattingSession
+        return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
     def get_currency_formatting_session(self):
@@ -1069,7 +1063,7 @@ class LocaleManager:
         ``supports_currency_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CurrencyFormattingSession
+        return  # osid.locale.CurrencyFormattingSession
 
     currency_formatting_session = property(fget=get_currency_formatting_session)
 
@@ -1093,7 +1087,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CurrencyFormattingSession
+        return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
     def get_coordinate_formatting_session(self):
@@ -1108,7 +1102,7 @@ class LocaleManager:
         ``supports_coordinate_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CoordinateFormattingSession
+        return  # osid.locale.CoordinateFormattingSession
 
     coordinate_formatting_session = property(fget=get_coordinate_formatting_session)
 
@@ -1132,7 +1126,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CoordinateFormattingSession
+        return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
     def get_unit_conversion_session(self):
@@ -1147,7 +1141,7 @@ class LocaleManager:
         ``supports_unit_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.UnitConversionSession
+        return  # osid.locale.UnitConversionSession
 
     unit_conversion_session = property(fget=get_unit_conversion_session)
 
@@ -1164,7 +1158,7 @@ class LocaleManager:
         ``supports_currency_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CurrencyConversionSession
+        return  # osid.locale.CurrencyConversionSession
 
     currency_conversion_session = property(fget=get_currency_conversion_session)
 
@@ -1188,7 +1182,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CurrencyConversionSession
+        return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
     def get_calendar_conversion_session(self):
@@ -1203,7 +1197,7 @@ class LocaleManager:
         ``supports_calendar_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarConversionSession
+        return  # osid.locale.CalendarConversionSession
 
     calendar_conversion_session = property(fget=get_calendar_conversion_session)
 
@@ -1231,7 +1225,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarConversionSession
+        return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
     def get_coordinate_conversion_session(self):
@@ -1246,7 +1240,7 @@ class LocaleManager:
         ``supports_coordinate_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CoordinateConversionSession
+        return  # osid.locale.CoordinateConversionSession
 
     coordinate_conversion_session = property(fget=get_coordinate_conversion_session)
 
@@ -1270,7 +1264,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CoordinateConversionSession
+        return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
     def get_spatial_unit_conversion_session(self):
@@ -1285,7 +1279,7 @@ class LocaleManager:
         ``supports_spatial_unit_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.SpatialUnitConversionSession
+        return  # osid.locale.SpatialUnitConversionSession
 
     spatial_unit_conversion_session = property(fget=get_spatial_unit_conversion_session)
 
@@ -1309,7 +1303,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.SpatialUnitConversionSession
+        return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
     def get_format_conversion_session(self):
@@ -1324,7 +1318,7 @@ class LocaleManager:
         ``supports_format_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.FormatConversionSession
+        return  # osid.locale.FormatConversionSession
 
     format_conversion_session = property(fget=get_format_conversion_session)
 
@@ -1348,7 +1342,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.FormatConversionSession
+        return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
     def get_calendar_info_session(self):
@@ -1363,7 +1357,7 @@ class LocaleManager:
         ``supports_calendar_info()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarInfoSession
+        return  # osid.locale.CalendarInfoSession
 
     calendar_info_session = property(fget=get_calendar_info_session)
 
@@ -1387,7 +1381,7 @@ class LocaleManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarInfoSession
+        return  # osid.locale.CalendarInfoSession
 
 
 class LocaleProxyManager:
@@ -1421,10 +1415,8 @@ class LocaleProxyManager:
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_translation_session(self, proxy):
@@ -1442,7 +1434,7 @@ class LocaleProxyManager:
         ``supports_translation()`` is ``true``.*
 
         """
-        return # osid.locale.TranslationSession
+        return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
     def get_translation_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy):
@@ -1470,7 +1462,7 @@ class LocaleProxyManager:
         are ``true``.*
 
         """
-        return # osid.locale.TranslationSession
+        return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
     def get_translation_admin_session(self, proxy):
@@ -1488,7 +1480,7 @@ class LocaleProxyManager:
         ``supports_translation_admin()`` is ``true``.*
 
         """
-        return # osid.locale.TranslationAdminSession
+        return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
     def get_translation_admin_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy):
@@ -1516,7 +1508,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.TranslationAdminSession
+        return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
     def get_numeric_formatting_session(self, proxy):
@@ -1534,7 +1526,7 @@ class LocaleProxyManager:
         ``supports_numeric_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.NumericFormattingSession
+        return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
     def get_numeric_formatting_session_for_type(self, numeric_format_type, proxy):
@@ -1556,7 +1548,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.NumericFormattingSession
+        return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
     def get_calendar_formatting_session(self, proxy):
@@ -1574,7 +1566,7 @@ class LocaleProxyManager:
         ``supports_calendar_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarFormattingSession
+        return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
     def get_calendar_formatting_session_for_type(self, calendar_type, calendar_format_type, time_type, time_format_type, proxy):
@@ -1602,7 +1594,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarFormattingSession
+        return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
     def get_currency_formatting_session(self, proxy):
@@ -1620,7 +1612,7 @@ class LocaleProxyManager:
         ``supports_currency_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CurrencyFormattingSession
+        return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
     def get_currency_formatting_session_for_type(self, currency_type, numeric_format_type, proxy):
@@ -1644,7 +1636,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CurrencyFormattingSession
+        return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
     def get_coordinate_formatting_session(self, proxy):
@@ -1662,7 +1654,7 @@ class LocaleProxyManager:
         ``supports_coordinate_formatting()`` is ``true``.*
 
         """
-        return # osid.locale.CoordinateFormattingSession
+        return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
     def get_coordinate_formatting_session_for_type(self, coordinate_type, coordinate_format_type, proxy):
@@ -1686,7 +1678,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CoordinateFormattingSession
+        return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
     def get_unit_conversion_session(self, proxy):
@@ -1704,7 +1696,7 @@ class LocaleProxyManager:
         ``supports_unit_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.UnitConversionSession
+        return  # osid.locale.UnitConversionSession
 
     @abc.abstractmethod
     def get_currency_conversion_session(self, proxy):
@@ -1722,7 +1714,7 @@ class LocaleProxyManager:
         ``supports_currency_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CurrencyConversionSession
+        return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
     def get_currency_conversion_session_for_type(self, source_currency_type, target_currency_type, proxy):
@@ -1746,7 +1738,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CurrencyConversionSession
+        return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
     def get_calendar_conversion_session(self, proxy):
@@ -1764,7 +1756,7 @@ class LocaleProxyManager:
         ``supports_calendar_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarConversionSession
+        return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
     def get_calendar_conversion_session_for_type(self, source_calendar_type, source_time_type, target_calendar_type, target_time_type, proxy):
@@ -1792,7 +1784,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarConversionSession
+        return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
     def get_coordinate_conversion_session(self, proxy):
@@ -1810,7 +1802,7 @@ class LocaleProxyManager:
         ``supports_coordinate_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.CoordinateConversionSession
+        return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
     def get_coordinate_conversion_session_for_type(self, source_coordinate_type, target_coordinate_type, proxy):
@@ -1834,7 +1826,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CoordinateConversionSession
+        return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
     def get_spatial_unit_conversion_session(self, proxy):
@@ -1852,7 +1844,7 @@ class LocaleProxyManager:
         ``supports_spatial_unit_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.SpatialUnitConversionSession
+        return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
     def get_spatial_unit_conversion_session_for_type(self, source_spatial_unit_record_type, target_spatial_unit_record_type, proxy):
@@ -1876,7 +1868,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.SpatialUnitConversionSession
+        return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
     def get_format_conversion_session(self, proxy):
@@ -1894,7 +1886,7 @@ class LocaleProxyManager:
         ``supports_format_conversion()`` is ``true``.*
 
         """
-        return # osid.locale.FormatConversionSession
+        return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
     def get_format_conversion_session_for_type(self, source_format_type, target_format_type, proxy):
@@ -1918,7 +1910,7 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.FormatConversionSession
+        return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
     def get_calendar_info_session(self, proxy):
@@ -1936,7 +1928,7 @@ class LocaleProxyManager:
         ``supports_calendar_info()`` is ``true``.*
 
         """
-        return # osid.locale.CalendarInfoSession
+        return  # osid.locale.CalendarInfoSession
 
     @abc.abstractmethod
     def get_calendar_info_session_for_type(self, calendar_type, time_type, proxy):
@@ -1960,6 +1952,4 @@ class LocaleProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.locale.CalendarInfoSession
-
-
+        return  # osid.locale.CalendarInfoSession

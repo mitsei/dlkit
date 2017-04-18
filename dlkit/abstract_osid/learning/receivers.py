@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ObjectiveReceiver:
     """The objective receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Objectives``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_objectives(self, notification_id, objective_ids):
@@ -89,7 +85,6 @@ class ActivityReceiver:
     """The activity receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Activities``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_activities(self, notification_id, activity_ids):
         """The callback for notifications of new activities.
@@ -140,7 +135,6 @@ class ProficiencyReceiver:
     """The proficiency receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted proficiencies."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_proficiencies(self, notification_id, proficiency_ids):
         """The callback for notifications of new proficiencies.
@@ -190,7 +184,6 @@ class ProficiencyReceiver:
 class ObjectiveBankReceiver:
     """The vault receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``ObjectiveBank`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_objective_banks(self, notification_id, objective_bank_ids):
@@ -251,5 +244,3 @@ class ObjectiveBankReceiver:
 
         """
         pass
-
-

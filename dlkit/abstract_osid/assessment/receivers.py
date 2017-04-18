@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ItemReceiver:
     """The item receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Items``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_items(self, notification_id, item_ids):
@@ -74,7 +70,6 @@ class AssessmentReceiver:
     """The assessment receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Assessment`` objects."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_assessments(self, notification_id, assessment_ids):
         """The callback for notifications of new assessments.
@@ -124,7 +119,6 @@ class AssessmentReceiver:
 class AssessmentOfferedReceiver:
     """The assessment receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``AssessmentOffered`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_assessments_offered(self, notification_id, assessment_offered_ids):
@@ -176,7 +170,6 @@ class AssessmentTakenReceiver:
     """The assessment receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``AssessmentTaken`` objects."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_assessments_taken(self, notification_id, assessment_taken_ids):
         """The callback for notifications of new taken assessments.
@@ -226,7 +219,6 @@ class AssessmentTakenReceiver:
 class BankReceiver:
     """The bank receiver is the consumer supplied interface for receiving notifications pertaining to new, updated, or deleted Bank objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_banks(self, notification_id, bank_ids):
@@ -287,5 +279,3 @@ class BankReceiver:
 
         """
         pass
-
-

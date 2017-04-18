@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.authentication import managers as authentication_managers
 
 
-
-
 class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.AuthenticationProfile):
     """Adapts underlying AuthenticationProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.A
             return self._provider_manager.get_agency_hierarchy_session()
         except Unimplemented:
             return None
-
     def get_agent_record_types(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.get_resource_record_types
@@ -65,9 +61,10 @@ class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.A
     agency_search_record_types = property(fget=get_agency_search_record_types)
 
 
+
+
 class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, authentication_managers.AuthenticationManager):
     """Adapts underlying AuthenticationManager methodswith authorization checks."""
-
     def __init__(self):
         AuthenticationProfile.__init__(self)
 
@@ -78,8 +75,6 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('AUTHENTICATION', provider_impl)
         # need to add version argument
-
-
     def get_authentication_batch_manager(self):
         raise Unimplemented()
 
@@ -96,9 +91,10 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
     authentication_process_manager = property(fget=get_authentication_process_manager)
 
 
+
+
 class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationProfile, authentication_managers.AuthenticationProxyManager):
     """Adapts underlying AuthenticationProxyManager methodswith authorization checks."""
-
     def __init__(self):
         AuthenticationProfile.__init__(self)
 
@@ -109,8 +105,6 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('AUTHENTICATION', provider_impl)
         # need to add version argument
-
-
     def get_authentication_batch_proxy_manager(self):
         raise Unimplemented()
 
@@ -125,5 +119,3 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
         raise Unimplemented()
 
     authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
-
-

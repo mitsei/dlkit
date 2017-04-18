@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ObjectiveRecord:
     """A record for an ``Objective``.
 
@@ -27,9 +24,6 @@ class ObjectiveRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveQueryRecord:
@@ -42,9 +36,6 @@ class ObjectiveQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveQueryInspectorRecord:
     """A record for an ``ObjectiveQueryInspector``.
 
@@ -53,9 +44,6 @@ class ObjectiveQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveFormRecord:
@@ -68,9 +56,6 @@ class ObjectiveFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveSearchOrderRecord:
     """A record for an ``ObjectiveSearchOrder``.
 
@@ -79,9 +64,6 @@ class ObjectiveSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveSearchRecord:
@@ -94,9 +76,6 @@ class ObjectiveSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveSearchResultsRecord:
     """A record for an ``ObjectiveSearchResults``.
 
@@ -105,9 +84,6 @@ class ObjectiveSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ActivityRecord:
@@ -120,9 +96,6 @@ class ActivityRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ActivityQueryRecord:
     """A record for an ``ActivityQuery``.
 
@@ -131,9 +104,6 @@ class ActivityQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ActivityQueryInspectorRecord:
@@ -146,9 +116,6 @@ class ActivityQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ActivityFormRecord:
     """A record for a ``ActivityForm``.
 
@@ -157,9 +124,6 @@ class ActivityFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ActivitySearchOrderRecord:
@@ -172,9 +136,6 @@ class ActivitySearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ActivitySearchRecord:
     """A record for an ``ActivitySearch``.
 
@@ -183,9 +144,6 @@ class ActivitySearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ActivitySearchResultsRecord:
@@ -198,9 +156,6 @@ class ActivitySearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ProficiencyRecord:
     """A record for a ``Proficiency``.
 
@@ -209,9 +164,6 @@ class ProficiencyRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ProficiencyQueryRecord:
@@ -224,9 +176,6 @@ class ProficiencyQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ProficiencyQueryInspectorRecord:
     """A record for a ``ProficiencyQueryInspector``.
 
@@ -235,9 +184,6 @@ class ProficiencyQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ProficiencyFormRecord:
@@ -250,9 +196,6 @@ class ProficiencyFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ProficiencySearchOrderRecord:
     """A record for a ``ProficiencySearchOrder``.
 
@@ -261,9 +204,6 @@ class ProficiencySearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ProficiencySearchRecord:
@@ -276,9 +216,6 @@ class ProficiencySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ProficiencySearchResultsRecord:
     """A record for a ``ProficiencySearchResults``.
 
@@ -287,9 +224,6 @@ class ProficiencySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveBankRecord:
@@ -302,9 +236,6 @@ class ObjectiveBankRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveBankQueryRecord:
     """A record for an ``ObjectiveBankQuery``.
 
@@ -313,9 +244,6 @@ class ObjectiveBankQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveBankQueryInspectorRecord:
@@ -328,9 +256,6 @@ class ObjectiveBankQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveBankFormRecord:
     """A record for a ``ObjectiveBankForm``.
 
@@ -339,9 +264,6 @@ class ObjectiveBankFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ObjectiveBankSearchOrderRecord:
@@ -354,9 +276,6 @@ class ObjectiveBankSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveBankSearchRecord:
     """A record for a ``ObjectiveBankSearch``.
 
@@ -367,9 +286,6 @@ class ObjectiveBankSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ObjectiveBankSearchResultsRecord:
     """A record for a ``ObjectiveBankSearchResults``.
 
@@ -378,8 +294,3 @@ class ObjectiveBankSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

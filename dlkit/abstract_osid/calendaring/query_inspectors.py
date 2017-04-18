@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventQueryInspector:
@@ -36,7 +31,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     implicit_terms = property(fget=get_implicit_terms)
 
@@ -51,7 +46,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     duration_terms = property(fget=get_duration_terms)
 
@@ -66,7 +61,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     recurring_event_id_terms = property(fget=get_recurring_event_id_terms)
 
@@ -81,7 +76,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQueryInspector
+        return  # osid.calendaring.RecurringEventQueryInspector
 
     recurring_event_terms = property(fget=get_recurring_event_terms)
 
@@ -96,7 +91,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     superseding_event_id_terms = property(fget=get_superseding_event_id_terms)
 
@@ -111,7 +106,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQueryInspector
+        return  # osid.calendaring.SupersedingEventQueryInspector
 
     superseding_event_terms = property(fget=get_superseding_event_terms)
 
@@ -126,7 +121,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     offset_event_id_terms = property(fget=get_offset_event_id_terms)
 
@@ -141,7 +136,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQueryInspector
+        return  # osid.calendaring.OffsetEventQueryInspector
 
     offset_event_terms = property(fget=get_offset_event_terms)
 
@@ -156,7 +151,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     location_description_terms = property(fget=get_location_description_terms)
 
@@ -171,7 +166,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     location_id_terms = property(fget=get_location_id_terms)
 
@@ -186,7 +181,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_terms = property(fget=get_location_terms)
 
@@ -201,7 +196,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     sponsor_id_terms = property(fget=get_sponsor_id_terms)
 
@@ -216,7 +211,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     sponsor_terms = property(fget=get_sponsor_terms)
 
@@ -231,7 +226,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CoordinateTerm
+        return  # osid.search.terms.CoordinateTerm
 
     coordinate_terms = property(fget=get_coordinate_terms)
 
@@ -246,7 +241,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     spatial_unit_terms = property(fget=get_spatial_unit_terms)
 
@@ -261,7 +256,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     commitment_id_terms = property(fget=get_commitment_id_terms)
 
@@ -276,7 +271,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQueryInspector
+        return  # osid.calendaring.CommitmentQueryInspector
 
     commitment_terms = property(fget=get_commitment_terms)
 
@@ -291,7 +286,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     containing_event_id_terms = property(fget=get_containing_event_id_terms)
 
@@ -306,7 +301,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     containing_event_terms = property(fget=get_containing_event_terms)
 
@@ -321,7 +316,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -336,7 +331,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -355,7 +350,7 @@ class EventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventQueryInspectorRecord
+        return  # osid.calendaring.records.EventQueryInspectorRecord
 
 
 class RecurringEventQueryInspector:
@@ -373,7 +368,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     schedule_id_terms = property(fget=get_schedule_id_terms)
 
@@ -388,7 +383,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQueryInspector
+        return  # osid.calendaring.ScheduleQueryInspector
 
     schedule_terms = property(fget=get_schedule_terms)
 
@@ -403,7 +398,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     superseding_event_id_terms = property(fget=get_superseding_event_id_terms)
 
@@ -418,7 +413,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQueryInspector
+        return  # osid.calendaring.SupersedingEventQueryInspector
 
     superseding_event_terms = property(fget=get_superseding_event_terms)
 
@@ -433,7 +428,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     event_id_terms = property(fget=get_event_id_terms)
 
@@ -448,7 +443,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_terms = property(fget=get_event_terms)
 
@@ -463,7 +458,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     blackout_terms = property(fget=get_blackout_terms)
 
@@ -478,7 +473,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     blackout_inclusive_terms = property(fget=get_blackout_inclusive_terms)
 
@@ -493,7 +488,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     sponsor_id_terms = property(fget=get_sponsor_id_terms)
 
@@ -508,7 +503,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     sponsor_terms = property(fget=get_sponsor_terms)
 
@@ -523,7 +518,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     specific_meeting_time_terms = property(fget=get_specific_meeting_time_terms)
 
@@ -538,7 +533,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -553,7 +548,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -573,7 +568,7 @@ class RecurringEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventQueryInspectorRecord
+        return  # osid.calendaring.records.RecurringEventQueryInspectorRecord
 
 
 class SupersedingEventQueryInspector:
@@ -591,7 +586,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     superseded_event_id_terms = property(fget=get_superseded_event_id_terms)
 
@@ -606,7 +601,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     superseded_event_terms = property(fget=get_superseded_event_terms)
 
@@ -621,7 +616,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     superseding_event_id_terms = property(fget=get_superseding_event_id_terms)
 
@@ -636,7 +631,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     superseding_event_terms = property(fget=get_superseding_event_terms)
 
@@ -651,7 +646,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     superseded_date_terms = property(fget=get_superseded_date_terms)
 
@@ -666,7 +661,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     superseded_event_position_terms = property(fget=get_superseded_event_position_terms)
 
@@ -681,7 +676,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -696,7 +691,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -716,7 +711,7 @@ class SupersedingEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventQueryInspectorRecord
+        return  # osid.calendaring.records.SupersedingEventQueryInspectorRecord
 
 
 class OffsetEventQueryInspector:
@@ -734,7 +729,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     fixed_start_time_terms = property(fget=get_fixed_start_time_terms)
 
@@ -749,7 +744,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     start_reference_event_id_terms = property(fget=get_start_reference_event_id_terms)
 
@@ -764,7 +759,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     start_reference_event_terms = property(fget=get_start_reference_event_terms)
 
@@ -779,7 +774,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     fixed_start_offset_terms = property(fget=get_fixed_start_offset_terms)
 
@@ -794,7 +789,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     relative_weekday_start_offset_terms = property(fget=get_relative_weekday_start_offset_terms)
 
@@ -809,7 +804,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalTerm
+        return  # osid.search.terms.CardinalTerm
 
     relative_start_weekday_terms = property(fget=get_relative_start_weekday_terms)
 
@@ -824,7 +819,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationRangeTerm
+        return  # osid.search.terms.DurationRangeTerm
 
     fixed_duration_terms = property(fget=get_fixed_duration_terms)
 
@@ -839,7 +834,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     end_reference_event_id_terms = property(fget=get_end_reference_event_id_terms)
 
@@ -854,7 +849,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     end_reference_event_terms = property(fget=get_end_reference_event_terms)
 
@@ -869,7 +864,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     fixed_end_offset_terms = property(fget=get_fixed_end_offset_terms)
 
@@ -884,7 +879,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     relative_weekday_end_offset_terms = property(fget=get_relative_weekday_end_offset_terms)
 
@@ -899,7 +894,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalTerm
+        return  # osid.search.terms.CardinalTerm
 
     relative_end_weekday_terms = property(fget=get_relative_end_weekday_terms)
 
@@ -914,7 +909,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     location_description_terms = property(fget=get_location_description_terms)
 
@@ -929,7 +924,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     location_id_terms = property(fget=get_location_id_terms)
 
@@ -944,7 +939,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_terms = property(fget=get_location_terms)
 
@@ -959,7 +954,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     sponsor_id_terms = property(fget=get_sponsor_id_terms)
 
@@ -974,7 +969,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     sponsor_terms = property(fget=get_sponsor_terms)
 
@@ -989,7 +984,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -1004,7 +999,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -1023,7 +1018,7 @@ class OffsetEventQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventQueryInspectorRecord
+        return  # osid.calendaring.records.OffsetEventQueryInspectorRecord
 
 
 class ScheduleQueryInspector:
@@ -1041,7 +1036,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     schedule_slot_id_terms = property(fget=get_schedule_slot_id_terms)
 
@@ -1056,7 +1051,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQueryInspector
+        return  # osid.calendaring.ScheduleSlotQueryInspector
 
     schedule_slot_terms = property(fget=get_schedule_slot_terms)
 
@@ -1071,7 +1066,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     time_period_id_terms = property(fget=get_time_period_id_terms)
 
@@ -1086,7 +1081,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQueryInspector
+        return  # osid.calendaring.TimePeriodQueryInspector
 
     time_period_terms = property(fget=get_time_period_terms)
 
@@ -1101,7 +1096,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     schedule_start_terms = property(fget=get_schedule_start_terms)
 
@@ -1116,7 +1111,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     schedule_end_terms = property(fget=get_schedule_end_terms)
 
@@ -1131,7 +1126,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     schedule_time_terms = property(fget=get_schedule_time_terms)
 
@@ -1146,7 +1141,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     schedule_time_inclusive_terms = property(fget=get_schedule_time_inclusive_terms)
 
@@ -1161,7 +1156,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalTerm
+        return  # osid.search.terms.CardinalTerm
 
     limit_terms = property(fget=get_limit_terms)
 
@@ -1176,7 +1171,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     location_description_terms = property(fget=get_location_description_terms)
 
@@ -1191,7 +1186,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     location_id_terms = property(fget=get_location_id_terms)
 
@@ -1206,7 +1201,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_terms = property(fget=get_location_terms)
 
@@ -1221,7 +1216,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationRangeTerm
+        return  # osid.search.terms.DurationRangeTerm
 
     total_duration_terms = property(fget=get_total_duration_terms)
 
@@ -1236,7 +1231,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -1251,7 +1246,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -1270,7 +1265,7 @@ class ScheduleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleQueryInspectorRecord
+        return  # osid.calendaring.records.ScheduleQueryInspectorRecord
 
 
 class ScheduleSlotQueryInspector:
@@ -1288,7 +1283,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     schedule_slot_id_terms = property(fget=get_schedule_slot_id_terms)
 
@@ -1303,7 +1298,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQueryInspector
+        return  # osid.calendaring.ScheduleSlotQueryInspector
 
     schedule_slot_terms = property(fget=get_schedule_slot_terms)
 
@@ -1318,7 +1313,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalTerm
+        return  # osid.search.terms.CardinalTerm
 
     weekday_terms = property(fget=get_weekday_terms)
 
@@ -1333,7 +1328,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerTerm
+        return  # osid.search.terms.IntegerTerm
 
     weekly_interval_terms = property(fget=get_weekly_interval_terms)
 
@@ -1348,7 +1343,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerTerm
+        return  # osid.search.terms.IntegerTerm
 
     week_of_month_terms = property(fget=get_week_of_month_terms)
 
@@ -1363,7 +1358,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TimeRangeTerm
+        return  # osid.search.terms.TimeRangeTerm
 
     weekday_time_terms = property(fget=get_weekday_time_terms)
 
@@ -1378,7 +1373,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationRangeTerm
+        return  # osid.search.terms.DurationRangeTerm
 
     fixed_interval_terms = property(fget=get_fixed_interval_terms)
 
@@ -1393,7 +1388,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     duration_terms = property(fget=get_duration_terms)
 
@@ -1408,7 +1403,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -1423,7 +1418,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -1442,7 +1437,7 @@ class ScheduleSlotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotQueryInspectorRecord
+        return  # osid.calendaring.records.ScheduleSlotQueryInspectorRecord
 
 
 class TimePeriodQueryInspector:
@@ -1460,7 +1455,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     start_terms = property(fget=get_start_terms)
 
@@ -1475,7 +1470,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     end_terms = property(fget=get_end_terms)
 
@@ -1490,7 +1485,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     time_terms = property(fget=get_time_terms)
 
@@ -1505,7 +1500,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     time_inclusive_terms = property(fget=get_time_inclusive_terms)
 
@@ -1520,7 +1515,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     duration_terms = property(fget=get_duration_terms)
 
@@ -1535,7 +1530,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     exception_id_terms = property(fget=get_exception_id_terms)
 
@@ -1550,7 +1545,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     exception_terms = property(fget=get_exception_terms)
 
@@ -1565,7 +1560,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     event_id_terms = property(fget=get_event_id_terms)
 
@@ -1580,7 +1575,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_terms = property(fget=get_event_terms)
 
@@ -1595,7 +1590,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -1610,7 +1605,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -1629,7 +1624,7 @@ class TimePeriodQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodQueryInspectorRecord
+        return  # osid.calendaring.records.TimePeriodQueryInspectorRecord
 
 
 class CommitmentQueryInspector:
@@ -1647,7 +1642,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     event_id_terms = property(fget=get_event_id_terms)
 
@@ -1662,7 +1657,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_terms = property(fget=get_event_terms)
 
@@ -1677,7 +1672,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -1692,7 +1687,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -1707,7 +1702,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     calendar_id_terms = property(fget=get_calendar_id_terms)
 
@@ -1722,7 +1717,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_terms = property(fget=get_calendar_terms)
 
@@ -1741,7 +1736,7 @@ class CommitmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentQueryInspectorRecord
+        return  # osid.calendaring.records.CommitmentQueryInspectorRecord
 
 
 class CalendarQueryInspector:
@@ -1759,7 +1754,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     event_id_terms = property(fget=get_event_id_terms)
 
@@ -1774,7 +1769,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_terms = property(fget=get_event_terms)
 
@@ -1789,7 +1784,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     time_period_id_terms = property(fget=get_time_period_id_terms)
 
@@ -1804,7 +1799,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQueryInspector
+        return  # osid.calendaring.TimePeriodQueryInspector
 
     time_period_terms = property(fget=get_time_period_terms)
 
@@ -1819,7 +1814,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     commitment_id_terms = property(fget=get_commitment_id_terms)
 
@@ -1834,7 +1829,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQueryInspector
+        return  # osid.calendaring.CommitmentQueryInspector
 
     commitment_terms = property(fget=get_commitment_terms)
 
@@ -1849,7 +1844,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_calendar_id_terms = property(fget=get_ancestor_calendar_id_terms)
 
@@ -1864,7 +1859,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     ancestor_calendar_terms = property(fget=get_ancestor_calendar_terms)
 
@@ -1879,7 +1874,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_calendar_id_terms = property(fget=get_descendant_calendar_id_terms)
 
@@ -1894,7 +1889,7 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     descendant_calendar_terms = property(fget=get_descendant_calendar_terms)
 
@@ -1913,6 +1908,4 @@ class CalendarQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarQueryInspectorRecord
-
-
+        return  # osid.calendaring.records.CalendarQueryInspectorRecord

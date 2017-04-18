@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestCommentingProfile(unittest.TestCase):
     """Tests for CommentingProfile"""
 
@@ -66,6 +68,8 @@ class TestCommentingProfile(unittest.TestCase):
     def test_get_book_search_record_types(self):
         """Tests get_book_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_book_search_record_types(), abc_type_list))
+
+
 
 
 class TestCommentingManager(unittest.TestCase):
@@ -159,6 +163,8 @@ class TestCommentingManager(unittest.TestCase):
         #     self.mgr.get_commenting_batch_manager()
         if self.svc_mgr.supports_commenting_batch():
             self.svc_mgr.get_commenting_batch_manager()
+
+
 
 
 class TestCommentingProxyManager(unittest.TestCase):

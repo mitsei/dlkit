@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class IdForm:
     """This form provides a means of creating an ``Id``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authority_metadata(self):
@@ -35,7 +31,7 @@ class IdForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     authority_metadata = property(fget=get_authority_metadata)
 
@@ -78,7 +74,7 @@ class IdForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     identifier_namespace_metadata = property(fget=get_identifier_namespace_metadata)
 
@@ -121,7 +117,7 @@ class IdForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     identifier_prefix_metadata = property(fget=get_identifier_prefix_metadata)
 
@@ -166,7 +162,7 @@ class IdForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     identifier_suffix_metadata = property(fget=get_identifier_suffix_metadata)
 
@@ -211,7 +207,7 @@ class IdForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     identifier_metadata = property(fget=get_identifier_metadata)
 
@@ -254,11 +250,8 @@ class IdList:
            Id[] ids = il.getNextIds(il.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_id(self):
@@ -272,7 +265,7 @@ class IdList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     next_id = property(fget=get_next_id)
 
@@ -293,6 +286,4 @@ class IdList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
-
-
+        return  # osid.id.Id

@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.relationship import sessions as abc_relationship_sessions
 
 
-
-
 class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSession, osid_sessions.OsidSession):
     """Adapts underlying RelationshipLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_family_id()
@@ -67,7 +64,6 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         for family_id in self._unauth_family_ids:
             query.match_family_id(family_id, match=False)
         return self._query_session.get_relationships_by_query(query)
-
     def get_family_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -265,9 +261,10 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
     relationships = property(fget=get_relationships)
 
 
+
+
 class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySession, osid_sessions.OsidSession):
     """Adapts underlying RelationshipQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_family_id()
@@ -315,7 +312,6 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
 
         def match_family_id(self, family_id, match=True):
             self._cat_id_args_list.append({'family_id': family_id, 'match': match})
-
     def get_family_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -383,6 +379,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         return result
 
 
+
+
 class RelationshipSearchSession(abc_relationship_sessions.RelationshipSearchSession, RelationshipQuerySession):
     """Adapts underlying RelationshipSearchSession methodswith authorization checks."""
 
@@ -415,9 +413,10 @@ class RelationshipSearchSession(abc_relationship_sessions.RelationshipSearchSess
         raise Unimplemented()
 
 
+
+
 class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSession, osid_sessions.OsidSession):
     """Adapts underlying RelationshipAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_family_id()
@@ -443,7 +442,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
     def _can_for_relationship(self, func_name, relationship_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, relationship_id, 'get_family_ids_for_relationship')
-
     def get_family_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -542,6 +540,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         if not self._can_for_relationship('alias', relationship_id):
             raise PermissionDenied()
         return self._provider_session.alias_relationship(relationship_id, alias_id)
+
+
 
 
 class RelationshipNotificationSession(abc_relationship_sessions.RelationshipNotificationSession, osid_sessions.OsidSession):
@@ -723,15 +723,14 @@ class RelationshipNotificationSession(abc_relationship_sessions.RelationshipNoti
         raise Unimplemented()
 
 
+
+
 class RelationshipFamilySession(abc_relationship_sessions.RelationshipFamilySession, osid_sessions.OsidSession):
     """Adapts underlying RelationshipFamilySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'relationship.RelationshipFamily'
-
-
     def can_lookup_relationship_family_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -796,15 +795,14 @@ class RelationshipFamilySession(abc_relationship_sessions.RelationshipFamilySess
         return self._provider_session.get_families_by_relationship(relationship_id)
 
 
+
+
 class RelationshipFamilyAssignmentSession(abc_relationship_sessions.RelationshipFamilyAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying RelationshipFamilyAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'relationship.RelationshipFamily'
-
-
     def can_assign_relationships(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -851,6 +849,8 @@ class RelationshipFamilyAssignmentSession(abc_relationship_sessions.Relationship
     @raise_null_argument
     def reassign_relationship_to_family(self, relationship_id, from_family_id, to_family_id):
         raise Unimplemented()
+
+
 
 
 class RelationshipSmartFamilySession(abc_relationship_sessions.RelationshipSmartFamilySession, osid_sessions.OsidSession):
@@ -902,17 +902,16 @@ class RelationshipSmartFamilySession(abc_relationship_sessions.RelationshipSmart
         raise Unimplemented()
 
 
+
+
 class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_sessions.OsidSession):
     """Adapts underlying FamilyLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'relationship.Family'
-
-
     def can_lookup_families(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -974,17 +973,16 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
     families = property(fget=get_families)
 
 
+
+
 class FamilyQuerySession(abc_relationship_sessions.FamilyQuerySession, osid_sessions.OsidSession):
     """Adapts underlying FamilyQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'relationship.Family'
-
-
     def can_search_families(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -1009,6 +1007,8 @@ class FamilyQuerySession(abc_relationship_sessions.FamilyQuerySession, osid_sess
         return self._provider_session.get_families_by_query(family_query)
 
 
+
+
 class FamilySearchSession(abc_relationship_sessions.FamilySearchSession, FamilyQuerySession):
     """Adapts underlying FamilySearchSession methodswith authorization checks."""
 
@@ -1031,17 +1031,16 @@ class FamilySearchSession(abc_relationship_sessions.FamilySearchSession, FamilyQ
         raise Unimplemented()
 
 
+
+
 class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sessions.OsidSession):
     """Adapts underlying FamilyAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'relationship.Family'
-
-
     def can_create_families(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -1116,6 +1115,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_family(family_id, alias_id)
+
+
 
 
 class FamilyNotificationSession(abc_relationship_sessions.FamilyNotificationSession, osid_sessions.OsidSession):
@@ -1193,17 +1194,16 @@ class FamilyNotificationSession(abc_relationship_sessions.FamilyNotificationSess
         raise Unimplemented()
 
 
+
+
 class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying FamilyHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'relationship.Family'
-
-
     def get_family_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1358,9 +1358,10 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
             include_siblings)
 
 
+
+
 class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying FamilyHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -1368,8 +1369,6 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         self._qualifier_id = Id('relationship.Family%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'relationship.Family'
         # should this be 'relationship.FamilyHierarchy' ?
-
-
     def get_family_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1422,5 +1421,3 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_families(family_id)
-
-

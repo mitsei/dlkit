@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterQuery:
@@ -253,7 +248,7 @@ class ParameterQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_query(self):
@@ -267,7 +262,7 @@ class ParameterQuery:
         ``supports_value_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueQuery
+        return  # osid.configuration.ValueQuery
 
     value_query = property(fget=get_value_query)
 
@@ -376,7 +371,7 @@ class ParameterQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_query(self):
@@ -390,7 +385,7 @@ class ParameterQuery:
         ``supports_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
     configuration_query = property(fget=get_configuration_query)
 
@@ -424,7 +419,7 @@ class ParameterQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterQueryRecord
+        return  # osid.configuration.records.ParameterQueryRecord
 
 
 class ValueQuery:
@@ -1171,7 +1166,7 @@ class ValueQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_query(self):
@@ -1185,7 +1180,7 @@ class ValueQuery:
         ``supports_parameter_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
     parameter_query = property(fget=get_parameter_query)
 
@@ -1241,7 +1236,7 @@ class ValueQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_query(self):
@@ -1255,7 +1250,7 @@ class ValueQuery:
         ``supports_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
     configuration_query = property(fget=get_configuration_query)
 
@@ -1289,7 +1284,7 @@ class ValueQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueQueryRecord
+        return  # osid.configuration.records.ValueQueryRecord
 
 
 class ConfigurationQuery:
@@ -1367,7 +1362,7 @@ class ConfigurationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_query(self):
@@ -1381,7 +1376,7 @@ class ConfigurationQuery:
         ``supports_parameter_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
     parameter_query = property(fget=get_parameter_query)
 
@@ -1452,7 +1447,7 @@ class ConfigurationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_configuration_query(self):
@@ -1466,7 +1461,7 @@ class ConfigurationQuery:
         ``supports_ancestor_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
     ancestor_configuration_query = property(fget=get_ancestor_configuration_query)
 
@@ -1536,7 +1531,7 @@ class ConfigurationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_configuration_query(self):
@@ -1550,7 +1545,7 @@ class ConfigurationQuery:
         ``supports_descendant_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
     descendant_configuration_query = property(fget=get_descendant_configuration_query)
 
@@ -1597,6 +1592,4 @@ class ConfigurationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationQueryRecord
-
-
+        return  # osid.configuration.records.ConfigurationQueryRecord

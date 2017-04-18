@@ -16,6 +16,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 
 
 
+
+
 class TestAssessmentPartLookupSession(unittest.TestCase):
     """Tests for AssessmentPartLookupSession"""
 
@@ -194,6 +196,8 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_part_ids[0])
 
 
+
+
 class TestAssessmentPartAdminSession(unittest.TestCase):
     """Tests for AssessmentPartAdminSession"""
 
@@ -285,6 +289,8 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestAssessmentPartItemSession(unittest.TestCase):
     """Tests for AssessmentPartItemSession"""
 
@@ -363,6 +369,8 @@ class TestAssessmentPartItemSession(unittest.TestCase):
         """Tests get_assessment_parts_by_item"""
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available(), 1)
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident, self.assessment_part.ident)
+
+
 
 
 class TestAssessmentPartItemDesignSession(unittest.TestCase):
@@ -445,6 +453,8 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
     def test_remove_item(self):
         """Tests remove_item"""
         pass
+
+
 
 
 class TestSequenceRuleLookupSession(unittest.TestCase):
@@ -614,6 +624,8 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         self.catalog.alias_sequence_rule(self.sequence_rule_ids[0], ALIAS_ID)
         obj = self.catalog.get_sequence_rule(ALIAS_ID)
         self.assertEqual(obj.get_id(), self.sequence_rule_ids[0])
+
+
 
 
 class TestSequenceRuleAdminSession(unittest.TestCase):

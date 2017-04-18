@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ResourceQueryInspector:
     """This is the query inspector for examining resource queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_group_terms(self):
@@ -35,7 +31,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     group_terms = property(fget=get_group_terms)
 
@@ -50,7 +46,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     demographic_terms = property(fget=get_demographic_terms)
 
@@ -65,7 +61,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     containing_group_id_terms = property(fget=get_containing_group_id_terms)
 
@@ -80,7 +76,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     containing_group_terms = property(fget=get_containing_group_terms)
 
@@ -95,7 +91,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     avatar_id_terms = property(fget=get_avatar_id_terms)
 
@@ -110,7 +106,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     avatar_terms = property(fget=get_avatar_terms)
 
@@ -125,7 +121,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agent_id_terms = property(fget=get_agent_id_terms)
 
@@ -140,7 +136,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_terms = property(fget=get_agent_terms)
 
@@ -155,7 +151,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_relationship_id_terms = property(fget=get_resource_relationship_id_terms)
 
@@ -170,7 +166,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQueryInspector
+        return  # osid.resource.ResourceRelationshipQueryInspector
 
     resource_relationship_terms = property(fget=get_resource_relationship_terms)
 
@@ -185,7 +181,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bin_id_terms = property(fget=get_bin_id_terms)
 
@@ -200,7 +196,7 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQueryInspector
+        return  # osid.resource.BinQueryInspector
 
     bin_terms = property(fget=get_bin_terms)
 
@@ -219,13 +215,12 @@ class ResourceQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceQueryInspectorRecord
+        return  # osid.resource.records.ResourceQueryInspectorRecord
 
 
 class ResourceRelationshipQueryInspector:
     """This is the query inspector for examining resource relationship queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_resource_id_terms(self):
@@ -238,7 +233,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     source_resource_id_terms = property(fget=get_source_resource_id_terms)
 
@@ -253,7 +248,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     source_resource_terms = property(fget=get_source_resource_terms)
 
@@ -268,7 +263,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     destination_resource_id_terms = property(fget=get_destination_resource_id_terms)
 
@@ -283,7 +278,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     destination_resource_terms = property(fget=get_destination_resource_terms)
 
@@ -298,7 +293,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     same_resource_terms = property(fget=get_same_resource_terms)
 
@@ -313,7 +308,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bin_id_terms = property(fget=get_bin_id_terms)
 
@@ -328,7 +323,7 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQueryInspector
+        return  # osid.resource.BinQueryInspector
 
     bin_terms = property(fget=get_bin_terms)
 
@@ -347,13 +342,12 @@ class ResourceRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipQueryInspectorRecord
+        return  # osid.resource.records.ResourceRelationshipQueryInspectorRecord
 
 
 class BinQueryInspector:
     """This is the query inspector for examining bin queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_id_terms(self):
@@ -366,7 +360,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -381,7 +375,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -396,7 +390,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_bin_id_terms = property(fget=get_ancestor_bin_id_terms)
 
@@ -411,7 +405,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQueryInspector
+        return  # osid.resource.BinQueryInspector
 
     ancestor_bin_terms = property(fget=get_ancestor_bin_terms)
 
@@ -426,7 +420,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_bin_id_terms = property(fget=get_descendant_bin_id_terms)
 
@@ -441,7 +435,7 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQueryInspector
+        return  # osid.resource.BinQueryInspector
 
     descendant_bin_terms = property(fget=get_descendant_bin_terms)
 
@@ -460,6 +454,4 @@ class BinQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinQueryInspectorRecord
-
-
+        return  # osid.resource.records.BinQueryInspectorRecord

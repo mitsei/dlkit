@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.logging_ import managers as logging_managers
 
 
-
-
 class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile):
     """The logging profile describes the interoperability among logging services."""
 
@@ -200,6 +198,8 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         return 'supports_log_entry_admin' in profile.SUPPORTS
 
 
+
+
 class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers.LoggingManager):
     """The logging manager provides access to logging sessions and provides interoperability tests for various aspects of this service.
 
@@ -234,10 +234,8 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     supported search types supported by this service.
 
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_logging_session(self):
         """Gets the ``OsidSession`` associated with the logging service.
@@ -472,6 +470,8 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     logging_batch_manager = property(fget=get_logging_batch_manager)
 
 
+
+
 class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
     """The logging manager provides access to logging sessions and provides interoperability tests for various aspects of this service.
 
@@ -508,10 +508,8 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     supported search types supported by this service.
 
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_logging_session(self, proxy):
         """Gets the ``OsidSession`` associated with the logging service.
@@ -744,5 +742,3 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
         raise errors.Unimplemented()
 
     logging_batch_proxy_manager = property(fget=get_logging_batch_proxy_manager)
-
-

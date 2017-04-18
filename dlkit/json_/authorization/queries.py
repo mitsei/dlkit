@@ -20,11 +20,8 @@ from dlkit.abstract_osid.authorization import queries as abc_authorization_queri
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_queries.OsidRelationshipQuery):
     """The query for authorizations."""
-
     def __init__(self, runtime):
         self._namespace = 'authorization.Authorization'
         self._runtime = runtime
@@ -34,8 +31,6 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
-
-
     @utilities.arguments_not_none
     def match_explicit_authorizations(self, match):
         """Matches explciit authorizations.
@@ -505,6 +500,8 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         raise errors.Unimplemented()
 
 
+
+
 class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching vaults.
 
@@ -512,7 +509,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
     the same method produce a nested ``OR``.
 
     """
-
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('VAULT_RECORD_TYPES', runtime)
@@ -535,8 +531,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
-
-
     @utilities.arguments_not_none
     def match_function_id(self, function_id, match):
         """Sets the function ``Id`` for this query.
@@ -909,5 +903,3 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
 
         """
         raise errors.Unimplemented()
-
-

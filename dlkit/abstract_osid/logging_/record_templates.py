@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class LogEntryRecord:
     """A record for a ``LogEntry``.
 
@@ -27,9 +24,6 @@ class LogEntryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogEntryQueryRecord:
@@ -42,9 +36,6 @@ class LogEntryQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogEntryQueryInspectorRecord:
     """A record for a ``LogEntryQueryInspector``.
 
@@ -53,9 +44,6 @@ class LogEntryQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogEntryFormRecord:
@@ -68,9 +56,6 @@ class LogEntryFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogEntrySearchOrderRecord:
     """A record for a ``LogEntrySearchOrder``.
 
@@ -79,9 +64,6 @@ class LogEntrySearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogEntrySearchRecord:
@@ -94,9 +76,6 @@ class LogEntrySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogEntrySearchResultsRecord:
     """A record for a ``LogEntrySearchResults``.
 
@@ -105,9 +84,6 @@ class LogEntrySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogRecord:
@@ -120,9 +96,6 @@ class LogRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogQueryRecord:
     """A record for a ``LogQuery``.
 
@@ -131,9 +104,6 @@ class LogQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogQueryInspectorRecord:
@@ -146,9 +116,6 @@ class LogQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogFormRecord:
     """A record for a ``LogForm``.
 
@@ -157,9 +124,6 @@ class LogFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class LogSearchOrderRecord:
@@ -172,9 +136,6 @@ class LogSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogSearchRecord:
     """A record for a ``LogSearch``.
 
@@ -185,9 +146,6 @@ class LogSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class LogSearchResultsRecord:
     """A record for a ``LogSearchResults``.
 
@@ -196,8 +154,3 @@ class LogSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

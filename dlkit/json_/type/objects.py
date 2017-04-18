@@ -18,8 +18,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.type import objects as abc_type_objects
 
 
-
-
 class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
     """This form provides a means of updating various fields in the ``Type``.
 
@@ -27,7 +25,6 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
     ``Type`` identification, and as such not modifiable.
 
     """
-
     def __init__(self, type_=None, update=False):
         from ..osid.objects import OsidForm
         OsidForm.__init__(self)
@@ -75,7 +72,6 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
         self._my_map['displayLabel'] = self._display_label_metadata['default_string_values'][0]
         self._my_map['description'] = self._description_metadata['default_string_values'][0]
         self._my_map['domain'] = self._domain_metadata['default_string_values'][0]
-
     def get_display_name_metadata(self):
         """Gets the metadata for the display name.
 
@@ -250,6 +246,8 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
     domain = property(fset=set_domain, fdel=clear_domain)
 
 
+
+
 class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``TypeList`` provides a means for accessing ``Type`` elements sequentially either one at a time or many at a time.
 
@@ -259,8 +257,6 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
       while (tl.hasNext()) {
            Type[] types = tl.getNextTypes(tl.available());
       }
-
-
 
     """
 
@@ -301,5 +297,3 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
 
         """
         return self._get_next_n(n)
-
-

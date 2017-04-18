@@ -16,15 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationRecord:
     """A record for an ``Authorization`` The methods specified by the record type are available through the underlying object."""
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AuthorizationQueryRecord:
@@ -37,9 +31,6 @@ class AuthorizationQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AuthorizationQueryInspectorRecord:
     """A record for an ``AuthorizationQueryInspector``.
 
@@ -48,9 +39,6 @@ class AuthorizationQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AuthorizationFormRecord:
@@ -63,9 +51,6 @@ class AuthorizationFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AuthorizationSearchOrderRecord:
     """A record for an ``AuthorizationSearchOrder``.
 
@@ -74,9 +59,6 @@ class AuthorizationSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AuthorizationSearchRecord:
@@ -89,9 +71,6 @@ class AuthorizationSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AuthorizationSearchResultsRecord:
     """A record for an ``AuthorizationSearchResults``.
 
@@ -100,9 +79,6 @@ class AuthorizationSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AuthorizationConditionRecord:
@@ -115,9 +91,6 @@ class AuthorizationConditionRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FunctionRecord:
     """A record for a ``Function``.
 
@@ -126,9 +99,6 @@ class FunctionRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FunctionQueryRecord:
@@ -141,9 +111,6 @@ class FunctionQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FunctionQueryInspectorRecord:
     """A record for a ``FunctionQueryInspector``.
 
@@ -152,9 +119,6 @@ class FunctionQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FunctionFormRecord:
@@ -167,9 +131,6 @@ class FunctionFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FunctionSearchOrderRecord:
     """A record for a ``FunctionSearchOrder``.
 
@@ -178,9 +139,6 @@ class FunctionSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FunctionSearchRecord:
@@ -193,9 +151,6 @@ class FunctionSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FunctionSearchResultsRecord:
     """A record for a ``FunctionSearchResults``.
 
@@ -204,9 +159,6 @@ class FunctionSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QualifierRecord:
@@ -219,9 +171,6 @@ class QualifierRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class QualifierQueryRecord:
     """A record for a ``QualifierQuery``.
 
@@ -230,9 +179,6 @@ class QualifierQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QualifierQueryInspectorRecord:
@@ -245,9 +191,6 @@ class QualifierQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class QualifierFormRecord:
     """A record for a ``QualifierForm``.
 
@@ -256,9 +199,6 @@ class QualifierFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QualifierSearchOrderRecord:
@@ -271,9 +211,6 @@ class QualifierSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class QualifierSearchRecord:
     """A record for a ``QualifierSearch``.
 
@@ -282,9 +219,6 @@ class QualifierSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QualifierSearchResultsRecord:
@@ -297,9 +231,6 @@ class QualifierSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class VaultRecord:
     """A record for a ``Vault``.
 
@@ -308,9 +239,6 @@ class VaultRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class VaultQueryRecord:
@@ -323,9 +251,6 @@ class VaultQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class VaultQueryInspectorRecord:
     """A record for a ``VaultQueryInspector``.
 
@@ -334,9 +259,6 @@ class VaultQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class VaultFormRecord:
@@ -349,9 +271,6 @@ class VaultFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class VaultSearchOrderRecord:
     """A record for a ``VaultSearchOrder``.
 
@@ -360,9 +279,6 @@ class VaultSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class VaultSearchRecord:
@@ -375,9 +291,6 @@ class VaultSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class VaultSearchResultsRecord:
     """A record for a ``VaultSearchResults``.
 
@@ -386,8 +299,3 @@ class VaultSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

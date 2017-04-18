@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Endpoint:
@@ -43,7 +38,7 @@ class Endpoint:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.records.EndpointRecord
+        return  # osid.transport.records.EndpointRecord
 
 
 class EndpointList:
@@ -75,7 +70,7 @@ class EndpointList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     next_endpoint = property(fget=get_next_endpoint)
 
@@ -95,7 +90,7 @@ class EndpointList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
 
 class Request:
@@ -140,7 +135,7 @@ class Request:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.records.RequestRecord
+        return  # osid.transport.records.RequestRecord
 
 
 class Response:
@@ -158,7 +153,7 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_status_message(self):
@@ -174,7 +169,7 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     status_message = property(fget=get_status_message)
 
@@ -196,7 +191,7 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.records.ResponseRecord
+        return  # osid.transport.records.ResponseRecord
 
 
 class DataInputStream:
@@ -217,7 +212,7 @@ class DataInputStream:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def available(self):
@@ -233,7 +228,7 @@ class DataInputStream:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def skip(self, n):
@@ -248,7 +243,7 @@ class DataInputStream:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def read(self, buf, n):
@@ -268,7 +263,7 @@ class DataInputStream:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     @abc.abstractmethod
     def close(self):
@@ -335,5 +330,3 @@ class DataOutputStream:
 
         """
         pass
-
-

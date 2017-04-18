@@ -18,8 +18,6 @@ from dlkit.abstract_osid.osid import searches as abc_osid_searches
 from dlkit.primordium.id.primitives import Id
 
 
-
-
 class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
     """``OsidSearch`` specifies search options used to perform OSID searches.
 
@@ -31,18 +29,15 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
     search interface to retrieve the first 25 results:
       OsidSearch os = session.getObjectSearch();
       os.limitResultSet(1, 25);
-      
+
       OsidQuery query;
       query = session.getObjectQuery();
       query.addDescriptionMatch("*food*", wildcardStringMatchType, true);
-      
+
       ObjectSearchResults results = session.getObjectsBySearch(query, os);
       ObjectList list = results.getObjectList();
 
-
-
     """
-
     def __init__(self, runtime):
         self._records = dict()
         # _load_records is in OsidExtensibleQuery:
@@ -63,7 +58,6 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
             pass
         self._limit_result_set_start = None
         self._limit_result_set_end = None
-
     @utilities.arguments_not_none
     def limit_result_set(self, start, end):
         """By default, searches return all matching results.
@@ -102,6 +96,8 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
         return self._limit_result_set_end
 
 
+
+
 class OsidSearchResults(abc_osid_searches.OsidSearchResults, osid_rules.OsidResult):
     """This interface provides a means to capture results of a search.
 
@@ -132,5 +128,3 @@ class OsidSearchResults(abc_osid_searches.OsidSearchResults, osid_rules.OsidResu
         return self._results.count(True)
 
     result_size = property(fget=get_result_size)
-
-

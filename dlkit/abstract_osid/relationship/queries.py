@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class RelationshipQuery:
     """This is the query for searching relationships.
 
@@ -27,7 +24,6 @@ class RelationshipQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_source_id(self, peer, match):
@@ -150,7 +146,7 @@ class RelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_query(self):
@@ -166,7 +162,7 @@ class RelationshipQuery:
         ``supports_family_query()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyQuery
+        return  # osid.relationship.FamilyQuery
 
     family_query = property(fget=get_family_query)
 
@@ -201,7 +197,7 @@ class RelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipQueryRecord
+        return  # osid.relationship.records.RelationshipQueryRecord
 
 
 class FamilyQuery:
@@ -212,7 +208,6 @@ class FamilyQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_relationship_id(self, relationship_id, match):
@@ -253,7 +248,7 @@ class FamilyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_query(self):
@@ -267,7 +262,7 @@ class FamilyQuery:
         ``supports_relationship_query()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
     relationship_query = property(fget=get_relationship_query)
 
@@ -336,7 +331,7 @@ class FamilyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_family_query(self):
@@ -352,7 +347,7 @@ class FamilyQuery:
         ``supports_ancestor_family_query()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyQuery
+        return  # osid.relationship.FamilyQuery
 
     ancestor_family_query = property(fget=get_ancestor_family_query)
 
@@ -421,7 +416,7 @@ class FamilyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_family_query(self):
@@ -437,7 +432,7 @@ class FamilyQuery:
         ``supports_descendant_family_query()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyQuery
+        return  # osid.relationship.FamilyQuery
 
     descendant_family_query = property(fget=get_descendant_family_query)
 
@@ -485,6 +480,4 @@ class FamilyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilyQueryRecord
-
-
+        return  # osid.relationship.records.FamilyQueryRecord

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Question:
     """A ``Question`` represents the question portion of an assessment item.
 
@@ -27,7 +24,6 @@ class Question:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_question_record(self, question_record_type):
@@ -50,13 +46,12 @@ class Question:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.QuestionRecord
+        return  # osid.assessment.records.QuestionRecord
 
 
 class QuestionForm:
     """This is the form for creating and updating ``Questions``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_question_form_record(self, question_record_type):
@@ -73,7 +68,7 @@ class QuestionForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.QuestionFormRecord
+        return  # osid.assessment.records.QuestionFormRecord
 
 
 class QuestionList:
@@ -87,11 +82,8 @@ class QuestionList:
            Question[] question = al.getNextQuestions(ql.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_question(self):
@@ -105,7 +97,7 @@ class QuestionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     next_question = property(fget=get_next_question)
 
@@ -123,7 +115,7 @@ class QuestionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
 
 class Answer:
@@ -134,7 +126,6 @@ class Answer:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_answer_record(self, answer_record_type):
@@ -157,13 +148,12 @@ class Answer:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AnswerRecord
+        return  # osid.assessment.records.AnswerRecord
 
 
 class AnswerForm:
     """This is the form for creating and updating ``Answers``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_answer_form_record(self, answer_record_type):
@@ -180,7 +170,7 @@ class AnswerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AnswerFormRecord
+        return  # osid.assessment.records.AnswerFormRecord
 
 
 class AnswerList:
@@ -194,11 +184,8 @@ class AnswerList:
            Answer[] answer = al.getNextAnswers(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_answer(self):
@@ -212,7 +199,7 @@ class AnswerList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Answer
+        return  # osid.assessment.Answer
 
     next_answer = property(fget=get_next_answer)
 
@@ -230,7 +217,7 @@ class AnswerList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Answer
+        return  # osid.assessment.Answer
 
 
 class Item:
@@ -244,7 +231,6 @@ class Item:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_learning_objective_ids(self):
         """Gets the ``Ids`` of any ``Objectives`` corresponding to this item.
@@ -256,7 +242,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
@@ -271,7 +257,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     learning_objectives = property(fget=get_learning_objectives)
 
@@ -286,7 +272,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     question_id = property(fget=get_question_id)
 
@@ -301,7 +287,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     question = property(fget=get_question)
 
@@ -318,7 +304,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     answer_ids = property(fget=get_answer_ids)
 
@@ -333,7 +319,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerList
+        return  # osid.assessment.AnswerList
 
     answers = property(fget=get_answers)
 
@@ -358,7 +344,7 @@ class Item:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemRecord
+        return  # osid.assessment.records.ItemRecord
 
 
 class ItemForm:
@@ -373,7 +359,6 @@ class ItemForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_learning_objectives_metadata(self):
         """Gets the metadata for learning objectives.
@@ -385,7 +370,7 @@ class ItemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     learning_objectives_metadata = property(fget=get_learning_objectives_metadata)
 
@@ -431,7 +416,7 @@ class ItemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemFormRecord
+        return  # osid.assessment.records.ItemFormRecord
 
 
 class ItemList:
@@ -444,11 +429,8 @@ class ItemList:
            Item[] items = il.getNextItems(il.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_item(self):
@@ -462,7 +444,7 @@ class ItemList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Item
+        return  # osid.assessment.Item
 
     next_item = property(fget=get_next_item)
 
@@ -480,7 +462,7 @@ class ItemList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Item
+        return  # osid.assessment.Item
 
 
 class Assessment:
@@ -496,7 +478,6 @@ class Assessment:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_level_id(self):
         """Gets the ``Id`` of a ``Grade`` corresponding to the assessment difficulty.
@@ -508,7 +489,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     level_id = property(fget=get_level_id)
 
@@ -523,7 +504,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     level = property(fget=get_level)
 
@@ -538,7 +519,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_id(self):
@@ -551,7 +532,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     rubric_id = property(fget=get_rubric_id)
 
@@ -567,7 +548,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     rubric = property(fget=get_rubric)
 
@@ -592,7 +573,7 @@ class Assessment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentRecord
+        return  # osid.assessment.records.AssessmentRecord
 
 
 class AssessmentForm:
@@ -607,7 +588,6 @@ class AssessmentForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_level_metadata(self):
         """Gets the metadata for a grade level.
@@ -619,7 +599,7 @@ class AssessmentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     level_metadata = property(fget=get_level_metadata)
 
@@ -662,7 +642,7 @@ class AssessmentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     rubric_metadata = property(fget=get_rubric_metadata)
 
@@ -709,7 +689,7 @@ class AssessmentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentFormRecord
+        return  # osid.assessment.records.AssessmentFormRecord
 
 
 class AssessmentList:
@@ -723,11 +703,8 @@ class AssessmentList:
            Assessment[] assessments = al.hetNextAssessments(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_assessment(self):
@@ -741,7 +718,7 @@ class AssessmentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     next_assessment = property(fget=get_next_assessment)
 
@@ -759,7 +736,7 @@ class AssessmentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
 
 class AssessmentOffered:
@@ -770,7 +747,6 @@ class AssessmentOffered:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_id(self):
@@ -783,7 +759,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_id = property(fget=get_assessment_id)
 
@@ -798,7 +774,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     assessment = property(fget=get_assessment)
 
@@ -813,7 +789,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     level_id = property(fget=get_level_id)
 
@@ -828,7 +804,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     level = property(fget=get_level)
 
@@ -843,7 +819,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def are_items_shuffled(self):
@@ -856,7 +832,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_start_time(self):
@@ -869,7 +845,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_start_time(self):
@@ -882,7 +858,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     start_time = property(fget=get_start_time)
 
@@ -897,7 +873,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_deadline(self):
@@ -910,7 +886,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     deadline = property(fget=get_deadline)
 
@@ -925,7 +901,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_duration(self):
@@ -938,7 +914,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     duration = property(fget=get_duration)
 
@@ -953,7 +929,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_id(self):
@@ -966,7 +942,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     score_system_id = property(fget=get_score_system_id)
 
@@ -982,7 +958,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     score_system = property(fget=get_score_system)
 
@@ -997,7 +973,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_id(self):
@@ -1010,7 +986,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grade_system_id = property(fget=get_grade_system_id)
 
@@ -1026,7 +1002,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     grade_system = property(fget=get_grade_system)
 
@@ -1041,7 +1017,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_id(self):
@@ -1054,7 +1030,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     rubric_id = property(fget=get_rubric_id)
 
@@ -1070,7 +1046,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
     rubric = property(fget=get_rubric)
 
@@ -1096,7 +1072,7 @@ class AssessmentOffered:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedRecord
+        return  # osid.assessment.records.AssessmentOfferedRecord
 
 
 class AssessmentOfferedForm:
@@ -1111,7 +1087,6 @@ class AssessmentOfferedForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_level_metadata(self):
         """Gets the metadata for a grade level.
@@ -1123,7 +1098,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     level_metadata = property(fget=get_level_metadata)
 
@@ -1165,7 +1140,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     items_sequential_metadata = property(fget=get_items_sequential_metadata)
 
@@ -1207,7 +1182,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     items_shuffled_metadata = property(fget=get_items_shuffled_metadata)
 
@@ -1252,7 +1227,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     start_time_metadata = property(fget=get_start_time_metadata)
 
@@ -1294,7 +1269,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     deadline_metadata = property(fget=get_deadline_metadata)
 
@@ -1336,7 +1311,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     duration_metadata = property(fget=get_duration_metadata)
 
@@ -1378,7 +1353,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     score_system_metadata = property(fget=get_score_system_metadata)
 
@@ -1420,7 +1395,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     grade_system_metadata = property(fget=get_grade_system_metadata)
 
@@ -1466,7 +1441,7 @@ class AssessmentOfferedForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedFormRecord
+        return  # osid.assessment.records.AssessmentOfferedFormRecord
 
 
 class AssessmentOfferedList:
@@ -1480,11 +1455,8 @@ class AssessmentOfferedList:
            AssessmentOffered[] assessments = aol.hetNextAssessmentsOffered(aol.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_assessment_offered(self):
@@ -1498,7 +1470,7 @@ class AssessmentOfferedList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
     next_assessment_offered = property(fget=get_next_assessment_offered)
 
@@ -1516,13 +1488,12 @@ class AssessmentOfferedList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
 
 class AssessmentTaken:
     """Represents a taken assessment or an assessment in progress."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_offered_id(self):
@@ -1535,7 +1506,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_offered_id = property(fget=get_assessment_offered_id)
 
@@ -1550,7 +1521,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
     assessment_offered = property(fget=get_assessment_offered)
 
@@ -1565,7 +1536,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     taker_id = property(fget=get_taker_id)
 
@@ -1580,7 +1551,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     taker = property(fget=get_taker)
 
@@ -1595,7 +1566,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     taking_agent_id = property(fget=get_taking_agent_id)
 
@@ -1610,7 +1581,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     taking_agent = property(fget=get_taking_agent)
 
@@ -1625,7 +1596,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_actual_start_time(self):
@@ -1638,7 +1609,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     actual_start_time = property(fget=get_actual_start_time)
 
@@ -1653,7 +1624,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_completion_time(self):
@@ -1666,7 +1637,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     completion_time = property(fget=get_completion_time)
 
@@ -1681,7 +1652,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     time_spent = property(fget=get_time_spent)
 
@@ -1696,7 +1667,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     completion = property(fget=get_completion)
 
@@ -1711,7 +1682,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_id(self):
@@ -1724,7 +1695,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     score_system_id = property(fget=get_score_system_id)
 
@@ -1740,7 +1711,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     score_system = property(fget=get_score_system)
 
@@ -1755,7 +1726,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     score = property(fget=get_score)
 
@@ -1770,7 +1741,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_id(self):
@@ -1783,7 +1754,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grade_id = property(fget=get_grade_id)
 
@@ -1799,7 +1770,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     grade = property(fget=get_grade)
 
@@ -1814,7 +1785,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     feedback = property(fget=get_feedback)
 
@@ -1829,7 +1800,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_id(self):
@@ -1842,7 +1813,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     rubric_id = property(fget=get_rubric_id)
 
@@ -1858,7 +1829,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
     rubric = property(fget=get_rubric)
 
@@ -1883,7 +1854,7 @@ class AssessmentTaken:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenRecord
+        return  # osid.assessment.records.AssessmentTakenRecord
 
 
 class AssessmentTakenForm:
@@ -1898,7 +1869,6 @@ class AssessmentTakenForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_taker_metadata(self):
         """Gets the metadata for a resource to manually set which resource will be taking the assessment.
@@ -1910,7 +1880,7 @@ class AssessmentTakenForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     taker_metadata = property(fget=get_taker_metadata)
 
@@ -1956,7 +1926,7 @@ class AssessmentTakenForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenFormRecord
+        return  # osid.assessment.records.AssessmentTakenFormRecord
 
 
 class AssessmentTakenList:
@@ -1970,11 +1940,8 @@ class AssessmentTakenList:
            AssessmentTaken[] assessments = atl.hetNextAssessmentsTaken(atl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_assessment_taken(self):
@@ -1988,7 +1955,7 @@ class AssessmentTakenList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
     next_assessment_taken = property(fget=get_next_assessment_taken)
 
@@ -2006,7 +1973,7 @@ class AssessmentTakenList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
 
 class AssessmentSection:
@@ -2019,7 +1986,6 @@ class AssessmentSection:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_taken_id(self):
         """Gets the ``Id`` of the ``AssessmentTaken``.
@@ -2031,7 +1997,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_taken_id = property(fget=get_assessment_taken_id)
 
@@ -2046,7 +2012,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
     assessment_taken = property(fget=get_assessment_taken)
 
@@ -2061,7 +2027,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_allocated_time(self):
@@ -2074,7 +2040,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     allocated_time = property(fget=get_allocated_time)
 
@@ -2089,7 +2055,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def are_items_shuffled(self):
@@ -2102,7 +2068,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_section_record(self, assessment_section_record_type):
@@ -2126,7 +2092,7 @@ class AssessmentSection:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentSectionRecord
+        return  # osid.assessment.records.AssessmentSectionRecord
 
 
 class AssessmentSectionList:
@@ -2140,11 +2106,8 @@ class AssessmentSectionList:
            AssessmentSection[] sections = asl.hetNextAssessmentSections(asl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_assessment_section(self):
@@ -2158,7 +2121,7 @@ class AssessmentSectionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
     next_assessment_section = property(fget=get_next_assessment_section)
 
@@ -2176,13 +2139,12 @@ class AssessmentSectionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
 
 class Bank:
     """A bank defines a collection of assessments and items."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_record(self, bank_record_type):
@@ -2205,7 +2167,7 @@ class Bank:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankRecord
+        return  # osid.assessment.records.BankRecord
 
 
 class BankForm:
@@ -2219,7 +2181,6 @@ class BankForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_form_record(self, bank_record_type):
@@ -2236,7 +2197,7 @@ class BankForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankFormRecord
+        return  # osid.assessment.records.BankFormRecord
 
 
 class BankList:
@@ -2249,11 +2210,8 @@ class BankList:
            Bank[] banks = bl.getNextBanks(bl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_bank(self):
@@ -2267,7 +2225,7 @@ class BankList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     next_bank = property(fget=get_next_bank)
 
@@ -2285,7 +2243,7 @@ class BankList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
 
 class BankNode:
@@ -2298,7 +2256,6 @@ class BankNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank(self):
         """Gets the ``Bank`` at this node.
@@ -2310,7 +2267,7 @@ class BankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2325,7 +2282,7 @@ class BankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankNodeList
+        return  # osid.assessment.BankNodeList
 
     parent_bank_nodes = property(fget=get_parent_bank_nodes)
 
@@ -2340,7 +2297,7 @@ class BankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankNodeList
+        return  # osid.assessment.BankNodeList
 
     child_bank_nodes = property(fget=get_child_bank_nodes)
 
@@ -2356,11 +2313,8 @@ class BankNodeList:
            BankNode[] nodes = bnl.getNextBankNodes(bnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_bank_node(self):
@@ -2374,7 +2328,7 @@ class BankNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankNode
+        return  # osid.assessment.BankNode
 
     next_bank_node = property(fget=get_next_bank_node)
 
@@ -2392,7 +2346,7 @@ class BankNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankNode
+        return  # osid.assessment.BankNode
 
 
 class ResponseList:
@@ -2406,11 +2360,8 @@ class ResponseList:
            Response[] responses = rl.getNextResponses(rl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_response(self):
@@ -2424,7 +2375,7 @@ class ResponseList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Response
+        return  # osid.assessment.Response
 
     next_response = property(fget=get_next_response)
 
@@ -2442,6 +2393,4 @@ class ResponseList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Response
-
-
+        return  # osid.assessment.Response

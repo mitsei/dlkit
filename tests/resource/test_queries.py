@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestResourceQuery(unittest.TestCase):
     """Tests for ResourceQuery"""
 
@@ -177,6 +179,8 @@ class TestResourceQuery(unittest.TestCase):
     def test_get_resource_query_record(self):
         """Tests get_resource_query_record"""
         pass
+
+
 
 
 class TestBinQuery(unittest.TestCase):

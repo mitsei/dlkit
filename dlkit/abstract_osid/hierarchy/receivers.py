@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class HierarchyStructureReceiver:
     """The hierarchy receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted hierarchy nodes."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_nodes(self, notification_id, node_ids):
@@ -74,7 +70,6 @@ class HierarchyReceiver:
     """The hierarchy receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Hierarchy`` objects."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_hierarchies(self, notification_id, hierarchy_ids):
         """The callback for notifications of new hierarchies.
@@ -119,5 +114,3 @@ class HierarchyReceiver:
 
         """
         pass
-
-

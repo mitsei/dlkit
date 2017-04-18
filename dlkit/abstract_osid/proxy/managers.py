@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ProxyProfile:
     """The ``ProxyProfile`` describes the interoperability among proxy services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_proxy(self):
@@ -35,7 +31,7 @@ class ProxyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proxy_record_types(self):
@@ -48,7 +44,7 @@ class ProxyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     proxy_record_types = property(fget=get_proxy_record_types)
 
@@ -65,7 +61,7 @@ class ProxyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proxy_condition_record_types(self):
@@ -78,7 +74,7 @@ class ProxyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     proxy_condition_record_types = property(fget=get_proxy_condition_record_types)
 
@@ -95,7 +91,7 @@ class ProxyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class ProxyManager:
@@ -105,10 +101,8 @@ class ProxyManager:
 
       * ``ProxySession:`` a session to acquire proxy interfaces
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_proxy_session(self):
@@ -123,7 +117,7 @@ class ProxyManager:
         ``supports_proxy()`` is ``true``.*
 
         """
-        return # osid.proxy.ProxySession
+        return  # osid.proxy.ProxySession
 
     proxy_session = property(fget=get_proxy_session)
 
@@ -136,10 +130,8 @@ class ProxyProxyManager:
 
       * ``ProxySession:`` a session to acquire proxies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_proxy_session(self, proxy):
@@ -157,6 +149,4 @@ class ProxyProxyManager:
         ``supports_proxy()`` is ``true``.*
 
         """
-        return # osid.proxy.ProxySession
-
-
+        return  # osid.proxy.ProxySession

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidSearch:
     """``OsidSearch`` specifies search options used to perform OSID searches.
 
@@ -30,19 +27,16 @@ class OsidSearch:
     search interface to retrieve the first 25 results:
       OsidSearch os = session.getObjectSearch();
       os.limitResultSet(1, 25);
-      
+
       OsidQuery query;
       query = session.getObjectQuery();
       query.addDescriptionMatch("*food*", wildcardStringMatchType, true);
-      
+
       ObjectSearchResults results = session.getObjectsBySearch(query, os);
       ObjectList list = results.getObjectList();
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def limit_result_set(self, start, end):
@@ -83,7 +77,6 @@ class OsidSearchResults:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_result_size(self):
         """Returns the size of a result set from a search query.
@@ -99,8 +92,6 @@ class OsidSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     result_size = property(fget=get_result_size)
-
-

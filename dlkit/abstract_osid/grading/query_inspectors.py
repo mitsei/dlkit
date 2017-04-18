@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class GradeQueryInspector:
     """This is the query inspector for examining grade queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_id_terms(self):
@@ -35,7 +31,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
@@ -50,7 +46,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     grade_system_terms = property(fget=get_grade_system_terms)
 
@@ -65,7 +61,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     input_score_start_range_terms = property(fget=get_input_score_start_range_terms)
 
@@ -80,7 +76,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     input_score_end_range_terms = property(fget=get_input_score_end_range_terms)
 
@@ -95,7 +91,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     input_score_terms = property(fget=get_input_score_terms)
 
@@ -110,7 +106,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     output_score_terms = property(fget=get_output_score_terms)
 
@@ -125,7 +121,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
@@ -140,7 +136,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQueryInspector
+        return  # osid.grading.GradeEntryQueryInspector
 
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
@@ -155,7 +151,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
@@ -170,7 +166,7 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_terms = property(fget=get_gradebook_terms)
 
@@ -189,13 +185,12 @@ class GradeQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeQueryInspectorRecord
+        return  # osid.grading.records.GradeQueryInspectorRecord
 
 
 class GradeSystemQueryInspector:
     """This is the query inspector for examining grade system queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_based_on_grades_terms(self):
@@ -208,7 +203,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     based_on_grades_terms = property(fget=get_based_on_grades_terms)
 
@@ -223,7 +218,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_id_terms = property(fget=get_grade_id_terms)
 
@@ -238,7 +233,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     grade_terms = property(fget=get_grade_terms)
 
@@ -253,7 +248,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     lowest_numeric_score_terms = property(fget=get_lowest_numeric_score_terms)
 
@@ -268,7 +263,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     numeric_score_increment_terms = property(fget=get_numeric_score_increment_terms)
 
@@ -283,7 +278,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     highest_numeric_score_terms = property(fget=get_highest_numeric_score_terms)
 
@@ -298,7 +293,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
@@ -313,7 +308,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
@@ -328,7 +323,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
@@ -343,7 +338,7 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_terms = property(fget=get_gradebook_terms)
 
@@ -362,13 +357,12 @@ class GradeSystemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemQueryInspectorRecord
+        return  # osid.grading.records.GradeSystemQueryInspectorRecord
 
 
 class GradeEntryQueryInspector:
     """This is the query inspector for examining grade entry queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_column_id_terms(self):
@@ -381,7 +375,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
@@ -396,7 +390,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
@@ -411,7 +405,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     key_resource_id_terms = property(fget=get_key_resource_id_terms)
 
@@ -426,7 +420,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     key_resource_terms = property(fget=get_key_resource_terms)
 
@@ -441,7 +435,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     derived_terms = property(fget=get_derived_terms)
 
@@ -456,7 +450,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     overridden_grade_entry_id_terms = property(fget=get_overridden_grade_entry_id_terms)
 
@@ -471,7 +465,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQueryInspector
+        return  # osid.grading.GradeEntryQueryInspector
 
     overridden_grade_entry_terms = property(fget=get_overridden_grade_entry_terms)
 
@@ -486,7 +480,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     ignored_for_calculations_terms = property(fget=get_ignored_for_calculations_terms)
 
@@ -501,7 +495,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_id_terms = property(fget=get_grade_id_terms)
 
@@ -516,7 +510,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     grade_terms = property(fget=get_grade_terms)
 
@@ -531,7 +525,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     score_terms = property(fget=get_score_terms)
 
@@ -546,7 +540,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     time_graded_terms = property(fget=get_time_graded_terms)
 
@@ -561,7 +555,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grader_id_terms = property(fget=get_grader_id_terms)
 
@@ -576,7 +570,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     grader_terms = property(fget=get_grader_terms)
 
@@ -591,7 +585,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grading_agent_id_terms = property(fget=get_grading_agent_id_terms)
 
@@ -606,7 +600,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     grading_agent_terms = property(fget=get_grading_agent_terms)
 
@@ -621,7 +615,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
@@ -636,7 +630,7 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_terms = property(fget=get_gradebook_terms)
 
@@ -655,13 +649,12 @@ class GradeEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntryQueryInspectorRecord
+        return  # osid.grading.records.GradeEntryQueryInspectorRecord
 
 
 class GradebookColumnQueryInspector:
     """This is the query inspector for examining gradebook column queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_id_terms(self):
@@ -674,7 +667,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
@@ -689,7 +682,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     grade_system_terms = property(fget=get_grade_system_terms)
 
@@ -704,7 +697,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
@@ -719,7 +712,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQueryInspector
+        return  # osid.grading.GradeEntryQueryInspector
 
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
@@ -734,7 +727,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSummaryQueryInspector
+        return  # osid.grading.GradebookColumnSummaryQueryInspector
 
     gradebook_column_summary_terms = property(fget=get_gradebook_column_summary_terms)
 
@@ -749,7 +742,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
@@ -764,7 +757,7 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_terms = property(fget=get_gradebook_terms)
 
@@ -783,13 +776,12 @@ class GradebookColumnQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnQueryInspectorRecord
+        return  # osid.grading.records.GradebookColumnQueryInspectorRecord
 
 
 class GradebookColumnSummaryQueryInspector:
     """This is the query inspector for examining gradebook column summary queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_column_id_terms(self):
@@ -802,7 +794,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
@@ -817,7 +809,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
@@ -832,7 +824,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     mean_terms = property(fget=get_mean_terms)
 
@@ -847,7 +839,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_mean_terms = property(fget=get_minimum_mean_terms)
 
@@ -862,7 +854,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     median_terms = property(fget=get_median_terms)
 
@@ -877,7 +869,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_median_terms = property(fget=get_minimum_median_terms)
 
@@ -892,7 +884,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     mode_terms = property(fget=get_mode_terms)
 
@@ -907,7 +899,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_mode_terms = property(fget=get_minimum_mode_terms)
 
@@ -922,7 +914,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     rms_terms = property(fget=get_rms_terms)
 
@@ -937,7 +929,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_rms_terms = property(fget=get_minimum_rms_terms)
 
@@ -952,7 +944,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     standard_deviation_terms = property(fget=get_standard_deviation_terms)
 
@@ -967,7 +959,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_standard_deviation_terms = property(fget=get_minimum_standard_deviation_terms)
 
@@ -982,7 +974,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     sum_terms = property(fget=get_sum_terms)
 
@@ -997,7 +989,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_sum_terms = property(fget=get_minimum_sum_terms)
 
@@ -1012,7 +1004,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
@@ -1027,7 +1019,7 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_terms = property(fget=get_gradebook_terms)
 
@@ -1046,13 +1038,12 @@ class GradebookColumnSummaryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSummaryQueryInspectorRecord
+        return  # osid.grading.records.GradebookColumnSummaryQueryInspectorRecord
 
 
 class GradebookQueryInspector:
     """This is the query inspector for examining gradebook queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_id_terms(self):
@@ -1065,7 +1056,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
@@ -1080,7 +1071,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     grade_system_terms = property(fget=get_grade_system_terms)
 
@@ -1095,7 +1086,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
@@ -1110,7 +1101,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQueryInspector
+        return  # osid.grading.GradeEntryQueryInspector
 
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
@@ -1125,7 +1116,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
@@ -1140,7 +1131,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
@@ -1155,7 +1146,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_gradebook_id_terms = property(fget=get_ancestor_gradebook_id_terms)
 
@@ -1170,7 +1161,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     ancestor_gradebook_terms = property(fget=get_ancestor_gradebook_terms)
 
@@ -1185,7 +1176,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_gradebook_id_terms = property(fget=get_descendant_gradebook_id_terms)
 
@@ -1200,7 +1191,7 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     descendant_gradebook_terms = property(fget=get_descendant_gradebook_terms)
 
@@ -1219,6 +1210,4 @@ class GradebookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookQueryInspectorRecord
-
-
+        return  # osid.grading.records.GradebookQueryInspectorRecord

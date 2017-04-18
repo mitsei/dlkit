@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.commenting import sessions as abc_commenting_sessions
 
 
-
-
 class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_sessions.OsidSession):
     """Adapts underlying CommentLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_book_id()
@@ -67,7 +64,6 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         for book_id in self._unauth_book_ids:
             query.match_book_id(book_id, match=False)
         return self._query_session.get_comments_by_query(query)
-
     def get_book_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -269,6 +265,8 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
     comments = property(fget=get_comments)
 
 
+
+
 class RatingLookupSession(abc_commenting_sessions.RatingLookupSession, osid_sessions.OsidSession):
     """Adapts underlying RatingLookupSession methodswith authorization checks."""
 
@@ -345,9 +343,10 @@ class RatingLookupSession(abc_commenting_sessions.RatingLookupSession, osid_sess
         raise Unimplemented()
 
 
+
+
 class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sessions.OsidSession):
     """Adapts underlying CommentQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_book_id()
@@ -395,7 +394,6 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
 
         def match_book_id(self, book_id, match=True):
             self._cat_id_args_list.append({'book_id': book_id, 'match': match})
-
     def get_book_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -463,6 +461,8 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         return result
 
 
+
+
 class CommentSearchSession(abc_commenting_sessions.CommentSearchSession, CommentQuerySession):
     """Adapts underlying CommentSearchSession methodswith authorization checks."""
 
@@ -495,9 +495,10 @@ class CommentSearchSession(abc_commenting_sessions.CommentSearchSession, Comment
         raise Unimplemented()
 
 
+
+
 class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sessions.OsidSession):
     """Adapts underlying CommentAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_book_id()
@@ -523,7 +524,6 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
     def _can_for_comment(self, func_name, comment_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, comment_id, 'get_book_ids_for_comment')
-
     def get_book_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -622,6 +622,8 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         if not self._can_for_comment('alias', comment_id):
             raise PermissionDenied()
         return self._provider_session.alias_comment(comment_id, alias_id)
+
+
 
 
 class CommentNotificationSession(abc_commenting_sessions.CommentNotificationSession, osid_sessions.OsidSession):
@@ -779,15 +781,14 @@ class CommentNotificationSession(abc_commenting_sessions.CommentNotificationSess
         raise Unimplemented()
 
 
+
+
 class CommentBookSession(abc_commenting_sessions.CommentBookSession, osid_sessions.OsidSession):
     """Adapts underlying CommentBookSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'commenting.CommentBook'
-
-
     def can_lookup_comment_book_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -852,15 +853,14 @@ class CommentBookSession(abc_commenting_sessions.CommentBookSession, osid_sessio
         return self._provider_session.get_books_by_comment(comment_id)
 
 
+
+
 class CommentBookAssignmentSession(abc_commenting_sessions.CommentBookAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying CommentBookAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'commenting.CommentBook'
-
-
     def can_assign_comments(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -907,6 +907,8 @@ class CommentBookAssignmentSession(abc_commenting_sessions.CommentBookAssignment
     @raise_null_argument
     def reassign_comment_to_book(self, comment_id, from_book_id, to_book_id):
         raise Unimplemented()
+
+
 
 
 class CommentSmartBookSession(abc_commenting_sessions.CommentSmartBookSession, osid_sessions.OsidSession):
@@ -958,17 +960,16 @@ class CommentSmartBookSession(abc_commenting_sessions.CommentSmartBookSession, o
         raise Unimplemented()
 
 
+
+
 class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions.OsidSession):
     """Adapts underlying BookLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'commenting.Book'
-
-
     def can_lookup_books(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -1030,17 +1031,16 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
     books = property(fget=get_books)
 
 
+
+
 class BookQuerySession(abc_commenting_sessions.BookQuerySession, osid_sessions.OsidSession):
     """Adapts underlying BookQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'commenting.Book'
-
-
     def can_search_books(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -1065,6 +1065,8 @@ class BookQuerySession(abc_commenting_sessions.BookQuerySession, osid_sessions.O
         return self._provider_session.get_books_by_query(book_query)
 
 
+
+
 class BookSearchSession(abc_commenting_sessions.BookSearchSession, BookQuerySession):
     """Adapts underlying BookSearchSession methodswith authorization checks."""
 
@@ -1087,17 +1089,16 @@ class BookSearchSession(abc_commenting_sessions.BookSearchSession, BookQuerySess
         raise Unimplemented()
 
 
+
+
 class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.OsidSession):
     """Adapts underlying BookAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'commenting.Book'
-
-
     def can_create_books(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -1172,6 +1173,8 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_book(book_id, alias_id)
+
+
 
 
 class BookNotificationSession(abc_commenting_sessions.BookNotificationSession, osid_sessions.OsidSession):
@@ -1249,17 +1252,16 @@ class BookNotificationSession(abc_commenting_sessions.BookNotificationSession, o
         raise Unimplemented()
 
 
+
+
 class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying BookHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'commenting.Book'
-
-
     def get_book_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1414,9 +1416,10 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
             include_siblings)
 
 
+
+
 class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying BookHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -1424,8 +1427,6 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         self._qualifier_id = Id('commenting.Book%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'commenting.Book'
         # should this be 'commenting.BookHierarchy' ?
-
-
     def get_book_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1478,5 +1479,3 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_books(book_id)
-
-

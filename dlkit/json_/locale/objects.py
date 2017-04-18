@@ -30,8 +30,6 @@ from dlkit.primordium.locale.types import time_format
 from dlkit.primordium.locale.types import unit_system
 
 
-
-
 class Locale(abc_locale_objects.Locale):
     """A locale is a collection of types.
 
@@ -40,7 +38,6 @@ class Locale(abc_locale_objects.Locale):
     culture.
 
     """
-
     ##
     # This constructor should probably be referencing a locale settings
     # module for default values?
@@ -68,8 +65,6 @@ class Locale(abc_locale_objects.Locale):
         self._time_format_type_identifier = time_format_type_identifier
         self._currency_format_type_identifier = currency_format_type_identifier
         self._coordinate_format_type_identifier = coordinate_format_type_identifier
-
-
     def get_language_type(self):
         """Gets the language ``Type``.
 
@@ -192,6 +187,8 @@ class Locale(abc_locale_objects.Locale):
     coordinate_format_type = property(fget=get_coordinate_format_type)
 
 
+
+
 class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``LocaleList`` provides a means for accessing ``Locale`` elements sequentially either one at a time or many at a time.
 
@@ -202,8 +199,6 @@ class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):
       while (ll.hasNext()) {
            Locale[] locales = ll.getNextLocales(ll.available());
       }
-
-
 
     """
 
@@ -246,5 +241,3 @@ class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

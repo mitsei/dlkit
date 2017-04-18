@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestObjectiveQuery(unittest.TestCase):
     """Tests for ObjectiveQuery"""
 
@@ -309,6 +311,8 @@ class TestObjectiveQuery(unittest.TestCase):
         pass
 
 
+
+
 class TestActivityQuery(unittest.TestCase):
     """Tests for ActivityQuery"""
 
@@ -460,6 +464,8 @@ class TestActivityQuery(unittest.TestCase):
         pass
 
 
+
+
 class TestProficiencyQuery(unittest.TestCase):
     """Tests for ProficiencyQuery"""
 
@@ -599,6 +605,8 @@ class TestProficiencyQuery(unittest.TestCase):
     def test_get_proficiency_query_record(self):
         """Tests get_proficiency_query_record"""
         pass
+
+
 
 
 class TestObjectiveBankQuery(unittest.TestCase):

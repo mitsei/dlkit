@@ -16,8 +16,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid import metadata as abc_osid_metadata
 
 
-
-
 class Metadata(abc_osid_metadata.Metadata):
     """The ``Metadata`` interface defines a set of methods describing a the syntax and rules for creating and updating a data element inside an ``OsidForm``.
 
@@ -26,10 +24,8 @@ class Metadata(abc_osid_metadata.Metadata):
     from provider to provider or from object to object.
 
     """
-
     def __init__(self, **kwargs):
         self._kwargs = kwargs
-
     def get_element_id(self):
         """Gets a unique ``Id`` for the data element.
 
@@ -1960,5 +1956,3 @@ class Metadata(abc_osid_metadata.Metadata):
         return self._kwargs['existing_version_values']
 
     existing_version_values = property(fget=get_existing_version_values)
-
-

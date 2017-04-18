@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class RelationshipRecord:
     """A record for a ``Relationship``.
 
@@ -27,9 +24,6 @@ class RelationshipRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RelationshipQueryRecord:
@@ -42,9 +36,6 @@ class RelationshipQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RelationshipQueryInspectorRecord:
     """A record for a ``RelationshipQueryInspector``.
 
@@ -53,9 +44,6 @@ class RelationshipQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RelationshipFormRecord:
@@ -68,9 +56,6 @@ class RelationshipFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RelationshipSearchOrderRecord:
     """A record for a ``RelationshipSearchOrder``.
 
@@ -79,9 +64,6 @@ class RelationshipSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RelationshipSearchRecord:
@@ -94,9 +76,6 @@ class RelationshipSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RelationshipSearchResultsRecord:
     """A record for a ``RelationshipSearchResults``.
 
@@ -105,9 +84,6 @@ class RelationshipSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FamilyRecord:
@@ -120,9 +96,6 @@ class FamilyRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FamilyQueryRecord:
     """A record for a ``FamilyQuery``.
 
@@ -131,9 +104,6 @@ class FamilyQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FamilyQueryInspectorRecord:
@@ -146,9 +116,6 @@ class FamilyQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FamilyFormRecord:
     """A record for a ``FamilyForm``.
 
@@ -157,9 +124,6 @@ class FamilyFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class FamilySearchOrderRecord:
@@ -172,9 +136,6 @@ class FamilySearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FamilySearchRecord:
     """A record for a ``FamilySearch``.
 
@@ -185,9 +146,6 @@ class FamilySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class FamilySearchResultsRecord:
     """A record for a ``FamilySearchResults``.
 
@@ -196,8 +154,3 @@ class FamilySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

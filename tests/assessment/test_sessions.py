@@ -17,6 +17,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAssessmentSession(unittest.TestCase):
     """Tests for AssessmentSession"""
 
@@ -257,6 +259,8 @@ class TestAssessmentSession(unittest.TestCase):
         pass
 
 
+
+
 class TestAssessmentResultsSession(unittest.TestCase):
     """Tests for AssessmentResultsSession"""
 
@@ -315,6 +319,8 @@ class TestAssessmentResultsSession(unittest.TestCase):
     def test_get_grade_entries(self):
         """Tests get_grade_entries"""
         pass
+
+
 
 
 class TestItemLookupSession(unittest.TestCase):
@@ -461,6 +467,8 @@ class TestItemLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.item_ids[0])
 
 
+
+
 class TestItemQuerySession(unittest.TestCase):
     """Tests for ItemQuerySession"""
 
@@ -532,6 +540,8 @@ class TestItemQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_items_by_query(query).available(), 3)
 
 
+
+
 class TestItemSearchSession(unittest.TestCase):
     """Tests for ItemSearchSession"""
 
@@ -554,6 +564,8 @@ class TestItemSearchSession(unittest.TestCase):
     def test_get_item_query_from_inspector(self):
         """Tests get_item_query_from_inspector"""
         pass
+
+
 
 
 class TestItemAdminSession(unittest.TestCase):
@@ -723,6 +735,8 @@ class TestItemAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestItemNotificationSession(unittest.TestCase):
     """Tests for ItemNotificationSession"""
 
@@ -835,6 +849,8 @@ class TestItemNotificationSession(unittest.TestCase):
         pass
 
 
+
+
 class TestItemBankSession(unittest.TestCase):
     """Tests for ItemBankSession"""
 
@@ -923,6 +939,8 @@ class TestItemBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestItemBankAssignmentSession(unittest.TestCase):
     """Tests for ItemBankAssignmentSession"""
 
@@ -960,6 +978,8 @@ class TestItemBankAssignmentSession(unittest.TestCase):
     def test_reassign_item_to_billing(self):
         """Tests reassign_item_to_billing"""
         pass
+
+
 
 
 class TestAssessmentLookupSession(unittest.TestCase):
@@ -1086,6 +1106,8 @@ class TestAssessmentLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_ids[0])
 
 
+
+
 class TestAssessmentQuerySession(unittest.TestCase):
     """Tests for AssessmentQuerySession"""
 
@@ -1155,6 +1177,8 @@ class TestAssessmentQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_assessments_by_query(query).available(), 3)
+
+
 
 
 class TestAssessmentAdminSession(unittest.TestCase):
@@ -1236,6 +1260,8 @@ class TestAssessmentAdminSession(unittest.TestCase):
     def test_alias_assessment(self):
         """Tests alias_assessment"""
         pass
+
+
 
 
 class TestAssessmentBankSession(unittest.TestCase):
@@ -1326,6 +1352,8 @@ class TestAssessmentBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestAssessmentBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentBankAssignmentSession"""
 
@@ -1363,6 +1391,8 @@ class TestAssessmentBankAssignmentSession(unittest.TestCase):
     def test_reassign_assessment_to_billing(self):
         """Tests reassign_assessment_to_billing"""
         pass
+
+
 
 
 class TestAssessmentBasicAuthoringSession(unittest.TestCase):
@@ -1476,6 +1506,8 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
             self.test_item_ids[2],
             self.test_item_ids[3]],
             self.assessment.ident)
+
+
 
 
 class TestAssessmentOfferedLookupSession(unittest.TestCase):
@@ -1616,6 +1648,8 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_offered_ids[0])
 
 
+
+
 class TestAssessmentOfferedQuerySession(unittest.TestCase):
     """Tests for AssessmentOfferedQuerySession"""
 
@@ -1691,6 +1725,8 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_assessments_offered_by_query(query).available(), 3)
+
+
 
 
 class TestAssessmentOfferedAdminSession(unittest.TestCase):
@@ -1772,6 +1808,8 @@ class TestAssessmentOfferedAdminSession(unittest.TestCase):
     def test_alias_assessment_offered(self):
         """Tests alias_assessment_offered"""
         pass
+
+
 
 
 class TestAssessmentOfferedBankSession(unittest.TestCase):
@@ -1868,6 +1906,8 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentOfferedBankAssignmentSession"""
 
@@ -1905,6 +1945,8 @@ class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     def test_reassign_assessment_offered_to_billing(self):
         """Tests reassign_assessment_offered_to_billing"""
         pass
+
+
 
 
 class TestAssessmentTakenLookupSession(unittest.TestCase):
@@ -2097,6 +2139,8 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_taken_ids[0])
 
 
+
+
 class TestAssessmentTakenQuerySession(unittest.TestCase):
     """Tests for AssessmentTakenQuerySession"""
 
@@ -2181,6 +2225,8 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assessments_taken_by_query(query).available(), 3)
 
 
+
+
 class TestAssessmentTakenAdminSession(unittest.TestCase):
     """Tests for AssessmentTakenAdminSession"""
 
@@ -2260,6 +2306,8 @@ class TestAssessmentTakenAdminSession(unittest.TestCase):
     def test_alias_assessment_taken(self):
         """Tests alias_assessment_taken"""
         pass
+
+
 
 
 class TestAssessmentTakenBankSession(unittest.TestCase):
@@ -2363,6 +2411,8 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentTakenBankAssignmentSession"""
 
@@ -2400,6 +2450,8 @@ class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
     def test_reassign_assessment_taken_to_billing(self):
         """Tests reassign_assessment_taken_to_billing"""
         pass
+
+
 
 
 class TestBankLookupSession(unittest.TestCase):
@@ -2473,6 +2525,8 @@ class TestBankLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_banks()
 
 
+
+
 class TestBankQuerySession(unittest.TestCase):
     """Tests for BankQuerySession"""
 
@@ -2490,6 +2544,8 @@ class TestBankQuerySession(unittest.TestCase):
     def test_get_banks_by_query(self):
         """Tests get_banks_by_query"""
         pass
+
+
 
 
 class TestBankAdminSession(unittest.TestCase):
@@ -2587,6 +2643,8 @@ class TestBankAdminSession(unittest.TestCase):
     def test_alias_bank(self):
         """Tests alias_bank"""
         pass
+
+
 
 
 class TestBankHierarchySession(unittest.TestCase):
@@ -2721,6 +2779,8 @@ class TestBankHierarchySession(unittest.TestCase):
         """Tests get_bank_nodes"""
         nodes = self.svc_mgr.get_bank_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
         # add some tests on the returned node
+
+
 
 
 class TestBankHierarchyDesignSession(unittest.TestCase):

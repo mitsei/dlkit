@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.authentication import records as abc_authentication_records
 
 
-
-
 class AgentRecord(abc_authentication_records.AgentRecord, osid_records.OsidRecord):
     """A record for an ``Agent``.
 
@@ -25,6 +23,8 @@ class AgentRecord(abc_authentication_records.AgentRecord, osid_records.OsidRecor
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class AgentQueryRecord(abc_authentication_records.AgentQueryRecord, osid_records
 
 
 
+
+
 class AgentFormRecord(abc_authentication_records.AgentFormRecord, osid_records.OsidRecord):
     """A record for an ``AgentForm``.
 
@@ -51,6 +53,8 @@ class AgentFormRecord(abc_authentication_records.AgentFormRecord, osid_records.O
 
 
 
+
+
 class AgentSearchRecord(abc_authentication_records.AgentSearchRecord, osid_records.OsidRecord):
     """A record for an ``AgentSearch``.
 
@@ -58,7 +62,3 @@ class AgentSearchRecord(abc_authentication_records.AgentSearchRecord, osid_recor
     underlying object.
 
     """
-
-
-
-

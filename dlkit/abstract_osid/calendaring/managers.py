@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class CalendaringProfile:
@@ -32,11 +27,10 @@ class CalendaringProfile:
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_lookup(self):
@@ -47,11 +41,10 @@ class CalendaringProfile:
         :return: true if event lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_query(self):
@@ -60,11 +53,10 @@ class CalendaringProfile:
         :return: ``true`` if event query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_search(self):
@@ -73,11 +65,10 @@ class CalendaringProfile:
         :return: ``true`` if event search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_admin(self):
@@ -86,11 +77,10 @@ class CalendaringProfile:
         :return: ``true`` if event admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_notification(self):
@@ -106,7 +96,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_calendar(self):
@@ -115,11 +105,10 @@ class CalendaringProfile:
         :return: ``true`` if event calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_calendar_assignment(self):
@@ -128,11 +117,10 @@ class CalendaringProfile:
         :return: ``true`` if event calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_event_smart_calendar(self):
@@ -141,11 +129,10 @@ class CalendaringProfile:
         :return: ``true`` if event smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_lookup(self):
@@ -154,11 +141,10 @@ class CalendaringProfile:
         :return: true if recurring event lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_unravelling(self):
@@ -167,11 +153,10 @@ class CalendaringProfile:
         :return: true if recurring event unravelling is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_query(self):
@@ -180,11 +165,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_search(self):
@@ -193,11 +177,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_admin(self):
@@ -206,11 +189,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_notification(self):
@@ -222,11 +204,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event notification is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_calendar(self):
@@ -235,11 +216,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_calendar_assignment(self):
@@ -248,11 +228,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_recurring_event_smart_calendar(self):
@@ -261,11 +240,10 @@ class CalendaringProfile:
         :return: ``true`` if recurring event smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_lookup(self):
@@ -277,11 +255,10 @@ class CalendaringProfile:
         :return: true if superseding event lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_query(self):
@@ -290,11 +267,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_search(self):
@@ -303,11 +279,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_admin(self):
@@ -316,11 +291,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_notification(self):
@@ -332,11 +306,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event notification is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_calendar(self):
@@ -345,11 +318,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_calendar_assignment(self):
@@ -358,11 +330,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding event calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_superseding_event_smart_calendar(self):
@@ -371,11 +342,10 @@ class CalendaringProfile:
         :return: ``true`` if superseding smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_lookup(self):
@@ -386,11 +356,10 @@ class CalendaringProfile:
         :return: true if offset event lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_query(self):
@@ -399,11 +368,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_search(self):
@@ -412,11 +380,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_admin(self):
@@ -425,11 +392,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_notification(self):
@@ -441,11 +407,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event notification is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_calendar(self):
@@ -454,11 +419,10 @@ class CalendaringProfile:
         :return: ``true`` if event calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_calendar_assignment(self):
@@ -467,11 +431,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_offset_event_smart_calendar(self):
@@ -480,11 +443,10 @@ class CalendaringProfile:
         :return: ``true`` if offset event smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_lookup(self):
@@ -495,11 +457,10 @@ class CalendaringProfile:
         :return: true if schedule lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_query(self):
@@ -508,11 +469,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_search(self):
@@ -521,11 +481,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_admin(self):
@@ -534,11 +493,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_notification(self):
@@ -550,11 +508,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule notification is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_calendar(self):
@@ -563,11 +520,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_calendar_assignment(self):
@@ -576,11 +532,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_smart_calendar(self):
@@ -589,11 +544,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_lookup(self):
@@ -605,11 +559,10 @@ class CalendaringProfile:
         :return: true if schedule slot lookup is supported, false otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_query(self):
@@ -618,11 +571,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_search(self):
@@ -631,11 +583,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slots search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_admin(self):
@@ -644,11 +595,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_notification(self):
@@ -660,11 +610,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot notification is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_calendar(self):
@@ -673,11 +622,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_calendar_assignment(self):
@@ -686,11 +634,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_schedule_slot_smart_calendar(self):
@@ -699,11 +646,10 @@ class CalendaringProfile:
         :return: ``true`` if schedule slot smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_lookup(self):
@@ -712,11 +658,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment lookup is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_query(self):
@@ -725,11 +670,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment query is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_search(self):
@@ -738,11 +682,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_admin(self):
@@ -751,11 +694,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_notification(self):
@@ -767,11 +709,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment notification is supported ``,``  ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_calendar(self):
@@ -780,11 +721,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_calendar_assignment(self):
@@ -793,11 +733,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commitment_smart_calendar(self):
@@ -806,11 +745,10 @@ class CalendaringProfile:
         :return: ``true`` if commitment smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_lookup(self):
@@ -819,11 +757,10 @@ class CalendaringProfile:
         :return: ``true`` if time period lookup is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_search(self):
@@ -832,11 +769,10 @@ class CalendaringProfile:
         :return: ``true`` if time period search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_admin(self):
@@ -845,11 +781,10 @@ class CalendaringProfile:
         :return: ``true`` if time period admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_notification(self):
@@ -861,11 +796,10 @@ class CalendaringProfile:
         :return: ``true`` if time period notification is supported ``,``  ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_calendar(self):
@@ -874,11 +808,10 @@ class CalendaringProfile:
         :return: ``true`` if time period calendar lookup session is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_calendar_assignment(self):
@@ -887,11 +820,10 @@ class CalendaringProfile:
         :return: ``true`` if time period calendar assignment is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_time_period_smart_calendar(self):
@@ -900,11 +832,10 @@ class CalendaringProfile:
         :return: ``true`` if time period smart calendaring is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_lookup(self):
@@ -913,11 +844,10 @@ class CalendaringProfile:
         :return: ``true`` if calendar lookup is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_search(self):
@@ -926,11 +856,10 @@ class CalendaringProfile:
         :return: ``true`` if calendar search is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_admin(self):
@@ -939,11 +868,10 @@ class CalendaringProfile:
         :return: ``true`` if calendar admin is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_notification(self):
@@ -955,11 +883,10 @@ class CalendaringProfile:
         :return: ``true`` if calendar notification is supported ``,``  ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_hierarchy(self):
@@ -968,11 +895,10 @@ class CalendaringProfile:
         :return: ``true`` if a calendar hierarchy traversal is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendar_hierarchy_design(self):
@@ -981,11 +907,10 @@ class CalendaringProfile:
         :return: ``true`` if a calendar hierarchy design is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendaring_batch(self):
@@ -994,11 +919,10 @@ class CalendaringProfile:
         :return: ``true`` if a calendar batch package is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendaring_cycle(self):
@@ -1007,11 +931,10 @@ class CalendaringProfile:
         :return: ``true`` if a calendar cycle package is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_calendaring_rules(self):
@@ -1020,11 +943,10 @@ class CalendaringProfile:
         :return: ``true`` if a calendar rules package is supported, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_record_types(self):
@@ -1033,11 +955,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Event`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     event_record_types = property(fget=get_event_record_types)
 
@@ -1054,7 +975,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_search_record_types(self):
@@ -1063,11 +984,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Event`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     event_search_record_types = property(fget=get_event_search_record_types)
 
@@ -1084,7 +1004,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_record_types(self):
@@ -1093,11 +1013,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``RecurringEvent`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     recurring_event_record_types = property(fget=get_recurring_event_record_types)
 
@@ -1114,7 +1033,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_search_record_types(self):
@@ -1123,11 +1042,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``RecurringEvent`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     recurring_event_search_record_types = property(fget=get_recurring_event_search_record_types)
 
@@ -1144,7 +1062,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_record_types(self):
@@ -1153,11 +1071,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``SupersedingEvent`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     superseding_event_record_types = property(fget=get_superseding_event_record_types)
 
@@ -1174,7 +1091,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_search_record_types(self):
@@ -1183,11 +1100,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``SupersedingEvent`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     superseding_event_search_record_types = property(fget=get_superseding_event_search_record_types)
 
@@ -1204,7 +1120,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_record_types(self):
@@ -1213,11 +1129,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``OffsetEvent`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     offset_event_record_types = property(fget=get_offset_event_record_types)
 
@@ -1234,7 +1149,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_search_record_types(self):
@@ -1243,11 +1158,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``OffsetEvent`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     offset_event_search_record_types = property(fget=get_offset_event_search_record_types)
 
@@ -1264,7 +1178,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_record_types(self):
@@ -1273,11 +1187,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Schedule`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     schedule_record_types = property(fget=get_schedule_record_types)
 
@@ -1294,7 +1207,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_search_record_types(self):
@@ -1303,11 +1216,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Schedule`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     schedule_search_record_types = property(fget=get_schedule_search_record_types)
 
@@ -1324,7 +1236,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_record_types(self):
@@ -1333,11 +1245,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``ScheduleSlot`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     schedule_slot_record_types = property(fget=get_schedule_slot_record_types)
 
@@ -1354,7 +1265,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_search_record_types(self):
@@ -1363,11 +1274,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``ScheduleSlot`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     schedule_slot_search_record_types = property(fget=get_schedule_slot_search_record_types)
 
@@ -1384,7 +1294,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_record_types(self):
@@ -1393,11 +1303,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``TimePeriod`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     time_period_record_types = property(fget=get_time_period_record_types)
 
@@ -1414,7 +1323,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_search_record_types(self):
@@ -1423,11 +1332,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``TimePeriod`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     time_period_search_record_types = property(fget=get_time_period_search_record_types)
 
@@ -1444,7 +1352,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_record_types(self):
@@ -1453,11 +1361,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Commitment`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     commitment_record_types = property(fget=get_commitment_record_types)
 
@@ -1474,7 +1381,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_search_record_types(self):
@@ -1483,11 +1390,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Commitment`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     commitment_search_record_types = property(fget=get_commitment_search_record_types)
 
@@ -1504,7 +1410,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_record_types(self):
@@ -1513,11 +1419,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Calendar`` record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     calendar_record_types = property(fget=get_calendar_record_types)
 
@@ -1534,7 +1439,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_search_record_types(self):
@@ -1543,11 +1448,10 @@ class CalendaringProfile:
         :return: a list containing the supported ``Calendar`` search record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     calendar_search_record_types = property(fget=get_calendar_search_record_types)
 
@@ -1564,7 +1468,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit_record_types(self):
@@ -1573,11 +1477,10 @@ class CalendaringProfile:
         :return: the list of supported spatial unit record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
@@ -1594,7 +1497,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate_record_types(self):
@@ -1603,11 +1506,10 @@ class CalendaringProfile:
         :return: the list of supported coordinate record types
         :rtype: ``osid.type.TypeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     coordinate_record_types = property(fget=get_coordinate_record_types)
 
@@ -1624,7 +1526,7 @@ class CalendaringProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class CalendaringManager:
@@ -1778,7 +1680,7 @@ class CalendaringManager:
         ``supports_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventLookupSession
+        return  # osid.calendaring.EventLookupSession
 
     event_lookup_session = property(fget=get_event_lookup_session)
 
@@ -1800,7 +1702,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventLookupSession
+        return  # osid.calendaring.EventLookupSession
 
     @abc.abstractmethod
     def get_event_query_session(self):
@@ -1815,7 +1717,7 @@ class CalendaringManager:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuerySession
+        return  # osid.calendaring.EventQuerySession
 
     event_query_session = property(fget=get_event_query_session)
 
@@ -1837,7 +1739,7 @@ class CalendaringManager:
         are ``true``.*
 
         """
-        return # osid.calendaring.EventQuerySession
+        return  # osid.calendaring.EventQuerySession
 
     @abc.abstractmethod
     def get_event_search_session(self):
@@ -1852,7 +1754,7 @@ class CalendaringManager:
         ``supports_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchSession
+        return  # osid.calendaring.EventSearchSession
 
     event_search_session = property(fget=get_event_search_session)
 
@@ -1874,7 +1776,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventSearchSession
+        return  # osid.calendaring.EventSearchSession
 
     @abc.abstractmethod
     def get_event_admin_session(self):
@@ -1889,7 +1791,7 @@ class CalendaringManager:
         ``supports_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventAdminSession
+        return  # osid.calendaring.EventAdminSession
 
     event_admin_session = property(fget=get_event_admin_session)
 
@@ -1911,7 +1813,7 @@ class CalendaringManager:
         are ``true``.*
 
         """
-        return # osid.calendaring.EventAdminSession
+        return  # osid.calendaring.EventAdminSession
 
     @abc.abstractmethod
     def get_event_notification_session(self, event_receiver):
@@ -1929,7 +1831,7 @@ class CalendaringManager:
         ``supports_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventNotificationSession
+        return  # osid.calendaring.EventNotificationSession
 
     @abc.abstractmethod
     def get_event_notification_session_for_calendar(self, event_receiver, calendar_id):
@@ -1951,7 +1853,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventNotificationSession
+        return  # osid.calendaring.EventNotificationSession
 
     @abc.abstractmethod
     def get_event_calendar_session(self):
@@ -1966,7 +1868,7 @@ class CalendaringManager:
         ``supports_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventCalendarSession
+        return  # osid.calendaring.EventCalendarSession
 
     event_calendar_session = property(fget=get_event_calendar_session)
 
@@ -1983,7 +1885,7 @@ class CalendaringManager:
         ``supports_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventCalendarAssignmentSession
+        return  # osid.calendaring.EventCalendarAssignmentSession
 
     event_calendar_assignment_session = property(fget=get_event_calendar_assignment_session)
 
@@ -2004,7 +1906,7 @@ class CalendaringManager:
         ``supports_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSmartCalendarSession
+        return  # osid.calendaring.EventSmartCalendarSession
 
     @abc.abstractmethod
     def get_recurring_event_lookup_session(self):
@@ -2019,7 +1921,7 @@ class CalendaringManager:
         ``supports_recurring_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventLookupSession
+        return  # osid.calendaring.RecurringEventLookupSession
 
     recurring_event_lookup_session = property(fget=get_recurring_event_lookup_session)
 
@@ -2042,7 +1944,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventLookupSession
+        return  # osid.calendaring.RecurringEventLookupSession
 
     @abc.abstractmethod
     def get_recurring_event_query_session(self):
@@ -2057,7 +1959,7 @@ class CalendaringManager:
         ``supports_recurring_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventQuerySession
+        return  # osid.calendaring.RecurringEventQuerySession
 
     recurring_event_query_session = property(fget=get_recurring_event_query_session)
 
@@ -2080,7 +1982,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventQuerySession
+        return  # osid.calendaring.RecurringEventQuerySession
 
     @abc.abstractmethod
     def get_recurring_event_search_session(self):
@@ -2095,7 +1997,7 @@ class CalendaringManager:
         ``supports_recurring_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSearchSession
+        return  # osid.calendaring.RecurringEventSearchSession
 
     recurring_event_search_session = property(fget=get_recurring_event_search_session)
 
@@ -2118,7 +2020,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSearchSession
+        return  # osid.calendaring.RecurringEventSearchSession
 
     @abc.abstractmethod
     def get_recurring_event_admin_session(self):
@@ -2133,7 +2035,7 @@ class CalendaringManager:
         ``supports_recurring_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventAdminSession
+        return  # osid.calendaring.RecurringEventAdminSession
 
     recurring_event_admin_session = property(fget=get_recurring_event_admin_session)
 
@@ -2156,7 +2058,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventAdminSession
+        return  # osid.calendaring.RecurringEventAdminSession
 
     @abc.abstractmethod
     def get_recurring_event_notification_session(self, recurring_event_receiver):
@@ -2174,7 +2076,7 @@ class CalendaringManager:
         ``supports_recurring_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventNotificationSession
+        return  # osid.calendaring.RecurringEventNotificationSession
 
     @abc.abstractmethod
     def get_recurring_event_notification_session_for_calendar(self, recurring_event_receiver, calendar_id):
@@ -2197,7 +2099,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventNotificationSession
+        return  # osid.calendaring.RecurringEventNotificationSession
 
     @abc.abstractmethod
     def get_recurring_event_calendar_session(self):
@@ -2212,7 +2114,7 @@ class CalendaringManager:
         ``supports_recurring_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventCalendarSession
+        return  # osid.calendaring.RecurringEventCalendarSession
 
     recurring_event_calendar_session = property(fget=get_recurring_event_calendar_session)
 
@@ -2229,7 +2131,7 @@ class CalendaringManager:
         ``supports_recurring_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventCalendarAssignmentSession
+        return  # osid.calendaring.RecurringEventCalendarAssignmentSession
 
     recurring_event_calendar_assignment_session = property(fget=get_recurring_event_calendar_assignment_session)
 
@@ -2250,7 +2152,7 @@ class CalendaringManager:
         ``supports_recurring_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSmartCalendarSession
+        return  # osid.calendaring.RecurringEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_superseding_event_lookup_session(self):
@@ -2265,7 +2167,7 @@ class CalendaringManager:
         ``supports_superseding_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventLookupSession
+        return  # osid.calendaring.SupersedingEventLookupSession
 
     superseding_event_lookup_session = property(fget=get_superseding_event_lookup_session)
 
@@ -2288,7 +2190,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventLookupSession
+        return  # osid.calendaring.SupersedingEventLookupSession
 
     @abc.abstractmethod
     def get_superseding_event_query_session(self):
@@ -2303,7 +2205,7 @@ class CalendaringManager:
         ``supports_superseding_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuerySession
+        return  # osid.calendaring.SupersedingEventQuerySession
 
     superseding_event_query_session = property(fget=get_superseding_event_query_session)
 
@@ -2326,7 +2228,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuerySession
+        return  # osid.calendaring.SupersedingEventQuerySession
 
     @abc.abstractmethod
     def get_superseding_event_search_session(self):
@@ -2341,7 +2243,7 @@ class CalendaringManager:
         ``supports_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchSession
+        return  # osid.calendaring.SupersedingEventSearchSession
 
     superseding_event_search_session = property(fget=get_superseding_event_search_session)
 
@@ -2364,7 +2266,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchSession
+        return  # osid.calendaring.SupersedingEventSearchSession
 
     @abc.abstractmethod
     def get_superseding_event_admin_session(self):
@@ -2379,7 +2281,7 @@ class CalendaringManager:
         ``supports_superseding_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventAdminSession
+        return  # osid.calendaring.SupersedingEventAdminSession
 
     superseding_event_admin_session = property(fget=get_superseding_event_admin_session)
 
@@ -2402,7 +2304,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventAdminSession
+        return  # osid.calendaring.SupersedingEventAdminSession
 
     @abc.abstractmethod
     def get_superseding_event_notification_session(self, superseding_event_receiver):
@@ -2420,7 +2322,7 @@ class CalendaringManager:
         ``supports_superseding_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventNotificationSession
+        return  # osid.calendaring.SupersedingEventNotificationSession
 
     @abc.abstractmethod
     def get_superseding_event_notification_session_for_calendar(self, superseding_event_receiver, calendar_id):
@@ -2443,7 +2345,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventNotificationSession
+        return  # osid.calendaring.SupersedingEventNotificationSession
 
     @abc.abstractmethod
     def get_superseding_event_calendar_session(self):
@@ -2458,7 +2360,7 @@ class CalendaringManager:
         ``supports_superseding_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventCalendarSession
+        return  # osid.calendaring.SupersedingEventCalendarSession
 
     superseding_event_calendar_session = property(fget=get_superseding_event_calendar_session)
 
@@ -2476,7 +2378,7 @@ class CalendaringManager:
         ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventCalendarAssignmentSession
+        return  # osid.calendaring.SupersedingEventCalendarAssignmentSession
 
     superseding_event_calendar_assignment_session = property(fget=get_superseding_event_calendar_assignment_session)
 
@@ -2497,7 +2399,7 @@ class CalendaringManager:
         ``supports_superseding_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSmartCalendarSession
+        return  # osid.calendaring.SupersedingEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_offset_event_lookup_session(self):
@@ -2512,7 +2414,7 @@ class CalendaringManager:
         ``supports_offset_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventLookupSession
+        return  # osid.calendaring.OffsetEventLookupSession
 
     offset_event_lookup_session = property(fget=get_offset_event_lookup_session)
 
@@ -2535,7 +2437,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventLookupSession
+        return  # osid.calendaring.OffsetEventLookupSession
 
     @abc.abstractmethod
     def get_offset_event_query_session(self):
@@ -2550,7 +2452,7 @@ class CalendaringManager:
         ``supports_offset_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventQuerySession
+        return  # osid.calendaring.OffsetEventQuerySession
 
     offset_event_query_session = property(fget=get_offset_event_query_session)
 
@@ -2572,7 +2474,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventQuerySession
+        return  # osid.calendaring.OffsetEventQuerySession
 
     @abc.abstractmethod
     def get_offset_event_search_session(self):
@@ -2587,7 +2489,7 @@ class CalendaringManager:
         ``supports_offset_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSearchSession
+        return  # osid.calendaring.OffsetEventSearchSession
 
     offset_event_search_session = property(fget=get_offset_event_search_session)
 
@@ -2610,7 +2512,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSearchSession
+        return  # osid.calendaring.OffsetEventSearchSession
 
     @abc.abstractmethod
     def get_offset_event_admin_session(self):
@@ -2625,7 +2527,7 @@ class CalendaringManager:
         ``supports_offset_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventAdminSession
+        return  # osid.calendaring.OffsetEventAdminSession
 
     offset_event_admin_session = property(fget=get_offset_event_admin_session)
 
@@ -2647,7 +2549,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventAdminSession
+        return  # osid.calendaring.OffsetEventAdminSession
 
     @abc.abstractmethod
     def get_offset_event_notification_session(self, offset_event_receiver):
@@ -2665,7 +2567,7 @@ class CalendaringManager:
         ``supports_offset_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventNotificationSession
+        return  # osid.calendaring.OffsetEventNotificationSession
 
     @abc.abstractmethod
     def get_offset_event_notification_session_for_calendar(self, offset_event_receiver, calendar_id):
@@ -2688,7 +2590,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventNotificationSession
+        return  # osid.calendaring.OffsetEventNotificationSession
 
     @abc.abstractmethod
     def get_offset_event_calendar_session(self):
@@ -2703,7 +2605,7 @@ class CalendaringManager:
         ``supports_offset_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventCalendarSession
+        return  # osid.calendaring.OffsetEventCalendarSession
 
     offset_event_calendar_session = property(fget=get_offset_event_calendar_session)
 
@@ -2720,7 +2622,7 @@ class CalendaringManager:
         ``supports_offset_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventCalendarAssignmentSession
+        return  # osid.calendaring.OffsetEventCalendarAssignmentSession
 
     offset_event_calendar_assignment_session = property(fget=get_offset_event_calendar_assignment_session)
 
@@ -2741,7 +2643,7 @@ class CalendaringManager:
         ``supports_offset_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSmartCalendarSession
+        return  # osid.calendaring.OffsetEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_schedule_lookup_session(self):
@@ -2756,7 +2658,7 @@ class CalendaringManager:
         ``supports_schedule_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleLookupSession
+        return  # osid.calendaring.ScheduleLookupSession
 
     schedule_lookup_session = property(fget=get_schedule_lookup_session)
 
@@ -2778,7 +2680,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleLookupSession
+        return  # osid.calendaring.ScheduleLookupSession
 
     @abc.abstractmethod
     def get_schedule_query_session(self):
@@ -2793,7 +2695,7 @@ class CalendaringManager:
         ``supports_schedule_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuerySession
+        return  # osid.calendaring.ScheduleQuerySession
 
     schedule_query_session = property(fget=get_schedule_query_session)
 
@@ -2815,7 +2717,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuerySession
+        return  # osid.calendaring.ScheduleQuerySession
 
     @abc.abstractmethod
     def get_schedule_search_session(self):
@@ -2830,7 +2732,7 @@ class CalendaringManager:
         ``supports_schedule_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSearchSession
+        return  # osid.calendaring.ScheduleSearchSession
 
     schedule_search_session = property(fget=get_schedule_search_session)
 
@@ -2852,7 +2754,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSearchSession
+        return  # osid.calendaring.ScheduleSearchSession
 
     @abc.abstractmethod
     def get_schedule_admin_session(self):
@@ -2867,7 +2769,7 @@ class CalendaringManager:
         ``supports_schedule_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleAdminSession
+        return  # osid.calendaring.ScheduleAdminSession
 
     schedule_admin_session = property(fget=get_schedule_admin_session)
 
@@ -2889,7 +2791,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleAdminSession
+        return  # osid.calendaring.ScheduleAdminSession
 
     @abc.abstractmethod
     def get_schedule_notification_session(self, schedule_receiver):
@@ -2907,7 +2809,7 @@ class CalendaringManager:
         ``supports_schedule_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleNotificationSession
+        return  # osid.calendaring.ScheduleNotificationSession
 
     @abc.abstractmethod
     def get_schedule_notification_session_for_calendar(self, schedule_receiver, calendar_id):
@@ -2930,7 +2832,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleNotificationSession
+        return  # osid.calendaring.ScheduleNotificationSession
 
     @abc.abstractmethod
     def get_schedule_calendar_session(self):
@@ -2945,7 +2847,7 @@ class CalendaringManager:
         ``supports_schedule_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleCalendarSession
+        return  # osid.calendaring.ScheduleCalendarSession
 
     schedule_calendar_session = property(fget=get_schedule_calendar_session)
 
@@ -2962,7 +2864,7 @@ class CalendaringManager:
         ``supports_schedule_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleCalendarAssignmentSession
+        return  # osid.calendaring.ScheduleCalendarAssignmentSession
 
     schedule_calendar_assignment_session = property(fget=get_schedule_calendar_assignment_session)
 
@@ -2983,7 +2885,7 @@ class CalendaringManager:
         ``supports_schedule_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSmartCalendarSession
+        return  # osid.calendaring.ScheduleSmartCalendarSession
 
     @abc.abstractmethod
     def get_schedule_slot_lookup_session(self):
@@ -2998,7 +2900,7 @@ class CalendaringManager:
         ``supports_schedule_slot_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotLookupSession
+        return  # osid.calendaring.ScheduleSlotLookupSession
 
     schedule_slot_lookup_session = property(fget=get_schedule_slot_lookup_session)
 
@@ -3021,7 +2923,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotLookupSession
+        return  # osid.calendaring.ScheduleSlotLookupSession
 
     @abc.abstractmethod
     def get_schedule_slot_query_session(self):
@@ -3036,7 +2938,7 @@ class CalendaringManager:
         ``supports_schedule_slot_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuerySession
+        return  # osid.calendaring.ScheduleSlotQuerySession
 
     schedule_slot_query_session = property(fget=get_schedule_slot_query_session)
 
@@ -3059,7 +2961,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuerySession
+        return  # osid.calendaring.ScheduleSlotQuerySession
 
     @abc.abstractmethod
     def get_schedule_slot_search_session(self):
@@ -3074,7 +2976,7 @@ class CalendaringManager:
         ``supports_schedule_slot_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchSession
+        return  # osid.calendaring.ScheduleSlotSearchSession
 
     schedule_slot_search_session = property(fget=get_schedule_slot_search_session)
 
@@ -3097,7 +2999,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchSession
+        return  # osid.calendaring.ScheduleSlotSearchSession
 
     @abc.abstractmethod
     def get_schedule_slot_admin_session(self):
@@ -3112,7 +3014,7 @@ class CalendaringManager:
         ``supports_schedule_slot_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotAdminSession
+        return  # osid.calendaring.ScheduleSlotAdminSession
 
     schedule_slot_admin_session = property(fget=get_schedule_slot_admin_session)
 
@@ -3135,7 +3037,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotAdminSession
+        return  # osid.calendaring.ScheduleSlotAdminSession
 
     @abc.abstractmethod
     def get_schedule_slot_notification_session(self, schedule_slot_receiver):
@@ -3153,7 +3055,7 @@ class CalendaringManager:
         ``supports_schedule_slot_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotNotificationSession
+        return  # osid.calendaring.ScheduleSlotNotificationSession
 
     @abc.abstractmethod
     def get_schedule_slot_notification_session_for_calendar(self, schedule_slot_receiver, calendar_id):
@@ -3176,7 +3078,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotNotificationSession
+        return  # osid.calendaring.ScheduleSlotNotificationSession
 
     @abc.abstractmethod
     def get_schedule_slot_calendar_session(self):
@@ -3191,7 +3093,7 @@ class CalendaringManager:
         ``supports_schedule_slot_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotCalendarSession
+        return  # osid.calendaring.ScheduleSlotCalendarSession
 
     schedule_slot_calendar_session = property(fget=get_schedule_slot_calendar_session)
 
@@ -3208,7 +3110,7 @@ class CalendaringManager:
         ``supports_schedule_slot_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotCalendarAssignmentSession
+        return  # osid.calendaring.ScheduleSlotCalendarAssignmentSession
 
     schedule_slot_calendar_assignment_session = property(fget=get_schedule_slot_calendar_assignment_session)
 
@@ -3229,7 +3131,7 @@ class CalendaringManager:
         ``supports_schedule_slot_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSmartCalendarSession
+        return  # osid.calendaring.ScheduleSlotSmartCalendarSession
 
     @abc.abstractmethod
     def get_commitment_lookup_session(self):
@@ -3244,7 +3146,7 @@ class CalendaringManager:
         ``supports_commitment_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentLookupSession
+        return  # osid.calendaring.CommitmentLookupSession
 
     commitment_lookup_session = property(fget=get_commitment_lookup_session)
 
@@ -3266,7 +3168,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentLookupSession
+        return  # osid.calendaring.CommitmentLookupSession
 
     @abc.abstractmethod
     def get_commitment_query_session(self):
@@ -3281,7 +3183,7 @@ class CalendaringManager:
         ``supports_commitment_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuerySession
+        return  # osid.calendaring.CommitmentQuerySession
 
     commitment_query_session = property(fget=get_commitment_query_session)
 
@@ -3303,7 +3205,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuerySession
+        return  # osid.calendaring.CommitmentQuerySession
 
     @abc.abstractmethod
     def get_commitment_search_session(self):
@@ -3318,7 +3220,7 @@ class CalendaringManager:
         ``supports_commitment_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSearchSession
+        return  # osid.calendaring.CommitmentSearchSession
 
     commitment_search_session = property(fget=get_commitment_search_session)
 
@@ -3340,7 +3242,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSearchSession
+        return  # osid.calendaring.CommitmentSearchSession
 
     @abc.abstractmethod
     def get_commitment_admin_session(self):
@@ -3355,7 +3257,7 @@ class CalendaringManager:
         ``supports_commitment_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentAdminSession
+        return  # osid.calendaring.CommitmentAdminSession
 
     commitment_admin_session = property(fget=get_commitment_admin_session)
 
@@ -3377,7 +3279,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentAdminSession
+        return  # osid.calendaring.CommitmentAdminSession
 
     @abc.abstractmethod
     def get_commitment_notification_session(self, commitment_receiver):
@@ -3395,7 +3297,7 @@ class CalendaringManager:
         ``supports_commitment_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentNotificationSession
+        return  # osid.calendaring.CommitmentNotificationSession
 
     @abc.abstractmethod
     def get_commitment_notification_session_for_calendar(self, commitment_receiver, calendar_id):
@@ -3418,7 +3320,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentNotificationSession
+        return  # osid.calendaring.CommitmentNotificationSession
 
     @abc.abstractmethod
     def get_commitment_calendar_session(self):
@@ -3433,7 +3335,7 @@ class CalendaringManager:
         ``supports_commitment_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentCalendarSession
+        return  # osid.calendaring.CommitmentCalendarSession
 
     commitment_calendar_session = property(fget=get_commitment_calendar_session)
 
@@ -3450,7 +3352,7 @@ class CalendaringManager:
         ``supports_commitment_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentCalendarAssignmentSession
+        return  # osid.calendaring.CommitmentCalendarAssignmentSession
 
     commitment_calendar_assignment_session = property(fget=get_commitment_calendar_assignment_session)
 
@@ -3471,7 +3373,7 @@ class CalendaringManager:
         ``supports_commitment_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSmartCalendarSession
+        return  # osid.calendaring.CommitmentSmartCalendarSession
 
     @abc.abstractmethod
     def get_time_period_lookup_session(self):
@@ -3486,7 +3388,7 @@ class CalendaringManager:
         ``supports_time_period_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodLookupSession
+        return  # osid.calendaring.TimePeriodLookupSession
 
     time_period_lookup_session = property(fget=get_time_period_lookup_session)
 
@@ -3508,7 +3410,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodLookupSession
+        return  # osid.calendaring.TimePeriodLookupSession
 
     @abc.abstractmethod
     def get_time_period_query_session(self):
@@ -3523,7 +3425,7 @@ class CalendaringManager:
         ``supports_time_period_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuerySession
+        return  # osid.calendaring.TimePeriodQuerySession
 
     time_period_query_session = property(fget=get_time_period_query_session)
 
@@ -3545,7 +3447,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuerySession
+        return  # osid.calendaring.TimePeriodQuerySession
 
     @abc.abstractmethod
     def get_time_period_search_session(self):
@@ -3560,7 +3462,7 @@ class CalendaringManager:
         ``supports_time_period_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSearchSession
+        return  # osid.calendaring.TimePeriodSearchSession
 
     time_period_search_session = property(fget=get_time_period_search_session)
 
@@ -3582,7 +3484,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSearchSession
+        return  # osid.calendaring.TimePeriodSearchSession
 
     @abc.abstractmethod
     def get_time_period_admin_session(self):
@@ -3597,7 +3499,7 @@ class CalendaringManager:
         ``supports_time_period_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodAdminSession
+        return  # osid.calendaring.TimePeriodAdminSession
 
     time_period_admin_session = property(fget=get_time_period_admin_session)
 
@@ -3619,7 +3521,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodAdminSession
+        return  # osid.calendaring.TimePeriodAdminSession
 
     @abc.abstractmethod
     def get_time_period_notification_session(self, time_period_receiver):
@@ -3637,7 +3539,7 @@ class CalendaringManager:
         ``supports_time_period_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodNotificationSession
+        return  # osid.calendaring.TimePeriodNotificationSession
 
     @abc.abstractmethod
     def get_time_period_notification_session_for_calendar(self, time_period_receiver, calendar_id):
@@ -3660,7 +3562,7 @@ class CalendaringManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodNotificationSession
+        return  # osid.calendaring.TimePeriodNotificationSession
 
     @abc.abstractmethod
     def get_time_period_calendar_session(self):
@@ -3675,7 +3577,7 @@ class CalendaringManager:
         ``supports_time_period_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodCalendarSession
+        return  # osid.calendaring.TimePeriodCalendarSession
 
     time_period_calendar_session = property(fget=get_time_period_calendar_session)
 
@@ -3692,7 +3594,7 @@ class CalendaringManager:
         ``supports_time_period_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodCalendarAssignmentSession
+        return  # osid.calendaring.TimePeriodCalendarAssignmentSession
 
     time_period_calendar_assignment_session = property(fget=get_time_period_calendar_assignment_session)
 
@@ -3713,7 +3615,7 @@ class CalendaringManager:
         ``supports_time_period_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSmartCalendarSession
+        return  # osid.calendaring.TimePeriodSmartCalendarSession
 
     @abc.abstractmethod
     def get_calendar_lookup_session(self):
@@ -3728,7 +3630,7 @@ class CalendaringManager:
         ``supports_calendar_lookup()`` is true.*
 
         """
-        return # osid.calendaring.CalendarLookupSession
+        return  # osid.calendaring.CalendarLookupSession
 
     calendar_lookup_session = property(fget=get_calendar_lookup_session)
 
@@ -3745,7 +3647,7 @@ class CalendaringManager:
         ``supports_calendar_search()`` is true.*
 
         """
-        return # osid.calendaring.CalendarSearchSession
+        return  # osid.calendaring.CalendarSearchSession
 
     calendar_search_session = property(fget=get_calendar_search_session)
 
@@ -3762,7 +3664,7 @@ class CalendaringManager:
         ``supports_calendar_admin()`` is true.*
 
         """
-        return # osid.calendaring.CalendarAdminSession
+        return  # osid.calendaring.CalendarAdminSession
 
     calendar_admin_session = property(fget=get_calendar_admin_session)
 
@@ -3782,7 +3684,7 @@ class CalendaringManager:
         ``supports_calendar_notification()`` is true.*
 
         """
-        return # osid.calendaring.CalendarNotificationSession
+        return  # osid.calendaring.CalendarNotificationSession
 
     @abc.abstractmethod
     def get_calendar_hierarchy_session(self):
@@ -3797,7 +3699,7 @@ class CalendaringManager:
         ``supports_calendar_hierarchy()`` is true.*
 
         """
-        return # osid.calendaring.CalendarHierarchySession
+        return  # osid.calendaring.CalendarHierarchySession
 
     calendar_hierarchy_session = property(fget=get_calendar_hierarchy_session)
 
@@ -3814,7 +3716,7 @@ class CalendaringManager:
         ``supports_calendar_hierarchy_design()`` is true.*
 
         """
-        return # osid.calendaring.CalendarHierarchyDesignSession
+        return  # osid.calendaring.CalendarHierarchyDesignSession
 
     calendar_hierarchy_design_session = property(fget=get_calendar_hierarchy_design_session)
 
@@ -3831,7 +3733,7 @@ class CalendaringManager:
         ``supports_calendaring_batch()`` is ``true``.*
 
         """
-        return # osid.calendaring.batch.CalendaringBatchManager
+        return  # osid.calendaring.batch.CalendaringBatchManager
 
     calandaring_batch_manager = property(fget=get_calandaring_batch_manager)
 
@@ -3848,7 +3750,7 @@ class CalendaringManager:
         ``supports_calendaring_cycle()`` is ``true``.*
 
         """
-        return # osid.calendaring.cycle.CalendaringCycleManager
+        return  # osid.calendaring.cycle.CalendaringCycleManager
 
     calandaring_cycle_manager = property(fget=get_calandaring_cycle_manager)
 
@@ -3865,7 +3767,7 @@ class CalendaringManager:
         ``supports_calendaring_rules()`` is ``true``.*
 
         """
-        return # osid.calendaring.rules.CalendaringRulesManager
+        return  # osid.calendaring.rules.CalendaringRulesManager
 
     calandaring_rules_manager = property(fget=get_calandaring_rules_manager)
 
@@ -4026,7 +3928,7 @@ class CalendaringProxyManager:
         ``supports_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventLookupSession
+        return  # osid.calendaring.EventLookupSession
 
     @abc.abstractmethod
     def get_event_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -4048,7 +3950,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventLookupSession
+        return  # osid.calendaring.EventLookupSession
 
     @abc.abstractmethod
     def get_event_query_session(self, proxy):
@@ -4066,7 +3968,7 @@ class CalendaringProxyManager:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuerySession
+        return  # osid.calendaring.EventQuerySession
 
     @abc.abstractmethod
     def get_event_query_session_for_calendar(self, calendar_id, proxy):
@@ -4088,7 +3990,7 @@ class CalendaringProxyManager:
         are ``true``.*
 
         """
-        return # osid.calendaring.EventQuerySession
+        return  # osid.calendaring.EventQuerySession
 
     @abc.abstractmethod
     def get_event_search_session(self, proxy):
@@ -4106,7 +4008,7 @@ class CalendaringProxyManager:
         ``supports_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchSession
+        return  # osid.calendaring.EventSearchSession
 
     @abc.abstractmethod
     def get_event_search_session_for_calendar(self, calendar_id, proxy):
@@ -4128,7 +4030,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventSearchSession
+        return  # osid.calendaring.EventSearchSession
 
     @abc.abstractmethod
     def get_event_admin_session(self, proxy):
@@ -4146,7 +4048,7 @@ class CalendaringProxyManager:
         ``supports_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventAdminSession
+        return  # osid.calendaring.EventAdminSession
 
     @abc.abstractmethod
     def get_event_admin_session_for_calendar(self, calendar_id, proxy):
@@ -4168,7 +4070,7 @@ class CalendaringProxyManager:
         are ``true``.*
 
         """
-        return # osid.calendaring.EventAdminSession
+        return  # osid.calendaring.EventAdminSession
 
     @abc.abstractmethod
     def get_event_notification_session(self, event_receiver, proxy):
@@ -4188,7 +4090,7 @@ class CalendaringProxyManager:
         ``supports_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventNotificationSession
+        return  # osid.calendaring.EventNotificationSession
 
     @abc.abstractmethod
     def get_event_notification_session_for_calendar(self, event_receiver, calendar_id, proxy):
@@ -4212,7 +4114,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.EventNotificationSession
+        return  # osid.calendaring.EventNotificationSession
 
     @abc.abstractmethod
     def get_event_calendar_session(self, proxy):
@@ -4230,7 +4132,7 @@ class CalendaringProxyManager:
         ``supports_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventCalendarSession
+        return  # osid.calendaring.EventCalendarSession
 
     @abc.abstractmethod
     def get_event_calendar_assignment_session(self, proxy):
@@ -4248,7 +4150,7 @@ class CalendaringProxyManager:
         ``supports_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventCalendarAssignmentSession
+        return  # osid.calendaring.EventCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_event_smart_calendar_session(self, calendar_id, proxy):
@@ -4269,7 +4171,7 @@ class CalendaringProxyManager:
         ``supports_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSmartCalendarSession
+        return  # osid.calendaring.EventSmartCalendarSession
 
     @abc.abstractmethod
     def get_recurring_event_lookup_session(self, proxy):
@@ -4287,7 +4189,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventLookupSession
+        return  # osid.calendaring.RecurringEventLookupSession
 
     @abc.abstractmethod
     def get_recurring_event_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -4310,7 +4212,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventLookupSession
+        return  # osid.calendaring.RecurringEventLookupSession
 
     @abc.abstractmethod
     def get_recurring_event_query_session(self, proxy):
@@ -4328,7 +4230,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventQuerySession
+        return  # osid.calendaring.RecurringEventQuerySession
 
     @abc.abstractmethod
     def get_recurring_event_query_session_for_calendar(self, calendar_id, proxy):
@@ -4351,7 +4253,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventQuerySession
+        return  # osid.calendaring.RecurringEventQuerySession
 
     @abc.abstractmethod
     def get_recurring_event_search_session(self, proxy):
@@ -4369,7 +4271,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSearchSession
+        return  # osid.calendaring.RecurringEventSearchSession
 
     @abc.abstractmethod
     def get_recurring_event_search_session_for_calendar(self, calendar_id, proxy):
@@ -4392,7 +4294,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSearchSession
+        return  # osid.calendaring.RecurringEventSearchSession
 
     @abc.abstractmethod
     def get_recurring_event_admin_session(self, proxy):
@@ -4410,7 +4312,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventAdminSession
+        return  # osid.calendaring.RecurringEventAdminSession
 
     @abc.abstractmethod
     def get_recurring_event_admin_session_for_calendar(self, calendar_id, proxy):
@@ -4433,7 +4335,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventAdminSession
+        return  # osid.calendaring.RecurringEventAdminSession
 
     @abc.abstractmethod
     def get_recurring_event_notification_session(self, recurring_event_receiver, proxy):
@@ -4453,7 +4355,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventNotificationSession
+        return  # osid.calendaring.RecurringEventNotificationSession
 
     @abc.abstractmethod
     def get_recurring_event_notification_session_for_calendar(self, recurring_event_receiver, calendar_id, proxy):
@@ -4478,7 +4380,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventNotificationSession
+        return  # osid.calendaring.RecurringEventNotificationSession
 
     @abc.abstractmethod
     def get_recurring_event_calendar_session(self, proxy):
@@ -4496,7 +4398,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventCalendarSession
+        return  # osid.calendaring.RecurringEventCalendarSession
 
     @abc.abstractmethod
     def get_recurring_event_calendar_assignment_session(self, proxy):
@@ -4514,7 +4416,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventCalendarAssignmentSession
+        return  # osid.calendaring.RecurringEventCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_recurring_event_smart_calendar_session(self, calendar_id, proxy):
@@ -4535,7 +4437,7 @@ class CalendaringProxyManager:
         ``supports_recurring_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSmartCalendarSession
+        return  # osid.calendaring.RecurringEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_superseding_event_lookup_session(self, proxy):
@@ -4553,7 +4455,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventLookupSession
+        return  # osid.calendaring.SupersedingEventLookupSession
 
     @abc.abstractmethod
     def get_superseding_event_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -4576,7 +4478,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventLookupSession
+        return  # osid.calendaring.SupersedingEventLookupSession
 
     @abc.abstractmethod
     def get_superseding_event_query_session(self, proxy):
@@ -4594,7 +4496,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuerySession
+        return  # osid.calendaring.SupersedingEventQuerySession
 
     @abc.abstractmethod
     def get_superseding_event_query_session_for_calendar(self, calendar_id, proxy):
@@ -4617,7 +4519,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuerySession
+        return  # osid.calendaring.SupersedingEventQuerySession
 
     @abc.abstractmethod
     def get_superseding_event_search_session(self, proxy):
@@ -4635,7 +4537,7 @@ class CalendaringProxyManager:
         ``supports_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchSession
+        return  # osid.calendaring.SupersedingEventSearchSession
 
     @abc.abstractmethod
     def get_superseding_event_search_session_for_calendar(self, calendar_id, proxy):
@@ -4658,7 +4560,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchSession
+        return  # osid.calendaring.SupersedingEventSearchSession
 
     @abc.abstractmethod
     def get_superseding_event_admin_session(self, proxy):
@@ -4676,7 +4578,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventAdminSession
+        return  # osid.calendaring.SupersedingEventAdminSession
 
     @abc.abstractmethod
     def get_superseding_event_admin_session_for_calendar(self, calendar_id, proxy):
@@ -4699,7 +4601,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventAdminSession
+        return  # osid.calendaring.SupersedingEventAdminSession
 
     @abc.abstractmethod
     def get_superseding_event_notification_session(self, superseding_event_receiver, proxy):
@@ -4719,7 +4621,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventNotificationSession
+        return  # osid.calendaring.SupersedingEventNotificationSession
 
     @abc.abstractmethod
     def get_superseding_event_notification_session_for_calendar(self, superseding_event_receiver, calendar_id, proxy):
@@ -4744,7 +4646,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventNotificationSession
+        return  # osid.calendaring.SupersedingEventNotificationSession
 
     @abc.abstractmethod
     def get_superseding_event_calendar_session(self, proxy):
@@ -4762,7 +4664,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventCalendarSession
+        return  # osid.calendaring.SupersedingEventCalendarSession
 
     @abc.abstractmethod
     def get_superseding_event_calendar_assignment_session(self, proxy):
@@ -4781,7 +4683,7 @@ class CalendaringProxyManager:
         ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventCalendarAssignmentSession
+        return  # osid.calendaring.SupersedingEventCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_superseding_event_smart_calendar_session(self, calendar_id, proxy):
@@ -4802,7 +4704,7 @@ class CalendaringProxyManager:
         ``supports_superseding_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSmartCalendarSession
+        return  # osid.calendaring.SupersedingEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_offset_event_lookup_session(self, proxy):
@@ -4820,7 +4722,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventLookupSession
+        return  # osid.calendaring.OffsetEventLookupSession
 
     @abc.abstractmethod
     def get_offset_event_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -4843,7 +4745,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventLookupSession
+        return  # osid.calendaring.OffsetEventLookupSession
 
     @abc.abstractmethod
     def get_offset_event_query_session(self, proxy):
@@ -4861,7 +4763,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventQuerySession
+        return  # osid.calendaring.OffsetEventQuerySession
 
     @abc.abstractmethod
     def get_offset_event_query_session_for_calendar(self, calendar_id, proxy):
@@ -4883,7 +4785,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventQuerySession
+        return  # osid.calendaring.OffsetEventQuerySession
 
     @abc.abstractmethod
     def get_offset_event_search_session(self, proxy):
@@ -4901,7 +4803,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSearchSession
+        return  # osid.calendaring.OffsetEventSearchSession
 
     @abc.abstractmethod
     def get_offset_event_search_session_for_calendar(self, calendar_id, proxy):
@@ -4924,7 +4826,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSearchSession
+        return  # osid.calendaring.OffsetEventSearchSession
 
     @abc.abstractmethod
     def get_offset_event_admin_session(self, proxy):
@@ -4942,7 +4844,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventAdminSession
+        return  # osid.calendaring.OffsetEventAdminSession
 
     @abc.abstractmethod
     def get_offset_event_admin_session_for_calendar(self, calendar_id, proxy):
@@ -4964,7 +4866,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventAdminSession
+        return  # osid.calendaring.OffsetEventAdminSession
 
     @abc.abstractmethod
     def get_offset_event_notification_session(self, offset_event_receiver, proxy):
@@ -4984,7 +4886,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventNotificationSession
+        return  # osid.calendaring.OffsetEventNotificationSession
 
     @abc.abstractmethod
     def get_offset_event_notification_session_for_calendar(self, offset_event_receiver, calendar_id, proxy):
@@ -5009,7 +4911,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventNotificationSession
+        return  # osid.calendaring.OffsetEventNotificationSession
 
     @abc.abstractmethod
     def get_offset_event_calendar_session(self, proxy):
@@ -5027,7 +4929,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventCalendarSession
+        return  # osid.calendaring.OffsetEventCalendarSession
 
     @abc.abstractmethod
     def get_offset_event_calendar_assignment_session(self, proxy):
@@ -5045,7 +4947,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventCalendarAssignmentSession
+        return  # osid.calendaring.OffsetEventCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_offset_event_smart_calendar_session(self, calendar_id, proxy):
@@ -5066,7 +4968,7 @@ class CalendaringProxyManager:
         ``supports_offset_event_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSmartCalendarSession
+        return  # osid.calendaring.OffsetEventSmartCalendarSession
 
     @abc.abstractmethod
     def get_schedule_lookup_session(self, proxy):
@@ -5084,7 +4986,7 @@ class CalendaringProxyManager:
         ``supports_schedule_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleLookupSession
+        return  # osid.calendaring.ScheduleLookupSession
 
     @abc.abstractmethod
     def get_schedule_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -5106,7 +5008,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleLookupSession
+        return  # osid.calendaring.ScheduleLookupSession
 
     @abc.abstractmethod
     def get_schedule_query_session(self, proxy):
@@ -5124,7 +5026,7 @@ class CalendaringProxyManager:
         ``supports_schedule_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuerySession
+        return  # osid.calendaring.ScheduleQuerySession
 
     @abc.abstractmethod
     def get_schedule_query_session_for_calendar(self, calendar_id, proxy):
@@ -5146,7 +5048,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuerySession
+        return  # osid.calendaring.ScheduleQuerySession
 
     @abc.abstractmethod
     def get_schedule_search_session(self, proxy):
@@ -5164,7 +5066,7 @@ class CalendaringProxyManager:
         ``supports_schedule_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSearchSession
+        return  # osid.calendaring.ScheduleSearchSession
 
     @abc.abstractmethod
     def get_schedule_search_session_for_calendar(self, calendar_id, proxy):
@@ -5186,7 +5088,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSearchSession
+        return  # osid.calendaring.ScheduleSearchSession
 
     @abc.abstractmethod
     def get_schedule_admin_session(self, proxy):
@@ -5204,7 +5106,7 @@ class CalendaringProxyManager:
         ``supports_schedule_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleAdminSession
+        return  # osid.calendaring.ScheduleAdminSession
 
     @abc.abstractmethod
     def get_schedule_admin_session_for_calendar(self, calendar_id, proxy):
@@ -5226,7 +5128,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleAdminSession
+        return  # osid.calendaring.ScheduleAdminSession
 
     @abc.abstractmethod
     def get_schedule_notification_session(self, schedule_receiver, proxy):
@@ -5246,7 +5148,7 @@ class CalendaringProxyManager:
         ``supports_schedule_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleNotificationSession
+        return  # osid.calendaring.ScheduleNotificationSession
 
     @abc.abstractmethod
     def get_schedule_notification_session_for_calendar(self, schedule_receiver, calendar_id, proxy):
@@ -5271,7 +5173,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleNotificationSession
+        return  # osid.calendaring.ScheduleNotificationSession
 
     @abc.abstractmethod
     def get_schedule_calendar_session(self, proxy):
@@ -5289,7 +5191,7 @@ class CalendaringProxyManager:
         ``supports_schedule_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleCalendarSession
+        return  # osid.calendaring.ScheduleCalendarSession
 
     @abc.abstractmethod
     def get_schedule_calendar_assignment_session(self, proxy):
@@ -5307,7 +5209,7 @@ class CalendaringProxyManager:
         ``supports_schedule_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleCalendarAssignmentSession
+        return  # osid.calendaring.ScheduleCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_schedule_smart_calendar_session(self, calendar_id, proxy):
@@ -5328,7 +5230,7 @@ class CalendaringProxyManager:
         ``supports_schedule_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSmartCalendarSession
+        return  # osid.calendaring.ScheduleSmartCalendarSession
 
     @abc.abstractmethod
     def get_schedule_slot_lookup_session(self, proxy):
@@ -5346,7 +5248,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotLookupSession
+        return  # osid.calendaring.ScheduleSlotLookupSession
 
     @abc.abstractmethod
     def get_schedule_slot_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -5369,7 +5271,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotLookupSession
+        return  # osid.calendaring.ScheduleSlotLookupSession
 
     @abc.abstractmethod
     def get_schedule_slot_query_session(self, proxy):
@@ -5387,7 +5289,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuerySession
+        return  # osid.calendaring.ScheduleSlotQuerySession
 
     @abc.abstractmethod
     def get_schedule_slot_query_session_for_calendar(self, calendar_id, proxy):
@@ -5410,7 +5312,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuerySession
+        return  # osid.calendaring.ScheduleSlotQuerySession
 
     @abc.abstractmethod
     def get_schedule_slot_search_session(self, proxy):
@@ -5428,7 +5330,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchSession
+        return  # osid.calendaring.ScheduleSlotSearchSession
 
     @abc.abstractmethod
     def get_schedule_slot_search_session_for_calendar(self, calendar_id, proxy):
@@ -5451,7 +5353,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchSession
+        return  # osid.calendaring.ScheduleSlotSearchSession
 
     @abc.abstractmethod
     def get_schedule_slot_admin_session(self, proxy):
@@ -5469,7 +5371,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotAdminSession
+        return  # osid.calendaring.ScheduleSlotAdminSession
 
     @abc.abstractmethod
     def get_schedule_slot_admin_session_for_calendar(self, calendar_id, proxy):
@@ -5492,7 +5394,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotAdminSession
+        return  # osid.calendaring.ScheduleSlotAdminSession
 
     @abc.abstractmethod
     def get_schedule_slot_notification_session(self, schedule_slot_receiver, proxy):
@@ -5512,7 +5414,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotNotificationSession
+        return  # osid.calendaring.ScheduleSlotNotificationSession
 
     @abc.abstractmethod
     def get_schedule_slot_notification_session_for_calendar(self, schedule_slot_receiver, calendar_id, proxy):
@@ -5537,7 +5439,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotNotificationSession
+        return  # osid.calendaring.ScheduleSlotNotificationSession
 
     @abc.abstractmethod
     def get_schedule_slot_calendar_session(self, proxy):
@@ -5555,7 +5457,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotCalendarSession
+        return  # osid.calendaring.ScheduleSlotCalendarSession
 
     @abc.abstractmethod
     def get_schedule_slot_calendar_assignment_session(self, proxy):
@@ -5573,7 +5475,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotCalendarAssignmentSession
+        return  # osid.calendaring.ScheduleSlotCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_schedule_slot_smart_calendar_session(self, calendar_id, proxy):
@@ -5594,7 +5496,7 @@ class CalendaringProxyManager:
         ``supports_schedule_slot_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSmartCalendarSession
+        return  # osid.calendaring.ScheduleSlotSmartCalendarSession
 
     @abc.abstractmethod
     def get_commitment_lookup_session(self, proxy):
@@ -5612,7 +5514,7 @@ class CalendaringProxyManager:
         ``supports_commitment_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentLookupSession
+        return  # osid.calendaring.CommitmentLookupSession
 
     @abc.abstractmethod
     def get_commitment_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -5634,7 +5536,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentLookupSession
+        return  # osid.calendaring.CommitmentLookupSession
 
     @abc.abstractmethod
     def get_commitment_query_session(self, proxy):
@@ -5652,7 +5554,7 @@ class CalendaringProxyManager:
         ``supports_commitment_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuerySession
+        return  # osid.calendaring.CommitmentQuerySession
 
     @abc.abstractmethod
     def get_commitment_query_session_for_calendar(self, calendar_id, proxy):
@@ -5674,7 +5576,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuerySession
+        return  # osid.calendaring.CommitmentQuerySession
 
     @abc.abstractmethod
     def get_commitment_search_session(self, proxy):
@@ -5692,7 +5594,7 @@ class CalendaringProxyManager:
         ``supports_commitment_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSearchSession
+        return  # osid.calendaring.CommitmentSearchSession
 
     @abc.abstractmethod
     def get_commitment_search_session_for_calendar(self, calendar_id, proxy):
@@ -5714,7 +5616,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSearchSession
+        return  # osid.calendaring.CommitmentSearchSession
 
     @abc.abstractmethod
     def get_commitment_admin_session(self, proxy):
@@ -5732,7 +5634,7 @@ class CalendaringProxyManager:
         ``supports_commitment_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentAdminSession
+        return  # osid.calendaring.CommitmentAdminSession
 
     @abc.abstractmethod
     def get_commitment_admin_session_for_calendar(self, calendar_id, proxy):
@@ -5754,7 +5656,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentAdminSession
+        return  # osid.calendaring.CommitmentAdminSession
 
     @abc.abstractmethod
     def get_commitment_notification_session(self, commitment_receiver, proxy):
@@ -5774,7 +5676,7 @@ class CalendaringProxyManager:
         ``supports_commitment_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentNotificationSession
+        return  # osid.calendaring.CommitmentNotificationSession
 
     @abc.abstractmethod
     def get_commitment_notification_session_for_calendar(self, commitment_receiver, calendar_id, proxy):
@@ -5799,7 +5701,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.CommitmentNotificationSession
+        return  # osid.calendaring.CommitmentNotificationSession
 
     @abc.abstractmethod
     def get_commitment_calendar_session(self, proxy):
@@ -5817,7 +5719,7 @@ class CalendaringProxyManager:
         ``supports_commitment_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentCalendarSession
+        return  # osid.calendaring.CommitmentCalendarSession
 
     @abc.abstractmethod
     def get_commitment_calendar_assignment_session(self, proxy):
@@ -5835,7 +5737,7 @@ class CalendaringProxyManager:
         ``supports_commitment_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentCalendarAssignmentSession
+        return  # osid.calendaring.CommitmentCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_commitment_smart_calendar_session(self, calendar_id, proxy):
@@ -5856,7 +5758,7 @@ class CalendaringProxyManager:
         ``supports_commitment_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentSmartCalendarSession
+        return  # osid.calendaring.CommitmentSmartCalendarSession
 
     @abc.abstractmethod
     def get_time_period_lookup_session(self, proxy):
@@ -5874,7 +5776,7 @@ class CalendaringProxyManager:
         ``supports_time_period_lookup()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodLookupSession
+        return  # osid.calendaring.TimePeriodLookupSession
 
     @abc.abstractmethod
     def get_time_period_lookup_session_for_calendar(self, calendar_id, proxy):
@@ -5896,7 +5798,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodLookupSession
+        return  # osid.calendaring.TimePeriodLookupSession
 
     @abc.abstractmethod
     def get_time_period_query_session(self, proxy):
@@ -5914,7 +5816,7 @@ class CalendaringProxyManager:
         ``supports_time_period_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuerySession
+        return  # osid.calendaring.TimePeriodQuerySession
 
     @abc.abstractmethod
     def get_time_period_query_session_for_calendar(self, calendar_id, proxy):
@@ -5936,7 +5838,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuerySession
+        return  # osid.calendaring.TimePeriodQuerySession
 
     @abc.abstractmethod
     def get_time_period_search_session(self, proxy):
@@ -5954,7 +5856,7 @@ class CalendaringProxyManager:
         ``supports_time_period_search()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSearchSession
+        return  # osid.calendaring.TimePeriodSearchSession
 
     @abc.abstractmethod
     def get_time_period_search_session_for_calendar(self, calendar_id, proxy):
@@ -5976,7 +5878,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSearchSession
+        return  # osid.calendaring.TimePeriodSearchSession
 
     @abc.abstractmethod
     def get_time_period_admin_session(self, proxy):
@@ -5994,7 +5896,7 @@ class CalendaringProxyManager:
         ``supports_time_period_admin()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodAdminSession
+        return  # osid.calendaring.TimePeriodAdminSession
 
     @abc.abstractmethod
     def get_time_period_admin_session_for_calendar(self, calendar_id, proxy):
@@ -6016,7 +5918,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodAdminSession
+        return  # osid.calendaring.TimePeriodAdminSession
 
     @abc.abstractmethod
     def get_time_period_notification_session(self, time_period_receiver, proxy):
@@ -6036,7 +5938,7 @@ class CalendaringProxyManager:
         ``supports_time_period_notification()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodNotificationSession
+        return  # osid.calendaring.TimePeriodNotificationSession
 
     @abc.abstractmethod
     def get_time_period_notification_session_for_calendar(self, time_period_receiver, calendar_id, proxy):
@@ -6061,7 +5963,7 @@ class CalendaringProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodNotificationSession
+        return  # osid.calendaring.TimePeriodNotificationSession
 
     @abc.abstractmethod
     def get_time_period_calendar_session(self, proxy):
@@ -6079,7 +5981,7 @@ class CalendaringProxyManager:
         ``supports_time_period_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodCalendarSession
+        return  # osid.calendaring.TimePeriodCalendarSession
 
     @abc.abstractmethod
     def get_time_period_calendar_assignment_session(self, proxy):
@@ -6097,7 +5999,7 @@ class CalendaringProxyManager:
         ``supports_time_period_calendar_assignment()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodCalendarAssignmentSession
+        return  # osid.calendaring.TimePeriodCalendarAssignmentSession
 
     @abc.abstractmethod
     def get_time_period_smart_calendar_session(self, calendar_id, proxy):
@@ -6118,7 +6020,7 @@ class CalendaringProxyManager:
         ``supports_time_period_smart_calendar()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSmartCalendarSession
+        return  # osid.calendaring.TimePeriodSmartCalendarSession
 
     @abc.abstractmethod
     def get_calendar_lookup_session(self, proxy):
@@ -6136,7 +6038,7 @@ class CalendaringProxyManager:
         ``supports_calendar_lookup()`` is true.*
 
         """
-        return # osid.calendaring.CalendarLookupSession
+        return  # osid.calendaring.CalendarLookupSession
 
     @abc.abstractmethod
     def get_calendar_search_session(self, proxy):
@@ -6154,7 +6056,7 @@ class CalendaringProxyManager:
         ``supports_calendar_search()`` is true.*
 
         """
-        return # osid.calendaring.CalendarSearchSession
+        return  # osid.calendaring.CalendarSearchSession
 
     @abc.abstractmethod
     def get_calendar_admin_session(self, proxy):
@@ -6172,7 +6074,7 @@ class CalendaringProxyManager:
         ``supports_calendar_admin()`` is true.*
 
         """
-        return # osid.calendaring.CalendarAdminSession
+        return  # osid.calendaring.CalendarAdminSession
 
     @abc.abstractmethod
     def get_calendar_notification_session(self, calendar_receiver, proxy):
@@ -6192,7 +6094,7 @@ class CalendaringProxyManager:
         ``supports_calendar_notification()`` is true.*
 
         """
-        return # osid.calendaring.CalendarNotificationSession
+        return  # osid.calendaring.CalendarNotificationSession
 
     @abc.abstractmethod
     def get_calendar_hierarchy_session(self, proxy):
@@ -6210,7 +6112,7 @@ class CalendaringProxyManager:
         ``supports_calendar_hierarchy()`` is true.*
 
         """
-        return # osid.calendaring.CalendarHierarchySession
+        return  # osid.calendaring.CalendarHierarchySession
 
     @abc.abstractmethod
     def get_calendar_hierarchy_design_session(self, proxy):
@@ -6228,7 +6130,7 @@ class CalendaringProxyManager:
         ``supports_calendar_hierarchy_design()`` is true.*
 
         """
-        return # osid.calendaring.CalendarHierarchyDesignSession
+        return  # osid.calendaring.CalendarHierarchyDesignSession
 
     @abc.abstractmethod
     def get_calandaring_batch_proxy_manager(self):
@@ -6243,7 +6145,7 @@ class CalendaringProxyManager:
         ``supports_calendaring_batch()`` is ``true``.*
 
         """
-        return # osid.calendaring.batch.CalendaringBatchProxyManager
+        return  # osid.calendaring.batch.CalendaringBatchProxyManager
 
     calandaring_batch_proxy_manager = property(fget=get_calandaring_batch_proxy_manager)
 
@@ -6260,7 +6162,7 @@ class CalendaringProxyManager:
         ``supports_calendaring_cycle()`` is ``true``.*
 
         """
-        return # osid.calendaring.cycle.CalendaringCycleProxyManager
+        return  # osid.calendaring.cycle.CalendaringCycleProxyManager
 
     calandaring_cycle_proxy_manager = property(fget=get_calandaring_cycle_proxy_manager)
 
@@ -6277,8 +6179,6 @@ class CalendaringProxyManager:
         ``supports_calendaring_rules()`` is ``true``.*
 
         """
-        return # osid.calendaring.rules.CalendaringRulesProxyManager
+        return  # osid.calendaring.rules.CalendaringRulesProxyManager
 
     calandaring_rules_proxy_manager = property(fget=get_calandaring_rules_proxy_manager)
-
-

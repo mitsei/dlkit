@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationSearch:
     """``AuthorizationSearch`` defines the interface for specifying authorization search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_authorizations(self, authorization_ids):
@@ -69,13 +65,12 @@ class AuthorizationSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationSearchRecord
+        return  # osid.authorization.records.AuthorizationSearchRecord
 
 
 class AuthorizationSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorizations(self):
@@ -88,7 +83,7 @@ class AuthorizationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     authorizations = property(fget=get_authorizations)
 
@@ -103,7 +98,7 @@ class AuthorizationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     authorization_query_inspector = property(fget=get_authorization_query_inspector)
 
@@ -125,13 +120,12 @@ class AuthorizationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationSearchResultsRecord
+        return  # osid.authorization.records.AuthorizationSearchResultsRecord
 
 
 class FunctionSearch:
     """``FunctionSearch`` defines the interface for specifying function search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_functions(self, function_ids):
@@ -178,13 +172,12 @@ class FunctionSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionSearchRecord
+        return  # osid.authorization.records.FunctionSearchRecord
 
 
 class FunctionSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_functions(self):
@@ -197,7 +190,7 @@ class FunctionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     functions = property(fget=get_functions)
 
@@ -212,7 +205,7 @@ class FunctionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     function_query_inspector = property(fget=get_function_query_inspector)
 
@@ -234,13 +227,12 @@ class FunctionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionSearchResultsRecord
+        return  # osid.authorization.records.FunctionSearchResultsRecord
 
 
 class QualifierSearch:
     """``QualifierSearch`` defines the interface for specifying qualifier search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_qualifiers(self, qualifier_ids):
@@ -287,13 +279,12 @@ class QualifierSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierSearchRecord
+        return  # osid.authorization.records.QualifierSearchRecord
 
 
 class QualifierSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifiers(self):
@@ -306,7 +297,7 @@ class QualifierSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     qualifiers = property(fget=get_qualifiers)
 
@@ -321,7 +312,7 @@ class QualifierSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQueryInspector
+        return  # osid.authorization.QualifierQueryInspector
 
     qualifier_query_inspector = property(fget=get_qualifier_query_inspector)
 
@@ -343,13 +334,12 @@ class QualifierSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierSearchResultsRecord
+        return  # osid.authorization.records.QualifierSearchResultsRecord
 
 
 class VaultSearch:
     """The interface for governing vault searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_vaults(self, vault_ids):
@@ -396,13 +386,12 @@ class VaultSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultSearchRecord
+        return  # osid.authorization.records.VaultSearchRecord
 
 
 class VaultSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vaults(self):
@@ -415,7 +404,7 @@ class VaultSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     vaults = property(fget=get_vaults)
 
@@ -430,7 +419,7 @@ class VaultSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     vault_query_inspector = property(fget=get_vault_query_inspector)
 
@@ -452,6 +441,4 @@ class VaultSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultSearchResultsRecord
-
-
+        return  # osid.authorization.records.VaultSearchResultsRecord

@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestObjectiveRecord(unittest.TestCase):
     """Tests for ObjectiveRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestObjectiveQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestObjectiveFormRecord(unittest.TestCase):
     """Tests for ObjectiveFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestObjectiveSearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestActivityRecord(unittest.TestCase):
     """Tests for ActivityRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestActivityQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestActivityFormRecord(unittest.TestCase):
     """Tests for ActivityFormRecord"""
+
+
 
 
 
@@ -51,8 +67,12 @@ class TestActivitySearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestProficiencyRecord(unittest.TestCase):
     """Tests for ProficiencyRecord"""
+
+
 
 
 
@@ -63,8 +83,12 @@ class TestProficiencyQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestProficiencyFormRecord(unittest.TestCase):
     """Tests for ProficiencyFormRecord"""
+
+
 
 
 
@@ -75,8 +99,12 @@ class TestProficiencySearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestObjectiveBankRecord(unittest.TestCase):
     """Tests for ObjectiveBankRecord"""
+
+
 
 
 
@@ -87,8 +115,12 @@ class TestObjectiveBankQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestObjectiveBankFormRecord(unittest.TestCase):
     """Tests for ObjectiveBankFormRecord"""
+
+
 
 
 

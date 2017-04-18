@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentPartLookupSession:
     """This session defines methods for retrieving assessment parts."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -35,7 +31,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -51,7 +47,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -72,7 +68,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_assessment_part_view(self):
@@ -190,7 +186,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
     def get_assessment_parts_by_ids(self, assessment_part_ids):
@@ -208,7 +204,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_parts_by_genus_type(self, assessment_part_genus_type):
@@ -225,7 +221,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_parts_by_parent_genus_type(self, assessment_genus_type):
@@ -242,7 +238,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_parts_by_record_type(self, assessment_part_record_type):
@@ -259,7 +255,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_parts_for_assessment(self, assessment_id):
@@ -276,7 +272,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_parts(self):
@@ -290,7 +286,7 @@ class AssessmentPartLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     assessment_parts = property(fget=get_assessment_parts)
 
@@ -320,7 +316,6 @@ class AssessmentPartQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -332,7 +327,7 @@ class AssessmentPartQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -348,7 +343,7 @@ class AssessmentPartQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -369,7 +364,7 @@ class AssessmentPartQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -431,7 +426,7 @@ class AssessmentPartQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     assessment_part_query = property(fget=get_assessment_part_query)
 
@@ -451,7 +446,7 @@ class AssessmentPartQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
 
 class AssessmentPartSearchSession:
@@ -485,7 +480,6 @@ class AssessmentPartSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_part_search(self):
         """Gets an assessment part search.
@@ -497,7 +491,7 @@ class AssessmentPartSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearch
+        return  # osid.assessment.authoring.AssessmentPartSearch
 
     assessment_part_search = property(fget=get_assessment_part_search)
 
@@ -515,7 +509,7 @@ class AssessmentPartSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchOrder
+        return  # osid.assessment.authoring.AssessmentPartSearchOrder
 
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
@@ -537,7 +531,7 @@ class AssessmentPartSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchResults
+        return  # osid.assessment.authoring.AssessmentPartSearchResults
 
     @abc.abstractmethod
     def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector):
@@ -556,7 +550,7 @@ class AssessmentPartSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
 
 class AssessmentPartAdminSession:
@@ -593,7 +587,6 @@ class AssessmentPartAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -605,7 +598,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -621,7 +614,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -642,7 +635,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_assessment_part_with_record_types(self, assessment_part_record_types):
@@ -664,7 +657,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_form_for_create_for_assessment(self, assessment_id, assessment_part_record_types):
@@ -687,7 +680,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartForm
+        return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
     def create_assessment_part_for_assessment(self, assessment_part_form):
@@ -707,7 +700,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
     def get_assessment_part_form_for_create_for_assessment_part(self, assessment_part_id, assessment_part_record_types):
@@ -730,7 +723,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartForm
+        return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
     def create_assessment_part_for_assessment_part(self, assessment_part_form):
@@ -750,7 +743,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
     def can_update_assessment_parts(self):
@@ -769,7 +762,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_form_for_update(self, assessment_part_id):
@@ -790,7 +783,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartForm
+        return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
     def update_assessment_part(self, assessment_part_id, assessment_part_form):
@@ -828,7 +821,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_assessment_part(self, assessment_part_id):
@@ -863,7 +856,7 @@ class AssessmentPartAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_assessment_part(self, assessment_part_id, alias_id):
@@ -905,7 +898,6 @@ class AssessmentPartNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -917,7 +909,7 @@ class AssessmentPartNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -933,7 +925,7 @@ class AssessmentPartNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -954,7 +946,7 @@ class AssessmentPartNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -1165,10 +1157,8 @@ class AssessmentPartBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_assessment_part_bank_mappings(self):
@@ -1187,7 +1177,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_assessment_part_bank_view(self):
@@ -1234,7 +1224,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessment_parts_by_bank(self, bank_id):
@@ -1252,7 +1242,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_assessment_part_ids_by_banks(self, bank_ids):
@@ -1269,7 +1259,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessment_parts_by_banks(self, bank_ids):
@@ -1286,7 +1276,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
     def get_bank_ids_by_assessment_part(self, assessment_part_id):
@@ -1304,7 +1294,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_assessment_part(self, assessment_part_id):
@@ -1322,7 +1312,7 @@ class AssessmentPartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class AssessmentPartBankAssignmentSession:
@@ -1338,7 +1328,6 @@ class AssessmentPartBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_assessment_parts(self):
@@ -1357,7 +1346,7 @@ class AssessmentPartBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_assessment_parts_to_bank(self, bank_id):
@@ -1378,7 +1367,7 @@ class AssessmentPartBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -1394,7 +1383,7 @@ class AssessmentPartBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_assessment_part(self, bank_id, assessment_part_id):
@@ -1412,7 +1401,7 @@ class AssessmentPartBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_assessment_part_to_bank(self, assessment_part_id, bank_id):
@@ -1491,7 +1480,6 @@ class AssessmentPartSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1503,7 +1491,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1519,7 +1507,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1540,7 +1528,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_query(self):
@@ -1553,7 +1541,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     assessment_part_query = property(fget=get_assessment_part_query)
 
@@ -1568,7 +1556,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchOrder
+        return  # osid.assessment.authoring.AssessmentPartSearchOrder
 
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
@@ -1600,7 +1588,7 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     @abc.abstractmethod
     def apply_assessment_part_sequencing(self, assessment_part_search_order):
@@ -1632,13 +1620,12 @@ class AssessmentPartSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
 
 class AssessmentPartItemSession:
     """This session defines methods for looking up ``Item`` to ``AssessmentPart`` mappings."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -1651,7 +1638,7 @@ class AssessmentPartItemSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1667,7 +1654,7 @@ class AssessmentPartItemSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1688,7 +1675,7 @@ class AssessmentPartItemSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asseessment_part_item_view(self):
@@ -1766,7 +1753,7 @@ class AssessmentPartItemSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_assessment_parts_by_item(self, item_id):
@@ -1789,7 +1776,7 @@ class AssessmentPartItemSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
 
 class AssessmentPartItemDesignSession:
@@ -1803,7 +1790,6 @@ class AssessmentPartItemDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1815,7 +1801,7 @@ class AssessmentPartItemDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1831,7 +1817,7 @@ class AssessmentPartItemDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1852,7 +1838,7 @@ class AssessmentPartItemDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_item(self, item_id, assessment_part_id):
@@ -1954,7 +1940,6 @@ class SequenceRuleLookupSession:
     """This session provides methods for retrieving ``SequenceRules``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1966,7 +1951,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1982,7 +1967,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2003,7 +1988,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_sequence_rule_view(self):
@@ -2099,7 +2084,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRule
+        return  # osid.assessment.authoring.SequenceRule
 
     @abc.abstractmethod
     def get_sequence_rules_by_ids(self, sequence_rule_ids):
@@ -2117,7 +2102,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_by_genus_type(self, sequence_rule_genus_type):
@@ -2134,7 +2119,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_by_parent_genus_type(self, sequence_rule_genus_type):
@@ -2151,7 +2136,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_by_record_type(self, sequence_rule_record_type):
@@ -2168,7 +2153,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_for_assessment_part(self, assessment_part_id):
@@ -2185,7 +2170,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_for_next_assessment_part(self, next_assessment_part_id):
@@ -2202,7 +2187,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_for_assessment_parts(self, assessment_part_id, next_assessment_part_id):
@@ -2221,7 +2206,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules_for_assessment(self, assessment_id):
@@ -2238,7 +2223,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rules(self):
@@ -2252,7 +2237,7 @@ class SequenceRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     sequence_rules = property(fget=get_sequence_rules)
 
@@ -2278,7 +2263,6 @@ class SequenceRuleQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -2290,7 +2274,7 @@ class SequenceRuleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -2306,7 +2290,7 @@ class SequenceRuleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2327,7 +2311,7 @@ class SequenceRuleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -2367,7 +2351,7 @@ class SequenceRuleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuery
+        return  # osid.assessment.authoring.SequenceRuleQuery
 
     sequence_rule_query = property(fget=get_sequence_rule_query)
 
@@ -2387,7 +2371,7 @@ class SequenceRuleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
 
 class SequenceRuleSearchSession:
@@ -2421,7 +2405,6 @@ class SequenceRuleSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_sequence_rule_search(self):
         """Gets a sequence rule search.
@@ -2433,7 +2416,7 @@ class SequenceRuleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearch
+        return  # osid.assessment.authoring.SequenceRuleSearch
 
     sequence_rule_search = property(fget=get_sequence_rule_search)
 
@@ -2451,7 +2434,7 @@ class SequenceRuleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchOrder
+        return  # osid.assessment.authoring.SequenceRuleSearchOrder
 
     sequence_rule_search_order = property(fget=get_sequence_rule_search_order)
 
@@ -2473,7 +2456,7 @@ class SequenceRuleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchResults
+        return  # osid.assessment.authoring.SequenceRuleSearchResults
 
     @abc.abstractmethod
     def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector):
@@ -2491,7 +2474,7 @@ class SequenceRuleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuery
+        return  # osid.assessment.authoring.SequenceRuleQuery
 
 
 class SequenceRuleAdminSession:
@@ -2502,7 +2485,6 @@ class SequenceRuleAdminSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -2515,7 +2497,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -2531,7 +2513,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2552,7 +2534,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_sequence_rule_with_record_types(self, sequence_rule_record_types):
@@ -2574,7 +2556,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_form_for_create(self, assessment_part_id, next_assessment_part_id, sequence_rule_record_types):
@@ -2600,7 +2582,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleForm
+        return  # osid.assessment.authoring.SequenceRuleForm
 
     @abc.abstractmethod
     def create_sequence_rule(self, sequence_rule_form):
@@ -2620,7 +2602,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRule
+        return  # osid.assessment.authoring.SequenceRule
 
     @abc.abstractmethod
     def can_update_sequence_rules(self):
@@ -2639,7 +2621,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_form_for_update(self, sequence_rule_id):
@@ -2660,7 +2642,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleForm
+        return  # osid.assessment.authoring.SequenceRuleForm
 
     @abc.abstractmethod
     def update_sequence_rule(self, sequence_rule_form):
@@ -2697,7 +2679,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_sequence_rule(self, sequence_rule_id):
@@ -2732,7 +2714,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_sequence_rule(self, sequence_rule_id, alias_id):
@@ -2775,7 +2757,7 @@ class SequenceRuleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def move_sequence_rule_ahead(self, sequence_rule_id, assessment_part_id, reference_id):
@@ -2851,7 +2833,6 @@ class SequenceRuleNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -2863,7 +2844,7 @@ class SequenceRuleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -2879,7 +2860,7 @@ class SequenceRuleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2900,7 +2881,7 @@ class SequenceRuleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -3217,10 +3198,8 @@ class SequenceRuleBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_sequence_rule_bank_mappings(self):
@@ -3239,7 +3218,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_sequence_rule_bank_view(self):
@@ -3286,7 +3265,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rules_by_bank(self, bank_id):
@@ -3304,7 +3283,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_sequence_rule_ids_by_banks(self, bank_ids):
@@ -3321,7 +3300,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rules_by_banks(self, bank_ids):
@@ -3338,7 +3317,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
     def get_bank_ids_by_sequence_rule(self, sequence_rule_id):
@@ -3356,7 +3335,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_sequence_rule(self, sequence_rule_id):
@@ -3374,7 +3353,7 @@ class SequenceRuleBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class SequenceRuleBankAssignmentSession:
@@ -3390,7 +3369,6 @@ class SequenceRuleBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_sequence_rules(self):
@@ -3409,7 +3387,7 @@ class SequenceRuleBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_sequence_rules_to_bank(self, bank_id):
@@ -3430,7 +3408,7 @@ class SequenceRuleBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -3446,7 +3424,7 @@ class SequenceRuleBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_sequence_rule(self, bank_id, sequence_rule_id):
@@ -3464,7 +3442,7 @@ class SequenceRuleBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_sequence_rule_to_bank(self, sequence_rule_id, bank_id):
@@ -3543,7 +3521,6 @@ class SequenceRuleSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -3555,7 +3532,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3571,7 +3548,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3592,7 +3569,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_query(self):
@@ -3605,7 +3582,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuery
+        return  # osid.assessment.authoring.SequenceRuleQuery
 
     sequence_rule_query = property(fget=get_sequence_rule_query)
 
@@ -3620,7 +3597,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleSearchOrder
+        return  # osid.assessment.authoring.SequenceRuleSearchOrder
 
     sequence_rule_search_order = property(fget=get_sequence_rule_search_order)
 
@@ -3652,7 +3629,7 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQueryInspector
+        return  # osid.assessment.authoring.SequenceRuleQueryInspector
 
     @abc.abstractmethod
     def apply_sequence_rule_sequencing(self, sequence_rule_search_order):
@@ -3684,13 +3661,12 @@ class SequenceRuleSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuery
+        return  # osid.assessment.authoring.SequenceRuleQuery
 
 
 class SequenceRuleEnablerLookupSession:
     """This session provides methods for retrieving ``SequenceRuleEnablers``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -3703,7 +3679,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3719,7 +3695,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3740,7 +3716,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_sequence_rule_enabler_view(self):
@@ -3836,7 +3812,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnabler
+        return  # osid.assessment.authoring.SequenceRuleEnabler
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_ids(self, sequence_rule_enabler_ids):
@@ -3854,7 +3830,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_genus_type(self, sequence_rule_enabler_genus_type):
@@ -3871,7 +3847,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_parent_genus_type(self, sequence_rule_enabler_genus_type):
@@ -3888,7 +3864,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_record_type(self, sequence_rule_enabler_record_type):
@@ -3905,7 +3881,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_on_date(self, from_, to):
@@ -3925,7 +3901,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_on_date_with_agent(self, agent_id, from_, to):
@@ -3947,7 +3923,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers(self):
@@ -3961,7 +3937,7 @@ class SequenceRuleEnablerLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     sequence_rule_enablers = property(fget=get_sequence_rule_enablers)
 
@@ -3988,7 +3964,6 @@ class SequenceRuleEnablerQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -4000,7 +3975,7 @@ class SequenceRuleEnablerQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4016,7 +3991,7 @@ class SequenceRuleEnablerQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4037,7 +4012,7 @@ class SequenceRuleEnablerQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -4077,7 +4052,7 @@ class SequenceRuleEnablerQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuery
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuery
 
     sequence_rule_enabler_query = property(fget=get_sequence_rule_enabler_query)
 
@@ -4097,7 +4072,7 @@ class SequenceRuleEnablerQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
 
 class SequenceRuleEnablerSearchSession:
@@ -4133,7 +4108,6 @@ class SequenceRuleEnablerSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_sequence_rule_enabler_search(self):
         """Gets a sequence rule enabler search.
@@ -4145,7 +4119,7 @@ class SequenceRuleEnablerSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearch
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearch
 
     sequence_rule_enabler_search = property(fget=get_sequence_rule_enabler_search)
 
@@ -4164,7 +4138,7 @@ class SequenceRuleEnablerSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchOrder
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchOrder
 
     sequence_rule_enabler_search_order = property(fget=get_sequence_rule_enabler_search_order)
 
@@ -4186,7 +4160,7 @@ class SequenceRuleEnablerSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchResults
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchResults
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector):
@@ -4205,7 +4179,7 @@ class SequenceRuleEnablerSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuery
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuery
 
 
 class SequenceRuleEnablerAdminSession:
@@ -4216,7 +4190,6 @@ class SequenceRuleEnablerAdminSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -4229,7 +4202,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4245,7 +4218,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4266,7 +4239,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_sequence_rule_enabler_with_record_types(self, sequence_rule_enabler_record_types):
@@ -4288,7 +4261,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_form_for_create(self, sequence_rule_enabler_record_types):
@@ -4308,7 +4281,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerForm
+        return  # osid.assessment.authoring.SequenceRuleEnablerForm
 
     @abc.abstractmethod
     def create_sequence_rule_enabler(self, sequence_rule_enabler_form):
@@ -4328,7 +4301,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnabler
+        return  # osid.assessment.authoring.SequenceRuleEnabler
 
     @abc.abstractmethod
     def can_update_sequence_rule_enablers(self):
@@ -4347,7 +4320,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_form_for_update(self, sequence_rule_enabler_id):
@@ -4368,7 +4341,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerForm
+        return  # osid.assessment.authoring.SequenceRuleEnablerForm
 
     @abc.abstractmethod
     def update_sequence_rule_enabler(self, sequence_rule_enabler_form):
@@ -4405,7 +4378,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -4440,7 +4413,7 @@ class SequenceRuleEnablerAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_sequence_rule_enabler(self, sequence_rule_enabler_id, alias_id):
@@ -4483,7 +4456,6 @@ class SequenceRuleEnablerNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -4495,7 +4467,7 @@ class SequenceRuleEnablerNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4511,7 +4483,7 @@ class SequenceRuleEnablerNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4532,7 +4504,7 @@ class SequenceRuleEnablerNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -4743,10 +4715,8 @@ class SequenceRuleEnablerBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_sequence_rule_enabler_bank_mappings(self):
@@ -4765,7 +4735,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_sequence_rule_enabler_bank_view(self):
@@ -4812,7 +4782,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_bank(self, bank_id):
@@ -4830,7 +4800,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_ids_by_banks(self, bank_ids):
@@ -4847,7 +4817,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_by_banks(self, bank_ids):
@@ -4864,7 +4834,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_bank_ids_by_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -4882,7 +4852,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -4900,7 +4870,7 @@ class SequenceRuleEnablerBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class SequenceRuleEnablerBankAssignmentSession:
@@ -4916,7 +4886,6 @@ class SequenceRuleEnablerBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_sequence_rule_enablers(self):
@@ -4935,7 +4904,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_sequence_rule_enablers_to_bank(self, bank_id):
@@ -4956,7 +4925,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -4972,7 +4941,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_sequence_rule_enabler(self, bank_id, sequence_rule_enabler_id):
@@ -4990,7 +4959,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_sequence_rule_enabler_to_bank(self, sequence_rule_enabler_id, bank_id):
@@ -5047,7 +5016,6 @@ class SequenceRuleEnablerSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -5059,7 +5027,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5075,7 +5043,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5096,7 +5064,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_query(self):
@@ -5109,7 +5077,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuery
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuery
 
     sequence_rule_enabler_query = property(fget=get_sequence_rule_enabler_query)
 
@@ -5124,7 +5092,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerSearchOrder
+        return  # osid.assessment.authoring.SequenceRuleEnablerSearchOrder
 
     sequence_rule_enabler_search_order = property(fget=get_sequence_rule_enabler_search_order)
 
@@ -5156,7 +5124,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQueryInspector
+        return  # osid.assessment.authoring.SequenceRuleEnablerQueryInspector
 
     @abc.abstractmethod
     def apply_sequence_rule_enabler_sequencing(self, sequence_rule_enabler_search_order):
@@ -5188,7 +5156,7 @@ class SequenceRuleEnablerSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQuery
+        return  # osid.assessment.authoring.SequenceRuleEnablerQuery
 
 
 class SequenceRuleEnablerRuleLookupSession:
@@ -5211,10 +5179,8 @@ class SequenceRuleEnablerRuleLookupSession:
         this bank and any other sequence rule enablers implicitly
         available in this bank through bank inheritence.
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -5227,7 +5193,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5243,7 +5209,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5264,7 +5230,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_sequence_rule_enabler_rule_view(self):
@@ -5323,7 +5289,7 @@ class SequenceRuleEnablerRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_ids_for_sequence_rule(self,  sequence_rule_id):
+    def get_sequence_rule_enabler_ids_for_sequence_rule(self, sequence_rule_id):
         """Gets the ``SequenceRuleEnabler Id`` associated with a ``SequenceRule``.
 
         :param  sequence_rule_id: ``Id`` of the ``SequenceRule``
@@ -5338,7 +5304,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rule_enablers_for_sequence_rule(self, sequence_rule_id):
@@ -5356,7 +5322,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
     def get_sequence_rule_ids_for_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -5374,7 +5340,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_sequence_rules_for_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -5392,7 +5358,7 @@ class SequenceRuleEnablerRuleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
 
 class SequenceRuleEnablerRuleApplicationSession:
@@ -5405,7 +5371,6 @@ class SequenceRuleEnablerRuleApplicationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -5417,7 +5382,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5433,7 +5398,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5454,7 +5419,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def assign_sequence_rule_enabler_to_sequence_rule(self, sequence_rule_enabler_id, sequence_rule_id):
@@ -5510,7 +5475,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def move_sequence_rule_enabler_ahead(self, sequence_rule_enabler_id, sequence_rule_id, reference_id):
@@ -5569,5 +5534,3 @@ class SequenceRuleEnablerRuleApplicationSession:
 
         """
         pass
-
-

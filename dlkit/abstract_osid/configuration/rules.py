@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ValueCondition:
@@ -46,6 +41,4 @@ class ValueCondition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueConditionRecord
-
-
+        return  # osid.configuration.records.ValueConditionRecord

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class GradeQuery:
     """This is the query for searching gradings.
 
@@ -27,7 +24,6 @@ class GradeQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_grade_system_id(self, grade_system_id, match):
@@ -68,7 +64,7 @@ class GradeQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_query(self):
@@ -84,7 +80,7 @@ class GradeQuery:
         ``supports_grade_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -260,7 +256,7 @@ class GradeQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_query(self):
@@ -276,7 +272,7 @@ class GradeQuery:
         ``supports_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
     grade_entry_query = property(fget=get_grade_entry_query)
 
@@ -345,7 +341,7 @@ class GradeQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -361,7 +357,7 @@ class GradeQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -395,7 +391,7 @@ class GradeQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeQueryRecord
+        return  # osid.grading.records.GradeQueryRecord
 
 
 class GradeSystemQuery:
@@ -406,7 +402,6 @@ class GradeSystemQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_based_on_grades(self, match):
@@ -473,7 +468,7 @@ class GradeSystemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_query(self):
@@ -489,7 +484,7 @@ class GradeSystemQuery:
         ``supports_grade_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     grade_query = property(fget=get_grade_query)
 
@@ -651,7 +646,7 @@ class GradeSystemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_query(self):
@@ -667,7 +662,7 @@ class GradeSystemQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -736,7 +731,7 @@ class GradeSystemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -752,7 +747,7 @@ class GradeSystemQuery:
         ``supports_gradebook_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -786,7 +781,7 @@ class GradeSystemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemQueryRecord
+        return  # osid.grading.records.GradeSystemQueryRecord
 
 
 class GradeEntryQuery:
@@ -797,7 +792,6 @@ class GradeEntryQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_gradebook_column_id(self, gradebook_column_id, match):
@@ -838,7 +832,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_query(self):
@@ -854,7 +848,7 @@ class GradeEntryQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -910,7 +904,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_key_resource_query(self):
@@ -926,7 +920,7 @@ class GradeEntryQuery:
         ``supports_key_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     key_resource_query = property(fget=get_key_resource_query)
 
@@ -1021,7 +1015,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_overridden_grade_entry_query(self):
@@ -1037,7 +1031,7 @@ class GradeEntryQuery:
         ``supports_overridden_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
     overridden_grade_entry_query = property(fget=get_overridden_grade_entry_query)
 
@@ -1132,7 +1126,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_query(self):
@@ -1148,7 +1142,7 @@ class GradeEntryQuery:
         ``supports_grade_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     grade_query = property(fget=get_grade_query)
 
@@ -1290,7 +1284,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grader_query(self):
@@ -1306,7 +1300,7 @@ class GradeEntryQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     grader_query = property(fget=get_grader_query)
 
@@ -1375,7 +1369,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grading_agent_query(self):
@@ -1391,7 +1385,7 @@ class GradeEntryQuery:
         ``supports_grading_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     grading_agent_query = property(fget=get_grading_agent_query)
 
@@ -1460,7 +1454,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -1476,7 +1470,7 @@ class GradeEntryQuery:
         ``supports_gradebook_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -1510,7 +1504,7 @@ class GradeEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntryQueryRecord
+        return  # osid.grading.records.GradeEntryQueryRecord
 
 
 class GradebookColumnQuery:
@@ -1521,7 +1515,6 @@ class GradebookColumnQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_grade_system_id(self, grade_system_id, match):
@@ -1562,7 +1555,7 @@ class GradebookColumnQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_query(self):
@@ -1578,7 +1571,7 @@ class GradebookColumnQuery:
         ``supports_grade_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -1647,7 +1640,7 @@ class GradebookColumnQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_query(self):
@@ -1663,7 +1656,7 @@ class GradebookColumnQuery:
         ``supports_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
     grade_entry_query = property(fget=get_grade_entry_query)
 
@@ -1704,7 +1697,7 @@ class GradebookColumnQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_summary_query(self):
@@ -1720,7 +1713,7 @@ class GradebookColumnQuery:
         ``supports_gradebook_column_summary_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSummaryQuery
+        return  # osid.grading.GradebookColumnSummaryQuery
 
     gradebook_column_summary_query = property(fget=get_gradebook_column_summary_query)
 
@@ -1776,7 +1769,7 @@ class GradebookColumnQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -1792,7 +1785,7 @@ class GradebookColumnQuery:
         ``supports_gradebook_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -1826,7 +1819,7 @@ class GradebookColumnQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnQueryRecord
+        return  # osid.grading.records.GradebookColumnQueryRecord
 
 
 class GradebookColumnSummaryQuery:
@@ -1837,7 +1830,6 @@ class GradebookColumnSummaryQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_gradebook_column_id(self, gradebook_column_id, match):
@@ -1878,7 +1870,7 @@ class GradebookColumnSummaryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_query(self):
@@ -1894,7 +1886,7 @@ class GradebookColumnSummaryQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -2311,7 +2303,7 @@ class GradebookColumnSummaryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -2327,7 +2319,7 @@ class GradebookColumnSummaryQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -2361,7 +2353,7 @@ class GradebookColumnSummaryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSummaryQueryRecord
+        return  # osid.grading.records.GradebookColumnSummaryQueryRecord
 
 
 class GradebookQuery:
@@ -2372,7 +2364,6 @@ class GradebookQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_grade_system_id(self, grade_system_id, match):
@@ -2413,7 +2404,7 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_query(self):
@@ -2429,7 +2420,7 @@ class GradebookQuery:
         ``supports_grade_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -2498,7 +2489,7 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_query(self):
@@ -2514,7 +2505,7 @@ class GradebookQuery:
         ``supports_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
     grade_entry_query = property(fget=get_grade_entry_query)
 
@@ -2583,7 +2574,7 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_query(self):
@@ -2599,7 +2590,7 @@ class GradebookQuery:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -2668,7 +2659,7 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_gradebook_query(self):
@@ -2684,7 +2675,7 @@ class GradebookQuery:
         ``supports_ancestor_gradebook_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     ancestor_gradebook_query = property(fget=get_ancestor_gradebook_query)
 
@@ -2753,7 +2744,7 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_gradebook_query(self):
@@ -2769,7 +2760,7 @@ class GradebookQuery:
         ``supports_descendant_gradebook_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     descendant_gradebook_query = property(fget=get_descendant_gradebook_query)
 
@@ -2816,6 +2807,4 @@ class GradebookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookQueryRecord
-
-
+        return  # osid.grading.records.GradebookQueryRecord

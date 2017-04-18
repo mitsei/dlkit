@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ResourceRecord:
     """A record for a ``Resource``.
 
@@ -27,9 +24,6 @@ class ResourceRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceQueryRecord:
@@ -42,9 +36,6 @@ class ResourceQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceQueryInspectorRecord:
     """A record for a ``ResourceQueryInspector``.
 
@@ -53,9 +44,6 @@ class ResourceQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceFormRecord:
@@ -68,9 +56,6 @@ class ResourceFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceSearchOrderRecord:
     """A record for a ``ResourceSearchOrder``.
 
@@ -79,9 +64,6 @@ class ResourceSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceSearchRecord:
@@ -94,9 +76,6 @@ class ResourceSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceSearchResultsRecord:
     """A record for a ``ResourceSearchResults``.
 
@@ -105,9 +84,6 @@ class ResourceSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceRelationshipRecord:
@@ -120,9 +96,6 @@ class ResourceRelationshipRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceRelationshipQueryRecord:
     """A record for a ``ResourceRelationshipQuery``.
 
@@ -131,9 +104,6 @@ class ResourceRelationshipQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceRelationshipQueryInspectorRecord:
@@ -146,9 +116,6 @@ class ResourceRelationshipQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceRelationshipFormRecord:
     """A record for a ``ResourceRelationshipForm``.
 
@@ -157,9 +124,6 @@ class ResourceRelationshipFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceRelationshipSearchOrderRecord:
@@ -172,9 +136,6 @@ class ResourceRelationshipSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResourceRelationshipSearchRecord:
     """A record for a ``ResourceRelationshipSearch``.
 
@@ -183,9 +144,6 @@ class ResourceRelationshipSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ResourceRelationshipSearchResultsRecord:
@@ -198,9 +156,6 @@ class ResourceRelationshipSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BinRecord:
     """A record for a ``Bin``.
 
@@ -209,9 +164,6 @@ class BinRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BinQueryRecord:
@@ -224,9 +176,6 @@ class BinQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BinQueryInspectorRecord:
     """A record for a ``BinQueryInspector``.
 
@@ -235,9 +184,6 @@ class BinQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BinFormRecord:
@@ -250,9 +196,6 @@ class BinFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BinSearchOrderRecord:
     """A record for a ``BinSearchOrder``.
 
@@ -261,9 +204,6 @@ class BinSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BinSearchRecord:
@@ -276,9 +216,6 @@ class BinSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BinSearchResultsRecord:
     """A record for a ``BinSearchResults``.
 
@@ -287,8 +224,3 @@ class BinSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

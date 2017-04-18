@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestLogEntryRecord(unittest.TestCase):
     """Tests for LogEntryRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestLogEntryQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestLogEntryFormRecord(unittest.TestCase):
     """Tests for LogEntryFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestLogEntrySearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestLogRecord(unittest.TestCase):
     """Tests for LogRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestLogQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestLogFormRecord(unittest.TestCase):
     """Tests for LogFormRecord"""
+
+
 
 
 

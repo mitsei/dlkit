@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ObjectiveQueryInspector:
     """This is the query inspector for examining objective queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_id_terms(self):
@@ -35,7 +31,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -50,7 +46,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -65,7 +61,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     knowledge_category_id_terms = property(fget=get_knowledge_category_id_terms)
 
@@ -80,7 +76,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     knowledge_category_terms = property(fget=get_knowledge_category_terms)
 
@@ -95,7 +91,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     cognitive_process_id_terms = property(fget=get_cognitive_process_id_terms)
 
@@ -110,7 +106,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     cognitive_process_terms = property(fget=get_cognitive_process_terms)
 
@@ -125,7 +121,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     requisite_objective_id_terms = property(fget=get_requisite_objective_id_terms)
 
@@ -140,7 +136,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     requisite_objective_terms = property(fget=get_requisite_objective_terms)
 
@@ -155,7 +151,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     dependent_objective_id_terms = property(fget=get_dependent_objective_id_terms)
 
@@ -170,7 +166,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     dependent_objective_terms = property(fget=get_dependent_objective_terms)
 
@@ -185,7 +181,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     equivalent_objective_id_terms = property(fget=get_equivalent_objective_id_terms)
 
@@ -200,7 +196,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     equivalent_objective_terms = property(fget=get_equivalent_objective_terms)
 
@@ -215,7 +211,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_objective_id_terms = property(fget=get_ancestor_objective_id_terms)
 
@@ -230,7 +226,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     ancestor_objective_terms = property(fget=get_ancestor_objective_terms)
 
@@ -245,7 +241,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_objective_id_terms = property(fget=get_descendant_objective_id_terms)
 
@@ -260,7 +256,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     descendant_objective_terms = property(fget=get_descendant_objective_terms)
 
@@ -275,7 +271,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     activity_id_terms = property(fget=get_activity_id_terms)
 
@@ -290,7 +286,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQueryInspector
+        return  # osid.learning.ActivityQueryInspector
 
     activity_terms = property(fget=get_activity_terms)
 
@@ -305,7 +301,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
@@ -320,7 +316,7 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
@@ -339,13 +335,12 @@ class ObjectiveQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveQueryInspectorRecord
+        return  # osid.learning.records.ObjectiveQueryInspectorRecord
 
 
 class ActivityQueryInspector:
     """This is the query inspector for examining activity queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_id_terms(self):
@@ -358,7 +353,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_id_terms = property(fget=get_objective_id_terms)
 
@@ -373,7 +368,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     objective_terms = property(fget=get_objective_terms)
 
@@ -388,7 +383,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     asset_id_terms = property(fget=get_asset_id_terms)
 
@@ -403,7 +398,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     asset_terms = property(fget=get_asset_terms)
 
@@ -418,7 +413,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     course_id_terms = property(fget=get_course_id_terms)
 
@@ -433,7 +428,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.course.CourseQueryInspector
+        return  # osid.course.CourseQueryInspector
 
     course_terms = property(fget=get_course_terms)
 
@@ -448,7 +443,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -463,7 +458,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -478,7 +473,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
@@ -493,7 +488,7 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
@@ -512,13 +507,12 @@ class ActivityQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivityQueryInspectorRecord
+        return  # osid.learning.records.ActivityQueryInspectorRecord
 
 
 class ProficiencyQueryInspector:
     """This is the query inspector for examining proficiency queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_id_terms(self):
@@ -531,7 +525,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -546,7 +540,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -561,7 +555,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_id_terms = property(fget=get_objective_id_terms)
 
@@ -576,7 +570,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     objective_terms = property(fget=get_objective_terms)
 
@@ -591,7 +585,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     completion_terms = property(fget=get_completion_terms)
 
@@ -606,7 +600,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalTerm
+        return  # osid.search.terms.DecimalTerm
 
     minimum_completion_terms = property(fget=get_minimum_completion_terms)
 
@@ -621,7 +615,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     level_id_terms = property(fget=get_level_id_terms)
 
@@ -636,7 +630,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     level_terms = property(fget=get_level_terms)
 
@@ -651,7 +645,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
@@ -666,7 +660,7 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
@@ -685,13 +679,12 @@ class ProficiencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencyQueryInspectorRecord
+        return  # osid.learning.records.ProficiencyQueryInspectorRecord
 
 
 class ObjectiveBankQueryInspector:
     """This is the query inspector for examining objective bank queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_id_terms(self):
@@ -704,7 +697,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     objective_id_terms = property(fget=get_objective_id_terms)
 
@@ -719,7 +712,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     objective_terms = property(fget=get_objective_terms)
 
@@ -734,7 +727,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     activity_id_terms = property(fget=get_activity_id_terms)
 
@@ -749,7 +742,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQueryInspector
+        return  # osid.learning.ActivityQueryInspector
 
     activity_terms = property(fget=get_activity_terms)
 
@@ -764,7 +757,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_objective_bank_id_terms = property(fget=get_ancestor_objective_bank_id_terms)
 
@@ -779,7 +772,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     ancestor_objective_bank_terms = property(fget=get_ancestor_objective_bank_terms)
 
@@ -794,7 +787,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_objective_bank_id_terms = property(fget=get_descendant_objective_bank_id_terms)
 
@@ -809,7 +802,7 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     descendant_objective_bank_terms = property(fget=get_descendant_objective_bank_terms)
 
@@ -828,6 +821,4 @@ class ObjectiveBankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankQueryInspectorRecord
-
-
+        return  # osid.learning.records.ObjectiveBankQueryInspectorRecord

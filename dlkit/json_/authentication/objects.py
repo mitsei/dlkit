@@ -27,8 +27,6 @@ from dlkit.abstract_osid.authentication import objects as abc_authentication_obj
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     """An ``Agent`` represents an authenticatable identity.
 
@@ -36,7 +34,6 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     any persisted references should use the ``Id``.
 
     """
-
     _authority = 'Django_user_service'
     _namespace = 'authentication.Agent'
 
@@ -75,7 +72,6 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     def get_description(self):
         from ..locale.primitives import DisplayText
         return DisplayText('the agent Id for ' + self.get_display_name().get_text())
-
     @utilities.arguments_not_none
     def get_agent_record(self, agent_record_type):
         """Gets the agent record corresponding to the given ``Agent`` record ``Type``.
@@ -100,6 +96,8 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         return self._get_record(agent_record_type)
 
 
+
+
 class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Agents``.
 
@@ -110,7 +108,6 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
     constraints.
 
     """
-
     _namespace = 'authentication.Agent'
 
     def __init__(self, **kwargs):
@@ -127,8 +124,6 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
         """Initialize form map"""
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['assignedAgencyIds'] = [str(kwargs['agency_id'])]
-
-
     @utilities.arguments_not_none
     def get_agent_form_record(self, agent_record_type):
         """Gets the ``AgentFormRecord`` corresponding to the given agent record ``Type``.
@@ -147,6 +142,8 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
         return self._get_record(agent_record_type)
 
 
+
+
 class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AgentList`` provides a means for accessing ``Agent`` elements sequentially either one at a time or many at a time.
 
@@ -156,8 +153,6 @@ class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
       while (al.hasNext()) {
            Agent[] agents = al.getNextAgents(al.available());
       }
-
-
 
     """
 
@@ -197,5 +192,3 @@ class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

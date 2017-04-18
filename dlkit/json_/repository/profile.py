@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo repository'
 
 DESCRIPTION = 'MongoDB based repository implementation'
 
-VERSIONCOMPONENTS = [0, 1, 51]
+VERSIONCOMPONENTS = [0, 1, 73]
 
 RELEASEDATE = "2017-04-18"
 

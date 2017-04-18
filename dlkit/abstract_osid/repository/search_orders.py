@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssetSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_title(self, style):
@@ -139,7 +135,7 @@ class AssetSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_source_search_order(self):
@@ -153,7 +149,7 @@ class AssetSearchOrder:
         ``supports_source_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     source_search_order = property(fget=get_source_search_order)
 
@@ -239,13 +235,12 @@ class AssetSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetSearchOrderRecord
+        return  # osid.repository.records.AssetSearchOrderRecord
 
 
 class CompositionSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_composition_search_order_record(self, composition_record_type):
@@ -265,13 +260,12 @@ class CompositionSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionSearchOrderRecord
+        return  # osid.repository.records.CompositionSearchOrderRecord
 
 
 class RepositorySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_search_order_record(self, repository_record_type):
@@ -290,6 +284,4 @@ class RepositorySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositorySearchOrderRecord
-
-
+        return  # osid.repository.records.RepositorySearchOrderRecord

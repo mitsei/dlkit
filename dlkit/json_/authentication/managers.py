@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.authentication import managers as authentication_managers
 
 
-
-
 class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.AuthenticationProfile):
     """The ``AuthenticationProfile`` describes the interoperability among authentication services."""
 
@@ -100,6 +98,8 @@ class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.A
     agency_search_record_types = property(fget=get_agency_search_record_types)
 
 
+
+
 class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, authentication_managers.AuthenticationManager):
     """The authentication manager provides access to authentication sessions and provides interoperability tests for various aspects of this service.
 
@@ -131,12 +131,9 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     def get_authentication_batch_manager(self):
         """Gets an ``AuthenticationBatchManager``.
 
@@ -187,6 +184,8 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
     authentication_process_manager = property(fget=get_authentication_process_manager)
 
 
+
+
 class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationProfile, authentication_managers.AuthenticationProxyManager):
     """The authentication proxy manager provides access to authentication sessions and provides interoperability tests for various aspects of this service.
 
@@ -219,12 +218,9 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     def get_authentication_batch_proxy_manager(self):
         """Gets an ``AuthenticationBatchProxyManager``.
 
@@ -275,5 +271,3 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
         raise errors.Unimplemented()
 
     authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
-
-

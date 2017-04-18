@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class TypeLookupSession:
     """This session retrieves Types.
 
@@ -27,7 +24,6 @@ class TypeLookupSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_types(self):
@@ -46,7 +42,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_type(self, namespace, identifier, authority):
@@ -71,7 +67,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     @abc.abstractmethod
     def has_type(self, type_):
@@ -88,7 +84,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_types_by_domain(self, domain):
@@ -105,7 +101,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_types_by_authority(self, authority):
@@ -122,7 +118,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_types_by_domain_and_authority(self, domain, authority):
@@ -141,7 +137,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_types(self):
@@ -155,7 +151,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     types = property(fget=get_types)
 
@@ -176,7 +172,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def implies_support(self, type_, base_type):
@@ -195,7 +191,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_base_type(self, type_):
@@ -212,7 +208,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_base_types(self, type_):
@@ -229,7 +225,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_relation_types(self):
@@ -245,7 +241,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     relation_types = property(fget=get_relation_types)
 
@@ -264,7 +260,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_destination_types_by_source(self, source_type):
@@ -281,7 +277,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_destination_types_by_source_and_relation_type(self, source_type, relation_type):
@@ -300,7 +296,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_destination_types_by_relation_type(self, relation_type):
@@ -317,7 +313,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_types_by_destination(self, destination_type):
@@ -334,7 +330,7 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     @abc.abstractmethod
     def get_source_types_by_destination_and_relation_type(self, destination_type, relation_type):
@@ -353,13 +349,12 @@ class TypeLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
 
 class TypeAdminSession:
     """This session is used to create, update and delete ``Types`` in the registry."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_create_types(self):
@@ -378,7 +373,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_type_form_for_create(self, type_):
@@ -397,7 +392,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeForm
+        return  # osid.type.TypeForm
 
     @abc.abstractmethod
     def create_type(self, type_form):
@@ -417,7 +412,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     @abc.abstractmethod
     def can_update_types(self):
@@ -436,7 +431,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_type_form_for_update(self, type_):
@@ -456,7 +451,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeForm
+        return  # osid.type.TypeForm
 
     @abc.abstractmethod
     def update_type(self, type_form):
@@ -493,7 +488,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_delete_type(self, type_):
@@ -514,7 +509,7 @@ class TypeAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_type(self, type_):
@@ -633,5 +628,3 @@ class TypeAdminSession:
 
         """
         pass
-
-

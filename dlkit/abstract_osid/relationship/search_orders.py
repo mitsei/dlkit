@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RelationshipSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_source(self, style):
@@ -68,13 +64,12 @@ class RelationshipSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipSearchOrderRecord
+        return  # osid.relationship.records.RelationshipSearchOrderRecord
 
 
 class FamilySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_family_search_order_record(self, family_record_type):
@@ -94,6 +89,4 @@ class FamilySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilySearchOrderRecord
-
-
+        return  # osid.relationship.records.FamilySearchOrderRecord

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentPartSearch:
     """The search interface for governing assessment part searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_assessment_parts(self, bank_ids):
@@ -69,13 +65,12 @@ class AssessmentPartSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartSearchRecord
+        return  # osid.assessment.authoring.records.AssessmentPartSearchRecord
 
 
 class AssessmentPartSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_parts(self):
@@ -88,7 +83,7 @@ class AssessmentPartSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     assessment_parts = property(fget=get_assessment_parts)
 
@@ -103,7 +98,7 @@ class AssessmentPartSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     assessment_part_query_inspector = property(fget=get_assessment_part_query_inspector)
 
@@ -126,13 +121,12 @@ class AssessmentPartSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartSearchResultsRecord
+        return  # osid.assessment.authoring.records.AssessmentPartSearchResultsRecord
 
 
 class SequenceRuleSearch:
     """The search interface for governing sequence rule searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_sequence_rules(self, bank_ids):
@@ -179,13 +173,12 @@ class SequenceRuleSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleSearchRecord
+        return  # osid.assessment.authoring.records.SequenceRuleSearchRecord
 
 
 class SequenceRuleSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequence_rules(self):
@@ -198,7 +191,7 @@ class SequenceRuleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleList
+        return  # osid.assessment.authoring.SequenceRuleList
 
     sequence_rules = property(fget=get_sequence_rules)
 
@@ -213,7 +206,7 @@ class SequenceRuleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQueryInspector
+        return  # osid.assessment.authoring.SequenceRuleQueryInspector
 
     sequence_rule_query_inspector = property(fget=get_sequence_rule_query_inspector)
 
@@ -236,13 +229,12 @@ class SequenceRuleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleSearchResultsRecord
+        return  # osid.assessment.authoring.records.SequenceRuleSearchResultsRecord
 
 
 class SequenceRuleEnablerSearch:
     """The search interface for governing sequence rule enabler searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_sequence_rule_enablers(self, sequence_rule_enabler_ids):
@@ -289,13 +281,12 @@ class SequenceRuleEnablerSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerSearchRecord
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerSearchRecord
 
 
 class SequenceRuleEnablerSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequence_rule_enablers(self):
@@ -308,7 +299,7 @@ class SequenceRuleEnablerSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerList
+        return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     sequence_rule_enablers = property(fget=get_sequence_rule_enablers)
 
@@ -323,7 +314,7 @@ class SequenceRuleEnablerSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnablerQueryInspector
+        return  # osid.assessment.authoring.SequenceRuleEnablerQueryInspector
 
     sequence_rule_enabler_query_inspector = property(fget=get_sequence_rule_enabler_query_inspector)
 
@@ -346,6 +337,4 @@ class SequenceRuleEnablerSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerSearchResultsRecord
-
-
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerSearchResultsRecord

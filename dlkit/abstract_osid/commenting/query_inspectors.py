@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentQueryInspector:
     """The comment query inspector for examining comment queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_reference_id_terms(self):
@@ -35,7 +31,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     reference_id_terms = property(fget=get_reference_id_terms)
 
@@ -50,7 +46,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     commentor_id_terms = property(fget=get_commentor_id_terms)
 
@@ -65,7 +61,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     commentor_terms = property(fget=get_commentor_terms)
 
@@ -80,7 +76,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     commenting_agent_id_terms = property(fget=get_commenting_agent_id_terms)
 
@@ -95,7 +91,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     commenting_agent_terms = property(fget=get_commenting_agent_terms)
 
@@ -110,7 +106,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     text_terms = property(fget=get_text_terms)
 
@@ -125,7 +121,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     rating_id_terms = property(fget=get_rating_id_terms)
 
@@ -140,7 +136,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     rating_terms = property(fget=get_rating_terms)
 
@@ -155,7 +151,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     book_id_terms = property(fget=get_book_id_terms)
 
@@ -170,7 +166,7 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQueryInspector
+        return  # osid.commenting.BookQueryInspector
 
     book_terms = property(fget=get_book_terms)
 
@@ -189,13 +185,12 @@ class CommentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentQueryInspectorRecord
+        return  # osid.commenting.records.CommentQueryInspectorRecord
 
 
 class BookQueryInspector:
     """This is the query inspector for examining bok queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_comment_id_terms(self):
@@ -208,7 +203,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     comment_id_terms = property(fget=get_comment_id_terms)
 
@@ -223,7 +218,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQueryInspector
+        return  # osid.commenting.CommentQueryInspector
 
     comment_terms = property(fget=get_comment_terms)
 
@@ -238,7 +233,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_book_id_terms = property(fget=get_ancestor_book_id_terms)
 
@@ -253,7 +248,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQueryInspector
+        return  # osid.commenting.BookQueryInspector
 
     ancestor_book_terms = property(fget=get_ancestor_book_terms)
 
@@ -268,7 +263,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_book_id_terms = property(fget=get_descendant_book_id_terms)
 
@@ -283,7 +278,7 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQueryInspector
+        return  # osid.commenting.BookQueryInspector
 
     descendant_book_terms = property(fget=get_descendant_book_terms)
 
@@ -302,6 +297,4 @@ class BookQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookQueryInspectorRecord
-
-
+        return  # osid.commenting.records.BookQueryInspectorRecord

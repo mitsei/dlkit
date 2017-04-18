@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationSession:
     """This is the basic session for verifying authorizations."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_id(self):
@@ -35,7 +31,7 @@ class AuthorizationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -51,7 +47,7 @@ class AuthorizationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -72,7 +68,7 @@ class AuthorizationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_authorized(self, agent_id, function_id, qualifier_id):
@@ -116,7 +112,7 @@ class AuthorizationSession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_condition(self, function_id):
@@ -134,7 +130,7 @@ class AuthorizationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationCondition
+        return  # osid.authorization.AuthorizationCondition
 
     @abc.abstractmethod
     def is_authorized_on_condition(self, agent_id, function_id, qualifier_id, condition):
@@ -181,13 +177,12 @@ class AuthorizationSession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AuthorizationLookupSession:
     """This session defines methods to search and retrieve ``Authorization`` mappings."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_id(self):
@@ -200,7 +195,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -216,7 +211,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -237,7 +232,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_authorization_view(self):
@@ -370,7 +365,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Authorization
+        return  # osid.authorization.Authorization
 
     @abc.abstractmethod
     def get_authorizations_by_ids(self, authorization_ids):
@@ -396,7 +391,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_by_genus_type(self, authorization_genus_type):
@@ -418,7 +413,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_by_parent_genus_type(self, authorization_genus_type):
@@ -440,7 +435,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_by_record_type(self, authorization_record_type):
@@ -462,7 +457,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_on_date(self, from_, to):
@@ -482,7 +477,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_resource(self, resource_id):
@@ -505,7 +500,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_resource_on_date(self, resource_id, from_, to):
@@ -539,7 +534,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_agent(self, agent_id):
@@ -561,7 +556,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_agent_on_date(self, agent_id, from_, to):
@@ -583,7 +578,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_function(self, function_id):
@@ -605,7 +600,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_function_on_date(self, function_id, from_, to):
@@ -627,7 +622,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_resource_and_function(self, resource_id, function_id):
@@ -652,7 +647,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_resource_and_function_on_date(self, resource_id, function_id, from_, to):
@@ -688,7 +683,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_agent_and_function(self, agent_id, function_id):
@@ -713,7 +708,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_for_agent_and_function_on_date(self, agent_id, function_id, from_, to):
@@ -737,7 +732,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_by_qualifier(self, qualifier_id):
@@ -759,7 +754,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_explicit_authorization(self, authorization_id):
@@ -780,7 +775,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Authorization
+        return  # osid.authorization.Authorization
 
     @abc.abstractmethod
     def get_authorizations(self):
@@ -799,7 +794,7 @@ class AuthorizationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     authorizations = property(fget=get_authorizations)
 
@@ -821,10 +816,8 @@ class AuthorizationQuerySession:
       * explicit authorization view: only explicit authorizations are
         returned
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_id(self):
@@ -837,7 +830,7 @@ class AuthorizationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -853,7 +846,7 @@ class AuthorizationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -874,7 +867,7 @@ class AuthorizationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -945,7 +938,7 @@ class AuthorizationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     authorization_query = property(fget=get_authorization_query)
 
@@ -965,7 +958,7 @@ class AuthorizationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
 
 class AuthorizationSearchSession:
@@ -995,10 +988,8 @@ class AuthorizationSearchSession:
       * explicit authorization view: only explicit authorizations are
         returned
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorization_search(self):
@@ -1011,7 +1002,7 @@ class AuthorizationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationSearch
+        return  # osid.authorization.AuthorizationSearch
 
     authorization_search = property(fget=get_authorization_search)
 
@@ -1029,7 +1020,7 @@ class AuthorizationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationSearchOrder
+        return  # osid.authorization.AuthorizationSearchOrder
 
     authorization_search_order = property(fget=get_authorization_search_order)
 
@@ -1051,7 +1042,7 @@ class AuthorizationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationSearchResults
+        return  # osid.authorization.AuthorizationSearchResults
 
     @abc.abstractmethod
     def get_authorization_query_from_inspector(self, authorization_query_inspector):
@@ -1070,7 +1061,7 @@ class AuthorizationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
 
 class AuthorizationAdminSession:
@@ -1112,7 +1103,6 @@ class AuthorizationAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -1124,7 +1114,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -1140,7 +1130,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -1161,7 +1151,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_authorization_with_record_types(self, authorization_record_types):
@@ -1182,7 +1172,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_form_for_create_for_agent(self, agent_id, function_id, qualifier_id, authorization_record_types):
@@ -1209,7 +1199,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationForm
+        return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
     def get_authorization_form_for_create_for_resource(self, resource_id, function_id, qualifier_id, authorization_record_types):
@@ -1236,7 +1226,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationForm
+        return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
     def get_authorization_form_for_create_for_resource_and_trust(self, resource_id, trust_id, function_id, qualifier_id, authorization_record_types):
@@ -1265,7 +1255,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationForm
+        return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
     def create_authorization(self, authorization_form):
@@ -1285,7 +1275,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Authorization
+        return  # osid.authorization.Authorization
 
     @abc.abstractmethod
     def can_update_authorizations(self):
@@ -1304,7 +1294,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_form_for_update(self, authorization_id):
@@ -1325,7 +1315,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationForm
+        return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
     def update_authorization(self, authorization_form):
@@ -1362,7 +1352,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_authorization(self, authorization_id):
@@ -1397,7 +1387,7 @@ class AuthorizationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_authorization(self, authorization_id, alias_id):
@@ -1437,7 +1427,6 @@ class AuthorizationNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -1449,7 +1438,7 @@ class AuthorizationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -1465,7 +1454,7 @@ class AuthorizationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -1486,7 +1475,7 @@ class AuthorizationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -1834,10 +1823,8 @@ class AuthorizationVaultSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_vault_view(self):
@@ -1885,7 +1872,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_ids_by_vault(self, vault_id):
@@ -1903,7 +1890,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_authorizations_by_vault(self, vault_id):
@@ -1921,7 +1908,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_authorizations_ids_by_vault(self, vault_ids):
@@ -1938,7 +1925,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_authorizations_by_vault(self, vault_ids):
@@ -1955,7 +1942,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationList
+        return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
     def get_vault_ids_by_authorization(self, authorization_id):
@@ -1973,7 +1960,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_vault_by_authorization(self, authorization_id):
@@ -1991,7 +1978,7 @@ class AuthorizationVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
 
 class AuthorizationVaultAssignmentSession:
@@ -2007,7 +1994,6 @@ class AuthorizationVaultAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_authorizations(self):
@@ -2026,7 +2012,7 @@ class AuthorizationVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_authorizations_to_vault(self, vault_id):
@@ -2047,7 +2033,7 @@ class AuthorizationVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_vault_ids(self, vault_id):
@@ -2063,7 +2049,7 @@ class AuthorizationVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id):
@@ -2081,7 +2067,7 @@ class AuthorizationVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_authorization_to_vault(self, authorization_id, vault_id):
@@ -2160,7 +2146,6 @@ class AuthorizationSmartVaultSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -2172,7 +2157,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -2188,7 +2173,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -2209,7 +2194,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_query(self):
@@ -2222,7 +2207,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     authorization_query = property(fget=get_authorization_query)
 
@@ -2237,7 +2222,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationSearchOrder
+        return  # osid.authorization.AuthorizationSearchOrder
 
     authorization_search_order = property(fget=get_authorization_search_order)
 
@@ -2269,7 +2254,7 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     @abc.abstractmethod
     def apply_authorization_sequencing(self, authorization_search_order):
@@ -2301,13 +2286,12 @@ class AuthorizationSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
 
 class FunctionLookupSession:
     """This session provides methods for retrieving ``Function`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_id(self):
@@ -2320,7 +2304,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -2336,7 +2320,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -2357,7 +2341,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_function_view(self):
@@ -2459,7 +2443,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Function
+        return  # osid.authorization.Function
 
     @abc.abstractmethod
     def get_functions_by_ids(self, function_ids):
@@ -2485,7 +2469,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_functions_by_genus_type(self, function_genus_type):
@@ -2506,7 +2490,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_functions_by_parent_genus_type(self, function_genus_type):
@@ -2527,7 +2511,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_functions_by_record_type(self, function_record_type):
@@ -2548,7 +2532,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_functions(self):
@@ -2566,7 +2550,7 @@ class FunctionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     functions = property(fget=get_functions)
 
@@ -2594,7 +2578,6 @@ class FunctionQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -2606,7 +2589,7 @@ class FunctionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -2622,7 +2605,7 @@ class FunctionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -2643,7 +2626,7 @@ class FunctionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -2683,7 +2666,7 @@ class FunctionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
     function_query = property(fget=get_function_query)
 
@@ -2703,7 +2686,7 @@ class FunctionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
 
 class FunctionSearchSession:
@@ -2739,7 +2722,6 @@ class FunctionSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_function_search(self):
         """Gets a function search.
@@ -2751,7 +2733,7 @@ class FunctionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionSearch
+        return  # osid.authorization.FunctionSearch
 
     function_search = property(fget=get_function_search)
 
@@ -2769,7 +2751,7 @@ class FunctionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionSearchOrder
+        return  # osid.authorization.FunctionSearchOrder
 
     function_search_order = property(fget=get_function_search_order)
 
@@ -2791,7 +2773,7 @@ class FunctionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionSearchResults
+        return  # osid.authorization.FunctionSearchResults
 
     @abc.abstractmethod
     def get_function_query_from_inspector(self, function_query_inspector):
@@ -2809,7 +2791,7 @@ class FunctionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
 
 class FunctionAdminSession:
@@ -2850,7 +2832,6 @@ class FunctionAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -2862,7 +2843,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -2878,7 +2859,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -2899,7 +2880,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_function_with_record_types(self, function_record_types):
@@ -2920,7 +2901,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_form_for_create(self, function_record_types):
@@ -2940,7 +2921,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionForm
+        return  # osid.authorization.FunctionForm
 
     @abc.abstractmethod
     def create_function(self, function_form):
@@ -2960,7 +2941,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Function
+        return  # osid.authorization.Function
 
     @abc.abstractmethod
     def can_update_functions(self):
@@ -2979,7 +2960,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_form_for_update(self, function_id):
@@ -3000,7 +2981,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionForm
+        return  # osid.authorization.FunctionForm
 
     @abc.abstractmethod
     def update_function(self, function_form):
@@ -3037,7 +3018,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_function(self, function_id):
@@ -3072,7 +3053,7 @@ class FunctionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_function(self, function_id, alias_id):
@@ -3112,7 +3093,6 @@ class FunctionNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -3124,7 +3104,7 @@ class FunctionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -3140,7 +3120,7 @@ class FunctionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -3161,7 +3141,7 @@ class FunctionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -3368,10 +3348,8 @@ class FunctionVaultSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_function_vault_mappings(self):
@@ -3390,7 +3368,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_vault_view(self):
@@ -3437,7 +3415,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_functions_by_vault(self, vault_id):
@@ -3455,7 +3433,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_function_ids_by_vaults(self, vault_ids):
@@ -3472,7 +3450,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_functions_by_vaults(self, vault_ids):
@@ -3489,7 +3467,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionList
+        return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
     def get_vault_ids_by_function(self, function_id):
@@ -3507,7 +3485,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_vaults_by_function(self, function_id):
@@ -3525,7 +3503,7 @@ class FunctionVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
 
 class FunctionVaultAssignmentSession:
@@ -3541,7 +3519,6 @@ class FunctionVaultAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_functions(self):
@@ -3560,7 +3537,7 @@ class FunctionVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_functions_to_vault(self, vault_id):
@@ -3581,7 +3558,7 @@ class FunctionVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_vault_ids(self, vault_id):
@@ -3597,7 +3574,7 @@ class FunctionVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_vault_ids_for_function(self, vault_id, function_id):
@@ -3615,7 +3592,7 @@ class FunctionVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_function_to_vault(self, function_id, vault_id):
@@ -3693,7 +3670,6 @@ class FunctionSmartVaultSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -3705,7 +3681,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -3721,7 +3697,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -3742,7 +3718,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_query(self):
@@ -3755,7 +3731,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
     function_query = property(fget=get_function_query)
 
@@ -3770,7 +3746,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionSearchOrder
+        return  # osid.authorization.FunctionSearchOrder
 
     function_search_order = property(fget=get_function_search_order)
 
@@ -3802,7 +3778,7 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     @abc.abstractmethod
     def apply_function_sequencing(self, function_search_order):
@@ -3834,13 +3810,12 @@ class FunctionSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
 
 class QualifierLookupSession:
     """This session defines methods for retrieving qualifiers."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_id(self):
@@ -3853,7 +3828,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -3869,7 +3844,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -3890,7 +3865,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_qualifier_view(self):
@@ -3970,7 +3945,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
     @abc.abstractmethod
     def get_qualifiers_by_ids(self, qualifier_ids):
@@ -3996,7 +3971,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_qualifiers_by_genus_type(self, qualifier_genus_type):
@@ -4018,7 +3993,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_qualifiers_by_parent_genus_type(self, qualifier_genus_type):
@@ -4039,7 +4014,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_qualifiers_by_record_type(self, qualifier_record_type):
@@ -4062,7 +4037,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_qualifiers(self):
@@ -4080,7 +4055,7 @@ class QualifierLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     qualifiers = property(fget=get_qualifiers)
 
@@ -4108,7 +4083,6 @@ class QualifierQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -4120,7 +4094,7 @@ class QualifierQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -4136,7 +4110,7 @@ class QualifierQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -4157,7 +4131,7 @@ class QualifierQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -4197,7 +4171,7 @@ class QualifierQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     qualifier_query = property(fget=get_qualifier_query)
 
@@ -4217,7 +4191,7 @@ class QualifierQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
 
 class QualifierSearchSession:
@@ -4253,7 +4227,6 @@ class QualifierSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_qualifier_search(self):
         """Gets a qualifier search.
@@ -4265,7 +4238,7 @@ class QualifierSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierSearch
+        return  # osid.authorization.QualifierSearch
 
     qualifier_search = property(fget=get_qualifier_search)
 
@@ -4283,7 +4256,7 @@ class QualifierSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierSearchOrder
+        return  # osid.authorization.QualifierSearchOrder
 
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
@@ -4305,7 +4278,7 @@ class QualifierSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierSearchResults
+        return  # osid.authorization.QualifierSearchResults
 
     @abc.abstractmethod
     def get_qualifier_query_from_inspector(self, qualifier_query_inspector):
@@ -4323,7 +4296,7 @@ class QualifierSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
 
 class QualifierAdminSession:
@@ -4364,7 +4337,6 @@ class QualifierAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -4376,7 +4348,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -4392,7 +4364,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -4413,7 +4385,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_qualifier_with_record_types(self, qualifier_record_types):
@@ -4434,7 +4406,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_form_for_create(self, qualifier_record_types):
@@ -4454,7 +4426,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierForm
+        return  # osid.authorization.QualifierForm
 
     @abc.abstractmethod
     def create_qualifier(self, qualifier_form):
@@ -4474,7 +4446,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
     @abc.abstractmethod
     def can_update_qualifiers(self):
@@ -4493,7 +4465,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_form_for_update(self, qualifier_id):
@@ -4514,7 +4486,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierForm
+        return  # osid.authorization.QualifierForm
 
     @abc.abstractmethod
     def update_qualifier(self, qualifier_form):
@@ -4551,7 +4523,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_qualifier(self, qualifier_id):
@@ -4586,7 +4558,7 @@ class QualifierAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_qualifier(self, qualifier_id, alias_id):
@@ -4626,7 +4598,6 @@ class QualifierNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -4638,7 +4609,7 @@ class QualifierNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -4654,7 +4625,7 @@ class QualifierNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -4675,7 +4646,7 @@ class QualifierNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_vault_view(self):
@@ -4949,10 +4920,8 @@ class QualifierHierarchySession:
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_id(self):
@@ -4965,7 +4934,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
@@ -4981,7 +4950,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
@@ -5002,7 +4971,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_qualifier_view(self):
@@ -5045,7 +5014,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_qualifier_ids = property(fget=get_root_qualifier_ids)
 
@@ -5061,7 +5030,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     root_qualifiers = property(fget=get_root_qualifiers)
 
@@ -5081,7 +5050,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_qualifier(self, id_, qualifier_id):
@@ -5102,7 +5071,7 @@ class QualifierHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_qualifier_ids(self, qualifier_id):
@@ -5120,7 +5089,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_qualifiers(self, qualifier_id):
@@ -5138,7 +5107,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def is_ancestor_of_qualifier(self, id_, qualifier_id):
@@ -5159,7 +5128,7 @@ class QualifierHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_qualifiers(self, qualifier_id):
@@ -5177,7 +5146,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_qualifier(self, id_, qualifier_id):
@@ -5198,7 +5167,7 @@ class QualifierHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_qualifier_ids(self, qualifier_id):
@@ -5216,7 +5185,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_qualifiers(self, qualifier_id):
@@ -5234,7 +5203,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def is_descendant_of_qualifier(self, id_, qualifier_id):
@@ -5255,7 +5224,7 @@ class QualifierHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_node_ids(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5279,7 +5248,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_qualifier_nodes(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5303,7 +5272,7 @@ class QualifierHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierNode
+        return  # osid.authorization.QualifierNode
 
 
 class QualifierHierarchyDesignSession:
@@ -5313,7 +5282,6 @@ class QualifierHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_id(self):
@@ -5326,7 +5294,7 @@ class QualifierHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
@@ -5342,7 +5310,7 @@ class QualifierHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
@@ -5363,7 +5331,7 @@ class QualifierHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_qualifier(self, qualifier_id):
@@ -5465,10 +5433,8 @@ class QualifierVaultSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_qualifier_vault_mappings(self):
@@ -5487,7 +5453,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_vault_view(self):
@@ -5534,7 +5500,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_qualifiers_by_vault(self, vault_id):
@@ -5552,7 +5518,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_qualifier_ids_by_vaults(self, vault_ids):
@@ -5569,7 +5535,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_qualifiers_by_vaults(self, vault_ids):
@@ -5586,7 +5552,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierList
+        return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
     def get_vault_ids_by_qualifier(self, qualifier_id):
@@ -5604,7 +5570,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_vaults_by_qualifier(self, qualifier_id):
@@ -5622,7 +5588,7 @@ class QualifierVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
 
 class QualifierVaultAssignmentSession:
@@ -5638,7 +5604,6 @@ class QualifierVaultAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_qualifiers(self):
@@ -5657,7 +5622,7 @@ class QualifierVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_qualifiers_to_vault(self, vault_id):
@@ -5678,7 +5643,7 @@ class QualifierVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_vault_ids(self, vault_id):
@@ -5694,7 +5659,7 @@ class QualifierVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_vault_ids_for_qualifier(self, vault_id, qualifier_id):
@@ -5712,7 +5677,7 @@ class QualifierVaultAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_qualifier_to_vault(self, qualifier_id, vault_id):
@@ -5790,7 +5755,6 @@ class QualifierSmartVaultSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
@@ -5802,7 +5766,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_id = property(fget=get_vault_id)
 
@@ -5818,7 +5782,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -5839,7 +5803,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_query(self):
@@ -5852,7 +5816,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     qualifier_query = property(fget=get_qualifier_query)
 
@@ -5867,7 +5831,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierSearchOrder
+        return  # osid.authorization.QualifierSearchOrder
 
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
@@ -5899,7 +5863,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQueryInspector
+        return  # osid.authorization.QualifierQueryInspector
 
     @abc.abstractmethod
     def apply_qualifier_sequencing(self, qualifier_search_order):
@@ -5931,7 +5895,7 @@ class QualifierSmartVaultSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
 
 class VaultLookupSession:
@@ -5961,7 +5925,6 @@ class VaultLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_vaults(self):
         """Tests if this user can perform ``Vault`` lookups.
@@ -5979,7 +5942,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_vault_view(self):
@@ -6031,7 +5994,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     @abc.abstractmethod
     def get_vaults_by_ids(self, vault_ids):
@@ -6057,7 +6020,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def get_vaults_by_genus_type(self, vault_genus_type):
@@ -6078,7 +6041,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def get_vaults_by_parent_genus_type(self, vault_genus_type):
@@ -6099,7 +6062,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def get_vaults_by_record_type(self, vault_record_type):
@@ -6120,7 +6083,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def get_vaults_by_provider(self, resource_id):
@@ -6141,7 +6104,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def get_vaults(self):
@@ -6159,7 +6122,7 @@ class VaultLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     vaults = property(fget=get_vaults)
 
@@ -6174,7 +6137,6 @@ class VaultQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_vaults(self):
@@ -6193,7 +6155,7 @@ class VaultQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_query(self):
@@ -6206,7 +6168,7 @@ class VaultQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     vault_query = property(fget=get_vault_query)
 
@@ -6226,7 +6188,7 @@ class VaultQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
 
 class VaultSearchSession:
@@ -6249,7 +6211,6 @@ class VaultSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault_search(self):
         """Gets a vault search.
@@ -6261,7 +6222,7 @@ class VaultSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultSearch
+        return  # osid.authorization.VaultSearch
 
     vault_search = property(fget=get_vault_search)
 
@@ -6279,7 +6240,7 @@ class VaultSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultSearchOrder
+        return  # osid.authorization.VaultSearchOrder
 
     vault_search_order = property(fget=get_vault_search_order)
 
@@ -6301,7 +6262,7 @@ class VaultSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultSearchResults
+        return  # osid.authorization.VaultSearchResults
 
     @abc.abstractmethod
     def get_vault_query_from_inspector(self, vault_query_inspector):
@@ -6319,7 +6280,7 @@ class VaultSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
 
 class VaultAdminSession:
@@ -6356,7 +6317,6 @@ class VaultAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_vaults(self):
         """Tests if this user can create ``Vaults``.
@@ -6374,7 +6334,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_vault_with_record_types(self, vault_record_types):
@@ -6395,7 +6355,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_form_for_create(self, vault_record_types):
@@ -6415,7 +6375,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultForm
+        return  # osid.authorization.VaultForm
 
     @abc.abstractmethod
     def create_vault(self, vault_form):
@@ -6435,7 +6395,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     @abc.abstractmethod
     def can_update_vaults(self):
@@ -6454,7 +6414,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_form_for_update(self, vault_id):
@@ -6475,7 +6435,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultForm
+        return  # osid.authorization.VaultForm
 
     @abc.abstractmethod
     def update_vault(self, vault_form):
@@ -6512,7 +6472,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_vault(self, vault_id):
@@ -6547,7 +6507,7 @@ class VaultAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_vault(self, vault_id, alias_id):
@@ -6584,7 +6544,6 @@ class VaultNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_vault_notifications(self):
         """Tests if this user can register for ``Vault`` notifications.
@@ -6602,7 +6561,7 @@ class VaultNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_vault_notifications(self):
@@ -6848,10 +6807,8 @@ class VaultHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_hierarchy_id(self):
@@ -6864,7 +6821,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
 
@@ -6880,7 +6837,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     vault_hierarchy = property(fget=get_vault_hierarchy)
 
@@ -6901,7 +6858,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_vault_view(self):
@@ -6944,7 +6901,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_vault_ids = property(fget=get_root_vault_ids)
 
@@ -6960,7 +6917,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     root_vaults = property(fget=get_root_vaults)
 
@@ -6980,7 +6937,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_vault(self, id_, vault_id):
@@ -7001,7 +6958,7 @@ class VaultHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_vault_ids(self, vault_id):
@@ -7019,7 +6976,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_vaults(self, vault_id):
@@ -7037,7 +6994,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def is_ancestor_of_vault(self, id_, vault_id):
@@ -7058,7 +7015,7 @@ class VaultHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_vaults(self, vault_id):
@@ -7076,7 +7033,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_vault(self, id_, vault_id):
@@ -7097,7 +7054,7 @@ class VaultHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_vault_ids(self, vault_id):
@@ -7115,7 +7072,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_vaults(self, vault_id):
@@ -7133,7 +7090,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultList
+        return  # osid.authorization.VaultList
 
     @abc.abstractmethod
     def is_descendant_of_vault(self, id_, vault_id):
@@ -7154,7 +7111,7 @@ class VaultHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_node_ids(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
@@ -7178,7 +7135,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_vault_nodes(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
@@ -7202,7 +7159,7 @@ class VaultHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultNode
+        return  # osid.authorization.VaultNode
 
 
 class VaultHierarchyDesignSession:
@@ -7212,7 +7169,6 @@ class VaultHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_hierarchy_id(self):
@@ -7225,7 +7181,7 @@ class VaultHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
 
@@ -7241,7 +7197,7 @@ class VaultHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     vault_hierarchy = property(fget=get_vault_hierarchy)
 
@@ -7262,7 +7218,7 @@ class VaultHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_vault(self, vault_id):
@@ -7349,5 +7305,3 @@ class VaultHierarchyDesignSession:
 
         """
         pass
-
-

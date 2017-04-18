@@ -26,8 +26,6 @@ from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.primitives import DisplayText
 
 
-
-
 class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     """A marker interface for an interface that behaves like a language primitive.
 
@@ -42,9 +40,10 @@ class OsidPrimitive(abc_osid_markers.OsidPrimitive):
 
 
 
+
+
 class Identifiable(abc_osid_markers.Identifiable):
     """A marker interface for objects uniquely identified with an OSID ``Id``."""
-
     _namespace = 'osid.Identifiable'
 
     def __init__(self, runtime=None):
@@ -58,8 +57,6 @@ class Identifiable(abc_osid_markers.Identifiable):
                 authority_param_id).get_string_value()
         except (AttributeError, KeyError, errors.NotFound):
             self._authority = 'ODL.MIT.EDU'
-
-
     def get_id(self):
         """Gets the Id associated with this instance of this OSID object.
 
@@ -125,9 +122,10 @@ class Identifiable(abc_osid_markers.Identifiable):
         return False
 
 
+
+
 class Extensible(abc_osid_markers.Extensible):
     """A marker interface for objects that contain ``OsidRecords``."""
-
     def __init__(self, object_name, runtime=None, proxy=None, **kwargs):
         self._records = {}
         self._supported_record_type_ids = []
@@ -215,7 +213,6 @@ class Extensible(abc_osid_markers.Extensible):
                                     runtime=self._runtime,
                                     proxy=getattr(self, '_proxy', None),
                                     local=local)
-
     def get_record_types(self):
         """Gets the record types available in this object.
 
@@ -253,6 +250,8 @@ class Extensible(abc_osid_markers.Extensible):
 
         """
         return str(record_type) in self._supported_record_type_ids
+
+
 
 
 class Browsable(abc_osid_markers.Browsable):
@@ -303,19 +302,20 @@ class Browsable(abc_osid_markers.Browsable):
         raise errors.Unimplemented()
 
 
+
+
 class Suppliable(abc_osid_markers.Suppliable):
     """A marker interface for OSID Provider-owned objects used to supply input from an OSID Consumer."""
 
 
 
 
+
+
 class Temporal(abc_osid_markers.Temporal):
     """``Temporal`` is used to indicate the object endures for a period of time."""
-
     def __init__(self):
         self._my_map = {}
-
-
     def is_effective(self):
         """Tests if the current date is within the start end end dates inclusive.
 
@@ -366,6 +366,8 @@ class Temporal(abc_osid_markers.Temporal):
     end_date = property(fget=get_end_date)
 
 
+
+
 class Subjugateable(abc_osid_markers.Subjugateable):
     """A ``Subjugateable`` is an ``OsidObject`` dependent upon another ``OsidObject``.
 
@@ -376,6 +378,8 @@ class Subjugateable(abc_osid_markers.Subjugateable):
     ``OsidObject``.
 
     """
+
+
 
 
 
@@ -404,12 +408,12 @@ class Aggregateable(abc_osid_markers.Aggregateable):
 
 
 
+
+
 class Containable(abc_osid_markers.Containable):
     """A ``Containable`` is a kind of aggregate where an ``OsidObject`` is defined as a recursive composition of itself directly accessible without knowledge of the originating service."""
-
     def __init__(self):
         self._my_map = {}
-
     def is_sequestered(self):
         """Tests if this ``Containable`` is sequestered in that it should not appear outside of its aggregated composition.
 
@@ -420,6 +424,8 @@ class Containable(abc_osid_markers.Containable):
 
         """
         return self._my_map['sequestered']
+
+
 
 
 class Sourceable(abc_osid_markers.Sourceable):
@@ -510,6 +516,8 @@ class Sourceable(abc_osid_markers.Sourceable):
     license_ = property(fget=get_license)
 
 
+
+
 class Federateable(abc_osid_markers.Federateable):
     """``Federateable`` is used to indicate an ``OsidObject`` can be federated using the OSID Hierarchy pattern.
 
@@ -517,6 +525,8 @@ class Federateable(abc_osid_markers.Federateable):
     the hiererarchy that any ``OsidObject`` "includes" its children.
 
     """
+
+
 
 
 
@@ -614,5 +624,3 @@ class Operable(abc_osid_markers.Operable):
         """
         # Someday I'll have a real implementation, but for now I just:
         return False
-
-

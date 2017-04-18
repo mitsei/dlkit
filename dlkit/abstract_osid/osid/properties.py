@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Property:
     """A ``Property`` is a representation of data in string form.
 
@@ -33,7 +30,6 @@ class Property:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_display_name(self):
         """The display name for this property.
@@ -45,7 +41,7 @@ class Property:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -60,7 +56,7 @@ class Property:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_label = property(fget=get_display_label)
 
@@ -75,7 +71,7 @@ class Property:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -90,7 +86,7 @@ class Property:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     value = property(fget=get_value)
 
@@ -106,11 +102,8 @@ class PropertyList:
            Property[] properties = pl.getNextProperties(pl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_property(self):
@@ -124,7 +117,7 @@ class PropertyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Property
+        return  # osid.Property
 
     next_property = property(fget=get_next_property)
 
@@ -142,6 +135,4 @@ class PropertyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Property
-
-
+        return  # osid.Property

@@ -20,8 +20,6 @@ from ..utilities import get_registry
 from dlkit.abstract_osid.hierarchy import queries as abc_hierarchy_queries
 
 
-
-
 class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching hierarchies.
 
@@ -31,7 +29,6 @@ class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCata
     accessing the ``HierarchyQuery`` record.
 
     """
-
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('HIERARCHY_RECORD_TYPES', runtime)
@@ -54,8 +51,6 @@ class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCata
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
-
-
     @utilities.arguments_not_none
     def match_node_id(self, id_, match):
         """Matches an ``Id`` of a node in this hierarchy.
@@ -114,5 +109,3 @@ class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCata
 
         """
         raise errors.Unimplemented()
-
-

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class IdLookupSession:
     """This session is for retrieving ``Id`` objects.
 
@@ -28,7 +25,6 @@ class IdLookupSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_ids(self):
@@ -47,7 +43,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_id(self, id_):
@@ -68,7 +64,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     ident = property(fget=get_id)
 
@@ -91,7 +87,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_ids_by_authority(self, authority):
@@ -108,7 +104,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_ids_by_authority_and_namespace(self, authority, namespace):
@@ -127,7 +123,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_ids(self):
@@ -141,7 +137,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     ids = property(fget=get_ids)
 
@@ -165,7 +161,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_id_aliases(self, id_):
@@ -182,7 +178,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_id_aliases_by_authority(self, id_, authority):
@@ -201,7 +197,7 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_id_aliases_by_authority_and_namespace(self, id_, authority, namespace):
@@ -222,13 +218,12 @@ class IdLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
 
 class IdIssueSession:
     """This is a simple session used to create new ``Ids``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_issue_ids(self):
@@ -247,7 +242,7 @@ class IdIssueSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def issue_id(self):
@@ -264,13 +259,12 @@ class IdIssueSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
 
 class IdAdminSession:
     """This session is used to manually create new ``Ids``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_create_ids(self):
@@ -289,7 +283,7 @@ class IdAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_id_form_for_create(self):
@@ -305,7 +299,7 @@ class IdAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdForm
+        return  # osid.id.IdForm
 
     id_form_for_create = property(fget=get_id_form_for_create)
 
@@ -331,7 +325,7 @@ class IdAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     @abc.abstractmethod
     def can_alias_ids(self):
@@ -350,7 +344,7 @@ class IdAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_id(self, primary_id, equivalent_id):
@@ -393,5 +387,3 @@ class IdAdminSession:
 
         """
         pass
-
-

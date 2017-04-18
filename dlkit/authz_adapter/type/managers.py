@@ -16,10 +16,10 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.type import managers as type_managers
 
 
-
-
 class TypeProfile(osid_managers.OsidProfile, type_managers.TypeProfile):
     """Adapts underlying TypeProfile methodswith authorization checks."""
+
+
 
 
 
@@ -30,9 +30,7 @@ class TypeManager(osid_managers.OsidManager, TypeProfile, type_managers.TypeMana
 
 
 
+
+
 class TypeProxyManager(osid_managers.OsidProxyManager, TypeProfile, type_managers.TypeProxyManager):
     """Adapts underlying TypeProxyManager methodswith authorization checks."""
-
-
-
-

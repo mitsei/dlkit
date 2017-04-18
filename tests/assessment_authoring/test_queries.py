@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestAssessmentPartQuery(unittest.TestCase):
     """Tests for AssessmentPartQuery"""
 
@@ -162,6 +164,8 @@ class TestAssessmentPartQuery(unittest.TestCase):
     def test_get_assessment_part_query_record(self):
         """Tests get_assessment_part_query_record"""
         pass
+
+
 
 
 class TestSequenceRuleQuery(unittest.TestCase):

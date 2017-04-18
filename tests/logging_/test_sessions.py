@@ -17,6 +17,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestLoggingSession(unittest.TestCase):
     """Tests for LoggingSession"""
 
@@ -76,6 +78,8 @@ class TestLoggingSession(unittest.TestCase):
     def test_create_log_entry(self):
         """Tests create_log_entry"""
         pass
+
+
 
 
 class TestLogEntryLookupSession(unittest.TestCase):
@@ -233,6 +237,8 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.log_entry_ids[0])
 
 
+
+
 class TestLogEntryQuerySession(unittest.TestCase):
     """Tests for LogEntryQuerySession"""
 
@@ -302,6 +308,8 @@ class TestLogEntryQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 3)
+
+
 
 
 class TestLogEntryAdminSession(unittest.TestCase):
@@ -387,6 +395,8 @@ class TestLogEntryAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestLogLookupSession(unittest.TestCase):
     """Tests for LogLookupSession"""
 
@@ -456,6 +466,8 @@ class TestLogLookupSession(unittest.TestCase):
     def test_get_logs(self):
         """Tests get_logs"""
         catalogs = self.svc_mgr.get_logs()
+
+
 
 
 class TestLogAdminSession(unittest.TestCase):

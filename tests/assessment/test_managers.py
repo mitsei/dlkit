@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAssessmentProfile(unittest.TestCase):
     """Tests for AssessmentProfile"""
 
@@ -186,6 +188,8 @@ class TestAssessmentProfile(unittest.TestCase):
     def test_get_bank_search_record_types(self):
         """Tests get_bank_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_bank_search_record_types(), abc_type_list))
+
+
 
 
 class TestAssessmentManager(unittest.TestCase):
@@ -514,6 +518,8 @@ class TestAssessmentManager(unittest.TestCase):
         #     self.mgr.get_assessment_batch_manager()
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_manager()
+
+
 
 
 class TestAssessmentProxyManager(unittest.TestCase):

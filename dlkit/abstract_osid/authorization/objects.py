@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Authorization:
     """An Authorization is a mapping among an actor, a ``Function`` and a ``Qualifier``.
 
@@ -51,7 +48,6 @@ class Authorization:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def is_implicit(self):
         """Tests if this authorization is implicit.
@@ -63,7 +59,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_resource(self):
@@ -76,7 +72,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_id(self):
@@ -89,7 +85,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     resource_id = property(fget=get_resource_id)
 
@@ -105,7 +101,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = property(fget=get_resource)
 
@@ -120,7 +116,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_trust_id(self):
@@ -133,7 +129,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     trust_id = property(fget=get_trust_id)
 
@@ -149,7 +145,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     trust = property(fget=get_trust)
 
@@ -167,7 +163,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_id(self):
@@ -180,7 +176,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agent_id = property(fget=get_agent_id)
 
@@ -196,7 +192,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     agent = property(fget=get_agent)
 
@@ -211,7 +207,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     function_id = property(fget=get_function_id)
 
@@ -226,7 +222,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Function
+        return  # osid.authorization.Function
 
     function = property(fget=get_function)
 
@@ -241,7 +237,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     qualifier_id = property(fget=get_qualifier_id)
 
@@ -256,7 +252,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
     qualifier = property(fget=get_qualifier)
 
@@ -281,7 +277,7 @@ class Authorization:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationRecord
+        return  # osid.authorization.records.AuthorizationRecord
 
 
 class AuthorizationForm:
@@ -295,7 +291,6 @@ class AuthorizationForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorization_form_record(self, authorization_record_type):
@@ -312,7 +307,7 @@ class AuthorizationForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationFormRecord
+        return  # osid.authorization.records.AuthorizationFormRecord
 
 
 class AuthorizationList:
@@ -326,11 +321,8 @@ class AuthorizationList:
            Authorization[] authorizations = al.getNextAuthorizations(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_authorization(self):
@@ -344,7 +336,7 @@ class AuthorizationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Authorization
+        return  # osid.authorization.Authorization
 
     next_authorization = property(fget=get_next_authorization)
 
@@ -362,7 +354,7 @@ class AuthorizationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Authorization
+        return  # osid.authorization.Authorization
 
 
 class Function:
@@ -376,7 +368,6 @@ class Function:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_qualifier_hierarchy_id(self):
         """Gets the qualifier hierarchy ``Id`` for this function.
@@ -388,7 +379,7 @@ class Function:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
@@ -403,7 +394,7 @@ class Function:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
@@ -428,7 +419,7 @@ class Function:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionRecord
+        return  # osid.authorization.records.FunctionRecord
 
 
 class FunctionForm:
@@ -443,7 +434,6 @@ class FunctionForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_qualifier_hierarchy_metadata(self):
         """Gets the metadata for a qualifier hierarchy.
@@ -455,7 +445,7 @@ class FunctionForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     qualifier_hierarchy_metadata = property(fget=get_qualifier_hierarchy_metadata)
 
@@ -502,7 +492,7 @@ class FunctionForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionFormRecord
+        return  # osid.authorization.records.FunctionFormRecord
 
 
 class FunctionList:
@@ -516,11 +506,8 @@ class FunctionList:
            Function[] functions = fl.getNextFunctions(fl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_function(self):
@@ -534,7 +521,7 @@ class FunctionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Function
+        return  # osid.authorization.Function
 
     next_function = property(fget=get_next_function)
 
@@ -552,7 +539,7 @@ class FunctionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Function
+        return  # osid.authorization.Function
 
 
 class Qualifier:
@@ -563,7 +550,6 @@ class Qualifier:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_record(self, qualifier_record_type):
@@ -586,7 +572,7 @@ class Qualifier:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierRecord
+        return  # osid.authorization.records.QualifierRecord
 
 
 class QualifierForm:
@@ -600,7 +586,6 @@ class QualifierForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_form_record(self, qualifier_record_type):
@@ -617,7 +602,7 @@ class QualifierForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierFormRecord
+        return  # osid.authorization.records.QualifierFormRecord
 
 
 class QualifierList:
@@ -631,11 +616,8 @@ class QualifierList:
            Qualifier[] qualifiers = ql.hetNextQualifiers(ql.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_qualifier(self):
@@ -649,7 +631,7 @@ class QualifierList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
     next_qualifier = property(fget=get_next_qualifier)
 
@@ -667,7 +649,7 @@ class QualifierList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
 
 class QualifierNode:
@@ -680,7 +662,6 @@ class QualifierNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_qualifier(self):
         """Gets the ``Qualifier`` at this node.
@@ -692,7 +673,7 @@ class QualifierNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Qualifier
+        return  # osid.authorization.Qualifier
 
     qualifier = property(fget=get_qualifier)
 
@@ -707,7 +688,7 @@ class QualifierNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierNodeList
+        return  # osid.authorization.QualifierNodeList
 
     parent_qualifier_nodes = property(fget=get_parent_qualifier_nodes)
 
@@ -722,7 +703,7 @@ class QualifierNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierNodeList
+        return  # osid.authorization.QualifierNodeList
 
     child_qualifier_nodes = property(fget=get_child_qualifier_nodes)
 
@@ -738,11 +719,8 @@ class QualifierNodeList:
            QualifierNode[] nodes = qnl.hetNextQualifierNodes(qnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_qualifier_node(self):
@@ -756,7 +734,7 @@ class QualifierNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierNode
+        return  # osid.authorization.QualifierNode
 
     next_qualifier_node = property(fget=get_next_qualifier_node)
 
@@ -774,13 +752,12 @@ class QualifierNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierNode
+        return  # osid.authorization.QualifierNode
 
 
 class Vault:
     """A vault defines a collection of authorizations and functions."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_record(self, vault_record_type):
@@ -803,7 +780,7 @@ class Vault:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultRecord
+        return  # osid.authorization.records.VaultRecord
 
 
 class VaultForm:
@@ -817,7 +794,6 @@ class VaultForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_form_record(self, vault_record_type):
@@ -834,7 +810,7 @@ class VaultForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultFormRecord
+        return  # osid.authorization.records.VaultFormRecord
 
 
 class VaultList:
@@ -847,11 +823,8 @@ class VaultList:
            Vault[] vaults = vl.getNextVaults(vl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_vault(self):
@@ -865,7 +838,7 @@ class VaultList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     next_vault = property(fget=get_next_vault)
 
@@ -883,7 +856,7 @@ class VaultList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
 
 class VaultNode:
@@ -896,7 +869,6 @@ class VaultNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_vault(self):
         """Gets the ``Vault`` at this node.
@@ -908,7 +880,7 @@ class VaultNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.Vault
+        return  # osid.authorization.Vault
 
     vault = property(fget=get_vault)
 
@@ -923,7 +895,7 @@ class VaultNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultNodeList
+        return  # osid.authorization.VaultNodeList
 
     parent_vault_nodes = property(fget=get_parent_vault_nodes)
 
@@ -938,7 +910,7 @@ class VaultNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultNodeList
+        return  # osid.authorization.VaultNodeList
 
     child_vault_nodes = property(fget=get_child_vault_nodes)
 
@@ -954,11 +926,8 @@ class VaultNodeList:
            VaultNode[] nodes = vnl.getNextVaultNodes(vnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_vault_node(self):
@@ -972,7 +941,7 @@ class VaultNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultNode
+        return  # osid.authorization.VaultNode
 
     next_vault_node = property(fget=get_next_vault_node)
 
@@ -990,6 +959,4 @@ class VaultNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultNode
-
-
+        return  # osid.authorization.VaultNode

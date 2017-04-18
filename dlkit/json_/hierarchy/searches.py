@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.hierarchy import searches as abc_hierarchy_searches
 
 
-
-
 class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.OsidSearch):
     """``HierarchySearch`` defines the interface for specifying hierarchy search options."""
 
@@ -69,6 +67,8 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
         raise errors.Unimplemented()
 
 
+
+
 class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -117,5 +117,3 @@ class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid
 
         """
         raise errors.Unimplemented()
-
-

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class CommentQuery:
     """This is the query for searching comments.
 
@@ -27,7 +24,6 @@ class CommentQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_reference_id(self, source_id, match):
@@ -96,7 +92,7 @@ class CommentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commentor_query(self):
@@ -112,7 +108,7 @@ class CommentQuery:
         ``supports_commentor_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     commentor_query = property(fget=get_commentor_query)
 
@@ -168,7 +164,7 @@ class CommentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commenting_agent_query(self):
@@ -184,7 +180,7 @@ class CommentQuery:
         ``supports_commenting_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     commenting_agent_query = property(fget=get_commenting_agent_query)
 
@@ -285,7 +281,7 @@ class CommentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rating_query(self):
@@ -301,7 +297,7 @@ class CommentQuery:
         ``supports_rating_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     rating_query = property(fget=get_rating_query)
 
@@ -370,7 +366,7 @@ class CommentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_query(self):
@@ -386,7 +382,7 @@ class CommentQuery:
         ``supports_book_query()`` is ``true``.*
 
         """
-        return # osid.commenting.BookQuery
+        return  # osid.commenting.BookQuery
 
     book_query = property(fget=get_book_query)
 
@@ -420,7 +416,7 @@ class CommentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentQueryRecord
+        return  # osid.commenting.records.CommentQueryRecord
 
 
 class BookQuery:
@@ -431,7 +427,6 @@ class BookQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_comment_id(self, comment_id, match):
@@ -472,7 +467,7 @@ class BookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_query(self):
@@ -486,7 +481,7 @@ class BookQuery:
         ``supports_comment_query()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
     comment_query = property(fget=get_comment_query)
 
@@ -555,7 +550,7 @@ class BookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_book_query(self):
@@ -571,7 +566,7 @@ class BookQuery:
         ``supports_ancestor_book_query()`` is ``true``.*
 
         """
-        return # osid.commenting.BookQuery
+        return  # osid.commenting.BookQuery
 
     ancestor_book_query = property(fget=get_ancestor_book_query)
 
@@ -640,7 +635,7 @@ class BookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_book_query(self):
@@ -656,7 +651,7 @@ class BookQuery:
         ``supports_descendant_book_query()`` is ``true``.*
 
         """
-        return # osid.commenting.BookQuery
+        return  # osid.commenting.BookQuery
 
     descendant_book_query = property(fget=get_descendant_book_query)
 
@@ -703,6 +698,4 @@ class BookQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookQueryRecord
-
-
+        return  # osid.commenting.records.BookQueryRecord

@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -188,7 +187,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_route_query(self):
@@ -204,7 +203,7 @@ class LocationQuery:
         ``supports_route_query()`` is ``true``.*
 
         """
-        return # osid.mapping.route.RouteQuery
+        return  # osid.mapping.route.RouteQuery
 
     route_query = abc.abstractproperty(fget=get_route_query)
 
@@ -273,7 +272,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_path_query(self):
@@ -289,7 +288,7 @@ class LocationQuery:
         ``supports_path_query()`` is ``true``.*
 
         """
-        return # osid.mapping.path.PathQuery
+        return  # osid.mapping.path.PathQuery
 
     path_query = abc.abstractproperty(fget=get_path_query)
 
@@ -358,7 +357,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_containing_location_query(self):
@@ -374,7 +373,7 @@ class LocationQuery:
         ``supports_containing_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     containing_location_query = abc.abstractproperty(fget=get_containing_location_query)
 
@@ -443,7 +442,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_contained_location_query(self):
@@ -459,7 +458,7 @@ class LocationQuery:
         ``supports_contained_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     contained_location_query = abc.abstractproperty(fget=get_contained_location_query)
 
@@ -528,7 +527,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_query(self):
@@ -544,7 +543,7 @@ class LocationQuery:
         ``supports_map_query()`` is ``true``.*
 
         """
-        return # osid.mapping.MapQuery
+        return  # osid.mapping.MapQuery
 
     map_query = abc.abstractproperty(fget=get_map_query)
 
@@ -578,7 +577,7 @@ class LocationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationQueryRecord
+        return  # osid.mapping.records.LocationQueryRecord
 
 
 class MapQuery:
@@ -629,7 +628,7 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -645,7 +644,7 @@ class MapQuery:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = abc.abstractproperty(fget=get_location_query)
 
@@ -714,7 +713,7 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_path_query(self):
@@ -730,7 +729,7 @@ class MapQuery:
         ``supports_path_query()`` is ``true``.*
 
         """
-        return # osid.mapping.path.PathQuery
+        return  # osid.mapping.path.PathQuery
 
     path_query = abc.abstractproperty(fget=get_path_query)
 
@@ -799,7 +798,7 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_route_query(self):
@@ -815,7 +814,7 @@ class MapQuery:
         ``supports_route_query()`` is ``true``.*
 
         """
-        return # osid.mapping.route.RouteQuery
+        return  # osid.mapping.route.RouteQuery
 
     route_query = abc.abstractproperty(fget=get_route_query)
 
@@ -884,7 +883,7 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_map_query(self):
@@ -900,7 +899,7 @@ class MapQuery:
         ``supports_ancestor_map_query()`` is ``true``.*
 
         """
-        return # osid.mapping.MapQuery
+        return  # osid.mapping.MapQuery
 
     ancestor_map_query = abc.abstractproperty(fget=get_ancestor_map_query)
 
@@ -969,7 +968,7 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_map_query(self):
@@ -985,7 +984,7 @@ class MapQuery:
         ``supports_descendant_map_query()`` is ``true``.*
 
         """
-        return # osid.mapping.MapQuery
+        return  # osid.mapping.MapQuery
 
     descendant_map_query = abc.abstractproperty(fget=get_descendant_map_query)
 
@@ -1032,6 +1031,4 @@ class MapQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapQueryRecord
-
-
+        return  # osid.mapping.records.MapQueryRecord

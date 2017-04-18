@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationReceiver:
     """The authorization receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Authorizations``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_authorizations(self, notification_id, authorization_ids):
@@ -74,7 +70,6 @@ class FunctionReceiver:
     """The function receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Functions``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_functions(self, notification_id, function_ids):
         """The callback for notifications of new functions.
@@ -124,7 +119,6 @@ class FunctionReceiver:
 class QualifierReceiver:
     """The qualifier receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Qualifier`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_qualifiers(self, notification_id, qualifier_ids):
@@ -191,7 +185,6 @@ class VaultReceiver:
     """The vault receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Vault`` objects."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_vaults(self, notification_id, vault_ids):
         """The callback for notifications of new vaults.
@@ -251,5 +244,3 @@ class VaultReceiver:
 
         """
         pass
-
-

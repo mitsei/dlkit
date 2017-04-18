@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RelationshipSearch:
     """The search interface for governing relationship searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_relationships(self, relationship_ids):
@@ -70,13 +66,12 @@ class RelationshipSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipSearchRecord
+        return  # osid.relationship.records.RelationshipSearchRecord
 
 
 class RelationshipSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_relationships(self):
@@ -89,7 +84,7 @@ class RelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     relationships = property(fget=get_relationships)
 
@@ -104,7 +99,7 @@ class RelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQueryInspector
+        return  # osid.relationship.RelationshipQueryInspector
 
     relationship_query_inspector = property(fget=get_relationship_query_inspector)
 
@@ -128,13 +123,12 @@ class RelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipSearchResultsRecord
+        return  # osid.relationship.records.RelationshipSearchResultsRecord
 
 
 class FamilySearch:
     """The search interface for governing family searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_families(self, family_ids):
@@ -182,13 +176,12 @@ class FamilySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilySearchRecord
+        return  # osid.relationship.records.FamilySearchRecord
 
 
 class FamilySearchResults:
     """This interface provides a means to capture results of a search and is used as a vehicle to perform a search within a previous result set."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_families(self):
@@ -201,7 +194,7 @@ class FamilySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     families = property(fget=get_families)
 
@@ -216,7 +209,7 @@ class FamilySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQueryInspector
+        return  # osid.relationship.FamilyQueryInspector
 
     family_query_inspector = property(fget=get_family_query_inspector)
 
@@ -239,6 +232,4 @@ class FamilySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilySearchResultsRecord
-
-
+        return  # osid.relationship.records.FamilySearchResultsRecord

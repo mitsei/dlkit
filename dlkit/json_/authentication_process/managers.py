@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.authentication_process import managers as authentication_process_managers
 
 
-
-
 class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_process_managers.AuthenticationProcessProfile):
     """The ``AuthenticationProcessProfile`` describes the interoperability among authentication process services."""
 
@@ -110,6 +108,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
     trust_types = property(fget=get_trust_types)
 
 
+
+
 class AuthenticationProcessManager(osid_managers.OsidManager, AuthenticationProcessProfile, authentication_process_managers.AuthenticationProcessManager):
     """The authentication process manager provides access to authentication sessions and provides interoperability tests for various aspects of this service.
 
@@ -126,11 +126,10 @@ class AuthenticationProcessManager(osid_managers.OsidManager, AuthenticationProc
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
 
 
 
@@ -152,12 +151,6 @@ class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, Authenti
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-
-
-

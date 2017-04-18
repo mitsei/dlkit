@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AgentSearch:
     """``AgentSearch`` defines the interface for specifying agent search options.
 
@@ -31,7 +28,6 @@ class AgentSearch:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_agents(self, agent_ids):
@@ -78,7 +74,7 @@ class AgentSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentSearchRecord
+        return  # osid.authentication.records.AgentSearchRecord
 
 
 class AgentSearchResults:
@@ -94,7 +90,6 @@ class AgentSearchResults:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agents(self):
         """Gets the agent list resulting from the search.
@@ -106,7 +101,7 @@ class AgentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     agents = property(fget=get_agents)
 
@@ -121,7 +116,7 @@ class AgentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_query_inspector = property(fget=get_agent_query_inspector)
 
@@ -143,13 +138,12 @@ class AgentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentSearchResultsRecord
+        return  # osid.authentication.records.AgentSearchResultsRecord
 
 
 class AgencySearch:
     """The interface for governing agency searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_agencies(self, agency_ids):
@@ -196,13 +190,12 @@ class AgencySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencySearchRecord
+        return  # osid.authentication.records.AgencySearchRecord
 
 
 class AgencySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agencies(self):
@@ -215,7 +208,7 @@ class AgencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     agencies = property(fget=get_agencies)
 
@@ -230,7 +223,7 @@ class AgencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQueryInspector
+        return  # osid.authentication.AgencyQueryInspector
 
     agency_query_inspector = property(fget=get_agency_query_inspector)
 
@@ -252,6 +245,4 @@ class AgencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencySearchResultsRecord
-
-
+        return  # osid.authentication.records.AgencySearchResultsRecord

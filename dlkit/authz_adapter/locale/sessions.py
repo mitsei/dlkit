@@ -15,8 +15,6 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.locale import sessions as abc_locale_sessions
 
 
-
-
 class TranslationSession(abc_locale_sessions.TranslationSession, osid_sessions.OsidSession):
     """Adapts underlying TranslationSession methodswith authorization checks."""
 
@@ -56,6 +54,8 @@ class TranslationSession(abc_locale_sessions.TranslationSession, osid_sessions.O
         raise Unimplemented()
 
 
+
+
 class TranslationAdminSession(abc_locale_sessions.TranslationAdminSession, osid_sessions.OsidSession):
     """Adapts underlying TranslationAdminSession methodswith authorization checks."""
 
@@ -92,6 +92,8 @@ class TranslationAdminSession(abc_locale_sessions.TranslationAdminSession, osid_
     @raise_null_argument
     def remove_translation(self, source_text):
         raise Unimplemented()
+
+
 
 
 class NumericFormattingSession(abc_locale_sessions.NumericFormattingSession, osid_sessions.OsidSession):
@@ -140,6 +142,8 @@ class NumericFormattingSession(abc_locale_sessions.NumericFormattingSession, osi
     @raise_null_argument
     def integer_to_string(self, str_):
         raise Unimplemented()
+
+
 
 
 class CalendarFormattingSession(abc_locale_sessions.CalendarFormattingSession, osid_sessions.OsidSession):
@@ -205,6 +209,8 @@ class CalendarFormattingSession(abc_locale_sessions.CalendarFormattingSession, o
         raise Unimplemented()
 
 
+
+
 class CurrencyFormattingSession(abc_locale_sessions.CurrencyFormattingSession, osid_sessions.OsidSession):
     """Adapts underlying CurrencyFormattingSession methodswith authorization checks."""
 
@@ -232,6 +238,8 @@ class CurrencyFormattingSession(abc_locale_sessions.CurrencyFormattingSession, o
     @raise_null_argument
     def string_to_currency(self, s):
         raise Unimplemented()
+
+
 
 
 class CoordinateFormattingSession(abc_locale_sessions.CoordinateFormattingSession, osid_sessions.OsidSession):
@@ -263,6 +271,8 @@ class CoordinateFormattingSession(abc_locale_sessions.CoordinateFormattingSessio
         raise Unimplemented()
 
 
+
+
 class UnitConversionSession(abc_locale_sessions.UnitConversionSession, osid_sessions.OsidSession):
     """Adapts underlying UnitConversionSession methodswith authorization checks."""
 
@@ -276,6 +286,8 @@ class UnitConversionSession(abc_locale_sessions.UnitConversionSession, osid_sess
     @raise_null_argument
     def convert_units(self, source_units, source_unit_type, target_unit_type):
         raise Unimplemented()
+
+
 
 
 class CurrencyConversionSession(abc_locale_sessions.CurrencyConversionSession, osid_sessions.OsidSession):
@@ -301,6 +313,8 @@ class CurrencyConversionSession(abc_locale_sessions.CurrencyConversionSession, o
     @raise_null_argument
     def convert_currencies(self, source_currency_amounts):
         raise Unimplemented()
+
+
 
 
 class CalendarConversionSession(abc_locale_sessions.CalendarConversionSession, osid_sessions.OsidSession):
@@ -338,6 +352,8 @@ class CalendarConversionSession(abc_locale_sessions.CalendarConversionSession, o
         raise Unimplemented()
 
 
+
+
 class CoordinateConversionSession(abc_locale_sessions.CoordinateConversionSession, osid_sessions.OsidSession):
     """Adapts underlying CoordinateConversionSession methodswith authorization checks."""
 
@@ -361,6 +377,8 @@ class CoordinateConversionSession(abc_locale_sessions.CoordinateConversionSessio
     @raise_null_argument
     def convert_coordinates(self, source_coordinate_list):
         raise Unimplemented()
+
+
 
 
 class SpatialUnitConversionSession(abc_locale_sessions.SpatialUnitConversionSession, osid_sessions.OsidSession):
@@ -388,6 +406,8 @@ class SpatialUnitConversionSession(abc_locale_sessions.SpatialUnitConversionSess
         raise Unimplemented()
 
 
+
+
 class FormatConversionSession(abc_locale_sessions.FormatConversionSession, osid_sessions.OsidSession):
     """Adapts underlying FormatConversionSession methodswith authorization checks."""
 
@@ -411,6 +431,8 @@ class FormatConversionSession(abc_locale_sessions.FormatConversionSession, osid_
     @raise_null_argument
     def convert_formats(self, source_texts):
         raise Unimplemented()
+
+
 
 
 class CalendarInfoSession(abc_locale_sessions.CalendarInfoSession, osid_sessions.OsidSession):
@@ -438,5 +460,3 @@ class CalendarInfoSession(abc_locale_sessions.CalendarInfoSession, osid_sessions
         raise Unimplemented()
 
     time_info = property(fget=get_time_info)
-
-

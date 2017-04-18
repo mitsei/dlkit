@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.assessment_authoring import managers as assessment_authoring_managers
 
 
-
-
 class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring_managers.AssessmentAuthoringProfile):
     """Adapts underlying AssessmentAuthoringProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -43,8 +40,6 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         except AttributeError:
             # need to add version argument
             return self._my_runtime.get_manager(base_package.upper(), provider_impl)
-
-
     def supports_assessment_part_lookup(self):
         # Implemented from azosid template for -
         # osid.assessment_authoring.AssessmentAuthoringProfile.supports_assessment_part_lookup
@@ -130,9 +125,10 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
     sequence_rule_enabler_search_record_types = property(fget=get_sequence_rule_enabler_search_record_types)
 
 
+
+
 class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringProfile, assessment_authoring_managers.AssessmentAuthoringManager):
     """Adapts underlying AssessmentAuthoringManager methodswith authorization checks."""
-
     def __init__(self):
         AssessmentAuthoringProfile.__init__(self)
 
@@ -143,8 +139,6 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('ASSESSMENT_AUTHORING', provider_impl)
         # need to add version argument
-
-
     def get_assessment_part_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -294,9 +288,10 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         return self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id)
 
 
+
+
 class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, AssessmentAuthoringProfile, assessment_authoring_managers.AssessmentAuthoringProxyManager):
     """Adapts underlying AssessmentAuthoringProxyManager methodswith authorization checks."""
-
     def __init__(self):
         AssessmentAuthoringProfile.__init__(self)
 
@@ -307,8 +302,6 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('ASSESSMENT_AUTHORING', provider_impl)
         # need to add version argument
-
-
     @raise_null_argument
     def get_assessment_part_lookup_session(self, proxy):
         # Implemented from azosid template for -
@@ -460,5 +453,3 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
 
     def get_assessment_part_item_design_session_for_bank(self, bank_id, proxy):
         return self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id, proxy)
-
-

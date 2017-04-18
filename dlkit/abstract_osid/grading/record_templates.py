@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class GradeRecord:
     """A record for a ``Grade``.
 
@@ -27,9 +24,6 @@ class GradeRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeQueryRecord:
@@ -42,9 +36,6 @@ class GradeQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeQueryInspectorRecord:
     """A record for a ``GradeQueryInspector``.
 
@@ -53,9 +44,6 @@ class GradeQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeFormRecord:
@@ -68,9 +56,6 @@ class GradeFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeSearchOrderRecord:
     """A record for a ``GradeSearchOrder``.
 
@@ -79,9 +64,6 @@ class GradeSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeSystemRecord:
@@ -94,9 +76,6 @@ class GradeSystemRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeSystemQueryRecord:
     """A record for a ``GradeSystemQuery``.
 
@@ -105,9 +84,6 @@ class GradeSystemQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeSystemQueryInspectorRecord:
@@ -120,9 +96,6 @@ class GradeSystemQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeSystemFormRecord:
     """A record for a ``GradeSystemForm``.
 
@@ -131,9 +104,6 @@ class GradeSystemFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeSystemSearchOrderRecord:
@@ -146,9 +116,6 @@ class GradeSystemSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeSystemSearchRecord:
     """A record for a ``GradeSystemSearch``.
 
@@ -157,9 +124,6 @@ class GradeSystemSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeSystemSearchResultsRecord:
@@ -172,9 +136,6 @@ class GradeSystemSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeEntryRecord:
     """A record for a ``GradeEntry``.
 
@@ -183,9 +144,6 @@ class GradeEntryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeEntryQueryRecord:
@@ -198,9 +156,6 @@ class GradeEntryQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeEntryQueryInspectorRecord:
     """A record for a ``GradeEntryQueryInspector``.
 
@@ -209,9 +164,6 @@ class GradeEntryQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeEntryFormRecord:
@@ -224,9 +176,6 @@ class GradeEntryFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeEntrySearchOrderRecord:
     """A record for a ``GradeEntrySearchOrder``.
 
@@ -235,9 +184,6 @@ class GradeEntrySearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradeEntrySearchRecord:
@@ -250,9 +196,6 @@ class GradeEntrySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradeEntrySearchResultsRecord:
     """A record for a ``GradeEntrySearchResults``.
 
@@ -261,9 +204,6 @@ class GradeEntrySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnRecord:
@@ -276,9 +216,6 @@ class GradebookColumnRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookColumnQueryRecord:
     """A record for a ``GradebookColumnQuery``.
 
@@ -287,9 +224,6 @@ class GradebookColumnQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnQueryInspectorRecord:
@@ -302,9 +236,6 @@ class GradebookColumnQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookColumnFormRecord:
     """A record for a ``GradebookColumnForm``.
 
@@ -313,9 +244,6 @@ class GradebookColumnFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnSearchOrderRecord:
@@ -328,9 +256,6 @@ class GradebookColumnSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookColumnSearchRecord:
     """A record for a ``GradebookColumnSearch``.
 
@@ -339,9 +264,6 @@ class GradebookColumnSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnSearchResultsRecord:
@@ -354,9 +276,6 @@ class GradebookColumnSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookColumnSummaryRecord:
     """A record for a ``GradebookColumnSummary``.
 
@@ -365,9 +284,6 @@ class GradebookColumnSummaryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnSummaryQueryRecord:
@@ -380,9 +296,6 @@ class GradebookColumnSummaryQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookColumnSummaryQueryInspectorRecord:
     """A record for a ``GradebookColumnSummaryQueryInspector``.
 
@@ -391,9 +304,6 @@ class GradebookColumnSummaryQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookColumnSummarySearchOrderRecord:
@@ -406,9 +316,6 @@ class GradebookColumnSummarySearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookRecord:
     """A record for a ``Gradebook``.
 
@@ -417,9 +324,6 @@ class GradebookRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookQueryRecord:
@@ -432,9 +336,6 @@ class GradebookQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookQueryInspectorRecord:
     """A record for a ``GradebookQueryInspector``.
 
@@ -443,9 +344,6 @@ class GradebookQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookFormRecord:
@@ -458,9 +356,6 @@ class GradebookFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookSearchOrderRecord:
     """A record for a ``GradebookSearchOrder``.
 
@@ -469,9 +364,6 @@ class GradebookSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class GradebookSearchRecord:
@@ -484,9 +376,6 @@ class GradebookSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class GradebookSearchResultsRecord:
     """A record for a ``GradebookSearchResults``.
 
@@ -495,8 +384,3 @@ class GradebookSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

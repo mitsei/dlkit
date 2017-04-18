@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RelationshipProfile:
     """The relationship profile describes the interoperability among relationship services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -40,7 +36,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_lookup(self):
@@ -53,7 +49,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_query(self):
@@ -66,7 +62,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_search(self):
@@ -79,7 +75,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_admin(self):
@@ -92,7 +88,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_notification(self):
@@ -105,7 +101,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_family(self):
@@ -118,7 +114,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_family_assignment(self):
@@ -134,7 +130,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_smart_family(self):
@@ -147,7 +143,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_lookup(self):
@@ -160,7 +156,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_query(self):
@@ -173,7 +169,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_search(self):
@@ -186,7 +182,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_admin(self):
@@ -199,7 +195,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_notification(self):
@@ -212,7 +208,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_hierarchy(self):
@@ -226,7 +222,7 @@ class RelationshipProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_family_hierarchy_design(self):
@@ -239,7 +235,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_batch(self):
@@ -252,7 +248,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_relationship_rules(self):
@@ -265,7 +261,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_record_types(self):
@@ -278,7 +274,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     relationship_record_types = property(fget=get_relationship_record_types)
 
@@ -295,7 +291,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_search_record_types(self):
@@ -308,7 +304,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     relationship_search_record_types = property(fget=get_relationship_search_record_types)
 
@@ -325,7 +321,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_record_types(self):
@@ -338,7 +334,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     family_record_types = property(fget=get_family_record_types)
 
@@ -355,7 +351,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_search_record_types(self):
@@ -368,7 +364,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     family_search_record_types = property(fget=get_family_search_record_types)
 
@@ -385,7 +381,7 @@ class RelationshipProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class RelationshipManager:
@@ -419,10 +415,8 @@ class RelationshipManager:
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_relationship_lookup_session(self):
@@ -437,7 +431,7 @@ class RelationshipManager:
         ``supports_relationship_lookup()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipLookupSession
+        return  # osid.relationship.RelationshipLookupSession
 
     relationship_lookup_session = property(fget=get_relationship_lookup_session)
 
@@ -459,7 +453,7 @@ class RelationshipManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipLookupSession
+        return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
     def get_relationship_query_session(self):
@@ -474,7 +468,7 @@ class RelationshipManager:
         ``supports_relationship_query()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipQuerySession
+        return  # osid.relationship.RelationshipQuerySession
 
     relationship_query_session = property(fget=get_relationship_query_session)
 
@@ -496,7 +490,7 @@ class RelationshipManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipQuerySession
+        return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
     def get_relationship_search_session(self):
@@ -511,7 +505,7 @@ class RelationshipManager:
         ``supports_relationship_search()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipSearchSession
+        return  # osid.relationship.RelationshipSearchSession
 
     relationship_search_session = property(fget=get_relationship_search_session)
 
@@ -533,7 +527,7 @@ class RelationshipManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipSearchSession
+        return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
     def get_relationship_admin_session(self):
@@ -548,7 +542,7 @@ class RelationshipManager:
         ``supports_relationship_admin()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipAdminSession
+        return  # osid.relationship.RelationshipAdminSession
 
     relationship_admin_session = property(fget=get_relationship_admin_session)
 
@@ -570,7 +564,7 @@ class RelationshipManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipAdminSession
+        return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
     def get_relationship_notification_session(self, relationship_receiver):
@@ -588,7 +582,7 @@ class RelationshipManager:
         ``supports_relationship_notification()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipNotificationSession
+        return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
     def get_relationship_notification_session_for_family(self, relationship_receiver, family_id):
@@ -610,7 +604,7 @@ class RelationshipManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipNotificationSession
+        return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
     def get_relationship_family_session(self):
@@ -625,7 +619,7 @@ class RelationshipManager:
         ``supports_relationship_family()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipFamilySession
+        return  # osid.relationship.RelationshipFamilySession
 
     relationship_family_session = property(fget=get_relationship_family_session)
 
@@ -642,7 +636,7 @@ class RelationshipManager:
         ``supports_relationship_family_assignment()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipFamilyAssignmentSession
+        return  # osid.relationship.RelationshipFamilyAssignmentSession
 
     relationship_family_assignment_session = property(fget=get_relationship_family_assignment_session)
 
@@ -663,7 +657,7 @@ class RelationshipManager:
         ``supports_relationship_smart_family()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipSmartFamilySession
+        return  # osid.relationship.RelationshipSmartFamilySession
 
     @abc.abstractmethod
     def get_family_lookup_session(self):
@@ -678,7 +672,7 @@ class RelationshipManager:
         ``supports_family_lookup()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyLookupSession
+        return  # osid.relationship.FamilyLookupSession
 
     family_lookup_session = property(fget=get_family_lookup_session)
 
@@ -695,7 +689,7 @@ class RelationshipManager:
         ``supports_family_query()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyQuerySession
+        return  # osid.relationship.FamilyQuerySession
 
     family_query_session = property(fget=get_family_query_session)
 
@@ -712,7 +706,7 @@ class RelationshipManager:
         ``supports_family_search()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilySearchSession
+        return  # osid.relationship.FamilySearchSession
 
     family_search_session = property(fget=get_family_search_session)
 
@@ -729,7 +723,7 @@ class RelationshipManager:
         ``supports_family_admin()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyAdminSession
+        return  # osid.relationship.FamilyAdminSession
 
     family_admin_session = property(fget=get_family_admin_session)
 
@@ -749,7 +743,7 @@ class RelationshipManager:
         ``supports_family_notification()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyNotificationSession
+        return  # osid.relationship.FamilyNotificationSession
 
     @abc.abstractmethod
     def get_family_hierarchy_session(self):
@@ -764,7 +758,7 @@ class RelationshipManager:
         ``supports_family_hierarchy()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyHierarchySession
+        return  # osid.relationship.FamilyHierarchySession
 
     family_hierarchy_session = property(fget=get_family_hierarchy_session)
 
@@ -781,7 +775,7 @@ class RelationshipManager:
         ``supports_family_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyHierarchyDesignSession
+        return  # osid.relationship.FamilyHierarchyDesignSession
 
     family_hierarchy_design_session = property(fget=get_family_hierarchy_design_session)
 
@@ -798,7 +792,7 @@ class RelationshipManager:
         ``supports_relationship_batch()`` is ``true``.*
 
         """
-        return # osid.relationship.batch.RelationshipBatchManager
+        return  # osid.relationship.batch.RelationshipBatchManager
 
     relationship_batch_manager = property(fget=get_relationship_batch_manager)
 
@@ -815,7 +809,7 @@ class RelationshipManager:
         ``supports_relationship_rules()`` is ``true``.*
 
         """
-        return # osid.relationship.rules.RelationshipRulesManager
+        return  # osid.relationship.rules.RelationshipRulesManager
 
     relationship_rules_manager = property(fget=get_relationship_rules_manager)
 
@@ -852,10 +846,8 @@ class RelationshipProxyManager:
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_relationship_lookup_session(self, proxy):
@@ -873,7 +865,7 @@ class RelationshipProxyManager:
         ``supports_relationship_lookup()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipLookupSession
+        return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
     def get_relationship_lookup_session_for_family(self, family_id, proxy):
@@ -895,7 +887,7 @@ class RelationshipProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipLookupSession
+        return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
     def get_relationship_query_session(self, proxy):
@@ -913,7 +905,7 @@ class RelationshipProxyManager:
         ``supports_relationship_query()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipQuerySession
+        return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
     def get_relationship_query_session_for_family(self, family_id, proxy):
@@ -935,7 +927,7 @@ class RelationshipProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipQuerySession
+        return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
     def get_relationship_search_session(self, proxy):
@@ -953,7 +945,7 @@ class RelationshipProxyManager:
         ``supports_relationship_search()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipSearchSession
+        return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
     def get_relationship_search_session_for_family(self, family_id, proxy):
@@ -975,7 +967,7 @@ class RelationshipProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipSearchSession
+        return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
     def get_relationship_admin_session(self, proxy):
@@ -993,7 +985,7 @@ class RelationshipProxyManager:
         ``supports_relationship_admin()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipAdminSession
+        return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
     def get_relationship_admin_session_for_family(self, family_id, proxy):
@@ -1015,7 +1007,7 @@ class RelationshipProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipAdminSession
+        return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
     def get_relationship_notification_session(self, relationship_receiver, proxy):
@@ -1035,7 +1027,7 @@ class RelationshipProxyManager:
         ``supports_relationship_notification()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipNotificationSession
+        return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
     def get_relationship_notification_session_for_family(self, relationship_receiver, family_id, proxy):
@@ -1059,7 +1051,7 @@ class RelationshipProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.relationship.RelationshipNotificationSession
+        return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
     def get_relationship_family_session(self, proxy):
@@ -1077,7 +1069,7 @@ class RelationshipProxyManager:
         ``supports_relationship_family()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipFamilySession
+        return  # osid.relationship.RelationshipFamilySession
 
     @abc.abstractmethod
     def get_relationship_family_assignment_session(self, proxy):
@@ -1095,7 +1087,7 @@ class RelationshipProxyManager:
         ``supports_relationship_family_assignment()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipFamilyAssignmentSession
+        return  # osid.relationship.RelationshipFamilyAssignmentSession
 
     @abc.abstractmethod
     def get_relationship_smart_family_session(self, family_id, proxy):
@@ -1116,7 +1108,7 @@ class RelationshipProxyManager:
         ``supports_relationship_smart_family()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipSmartFamilySession
+        return  # osid.relationship.RelationshipSmartFamilySession
 
     @abc.abstractmethod
     def get_family_lookup_session(self, proxy):
@@ -1134,7 +1126,7 @@ class RelationshipProxyManager:
         ``supports_family_lookup()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyLookupSession
+        return  # osid.relationship.FamilyLookupSession
 
     @abc.abstractmethod
     def get_family_query_session(self, proxy):
@@ -1152,7 +1144,7 @@ class RelationshipProxyManager:
         ``supports_famil_query()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyQuerySession
+        return  # osid.relationship.FamilyQuerySession
 
     @abc.abstractmethod
     def get_family_search_session(self, proxy):
@@ -1170,7 +1162,7 @@ class RelationshipProxyManager:
         ``supports_family_search()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilySearchSession
+        return  # osid.relationship.FamilySearchSession
 
     @abc.abstractmethod
     def get_family_admin_session(self, proxy):
@@ -1188,7 +1180,7 @@ class RelationshipProxyManager:
         ``supports_family_admin()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyAdminSession
+        return  # osid.relationship.FamilyAdminSession
 
     @abc.abstractmethod
     def get_family_notification_session(self, family_receiver, proxy):
@@ -1208,7 +1200,7 @@ class RelationshipProxyManager:
         ``supports_family_notification()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyNotificationSession
+        return  # osid.relationship.FamilyNotificationSession
 
     @abc.abstractmethod
     def get_family_hierarchy_session(self, proxy):
@@ -1226,7 +1218,7 @@ class RelationshipProxyManager:
         ``supports_family_hierarchy()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyHierarchySession
+        return  # osid.relationship.FamilyHierarchySession
 
     @abc.abstractmethod
     def get_family_hierarchy_design_session(self, proxy):
@@ -1244,7 +1236,7 @@ class RelationshipProxyManager:
         ``supports_family_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.relationship.FamilyHierarchyDesignSession
+        return  # osid.relationship.FamilyHierarchyDesignSession
 
     @abc.abstractmethod
     def get_relationship_batch_proxy_manager(self):
@@ -1259,7 +1251,7 @@ class RelationshipProxyManager:
         ``supports_relationship_rules()`` is ``true``.*
 
         """
-        return # osid.relationship.batch.RelationshipBatchProxyManager
+        return  # osid.relationship.batch.RelationshipBatchProxyManager
 
     relationship_batch_proxy_manager = property(fget=get_relationship_batch_proxy_manager)
 
@@ -1276,8 +1268,6 @@ class RelationshipProxyManager:
         ``supports_relationship_rules()`` is ``true``.*
 
         """
-        return # osid.relationship.rules.RelationshipRulesProxyManager
+        return  # osid.relationship.rules.RelationshipRulesProxyManager
 
     relationship_rules_proxy_manager = property(fget=get_relationship_rules_proxy_manager)
-
-

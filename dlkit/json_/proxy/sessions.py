@@ -19,19 +19,15 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.proxy import sessions as abc_proxy_sessions
 
 
-
-
 class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
     """This session converts external data into a proxy for use in OSID proxy managers.
 
     The external data is specified in the form of a ``ProxyCondition``.
 
     """
-
     def __init__(self, proxy=None, runtime=None):
         self._proxy = proxy
         self._runtime = runtime
-
     def get_proxy_condition(self):
         """Gets a proxy condition for acquiring a proxy.
 
@@ -67,5 +63,3 @@ class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
         # Also need to deal with effective dates and Local
         return rules.Proxy(authentication=authentication,
                            effective_agent_id=effective_agent_id)
-
-

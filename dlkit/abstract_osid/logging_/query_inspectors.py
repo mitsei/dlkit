@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LogEntryQueryInspector:
     """This is the query inspector for examining log entry queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_priority_terms(self):
@@ -35,7 +31,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     priority_terms = property(fget=get_priority_terms)
 
@@ -50,7 +46,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     minimum_priority_terms = property(fget=get_minimum_priority_terms)
 
@@ -65,7 +61,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     timestamp_terms = property(fget=get_timestamp_terms)
 
@@ -80,7 +76,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -95,7 +91,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -110,7 +106,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agent_id_terms = property(fget=get_agent_id_terms)
 
@@ -125,7 +121,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_terms = property(fget=get_agent_terms)
 
@@ -140,7 +136,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     log_id_terms = property(fget=get_log_id_terms)
 
@@ -155,7 +151,7 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQueryInspector
+        return  # osid.logging.LogQueryInspector
 
     log_terms = property(fget=get_log_terms)
 
@@ -174,13 +170,12 @@ class LogEntryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntryQueryInspectorRecord
+        return  # osid.logging.records.LogEntryQueryInspectorRecord
 
 
 class LogQueryInspector:
     """This is the query inspector for examining log queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_entry_id_terms(self):
@@ -193,7 +188,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     log_entry_id_terms = property(fget=get_log_entry_id_terms)
 
@@ -208,7 +203,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQueryInspector
+        return  # osid.logging.LogEntryQueryInspector
 
     log_entry_terms = property(fget=get_log_entry_terms)
 
@@ -223,7 +218,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_log_id_terms = property(fget=get_ancestor_log_id_terms)
 
@@ -238,7 +233,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQueryInspector
+        return  # osid.logging.LogQueryInspector
 
     ancestor_log_terms = property(fget=get_ancestor_log_terms)
 
@@ -253,7 +248,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_log_id_terms = property(fget=get_descendant_log_id_terms)
 
@@ -268,7 +263,7 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQueryInspector
+        return  # osid.logging.LogQueryInspector
 
     descendant_log_terms = property(fget=get_descendant_log_terms)
 
@@ -287,6 +282,4 @@ class LogQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogQueryInspectorRecord
-
-
+        return  # osid.logging.records.LogQueryInspectorRecord

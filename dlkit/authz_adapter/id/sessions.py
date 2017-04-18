@@ -15,8 +15,6 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.id import sessions as abc_id_sessions
 
 
-
-
 class IdLookupSession(abc_id_sessions.IdLookupSession, osid_sessions.OsidSession):
     """Adapts underlying IdLookupSession methodswith authorization checks."""
 
@@ -63,6 +61,8 @@ class IdLookupSession(abc_id_sessions.IdLookupSession, osid_sessions.OsidSession
         raise Unimplemented()
 
 
+
+
 class IdIssueSession(abc_id_sessions.IdIssueSession, osid_sessions.OsidSession):
     """Adapts underlying IdIssueSession methodswith authorization checks."""
 
@@ -71,6 +71,8 @@ class IdIssueSession(abc_id_sessions.IdIssueSession, osid_sessions.OsidSession):
 
     def issue_id(self):
         raise Unimplemented()
+
+
 
 
 class IdAdminSession(abc_id_sessions.IdAdminSession, osid_sessions.OsidSession):
@@ -98,5 +100,3 @@ class IdAdminSession(abc_id_sessions.IdAdminSession, osid_sessions.OsidSession):
     @raise_null_argument
     def remove_alias(self, primary_id, equivalent_id):
         raise Unimplemented()
-
-

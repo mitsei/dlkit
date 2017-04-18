@@ -29,8 +29,6 @@ from dlkit.abstract_osid.resource import objects as abc_resource_objects
 from dlkit.primordium.id.primitives import Id
 
 
-
-
 class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
     """A ``Resource`` represents an arbitrary entity.
 
@@ -46,14 +44,11 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
     one of the group sessions available in this OSID.
 
     """
-
     _namespace = 'resource.Resource'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='RESOURCE', **kwargs)
         self._catalog_name = 'Bin'
-
-
     def is_group(self):
         """Tests if this resource is a group.
 
@@ -161,6 +156,8 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
     object_map = property(fget=get_object_map)
 
 
+
+
 class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Resources``.
 
@@ -174,7 +171,6 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
     if it is possible to convert a resource to a group and vice-versa.
 
     """
-
     _namespace = 'resource.Resource'
 
     def __init__(self, **kwargs):
@@ -196,8 +192,6 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         self._my_map['assignedBinIds'] = [str(kwargs['bin_id'])]
         self._my_map['group'] = self._group_default
         self._my_map['avatarId'] = self._avatar_default
-
-
     def get_group_metadata(self):
         """Gets the metadata for a group.
 
@@ -311,6 +305,8 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         return self._get_record(resource_record_type)
 
 
+
+
 class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ResourceList`` provides a means for accessing ``Resource`` elements sequentially either one at a time or many at a time.
 
@@ -321,8 +317,6 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
       while (rl.hasNext()) {
            Resource[] resources = rl.getNextResources(rl.available());
       }
-
-
 
     """
 
@@ -363,6 +357,8 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
+
+
 
 
 class ResourceNode(abc_resource_objects.ResourceNode, osid_objects.OsidNode):
@@ -411,6 +407,8 @@ class ResourceNode(abc_resource_objects.ResourceNode, osid_objects.OsidNode):
     child_resource_nodes = property(fget=get_child_resource_nodes)
 
 
+
+
 class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ResourceNodeList`` provides a means for accessing ``ResourceNode`` elements sequentially either one at a time or many at a time.
 
@@ -421,8 +419,6 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
       while rnl.hasNext()) {
            ResourceNode[] nodes = rnl.getNextResourceNodes(rnl.available());
       }
-
-
 
     """
 
@@ -465,14 +461,14 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
         return self._get_next_n(n)
 
 
+
+
 class Bin(abc_resource_objects.Bin, osid_objects.OsidCatalog):
     """An inventory defines a collection of resources."""
-
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='BIN', **kwargs)
-
     @utilities.arguments_not_none
     def get_bin_record(self, bin_record_type):
         """Gets the bin record corresponding to the given ``Bin`` record ``Type``.
@@ -495,6 +491,8 @@ class Bin(abc_resource_objects.Bin, osid_objects.OsidCatalog):
         raise errors.Unimplemented()
 
 
+
+
 class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating bins.
 
@@ -504,7 +502,6 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     provide display hints or data constraints.
 
     """
-
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
@@ -521,8 +518,6 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
-
-
     @utilities.arguments_not_none
     def get_bin_form_record(self, bin_record_type):
         """Gets the ``BinFormRecord`` corresponding to the given bin record ``Type``.
@@ -540,6 +535,8 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
         raise errors.Unimplemented()
 
 
+
+
 class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``BinList`` provides a means for accessing ``Bin`` elements sequentially either one at a time or many at a time.
 
@@ -549,8 +546,6 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
       while (bl.hasNext()) {
            Bin[] bins = bl.getNextBins(bl.available());
       }
-
-
 
     """
 
@@ -591,6 +586,8 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -599,7 +596,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
     ``BinHierarchySession``.
 
     """
-
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -616,7 +612,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
         for bin_node in self.get_child_bin_nodes():
             node_map['childNodes'].append(bin_node.get_object_node_map())
         return node_map
-
     def get_bin(self):
         """Gets the ``Bin`` at this node.
 
@@ -668,6 +663,8 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
     child_bin_nodes = property(fget=get_child_bin_nodes)
 
 
+
+
 class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``BinNodeList`` provides a means for accessing ``BinNode`` elements sequentially either one at a time or many at a time.
 
@@ -678,8 +675,6 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
       while (bnl.hasNext()) {
            BinNode[] nodes = bnl.getNextBinNodes(bnl.available());
       }
-
-
 
     """
 
@@ -720,5 +715,3 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

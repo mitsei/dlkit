@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -66,7 +65,7 @@ class LocationSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationSearchRecord
+        return  # osid.mapping.records.LocationSearchRecord
 
 
 class LocationSearchResults:
@@ -84,7 +83,7 @@ class LocationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     locations = abc.abstractproperty(fget=get_locations)
 
@@ -99,7 +98,7 @@ class LocationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_query_inspector = abc.abstractproperty(fget=get_location_query_inspector)
 
@@ -121,7 +120,7 @@ class LocationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationSearchResultsRecord
+        return  # osid.mapping.records.LocationSearchResultsRecord
 
 
 class MapSearch:
@@ -174,7 +173,7 @@ class MapSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapSearchRecord
+        return  # osid.mapping.records.MapSearchRecord
 
 
 class MapSearchResults:
@@ -192,7 +191,7 @@ class MapSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     maps = abc.abstractproperty(fget=get_maps)
 
@@ -207,7 +206,7 @@ class MapSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQueryInspector
+        return  # osid.mapping.MapQueryInspector
 
     map_query_inspector = abc.abstractproperty(fget=get_map_query_inspector)
 
@@ -230,6 +229,4 @@ class MapSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapSearchResultsRecord
-
-
+        return  # osid.mapping.records.MapSearchResultsRecord

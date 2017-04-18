@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.commenting import records as abc_commenting_records
 
 
-
-
 class CommentRecord(abc_commenting_records.CommentRecord, osid_records.OsidRecord):
     """A record for a ``Comment``.
 
@@ -25,6 +23,8 @@ class CommentRecord(abc_commenting_records.CommentRecord, osid_records.OsidRecor
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class CommentQueryRecord(abc_commenting_records.CommentQueryRecord, osid_records
 
 
 
+
+
 class CommentFormRecord(abc_commenting_records.CommentFormRecord, osid_records.OsidRecord):
     """A record for a ``CommentForm``.
 
@@ -47,6 +49,8 @@ class CommentFormRecord(abc_commenting_records.CommentFormRecord, osid_records.O
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class CommentSearchRecord(abc_commenting_records.CommentSearchRecord, osid_recor
 
 
 
+
+
 class BookRecord(abc_commenting_records.BookRecord, osid_records.OsidRecord):
     """A record for a ``Book``.
 
@@ -69,6 +75,8 @@ class BookRecord(abc_commenting_records.BookRecord, osid_records.OsidRecord):
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class BookQueryRecord(abc_commenting_records.BookQueryRecord, osid_records.OsidR
 
 
 
+
+
 class BookFormRecord(abc_commenting_records.BookFormRecord, osid_records.OsidRecord):
     """A record for a ``BookForm``.
 
@@ -95,6 +105,8 @@ class BookFormRecord(abc_commenting_records.BookFormRecord, osid_records.OsidRec
 
 
 
+
+
 class BookSearchRecord(abc_commenting_records.BookSearchRecord, osid_records.OsidRecord):
     """A record for a ``BookSearch``.
 
@@ -102,7 +114,3 @@ class BookSearchRecord(abc_commenting_records.BookSearchRecord, osid_records.Osi
     underlying object.
 
     """
-
-
-
-

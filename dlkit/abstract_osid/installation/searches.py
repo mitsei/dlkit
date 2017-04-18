@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class PackageSearch:
@@ -70,7 +65,7 @@ class PackageSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageSearchRecord
+        return  # osid.installation.records.PackageSearchRecord
 
 
 class PackageSearchResults:
@@ -88,7 +83,7 @@ class PackageSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     packages = property(fget=get_packages)
 
@@ -103,7 +98,7 @@ class PackageSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     package_query_inspector = property(fget=get_package_query_inspector)
 
@@ -125,7 +120,7 @@ class PackageSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageSearchResultsRecord
+        return  # osid.installation.records.PackageSearchResultsRecord
 
 
 class DepotSearch:
@@ -177,7 +172,7 @@ class DepotSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotSearchRecord
+        return  # osid.installation.records.DepotSearchRecord
 
 
 class DepotSearchResults:
@@ -195,7 +190,7 @@ class DepotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     depots = property(fget=get_depots)
 
@@ -210,7 +205,7 @@ class DepotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQueryInspector
+        return  # osid.installation.DepotQueryInspector
 
     depot_query_inspector = property(fget=get_depot_query_inspector)
 
@@ -232,7 +227,7 @@ class DepotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotSearchResultsRecord
+        return  # osid.installation.records.DepotSearchResultsRecord
 
 
 class InstallationSearch:
@@ -284,7 +279,7 @@ class InstallationSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationSearchRecord
+        return  # osid.installation.records.InstallationSearchRecord
 
 
 class InstallationSearchResults:
@@ -302,7 +297,7 @@ class InstallationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     installations = property(fget=get_installations)
 
@@ -317,7 +312,7 @@ class InstallationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationQueryInspector
+        return  # osid.installation.InstallationQueryInspector
 
     installation_query_inspector = property(fget=get_installation_query_inspector)
 
@@ -339,6 +334,4 @@ class InstallationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationSearchResultsRecord
-
-
+        return  # osid.installation.records.InstallationSearchResultsRecord

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class HierarchySearch:
     """``HierarchySearch`` defines the interface for specifying hierarchy search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_hierarchies(self, hierarchy_ids):
@@ -69,13 +65,12 @@ class HierarchySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchySearchRecord
+        return  # osid.hierarchy.records.HierarchySearchRecord
 
 
 class HierarchySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchies(self):
@@ -88,7 +83,7 @@ class HierarchySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     hierarchies = property(fget=get_hierarchies)
 
@@ -103,7 +98,7 @@ class HierarchySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyQueryInspector
+        return  # osid.hierarchy.HierarchyQueryInspector
 
     hierarchy_query_inspector = property(fget=get_hierarchy_query_inspector)
 
@@ -125,6 +120,4 @@ class HierarchySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchySearchResultsRecord
-
-
+        return  # osid.hierarchy.records.HierarchySearchResultsRecord

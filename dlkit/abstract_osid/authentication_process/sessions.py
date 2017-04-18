@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AuthenticationAcquisitionSession:
     """This session acquires authentication credentials.
 
@@ -29,7 +26,6 @@ class AuthenticationAcquisitionSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authentication(self):
@@ -47,7 +43,7 @@ class AuthenticationAcquisitionSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authentication.process.Authentication
+        return  # osid.authentication.process.Authentication
 
     authentication = property(fget=get_authentication)
 
@@ -67,7 +63,6 @@ class AuthenticationValidationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_authentication_input(self):
         """Gets an interface for authentication input.
@@ -79,7 +74,7 @@ class AuthenticationValidationSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authentication.process.AuthenticationInput
+        return  # osid.authentication.process.AuthenticationInput
 
     authentication_input = property(fget=get_authentication_input)
 
@@ -99,7 +94,7 @@ class AuthenticationValidationSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authentication.process.Authentication
+        return  # osid.authentication.process.Authentication
 
     @abc.abstractmethod
     def get_challenge_data(self, input_):
@@ -120,7 +115,7 @@ class AuthenticationValidationSession:
         ``true``.*
 
         """
-        return # osid.authentication.process.Challenge
+        return  # osid.authentication.process.Challenge
 
 
 class TrustLookupSession:
@@ -162,7 +157,6 @@ class TrustLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -174,7 +168,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -190,7 +184,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -211,7 +205,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_trust_view(self):
@@ -290,7 +284,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     @abc.abstractmethod
     def get_trusts_by_ids(self, trust_ids):
@@ -316,7 +310,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
     def get_trusts_by_genus_type(self, trust_genus_type):
@@ -337,7 +331,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
     def get_trusts_by_parent_genus_type(self, trust_genus_type):
@@ -358,7 +352,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
     def get_trusts_by_record_type(self, trust_record_type):
@@ -379,7 +373,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
     def get_circle_of_trust(self, trust_id):
@@ -401,7 +395,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
     def get_trusts(self):
@@ -419,7 +413,7 @@ class TrustLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.TrustList
+        return  # osid.authentication.process.TrustList
 
     trusts = property(fget=get_trusts)
 
@@ -427,7 +421,6 @@ class TrustLookupSession:
 class CircleOfTrustSession:
     """This session examines the relationship between ``Agents`` and ``Trusts``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_id(self):
@@ -440,7 +433,7 @@ class CircleOfTrustSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -456,7 +449,7 @@ class CircleOfTrustSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -477,7 +470,7 @@ class CircleOfTrustSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_agency_view(self):
@@ -526,7 +519,7 @@ class CircleOfTrustSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     @abc.abstractmethod
     def is_in_circle(self, agent_id):
@@ -543,6 +536,4 @@ class CircleOfTrustSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
-
-
+        return  # boolean

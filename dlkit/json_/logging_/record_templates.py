@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.logging_ import records as abc_logging_records
 
 
-
-
 class LogEntryRecord(abc_logging_records.LogEntryRecord, osid_records.OsidRecord):
     """A record for a ``LogEntry``.
 
@@ -25,6 +23,8 @@ class LogEntryRecord(abc_logging_records.LogEntryRecord, osid_records.OsidRecord
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class LogEntryQueryRecord(abc_logging_records.LogEntryQueryRecord, osid_records.
 
 
 
+
+
 class LogEntryFormRecord(abc_logging_records.LogEntryFormRecord, osid_records.OsidRecord):
     """A record for a ``LogEntryForm``.
 
@@ -47,6 +49,8 @@ class LogEntryFormRecord(abc_logging_records.LogEntryFormRecord, osid_records.Os
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class LogEntrySearchRecord(abc_logging_records.LogEntrySearchRecord, osid_record
 
 
 
+
+
 class LogRecord(abc_logging_records.LogRecord, osid_records.OsidRecord):
     """A record for a ``Log``.
 
@@ -69,6 +75,8 @@ class LogRecord(abc_logging_records.LogRecord, osid_records.OsidRecord):
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class LogQueryRecord(abc_logging_records.LogQueryRecord, osid_records.OsidRecord
 
 
 
+
+
 class LogFormRecord(abc_logging_records.LogFormRecord, osid_records.OsidRecord):
     """A record for a ``LogForm``.
 
@@ -95,6 +105,8 @@ class LogFormRecord(abc_logging_records.LogFormRecord, osid_records.OsidRecord):
 
 
 
+
+
 class LogSearchRecord(abc_logging_records.LogSearchRecord, osid_records.OsidRecord):
     """A record for a ``LogSearch``.
 
@@ -102,7 +114,3 @@ class LogSearchRecord(abc_logging_records.LogSearchRecord, osid_records.OsidReco
     underlying object.
 
     """
-
-
-
-

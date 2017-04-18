@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Resource:
     """A ``Resource`` represents an arbitrary entity.
 
@@ -36,7 +33,6 @@ class Resource:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def is_group(self):
         """Tests if this resource is a group.
@@ -50,7 +46,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_demographic(self):
@@ -66,7 +62,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_avatar(self):
@@ -79,7 +75,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_avatar_id(self):
@@ -92,7 +88,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     avatar_id = property(fget=get_avatar_id)
 
@@ -108,7 +104,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
     avatar = property(fget=get_avatar)
 
@@ -133,7 +129,7 @@ class Resource:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRecord
+        return  # osid.resource.records.ResourceRecord
 
 
 class ResourceForm:
@@ -151,7 +147,6 @@ class ResourceForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_group_metadata(self):
         """Gets the metadata for a group.
@@ -163,7 +158,7 @@ class ResourceForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     group_metadata = property(fget=get_group_metadata)
 
@@ -205,7 +200,7 @@ class ResourceForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     avatar_metadata = property(fget=get_avatar_metadata)
 
@@ -251,7 +246,7 @@ class ResourceForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceFormRecord
+        return  # osid.resource.records.ResourceFormRecord
 
 
 class ResourceList:
@@ -265,11 +260,8 @@ class ResourceList:
            Resource[] resources = rl.getNextResources(rl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_resource(self):
@@ -283,7 +275,7 @@ class ResourceList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     next_resource = property(fget=get_next_resource)
 
@@ -301,7 +293,7 @@ class ResourceList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
 
 class ResourceNode:
@@ -314,7 +306,6 @@ class ResourceNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_resource(self):
         """Gets the ``Resource`` at this node.
@@ -326,7 +317,7 @@ class ResourceNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = property(fget=get_resource)
 
@@ -341,7 +332,7 @@ class ResourceNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceNodeList
+        return  # osid.resource.ResourceNodeList
 
     parent_resource_nodes = property(fget=get_parent_resource_nodes)
 
@@ -356,7 +347,7 @@ class ResourceNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceNodeList
+        return  # osid.resource.ResourceNodeList
 
     child_resource_nodes = property(fget=get_child_resource_nodes)
 
@@ -372,11 +363,8 @@ class ResourceNodeList:
            ResourceNode[] nodes = rnl.getNextResourceNodes(rnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_resource_node(self):
@@ -390,7 +378,7 @@ class ResourceNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceNode
+        return  # osid.resource.ResourceNode
 
     next_resource_node = property(fget=get_next_resource_node)
 
@@ -408,13 +396,12 @@ class ResourceNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceNode
+        return  # osid.resource.ResourceNode
 
 
 class ResourceRelationship:
     """``ResourceRelationship`` relates two resources."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_resource_id(self):
@@ -427,7 +414,7 @@ class ResourceRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     source_resource_id = property(fget=get_source_resource_id)
 
@@ -442,7 +429,7 @@ class ResourceRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     source_resource = property(fget=get_source_resource)
 
@@ -457,7 +444,7 @@ class ResourceRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     destination_resource_id = property(fget=get_destination_resource_id)
 
@@ -472,7 +459,7 @@ class ResourceRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     destination_resource = property(fget=get_destination_resource)
 
@@ -498,13 +485,12 @@ class ResourceRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipRecord
+        return  # osid.resource.records.ResourceRelationshipRecord
 
 
 class ResourceRelationshipForm:
     """This is the form for creating and updating ``ResourceRelationships``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_relationship_form_record(self, resource_relationship_record_type):
@@ -521,7 +507,7 @@ class ResourceRelationshipForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipFormRecord
+        return  # osid.resource.records.ResourceRelationshipFormRecord
 
 
 class ResourceRelationshipList:
@@ -535,11 +521,8 @@ class ResourceRelationshipList:
            ResourceRelationship[] relationships = rrl.getNextResourceRelationships(rrl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_resource_relationship(self):
@@ -553,7 +536,7 @@ class ResourceRelationshipList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationship
+        return  # osid.resource.ResourceRelationship
 
     next_resource_relationship = property(fget=get_next_resource_relationship)
 
@@ -571,13 +554,12 @@ class ResourceRelationshipList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationship
+        return  # osid.resource.ResourceRelationship
 
 
 class Bin:
     """An inventory defines a collection of resources."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_record(self, bin_record_type):
@@ -600,7 +582,7 @@ class Bin:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinRecord
+        return  # osid.resource.records.BinRecord
 
 
 class BinForm:
@@ -613,7 +595,6 @@ class BinForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_form_record(self, bin_record_type):
@@ -630,7 +611,7 @@ class BinForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinFormRecord
+        return  # osid.resource.records.BinFormRecord
 
 
 class BinList:
@@ -643,11 +624,8 @@ class BinList:
            Bin[] bins = bl.getNextBins(bl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_bin(self):
@@ -661,7 +639,7 @@ class BinList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     next_bin = property(fget=get_next_bin)
 
@@ -679,7 +657,7 @@ class BinList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
 
 class BinNode:
@@ -692,7 +670,6 @@ class BinNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin(self):
         """Gets the ``Bin`` at this node.
@@ -704,7 +681,7 @@ class BinNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -719,7 +696,7 @@ class BinNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinNodeList
+        return  # osid.resource.BinNodeList
 
     parent_bin_nodes = property(fget=get_parent_bin_nodes)
 
@@ -734,7 +711,7 @@ class BinNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinNodeList
+        return  # osid.resource.BinNodeList
 
     child_bin_nodes = property(fget=get_child_bin_nodes)
 
@@ -750,11 +727,8 @@ class BinNodeList:
            BinNode[] nodes = bnl.getNextBinNodes(bnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_bin_node(self):
@@ -768,7 +742,7 @@ class BinNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinNode
+        return  # osid.resource.BinNode
 
     next_bin_node = property(fget=get_next_bin_node)
 
@@ -786,6 +760,4 @@ class BinNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinNode
-
-
+        return  # osid.resource.BinNode

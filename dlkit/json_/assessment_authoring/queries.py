@@ -19,8 +19,6 @@ from dlkit.abstract_osid.assessment_authoring import queries as abc_assessment_a
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, osid_queries.OsidObjectQuery, osid_queries.OsidContainableQuery, osid_queries.OsidOperableQuery):
     """This is the query for searching assessment parts.
 
@@ -28,7 +26,6 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
     invocations of a method produces a nested ``OR``.
 
     """
-
     def __init__(self, runtime):
         self._namespace = 'assessment_authoring.AssessmentPart'
         self._runtime = runtime
@@ -38,8 +35,6 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
-
-
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
         """Sets the assessment ``Id`` for this query.
@@ -431,6 +426,8 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
         raise errors.Unimplemented()
 
 
+
+
 class SequenceRuleQuery(abc_assessment_authoring_queries.SequenceRuleQuery, osid_queries.OsidRuleQuery):
     """This is the query for searching sequence rules.
 
@@ -806,5 +803,3 @@ class SequenceRuleQuery(abc_assessment_authoring_queries.SequenceRuleQuery, osid
 
         """
         raise errors.Unimplemented()
-
-

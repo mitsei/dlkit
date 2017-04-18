@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class PackageQuery:
@@ -225,7 +220,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_creator_query(self):
@@ -241,7 +236,7 @@ class PackageQuery:
         ``supports_creator_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     creator_query = property(fget=get_creator_query)
 
@@ -353,7 +348,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_dependency_query(self):
@@ -369,7 +364,7 @@ class PackageQuery:
         ``supports_dependency_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     dependency_query = property(fget=get_dependency_query)
 
@@ -487,7 +482,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_query(self):
@@ -503,7 +498,7 @@ class PackageQuery:
         ``supports_installation_query()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationQuery
+        return  # osid.installation.InstallationQuery
 
     installation_query = property(fget=get_installation_query)
 
@@ -572,7 +567,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_dependent_query(self):
@@ -588,7 +583,7 @@ class PackageQuery:
         ``supports_dependent_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     dependent_query = property(fget=get_dependent_query)
 
@@ -657,7 +652,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_versioned_package_query(self):
@@ -673,7 +668,7 @@ class PackageQuery:
         ``supports_version_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     versioned_package_query = property(fget=get_versioned_package_query)
 
@@ -742,7 +737,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_content_query(self):
@@ -758,7 +753,7 @@ class PackageQuery:
         ``supports_installation_content_query()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationContentQuery
+        return  # osid.installation.InstallationContentQuery
 
     installation_content_query = property(fget=get_installation_content_query)
 
@@ -827,7 +822,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_query(self):
@@ -843,7 +838,7 @@ class PackageQuery:
         ``supports_depot_query()`` is ``true``.*
 
         """
-        return # osid.installation.DepotQuery
+        return  # osid.installation.DepotQuery
 
     depot_query = property(fget=get_depot_query)
 
@@ -877,7 +872,7 @@ class PackageQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageQueryRecord
+        return  # osid.installation.records.PackageQueryRecord
 
 
 class InstallationContentQuery:
@@ -993,7 +988,7 @@ class InstallationContentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationContentQueryRecord
+        return  # osid.installation.records.InstallationContentQueryRecord
 
 
 class DepotQuery:
@@ -1044,7 +1039,7 @@ class DepotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_query(self):
@@ -1060,7 +1055,7 @@ class DepotQuery:
         ``supports_package_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     package_query = property(fget=get_package_query)
 
@@ -1129,7 +1124,7 @@ class DepotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_depot_query(self):
@@ -1145,7 +1140,7 @@ class DepotQuery:
         ``supports_ancestor_depot_query()`` is ``true``.*
 
         """
-        return # osid.installation.DepotQuery
+        return  # osid.installation.DepotQuery
 
     ancestor_depot_query = property(fget=get_ancestor_depot_query)
 
@@ -1214,7 +1209,7 @@ class DepotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_depot_query(self):
@@ -1230,7 +1225,7 @@ class DepotQuery:
         ``supports_descendant_depot_query()`` is ``true``.*
 
         """
-        return # osid.installation.DepotQuery
+        return  # osid.installation.DepotQuery
 
     descendant_depot_query = property(fget=get_descendant_depot_query)
 
@@ -1277,7 +1272,7 @@ class DepotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotQueryRecord
+        return  # osid.installation.records.DepotQueryRecord
 
 
 class InstallationQuery:
@@ -1328,7 +1323,7 @@ class InstallationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_site_query(self):
@@ -1344,7 +1339,7 @@ class InstallationQuery:
         ``supports_site_query()`` is ``true``.*
 
         """
-        return # osid.installation.SiteQuery
+        return  # osid.installation.SiteQuery
 
     site_query = property(fget=get_site_query)
 
@@ -1400,7 +1395,7 @@ class InstallationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_query(self):
@@ -1416,7 +1411,7 @@ class InstallationQuery:
         ``supports_package_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     package_query = property(fget=get_package_query)
 
@@ -1502,7 +1497,7 @@ class InstallationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self):
@@ -1518,7 +1513,7 @@ class InstallationQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -1582,7 +1577,7 @@ class InstallationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationQueryRecord
+        return  # osid.installation.records.InstallationQueryRecord
 
 
 class SiteQuery:
@@ -1633,7 +1628,7 @@ class SiteQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_query(self):
@@ -1649,7 +1644,7 @@ class SiteQuery:
         ``supports_installation_query()`` is ``true``.*
 
         """
-        return # osid.installation.SiteQuery
+        return  # osid.installation.SiteQuery
 
     installation_query = property(fget=get_installation_query)
 
@@ -1696,6 +1691,4 @@ class SiteQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.SiteQueryRecord
-
-
+        return  # osid.installation.records.SiteQueryRecord

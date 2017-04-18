@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.repository import managers as repository_managers
 
 
-
-
 class RepositoryProfile(osid_managers.OsidProfile, repository_managers.RepositoryProfile):
     """Adapts underlying RepositoryProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
             return self._provider_manager.get_repository_hierarchy_session()
         except Unimplemented:
             return None
-
     def supports_asset_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -200,9 +196,10 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
     coordinate_types = property(fget=get_coordinate_types)
 
 
+
+
 class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository_managers.RepositoryManager):
     """Adapts underlying RepositoryManager methodswith authorization checks."""
-
     def __init__(self):
         RepositoryProfile.__init__(self)
 
@@ -249,7 +246,6 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
                 authz_session=self._authz_session)
         except AttributeError:
             raise OperationFailed('AssetContentLookupSession not implemented in authz_adapter')
-
     def get_asset_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -687,9 +683,10 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
     repository_rules_manager = property(fget=get_repository_rules_manager)
 
 
+
+
 class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
     """Adapts underlying RepositoryProxyManager methodswith authorization checks."""
-
     def __init__(self):
         RepositoryProfile.__init__(self)
 
@@ -740,7 +737,6 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
                 proxy=proxy)
         except AttributeError:
             raise OperationFailed('AssetContentLookupSession not implemented in authz_adapter')
-
     @raise_null_argument
     def get_asset_lookup_session(self, proxy):
         # Implemented from azosid template for -
@@ -1184,5 +1180,3 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
         raise Unimplemented()
 
     repository_rules_proxy_manager = property(fget=get_repository_rules_proxy_manager)
-
-

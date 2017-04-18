@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LearningProfile:
     """The ``LearningProfile`` describes the interoperability among learning services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_lookup(self):
@@ -51,7 +47,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_query(self):
@@ -64,7 +60,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_search(self):
@@ -77,7 +73,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_admin(self):
@@ -90,7 +86,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_notification(self):
@@ -106,7 +102,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_hierarchy(self):
@@ -119,7 +115,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_hierarchy_design(self):
@@ -132,7 +128,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_sequencing(self):
@@ -145,7 +141,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_objective_bank(self):
@@ -158,7 +154,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_objective_bank_assignment(self):
@@ -171,7 +167,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_smart_objective_bank(self):
@@ -184,7 +180,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_requisite(self):
@@ -197,7 +193,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_requisite_assignment(self):
@@ -210,7 +206,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_lookup(self):
@@ -223,7 +219,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_query(self):
@@ -236,7 +232,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_search(self):
@@ -249,7 +245,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_admin(self):
@@ -262,7 +258,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_notification(self):
@@ -278,7 +274,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_objective_bank(self):
@@ -291,7 +287,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_objective_bank_assignment(self):
@@ -304,7 +300,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_activity_smart_objective_bank(self):
@@ -317,7 +313,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_lookup(self):
@@ -330,7 +326,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_query(self):
@@ -343,7 +339,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_search(self):
@@ -356,7 +352,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_admin(self):
@@ -369,7 +365,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_notification(self):
@@ -382,7 +378,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_objective_bank(self):
@@ -395,7 +391,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_objective_bank_assignment(self):
@@ -408,7 +404,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_proficiency_smart_objective_bank(self):
@@ -421,7 +417,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_my_learning_path(self):
@@ -434,7 +430,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_learning_path(self):
@@ -447,7 +443,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_lookup(self):
@@ -460,7 +456,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_query(self):
@@ -473,7 +469,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_search(self):
@@ -486,7 +482,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_admin(self):
@@ -499,7 +495,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_notification(self):
@@ -515,7 +511,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_hierarchy(self):
@@ -528,7 +524,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_objective_bank_hierarchy_design(self):
@@ -541,7 +537,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_learning_batch(self):
@@ -554,7 +550,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_record_types(self):
@@ -567,7 +563,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     objective_record_types = property(fget=get_objective_record_types)
 
@@ -584,7 +580,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_search_record_types(self):
@@ -597,7 +593,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     objective_search_record_types = property(fget=get_objective_search_record_types)
 
@@ -614,7 +610,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_record_types(self):
@@ -627,7 +623,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     activity_record_types = property(fget=get_activity_record_types)
 
@@ -644,7 +640,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_search_record_types(self):
@@ -657,7 +653,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     activity_search_record_types = property(fget=get_activity_search_record_types)
 
@@ -674,7 +670,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proficiency_record_types(self):
@@ -687,7 +683,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     proficiency_record_types = property(fget=get_proficiency_record_types)
 
@@ -704,7 +700,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proficiency_search_record_types(self):
@@ -717,7 +713,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     proficiency_search_record_types = property(fget=get_proficiency_search_record_types)
 
@@ -734,7 +730,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_record_types(self):
@@ -747,7 +743,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     objective_bank_record_types = property(fget=get_objective_bank_record_types)
 
@@ -764,7 +760,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_search_record_types(self):
@@ -777,7 +773,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     objective_bank_search_record_types = property(fget=get_objective_bank_search_record_types)
 
@@ -794,7 +790,7 @@ class LearningProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class LearningManager:
@@ -875,10 +871,8 @@ class LearningManager:
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_lookup_session(self):
@@ -893,7 +887,7 @@ class LearningManager:
         ``supports_objective_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveLookupSession
+        return  # osid.learning.ObjectiveLookupSession
 
     objective_lookup_session = property(fget=get_objective_lookup_session)
 
@@ -915,7 +909,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveLookupSession
+        return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
     def get_objective_query_session(self):
@@ -930,7 +924,7 @@ class LearningManager:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuerySession
+        return  # osid.learning.ObjectiveQuerySession
 
     objective_query_session = property(fget=get_objective_query_session)
 
@@ -952,7 +946,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuerySession
+        return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
     def get_objective_search_session(self):
@@ -967,7 +961,7 @@ class LearningManager:
         ``supports_objective_search()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchSession
+        return  # osid.learning.ObjectiveSearchSession
 
     objective_search_session = property(fget=get_objective_search_session)
 
@@ -989,7 +983,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchSession
+        return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
     def get_objective_admin_session(self):
@@ -1004,7 +998,7 @@ class LearningManager:
         ``supports_objective_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveAdminSession
+        return  # osid.learning.ObjectiveAdminSession
 
     objective_admin_session = property(fget=get_objective_admin_session)
 
@@ -1026,7 +1020,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveAdminSession
+        return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
     def get_objective_notification_session(self, objective_receiver):
@@ -1044,7 +1038,7 @@ class LearningManager:
         ``supports_objective_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveNotificationSession
+        return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
     def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id):
@@ -1066,7 +1060,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveNotificationSession
+        return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
     def get_objective_hierarchy_session(self):
@@ -1081,7 +1075,7 @@ class LearningManager:
         ``supports_objective_hierarchy()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchySession
+        return  # osid.learning.ObjectiveHierarchySession
 
     objective_hierarchy_session = property(fget=get_objective_hierarchy_session)
 
@@ -1103,7 +1097,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchySession
+        return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
     def get_objective_hierarchy_design_session(self):
@@ -1118,7 +1112,7 @@ class LearningManager:
         ``supports_objective_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchyDesignSession
+        return  # osid.learning.ObjectiveHierarchyDesignSession
 
     objective_hierarchy_design_session = property(fget=get_objective_hierarchy_design_session)
 
@@ -1140,7 +1134,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchyDesignSession
+        return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
     def get_objective_sequencing_session(self):
@@ -1155,7 +1149,7 @@ class LearningManager:
         ``supports_objective_sequencing()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSequencingSession
+        return  # osid.learning.ObjectiveSequencingSession
 
     objective_sequencing_session = property(fget=get_objective_sequencing_session)
 
@@ -1177,7 +1171,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveSequencingSession
+        return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
     def get_objective_objective_bank_session(self):
@@ -1192,7 +1186,7 @@ class LearningManager:
         ``supports_objective_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveObjectiveBankSession
+        return  # osid.learning.ObjectiveObjectiveBankSession
 
     objective_objective_bank_session = property(fget=get_objective_objective_bank_session)
 
@@ -1209,7 +1203,7 @@ class LearningManager:
         ``supports_objective_objective_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveObjectiveBankAssignmentSession
+        return  # osid.learning.ObjectiveObjectiveBankAssignmentSession
 
     objective_objective_bank_assignment_session = property(fget=get_objective_objective_bank_assignment_session)
 
@@ -1230,7 +1224,7 @@ class LearningManager:
         ``supports_objective_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSmartObjectiveBankSession
+        return  # osid.learning.ObjectiveSmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_objective_requisite_session(self):
@@ -1245,7 +1239,7 @@ class LearningManager:
         ``supports_objective_requisite()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteSession
+        return  # osid.learning.ObjectiveRequisiteSession
 
     objective_requisite_session = property(fget=get_objective_requisite_session)
 
@@ -1267,7 +1261,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteSession
+        return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
     def get_objective_requisite_assignment_session(self):
@@ -1282,7 +1276,7 @@ class LearningManager:
         ``supports_objective_requisite_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteAssignmentSession
+        return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     objective_requisite_assignment_session = property(fget=get_objective_requisite_assignment_session)
 
@@ -1304,7 +1298,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteAssignmentSession
+        return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
     def get_activity_lookup_session(self):
@@ -1319,7 +1313,7 @@ class LearningManager:
         ``supports_activity_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityLookupSession
+        return  # osid.learning.ActivityLookupSession
 
     activity_lookup_session = property(fget=get_activity_lookup_session)
 
@@ -1341,7 +1335,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityLookupSession
+        return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
     def get_activity_query_session(self):
@@ -1356,7 +1350,7 @@ class LearningManager:
         ``supports_activity_query()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityQuerySession
+        return  # osid.learning.ActivityQuerySession
 
     activity_query_session = property(fget=get_activity_query_session)
 
@@ -1378,7 +1372,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityQuerySession
+        return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
     def get_activity_search_session(self):
@@ -1393,7 +1387,7 @@ class LearningManager:
         ``supports_activity_search()`` is ``true``.*
 
         """
-        return # osid.learning.ActivitySearchSession
+        return  # osid.learning.ActivitySearchSession
 
     activity_search_session = property(fget=get_activity_search_session)
 
@@ -1415,7 +1409,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivitySearchSession
+        return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
     def get_activity_admin_session(self):
@@ -1430,7 +1424,7 @@ class LearningManager:
         ``supports_activity_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityAdminSession
+        return  # osid.learning.ActivityAdminSession
 
     activity_admin_session = property(fget=get_activity_admin_session)
 
@@ -1452,7 +1446,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityAdminSession
+        return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
     def get_activity_notification_session(self, activity_receiver):
@@ -1470,7 +1464,7 @@ class LearningManager:
         ``supports_activity_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityNotificationSession
+        return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
     def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id):
@@ -1492,7 +1486,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityNotificationSession
+        return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
     def get_activity_objective_bank_session(self):
@@ -1507,7 +1501,7 @@ class LearningManager:
         ``supports_activity_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityObjectiveBankSession
+        return  # osid.learning.ActivityObjectiveBankSession
 
     activity_objective_bank_session = property(fget=get_activity_objective_bank_session)
 
@@ -1524,7 +1518,7 @@ class LearningManager:
         ``supports_activity_objective_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityObjectiveBankAssignmentSession
+        return  # osid.learning.ActivityObjectiveBankAssignmentSession
 
     activity_objective_bank_assignment_session = property(fget=get_activity_objective_bank_assignment_session)
 
@@ -1545,7 +1539,7 @@ class LearningManager:
         ``supports_activity_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ActivitySmartObjectiveBankSession
+        return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_proficiency_lookup_session(self):
@@ -1560,7 +1554,7 @@ class LearningManager:
         ``supports_proficiency_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyLookupSession
+        return  # osid.learning.ProficiencyLookupSession
 
     proficiency_lookup_session = property(fget=get_proficiency_lookup_session)
 
@@ -1582,7 +1576,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyLookupSession
+        return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
     def get_proficiency_query_session(self):
@@ -1597,7 +1591,7 @@ class LearningManager:
         ``supports_proficiency_query()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyQuerySession
+        return  # osid.learning.ProficiencyQuerySession
 
     proficiency_query_session = property(fget=get_proficiency_query_session)
 
@@ -1619,7 +1613,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyQuerySession
+        return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
     def get_proficiency_search_session(self):
@@ -1634,7 +1628,7 @@ class LearningManager:
         ``supports_proficiency_search()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencySearchSession
+        return  # osid.learning.ProficiencySearchSession
 
     proficiency_search_session = property(fget=get_proficiency_search_session)
 
@@ -1656,7 +1650,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencySearchSession
+        return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
     def get_proficiency_admin_session(self):
@@ -1671,7 +1665,7 @@ class LearningManager:
         ``supports_proficiency_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyAdminSession
+        return  # osid.learning.ProficiencyAdminSession
 
     proficiency_admin_session = property(fget=get_proficiency_admin_session)
 
@@ -1693,7 +1687,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyAdminSession
+        return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
     def get_proficiency_notification_session(self, proficiency_receiver):
@@ -1711,7 +1705,7 @@ class LearningManager:
         ``supports_proficiency_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyNotificationSession
+        return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
     def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id):
@@ -1733,7 +1727,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyNotificationSession
+        return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
     def get_proficiency_objective_bank_session(self):
@@ -1748,7 +1742,7 @@ class LearningManager:
         ``supports_proficiency_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyObjectiveBankSession
+        return  # osid.learning.ProficiencyObjectiveBankSession
 
     proficiency_objective_bank_session = property(fget=get_proficiency_objective_bank_session)
 
@@ -1766,7 +1760,7 @@ class LearningManager:
         ``true``.*
 
         """
-        return # osid.learning.ProficiencyObjectiveBankAssignmentSession
+        return  # osid.learning.ProficiencyObjectiveBankAssignmentSession
 
     proficiency_objective_bank_assignment_session = property(fget=get_proficiency_objective_bank_assignment_session)
 
@@ -1787,7 +1781,7 @@ class LearningManager:
         ``supports_proficiency_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencySmartObjectiveBankSession
+        return  # osid.learning.ProficiencySmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_my_learning_path_session(self):
@@ -1802,7 +1796,7 @@ class LearningManager:
         ``supports_my_learning_path()`` is ``true``.*
 
         """
-        return # osid.learning.MyLearningPathSession
+        return  # osid.learning.MyLearningPathSession
 
     my_learning_path_session = property(fget=get_my_learning_path_session)
 
@@ -1824,7 +1818,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.MyLearningPathSession
+        return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
     def get_learning_path_session(self):
@@ -1839,7 +1833,7 @@ class LearningManager:
         ``supports_learning_path()`` is ``true``.*
 
         """
-        return # osid.learning.LearningPathSession
+        return  # osid.learning.LearningPathSession
 
     learning_path_session = property(fget=get_learning_path_session)
 
@@ -1861,7 +1855,7 @@ class LearningManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.LearningPathSession
+        return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
     def get_objective_bank_lookup_session(self):
@@ -1876,7 +1870,7 @@ class LearningManager:
         ``supports_objective_bank_lookup()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankLookupSession
+        return  # osid.learning.ObjectiveBankLookupSession
 
     objective_bank_lookup_session = property(fget=get_objective_bank_lookup_session)
 
@@ -1893,7 +1887,7 @@ class LearningManager:
         ``supports_objective_bank_query()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankQuerySession
+        return  # osid.learning.ObjectiveBankQuerySession
 
     objective_bank_query_session = property(fget=get_objective_bank_query_session)
 
@@ -1910,7 +1904,7 @@ class LearningManager:
         ``supports_objective_bank_search()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankSearchSession
+        return  # osid.learning.ObjectiveBankSearchSession
 
     objective_bank_search_session = property(fget=get_objective_bank_search_session)
 
@@ -1927,7 +1921,7 @@ class LearningManager:
         ``supports_objective_bank_admin()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankAdminSession
+        return  # osid.learning.ObjectiveBankAdminSession
 
     objective_bank_admin_session = property(fget=get_objective_bank_admin_session)
 
@@ -1947,7 +1941,7 @@ class LearningManager:
         ``supports_objective_bank_notification()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankNotificationSession
+        return  # osid.learning.ObjectiveBankNotificationSession
 
     @abc.abstractmethod
     def get_objective_bank_hierarchy_session(self):
@@ -1962,7 +1956,7 @@ class LearningManager:
         ``supports_objective_bank_hierarchy()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankHierarchySession
+        return  # osid.learning.ObjectiveBankHierarchySession
 
     objective_bank_hierarchy_session = property(fget=get_objective_bank_hierarchy_session)
 
@@ -1979,7 +1973,7 @@ class LearningManager:
         ``supports_objective_bank_hierarchy_design()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankHierarchyDesignSession
+        return  # osid.learning.ObjectiveBankHierarchyDesignSession
 
     objective_bank_hierarchy_design_session = property(fget=get_objective_bank_hierarchy_design_session)
 
@@ -1996,7 +1990,7 @@ class LearningManager:
         ``supports_learning_batch()`` is true.*
 
         """
-        return # osid.learning.batch.LearningBatchManager
+        return  # osid.learning.batch.LearningBatchManager
 
     learning_batch_manager = property(fget=get_learning_batch_manager)
 
@@ -2080,10 +2074,8 @@ class LearningProxyManager:
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_lookup_session(self, proxy):
@@ -2101,7 +2093,7 @@ class LearningProxyManager:
         ``supports_objective_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveLookupSession
+        return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
     def get_objective_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2123,7 +2115,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveLookupSession
+        return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
     def get_objective_query_session(self, proxy):
@@ -2141,7 +2133,7 @@ class LearningProxyManager:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuerySession
+        return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
     def get_objective_query_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2163,7 +2155,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuerySession
+        return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
     def get_objective_search_session(self, proxy):
@@ -2181,7 +2173,7 @@ class LearningProxyManager:
         ``supports_objective_search()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchSession
+        return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
     def get_objective_search_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2203,7 +2195,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchSession
+        return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
     def get_objective_admin_session(self, proxy):
@@ -2221,7 +2213,7 @@ class LearningProxyManager:
         ``supports_objective_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveAdminSession
+        return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
     def get_objective_admin_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2243,7 +2235,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveAdminSession
+        return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
     def get_objective_notification_session(self, objective_receiver, proxy):
@@ -2263,7 +2255,7 @@ class LearningProxyManager:
         ``supports_objective_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveNotificationSession
+        return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
     def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id, proxy):
@@ -2287,7 +2279,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveNotificationSession
+        return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
     def get_objective_hierarchy_session(self, proxy):
@@ -2305,7 +2297,7 @@ class LearningProxyManager:
         ``supports_objective_hierarchy()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchySession
+        return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
     def get_objective_hierarchy_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2327,7 +2319,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchySession
+        return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
     def get_objective_hierarchy_design_session(self, proxy):
@@ -2345,7 +2337,7 @@ class LearningProxyManager:
         ``supports_objective_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchyDesignSession
+        return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
     def get_objective_hierarchy_design_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2367,7 +2359,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveHierarchyDesignSession
+        return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
     def get_objective_sequencing_session(self, proxy):
@@ -2385,7 +2377,7 @@ class LearningProxyManager:
         ``supports_objective_sequencing()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSequencingSession
+        return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
     def get_objective_sequencing_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2407,7 +2399,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveSequencingSession
+        return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
     def get_objective_objective_bank_session(self, proxy):
@@ -2425,7 +2417,7 @@ class LearningProxyManager:
         ``supports_objective_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveObjectiveBankSession
+        return  # osid.learning.ObjectiveObjectiveBankSession
 
     @abc.abstractmethod
     def get_objective_objective_bank_assignment_session(self, proxy):
@@ -2443,7 +2435,7 @@ class LearningProxyManager:
         ``supports_objective_objective_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveObjectiveBankAssignmentSession
+        return  # osid.learning.ObjectiveObjectiveBankAssignmentSession
 
     @abc.abstractmethod
     def get_objective_smart_objective_bank_session(self, objective_bank_id, proxy):
@@ -2464,7 +2456,7 @@ class LearningProxyManager:
         ``supports_objective_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ActivitySmartObjectiveBankSession
+        return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_objective_requisite_session(self, proxy):
@@ -2482,7 +2474,7 @@ class LearningProxyManager:
         ``supports_objective_requisite()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteSession
+        return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
     def get_objective_requisite_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2504,7 +2496,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteSession
+        return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
     def get_objective_requisite_assignment_session(self, proxy):
@@ -2522,7 +2514,7 @@ class LearningProxyManager:
         ``supports_objective_requisite_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteAssignmentSession
+        return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
     def get_objective_requisite_assignment_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2544,7 +2536,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ObjectiveRequisiteAssignmentSession
+        return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
     def get_activity_lookup_session(self, proxy):
@@ -2562,7 +2554,7 @@ class LearningProxyManager:
         ``supports_activity_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityLookupSession
+        return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
     def get_activity_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2584,7 +2576,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityLookupSession
+        return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
     def get_activity_query_session(self, proxy):
@@ -2602,7 +2594,7 @@ class LearningProxyManager:
         ``supports_activity_query()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityQuerySession
+        return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
     def get_activity_query_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2624,7 +2616,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityQuerySession
+        return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
     def get_activity_search_session(self, proxy):
@@ -2642,7 +2634,7 @@ class LearningProxyManager:
         ``supports_activity_search()`` is ``true``.*
 
         """
-        return # osid.learning.ActivitySearchSession
+        return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
     def get_activity_search_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2664,7 +2656,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivitySearchSession
+        return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
     def get_activity_admin_session(self, proxy):
@@ -2682,7 +2674,7 @@ class LearningProxyManager:
         ``supports_activity_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityAdminSession
+        return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
     def get_activity_admin_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2704,7 +2696,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityAdminSession
+        return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
     def get_activity_notification_session(self, activity_receiver, proxy):
@@ -2724,7 +2716,7 @@ class LearningProxyManager:
         ``supports_activity_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityNotificationSession
+        return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
     def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id, proxy):
@@ -2748,7 +2740,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.learning.ActivityNotificationSession
+        return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
     def get_activity_objective_bank_session(self, proxy):
@@ -2766,7 +2758,7 @@ class LearningProxyManager:
         ``supports_activity_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityObjectiveBankSession
+        return  # osid.learning.ActivityObjectiveBankSession
 
     @abc.abstractmethod
     def get_activity_objective_bank_assignment_session(self, proxy):
@@ -2784,7 +2776,7 @@ class LearningProxyManager:
         ``supports_activity_objective_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityObjectiveBankAssignmentSession
+        return  # osid.learning.ActivityObjectiveBankAssignmentSession
 
     @abc.abstractmethod
     def get_activity_smart_objective_bank_session(self, objective_bank_id, proxy):
@@ -2805,7 +2797,7 @@ class LearningProxyManager:
         ``supports_activity_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ActivitySmartObjectiveBankSession
+        return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_proficiency_lookup_session(self, proxy):
@@ -2823,7 +2815,7 @@ class LearningProxyManager:
         ``supports_proficiency_lookup()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyLookupSession
+        return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
     def get_proficiency_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2845,7 +2837,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyLookupSession
+        return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
     def get_proficiency_query_session(self, proxy):
@@ -2863,7 +2855,7 @@ class LearningProxyManager:
         ``supports_proficiency_query()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyQuerySession
+        return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
     def get_proficiency_query_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2885,7 +2877,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyQuerySession
+        return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
     def get_proficiency_search_session(self, proxy):
@@ -2903,7 +2895,7 @@ class LearningProxyManager:
         ``supports_proficiency_search()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencySearchSession
+        return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
     def get_proficiency_search_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2925,7 +2917,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencySearchSession
+        return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
     def get_proficiency_admin_session(self, proxy):
@@ -2943,7 +2935,7 @@ class LearningProxyManager:
         ``supports_proficiency_admin()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyAdminSession
+        return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
     def get_proficiency_admin_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -2965,7 +2957,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyAdminSession
+        return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
     def get_proficiency_notification_session(self, proficiency_receiver, proxy):
@@ -2985,7 +2977,7 @@ class LearningProxyManager:
         ``supports_proficiency_notification()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyNotificationSession
+        return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
     def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id, proxy):
@@ -3009,7 +3001,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.ProficiencyNotificationSession
+        return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
     def get_proficiency_objective_bank_session(self, proxy):
@@ -3027,7 +3019,7 @@ class LearningProxyManager:
         ``supports_proficiency_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencyObjectiveBankSession
+        return  # osid.learning.ProficiencyObjectiveBankSession
 
     @abc.abstractmethod
     def get_proficiency_objective_bank_assignment_session(self, proxy):
@@ -3046,7 +3038,7 @@ class LearningProxyManager:
         ``true``.*
 
         """
-        return # osid.learning.ProficiencyObjectiveBankAssignmentSession
+        return  # osid.learning.ProficiencyObjectiveBankAssignmentSession
 
     @abc.abstractmethod
     def get_proficiency_smart_objective_bank_session(self, objective_bank_id, proxy):
@@ -3067,7 +3059,7 @@ class LearningProxyManager:
         ``supports_proficiency_smart_objective_bank()`` is ``true``.*
 
         """
-        return # osid.learning.ProficiencySmartObjectiveBankSession
+        return  # osid.learning.ProficiencySmartObjectiveBankSession
 
     @abc.abstractmethod
     def get_my_learning_path_session(self, proxy):
@@ -3085,7 +3077,7 @@ class LearningProxyManager:
         ``supports_my_learning_path()`` is ``true``.*
 
         """
-        return # osid.learning.MyLearningPathSession
+        return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
     def get_my_learning_path_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -3107,7 +3099,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.MyLearningPathSession
+        return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
     def get_learning_path_session(self, proxy):
@@ -3125,7 +3117,7 @@ class LearningProxyManager:
         ``supports_learning_path()`` is ``true``.*
 
         """
-        return # osid.learning.LearningPathSession
+        return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
     def get_learning_path_session_for_objective_bank(self, objective_bank_id, proxy):
@@ -3147,7 +3139,7 @@ class LearningProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.learning.LearningPathSession
+        return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
     def get_objective_bank_lookup_session(self, proxy):
@@ -3165,7 +3157,7 @@ class LearningProxyManager:
         ``supports_objective_bank_lookup()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankLookupSession
+        return  # osid.learning.ObjectiveBankLookupSession
 
     @abc.abstractmethod
     def get_objective_bank_query_session(self, proxy):
@@ -3183,7 +3175,7 @@ class LearningProxyManager:
         ``supports_objective_bank_query()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankQuerySession
+        return  # osid.learning.ObjectiveBankQuerySession
 
     @abc.abstractmethod
     def get_objective_bank_search_session(self, proxy):
@@ -3201,7 +3193,7 @@ class LearningProxyManager:
         ``supports_objective_bank_search()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankSearchSession
+        return  # osid.learning.ObjectiveBankSearchSession
 
     @abc.abstractmethod
     def get_objective_bank_admin_session(self, proxy):
@@ -3219,7 +3211,7 @@ class LearningProxyManager:
         ``supports_objective_bank_admin()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankAdminSession
+        return  # osid.learning.ObjectiveBankAdminSession
 
     @abc.abstractmethod
     def get_objective_bank_notification_session(self, objective_bank_receiver, proxy):
@@ -3239,7 +3231,7 @@ class LearningProxyManager:
         ``supports_objective_bank_notification()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankNotificationSession
+        return  # osid.learning.ObjectiveBankNotificationSession
 
     @abc.abstractmethod
     def get_objective_bank_hierarchy_session(self, proxy):
@@ -3257,7 +3249,7 @@ class LearningProxyManager:
         ``supports_objective_bank_hierarchy()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankHierarchySession
+        return  # osid.learning.ObjectiveBankHierarchySession
 
     @abc.abstractmethod
     def get_objective_bank_hierarchy_design_session(self, proxy):
@@ -3275,7 +3267,7 @@ class LearningProxyManager:
         ``supports_objective_bank_hierarchy_design()`` is true.*
 
         """
-        return # osid.learning.ObjectiveBankHierarchyDesignSession
+        return  # osid.learning.ObjectiveBankHierarchyDesignSession
 
     @abc.abstractmethod
     def get_learning_batch_proxy_manager(self):
@@ -3290,8 +3282,6 @@ class LearningProxyManager:
         ``supports_learning_batch()`` is true.*
 
         """
-        return # osid.learning.batch.LearningBatchProxyManager
+        return  # osid.learning.batch.LearningBatchProxyManager
 
     learning_batch_proxy_manager = property(fget=get_learning_batch_proxy_manager)
-
-

@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestResourceSearch(unittest.TestCase):
     """Tests for ResourceSearch"""
 
@@ -20,6 +22,8 @@ class TestResourceSearch(unittest.TestCase):
     def test_get_resource_search_record(self):
         """Tests get_resource_search_record"""
         pass
+
+
 
 
 class TestResourceSearchResults(unittest.TestCase):
@@ -41,6 +45,8 @@ class TestResourceSearchResults(unittest.TestCase):
         pass
 
 
+
+
 class TestBinSearch(unittest.TestCase):
     """Tests for BinSearch"""
 
@@ -58,6 +64,8 @@ class TestBinSearch(unittest.TestCase):
     def test_get_bin_search_record(self):
         """Tests get_bin_search_record"""
         pass
+
+
 
 
 class TestBinSearchResults(unittest.TestCase):

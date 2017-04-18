@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ResourceReceiver:
     """The resource receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Resource`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_resources(self, notification_id, resource_ids):
@@ -74,7 +70,6 @@ class GroupReceiver:
     """The resource group receiver is the consumer supplied interface for receiving notifications pertaining to new or deleted members."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_member(self, group_id, member_id):
         """The callback for notifications of new resource members.
@@ -109,7 +104,6 @@ class GroupReceiver:
 class ResourceRelationshipReceiver:
     """The resource relationship receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``ResourceRelationships``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_resource_relationships(self, notification_id, resource_relationship_ids):
@@ -160,7 +154,6 @@ class ResourceRelationshipReceiver:
 class BinReceiver:
     """The bin receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Bin`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_bins(self, notification_id, bin_ids):
@@ -277,5 +270,3 @@ class BinReceiver:
 
         """
         pass
-
-

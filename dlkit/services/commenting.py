@@ -37,10 +37,8 @@ DISABLED = -1
 
 class CommentingProfile(osid.OsidProfile, commenting_managers.CommentingProfile):
     """CommentingProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_comment_lookup(self):
         """Pass through to provider supports_comment_lookup"""
         # Implemented from kitosid template for -
@@ -118,7 +116,6 @@ class CommentingProfile(osid.OsidProfile, commenting_managers.CommentingProfile)
 
 class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, commenting_managers.CommentingManager):
     """CommentingManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -239,7 +236,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_comment_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_comment_lookup_session"""
         # Implemented from kitosid template for -
@@ -746,7 +742,6 @@ class CommentingProxyManager(osid.OsidProxyManager, CommentingProfile, commentin
 
 class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
     """Book convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -884,7 +879,6 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_book_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

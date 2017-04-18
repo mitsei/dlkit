@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ConfigurationProfile:
@@ -36,7 +31,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_retrieval(self):
@@ -49,7 +44,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_lookup(self):
@@ -62,7 +57,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_query(self):
@@ -75,7 +70,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_search(self):
@@ -88,7 +83,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_admin(self):
@@ -101,7 +96,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_value_notification(self):
@@ -114,7 +109,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_lookup(self):
@@ -127,7 +122,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_query(self):
@@ -140,7 +135,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_search(self):
@@ -153,7 +148,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_admin(self):
@@ -167,7 +162,7 @@ class ConfigurationProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_notification(self):
@@ -180,7 +175,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_configuration(self):
@@ -194,7 +189,7 @@ class ConfigurationProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_configuration_assignment(self):
@@ -208,7 +203,7 @@ class ConfigurationProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_parameter_smart_configuration(self):
@@ -222,7 +217,7 @@ class ConfigurationProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_lookup(self):
@@ -235,7 +230,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_query(self):
@@ -248,7 +243,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_search(self):
@@ -261,7 +256,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_admin(self):
@@ -274,7 +269,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_notification(self):
@@ -287,7 +282,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_hierarchy(self):
@@ -300,7 +295,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_hierarchy_design(self):
@@ -313,7 +308,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_batch(self):
@@ -326,7 +321,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_configuration_rules(self):
@@ -339,7 +334,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_condition_record_types(self):
@@ -352,7 +347,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     value_condition_record_types = property(fget=get_value_condition_record_types)
 
@@ -369,7 +364,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_record_types(self):
@@ -382,7 +377,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     value_record_types = property(fget=get_value_record_types)
 
@@ -399,7 +394,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_search_record_types(self):
@@ -412,7 +407,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     value_search_record_types = property(fget=get_value_search_record_types)
 
@@ -429,7 +424,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_record_types(self):
@@ -442,7 +437,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     parameter_record_types = property(fget=get_parameter_record_types)
 
@@ -459,7 +454,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_search_record_types(self):
@@ -472,7 +467,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     parameter_search_record_types = property(fget=get_parameter_search_record_types)
 
@@ -489,7 +484,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_record_types(self):
@@ -502,7 +497,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     configuration_record_types = property(fget=get_configuration_record_types)
 
@@ -519,7 +514,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_search_record_types(self):
@@ -532,7 +527,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     configuration_search_record_types = property(fget=get_configuration_search_record_types)
 
@@ -549,7 +544,7 @@ class ConfigurationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class ConfigurationManager:
@@ -624,7 +619,7 @@ class ConfigurationManager:
         ``supports_value_retrieval()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueRetrievalSession
+        return  # osid.configuration.ValueRetrievalSession
 
     value_retrieval_session = property(fget=get_value_retrieval_session)
 
@@ -646,7 +641,7 @@ class ConfigurationManager:
         ``supports_value_retrieval()`` are ``true``.*
 
         """
-        return # osid.configuration.ValueRetrievalSession
+        return  # osid.configuration.ValueRetrievalSession
 
     @abc.abstractmethod
     def get_value_lookup_session(self):
@@ -661,7 +656,7 @@ class ConfigurationManager:
         ``supports_value_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueLookupSession
+        return  # osid.configuration.ValueLookupSession
 
     value_lookup_session = property(fget=get_value_lookup_session)
 
@@ -683,7 +678,7 @@ class ConfigurationManager:
         ``supports_value_lookup()`` are ``true``.*
 
         """
-        return # osid.configuration.ValueLookupSession
+        return  # osid.configuration.ValueLookupSession
 
     @abc.abstractmethod
     def get_value_query_session(self):
@@ -698,7 +693,7 @@ class ConfigurationManager:
         ``supports_value_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueQuerySession
+        return  # osid.configuration.ValueQuerySession
 
     value_query_session = property(fget=get_value_query_session)
 
@@ -720,7 +715,7 @@ class ConfigurationManager:
         are ``true``.*
 
         """
-        return # osid.configuration.ValueQuerySession
+        return  # osid.configuration.ValueQuerySession
 
     @abc.abstractmethod
     def get_value_search_session(self):
@@ -735,7 +730,7 @@ class ConfigurationManager:
         ``supports_value_search()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueSearchSession
+        return  # osid.configuration.ValueSearchSession
 
     value_search_session = property(fget=get_value_search_session)
 
@@ -757,7 +752,7 @@ class ConfigurationManager:
         ``supports_value_search()`` are ``true``.*
 
         """
-        return # osid.configuration.ValueSearchSession
+        return  # osid.configuration.ValueSearchSession
 
     @abc.abstractmethod
     def get_value_admin_session(self):
@@ -772,7 +767,7 @@ class ConfigurationManager:
         ``supports_value_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueAdminSession
+        return  # osid.configuration.ValueAdminSession
 
     value_admin_session = property(fget=get_value_admin_session)
 
@@ -794,7 +789,7 @@ class ConfigurationManager:
         are ``true``.*
 
         """
-        return # osid.configuration.ValueAdminSession
+        return  # osid.configuration.ValueAdminSession
 
     @abc.abstractmethod
     def get_value_notification_session(self, value_receiver):
@@ -812,7 +807,7 @@ class ConfigurationManager:
         ``supports_value_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueNotificationSession
+        return  # osid.configuration.ValueNotificationSession
 
     @abc.abstractmethod
     def get_value_notification_session_for_configuration(self, value_receiver, configuration_id):
@@ -834,7 +829,7 @@ class ConfigurationManager:
         ``supports_value_notification()`` are ``true``.*
 
         """
-        return # osid.configuration.ValueNotificationSession
+        return  # osid.configuration.ValueNotificationSession
 
     @abc.abstractmethod
     def get_parameter_lookup_session(self):
@@ -849,7 +844,7 @@ class ConfigurationManager:
         ``supports_parameter_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterLookupSession
+        return  # osid.configuration.ParameterLookupSession
 
     parameter_lookup_session = property(fget=get_parameter_lookup_session)
 
@@ -871,7 +866,7 @@ class ConfigurationManager:
         ``supports_parameter_lookup()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterLookupSession
+        return  # osid.configuration.ParameterLookupSession
 
     @abc.abstractmethod
     def get_parameter_query_session(self):
@@ -886,7 +881,7 @@ class ConfigurationManager:
         ``supports_parameter_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterQuerySession
+        return  # osid.configuration.ParameterQuerySession
 
     parameter_query_session = property(fget=get_parameter_query_session)
 
@@ -908,7 +903,7 @@ class ConfigurationManager:
         ``supports_parameter_query()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterQuerySession
+        return  # osid.configuration.ParameterQuerySession
 
     @abc.abstractmethod
     def get_parameter_search_session(self):
@@ -923,7 +918,7 @@ class ConfigurationManager:
         ``supports_parameter_search()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterSearchSession
+        return  # osid.configuration.ParameterSearchSession
 
     parameter_search_session = property(fget=get_parameter_search_session)
 
@@ -945,7 +940,7 @@ class ConfigurationManager:
         ``supports_parameter_search()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterSearchSession
+        return  # osid.configuration.ParameterSearchSession
 
     @abc.abstractmethod
     def get_parameter_admin_session(self):
@@ -960,7 +955,7 @@ class ConfigurationManager:
         ``supports_parameter_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterAdminSession
+        return  # osid.configuration.ParameterAdminSession
 
     parameter_admin_session = property(fget=get_parameter_admin_session)
 
@@ -982,7 +977,7 @@ class ConfigurationManager:
         ``supports_parameter_admin()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterAdminSession
+        return  # osid.configuration.ParameterAdminSession
 
     @abc.abstractmethod
     def get_parameter_notification_session(self, parameter_receiver):
@@ -1000,7 +995,7 @@ class ConfigurationManager:
         ``supports_parameter_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterNotificationSession
+        return  # osid.configuration.ParameterNotificationSession
 
     @abc.abstractmethod
     def get_parameter_notification_session_for_configuration(self, parameter_receiver, configuration_id):
@@ -1023,7 +1018,7 @@ class ConfigurationManager:
         ``supports_parameter_notification()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterNotificationSession
+        return  # osid.configuration.ParameterNotificationSession
 
     @abc.abstractmethod
     def get_parameter_configuration_session(self):
@@ -1038,7 +1033,7 @@ class ConfigurationManager:
         ``supports_parameter_configuration()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterConfigurationSession
+        return  # osid.configuration.ParameterConfigurationSession
 
     parameter_configuration_session = property(fget=get_parameter_configuration_session)
 
@@ -1055,7 +1050,7 @@ class ConfigurationManager:
         ``supports_parameter_configuration_assignment()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterConfigurationAssignmentSession
+        return  # osid.configuration.ParameterConfigurationAssignmentSession
 
     parameter_configuration_assignment_session = property(fget=get_parameter_configuration_assignment_session)
 
@@ -1076,7 +1071,7 @@ class ConfigurationManager:
         ``supports_parameter_smart_configuration()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterSmartConfigurationSession
+        return  # osid.configuration.ParameterSmartConfigurationSession
 
     @abc.abstractmethod
     def get_configuration_lookup_session(self):
@@ -1091,7 +1086,7 @@ class ConfigurationManager:
         ``supports_configuration_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationLookupSession
+        return  # osid.configuration.ConfigurationLookupSession
 
     configuration_lookup_session = property(fget=get_configuration_lookup_session)
 
@@ -1108,7 +1103,7 @@ class ConfigurationManager:
         ``supports_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuerySession
+        return  # osid.configuration.ConfigurationQuerySession
 
     configuration_query_session = property(fget=get_configuration_query_session)
 
@@ -1125,7 +1120,7 @@ class ConfigurationManager:
         ``supports_configuration_search()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationSearchSession
+        return  # osid.configuration.ConfigurationSearchSession
 
     configuration_search_session = property(fget=get_configuration_search_session)
 
@@ -1142,7 +1137,7 @@ class ConfigurationManager:
         ``supports_configuration_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationAdminSession
+        return  # osid.configuration.ConfigurationAdminSession
 
     configuration_admin_session = property(fget=get_configuration_admin_session)
 
@@ -1162,7 +1157,7 @@ class ConfigurationManager:
         ``supports_configuration_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationNotificationSession
+        return  # osid.configuration.ConfigurationNotificationSession
 
     @abc.abstractmethod
     def get_configuration_hierarchy_session(self):
@@ -1177,7 +1172,7 @@ class ConfigurationManager:
         ``supports_configuration_hierarchy()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationHierarchySession
+        return  # osid.configuration.ConfigurationHierarchySession
 
     configuration_hierarchy_session = property(fget=get_configuration_hierarchy_session)
 
@@ -1194,7 +1189,7 @@ class ConfigurationManager:
         ``supports_configuration_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationHierarchyDesignSession
+        return  # osid.configuration.ConfigurationHierarchyDesignSession
 
     configuration_hierarchy_design_session = property(fget=get_configuration_hierarchy_design_session)
 
@@ -1211,7 +1206,7 @@ class ConfigurationManager:
         ``supports_configuration_batch()`` is ``true``.*
 
         """
-        return # osid.configuration.batch.ConfigurationBatchManager
+        return  # osid.configuration.batch.ConfigurationBatchManager
 
     configuration_batch_manager = property(fget=get_configuration_batch_manager)
 
@@ -1228,7 +1223,7 @@ class ConfigurationManager:
         ``supports_configuration_rules()`` is ``true``.*
 
         """
-        return # osid.configuration.rules.ConfigurationRulesManager
+        return  # osid.configuration.rules.ConfigurationRulesManager
 
     configuration_rules_manager = property(fget=get_configuration_rules_manager)
 
@@ -1309,7 +1304,7 @@ class ConfigurationProxyManager:
         ``supports_value_retrieval()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueRetrievalSession
+        return  # osid.configuration.ValueRetrievalSession
 
     @abc.abstractmethod
     def get_value_retrieval_session_for_configuration(self, configuration_id, proxy):
@@ -1331,7 +1326,7 @@ class ConfigurationProxyManager:
         ``supports_value_retrieval()`` are ``true``*
 
         """
-        return # osid.configuration.ValueRetrievalSession
+        return  # osid.configuration.ValueRetrievalSession
 
     @abc.abstractmethod
     def get_value_lookup_session(self, proxy):
@@ -1349,7 +1344,7 @@ class ConfigurationProxyManager:
         ``supports_value_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueLookupSession
+        return  # osid.configuration.ValueLookupSession
 
     @abc.abstractmethod
     def get_value_lookup_session_for_configuration(self, configuration_id, proxy):
@@ -1371,7 +1366,7 @@ class ConfigurationProxyManager:
         ``supports_value_lookup()`` are ``true``*
 
         """
-        return # osid.configuration.ValueLookupSession
+        return  # osid.configuration.ValueLookupSession
 
     @abc.abstractmethod
     def get_value_query_session(self, proxy):
@@ -1389,7 +1384,7 @@ class ConfigurationProxyManager:
         ``supports_value_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueQuerySession
+        return  # osid.configuration.ValueQuerySession
 
     @abc.abstractmethod
     def get_value_query_session_for_configuration(self, configuration_id, proxy):
@@ -1411,7 +1406,7 @@ class ConfigurationProxyManager:
         are ``true``*
 
         """
-        return # osid.configuration.ValueQuerySession
+        return  # osid.configuration.ValueQuerySession
 
     @abc.abstractmethod
     def get_value_search_session(self, proxy):
@@ -1429,7 +1424,7 @@ class ConfigurationProxyManager:
         ``supports_value_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueSearchSession
+        return  # osid.configuration.ValueSearchSession
 
     @abc.abstractmethod
     def get_value_search_session_for_configuration(self, configuration_id, proxy):
@@ -1451,7 +1446,7 @@ class ConfigurationProxyManager:
         ``supports_value_search()`` are ``true``*
 
         """
-        return # osid.configuration.ValueSearchSession
+        return  # osid.configuration.ValueSearchSession
 
     @abc.abstractmethod
     def get_value_notification_session(self, value_receiver, proxy):
@@ -1471,7 +1466,7 @@ class ConfigurationProxyManager:
         ``supports_value_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueNotificationSession
+        return  # osid.configuration.ValueNotificationSession
 
     @abc.abstractmethod
     def get_value_notification_session_for_configuration(self, value_receiver, configuration_id, proxy):
@@ -1495,7 +1490,7 @@ class ConfigurationProxyManager:
         ``supports_value_notification()`` are ``true``.*
 
         """
-        return # osid.configuration.ValueNotificationSession
+        return  # osid.configuration.ValueNotificationSession
 
     @abc.abstractmethod
     def get_value_admin_session(self, proxy):
@@ -1513,7 +1508,7 @@ class ConfigurationProxyManager:
         ``supports_value_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueAdminSession
+        return  # osid.configuration.ValueAdminSession
 
     @abc.abstractmethod
     def get_value_admin_session_for_configuration(self, configuration_id, proxy):
@@ -1535,7 +1530,7 @@ class ConfigurationProxyManager:
         are ``true``.*
 
         """
-        return # osid.configuration.ValueAdminSession
+        return  # osid.configuration.ValueAdminSession
 
     @abc.abstractmethod
     def get_parameter_lookup_session(self, proxy):
@@ -1553,7 +1548,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterLookupSession
+        return  # osid.configuration.ParameterLookupSession
 
     @abc.abstractmethod
     def get_parameter_lookup_session_for_configuration(self, configuration_id, proxy):
@@ -1574,7 +1569,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_lookup()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterLookupSession
+        return  # osid.configuration.ParameterLookupSession
 
     @abc.abstractmethod
     def get_parameter_query_session(self, proxy):
@@ -1592,7 +1587,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterQuerySession
+        return  # osid.configuration.ParameterQuerySession
 
     @abc.abstractmethod
     def get_parameter_query_session_for_configuration(self, configuration_id, proxy):
@@ -1613,7 +1608,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_query()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterQuerySession
+        return  # osid.configuration.ParameterQuerySession
 
     @abc.abstractmethod
     def get_parameter_search_session(self, proxy):
@@ -1631,7 +1626,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_search()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterSearchSession
+        return  # osid.configuration.ParameterSearchSession
 
     @abc.abstractmethod
     def get_parameter_search_session_for_configuration(self, configuration_id, proxy):
@@ -1653,7 +1648,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_search()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterSearchSession
+        return  # osid.configuration.ParameterSearchSession
 
     @abc.abstractmethod
     def get_parameter_admin_session(self, proxy):
@@ -1671,7 +1666,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterAdminSession
+        return  # osid.configuration.ParameterAdminSession
 
     @abc.abstractmethod
     def get_parameter_admin_session_for_configuration(self, configuration_id, proxy):
@@ -1693,7 +1688,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_admin()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterAdminSession
+        return  # osid.configuration.ParameterAdminSession
 
     @abc.abstractmethod
     def get_parameter_notification_session(self, parameter_receiver, proxy):
@@ -1713,7 +1708,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterNotificationSession
+        return  # osid.configuration.ParameterNotificationSession
 
     @abc.abstractmethod
     def get_parameter_notification_session_for_configuration(self, parameter_receiver, configuration_id, proxy):
@@ -1738,7 +1733,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_notification()`` are ``true``.*
 
         """
-        return # osid.configuration.ParameterNotificationSession
+        return  # osid.configuration.ParameterNotificationSession
 
     @abc.abstractmethod
     def get_parameter_configuration_session(self, proxy):
@@ -1756,7 +1751,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_configuration()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterConfigurationSession
+        return  # osid.configuration.ParameterConfigurationSession
 
     @abc.abstractmethod
     def get_parameter_configuration_assignment_session(self, proxy):
@@ -1774,7 +1769,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_configuration_assignment()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterConfigurationAssignmentSession
+        return  # osid.configuration.ParameterConfigurationAssignmentSession
 
     @abc.abstractmethod
     def get_parameter_smart_configuration_session(self, configuration_id, proxy):
@@ -1795,7 +1790,7 @@ class ConfigurationProxyManager:
         ``supports_parameter_smart_configuration()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterSmartConfigurationSession
+        return  # osid.configuration.ParameterSmartConfigurationSession
 
     @abc.abstractmethod
     def get_configuration_lookup_session(self, proxy):
@@ -1813,7 +1808,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_lookup()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationLookupSession
+        return  # osid.configuration.ConfigurationLookupSession
 
     @abc.abstractmethod
     def get_configuration_query_session(self, proxy):
@@ -1831,7 +1826,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_query()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationQuerySession
+        return  # osid.configuration.ConfigurationQuerySession
 
     @abc.abstractmethod
     def get_configuration_search_session(self, proxy):
@@ -1849,7 +1844,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_search()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationSearchSession
+        return  # osid.configuration.ConfigurationSearchSession
 
     @abc.abstractmethod
     def get_configuration_notification_session(self, configuration_receiver, proxy):
@@ -1869,7 +1864,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_notification()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationNotificationSession
+        return  # osid.configuration.ConfigurationNotificationSession
 
     @abc.abstractmethod
     def get_configuration_admin_session(self, proxy):
@@ -1887,7 +1882,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_admin()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationAdminSession
+        return  # osid.configuration.ConfigurationAdminSession
 
     @abc.abstractmethod
     def get_configuration_hierarchy_session(self, proxy):
@@ -1905,7 +1900,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_hierarchy()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationHierarchySession
+        return  # osid.configuration.ConfigurationHierarchySession
 
     @abc.abstractmethod
     def get_configuration_hierarchy_design_session(self, proxy):
@@ -1923,7 +1918,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.configuration.ConfigurationHierarchyDesignSession
+        return  # osid.configuration.ConfigurationHierarchyDesignSession
 
     @abc.abstractmethod
     def get_configuration_batch_proxy_manager(self):
@@ -1938,7 +1933,7 @@ class ConfigurationProxyManager:
         ``supports_configuration_batch()`` is ``true``.*
 
         """
-        return # osid.configuration.batch.ConfigurationBatchProxyManager
+        return  # osid.configuration.batch.ConfigurationBatchProxyManager
 
     configuration_batch_proxy_manager = property(fget=get_configuration_batch_proxy_manager)
 
@@ -1955,8 +1950,6 @@ class ConfigurationProxyManager:
         ``supports_configuration_rules()`` is ``true``.*
 
         """
-        return # osid.configuration.rules.ConfigurationRulesProxyManager
+        return  # osid.configuration.rules.ConfigurationRulesProxyManager
 
     configuration_rules_proxy_manager = property(fget=get_configuration_rules_proxy_manager)
-
-

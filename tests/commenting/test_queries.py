@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestCommentQuery(unittest.TestCase):
     """Tests for CommentQuery"""
 
@@ -142,6 +144,8 @@ class TestCommentQuery(unittest.TestCase):
     def test_get_comment_query_record(self):
         """Tests get_comment_query_record"""
         pass
+
+
 
 
 class TestBookQuery(unittest.TestCase):

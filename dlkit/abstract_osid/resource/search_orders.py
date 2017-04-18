@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ResourceSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_group(self, style):
@@ -74,7 +70,7 @@ class ResourceSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_avatar_search_order(self):
@@ -88,7 +84,7 @@ class ResourceSearchOrder:
         ``supports_avatar_search_order()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSearchOrder
+        return  # osid.repository.AssetSearchOrder
 
     avatar_search_order = property(fget=get_avatar_search_order)
 
@@ -109,13 +105,12 @@ class ResourceSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceSearchOrderRecord
+        return  # osid.resource.records.ResourceSearchOrderRecord
 
 
 class ResourceRelationshipSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_source_resource(self, style):
@@ -141,7 +136,7 @@ class ResourceRelationshipSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_source_resource_search_order(self):
@@ -155,7 +150,7 @@ class ResourceRelationshipSearchOrder:
         ``supports_source_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     source_resource_search_order = property(fget=get_source_resource_search_order)
 
@@ -183,7 +178,7 @@ class ResourceRelationshipSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_destination_resource_search_order(self):
@@ -197,7 +192,7 @@ class ResourceRelationshipSearchOrder:
         ``supports_destination_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     destination_resource_search_order = property(fget=get_destination_resource_search_order)
 
@@ -218,13 +213,12 @@ class ResourceRelationshipSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipSearchOrderRecord
+        return  # osid.resource.records.ResourceRelationshipSearchOrderRecord
 
 
 class BinSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_search_order_record(self, bin_record_type):
@@ -243,6 +237,4 @@ class BinSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinSearchOrderRecord
-
-
+        return  # osid.resource.records.BinSearchOrderRecord

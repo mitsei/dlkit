@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class TypeForm:
     """This form provides a means of updating various fields in the ``Type``.
 
@@ -27,7 +24,6 @@ class TypeForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_display_name_metadata(self):
@@ -40,7 +36,7 @@ class TypeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     display_name_metadata = property(fget=get_display_name_metadata)
 
@@ -83,7 +79,7 @@ class TypeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     display_label_metadata = property(fget=get_display_label_metadata)
 
@@ -126,7 +122,7 @@ class TypeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     description_metadata = property(fget=get_description_metadata)
 
@@ -169,7 +165,7 @@ class TypeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     domain_metadata = property(fget=get_domain_metadata)
 
@@ -212,11 +208,8 @@ class TypeList:
            Type[] types = tl.getNextTypes(tl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_type(self):
@@ -230,7 +223,7 @@ class TypeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     next_type = property(fget=get_next_type)
 
@@ -251,6 +244,4 @@ class TypeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
-
-
+        return  # osid.type.Type

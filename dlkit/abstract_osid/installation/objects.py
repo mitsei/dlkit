@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Package:
@@ -36,7 +31,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     version = property(fget=get_version)
 
@@ -51,7 +46,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     copyright_ = property(fget=get_copyright)
 
@@ -66,7 +61,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_creator_id(self):
@@ -79,7 +74,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     creator_id = property(fget=get_creator_id)
 
@@ -94,7 +89,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     creator = property(fget=get_creator)
 
@@ -109,7 +104,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     release_date = property(fget=get_release_date)
 
@@ -124,7 +119,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     dependency_ids = property(fget=get_dependency_ids)
 
@@ -139,7 +134,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     dependencies = property(fget=get_dependencies)
 
@@ -157,7 +152,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     url = property(fget=get_url)
 
@@ -172,7 +167,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     installation_content_ids = property(fget=get_installation_content_ids)
 
@@ -187,7 +182,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContentList
+        return  # osid.installation.InstallationContentList
 
     installation_contents = property(fget=get_installation_contents)
 
@@ -212,7 +207,7 @@ class Package:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageRecord
+        return  # osid.installation.records.PackageRecord
 
 
 class PackageForm:
@@ -238,7 +233,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     version_metadata = property(fget=get_version_metadata)
 
@@ -281,7 +276,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     copyright_metadata = property(fget=get_copyright_metadata)
 
@@ -324,7 +319,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     requires_license_acknowledgement_metadata = property(fget=get_requires_license_acknowledgement_metadata)
 
@@ -366,7 +361,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     creator_metadata = property(fget=get_creator_metadata)
 
@@ -409,7 +404,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     release_date_metadata = property(fget=get_release_date_metadata)
 
@@ -452,7 +447,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     dependencies_metadata = property(fget=get_dependencies_metadata)
 
@@ -495,7 +490,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     url_metadata = property(fget=get_url_metadata)
 
@@ -542,7 +537,7 @@ class PackageForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageFormRecord
+        return  # osid.installation.records.PackageFormRecord
 
 
 class PackageList:
@@ -574,7 +569,7 @@ class PackageList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
     next_package = property(fget=get_next_package)
 
@@ -593,7 +588,7 @@ class PackageList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
 
 class InstallationContent:
@@ -611,7 +606,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     package_id = property(fget=get_package_id)
 
@@ -626,7 +621,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
     package = property(fget=get_package)
 
@@ -641,7 +636,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_data_length(self):
@@ -654,7 +649,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     data_length = property(fget=get_data_length)
 
@@ -669,7 +664,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.DataInputStream
+        return  # osid.transport.DataInputStream
 
     data = property(fget=get_data)
 
@@ -695,7 +690,7 @@ class InstallationContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationContentRecord
+        return  # osid.installation.records.InstallationContentRecord
 
 
 class InstallationContentForm:
@@ -721,7 +716,7 @@ class InstallationContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     data_metadata = property(fget=get_data_metadata)
 
@@ -768,7 +763,7 @@ class InstallationContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationContentFormRecord
+        return  # osid.installation.records.InstallationContentFormRecord
 
 
 class InstallationContentList:
@@ -800,7 +795,7 @@ class InstallationContentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContent
+        return  # osid.installation.InstallationContent
 
     next_installation_content = property(fget=get_next_installation_content)
 
@@ -821,7 +816,7 @@ class InstallationContentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContent
+        return  # osid.installation.InstallationContent
 
 
 class Depot:
@@ -849,7 +844,7 @@ class Depot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotRecord
+        return  # osid.installation.records.DepotRecord
 
 
 class DepotForm:
@@ -879,7 +874,7 @@ class DepotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotFormRecord
+        return  # osid.installation.records.DepotFormRecord
 
 
 class DepotList:
@@ -910,7 +905,7 @@ class DepotList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     next_depot = property(fget=get_next_depot)
 
@@ -929,7 +924,7 @@ class DepotList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
 
 class DepotNode:
@@ -953,7 +948,7 @@ class DepotNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -968,7 +963,7 @@ class DepotNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotNodeList
+        return  # osid.installation.DepotNodeList
 
     parent_depot_nodes = property(fget=get_parent_depot_nodes)
 
@@ -983,7 +978,7 @@ class DepotNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotNodeList
+        return  # osid.installation.DepotNodeList
 
     child_depot_nodes = property(fget=get_child_depot_nodes)
 
@@ -1017,7 +1012,7 @@ class DepotNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotNode
+        return  # osid.installation.DepotNode
 
     next_depot_node = property(fget=get_next_depot_node)
 
@@ -1037,7 +1032,7 @@ class DepotNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotNode
+        return  # osid.installation.DepotNode
 
 
 class Installation:
@@ -1055,7 +1050,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -1070,7 +1065,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -1085,7 +1080,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     package_id = property(fget=get_package_id)
 
@@ -1100,7 +1095,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
     package = property(fget=get_package)
 
@@ -1115,7 +1110,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -1130,7 +1125,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -1145,7 +1140,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     install_date = property(fget=get_install_date)
 
@@ -1160,7 +1155,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agent_id = property(fget=get_agent_id)
 
@@ -1175,7 +1170,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     agent = property(fget=get_agent)
 
@@ -1190,7 +1185,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     last_check_date = property(fget=get_last_check_date)
 
@@ -1215,7 +1210,7 @@ class Installation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationRecord
+        return  # osid.installation.records.InstallationRecord
 
 
 class InstallationList:
@@ -1247,7 +1242,7 @@ class InstallationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Installation
+        return  # osid.installation.Installation
 
     next_installation = property(fget=get_next_installation)
 
@@ -1267,7 +1262,7 @@ class InstallationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Installation
+        return  # osid.installation.Installation
 
 
 class Site:
@@ -1285,7 +1280,7 @@ class Site:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     path = property(fget=get_path)
 
@@ -1310,7 +1305,7 @@ class Site:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.SiteRecord
+        return  # osid.installation.records.SiteRecord
 
 
 class SiteList:
@@ -1341,7 +1336,7 @@ class SiteList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     next_site = property(fget=get_next_site)
 
@@ -1360,6 +1355,4 @@ class SiteList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
-
-
+        return  # osid.installation.Site

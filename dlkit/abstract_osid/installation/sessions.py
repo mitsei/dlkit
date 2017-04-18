@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class InstallationLookupSession:
@@ -55,7 +50,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -71,7 +66,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -92,7 +87,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_installation_view(self):
@@ -168,7 +163,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.installation.Installation
+        return  # osid.installation.Installation
 
     @abc.abstractmethod
     def get_installations_by_ids(self, installation_ids):
@@ -194,7 +189,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     @abc.abstractmethod
     def get_installations_by_genus_type(self, installation_genus_type):
@@ -217,7 +212,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     @abc.abstractmethod
     def get_installations_by_parent_genus_type(self, installation_genus_type):
@@ -240,7 +235,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     @abc.abstractmethod
     def get_installations_by_record_type(self, installation_record_type):
@@ -262,7 +257,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     @abc.abstractmethod
     def get_installations_by_package(self, package_id):
@@ -287,7 +282,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     @abc.abstractmethod
     def get_installations(self):
@@ -307,7 +302,7 @@ class InstallationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     installations = property(fget=get_installations)
 
@@ -337,7 +332,7 @@ class InstallationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -353,7 +348,7 @@ class InstallationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -374,7 +369,7 @@ class InstallationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_normalized_version_view(self):
@@ -431,7 +426,7 @@ class InstallationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationQuery
+        return  # osid.installation.InstallationQuery
 
     installation_query = property(fget=get_installation_query)
 
@@ -451,7 +446,7 @@ class InstallationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
 
 class InstallationSearchSession:
@@ -489,7 +484,7 @@ class InstallationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationSearch
+        return  # osid.installation.InstallationSearch
 
     installation_search = property(fget=get_installation_search)
 
@@ -507,7 +502,7 @@ class InstallationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationSearchOrder
+        return  # osid.installation.InstallationSearchOrder
 
     installation_search_order = property(fget=get_installation_search_order)
 
@@ -529,7 +524,7 @@ class InstallationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationSearchResults
+        return  # osid.installation.InstallationSearchResults
 
     @abc.abstractmethod
     def get_installations_query_from_inspector(self, installaton_query_inspector):
@@ -547,7 +542,7 @@ class InstallationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationQuery
+        return  # osid.installation.InstallationQuery
 
 
 class InstallationManagementSession:
@@ -565,7 +560,7 @@ class InstallationManagementSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -581,7 +576,7 @@ class InstallationManagementSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -601,7 +596,7 @@ class InstallationManagementSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def install_package(self, package_id):
@@ -620,7 +615,7 @@ class InstallationManagementSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Installation
+        return  # osid.installation.Installation
 
     @abc.abstractmethod
     def remove_installation(self, installation_id):
@@ -666,7 +661,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -682,7 +677,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -703,7 +698,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_installation_current(self):
@@ -717,7 +712,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installations_to_update(self):
@@ -736,7 +731,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     installations_to_update = property(fget=get_installations_to_update)
 
@@ -752,7 +747,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     current_packages = property(fget=get_current_packages)
 
@@ -772,7 +767,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def is_installation_obsolete(self):
@@ -786,7 +781,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_obsolete_installations(self):
@@ -800,7 +795,7 @@ class InstallationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationList
+        return  # osid.installation.InstallationList
 
     obsolete_installations = property(fget=get_obsolete_installations)
 
@@ -855,7 +850,7 @@ class InstallationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     site_id = property(fget=get_site_id)
 
@@ -871,7 +866,7 @@ class InstallationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     site = property(fget=get_site)
 
@@ -892,7 +887,7 @@ class InstallationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def register_for_new_installations(self):
@@ -979,7 +974,7 @@ class SiteLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_site_view(self):
@@ -1032,7 +1027,7 @@ class SiteLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.installation.Site
+        return  # osid.installation.Site
 
     @abc.abstractmethod
     def get_sites(self):
@@ -1050,7 +1045,7 @@ class SiteLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.SiteList
+        return  # osid.installation.SiteList
 
     sites = property(fget=get_sites)
 
@@ -1070,7 +1065,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -1086,7 +1081,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -1107,7 +1102,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_package_view(self):
@@ -1210,7 +1205,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
     @abc.abstractmethod
     def get_packages_by_ids(self, package_ids):
@@ -1236,7 +1231,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_packages_by_genus_type(self, package_genus_type):
@@ -1258,7 +1253,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_packages_by_parent_genus_type(self, package_genus_type):
@@ -1280,7 +1275,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_packages_by_record_type(self, package_record_type):
@@ -1301,7 +1296,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_packages_by_provider(self, resource_id):
@@ -1322,7 +1317,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_dependent_packages(self, package_id):
@@ -1340,7 +1335,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_package_versions(self, package_id):
@@ -1358,7 +1353,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_packages(self):
@@ -1376,7 +1371,7 @@ class PackageLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     packages = property(fget=get_packages)
 
@@ -1421,7 +1416,7 @@ class PackageQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -1437,7 +1432,7 @@ class PackageQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -1458,7 +1453,7 @@ class PackageQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_depot_view(self):
@@ -1542,7 +1537,7 @@ class PackageQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     package_query = property(fget=get_package_query)
 
@@ -1562,7 +1557,7 @@ class PackageQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
 
 class PackageSearchSession:
@@ -1614,7 +1609,7 @@ class PackageSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageSearch
+        return  # osid.installation.PackageSearch
 
     package_search = property(fget=get_package_search)
 
@@ -1632,7 +1627,7 @@ class PackageSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageSearchOrder
+        return  # osid.installation.PackageSearchOrder
 
     package_search_order = property(fget=get_package_search_order)
 
@@ -1654,7 +1649,7 @@ class PackageSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageSearchResults
+        return  # osid.installation.PackageSearchResults
 
     @abc.abstractmethod
     def get_package_query_from_inspector(self, package_query_inspector):
@@ -1672,7 +1667,7 @@ class PackageSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
 
 class PackageAdminSession:
@@ -1723,7 +1718,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -1739,7 +1734,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -1760,7 +1755,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_package_with_record_types(self, package_record_types):
@@ -1781,7 +1776,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_form_for_create(self, package_record_types):
@@ -1801,7 +1796,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageForm
+        return  # osid.installation.PackageForm
 
     @abc.abstractmethod
     def create_package(self, package_form):
@@ -1821,7 +1816,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Package
+        return  # osid.installation.Package
 
     @abc.abstractmethod
     def can_update_packages(self):
@@ -1840,7 +1835,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_update_package(self, package_id):
@@ -1864,7 +1859,7 @@ class PackageAdminSession:
         update available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_form_for_update(self, package_id):
@@ -1885,7 +1880,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageForm
+        return  # osid.installation.PackageForm
 
     @abc.abstractmethod
     def update_package(self, package_form):
@@ -1921,7 +1916,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_delete_package(self, package_id):
@@ -1945,7 +1940,7 @@ class PackageAdminSession:
         delete available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_package(self, package_id):
@@ -1980,7 +1975,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_package(self, package_id, alias_id):
@@ -2023,7 +2018,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_installation_content_with_record_types(self, installation_content_record_types):
@@ -2046,7 +2041,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_content_form_for_create(self, package_id, installation_content_record_types):
@@ -2067,7 +2062,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContentForm
+        return  # osid.installation.InstallationContentForm
 
     @abc.abstractmethod
     def create_installation_content(self, installation_content_form):
@@ -2088,7 +2083,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContent
+        return  # osid.installation.InstallationContent
 
     @abc.abstractmethod
     def can_update_installation_contents(self):
@@ -2107,7 +2102,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_content_form_for_update(self, installation_content_id):
@@ -2127,7 +2122,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContentForm
+        return  # osid.installation.InstallationContentForm
 
     @abc.abstractmethod
     def update_installation_content(self, installation_content_form):
@@ -2165,7 +2160,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_installation_content(self, installation_content_id):
@@ -2200,7 +2195,7 @@ class PackageAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_package_version(self, package_id, next_package_id):
@@ -2264,7 +2259,7 @@ class PackageNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -2280,7 +2275,7 @@ class PackageNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -2301,7 +2296,7 @@ class PackageNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_depot_view(self):
@@ -2444,7 +2439,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_depot_view(self):
@@ -2536,7 +2531,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_packages_by_depot(self, depot_id):
@@ -2554,7 +2549,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_package_ids_by_depots(self, depot_ids):
@@ -2571,7 +2566,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_packages_by_depots(self, depot_ids):
@@ -2588,7 +2583,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageList
+        return  # osid.installation.PackageList
 
     @abc.abstractmethod
     def get_depot_ids_by_package(self, package_id):
@@ -2606,7 +2601,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_depots_by_package(self, package_id):
@@ -2624,7 +2619,7 @@ class PackageDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
 
 class PackageDepotAssignmentSession:
@@ -2658,7 +2653,7 @@ class PackageDepotAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_packages_to_depot(self, depot_id):
@@ -2679,7 +2674,7 @@ class PackageDepotAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_depot_ids(self, depot_id):
@@ -2695,7 +2690,7 @@ class PackageDepotAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_depot_ids_for_package(self, depot_id, package_id):
@@ -2713,7 +2708,7 @@ class PackageDepotAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_package_to_depot(self, package_id, depot_id):
@@ -2780,7 +2775,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_id = property(fget=get_depot_id)
 
@@ -2796,7 +2791,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     depot = property(fget=get_depot)
 
@@ -2817,7 +2812,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_query(self):
@@ -2830,7 +2825,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
     package_query = property(fget=get_package_query)
 
@@ -2845,7 +2840,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageSearchOrder
+        return  # osid.installation.PackageSearchOrder
 
     package_search_order = property(fget=get_package_search_order)
 
@@ -2877,7 +2872,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     @abc.abstractmethod
     def apply_package_sequencing(self, package_search_order):
@@ -2909,7 +2904,7 @@ class PackageSmartDepotSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQuery
+        return  # osid.installation.PackageQuery
 
 
 class DepotLookupSession:
@@ -2955,7 +2950,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_depot_view(self):
@@ -3008,7 +3003,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     @abc.abstractmethod
     def get_depots_by_ids(self, depot_ids):
@@ -3034,7 +3029,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def get_depots_by_genus_type(self, depot_genus_type):
@@ -3056,7 +3051,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def get_depots_by_parent_genus_type(self, depot_genus_type):
@@ -3078,7 +3073,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def get_depots_by_record_type(self, depot_record_type):
@@ -3099,7 +3094,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def get_depots_by_provider(self, resource_id):
@@ -3120,7 +3115,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def get_depots(self):
@@ -3138,7 +3133,7 @@ class DepotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     depots = property(fget=get_depots)
 
@@ -3171,7 +3166,7 @@ class DepotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_query(self):
@@ -3184,7 +3179,7 @@ class DepotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQuery
+        return  # osid.installation.DepotQuery
 
     depot_query = property(fget=get_depot_query)
 
@@ -3204,7 +3199,7 @@ class DepotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
 
 class DepotSearchSession:
@@ -3238,7 +3233,7 @@ class DepotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotSearch
+        return  # osid.installation.DepotSearch
 
     depot_search = property(fget=get_depot_search)
 
@@ -3256,7 +3251,7 @@ class DepotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotSearchOrder
+        return  # osid.installation.DepotSearchOrder
 
     depot_search_order = property(fget=get_depot_search_order)
 
@@ -3278,7 +3273,7 @@ class DepotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotSearchResults
+        return  # osid.installation.DepotSearchResults
 
     @abc.abstractmethod
     def get_depot_query_from_inspector(self, depot_query_inspector):
@@ -3296,7 +3291,7 @@ class DepotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQuery
+        return  # osid.installation.DepotQuery
 
 
 class DepotAdminSession:
@@ -3348,7 +3343,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_depot_with_record_types(self, depot_record_types):
@@ -3369,7 +3364,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_form_for_create(self, depot_record_types):
@@ -3389,7 +3384,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotForm
+        return  # osid.installation.DepotForm
 
     @abc.abstractmethod
     def create_depot(self, depot_form):
@@ -3409,7 +3404,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Depot
+        return  # osid.installation.Depot
 
     @abc.abstractmethod
     def can_update_depots(self):
@@ -3428,7 +3423,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_update_depot(self, depot_id):
@@ -3452,7 +3447,7 @@ class DepotAdminSession:
         update available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_form_for_update(self, depot_id):
@@ -3473,7 +3468,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotForm
+        return  # osid.installation.DepotForm
 
     @abc.abstractmethod
     def update_depot(self, depot_form):
@@ -3509,7 +3504,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_delete_depot(self, depot_id):
@@ -3533,7 +3528,7 @@ class DepotAdminSession:
         delete available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_depot(self, depot_id):
@@ -3568,7 +3563,7 @@ class DepotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_depot(self, depot_id, alias_id):
@@ -3622,7 +3617,7 @@ class DepotNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def register_for_new_depots(self):
@@ -3817,7 +3812,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_hierarchy_id = property(fget=get_depot_hierarchy_id)
 
@@ -3833,7 +3828,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     depot_hierarchy = property(fget=get_depot_hierarchy)
 
@@ -3854,7 +3849,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_depot_view(self):
@@ -3898,7 +3893,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_depot_ids = property(fget=get_root_depot_ids)
 
@@ -3914,7 +3909,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     root_depots = property(fget=get_root_depots)
 
@@ -3934,7 +3929,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_depot(self, id_, depot_id):
@@ -3955,7 +3950,7 @@ class DepotHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_depot_ids(self, depot_id):
@@ -3973,7 +3968,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_depots(self, depot_id):
@@ -3991,7 +3986,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def is_ancestor_of_depot(self, id_, depot_id):
@@ -4012,7 +4007,7 @@ class DepotHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_depots(self, depot_id):
@@ -4030,7 +4025,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_depot(self, id_, depot_id):
@@ -4051,7 +4046,7 @@ class DepotHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_depot_ids(self, depot_id):
@@ -4069,7 +4064,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_depots(self, depot_id):
@@ -4087,7 +4082,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotList
+        return  # osid.installation.DepotList
 
     @abc.abstractmethod
     def is_descendant_of_depot(self, id_, depot_id):
@@ -4108,7 +4103,7 @@ class DepotHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_node_ids(self, depot_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4134,7 +4129,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_depot_nodes(self, depot_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4160,7 +4155,7 @@ class DepotHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotNode
+        return  # osid.installation.DepotNode
 
 
 class DepotHierarchyDesignSession:
@@ -4182,7 +4177,7 @@ class DepotHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     depot_hierarchy_id = property(fget=get_depot_hierarchy_id)
 
@@ -4198,7 +4193,7 @@ class DepotHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     depot_hierarchy = property(fget=get_depot_hierarchy)
 
@@ -4219,7 +4214,7 @@ class DepotHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_depot(self, depot_id):
@@ -4306,5 +4301,3 @@ class DepotHierarchyDesignSession:
 
         """
         pass
-
-

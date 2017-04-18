@@ -50,8 +50,6 @@ CREATED = True
 UPDATED = True
 
 
-
-
 class OsidSession(abc_osid_sessions.OsidSession):
     """The ``OsidSession`` is the top level interface for all OSID sessions.
 
@@ -69,7 +67,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
     through the transaction interface.
 
     """
-
     def __init__(self):
         self._proxy = None
         self._runtime = None
@@ -347,7 +344,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
         except (KeyError, ValueError):
             raise errors.NotFound()
         collection.save(obj_map)
-
     def get_locale(self):
         """Gets the locale indicating the localization preferences in effect for this session.
 
@@ -505,5 +501,3 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
         """
         raise errors.Unimplemented()
-
-

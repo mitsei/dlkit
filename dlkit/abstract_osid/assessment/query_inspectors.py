@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class QuestionQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -29,7 +26,6 @@ class QuestionQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_question_query_inspector_record(self, question_record_type):
@@ -46,7 +42,7 @@ class QuestionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.QuestionQueryInspectorRecord
+        return  # osid.assessment.records.QuestionQueryInspectorRecord
 
 
 class AnswerQueryInspector:
@@ -59,7 +55,6 @@ class AnswerQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_answer_query_inspector_record(self, question_record_type):
@@ -76,7 +71,7 @@ class AnswerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AnswerQueryInspectorRecord
+        return  # osid.assessment.records.AnswerQueryInspectorRecord
 
 
 class ItemQueryInspector:
@@ -90,7 +85,6 @@ class ItemQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_learning_objective_id_terms(self):
         """Gets the learning objective ``Id`` query terms.
@@ -102,7 +96,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     learning_objective_id_terms = property(fget=get_learning_objective_id_terms)
 
@@ -117,7 +111,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     learning_objective_terms = property(fget=get_learning_objective_terms)
 
@@ -132,7 +126,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     question_id_terms = property(fget=get_question_id_terms)
 
@@ -147,7 +141,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.QuestionQueryInspector
+        return  # osid.assessment.QuestionQueryInspector
 
     question_terms = property(fget=get_question_terms)
 
@@ -162,7 +156,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     answer_id_terms = property(fget=get_answer_id_terms)
 
@@ -177,7 +171,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerQueryInspector
+        return  # osid.assessment.AnswerQueryInspector
 
     answer_terms = property(fget=get_answer_terms)
 
@@ -192,7 +186,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -207,7 +201,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -222,7 +216,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -237,7 +231,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -256,7 +250,7 @@ class ItemQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemQueryInspectorRecord
+        return  # osid.assessment.records.ItemQueryInspectorRecord
 
 
 class AssessmentQueryInspector:
@@ -270,7 +264,6 @@ class AssessmentQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_level_id_terms(self):
         """Gets the level ``Id`` query terms.
@@ -282,7 +275,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     level_id_terms = property(fget=get_level_id_terms)
 
@@ -297,7 +290,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     level_terms = property(fget=get_level_terms)
 
@@ -312,7 +305,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
@@ -327,7 +320,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     rubric_terms = property(fget=get_rubric_terms)
 
@@ -342,7 +335,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     item_id_terms = property(fget=get_item_id_terms)
 
@@ -357,7 +350,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQueryInspector
+        return  # osid.assessment.ItemQueryInspector
 
     item_terms = property(fget=get_item_terms)
 
@@ -372,7 +365,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
@@ -387,7 +380,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
@@ -402,7 +395,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_taken_id_terms = property(fget=get_assessment_taken_id_terms)
 
@@ -417,7 +410,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQueryInspector
+        return  # osid.assessment.AssessmentTakenQueryInspector
 
     assessment_taken_terms = property(fget=get_assessment_taken_terms)
 
@@ -432,7 +425,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -447,7 +440,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -466,7 +459,7 @@ class AssessmentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentQueryInspectorRecord
+        return  # osid.assessment.records.AssessmentQueryInspectorRecord
 
 
 class AssessmentOfferedQueryInspector:
@@ -480,7 +473,6 @@ class AssessmentOfferedQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_id_terms(self):
         """Gets the assessment ``Id`` query terms.
@@ -492,7 +484,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -507,7 +499,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -522,7 +514,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     level_id_terms = property(fget=get_level_id_terms)
 
@@ -537,7 +529,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     level_terms = property(fget=get_level_terms)
 
@@ -552,7 +544,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     items_sequential_terms = property(fget=get_items_sequential_terms)
 
@@ -567,7 +559,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     items_shuffled_terms = property(fget=get_items_shuffled_terms)
 
@@ -582,7 +574,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     start_time_terms = property(fget=get_start_time_terms)
 
@@ -597,7 +589,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     deadline_terms = property(fget=get_deadline_terms)
 
@@ -612,7 +604,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     duration_terms = property(fget=get_duration_terms)
 
@@ -627,7 +619,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     score_system_id_terms = property(fget=get_score_system_id_terms)
 
@@ -642,7 +634,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     score_system_terms = property(fget=get_score_system_terms)
 
@@ -657,7 +649,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
@@ -672,7 +664,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     grade_system_terms = property(fget=get_grade_system_terms)
 
@@ -687,7 +679,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
@@ -702,7 +694,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     rubric_terms = property(fget=get_rubric_terms)
 
@@ -717,7 +709,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_taken_id_terms = property(fget=get_assessment_taken_id_terms)
 
@@ -732,7 +724,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQueryInspector
+        return  # osid.assessment.AssessmentTakenQueryInspector
 
     assessment_taken_terms = property(fget=get_assessment_taken_terms)
 
@@ -747,7 +739,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -762,7 +754,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -781,7 +773,7 @@ class AssessmentOfferedQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedQueryInspectorRecord
+        return  # osid.assessment.records.AssessmentOfferedQueryInspectorRecord
 
 
 class AssessmentTakenQueryInspector:
@@ -795,7 +787,6 @@ class AssessmentTakenQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_offered_id_terms(self):
         """Gets the assessment offered ``Id`` query terms.
@@ -807,7 +798,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
@@ -822,7 +813,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
@@ -837,7 +828,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     taker_id_terms = property(fget=get_taker_id_terms)
 
@@ -852,7 +843,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     taker_terms = property(fget=get_taker_terms)
 
@@ -867,7 +858,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     taking_agent_id_terms = property(fget=get_taking_agent_id_terms)
 
@@ -882,7 +873,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     taking_agent_terms = property(fget=get_taking_agent_terms)
 
@@ -897,7 +888,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     actual_start_time_terms = property(fget=get_actual_start_time_terms)
 
@@ -912,7 +903,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeTerm
+        return  # osid.search.terms.DateTimeTerm
 
     completion_time_terms = property(fget=get_completion_time_terms)
 
@@ -927,7 +918,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     time_spent_terms = property(fget=get_time_spent_terms)
 
@@ -942,7 +933,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     score_system_id_terms = property(fget=get_score_system_id_terms)
 
@@ -957,7 +948,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     score_system_terms = property(fget=get_score_system_terms)
 
@@ -972,7 +963,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     score_terms = property(fget=get_score_terms)
 
@@ -987,7 +978,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     grade_id_terms = property(fget=get_grade_id_terms)
 
@@ -1002,7 +993,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeQueryInspector
+        return  # osid.grading.GradeQueryInspector
 
     grade_terms = property(fget=get_grade_terms)
 
@@ -1017,7 +1008,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     feedback_terms = property(fget=get_feedback_terms)
 
@@ -1032,7 +1023,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
@@ -1047,7 +1038,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQueryInspector
+        return  # osid.assessment.AssessmentTakenQueryInspector
 
     rubric_terms = property(fget=get_rubric_terms)
 
@@ -1062,7 +1053,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -1077,7 +1068,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -1096,7 +1087,7 @@ class AssessmentTakenQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenQueryInspectorRecord
+        return  # osid.assessment.records.AssessmentTakenQueryInspectorRecord
 
 
 class BankQueryInspector:
@@ -1110,7 +1101,6 @@ class BankQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_item_id_terms(self):
         """Gets the item ``Id`` query terms.
@@ -1122,7 +1112,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     item_id_terms = property(fget=get_item_id_terms)
 
@@ -1137,7 +1127,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQueryInspector
+        return  # osid.assessment.ItemQueryInspector
 
     item_terms = property(fget=get_item_terms)
 
@@ -1152,7 +1142,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -1167,7 +1157,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -1182,7 +1172,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
@@ -1197,7 +1187,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
@@ -1212,7 +1202,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_bank_id_terms = property(fget=get_ancestor_bank_id_terms)
 
@@ -1227,7 +1217,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     ancestor_bank_terms = property(fget=get_ancestor_bank_terms)
 
@@ -1242,7 +1232,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_bank_id_terms = property(fget=get_descendant_bank_id_terms)
 
@@ -1257,7 +1247,7 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     descendant_bank_terms = property(fget=get_descendant_bank_terms)
 
@@ -1276,6 +1266,4 @@ class BankQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankQueryInspectorRecord
-
-
+        return  # osid.assessment.records.BankQueryInspectorRecord

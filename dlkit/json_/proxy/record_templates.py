@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.proxy import records as abc_proxy_records
 
 
-
-
 class ProxyRecord(abc_proxy_records.ProxyRecord, osid_records.OsidRecord):
     """A record for a ``Proxy``.
 
@@ -29,6 +27,8 @@ class ProxyRecord(abc_proxy_records.ProxyRecord, osid_records.OsidRecord):
 
 
 
+
+
 class ProxyConditionRecord(abc_proxy_records.ProxyConditionRecord, osid_records.OsidRecord):
     """A record for a ``ProxyCondition``.
 
@@ -36,7 +36,3 @@ class ProxyConditionRecord(abc_proxy_records.ProxyConditionRecord, osid_records.
     underlying object.
 
     """
-
-
-
-

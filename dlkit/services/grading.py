@@ -37,10 +37,8 @@ DISABLED = -1
 
 class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
     """GradingProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_grade_system_lookup(self):
         """Pass through to provider supports_grade_system_lookup"""
         # Implemented from kitosid template for -
@@ -190,7 +188,6 @@ class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
 
 class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading_managers.GradingManager):
     """GradingManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -311,7 +308,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_grade_system_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_grade_system_lookup_session"""
         # Implemented from kitosid template for -
@@ -788,7 +784,6 @@ class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_manager
 
 class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalog):
     """Gradebook convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -926,7 +921,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_gradebook_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

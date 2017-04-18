@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class HierarchyQuery:
     """This is the query for searching hierarchies.
 
@@ -29,7 +26,6 @@ class HierarchyQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_node_id(self, id_, match):
@@ -95,6 +91,4 @@ class HierarchyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchyQueryRecord
-
-
+        return  # osid.hierarchy.records.HierarchyQueryRecord

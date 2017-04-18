@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class TypeProfile:
     """The ``TypeProfile`` describes the interoperability among type services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_type_lookup(self):
@@ -35,7 +31,7 @@ class TypeProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_type_admin(self):
@@ -48,7 +44,7 @@ class TypeProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class TypeManager:
@@ -59,7 +55,6 @@ class TypeManager:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_type_lookup_session(self):
@@ -74,7 +69,7 @@ class TypeManager:
         ``supports_type_lookup()`` is ``true``.*
 
         """
-        return # osid.type.TypeLookupSession
+        return  # osid.type.TypeLookupSession
 
     type_lookup_session = property(fget=get_type_lookup_session)
 
@@ -91,7 +86,7 @@ class TypeManager:
         ``supports_type_admin()`` is ``true``.*
 
         """
-        return # osid.type.TypeAdminSession
+        return  # osid.type.TypeAdminSession
 
     type_admin_session = property(fget=get_type_admin_session)
 
@@ -106,7 +101,6 @@ class TypeProxyManager:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_type_lookup_session(self, proxy):
@@ -124,7 +118,7 @@ class TypeProxyManager:
         ``supports_type_lookup()`` is ``true``.*
 
         """
-        return # osid.type.TypeLookupSession
+        return  # osid.type.TypeLookupSession
 
     @abc.abstractmethod
     def get_type_admin_session(self, proxy):
@@ -142,6 +136,4 @@ class TypeProxyManager:
         ``supports_type_admin()`` is ``true``.*
 
         """
-        return # osid.type.TypeAdminSession
-
-
+        return  # osid.type.TypeAdminSession

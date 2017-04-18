@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthenticationProcessProfile:
     """The ``AuthenticationProcessProfile`` describes the interoperability among authentication process services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_authentication_acquisition(self):
@@ -38,7 +34,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authentication_validation(self):
@@ -54,7 +50,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_trust_lookup(self):
@@ -67,7 +63,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_circle_of_trust(self):
@@ -80,7 +76,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_challenge(self):
@@ -93,7 +89,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authentication_record_types(self):
@@ -106,7 +102,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     authentication_record_types = property(fget=get_authentication_record_types)
 
@@ -123,7 +119,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authentication_input_record_types(self):
@@ -136,7 +132,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     authentication_input_record_types = property(fget=get_authentication_input_record_types)
 
@@ -153,7 +149,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_challenge_record_types(self):
@@ -166,7 +162,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     challenge_record_types = property(fget=get_challenge_record_types)
 
@@ -183,7 +179,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_credential_export(self):
@@ -196,7 +192,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_credential_types(self):
@@ -209,7 +205,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     credential_types = property(fget=get_credential_types)
 
@@ -226,7 +222,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_trust_types(self):
@@ -239,7 +235,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     trust_types = property(fget=get_trust_types)
 
@@ -256,7 +252,7 @@ class AuthenticationProcessProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AuthenticationProcessManager:
@@ -275,10 +271,8 @@ class AuthenticationProcessManager:
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authentication_acquisition_session(self):
@@ -293,7 +287,7 @@ class AuthenticationProcessManager:
         ``supports_acquisition()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationAcquisitionSession
+        return  # osid.authentication.process.AuthenticationAcquisitionSession
 
     authentication_acquisition_session = property(fget=get_authentication_acquisition_session)
 
@@ -310,7 +304,7 @@ class AuthenticationProcessManager:
         ``supports_validation()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationValidationSession
+        return  # osid.authentication.process.AuthenticationValidationSession
 
     authentication_validation_session = property(fget=get_authentication_validation_session)
 
@@ -327,7 +321,7 @@ class AuthenticationProcessManager:
         ``supports_trust_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.process.TrustLookupSession
+        return  # osid.authentication.process.TrustLookupSession
 
     trust_lookup_session = property(fget=get_trust_lookup_session)
 
@@ -349,7 +343,7 @@ class AuthenticationProcessManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.process.TrustLookupSession
+        return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
     def get_circle_of_trust_session(self):
@@ -364,7 +358,7 @@ class AuthenticationProcessManager:
         ``supports_circle_of_trust()`` is ``true``.*
 
         """
-        return # osid.authentication.process.CircleOfTrustSession
+        return  # osid.authentication.process.CircleOfTrustSession
 
     circle_of_trust_session = property(fget=get_circle_of_trust_session)
 
@@ -386,7 +380,7 @@ class AuthenticationProcessManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.process.CircleOfTrustSession
+        return  # osid.authentication.process.CircleOfTrustSession
 
 
 class AuthenticationProcessProxyManager:
@@ -406,10 +400,8 @@ class AuthenticationProcessProxyManager:
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authentication_acquisition_session(self, proxy):
@@ -427,7 +419,7 @@ class AuthenticationProcessProxyManager:
         ``supports_acquisition()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationAcquisitionSession
+        return  # osid.authentication.process.AuthenticationAcquisitionSession
 
     @abc.abstractmethod
     def get_authentication_validation_session(self, proxy):
@@ -445,7 +437,7 @@ class AuthenticationProcessProxyManager:
         ``supports_validation()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationValidationSession
+        return  # osid.authentication.process.AuthenticationValidationSession
 
     @abc.abstractmethod
     def get_trust_lookup_session(self, proxy):
@@ -463,7 +455,7 @@ class AuthenticationProcessProxyManager:
         ``supports_trust_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.process.TrustLookupSession
+        return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
     def get_trust_lookup_session_for_agency(self, agency_id, proxy):
@@ -485,7 +477,7 @@ class AuthenticationProcessProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.process.TrustLookupSession
+        return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
     def get_circle_of_trust_session(self, proxy):
@@ -503,7 +495,7 @@ class AuthenticationProcessProxyManager:
         ``supports_circle_of_trust()`` is ``true``.*
 
         """
-        return # osid.authentication.process.CircleOfTrustSession
+        return  # osid.authentication.process.CircleOfTrustSession
 
     @abc.abstractmethod
     def get_circle_of_trust_session_for_agency(self, agency_id, proxy):
@@ -525,6 +517,4 @@ class AuthenticationProcessProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.process.CircleOfTrustSession
-
-
+        return  # osid.authentication.process.CircleOfTrustSession

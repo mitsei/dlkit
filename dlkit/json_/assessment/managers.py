@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.assessment import managers as assessment_managers
 
 
-
-
 class AssessmentProfile(osid_managers.OsidProfile, assessment_managers.AssessmentProfile):
     """The ``AssessmentProfile`` describes the interoperability among assessment services."""
 
@@ -595,6 +593,8 @@ class AssessmentProfile(osid_managers.OsidProfile, assessment_managers.Assessmen
     bank_search_record_types = property(fget=get_bank_search_record_types)
 
 
+
+
 class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment_managers.AssessmentManager):
     """The assessment manager provides access to assessment sessions and provides interoperability tests for various aspects of this service.
 
@@ -684,12 +684,9 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_assessment_session(self):
         """Gets an ``AssessmentSession`` which is responsible for taking assessments and examining responses from assessments taken.
@@ -1730,6 +1727,8 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
     assessment_batch_manager = property(fget=get_assessment_batch_manager)
 
 
+
+
 class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, assessment_managers.AssessmentProxyManager):
     """The assessment manager provides access to assessment sessions and provides interoperability tests for various aspects of this service.
 
@@ -1820,12 +1819,9 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_assessment_session(self, proxy):
         """Gets an ``AssessmentSession`` which is responsible for taking assessments and examining responses from assessments taken.
@@ -2866,5 +2862,3 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
         raise errors.Unimplemented()
 
     assessment_batch_proxy_manager = property(fget=get_assessment_batch_proxy_manager)
-
-

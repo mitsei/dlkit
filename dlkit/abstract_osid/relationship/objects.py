@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Relationship:
     """A ``Relationship`` is an object between two peers.
 
@@ -27,7 +24,6 @@ class Relationship:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_id(self):
@@ -40,7 +36,7 @@ class Relationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     source_id = property(fget=get_source_id)
 
@@ -55,7 +51,7 @@ class Relationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     destination_id = property(fget=get_destination_id)
 
@@ -81,7 +77,7 @@ class Relationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipRecord
+        return  # osid.relationship.records.RelationshipRecord
 
 
 class RelationshipForm:
@@ -95,7 +91,6 @@ class RelationshipForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_relationship_form_record(self, relationship_record_type):
@@ -113,7 +108,7 @@ class RelationshipForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipFormRecord
+        return  # osid.relationship.records.RelationshipFormRecord
 
 
 class RelationshipList:
@@ -127,11 +122,8 @@ class RelationshipList:
            Relationship[] relationships = rl.getNextRelationships(rl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_relationship(self):
@@ -145,7 +137,7 @@ class RelationshipList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Relationship
+        return  # osid.relationship.Relationship
 
     next_relationship = property(fget=get_next_relationship)
 
@@ -166,7 +158,7 @@ class RelationshipList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Relationship
+        return  # osid.relationship.Relationship
 
 
 class Family:
@@ -177,7 +169,6 @@ class Family:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_family_record(self, family_record_type):
@@ -201,7 +192,7 @@ class Family:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilyRecord
+        return  # osid.relationship.records.FamilyRecord
 
 
 class FamilyForm:
@@ -215,7 +206,6 @@ class FamilyForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_family_form_record(self, family_record_type):
@@ -233,7 +223,7 @@ class FamilyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilyFormRecord
+        return  # osid.relationship.records.FamilyFormRecord
 
 
 class FamilyList:
@@ -247,11 +237,8 @@ class FamilyList:
            Family[] families = fl.getNextFamilies(fl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_family(self):
@@ -265,7 +252,7 @@ class FamilyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     next_family = property(fget=get_next_family)
 
@@ -286,7 +273,7 @@ class FamilyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
 
 class FamilyNode:
@@ -299,7 +286,6 @@ class FamilyNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family(self):
         """Gets the ``Family`` at this node.
@@ -311,7 +297,7 @@ class FamilyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -326,7 +312,7 @@ class FamilyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyNodeList
+        return  # osid.relationship.FamilyNodeList
 
     parent_family_nodes = property(fget=get_parent_family_nodes)
 
@@ -341,7 +327,7 @@ class FamilyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyNodeList
+        return  # osid.relationship.FamilyNodeList
 
     child_family_nodes = property(fget=get_child_family_nodes)
 
@@ -357,11 +343,8 @@ class FamilyNodeList:
            FamilyNode[] nodes = fnl.getNextFamilyNodes(fnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_family_node(self):
@@ -375,7 +358,7 @@ class FamilyNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyNode
+        return  # osid.relationship.FamilyNode
 
     next_family_node = property(fget=get_next_family_node)
 
@@ -396,6 +379,4 @@ class FamilyNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyNode
-
-
+        return  # osid.relationship.FamilyNode

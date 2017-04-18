@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssessmentPartQuery:
     """This is the query for searching assessment parts.
 
@@ -27,7 +24,6 @@ class AssessmentPartQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_assessment_id(self, assessment_id, match):
@@ -68,7 +64,7 @@ class AssessmentPartQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -84,7 +80,7 @@ class AssessmentPartQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -140,7 +136,7 @@ class AssessmentPartQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_assessment_part_query(self):
@@ -156,7 +152,7 @@ class AssessmentPartQuery:
         ``supports_parent_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     parent_assessment_part_query = property(fget=get_parent_assessment_part_query)
 
@@ -337,7 +333,7 @@ class AssessmentPartQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_assessment_part_query(self):
@@ -353,7 +349,7 @@ class AssessmentPartQuery:
         ``supports_child_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     child_assessment_part_query = property(fget=get_child_assessment_part_query)
 
@@ -422,7 +418,7 @@ class AssessmentPartQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -438,7 +434,7 @@ class AssessmentPartQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -472,7 +468,7 @@ class AssessmentPartQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartQueryRecord
+        return  # osid.assessment.authoring.records.AssessmentPartQueryRecord
 
 
 class SequenceRuleQuery:
@@ -483,7 +479,6 @@ class SequenceRuleQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_assessment_part_id(self, assessment_part_id, match):
@@ -524,7 +519,7 @@ class SequenceRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_query(self):
@@ -540,7 +535,7 @@ class SequenceRuleQuery:
         ``supports_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     assessment_part_query = property(fget=get_assessment_part_query)
 
@@ -596,7 +591,7 @@ class SequenceRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_next_assessment_part_query(self):
@@ -612,7 +607,7 @@ class SequenceRuleQuery:
         ``supports_next_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     next_assessment_part_query = property(fget=get_next_assessment_part_query)
 
@@ -780,7 +775,7 @@ class SequenceRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_applied_assessment_part_query(self):
@@ -796,7 +791,7 @@ class SequenceRuleQuery:
         ``supports_applied_assessment_part_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQuery
+        return  # osid.assessment.authoring.AssessmentPartQuery
 
     applied_assessment_part_query = property(fget=get_applied_assessment_part_query)
 
@@ -865,7 +860,7 @@ class SequenceRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -881,7 +876,7 @@ class SequenceRuleQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -915,7 +910,7 @@ class SequenceRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleQueryRecord
+        return  # osid.assessment.authoring.records.SequenceRuleQueryRecord
 
 
 class SequenceRuleEnablerQuery:
@@ -926,7 +921,6 @@ class SequenceRuleEnablerQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_ruled_sequence_rule_id(self, sequence_rule_id, match):
@@ -967,7 +961,7 @@ class SequenceRuleEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ruled_sequence_rule_query(self):
@@ -983,7 +977,7 @@ class SequenceRuleEnablerQuery:
         ``supports_ruled_sequence_rule_query()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQuery
+        return  # osid.assessment.authoring.SequenceRuleQuery
 
     ruled_sequence_rule_query = property(fget=get_ruled_sequence_rule_query)
 
@@ -1052,7 +1046,7 @@ class SequenceRuleEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -1068,7 +1062,7 @@ class SequenceRuleEnablerQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -1102,6 +1096,4 @@ class SequenceRuleEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerQueryRecord
-
-
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerQueryRecord

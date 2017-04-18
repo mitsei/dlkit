@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LogEntrySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_priority(self, style):
@@ -74,7 +70,7 @@ class LogEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_order(self):
@@ -88,7 +84,7 @@ class LogEntrySearchOrder:
         ``supports_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -116,7 +112,7 @@ class LogEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_search_order(self):
@@ -130,7 +126,7 @@ class LogEntrySearchOrder:
         ``supports_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     agent_search_order = property(fget=get_agent_search_order)
 
@@ -151,13 +147,12 @@ class LogEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntrySearchOrderRecord
+        return  # osid.logging.records.LogEntrySearchOrderRecord
 
 
 class LogSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_search_order_record(self, log_record_type):
@@ -176,6 +171,4 @@ class LogSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogSearchOrderRecord
-
-
+        return  # osid.logging.records.LogSearchOrderRecord

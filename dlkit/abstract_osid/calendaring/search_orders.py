@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventSearchOrder:
@@ -65,7 +60,7 @@ class EventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_search_order(self):
@@ -79,7 +74,7 @@ class EventSearchOrder:
         ``supports_recurring_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventSearchOrder
+        return  # osid.calendaring.RecurringEventSearchOrder
 
     recurring_event_search_order = property(fget=get_recurring_event_search_order)
 
@@ -107,7 +102,7 @@ class EventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_search_order(self):
@@ -121,7 +116,7 @@ class EventSearchOrder:
         ``supports_superseding_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchOrder
+        return  # osid.calendaring.SupersedingEventSearchOrder
 
     superseding_event_search_order = property(fget=get_superseding_event_search_order)
 
@@ -149,7 +144,7 @@ class EventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_search_order(self):
@@ -163,7 +158,7 @@ class EventSearchOrder:
         ``supports_offset_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventSearchOrder
+        return  # osid.calendaring.OffsetEventSearchOrder
 
     offset_event_search_order = property(fget=get_offset_event_search_order)
 
@@ -204,7 +199,7 @@ class EventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_search_order(self):
@@ -218,7 +213,7 @@ class EventSearchOrder:
         ``supports_location_search_order()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSearchOrder
+        return  # osid.mapping.LocationSearchOrder
 
     location_search_order = property(fget=get_location_search_order)
 
@@ -239,7 +234,7 @@ class EventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventSearchOrderRecord
+        return  # osid.calendaring.records.EventSearchOrderRecord
 
 
 class RecurringEventSearchOrder:
@@ -263,7 +258,7 @@ class RecurringEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventSearchOrderRecord
+        return  # osid.calendaring.records.RecurringEventSearchOrderRecord
 
 
 class SupersedingEventSearchOrder:
@@ -294,7 +289,7 @@ class SupersedingEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseded_event_search_order(self):
@@ -308,7 +303,7 @@ class SupersedingEventSearchOrder:
         ``supports_superseded_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     superseded_event_search_order = property(fget=get_superseded_event_search_order)
 
@@ -336,7 +331,7 @@ class SupersedingEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_search_order(self):
@@ -350,7 +345,7 @@ class SupersedingEventSearchOrder:
         ``supports_superseding_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     superseding_event_search_order = property(fget=get_superseding_event_search_order)
 
@@ -397,7 +392,7 @@ class SupersedingEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventSearchOrderRecord
+        return  # osid.calendaring.records.SupersedingEventSearchOrderRecord
 
 
 class OffsetEventSearchOrder:
@@ -441,7 +436,7 @@ class OffsetEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_start_reference_event_search_order(self):
@@ -455,7 +450,7 @@ class OffsetEventSearchOrder:
         ``supports_start_reference_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     start_reference_event_search_order = property(fget=get_start_reference_event_search_order)
 
@@ -535,7 +530,7 @@ class OffsetEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_end_reference_event_search_order(self):
@@ -549,7 +544,7 @@ class OffsetEventSearchOrder:
         ``supports_end_reference_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     end_reference_event_search_order = property(fget=get_end_reference_event_search_order)
 
@@ -629,7 +624,7 @@ class OffsetEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_search_order(self):
@@ -643,7 +638,7 @@ class OffsetEventSearchOrder:
         ``supports_location_search_order()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSearchOrder
+        return  # osid.mapping.LocationSearchOrder
 
     location_search_order = property(fget=get_location_search_order)
 
@@ -664,7 +659,7 @@ class OffsetEventSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventSearchOrderRecord
+        return  # osid.calendaring.records.OffsetEventSearchOrderRecord
 
 
 class ScheduleSearchOrder:
@@ -695,7 +690,7 @@ class ScheduleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_search_order(self):
@@ -709,7 +704,7 @@ class ScheduleSearchOrder:
         ``supports_schedule_slot_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchOrder
+        return  # osid.calendaring.ScheduleSlotSearchOrder
 
     schedule_slot_search_order = property(fget=get_schedule_slot_search_order)
 
@@ -737,7 +732,7 @@ class ScheduleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_search_order(self):
@@ -751,7 +746,7 @@ class ScheduleSearchOrder:
         ``supports_time_period_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodSearchOrder
+        return  # osid.calendaring.TimePeriodSearchOrder
 
     time_period_search_order = property(fget=get_time_period_search_order)
 
@@ -844,7 +839,7 @@ class ScheduleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_search_order(self):
@@ -858,7 +853,7 @@ class ScheduleSearchOrder:
         ``supports_location_search_order()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSearchOrder
+        return  # osid.mapping.LocationSearchOrder
 
     location_search_order = property(fget=get_location_search_order)
 
@@ -879,7 +874,7 @@ class ScheduleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSearchOrderRecord
+        return  # osid.calendaring.records.ScheduleSearchOrderRecord
 
 
 class ScheduleSlotSearchOrder:
@@ -981,7 +976,7 @@ class ScheduleSlotSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotSearchOrderRecord
+        return  # osid.calendaring.records.ScheduleSlotSearchOrderRecord
 
 
 class TimePeriodSearchOrder:
@@ -1044,7 +1039,7 @@ class TimePeriodSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodSearchOrderRecord
+        return  # osid.calendaring.records.TimePeriodSearchOrderRecord
 
 
 class CommitmentSearchOrder:
@@ -1075,7 +1070,7 @@ class CommitmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_search_order(self):
@@ -1089,7 +1084,7 @@ class CommitmentSearchOrder:
         ``supports_event_search_order()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     event_search_order = property(fget=get_event_search_order)
 
@@ -1117,7 +1112,7 @@ class CommitmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_order(self):
@@ -1131,7 +1126,7 @@ class CommitmentSearchOrder:
         ``supports_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -1152,7 +1147,7 @@ class CommitmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentSearchOrderRecord
+        return  # osid.calendaring.records.CommitmentSearchOrderRecord
 
 
 class CalendarSearchOrder:
@@ -1176,6 +1171,4 @@ class CalendarSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarSearchOrderRecord
-
-
+        return  # osid.calendaring.records.CalendarSearchOrderRecord

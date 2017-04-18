@@ -32,6 +32,8 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAuthorizationSession(unittest.TestCase):
     """Tests for AuthorizationSession"""
 
@@ -314,6 +316,8 @@ class TestAuthorizationSession(unittest.TestCase):
         pass
 
 
+
+
 class TestAuthorizationLookupSession(unittest.TestCase):
     """Tests for AuthorizationLookupSession"""
 
@@ -525,6 +529,8 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.authorization_ids[0])
 
 
+
+
 class TestAuthorizationQuerySession(unittest.TestCase):
     """Tests for AuthorizationQuerySession"""
 
@@ -608,6 +614,8 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_authorizations_by_query(query).available(), 3)
+
+
 
 
 class TestAuthorizationAdminSession(unittest.TestCase):
@@ -701,6 +709,8 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestVaultLookupSession(unittest.TestCase):
     """Tests for VaultLookupSession"""
 
@@ -772,6 +782,8 @@ class TestVaultLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_vaults()
 
 
+
+
 class TestVaultQuerySession(unittest.TestCase):
     """Tests for VaultQuerySession"""
 
@@ -789,6 +801,8 @@ class TestVaultQuerySession(unittest.TestCase):
     def test_get_vaults_by_query(self):
         """Tests get_vaults_by_query"""
         pass
+
+
 
 
 class TestVaultAdminSession(unittest.TestCase):

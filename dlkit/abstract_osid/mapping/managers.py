@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -37,7 +36,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_lookup(self):
@@ -50,7 +49,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_query(self):
@@ -63,7 +62,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_search(self):
@@ -76,7 +75,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_admin(self):
@@ -89,7 +88,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_notification(self):
@@ -102,7 +101,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_hierarchy(self):
@@ -115,7 +114,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_hierarchy_design(self):
@@ -128,7 +127,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_map(self):
@@ -141,7 +140,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_map_assignment(self):
@@ -154,7 +153,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_smart_map(self):
@@ -167,7 +166,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_adjacency(self):
@@ -180,7 +179,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_location_spatial(self):
@@ -193,7 +192,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_location(self):
@@ -206,7 +205,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_location_update(self):
@@ -219,7 +218,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_location_notification(self):
@@ -232,7 +231,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_position_notification(self):
@@ -245,7 +244,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_my_location(self):
@@ -258,7 +257,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_lookup(self):
@@ -271,7 +270,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_query(self):
@@ -284,7 +283,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_search(self):
@@ -297,7 +296,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_admin(self):
@@ -310,7 +309,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_notification(self):
@@ -323,7 +322,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_hierarchy(self):
@@ -337,7 +336,7 @@ class MappingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_map_hierarchy_design(self):
@@ -350,7 +349,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_mapping_batch(self):
@@ -363,7 +362,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_mapping_path(self):
@@ -376,7 +375,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_mapping_route(self):
@@ -389,7 +388,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_record_types(self):
@@ -402,7 +401,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     location_record_types = abc.abstractproperty(fget=get_location_record_types)
 
@@ -419,7 +418,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_search_record_types(self):
@@ -432,7 +431,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     location_search_record_types = abc.abstractproperty(fget=get_location_search_record_types)
 
@@ -449,7 +448,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_record_types(self):
@@ -462,7 +461,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     map_record_types = abc.abstractproperty(fget=get_map_record_types)
 
@@ -479,7 +478,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_search_record_types(self):
@@ -492,7 +491,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     map_search_record_types = abc.abstractproperty(fget=get_map_search_record_types)
 
@@ -509,7 +508,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_location_record_types(self):
@@ -522,7 +521,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     resource_location_record_types = abc.abstractproperty(fget=get_resource_location_record_types)
 
@@ -539,7 +538,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate_types(self):
@@ -552,7 +551,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     coordinate_types = abc.abstractproperty(fget=get_coordinate_types)
 
@@ -569,7 +568,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_heading_types(self):
@@ -582,7 +581,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     heading_types = abc.abstractproperty(fget=get_heading_types)
 
@@ -599,7 +598,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit_record_types(self):
@@ -612,7 +611,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     spatial_unit_record_types = abc.abstractproperty(fget=get_spatial_unit_record_types)
 
@@ -629,7 +628,7 @@ class MappingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class MappingManager:
@@ -698,7 +697,7 @@ class MappingManager:
         ``supports_location_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationLookupSession
+        return  # osid.mapping.LocationLookupSession
 
     location_lookup_session = abc.abstractproperty(fget=get_location_lookup_session)
 
@@ -720,7 +719,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationLookupSession
+        return  # osid.mapping.LocationLookupSession
 
     @abc.abstractmethod
     def get_location_query_session(self):
@@ -735,7 +734,7 @@ class MappingManager:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuerySession
+        return  # osid.mapping.LocationQuerySession
 
     location_query_session = abc.abstractproperty(fget=get_location_query_session)
 
@@ -757,7 +756,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationQuerySession
+        return  # osid.mapping.LocationQuerySession
 
     @abc.abstractmethod
     def get_location_search_session(self):
@@ -772,7 +771,7 @@ class MappingManager:
         ``supports_location_search()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSearchSession
+        return  # osid.mapping.LocationSearchSession
 
     location_search_session = abc.abstractproperty(fget=get_location_search_session)
 
@@ -794,7 +793,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationSearchSession
+        return  # osid.mapping.LocationSearchSession
 
     @abc.abstractmethod
     def get_location_admin_session(self):
@@ -809,7 +808,7 @@ class MappingManager:
         ``supports_location_admin()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationAdminSession
+        return  # osid.mapping.LocationAdminSession
 
     location_admin_session = abc.abstractproperty(fget=get_location_admin_session)
 
@@ -831,7 +830,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationAdminSession
+        return  # osid.mapping.LocationAdminSession
 
     @abc.abstractmethod
     def get_location_notification_session(self, location_receiver):
@@ -849,7 +848,7 @@ class MappingManager:
         ``supports_location_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationNotificationSession
+        return  # osid.mapping.LocationNotificationSession
 
     @abc.abstractmethod
     def get_location_notification_session_for_map(self, location_receiver, map_id):
@@ -871,7 +870,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationNotificationSession
+        return  # osid.mapping.LocationNotificationSession
 
     @abc.abstractmethod
     def get_location_hierarchy_session(self):
@@ -886,7 +885,7 @@ class MappingManager:
         ``supports_location_hierarchy()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationHierarchySession
+        return  # osid.mapping.LocationHierarchySession
 
     location_hierarchy_session = abc.abstractproperty(fget=get_location_hierarchy_session)
 
@@ -908,7 +907,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationHierarchySession
+        return  # osid.mapping.LocationHierarchySession
 
     @abc.abstractmethod
     def get_location_hierarchy_design_session(self):
@@ -923,7 +922,7 @@ class MappingManager:
         ``supports_location_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationHierarchyDesignSession
+        return  # osid.mapping.LocationHierarchyDesignSession
 
     location_hierarchy_design_session = abc.abstractproperty(fget=get_location_hierarchy_design_session)
 
@@ -945,7 +944,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationHierarchyDesignSession
+        return  # osid.mapping.LocationHierarchyDesignSession
 
     @abc.abstractmethod
     def get_location_map_session(self):
@@ -960,7 +959,7 @@ class MappingManager:
         ``supports_location_map()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationMapSession
+        return  # osid.mapping.LocationMapSession
 
     location_map_session = abc.abstractproperty(fget=get_location_map_session)
 
@@ -977,7 +976,7 @@ class MappingManager:
         ``supports_location_map_assignment()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationMapAssignmentSession
+        return  # osid.mapping.LocationMapAssignmentSession
 
     location_map_assignment_session = abc.abstractproperty(fget=get_location_map_assignment_session)
 
@@ -998,7 +997,7 @@ class MappingManager:
         ``supports_location_smart_map()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSmartMapSession
+        return  # osid.mapping.LocationSmartMapSession
 
     @abc.abstractmethod
     def get_location_adjacency_session(self):
@@ -1013,7 +1012,7 @@ class MappingManager:
         ``supports_location_adjacency()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationAdjacencySession
+        return  # osid.mapping.LocationAdjacencySession
 
     location_adjacency_session = abc.abstractproperty(fget=get_location_adjacency_session)
 
@@ -1035,7 +1034,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationAdjacencySession
+        return  # osid.mapping.LocationAdjacencySession
 
     @abc.abstractmethod
     def get_location_spatial_session(self):
@@ -1050,7 +1049,7 @@ class MappingManager:
         ``supports_location_spatial()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSpatialSession
+        return  # osid.mapping.LocationSpatialSession
 
     location_spatial_session = abc.abstractproperty(fget=get_location_spatial_session)
 
@@ -1072,7 +1071,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationSpatialSession
+        return  # osid.mapping.LocationSpatialSession
 
     @abc.abstractmethod
     def get_resource_location_session(self):
@@ -1087,7 +1086,7 @@ class MappingManager:
         ``supports_resource_location()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationSession
+        return  # osid.mapping.ResourceLocationSession
 
     resource_location_session = abc.abstractproperty(fget=get_resource_location_session)
 
@@ -1109,7 +1108,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationSession
+        return  # osid.mapping.ResourceLocationSession
 
     @abc.abstractmethod
     def get_resource_location_update_session(self):
@@ -1124,7 +1123,7 @@ class MappingManager:
         ``supports_resource_location_update()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationUpdateSession
+        return  # osid.mapping.ResourceLocationUpdateSession
 
     resource_location_update_session = abc.abstractproperty(fget=get_resource_location_update_session)
 
@@ -1146,7 +1145,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationUpdateSession
+        return  # osid.mapping.ResourceLocationUpdateSession
 
     @abc.abstractmethod
     def get_resource_location_notification_session(self, resource_location_receiver):
@@ -1164,7 +1163,7 @@ class MappingManager:
         ``supports_resource_location_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationNotificationSession
+        return  # osid.mapping.ResourceLocationNotificationSession
 
     @abc.abstractmethod
     def get_resource_location_notification_session_for_map(self, resource_location_receiver, map_id):
@@ -1186,7 +1185,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationNotificationSession
+        return  # osid.mapping.ResourceLocationNotificationSession
 
     @abc.abstractmethod
     def get_resource_position_notification_session(self, resource_position_receiver):
@@ -1204,7 +1203,7 @@ class MappingManager:
         ``supports_resource_position_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourcePositionNotificationSession
+        return  # osid.mapping.ResourcePositionNotificationSession
 
     @abc.abstractmethod
     def get_resource_position_notification_session_for_map(self, resource_position_receiver, map_id):
@@ -1226,7 +1225,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourcePositionNotificationSession
+        return  # osid.mapping.ResourcePositionNotificationSession
 
     @abc.abstractmethod
     def get_my_location_session(self):
@@ -1241,7 +1240,7 @@ class MappingManager:
         ``supports_my_location_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.MyLocationSession
+        return  # osid.mapping.MyLocationSession
 
     my_location_session = abc.abstractproperty(fget=get_my_location_session)
 
@@ -1263,7 +1262,7 @@ class MappingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.MyLocationSession
+        return  # osid.mapping.MyLocationSession
 
     @abc.abstractmethod
     def get_map_lookup_session(self):
@@ -1278,7 +1277,7 @@ class MappingManager:
         ``supports_map_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.MapLookupSession
+        return  # osid.mapping.MapLookupSession
 
     map_lookup_session = abc.abstractproperty(fget=get_map_lookup_session)
 
@@ -1295,7 +1294,7 @@ class MappingManager:
         ``supports_map_query()`` is ``true``.*
 
         """
-        return # osid.mapping.MapQuerySession
+        return  # osid.mapping.MapQuerySession
 
     map_query_session = abc.abstractproperty(fget=get_map_query_session)
 
@@ -1312,7 +1311,7 @@ class MappingManager:
         ``supports_map_search()`` is ``true``.*
 
         """
-        return # osid.mapping.MapSearchSession
+        return  # osid.mapping.MapSearchSession
 
     map_search_session = abc.abstractproperty(fget=get_map_search_session)
 
@@ -1329,7 +1328,7 @@ class MappingManager:
         ``supports_map_admin()`` is ``true``.*
 
         """
-        return # osid.mapping.MapAdminSession
+        return  # osid.mapping.MapAdminSession
 
     map_admin_session = abc.abstractproperty(fget=get_map_admin_session)
 
@@ -1349,7 +1348,7 @@ class MappingManager:
         ``supports_map_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.MapNotificationSession
+        return  # osid.mapping.MapNotificationSession
 
     @abc.abstractmethod
     def get_map_hierarchy_session(self):
@@ -1364,7 +1363,7 @@ class MappingManager:
         ``supports_map_hierarchy()`` is ``true``.*
 
         """
-        return # osid.mapping.MapHierarchySession
+        return  # osid.mapping.MapHierarchySession
 
     map_hierarchy_session = abc.abstractproperty(fget=get_map_hierarchy_session)
 
@@ -1381,7 +1380,7 @@ class MappingManager:
         ``supports_map_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.mapping.MapHierarchyDesignSession
+        return  # osid.mapping.MapHierarchyDesignSession
 
     map_hierarchy_design_session = abc.abstractproperty(fget=get_map_hierarchy_design_session)
 
@@ -1398,7 +1397,7 @@ class MappingManager:
         ``supports_mapping_batch()`` is ``true``.*
 
         """
-        return # osid.mapping.batch.MappingBatchManager
+        return  # osid.mapping.batch.MappingBatchManager
 
     mapping_batch_manager = abc.abstractproperty(fget=get_mapping_batch_manager)
 
@@ -1415,7 +1414,7 @@ class MappingManager:
         ``supports_mapping_path()`` is ``true``.*
 
         """
-        return # osid.mapping.path.MappingPathManager
+        return  # osid.mapping.path.MappingPathManager
 
     mapping_path_manager = abc.abstractproperty(fget=get_mapping_path_manager)
 
@@ -1432,7 +1431,7 @@ class MappingManager:
         ``supports_mapping_route()`` is ``true``.*
 
         """
-        return # osid.mapping.route.MappingRouteManager
+        return  # osid.mapping.route.MappingRouteManager
 
     mapping_route_manager = abc.abstractproperty(fget=get_mapping_route_manager)
 
@@ -1507,7 +1506,7 @@ class MappingProxyManager:
         ``supports_location_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationLookupSession
+        return  # osid.mapping.LocationLookupSession
 
     @abc.abstractmethod
     def get_location_lookup_session_for_map(self, map_id, proxy):
@@ -1529,7 +1528,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationLookupSession
+        return  # osid.mapping.LocationLookupSession
 
     @abc.abstractmethod
     def get_location_query_session(self, proxy):
@@ -1547,7 +1546,7 @@ class MappingProxyManager:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuerySession
+        return  # osid.mapping.LocationQuerySession
 
     @abc.abstractmethod
     def get_location_query_session_for_map(self, map_id, proxy):
@@ -1569,7 +1568,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationQuerySession
+        return  # osid.mapping.LocationQuerySession
 
     @abc.abstractmethod
     def get_location_search_session(self, proxy):
@@ -1587,7 +1586,7 @@ class MappingProxyManager:
         ``supports_location_search()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSearchSession
+        return  # osid.mapping.LocationSearchSession
 
     @abc.abstractmethod
     def get_location_search_session_for_map(self, map_id, proxy):
@@ -1609,7 +1608,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationSearchSession
+        return  # osid.mapping.LocationSearchSession
 
     @abc.abstractmethod
     def get_location_admin_session(self, proxy):
@@ -1627,7 +1626,7 @@ class MappingProxyManager:
         ``supports_location_admin()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationAdminSession
+        return  # osid.mapping.LocationAdminSession
 
     @abc.abstractmethod
     def get_location_admin_session_for_map(self, map_id, proxy):
@@ -1649,7 +1648,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationAdminSession
+        return  # osid.mapping.LocationAdminSession
 
     @abc.abstractmethod
     def get_location_notification_session(self, location_receiver, proxy):
@@ -1669,7 +1668,7 @@ class MappingProxyManager:
         ``supports_location_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationNotificationSession
+        return  # osid.mapping.LocationNotificationSession
 
     @abc.abstractmethod
     def get_location_notification_session_for_map(self, location_receiver, map_id, proxy):
@@ -1693,7 +1692,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationNotificationSession
+        return  # osid.mapping.LocationNotificationSession
 
     @abc.abstractmethod
     def get_location_hierarchy_session(self, proxy):
@@ -1711,7 +1710,7 @@ class MappingProxyManager:
         ``supports_location_hierarchy()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationHierarchySession
+        return  # osid.mapping.LocationHierarchySession
 
     @abc.abstractmethod
     def get_location_hierarchy_session_for_map(self, map_id, proxy):
@@ -1733,7 +1732,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationHierarchySession
+        return  # osid.mapping.LocationHierarchySession
 
     @abc.abstractmethod
     def get_location_hierarchy_design_session(self, proxy):
@@ -1751,7 +1750,7 @@ class MappingProxyManager:
         ``supports_location_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationHierarchyDesignSession
+        return  # osid.mapping.LocationHierarchyDesignSession
 
     @abc.abstractmethod
     def get_location_hierarchy_design_session_for_map(self, map_id, proxy):
@@ -1773,7 +1772,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationHierarchyDesignSession
+        return  # osid.mapping.LocationHierarchyDesignSession
 
     @abc.abstractmethod
     def get_location_map_session(self, proxy):
@@ -1791,7 +1790,7 @@ class MappingProxyManager:
         ``supports_location_map()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationMapSession
+        return  # osid.mapping.LocationMapSession
 
     @abc.abstractmethod
     def get_location_map_assignment_session(self, proxy):
@@ -1809,7 +1808,7 @@ class MappingProxyManager:
         ``supports_location_map_assignment()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationMapAssignmentSession
+        return  # osid.mapping.LocationMapAssignmentSession
 
     @abc.abstractmethod
     def get_location_smart_map_session(self, map_id, proxy):
@@ -1830,7 +1829,7 @@ class MappingProxyManager:
         ``supports_location_smart_map()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSmartMapSession
+        return  # osid.mapping.LocationSmartMapSession
 
     @abc.abstractmethod
     def get_location_adjacency_session(self, proxy):
@@ -1848,7 +1847,7 @@ class MappingProxyManager:
         ``supports_location_adjacency()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationAdjacencySession
+        return  # osid.mapping.LocationAdjacencySession
 
     @abc.abstractmethod
     def get_location_adjacency_session_for_map(self, map_id, proxy):
@@ -1870,7 +1869,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationAdjacencySession
+        return  # osid.mapping.LocationAdjacencySession
 
     @abc.abstractmethod
     def get_location_spatial_session(self, proxy):
@@ -1888,7 +1887,7 @@ class MappingProxyManager:
         ``supports_location_spatial()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationSpatialSession
+        return  # osid.mapping.LocationSpatialSession
 
     @abc.abstractmethod
     def get_location_spatial_session_for_map(self, map_id, proxy):
@@ -1910,7 +1909,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.LocationSpatialSession
+        return  # osid.mapping.LocationSpatialSession
 
     @abc.abstractmethod
     def get_resource_location_session(self, proxy):
@@ -1928,7 +1927,7 @@ class MappingProxyManager:
         ``supports_resource_location()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationSession
+        return  # osid.mapping.ResourceLocationSession
 
     @abc.abstractmethod
     def get_resource_location_session_for_map(self, map_id, proxy):
@@ -1950,7 +1949,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationSession
+        return  # osid.mapping.ResourceLocationSession
 
     @abc.abstractmethod
     def get_resource_location_update_session(self, proxy):
@@ -1968,7 +1967,7 @@ class MappingProxyManager:
         ``supports_resource_location_update()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationUpdateSession
+        return  # osid.mapping.ResourceLocationUpdateSession
 
     @abc.abstractmethod
     def get_resource_location_update_session_for_map(self, map_id, proxy):
@@ -1990,7 +1989,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationUpdateSession
+        return  # osid.mapping.ResourceLocationUpdateSession
 
     @abc.abstractmethod
     def get_resource_location_notification_session(self, resource_location_receiver, proxy):
@@ -2010,7 +2009,7 @@ class MappingProxyManager:
         ``supports_resource_location_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationNotificationSession
+        return  # osid.mapping.ResourceLocationNotificationSession
 
     @abc.abstractmethod
     def get_resource_location_notification_session_for_map(self, resource_location_receiver, map_id, proxy):
@@ -2034,7 +2033,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourceLocationNotificationSession
+        return  # osid.mapping.ResourceLocationNotificationSession
 
     @abc.abstractmethod
     def get_resource_position_notification_session(self, resource_position_receiver, proxy):
@@ -2054,7 +2053,7 @@ class MappingProxyManager:
         ``supports_resource_position_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.ResourceLocationNotificationSession
+        return  # osid.mapping.ResourceLocationNotificationSession
 
     @abc.abstractmethod
     def get_resource_position_notification_session_for_map(self, resource_position_receiver, map_id, proxy):
@@ -2078,7 +2077,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.ResourcePositionNotificationSession
+        return  # osid.mapping.ResourcePositionNotificationSession
 
     @abc.abstractmethod
     def get_my_location_session(self, proxy):
@@ -2096,7 +2095,7 @@ class MappingProxyManager:
         ``supports_my_location_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.MyLocationSession
+        return  # osid.mapping.MyLocationSession
 
     @abc.abstractmethod
     def get_my_location_session_for_map(self, map_id, proxy):
@@ -2118,7 +2117,7 @@ class MappingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.mapping.MyLocationSession
+        return  # osid.mapping.MyLocationSession
 
     @abc.abstractmethod
     def get_map_lookup_session(self, proxy):
@@ -2136,7 +2135,7 @@ class MappingProxyManager:
         ``supports_map_lookup()`` is ``true``.*
 
         """
-        return # osid.mapping.MapLookupSession
+        return  # osid.mapping.MapLookupSession
 
     @abc.abstractmethod
     def get_map_query_session(self, proxy):
@@ -2154,7 +2153,7 @@ class MappingProxyManager:
         ``supports_map_query()`` is ``true``.*
 
         """
-        return # osid.mapping.MapQuerySession
+        return  # osid.mapping.MapQuerySession
 
     @abc.abstractmethod
     def get_map_search_session(self, proxy):
@@ -2172,7 +2171,7 @@ class MappingProxyManager:
         ``supports_map_search()`` is ``true``.*
 
         """
-        return # osid.mapping.MapSearchSession
+        return  # osid.mapping.MapSearchSession
 
     @abc.abstractmethod
     def get_map_admin_session(self, proxy):
@@ -2190,7 +2189,7 @@ class MappingProxyManager:
         ``supports_map_admin()`` is ``true``.*
 
         """
-        return # osid.mapping.MapAdminSession
+        return  # osid.mapping.MapAdminSession
 
     @abc.abstractmethod
     def get_map_notification_session(self, map_receiver, proxy):
@@ -2210,7 +2209,7 @@ class MappingProxyManager:
         ``supports_map_notification()`` is ``true``.*
 
         """
-        return # osid.mapping.MapNotificationSession
+        return  # osid.mapping.MapNotificationSession
 
     @abc.abstractmethod
     def get_map_hierarchy_session(self, proxy):
@@ -2228,7 +2227,7 @@ class MappingProxyManager:
         ``supports_map_hierarchy()`` is ``true``.*
 
         """
-        return # osid.mapping.MapHierarchySession
+        return  # osid.mapping.MapHierarchySession
 
     @abc.abstractmethod
     def get_map_hierarchy_design_session(self, proxy):
@@ -2246,7 +2245,7 @@ class MappingProxyManager:
         ``supports_map_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.mapping.MapHierarchyDesignSession
+        return  # osid.mapping.MapHierarchyDesignSession
 
     @abc.abstractmethod
     def get_mapping_batch_proxy_manager(self):
@@ -2261,7 +2260,7 @@ class MappingProxyManager:
         ``supports_mapping_batch()`` is ``true``.*
 
         """
-        return # osid.mapping.batch.MappingBatchProxyManager
+        return  # osid.mapping.batch.MappingBatchProxyManager
 
     mapping_batch_proxy_manager = abc.abstractproperty(fget=get_mapping_batch_proxy_manager)
 
@@ -2278,7 +2277,7 @@ class MappingProxyManager:
         ``supports_mapping_path()`` is ``true``.*
 
         """
-        return # osid.mapping.path.MappingPathProxyManager
+        return  # osid.mapping.path.MappingPathProxyManager
 
     mapping_path_proxy_manager = abc.abstractproperty(fget=get_mapping_path_proxy_manager)
 
@@ -2295,8 +2294,6 @@ class MappingProxyManager:
         ``supports_mapping_route()`` is ``true``.*
 
         """
-        return # osid.mapping.route.MappingRouteProxyManager
+        return  # osid.mapping.route.MappingRouteProxyManager
 
     mapping_route_proxy_manager = abc.abstractproperty(fget=get_mapping_route_proxy_manager)
-
-

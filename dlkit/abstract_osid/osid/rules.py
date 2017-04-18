@@ -16,15 +16,9 @@
 import abc
 
 
-
-
-
 class OsidCondition:
     """The ``OsidCondition`` is used to input conditions into a rule for evaluation."""
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidInput:
@@ -32,14 +26,6 @@ class OsidInput:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidResult:
     """The ``OsidResult`` is used to retrieve the result of processing a rule."""
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

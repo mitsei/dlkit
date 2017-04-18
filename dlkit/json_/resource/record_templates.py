@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.resource import records as abc_resource_records
 
 
-
-
 class ResourceRecord(abc_resource_records.ResourceRecord, osid_records.OsidRecord):
     """A record for a ``Resource``.
 
@@ -25,6 +23,8 @@ class ResourceRecord(abc_resource_records.ResourceRecord, osid_records.OsidRecor
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class ResourceQueryRecord(abc_resource_records.ResourceQueryRecord, osid_records
 
 
 
+
+
 class ResourceFormRecord(abc_resource_records.ResourceFormRecord, osid_records.OsidRecord):
     """A record for a ``ResourceForm``.
 
@@ -47,6 +49,8 @@ class ResourceFormRecord(abc_resource_records.ResourceFormRecord, osid_records.O
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class ResourceSearchRecord(abc_resource_records.ResourceSearchRecord, osid_recor
 
 
 
+
+
 class BinRecord(abc_resource_records.BinRecord, osid_records.OsidRecord):
     """A record for a ``Bin``.
 
@@ -69,6 +75,8 @@ class BinRecord(abc_resource_records.BinRecord, osid_records.OsidRecord):
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class BinQueryRecord(abc_resource_records.BinQueryRecord, osid_records.OsidRecor
 
 
 
+
+
 class BinFormRecord(abc_resource_records.BinFormRecord, osid_records.OsidRecord):
     """A record for a ``BinForm``.
 
@@ -95,6 +105,8 @@ class BinFormRecord(abc_resource_records.BinFormRecord, osid_records.OsidRecord)
 
 
 
+
+
 class BinSearchRecord(abc_resource_records.BinSearchRecord, osid_records.OsidRecord):
     """A record for a ``BinSearch``.
 
@@ -102,7 +114,3 @@ class BinSearchRecord(abc_resource_records.BinSearchRecord, osid_records.OsidRec
     underlying object.
 
     """
-
-
-
-

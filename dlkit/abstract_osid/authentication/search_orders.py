@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AgentSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_resource(self, style):
@@ -48,7 +44,7 @@ class AgentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_order(self):
@@ -62,7 +58,7 @@ class AgentSearchOrder:
         ``supports_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -83,13 +79,12 @@ class AgentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentSearchOrderRecord
+        return  # osid.authentication.records.AgentSearchOrderRecord
 
 
 class AgencySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_search_order_record(self, agency_record_type):
@@ -108,6 +103,4 @@ class AgencySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencySearchOrderRecord
-
-
+        return  # osid.authentication.records.AgencySearchOrderRecord

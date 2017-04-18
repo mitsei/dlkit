@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.authorization import managers as authorization_managers
 
 
-
-
 class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.AuthorizationProfile):
     """The ``AuthorizationProfile`` describes the interoperability among authorization services."""
 
@@ -280,6 +278,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
 
 
+
+
 class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, authorization_managers.AuthorizationManager):
     """The authorization manager provides access to authorization sessions and provides interoperability tests for various aspects of this service.
 
@@ -348,12 +348,9 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_authorization_session(self):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
@@ -628,6 +625,8 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 
 
+
+
 class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
     """The authorization manager provides access to authorization sessions and provides interoperability tests for various aspects of this service.
 
@@ -695,12 +694,9 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_authorization_session(self, proxy):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
@@ -975,5 +971,3 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         raise errors.Unimplemented()
 
     authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
-
-

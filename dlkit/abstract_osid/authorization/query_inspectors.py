@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationQueryInspector:
     """The query inspector for examining authorization queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_explicit_authorizations_terms(self):
@@ -35,7 +31,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     explicit_authorizations_terms = property(fget=get_explicit_authorizations_terms)
 
@@ -50,7 +46,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     related_authorization_id_terms = property(fget=get_related_authorization_id_terms)
 
@@ -65,7 +61,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     related_authorization_terms = property(fget=get_related_authorization_terms)
 
@@ -80,7 +76,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -95,7 +91,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -110,7 +106,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     trust_id_terms = property(fget=get_trust_id_terms)
 
@@ -125,7 +121,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agent_id_terms = property(fget=get_agent_id_terms)
 
@@ -140,7 +136,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_terms = property(fget=get_agent_terms)
 
@@ -155,7 +151,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     function_id_terms = property(fget=get_function_id_terms)
 
@@ -170,7 +166,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     function_terms = property(fget=get_function_terms)
 
@@ -185,7 +181,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     qualifier_id_terms = property(fget=get_qualifier_id_terms)
 
@@ -200,7 +196,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQueryInspector
+        return  # osid.authorization.QualifierQueryInspector
 
     qualifier_terms = property(fget=get_qualifier_terms)
 
@@ -215,7 +211,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     vault_id_terms = property(fget=get_vault_id_terms)
 
@@ -230,7 +226,7 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     vault_terms = property(fget=get_vault_terms)
 
@@ -249,13 +245,12 @@ class AuthorizationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationQueryInspectorRecord
+        return  # osid.authorization.records.AuthorizationQueryInspectorRecord
 
 
 class FunctionQueryInspector:
     """This is the query inspector for examining function queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_id_terms(self):
@@ -268,7 +263,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     qualifier_hierarchy_id_terms = property(fget=get_qualifier_hierarchy_id_terms)
 
@@ -283,7 +278,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyQueryInspector
+        return  # osid.hierarchy.HierarchyQueryInspector
 
     qualifier_hierarchy_terms = property(fget=get_qualifier_hierarchy_terms)
 
@@ -298,7 +293,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
@@ -313,7 +308,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     authorization_terms = property(fget=get_authorization_terms)
 
@@ -328,7 +323,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     vault_id_terms = property(fget=get_vault_id_terms)
 
@@ -343,7 +338,7 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     vault_terms = property(fget=get_vault_terms)
 
@@ -362,13 +357,12 @@ class FunctionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionQueryInspectorRecord
+        return  # osid.authorization.records.FunctionQueryInspectorRecord
 
 
 class QualifierQueryInspector:
     """This is the query inspector for examining qualifiers queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_id_terms(self):
@@ -381,7 +375,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     qualifier_hierarchy_id_terms = property(fget=get_qualifier_hierarchy_id_terms)
 
@@ -396,7 +390,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyQueryInspector
+        return  # osid.hierarchy.HierarchyQueryInspector
 
     qualifier_hierarchy_terms = property(fget=get_qualifier_hierarchy_terms)
 
@@ -411,7 +405,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
@@ -426,7 +420,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     authorization_terms = property(fget=get_authorization_terms)
 
@@ -441,7 +435,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_qualifier_id_terms = property(fget=get_ancestor_qualifier_id_terms)
 
@@ -456,7 +450,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     ancestor_qualifier_terms = property(fget=get_ancestor_qualifier_terms)
 
@@ -471,7 +465,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_qualifier_id_terms = property(fget=get_descendant_qualifier_id_terms)
 
@@ -486,7 +480,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     descendant_qualifier_terms = property(fget=get_descendant_qualifier_terms)
 
@@ -501,7 +495,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     vault_id_terms = property(fget=get_vault_id_terms)
 
@@ -516,7 +510,7 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     vault_terms = property(fget=get_vault_terms)
 
@@ -535,13 +529,12 @@ class QualifierQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierQueryInspectorRecord
+        return  # osid.authorization.records.QualifierQueryInspectorRecord
 
 
 class VaultQueryInspector:
     """This is the query inspector for examining vault queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_function_id_terms(self):
@@ -554,7 +547,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     function_id_terms = property(fget=get_function_id_terms)
 
@@ -569,7 +562,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.FunctionQueryInspector
+        return  # osid.authorization.FunctionQueryInspector
 
     function_terms = property(fget=get_function_terms)
 
@@ -584,7 +577,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     qualifier_id_terms = property(fget=get_qualifier_id_terms)
 
@@ -599,7 +592,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.QualifierQueryInspector
+        return  # osid.authorization.QualifierQueryInspector
 
     qualifier_terms = property(fget=get_qualifier_terms)
 
@@ -614,7 +607,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
@@ -629,7 +622,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.AuthorizationQueryInspector
+        return  # osid.authorization.AuthorizationQueryInspector
 
     authorization_terms = property(fget=get_authorization_terms)
 
@@ -644,7 +637,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_vault_id_terms = property(fget=get_ancestor_vault_id_terms)
 
@@ -659,7 +652,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     ancestor_vault_terms = property(fget=get_ancestor_vault_terms)
 
@@ -674,7 +667,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_vault_id_terms = property(fget=get_descendant_vault_id_terms)
 
@@ -689,7 +682,7 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.VaultQueryInspector
+        return  # osid.authorization.VaultQueryInspector
 
     descendant_vault_terms = property(fget=get_descendant_vault_terms)
 
@@ -708,6 +701,4 @@ class VaultQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultQueryInspectorRecord
-
-
+        return  # osid.authorization.records.VaultQueryInspectorRecord

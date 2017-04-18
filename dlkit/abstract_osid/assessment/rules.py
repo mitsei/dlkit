@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Response:
     """A response to an assessment item.
 
@@ -28,7 +25,6 @@ class Response:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_item_id(self):
@@ -41,7 +37,7 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     item_id = property(fget=get_item_id)
 
@@ -56,7 +52,7 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Item
+        return  # osid.assessment.Item
 
     item = property(fget=get_item)
 
@@ -81,6 +77,4 @@ class Response:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ResponseRecord
-
-
+        return  # osid.assessment.records.ResponseRecord

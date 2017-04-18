@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -32,7 +31,7 @@ class Location:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit(self):
@@ -45,7 +44,7 @@ class Location:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     spatial_unit = abc.abstractproperty(fget=get_spatial_unit)
 
@@ -70,7 +69,7 @@ class Location:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationRecord
+        return  # osid.mapping.records.LocationRecord
 
 
 class LocationForm:
@@ -96,7 +95,7 @@ class LocationForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     spatial_unit_metadata = abc.abstractproperty(fget=get_spatial_unit_metadata)
 
@@ -144,7 +143,7 @@ class LocationForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationFormRecord
+        return  # osid.mapping.records.LocationFormRecord
 
 
 class LocationList:
@@ -175,7 +174,7 @@ class LocationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     next_location = abc.abstractproperty(fget=get_next_location)
 
@@ -196,7 +195,7 @@ class LocationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
 
 class LocationNode:
@@ -220,7 +219,7 @@ class LocationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = abc.abstractproperty(fget=get_location)
 
@@ -235,7 +234,7 @@ class LocationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationNodeList
+        return  # osid.mapping.LocationNodeList
 
     parent_location_nodes = abc.abstractproperty(fget=get_parent_location_nodes)
 
@@ -250,7 +249,7 @@ class LocationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationNodeList
+        return  # osid.mapping.LocationNodeList
 
     child_location_nodes = abc.abstractproperty(fget=get_child_location_nodes)
 
@@ -283,7 +282,7 @@ class LocationNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationNode
+        return  # osid.mapping.LocationNode
 
     next_location_node = abc.abstractproperty(fget=get_next_location_node)
 
@@ -304,7 +303,7 @@ class LocationNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationNode
+        return  # osid.mapping.LocationNode
 
 
 class Map:
@@ -332,7 +331,7 @@ class Map:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapRecord
+        return  # osid.mapping.records.MapRecord
 
 
 class MapForm:
@@ -361,7 +360,7 @@ class MapForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapFormRecord
+        return  # osid.mapping.records.MapFormRecord
 
 
 class MapList:
@@ -391,7 +390,7 @@ class MapList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     next_map = abc.abstractproperty(fget=get_next_map)
 
@@ -412,7 +411,7 @@ class MapList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
 
 class MapNode:
@@ -436,7 +435,7 @@ class MapNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -451,7 +450,7 @@ class MapNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapNodeList
+        return  # osid.mapping.MapNodeList
 
     parent_map_nodes = abc.abstractproperty(fget=get_parent_map_nodes)
 
@@ -466,7 +465,7 @@ class MapNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapNodeList
+        return  # osid.mapping.MapNodeList
 
     child_map_nodes = abc.abstractproperty(fget=get_child_map_nodes)
 
@@ -499,7 +498,7 @@ class MapNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapNode
+        return  # osid.mapping.MapNode
 
     next_map_node = abc.abstractproperty(fget=get_next_map_node)
 
@@ -520,7 +519,7 @@ class MapNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapNode
+        return  # osid.mapping.MapNode
 
 
 class ResourceLocation:
@@ -538,7 +537,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     resource_id = abc.abstractproperty(fget=get_resource_id)
 
@@ -553,7 +552,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = abc.abstractproperty(fget=get_resource)
 
@@ -568,7 +567,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_id(self):
@@ -581,7 +580,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_id = abc.abstractproperty(fget=get_location_id)
 
@@ -597,7 +596,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = abc.abstractproperty(fget=get_location)
 
@@ -612,7 +611,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate(self):
@@ -625,7 +624,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     coordinate = abc.abstractproperty(fget=get_coordinate)
 
@@ -650,7 +649,7 @@ class ResourceLocation:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.ResourceLocationRecord
+        return  # osid.mapping.records.ResourceLocationRecord
 
 
 class ResourceLocationList:
@@ -681,7 +680,7 @@ class ResourceLocationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocation
+        return  # osid.mapping.ResourceLocation
 
     next_resource_location = abc.abstractproperty(fget=get_next_resource_location)
 
@@ -702,7 +701,7 @@ class ResourceLocationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocation
+        return  # osid.mapping.ResourceLocation
 
 
 class CoordinateList:
@@ -733,7 +732,7 @@ class CoordinateList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     next_coordinate = abc.abstractproperty(fget=get_next_coordinate)
 
@@ -754,7 +753,7 @@ class CoordinateList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
 
 class SpatialUnitList:
@@ -785,7 +784,7 @@ class SpatialUnitList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     next_spatial_unit = abc.abstractproperty(fget=get_next_spatial_unit)
 
@@ -806,6 +805,4 @@ class SpatialUnitList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
-
-
+        return  # osid.mapping.SpatialUnit

@@ -30,8 +30,6 @@ from dlkit.primordium.locale.types.string import get_type_data as get_string_typ
 DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data('WORDIGNORECASE'))
 
 
-
-
 class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     """The ``OsidQuery`` is used to assemble search queries.
 
@@ -69,7 +67,6 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     locale appear in the objects.
 
     """
-
     def __init__(self, runtime):
         self._records = dict()
         # _load_records is in OsidExtensibleQuery:
@@ -207,7 +204,6 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
                 del self._query_terms[match_key]
         except KeyError:
             pass
-
     def get_string_match_types(self):
         """Gets the string matching types supported.
 
@@ -310,6 +306,8 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     any_terms = property(fdel=clear_any_terms)
 
 
+
+
 class OsidIdentifiableQuery(abc_osid_queries.OsidIdentifiableQuery, OsidQuery):
     """The ``OsidIdentiableQuery`` is used to assemble search queries for ``Identifiable`` objects.
 
@@ -352,6 +350,8 @@ class OsidIdentifiableQuery(abc_osid_queries.OsidIdentifiableQuery, OsidQuery):
     id_terms = property(fdel=clear_id_terms)
 
 
+
+
 class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_markers.Extensible):
     """The ``OsidExtensibleQuery`` is used to assemble search queries for ``Extensible`` objects.
 
@@ -366,7 +366,6 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
     matching all the given data (eg: AND) are returned.
 
     """
-
     def _load_records(self, record_type_idstrs):
         """Loads query records"""
         for record_type_idstr in record_type_idstrs:
@@ -381,7 +380,6 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
         module = importlib.import_module(record_type_data['module_path'])
         record = getattr(module, record_type_data['query_record_class_name'])
         self._records[record_type_idstr] = record(self)
-
     @utilities.arguments_not_none
     def match_record_type(self, record_type, match):
         """Sets a ``Type`` for querying objects having records implementing a given record type.
@@ -417,6 +415,8 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
     record_terms = property(fdel=clear_record_terms)
 
 
+
+
 class OsidBrowsableQuery(abc_osid_queries.OsidBrowsableQuery, OsidQuery):
     """The ``OsidBrowsableQuery`` is used to assemble search queries for ``Browsable`` objects.
 
@@ -431,6 +431,8 @@ class OsidBrowsableQuery(abc_osid_queries.OsidBrowsableQuery, OsidQuery):
     matching all the given data (eg: AND) are returned.
 
     """
+
+
 
 
 
@@ -588,14 +590,20 @@ class OsidTemporalQuery(abc_osid_queries.OsidTemporalQuery, OsidQuery):
     date_terms = property(fdel=clear_date_terms)
 
 
+
+
 class OsidSubjugateableQuery(abc_osid_queries.OsidSubjugateableQuery, OsidQuery):
     """The ``OsidSubjugateableQuery`` is used to assemble search queries for dependent objects."""
 
 
 
 
+
+
 class OsidAggregateableQuery(abc_osid_queries.OsidAggregateableQuery, OsidQuery):
     """The ``OsidAggregateableQuery`` is used to assemble search queries for assemblages."""
+
+
 
 
 
@@ -629,6 +637,8 @@ class OsidContainableQuery(abc_osid_queries.OsidContainableQuery, OsidQuery):
         raise errors.Unimplemented()
 
     sequestered_terms = property(fdel=clear_sequestered_terms)
+
+
 
 
 class OsidSourceableQuery(abc_osid_queries.OsidSourceableQuery, OsidQuery):
@@ -823,8 +833,12 @@ class OsidSourceableQuery(abc_osid_queries.OsidSourceableQuery, OsidQuery):
     license_terms = property(fdel=clear_license_terms)
 
 
+
+
 class OsidFederateableQuery(abc_osid_queries.OsidFederateableQuery, OsidQuery):
     """The ``OsidFederateableQuery`` is used to assemble search queries for federated objects."""
+
+
 
 
 
@@ -922,6 +936,8 @@ class OsidOperableQuery(abc_osid_queries.OsidOperableQuery, OsidQuery):
     operational_terms = property(fdel=clear_operational_terms)
 
 
+
+
 class OsidObjectQuery(abc_osid_queries.OsidObjectQuery, OsidIdentifiableQuery, OsidExtensibleQuery, OsidBrowsableQuery):
     """The ``OsidObjectQuery`` is used to assemble search queries.
 
@@ -969,19 +985,15 @@ class OsidObjectQuery(abc_osid_queries.OsidObjectQuery, OsidIdentifiableQuery, O
       query.matchDisplayName("Fred*", wildcardStringMatchType, true);
       query.matchDisplayName("Barney*", wildcardStringMatchType, true);
       query.matchDescriptionMatch("dinosaur", wordStringMatchType, false);
-      
+
       ColorQuery recordQuery;
       recordQuery = query.getObjectRecord(colorRecordType);
       recordQuery.matchColor("purple", false);
       ObjectList list = session.getObjectsByQuery(query);
 
-
-
     """
-
     def __init__(self, runtime):
         OsidQuery.__init__(self, runtime)
-
     @utilities.arguments_not_none
     def match_display_name(self, display_name, string_match_type=DEFAULT_STRING_MATCH_TYPE, match=True):
         """Adds a display name to match.
@@ -1663,6 +1675,8 @@ class OsidObjectQuery(abc_osid_queries.OsidObjectQuery, OsidIdentifiableQuery, O
     relationship_peer_id_terms = property(fdel=clear_relationship_peer_id_terms)
 
 
+
+
 class OsidRelationshipQuery(abc_osid_queries.OsidRelationshipQuery, OsidObjectQuery, OsidTemporalQuery):
     """This is the query interface for searching relationships.
 
@@ -1743,8 +1757,12 @@ class OsidRelationshipQuery(abc_osid_queries.OsidRelationshipQuery, OsidObjectQu
     end_reason_terms = property(fdel=clear_end_reason_terms)
 
 
+
+
 class OsidCatalogQuery(abc_osid_queries.OsidCatalogQuery, OsidObjectQuery, OsidSourceableQuery, OsidFederateableQuery):
     """The ``OsidCatalogQuery`` is used to assemble search queries for catalogs."""
+
+
 
 
 
@@ -1826,6 +1844,8 @@ class OsidRuleQuery(abc_osid_queries.OsidRuleQuery, OsidObjectQuery, OsidOperabl
         raise errors.Unimplemented()
 
     rule_terms = property(fdel=clear_rule_terms)
+
+
 
 
 class OsidEnablerQuery(abc_osid_queries.OsidEnablerQuery, OsidRuleQuery, OsidTemporalQuery):
@@ -2121,6 +2141,8 @@ class OsidEnablerQuery(abc_osid_queries.OsidEnablerQuery, OsidRuleQuery, OsidTem
     demographic_terms = property(fdel=clear_demographic_terms)
 
 
+
+
 class OsidConstrainerQuery(abc_osid_queries.OsidConstrainerQuery, OsidRuleQuery):
     """This is the query interface for searching constrainers.
 
@@ -2128,6 +2150,8 @@ class OsidConstrainerQuery(abc_osid_queries.OsidConstrainerQuery, OsidRuleQuery)
     the same method produce a nested ``OR``.
 
     """
+
+
 
 
 
@@ -2143,6 +2167,8 @@ class OsidProcessorQuery(abc_osid_queries.OsidProcessorQuery, OsidRuleQuery):
 
 
 
+
+
 class OsidGovernatorQuery(abc_osid_queries.OsidGovernatorQuery, OsidObjectQuery, OsidOperableQuery, OsidSourceableQuery):
     """This is the query interface for searching governers.
 
@@ -2150,6 +2176,8 @@ class OsidGovernatorQuery(abc_osid_queries.OsidGovernatorQuery, OsidObjectQuery,
     the same method produce a nested ``OR``.
 
     """
+
+
 
 
 
@@ -2277,6 +2305,8 @@ class OsidCompendiumQuery(abc_osid_queries.OsidCompendiumQuery, OsidObjectQuery,
     extrapolated_terms = property(fdel=clear_extrapolated_terms)
 
 
+
+
 class OsidCapsuleQuery(abc_osid_queries.OsidCapsuleQuery, OsidQuery):
     """This is the query interface for searching capsulating interfaces.
 
@@ -2284,7 +2314,3 @@ class OsidCapsuleQuery(abc_osid_queries.OsidCapsuleQuery, OsidQuery):
     the same method produce a nested ``OR``.
 
     """
-
-
-
-

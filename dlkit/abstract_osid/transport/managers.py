@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class TransportProfile:
@@ -40,7 +35,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_outbound_stream(self):
@@ -53,7 +48,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_inbound_stream(self):
@@ -66,7 +61,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_outbound_message(self):
@@ -79,7 +74,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_inbound_message(self):
@@ -92,7 +87,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_endpoint_lookup(self):
@@ -105,7 +100,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_endpoint_record_types(self):
@@ -118,7 +113,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     endpoint_record_types = property(fget=get_endpoint_record_types)
 
@@ -135,7 +130,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_request_record_types(self):
@@ -148,7 +143,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     request_record_types = property(fget=get_request_record_types)
 
@@ -165,7 +160,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_response_record_types(self):
@@ -178,7 +173,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     response_record_types = property(fget=get_response_record_types)
 
@@ -195,7 +190,7 @@ class TransportProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class TransportManager:
@@ -224,7 +219,7 @@ class TransportManager:
         ``supports_outbound_stream()`` is ``true``.*
 
         """
-        return # osid.transport.OutboundStreamSession
+        return  # osid.transport.OutboundStreamSession
 
     outbound_stream_session = property(fget=get_outbound_stream_session)
 
@@ -246,7 +241,7 @@ class TransportManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.OutboundStreamSession
+        return  # osid.transport.OutboundStreamSession
 
     @abc.abstractmethod
     def get_inbound_stream_session(self, stream_receiver):
@@ -264,7 +259,7 @@ class TransportManager:
         ``supports_inbound_stream()`` is ``true``.*
 
         """
-        return # osid.transport.InboundStreamSession
+        return  # osid.transport.InboundStreamSession
 
     @abc.abstractmethod
     def get_inbound_stream_session_for_endpoint(self, stream_receiver, endpoint_id):
@@ -286,7 +281,7 @@ class TransportManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.InboundStreamSession
+        return  # osid.transport.InboundStreamSession
 
     @abc.abstractmethod
     def get_outbound_message_session(self):
@@ -301,7 +296,7 @@ class TransportManager:
         ``supports_outbound_message()`` is ``true``.*
 
         """
-        return # osid.transport.OutboundMessageSession
+        return  # osid.transport.OutboundMessageSession
 
     outbound_message_session = property(fget=get_outbound_message_session)
 
@@ -323,7 +318,7 @@ class TransportManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.OutboundMessageSession
+        return  # osid.transport.OutboundMessageSession
 
     @abc.abstractmethod
     def get_inbound_message_session(self, message_receiver):
@@ -341,7 +336,7 @@ class TransportManager:
         ``supports_inbound_message()`` is ``true``.*
 
         """
-        return # osid.transport.InboundMessageSession
+        return  # osid.transport.InboundMessageSession
 
     @abc.abstractmethod
     def get_inbound_message_session_for_endpoint(self, message_receiver, endpoint_id):
@@ -363,7 +358,7 @@ class TransportManager:
         ``supports_visible_federation()`` are true.*
 
         """
-        return # osid.transport.InboundMessageSession
+        return  # osid.transport.InboundMessageSession
 
     @abc.abstractmethod
     def get_endpoint_lookup_session(self):
@@ -378,7 +373,7 @@ class TransportManager:
         ``supports_inbound()`` is ``true``.*
 
         """
-        return # osid.transport.EndpointLookupSession
+        return  # osid.transport.EndpointLookupSession
 
     endpoint_lookup_session = property(fget=get_endpoint_lookup_session)
 
@@ -412,7 +407,7 @@ class TransportProxyManager:
         ``supports_outbound_stream()`` is ``true``.*
 
         """
-        return # osid.transport.OutboundStreamSession
+        return  # osid.transport.OutboundStreamSession
 
     @abc.abstractmethod
     def get_outbound_stream_session_for_endpoint(self, endpoint_id, proxy):
@@ -434,7 +429,7 @@ class TransportProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.OutboundStreamSession
+        return  # osid.transport.OutboundStreamSession
 
     @abc.abstractmethod
     def get_inbound_stream_session(self, stream_receiver, proxy):
@@ -454,7 +449,7 @@ class TransportProxyManager:
         ``supports_inbound_stream()`` is ``true``.*
 
         """
-        return # osid.transport.InboundStreamSession
+        return  # osid.transport.InboundStreamSession
 
     @abc.abstractmethod
     def get_inbound_stream_session_for_endpoint(self, stream_receiver, endpoint_id, proxy):
@@ -478,7 +473,7 @@ class TransportProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.InboundStreamSession
+        return  # osid.transport.InboundStreamSession
 
     @abc.abstractmethod
     def get_outbound_message_session(self, proxy):
@@ -496,7 +491,7 @@ class TransportProxyManager:
         ``supports_outbound_message()`` is ``true``.*
 
         """
-        return # osid.transport.OutboundMessageSession
+        return  # osid.transport.OutboundMessageSession
 
     @abc.abstractmethod
     def get_outbound_message_session_for_endpoint(self, endpoint_id, proxy):
@@ -518,7 +513,7 @@ class TransportProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.transport.OutboundMessageSession
+        return  # osid.transport.OutboundMessageSession
 
     @abc.abstractmethod
     def get_inbound_message_session(self, message_receiver, proxy):
@@ -538,7 +533,7 @@ class TransportProxyManager:
         ``supports_inbound_message()`` is ``true``.*
 
         """
-        return # osid.transport.InboundMessageSession
+        return  # osid.transport.InboundMessageSession
 
     @abc.abstractmethod
     def get_inbound_message_session_for_endpoint(self, message_receiver, endpoint_id, proxy):
@@ -562,7 +557,7 @@ class TransportProxyManager:
         ``supports_visible_federation()`` are true.*
 
         """
-        return # osid.transport.InboundMessageSession
+        return  # osid.transport.InboundMessageSession
 
     @abc.abstractmethod
     def get_endpoint_lookup_session(self, proxy):
@@ -580,6 +575,4 @@ class TransportProxyManager:
         ``supports_inbound()`` is ``true``.*
 
         """
-        return # osid.transport.EndpointLookupSession
-
-
+        return  # osid.transport.EndpointLookupSession

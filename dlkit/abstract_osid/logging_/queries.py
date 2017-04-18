@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class LogEntryQuery:
     """This is the query for searching log entries.
 
@@ -27,7 +24,6 @@ class LogEntryQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_priority(self, priority_type, match):
@@ -168,7 +164,7 @@ class LogEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -182,7 +178,7 @@ class LogEntryQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -238,7 +234,7 @@ class LogEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self):
@@ -252,7 +248,7 @@ class LogEntryQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -308,7 +304,7 @@ class LogEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_query(self):
@@ -322,7 +318,7 @@ class LogEntryQuery:
         ``supports_log_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogQuery
+        return  # osid.logging.LogQuery
 
     log_query = property(fget=get_log_query)
 
@@ -356,7 +352,7 @@ class LogEntryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntryQueryRecord
+        return  # osid.logging.records.LogEntryQueryRecord
 
 
 class LogQuery:
@@ -367,7 +363,6 @@ class LogQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_log_entry_id(self, log_entry_id, match):
@@ -408,7 +403,7 @@ class LogQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_query(self):
@@ -422,7 +417,7 @@ class LogQuery:
         ``supports_log_entry_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryQuery
+        return  # osid.logging.LogEntryQuery
 
     log_entry_query = property(fget=get_log_entry_query)
 
@@ -491,7 +486,7 @@ class LogQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_log_query(self):
@@ -507,7 +502,7 @@ class LogQuery:
         ``supports_ancestor_log_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogQuery
+        return  # osid.logging.LogQuery
 
     ancestor_log_query = property(fget=get_ancestor_log_query)
 
@@ -576,7 +571,7 @@ class LogQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_log_query(self):
@@ -592,7 +587,7 @@ class LogQuery:
         ``supports_descendant_log_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogQuery
+        return  # osid.logging.LogQuery
 
     descendant_log_query = property(fget=get_descendant_log_query)
 
@@ -639,6 +634,4 @@ class LogQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogQueryRecord
-
-
+        return  # osid.logging.records.LogQueryRecord

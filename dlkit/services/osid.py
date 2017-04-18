@@ -47,10 +47,8 @@ class OsidPrimitive(abc_osid_markers.OsidPrimitive):
 
 class Identifiable(abc_osid_markers.Identifiable):
     """Identifiable convenience adapter including related Session methods."""
-
     def __init__(self, osid_object): # I will never be called :(
         self._osid_object = osid_object
-
     def get_id(self):
         return self._osid_object.get_id()
 
@@ -68,10 +66,8 @@ class Identifiable(abc_osid_markers.Identifiable):
 
 class Extensible(abc_osid_markers.Extensible):
     """Extensible convenience adapter including related Session methods."""
-
     def __init__(self, osid_object): # I will never be called :(
         self._osid_object = osid_object
-
     def get_record_types(self):
         return self._osid_object.get_record_types()
 
@@ -83,10 +79,8 @@ class Extensible(abc_osid_markers.Extensible):
 
 class Browsable(abc_osid_markers.Browsable):
     """Browsable convenience adapter including related Session methods."""
-
     def __init__(self, osid_object): # I will never be called :(
         self._osid_object = osid_object
-
     def get_properties(self):
         return self._osid_object.get_properties()
 
@@ -145,10 +139,8 @@ class Containable(abc_osid_markers.Containable):
 
 class Sourceable(abc_osid_markers.Sourceable):
     """Sourceable convenience adapter including related Session methods."""
-
     def __init__(self, osid_object): # I will never be called :(
         self._osid_object = osid_object
-
     def get_provider_id(self):
         return self._osid_object.get_provider_id()
 
@@ -203,10 +195,8 @@ class Operable(abc_osid_markers.Operable):
 
 class OsidProfile(abc_osid_managers.OsidProfile):
     """OsidProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def get_id(self):
         pass
 
@@ -301,8 +291,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
 
 class OsidSession(abc_osid_sessions.OsidSession):
     """OsidSession convenience adapter including related Session methods."""
-
-
     COMPARATIVE = 0
     PLENARY = 1
     FEDERATED = 0
@@ -344,7 +332,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
     def clear_proxy(self):
         """Sets proxy to None."""
         self._proxy = None
-
     def get_locale(self):
         pass
 
@@ -428,10 +415,8 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
 class OsidObject(abc_osid_objects.OsidObject):
     """OsidObject convenience adapter including related Session methods."""
-
     def __init__(self, osid_object):
         self._osid_object = osid_object
-
     def get_display_name(self):
         return self._osid_object.get_display_name()
 
@@ -459,7 +444,6 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject):
 
 class OsidList(abc_osid_objects.OsidList):
     """OsidList convenience adapter including related Session methods."""
-
     def __init__(self, iter_object=None, count=None):
         if iter_object is None:
             iter_object = []
@@ -480,7 +464,6 @@ class OsidList(abc_osid_objects.OsidList):
 
     def len(self):
         return self.available()
-
     def has_next(self):
         if self._count != None:
             # If count is available, use it

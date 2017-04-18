@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class PackageQueryInspector:
@@ -36,7 +31,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.VersionTerm
+        return  # osid.search.terms.VersionTerm
 
     version_terms = property(fget=get_version_terms)
 
@@ -51,7 +46,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.VersionTerm
+        return  # osid.search.terms.VersionTerm
 
     version_since_terms = property(fget=get_version_since_terms)
 
@@ -66,7 +61,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     copyright_terms = property(fget=get_copyright_terms)
 
@@ -81,7 +76,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     requires_license_acknowledgement_terms = property(fget=get_requires_license_acknowledgement_terms)
 
@@ -96,7 +91,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     creator_id_terms = property(fget=get_creator_id_terms)
 
@@ -111,7 +106,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     creator_terms = property(fget=get_creator_terms)
 
@@ -126,7 +121,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     release_date_terms = property(fget=get_release_date_terms)
 
@@ -141,7 +136,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     dependency_id_terms = property(fget=get_dependency_id_terms)
 
@@ -156,7 +151,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     dependency_terms = property(fget=get_dependency_terms)
 
@@ -171,7 +166,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     url_terms = property(fget=get_url_terms)
 
@@ -186,7 +181,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     installation_id_terms = property(fget=get_installation_id_terms)
 
@@ -201,7 +196,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationQueryInspector
+        return  # osid.installation.InstallationQueryInspector
 
     installation_terms = property(fget=get_installation_terms)
 
@@ -216,7 +211,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     dependent_id_terms = property(fget=get_dependent_id_terms)
 
@@ -231,7 +226,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     dependent_terms = property(fget=get_dependent_terms)
 
@@ -246,7 +241,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     versioned_package_id_terms = property(fget=get_versioned_package_id_terms)
 
@@ -261,7 +256,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     versioned_package_terms = property(fget=get_versioned_package_terms)
 
@@ -276,7 +271,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     installation_content_id_terms = property(fget=get_installation_content_id_terms)
 
@@ -291,7 +286,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationContentQueryInspector
+        return  # osid.installation.InstallationContentQueryInspector
 
     installation_content_terms = property(fget=get_installation_content_terms)
 
@@ -306,7 +301,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     depot_id_terms = property(fget=get_depot_id_terms)
 
@@ -321,7 +316,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQueryInspector
+        return  # osid.installation.DepotQueryInspector
 
     depot_terms = property(fget=get_depot_terms)
 
@@ -340,7 +335,7 @@ class PackageQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageQueryInspectorRecord
+        return  # osid.installation.records.PackageQueryInspectorRecord
 
 
 class InstallationContentQueryInspector:
@@ -358,7 +353,7 @@ class InstallationContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     data_length_terms = property(fget=get_data_length_terms)
 
@@ -373,7 +368,7 @@ class InstallationContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BytesTerm
+        return  # osid.search.terms.BytesTerm
 
     data_terms = property(fget=get_data_terms)
 
@@ -393,7 +388,7 @@ class InstallationContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationContentQueryInspectorRecord
+        return  # osid.installation.records.InstallationContentQueryInspectorRecord
 
 
 class DepotQueryInspector:
@@ -411,7 +406,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     package_id_terms = property(fget=get_package_id_terms)
 
@@ -426,7 +421,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     package_terms = property(fget=get_package_terms)
 
@@ -441,7 +436,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_depot_id_terms = property(fget=get_ancestor_depot_id_terms)
 
@@ -456,7 +451,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQueryInspector
+        return  # osid.installation.DepotQueryInspector
 
     ancestor_depot_terms = property(fget=get_ancestor_depot_terms)
 
@@ -471,7 +466,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_depot_id_terms = property(fget=get_descendant_depot_id_terms)
 
@@ -486,7 +481,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.DepotQueryInspector
+        return  # osid.installation.DepotQueryInspector
 
     descendant_depot_terms = property(fget=get_descendant_depot_terms)
 
@@ -505,7 +500,7 @@ class DepotQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotQueryInspectorRecord
+        return  # osid.installation.records.DepotQueryInspectorRecord
 
 
 class InstallationQueryInspector:
@@ -523,7 +518,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     site_id_terms = property(fget=get_site_id_terms)
 
@@ -538,7 +533,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.SiteQueryInspector
+        return  # osid.installation.SiteQueryInspector
 
     site_terms = property(fget=get_site_terms)
 
@@ -553,7 +548,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     package_id_terms = property(fget=get_package_id_terms)
 
@@ -568,7 +563,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.PackageQueryInspector
+        return  # osid.installation.PackageQueryInspector
 
     package_terms = property(fget=get_package_terms)
 
@@ -583,7 +578,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     install_date_terms = property(fget=get_install_date_terms)
 
@@ -598,7 +593,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agent_id_terms = property(fget=get_agent_id_terms)
 
@@ -613,7 +608,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_terms = property(fget=get_agent_terms)
 
@@ -628,7 +623,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     last_check_date_terms = property(fget=get_last_check_date_terms)
 
@@ -647,7 +642,7 @@ class InstallationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationQueryInspectorRecord
+        return  # osid.installation.records.InstallationQueryInspectorRecord
 
 
 class SiteQueryInspector:
@@ -665,7 +660,7 @@ class SiteQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     installation_id_terms = property(fget=get_installation_id_terms)
 
@@ -680,7 +675,7 @@ class SiteQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.InstallationQueryInspector
+        return  # osid.installation.InstallationQueryInspector
 
     installation_terms = property(fget=get_installation_terms)
 
@@ -699,6 +694,4 @@ class SiteQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.SiteQueryInspectorRecord
-
-
+        return  # osid.installation.records.SiteQueryInspectorRecord

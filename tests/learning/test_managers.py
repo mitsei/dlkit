@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestLearningProfile(unittest.TestCase):
     """Tests for LearningProfile"""
 
@@ -138,6 +140,8 @@ class TestLearningProfile(unittest.TestCase):
     def test_get_objective_bank_search_record_types(self):
         """Tests get_objective_bank_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_objective_bank_search_record_types(), abc_type_list))
+
+
 
 
 class TestLearningManager(unittest.TestCase):
@@ -375,6 +379,8 @@ class TestLearningManager(unittest.TestCase):
         #     self.mgr.get_learning_batch_manager()
         if self.svc_mgr.supports_learning_batch():
             self.svc_mgr.get_learning_batch_manager()
+
+
 
 
 class TestLearningProxyManager(unittest.TestCase):

@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.assessment_authoring import sessions as abc_assessment_authoring_sessions
 
 
-
-
 class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPartLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -67,7 +64,6 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessment_parts_by_query(query)
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -232,9 +228,10 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         return self._try_harder(query)
 
 
+
+
 class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPartQuerySession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -282,7 +279,6 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -360,6 +356,8 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         return result
 
 
+
+
 class AssessmentPartSearchSession(abc_assessment_authoring_sessions.AssessmentPartSearchSession, AssessmentPartQuerySession):
     """Adapts underlying AssessmentPartSearchSession methodswith authorization checks."""
 
@@ -392,9 +390,10 @@ class AssessmentPartSearchSession(abc_assessment_authoring_sessions.AssessmentPa
         raise Unimplemented()
 
 
+
+
 class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPartAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -420,7 +419,6 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
     def _can_for_assessment_part(self, func_name, assessment_part_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, assessment_part_id, 'get_bank_ids_for_assessment_part')
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -535,15 +533,14 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         return self._provider_session.alias_assessment_part(assessment_part_id, alias_id)
 
 
+
+
 class AssessmentPartNotificationSession(abc_assessment_authoring_sessions.AssessmentPartNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment_authoring.AssessmentPart'
-
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -648,15 +645,14 @@ class AssessmentPartNotificationSession(abc_assessment_authoring_sessions.Assess
         raise Unimplemented()
 
 
+
+
 class AssessmentPartBankSession(abc_assessment_authoring_sessions.AssessmentPartBankSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartBankSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('assessment_authoring.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'assessment_authoring.AssessmentPartBank'
-
-
     def can_lookup_assessment_part_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -721,15 +717,14 @@ class AssessmentPartBankSession(abc_assessment_authoring_sessions.AssessmentPart
         return self._provider_session.get_banks_by_assessment_part(assessment_part_id)
 
 
+
+
 class AssessmentPartBankAssignmentSession(abc_assessment_authoring_sessions.AssessmentPartBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartBankAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('assessment_authoring.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'assessment_authoring.AssessmentPartBank'
-
-
     def can_assign_assessment_parts(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -776,6 +771,8 @@ class AssessmentPartBankAssignmentSession(abc_assessment_authoring_sessions.Asse
     @raise_null_argument
     def reassign_assessment_part_to_bank(self, assessment_part_id, from_biank_id, to_bank_id):
         raise Unimplemented()
+
+
 
 
 class AssessmentPartSmartBankSession(abc_assessment_authoring_sessions.AssessmentPartSmartBankSession, osid_sessions.OsidSession):
@@ -825,6 +822,8 @@ class AssessmentPartSmartBankSession(abc_assessment_authoring_sessions.Assessmen
     @raise_null_argument
     def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector):
         raise Unimplemented()
+
+
 
 
 class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPartItemSession, osid_sessions.OsidSession):
@@ -893,6 +892,8 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
             return self._provider_session.get_assessment_parts_by_item(item_id)
 
 
+
+
 class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.AssessmentPartItemDesignSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartItemDesignSession methodswith authorization checks."""
 
@@ -952,9 +953,10 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
             return self._provider_session.remove_item(item_id, assessment_part_id)
 
 
+
+
 class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLookupSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -999,7 +1001,6 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_sequence_rules_by_query(query)
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1171,9 +1172,10 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
     sequence_rules = property(fget=get_sequence_rules)
 
 
+
+
 class SequenceRuleQuerySession(abc_assessment_authoring_sessions.SequenceRuleQuerySession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -1221,7 +1223,6 @@ class SequenceRuleQuerySession(abc_assessment_authoring_sessions.SequenceRuleQue
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1289,6 +1290,8 @@ class SequenceRuleQuerySession(abc_assessment_authoring_sessions.SequenceRuleQue
         return result
 
 
+
+
 class SequenceRuleSearchSession(abc_assessment_authoring_sessions.SequenceRuleSearchSession, SequenceRuleQuerySession):
     """Adapts underlying SequenceRuleSearchSession methodswith authorization checks."""
 
@@ -1321,9 +1324,10 @@ class SequenceRuleSearchSession(abc_assessment_authoring_sessions.SequenceRuleSe
         raise Unimplemented()
 
 
+
+
 class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdminSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
@@ -1349,7 +1353,6 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
     def _can_for_sequence_rule(self, func_name, sequence_rule_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, sequence_rule_id, 'get_bank_ids_for_sequence_rule')
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1465,15 +1468,14 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         raise Unimplemented()
 
 
+
+
 class SequenceRuleNotificationSession(abc_assessment_authoring_sessions.SequenceRuleNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment_authoring.SequenceRule'
-
-
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1626,15 +1628,14 @@ class SequenceRuleNotificationSession(abc_assessment_authoring_sessions.Sequence
         raise Unimplemented()
 
 
+
+
 class SequenceRuleBankSession(abc_assessment_authoring_sessions.SequenceRuleBankSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleBankSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('assessment_authoring.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'assessment_authoring.SequenceRuleBank'
-
-
     def can_lookup_sequence_rule_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -1699,15 +1700,14 @@ class SequenceRuleBankSession(abc_assessment_authoring_sessions.SequenceRuleBank
         return self._provider_session.get_banks_by_sequence_rule(sequence_rule_id)
 
 
+
+
 class SequenceRuleBankAssignmentSession(abc_assessment_authoring_sessions.SequenceRuleBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleBankAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('assessment_authoring.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'assessment_authoring.SequenceRuleBank'
-
-
     def can_assign_sequence_rules(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1754,6 +1754,8 @@ class SequenceRuleBankAssignmentSession(abc_assessment_authoring_sessions.Sequen
     @raise_null_argument
     def reassign_sequence_rule_to_bank(self, sequence_rule_id, from_bank_id, to_bank_id):
         raise Unimplemented()
+
+
 
 
 class SequenceRuleSmartBankSession(abc_assessment_authoring_sessions.SequenceRuleSmartBankSession, osid_sessions.OsidSession):
@@ -1803,6 +1805,8 @@ class SequenceRuleSmartBankSession(abc_assessment_authoring_sessions.SequenceRul
     @raise_null_argument
     def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector):
         raise Unimplemented()
+
+
 
 
 class SequenceRuleEnablerLookupSession(abc_assessment_authoring_sessions.SequenceRuleEnablerLookupSession, osid_sessions.OsidSession):
@@ -1949,6 +1953,8 @@ class SequenceRuleEnablerLookupSession(abc_assessment_authoring_sessions.Sequenc
     sequence_rule_enablers = property(fget=get_sequence_rule_enablers)
 
 
+
+
 class SequenceRuleEnablerQuerySession(abc_assessment_authoring_sessions.SequenceRuleEnablerQuerySession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleEnablerQuerySession methodswith authorization checks."""
 
@@ -2019,6 +2025,8 @@ class SequenceRuleEnablerQuerySession(abc_assessment_authoring_sessions.Sequence
         return result
 
 
+
+
 class SequenceRuleEnablerSearchSession(abc_assessment_authoring_sessions.SequenceRuleEnablerSearchSession, SequenceRuleEnablerQuerySession):
     """Adapts underlying SequenceRuleEnablerSearchSession methodswith authorization checks."""
 
@@ -2049,6 +2057,8 @@ class SequenceRuleEnablerSearchSession(abc_assessment_authoring_sessions.Sequenc
     @raise_null_argument
     def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector):
         raise Unimplemented()
+
+
 
 
 class SequenceRuleEnablerAdminSession(abc_assessment_authoring_sessions.SequenceRuleEnablerAdminSession, osid_sessions.OsidSession):
@@ -2152,6 +2162,8 @@ class SequenceRuleEnablerAdminSession(abc_assessment_authoring_sessions.Sequence
         if not self._can_for_sequence_rule_enabler('alias', sequence_rule_enabler_id):
             raise PermissionDenied()
         return self._provider_session.alias_sequence_rule_enabler(sequence_rule_enabler_id, alias_id)
+
+
 
 
 class SequenceRuleEnablerNotificationSession(abc_assessment_authoring_sessions.SequenceRuleEnablerNotificationSession, osid_sessions.OsidSession):
@@ -2261,6 +2273,8 @@ class SequenceRuleEnablerNotificationSession(abc_assessment_authoring_sessions.S
         raise Unimplemented()
 
 
+
+
 class SequenceRuleEnablerBankSession(abc_assessment_authoring_sessions.SequenceRuleEnablerBankSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleEnablerBankSession methodswith authorization checks."""
 
@@ -2328,6 +2342,8 @@ class SequenceRuleEnablerBankSession(abc_assessment_authoring_sessions.SequenceR
         return self._provider_session.get_banks_by_sequence_rule_enabler(sequence_rule_enabler_id)
 
 
+
+
 class SequenceRuleEnablerBankAssignmentSession(abc_assessment_authoring_sessions.SequenceRuleEnablerBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleEnablerBankAssignmentSession methodswith authorization checks."""
 
@@ -2373,6 +2389,8 @@ class SequenceRuleEnablerBankAssignmentSession(abc_assessment_authoring_sessions
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_sequence_rule_enabler_from_bank(sequence_rule_enabler_id, bank_id)
+
+
 
 
 class SequenceRuleEnablerSmartBankSession(abc_assessment_authoring_sessions.SequenceRuleEnablerSmartBankSession, osid_sessions.OsidSession):
@@ -2422,6 +2440,8 @@ class SequenceRuleEnablerSmartBankSession(abc_assessment_authoring_sessions.Sequ
     @raise_null_argument
     def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector):
         raise Unimplemented()
+
+
 
 
 class SequenceRuleEnablerRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleEnablerRuleLookupSession, osid_sessions.OsidSession):
@@ -2502,6 +2522,8 @@ class SequenceRuleEnablerRuleLookupSession(abc_assessment_authoring_sessions.Seq
         raise Unimplemented()
 
 
+
+
 class SequenceRuleEnablerRuleApplicationSession(abc_assessment_authoring_sessions.SequenceRuleEnablerRuleApplicationSession, osid_sessions.OsidSession):
     """Adapts underlying SequenceRuleEnablerRuleApplicationSession methodswith authorization checks."""
 
@@ -2547,5 +2569,3 @@ class SequenceRuleEnablerRuleApplicationSession(abc_assessment_authoring_session
     @raise_null_argument
     def order_sequence_rule_enablers(self, sequence_rule_enabler_ids, sequence_rule_id):
         raise Unimplemented()
-
-

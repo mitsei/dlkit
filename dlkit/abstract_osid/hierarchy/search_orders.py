@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class HierarchySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchy_search_order_record(self, hierarchy_record_type):
@@ -41,6 +37,4 @@ class HierarchySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchySearchOrderRecord
-
-
+        return  # osid.hierarchy.records.HierarchySearchOrderRecord

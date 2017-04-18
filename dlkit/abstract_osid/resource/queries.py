@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ResourceQuery:
     """This is the query for searching resources.
 
@@ -27,7 +24,6 @@ class ResourceQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_group(self, match):
@@ -120,7 +116,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_containing_group_query(self):
@@ -136,7 +132,7 @@ class ResourceQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     containing_group_query = property(fget=get_containing_group_query)
 
@@ -205,7 +201,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_avatar_query(self):
@@ -221,7 +217,7 @@ class ResourceQuery:
         ``supports_avatar_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     avatar_query = property(fget=get_avatar_query)
 
@@ -290,7 +286,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self):
@@ -306,7 +302,7 @@ class ResourceQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -375,7 +371,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_query(self):
@@ -391,7 +387,7 @@ class ResourceQuery:
         ``supports_resource_relationship_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipQuery
+        return  # osid.resource.ResourceRelationshipQuery
 
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
@@ -460,7 +456,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_query(self):
@@ -476,7 +472,7 @@ class ResourceQuery:
         ``supports_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
     bin_query = property(fget=get_bin_query)
 
@@ -510,7 +506,7 @@ class ResourceQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceQueryRecord
+        return  # osid.resource.records.ResourceQueryRecord
 
 
 class ResourceRelationshipQuery:
@@ -521,7 +517,6 @@ class ResourceRelationshipQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_source_resource_id(self, resource_id, match):
@@ -562,7 +557,7 @@ class ResourceRelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_source_resource_query(self):
@@ -578,7 +573,7 @@ class ResourceRelationshipQuery:
         ``supports_source_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     source_resource_query = property(fget=get_source_resource_query)
 
@@ -634,7 +629,7 @@ class ResourceRelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_destination_resource_query(self):
@@ -650,7 +645,7 @@ class ResourceRelationshipQuery:
         ``supports_destination_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     destination_resource_query = property(fget=get_destination_resource_query)
 
@@ -732,7 +727,7 @@ class ResourceRelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_query(self):
@@ -748,7 +743,7 @@ class ResourceRelationshipQuery:
         ``supports_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
     bin_query = property(fget=get_bin_query)
 
@@ -782,7 +777,7 @@ class ResourceRelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipQueryRecord
+        return  # osid.resource.records.ResourceRelationshipQueryRecord
 
 
 class BinQuery:
@@ -793,7 +788,6 @@ class BinQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_resource_id(self, resource_id, match):
@@ -834,7 +828,7 @@ class BinQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -850,7 +844,7 @@ class BinQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -919,7 +913,7 @@ class BinQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_bin_query(self):
@@ -935,7 +929,7 @@ class BinQuery:
         ``supports_ancestor_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
     ancestor_bin_query = property(fget=get_ancestor_bin_query)
 
@@ -1004,7 +998,7 @@ class BinQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_bin_query(self):
@@ -1020,7 +1014,7 @@ class BinQuery:
         ``supports_descendant_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
     descendant_bin_query = property(fget=get_descendant_bin_query)
 
@@ -1067,6 +1061,4 @@ class BinQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinQueryRecord
-
-
+        return  # osid.resource.records.BinQueryRecord

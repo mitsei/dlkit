@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -29,7 +26,6 @@ class OsidQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_keyword_terms(self):
@@ -42,7 +38,7 @@ class OsidQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     keyword_terms = property(fget=get_keyword_terms)
 
@@ -57,7 +53,7 @@ class OsidQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     any_terms = property(fget=get_any_terms)
 
@@ -73,7 +69,6 @@ class OsidIdentifiableQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_id_terms(self):
         """Gets the ``Id`` query terms.
@@ -85,7 +80,7 @@ class OsidIdentifiableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     id_terms = property(fget=get_id_terms)
 
@@ -101,7 +96,6 @@ class OsidExtensibleQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_record_type_terms(self):
         """Gets the record type query terms.
@@ -113,7 +107,7 @@ class OsidExtensibleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     record_type_terms = property(fget=get_record_type_terms)
 
@@ -130,9 +124,6 @@ class OsidBrowsableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidTemporalQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -143,7 +134,6 @@ class OsidTemporalQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_effective_terms(self):
@@ -156,7 +146,7 @@ class OsidTemporalQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     effective_terms = property(fget=get_effective_terms)
 
@@ -171,7 +161,7 @@ class OsidTemporalQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     start_date_terms = property(fget=get_start_date_terms)
 
@@ -186,7 +176,7 @@ class OsidTemporalQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     end_date_terms = property(fget=get_end_date_terms)
 
@@ -201,7 +191,7 @@ class OsidTemporalQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     date_terms = property(fget=get_date_terms)
 
@@ -218,9 +208,6 @@ class OsidSubjugateableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidAggregateableQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -231,9 +218,6 @@ class OsidAggregateableQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidContainableQueryInspector:
@@ -247,7 +231,6 @@ class OsidContainableQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_sequestered_terms(self):
         """Gets the sequestered query terms.
@@ -259,7 +242,7 @@ class OsidContainableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     sequestered_terms = property(fget=get_sequestered_terms)
 
@@ -275,7 +258,6 @@ class OsidSourceableQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_provider_id_terms(self):
         """Gets the provider ``Id`` query terms.
@@ -287,7 +269,7 @@ class OsidSourceableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     provider_id_terms = property(fget=get_provider_id_terms)
 
@@ -302,7 +284,7 @@ class OsidSourceableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     provider_terms = property(fget=get_provider_terms)
 
@@ -317,7 +299,7 @@ class OsidSourceableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     branding_id_terms = property(fget=get_branding_id_terms)
 
@@ -332,7 +314,7 @@ class OsidSourceableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     branding_terms = property(fget=get_branding_terms)
 
@@ -347,7 +329,7 @@ class OsidSourceableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     license_terms = property(fget=get_license_terms)
 
@@ -364,9 +346,6 @@ class OsidFederateableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidOperableQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -377,7 +356,6 @@ class OsidOperableQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_active_terms(self):
@@ -390,7 +368,7 @@ class OsidOperableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     active_terms = property(fget=get_active_terms)
 
@@ -405,7 +383,7 @@ class OsidOperableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     enabled_terms = property(fget=get_enabled_terms)
 
@@ -420,7 +398,7 @@ class OsidOperableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     disabled_terms = property(fget=get_disabled_terms)
 
@@ -435,7 +413,7 @@ class OsidOperableQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     operational_terms = property(fget=get_operational_terms)
 
@@ -451,7 +429,6 @@ class OsidObjectQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_display_name_terms(self):
         """Gets the display name query terms.
@@ -463,7 +440,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     display_name_terms = property(fget=get_display_name_terms)
 
@@ -478,7 +455,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     description_terms = property(fget=get_description_terms)
 
@@ -493,7 +470,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     genus_type_terms = property(fget=get_genus_type_terms)
 
@@ -508,7 +485,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     parent_genus_type_terms = property(fget=get_parent_genus_type_terms)
 
@@ -523,7 +500,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     subject_id_terms = property(fget=get_subject_id_terms)
 
@@ -538,7 +515,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.ontology.SubjectQueryInspector
+        return  # osid.ontology.SubjectQueryInspector
 
     subject_terms = property(fget=get_subject_terms)
 
@@ -553,7 +530,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.ontology.RelevancyQueryInspector
+        return  # osid.ontology.RelevancyQueryInspector
 
     subject_relevancy_terms = property(fget=get_subject_relevancy_terms)
 
@@ -568,7 +545,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     state_id_terms = property(fget=get_state_id_terms)
 
@@ -583,7 +560,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.process.StateQueryInspector
+        return  # osid.process.StateQueryInspector
 
     state_terms = property(fget=get_state_terms)
 
@@ -598,7 +575,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     comment_id_terms = property(fget=get_comment_id_terms)
 
@@ -613,7 +590,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQueryInspector
+        return  # osid.commenting.CommentQueryInspector
 
     comment_terms = property(fget=get_comment_terms)
 
@@ -628,7 +605,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     journal_entry_id_terms = property(fget=get_journal_entry_id_terms)
 
@@ -643,7 +620,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.journaling.JournalEntryQueryInspector
+        return  # osid.journaling.JournalEntryQueryInspector
 
     journal_entry_terms = property(fget=get_journal_entry_terms)
 
@@ -658,7 +635,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.metering.StatisticQueryInspector
+        return  # osid.metering.StatisticQueryInspector
 
     statistic_terms = property(fget=get_statistic_terms)
 
@@ -673,7 +650,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     credit_id_terms = property(fget=get_credit_id_terms)
 
@@ -688,7 +665,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.acknowledgement.CreditQueryInspector
+        return  # osid.acknowledgement.CreditQueryInspector
 
     credit_terms = property(fget=get_credit_terms)
 
@@ -703,7 +680,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     relationship_id_terms = property(fget=get_relationship_id_terms)
 
@@ -718,7 +695,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQueryInspector
+        return  # osid.relationship.RelationshipQueryInspector
 
     relationship_terms = property(fget=get_relationship_terms)
 
@@ -733,7 +710,7 @@ class OsidObjectQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     relationship_peer_id_terms = property(fget=get_relationship_peer_id_terms)
 
@@ -749,7 +726,6 @@ class OsidRelationshipQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_end_reason_id_terms(self):
         """Gets the end reaosn state ``Id`` query terms.
@@ -761,7 +737,7 @@ class OsidRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     end_reason_id_terms = property(fget=get_end_reason_id_terms)
 
@@ -776,7 +752,7 @@ class OsidRelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.process.StateQueryInspector
+        return  # osid.process.StateQueryInspector
 
     end_reason_terms = property(fget=get_end_reason_terms)
 
@@ -793,9 +769,6 @@ class OsidCatalogQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidRuleQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -806,7 +779,6 @@ class OsidRuleQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_rule_id_terms(self):
@@ -819,7 +791,7 @@ class OsidRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     rule_id_terms = property(fget=get_rule_id_terms)
 
@@ -834,7 +806,7 @@ class OsidRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.rules.RuleQueryInspector
+        return  # osid.rules.RuleQueryInspector
 
     rule_terms = property(fget=get_rule_terms)
 
@@ -850,7 +822,6 @@ class OsidEnablerQueryInspector:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_schedule_id_terms(self):
         """Gets the effective schedule ``Id`` query terms.
@@ -862,7 +833,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     schedule_id_terms = property(fget=get_schedule_id_terms)
 
@@ -877,7 +848,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQueryInspector
+        return  # osid.calendaring.ScheduleQueryInspector
 
     schedule_terms = property(fget=get_schedule_terms)
 
@@ -892,7 +863,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     event_id_terms = property(fget=get_event_id_terms)
 
@@ -907,7 +878,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_terms = property(fget=get_event_terms)
 
@@ -922,7 +893,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     cyclic_event_id_terms = property(fget=get_cyclic_event_id_terms)
 
@@ -937,7 +908,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.cycle.CyclicEventQueryInspector
+        return  # osid.calendaring.cycle.CyclicEventQueryInspector
 
     cyclic_event_terms = property(fget=get_cyclic_event_terms)
 
@@ -952,7 +923,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     demographic_id_terms = property(fget=get_demographic_id_terms)
 
@@ -967,7 +938,7 @@ class OsidEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     demographic_terms = property(fget=get_demographic_terms)
 
@@ -984,9 +955,6 @@ class OsidConstrainerQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidProcessorQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -997,9 +965,6 @@ class OsidProcessorQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidGovernatorQueryInspector:
@@ -1014,9 +979,6 @@ class OsidGovernatorQueryInspector:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidCompendiumQueryInspector:
     """The query inspectors provide a means of accessing the match terms of a query.
 
@@ -1027,7 +989,6 @@ class OsidCompendiumQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_start_date_terms(self):
@@ -1040,7 +1001,7 @@ class OsidCompendiumQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     start_date_terms = property(fget=get_start_date_terms)
 
@@ -1055,7 +1016,7 @@ class OsidCompendiumQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     end_date_terms = property(fget=get_end_date_terms)
 
@@ -1070,7 +1031,7 @@ class OsidCompendiumQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     interpolated_terms = property(fget=get_interpolated_terms)
 
@@ -1085,7 +1046,7 @@ class OsidCompendiumQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     extrapolated_terms = property(fget=get_extrapolated_terms)
 
@@ -1100,8 +1061,3 @@ class OsidCapsuleQueryInspector:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

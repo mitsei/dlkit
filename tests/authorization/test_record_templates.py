@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestAuthorizationRecord(unittest.TestCase):
     """Tests for AuthorizationRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestAuthorizationQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestAuthorizationFormRecord(unittest.TestCase):
     """Tests for AuthorizationFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestAuthorizationSearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestVaultRecord(unittest.TestCase):
     """Tests for VaultRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestVaultQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestVaultFormRecord(unittest.TestCase):
     """Tests for VaultFormRecord"""
+
+
 
 
 

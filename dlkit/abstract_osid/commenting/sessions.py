@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentLookupSession:
     """This session defines methods for retrieving comments."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_id(self):
@@ -35,7 +31,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -51,7 +47,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -72,7 +68,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_comment_view(self):
@@ -168,7 +164,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Comment
+        return  # osid.commenting.Comment
 
     @abc.abstractmethod
     def get_comments_by_ids(self, comment_ids):
@@ -186,7 +182,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type(self, comment_genus_type):
@@ -203,7 +199,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_parent_genus_type(self, comment_genus_type):
@@ -220,7 +216,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_record_type(self, comment_record_type):
@@ -237,7 +233,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_on_date(self, from_, to):
@@ -257,7 +253,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_on_date(self, comment_genus_type, from_, to):
@@ -279,7 +275,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_commentor(self, resource_id):
@@ -296,7 +292,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_commentor_on_date(self, resource_id, from_, to):
@@ -318,7 +314,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_commentor(self, resource_id, comment_genus_type):
@@ -337,7 +333,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_commentor_on_date(self, resource_id, comment_genus_type, from_, to):
@@ -361,7 +357,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_reference(self, reference_id):
@@ -378,7 +374,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_reference_on_date(self, reference_id, from_, to):
@@ -400,7 +396,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_reference(self, reference_id, comment_genus_type):
@@ -419,7 +415,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_reference_on_date(self, reference_id, comment_genus_type, from_, to):
@@ -443,7 +439,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_commentor_and_reference(self, resource_id, reference_id):
@@ -462,7 +458,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_for_commentor_and_reference_on_date(self, resource_id, reference_id, from_, to):
@@ -486,7 +482,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_commentor_and_reference(self, resource_id, reference_id, comment_genus_type):
@@ -507,7 +503,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments_by_genus_type_for_commentor_and_reference_on_date(self, resource_id, reference_id, comment_genus_type, from_, to):
@@ -533,7 +529,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comments(self):
@@ -547,7 +543,7 @@ class CommentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     comments = property(fget=get_comments)
 
@@ -555,7 +551,6 @@ class CommentLookupSession:
 class RatingLookupSession:
     """This session defines methods for retrieving comments."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_id(self):
@@ -568,7 +563,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -584,7 +579,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -605,7 +600,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_comment_view(self):
@@ -675,7 +670,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     cumulative_rating = property(fget=get_cumulative_rating)
 
@@ -695,7 +690,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     @abc.abstractmethod
     def get_cumulative_rating_for_commentor(self, resource_id):
@@ -713,7 +708,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     @abc.abstractmethod
     def get_top_references(self, max_):
@@ -729,7 +724,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_references(self, grade_id):
@@ -747,7 +742,7 @@ class RatingLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
 
 class CommentQuerySession:
@@ -764,7 +759,6 @@ class CommentQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
@@ -776,7 +770,7 @@ class CommentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -792,7 +786,7 @@ class CommentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -813,7 +807,7 @@ class CommentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_book_view(self):
@@ -853,7 +847,7 @@ class CommentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
     comment_query = property(fget=get_comment_query)
 
@@ -873,7 +867,7 @@ class CommentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
 
 class CommentSearchSession:
@@ -901,7 +895,6 @@ class CommentSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_comment_search(self):
         """Gets a comment search.
@@ -913,7 +906,7 @@ class CommentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentSearch
+        return  # osid.commenting.CommentSearch
 
     comment_search = property(fget=get_comment_search)
 
@@ -931,7 +924,7 @@ class CommentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentSearchOrder
+        return  # osid.commenting.CommentSearchOrder
 
     comment_search_order = property(fget=get_comment_search_order)
 
@@ -953,7 +946,7 @@ class CommentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentSearchResults
+        return  # osid.commenting.CommentSearchResults
 
     @abc.abstractmethod
     def get_comment_query_from_inspector(self, comment_query_inspector):
@@ -971,7 +964,7 @@ class CommentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
 
 class CommentAdminSession:
@@ -1012,7 +1005,6 @@ class CommentAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
@@ -1024,7 +1016,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -1040,7 +1032,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -1061,7 +1053,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_comment_with_record_types(self, comment_record_types):
@@ -1082,7 +1074,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_form_for_create(self, reference_id, comment_record_types):
@@ -1104,7 +1096,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentForm
+        return  # osid.commenting.CommentForm
 
     @abc.abstractmethod
     def create_comment(self, comment_form):
@@ -1124,7 +1116,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Comment
+        return  # osid.commenting.Comment
 
     @abc.abstractmethod
     def can_update_comments(self):
@@ -1143,7 +1135,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_form_for_update(self, comment_id):
@@ -1164,7 +1156,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentForm
+        return  # osid.commenting.CommentForm
 
     @abc.abstractmethod
     def update_comment(self, comment_form):
@@ -1201,7 +1193,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_comment(self, comment_id):
@@ -1236,7 +1228,7 @@ class CommentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_comment(self, comment_id, alias_id):
@@ -1273,7 +1265,6 @@ class CommentNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
@@ -1285,7 +1276,7 @@ class CommentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -1301,7 +1292,7 @@ class CommentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -1322,7 +1313,7 @@ class CommentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_book_view(self):
@@ -1639,10 +1630,8 @@ class CommentBookSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_comment_book_mappings(self):
@@ -1661,7 +1650,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_book_view(self):
@@ -1708,7 +1697,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_comments_by_book(self, book_id):
@@ -1726,7 +1715,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_comment_ids_by_books(self, book_ids):
@@ -1743,7 +1732,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_comments_by_books(self, book_ids):
@@ -1760,7 +1749,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     @abc.abstractmethod
     def get_book_ids_by_comment(self, comment_id):
@@ -1778,7 +1767,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_books_by_comment(self, comment_id):
@@ -1796,7 +1785,7 @@ class CommentBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
 
 class CommentBookAssignmentSession:
@@ -1812,7 +1801,6 @@ class CommentBookAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_comments(self):
@@ -1831,7 +1819,7 @@ class CommentBookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_comments_to_book(self, book_id):
@@ -1852,7 +1840,7 @@ class CommentBookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_book_ids(self, book_id):
@@ -1868,7 +1856,7 @@ class CommentBookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_book_ids_for_comment(self, book_id, comment_id):
@@ -1886,7 +1874,7 @@ class CommentBookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_comment_to_book(self, comment_id, book_id):
@@ -1964,7 +1952,6 @@ class CommentSmartBookSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
@@ -1976,7 +1963,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_id = property(fget=get_book_id)
 
@@ -1992,7 +1979,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -2013,7 +2000,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_query(self):
@@ -2026,7 +2013,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
     comment_query = property(fget=get_comment_query)
 
@@ -2041,7 +2028,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentSearchOrder
+        return  # osid.commenting.CommentSearchOrder
 
     comment_search_order = property(fget=get_comment_search_order)
 
@@ -2073,7 +2060,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQueryInspector
+        return  # osid.commenting.CommentQueryInspector
 
     @abc.abstractmethod
     def apply_comment_sequencing(self, comment_search_order):
@@ -2105,7 +2092,7 @@ class CommentSmartBookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
 
 class BookLookupSession:
@@ -2119,10 +2106,8 @@ class BookLookupSession:
       * comparative view: elements may be silently omitted or re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_books(self):
@@ -2141,7 +2126,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_book_view(self):
@@ -2193,7 +2178,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     @abc.abstractmethod
     def get_books_by_ids(self, book_ids):
@@ -2219,7 +2204,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def get_books_by_genus_type(self, book_genus_type):
@@ -2240,7 +2225,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def get_books_by_parent_genus_type(self, book_genus_type):
@@ -2261,7 +2246,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def get_books_by_record_type(self, book_record_type):
@@ -2282,7 +2267,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def get_books_by_provider(self, resource_id):
@@ -2303,7 +2288,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def get_books(self):
@@ -2321,7 +2306,7 @@ class BookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     books = property(fget=get_books)
 
@@ -2340,7 +2325,6 @@ class BookQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_search_books(self):
         """Tests if this user can perform ``Book`` searches.
@@ -2358,7 +2342,7 @@ class BookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_query(self):
@@ -2371,7 +2355,7 @@ class BookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQuery
+        return  # osid.commenting.BookQuery
 
     book_query = property(fget=get_book_query)
 
@@ -2391,7 +2375,7 @@ class BookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
 
 class BookSearchSession:
@@ -2417,7 +2401,6 @@ class BookSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_search(self):
         """Gets a book search.
@@ -2429,7 +2412,7 @@ class BookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookSearch
+        return  # osid.commenting.BookSearch
 
     book_search = property(fget=get_book_search)
 
@@ -2447,7 +2430,7 @@ class BookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookSearchOrder
+        return  # osid.commenting.BookSearchOrder
 
     book_search_order = property(fget=get_book_search_order)
 
@@ -2469,7 +2452,7 @@ class BookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookSearchResults
+        return  # osid.commenting.BookSearchResults
 
     @abc.abstractmethod
     def get_book_query_from_inspector(self, book_query_inspector):
@@ -2487,7 +2470,7 @@ class BookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQuery
+        return  # osid.commenting.BookQuery
 
 
 class BookAdminSession:
@@ -2523,7 +2506,6 @@ class BookAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_books(self):
         """Tests if this user can create ``Books``.
@@ -2541,7 +2523,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_book_with_record_types(self, book_record_types):
@@ -2562,7 +2544,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_form_for_create(self, book_record_types):
@@ -2582,7 +2564,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookForm
+        return  # osid.commenting.BookForm
 
     @abc.abstractmethod
     def create_book(self, book_form):
@@ -2602,7 +2584,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     @abc.abstractmethod
     def can_update_books(self):
@@ -2621,7 +2603,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_form_for_update(self, book_id):
@@ -2641,7 +2623,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookForm
+        return  # osid.commenting.BookForm
 
     @abc.abstractmethod
     def update_book(self, book_form):
@@ -2677,7 +2659,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_book(self, book_id):
@@ -2712,7 +2694,7 @@ class BookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_book(self, book_id, alias_id):
@@ -2753,7 +2735,6 @@ class BookNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_book_notifications(self):
         """Tests if this user can register for ``Book`` notifications.
@@ -2771,7 +2752,7 @@ class BookNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_book_notifications(self):
@@ -3017,10 +2998,8 @@ class BookHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_hierarchy_id(self):
@@ -3033,7 +3012,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_hierarchy_id = property(fget=get_book_hierarchy_id)
 
@@ -3049,7 +3028,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     book_hierarchy = property(fget=get_book_hierarchy)
 
@@ -3070,7 +3049,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_book_view(self):
@@ -3113,7 +3092,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_book_ids = property(fget=get_root_book_ids)
 
@@ -3134,7 +3113,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     root_books = property(fget=get_root_books)
 
@@ -3154,7 +3133,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_book(self, id_, book_id):
@@ -3175,7 +3154,7 @@ class BookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_book_ids(self, book_id):
@@ -3193,7 +3172,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_books(self, book_id):
@@ -3211,7 +3190,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def is_ancestor_of_book(self, id_, book_id):
@@ -3232,7 +3211,7 @@ class BookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_books(self, book_id):
@@ -3250,7 +3229,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_book(self, id_, book_id):
@@ -3271,7 +3250,7 @@ class BookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_book_ids(self, book_id):
@@ -3289,7 +3268,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_books(self, book_id):
@@ -3307,7 +3286,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     @abc.abstractmethod
     def is_descendant_of_book(self, id_, book_id):
@@ -3328,7 +3307,7 @@ class BookHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_node_ids(self, book_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3352,7 +3331,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_book_nodes(self, book_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3376,7 +3355,7 @@ class BookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookNode
+        return  # osid.commenting.BookNode
 
 
 class BookHierarchyDesignSession:
@@ -3390,7 +3369,6 @@ class BookHierarchyDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -3402,7 +3380,7 @@ class BookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     book_hierarchy_id = property(fget=get_book_hierarchy_id)
 
@@ -3418,7 +3396,7 @@ class BookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     book_hierarchy = property(fget=get_book_hierarchy)
 
@@ -3439,7 +3417,7 @@ class BookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_book(self, book_id):
@@ -3526,5 +3504,3 @@ class BookHierarchyDesignSession:
 
         """
         pass
-
-

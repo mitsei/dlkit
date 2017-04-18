@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class QuestionQuery:
     """This is the query for searching questions.
 
@@ -27,7 +24,6 @@ class QuestionQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_question_query_record(self, question_record_type):
@@ -46,7 +42,7 @@ class QuestionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.QuestionQueryRecord
+        return  # osid.assessment.records.QuestionQueryRecord
 
 
 class AnswerQuery:
@@ -57,7 +53,6 @@ class AnswerQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_answer_query_record(self, answer_record_type):
@@ -76,7 +71,7 @@ class AnswerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AnswerQueryRecord
+        return  # osid.assessment.records.AnswerQueryRecord
 
 
 class ItemQuery:
@@ -87,7 +82,6 @@ class ItemQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_learning_objective_id(self, objective_id, match):
@@ -128,7 +122,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_learning_objective_query(self):
@@ -144,7 +138,7 @@ class ItemQuery:
         ``supports_learning_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     learning_objective_query = property(fget=get_learning_objective_query)
 
@@ -213,7 +207,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_question_query(self):
@@ -229,7 +223,7 @@ class ItemQuery:
         ``supports_learning_objective_query()`` is ``true``.*
 
         """
-        return # osid.assessment.QuestionQuery
+        return  # osid.assessment.QuestionQuery
 
     question_query = property(fget=get_question_query)
 
@@ -298,7 +292,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_answer_query(self):
@@ -314,7 +308,7 @@ class ItemQuery:
         ``supports_learning_objective_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AnswerQuery
+        return  # osid.assessment.AnswerQuery
 
     answer_query = property(fget=get_answer_query)
 
@@ -383,7 +377,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -399,7 +393,7 @@ class ItemQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -468,7 +462,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -484,7 +478,7 @@ class ItemQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -518,7 +512,7 @@ class ItemQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemQueryRecord
+        return  # osid.assessment.records.ItemQueryRecord
 
 
 class AssessmentQuery:
@@ -529,7 +523,6 @@ class AssessmentQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_level_id(self, grade_id, match):
@@ -570,7 +563,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_query(self):
@@ -586,7 +579,7 @@ class AssessmentQuery:
         ``supports_level_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     level_query = property(fget=get_level_query)
 
@@ -655,7 +648,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_query(self):
@@ -671,7 +664,7 @@ class AssessmentQuery:
         ``supports_rubric_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     rubric_query = property(fget=get_rubric_query)
 
@@ -740,7 +733,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_query(self):
@@ -756,7 +749,7 @@ class AssessmentQuery:
         ``supports_item_query()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
     item_query = property(fget=get_item_query)
 
@@ -825,7 +818,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_query(self):
@@ -841,7 +834,7 @@ class AssessmentQuery:
         ``supports_assessment_offered_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
@@ -910,7 +903,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_query(self):
@@ -926,7 +919,7 @@ class AssessmentQuery:
         ``supports_assessment_taken_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
@@ -995,7 +988,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -1011,7 +1004,7 @@ class AssessmentQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -1045,7 +1038,7 @@ class AssessmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentQueryRecord
+        return  # osid.assessment.records.AssessmentQueryRecord
 
 
 class AssessmentOfferedQuery:
@@ -1056,7 +1049,6 @@ class AssessmentOfferedQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_assessment_id(self, assessment_id, match):
@@ -1097,7 +1089,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -1113,7 +1105,7 @@ class AssessmentOfferedQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -1169,7 +1161,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_query(self):
@@ -1185,7 +1177,7 @@ class AssessmentOfferedQuery:
         ``supports_level_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     level_query = property(fget=get_level_query)
 
@@ -1437,7 +1429,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_query(self):
@@ -1453,7 +1445,7 @@ class AssessmentOfferedQuery:
         ``supports_score_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     score_system_query = property(fget=get_score_system_query)
 
@@ -1522,7 +1514,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_query(self):
@@ -1538,7 +1530,7 @@ class AssessmentOfferedQuery:
         ``supports_score_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -1607,7 +1599,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_query(self):
@@ -1623,7 +1615,7 @@ class AssessmentOfferedQuery:
         ``supports_rubric_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     rubric_query = property(fget=get_rubric_query)
 
@@ -1692,7 +1684,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_query(self):
@@ -1708,7 +1700,7 @@ class AssessmentOfferedQuery:
         ``supports_assessment_taken_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
@@ -1777,7 +1769,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -1793,7 +1785,7 @@ class AssessmentOfferedQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -1827,7 +1819,7 @@ class AssessmentOfferedQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedQueryRecord
+        return  # osid.assessment.records.AssessmentOfferedQueryRecord
 
 
 class AssessmentTakenQuery:
@@ -1838,7 +1830,6 @@ class AssessmentTakenQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_assessment_offered_id(self, assessment_offered_id, match):
@@ -1879,7 +1870,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_query(self):
@@ -1895,7 +1886,7 @@ class AssessmentTakenQuery:
         ``supports_assessment_offered_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
@@ -1951,7 +1942,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_taker_query(self):
@@ -1967,7 +1958,7 @@ class AssessmentTakenQuery:
         ``supports_taker_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     taker_query = property(fget=get_taker_query)
 
@@ -2023,7 +2014,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_taking_agent_query(self):
@@ -2039,7 +2030,7 @@ class AssessmentTakenQuery:
         ``supports_taking_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     taking_agent_query = property(fget=get_taking_agent_query)
 
@@ -2214,7 +2205,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_query(self):
@@ -2230,7 +2221,7 @@ class AssessmentTakenQuery:
         ``supports_score_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     score_system_query = property(fget=get_score_system_query)
 
@@ -2342,7 +2333,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_query(self):
@@ -2358,7 +2349,7 @@ class AssessmentTakenQuery:
         ``supports_grade_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     grade_query = property(fget=get_grade_query)
 
@@ -2472,7 +2463,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_query(self):
@@ -2488,7 +2479,7 @@ class AssessmentTakenQuery:
         ``supports_rubric_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
     rubric_query = property(fget=get_rubric_query)
 
@@ -2557,7 +2548,7 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -2573,7 +2564,7 @@ class AssessmentTakenQuery:
         ``supports_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -2607,13 +2598,12 @@ class AssessmentTakenQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenQueryRecord
+        return  # osid.assessment.records.AssessmentTakenQueryRecord
 
 
 class BankQuery:
     """This is the query for searching banks Each method specifies an ``AND`` term while multiple invocations of the same method produce a nested ``OR``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_item_id(self, item_id, match):
@@ -2654,7 +2644,7 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_query(self):
@@ -2670,7 +2660,7 @@ class BankQuery:
         ``supports_item_query()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
     item_query = property(fget=get_item_query)
 
@@ -2739,7 +2729,7 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -2755,7 +2745,7 @@ class BankQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -2824,7 +2814,7 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_query(self):
@@ -2840,7 +2830,7 @@ class BankQuery:
         ``supports_assessment_offered_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
@@ -2909,7 +2899,7 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_bank_query(self):
@@ -2925,7 +2915,7 @@ class BankQuery:
         ``supports_ancestor_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     ancestor_bank_query = property(fget=get_ancestor_bank_query)
 
@@ -2994,7 +2984,7 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_bank_query(self):
@@ -3010,7 +3000,7 @@ class BankQuery:
         ``supports_descendant_bank_query()`` is ``true``.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     descendant_bank_query = property(fget=get_descendant_bank_query)
 
@@ -3057,6 +3047,4 @@ class BankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankQueryRecord
-
-
+        return  # osid.assessment.records.BankQueryRecord

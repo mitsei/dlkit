@@ -16,8 +16,6 @@ from ..osid import markers as osid_markers
 from dlkit.abstract_osid.type import primitives as abc_type_primitives
 
 
-
-
 class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
     """The Type is a form of identifier that is primarily used to identify interface specifications.
 
@@ -39,7 +37,6 @@ class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
     description and domain.
 
     """
-
     def __init__(self, type_map=None,
                        identifier=None,
                        authority=None,
@@ -73,7 +70,6 @@ class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
                 'languageTypeId': language_type_str,
                 'scriptTypeId': script_type_str,
                 'formatTypeId': format_type_str}
-
     def get_display_name(self):
         """Gets the full display name of this ``Type``.
 
@@ -175,5 +171,3 @@ class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
         return self._my_map['identifier']
 
     identifier = property(fget=get_identifier)
-
-

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ObjectiveSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_assessment(self, style):
@@ -48,7 +44,7 @@ class ObjectiveSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_search_order(self):
@@ -62,7 +58,7 @@ class ObjectiveSearchOrder:
         ``supports_assessment_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     assessment_search_order = property(fget=get_assessment_search_order)
 
@@ -90,7 +86,7 @@ class ObjectiveSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_knowledge_category_search_order(self):
@@ -104,7 +100,7 @@ class ObjectiveSearchOrder:
         ``supports_knowledge_category_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     knowledge_category_search_order = property(fget=get_knowledge_category_search_order)
 
@@ -132,7 +128,7 @@ class ObjectiveSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cognitive_process_search_order(self):
@@ -146,7 +142,7 @@ class ObjectiveSearchOrder:
         ``supports_cognitive_process_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     cognitive_process_search_order = property(fget=get_cognitive_process_search_order)
 
@@ -167,13 +163,12 @@ class ObjectiveSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveSearchOrderRecord
+        return  # osid.learning.records.ObjectiveSearchOrderRecord
 
 
 class ActivitySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_objective(self, style):
@@ -199,7 +194,7 @@ class ActivitySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_search_order(self):
@@ -213,7 +208,7 @@ class ActivitySearchOrder:
         ``supports_objective_search_order()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchOrder
+        return  # osid.learning.ObjectiveSearchOrder
 
     objective_search_order = property(fget=get_objective_search_order)
 
@@ -234,13 +229,12 @@ class ActivitySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivitySearchOrderRecord
+        return  # osid.learning.records.ActivitySearchOrderRecord
 
 
 class ProficiencySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_resource(self, style):
@@ -266,7 +260,7 @@ class ProficiencySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_order(self):
@@ -280,7 +274,7 @@ class ProficiencySearchOrder:
         ``supports_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -308,7 +302,7 @@ class ProficiencySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_search_order(self):
@@ -322,7 +316,7 @@ class ProficiencySearchOrder:
         ``supports_objective_search_order()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveSearchOrder
+        return  # osid.learning.ObjectiveSearchOrder
 
     objective_search_order = property(fget=get_objective_search_order)
 
@@ -363,7 +357,7 @@ class ProficiencySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_search_order(self):
@@ -377,7 +371,7 @@ class ProficiencySearchOrder:
         ``supports_level_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     level_search_order = property(fget=get_level_search_order)
 
@@ -398,13 +392,12 @@ class ProficiencySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencySearchOrderRecord
+        return  # osid.learning.records.ProficiencySearchOrderRecord
 
 
 class ObjectiveBankSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_search_order_record(self, objective_bank_record_type):
@@ -423,6 +416,4 @@ class ObjectiveBankSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankSearchOrderRecord
-
-
+        return  # osid.learning.records.ObjectiveBankSearchOrderRecord

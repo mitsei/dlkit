@@ -16,10 +16,10 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.authorization import records as abc_authorization_records
 
 
-
-
 class AuthorizationRecord(abc_authorization_records.AuthorizationRecord, osid_records.OsidRecord):
     """A record for an ``Authorization`` The methods specified by the record type are available through the underlying object."""
+
+
 
 
 
@@ -35,6 +35,8 @@ class AuthorizationQueryRecord(abc_authorization_records.AuthorizationQueryRecor
 
 
 
+
+
 class AuthorizationFormRecord(abc_authorization_records.AuthorizationFormRecord, osid_records.OsidRecord):
     """A record for an ``AuthorizationForm``.
 
@@ -42,6 +44,8 @@ class AuthorizationFormRecord(abc_authorization_records.AuthorizationFormRecord,
     underlying object.
 
     """
+
+
 
 
 
@@ -57,6 +61,8 @@ class AuthorizationSearchRecord(abc_authorization_records.AuthorizationSearchRec
 
 
 
+
+
 class VaultRecord(abc_authorization_records.VaultRecord, osid_records.OsidRecord):
     """A record for a ``Vault``.
 
@@ -64,6 +70,8 @@ class VaultRecord(abc_authorization_records.VaultRecord, osid_records.OsidRecord
     underlying object.
 
     """
+
+
 
 
 
@@ -79,6 +87,8 @@ class VaultQueryRecord(abc_authorization_records.VaultQueryRecord, osid_records.
 
 
 
+
+
 class VaultFormRecord(abc_authorization_records.VaultFormRecord, osid_records.OsidRecord):
     """A record for a ``VaultForm``.
 
@@ -90,6 +100,8 @@ class VaultFormRecord(abc_authorization_records.VaultFormRecord, osid_records.Os
 
 
 
+
+
 class VaultSearchRecord(abc_authorization_records.VaultSearchRecord, osid_records.OsidRecord):
     """A record for a ``VaultSearch``.
 
@@ -97,7 +109,3 @@ class VaultSearchRecord(abc_authorization_records.VaultSearchRecord, osid_record
     underlying object.
 
     """
-
-
-
-

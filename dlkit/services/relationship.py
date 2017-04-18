@@ -37,10 +37,8 @@ DISABLED = -1
 
 class RelationshipProfile(osid.OsidProfile, relationship_managers.RelationshipProfile):
     """RelationshipProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_relationship_lookup(self):
         """Pass through to provider supports_relationship_lookup"""
         # Implemented from kitosid template for -
@@ -118,7 +116,6 @@ class RelationshipProfile(osid.OsidProfile, relationship_managers.RelationshipPr
 
 class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfile, relationship_managers.RelationshipManager):
     """RelationshipManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -239,7 +236,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_relationship_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_relationship_lookup_session"""
         # Implemented from kitosid template for -
@@ -758,7 +754,6 @@ class RelationshipProxyManager(osid.OsidProxyManager, RelationshipProfile, relat
 
 class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog):
     """Family convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -896,7 +891,6 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_family_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

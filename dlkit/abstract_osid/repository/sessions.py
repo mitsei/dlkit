@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssetLookupSession:
     """This session defines methods for retrieving assets.
 
@@ -51,7 +48,6 @@ class AssetLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -63,7 +59,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -79,7 +75,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -100,7 +96,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asset_view(self):
@@ -179,7 +175,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
     @abc.abstractmethod
     def get_assets_by_ids(self, asset_ids):
@@ -205,7 +201,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_assets_by_genus_type(self, asset_genus_type):
@@ -226,7 +222,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_assets_by_parent_genus_type(self, asset_genus_type):
@@ -247,7 +243,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_assets_by_record_type(self, asset_record_type):
@@ -268,7 +264,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_assets_by_provider(self, resource_id):
@@ -289,7 +285,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_assets(self):
@@ -307,7 +303,7 @@ class AssetLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     assets = property(fget=get_assets)
 
@@ -344,7 +340,6 @@ class AssetContentLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -356,7 +351,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -372,7 +367,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -393,7 +388,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asset_content_view(self):
@@ -472,7 +467,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContent
+        return  # osid.repository.AssetContent
 
     @abc.abstractmethod
     def get_asset_contents_by_ids(self, asset_content_ids):
@@ -498,7 +493,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList
 
     @abc.abstractmethod
     def get_asset_contents_by_genus_type(self, asset_content_genus_type):
@@ -519,7 +514,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList
 
     @abc.abstractmethod
     def get_asset_contents_by_parent_genus_type(self, asset_content_genus_type):
@@ -540,7 +535,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList
 
     @abc.abstractmethod
     def get_asset_contents_by_record_type(self, asset_content_record_type):
@@ -561,7 +556,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList
 
     @abc.abstractmethod
     def get_asset_contents_for_asset(self, asset_id):
@@ -605,7 +600,7 @@ class AssetContentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return  # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList+
 
 
 class AssetQuerySession:
@@ -629,7 +624,6 @@ class AssetQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -641,7 +635,7 @@ class AssetQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -657,7 +651,7 @@ class AssetQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -678,7 +672,7 @@ class AssetQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_repository_view(self):
@@ -718,7 +712,7 @@ class AssetQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     asset_query = property(fget=get_asset_query)
 
@@ -738,7 +732,7 @@ class AssetQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
 
 class AssetSearchSession:
@@ -771,7 +765,6 @@ class AssetSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_asset_search(self):
         """Gets an asset search.
@@ -783,7 +776,7 @@ class AssetSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetSearch
+        return  # osid.repository.AssetSearch
 
     asset_search = property(fget=get_asset_search)
 
@@ -801,7 +794,7 @@ class AssetSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetSearchOrder
+        return  # osid.repository.AssetSearchOrder
 
     asset_search_order = property(fget=get_asset_search_order)
 
@@ -823,7 +816,7 @@ class AssetSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetSearchResults
+        return  # osid.repository.AssetSearchResults
 
     @abc.abstractmethod
     def get_asset_query_from_inspector(self, asset_query_inspector):
@@ -841,7 +834,7 @@ class AssetSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
 
 class AssetAdminSession:
@@ -893,39 +886,36 @@ class AssetAdminSession:
       if (!session.canCreateAssets()) {
           return "asset creation not permitted";
       }
-      
+
       Type types[1];
-      types[0] = assetPhotographType; 
+      types[0] = assetPhotographType;
       if (!session.canCreateAssetWithRecordTypes(types)) {
           return "creating an asset with a photograph type is not supported";
       }
-      
+
       AssetForm form = session.getAssetFormForCreate();
       Metadata metadata = form.getDisplayNameMetadata();
       if (metadata.isReadOnly()) {
           return "cannot set display name";
       }
-      
+
       form.setDisplayName("my photo");
-      
+
       PhotographRecordForm photoForm = (PhotographRecordForn) form.getRecordForm(assetPhotogaphType);
       Metadata metadata = form.getApertureMetadata();
       if (metadata.isReadOnly()) {
           return ("cannot set aperture");
       }
-      
+
       photoForm.setAperture("5.6");
       if (!form.isValid()) {
           return form.getValidationMessage();
       }
-      
+
       Asset newAsset = session.createAsset(form);
-
-
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_id(self):
@@ -938,7 +928,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -954,7 +944,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -975,7 +965,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_asset_with_record_types(self, asset_record_types):
@@ -996,7 +986,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_form_for_create(self, asset_record_types):
@@ -1016,7 +1006,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetForm
+        return  # osid.repository.AssetForm
 
     @abc.abstractmethod
     def create_asset(self, asset_form):
@@ -1036,7 +1026,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
     @abc.abstractmethod
     def can_update_assets(self):
@@ -1055,7 +1045,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_form_for_update(self, asset_id):
@@ -1076,7 +1066,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetForm
+        return  # osid.repository.AssetForm
 
     @abc.abstractmethod
     def update_asset(self, asset_form):
@@ -1113,7 +1103,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_asset(self, asset_id):
@@ -1148,7 +1138,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_asset(self, asset_id, alias_id):
@@ -1191,7 +1181,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_asset_content_with_record_types(self, asset_content_record_types):
@@ -1212,7 +1202,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_content_form_for_create(self, asset_id, asset_content_record_types):
@@ -1233,7 +1223,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentForm
+        return  # osid.repository.AssetContentForm
 
     @abc.abstractmethod
     def create_asset_content(self, asset_content_form):
@@ -1253,7 +1243,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContent
+        return  # osid.repository.AssetContent
 
     @abc.abstractmethod
     def can_update_asset_contents(self):
@@ -1272,7 +1262,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_content_form_for_update(self, asset_content_id):
@@ -1292,7 +1282,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentForm
+        return  # osid.repository.AssetContentForm
 
     @abc.abstractmethod
     def update_asset_content(self, asset_content_form):
@@ -1329,7 +1319,7 @@ class AssetAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_asset_content(self, asset_content_id):
@@ -1363,7 +1353,6 @@ class AssetNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -1375,7 +1364,7 @@ class AssetNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -1391,7 +1380,7 @@ class AssetNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -1412,7 +1401,7 @@ class AssetNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_repository_view(self):
@@ -1633,10 +1622,8 @@ class AssetRepositorySession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_asset_repository_mappings(self):
@@ -1655,7 +1642,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_repository_view(self):
@@ -1702,7 +1689,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assets_by_repository(self, repository_id):
@@ -1720,7 +1707,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_asset_ids_by_repositories(self, repository_ids):
@@ -1737,7 +1724,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assets_by_repositories(self, repository_ids):
@@ -1754,7 +1741,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_repository_ids_by_asset(self, asset_id):
@@ -1772,7 +1759,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_repositories_by_asset(self, asset_id):
@@ -1790,7 +1777,7 @@ class AssetRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
 
 class AssetRepositoryAssignmentSession:
@@ -1807,7 +1794,6 @@ class AssetRepositoryAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_assets(self):
@@ -1826,7 +1812,7 @@ class AssetRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_assets_to_repository(self, repository_id):
@@ -1847,7 +1833,7 @@ class AssetRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_repository_ids(self, repository_id):
@@ -1863,7 +1849,7 @@ class AssetRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_repository_ids_for_asset(self, repository_id, asset_id):
@@ -1881,7 +1867,7 @@ class AssetRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_asset_to_repository(self, asset_id, repository_id):
@@ -1937,7 +1923,6 @@ class AssetSmartRepositorySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -1949,7 +1934,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -1965,7 +1950,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -1986,7 +1971,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_query(self):
@@ -1999,7 +1984,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     asset_query = property(fget=get_asset_query)
 
@@ -2014,7 +1999,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetSearchOrder
+        return  # osid.repository.AssetSearchOrder
 
     asset_search_order = property(fget=get_asset_search_order)
 
@@ -2046,7 +2031,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     @abc.abstractmethod
     def apply_asset_sequencing(self, asset_search_order):
@@ -2078,7 +2063,7 @@ class AssetSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
 
 class AssetTemporalSession:
@@ -2089,7 +2074,6 @@ class AssetTemporalSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_id(self):
@@ -2102,7 +2086,7 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2118,7 +2102,7 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2139,7 +2123,7 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asset_view(self):
@@ -2219,7 +2203,7 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeIntervalList
+        return  # osid.calendaring.DateTimeIntervalList
 
     @abc.abstractmethod
     def get_asset_ids_by_temporal_coverage(self, from_, to):
@@ -2239,7 +2223,7 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assets_by_temporal_coverage(self, from_, to):
@@ -2259,13 +2243,12 @@ class AssetTemporalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
 
 class AssetTemporalAssignmentSession:
     """This session defines methods to manage temporal coverage of an asset."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_id(self):
@@ -2278,7 +2261,7 @@ class AssetTemporalAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2294,7 +2277,7 @@ class AssetTemporalAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2315,7 +2298,7 @@ class AssetTemporalAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_temporal_coverage(self, asset_id, begin, end):
@@ -2369,7 +2352,6 @@ class AssetSpatialSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -2381,7 +2363,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2397,7 +2379,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2418,7 +2400,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asset_view(self):
@@ -2492,7 +2474,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_asset_locations(self, asset_id):
@@ -2510,7 +2492,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_asset_spatial_coverage(self, asset_id):
@@ -2534,7 +2516,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnitList
+        return  # osid.mapping.SpatialUnitList
 
     @abc.abstractmethod
     def get_asset_ids_by_location(self, location_id):
@@ -2551,7 +2533,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assets_by_location(self, location_id):
@@ -2568,7 +2550,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_asset_ids_by_spatial_coverage(self, spatial_unit):
@@ -2585,7 +2567,7 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assets_by_spatial_coverage(self, spatial_unit):
@@ -2602,13 +2584,12 @@ class AssetSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
 
 class AssetSpatialAssignmentSession:
     """This session defines methods to manage the spatial coverage of an asset."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_id(self):
@@ -2621,7 +2602,7 @@ class AssetSpatialAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2637,7 +2618,7 @@ class AssetSpatialAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2658,7 +2639,7 @@ class AssetSpatialAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_asset_location(self, asset_id, location_id):
@@ -2764,7 +2745,6 @@ class AssetCompositionSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -2776,7 +2756,7 @@ class AssetCompositionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2792,7 +2772,7 @@ class AssetCompositionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2813,7 +2793,7 @@ class AssetCompositionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_asset_composition_view(self):
@@ -2887,7 +2867,7 @@ class AssetCompositionSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     @abc.abstractmethod
     def get_compositions_by_asset(self, asset_id):
@@ -2905,7 +2885,7 @@ class AssetCompositionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
 
 class AssetCompositionDesignSession:
@@ -2919,7 +2899,6 @@ class AssetCompositionDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -2931,7 +2910,7 @@ class AssetCompositionDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -2947,7 +2926,7 @@ class AssetCompositionDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -2968,7 +2947,7 @@ class AssetCompositionDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_asset(self, asset_id, composition_id):
@@ -3109,7 +3088,6 @@ class CompositionLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -3121,7 +3099,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -3137,7 +3115,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -3158,7 +3136,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_composition_view(self):
@@ -3276,7 +3254,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.repository.Composition
+        return  # osid.repository.Composition
 
     @abc.abstractmethod
     def get_compositions_by_ids(self, composition_ids):
@@ -3294,7 +3272,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_compositions_by_genus_type(self, composition_genus_type):
@@ -3311,7 +3289,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_compositions_by_parent_genus_type(self, composition_genus_type):
@@ -3328,7 +3306,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_compositions_by_record_type(self, composition_record_type):
@@ -3345,7 +3323,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_compositions_by_provider(self, resource_id):
@@ -3370,7 +3348,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_compositions(self):
@@ -3384,7 +3362,7 @@ class CompositionLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     compositions = property(fget=get_compositions)
 
@@ -3415,7 +3393,6 @@ class CompositionQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -3427,7 +3404,7 @@ class CompositionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -3443,7 +3420,7 @@ class CompositionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -3464,7 +3441,7 @@ class CompositionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_repository_view(self):
@@ -3526,7 +3503,7 @@ class CompositionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     composition_query = property(fget=get_composition_query)
 
@@ -3546,7 +3523,7 @@ class CompositionQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
 
 class CompositionSearchSession:
@@ -3581,7 +3558,6 @@ class CompositionSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_composition_search(self):
         """Gets a composition search.
@@ -3593,7 +3569,7 @@ class CompositionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionSearch
+        return  # osid.repository.CompositionSearch
 
     composition_search = property(fget=get_composition_search)
 
@@ -3611,7 +3587,7 @@ class CompositionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionSearchOrder
+        return  # osid.repository.CompositionSearchOrder
 
     composition_search_order = property(fget=get_composition_search_order)
 
@@ -3633,7 +3609,7 @@ class CompositionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionSearchResults
+        return  # osid.repository.CompositionSearchResults
 
     @abc.abstractmethod
     def get_composition_query_from_inspector(self, composition_query_inspector):
@@ -3651,7 +3627,7 @@ class CompositionSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
 
 class CompositionAdminSession:
@@ -3692,7 +3668,6 @@ class CompositionAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -3704,7 +3679,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -3720,7 +3695,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -3741,7 +3716,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_composition_with_record_types(self, composition_record_types):
@@ -3762,7 +3737,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_form_for_create(self, composition_record_types):
@@ -3782,7 +3757,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionForm
+        return  # osid.repository.CompositionForm
 
     @abc.abstractmethod
     def create_composition(self, composiiton_form):
@@ -3802,7 +3777,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Composition
+        return  # osid.repository.Composition
 
     @abc.abstractmethod
     def can_update_compositions(self):
@@ -3821,7 +3796,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_form_for_update(self, composition_id):
@@ -3842,7 +3817,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionForm
+        return  # osid.repository.CompositionForm
 
     @abc.abstractmethod
     def update_composition(self, composiiton_form):
@@ -3879,7 +3854,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_composition(self, composition_id):
@@ -3967,7 +3942,7 @@ class CompositionAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_composition(self, composition_id, alias_id):
@@ -4009,10 +3984,8 @@ class CompositionNotificationSession:
       * ``isolateRepositoryView:`` restricts notifications to this
         ``Repository`` only
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_id(self):
@@ -4025,7 +3998,7 @@ class CompositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -4041,7 +4014,7 @@ class CompositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -4062,7 +4035,7 @@ class CompositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_repository_view(self):
@@ -4229,10 +4202,8 @@ class CompositionRepositorySession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_composition_repository_view(self):
@@ -4280,7 +4251,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_ids_by_repository(self, repository_id):
@@ -4298,7 +4269,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_compositions_by_repository(self, repository_id):
@@ -4316,7 +4287,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_composition_ids_by_repositories(self, repository_ids):
@@ -4333,7 +4304,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_compoitions_by_repositories(self, repository_ids):
@@ -4350,7 +4321,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     @abc.abstractmethod
     def get_repository_ids_by_composition(self, composition_id):
@@ -4368,7 +4339,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_repositories_by_composition(self, composition_id):
@@ -4386,7 +4357,7 @@ class CompositionRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
 
 class CompositionRepositoryAssignmentSession:
@@ -4403,7 +4374,6 @@ class CompositionRepositoryAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_compositions(self):
@@ -4422,7 +4392,7 @@ class CompositionRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_compositions_to_repository(self, repository_id):
@@ -4443,7 +4413,7 @@ class CompositionRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_repository_ids(self, repository_id):
@@ -4459,7 +4429,7 @@ class CompositionRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_repository_ids_for_composition(self, repository_id, composition_id):
@@ -4477,7 +4447,7 @@ class CompositionRepositoryAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_composition_to_repository(self, composition_id, repository_id):
@@ -4534,7 +4504,6 @@ class CompositionSmartRepositorySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
@@ -4546,7 +4515,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_id = property(fget=get_repository_id)
 
@@ -4562,7 +4531,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -4583,7 +4552,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_query(self):
@@ -4596,7 +4565,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     composition_query = property(fget=get_composition_query)
 
@@ -4611,7 +4580,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionSearchOrder
+        return  # osid.repository.CompositionSearchOrder
 
     composition_search_order = property(fget=get_composition_search_order)
 
@@ -4643,7 +4612,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     @abc.abstractmethod
     def apply_composition_sequencing(self, composition_search_order):
@@ -4675,7 +4644,7 @@ class CompositionSmartRepositorySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
 
 class RepositoryLookupSession:
@@ -4705,7 +4674,6 @@ class RepositoryLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_repositories(self):
         """Tests if this user can perform ``Repository`` lookups.
@@ -4723,7 +4691,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_repository_view(self):
@@ -4776,7 +4744,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     @abc.abstractmethod
     def get_repositories_by_ids(self, repository_ids):
@@ -4802,7 +4770,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def get_repositories_by_genus_type(self, repository_genus_type):
@@ -4824,7 +4792,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def get_repositories_by_parent_genus_type(self, repository_genus_type):
@@ -4846,7 +4814,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def get_repositories_by_record_type(self, repository_record_type):
@@ -4868,7 +4836,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def get_repositories_by_provider(self, resource_id):
@@ -4890,7 +4858,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def get_repositories(self):
@@ -4909,7 +4877,7 @@ class RepositoryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     repositories = property(fget=get_repositories)
 
@@ -4925,7 +4893,6 @@ class RepositoryQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_repositories(self):
@@ -4944,7 +4911,7 @@ class RepositoryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_query(self):
@@ -4957,7 +4924,7 @@ class RepositoryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
     repository_query = property(fget=get_repository_query)
 
@@ -4977,7 +4944,7 @@ class RepositoryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
 
 class RepositorySearchSession:
@@ -5002,7 +4969,6 @@ class RepositorySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository_search(self):
         """Gets a repository search.
@@ -5014,7 +4980,7 @@ class RepositorySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositorySearch
+        return  # osid.repository.RepositorySearch
 
     repository_search = property(fget=get_repository_search)
 
@@ -5032,7 +4998,7 @@ class RepositorySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositorySearchOrder
+        return  # osid.repository.RepositorySearchOrder
 
     repository_search_order = property(fget=get_repository_search_order)
 
@@ -5054,7 +5020,7 @@ class RepositorySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositorySearchResults
+        return  # osid.repository.RepositorySearchResults
 
     @abc.abstractmethod
     def get_repository_query_from_inspector(self, repository_query_inspector):
@@ -5072,7 +5038,7 @@ class RepositorySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
 
 class RepositoryAdminSession:
@@ -5107,7 +5073,6 @@ class RepositoryAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_repositories(self):
         """Tests if this user can create ``Repositories``.
@@ -5125,7 +5090,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_repository_with_record_types(self, repository_record_types):
@@ -5146,7 +5111,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_form_for_create(self, repository_record_types):
@@ -5166,7 +5131,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryForm
+        return  # osid.repository.RepositoryForm
 
     @abc.abstractmethod
     def create_repository(self, repository_form):
@@ -5186,7 +5151,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     @abc.abstractmethod
     def can_update_repositories(self):
@@ -5205,7 +5170,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_form_for_update(self, repository_id):
@@ -5226,7 +5191,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryForm
+        return  # osid.repository.RepositoryForm
 
     @abc.abstractmethod
     def update_repository(self, repository_form):
@@ -5263,7 +5228,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_repository(self, repository_id):
@@ -5298,7 +5263,7 @@ class RepositoryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_repository(self, repository_id, alias_id):
@@ -5335,7 +5300,6 @@ class RepositoryNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_repository_notifications(self):
         """Tests if this user can register for ``Repository`` notifications.
@@ -5353,7 +5317,7 @@ class RepositoryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def register_for_new_repositories(self):
@@ -5578,10 +5542,8 @@ class RepositoryHierarchySession:
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_hierarchy_id(self):
@@ -5594,7 +5556,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_hierarchy_id = property(fget=get_repository_hierarchy_id)
 
@@ -5610,7 +5572,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     repository_hierarchy = property(fget=get_repository_hierarchy)
 
@@ -5631,7 +5593,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_repository_view(self):
@@ -5674,7 +5636,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_repository_ids = property(fget=get_root_repository_ids)
 
@@ -5695,7 +5657,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     root_repositories = property(fget=get_root_repositories)
 
@@ -5715,7 +5677,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_repository(self, id_, repository_id):
@@ -5736,7 +5698,7 @@ class RepositoryHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_repository_ids(self, repository_id):
@@ -5754,7 +5716,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_repositories(self, repository_id):
@@ -5772,7 +5734,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def is_ancestor_of_repository(self, id_, repository_id):
@@ -5793,7 +5755,7 @@ class RepositoryHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_repositories(self, repository_id):
@@ -5811,7 +5773,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_repository(self, id_, repository_id):
@@ -5832,7 +5794,7 @@ class RepositoryHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_repository_ids(self, repository_id):
@@ -5850,7 +5812,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_repositories(self, repository_id):
@@ -5868,7 +5830,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     @abc.abstractmethod
     def is_descendant_of_repository(self, id_, repository_id):
@@ -5889,7 +5851,7 @@ class RepositoryHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_node_ids(self, repository_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5913,7 +5875,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_repository_nodes(self, repository_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5937,7 +5899,7 @@ class RepositoryHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryNode
+        return  # osid.repository.RepositoryNode
 
 
 class RepositoryHierarchyDesignSession:
@@ -5947,7 +5909,6 @@ class RepositoryHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_hierarchy_id(self):
@@ -5960,7 +5921,7 @@ class RepositoryHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     repository_hierarchy_id = property(fget=get_repository_hierarchy_id)
 
@@ -5976,7 +5937,7 @@ class RepositoryHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     repository_hierarchy = property(fget=get_repository_hierarchy)
 
@@ -5997,7 +5958,7 @@ class RepositoryHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_repository(self, repository_id):
@@ -6084,5 +6045,3 @@ class RepositoryHierarchyDesignSession:
 
         """
         pass
-
-

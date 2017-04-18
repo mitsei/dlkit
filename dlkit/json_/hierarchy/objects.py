@@ -22,8 +22,6 @@ from dlkit.abstract_osid.hierarchy import objects as abc_hierarchy_objects
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
     """A ``Hierarchy`` represents an authenticatable identity.
 
@@ -31,12 +29,10 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
     any persisted references should use the Id.
 
     """
-
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='HIERARCHY', **kwargs)
-
     @utilities.arguments_not_none
     def get_hierarchy_record(self, hierarchy_record_type):
         """Gets the hierarchy record corresponding to the given ``Hierarchy`` record ``Type``.
@@ -61,6 +57,8 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
         raise errors.Unimplemented()
 
 
+
+
 class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating ``Hierarchy`` objects.
 
@@ -71,7 +69,6 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
     constraints.
 
     """
-
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
@@ -88,8 +85,6 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
-
-
     @utilities.arguments_not_none
     def get_hierarchy_form_record(self, hierarchy_record_type):
         """Gets the ``HierarchyFormRecord`` corresponding to the given hierarchy record ``Type``.
@@ -108,6 +103,8 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
         raise errors.Unimplemented()
 
 
+
+
 class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``HierarchyList`` provides a means for accessing ``Id`` elements sequentially either one at a time or many at a time.
 
@@ -118,8 +115,6 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
       while (hl.hasNext()) {
            Hierarchy[] hierarchies = hl.getNextHierarchies(hl.available());
       }
-
-
 
     """
 
@@ -165,6 +160,8 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class Node(abc_hierarchy_objects.Node, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -197,6 +194,8 @@ class Node(abc_hierarchy_objects.Node, osid_objects.OsidNode):
     children = property(fget=get_children)
 
 
+
+
 class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``NodeList`` provides a means for accessing ``Id`` elements sequentially either one at a time or many at a time.
 
@@ -206,8 +205,6 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
       while (nl.hasNext()) {
            Node[] nodes = nl.getNextNodes(nl.available());
       }
-
-
 
     """
 
@@ -249,5 +246,3 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

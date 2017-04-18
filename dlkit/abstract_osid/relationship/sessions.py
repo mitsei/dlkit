@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class RelationshipLookupSession:
     """This session defines methods for retrieving relationships.
 
@@ -45,7 +42,6 @@ class RelationshipLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
@@ -57,7 +53,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_id = property(fget=get_family_id)
 
@@ -73,7 +69,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -94,7 +90,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_relationship_view(self):
@@ -190,7 +186,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Relationship
+        return  # osid.relationship.Relationship
 
     @abc.abstractmethod
     def get_relationships_by_ids(self, relationship_ids):
@@ -208,7 +204,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type(self, relationship_genus_type):
@@ -225,7 +221,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_parent_genus_type(self, relationship_genus_type):
@@ -242,7 +238,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_record_type(self, relationship_record_type):
@@ -259,7 +255,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_on_date(self, from_, to):
@@ -279,7 +275,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_source(self, source_id):
@@ -296,7 +292,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_source_on_date(self, source_id, from_, to):
@@ -318,7 +314,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_source(self, source_id, relationship_genus_type):
@@ -351,7 +347,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_source_on_date(self, source_id, relationship_genus_type, from_, to):
@@ -375,7 +371,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_destination(self, destination_id):
@@ -392,7 +388,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_destination_on_date(self, destination_id, from_, to):
@@ -414,7 +410,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_destination(self, destination_id, relationship_genus_type):
@@ -447,7 +443,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_destination_on_date(self, destination_id, relationship_genus_type, from_, to):
@@ -471,7 +467,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_peers(self, source_id, destination_id):
@@ -490,7 +486,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_for_peers_on_date(self, source_id, destination_id, from_, to):
@@ -514,7 +510,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_peers(self, source_id, destination_id, relationship_genus_type):
@@ -547,7 +543,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships_by_genus_type_for_peers_on_date(self, source_id, destination_id, relationship_genus_type, from_, to):
@@ -573,7 +569,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationships(self):
@@ -587,7 +583,7 @@ class RelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     relationships = property(fget=get_relationships)
 
@@ -604,7 +600,6 @@ class RelationshipQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
@@ -616,7 +611,7 @@ class RelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_id = property(fget=get_family_id)
 
@@ -632,7 +627,7 @@ class RelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -680,7 +675,7 @@ class RelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_query(self):
@@ -693,7 +688,7 @@ class RelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
     relationship_query = property(fget=get_relationship_query)
 
@@ -713,7 +708,7 @@ class RelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
 
 class RelationshipSearchSession:
@@ -738,7 +733,6 @@ class RelationshipSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_relationship_search(self):
         """Gets a relationship search.
@@ -750,7 +744,7 @@ class RelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipSearch
+        return  # osid.relationship.RelationshipSearch
 
     relationship_search = property(fget=get_relationship_search)
 
@@ -768,7 +762,7 @@ class RelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipSearchOrder
+        return  # osid.relationship.RelationshipSearchOrder
 
     relationship_search_order = property(fget=get_relationship_search_order)
 
@@ -790,7 +784,7 @@ class RelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipSearchResults
+        return  # osid.relationship.RelationshipSearchResults
 
     @abc.abstractmethod
     def get_relationship_query_from_inspector(self, relationship_query_inspector):
@@ -808,7 +802,7 @@ class RelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
 
 class RelationshipAdminSession:
@@ -849,7 +843,6 @@ class RelationshipAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_id(self):
         """Gets the ``Familt``  ``Id`` associated with this session.
@@ -861,7 +854,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_id = property(fget=get_family_id)
 
@@ -877,7 +870,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -897,7 +890,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_relationship_with_record_types(self, relationship_record_types):
@@ -918,7 +911,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_form_for_create(self, source_id, destination_id, relationship_record_types):
@@ -943,7 +936,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipForm
+        return  # osid.relationship.RelationshipForm
 
     @abc.abstractmethod
     def create_relationship(self, relationship_form):
@@ -963,7 +956,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Relationship
+        return  # osid.relationship.Relationship
 
     @abc.abstractmethod
     def can_update_relationships(self):
@@ -982,7 +975,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_form_for_update(self, relationship_id):
@@ -1003,7 +996,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipForm
+        return  # osid.relationship.RelationshipForm
 
     @abc.abstractmethod
     def update_relationship(self, relationship_form):
@@ -1040,7 +1033,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_relationship(self, relationship_id):
@@ -1075,7 +1068,7 @@ class RelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_relationship(self, relationship_id, alias_id):
@@ -1117,7 +1110,6 @@ class RelationshipNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
@@ -1129,7 +1121,7 @@ class RelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_id = property(fget=get_family_id)
 
@@ -1145,7 +1137,7 @@ class RelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -1166,7 +1158,7 @@ class RelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_family_view(self):
@@ -1537,10 +1529,8 @@ class RelationshipFamilySession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_relationship_family_mappings(self):
@@ -1559,7 +1549,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_family_view(self):
@@ -1606,7 +1596,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_relationships_by_family(self, family_id):
@@ -1624,7 +1614,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_relationship_ids_by_families(self, family_ids):
@@ -1641,7 +1631,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_relationships_by_families(self, family_ids):
@@ -1658,7 +1648,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipList
+        return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
     def get_family_ids_by_relationship(self, relationship_id):
@@ -1676,7 +1666,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_families_by_relationship(self, relationship_id):
@@ -1694,7 +1684,7 @@ class RelationshipFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
 
 class RelationshipFamilyAssignmentSession:
@@ -1709,7 +1699,6 @@ class RelationshipFamilyAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_relationships(self):
@@ -1728,7 +1717,7 @@ class RelationshipFamilyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_relationships_to_family(self, family_id):
@@ -1749,7 +1738,7 @@ class RelationshipFamilyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_family_ids(self, family_id):
@@ -1765,7 +1754,7 @@ class RelationshipFamilyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_family_ids_for_relationship(self, family_id, relationship_id):
@@ -1783,7 +1772,7 @@ class RelationshipFamilyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_relationship_to_family(self, relationship_id, family_id):
@@ -1862,7 +1851,6 @@ class RelationshipSmartFamilySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
@@ -1874,7 +1862,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_id = property(fget=get_family_id)
 
@@ -1890,7 +1878,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     family = property(fget=get_family)
 
@@ -1911,7 +1899,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_query(self):
@@ -1924,7 +1912,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
     relationship_query = property(fget=get_relationship_query)
 
@@ -1939,7 +1927,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipSearchOrder
+        return  # osid.relationship.RelationshipSearchOrder
 
     relationship_search_order = property(fget=get_relationship_search_order)
 
@@ -1971,7 +1959,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQueryInspector
+        return  # osid.relationship.RelationshipQueryInspector
 
     @abc.abstractmethod
     def apply_relationship_sequencing(self, relationship_search_order):
@@ -2003,7 +1991,7 @@ class RelationshipSmartFamilySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
 
 class FamilyLookupSession:
@@ -2029,7 +2017,6 @@ class FamilyLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_families(self):
         """Tests if this user can perform ``Family`` lookups.
@@ -2047,7 +2034,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_family_view(self):
@@ -2099,7 +2086,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     @abc.abstractmethod
     def get_families_by_ids(self, family_ids):
@@ -2125,7 +2112,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def get_families_by_genus_type(self, family_genus_type):
@@ -2146,7 +2133,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def get_families_by_parent_genus_type(self, family_genus_type):
@@ -2167,7 +2154,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def get_families_by_record_type(self, family_record_type):
@@ -2188,7 +2175,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def get_families_by_provider(self, resource_id):
@@ -2209,7 +2196,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def get_families(self):
@@ -2227,7 +2214,7 @@ class FamilyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     families = property(fget=get_families)
 
@@ -2247,7 +2234,6 @@ class FamilyQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_search_families(self):
         """Tests if this user can perform ``Family`` searches.
@@ -2265,7 +2251,7 @@ class FamilyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_query(self):
@@ -2278,7 +2264,7 @@ class FamilyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQuery
+        return  # osid.relationship.FamilyQuery
 
     family_query = property(fget=get_family_query)
 
@@ -2298,7 +2284,7 @@ class FamilyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
 
 class FamilySearchSession:
@@ -2325,7 +2311,6 @@ class FamilySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_search(self):
         """Gets a family search.
@@ -2337,7 +2322,7 @@ class FamilySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilySearch
+        return  # osid.relationship.FamilySearch
 
     family_search = property(fget=get_family_search)
 
@@ -2355,7 +2340,7 @@ class FamilySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilySearchOrder
+        return  # osid.relationship.FamilySearchOrder
 
     family_search_order = property(fget=get_family_search_order)
 
@@ -2377,7 +2362,7 @@ class FamilySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilySearchResults
+        return  # osid.relationship.FamilySearchResults
 
     @abc.abstractmethod
     def get_family_query_from_inspector(self, family_query_inspector):
@@ -2395,7 +2380,7 @@ class FamilySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQuery
+        return  # osid.relationship.FamilyQuery
 
 
 class FamilyAdminSession:
@@ -2431,7 +2416,6 @@ class FamilyAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_families(self):
         """Tests if this user can create families.
@@ -2449,7 +2433,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_family_with_record_types(self, family_record_types):
@@ -2470,7 +2454,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_form_for_create(self, family_record_types):
@@ -2490,7 +2474,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyForm
+        return  # osid.relationship.FamilyForm
 
     @abc.abstractmethod
     def create_family(self, family_form):
@@ -2510,7 +2494,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.Family
+        return  # osid.relationship.Family
 
     @abc.abstractmethod
     def can_update_families(self):
@@ -2529,7 +2513,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_form_for_update(self, family_id):
@@ -2550,7 +2534,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyForm
+        return  # osid.relationship.FamilyForm
 
     @abc.abstractmethod
     def update_family(self, family_form):
@@ -2587,7 +2571,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_family(self, family_id):
@@ -2622,7 +2606,7 @@ class FamilyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_family(self, family_id, alias_id):
@@ -2663,7 +2647,6 @@ class FamilyNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_family_notifications(self):
         """Tests if this user can register for ``Family`` notifications.
@@ -2681,7 +2664,7 @@ class FamilyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_family_notifications(self):
@@ -2927,10 +2910,8 @@ class FamilyHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_family_hierarchy_id(self):
@@ -2943,7 +2924,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_hierarchy_id = property(fget=get_family_hierarchy_id)
 
@@ -2959,7 +2940,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     family_hierarchy = property(fget=get_family_hierarchy)
 
@@ -2980,7 +2961,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_family_view(self):
@@ -3023,7 +3004,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_family_ids = property(fget=get_root_family_ids)
 
@@ -3044,7 +3025,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     root_families = property(fget=get_root_families)
 
@@ -3064,7 +3045,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_family(self, id_, family_id):
@@ -3085,7 +3066,7 @@ class FamilyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_family_ids(self, family_id):
@@ -3103,7 +3084,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_families(self, family_id):
@@ -3121,7 +3102,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def is_ancestor_of_family(self, id_, family_id):
@@ -3142,7 +3123,7 @@ class FamilyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_families(self, family_id):
@@ -3160,7 +3141,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_family(self, id_, family_id):
@@ -3181,7 +3162,7 @@ class FamilyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_family_ids(self, family_id):
@@ -3199,7 +3180,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_families(self, family_id):
@@ -3217,7 +3198,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyList
+        return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
     def is_descendant_of_family(self, id_, family_id):
@@ -3238,7 +3219,7 @@ class FamilyHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_family_node_ids(self, family_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3262,7 +3243,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_family_nodes(self, family_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3286,7 +3267,7 @@ class FamilyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyNode
+        return  # osid.relationship.FamilyNode
 
 
 class FamilyHierarchyDesignSession:
@@ -3299,7 +3280,6 @@ class FamilyHierarchyDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_family_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -3311,7 +3291,7 @@ class FamilyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     family_hierarchy_id = property(fget=get_family_hierarchy_id)
 
@@ -3327,7 +3307,7 @@ class FamilyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     family_hierarchy = property(fget=get_family_hierarchy)
 
@@ -3348,7 +3328,7 @@ class FamilyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_family(self, family_id):
@@ -3435,5 +3415,3 @@ class FamilyHierarchyDesignSession:
 
         """
         pass
-
-

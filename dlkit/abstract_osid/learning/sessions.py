@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ObjectiveLookupSession:
     """This session provides methods for retrieving ``Objective`` s."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_id(self):
@@ -35,7 +31,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -51,7 +47,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -72,7 +68,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_view(self):
@@ -153,7 +149,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     @abc.abstractmethod
     def get_objectives_by_ids(self, objective_ids):
@@ -179,7 +175,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives_by_genus_type(self, objective_genus_type):
@@ -200,7 +196,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives_by_parent_genus_type(self, objective_genus_type):
@@ -221,7 +217,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives_by_record_type(self, objective_record_type):
@@ -242,7 +238,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives(self):
@@ -260,7 +256,7 @@ class ObjectiveLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     objectives = property(fget=get_objectives)
 
@@ -289,7 +285,6 @@ class ObjectiveQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -301,7 +296,7 @@ class ObjectiveQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -317,7 +312,7 @@ class ObjectiveQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -338,7 +333,7 @@ class ObjectiveQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -379,7 +374,7 @@ class ObjectiveQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     objective_query = property(fget=get_objective_query)
 
@@ -399,7 +394,7 @@ class ObjectiveQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
 
 class ObjectiveSearchSession:
@@ -436,7 +431,6 @@ class ObjectiveSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_search(self):
         """Gets an objective search.
@@ -448,7 +442,7 @@ class ObjectiveSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveSearch
+        return  # osid.learning.ObjectiveSearch
 
     objective_search = property(fget=get_objective_search)
 
@@ -466,7 +460,7 @@ class ObjectiveSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveSearchOrder
+        return  # osid.learning.ObjectiveSearchOrder
 
     objective_search_order = property(fget=get_objective_search_order)
 
@@ -488,7 +482,7 @@ class ObjectiveSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveSearchResults
+        return  # osid.learning.ObjectiveSearchResults
 
     @abc.abstractmethod
     def get_objective_query_from_inspector(self, objective_query_inspector):
@@ -506,7 +500,7 @@ class ObjectiveSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
 
 class ObjectiveAdminSession:
@@ -546,7 +540,6 @@ class ObjectiveAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -558,7 +551,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -574,7 +567,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -595,7 +588,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_objective_with_record_types(self, objective_record_types):
@@ -616,7 +609,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_form_for_create(self, objective_record_types):
@@ -636,7 +629,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveForm
+        return  # osid.learning.ObjectiveForm
 
     @abc.abstractmethod
     def create_objective(self, objective_form):
@@ -656,7 +649,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     @abc.abstractmethod
     def can_update_objectives(self):
@@ -675,7 +668,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_form_for_update(self, objective_id):
@@ -696,7 +689,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveForm
+        return  # osid.learning.ObjectiveForm
 
     @abc.abstractmethod
     def update_objective(self, objective_form):
@@ -733,7 +726,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_objective(self, objective_id):
@@ -768,7 +761,7 @@ class ObjectiveAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_objective(self, objective_id, alias_id):
@@ -808,7 +801,6 @@ class ObjectiveNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -820,7 +812,7 @@ class ObjectiveNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -836,7 +828,7 @@ class ObjectiveNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -857,7 +849,7 @@ class ObjectiveNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -1133,10 +1125,8 @@ class ObjectiveHierarchySession:
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_hierarchy_id(self):
@@ -1149,7 +1139,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
@@ -1165,7 +1155,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
@@ -1186,7 +1176,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_view(self):
@@ -1229,7 +1219,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_objective_ids = property(fget=get_root_objective_ids)
 
@@ -1245,7 +1235,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     root_objectives = property(fget=get_root_objectives)
 
@@ -1265,7 +1255,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_objective(self, id_, objective_id):
@@ -1286,7 +1276,7 @@ class ObjectiveHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_objective_ids(self, objective_id):
@@ -1304,7 +1294,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_objectives(self, objective_id):
@@ -1322,7 +1312,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def is_ancestor_of_objective(self, id_, objective_id):
@@ -1343,7 +1333,7 @@ class ObjectiveHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_objectives(self, objective_id):
@@ -1361,7 +1351,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_objective(self, id_, objective_id):
@@ -1382,7 +1372,7 @@ class ObjectiveHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_objective_ids(self, objective_id):
@@ -1400,7 +1390,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_objectives(self, objective_id):
@@ -1418,7 +1408,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def is_descendant_of_objective(self, id_, objective_id):
@@ -1439,7 +1429,7 @@ class ObjectiveHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_node_ids(self, objective_id, ancestor_levels, descendant_levels, include_siblings):
@@ -1463,7 +1453,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_objective_nodes(self, objective_id, ancestor_levels, descendant_levels, include_siblings):
@@ -1487,7 +1477,7 @@ class ObjectiveHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveNode
+        return  # osid.learning.ObjectiveNode
 
 
 class ObjectiveHierarchyDesignSession:
@@ -1497,7 +1487,6 @@ class ObjectiveHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_hierarchy_id(self):
@@ -1510,7 +1499,7 @@ class ObjectiveHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
@@ -1526,7 +1515,7 @@ class ObjectiveHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
@@ -1547,7 +1536,7 @@ class ObjectiveHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_objective(self, objective_id):
@@ -1640,7 +1629,6 @@ class ObjectiveSequencingSession:
     """This session provides methods to sequence the objectives in the objective hierarchy."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -1652,7 +1640,7 @@ class ObjectiveSequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
@@ -1668,7 +1656,7 @@ class ObjectiveSequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
@@ -1689,7 +1677,7 @@ class ObjectiveSequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def move_objective_ahead(self, parent_objective_id, reference_objective_id, objective_id):
@@ -1763,10 +1751,8 @@ class ObjectiveObjectiveBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_objective_objective_bank_mappings(self):
@@ -1785,7 +1771,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_bank_view(self):
@@ -1832,7 +1818,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_objectives_by_objective_bank(self, objective_bank_id):
@@ -1850,7 +1836,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objective_ids_by_objective_banks(self, objective_bank_ids):
@@ -1867,7 +1853,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_objectives_by_objective_banks(self, objective_bank_ids):
@@ -1884,7 +1870,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objective_bank_ids_by_objective(self, objective_id):
@@ -1902,7 +1888,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_objective_banks_by_objective(self, objective_id):
@@ -1920,7 +1906,7 @@ class ObjectiveObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
 
 class ObjectiveObjectiveBankAssignmentSession:
@@ -1937,7 +1923,6 @@ class ObjectiveObjectiveBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_objectives(self):
@@ -1956,7 +1941,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_objectives_to_objective_bank(self, objective_bank_id):
@@ -1977,7 +1962,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids(self, objective_bank_id):
@@ -1993,7 +1978,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids_for_objective(self, objective_bank_id, objective_id):
@@ -2011,7 +1996,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_objective_to_objective_bank(self, objective_id, objective_bank_id):
@@ -2090,7 +2075,6 @@ class ObjectiveSmartObjectiveBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -2102,7 +2086,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -2118,7 +2102,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -2139,7 +2123,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_query(self):
@@ -2152,7 +2136,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     objective_query = property(fget=get_objective_query)
 
@@ -2167,7 +2151,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveSearchOrder
+        return  # osid.learning.ObjectiveSearchOrder
 
     objective_search_order = property(fget=get_objective_search_order)
 
@@ -2199,7 +2183,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     @abc.abstractmethod
     def apply_objective_sequencing(self, objective_search_order):
@@ -2231,7 +2215,7 @@ class ObjectiveSmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
 
 class ObjectiveRequisiteSession:
@@ -2264,7 +2248,6 @@ class ObjectiveRequisiteSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -2276,7 +2259,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -2292,7 +2275,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -2313,7 +2296,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_view(self):
@@ -2394,7 +2377,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_all_requisite_objectives(self, objective_id):
@@ -2418,7 +2401,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_dependent_objectives(self, objective_id):
@@ -2442,7 +2425,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def is_objective_required(self, objective_id, required_objective_id):
@@ -2465,7 +2448,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_equivalent_objectives(self, objective_id):
@@ -2490,7 +2473,7 @@ class ObjectiveRequisiteSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
 
 class ObjectiveRequisiteAssignmentSession:
@@ -2506,7 +2489,6 @@ class ObjectiveRequisiteAssignmentSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -2518,7 +2500,7 @@ class ObjectiveRequisiteAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -2534,7 +2516,7 @@ class ObjectiveRequisiteAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -2555,7 +2537,7 @@ class ObjectiveRequisiteAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def assign_objective_requisite(self, objective_id, requisite_objective_id):
@@ -2662,7 +2644,6 @@ class ActivityLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -2674,7 +2655,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -2690,7 +2671,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -2711,7 +2692,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_activity_view(self):
@@ -2792,7 +2773,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.Activity
+        return  # osid.learning.Activity
 
     @abc.abstractmethod
     def get_activities_by_ids(self, activity_ids):
@@ -2818,7 +2799,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_by_genus_type(self, activity_genus_type):
@@ -2839,7 +2820,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_by_parent_genus_type(self, activity_genus_type):
@@ -2860,7 +2841,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_by_record_type(self, activity_record_type):
@@ -2881,7 +2862,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_for_objective(self, objective_id):
@@ -2906,7 +2887,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_for_objectives(self, objective_ids):
@@ -2932,7 +2913,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_by_asset(self, asset_id):
@@ -2957,7 +2938,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities_by_assets(self, asset_ids):
@@ -2982,7 +2963,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activities(self):
@@ -3000,7 +2981,7 @@ class ActivityLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     activities = property(fget=get_activities)
 
@@ -3029,7 +3010,6 @@ class ActivityQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -3041,7 +3021,7 @@ class ActivityQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -3057,7 +3037,7 @@ class ActivityQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -3078,7 +3058,7 @@ class ActivityQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -3119,7 +3099,7 @@ class ActivityQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
     activity_query = property(fget=get_activity_query)
 
@@ -3139,7 +3119,7 @@ class ActivityQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
 
 class ActivitySearchSession:
@@ -3176,7 +3156,6 @@ class ActivitySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_activity_search(self):
         """Gets an activity search.
@@ -3188,7 +3167,7 @@ class ActivitySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivitySearch
+        return  # osid.learning.ActivitySearch
 
     activity_search = property(fget=get_activity_search)
 
@@ -3206,7 +3185,7 @@ class ActivitySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivitySearchOrder
+        return  # osid.learning.ActivitySearchOrder
 
     activity_search_order = property(fget=get_activity_search_order)
 
@@ -3228,7 +3207,7 @@ class ActivitySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivitySearchResults
+        return  # osid.learning.ActivitySearchResults
 
     @abc.abstractmethod
     def get_activity_query_from_inspector(self, activity_query_inspector):
@@ -3246,7 +3225,7 @@ class ActivitySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
 
 class ActivityAdminSession:
@@ -3286,7 +3265,6 @@ class ActivityAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -3298,7 +3276,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -3314,7 +3292,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -3335,7 +3313,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_activity_with_record_types(self, activity_record_types):
@@ -3356,7 +3334,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_form_for_create(self, objective_id, activity_record_types):
@@ -3379,7 +3357,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityForm
+        return  # osid.learning.ActivityForm
 
     @abc.abstractmethod
     def create_activity(self, activity_form):
@@ -3399,7 +3377,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Activity
+        return  # osid.learning.Activity
 
     @abc.abstractmethod
     def can_update_activities(self):
@@ -3418,7 +3396,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_form_for_update(self, activity_id):
@@ -3439,7 +3417,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityForm
+        return  # osid.learning.ActivityForm
 
     @abc.abstractmethod
     def update_activity(self, activity_form):
@@ -3476,7 +3454,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_activity(self, activity_id):
@@ -3511,7 +3489,7 @@ class ActivityAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_activity(self, activity_id, alias_id):
@@ -3551,7 +3529,6 @@ class ActivityNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -3563,7 +3540,7 @@ class ActivityNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -3579,7 +3556,7 @@ class ActivityNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -3600,7 +3577,7 @@ class ActivityNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -3864,10 +3841,8 @@ class ActivityObjectiveBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_activity_objective_bank_mappings(self):
@@ -3886,7 +3861,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_bank_view(self):
@@ -3933,7 +3908,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_activities_by_objective_bank(self, objective_bank_id):
@@ -3951,7 +3926,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_activity_ids_by_objective_banks(self, objective_bank_ids):
@@ -3968,7 +3943,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_activities_by_objective_banks(self, objective_bank_ids):
@@ -3985,7 +3960,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     @abc.abstractmethod
     def get_objective_bank_ids_by_activity(self, activity_id):
@@ -4003,7 +3978,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_objective_banks_by_activity(self, activity_id):
@@ -4021,7 +3996,7 @@ class ActivityObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
 
 class ActivityObjectiveBankAssignmentSession:
@@ -4038,7 +4013,6 @@ class ActivityObjectiveBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_activities(self):
@@ -4057,7 +4031,7 @@ class ActivityObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_activities_to_objective_bank(self, objective_bank_id):
@@ -4078,7 +4052,7 @@ class ActivityObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids(self, objective_bank_id):
@@ -4094,7 +4068,7 @@ class ActivityObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids_for_activity(self, objective_bank_id, activity_id):
@@ -4112,7 +4086,7 @@ class ActivityObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_activity_to_objective_bank(self, activity_id, objective_bank_id):
@@ -4191,7 +4165,6 @@ class ActivitySmartObjectiveBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -4203,7 +4176,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -4219,7 +4192,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -4240,7 +4213,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_query(self):
@@ -4253,7 +4226,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
     activity_query = property(fget=get_activity_query)
 
@@ -4268,7 +4241,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivitySearchOrder
+        return  # osid.learning.ActivitySearchOrder
 
     activity_search_order = property(fget=get_activity_search_order)
 
@@ -4300,7 +4273,7 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQueryInspector
+        return  # osid.learning.ActivityQueryInspector
 
     @abc.abstractmethod
     def apply_activity_sequencing(self, activity_search_order):
@@ -4332,13 +4305,12 @@ class ActivitySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
 
 class ProficiencyLookupSession:
     """This session defines methods for retrieving proficiencies."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_id(self):
@@ -4351,7 +4323,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -4367,7 +4339,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -4388,7 +4360,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_proficiency_view(self):
@@ -4486,7 +4458,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Proficiency
+        return  # osid.learning.Proficiency
 
     @abc.abstractmethod
     def get_proficiencies_by_ids(self, proficiency_ids):
@@ -4504,7 +4476,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type(self, proficiency_genus_type):
@@ -4521,7 +4493,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_parent_genus_type(self, proficiency_genus_type):
@@ -4538,7 +4510,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_record_type(self, proficiency_record_type):
@@ -4555,7 +4527,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_on_date(self, from_, to):
@@ -4575,7 +4547,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_on_date(self, proficiency_genus_type, from_, to):
@@ -4597,7 +4569,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_objective(self, objective_id):
@@ -4614,7 +4586,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_objective_on_date(self, objective_id, from_, to):
@@ -4636,7 +4608,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_objective(self, objective_id, proficiency_genus_type):
@@ -4655,7 +4627,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_objective_on_date(self, objective_id, proficiency_genus_type, from_, to):
@@ -4679,7 +4651,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_objectives(self, objective_ids):
@@ -4696,7 +4668,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_resource(self, resource_id):
@@ -4713,7 +4685,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_resource_on_date(self, resource_id, from_, to):
@@ -4735,7 +4707,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_resource(self, resource_id, proficiency_genus_type):
@@ -4754,7 +4726,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_resource_on_date(self, resource_id, proficiency_genus_type, from_, to):
@@ -4778,7 +4750,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_resources(self, resource_ids):
@@ -4795,7 +4767,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_objective_and_resource(self, objective_id, resource_id):
@@ -4814,7 +4786,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_for_objective_and_resource_on_date(self, objective_id, resource_id, from_, to):
@@ -4838,7 +4810,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_objective_and_resource(self, objective_id, resource_id, proficiency_genus_type):
@@ -4859,7 +4831,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies_by_genus_type_for_objective_and_resource_on_date(self, objective_id, resource_id, proficiency_genus_type, from_, to):
@@ -4885,7 +4857,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiencies(self):
@@ -4899,7 +4871,7 @@ class ProficiencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     proficiencies = property(fget=get_proficiencies)
 
@@ -4926,7 +4898,6 @@ class ProficiencyQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -4938,7 +4909,7 @@ class ProficiencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -4954,7 +4925,7 @@ class ProficiencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -4975,7 +4946,7 @@ class ProficiencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -5016,7 +4987,7 @@ class ProficiencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQuery
+        return  # osid.learning.ProficiencyQuery
 
     proficiency_query = property(fget=get_proficiency_query)
 
@@ -5036,7 +5007,7 @@ class ProficiencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
 
 class ProficiencySearchSession:
@@ -5071,7 +5042,6 @@ class ProficiencySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_proficiency_search(self):
         """Gets a proficiency search.
@@ -5083,7 +5053,7 @@ class ProficiencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencySearch
+        return  # osid.learning.ProficiencySearch
 
     proficiency_search = property(fget=get_proficiency_search)
 
@@ -5101,7 +5071,7 @@ class ProficiencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencySearchOrder
+        return  # osid.learning.ProficiencySearchOrder
 
     proficiency_search_order = property(fget=get_proficiency_search_order)
 
@@ -5123,7 +5093,7 @@ class ProficiencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencySearchResults
+        return  # osid.learning.ProficiencySearchResults
 
     @abc.abstractmethod
     def get_proficiency_query_from_inspector(self, proficiency_query_inspector):
@@ -5141,7 +5111,7 @@ class ProficiencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQuery
+        return  # osid.learning.ProficiencyQuery
 
 
 class ProficiencyAdminSession:
@@ -5183,7 +5153,6 @@ class ProficiencyAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -5195,7 +5164,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -5211,7 +5180,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -5232,7 +5201,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_proficiency_with_record_types(self, proficiency_record_types):
@@ -5253,7 +5222,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proficiency_form_for_create(self, objective_id, resource_id, proficiency_record_types):
@@ -5278,7 +5247,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyForm
+        return  # osid.learning.ProficiencyForm
 
     @abc.abstractmethod
     def create_proficiency(self, proficiency_form):
@@ -5300,7 +5269,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Proficiency
+        return  # osid.learning.Proficiency
 
     @abc.abstractmethod
     def can_update_proficiencies(self):
@@ -5319,7 +5288,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proficiency_form_for_update(self, proficiency_id):
@@ -5337,7 +5306,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyForm
+        return  # osid.learning.ProficiencyForm
 
     @abc.abstractmethod
     def update_proficiency(self, proficiency_form):
@@ -5374,7 +5343,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_proficiency(self, proficiency_id):
@@ -5421,7 +5390,7 @@ class ProficiencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_proficiency(self, proficiency_id, alias_id):
@@ -5463,7 +5432,6 @@ class ProficiencyNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
@@ -5475,7 +5443,7 @@ class ProficiencyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -5491,7 +5459,7 @@ class ProficiencyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -5512,7 +5480,7 @@ class ProficiencyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_objective_bank_view(self):
@@ -5892,10 +5860,8 @@ class ProficiencyObjectiveBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_proficiency_objective_bank_mappings(self):
@@ -5914,7 +5880,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_proficiency_objective_bank_view(self):
@@ -5961,7 +5927,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_proficiencies_by_objective_bank(self, objective_bank_id):
@@ -5979,7 +5945,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_proficiency_ids_by_objective_banks(self, objective_bank_ids):
@@ -5996,7 +5962,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_proficiencies_by_objective_banks(self, objective_bank_ids):
@@ -6013,7 +5979,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
     def get_objective_bank_ids_by_proficiency(self, proficiency_id):
@@ -6031,7 +5997,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_objective_banks_by_proficiency(self, proficiency_id):
@@ -6049,7 +6015,7 @@ class ProficiencyObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
 
 class ProficiencyObjectiveBankAssignmentSession:
@@ -6065,7 +6031,6 @@ class ProficiencyObjectiveBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_proficiencies(self):
@@ -6084,7 +6049,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_proficiencies_to_objective_bank(self, objective_bank_id):
@@ -6105,7 +6070,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids(self, objective_bank_id):
@@ -6121,7 +6086,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id):
@@ -6139,7 +6104,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id):
@@ -6218,7 +6183,6 @@ class ProficiencySmartObjectiveBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_id(self):
         """Gets the ``Familt``  ``Id`` associated with this session.
@@ -6230,7 +6194,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -6246,7 +6210,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -6267,7 +6231,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_proficiency_query(self):
@@ -6280,7 +6244,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQuery
+        return  # osid.learning.ProficiencyQuery
 
     proficiency_query = property(fget=get_proficiency_query)
 
@@ -6295,7 +6259,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencySearchOrder
+        return  # osid.learning.ProficiencySearchOrder
 
     proficiency_search_order = property(fget=get_proficiency_search_order)
 
@@ -6327,7 +6291,7 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQueryInspector
+        return  # osid.learning.ProficiencyQueryInspector
 
     @abc.abstractmethod
     def apply_proficiency_sequencing(self, proficiency_search_order):
@@ -6359,13 +6323,12 @@ class ProficiencySmartObjectiveBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQuery
+        return  # osid.learning.ProficiencyQuery
 
 
 class MyLearningPathSession:
     """This session defines methods for finding learning paths through an objective hierarchy based on proficiencies."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_id(self):
@@ -6378,7 +6341,7 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -6394,7 +6357,7 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -6415,7 +6378,7 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_proficiency_view(self):
@@ -6494,7 +6457,7 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def find_path_at_proficiency(self, objective_id, grade_id):
@@ -6517,7 +6480,7 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives_by_completion(self, objective_id, completion):
@@ -6537,13 +6500,12 @@ class MyLearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
 
 class LearningPathSession:
     """This session defines methods for finding learning paths through an objective hierarchy based on proficiencies."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_id(self):
@@ -6556,7 +6518,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_id = property(fget=get_objective_bank_id)
 
@@ -6572,7 +6534,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -6593,7 +6555,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_proficiency_view(self):
@@ -6674,7 +6636,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def find_path_for_resource_at_proficiency(self, objective_id, resource_id, grade_id):
@@ -6699,7 +6661,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
     def get_objectives_for_resource_by_completion(self, objective_id, resource_id, completion):
@@ -6721,7 +6683,7 @@ class LearningPathSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
 
 class ObjectiveBankLookupSession:
@@ -6751,7 +6713,6 @@ class ObjectiveBankLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_objective_banks(self):
         """Tests if this user can perform ``ObjectiveBank`` lookups.
@@ -6769,7 +6730,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_bank_view(self):
@@ -6822,7 +6783,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     @abc.abstractmethod
     def get_objective_banks_by_ids(self, objective_bank_ids):
@@ -6848,7 +6809,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def get_objective_banks_by_genus_type(self, objective_bank_genus_type):
@@ -6870,7 +6831,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def get_objective_banks_by_parent_genus_type(self, objective_bank_genus_type):
@@ -6892,7 +6853,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def get_objective_banks_by_record_type(self, objective_bank_record_type):
@@ -6914,7 +6875,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def get_objective_banks_by_provider(self, resource_id):
@@ -6936,7 +6897,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def get_objective_banks(self):
@@ -6955,7 +6916,7 @@ class ObjectiveBankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     objective_banks = property(fget=get_objective_banks)
 
@@ -6971,7 +6932,6 @@ class ObjectiveBankQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_objective_banks(self):
@@ -6990,7 +6950,7 @@ class ObjectiveBankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_query(self):
@@ -7003,7 +6963,7 @@ class ObjectiveBankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     objective_bank_query = property(fget=get_objective_bank_query)
 
@@ -7023,7 +6983,7 @@ class ObjectiveBankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
 
 class ObjectiveBankSearchSession:
@@ -7048,7 +7008,6 @@ class ObjectiveBankSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank_search(self):
         """Gets an objective bank search.
@@ -7060,7 +7019,7 @@ class ObjectiveBankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankSearch
+        return  # osid.learning.ObjectiveBankSearch
 
     objective_bank_search = property(fget=get_objective_bank_search)
 
@@ -7078,7 +7037,7 @@ class ObjectiveBankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankSearchOrder
+        return  # osid.learning.ObjectiveBankSearchOrder
 
     objective_bank_search_order = property(fget=get_objective_bank_search_order)
 
@@ -7100,7 +7059,7 @@ class ObjectiveBankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankSearchResults
+        return  # osid.learning.ObjectiveBankSearchResults
 
     @abc.abstractmethod
     def get_objective_bank_query_from_inspector(self, objective_bank_query_inspector):
@@ -7119,7 +7078,7 @@ class ObjectiveBankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
 
 class ObjectiveBankAdminSession:
@@ -7158,7 +7117,6 @@ class ObjectiveBankAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_objective_banks(self):
         """Tests if this user can create ``ObjectiveBanks``.
@@ -7176,7 +7134,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_objective_bank_with_record_types(self, objective_bank_record_types):
@@ -7197,7 +7155,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_form_for_create(self, objective_bank_record_types):
@@ -7217,7 +7175,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankForm
+        return  # osid.learning.ObjectiveBankForm
 
     @abc.abstractmethod
     def create_objective_bank(self, objective_bank_form):
@@ -7237,7 +7195,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     @abc.abstractmethod
     def can_update_objective_banks(self):
@@ -7256,7 +7214,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_form_for_update(self, objective_bank_id):
@@ -7277,7 +7235,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankForm
+        return  # osid.learning.ObjectiveBankForm
 
     @abc.abstractmethod
     def update_objective_bank(self, objective_bank_form):
@@ -7314,7 +7272,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_objective_bank(self, objective_bank_id):
@@ -7349,7 +7307,7 @@ class ObjectiveBankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_objective_bank(self, objective_bank_id, alias_id):
@@ -7386,7 +7344,6 @@ class ObjectiveBankNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_objective_bank_notifications(self):
         """Tests if this user can register for ``ObjectiveBank`` notifications.
@@ -7404,7 +7361,7 @@ class ObjectiveBankNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_objective_bank_notifications(self):
@@ -7651,10 +7608,8 @@ class ObjectiveBankHierarchySession:
         omitted or re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_hierarchy_id(self):
@@ -7667,7 +7622,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_hierarchy_id = property(fget=get_objective_bank_hierarchy_id)
 
@@ -7683,7 +7638,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     objective_bank_hierarchy = property(fget=get_objective_bank_hierarchy)
 
@@ -7704,7 +7659,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_objective_bank_view(self):
@@ -7747,7 +7702,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_objective_bank_ids = property(fget=get_root_objective_bank_ids)
 
@@ -7763,7 +7718,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     root_objective_banks = property(fget=get_root_objective_banks)
 
@@ -7783,7 +7738,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_objective_bank(self, id_, objective_bank_id):
@@ -7804,7 +7759,7 @@ class ObjectiveBankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_objective_bank_ids(self, objective_bank_id):
@@ -7822,7 +7777,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_objective_banks(self, objective_bank_id):
@@ -7840,7 +7795,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def is_ancestor_of_objective_bank(self, id_, objective_bank_id):
@@ -7861,7 +7816,7 @@ class ObjectiveBankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_objective_banks(self, objective_bank_id):
@@ -7879,7 +7834,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_objective_bank(self, id_, objective_bank_id):
@@ -7900,7 +7855,7 @@ class ObjectiveBankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_objective_bank_ids(self, objective_bank_id):
@@ -7918,7 +7873,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_objective_banks(self, objective_bank_id):
@@ -7936,7 +7891,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
     def is_descendant_of_objective_bank(self, id_, objective_bank_id):
@@ -7957,7 +7912,7 @@ class ObjectiveBankHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_node_ids(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings):
@@ -7981,7 +7936,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_objective_bank_nodes(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings):
@@ -8005,7 +7960,7 @@ class ObjectiveBankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankNode
+        return  # osid.learning.ObjectiveBankNode
 
 
 class ObjectiveBankHierarchyDesignSession:
@@ -8015,7 +7970,6 @@ class ObjectiveBankHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_hierarchy_id(self):
@@ -8028,7 +7982,7 @@ class ObjectiveBankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_bank_hierarchy_id = property(fget=get_objective_bank_hierarchy_id)
 
@@ -8044,7 +7998,7 @@ class ObjectiveBankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     objective_bank_hierarchy = property(fget=get_objective_bank_hierarchy)
 
@@ -8065,7 +8019,7 @@ class ObjectiveBankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_objective_bank(self, objective_bank_id):
@@ -8152,5 +8106,3 @@ class ObjectiveBankHierarchyDesignSession:
 
         """
         pass
-
-

@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAssessmentAuthoringProfile(unittest.TestCase):
     """Tests for AssessmentAuthoringProfile"""
 
@@ -70,6 +72,8 @@ class TestAssessmentAuthoringProfile(unittest.TestCase):
     def test_get_sequence_rule_enabler_search_record_types(self):
         """Tests get_sequence_rule_enabler_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_sequence_rule_enabler_search_record_types(), abc_type_list))
+
+
 
 
 class TestAssessmentAuthoringManager(unittest.TestCase):
@@ -145,6 +149,8 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
     def test_get_sequence_rule_admin_session_for_bank(self):
         """Tests get_sequence_rule_admin_session_for_bank"""
         pass
+
+
 
 
 class TestAssessmentAuthoringProxyManager(unittest.TestCase):

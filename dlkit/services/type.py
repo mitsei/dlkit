@@ -42,8 +42,6 @@ class TypeProfile(osid.OsidProfile, type_managers.TypeProfile):
 
 class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers.TypeManager):
     """TypeManager convenience adapter including related Session methods."""
-
-
     def __init__(self, proxy=None):
         import settings
         import importlib
@@ -85,7 +83,6 @@ class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers
         # Implemented from
         # osid.type.TypeLookupSession.get_types
         return self._get_provider_session('type_lookup_session').get_types(*args, **kwargs)
-
 
 
 

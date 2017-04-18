@@ -30,8 +30,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.id.primitives import Id
 
 
-
-
 class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRelationship):
     """An Authorization is a mapping among an actor, a ``Function`` and a ``Qualifier``.
 
@@ -62,14 +60,11 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
     ``Agent``.
 
     """
-
     _namespace = 'authorization.Authorization'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='AUTHORIZATION', **kwargs)
         self._catalog_name = 'Vault'
-
-
     def is_implicit(self):
         """Tests if this authorization is implicit.
 
@@ -343,6 +338,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
     
 
 
+
+
 class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_objects.OsidRelationshipForm):
     """This is the form for creating and updating ``Authorizations``.
 
@@ -353,7 +350,6 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
     constraints.
 
     """
-
     _namespace = 'authorization.Authorization'
 
     def __init__(self, **kwargs):
@@ -378,7 +374,6 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
             self._my_map['agentId'] = str(kwargs['agent_id'])
         if 'resource_id' in kwargs:
             self._my_map['resourceId'] = str(kwargs['resource_id'])
-
     @utilities.arguments_not_none
     def get_authorization_form_record(self, authorization_record_type):
         """Gets the ``AuthorizationFormRecord`` corresponding to the given authorization record ``Type``.
@@ -398,6 +393,8 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
         return self._get_record(authorization_record_type)
 
 
+
+
 class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AuthorizationList`` provides a means for accessing ``Authorization`` elements sequentially either one at a time or many at a time.
 
@@ -408,8 +405,6 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
       while (al.hasNext()) {
            Authorization[] authorizations = al.getNextAuthorizations(al.available());
       }
-
-
 
     """
 
@@ -453,14 +448,14 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
         return self._get_next_n(n)
 
 
+
+
 class Vault(abc_authorization_objects.Vault, osid_objects.OsidCatalog):
     """A vault defines a collection of authorizations and functions."""
-
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='VAULT', **kwargs)
-
     @utilities.arguments_not_none
     def get_vault_record(self, vault_record_type):
         """Gets the vault record corresponding to the given ``Vault`` record ``Type``.
@@ -484,6 +479,8 @@ class Vault(abc_authorization_objects.Vault, osid_objects.OsidCatalog):
         raise errors.Unimplemented()
 
 
+
+
 class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating vaults.
 
@@ -494,7 +491,6 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
     constraints.
 
     """
-
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
@@ -511,8 +507,6 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
-
-
     @utilities.arguments_not_none
     def get_vault_form_record(self, vault_record_type):
         """Gets the ``VaultFormRecord`` corresponding to the given vault record ``Type``.
@@ -530,6 +524,8 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
         raise errors.Unimplemented()
 
 
+
+
 class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``VaultList`` provides a means for accessing ``Vault`` elements sequentially either one at a time or many at a time.
 
@@ -539,8 +535,6 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
       while (vl.hasNext()) {
            Vault[] vaults = vl.getNextVaults(vl.available());
       }
-
-
 
     """
 
@@ -582,6 +576,8 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -590,7 +586,6 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
     ``VaultHierarchySession``.
 
     """
-
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -607,7 +602,6 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
         for vault_node in self.get_child_vault_nodes():
             node_map['childNodes'].append(vault_node.get_object_node_map())
         return node_map
-
     def get_vault(self):
         """Gets the ``Vault`` at this node.
 
@@ -662,6 +656,8 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
     child_vault_nodes = property(fget=get_child_vault_nodes)
 
 
+
+
 class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``VaultNodeList`` provides a means for accessing ``VaultNode`` elements sequentially either one at a time or many at a time.
 
@@ -672,8 +668,6 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
       while (vnl.hasNext()) {
            VaultNode[] nodes = vnl.getNextVaultNodes(vnl.available());
       }
-
-
 
     """
 
@@ -714,5 +708,3 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class PackageSearchOrder:
@@ -88,7 +83,7 @@ class PackageSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_creator_search_order(self):
@@ -102,7 +97,7 @@ class PackageSearchOrder:
         ``supports_creator_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     creator_search_order = property(fget=get_creator_search_order)
 
@@ -149,7 +144,7 @@ class PackageSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.PackageSearchOrderRecord
+        return  # osid.installation.records.PackageSearchOrderRecord
 
 
 class DepotSearchOrder:
@@ -173,7 +168,7 @@ class DepotSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.DepotSearchOrderRecord
+        return  # osid.installation.records.DepotSearchOrderRecord
 
 
 class InstallationSearchOrder:
@@ -204,7 +199,7 @@ class InstallationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_site_search_order(self):
@@ -218,7 +213,7 @@ class InstallationSearchOrder:
         ``supports_site_search_order()`` is ``true``.*
 
         """
-        return # osid.installation.SiteSearchOrder
+        return  # osid.installation.SiteSearchOrder
 
     site_search_order = property(fget=get_site_search_order)
 
@@ -246,7 +241,7 @@ class InstallationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_search_order(self):
@@ -260,7 +255,7 @@ class InstallationSearchOrder:
         ``supports_package_search_order()`` is ``true``.*
 
         """
-        return # osid.installation.PackageSearchOrder
+        return  # osid.installation.PackageSearchOrder
 
     package_search_order = property(fget=get_package_search_order)
 
@@ -301,7 +296,7 @@ class InstallationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_search_order(self):
@@ -315,7 +310,7 @@ class InstallationSearchOrder:
         ``supports_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     agent_search_order = property(fget=get_agent_search_order)
 
@@ -349,7 +344,7 @@ class InstallationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.InstallationSearchOrderRecord
+        return  # osid.installation.records.InstallationSearchOrderRecord
 
 
 class SiteSearchOrder:
@@ -373,6 +368,4 @@ class SiteSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.records.SiteSearchOrderRecord
-
-
+        return  # osid.installation.records.SiteSearchOrderRecord

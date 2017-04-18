@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RelationshipReceiver:
     """The relationship receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Relationship`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_relationships(self, notification_id, relationship_ids):
@@ -73,7 +69,6 @@ class RelationshipReceiver:
 class FamilyReceiver:
     """The family receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Family`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_families(self, notification_id, family_ids):
@@ -134,5 +129,3 @@ class FamilyReceiver:
 
         """
         pass
-
-

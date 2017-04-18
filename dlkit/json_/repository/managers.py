@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.repository import managers as repository_managers
 
 
-
-
 class RepositoryProfile(osid_managers.OsidProfile, repository_managers.RepositoryProfile):
     """The repository profile describes interoperability among repository services."""
 
@@ -429,6 +427,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
     coordinate_types = property(fget=get_coordinate_types)
 
 
+
+
 class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository_managers.RepositoryManager):
     """The repository manager provides access to asset lookup and creation session and provides interoperability tests for various aspects of this service.
 
@@ -487,12 +487,9 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_asset_lookup_session(self):
         """Gets the ``OsidSession`` associated with the asset lookup service.
@@ -1198,6 +1195,8 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         return sessions.AssetContentLookupSession(repository_id, runtime=self._runtime) # pylint: disable=no-member
 
 
+
+
 class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
     """The repository manager provides access to asset lookup and creation session and provides interoperability tests for various aspects of this service.
 
@@ -1258,12 +1257,9 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_asset_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the asset lookup service.
@@ -1976,5 +1972,3 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         return sessions.AssetContentLookupSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime) # pylint: disable=no-member
-
-

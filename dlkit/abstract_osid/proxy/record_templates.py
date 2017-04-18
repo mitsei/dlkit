@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ProxyRecord:
     """A record for a ``Proxy``.
 
@@ -29,9 +26,6 @@ class ProxyRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ProxyConditionRecord:
     """A record for a ``ProxyCondition``.
 
@@ -40,8 +34,3 @@ class ProxyConditionRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

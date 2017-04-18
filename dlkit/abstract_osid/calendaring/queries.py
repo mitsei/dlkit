@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventQuery:
@@ -139,7 +134,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_query(self):
@@ -155,7 +150,7 @@ class EventQuery:
         ``supports_recurring_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.RecurringEventQuery
+        return  # osid.calendaring.RecurringEventQuery
 
     recurring_event_query = property(fget=get_recurring_event_query)
 
@@ -224,7 +219,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_query(self):
@@ -240,7 +235,7 @@ class EventQuery:
         ``supports_superseding_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
     superseding_event_query = property(fget=get_superseding_event_query)
 
@@ -309,7 +304,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_query(self):
@@ -325,7 +320,7 @@ class EventQuery:
         ``supports_offset_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.OffsetEventQuery
+        return  # osid.calendaring.OffsetEventQuery
 
     offset_event_query = property(fget=get_offset_event_query)
 
@@ -440,7 +435,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -456,7 +451,7 @@ class EventQuery:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = property(fget=get_location_query)
 
@@ -525,7 +520,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_query(self):
@@ -541,7 +536,7 @@ class EventQuery:
         ``supports_sponsor_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     sponsor_query = property(fget=get_sponsor_query)
 
@@ -653,7 +648,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_query(self):
@@ -669,7 +664,7 @@ class EventQuery:
         ``supports_commitment_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
     commitment_query = property(fget=get_commitment_query)
 
@@ -738,7 +733,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_containing_event_query(self):
@@ -752,7 +747,7 @@ class EventQuery:
         ``supports_containing_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     containing_event_query = property(fget=get_containing_event_query)
 
@@ -822,7 +817,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -838,7 +833,7 @@ class EventQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -872,7 +867,7 @@ class EventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventQueryRecord
+        return  # osid.calendaring.records.EventQueryRecord
 
 
 class RecurringEventQuery:
@@ -923,7 +918,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_query(self):
@@ -939,7 +934,7 @@ class RecurringEventQuery:
         ``supports_schedule_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
     schedule_query = property(fget=get_schedule_query)
 
@@ -1009,7 +1004,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_query(self):
@@ -1025,7 +1020,7 @@ class RecurringEventQuery:
         ``supports_superseding_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
     superseding_event_query = property(fget=get_superseding_event_query)
 
@@ -1140,7 +1135,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self):
@@ -1156,7 +1151,7 @@ class RecurringEventQuery:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -1299,7 +1294,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_query(self):
@@ -1315,7 +1310,7 @@ class RecurringEventQuery:
         ``supports_sponsor_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     sponsor_query = property(fget=get_sponsor_query)
 
@@ -1371,7 +1366,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -1387,7 +1382,7 @@ class RecurringEventQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -1421,7 +1416,7 @@ class RecurringEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventQueryRecord
+        return  # osid.calendaring.records.RecurringEventQueryRecord
 
 
 class SupersedingEventQuery:
@@ -1472,7 +1467,7 @@ class SupersedingEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseded_event_query(self):
@@ -1488,7 +1483,7 @@ class SupersedingEventQuery:
         ``supports_superseded_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     superseded_event_query = property(fget=get_superseded_event_query)
 
@@ -1544,7 +1539,7 @@ class SupersedingEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_query(self):
@@ -1560,7 +1555,7 @@ class SupersedingEventQuery:
         ``supports_superseding_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     superseding_event_query = property(fget=get_superseding_event_query)
 
@@ -1705,7 +1700,7 @@ class SupersedingEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -1721,7 +1716,7 @@ class SupersedingEventQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -1755,7 +1750,7 @@ class SupersedingEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventQueryRecord
+        return  # osid.calendaring.records.SupersedingEventQueryRecord
 
 
 class OffsetEventQuery:
@@ -1850,7 +1845,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_start_reference_event_query(self):
@@ -1866,7 +1861,7 @@ class OffsetEventQuery:
         ``supports_start_reference_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     start_reference_event_query = property(fget=get_start_reference_event_query)
 
@@ -2080,7 +2075,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_end_reference_event_query(self):
@@ -2096,7 +2091,7 @@ class OffsetEventQuery:
         ``supports_end_reference_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     end_reference_event_query = property(fget=get_end_reference_event_query)
 
@@ -2326,7 +2321,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -2342,7 +2337,7 @@ class OffsetEventQuery:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = property(fget=get_location_query)
 
@@ -2411,7 +2406,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_query(self):
@@ -2427,7 +2422,7 @@ class OffsetEventQuery:
         ``supports_sponsor_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     sponsor_query = property(fget=get_sponsor_query)
 
@@ -2483,7 +2478,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -2499,7 +2494,7 @@ class OffsetEventQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -2533,7 +2528,7 @@ class OffsetEventQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventQueryRecord
+        return  # osid.calendaring.records.OffsetEventQueryRecord
 
 
 class ScheduleQuery:
@@ -2584,7 +2579,7 @@ class ScheduleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_query(self):
@@ -2600,7 +2595,7 @@ class ScheduleQuery:
         ``supports_schedule_slot_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
     schedule_slot_query = property(fget=get_schedule_slot_query)
 
@@ -2670,7 +2665,7 @@ class ScheduleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_query(self):
@@ -2686,7 +2681,7 @@ class ScheduleQuery:
         ``supports_time_period_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
     time_period_query = property(fget=get_time_period_query)
 
@@ -3005,7 +3000,7 @@ class ScheduleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -3021,7 +3016,7 @@ class ScheduleQuery:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = property(fget=get_location_query)
 
@@ -3121,7 +3116,7 @@ class ScheduleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -3137,7 +3132,7 @@ class ScheduleQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -3171,7 +3166,7 @@ class ScheduleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleQueryRecord
+        return  # osid.calendaring.records.ScheduleQueryRecord
 
 
 class ScheduleSlotQuery:
@@ -3222,7 +3217,7 @@ class ScheduleSlotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_query(self):
@@ -3238,7 +3233,7 @@ class ScheduleSlotQuery:
         ``supports_schedule_slot_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
     schedule_slot_query = property(fget=get_schedule_slot_query)
 
@@ -3571,7 +3566,7 @@ class ScheduleSlotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -3587,7 +3582,7 @@ class ScheduleSlotQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -3621,7 +3616,7 @@ class ScheduleSlotQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotQueryRecord
+        return  # osid.calendaring.records.ScheduleSlotQueryRecord
 
 
 class TimePeriodQuery:
@@ -3864,7 +3859,7 @@ class TimePeriodQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_exception_query(self):
@@ -3880,7 +3875,7 @@ class TimePeriodQuery:
         ``supports_exception_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     exception_query = property(fget=get_exception_query)
 
@@ -3950,7 +3945,7 @@ class TimePeriodQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self):
@@ -3966,7 +3961,7 @@ class TimePeriodQuery:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -4035,7 +4030,7 @@ class TimePeriodQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -4051,7 +4046,7 @@ class TimePeriodQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -4085,7 +4080,7 @@ class TimePeriodQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodQueryRecord
+        return  # osid.calendaring.records.TimePeriodQueryRecord
 
 
 class CommitmentQuery:
@@ -4136,7 +4131,7 @@ class CommitmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self):
@@ -4152,7 +4147,7 @@ class CommitmentQuery:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -4208,7 +4203,7 @@ class CommitmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -4224,7 +4219,7 @@ class CommitmentQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -4280,7 +4275,7 @@ class CommitmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -4296,7 +4291,7 @@ class CommitmentQuery:
         ``supports_calendar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -4330,7 +4325,7 @@ class CommitmentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentQueryRecord
+        return  # osid.calendaring.records.CommitmentQueryRecord
 
 
 class CalendarQuery:
@@ -4381,7 +4376,7 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self):
@@ -4397,7 +4392,7 @@ class CalendarQuery:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -4466,7 +4461,7 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_query(self):
@@ -4482,7 +4477,7 @@ class CalendarQuery:
         ``supports_time_period_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
     time_period_query = property(fget=get_time_period_query)
 
@@ -4552,7 +4547,7 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_query(self):
@@ -4568,7 +4563,7 @@ class CalendarQuery:
         ``supports_commitment_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
     commitment_query = property(fget=get_commitment_query)
 
@@ -4637,7 +4632,7 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_calendar_query(self):
@@ -4653,7 +4648,7 @@ class CalendarQuery:
         ``supports_ancestor_calndar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     ancestor_calendar_query = property(fget=get_ancestor_calendar_query)
 
@@ -4722,7 +4717,7 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_calendar_query(self):
@@ -4738,7 +4733,7 @@ class CalendarQuery:
         ``supports_descendant_calndar_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     descendant_calendar_query = property(fget=get_descendant_calendar_query)
 
@@ -4785,6 +4780,4 @@ class CalendarQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarQueryRecord
-
-
+        return  # osid.calendaring.records.CalendarQueryRecord

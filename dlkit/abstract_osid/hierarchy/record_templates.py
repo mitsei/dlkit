@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class HierarchyRecord:
     """A record for a ``Hierarchy``.
 
@@ -27,9 +24,6 @@ class HierarchyRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class HierarchyQueryRecord:
@@ -42,9 +36,6 @@ class HierarchyQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class HierarchyQueryInspectorRecord:
     """A record for a ``HierarchyQueryInspector``.
 
@@ -53,9 +44,6 @@ class HierarchyQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class HierarchyFormRecord:
@@ -68,9 +56,6 @@ class HierarchyFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class HierarchySearchOrderRecord:
     """A record for a ``HierarchySearchOrder``.
 
@@ -79,9 +64,6 @@ class HierarchySearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class HierarchySearchRecord:
@@ -94,9 +76,6 @@ class HierarchySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class HierarchySearchResultsRecord:
     """A record for a ``HierarchySearchResults``.
 
@@ -105,8 +84,3 @@ class HierarchySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

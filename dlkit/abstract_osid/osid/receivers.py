@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidReceiver:
     """An ``OsidReceiver`` is used to receive asynchronous notifications from a service.
 
@@ -27,7 +24,6 @@ class OsidReceiver:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def up(self):
@@ -50,5 +46,3 @@ class OsidReceiver:
 
         """
         pass
-
-

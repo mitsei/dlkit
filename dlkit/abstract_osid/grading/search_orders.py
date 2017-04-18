@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class GradeSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_grade_system(self, style):
@@ -48,7 +44,7 @@ class GradeSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_search_order(self):
@@ -62,7 +58,7 @@ class GradeSearchOrder:
         ``supports_grade_system_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
@@ -122,13 +118,12 @@ class GradeSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSearchOrderRecord
+        return  # osid.grading.records.GradeSearchOrderRecord
 
 
 class GradeSystemSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_based_on_grades(self, style):
@@ -199,13 +194,12 @@ class GradeSystemSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemSearchOrderRecord
+        return  # osid.grading.records.GradeSystemSearchOrderRecord
 
 
 class GradeEntrySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_gradebook_column(self, style):
@@ -231,7 +225,7 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_search_order(self):
@@ -245,7 +239,7 @@ class GradeEntrySearchOrder:
         ``supports_gradebook_column_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSearchOrder
+        return  # osid.grading.GradebookColumnSearchOrder
 
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
@@ -273,7 +267,7 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_key_resource_search_order(self):
@@ -287,7 +281,7 @@ class GradeEntrySearchOrder:
         ``supports_key_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     key_resource_search_order = property(fget=get_key_resource_search_order)
 
@@ -341,7 +335,7 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_search_order(self):
@@ -355,7 +349,7 @@ class GradeEntrySearchOrder:
         ``supports_grade_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     grade_search_order = property(fget=get_grade_search_order)
 
@@ -396,7 +390,7 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grader_search_order(self):
@@ -410,7 +404,7 @@ class GradeEntrySearchOrder:
         ``supports_grader_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     grader_search_order = property(fget=get_grader_search_order)
 
@@ -438,7 +432,7 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grading_agent_search_order(self):
@@ -452,7 +446,7 @@ class GradeEntrySearchOrder:
         ``supports_grading_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     grading_agent_search_order = property(fget=get_grading_agent_search_order)
 
@@ -473,13 +467,12 @@ class GradeEntrySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntrySearchOrderRecord
+        return  # osid.grading.records.GradeEntrySearchOrderRecord
 
 
 class GradebookColumnSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_grade_system(self, style):
@@ -505,7 +498,7 @@ class GradebookColumnSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_summary_search_order(self):
@@ -519,7 +512,7 @@ class GradebookColumnSearchOrder:
         ``supports_grade_system_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     gradebook_column_summary_search_order = property(fget=get_gradebook_column_summary_search_order)
 
@@ -534,7 +527,7 @@ class GradebookColumnSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_search_order(self):
@@ -549,7 +542,7 @@ class GradebookColumnSearchOrder:
         ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSummarySearchOrder
+        return  # osid.grading.GradebookColumnSummarySearchOrder
 
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
@@ -570,13 +563,12 @@ class GradebookColumnSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSearchOrderRecord
+        return  # osid.grading.records.GradebookColumnSearchOrderRecord
 
 
 class GradebookColumnSummarySearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_mean(self, style):
@@ -673,13 +665,12 @@ class GradebookColumnSummarySearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSummarySearchOrderRecord
+        return  # osid.grading.records.GradebookColumnSummarySearchOrderRecord
 
 
 class GradebookSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_search_order_record(self, gradebook_record_type):
@@ -698,6 +689,4 @@ class GradebookSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookSearchOrderRecord
-
-
+        return  # osid.grading.records.GradebookSearchOrderRecord

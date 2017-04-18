@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssetQuery:
     """This is the query for searching assets.
 
@@ -28,7 +25,6 @@ class AssetQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_title(self, title, string_match_type, match):
@@ -321,7 +317,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_source_query(self):
@@ -337,7 +333,7 @@ class AssetQuery:
         ``supports_source_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     source_query = property(fget=get_source_query)
 
@@ -609,7 +605,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -625,7 +621,7 @@ class AssetQuery:
         ``supports_location_query()`` is ``true``.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = property(fget=get_location_query)
 
@@ -765,7 +761,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_content_query(self):
@@ -781,7 +777,7 @@ class AssetQuery:
         ``supports_asset_content_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetContentQuery
+        return  # osid.repository.AssetContentQuery
 
     asset_content_query = property(fget=get_asset_content_query)
 
@@ -850,7 +846,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_query(self):
@@ -866,7 +862,7 @@ class AssetQuery:
         ``supports_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     composition_query = property(fget=get_composition_query)
 
@@ -935,7 +931,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_query(self):
@@ -951,7 +947,7 @@ class AssetQuery:
         ``supports_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
     repository_query = property(fget=get_repository_query)
 
@@ -985,7 +981,7 @@ class AssetQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetQueryRecord
+        return  # osid.repository.records.AssetQueryRecord
 
 
 class AssetContentQuery:
@@ -996,7 +992,6 @@ class AssetContentQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_accessibility_type(self, accessibility_type, match):
@@ -1194,7 +1189,7 @@ class AssetContentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetContentQueryRecord
+        return  # osid.repository.records.AssetContentQueryRecord
 
 
 class CompositionQuery:
@@ -1205,7 +1200,6 @@ class CompositionQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_asset_id(self, asset_id, match):
@@ -1246,7 +1240,7 @@ class CompositionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_query(self):
@@ -1262,7 +1256,7 @@ class CompositionQuery:
         ``supports_asset_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     asset_query = property(fget=get_asset_query)
 
@@ -1331,7 +1325,7 @@ class CompositionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_containing_composition_query(self):
@@ -1347,7 +1341,7 @@ class CompositionQuery:
         ``supports_containing_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     containing_composition_query = property(fget=get_containing_composition_query)
 
@@ -1416,7 +1410,7 @@ class CompositionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_contained_composition_query(self):
@@ -1432,7 +1426,7 @@ class CompositionQuery:
         ``supports_contained_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     contained_composition_query = property(fget=get_contained_composition_query)
 
@@ -1501,7 +1495,7 @@ class CompositionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_query(self):
@@ -1517,7 +1511,7 @@ class CompositionQuery:
         ``supports_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
     repository_query = property(fget=get_repository_query)
 
@@ -1551,7 +1545,7 @@ class CompositionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionQueryRecord
+        return  # osid.repository.records.CompositionQueryRecord
 
 
 class RepositoryQuery:
@@ -1562,7 +1556,6 @@ class RepositoryQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_asset_id(self, asset_id, match):
@@ -1603,7 +1596,7 @@ class RepositoryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_query(self):
@@ -1619,7 +1612,7 @@ class RepositoryQuery:
         ``supports_asset_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     asset_query = property(fget=get_asset_query)
 
@@ -1688,7 +1681,7 @@ class RepositoryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_query(self):
@@ -1704,7 +1697,7 @@ class RepositoryQuery:
         ``supports_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuery
+        return  # osid.repository.CompositionQuery
 
     composition_query = property(fget=get_composition_query)
 
@@ -1773,7 +1766,7 @@ class RepositoryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_repository_query(self):
@@ -1789,7 +1782,7 @@ class RepositoryQuery:
         ``supports_ancestor_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
     ancestor_repository_query = property(fget=get_ancestor_repository_query)
 
@@ -1858,7 +1851,7 @@ class RepositoryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_repository_query(self):
@@ -1874,7 +1867,7 @@ class RepositoryQuery:
         ``supports_descendant_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuery
+        return  # osid.repository.RepositoryQuery
 
     descendant_repository_query = property(fget=get_descendant_repository_query)
 
@@ -1921,6 +1914,4 @@ class RepositoryQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositoryQueryRecord
-
-
+        return  # osid.repository.records.RepositoryQueryRecord

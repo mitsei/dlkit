@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Type:
     """The Type is a form of identifier that is primarily used to identify interface specifications.
 
@@ -42,7 +39,6 @@ class Type:
     """
     __metaclass__ = abc.ABCMeta
 
-
     def __hash__(self):
         return hash((self.get_authority(),
                      self.get_identifier_namespace(),
@@ -63,7 +59,6 @@ class Type:
             return result
         return not result
 
-
     def __str__(self):
         """Provides serialized version of Id"""
         return self._escape(self._escape(self.get_identifier_namespace()) + ':' +
@@ -78,7 +73,6 @@ class Type:
         """Private method for un-escaping : and @"""
         return string.replace("%40", "@").replace("%3A", ":").replace("%25", "%")
 
-
     @abc.abstractmethod
     def get_display_name(self):
         """Gets the full display name of this ``Type``.
@@ -90,7 +84,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -108,7 +102,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_label = property(fget=get_display_label)
 
@@ -123,7 +117,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -141,7 +135,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     domain = property(fget=get_domain)
 
@@ -162,7 +156,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     authority = property(fget=get_authority)
 
@@ -179,7 +173,7 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     identifier_namespace = property(fget=get_identifier_namespace)
 
@@ -198,8 +192,6 @@ class Type:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     identifier = property(fget=get_identifier)
-
-

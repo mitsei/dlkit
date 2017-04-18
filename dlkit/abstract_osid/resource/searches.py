@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ResourceSearch:
     """The search interface for governing resource searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_resources(self, resource_ids):
@@ -69,13 +65,12 @@ class ResourceSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceSearchRecord
+        return  # osid.resource.records.ResourceSearchRecord
 
 
 class ResourceSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resources(self):
@@ -88,7 +83,7 @@ class ResourceSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     resources = property(fget=get_resources)
 
@@ -103,7 +98,7 @@ class ResourceSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_query_inspector = property(fget=get_resource_query_inspector)
 
@@ -125,13 +120,12 @@ class ResourceSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceSearchResultsRecord
+        return  # osid.resource.records.ResourceSearchResultsRecord
 
 
 class ResourceRelationshipSearch:
     """``ResourceRelationshipSearch`` defines the interface for specifying relationship search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_resource_relationships(self, resource_relationship_ids):
@@ -178,13 +172,12 @@ class ResourceRelationshipSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipSearchRecord
+        return  # osid.resource.records.ResourceRelationshipSearchRecord
 
 
 class ResourceRelationshipSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_relationships(self):
@@ -197,7 +190,7 @@ class ResourceRelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     resource_relationships = property(fget=get_resource_relationships)
 
@@ -212,7 +205,7 @@ class ResourceRelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQueryInspector
+        return  # osid.resource.ResourceRelationshipQueryInspector
 
     resource_relationship_query_inspector = property(fget=get_resource_relationship_query_inspector)
 
@@ -234,13 +227,12 @@ class ResourceRelationshipSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.ResourceRelationshipSearchResultsRecord
+        return  # osid.resource.records.ResourceRelationshipSearchResultsRecord
 
 
 class BinSearch:
     """The interface for governing bin searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_bins(self, bin_ids):
@@ -287,13 +279,12 @@ class BinSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinSearchRecord
+        return  # osid.resource.records.BinSearchRecord
 
 
 class BinSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bins(self):
@@ -306,7 +297,7 @@ class BinSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     bins = property(fget=get_bins)
 
@@ -321,7 +312,7 @@ class BinSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQueryInspector
+        return  # osid.resource.BinQueryInspector
 
     bin_query_inspector = property(fget=get_bin_query_inspector)
 
@@ -343,6 +334,4 @@ class BinSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.records.BinSearchResultsRecord
-
-
+        return  # osid.resource.records.BinSearchResultsRecord

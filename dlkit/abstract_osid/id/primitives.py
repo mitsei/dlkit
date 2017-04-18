@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Id:
     """``Id`` represents an identifier object.
 
@@ -35,7 +32,6 @@ class Id:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     def __hash__(self):
         return hash((self.get_authority(),
@@ -57,7 +53,6 @@ class Id:
             return result
         return not result
 
-
     def __str__(self):
         """Provides serialized version of Id"""
         return self._escape(self._escape(self.get_identifier_namespace()) + ':' +
@@ -71,7 +66,6 @@ class Id:
     def _unescape(self, string):
         """Private method for un-escaping : and @"""
         return string.replace("%40", "@").replace("%3A", ":").replace("%25", "%")
-
 
     @abc.abstractmethod
     def get_authority(self):
@@ -89,7 +83,7 @@ class Id:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     authority = property(fget=get_authority)
 
@@ -113,7 +107,7 @@ class Id:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     identifier_namespace = property(fget=get_identifier_namespace)
 
@@ -132,8 +126,6 @@ class Id:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     identifier = property(fget=get_identifier)
-
-

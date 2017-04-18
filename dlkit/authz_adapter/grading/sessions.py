@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.grading import sessions as abc_grading_sessions
 
 
-
-
 class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -67,7 +64,6 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         for gradebook_id in self._unauth_gradebook_ids:
             query.match_gradebook_id(gradebook_id, match=False)
         return self._query_session.get_grade_systems_by_query(query)
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -195,9 +191,10 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
     grade_systems = property(fget=get_grade_systems)
 
 
+
+
 class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -245,7 +242,6 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
 
         def match_gradebook_id(self, gradebook_id, match=True):
             self._cat_id_args_list.append({'gradebook_id': gradebook_id, 'match': match})
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -313,6 +309,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         return result
 
 
+
+
 class GradeSystemSearchSession(abc_grading_sessions.GradeSystemSearchSession, GradeSystemQuerySession):
     """Adapts underlying GradeSystemSearchSession methodswith authorization checks."""
 
@@ -345,9 +343,10 @@ class GradeSystemSearchSession(abc_grading_sessions.GradeSystemSearchSession, Gr
         raise Unimplemented()
 
 
+
+
 class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -373,7 +372,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
     def _can_for_grade_system(self, func_name, grade_system_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, grade_system_id, 'get_gradebook_ids_for_grade_system')
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -547,15 +545,14 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         raise Unimplemented()
 
 
+
+
 class GradeSystemNotificationSession(abc_grading_sessions.GradeSystemNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
         self._id_namespace = 'grading.GradeSystem'
-
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -646,15 +643,14 @@ class GradeSystemNotificationSession(abc_grading_sessions.GradeSystemNotificatio
         raise Unimplemented()
 
 
+
+
 class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemGradebookSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'grading.GradeSystemGradebook'
-
-
     def use_comparative_gradebook_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -719,15 +715,14 @@ class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSessi
         return self._provider_session.get_gradebooks_by_grade_system(grade_system_id)
 
 
+
+
 class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGradebookAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying GradeSystemGradebookAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'grading.GradeSystemGradebook'
-
-
     def can_assign_grade_system(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -770,6 +765,8 @@ class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGrad
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_grade_system_from_gradebook(grade_system_id, gradebook_id)
+
+
 
 
 class GradeSystemSmartGradebookSession(abc_grading_sessions.GradeSystemSmartGradebookSession, osid_sessions.OsidSession):
@@ -821,9 +818,10 @@ class GradeSystemSmartGradebookSession(abc_grading_sessions.GradeSystemSmartGrad
         raise Unimplemented()
 
 
+
+
 class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid_sessions.OsidSession):
     """Adapts underlying GradeEntryLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -868,7 +866,6 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         for gradebook_id in self._unauth_gradebook_ids:
             query.match_gradebook_id(gradebook_id, match=False)
         return self._query_session.get_grade_entries_by_query(query)
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1046,9 +1043,10 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
     grade_entries = property(fget=get_grade_entries)
 
 
+
+
 class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_sessions.OsidSession):
     """Adapts underlying GradeEntryQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -1096,7 +1094,6 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
 
         def match_gradebook_id(self, gradebook_id, match=True):
             self._cat_id_args_list.append({'gradebook_id': gradebook_id, 'match': match})
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1164,6 +1161,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         return result
 
 
+
+
 class GradeEntrySearchSession(abc_grading_sessions.GradeEntrySearchSession, GradeEntryQuerySession):
     """Adapts underlying GradeEntrySearchSession methodswith authorization checks."""
 
@@ -1196,9 +1195,10 @@ class GradeEntrySearchSession(abc_grading_sessions.GradeEntrySearchSession, Grad
         raise Unimplemented()
 
 
+
+
 class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_sessions.OsidSession):
     """Adapts underlying GradeEntryAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -1224,7 +1224,6 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
     def _can_for_grade_entry(self, func_name, grade_entry_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, grade_entry_id, 'get_gradebook_ids_for_grade_entry')
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1334,6 +1333,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         if not self._can_for_grade_entry('alias', grade_entry_id):
             raise PermissionDenied()
         return self._provider_session.alias_grade_entry(grade_entry_id, alias_id)
+
+
 
 
 class GradeEntryNotificationSession(abc_grading_sessions.GradeEntryNotificationSession, osid_sessions.OsidSession):
@@ -1501,9 +1502,10 @@ class GradeEntryNotificationSession(abc_grading_sessions.GradeEntryNotificationS
         raise Unimplemented()
 
 
+
+
 class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -1548,7 +1550,6 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         for gradebook_id in self._unauth_gradebook_ids:
             query.match_gradebook_id(gradebook_id, match=False)
         return self._query_session.get_gradebook_columns_by_query(query)
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1688,9 +1689,10 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         raise NotFound()
 
 
+
+
 class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -1738,7 +1740,6 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
 
         def match_gradebook_id(self, gradebook_id, match=True):
             self._cat_id_args_list.append({'gradebook_id': gradebook_id, 'match': match})
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1806,6 +1807,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         return result
 
 
+
+
 class GradebookColumnSearchSession(abc_grading_sessions.GradebookColumnSearchSession, GradebookColumnQuerySession):
     """Adapts underlying GradebookColumnSearchSession methodswith authorization checks."""
 
@@ -1838,9 +1841,10 @@ class GradebookColumnSearchSession(abc_grading_sessions.GradebookColumnSearchSes
         raise Unimplemented()
 
 
+
+
 class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
@@ -1866,7 +1870,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
     def _can_for_gradebook_column(self, func_name, gradebook_column_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, gradebook_column_id, 'get_gradebook_ids_for_gradebook_column')
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1977,15 +1980,14 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         return self._provider_session.alias_gradebook_column(gradebook_column_id, alias_id)
 
 
+
+
 class GradebookColumnNotificationSession(abc_grading_sessions.GradebookColumnNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_gradebook_id()
         self._id_namespace = 'grading.GradebookColumn'
-
-
     def get_gradebook_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2076,15 +2078,14 @@ class GradebookColumnNotificationSession(abc_grading_sessions.GradebookColumnNot
         raise Unimplemented()
 
 
+
+
 class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradebookSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnGradebookSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'grading.GradebookColumnGradebook'
-
-
     def use_comparative_gradebook_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -2149,15 +2150,14 @@ class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradeb
         return self._provider_session.get_gradebooks_by_gradebook_column(gradebook_column_id)
 
 
+
+
 class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookColumnGradebookAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookColumnGradebookAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'grading.GradebookColumnGradebook'
-
-
     def can_assign_gradebook_columns(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -2200,6 +2200,8 @@ class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookCo
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_gradebook_column_from_gradebook(gradebook_column_id, gradebook_id)
+
+
 
 
 class GradebookColumnSmartGradebookSession(abc_grading_sessions.GradebookColumnSmartGradebookSession, osid_sessions.OsidSession):
@@ -2251,17 +2253,16 @@ class GradebookColumnSmartGradebookSession(abc_grading_sessions.GradebookColumnS
         raise Unimplemented()
 
 
+
+
 class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'grading.Gradebook'
-
-
     def can_lookup_gradebooks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2323,17 +2324,16 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
     gradebooks = property(fget=get_gradebooks)
 
 
+
+
 class GradebookQuerySession(abc_grading_sessions.GradebookQuerySession, osid_sessions.OsidSession):
     """Adapts underlying GradebookQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'grading.Gradebook'
-
-
     def can_search_gradebooks(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -2358,6 +2358,8 @@ class GradebookQuerySession(abc_grading_sessions.GradebookQuerySession, osid_ses
         return self._provider_session.get_gradebooks_by_query(gradebook_query)
 
 
+
+
 class GradebookSearchSession(abc_grading_sessions.GradebookSearchSession, GradebookQuerySession):
     """Adapts underlying GradebookSearchSession methodswith authorization checks."""
 
@@ -2380,17 +2382,16 @@ class GradebookSearchSession(abc_grading_sessions.GradebookSearchSession, Gradeb
         raise Unimplemented()
 
 
+
+
 class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'grading.Gradebook'
-
-
     def can_create_gradebooks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -2467,6 +2468,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         return self._provider_session.alias_gradebook(gradebook_id, alias_id)
 
 
+
+
 class GradebookNotificationSession(abc_grading_sessions.GradebookNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookNotificationSession methodswith authorization checks."""
 
@@ -2525,17 +2528,16 @@ class GradebookNotificationSession(abc_grading_sessions.GradebookNotificationSes
         raise Unimplemented()
 
 
+
+
 class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying GradebookHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'grading.Gradebook'
-
-
     def get_gradebook_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2690,9 +2692,10 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
             include_siblings)
 
 
+
+
 class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying GradebookHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -2700,8 +2703,6 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         self._qualifier_id = Id('grading.Gradebook%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'grading.Gradebook'
         # should this be 'grading.GradebookHierarchy' ?
-
-
     def get_gradebook_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2748,5 +2749,3 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_gradebook(gradebook_id, child_id)
-
-

@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Version:
@@ -36,7 +31,7 @@ class Version:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     scheme = property(fget=get_scheme)
 
@@ -54,8 +49,6 @@ class Version:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     components = property(fget=get_components)
-
-

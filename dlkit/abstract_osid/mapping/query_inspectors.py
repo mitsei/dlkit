@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -32,7 +31,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CoordinateTerm
+        return  # osid.search.terms.CoordinateTerm
 
     coordinate_terms = abc.abstractproperty(fget=get_coordinate_terms)
 
@@ -47,7 +46,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     contained_spatial_unit_terms = abc.abstractproperty(fget=get_contained_spatial_unit_terms)
 
@@ -62,7 +61,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     overlapping_spatial_unit_terms = abc.abstractproperty(fget=get_overlapping_spatial_unit_terms)
 
@@ -77,7 +76,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     spatial_unit_terms = abc.abstractproperty(fget=get_spatial_unit_terms)
 
@@ -92,7 +91,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     route_id_terms = abc.abstractproperty(fget=get_route_id_terms)
 
@@ -107,7 +106,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.route.RouteQueryInspector
+        return  # osid.mapping.route.RouteQueryInspector
 
     route_terms = abc.abstractproperty(fget=get_route_terms)
 
@@ -122,7 +121,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     path_id_terms = abc.abstractproperty(fget=get_path_id_terms)
 
@@ -137,7 +136,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.path.PathQueryInspector
+        return  # osid.mapping.path.PathQueryInspector
 
     path_terms = abc.abstractproperty(fget=get_path_terms)
 
@@ -152,7 +151,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     containing_location_id_terms = abc.abstractproperty(fget=get_containing_location_id_terms)
 
@@ -167,7 +166,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     containing_location_terms = abc.abstractproperty(fget=get_containing_location_terms)
 
@@ -182,7 +181,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     contained_location_id_terms = abc.abstractproperty(fget=get_contained_location_id_terms)
 
@@ -197,7 +196,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     contained_location_terms = abc.abstractproperty(fget=get_contained_location_terms)
 
@@ -212,7 +211,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     map_id_terms = abc.abstractproperty(fget=get_map_id_terms)
 
@@ -227,7 +226,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQueryInspector
+        return  # osid.mapping.MapQueryInspector
 
     map_terms = abc.abstractproperty(fget=get_map_terms)
 
@@ -246,7 +245,7 @@ class LocationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationQueryInspectorRecord
+        return  # osid.mapping.records.LocationQueryInspectorRecord
 
 
 class MapQueryInspector:
@@ -264,7 +263,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     location_id_terms = abc.abstractproperty(fget=get_location_id_terms)
 
@@ -279,7 +278,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_terms = abc.abstractproperty(fget=get_location_terms)
 
@@ -294,7 +293,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     path_id_terms = abc.abstractproperty(fget=get_path_id_terms)
 
@@ -309,7 +308,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.path.PathQueryInspector
+        return  # osid.mapping.path.PathQueryInspector
 
     path_terms = abc.abstractproperty(fget=get_path_terms)
 
@@ -324,7 +323,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     route_id_terms = abc.abstractproperty(fget=get_route_id_terms)
 
@@ -339,7 +338,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.route.RouteQueryInspector
+        return  # osid.mapping.route.RouteQueryInspector
 
     route_terms = abc.abstractproperty(fget=get_route_terms)
 
@@ -354,7 +353,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_map_id_terms = abc.abstractproperty(fget=get_ancestor_map_id_terms)
 
@@ -369,7 +368,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQueryInspector
+        return  # osid.mapping.MapQueryInspector
 
     ancestor_map_terms = abc.abstractproperty(fget=get_ancestor_map_terms)
 
@@ -384,7 +383,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_map_id_terms = abc.abstractproperty(fget=get_descendant_map_id_terms)
 
@@ -399,7 +398,7 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQueryInspector
+        return  # osid.mapping.MapQueryInspector
 
     descendant_map_terms = abc.abstractproperty(fget=get_descendant_map_terms)
 
@@ -418,6 +417,4 @@ class MapQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapQueryInspectorRecord
-
-
+        return  # osid.mapping.records.MapQueryInspectorRecord

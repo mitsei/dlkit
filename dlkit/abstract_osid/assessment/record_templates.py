@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class QuestionRecord:
     """A record for a ``Question``.
 
@@ -27,9 +24,6 @@ class QuestionRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QuestionQueryRecord:
@@ -42,9 +36,6 @@ class QuestionQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class QuestionQueryInspectorRecord:
     """A record for a ``QuestionQueryInspector``.
 
@@ -53,9 +44,6 @@ class QuestionQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class QuestionFormRecord:
@@ -68,9 +56,6 @@ class QuestionFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class QuestionSearchOrderRecord:
     """A record for a ``QuestionSearchOrder``.
 
@@ -79,9 +64,6 @@ class QuestionSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AnswerRecord:
@@ -94,9 +76,6 @@ class AnswerRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AnswerQueryRecord:
     """A record for an ``AnswerQuery``.
 
@@ -105,9 +84,6 @@ class AnswerQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AnswerQueryInspectorRecord:
@@ -120,9 +96,6 @@ class AnswerQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AnswerFormRecord:
     """A record for an ``AnswerForm``.
 
@@ -131,9 +104,6 @@ class AnswerFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AnswerSearchOrderRecord:
@@ -146,9 +116,6 @@ class AnswerSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ItemRecord:
     """A record for an ``Item``.
 
@@ -157,9 +124,6 @@ class ItemRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ItemQueryRecord:
@@ -172,9 +136,6 @@ class ItemQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ItemQueryInspectorRecord:
     """A record for an ``ItemQueryInspector``.
 
@@ -183,9 +144,6 @@ class ItemQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ItemFormRecord:
@@ -198,9 +156,6 @@ class ItemFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ItemSearchOrderRecord:
     """A record for an ``ItemSearchOrder``.
 
@@ -209,9 +164,6 @@ class ItemSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class ItemSearchRecord:
@@ -224,9 +176,6 @@ class ItemSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ItemSearchResultsRecord:
     """A record for an ``ItemSearchResults``.
 
@@ -235,9 +184,6 @@ class ItemSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentRecord:
@@ -250,9 +196,6 @@ class AssessmentRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentQueryRecord:
     """A record for an ``AssessmentQuery``.
 
@@ -261,9 +204,6 @@ class AssessmentQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentQueryInspectorRecord:
@@ -276,9 +216,6 @@ class AssessmentQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentFormRecord:
     """A record for an ``AssessmentForm``.
 
@@ -287,9 +224,6 @@ class AssessmentFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentSearchOrderRecord:
@@ -302,9 +236,6 @@ class AssessmentSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentSearchRecord:
     """A record for an ``AssessmentSearch``.
 
@@ -313,9 +244,6 @@ class AssessmentSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentSearchResultsRecord:
@@ -328,9 +256,6 @@ class AssessmentSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentOfferedRecord:
     """A record for an ``AssessmentOffered``.
 
@@ -339,9 +264,6 @@ class AssessmentOfferedRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentOfferedQueryRecord:
@@ -354,9 +276,6 @@ class AssessmentOfferedQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentOfferedQueryInspectorRecord:
     """A record for an ``AssessmentOfferedQueryInspector``.
 
@@ -365,9 +284,6 @@ class AssessmentOfferedQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentOfferedFormRecord:
@@ -380,9 +296,6 @@ class AssessmentOfferedFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentOfferedSearchOrderRecord:
     """A record for an ``AssessmentOfferedSearchOrder``.
 
@@ -391,9 +304,6 @@ class AssessmentOfferedSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentOfferedSearchRecord:
@@ -406,9 +316,6 @@ class AssessmentOfferedSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentOfferedSearchResultsRecord:
     """A record for an ``AssessmentOfferedSearchResults``.
 
@@ -417,9 +324,6 @@ class AssessmentOfferedSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentTakenRecord:
@@ -432,9 +336,6 @@ class AssessmentTakenRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentTakenQueryRecord:
     """A record for an ``AssessmentTakenQuery``.
 
@@ -443,9 +344,6 @@ class AssessmentTakenQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentTakenQueryInspectorRecord:
@@ -458,9 +356,6 @@ class AssessmentTakenQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentTakenFormRecord:
     """A record for an ``AssessmentTakenForm``.
 
@@ -469,9 +364,6 @@ class AssessmentTakenFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentTakenSearchOrderRecord:
@@ -484,9 +376,6 @@ class AssessmentTakenSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentTakenSearchRecord:
     """A record for an ``AssessmentTakenSearch``.
 
@@ -495,9 +384,6 @@ class AssessmentTakenSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentTakenSearchResultsRecord:
@@ -510,9 +396,6 @@ class AssessmentTakenSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentSectionRecord:
     """A record for an ``AssessmentSection``.
 
@@ -521,9 +404,6 @@ class AssessmentSectionRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BankRecord:
@@ -536,9 +416,6 @@ class BankRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BankQueryRecord:
     """A record for a ``BankQuery``.
 
@@ -547,9 +424,6 @@ class BankQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BankQueryInspectorRecord:
@@ -562,9 +436,6 @@ class BankQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BankFormRecord:
     """A record for a ``BankForm``.
 
@@ -573,9 +444,6 @@ class BankFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BankSearchOrderRecord:
@@ -588,9 +456,6 @@ class BankSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class BankSearchRecord:
     """A record for a ``BankSearch``.
 
@@ -599,9 +464,6 @@ class BankSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class BankSearchResultsRecord:
@@ -614,9 +476,6 @@ class BankSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ResponseRecord:
     """A record for a ``Response``.
 
@@ -625,8 +484,3 @@ class ResponseRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

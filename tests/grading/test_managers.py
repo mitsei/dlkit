@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestGradingProfile(unittest.TestCase):
     """Tests for GradingProfile"""
 
@@ -106,6 +108,8 @@ class TestGradingProfile(unittest.TestCase):
     def test_get_gradebook_search_record_types(self):
         """Tests get_gradebook_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_gradebook_search_record_types(), abc_type_list))
+
+
 
 
 class TestGradingManager(unittest.TestCase):
@@ -279,6 +283,8 @@ class TestGradingManager(unittest.TestCase):
         #     self.mgr.get_grading_transform_manager()
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_manager()
+
+
 
 
 class TestGradingProxyManager(unittest.TestCase):

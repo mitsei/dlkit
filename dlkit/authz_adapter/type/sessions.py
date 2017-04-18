@@ -15,8 +15,6 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.type import sessions as abc_type_sessions
 
 
-
-
 class TypeLookupSession(abc_type_sessions.TypeLookupSession, osid_sessions.OsidSession):
     """Adapts underlying TypeLookupSession methodswith authorization checks."""
 
@@ -94,6 +92,8 @@ class TypeLookupSession(abc_type_sessions.TypeLookupSession, osid_sessions.OsidS
         raise Unimplemented()
 
 
+
+
 class TypeAdminSession(abc_type_sessions.TypeAdminSession, osid_sessions.OsidSession):
     """Adapts underlying TypeAdminSession methodswith authorization checks."""
 
@@ -149,5 +149,3 @@ class TypeAdminSession(abc_type_sessions.TypeAdminSession, osid_sessions.OsidSes
     @raise_null_argument
     def remove_type_relation(self, source_type, destination_type, relation_type):
         raise Unimplemented()
-
-

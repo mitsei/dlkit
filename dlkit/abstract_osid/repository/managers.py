@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RepositoryProfile:
     """The repository profile describes interoperability among repository services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_lookup(self):
@@ -48,7 +44,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_query(self):
@@ -61,7 +57,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_search(self):
@@ -74,7 +70,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_admin(self):
@@ -87,7 +83,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_notification(self):
@@ -103,7 +99,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_repository(self):
@@ -116,7 +112,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_repository_assignment(self):
@@ -129,7 +125,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_smart_repository(self):
@@ -142,7 +138,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_temporal(self):
@@ -155,7 +151,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_temporal_assignment(self):
@@ -168,7 +164,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_spatial(self):
@@ -181,7 +177,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_spatial_assignment(self):
@@ -194,7 +190,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_composition(self):
@@ -207,7 +203,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_asset_composition_design(self):
@@ -220,7 +216,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_lookup(self):
@@ -233,7 +229,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_query(self):
@@ -246,7 +242,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_search(self):
@@ -259,7 +255,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_admin(self):
@@ -272,7 +268,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_notification(self):
@@ -285,7 +281,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_repository(self):
@@ -298,7 +294,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_repository_assignment(self):
@@ -311,7 +307,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_composition_smart_repository(self):
@@ -324,7 +320,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_lookup(self):
@@ -337,7 +333,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_query(self):
@@ -350,7 +346,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_search(self):
@@ -363,7 +359,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_admin(self):
@@ -376,7 +372,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_notification(self):
@@ -393,7 +389,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_hierarchy(self):
@@ -406,7 +402,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_hierarchy_design(self):
@@ -419,7 +415,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_batch(self):
@@ -432,7 +428,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_repository_rules(self):
@@ -445,7 +441,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_record_types(self):
@@ -458,7 +454,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     asset_record_types = property(fget=get_asset_record_types)
 
@@ -475,7 +471,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_search_record_types(self):
@@ -488,7 +484,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     asset_search_record_types = property(fget=get_asset_search_record_types)
 
@@ -505,7 +501,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_content_record_types(self):
@@ -518,7 +514,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     asset_content_record_types = property(fget=get_asset_content_record_types)
 
@@ -535,7 +531,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_record_types(self):
@@ -548,7 +544,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     composition_record_types = property(fget=get_composition_record_types)
 
@@ -565,7 +561,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_search_record_types(self):
@@ -578,7 +574,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     composition_search_record_types = property(fget=get_composition_search_record_types)
 
@@ -595,7 +591,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_record_types(self):
@@ -608,7 +604,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     repository_record_types = property(fget=get_repository_record_types)
 
@@ -625,7 +621,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_repository_search_record_types(self):
@@ -638,7 +634,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     repository_search_record_types = property(fget=get_repository_search_record_types)
 
@@ -655,7 +651,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit_record_types(self):
@@ -668,7 +664,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
@@ -685,7 +681,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_coordinate_types(self):
@@ -698,7 +694,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     coordinate_types = property(fget=get_coordinate_types)
 
@@ -715,7 +711,7 @@ class RepositoryProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class RepositoryManager:
@@ -776,10 +772,8 @@ class RepositoryManager:
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_asset_lookup_session(self):
@@ -794,7 +788,7 @@ class RepositoryManager:
         ``supports_asset_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.AssetLookupSession
+        return  # osid.repository.AssetLookupSession
 
     asset_lookup_session = property(fget=get_asset_lookup_session)
 
@@ -816,7 +810,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetLookupSession
+        return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
     def get_asset_query_session(self):
@@ -831,7 +825,7 @@ class RepositoryManager:
         ``supports_asset_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuerySession
+        return  # osid.repository.AssetQuerySession
 
     asset_query_session = property(fget=get_asset_query_session)
 
@@ -853,7 +847,7 @@ class RepositoryManager:
         are ``true``.*
 
         """
-        return # osid.repository.AssetQuerySession
+        return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
     def get_asset_search_session(self):
@@ -868,7 +862,7 @@ class RepositoryManager:
         ``supports_asset_search()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSearchSession
+        return  # osid.repository.AssetSearchSession
 
     asset_search_session = property(fget=get_asset_search_session)
 
@@ -890,7 +884,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSearchSession
+        return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
     def get_asset_admin_session(self):
@@ -905,7 +899,7 @@ class RepositoryManager:
         ``supports_asset_admin()`` is ``true``.*
 
         """
-        return # osid.repository.AssetAdminSession
+        return  # osid.repository.AssetAdminSession
 
     asset_admin_session = property(fget=get_asset_admin_session)
 
@@ -927,7 +921,7 @@ class RepositoryManager:
         are ``true``.*
 
         """
-        return # osid.repository.AssetAdminSession
+        return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
     def get_asset_notification_session(self, asset_receiver):
@@ -945,7 +939,7 @@ class RepositoryManager:
         ``supports_asset_notification()`` is ``true``.*
 
         """
-        return # osid.repository.AssetNotificationSession
+        return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
     def get_asset_notification_session_for_repository(self, asset_receiver, repository_id):
@@ -967,7 +961,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetNotificationSession
+        return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
     def get_asset_repository_session(self):
@@ -982,7 +976,7 @@ class RepositoryManager:
         ``supports_asset_repository()`` is ``true``.*
 
         """
-        return # osid.repository.AssetRepositorySession
+        return  # osid.repository.AssetRepositorySession
 
     asset_repository_session = property(fget=get_asset_repository_session)
 
@@ -999,7 +993,7 @@ class RepositoryManager:
         ``supports_asset_repository_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetRepositoryAssignmentSession
+        return  # osid.repository.AssetRepositoryAssignmentSession
 
     asset_repository_assignment_session = property(fget=get_asset_repository_assignment_session)
 
@@ -1020,7 +1014,7 @@ class RepositoryManager:
         ``supports_asset_smart_repository()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSmartRepositorySession
+        return  # osid.repository.AssetSmartRepositorySession
 
     @abc.abstractmethod
     def get_asset_temporal_session(self):
@@ -1035,7 +1029,7 @@ class RepositoryManager:
         ``supports_asset_temporal()`` is ``true``.*
 
         """
-        return # osid.repository.AssetTemporalSession
+        return  # osid.repository.AssetTemporalSession
 
     asset_temporal_session = property(fget=get_asset_temporal_session)
 
@@ -1057,7 +1051,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetTemporalSession
+        return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
     def get_asset_temporal_assignment_session(self):
@@ -1072,7 +1066,7 @@ class RepositoryManager:
         ``supports_asset_temporal_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetTemporalAssignmentSession
+        return  # osid.repository.AssetTemporalAssignmentSession
 
     asset_temporal_assignment_session = property(fget=get_asset_temporal_assignment_session)
 
@@ -1094,7 +1088,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetTemporalAssignmentSession
+        return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
     def get_asset_spatial_session(self):
@@ -1109,7 +1103,7 @@ class RepositoryManager:
         ``supports_spatial_assets()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSpatialSession
+        return  # osid.repository.AssetSpatialSession
 
     asset_spatial_session = property(fget=get_asset_spatial_session)
 
@@ -1131,7 +1125,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSpatialSession
+        return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
     def get_asset_spatial_assignment_session(self):
@@ -1146,7 +1140,7 @@ class RepositoryManager:
         ``supports_asset_spatial_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSpatialAssignmentSession
+        return  # osid.repository.AssetSpatialAssignmentSession
 
     asset_spatial_assignment_session = property(fget=get_asset_spatial_assignment_session)
 
@@ -1168,7 +1162,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSpatialAssignmentSession
+        return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
     def get_asset_composition_session(self):
@@ -1183,7 +1177,7 @@ class RepositoryManager:
         ``supports_asset_composition()`` is ``true``.*
 
         """
-        return # osid.repository.AssetCompositionSession
+        return  # osid.repository.AssetCompositionSession
 
     asset_composition_session = property(fget=get_asset_composition_session)
 
@@ -1200,7 +1194,7 @@ class RepositoryManager:
         ``supports_asset_composition_design()`` is ``true``.*
 
         """
-        return # osid.repository.AssetCompositionDesignSession
+        return  # osid.repository.AssetCompositionDesignSession
 
     asset_composition_design_session = property(fget=get_asset_composition_design_session)
 
@@ -1217,7 +1211,7 @@ class RepositoryManager:
         ``supports_composition_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionLookupSession
+        return  # osid.repository.CompositionLookupSession
 
     composition_lookup_session = property(fget=get_composition_lookup_session)
 
@@ -1239,7 +1233,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionLookupSession
+        return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
     def get_composition_query_session(self):
@@ -1254,7 +1248,7 @@ class RepositoryManager:
         ``supports_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuerySession
+        return  # osid.repository.CompositionQuerySession
 
     composition_query_session = property(fget=get_composition_query_session)
 
@@ -1276,7 +1270,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionQuerySession
+        return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
     def get_composition_search_session(self):
@@ -1291,7 +1285,7 @@ class RepositoryManager:
         ``supports_composition_search()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionSearchSession
+        return  # osid.repository.CompositionSearchSession
 
     composition_search_session = property(fget=get_composition_search_session)
 
@@ -1313,7 +1307,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionSearchSession
+        return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
     def get_composition_admin_session(self):
@@ -1328,7 +1322,7 @@ class RepositoryManager:
         ``supports_composition_admin()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionAdminSession
+        return  # osid.repository.CompositionAdminSession
 
     composition_admin_session = property(fget=get_composition_admin_session)
 
@@ -1350,7 +1344,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionAdminSession
+        return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
     def get_composition_notification_session(self, composition_receiver):
@@ -1368,7 +1362,7 @@ class RepositoryManager:
         ``supports_composition_notification()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionNotificationSession
+        return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
     def get_composition_notification_session_for_repository(self, composition_receiver, repository_id):
@@ -1390,7 +1384,7 @@ class RepositoryManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionNotificationSession
+        return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
     def get_composition_repository_session(self):
@@ -1405,7 +1399,7 @@ class RepositoryManager:
         ``supports_composition_repository()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionRepositorySession
+        return  # osid.repository.CompositionRepositorySession
 
     composition_repository_session = property(fget=get_composition_repository_session)
 
@@ -1422,7 +1416,7 @@ class RepositoryManager:
         ``supports_composition_repository_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionRepositoryAssignmentSession
+        return  # osid.repository.CompositionRepositoryAssignmentSession
 
     composition_repository_assignment_session = property(fget=get_composition_repository_assignment_session)
 
@@ -1443,7 +1437,7 @@ class RepositoryManager:
         ``supports_composition_smart_repository()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionSmartRepositorySession
+        return  # osid.repository.CompositionSmartRepositorySession
 
     @abc.abstractmethod
     def get_repository_lookup_session(self):
@@ -1458,7 +1452,7 @@ class RepositoryManager:
         ``supports_repository_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryLookupSession
+        return  # osid.repository.RepositoryLookupSession
 
     repository_lookup_session = property(fget=get_repository_lookup_session)
 
@@ -1475,7 +1469,7 @@ class RepositoryManager:
         ``supports_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuerySession
+        return  # osid.repository.RepositoryQuerySession
 
     repository_query_session = property(fget=get_repository_query_session)
 
@@ -1492,7 +1486,7 @@ class RepositoryManager:
         ``supports_repository_search()`` is ``true``.*
 
         """
-        return # osid.repository.RepositorySearchSession
+        return  # osid.repository.RepositorySearchSession
 
     repository_search_session = property(fget=get_repository_search_session)
 
@@ -1509,7 +1503,7 @@ class RepositoryManager:
         ``supports_repository_admin()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryAdminSession
+        return  # osid.repository.RepositoryAdminSession
 
     repository_admin_session = property(fget=get_repository_admin_session)
 
@@ -1529,7 +1523,7 @@ class RepositoryManager:
         ``supports_repository_notification()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryNotificationSession
+        return  # osid.repository.RepositoryNotificationSession
 
     @abc.abstractmethod
     def get_repository_hierarchy_session(self):
@@ -1544,7 +1538,7 @@ class RepositoryManager:
         ``supports_repository_hierarchy()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryHierarchySession
+        return  # osid.repository.RepositoryHierarchySession
 
     repository_hierarchy_session = property(fget=get_repository_hierarchy_session)
 
@@ -1561,7 +1555,7 @@ class RepositoryManager:
         ``supports_repository_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryHierarchyDesignSession
+        return  # osid.repository.RepositoryHierarchyDesignSession
 
     repository_hierarchy_design_session = property(fget=get_repository_hierarchy_design_session)
 
@@ -1578,7 +1572,7 @@ class RepositoryManager:
         ``supports_repository_batch()`` is ``true``.*
 
         """
-        return # osid.repository.batch.RepositoryBatchManager
+        return  # osid.repository.batch.RepositoryBatchManager
 
     repository_batch_manager = property(fget=get_repository_batch_manager)
 
@@ -1595,7 +1589,7 @@ class RepositoryManager:
         ``supports_repository_rules()`` is ``true``.*
 
         """
-        return # osid.repository.rules.RepositoryRulesManager
+        return  # osid.repository.rules.RepositoryRulesManager
 
     repository_rules_manager = property(fget=get_repository_rules_manager)
 
@@ -1660,10 +1654,8 @@ class RepositoryProxyManager:
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_asset_lookup_session(self, proxy):
@@ -1681,7 +1673,7 @@ class RepositoryProxyManager:
         ``supports_asset_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.AssetLookupSession
+        return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
     def get_asset_lookup_session_for_repository(self, repository_id, proxy):
@@ -1703,7 +1695,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetLookupSession
+        return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
     def get_asset_query_session(self, proxy):
@@ -1721,7 +1713,7 @@ class RepositoryProxyManager:
         ``supports_asset_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuerySession
+        return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
     def get_asset_query_session_for_repository(self, repository_id, proxy):
@@ -1743,7 +1735,7 @@ class RepositoryProxyManager:
         are ``true``.*
 
         """
-        return # osid.repository.AssetQuerySession
+        return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
     def get_asset_search_session(self, proxy):
@@ -1761,7 +1753,7 @@ class RepositoryProxyManager:
         ``supports_asset_search()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSearchSession
+        return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
     def get_asset_search_session_for_repository(self, repository_id, proxy):
@@ -1783,7 +1775,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSearchSession
+        return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
     def get_asset_admin_session(self, proxy):
@@ -1801,7 +1793,7 @@ class RepositoryProxyManager:
         ``supports_asset_admin()`` is ``true``.*
 
         """
-        return # osid.repository.AssetAdminSession
+        return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
     def get_asset_admin_session_for_repository(self, repository_id, proxy):
@@ -1823,7 +1815,7 @@ class RepositoryProxyManager:
         are ``true``.*
 
         """
-        return # osid.repository.AssetAdminSession
+        return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
     def get_asset_notification_session(self, asset_receiver, proxy):
@@ -1843,7 +1835,7 @@ class RepositoryProxyManager:
         ``supports_asset_notification()`` is ``true``.*
 
         """
-        return # osid.repository.AssetNotificationSession
+        return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
     def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, proxy):
@@ -1867,7 +1859,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetNotificationSession
+        return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
     def get_asset_repository_session(self, proxy):
@@ -1885,7 +1877,7 @@ class RepositoryProxyManager:
         ``supports_asset_repository()`` is ``true``.*
 
         """
-        return # osid.repository.AssetRepositorySession
+        return  # osid.repository.AssetRepositorySession
 
     @abc.abstractmethod
     def get_asset_repository_assignment_session(self, proxy):
@@ -1903,7 +1895,7 @@ class RepositoryProxyManager:
         ``supports_asset_repository_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetRepositoryAssignmentSession
+        return  # osid.repository.AssetRepositoryAssignmentSession
 
     @abc.abstractmethod
     def get_asset_smart_repository_session(self, repository_id, proxy):
@@ -1924,7 +1916,7 @@ class RepositoryProxyManager:
         ``supports_asset_smart_repository()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSmartRepositorySession
+        return  # osid.repository.AssetSmartRepositorySession
 
     @abc.abstractmethod
     def get_asset_temporal_session(self, proxy):
@@ -1942,7 +1934,7 @@ class RepositoryProxyManager:
         ``supports_asset_temporal()`` is ``true``.*
 
         """
-        return # osid.repository.AssetTemporalSession
+        return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
     def get_asset_temporal_session_for_repository(self, repository_id, proxy):
@@ -1964,7 +1956,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetTemporalSession
+        return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
     def get_asset_temporal_assignment_session(self, proxy):
@@ -1982,7 +1974,7 @@ class RepositoryProxyManager:
         ``supports_asset_temporal_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetTemporalAssignmentSession
+        return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
     def get_asset_temporal_assignment_session_for_repository(self, repository_id, proxy):
@@ -2004,7 +1996,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetTemporalAssignmentSession
+        return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
     def get_asset_spatial_session(self, proxy):
@@ -2022,7 +2014,7 @@ class RepositoryProxyManager:
         ``supports_spatial_assets()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSpatialSession
+        return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
     def get_asset_spatial_session_for_repository(self, repository_id, proxy):
@@ -2044,7 +2036,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSpatialSession
+        return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
     def get_asset_spatial_assignment_session(self, proxy):
@@ -2062,7 +2054,7 @@ class RepositoryProxyManager:
         ``supports_asset_spatial_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.AssetSpatialAssignmentSession
+        return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
     def get_asset_spatial_assignment_session_for_repository(self, repository_id, proxy):
@@ -2084,7 +2076,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.AssetSpatialAssignmentSession
+        return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
     def get_asset_composition_session(self, proxy):
@@ -2102,7 +2094,7 @@ class RepositoryProxyManager:
         ``supports_asset_composition()`` is ``true``.*
 
         """
-        return # osid.repository.AssetCompositionSession
+        return  # osid.repository.AssetCompositionSession
 
     @abc.abstractmethod
     def get_asset_composition_design_session(self, proxy):
@@ -2120,7 +2112,7 @@ class RepositoryProxyManager:
         ``supports_asset_composition_design()`` is ``true``.*
 
         """
-        return # osid.repository.AssetCompositionDesignSession
+        return  # osid.repository.AssetCompositionDesignSession
 
     @abc.abstractmethod
     def get_composition_lookup_session(self, proxy):
@@ -2138,7 +2130,7 @@ class RepositoryProxyManager:
         ``supports_composition_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionLookupSession
+        return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
     def get_composition_lookup_session_for_repository(self, repository_id, proxy):
@@ -2160,7 +2152,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionLookupSession
+        return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
     def get_composition_query_session(self, proxy):
@@ -2178,7 +2170,7 @@ class RepositoryProxyManager:
         ``supports_composition_query()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionQuerySession
+        return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
     def get_composition_query_session_for_repository(self, repository_id, proxy):
@@ -2200,7 +2192,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionQuerySession
+        return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
     def get_composition_search_session(self, proxy):
@@ -2218,7 +2210,7 @@ class RepositoryProxyManager:
         ``supports_composition_search()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionSearchSession
+        return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
     def get_composition_search_session_for_repository(self, repository_id, proxy):
@@ -2240,7 +2232,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionSearchSession
+        return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
     def get_composition_admin_session(self, proxy):
@@ -2258,7 +2250,7 @@ class RepositoryProxyManager:
         ``supports_composition_admin()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionAdminSession
+        return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
     def get_composition_admin_session_for_repository(self, repository_id, proxy):
@@ -2280,7 +2272,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionAdminSession
+        return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
     def get_composition_notification_session(self, composition_receiver, proxy):
@@ -2300,7 +2292,7 @@ class RepositoryProxyManager:
         ``supports_composition_notification()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionNotificationSession
+        return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
     def get_composition_notification_session_for_repository(self, composition_receiver, repository_id, proxy):
@@ -2324,7 +2316,7 @@ class RepositoryProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.repository.CompositionNotificationSession
+        return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
     def get_composition_repository_session(self, proxy):
@@ -2342,7 +2334,7 @@ class RepositoryProxyManager:
         ``supports_composition_repository()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionRepositorySession
+        return  # osid.repository.CompositionRepositorySession
 
     @abc.abstractmethod
     def get_composition_repository_assignment_session(self, proxy):
@@ -2360,7 +2352,7 @@ class RepositoryProxyManager:
         ``supports_composition_repository_assignment()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionRepositoryAssignmentSession
+        return  # osid.repository.CompositionRepositoryAssignmentSession
 
     @abc.abstractmethod
     def get_composition_smart_repository_session(self, repository_id, proxy):
@@ -2381,7 +2373,7 @@ class RepositoryProxyManager:
         ``supports_composition_smart_repository()`` is ``true``.*
 
         """
-        return # osid.repository.CompositionSmartRepositorySession
+        return  # osid.repository.CompositionSmartRepositorySession
 
     @abc.abstractmethod
     def get_repository_lookup_session(self, proxy):
@@ -2399,7 +2391,7 @@ class RepositoryProxyManager:
         ``supports_repository_lookup()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryLookupSession
+        return  # osid.repository.RepositoryLookupSession
 
     @abc.abstractmethod
     def get_repository_query_session(self, proxy):
@@ -2417,7 +2409,7 @@ class RepositoryProxyManager:
         ``supports_repository_query()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryQuerySession
+        return  # osid.repository.RepositoryQuerySession
 
     @abc.abstractmethod
     def get_repository_search_session(self, proxy):
@@ -2435,7 +2427,7 @@ class RepositoryProxyManager:
         ``supports_repository_search()`` is ``true``.*
 
         """
-        return # osid.repository.RepositorySearchSession
+        return  # osid.repository.RepositorySearchSession
 
     @abc.abstractmethod
     def get_repository_admin_session(self, proxy):
@@ -2453,7 +2445,7 @@ class RepositoryProxyManager:
         ``supports_repository_admin()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryAdminSession
+        return  # osid.repository.RepositoryAdminSession
 
     @abc.abstractmethod
     def get_repository_notification_session(self, repository_receiver, proxy):
@@ -2473,7 +2465,7 @@ class RepositoryProxyManager:
         ``supports_repository_notification()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryNotificationSession
+        return  # osid.repository.RepositoryNotificationSession
 
     @abc.abstractmethod
     def get_repository_hierarchy_session(self, proxy):
@@ -2491,7 +2483,7 @@ class RepositoryProxyManager:
         ``supports_repository_hierarchy()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryHierarchySession
+        return  # osid.repository.RepositoryHierarchySession
 
     @abc.abstractmethod
     def get_repository_hierarchy_design_session(self, proxy):
@@ -2509,7 +2501,7 @@ class RepositoryProxyManager:
         ``supports_repository_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.repository.RepositoryHierarchyDesignSession
+        return  # osid.repository.RepositoryHierarchyDesignSession
 
     @abc.abstractmethod
     def get_repository_batch_proxy_manager(self):
@@ -2524,7 +2516,7 @@ class RepositoryProxyManager:
         ``supports_repository_batch()`` is ``true``.*
 
         """
-        return # osid.repository.batch.RepositoryBatchProxyManager
+        return  # osid.repository.batch.RepositoryBatchProxyManager
 
     repository_batch_proxy_manager = property(fget=get_repository_batch_proxy_manager)
 
@@ -2541,8 +2533,6 @@ class RepositoryProxyManager:
         ``supports_repository_rules()`` is ``true``.*
 
         """
-        return # osid.repository.rules.RepositoryRulesProxyManager
+        return  # osid.repository.rules.RepositoryRulesProxyManager
 
     repository_rules_proxy_manager = property(fget=get_repository_rules_proxy_manager)
-
-

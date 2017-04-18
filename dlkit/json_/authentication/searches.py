@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.authentication import searches as abc_authentication_searches
 
 
-
-
 class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSearch):
     """``AgentSearch`` defines the interface for specifying agent search options.
 
@@ -78,6 +76,8 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
+
+
 class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search.
 
@@ -134,5 +134,3 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
 
         """
         raise errors.Unimplemented()
-
-

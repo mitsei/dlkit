@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ObjectiveQuery:
     """This is the query for searching objectives.
 
@@ -27,7 +24,6 @@ class ObjectiveQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_assessment_id(self, assessment_id, match):
@@ -68,7 +64,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -84,7 +80,7 @@ class ObjectiveQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -153,7 +149,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_knowledge_category_query(self):
@@ -169,7 +165,7 @@ class ObjectiveQuery:
         ``supports_knowledge_category_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     knowledge_category_query = property(fget=get_knowledge_category_query)
 
@@ -238,7 +234,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cognitive_process_query(self):
@@ -254,7 +250,7 @@ class ObjectiveQuery:
         ``supports_cognitive_process_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     cognitive_process_query = property(fget=get_cognitive_process_query)
 
@@ -323,7 +319,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_query(self):
@@ -339,7 +335,7 @@ class ObjectiveQuery:
         ``supports_activity_query()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
     activity_query = property(fget=get_activity_query)
 
@@ -408,7 +404,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_requisite_objective_query(self):
@@ -424,7 +420,7 @@ class ObjectiveQuery:
         ``supports_requisite_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     requisite_objective_query = property(fget=get_requisite_objective_query)
 
@@ -493,7 +489,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_dependent_objective_query(self):
@@ -509,7 +505,7 @@ class ObjectiveQuery:
         ``supports_dependent_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     dependent_objective_query = property(fget=get_dependent_objective_query)
 
@@ -578,7 +574,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_equivalent_objective_query(self):
@@ -594,7 +590,7 @@ class ObjectiveQuery:
         ``supports_equivalent_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     equivalent_objective_query = property(fget=get_equivalent_objective_query)
 
@@ -663,7 +659,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_objective_query(self):
@@ -679,7 +675,7 @@ class ObjectiveQuery:
         ``supports_ancestor_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     ancestor_objective_query = property(fget=get_ancestor_objective_query)
 
@@ -748,7 +744,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_objective_query(self):
@@ -764,7 +760,7 @@ class ObjectiveQuery:
         ``supports_descendant_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     descendant_objective_query = property(fget=get_descendant_objective_query)
 
@@ -833,7 +829,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_query(self):
@@ -849,7 +845,7 @@ class ObjectiveQuery:
         ``supports_objective_bank_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     objective_bank_query = property(fget=get_objective_bank_query)
 
@@ -883,7 +879,7 @@ class ObjectiveQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveQueryRecord
+        return  # osid.learning.records.ObjectiveQueryRecord
 
 
 class ActivityQuery:
@@ -894,7 +890,6 @@ class ActivityQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_objective_id(self, objective_id, match):
@@ -935,7 +930,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_query(self):
@@ -951,7 +946,7 @@ class ActivityQuery:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     objective_query = property(fget=get_objective_query)
 
@@ -1007,7 +1002,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_query(self):
@@ -1023,7 +1018,7 @@ class ActivityQuery:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     asset_query = property(fget=get_asset_query)
 
@@ -1092,7 +1087,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_course_query(self):
@@ -1108,7 +1103,7 @@ class ActivityQuery:
         ``supports_course_query()`` is ``true``.*
 
         """
-        return # osid.course.CourseQuery
+        return  # osid.course.CourseQuery
 
     course_query = property(fget=get_course_query)
 
@@ -1177,7 +1172,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -1193,7 +1188,7 @@ class ActivityQuery:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -1262,7 +1257,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_query(self):
@@ -1278,7 +1273,7 @@ class ActivityQuery:
         ``supports_objective_bank_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     objective_bank_query = property(fget=get_objective_bank_query)
 
@@ -1312,7 +1307,7 @@ class ActivityQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivityQueryRecord
+        return  # osid.learning.records.ActivityQueryRecord
 
 
 class ProficiencyQuery:
@@ -1323,7 +1318,6 @@ class ProficiencyQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_resource_id(self, resource_id, match):
@@ -1364,7 +1358,7 @@ class ProficiencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -1380,7 +1374,7 @@ class ProficiencyQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -1436,7 +1430,7 @@ class ProficiencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_query(self):
@@ -1452,7 +1446,7 @@ class ProficiencyQuery:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     objective_query = property(fget=get_objective_query)
 
@@ -1579,7 +1573,7 @@ class ProficiencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_query(self):
@@ -1595,7 +1589,7 @@ class ProficiencyQuery:
         ``supports_level_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeQuery
+        return  # osid.grading.GradeQuery
 
     level_query = property(fget=get_level_query)
 
@@ -1664,7 +1658,7 @@ class ProficiencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_bank_query(self):
@@ -1680,7 +1674,7 @@ class ProficiencyQuery:
         ``supports_objective_bank_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     objective_bank_query = property(fget=get_objective_bank_query)
 
@@ -1714,7 +1708,7 @@ class ProficiencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencyQueryRecord
+        return  # osid.learning.records.ProficiencyQueryRecord
 
 
 class ObjectiveBankQuery:
@@ -1725,7 +1719,6 @@ class ObjectiveBankQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_objective_id(self, objective_id, match):
@@ -1766,7 +1759,7 @@ class ObjectiveBankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_objective_query(self):
@@ -1782,7 +1775,7 @@ class ObjectiveBankQuery:
         ``supports_objective_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveQuery
+        return  # osid.learning.ObjectiveQuery
 
     objective_query = property(fget=get_objective_query)
 
@@ -1851,7 +1844,7 @@ class ObjectiveBankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_activity_query(self):
@@ -1867,7 +1860,7 @@ class ObjectiveBankQuery:
         ``supports_activity_query()`` is ``true``.*
 
         """
-        return # osid.learning.ActivityQuery
+        return  # osid.learning.ActivityQuery
 
     activity_query = property(fget=get_activity_query)
 
@@ -1936,7 +1929,7 @@ class ObjectiveBankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_objective_bank_query(self):
@@ -1952,7 +1945,7 @@ class ObjectiveBankQuery:
         ``supports_ancestor_calndar_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     ancestor_objective_bank_query = property(fget=get_ancestor_objective_bank_query)
 
@@ -2021,7 +2014,7 @@ class ObjectiveBankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_objective_bank_query(self):
@@ -2037,7 +2030,7 @@ class ObjectiveBankQuery:
         ``supports_descendant_calndar_query()`` is ``true``.*
 
         """
-        return # osid.learning.ObjectiveBankQuery
+        return  # osid.learning.ObjectiveBankQuery
 
     descendant_objective_bank_query = property(fget=get_descendant_objective_bank_query)
 
@@ -2084,6 +2077,4 @@ class ObjectiveBankQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankQueryRecord
-
-
+        return  # osid.learning.records.ObjectiveBankQueryRecord

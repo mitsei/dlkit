@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Parameter:
@@ -42,7 +37,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Syntax
+        return  # osid.Syntax
 
     value_syntax = property(fget=get_value_syntax)
 
@@ -57,7 +52,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     value_coordinate_type = property(fget=get_value_coordinate_type)
 
@@ -76,7 +71,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_heading_type(self):
@@ -89,7 +84,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     value_heading_type = property(fget=get_value_heading_type)
 
@@ -108,7 +103,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_object_type(self):
@@ -121,7 +116,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     value_object_type = property(fget=get_value_object_type)
 
@@ -143,7 +138,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_spatial_unit_record_type(self):
@@ -156,7 +151,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     value_spatial_unit_record_type = property(fget=get_value_spatial_unit_record_type)
 
@@ -175,7 +170,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_version_scheme(self):
@@ -188,7 +183,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     value_version_scheme = property(fget=get_value_version_scheme)
 
@@ -207,7 +202,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def are_values_shuffled(self):
@@ -220,7 +215,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_record(self, parameter_record_type):
@@ -243,7 +238,7 @@ class Parameter:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterRecord
+        return  # osid.configuration.records.ParameterRecord
 
 
 class ParameterForm:
@@ -268,7 +263,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_syntax_metadata = property(fget=get_value_syntax_metadata)
 
@@ -311,7 +306,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_coordinate_type_metadata = property(fget=get_value_coordinate_type_metadata)
 
@@ -354,7 +349,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_heading_type_metadata = property(fget=get_value_heading_type_metadata)
 
@@ -397,7 +392,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_object_type_metadata = property(fget=get_value_object_type_metadata)
 
@@ -440,7 +435,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_spatial_unit_record_type_metadata = property(fget=get_value_spatial_unit_record_type_metadata)
 
@@ -483,7 +478,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     value_version_scheme_metadata = property(fget=get_value_version_scheme_metadata)
 
@@ -526,7 +521,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     values_shuffled_metadata = property(fget=get_values_shuffled_metadata)
 
@@ -572,7 +567,7 @@ class ParameterForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterFormRecord
+        return  # osid.configuration.records.ParameterFormRecord
 
 
 class ParameterList:
@@ -604,7 +599,7 @@ class ParameterList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Parameter
+        return  # osid.configuration.Parameter
 
     next_parameter = property(fget=get_next_parameter)
 
@@ -624,7 +619,7 @@ class ParameterList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Parameter
+        return  # osid.configuration.Parameter
 
 
 class Value:
@@ -642,7 +637,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     parameter_id = property(fget=get_parameter_id)
 
@@ -657,7 +652,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Parameter
+        return  # osid.configuration.Parameter
 
     parameter = property(fget=get_parameter)
 
@@ -678,7 +673,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     priority = property(fget=get_priority)
 
@@ -693,7 +688,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     boolean_value = property(fget=get_boolean_value)
 
@@ -708,7 +703,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # byte
+        return  # byte
 
     bytes_value = property(fget=get_bytes_value)
 
@@ -723,7 +718,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     cardinal_value = property(fget=get_cardinal_value)
 
@@ -738,7 +733,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     coordinate_value = property(fget=get_coordinate_value)
 
@@ -753,7 +748,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     currency_value = property(fget=get_currency_value)
 
@@ -768,7 +763,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     date_time_value = property(fget=get_date_time_value)
 
@@ -783,7 +778,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     decimal_value = property(fget=get_decimal_value)
 
@@ -798,7 +793,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     distance_value = property(fget=get_distance_value)
 
@@ -813,7 +808,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     duration_value = property(fget=get_duration_value)
 
@@ -828,7 +823,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Heading
+        return  # osid.mapping.Heading
 
     heading_value = property(fget=get_heading_value)
 
@@ -843,7 +838,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     id_value = property(fget=get_id_value)
 
@@ -858,7 +853,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     integer_value = property(fget=get_integer_value)
 
@@ -873,7 +868,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # object
+        return  # object
 
     object_value = property(fget=get_object_value)
 
@@ -888,7 +883,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     spatial_unit_value = property(fget=get_spatial_unit_value)
 
@@ -903,7 +898,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     speed_value = property(fget=get_speed_value)
 
@@ -918,7 +913,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     string_value = property(fget=get_string_value)
 
@@ -933,7 +928,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     time_value = property(fget=get_time_value)
 
@@ -948,7 +943,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     type_value = property(fget=get_type_value)
 
@@ -963,7 +958,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     version_value = property(fget=get_version_value)
 
@@ -988,7 +983,7 @@ class Value:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueRecord
+        return  # osid.configuration.records.ValueRecord
 
 
 class ValueForm:
@@ -1016,7 +1011,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     priority_metadata = property(fget=get_priority_metadata)
 
@@ -1058,7 +1053,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     boolean_value_metadata = property(fget=get_boolean_value_metadata)
 
@@ -1090,7 +1085,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     byte_value_metadata = property(fget=get_byte_value_metadata)
 
@@ -1123,7 +1118,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     cardinal_value_metadata = property(fget=get_cardinal_value_metadata)
 
@@ -1155,7 +1150,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     coordinate_value_metadata = property(fget=get_coordinate_value_metadata)
 
@@ -1187,7 +1182,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     currency_value_metadata = property(fget=get_currency_value_metadata)
 
@@ -1219,7 +1214,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     date_time_value_metadata = property(fget=get_date_time_value_metadata)
 
@@ -1252,7 +1247,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     decimal_value_metadata = property(fget=get_decimal_value_metadata)
 
@@ -1284,7 +1279,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     distance_value_metadata = property(fget=get_distance_value_metadata)
 
@@ -1317,7 +1312,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     duration_value_metadata = property(fget=get_duration_value_metadata)
 
@@ -1350,7 +1345,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     id_value_metadata = property(fget=get_id_value_metadata)
 
@@ -1383,7 +1378,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     integer_value_metadata = property(fget=get_integer_value_metadata)
 
@@ -1415,7 +1410,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     spatial_unit_value_metadata = property(fget=get_spatial_unit_value_metadata)
 
@@ -1447,7 +1442,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     speed_value_metadata = property(fget=get_speed_value_metadata)
 
@@ -1479,7 +1474,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     string_value_metadata = property(fget=get_string_value_metadata)
 
@@ -1512,7 +1507,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     time_value_metadata = property(fget=get_time_value_metadata)
 
@@ -1545,7 +1540,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     type_value_metadata = property(fget=get_type_value_metadata)
 
@@ -1578,7 +1573,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     version_value_metadata = property(fget=get_version_value_metadata)
 
@@ -1611,7 +1606,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     object_value_metadata = property(fget=get_object_value_metadata)
 
@@ -1662,7 +1657,7 @@ class ValueForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueFormRecord
+        return  # osid.configuration.records.ValueFormRecord
 
 
 class ValueList:
@@ -1693,7 +1688,7 @@ class ValueList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
     next_value = property(fget=get_next_value)
 
@@ -1712,7 +1707,7 @@ class ValueList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
 
 class Configuration:
@@ -1738,7 +1733,7 @@ class Configuration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_record(self, configuration_record_type):
@@ -1761,7 +1756,7 @@ class Configuration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationRecord
+        return  # osid.configuration.records.ConfigurationRecord
 
 
 class ConfigurationForm:
@@ -1787,7 +1782,7 @@ class ConfigurationForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     registry_metadata = property(fget=get_registry_metadata)
 
@@ -1822,7 +1817,7 @@ class ConfigurationForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationFormRecord
+        return  # osid.configuration.records.ConfigurationFormRecord
 
 
 class ConfigurationList:
@@ -1854,7 +1849,7 @@ class ConfigurationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     next_configuration = property(fget=get_next_configuration)
 
@@ -1875,7 +1870,7 @@ class ConfigurationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
 
 class ConfigurationNode:
@@ -1899,7 +1894,7 @@ class ConfigurationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -1914,7 +1909,7 @@ class ConfigurationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationNodeList
+        return  # osid.configuration.ConfigurationNodeList
 
     parent_configuration_nodes = property(fget=get_parent_configuration_nodes)
 
@@ -1929,7 +1924,7 @@ class ConfigurationNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationNodeList
+        return  # osid.configuration.ConfigurationNodeList
 
     child_configuration_nodes = property(fget=get_child_configuration_nodes)
 
@@ -1963,7 +1958,7 @@ class ConfigurationNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationNode
+        return  # osid.configuration.ConfigurationNode
 
     next_configuration_node = property(fget=get_next_configuration_node)
 
@@ -1984,6 +1979,4 @@ class ConfigurationNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationNode
-
-
+        return  # osid.configuration.ConfigurationNode

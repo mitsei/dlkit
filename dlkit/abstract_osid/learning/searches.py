@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ObjectiveSearch:
     """``ObjectiveSearch`` defines the interface for specifying objective search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_objectives(self, objective_ids):
@@ -69,13 +65,12 @@ class ObjectiveSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveSearchRecord
+        return  # osid.learning.records.ObjectiveSearchRecord
 
 
 class ObjectiveSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objectives(self):
@@ -88,7 +83,7 @@ class ObjectiveSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveList
+        return  # osid.learning.ObjectiveList
 
     objectives = property(fget=get_objectives)
 
@@ -103,7 +98,7 @@ class ObjectiveSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveQueryInspector
+        return  # osid.learning.ObjectiveQueryInspector
 
     objective_query_inspector = property(fget=get_objective_query_inspector)
 
@@ -125,13 +120,12 @@ class ObjectiveSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveSearchResultsRecord
+        return  # osid.learning.records.ObjectiveSearchResultsRecord
 
 
 class ActivitySearch:
     """``ActivitySearch`` defines the interface for specifying activity search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_activities(self, activity_ids):
@@ -178,13 +172,12 @@ class ActivitySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivitySearchRecord
+        return  # osid.learning.records.ActivitySearchRecord
 
 
 class ActivitySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_activities(self):
@@ -197,7 +190,7 @@ class ActivitySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityList
+        return  # osid.learning.ActivityList
 
     activities = property(fget=get_activities)
 
@@ -212,7 +205,7 @@ class ActivitySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ActivityQueryInspector
+        return  # osid.learning.ActivityQueryInspector
 
     activity_query_inspector = property(fget=get_activity_query_inspector)
 
@@ -234,13 +227,12 @@ class ActivitySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivitySearchResultsRecord
+        return  # osid.learning.records.ActivitySearchResultsRecord
 
 
 class ProficiencySearch:
     """The search interface for governing proficiency searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_proficiencies(self, proficiency_ids):
@@ -287,13 +279,12 @@ class ProficiencySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencySearchRecord
+        return  # osid.learning.records.ProficiencySearchRecord
 
 
 class ProficiencySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_proficiencies(self):
@@ -306,7 +297,7 @@ class ProficiencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyList
+        return  # osid.learning.ProficiencyList
 
     proficiencies = property(fget=get_proficiencies)
 
@@ -321,7 +312,7 @@ class ProficiencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ProficiencyQueryInspector
+        return  # osid.learning.ProficiencyQueryInspector
 
     proficiency_query_inspector = property(fget=get_proficiency_query_inspector)
 
@@ -343,13 +334,12 @@ class ProficiencySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencySearchResultsRecord
+        return  # osid.learning.records.ProficiencySearchResultsRecord
 
 
 class ObjectiveBankSearch:
     """The interface for governing objective bank searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_objective_banks(self, objective_bank_ids):
@@ -396,13 +386,12 @@ class ObjectiveBankSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankSearchRecord
+        return  # osid.learning.records.ObjectiveBankSearchRecord
 
 
 class ObjectiveBankSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_banks(self):
@@ -415,7 +404,7 @@ class ObjectiveBankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankList
+        return  # osid.learning.ObjectiveBankList
 
     objective_banks = property(fget=get_objective_banks)
 
@@ -430,7 +419,7 @@ class ObjectiveBankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankQueryInspector
+        return  # osid.learning.ObjectiveBankQueryInspector
 
     objective_bank_query_inspector = property(fget=get_objective_bank_query_inspector)
 
@@ -452,6 +441,4 @@ class ObjectiveBankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankSearchResultsRecord
-
-
+        return  # osid.learning.records.ObjectiveBankSearchResultsRecord

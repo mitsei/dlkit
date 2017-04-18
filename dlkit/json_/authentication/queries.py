@@ -19,8 +19,6 @@ from dlkit.abstract_osid.authentication import queries as abc_authentication_que
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching agents.
 
@@ -31,20 +29,17 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
     "Tom" and whose "login name" is "tom" or "tjcoppet" in an agent
     record specified by ``companyAgentType``.
       Agent Query query = session.getAgentQuery();
-      
+
       query.matchDisplayName("Tom*", wildcardStringMatchType, true);
-      
+
       companyAgentQuery = query.getAgentQueryRecord(companyAgentType);
       companyAgentQuery.matchLoginName("tom");
       companyAgentQuery = query.getAgentQueryRecord(companyAgentType);
       companyAgentQuery.matchLoginName("tjcoppet");
-      
+
       AgentList agentList = session.getAgentsByQuery(query);
 
-
-
     """
-
     def __init__(self, runtime):
         self._namespace = 'authentication.Agent'
         self._runtime = runtime
@@ -54,8 +49,6 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
-
-
     @utilities.arguments_not_none
     def match_resource_id(self, agency_id, match):
         """Sets the resource ``Id`` for this query.
@@ -206,5 +199,3 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
 
         """
         raise errors.Unimplemented()
-
-

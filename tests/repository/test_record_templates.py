@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestAssetRecord(unittest.TestCase):
     """Tests for AssetRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestAssetQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestAssetFormRecord(unittest.TestCase):
     """Tests for AssetFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestAssetSearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestAssetContentRecord(unittest.TestCase):
     """Tests for AssetContentRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestAssetContentQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestAssetContentFormRecord(unittest.TestCase):
     """Tests for AssetContentFormRecord"""
+
+
 
 
 
@@ -51,8 +67,12 @@ class TestCompositionRecord(unittest.TestCase):
 
 
 
+
+
 class TestCompositionQueryRecord(unittest.TestCase):
     """Tests for CompositionQueryRecord"""
+
+
 
 
 
@@ -63,8 +83,12 @@ class TestCompositionFormRecord(unittest.TestCase):
 
 
 
+
+
 class TestCompositionSearchRecord(unittest.TestCase):
     """Tests for CompositionSearchRecord"""
+
+
 
 
 
@@ -75,14 +99,20 @@ class TestRepositoryRecord(unittest.TestCase):
 
 
 
+
+
 class TestRepositoryQueryRecord(unittest.TestCase):
     """Tests for RepositoryQueryRecord"""
 
 
 
 
+
+
 class TestRepositoryFormRecord(unittest.TestCase):
     """Tests for RepositoryFormRecord"""
+
+
 
 
 

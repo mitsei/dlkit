@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestLogEntrySearch(unittest.TestCase):
     """Tests for LogEntrySearch"""
 
@@ -20,6 +22,8 @@ class TestLogEntrySearch(unittest.TestCase):
     def test_get_log_entry_search_record(self):
         """Tests get_log_entry_search_record"""
         pass
+
+
 
 
 class TestLogEntrySearchResults(unittest.TestCase):
@@ -41,6 +45,8 @@ class TestLogEntrySearchResults(unittest.TestCase):
         pass
 
 
+
+
 class TestLogSearch(unittest.TestCase):
     """Tests for LogSearch"""
 
@@ -58,6 +64,8 @@ class TestLogSearch(unittest.TestCase):
     def test_get_log_search_record(self):
         """Tests get_log_search_record"""
         pass
+
+
 
 
 class TestLogSearchResults(unittest.TestCase):

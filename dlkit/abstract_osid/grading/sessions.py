@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class GradeSystemLookupSession:
     """The session defines methods for retrieving ``Grades`` and ``GradeSystems``.
 
@@ -42,7 +39,6 @@ class GradeSystemLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``GradeSystem``  ``Id`` associated with this session.
@@ -54,7 +50,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -70,7 +66,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -91,7 +87,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_grade_system_view(self):
@@ -171,7 +167,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
     def get_grade_system_by_grade(self, grade_id):
@@ -189,7 +185,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
     def get_grade_systems_by_ids(self, grade_system_ids):
@@ -215,7 +211,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_grade_systems_by_genus_type(self, grade_system_genus_type):
@@ -236,7 +232,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_grade_systems_by_parent_genus_type(self, grade_system_genus_type):
@@ -257,7 +253,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_grade_systems_by_record_type(self, grade_system_record_type):
@@ -278,7 +274,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_grade_systems(self):
@@ -297,7 +293,7 @@ class GradeSystemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     grade_systems = property(fget=get_grade_systems)
 
@@ -324,7 +320,6 @@ class GradeSystemQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -336,7 +331,7 @@ class GradeSystemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -352,7 +347,7 @@ class GradeSystemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -373,7 +368,7 @@ class GradeSystemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -413,7 +408,7 @@ class GradeSystemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -433,7 +428,7 @@ class GradeSystemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
 
 class GradeSystemSearchSession:
@@ -468,7 +463,6 @@ class GradeSystemSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_grade_system_search(self):
         """Gets a grade system search.
@@ -480,7 +474,7 @@ class GradeSystemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemSearch
+        return  # osid.grading.GradeSystemSearch
 
     grade_system_search = property(fget=get_grade_system_search)
 
@@ -498,7 +492,7 @@ class GradeSystemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
@@ -520,7 +514,7 @@ class GradeSystemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemSearchResults
+        return  # osid.grading.GradeSystemSearchResults
 
     @abc.abstractmethod
     def get_grade_system_query_from_inspector(self, grade_system_query_inspector):
@@ -538,7 +532,7 @@ class GradeSystemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
 
 class GradeSystemAdminSession:
@@ -579,7 +573,6 @@ class GradeSystemAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -591,7 +584,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -607,7 +600,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -628,7 +621,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_grade_system_with_record_types(self, grade_system_record_types):
@@ -649,7 +642,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_form_for_create(self, grade_system_record_types):
@@ -669,7 +662,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemForm
+        return  # osid.grading.GradeSystemForm
 
     @abc.abstractmethod
     def create_grade_system(self, grade_system_form):
@@ -689,7 +682,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
     def can_update_grade_systems(self):
@@ -708,7 +701,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_form_for_update(self, grade_system_id):
@@ -729,7 +722,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemForm
+        return  # osid.grading.GradeSystemForm
 
     @abc.abstractmethod
     def update_grade_system(self, grade_system_form):
@@ -766,7 +759,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_grade_system(self, grade_system_id):
@@ -801,7 +794,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_grade_system(self, grade_system_id, alias_id):
@@ -846,7 +839,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_grade_with_record_types(self, grade_system_id, grade_record_types):
@@ -869,7 +862,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_form_for_create(self, grade_system_id, grade_record_types):
@@ -892,7 +885,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeForm
+        return  # osid.grading.GradeForm
 
     @abc.abstractmethod
     def create_grade(self, grade_form):
@@ -912,7 +905,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     @abc.abstractmethod
     def can_update_grades(self, grade_system_id):
@@ -933,7 +926,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_form_for_update(self, grade_id):
@@ -954,7 +947,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeForm
+        return  # osid.grading.GradeForm
 
     @abc.abstractmethod
     def update_grade(self, grade_form):
@@ -993,7 +986,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_grade(self, grade_id):
@@ -1028,7 +1021,7 @@ class GradeSystemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_grade(self, grade_id, alias_id):
@@ -1065,7 +1058,6 @@ class GradeSystemNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -1077,7 +1069,7 @@ class GradeSystemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -1093,7 +1085,7 @@ class GradeSystemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -1114,7 +1106,7 @@ class GradeSystemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -1282,10 +1274,8 @@ class GradeSystemGradebookSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_gradebook_view(self):
@@ -1333,7 +1323,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_ids_by_gradebook(self, gradebook_id):
@@ -1351,7 +1341,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_grade_systems_by_gradebook(self, gradebook_id):
@@ -1369,7 +1359,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_grade_system_ids_by_gradebooks(self, gradebook_ids):
@@ -1386,7 +1376,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_grade_systems_by_gradebooks(self, gradebook_ids):
@@ -1403,7 +1393,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
     def get_gradebook_ids_by_grade_system(self, grade_system_id):
@@ -1421,7 +1411,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_gradebooks_by_grade_system(self, grade_system_id):
@@ -1439,7 +1429,7 @@ class GradeSystemGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
 
 class GradeSystemGradebookAssignmentSession:
@@ -1456,7 +1446,6 @@ class GradeSystemGradebookAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_grade_system(self):
@@ -1475,7 +1464,7 @@ class GradeSystemGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_grade_systems_to_gradebook(self, gradebook_id):
@@ -1496,7 +1485,7 @@ class GradeSystemGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_gradebook_ids(self, gradebook_id):
@@ -1512,7 +1501,7 @@ class GradeSystemGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id):
@@ -1530,7 +1519,7 @@ class GradeSystemGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id):
@@ -1587,7 +1576,6 @@ class GradeSystemSmartGradebookSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -1599,7 +1587,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -1615,7 +1603,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -1636,7 +1624,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_query(self):
@@ -1649,7 +1637,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
     grade_system_query = property(fget=get_grade_system_query)
 
@@ -1664,7 +1652,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
@@ -1696,7 +1684,7 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     @abc.abstractmethod
     def apply_grade_system_sequencing(self, grade_system_search_order):
@@ -1728,13 +1716,12 @@ class GradeSystemSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQuery
+        return  # osid.grading.GradeSystemQuery
 
 
 class GradeEntryLookupSession:
     """This session provides methods for retrieving ``GradeEntrie`` s."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_id(self):
@@ -1747,7 +1734,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -1763,7 +1750,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -1784,7 +1771,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_grade_entry_view(self):
@@ -1880,7 +1867,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
     def get_grade_entries_by_ids(self, grade_entry_ids):
@@ -1898,7 +1885,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_by_genus_type(self, grade_entry_genus_type):
@@ -1915,7 +1902,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_by_parent_genus_type(self, grade_entry_genus_type):
@@ -1932,7 +1919,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_by_record_type(self, grade_entry_record_type):
@@ -1949,7 +1936,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_on_date(self, from_, to):
@@ -1969,7 +1956,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_gradebook_column(self, gradebook_column_id):
@@ -1986,7 +1973,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_gradebook_column_on_date(self, gradebook_column_id, from_, to):
@@ -2008,7 +1995,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_resource(self, resource_id):
@@ -2025,7 +2012,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_resource_on_date(self, resource_id, from_, to):
@@ -2047,7 +2034,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_gradebook_column_and_resource(self, gradebook_column_id, resource_id):
@@ -2066,7 +2053,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_for_gradebook_column_and_resource_on_date(self, gradebook_column_id, resource_id, from_, to):
@@ -2090,7 +2077,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries_by_grader(self, resource_id):
@@ -2107,7 +2094,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
     def get_grade_entries(self):
@@ -2121,7 +2108,7 @@ class GradeEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     grade_entries = property(fget=get_grade_entries)
 
@@ -2150,7 +2137,6 @@ class GradeEntryQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -2162,7 +2148,7 @@ class GradeEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -2178,7 +2164,7 @@ class GradeEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -2199,7 +2185,7 @@ class GradeEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -2239,7 +2225,7 @@ class GradeEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
     grade_entry_query = property(fget=get_grade_entry_query)
 
@@ -2259,7 +2245,7 @@ class GradeEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
 
 class GradeEntrySearchSession:
@@ -2294,7 +2280,6 @@ class GradeEntrySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_grade_entry_search(self):
         """Gets a grade entry search.
@@ -2306,7 +2291,7 @@ class GradeEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntrySearch
+        return  # osid.grading.GradeEntrySearch
 
     grade_entry_search = property(fget=get_grade_entry_search)
 
@@ -2324,7 +2309,7 @@ class GradeEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntrySearchOrder
+        return  # osid.grading.GradeEntrySearchOrder
 
     grade_entry_search_order = property(fget=get_grade_entry_search_order)
 
@@ -2346,7 +2331,7 @@ class GradeEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntrySearchResults
+        return  # osid.grading.GradeEntrySearchResults
 
     @abc.abstractmethod
     def get_grade_entry_query_from_inspector(self, grade_entry_query_inspector):
@@ -2364,7 +2349,7 @@ class GradeEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQuery
+        return  # osid.grading.GradeEntryQuery
 
 
 class GradeEntryAdminSession:
@@ -2404,7 +2389,6 @@ class GradeEntryAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -2416,7 +2400,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -2432,7 +2416,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -2453,7 +2437,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_grade_entry_with_record_types(self, grade_entry_record_types):
@@ -2474,7 +2458,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_form_for_create(self, gradebook_column_id, resource_id, grade_entry_record_types):
@@ -2499,7 +2483,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryForm
+        return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
     def create_grade_entry(self, grade_entry_form):
@@ -2519,7 +2503,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
     def can_overridecalculated_grade_entries(self):
@@ -2538,7 +2522,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_form_for_override(self, grade_entry_id, grade_entry_record_types):
@@ -2562,7 +2546,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryForm
+        return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
     def override_calculated_grade_entry(self, grade_entry_form):
@@ -2582,7 +2566,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
     def can_update_grade_entries(self):
@@ -2601,7 +2585,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_form_for_update(self, grade_entry_id):
@@ -2622,7 +2606,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryForm
+        return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
     def update_grade_entry(self, grade_entry_form):
@@ -2659,7 +2643,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_grade_entry(self, grade_entry_id):
@@ -2694,7 +2678,7 @@ class GradeEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_grade_entry(self, grade_entry_id, alias_id):
@@ -2734,7 +2718,6 @@ class GradeEntryNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -2746,7 +2729,7 @@ class GradeEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -2762,7 +2745,7 @@ class GradeEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -2783,7 +2766,7 @@ class GradeEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -3103,7 +3086,6 @@ class GradebookColumnLookupSession:
     """This session provides methods for retrieving ``GradebookColumns``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -3115,7 +3097,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -3131,7 +3113,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -3152,7 +3134,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_gradebook_column_view(self):
@@ -3232,7 +3214,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
     @abc.abstractmethod
     def get_gradebook_columns_by_ids(self, gradebook_column_ids):
@@ -3256,7 +3238,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_columns_by_genus_type(self, gradebook_column_genus_type):
@@ -3278,7 +3260,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_columns_by_parent_genus_type(self, gradebook_column_genus_type):
@@ -3300,7 +3282,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_columns_by_record_type(self, gradebook_column_record_type):
@@ -3322,7 +3304,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_columns(self):
@@ -3341,7 +3323,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     gradebook_columns = property(fget=get_gradebook_columns)
 
@@ -3356,7 +3338,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_summary(self, gradebook_column_id):
@@ -3375,7 +3357,7 @@ class GradebookColumnLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSummary
+        return  # osid.grading.GradebookColumnSummary
 
 
 class GradebookColumnQuerySession:
@@ -3399,7 +3381,6 @@ class GradebookColumnQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -3411,7 +3392,7 @@ class GradebookColumnQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -3427,7 +3408,7 @@ class GradebookColumnQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -3448,7 +3429,7 @@ class GradebookColumnQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -3488,7 +3469,7 @@ class GradebookColumnQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -3508,7 +3489,7 @@ class GradebookColumnQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
 
 class GradebookColumnSearchSession:
@@ -3542,7 +3523,6 @@ class GradebookColumnSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_column_search(self):
         """Gets a gradebook column search.
@@ -3554,7 +3534,7 @@ class GradebookColumnSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSearch
+        return  # osid.grading.GradebookColumnSearch
 
     gradebook_column_search = property(fget=get_gradebook_column_search)
 
@@ -3572,7 +3552,7 @@ class GradebookColumnSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSearchOrder
+        return  # osid.grading.GradebookColumnSearchOrder
 
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
@@ -3594,7 +3574,7 @@ class GradebookColumnSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSearchResults
+        return  # osid.grading.GradebookColumnSearchResults
 
     @abc.abstractmethod
     def get_gradebook_column_query_from_inspector(self, gradebook_column_query_inspector):
@@ -3613,7 +3593,7 @@ class GradebookColumnSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
 
 class GradebookColumnAdminSession:
@@ -3654,7 +3634,6 @@ class GradebookColumnAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -3666,7 +3645,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -3682,7 +3661,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -3703,7 +3682,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_gradebook_column_with_record_types(self, gradebook_column_record_types):
@@ -3724,7 +3703,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_form_for_create(self, gradebook_column_record_types):
@@ -3744,7 +3723,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnForm
+        return  # osid.grading.GradebookColumnForm
 
     @abc.abstractmethod
     def create_gradebook_column(self, gradebook_column_form):
@@ -3764,7 +3743,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
     @abc.abstractmethod
     def can_update_gradebook_columns(self):
@@ -3783,7 +3762,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_form_for_update(self, gradebook_column_id):
@@ -3804,7 +3783,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnForm
+        return  # osid.grading.GradebookColumnForm
 
     @abc.abstractmethod
     def update_gradebook_column(self, gradebook_column_form):
@@ -3896,7 +3875,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_gradebook_column(self, gradebook_column_id):
@@ -3931,7 +3910,7 @@ class GradebookColumnAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_gradebook_column(self, gradebook_column_id, alias_id):
@@ -3971,7 +3950,6 @@ class GradebookColumnNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -3983,7 +3961,7 @@ class GradebookColumnNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -3999,7 +3977,7 @@ class GradebookColumnNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -4020,7 +3998,7 @@ class GradebookColumnNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_gradebook_view(self):
@@ -4187,10 +4165,8 @@ class GradebookColumnGradebookSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_gradebook_view(self):
@@ -4238,7 +4214,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_ids_by_gradebook(self, gradebook_id):
@@ -4256,7 +4232,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_gradebook_columns_by_gradebook(self, gradebook_id):
@@ -4274,7 +4250,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids):
@@ -4291,7 +4267,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_gradebook_columns_by_gradebooks(self, gradebook_ids):
@@ -4308,7 +4284,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
     def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id):
@@ -4326,7 +4302,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_gradebooks_by_gradebook_column(self, gradebook_column_id):
@@ -4344,7 +4320,7 @@ class GradebookColumnGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
 
 class GradebookColumnGradebookAssignmentSession:
@@ -4361,7 +4337,6 @@ class GradebookColumnGradebookAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_gradebook_columns(self):
@@ -4380,7 +4355,7 @@ class GradebookColumnGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_gradebook_columns_to_gradebook(self, gradebook_id):
@@ -4401,7 +4376,7 @@ class GradebookColumnGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_gradebook_ids(self, gradebook_id):
@@ -4417,7 +4392,7 @@ class GradebookColumnGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id):
@@ -4435,7 +4410,7 @@ class GradebookColumnGradebookAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id):
@@ -4492,7 +4467,6 @@ class GradebookColumnSmartGradebookSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
@@ -4504,7 +4478,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_id = property(fget=get_gradebook_id)
 
@@ -4520,7 +4494,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -4541,7 +4515,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_query(self):
@@ -4554,7 +4528,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
@@ -4569,7 +4543,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnSearchOrder
+        return  # osid.grading.GradebookColumnSearchOrder
 
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
@@ -4601,7 +4575,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     @abc.abstractmethod
     def apply_gradebook_column_sequencing(self, gradebook_column_search_order):
@@ -4633,7 +4607,7 @@ class GradebookColumnSmartGradebookSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQuery
+        return  # osid.grading.GradebookColumnQuery
 
 
 class GradebookLookupSession:
@@ -4663,7 +4637,6 @@ class GradebookLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_gradebooks(self):
         """Tests if this user can perform ``Gradebook`` lookups.
@@ -4681,7 +4654,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_gradebook_view(self):
@@ -4734,7 +4707,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     @abc.abstractmethod
     def get_gradebooks_by_ids(self, gradebook_ids):
@@ -4760,7 +4733,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def get_gradebooks_by_genus_type(self, gradebook_genus_type):
@@ -4781,7 +4754,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def get_gradebooks_by_parent_genus_type(self, gradebook_genus_type):
@@ -4802,7 +4775,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def get_gradebooks_by_record_type(self, gradebook_record_type):
@@ -4823,7 +4796,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def get_gradebooks_by_provider(self, resource_id):
@@ -4844,7 +4817,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def get_gradebooks(self):
@@ -4862,7 +4835,7 @@ class GradebookLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     gradebooks = property(fget=get_gradebooks)
 
@@ -4878,7 +4851,6 @@ class GradebookQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_gradebooks(self):
@@ -4897,7 +4869,7 @@ class GradebookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_query(self):
@@ -4910,7 +4882,7 @@ class GradebookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
     gradebook_query = property(fget=get_gradebook_query)
 
@@ -4930,7 +4902,7 @@ class GradebookQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
 
 class GradebookSearchSession:
@@ -4955,7 +4927,6 @@ class GradebookSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook_search(self):
         """Gets a gradebook search.
@@ -4967,7 +4938,7 @@ class GradebookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookSearch
+        return  # osid.grading.GradebookSearch
 
     gradebook_search = property(fget=get_gradebook_search)
 
@@ -4985,7 +4956,7 @@ class GradebookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookSearchOrder
+        return  # osid.grading.GradebookSearchOrder
 
     gradebook_search_order = property(fget=get_gradebook_search_order)
 
@@ -5007,7 +4978,7 @@ class GradebookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookSearchResults
+        return  # osid.grading.GradebookSearchResults
 
     @abc.abstractmethod
     def get_gradebook_query_from_inspector(self, gradebook_query_inspector):
@@ -5025,7 +4996,7 @@ class GradebookSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQuery
+        return  # osid.grading.GradebookQuery
 
 
 class GradebookAdminSession:
@@ -5061,7 +5032,6 @@ class GradebookAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_gradebooks(self):
         """Tests if this user can create ``Gradebooks``.
@@ -5079,7 +5049,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_gradebook_with_record_types(self, gradebook_record_types):
@@ -5100,7 +5070,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_form_for_create(self, gradebook_record_types):
@@ -5120,7 +5090,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookForm
+        return  # osid.grading.GradebookForm
 
     @abc.abstractmethod
     def create_gradebook(self, gradebook_form):
@@ -5140,7 +5110,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     @abc.abstractmethod
     def can_update_gradebooks(self):
@@ -5159,7 +5129,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_form_for_update(self, gradebook_id):
@@ -5180,7 +5150,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookForm
+        return  # osid.grading.GradebookForm
 
     @abc.abstractmethod
     def update_gradebook(self, gradebook_form):
@@ -5217,7 +5187,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_gradebook(self, gradebook_id):
@@ -5252,7 +5222,7 @@ class GradebookAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_gradebook(self, gradebook_id, alias_id):
@@ -5289,7 +5259,6 @@ class GradebookNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_gradebook_notifications(self):
         """Tests if this user can register for ``Gradebook`` notifications.
@@ -5307,7 +5276,7 @@ class GradebookNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def register_for_new_gradebooks(self):
@@ -5531,10 +5500,8 @@ class GradebookHierarchySession:
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_hierarchy_id(self):
@@ -5547,7 +5514,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_hierarchy_id = property(fget=get_gradebook_hierarchy_id)
 
@@ -5563,7 +5530,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     gradebook_hierarchy = property(fget=get_gradebook_hierarchy)
 
@@ -5584,7 +5551,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_gradebook_view(self):
@@ -5627,7 +5594,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_gradebook_ids = property(fget=get_root_gradebook_ids)
 
@@ -5643,7 +5610,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     root_gradebooks = property(fget=get_root_gradebooks)
 
@@ -5663,7 +5630,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_gradebook(self, id_, gradebook_id):
@@ -5684,7 +5651,7 @@ class GradebookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_gradebook_ids(self, gradebook_id):
@@ -5702,7 +5669,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_gradebooks(self, gradebook_id):
@@ -5720,7 +5687,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def is_ancestor_of_gradebook(self, id_, gradebook_id):
@@ -5741,7 +5708,7 @@ class GradebookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_gradebooks(self, gradebook_id):
@@ -5759,7 +5726,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_gradebook(self, id_, gradebook_id):
@@ -5780,7 +5747,7 @@ class GradebookHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_gradebook_ids(self, gradebook_id):
@@ -5798,7 +5765,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_gradebooks(self, gradebook_id):
@@ -5816,7 +5783,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     @abc.abstractmethod
     def is_descendant_of_gradebook(self, id_, gradebook_id):
@@ -5837,7 +5804,7 @@ class GradebookHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_node_ids(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5861,7 +5828,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_gradebook_nodes(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5885,7 +5852,7 @@ class GradebookHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookNode
+        return  # osid.grading.GradebookNode
 
 
 class GradebookHierarchyDesignSession:
@@ -5895,7 +5862,6 @@ class GradebookHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_hierarchy_id(self):
@@ -5908,7 +5874,7 @@ class GradebookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_hierarchy_id = property(fget=get_gradebook_hierarchy_id)
 
@@ -5924,7 +5890,7 @@ class GradebookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     gradebook_hierarchy = property(fget=get_gradebook_hierarchy)
 
@@ -5945,7 +5911,7 @@ class GradebookHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_gradebook(self, gradebook_id):
@@ -6016,5 +5982,3 @@ class GradebookHierarchyDesignSession:
 
         """
         pass
-
-

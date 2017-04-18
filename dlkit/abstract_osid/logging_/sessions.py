@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LoggingSession:
     """This session is used to log entries to a log."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_id(self):
@@ -35,7 +31,7 @@ class LoggingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -51,7 +47,7 @@ class LoggingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -72,7 +68,7 @@ class LoggingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def log(self, content, content_type):
@@ -127,7 +123,7 @@ class LoggingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryForm
+        return  # osid.logging.LogEntryForm
 
     log_entry_form = property(fget=get_log_entry_form)
 
@@ -153,7 +149,6 @@ class LogEntryLookupSession:
     """This session provides methods for retrieving ``log entries``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
@@ -165,7 +160,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -181,7 +176,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -202,7 +197,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_log_entry_view(self):
@@ -282,7 +277,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntry
+        return  # osid.logging.LogEntry
 
     @abc.abstractmethod
     def get_log_entries_by_ids(self, log_entry_ids):
@@ -308,7 +303,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_genus_type(self, log_entry_genus_type):
@@ -329,7 +324,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_parent_genus_type(self, log_entry_genus_type):
@@ -350,7 +345,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_record_type(self, log_entry_genus_type):
@@ -372,7 +367,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_priority_type(self, priority_type):
@@ -393,7 +388,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_date(self, start, end):
@@ -417,7 +412,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_priority_type_and_date(self, priority_type, start, end):
@@ -443,7 +438,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_for_resource(self, resource_id):
@@ -464,7 +459,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_date_for_resource(self, resource_id, start, end):
@@ -490,7 +485,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries_by_priority_type_and_date_for_resource(self, resource_id, priority_type, start, end):
@@ -518,7 +513,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entries(self):
@@ -536,7 +531,7 @@ class LogEntryLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     log_entries = property(fget=get_log_entries)
 
@@ -554,10 +549,8 @@ class LogEntryQuerySession:
       * isolated log view: searches are restricted to entries in this
         log only
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_id(self):
@@ -570,7 +563,7 @@ class LogEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -586,7 +579,7 @@ class LogEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -607,7 +600,7 @@ class LogEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_log_view(self):
@@ -647,7 +640,7 @@ class LogEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQuery
+        return  # osid.logging.LogEntryQuery
 
     log_entry_query = property(fget=get_log_entry_query)
 
@@ -667,7 +660,7 @@ class LogEntryQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
 
 class LogEntrySearchSession:
@@ -693,10 +686,8 @@ class LogEntrySearchSession:
       * isolated log view: searches are restricted to entries in this
         log only
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_entry_search(self):
@@ -709,7 +700,7 @@ class LogEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntrySearch
+        return  # osid.logging.LogEntrySearch
 
     log_entry_search = property(fget=get_log_entry_search)
 
@@ -727,7 +718,7 @@ class LogEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntrySearchOrder
+        return  # osid.logging.LogEntrySearchOrder
 
     log_entry_search_order = property(fget=get_log_entry_search_order)
 
@@ -749,7 +740,7 @@ class LogEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntrySearchResults
+        return  # osid.logging.LogEntrySearchResults
 
     @abc.abstractmethod
     def get_log_entry_query_from_inspector(self, log_entry_query_inspector):
@@ -767,7 +758,7 @@ class LogEntrySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQuery
+        return  # osid.logging.LogEntryQuery
 
 
 class LogEntryAdminSession:
@@ -807,7 +798,6 @@ class LogEntryAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
@@ -819,7 +809,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -835,7 +825,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -856,7 +846,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_log_entry_with_record_types(self, log_entry_record_types):
@@ -877,7 +867,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_form_for_create(self, log_entry_record_types):
@@ -897,7 +887,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryForm
+        return  # osid.logging.LogEntryForm
 
     @abc.abstractmethod
     def create_log_entry(self, log_entry_form):
@@ -917,7 +907,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntry
+        return  # osid.logging.LogEntry
 
     @abc.abstractmethod
     def can_update_log_entries(self):
@@ -936,7 +926,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_form_for_update(self, log_entry_id):
@@ -957,7 +947,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryForm
+        return  # osid.logging.LogEntryForm
 
     @abc.abstractmethod
     def update_log_entry(self, log_entry_form):
@@ -994,7 +984,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_log_entry(self, log_entry_id):
@@ -1029,7 +1019,7 @@ class LogEntryAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_log_entry(self, log_entry_id, alias_id):
@@ -1070,7 +1060,6 @@ class LogEntryNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
@@ -1082,7 +1071,7 @@ class LogEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -1098,7 +1087,7 @@ class LogEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -1119,7 +1108,7 @@ class LogEntryNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_log_view(self):
@@ -1435,10 +1424,8 @@ class LogEntryLogSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_log_view(self):
@@ -1486,7 +1473,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_ids_by_log(self, log_id):
@@ -1504,7 +1491,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_log_entries_by_log(self, log_id):
@@ -1522,7 +1509,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_entry_ids_by_log(self, log_ids):
@@ -1539,7 +1526,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_log_entrie_by_log(self, log_ids):
@@ -1556,7 +1543,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
     def get_log_ids_by_log_entry(self, log_entry_id):
@@ -1574,7 +1561,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_log_by_log_entry(self, log_entry_id):
@@ -1592,7 +1579,7 @@ class LogEntryLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
 
 class LogEntryLogAssignmentSession:
@@ -1608,7 +1595,6 @@ class LogEntryLogAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_log_entries(self):
@@ -1627,7 +1613,7 @@ class LogEntryLogAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_log_entries_to_log(self, log_id):
@@ -1648,7 +1634,7 @@ class LogEntryLogAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_log_ids(self, log_id):
@@ -1664,7 +1650,7 @@ class LogEntryLogAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_log_ids_for_log_entry(self, log_id, log_entry_id):
@@ -1682,7 +1668,7 @@ class LogEntryLogAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_log_entry_to_log(self, log_entry_id, log_id):
@@ -1760,7 +1746,6 @@ class LogEntrySmartLogSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
@@ -1772,7 +1757,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_id = property(fget=get_log_id)
 
@@ -1788,7 +1773,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -1809,7 +1794,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_query(self):
@@ -1822,7 +1807,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQuery
+        return  # osid.logging.LogEntryQuery
 
     log_entry_query = property(fget=get_log_entry_query)
 
@@ -1837,7 +1822,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntrySearchOrder
+        return  # osid.logging.LogEntrySearchOrder
 
     log_entry_search_order = property(fget=get_log_entry_search_order)
 
@@ -1869,7 +1854,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQueryInspector
+        return  # osid.logging.LogEntryQueryInspector
 
     @abc.abstractmethod
     def apply_log_entry_sequencing(self, log_entry_search_order):
@@ -1901,7 +1886,7 @@ class LogEntrySmartLogSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQuery
+        return  # osid.logging.LogEntryQuery
 
 
 class LogLookupSession:
@@ -1927,7 +1912,6 @@ class LogLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_logs(self):
         """Tests if this user can perform ``Log`` lookups.
@@ -1945,7 +1929,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_log_view(self):
@@ -1997,7 +1981,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     @abc.abstractmethod
     def get_logs_by_ids(self, log_ids):
@@ -2023,7 +2007,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def get_logs_by_genus_type(self, log_genus_type):
@@ -2044,7 +2028,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def get_logs_by_parent_genus_type(self, log_genus_type):
@@ -2065,7 +2049,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def get_logs_by_record_type(self, log_record_type):
@@ -2086,7 +2070,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def get_logs_by_provider(self, resource_id):
@@ -2107,7 +2091,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def get_logs(self):
@@ -2125,7 +2109,7 @@ class LogLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     logs = property(fget=get_logs)
 
@@ -2144,7 +2128,6 @@ class LogQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_search_logs(self):
         """Tests if this user can perform ``Log`` searches.
@@ -2162,7 +2145,7 @@ class LogQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_query(self):
@@ -2175,7 +2158,7 @@ class LogQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQuery
+        return  # osid.logging.LogQuery
 
     log_query = property(fget=get_log_query)
 
@@ -2195,7 +2178,7 @@ class LogQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
 
 class LogSearchSession:
@@ -2221,7 +2204,6 @@ class LogSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_search(self):
         """Gets a log search.
@@ -2233,7 +2215,7 @@ class LogSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogSearch
+        return  # osid.logging.LogSearch
 
     log_search = property(fget=get_log_search)
 
@@ -2251,7 +2233,7 @@ class LogSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogSearchOrder
+        return  # osid.logging.LogSearchOrder
 
     log_search_order = property(fget=get_log_search_order)
 
@@ -2273,7 +2255,7 @@ class LogSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogSearchResults
+        return  # osid.logging.LogSearchResults
 
     @abc.abstractmethod
     def get_log_query_from_inspector(self, log_query_inspector):
@@ -2291,7 +2273,7 @@ class LogSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQuery
+        return  # osid.logging.LogQuery
 
 
 class LogAdminSession:
@@ -2326,7 +2308,6 @@ class LogAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_logs(self):
         """Tests if this user can create ``Logs``.
@@ -2344,7 +2325,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_log_with_record_types(self, log_record_types):
@@ -2365,7 +2346,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_form_for_create(self, log_record_types):
@@ -2385,7 +2366,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogForm
+        return  # osid.logging.LogForm
 
     @abc.abstractmethod
     def create_log(self, log_form):
@@ -2405,7 +2386,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     @abc.abstractmethod
     def can_update_logs(self):
@@ -2424,7 +2405,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_form_for_update(self, log_id):
@@ -2444,7 +2425,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogForm
+        return  # osid.logging.LogForm
 
     @abc.abstractmethod
     def update_log(self, log_form):
@@ -2481,7 +2462,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_log(self, log_id):
@@ -2516,7 +2497,7 @@ class LogAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_log(self, log_id, alias_id):
@@ -2557,7 +2538,6 @@ class LogNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_log_notifications(self):
         """Tests if this user can register for ``Log`` notifications.
@@ -2575,7 +2555,7 @@ class LogNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_log_notifications(self):
@@ -2818,10 +2798,8 @@ class LogHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_hierarchy_id(self):
@@ -2834,7 +2812,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_hierarchy_id = property(fget=get_log_hierarchy_id)
 
@@ -2850,7 +2828,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     log_hierarchy = property(fget=get_log_hierarchy)
 
@@ -2871,7 +2849,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_log_view(self):
@@ -2914,7 +2892,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_log_ids = property(fget=get_root_log_ids)
 
@@ -2935,7 +2913,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     root_logs = property(fget=get_root_logs)
 
@@ -2955,7 +2933,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_log(self, id_, log_id):
@@ -2976,7 +2954,7 @@ class LogHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_log_ids(self, log_id):
@@ -2994,7 +2972,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_logs(self, log_id):
@@ -3012,7 +2990,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def is_ancestor_of_log(self, id_, log_id):
@@ -3033,7 +3011,7 @@ class LogHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_logs(self, log_id):
@@ -3051,7 +3029,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_log(self, id_, log_id):
@@ -3072,7 +3050,7 @@ class LogHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_log_ids(self, log_id):
@@ -3090,7 +3068,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_logs(self, log_id):
@@ -3108,7 +3086,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     @abc.abstractmethod
     def is_descendant_of_log(self, id_, log_id):
@@ -3129,7 +3107,7 @@ class LogHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_node_ids(self, log_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3153,7 +3131,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_log_nodes(self, log_id, ancestor_levels, descendant_levels, include_siblings):
@@ -3177,7 +3155,7 @@ class LogHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogNode
+        return  # osid.logging.LogNode
 
 
 class LogHierarchyDesignSession:
@@ -3190,7 +3168,6 @@ class LogHierarchyDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -3202,7 +3179,7 @@ class LogHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     log_hierarchy_id = property(fget=get_log_hierarchy_id)
 
@@ -3218,7 +3195,7 @@ class LogHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     log_hierarchy = property(fget=get_log_hierarchy)
 
@@ -3239,7 +3216,7 @@ class LogHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_log(self, log_id):
@@ -3326,5 +3303,3 @@ class LogHierarchyDesignSession:
 
         """
         pass
-
-

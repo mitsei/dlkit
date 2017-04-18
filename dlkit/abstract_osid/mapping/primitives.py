@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -32,7 +31,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     coordinate_type = abc.abstractproperty(fget=get_coordinate_type)
 
@@ -47,7 +46,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     dimensions = abc.abstractproperty(fget=get_dimensions)
 
@@ -64,7 +63,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     values = abc.abstractproperty(fget=get_values)
 
@@ -79,7 +78,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_uncertainty_minus(self):
@@ -95,7 +94,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_minus = abc.abstractproperty(fget=get_uncertainty_minus)
 
@@ -113,7 +112,7 @@ class Coordinate:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_plus = abc.abstractproperty(fget=get_uncertainty_plus)
 
@@ -133,7 +132,7 @@ class Speed:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     distance = abc.abstractproperty(fget=get_distance)
 
@@ -148,7 +147,7 @@ class Speed:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     time_unit = abc.abstractproperty(fget=get_time_unit)
 
@@ -168,7 +167,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     heading_type = abc.abstractproperty(fget=get_heading_type)
 
@@ -183,7 +182,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     dimensions = abc.abstractproperty(fget=get_dimensions)
 
@@ -198,7 +197,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     values = abc.abstractproperty(fget=get_values)
 
@@ -213,7 +212,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_uncertainty_minus(self):
@@ -229,7 +228,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_minus = abc.abstractproperty(fget=get_uncertainty_minus)
 
@@ -247,7 +246,7 @@ class Heading:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_plus = abc.abstractproperty(fget=get_uncertainty_plus)
 
@@ -272,7 +271,7 @@ class SpatialUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     center_coordinate = abc.abstractproperty(fget=get_center_coordinate)
 
@@ -287,7 +286,7 @@ class SpatialUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.CoordinateList
+        return  # osid.mapping.CoordinateList
 
     bounding_coordinates = abc.abstractproperty(fget=get_bounding_coordinates)
 
@@ -310,7 +309,7 @@ class SpatialUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.SpatialUnitRecord
+        return  # osid.mapping.records.SpatialUnitRecord
 
 
 class Distance:
@@ -330,7 +329,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     yotta_parsecs = abc.abstractproperty(fget=get_yotta_parsecs)
 
@@ -347,7 +346,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     exa_parsecs = abc.abstractproperty(fget=get_exa_parsecs)
 
@@ -365,7 +364,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     giga_parsecs = abc.abstractproperty(fget=get_giga_parsecs)
 
@@ -382,7 +381,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     yottameters = abc.abstractproperty(fget=get_yottameters)
 
@@ -399,7 +398,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     zettameters = abc.abstractproperty(fget=get_zettameters)
 
@@ -416,7 +415,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     exameters = abc.abstractproperty(fget=get_exameters)
 
@@ -433,7 +432,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     parsecs = abc.abstractproperty(fget=get_parsecs)
 
@@ -450,7 +449,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     light_years = abc.abstractproperty(fget=get_light_years)
 
@@ -467,7 +466,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     petameters = abc.abstractproperty(fget=get_petameters)
 
@@ -484,7 +483,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     terameters = abc.abstractproperty(fget=get_terameters)
 
@@ -501,7 +500,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     gigameters = abc.abstractproperty(fget=get_gigameters)
 
@@ -518,7 +517,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     megameters = abc.abstractproperty(fget=get_megameters)
 
@@ -535,7 +534,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     kilometers = abc.abstractproperty(fget=get_kilometers)
 
@@ -552,7 +551,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     meters = abc.abstractproperty(fget=get_meters)
 
@@ -567,7 +566,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     atto_parsecs = abc.abstractproperty(fget=get_atto_parsecs)
 
@@ -584,7 +583,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     centimeters = abc.abstractproperty(fget=get_centimeters)
 
@@ -601,7 +600,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     millimeters = abc.abstractproperty(fget=get_millimeters)
 
@@ -618,7 +617,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     microns = abc.abstractproperty(fget=get_microns)
 
@@ -635,7 +634,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     nanometers = abc.abstractproperty(fget=get_nanometers)
 
@@ -652,7 +651,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     angstroms = abc.abstractproperty(fget=get_angstroms)
 
@@ -669,7 +668,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     picometers = abc.abstractproperty(fget=get_picometers)
 
@@ -686,7 +685,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     femtometers = abc.abstractproperty(fget=get_femtometers)
 
@@ -703,7 +702,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     attometers = abc.abstractproperty(fget=get_attometers)
 
@@ -720,7 +719,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     zeptometers = abc.abstractproperty(fget=get_zeptometers)
 
@@ -737,7 +736,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     yoctometers = abc.abstractproperty(fget=get_yoctometers)
 
@@ -754,7 +753,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     xoxxometers = abc.abstractproperty(fget=get_xoxxometers)
 
@@ -771,7 +770,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     weebleometers = abc.abstractproperty(fget=get_weebleometers)
 
@@ -788,7 +787,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     vatometers = abc.abstractproperty(fget=get_vatometers)
 
@@ -805,7 +804,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     plancks = abc.abstractproperty(fget=get_plancks)
 
@@ -824,7 +823,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.DistanceResolution
+        return  # osid.mapping.DistanceResolution
 
     granularity = abc.abstractproperty(fget=get_granularity)
 
@@ -842,7 +841,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     granularity_multiplier = abc.abstractproperty(fget=get_granularity_multiplier)
 
@@ -857,7 +856,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_uncertainty_units(self):
@@ -870,7 +869,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.DistanceResolution
+        return  # osid.mapping.DistanceResolution
 
     uncertainty_units = abc.abstractproperty(fget=get_uncertainty_units)
 
@@ -885,7 +884,7 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_minus = abc.abstractproperty(fget=get_uncertainty_minus)
 
@@ -900,8 +899,6 @@ class Distance:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     uncertainty_plus = abc.abstractproperty(fget=get_uncertainty_plus)
-
-

@@ -20,11 +20,8 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.resource import searches as abc_resource_searches
 
 
-
-
 class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSearch):
     """The search interface for governing resource searches."""
-
     def __init__(self, runtime):
         self._namespace = 'resource.Resource'
         self._runtime = runtime
@@ -36,7 +33,6 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_searches.OsidSearch.__init__(self, runtime)
-
     @utilities.arguments_not_none
     def search_among_resources(self, resource_ids):
         """Execute this search among the given list of resources.
@@ -85,16 +81,16 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
+
+
 class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-
     def __init__(self, results, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
         self._results = results
         self._runtime = runtime
         self.retrieved = False
-
     def get_resources(self):
         """Gets the resource list resulting from a search.
 
@@ -143,6 +139,8 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
@@ -194,6 +192,8 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
         raise errors.Unimplemented()
 
 
+
+
 class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -240,5 +240,3 @@ class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.Osi
 
         """
         raise errors.Unimplemented()
-
-

@@ -32,18 +32,13 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.id.primitives import Id
 
 
-
-
 class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
     """A log entry consists of a time, an agent, and a priority type."""
-
     _namespace = 'logging.LogEntry'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='LOG_ENTRY', **kwargs)
         self._catalog_name = 'Log'
-
-
     def get_priority(self):
         """Gets the priority level of this entry.
 
@@ -191,6 +186,8 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
     object_map = property(fget=get_object_map)
 
 
+
+
 class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating log entries.
 
@@ -201,7 +198,6 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
     constraints.
 
     """
-
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, object_name='LOG_ENTRY', **kwargs)
         self._mdata = default_mdata.get_log_entry_mdata()
@@ -222,8 +218,6 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         self._my_map['timestamp'] = self._timestamp_default
         self._my_map['assignedLogIds'] = [str(kwargs['log_id'])]
         self._my_map['agentId'] = self._agent_default
-
-
     def get_priority_metadata(self):
         """Gets the metadata for a priority type.
 
@@ -357,6 +351,8 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         return self._get_record(log_entry_record_type)
 
 
+
+
 class LogEntryList(abc_logging_objects.LogEntryList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``LogList`` provides a means for accessing ``LogEntry`` elements sequentially either one at a time or many at a time.
 
@@ -367,8 +363,6 @@ class LogEntryList(abc_logging_objects.LogEntryList, osid_objects.OsidList):
       while (lel.hasNext()) {
            LogEntry[] entries = lel.getNextLogEntries(lel.available());
       }
-
-
 
     """
 
@@ -414,6 +408,8 @@ class LogEntryList(abc_logging_objects.LogEntryList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class Log(abc_logging_objects.Log, osid_objects.OsidCatalog):
     """A ``Log`` represents a collection of entries.
 
@@ -421,12 +417,10 @@ class Log(abc_logging_objects.Log, osid_objects.OsidCatalog):
     persisted references should use the ``Id``.
 
     """
-
     _namespace = 'logging.Log'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='LOG', **kwargs)
-
     @utilities.arguments_not_none
     def get_log_record(self, log_record_type):
         """Gets the record corresponding to the given ``Log`` record ``Type``.
@@ -450,6 +444,8 @@ class Log(abc_logging_objects.Log, osid_objects.OsidCatalog):
         raise errors.Unimplemented()
 
 
+
+
 class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating ``Logs``.
 
@@ -459,7 +455,6 @@ class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
     provide display hints or data constraints.
 
     """
-
     _namespace = 'logging.Log'
 
     def __init__(self, **kwargs):
@@ -476,8 +471,6 @@ class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
-
-
     @utilities.arguments_not_none
     def get_log_form_record(self, log_record_type):
         """Gets the ``LogFormRecord`` corresponding to the given log record ``Type``.
@@ -495,6 +488,8 @@ class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
         raise errors.Unimplemented()
 
 
+
+
 class LogList(abc_logging_objects.LogList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``LogList`` provides a means for accessing ``Log`` elements sequentially either one at a time or many at a time.
 
@@ -504,8 +499,6 @@ class LogList(abc_logging_objects.LogList, osid_objects.OsidList):
       while (ll.hasNext()) {
            Log[] logs = ll.getNextLogs(ll.available());
       }
-
-
 
     """
 
@@ -549,6 +542,8 @@ class LogList(abc_logging_objects.LogList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class LogNode(abc_logging_objects.LogNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -557,7 +552,6 @@ class LogNode(abc_logging_objects.LogNode, osid_objects.OsidNode):
     ``LogHierarchySession``.
 
     """
-
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -574,7 +568,6 @@ class LogNode(abc_logging_objects.LogNode, osid_objects.OsidNode):
         for log_node in self.get_child_log_nodes():
             node_map['childNodes'].append(log_node.get_object_node_map())
         return node_map
-
     def get_log(self):
         """Gets the ``Log`` at this node.
 
@@ -626,6 +619,8 @@ class LogNode(abc_logging_objects.LogNode, osid_objects.OsidNode):
     child_log_nodes = property(fget=get_child_log_nodes)
 
 
+
+
 class LogNodeList(abc_logging_objects.LogNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``LogNodeList`` provides a means for accessing ``LogNode`` elements sequentially either one at a time or many at a time.
 
@@ -636,8 +631,6 @@ class LogNodeList(abc_logging_objects.LogNodeList, osid_objects.OsidList):
       while (lnl.hasNext()) {
            LogNode[] nodes = lnl.getNextLogNodes(lnl.available());
       }
-
-
 
     """
 
@@ -681,5 +674,3 @@ class LogNodeList(abc_logging_objects.LogNodeList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

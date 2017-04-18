@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.locale import managers as locale_managers
 
 
-
-
 class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
     """The locale profile describes the interoperability of locale services."""
 
@@ -407,6 +405,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
     source_format_types = property(fget=get_source_format_types)
 
 
+
+
 class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.LocaleManager):
     """The locale manager provides access to locale sessions and provides interoperability tests for various aspects of this service.
 
@@ -436,11 +436,10 @@ class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.Lo
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
 
 
 
@@ -476,12 +475,6 @@ class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, locale_m
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-
-
-

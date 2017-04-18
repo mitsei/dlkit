@@ -42,8 +42,6 @@ ENCLOSURE_RECORD_TYPE = Type(
     authority='ODL.MIT.EDU')
 
 
-
-
 class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy.
 
@@ -67,7 +65,6 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
     authorized pathways.
 
     """
-
     _session_namespace = 'hierarchy.HierarchyTraversalSession'
 
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -134,7 +131,6 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
                                        display_label=display_label,
                                        description=description,
                                        domain=domain)
-
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -393,6 +389,8 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
                              'sequestered': False})
 
 
+
+
 class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid_sessions.OsidSession):
     """This session provides methods to manage a hierarchy.
 
@@ -402,7 +400,6 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
     inherited data, in the associated OSID.
 
     """
-
     _session_namespace = 'hierarchy.HierarchyDesignSession'
 
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -467,7 +464,6 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
                                        display_label=display_label,
                                        description=description,
                                        domain=domain)
-
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -627,6 +623,8 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
         self._ras.create_relationship(rfc)
 
 
+
+
 class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Hierarchy`` objects.
 
@@ -649,7 +647,6 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
     of precision.
 
     """
-
     _session_namespace = 'hierarchy.HierarchyLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -660,7 +657,6 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
-
     def can_lookup_hierarchies(self):
         """Tests if this user can perform ``Hierarchy`` lookups.
 
@@ -916,6 +912,8 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
     hierarchies = property(fget=get_hierarchies)
 
 
+
+
 class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Hierarchies``.
 
@@ -947,7 +945,6 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
     external ``Id`` to an internally assigned Id.
 
     """
-
     _session_namespace = 'hierarchy.HierarchyAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -957,7 +954,6 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_create_hierarchies(self):
         """Tests if this user can create ``Hierarchy`` objects.
 
@@ -1278,5 +1274,3 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=hierarchy_id, alias_id=osid.id.Id)
         self._alias_id(primary_id=hierarchy_id, equivalent_id=alias_id)
-
-

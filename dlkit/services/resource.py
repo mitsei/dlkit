@@ -37,10 +37,8 @@ DISABLED = -1
 
 class ResourceProfile(osid.OsidProfile, resource_managers.ResourceProfile):
     """ResourceProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_resource_lookup(self):
         """Pass through to provider supports_resource_lookup"""
         # Implemented from kitosid template for -
@@ -176,7 +174,6 @@ class ResourceProfile(osid.OsidProfile, resource_managers.ResourceProfile):
 
 class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resource_managers.ResourceManager):
     """ResourceManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -297,7 +294,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_resource_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_resource_lookup_session"""
         # Implemented from kitosid template for -
@@ -1056,7 +1052,6 @@ class ResourceProxyManager(osid.OsidProxyManager, ResourceProfile, resource_mana
 
 class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
     """Bin convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -1194,7 +1189,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_bin_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

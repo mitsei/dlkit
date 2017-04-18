@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestResourceProfile(unittest.TestCase):
     """Tests for ResourceProfile"""
 
@@ -102,6 +104,8 @@ class TestResourceProfile(unittest.TestCase):
     def test_get_bin_search_record_types(self):
         """Tests get_bin_search_record_types"""
         self.assertTrue(isinstance(self.mgr.get_bin_search_record_types(), abc_type_list))
+
+
 
 
 class TestResourceManager(unittest.TestCase):
@@ -257,6 +261,8 @@ class TestResourceManager(unittest.TestCase):
         #     self.mgr.get_resource_demographic_manager()
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_manager()
+
+
 
 
 class TestResourceProxyManager(unittest.TestCase):

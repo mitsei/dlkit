@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.relationship import searches as abc_relationship_searches
 
 
-
-
 class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_searches.OsidSearch):
     """The search interface for governing relationship searches."""
 
@@ -69,6 +67,8 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResults, osid_searches.OsidSearchResults):
@@ -125,6 +125,8 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         raise errors.Unimplemented()
 
 
+
+
 class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSearch):
     """The search interface for governing family searches."""
 
@@ -177,6 +179,8 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
+
+
 class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search and is used as a vehicle to perform a search within a previous result set."""
 
@@ -225,5 +229,3 @@ class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_se
 
         """
         raise errors.Unimplemented()
-
-

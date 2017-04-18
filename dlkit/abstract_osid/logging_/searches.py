@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LogEntrySearch:
     """The search interface for governing log entry searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_log_entries(self, log_entry_ids):
@@ -69,13 +65,12 @@ class LogEntrySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntrySearchRecord
+        return  # osid.logging.records.LogEntrySearchRecord
 
 
 class LogEntrySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_entries(self):
@@ -88,7 +83,7 @@ class LogEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryList
+        return  # osid.logging.LogEntryList
 
     log_entries = property(fget=get_log_entries)
 
@@ -103,7 +98,7 @@ class LogEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntryQueryInspector
+        return  # osid.logging.LogEntryQueryInspector
 
     log_entry_query_inspector = property(fget=get_log_entry_query_inspector)
 
@@ -125,13 +120,12 @@ class LogEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntrySearchResultsRecord
+        return  # osid.logging.records.LogEntrySearchResultsRecord
 
 
 class LogSearch:
     """The search interface for governing log searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_logs(self, log_ids):
@@ -178,13 +172,12 @@ class LogSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogSearchRecord
+        return  # osid.logging.records.LogSearchRecord
 
 
 class LogSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_logs(self):
@@ -197,7 +190,7 @@ class LogSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogList
+        return  # osid.logging.LogList
 
     logs = property(fget=get_logs)
 
@@ -212,7 +205,7 @@ class LogSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogQueryInspector
+        return  # osid.logging.LogQueryInspector
 
     log_query_inspector = property(fget=get_log_query_inspector)
 
@@ -234,6 +227,4 @@ class LogSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogSearchResultsRecord
-
-
+        return  # osid.logging.records.LogSearchResultsRecord

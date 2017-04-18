@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentPartQueryInspector:
     """This is the query inspector for examining assessment part queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_id_terms(self):
@@ -35,7 +31,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
@@ -50,7 +46,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_terms = property(fget=get_assessment_terms)
 
@@ -65,7 +61,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     parent_assessment_part_id_terms = property(fget=get_parent_assessment_part_id_terms)
 
@@ -80,7 +76,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     parent_assessment_part_terms = property(fget=get_parent_assessment_part_terms)
 
@@ -95,7 +91,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     section_terms = property(fget=get_section_terms)
 
@@ -110,7 +106,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalTerm
+        return  # osid.search.terms.CardinalTerm
 
     weight_terms = property(fget=get_weight_terms)
 
@@ -125,7 +121,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     allocated_time_terms = property(fget=get_allocated_time_terms)
 
@@ -140,7 +136,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     child_assessment_part_id_terms = property(fget=get_child_assessment_part_id_terms)
 
@@ -155,7 +151,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     child_assessment_part_terms = property(fget=get_child_assessment_part_terms)
 
@@ -170,7 +166,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -185,7 +181,7 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -204,13 +200,12 @@ class AssessmentPartQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartQueryInspectorRecord
+        return  # osid.assessment.authoring.records.AssessmentPartQueryInspectorRecord
 
 
 class SequenceRuleQueryInspector:
     """This is the query inspector for examining sequence rule queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_part_id_terms(self):
@@ -223,7 +218,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     assessment_part_id_terms = property(fget=get_assessment_part_id_terms)
 
@@ -238,7 +233,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     assessment_part_terms = property(fget=get_assessment_part_terms)
 
@@ -253,7 +248,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     next_assessment_part_id_terms = property(fget=get_next_assessment_part_id_terms)
 
@@ -268,7 +263,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     next_assessment_part_terms = property(fget=get_next_assessment_part_terms)
 
@@ -283,7 +278,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     minimum_score_terms = property(fget=get_minimum_score_terms)
 
@@ -298,7 +293,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     maximum_score_terms = property(fget=get_maximum_score_terms)
 
@@ -313,7 +308,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     cumulative_terms = property(fget=get_cumulative_terms)
 
@@ -328,7 +323,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     applied_assessment_part_id_terms = property(fget=get_applied_assessment_part_id_terms)
 
@@ -343,7 +338,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartQueryInspector
+        return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     applied_assessment_part_terms = property(fget=get_applied_assessment_part_terms)
 
@@ -358,7 +353,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -373,7 +368,7 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -392,13 +387,12 @@ class SequenceRuleQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleQueryInspectorRecord
+        return  # osid.assessment.authoring.records.SequenceRuleQueryInspectorRecord
 
 
 class SequenceRuleEnablerQueryInspector:
     """This is the query inspector for examining sequence rule enabler queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_ruled_sequence_rule_id_terms(self):
@@ -411,7 +405,7 @@ class SequenceRuleEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ruled_sequence_rule_id_terms = property(fget=get_ruled_sequence_rule_id_terms)
 
@@ -426,7 +420,7 @@ class SequenceRuleEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleQueryInspector
+        return  # osid.assessment.authoring.SequenceRuleQueryInspector
 
     ruled_sequence_rule_terms = property(fget=get_ruled_sequence_rule_terms)
 
@@ -441,7 +435,7 @@ class SequenceRuleEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     bank_id_terms = property(fget=get_bank_id_terms)
 
@@ -456,7 +450,7 @@ class SequenceRuleEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_terms = property(fget=get_bank_terms)
 
@@ -475,6 +469,4 @@ class SequenceRuleEnablerQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerQueryInspectorRecord
-
-
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerQueryInspectorRecord

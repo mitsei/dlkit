@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Asset:
     """An ``Asset`` represents some digital content.
 
@@ -93,7 +90,6 @@ class Asset:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_title(self):
         """Gets the proper title of this asset.
@@ -108,7 +104,7 @@ class Asset:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     title = property(fget=get_title)
 
@@ -124,7 +120,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_public_domain(self):
@@ -141,7 +137,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_copyright(self):
@@ -157,7 +153,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     copyright_ = property(fget=get_copyright)
 
@@ -172,7 +168,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     copyright_registration = property(fget=get_copyright_registration)
 
@@ -195,7 +191,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_distribute_alterations(self):
@@ -219,7 +215,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_distribute_compositions(self):
@@ -241,7 +237,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_source_id(self):
@@ -269,7 +265,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     source_id = property(fget=get_source_id)
 
@@ -290,7 +286,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     source = property(fget=get_source)
 
@@ -305,7 +301,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     provider_link_ids = property(fget=get_provider_link_ids)
 
@@ -320,7 +316,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     provider_links = property(fget=get_provider_links)
 
@@ -337,7 +333,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     created_date = property(fget=get_created_date)
 
@@ -356,7 +352,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_published_date(self):
@@ -373,7 +369,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     published_date = property(fget=get_published_date)
 
@@ -388,7 +384,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     principal_credit_string = property(fget=get_principal_credit_string)
 
@@ -403,7 +399,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     asset_content_ids = property(fget=get_asset_content_ids)
 
@@ -418,7 +414,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentList
+        return  # osid.repository.AssetContentList
 
     asset_contents = property(fget=get_asset_contents)
 
@@ -433,7 +429,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_composition_id(self):
@@ -446,7 +442,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     composition_id = property(fget=get_composition_id)
 
@@ -462,7 +458,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Composition
+        return  # osid.repository.Composition
 
     composition = property(fget=get_composition)
 
@@ -487,7 +483,7 @@ can_distribute_compositions()`` may also be ``false``.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetRecord
+        return  # osid.repository.records.AssetRecord
 
 
 class AssetForm:
@@ -502,7 +498,6 @@ class AssetForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_title_metadata(self):
         """Gets the metadata for an asset title.
@@ -514,7 +509,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     title_metadata = property(fget=get_title_metadata)
 
@@ -557,7 +552,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     public_domain_metadata = property(fget=get_public_domain_metadata)
 
@@ -598,7 +593,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     copyright_metadata = property(fget=get_copyright_metadata)
 
@@ -641,7 +636,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     copyright_registration_metadata = property(fget=get_copyright_registration_metadata)
 
@@ -684,7 +679,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     distribute_verbatim_metadata = property(fget=get_distribute_verbatim_metadata)
 
@@ -726,7 +721,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     distribute_alterations_metadata = property(fget=get_distribute_alterations_metadata)
 
@@ -770,7 +765,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     distribute_compositions_metadata = property(fget=get_distribute_compositions_metadata)
 
@@ -814,7 +809,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     source_metadata = property(fget=get_source_metadata)
 
@@ -857,7 +852,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     provider_links_metadata = property(fget=get_provider_links_metadata)
 
@@ -900,7 +895,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     created_date_metadata = property(fget=get_created_date_metadata)
 
@@ -943,7 +938,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     published_metadata = property(fget=get_published_metadata)
 
@@ -984,7 +979,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     published_date_metadata = property(fget=get_published_date_metadata)
 
@@ -1027,7 +1022,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     principal_credit_string_metadata = property(fget=get_principal_credit_string_metadata)
 
@@ -1070,7 +1065,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     composition_metadata = property(fget=get_composition_metadata)
 
@@ -1117,7 +1112,7 @@ class AssetForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetFormRecord
+        return  # osid.repository.records.AssetFormRecord
 
 
 class AssetList:
@@ -1130,11 +1125,8 @@ class AssetList:
            Asset[] assets = al.getNextAssets(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_asset(self):
@@ -1148,7 +1140,7 @@ class AssetList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
     next_asset = property(fget=get_next_asset)
 
@@ -1166,7 +1158,7 @@ class AssetList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
 
 class AssetContent:
@@ -1183,7 +1175,6 @@ class AssetContent:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_asset_id(self):
         """Gets the ``Asset Id`` corresponding to this content.
@@ -1195,7 +1186,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     asset_id = property(fget=get_asset_id)
 
@@ -1210,7 +1201,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Asset
+        return  # osid.repository.Asset
 
     asset = property(fget=get_asset)
 
@@ -1225,7 +1216,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     accessibility_types = property(fget=get_accessibility_types)
 
@@ -1240,7 +1231,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_data_length(self):
@@ -1253,7 +1244,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     data_length = property(fget=get_data_length)
 
@@ -1268,7 +1259,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.DataInputStream
+        return  # osid.transport.DataInputStream
 
     data = property(fget=get_data)
 
@@ -1283,7 +1274,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_url(self):
@@ -1296,7 +1287,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     url = property(fget=get_url)
 
@@ -1321,7 +1312,7 @@ class AssetContent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetContentRecord
+        return  # osid.repository.records.AssetContentRecord
 
 
 class AssetContentForm:
@@ -1336,7 +1327,6 @@ class AssetContentForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_accessibility_type_metadata(self):
         """Gets the metadata for an accessibility type.
@@ -1348,7 +1338,7 @@ class AssetContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     accessibility_type_metadata = property(fget=get_accessibility_type_metadata)
 
@@ -1408,7 +1398,7 @@ class AssetContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     data_metadata = property(fget=get_data_metadata)
 
@@ -1451,7 +1441,7 @@ class AssetContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     url_metadata = property(fget=get_url_metadata)
 
@@ -1498,7 +1488,7 @@ class AssetContentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetContentFormRecord
+        return  # osid.repository.records.AssetContentFormRecord
 
 
 class AssetContentList:
@@ -1512,11 +1502,8 @@ class AssetContentList:
            AssetContent[] contents = acl.getNextAssetContents(acl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_asset_content(self):
@@ -1530,7 +1517,7 @@ class AssetContentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContent
+        return  # osid.repository.AssetContent
 
     next_asset_content = property(fget=get_next_asset_content)
 
@@ -1548,7 +1535,7 @@ class AssetContentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContent
+        return  # osid.repository.AssetContent
 
 
 class Composition:
@@ -1559,7 +1546,6 @@ class Composition:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_children_ids(self):
@@ -1572,7 +1558,7 @@ class Composition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     children_ids = property(fget=get_children_ids)
 
@@ -1587,7 +1573,7 @@ class Composition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     children = property(fget=get_children)
 
@@ -1612,7 +1598,7 @@ class Composition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionRecord
+        return  # osid.repository.records.CompositionRecord
 
 
 class CompositionForm:
@@ -1626,7 +1612,6 @@ class CompositionForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_composition_form_record(self, composition_record_type):
@@ -1643,7 +1628,7 @@ class CompositionForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionFormRecord
+        return  # osid.repository.records.CompositionFormRecord
 
 
 class CompositionList:
@@ -1657,11 +1642,8 @@ class CompositionList:
            Composition[] compositions = cl.getNextCompositions(cl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_composition(self):
@@ -1675,7 +1657,7 @@ class CompositionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Composition
+        return  # osid.repository.Composition
 
     next_composition = property(fget=get_next_composition)
 
@@ -1693,13 +1675,12 @@ class CompositionList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Composition
+        return  # osid.repository.Composition
 
 
 class Repository:
     """A repository defines a collection of assets."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_record(self, repository_record_type):
@@ -1722,7 +1703,7 @@ class Repository:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositoryRecord
+        return  # osid.repository.records.RepositoryRecord
 
 
 class RepositoryForm:
@@ -1736,7 +1717,6 @@ class RepositoryForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repository_form_record(self, repository_record_type):
@@ -1753,7 +1733,7 @@ class RepositoryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositoryFormRecord
+        return  # osid.repository.records.RepositoryFormRecord
 
 
 class RepositoryList:
@@ -1767,11 +1747,8 @@ class RepositoryList:
            Repository[] repositories = rl.getNextRepositories(rl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_repository(self):
@@ -1785,7 +1762,7 @@ class RepositoryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     next_repository = property(fget=get_next_repository)
 
@@ -1803,7 +1780,7 @@ class RepositoryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
 
 class RepositoryNode:
@@ -1816,7 +1793,6 @@ class RepositoryNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_repository(self):
         """Gets the ``Repository`` at this node.
@@ -1828,7 +1804,7 @@ class RepositoryNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.Repository
+        return  # osid.repository.Repository
 
     repository = property(fget=get_repository)
 
@@ -1843,7 +1819,7 @@ class RepositoryNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryNodeList
+        return  # osid.repository.RepositoryNodeList
 
     parent_repository_nodes = property(fget=get_parent_repository_nodes)
 
@@ -1858,7 +1834,7 @@ class RepositoryNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryNodeList
+        return  # osid.repository.RepositoryNodeList
 
     child_repository_nodes = property(fget=get_child_repository_nodes)
 
@@ -1874,11 +1850,8 @@ class RepositoryNodeList:
            RepositoryNode[] nodes = rnl.getNextRepositoryNodes(rnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_repository_node(self):
@@ -1892,7 +1865,7 @@ class RepositoryNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryNode
+        return  # osid.repository.RepositoryNode
 
     next_repository_node = property(fget=get_next_repository_node)
 
@@ -1910,6 +1883,4 @@ class RepositoryNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryNode
-
-
+        return  # osid.repository.RepositoryNode

@@ -36,10 +36,8 @@ DISABLED = -1
 
 class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
     """LocaleProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def get_language_types_for_source(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -199,7 +197,6 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
 class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_managers.LocaleManager):
     """LocaleManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -320,7 +317,6 @@ class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_ma
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
 
 
 

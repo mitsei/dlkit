@@ -37,10 +37,8 @@ DISABLED = -1
 
 class AuthorizationProfile(osid.OsidProfile, authorization_managers.AuthorizationProfile):
     """AuthorizationProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_authorization(self):
         """Pass through to provider supports_authorization"""
         # Implemented from kitosid template for -
@@ -161,7 +159,6 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
 
 class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProfile, authorization_managers.AuthorizationManager):
     """AuthorizationManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -282,7 +279,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_authorization_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_session"""
         # Implemented from kitosid template for -
@@ -674,7 +670,6 @@ class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, aut
 
 class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog):
     """Vault convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -812,7 +807,6 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_vault_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

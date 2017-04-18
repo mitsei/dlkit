@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.assessment_authoring import searches as abc_assessment_authoring_searches
 
 
-
-
 class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearch, osid_searches.OsidSearch):
     """The search interface for governing assessment part searches."""
 
@@ -72,6 +70,8 @@ class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearc
         raise errors.Unimplemented()
 
 
+
+
 class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPartSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -123,6 +123,8 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, osid_searches.OsidSearch):
@@ -179,6 +181,8 @@ class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, o
         raise errors.Unimplemented()
 
 
+
+
 class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -229,5 +233,3 @@ class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSe
 
         """
         raise errors.Unimplemented()
-
-

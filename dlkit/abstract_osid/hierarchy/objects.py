@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Hierarchy:
     """A ``Hierarchy`` represents an authenticatable identity.
 
@@ -27,7 +24,6 @@ class Hierarchy:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchy_record(self, hierarchy_record_type):
@@ -50,7 +46,7 @@ class Hierarchy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchyRecord
+        return  # osid.hierarchy.records.HierarchyRecord
 
 
 class HierarchyForm:
@@ -64,7 +60,6 @@ class HierarchyForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchy_form_record(self, hierarchy_record_type):
@@ -81,7 +76,7 @@ class HierarchyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchyFormRecord
+        return  # osid.hierarchy.records.HierarchyFormRecord
 
 
 class HierarchyList:
@@ -95,11 +90,8 @@ class HierarchyList:
            Hierarchy[] hierarchies = hl.getNextHierarchies(hl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_hierarchy(self):
@@ -113,7 +105,7 @@ class HierarchyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     next_hierarchy = property(fget=get_next_hierarchy)
 
@@ -134,7 +126,7 @@ class HierarchyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
 
 class Node:
@@ -147,7 +139,6 @@ class Node:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_parents(self):
         """Gets the parents of this node.
@@ -159,7 +150,7 @@ class Node:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.NodeList
+        return  # osid.hierarchy.NodeList
 
     parents = property(fget=get_parents)
 
@@ -174,7 +165,7 @@ class Node:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.NodeList
+        return  # osid.hierarchy.NodeList
 
     children = property(fget=get_children)
 
@@ -189,11 +180,8 @@ class NodeList:
            Node[] nodes = nl.getNextNodes(nl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_node(self):
@@ -207,7 +195,7 @@ class NodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     next_node = property(fget=get_next_node)
 
@@ -228,6 +216,4 @@ class NodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
-
-
+        return  # osid.hierarchy.Node

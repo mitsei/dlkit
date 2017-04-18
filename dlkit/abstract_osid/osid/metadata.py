@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Metadata:
     """The ``Metadata`` interface defines a set of methods describing a the syntax and rules for creating and updating a data element inside an ``OsidForm``.
 
@@ -28,7 +25,6 @@ class Metadata:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_element_id(self):
@@ -41,7 +37,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     element_id = property(fget=get_element_id)
 
@@ -56,7 +52,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     element_label = property(fget=get_element_label)
 
@@ -75,7 +71,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     instructions = property(fget=get_instructions)
 
@@ -90,7 +86,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Syntax
+        return  # osid.Syntax
 
     syntax = property(fget=get_syntax)
 
@@ -105,7 +101,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_required(self):
@@ -118,7 +114,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_read_only(self):
@@ -135,7 +131,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_linked(self):
@@ -151,7 +147,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_value_known(self):
@@ -167,7 +163,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_value(self):
@@ -180,7 +176,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_units(self):
@@ -193,7 +189,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     units = property(fget=get_units)
 
@@ -208,7 +204,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minimum_elements = property(fget=get_minimum_elements)
 
@@ -223,7 +219,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     maximum_elements = property(fget=get_maximum_elements)
 
@@ -238,7 +234,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minimum_cardinal = property(fget=get_minimum_cardinal)
 
@@ -253,7 +249,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     maximum_cardinal = property(fget=get_maximum_cardinal)
 
@@ -268,7 +264,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     cardinal_set = property(fget=get_cardinal_set)
 
@@ -287,7 +283,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     default_cardinal_values = property(fget=get_default_cardinal_values)
 
@@ -306,7 +302,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     existing_cardinal_values = property(fget=get_existing_cardinal_values)
 
@@ -321,7 +317,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     coordinate_types = property(fget=get_coordinate_types)
 
@@ -339,7 +335,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_axes_for_coordinate_type(self, coordinate_type):
@@ -356,7 +352,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_minimum_coordinate_values(self, coordinate_type):
@@ -373,7 +369,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def get_maximum_coordinate_values(self, coordinate_type):
@@ -390,7 +386,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def get_coordinate_set(self):
@@ -403,7 +399,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     coordinate_set = property(fget=get_coordinate_set)
 
@@ -422,7 +418,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     default_coordinate_values = property(fget=get_default_coordinate_values)
 
@@ -441,7 +437,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     existing_coordinate_values = property(fget=get_existing_coordinate_values)
 
@@ -456,7 +452,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     currency_types = property(fget=get_currency_types)
 
@@ -474,7 +470,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_minimum_currency(self):
@@ -487,7 +483,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     minimum_currency = property(fget=get_minimum_currency)
 
@@ -502,7 +498,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     maximum_currency = property(fget=get_maximum_currency)
 
@@ -517,7 +513,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     currency_set = property(fget=get_currency_set)
 
@@ -536,7 +532,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     default_currency_values = property(fget=get_default_currency_values)
 
@@ -555,7 +551,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     existing_currency_values = property(fget=get_existing_currency_values)
 
@@ -570,7 +566,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     date_time_resolution = property(fget=get_date_time_resolution)
 
@@ -585,7 +581,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_types = property(fget=get_calendar_types)
 
@@ -603,7 +599,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_types(self):
@@ -616,7 +612,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_types = property(fget=get_time_types)
 
@@ -634,7 +630,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_minimum_date_time(self):
@@ -647,7 +643,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     minimum_date_time = property(fget=get_minimum_date_time)
 
@@ -662,7 +658,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     maximum_date_time = property(fget=get_maximum_date_time)
 
@@ -677,7 +673,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     date_time_set = property(fget=get_date_time_set)
 
@@ -696,7 +692,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     default_date_time_values = property(fget=get_default_date_time_values)
 
@@ -715,7 +711,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     existing_date_time_values = property(fget=get_existing_date_time_values)
 
@@ -730,7 +726,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     decimal_scale = property(fget=get_decimal_scale)
 
@@ -745,7 +741,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     minimum_decimal = property(fget=get_minimum_decimal)
 
@@ -760,7 +756,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     maximum_decimal = property(fget=get_maximum_decimal)
 
@@ -775,7 +771,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     decimal_set = property(fget=get_decimal_set)
 
@@ -794,7 +790,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     default_decimal_values = property(fget=get_default_decimal_values)
 
@@ -813,7 +809,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     existing_decimal_values = property(fget=get_existing_decimal_values)
 
@@ -828,7 +824,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.DistanceResolution
+        return  # osid.mapping.DistanceResolution
 
     distance_resolution = property(fget=get_distance_resolution)
 
@@ -843,7 +839,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     minimum_distance = property(fget=get_minimum_distance)
 
@@ -858,7 +854,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     maximum_distance = property(fget=get_maximum_distance)
 
@@ -873,7 +869,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     distance_set = property(fget=get_distance_set)
 
@@ -892,7 +888,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     default_distance_values = property(fget=get_default_distance_values)
 
@@ -911,7 +907,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Distance
+        return  # osid.mapping.Distance
 
     existing_distance_values = property(fget=get_existing_distance_values)
 
@@ -926,7 +922,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     minimum_duration = property(fget=get_minimum_duration)
 
@@ -941,7 +937,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     maximum_duration = property(fget=get_maximum_duration)
 
@@ -956,7 +952,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     duration_set = property(fget=get_duration_set)
 
@@ -975,7 +971,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     default_duration_values = property(fget=get_default_duration_values)
 
@@ -994,7 +990,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     existing_duration_values = property(fget=get_existing_duration_values)
 
@@ -1009,7 +1005,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     heading_types = property(fget=get_heading_types)
 
@@ -1027,7 +1023,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_axes_for_heading_type(self, heading_type):
@@ -1044,7 +1040,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_minimum_heading_values(self, heading_type):
@@ -1061,7 +1057,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def get_maximum_heading_values(self, heading_type):
@@ -1078,7 +1074,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def get_heading_set(self):
@@ -1091,7 +1087,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Heading
+        return  # osid.mapping.Heading
 
     heading_set = property(fget=get_heading_set)
 
@@ -1110,7 +1106,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Heading
+        return  # osid.mapping.Heading
 
     default_heading_values = property(fget=get_default_heading_values)
 
@@ -1129,7 +1125,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Heading
+        return  # osid.mapping.Heading
 
     existing_heading_values = property(fget=get_existing_heading_values)
 
@@ -1144,7 +1140,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     id_set = property(fget=get_id_set)
 
@@ -1163,7 +1159,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     default_id_values = property(fget=get_default_id_values)
 
@@ -1182,7 +1178,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     existing_id_values = property(fget=get_existing_id_values)
 
@@ -1197,7 +1193,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     minimum_integer = property(fget=get_minimum_integer)
 
@@ -1212,7 +1208,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     maximum_integer = property(fget=get_maximum_integer)
 
@@ -1227,7 +1223,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     integer_set = property(fget=get_integer_set)
 
@@ -1246,7 +1242,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     default_integer_values = property(fget=get_default_integer_values)
 
@@ -1265,7 +1261,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     existing_integer_values = property(fget=get_existing_integer_values)
 
@@ -1280,7 +1276,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     object_types = property(fget=get_object_types)
 
@@ -1298,7 +1294,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_object_set(self):
@@ -1311,7 +1307,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # object
+        return  # object
 
     object_set = property(fget=get_object_set)
 
@@ -1330,7 +1326,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # object
+        return  # object
 
     default_object_values = property(fget=get_default_object_values)
 
@@ -1349,7 +1345,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # object
+        return  # object
 
     existing_object_values = property(fget=get_existing_object_values)
 
@@ -1364,7 +1360,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
@@ -1382,7 +1378,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_spatial_unit_set(self):
@@ -1395,7 +1391,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     spatial_unit_set = property(fget=get_spatial_unit_set)
 
@@ -1414,7 +1410,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     default_spatial_unit_values = property(fget=get_default_spatial_unit_values)
 
@@ -1433,7 +1429,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     existing_spatial_unit_values = property(fget=get_existing_spatial_unit_values)
 
@@ -1448,7 +1444,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     minimum_speed = property(fget=get_minimum_speed)
 
@@ -1463,7 +1459,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     maximum_speed = property(fget=get_maximum_speed)
 
@@ -1478,7 +1474,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     speed_set = property(fget=get_speed_set)
 
@@ -1497,7 +1493,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     default_speed_values = property(fget=get_default_speed_values)
 
@@ -1516,7 +1512,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Speed
+        return  # osid.mapping.Speed
 
     existing_speed_values = property(fget=get_existing_speed_values)
 
@@ -1531,7 +1527,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minimum_string_length = property(fget=get_minimum_string_length)
 
@@ -1546,7 +1542,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     maximum_string_length = property(fget=get_maximum_string_length)
 
@@ -1564,7 +1560,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     string_match_types = property(fget=get_string_match_types)
 
@@ -1582,7 +1578,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_string_expression(self, string_match_type):
@@ -1599,7 +1595,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def get_string_format_types(self):
@@ -1612,7 +1608,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     string_format_types = property(fget=get_string_format_types)
 
@@ -1627,7 +1623,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     string_set = property(fget=get_string_set)
 
@@ -1646,7 +1642,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     default_string_values = property(fget=get_default_string_values)
 
@@ -1665,7 +1661,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     existing_string_values = property(fget=get_existing_string_values)
 
@@ -1680,7 +1676,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     minimum_time = property(fget=get_minimum_time)
 
@@ -1695,7 +1691,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     maximum_time = property(fget=get_maximum_time)
 
@@ -1710,7 +1706,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     time_set = property(fget=get_time_set)
 
@@ -1729,7 +1725,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     default_time_values = property(fget=get_default_time_values)
 
@@ -1748,7 +1744,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     existing_time_values = property(fget=get_existing_time_values)
 
@@ -1763,7 +1759,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     type_set = property(fget=get_type_set)
 
@@ -1782,7 +1778,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     default_type_values = property(fget=get_default_type_values)
 
@@ -1801,7 +1797,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     existing_type_values = property(fget=get_existing_type_values)
 
@@ -1816,7 +1812,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     version_types = property(fget=get_version_types)
 
@@ -1834,7 +1830,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_minimum_version(self):
@@ -1847,7 +1843,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     minimum_version = property(fget=get_minimum_version)
 
@@ -1862,7 +1858,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     maximum_version = property(fget=get_maximum_version)
 
@@ -1877,7 +1873,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     version_set = property(fget=get_version_set)
 
@@ -1896,7 +1892,7 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     default_version_values = property(fget=get_default_version_values)
 
@@ -1915,8 +1911,6 @@ class Metadata:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     existing_version_values = property(fget=get_existing_version_values)
-
-

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssetRecord:
     """A record for an ``Asset``.
 
@@ -27,9 +24,6 @@ class AssetRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssetQueryRecord:
@@ -42,9 +36,6 @@ class AssetQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssetQueryInspectorRecord:
     """A record for an ``AssetQueryInspector``.
 
@@ -53,9 +44,6 @@ class AssetQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssetFormRecord:
@@ -68,9 +56,6 @@ class AssetFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssetSearchOrderRecord:
     """A record for an ``AssetSearchOrder``.
 
@@ -79,9 +64,6 @@ class AssetSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssetSearchRecord:
@@ -94,9 +76,6 @@ class AssetSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssetSearchResultsRecord:
     """A record for an ``AssetSearchResults``.
 
@@ -105,9 +84,6 @@ class AssetSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssetContentRecord:
@@ -120,9 +96,6 @@ class AssetContentRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssetContentQueryRecord:
     """A record for an ``AssetContentQuery``.
 
@@ -131,9 +104,6 @@ class AssetContentQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssetContentQueryInspectorRecord:
@@ -146,9 +116,6 @@ class AssetContentQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssetContentFormRecord:
     """A record for an ``AssetForm``.
 
@@ -157,9 +124,6 @@ class AssetContentFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class CompositionRecord:
@@ -172,9 +136,6 @@ class CompositionRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class CompositionQueryRecord:
     """A record for a ``CompositionQuery``.
 
@@ -183,9 +144,6 @@ class CompositionQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class CompositionQueryInspectorRecord:
@@ -198,9 +156,6 @@ class CompositionQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class CompositionFormRecord:
     """A record for a ``CompositionForm``.
 
@@ -209,9 +164,6 @@ class CompositionFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class CompositionSearchOrderRecord:
@@ -224,9 +176,6 @@ class CompositionSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class CompositionSearchRecord:
     """A record for a ``CompositionSearch``.
 
@@ -235,9 +184,6 @@ class CompositionSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class CompositionSearchResultsRecord:
@@ -250,9 +196,6 @@ class CompositionSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RepositoryRecord:
     """A record for a ``Repository``.
 
@@ -261,9 +204,6 @@ class RepositoryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RepositoryQueryRecord:
@@ -276,9 +216,6 @@ class RepositoryQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RepositoryQueryInspectorRecord:
     """A record for a ``RepositoryQueryInspector``.
 
@@ -287,9 +224,6 @@ class RepositoryQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RepositoryFormRecord:
@@ -302,9 +236,6 @@ class RepositoryFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RepositorySearchOrderRecord:
     """A record for a ``RepositorySearchOrder``.
 
@@ -313,9 +244,6 @@ class RepositorySearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class RepositorySearchRecord:
@@ -328,9 +256,6 @@ class RepositorySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class RepositorySearchResultsRecord:
     """A record for a ``RepositorySearchResults``.
 
@@ -339,8 +264,3 @@ class RepositorySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.hierarchy import managers as hierarchy_managers
 
 
-
-
 class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyProfile):
     """The hierarchy profile describes the interoperability among hierarchy services."""
 
@@ -112,6 +110,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
 
 
+
+
 class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_managers.HierarchyManager):
     """The hierarchy manager provides access sessions to traverse and manage hierrachies of ``Ids``.
 
@@ -133,12 +133,9 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_hierarchy_traversal_session(self):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
@@ -272,6 +269,8 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
 
+
+
 class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
     """The hierarchy manager provides access sessions to traverse and manage hierrachies of ``Ids``.
 
@@ -294,12 +293,9 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_hierarchy_traversal_session(self, proxy):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
@@ -431,5 +427,3 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.HierarchyAdminSession(proxy=proxy, runtime=self._runtime)
-
-

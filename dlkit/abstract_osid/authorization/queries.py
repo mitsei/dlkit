@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationQuery:
     """The query for authorizations."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_explicit_authorizations(self, match):
@@ -92,7 +88,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_related_authorization_query(self, match):
@@ -108,7 +104,7 @@ class AuthorizationQuery:
         ``supports_related_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     @abc.abstractmethod
     def clear_related_authorization_terms(self):
@@ -162,7 +158,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self, match):
@@ -178,7 +174,7 @@ class AuthorizationQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
     def match_any_resource(self, match):
@@ -286,7 +282,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self, match):
@@ -302,7 +298,7 @@ class AuthorizationQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     @abc.abstractmethod
     def match_any_agent(self, match):
@@ -369,7 +365,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_query(self, match):
@@ -385,7 +381,7 @@ class AuthorizationQuery:
         ``supports_function_query()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
     @abc.abstractmethod
     def clear_function_terms(self):
@@ -439,7 +435,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_query(self, match):
@@ -455,7 +451,7 @@ class AuthorizationQuery:
         ``supports_qualifier_query()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     @abc.abstractmethod
     def clear_qualifier_terms(self):
@@ -509,7 +505,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_query(self):
@@ -525,7 +521,7 @@ class AuthorizationQuery:
         ``supports_vault_query()`` is ``true``.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     vault_query = property(fget=get_vault_query)
 
@@ -559,7 +555,7 @@ class AuthorizationQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationQueryRecord
+        return  # osid.authorization.records.AuthorizationQueryRecord
 
 
 class FunctionQuery:
@@ -570,7 +566,6 @@ class FunctionQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match):
@@ -611,7 +606,7 @@ class FunctionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_query(self):
@@ -627,7 +622,7 @@ class FunctionQuery:
         ``supports_qualifier_hierarchy_query()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyQuery
+        return  # osid.hierarchy.HierarchyQuery
 
     qualifier_hierarchy_query = property(fget=get_qualifier_hierarchy_query)
 
@@ -696,7 +691,7 @@ class FunctionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_query(self):
@@ -712,7 +707,7 @@ class FunctionQuery:
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     authorization_query = property(fget=get_authorization_query)
 
@@ -781,7 +776,7 @@ class FunctionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_query(self):
@@ -797,7 +792,7 @@ class FunctionQuery:
         ``supports_vault_query()`` is ``true``.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     vault_query = property(fget=get_vault_query)
 
@@ -831,7 +826,7 @@ class FunctionQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionQueryRecord
+        return  # osid.authorization.records.FunctionQueryRecord
 
 
 class QualifierQuery:
@@ -842,7 +837,6 @@ class QualifierQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match):
@@ -883,7 +877,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_query(self):
@@ -899,7 +893,7 @@ class QualifierQuery:
         ``supports_qualifier_hierarchy_query()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyQuery
+        return  # osid.hierarchy.HierarchyQuery
 
     qualifier_hierarchy_query = property(fget=get_qualifier_hierarchy_query)
 
@@ -955,7 +949,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_query(self):
@@ -971,7 +965,7 @@ class QualifierQuery:
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     authorization_query = property(fget=get_authorization_query)
 
@@ -1040,7 +1034,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_qualifier_query(self):
@@ -1056,7 +1050,7 @@ class QualifierQuery:
         ``supports_ancestor_qualifier_query()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     ancestor_qualifier_query = property(fget=get_ancestor_qualifier_query)
 
@@ -1125,7 +1119,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_qualifier_query(self):
@@ -1141,7 +1135,7 @@ class QualifierQuery:
         ``supports_descendant_qualifier_query()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     descendant_qualifier_query = property(fget=get_descendant_qualifier_query)
 
@@ -1210,7 +1204,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_query(self):
@@ -1226,7 +1220,7 @@ class QualifierQuery:
         ``supports_vault_query()`` is ``true``.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     vault_query = property(fget=get_vault_query)
 
@@ -1260,7 +1254,7 @@ class QualifierQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierQueryRecord
+        return  # osid.authorization.records.QualifierQueryRecord
 
 
 class VaultQuery:
@@ -1271,7 +1265,6 @@ class VaultQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_function_id(self, function_id, match):
@@ -1312,7 +1305,7 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_query(self):
@@ -1328,7 +1321,7 @@ class VaultQuery:
         ``supports_function_query()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionQuery
+        return  # osid.authorization.FunctionQuery
 
     function_query = property(fget=get_function_query)
 
@@ -1397,7 +1390,7 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_query(self):
@@ -1413,7 +1406,7 @@ class VaultQuery:
         ``supports_qualifier_query()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuery
+        return  # osid.authorization.QualifierQuery
 
     qualifier_query = property(fget=get_qualifier_query)
 
@@ -1482,7 +1475,7 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_query(self):
@@ -1498,7 +1491,7 @@ class VaultQuery:
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuery
+        return  # osid.authorization.AuthorizationQuery
 
     authorization_query = property(fget=get_authorization_query)
 
@@ -1567,7 +1560,7 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_vault_query(self):
@@ -1583,7 +1576,7 @@ class VaultQuery:
         ``supports_ancestor_vault_query()`` is ``true``.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     ancestor_vault_query = property(fget=get_ancestor_vault_query)
 
@@ -1652,7 +1645,7 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_vault_query(self):
@@ -1668,7 +1661,7 @@ class VaultQuery:
         ``supports_descendant_vault_query()`` is ``true``.*
 
         """
-        return # osid.authorization.VaultQuery
+        return  # osid.authorization.VaultQuery
 
     descendant_vault_query = property(fget=get_descendant_vault_query)
 
@@ -1715,6 +1708,4 @@ class VaultQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultQueryRecord
-
-
+        return  # osid.authorization.records.VaultQueryRecord

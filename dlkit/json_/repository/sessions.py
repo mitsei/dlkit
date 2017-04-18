@@ -53,8 +53,6 @@ SEQUESTERED = 0
 UNSEQUESTERED = 1
 
 
-
-
 class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving assets.
 
@@ -85,7 +83,6 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
     ``Asset``.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -99,7 +96,6 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
             cat_name='Repository',
             cat_class=objects.Repository)
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -757,6 +753,8 @@ class AssetContentLookupSession(abc_repository_sessions.AssetContentLookupSessio
         return objects.AssetContentList(asset_content_maps, runtime=self._runtime, proxy=self._proxy)
 
 
+
+
 class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Asset`` objects.
 
@@ -776,7 +774,6 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
     types. The query record is accessed via the ``AssetQuery``.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -790,7 +787,6 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
             cat_name='Repository',
             cat_class=objects.Repository)
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -990,6 +986,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
                                         proxy=self._proxy)
 
 
+
+
 class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQuerySession):
     """This session provides methods for searching among ``Asset`` objects.
 
@@ -1113,6 +1111,8 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
         raise errors.Unimplemented()
 
 
+
+
 class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Assets``.
 
@@ -1162,38 +1162,35 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
       if (!session.canCreateAssets()) {
           return "asset creation not permitted";
       }
-      
+
       Type types[1];
-      types[0] = assetPhotographType; 
+      types[0] = assetPhotographType;
       if (!session.canCreateAssetWithRecordTypes(types)) {
           return "creating an asset with a photograph type is not supported";
       }
-      
+
       AssetForm form = session.getAssetFormForCreate();
       Metadata metadata = form.getDisplayNameMetadata();
       if (metadata.isReadOnly()) {
           return "cannot set display name";
       }
-      
+
       form.setDisplayName("my photo");
-      
+
       PhotographRecordForm photoForm = (PhotographRecordForn) form.getRecordForm(assetPhotogaphType);
       Metadata metadata = form.getApertureMetadata();
       if (metadata.isReadOnly()) {
           return ("cannot set aperture");
       }
-      
+
       photoForm.setAperture("5.6");
       if (!form.isValid()) {
           return form.getValidationMessage();
       }
-      
+
       Asset newAsset = session.createAsset(form);
 
-
-
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -1208,7 +1205,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             cat_class=objects.Repository)
         self._forms = dict()
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -1914,6 +1910,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         collection.save(asset)
 
 
+
+
 class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession, osid_sessions.OsidSession):
     """This session defines methods to receive notifications on adds/changes to ``Asset`` objects in this ``Repository``.
 
@@ -1927,7 +1925,6 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
     ``AssetLookupSession``.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -1969,7 +1966,6 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         """Make sure the receiver is removed from the listener"""
         del MONGO_LISTENER.receivers[self._ns][self._receiver]
         super(AssetNotificationSession, self).__del__()
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -2232,6 +2228,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         raise errors.Unimplemented()
 
 
+
+
 class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Assets`` to ``Repository`` mappings.
 
@@ -2245,16 +2243,13 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
-
     _session_namespace = 'repository.AssetRepositorySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
-
     def can_lookup_asset_repository_mappings(self):
         """Tests if this user can perform lookups of asset/repository mappings.
 
@@ -2432,6 +2427,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
             self.get_repository_ids_by_asset(asset_id))
 
 
+
+
 class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Assets`` to ``Repositories``.
 
@@ -2445,7 +2442,6 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
     ``Id`` ).
 
     """
-
     _session_namespace = 'repository.AssetRepositoryAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2453,7 +2449,6 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         self._catalog_name = 'Repository'
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_assign_assets(self):
         """Tests if this user can alter asset/repository mappings.
 
@@ -2590,6 +2585,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         self._unassign_object_from_catalog(asset_id, repository_id)
 
 
+
+
 class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, osid_sessions.OsidSession):
     """This session defines methods for looking up ``Asset`` to ``Composition`` mappings.
 
@@ -2616,7 +2613,6 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
     and one should be selected before invoking any lookup methods.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -2630,7 +2626,6 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
             cat_name='Repository',
             cat_class=objects.Repository)
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -2788,6 +2783,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         return objects.CompositionList(result, runtime=self._runtime)
 
 
+
+
 class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesignSession, osid_sessions.OsidSession):
     """This session provides the means for adding assets to an asset composiiton.
 
@@ -2797,7 +2794,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
     hierarchy.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -2811,7 +2807,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
             cat_name='Repository',
             cat_class=objects.Repository)
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -3017,6 +3012,8 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         return composition_map, collection
 
 
+
+
 class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Composition`` objects.
 
@@ -3058,7 +3055,6 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     cast of the ``Composition``.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3084,8 +3080,6 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         if self._sequestered_view == SEQUESTERED:
             view_filter['sequestered'] = False
         return view_filter
-
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -3395,6 +3389,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     compositions = property(fget=get_compositions)
 
 
+
+
 class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Composition`` objects.
 
@@ -3419,7 +3415,6 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
     ``CompositionQuery``.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3445,8 +3440,6 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         if self._sequestered_view == SEQUESTERED:
             view_filter['sequestered'] = False
         return view_filter
-
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -3597,6 +3590,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         return objects.CompositionList(result, runtime=self._runtime, proxy=self._proxy)
 
 
+
+
 class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession, CompositionQuerySession):
     """This session provides methods for searching among ``Composition`` objects.
 
@@ -3725,6 +3720,8 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
         raise errors.Unimplemented()
 
 
+
+
 class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Compositions``.
 
@@ -3761,7 +3758,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
     external ``Id`` to an internally assigned Id.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3776,7 +3772,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
             cat_class=objects.Repository)
         self._forms = dict()
         self._kwargs = kwargs
-
     def get_repository_id(self):
         """Gets the ``Repository``  ``Id`` associated with this session.
 
@@ -4221,6 +4216,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         self._alias_id(primary_id=composition_id, equivalent_id=alias_id)
 
 
+
+
 class CompositionRepositorySession(abc_repository_sessions.CompositionRepositorySession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Composition`` to ``Repository`` mappings.
 
@@ -4234,16 +4231,13 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
-
     _session_namespace = 'repository.CompositionRepositorySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
-
     def use_comparative_composition_repository_view(self):
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
@@ -4422,6 +4416,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
             self.get_repository_ids_by_composition(composition_id))
 
 
+
+
 class CompositionRepositoryAssignmentSession(abc_repository_sessions.CompositionRepositoryAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Compositions`` to ``Repository`` objects.
 
@@ -4435,7 +4431,6 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
     ``Id`` ).
 
     """
-
     _session_namespace = 'repository.CompositionRepositoryAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4443,7 +4438,6 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         self._catalog_name = 'Repository'
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_assign_compositions(self):
         """Tests if this user can alter composition/repository mappings.
 
@@ -4585,6 +4579,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         self._unassign_object_from_catalog(composition_id, repository_id)
 
 
+
+
 class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Repository`` objects.
 
@@ -4610,7 +4606,6 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
     cast of the ``Repository``.
 
     """
-
     _session_namespace = 'repository.RepositoryLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4621,7 +4616,6 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
-
     def can_lookup_repositories(self):
         """Tests if this user can perform ``Repository`` lookups.
 
@@ -4874,6 +4868,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
     repositories = property(fget=get_repositories)
 
 
+
+
 class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Repository`` objects.
 
@@ -4884,14 +4880,12 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
     ``RepositoryQuery``.
 
     """
-
     _session_namespace = 'repository.RepositoryQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_search_repositories(self):
         """Tests if this user can perform ``Repository`` searches.
 
@@ -4952,6 +4946,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
         return objects.RepositoryList(result, runtime=self._runtime)
 
 
+
+
 class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Repositories``.
 
@@ -4982,7 +4978,6 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
     internally assigned Id.
 
     """
-
     _session_namespace = 'repository.RepositoryAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4992,7 +4987,6 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_create_repositories(self):
         """Tests if this user can create ``Repositories``.
 
@@ -5321,6 +5315,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         self._alias_id(primary_id=repository_id, equivalent_id=alias_id)
 
 
+
+
 class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Repository`` objects.
 
@@ -5346,9 +5342,7 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
-
     _session_namespace = 'repository.RepositoryHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -5365,7 +5359,6 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
                    namespace='CATALOG',
                    identifier='REPOSITORY'),
                 proxy=self._proxy)
-
     def get_repository_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -5774,13 +5767,14 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
+
+
 class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarchyDesignSession, osid_sessions.OsidSession):
     """This session defines methods for managing a hierarchy of ``Repository`` objects.
 
     Each node in the hierarchy is a unique ``Repository``.
 
     """
-
     _session_namespace = 'repository.RepositoryHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -5797,7 +5791,6 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
                    namespace='CATALOG',
                    identifier='REPOSITORY'),
                 proxy=self._proxy)
-
     def get_repository_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -5952,5 +5945,3 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=repository_id)
         return self._hierarchy_session.remove_children(id_=repository_id)
-
-

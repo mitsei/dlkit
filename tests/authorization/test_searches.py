@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestAuthorizationSearch(unittest.TestCase):
     """Tests for AuthorizationSearch"""
 
@@ -20,6 +22,8 @@ class TestAuthorizationSearch(unittest.TestCase):
     def test_get_authorization_search_record(self):
         """Tests get_authorization_search_record"""
         pass
+
+
 
 
 class TestAuthorizationSearchResults(unittest.TestCase):
@@ -41,6 +45,8 @@ class TestAuthorizationSearchResults(unittest.TestCase):
         pass
 
 
+
+
 class TestVaultSearch(unittest.TestCase):
     """Tests for VaultSearch"""
 
@@ -58,6 +64,8 @@ class TestVaultSearch(unittest.TestCase):
     def test_get_vault_search_record(self):
         """Tests get_vault_search_record"""
         pass
+
+
 
 
 class TestVaultSearchResults(unittest.TestCase):

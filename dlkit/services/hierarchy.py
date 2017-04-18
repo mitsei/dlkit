@@ -37,10 +37,8 @@ DISABLED = -1
 
 class HierarchyProfile(osid.OsidProfile, hierarchy_managers.HierarchyProfile):
     """HierarchyProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_hierarchy_traversal(self):
         """Pass through to provider supports_hierarchy_traversal"""
         # Implemented from kitosid template for -
@@ -84,7 +82,6 @@ class HierarchyProfile(osid.OsidProfile, hierarchy_managers.HierarchyProfile):
 
 class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hierarchy_managers.HierarchyManager):
     """HierarchyManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -205,7 +202,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_hierarchy_traversal_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_traversal_session"""
         # Implemented from kitosid template for -
@@ -545,7 +541,6 @@ class HierarchyProxyManager(osid.OsidProxyManager, HierarchyProfile, hierarchy_m
 
 class Hierarchy(abc_hierarchy_objects.Hierarchy, osid.OsidSession, osid.OsidCatalog):
     """Hierarchy convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -683,7 +678,6 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid.OsidSession, osid.OsidCata
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_hierarchy_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

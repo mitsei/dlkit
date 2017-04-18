@@ -16,10 +16,10 @@ from ..osid import managers as osid_managers
 from dlkit.manager_impls.id import managers as id_managers
 
 
-
-
 class IdProfile(osid_managers.OsidProfile, id_managers.IdProfile):
     """The ``IdProfile`` describes the interoperability among id services."""
+
+
 
 
 
@@ -50,6 +50,8 @@ class IdManager(osid_managers.OsidManager, IdProfile, id_managers.IdManager):
     id_batch_manager = property(fget=get_id_batch_manager)
 
 
+
+
 class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, id_managers.IdProxyManager):
     """This manager provides access to the available sessions of the Id service.
 
@@ -77,5 +79,3 @@ class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, id_managers.IdPr
         raise errors.Unimplemented()
 
     id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)
-
-

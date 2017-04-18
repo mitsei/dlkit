@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class GradingProfile:
     """The ``GradingProfile`` describes the interoperability among grading services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_lookup(self):
@@ -48,7 +44,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_query(self):
@@ -61,7 +57,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_search(self):
@@ -74,7 +70,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_admin(self):
@@ -87,7 +83,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_notification(self):
@@ -103,7 +99,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_gradebook(self):
@@ -116,7 +112,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_gradebook_assignment(self):
@@ -129,7 +125,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_system_smart_gradebook(self):
@@ -142,7 +138,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_entry_lookup(self):
@@ -155,7 +151,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_entry_query(self):
@@ -168,7 +164,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_entry_search(self):
@@ -181,7 +177,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_entry_admin(self):
@@ -194,7 +190,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grade_entry_notification(self):
@@ -207,7 +203,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_lookup(self):
@@ -220,7 +216,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_query(self):
@@ -233,7 +229,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_search(self):
@@ -246,7 +242,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_admin(self):
@@ -259,7 +255,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_notification(self):
@@ -275,7 +271,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_gradebook(self):
@@ -288,7 +284,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_gradebook_assignment(self):
@@ -301,7 +297,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_column_smart_gradebook(self):
@@ -314,7 +310,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_lookup(self):
@@ -327,7 +323,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_query(self):
@@ -340,7 +336,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_search(self):
@@ -353,7 +349,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_admin(self):
@@ -366,7 +362,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_notification(self):
@@ -382,7 +378,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_hierarchy(self):
@@ -395,7 +391,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_gradebook_hierarchy_design(self):
@@ -408,7 +404,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grading_batch(self):
@@ -421,7 +417,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grading_calculation(self):
@@ -434,7 +430,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_grading_transform(self):
@@ -447,7 +443,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_record_types(self):
@@ -460,7 +456,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     grade_record_types = property(fget=get_grade_record_types)
 
@@ -477,7 +473,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_record_types(self):
@@ -490,7 +486,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     grade_system_record_types = property(fget=get_grade_system_record_types)
 
@@ -507,7 +503,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_search_record_types(self):
@@ -520,7 +516,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     grade_system_search_record_types = property(fget=get_grade_system_search_record_types)
 
@@ -537,7 +533,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_record_types(self):
@@ -550,7 +546,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     grade_entry_record_types = property(fget=get_grade_entry_record_types)
 
@@ -567,7 +563,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entry_search_record_types(self):
@@ -580,7 +576,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     grade_entry_search_record_types = property(fget=get_grade_entry_search_record_types)
 
@@ -597,7 +593,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_record_types(self):
@@ -610,7 +606,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     gradebook_column_record_types = property(fget=get_gradebook_column_record_types)
 
@@ -627,7 +623,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_search_record_types(self):
@@ -640,7 +636,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     gradebook_column_search_record_types = property(fget=get_gradebook_column_search_record_types)
 
@@ -657,7 +653,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_column_summary_record_types(self):
@@ -670,7 +666,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     gradebook_column_summary_record_types = property(fget=get_gradebook_column_summary_record_types)
 
@@ -687,7 +683,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_record_types(self):
@@ -700,7 +696,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     gradebook_record_types = property(fget=get_gradebook_record_types)
 
@@ -717,7 +713,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_gradebook_search_record_types(self):
@@ -730,7 +726,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     gradebook_search_record_types = property(fget=get_gradebook_search_record_types)
 
@@ -747,7 +743,7 @@ class GradingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class GradingManager:
@@ -808,10 +804,8 @@ class GradingManager:
       * ``GradebookHierarchyDesignSession:`` a session to manage the
         gradebook hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_lookup_session(self):
@@ -826,7 +820,7 @@ class GradingManager:
         ``supports_grade_system_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemLookupSession
+        return  # osid.grading.GradeSystemLookupSession
 
     grade_system_lookup_session = property(fget=get_grade_system_lookup_session)
 
@@ -848,7 +842,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemLookupSession
+        return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
     def get_grade_system_query_session(self):
@@ -863,7 +857,7 @@ class GradingManager:
         ``supports_grade_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuerySession
+        return  # osid.grading.GradeSystemQuerySession
 
     grade_system_query_session = property(fget=get_grade_system_query_session)
 
@@ -885,7 +879,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuerySession
+        return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
     def get_grade_system_search_session(self):
@@ -900,7 +894,7 @@ class GradingManager:
         ``supports_grade_system_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchSession
+        return  # osid.grading.GradeSystemSearchSession
 
     grade_system_search_session = property(fget=get_grade_system_search_session)
 
@@ -922,7 +916,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchSession
+        return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
     def get_grade_system_admin_session(self):
@@ -937,7 +931,7 @@ class GradingManager:
         ``supports_grade_system_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemAdminSession
+        return  # osid.grading.GradeSystemAdminSession
 
     grade_system_admin_session = property(fget=get_grade_system_admin_session)
 
@@ -959,7 +953,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemAdminSession
+        return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
     def get_grade_system_notification_session(self, grade_system_receiver):
@@ -977,7 +971,7 @@ class GradingManager:
         ``supports_grade_system_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemNotificationSession
+        return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
     def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id):
@@ -999,7 +993,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemNotificationSession
+        return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
     def get_grade_system_gradebook_session(self):
@@ -1014,7 +1008,7 @@ class GradingManager:
         ``supports_grade_system_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookSession
 
     grade_system_gradebook_session = property(fget=get_grade_system_gradebook_session)
 
@@ -1031,7 +1025,7 @@ class GradingManager:
         ``supports_grade_system_gradebook_assignment()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookSession
 
     grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
 
@@ -1052,7 +1046,7 @@ class GradingManager:
         ``supports_grade_system_smart_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSmartGradebookSession
+        return  # osid.grading.GradeSystemSmartGradebookSession
 
     @abc.abstractmethod
     def get_grade_entry_lookup_session(self):
@@ -1067,7 +1061,7 @@ class GradingManager:
         ``supports_grade_entry_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryLookupSession
+        return  # osid.grading.GradeEntryLookupSession
 
     grade_entry_lookup_session = property(fget=get_grade_entry_lookup_session)
 
@@ -1089,7 +1083,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryLookupSession
+        return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
     def get_grade_entry_query_session(self):
@@ -1104,7 +1098,7 @@ class GradingManager:
         ``supports_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuerySession
+        return  # osid.grading.GradeEntryQuerySession
 
     grade_entry_query_session = property(fget=get_grade_entry_query_session)
 
@@ -1126,7 +1120,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuerySession
+        return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
     def get_grade_entry_search_session(self):
@@ -1141,7 +1135,7 @@ class GradingManager:
         ``supports_grade_entry_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntrySearchSession
+        return  # osid.grading.GradeEntrySearchSession
 
     grade_entry_search_session = property(fget=get_grade_entry_search_session)
 
@@ -1163,7 +1157,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntrySearchSession
+        return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
     def get_grade_entry_admin_session(self):
@@ -1178,7 +1172,7 @@ class GradingManager:
         ``supports_grade_entry_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryAdminSession
+        return  # osid.grading.GradeEntryAdminSession
 
     grade_entry_admin_session = property(fget=get_grade_entry_admin_session)
 
@@ -1200,7 +1194,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryAdminSession
+        return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
     def get_grade_entry_notification_session(self, receiver):
@@ -1218,7 +1212,7 @@ class GradingManager:
         ``supports_grade_entry_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryNotificationSession
+        return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
     def get_grade_entry_notification_session_for_gradebook(self, receiver, gradebook_id):
@@ -1240,7 +1234,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryNotificationSession
+        return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_lookup_session(self):
@@ -1255,7 +1249,7 @@ class GradingManager:
         ``supports_gradebook_column_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnLookupSession
+        return  # osid.grading.GradebookColumnLookupSession
 
     gradebook_column_lookup_session = property(fget=get_gradebook_column_lookup_session)
 
@@ -1277,7 +1271,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnLookupSession
+        return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
     def get_gradebook_column_query_session(self):
@@ -1292,7 +1286,7 @@ class GradingManager:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuerySession
+        return  # osid.grading.GradebookColumnQuerySession
 
     gradebook_column_query_session = property(fget=get_gradebook_column_query_session)
 
@@ -1314,7 +1308,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuerySession
+        return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
     def get_gradebook_column_search_session(self):
@@ -1329,7 +1323,7 @@ class GradingManager:
         ``supports_gradebook_column_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSearchSession
+        return  # osid.grading.GradebookColumnSearchSession
 
     gradebook_column_search_session = property(fget=get_gradebook_column_search_session)
 
@@ -1351,7 +1345,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSearchSession
+        return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
     def get_gradebook_column_admin_session(self):
@@ -1366,7 +1360,7 @@ class GradingManager:
         ``supports_gradebook_column_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnAdminSession
+        return  # osid.grading.GradebookColumnAdminSession
 
     gradebook_column_admin_session = property(fget=get_gradebook_column_admin_session)
 
@@ -1388,7 +1382,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnAdminSession
+        return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
     def get_gradebook_column_notification_session(self, gradebook_column_receiver):
@@ -1406,7 +1400,7 @@ class GradingManager:
         ``supports_gradebook_column_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnNotificationSession
+        return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id):
@@ -1428,7 +1422,7 @@ class GradingManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnNotificationSession
+        return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_gradebook_session(self):
@@ -1443,7 +1437,7 @@ class GradingManager:
         ``supports_gradebook_column_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnGradebookSession
+        return  # osid.grading.GradebookColumnGradebookSession
 
     gradebook_column_gradebook_session = property(fget=get_gradebook_column_gradebook_session)
 
@@ -1461,7 +1455,7 @@ class GradingManager:
         ``true``.*
 
         """
-        return # osid.grading.GradebookColumnGradebookAssignmentSession
+        return  # osid.grading.GradebookColumnGradebookAssignmentSession
 
     gradebook_column_gradebook_assignment_session = property(fget=get_gradebook_column_gradebook_assignment_session)
 
@@ -1482,7 +1476,7 @@ class GradingManager:
         ``supports_gradebook_column_smart_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSmartGradebookSession
+        return  # osid.grading.GradebookColumnSmartGradebookSession
 
     @abc.abstractmethod
     def get_gradebook_lookup_session(self):
@@ -1497,7 +1491,7 @@ class GradingManager:
         ``supports_gradebook_lookup()`` is true.*
 
         """
-        return # osid.grading.GradebookLookupSession
+        return  # osid.grading.GradebookLookupSession
 
     gradebook_lookup_session = property(fget=get_gradebook_lookup_session)
 
@@ -1514,7 +1508,7 @@ class GradingManager:
         ``supports_gradebook_query()`` is true.*
 
         """
-        return # osid.grading.GradebookQuerySession
+        return  # osid.grading.GradebookQuerySession
 
     gradebook_query_session = property(fget=get_gradebook_query_session)
 
@@ -1531,7 +1525,7 @@ class GradingManager:
         ``supports_gradebook_search()`` is true.*
 
         """
-        return # osid.grading.GradebookSearchSession
+        return  # osid.grading.GradebookSearchSession
 
     gradebook_search_session = property(fget=get_gradebook_search_session)
 
@@ -1548,7 +1542,7 @@ class GradingManager:
         ``supports_gradebook_admin()`` is true.*
 
         """
-        return # osid.grading.GradebookAdminSession
+        return  # osid.grading.GradebookAdminSession
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
@@ -1568,7 +1562,7 @@ class GradingManager:
         ``supports_gradebook_notification()`` is true.*
 
         """
-        return # osid.grading.GradebookNotificationSession
+        return  # osid.grading.GradebookNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_hierarchy_session(self):
@@ -1583,7 +1577,7 @@ class GradingManager:
         ``supports_gradebook_hierarchy()`` is true.*
 
         """
-        return # osid.grading.GradebookHierarchySession
+        return  # osid.grading.GradebookHierarchySession
 
     gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
 
@@ -1600,7 +1594,7 @@ class GradingManager:
         ``supports_gradebook_hierarchy_design()`` is true.*
 
         """
-        return # osid.grading.GradebookHierarchyDesignSession
+        return  # osid.grading.GradebookHierarchyDesignSession
 
     gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
 
@@ -1617,7 +1611,7 @@ class GradingManager:
         ``supports_grading_batch()`` is true.*
 
         """
-        return # osid.grading.batch.GradingBatchManager
+        return  # osid.grading.batch.GradingBatchManager
 
     grading_batch_manager = property(fget=get_grading_batch_manager)
 
@@ -1634,7 +1628,7 @@ class GradingManager:
         ``supports_grading_calculation()`` is true.*
 
         """
-        return # osid.grading.calculation.GradingCalculationManager
+        return  # osid.grading.calculation.GradingCalculationManager
 
     grading_calculation_manager = property(fget=get_grading_calculation_manager)
 
@@ -1651,7 +1645,7 @@ class GradingManager:
         ``supports_grading_transform()`` is true.*
 
         """
-        return # osid.grading.transform.GradingTransformManager
+        return  # osid.grading.transform.GradingTransformManager
 
     grading_transform_manager = property(fget=get_grading_transform_manager)
 
@@ -1717,10 +1711,8 @@ class GradingProxyManager:
       * ``GradebookHierarchyDesignSession:`` a session to manage the
         gradebook hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_lookup_session(self, proxy):
@@ -1738,7 +1730,7 @@ class GradingProxyManager:
         ``supports_grade_system_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemLookupSession
+        return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
     def get_grade_system_lookup_session_for_gradebook(self, gradebook_id, proxy):
@@ -1760,7 +1752,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemLookupSession
+        return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
     def get_grade_system_query_session(self, proxy):
@@ -1778,7 +1770,7 @@ class GradingProxyManager:
         ``supports_grade_system_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuerySession
+        return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
     def get_grade_system_query_session_for_gradebook(self, gradebook_id, proxy):
@@ -1800,7 +1792,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemQuerySession
+        return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
     def get_grade_system_search_session(self, proxy):
@@ -1818,7 +1810,7 @@ class GradingProxyManager:
         ``supports_grade_system_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchSession
+        return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
     def get_grade_system_search_session_for_gradebook(self, gradebook_id, proxy):
@@ -1840,7 +1832,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchSession
+        return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
     def get_grade_system_admin_session(self, proxy):
@@ -1858,7 +1850,7 @@ class GradingProxyManager:
         ``supports_grade_system_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemAdminSession
+        return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
     def get_grade_system_admin_session_for_gradebook(self, gradebook_id, proxy):
@@ -1880,7 +1872,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemAdminSession
+        return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
     def get_grade_system_notification_session(self, grade_system_receiver, proxy):
@@ -1900,7 +1892,7 @@ class GradingProxyManager:
         ``supports_grade_system_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemNotificationSession
+        return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
     def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id, proxy):
@@ -1924,7 +1916,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeSystemNotificationSession
+        return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
     def get_grade_system_gradebook_session(self, proxy):
@@ -1942,7 +1934,7 @@ class GradingProxyManager:
         ``supports_grade_system_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookSession
 
     @abc.abstractmethod
     def get_grade_system_gradebook_assignment_session(self, proxy):
@@ -1960,7 +1952,7 @@ class GradingProxyManager:
         ``supports_grade_system_gradebook_assignment()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookSession
 
     @abc.abstractmethod
     def get_grade_system_smart_gradebook_session(self, gradebook_id, proxy):
@@ -1981,7 +1973,7 @@ class GradingProxyManager:
         ``supports_grade_system_smart_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSmartGradebookSession
+        return  # osid.grading.GradeSystemSmartGradebookSession
 
     @abc.abstractmethod
     def get_grade_entry_lookup_session(self, proxy):
@@ -1999,7 +1991,7 @@ class GradingProxyManager:
         ``supports_grade_entry_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryLookupSession
+        return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
     def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id, proxy):
@@ -2021,7 +2013,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryLookupSession
+        return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
     def get_grade_entry_query_session(self, proxy):
@@ -2039,7 +2031,7 @@ class GradingProxyManager:
         ``supports_grade_entry_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuerySession
+        return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
     def get_grade_entry_query_session_for_gradebook(self, gradebook_id, proxy):
@@ -2061,7 +2053,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryQuerySession
+        return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
     def get_grade_entry_search_session(self, proxy):
@@ -2079,7 +2071,7 @@ class GradingProxyManager:
         ``supports_grade_entry_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntrySearchSession
+        return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
     def get_grade_entry_search_session_for_gradebook(self, gradebook_id, proxy):
@@ -2101,7 +2093,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntrySearchSession
+        return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
     def get_grade_entry_admin_session(self, proxy):
@@ -2119,7 +2111,7 @@ class GradingProxyManager:
         ``supports_grade_entry_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryAdminSession
+        return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
     def get_grade_entry_admin_session_for_gradebook(self, gradebook_id, proxy):
@@ -2141,7 +2133,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryAdminSession
+        return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
     def get_grade_entry_notification_session(self, grade_entry_receiver, proxy):
@@ -2161,7 +2153,7 @@ class GradingProxyManager:
         ``supports_grade_entry_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradeEntryNotificationSession
+        return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
     def get_grade_entry_notification_session_for_gradebook(self, grade_entry_receiver, gradebook_id, proxy):
@@ -2185,7 +2177,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradeEntryNotificationSession
+        return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_lookup_session(self, proxy):
@@ -2203,7 +2195,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_lookup()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnLookupSession
+        return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
     def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id, proxy):
@@ -2225,7 +2217,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnLookupSession
+        return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
     def get_gradebook_column_query_session(self, proxy):
@@ -2243,7 +2235,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_query()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuerySession
+        return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
     def get_gradebook_column_query_session_for_gradebook(self, gradebook_id, proxy):
@@ -2265,7 +2257,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnQuerySession
+        return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
     def get_gradebook_column_search_session(self, proxy):
@@ -2283,7 +2275,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_search()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSearchSession
+        return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
     def get_gradebook_column_search_session_for_gradebook(self, gradebook_id, proxy):
@@ -2305,7 +2297,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSearchSession
+        return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
     def get_gradebook_column_admin_session(self, proxy):
@@ -2323,7 +2315,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_admin()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnAdminSession
+        return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
     def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id, proxy):
@@ -2345,7 +2337,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnAdminSession
+        return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
     def get_gradebook_column_notification_session(self, gradebook_column_receiver, proxy):
@@ -2365,7 +2357,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_notification()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnNotificationSession
+        return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id, proxy):
@@ -2389,7 +2381,7 @@ class GradingProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.grading.GradebookColumnNotificationSession
+        return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_column_gradebook_session(self, proxy):
@@ -2407,7 +2399,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnGradebookSession
+        return  # osid.grading.GradebookColumnGradebookSession
 
     @abc.abstractmethod
     def get_gradebook_column_gradebook_assignment_session(self, proxy):
@@ -2426,7 +2418,7 @@ class GradingProxyManager:
         ``true``.*
 
         """
-        return # osid.grading.GradebookColumnGradebookAssignmentSession
+        return  # osid.grading.GradebookColumnGradebookAssignmentSession
 
     @abc.abstractmethod
     def get_gradebook_column_smart_gradebook_session(self, gradebook_id, proxy):
@@ -2447,7 +2439,7 @@ class GradingProxyManager:
         ``supports_gradebook_column_smart_gradebook()`` is ``true``.*
 
         """
-        return # osid.grading.GradebookColumnSmartGradebookSession
+        return  # osid.grading.GradebookColumnSmartGradebookSession
 
     @abc.abstractmethod
     def get_gradebook_lookup_session(self, proxy):
@@ -2465,7 +2457,7 @@ class GradingProxyManager:
         ``supports_gradebook_lookup()`` is true.*
 
         """
-        return # osid.grading.GradebookLookupSession
+        return  # osid.grading.GradebookLookupSession
 
     @abc.abstractmethod
     def get_gradebook_query_session(self, proxy):
@@ -2483,7 +2475,7 @@ class GradingProxyManager:
         ``supports_gradebook_query()`` is true.*
 
         """
-        return # osid.grading.GradebookQuerySession
+        return  # osid.grading.GradebookQuerySession
 
     @abc.abstractmethod
     def get_gradebook_search_session(self, proxy):
@@ -2501,7 +2493,7 @@ class GradingProxyManager:
         ``supports_gradebook_search()`` is true.*
 
         """
-        return # osid.grading.GradebookSearchSession
+        return  # osid.grading.GradebookSearchSession
 
     @abc.abstractmethod
     def get_gradebook_admin_session(self, proxy):
@@ -2519,7 +2511,7 @@ class GradingProxyManager:
         ``supports_gradebook_admin()`` is true.*
 
         """
-        return # osid.grading.GradebookAdminSession
+        return  # osid.grading.GradebookAdminSession
 
     @abc.abstractmethod
     def get_gradebook_notification_session(self, gradebook_receiver, proxy):
@@ -2539,7 +2531,7 @@ class GradingProxyManager:
         ``supports_gradebook_notification()`` is true.*
 
         """
-        return # osid.grading.GradebookNotificationSession
+        return  # osid.grading.GradebookNotificationSession
 
     @abc.abstractmethod
     def get_gradebook_hierarchy_session(self, proxy):
@@ -2557,7 +2549,7 @@ class GradingProxyManager:
         ``supports_gradebook_hierarchy()`` is true.*
 
         """
-        return # osid.grading.GradebookHierarchySession
+        return  # osid.grading.GradebookHierarchySession
 
     @abc.abstractmethod
     def get_gradebook_hierarchy_design_session(self, proxy):
@@ -2575,7 +2567,7 @@ class GradingProxyManager:
         ``supports_gradebook_hierarchy_design()`` is true.*
 
         """
-        return # osid.grading.GradebookHierarchyDesignSession
+        return  # osid.grading.GradebookHierarchyDesignSession
 
     @abc.abstractmethod
     def get_grading_batch_proxy_manager(self):
@@ -2590,7 +2582,7 @@ class GradingProxyManager:
         ``supports_grading_batch()`` is true.*
 
         """
-        return # osid.grading.batch.GradingBatchProxyManager
+        return  # osid.grading.batch.GradingBatchProxyManager
 
     grading_batch_proxy_manager = property(fget=get_grading_batch_proxy_manager)
 
@@ -2607,7 +2599,7 @@ class GradingProxyManager:
         ``supports_grading_calculation()`` is true.*
 
         """
-        return # osid.grading.calculation.GradingCalculationProxyManager
+        return  # osid.grading.calculation.GradingCalculationProxyManager
 
     grading_calculation_proxy_manager = property(fget=get_grading_calculation_proxy_manager)
 
@@ -2624,8 +2616,6 @@ class GradingProxyManager:
         ``supports_grading_transform()`` is true.*
 
         """
-        return # osid.grading.transform.GradingTransformProxyManager
+        return  # osid.grading.transform.GradingTransformProxyManager
 
     grading_transform_proxy_manager = property(fget=get_grading_transform_proxy_manager)
-
-

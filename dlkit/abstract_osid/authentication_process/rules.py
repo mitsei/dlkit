@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthenticationInput:
     """An authorization condition interface."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authentication_input_record(self, authentication_input_record_type):
@@ -48,6 +44,4 @@ class AuthenticationInput:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.AuthenticationInputRecord
-
-
+        return  # osid.authentication.process.records.AuthenticationInputRecord

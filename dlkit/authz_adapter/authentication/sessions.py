@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.authentication import sessions as abc_authentication_sessions
 
 
-
-
 class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AgentLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_agency_id()
@@ -67,7 +64,6 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         for agency_id in self._unauth_agency_ids:
             query.match_agency_id(agency_id, match=False)
         return self._query_session.get_agents_by_query(query)
-
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -191,9 +187,10 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
     agents = property(fget=get_agents)
 
 
+
+
 class AgentQuerySession(abc_authentication_sessions.AgentQuerySession, osid_sessions.OsidSession):
     """Adapts underlying AgentQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_agency_id()
@@ -241,7 +238,6 @@ class AgentQuerySession(abc_authentication_sessions.AgentQuerySession, osid_sess
 
         def match_agency_id(self, agency_id, match=True):
             self._cat_id_args_list.append({'agency_id': agency_id, 'match': match})
-
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -309,6 +305,8 @@ class AgentQuerySession(abc_authentication_sessions.AgentQuerySession, osid_sess
         return result
 
 
+
+
 class AgentSearchSession(abc_authentication_sessions.AgentSearchSession, AgentQuerySession):
     """Adapts underlying AgentSearchSession methodswith authorization checks."""
 
@@ -341,9 +339,10 @@ class AgentSearchSession(abc_authentication_sessions.AgentSearchSession, AgentQu
         raise Unimplemented()
 
 
+
+
 class AgentAdminSession(abc_authentication_sessions.AgentAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AgentAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_agency_id()
@@ -369,7 +368,6 @@ class AgentAdminSession(abc_authentication_sessions.AgentAdminSession, osid_sess
     def _can_for_agent(self, func_name, agent_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, agent_id, 'get_agency_ids_for_agent')
-
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -481,15 +479,14 @@ class AgentAdminSession(abc_authentication_sessions.AgentAdminSession, osid_sess
         return self._provider_session.alias_agent(agent_id, alias_id)
 
 
+
+
 class AgentNotificationSession(abc_authentication_sessions.AgentNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AgentNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_agency_id()
         self._id_namespace = 'authentication.Agent'
-
-
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -594,15 +591,14 @@ class AgentNotificationSession(abc_authentication_sessions.AgentNotificationSess
         raise Unimplemented()
 
 
+
+
 class AgentAgencySession(abc_authentication_sessions.AgentAgencySession, osid_sessions.OsidSession):
     """Adapts underlying AgentAgencySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'authentication.AgentAgency'
-
-
     def can_lookup_agent_agency_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -667,15 +663,14 @@ class AgentAgencySession(abc_authentication_sessions.AgentAgencySession, osid_se
         return self._provider_session.get_agencies_by_agent(agent_id)
 
 
+
+
 class AgentAgencyAssignmentSession(abc_authentication_sessions.AgentAgencyAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AgentAgencyAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'authentication.AgentAgency'
-
-
     def can_assign_agents(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -722,6 +717,8 @@ class AgentAgencyAssignmentSession(abc_authentication_sessions.AgentAgencyAssign
     @raise_null_argument
     def reassign_agent_to_agency(self, agent_id, from_agency_id, to_agency_id):
         raise Unimplemented()
+
+
 
 
 class AgentSmartAgencySession(abc_authentication_sessions.AgentSmartAgencySession, osid_sessions.OsidSession):
@@ -773,17 +770,16 @@ class AgentSmartAgencySession(abc_authentication_sessions.AgentSmartAgencySessio
         raise Unimplemented()
 
 
+
+
 class AgencyLookupSession(abc_authentication_sessions.AgencyLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AgencyLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authentication.Agency'
-
-
     def can_lookup_agencies(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -845,17 +841,16 @@ class AgencyLookupSession(abc_authentication_sessions.AgencyLookupSession, osid_
     agencies = property(fget=get_agencies)
 
 
+
+
 class AgencyQuerySession(abc_authentication_sessions.AgencyQuerySession, osid_sessions.OsidSession):
     """Adapts underlying AgencyQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authentication.Agency'
-
-
     def can_search_agencies(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -880,6 +875,8 @@ class AgencyQuerySession(abc_authentication_sessions.AgencyQuerySession, osid_se
         return self._provider_session.get_agencies_by_query(agency_query)
 
 
+
+
 class AgencySearchSession(abc_authentication_sessions.AgencySearchSession, AgencyQuerySession):
     """Adapts underlying AgencySearchSession methodswith authorization checks."""
 
@@ -902,17 +899,16 @@ class AgencySearchSession(abc_authentication_sessions.AgencySearchSession, Agenc
         raise Unimplemented()
 
 
+
+
 class AgencyAdminSession(abc_authentication_sessions.AgencyAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AgencyAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authentication.Agency'
-
-
     def can_create_agencies(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -987,6 +983,8 @@ class AgencyAdminSession(abc_authentication_sessions.AgencyAdminSession, osid_se
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_agency(agency_id, alias_id)
+
+
 
 
 class AgencyNotificationSession(abc_authentication_sessions.AgencyNotificationSession, osid_sessions.OsidSession):
@@ -1064,17 +1062,16 @@ class AgencyNotificationSession(abc_authentication_sessions.AgencyNotificationSe
         raise Unimplemented()
 
 
+
+
 class AgencyHierarchySession(abc_authentication_sessions.AgencyHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying AgencyHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authentication.Agency'
-
-
     def get_agency_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1229,9 +1226,10 @@ class AgencyHierarchySession(abc_authentication_sessions.AgencyHierarchySession,
             include_siblings)
 
 
+
+
 class AgencyHierarchyDesignSession(abc_authentication_sessions.AgencyHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying AgencyHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -1239,8 +1237,6 @@ class AgencyHierarchyDesignSession(abc_authentication_sessions.AgencyHierarchyDe
         self._qualifier_id = Id('authentication.Agency%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authentication.Agency'
         # should this be 'authentication.AgencyHierarchy' ?
-
-
     def get_agency_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1293,5 +1289,3 @@ class AgencyHierarchyDesignSession(abc_authentication_sessions.AgencyHierarchyDe
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_agencies(agency_id)
-
-

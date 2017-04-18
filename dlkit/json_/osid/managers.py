@@ -27,8 +27,6 @@ from dlkit.abstract_osid.osid import managers as abc_osid_managers
 from dlkit.abstract_osid.proxy.rules import Proxy as abc_proxy
 
 
-
-
 class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     """The ``OsidProfile`` defines the interoperability areas of an OSID.
 
@@ -38,8 +36,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     definitions within its managers.
 
     """
-
-
     def __init__(self):
         self._runtime = None
         self._config = None
@@ -51,8 +47,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         self._runtime = runtime
         self._config = runtime.get_configuration()
         set_json_client(runtime)
-
-
     def get_id(self):
         """Gets an identifier for this service implementation.
 
@@ -257,6 +251,8 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         raise errors.Unimplemented()
 
 
+
+
 class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
     """The ``OsidManager`` is the top level interface for all OSID managers.
 
@@ -271,10 +267,8 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
     common throughout all OSID managers which implement this interface.
 
     """
-
     def __init__(self):
         OsidProfile.__init__(self)
-
     @utilities.arguments_not_none
     def initialize(self, runtime):
         """Initializes this manager.
@@ -343,6 +337,8 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
             return False
 
 
+
+
 class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     """The ``OsidProxyManager`` is the top level interface for all OSID proxy managers.
 
@@ -365,10 +361,8 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     interface.
 
     """
-
     def __init__(self):
         OsidProfile.__init__(self)
-
     @utilities.arguments_not_none
     def initialize(self, runtime):
         """Initializes this manager.
@@ -431,6 +425,8 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         raise errors.Unimplemented()
 
 
+
+
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
     """The ``OsidRuntimeProfile`` defines the service aspects of the OSID runtime service."""
 
@@ -445,12 +441,12 @@ class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
         raise errors.Unimplemented()
 
 
+
+
 class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, OsidRuntimeProfile):
     """The ``OsidRuntimeManager`` represents and OSID platform and contains the information required for running OSID implementations such as search paths and configurations."""
-
     def __init__(self, configuration_key = None):
         self._configuration_key = configuration_key
-
     @utilities.arguments_not_none
     def get_manager(self, osid, impl_class_name, version):
         """Finds, loads and instantiates providers of OSID managers.
@@ -538,5 +534,3 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         raise errors.Unimplemented()
 
     configuration = property(fget=get_configuration)
-
-

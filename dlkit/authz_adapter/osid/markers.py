@@ -13,8 +13,6 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
 
 
-
-
 class Sourceable(abc_osid_markers.Sourceable):
     """Adapts underlying Sourceable methodswith authorization checks."""
 
@@ -42,5 +40,3 @@ class Sourceable(abc_osid_markers.Sourceable):
         raise Unimplemented()
 
     license_ = property(fget=get_license)
-
-

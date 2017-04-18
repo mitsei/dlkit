@@ -19,6 +19,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestCommentLookupSession(unittest.TestCase):
     """Tests for CommentLookupSession"""
 
@@ -221,6 +223,8 @@ class TestCommentLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.comment_ids[0])
 
 
+
+
 class TestCommentQuerySession(unittest.TestCase):
     """Tests for CommentQuerySession"""
 
@@ -290,6 +294,8 @@ class TestCommentQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_comments_by_query(query).available(), 3)
+
+
 
 
 class TestCommentAdminSession(unittest.TestCase):
@@ -373,6 +379,8 @@ class TestCommentAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestBookLookupSession(unittest.TestCase):
     """Tests for BookLookupSession"""
 
@@ -442,6 +450,8 @@ class TestBookLookupSession(unittest.TestCase):
     def test_get_books(self):
         """Tests get_books"""
         catalogs = self.svc_mgr.get_books()
+
+
 
 
 class TestBookAdminSession(unittest.TestCase):
@@ -539,6 +549,8 @@ class TestBookAdminSession(unittest.TestCase):
     def test_alias_book(self):
         """Tests alias_book"""
         pass
+
+
 
 
 class TestBookHierarchySession(unittest.TestCase):
@@ -673,6 +685,8 @@ class TestBookHierarchySession(unittest.TestCase):
         """Tests get_book_nodes"""
         nodes = self.svc_mgr.get_book_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
         # add some tests on the returned node
+
+
 
 
 class TestBookHierarchyDesignSession(unittest.TestCase):

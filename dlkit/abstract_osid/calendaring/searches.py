@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventSearch:
@@ -70,7 +65,7 @@ class EventSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventSearchRecord
+        return  # osid.calendaring.records.EventSearchRecord
 
 
 class EventSearchResults:
@@ -88,7 +83,7 @@ class EventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     events = property(fget=get_events)
 
@@ -103,7 +98,7 @@ class EventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     event_query_inspector = property(fget=get_event_query_inspector)
 
@@ -125,7 +120,7 @@ class EventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventSearchResultsRecord
+        return  # osid.calendaring.records.EventSearchResultsRecord
 
 
 class RecurringEventSearch:
@@ -174,7 +169,7 @@ class RecurringEventSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventSearchRecord
+        return  # osid.calendaring.records.RecurringEventSearchRecord
 
 
 class RecurringEventSearchResults:
@@ -192,7 +187,7 @@ class RecurringEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     recurring_events = property(fget=get_recurring_events)
 
@@ -207,7 +202,7 @@ class RecurringEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQueryInspector
+        return  # osid.calendaring.RecurringEventQueryInspector
 
     recurring_event_query_inspector = property(fget=get_recurring_event_query_inspector)
 
@@ -230,7 +225,7 @@ class RecurringEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventSearchResultsRecord
+        return  # osid.calendaring.records.RecurringEventSearchResultsRecord
 
 
 class SupersedingEventSearch:
@@ -279,7 +274,7 @@ class SupersedingEventSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventSearchRecord
+        return  # osid.calendaring.records.SupersedingEventSearchRecord
 
 
 class SupersedingEventSearchResults:
@@ -297,7 +292,7 @@ class SupersedingEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     superseding_events = property(fget=get_superseding_events)
 
@@ -312,7 +307,7 @@ class SupersedingEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQueryInspector
+        return  # osid.calendaring.SupersedingEventQueryInspector
 
     superseding_event_query_inspector = property(fget=get_superseding_event_query_inspector)
 
@@ -332,7 +327,7 @@ class SupersedingEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventSearchResultsRecord
+        return  # osid.calendaring.records.SupersedingEventSearchResultsRecord
 
 
 class OffsetEventSearch:
@@ -381,7 +376,7 @@ class OffsetEventSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventSearchRecord
+        return  # osid.calendaring.records.OffsetEventSearchRecord
 
 
 class OffsetEventSearchResults:
@@ -399,7 +394,7 @@ class OffsetEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     offset_events = property(fget=get_offset_events)
 
@@ -414,7 +409,7 @@ class OffsetEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQueryInspector
+        return  # osid.calendaring.OffsetEventQueryInspector
 
     offset_event_query_inspector = property(fget=get_offset_event_query_inspector)
 
@@ -433,7 +428,7 @@ class OffsetEventSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventSearchResultsRecord
+        return  # osid.calendaring.records.OffsetEventSearchResultsRecord
 
 
 class ScheduleSearch:
@@ -482,7 +477,7 @@ class ScheduleSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSearchRecord
+        return  # osid.calendaring.records.ScheduleSearchRecord
 
 
 class ScheduleSearchResults:
@@ -500,7 +495,7 @@ class ScheduleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     schedules = property(fget=get_schedules)
 
@@ -515,7 +510,7 @@ class ScheduleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQueryInspector
+        return  # osid.calendaring.ScheduleQueryInspector
 
     schedule_query_inspector = property(fget=get_schedule_query_inspector)
 
@@ -534,7 +529,7 @@ class ScheduleSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSearchResultsRecord
+        return  # osid.calendaring.records.ScheduleSearchResultsRecord
 
 
 class ScheduleSlotSearch:
@@ -583,7 +578,7 @@ class ScheduleSlotSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotSearchRecord
+        return  # osid.calendaring.records.ScheduleSlotSearchRecord
 
 
 class ScheduleSlotSearchResults:
@@ -601,7 +596,7 @@ class ScheduleSlotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     schedule_slots = property(fget=get_schedule_slots)
 
@@ -616,7 +611,7 @@ class ScheduleSlotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQueryInspector
+        return  # osid.calendaring.ScheduleSlotQueryInspector
 
     schedule_slot_query_inspector = property(fget=get_schedule_slot_query_inspector)
 
@@ -635,7 +630,7 @@ class ScheduleSlotSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotSearchResultsRecord
+        return  # osid.calendaring.records.ScheduleSlotSearchResultsRecord
 
 
 class TimePeriodSearch:
@@ -687,7 +682,7 @@ class TimePeriodSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodSearchRecord
+        return  # osid.calendaring.records.TimePeriodSearchRecord
 
 
 class TimePeriodSearchResults:
@@ -705,7 +700,7 @@ class TimePeriodSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     time_periods = property(fget=get_time_periods)
 
@@ -720,7 +715,7 @@ class TimePeriodSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQueryInspector
+        return  # osid.calendaring.TimePeriodQueryInspector
 
     time_period_query_inspector = property(fget=get_time_period_query_inspector)
 
@@ -742,7 +737,7 @@ class TimePeriodSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodSearchResultsRecord
+        return  # osid.calendaring.records.TimePeriodSearchResultsRecord
 
 
 class CommitmentSearch:
@@ -794,7 +789,7 @@ class CommitmentSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentSearchRecord
+        return  # osid.calendaring.records.CommitmentSearchRecord
 
 
 class CommitmentSearchResults:
@@ -812,7 +807,7 @@ class CommitmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     commitments = property(fget=get_commitments)
 
@@ -827,7 +822,7 @@ class CommitmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQueryInspector
+        return  # osid.calendaring.CommitmentQueryInspector
 
     commitment_query_inspector = property(fget=get_commitment_query_inspector)
 
@@ -849,7 +844,7 @@ class CommitmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentSearchResultsRecord
+        return  # osid.calendaring.records.CommitmentSearchResultsRecord
 
 
 class CalendarSearch:
@@ -901,7 +896,7 @@ class CalendarSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarSearchRecord
+        return  # osid.calendaring.records.CalendarSearchRecord
 
 
 class CalendarSearchResults:
@@ -919,7 +914,7 @@ class CalendarSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     calendars = property(fget=get_calendars)
 
@@ -934,7 +929,7 @@ class CalendarSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQueryInspector
+        return  # osid.calendaring.CalendarQueryInspector
 
     calendar_query_inspector = property(fget=get_calendar_query_inspector)
 
@@ -956,6 +951,4 @@ class CalendarSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarSearchResultsRecord
-
-
+        return  # osid.calendaring.records.CalendarSearchResultsRecord

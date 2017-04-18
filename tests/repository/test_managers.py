@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestRepositoryProfile(unittest.TestCase):
     """Tests for RepositoryProfile"""
 
@@ -138,6 +140,8 @@ class TestRepositoryProfile(unittest.TestCase):
     def test_get_coordinate_types(self):
         """Tests get_coordinate_types"""
         self.assertTrue(isinstance(self.mgr.get_coordinate_types(), abc_type_list))
+
+
 
 
 class TestRepositoryManager(unittest.TestCase):
@@ -349,6 +353,8 @@ class TestRepositoryManager(unittest.TestCase):
         #     self.mgr.get_repository_rules_manager()
         if self.svc_mgr.supports_repository_rules():
             self.svc_mgr.get_repository_rules_manager()
+
+
 
 
 class TestRepositoryProxyManager(unittest.TestCase):

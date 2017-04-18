@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.authorization import searches as abc_authorization_searches
 
 
-
-
 class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_searches.OsidSearch):
     """``AuthorizationSearch`` defines the interface for specifying authorization search options."""
 
@@ -72,6 +70,8 @@ class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_s
         raise errors.Unimplemented()
 
 
+
+
 class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -122,6 +122,8 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSearch):
@@ -175,6 +177,8 @@ class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSear
         raise errors.Unimplemented()
 
 
+
+
 class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -222,5 +226,3 @@ class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_sea
 
         """
         raise errors.Unimplemented()
-
-

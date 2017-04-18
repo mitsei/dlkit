@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AgentReceiver:
     """The agent receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Agent`` objects.
 
@@ -26,7 +23,6 @@ class AgentReceiver:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_agents(self, notification_id, agent_ids):
@@ -77,7 +73,6 @@ class AgentReceiver:
 class AgencyReceiver:
     """The agency receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Agency`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_agencies(self, notification_id, agency_ids):
@@ -138,5 +133,3 @@ class AgencyReceiver:
 
         """
         pass
-
-

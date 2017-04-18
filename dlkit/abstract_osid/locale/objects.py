@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class CalendarInfo:
     """This interface defines methods to examine a calendar.
 
@@ -28,7 +25,6 @@ class CalendarInfo:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_calendar_type(self):
@@ -41,7 +37,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -56,7 +52,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -71,7 +67,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -86,7 +82,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     common_era_name = property(fget=get_common_era_name)
 
@@ -101,7 +97,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     common_era_abbrev = property(fget=get_common_era_abbrev)
 
@@ -116,7 +112,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     before_common_era_name = property(fget=get_before_common_era_name)
 
@@ -131,7 +127,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     before_common_era_abbrev = property(fget=get_before_common_era_abbrev)
 
@@ -146,7 +142,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     first_year_in_common_era = property(fget=get_first_year_in_common_era)
 
@@ -161,7 +157,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     last_year_before_common_era = property(fget=get_last_year_before_common_era)
 
@@ -178,7 +174,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     year_name = property(fget=get_year_name)
 
@@ -195,7 +191,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     month_name = property(fget=get_month_name)
 
@@ -210,7 +206,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_num_months(self):
@@ -227,7 +223,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     num_months = property(fget=get_num_months)
 
@@ -245,7 +241,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_months(self):
@@ -262,7 +258,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarUnit
+        return  # osid.locale.CalendarUnit
 
     months = property(fget=get_months)
 
@@ -280,7 +276,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarUnit
+        return  # osid.locale.CalendarUnit
 
     @abc.abstractmethod
     def get_day_name(self):
@@ -295,7 +291,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     day_name = property(fget=get_day_name)
 
@@ -310,7 +306,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_num_days(self):
@@ -328,7 +324,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     num_days = property(fget=get_num_days)
 
@@ -348,7 +344,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_days(self):
@@ -366,7 +362,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarUnit
+        return  # osid.locale.CalendarUnit
 
     days = property(fget=get_days)
 
@@ -386,7 +382,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarUnit
+        return  # osid.locale.CalendarUnit
 
     @abc.abstractmethod
     def get_first_day_of_year(self):
@@ -399,7 +395,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     first_day_of_year = property(fget=get_first_day_of_year)
 
@@ -414,7 +410,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     end_of_days_name = property(fget=get_end_of_days_name)
 
@@ -429,7 +425,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     origin = property(fget=get_origin)
 
@@ -444,7 +440,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     end_of_days = property(fget=get_end_of_days)
 
@@ -459,7 +455,7 @@ class CalendarInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarUnit
+        return  # osid.locale.CalendarUnit
 
     weekdays = property(fget=get_weekdays)
 
@@ -474,7 +470,6 @@ class TimeInfo:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_time_type(self):
         """Gets the time type.
@@ -486,7 +481,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -501,7 +496,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -516,7 +511,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_label = property(fget=get_display_label)
 
@@ -531,7 +526,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -548,7 +543,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     hour_name = property(fget=get_hour_name)
 
@@ -565,7 +560,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     hour_abbrev = property(fget=get_hour_abbrev)
 
@@ -582,7 +577,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     hour_initial = property(fget=get_hour_initial)
 
@@ -597,7 +592,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_num_hours(self):
@@ -614,7 +609,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     num_hours = property(fget=get_num_hours)
 
@@ -637,7 +632,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_minute_name(self):
@@ -652,7 +647,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     minute_name = property(fget=get_minute_name)
 
@@ -669,7 +664,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     minute_abbrev = property(fget=get_minute_abbrev)
 
@@ -686,7 +681,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     minute_initial = property(fget=get_minute_initial)
 
@@ -701,7 +696,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_num_minutes(self):
@@ -719,7 +714,7 @@ class TimeInfo:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     num_minutes = property(fget=get_num_minutes)
 
@@ -745,7 +740,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_second_name(self):
@@ -760,7 +755,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     second_name = property(fget=get_second_name)
 
@@ -777,7 +772,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     second_abbrev = property(fget=get_second_abbrev)
 
@@ -794,7 +789,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     second_initial = property(fget=get_second_initial)
 
@@ -809,7 +804,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_num_seconds(self):
@@ -827,7 +822,7 @@ month, day)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     num_seconds = property(fget=get_num_seconds)
 
@@ -855,13 +850,12 @@ or equal to ``get_num_minutes_inhour(year, month, day, hour)``
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
 
 class CalendarUnit:
     """A description of a calendar unit."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_name(self):
@@ -874,7 +868,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     name = property(fget=get_name)
 
@@ -889,7 +883,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     abbrev3 = property(fget=get_abbrev3)
 
@@ -904,7 +898,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     abbrev2 = property(fget=get_abbrev2)
 
@@ -919,7 +913,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     initial = property(fget=get_initial)
 
@@ -934,7 +928,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     date_time_code = property(fget=get_date_time_code)
 
@@ -949,7 +943,7 @@ class CalendarUnit:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -964,7 +958,6 @@ class Locale:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_language_type(self):
         """Gets the language ``Type``.
@@ -976,7 +969,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     language_type = property(fget=get_language_type)
 
@@ -991,7 +984,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     script_type = property(fget=get_script_type)
 
@@ -1006,7 +999,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -1021,7 +1014,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -1036,7 +1029,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     currency_type = property(fget=get_currency_type)
 
@@ -1051,7 +1044,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     unit_system_type = property(fget=get_unit_system_type)
 
@@ -1066,7 +1059,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     numeric_format_type = property(fget=get_numeric_format_type)
 
@@ -1081,7 +1074,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_format_type = property(fget=get_calendar_format_type)
 
@@ -1096,7 +1089,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_format_type = property(fget=get_time_format_type)
 
@@ -1111,7 +1104,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     currency_format_type = property(fget=get_currency_format_type)
 
@@ -1126,7 +1119,7 @@ class Locale:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     coordinate_format_type = property(fget=get_coordinate_format_type)
 
@@ -1142,11 +1135,8 @@ class LocaleList:
            Locale[] locales = ll.getNextLocales(ll.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_locale(self):
@@ -1160,7 +1150,7 @@ class LocaleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.Locale
+        return  # osid.locale.Locale
 
     next_locale = property(fget=get_next_locale)
 
@@ -1181,6 +1171,4 @@ class LocaleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.Locale
-
-
+        return  # osid.locale.Locale

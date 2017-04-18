@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class RelationshipQueryInspector:
     """This is the query inspector for examining relationship queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_id_terms(self):
@@ -35,7 +31,7 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     source_id_terms = property(fget=get_source_id_terms)
 
@@ -50,7 +46,7 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     destination_id_terms = property(fget=get_destination_id_terms)
 
@@ -65,7 +61,7 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     same_peer_id_terms = property(fget=get_same_peer_id_terms)
 
@@ -80,7 +76,7 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     family_id_terms = property(fget=get_family_id_terms)
 
@@ -95,7 +91,7 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQueryInspector
+        return  # osid.relationship.FamilyQueryInspector
 
     family_terms = property(fget=get_family_terms)
 
@@ -115,13 +111,12 @@ class RelationshipQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.RelationshipQueryInspectorRecord
+        return  # osid.relationship.records.RelationshipQueryInspectorRecord
 
 
 class FamilyQueryInspector:
     """This is the query inspector for examining family queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_relationship_id_terms(self):
@@ -134,7 +129,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     relationship_id_terms = property(fget=get_relationship_id_terms)
 
@@ -149,7 +144,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.RelationshipQueryInspector
+        return  # osid.relationship.RelationshipQueryInspector
 
     relationship_terms = property(fget=get_relationship_terms)
 
@@ -164,7 +159,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_family_id_terms = property(fget=get_ancestor_family_id_terms)
 
@@ -179,7 +174,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQueryInspector
+        return  # osid.relationship.FamilyQueryInspector
 
     ancestor_family_terms = property(fget=get_ancestor_family_terms)
 
@@ -194,7 +189,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_family_id_terms = property(fget=get_descendant_family_id_terms)
 
@@ -209,7 +204,7 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.FamilyQueryInspector
+        return  # osid.relationship.FamilyQueryInspector
 
     descendant_family_terms = property(fget=get_descendant_family_terms)
 
@@ -229,6 +224,4 @@ class FamilyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.relationship.records.FamilyQueryInspectorRecord
-
-
+        return  # osid.relationship.records.FamilyQueryInspectorRecord

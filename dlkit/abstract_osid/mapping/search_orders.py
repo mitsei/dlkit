@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -51,7 +50,7 @@ class LocationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.LocationSearchOrderRecord
+        return  # osid.mapping.records.LocationSearchOrderRecord
 
 
 class MapSearchOrder:
@@ -75,6 +74,4 @@ class MapSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.records.MapSearchOrderRecord
-
-
+        return  # osid.mapping.records.MapSearchOrderRecord

@@ -24,8 +24,6 @@ UNANSWERED = 0
 NULL_SUBMISSION = 1
 
 
-
-
 class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
     """A response to an assessment item.
 
@@ -34,7 +32,6 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
     corresponding setters.
 
     """
-
     _namespace = 'assessment.Response'
 
     def __init__(self, osid_object_map, additional_attempts=None, runtime=None, proxy=None, section=None, **kwargs):
@@ -91,7 +88,6 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
                 return getattr(self._my_answer, name)
             except:
                 raise
-
     def get_item_id(self):
         """Gets the ``Id`` of the ``Item``.
 
@@ -185,5 +181,3 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
         if self._is_correct is not None:
             return self._is_correct
         raise errors.IllegalState('do not know if this response is correct')
-
-

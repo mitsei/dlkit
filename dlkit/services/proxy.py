@@ -36,10 +36,8 @@ DISABLED = -1
 
 class ProxyProfile(osid.OsidProfile, proxy_managers.ProxyProfile):
     """ProxyProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_proxy(self):
         """Pass through to provider supports_proxy"""
         # Implemented from kitosid template for -
@@ -65,8 +63,6 @@ class ProxyProfile(osid.OsidProfile, proxy_managers.ProxyProfile):
 
 class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, proxy_managers.ProxyManager):
     """ProxyManager convenience adapter including related Session methods."""
-
-
     def __init__(self):
         import settings
         import importlib
@@ -86,7 +82,6 @@ class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, proxy_manag
             else:
                 self._provider_sessions[session] = get_session()
             return self._provider_sessions[session]
-
     def get_proxy_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')

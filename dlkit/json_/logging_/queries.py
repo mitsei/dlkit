@@ -20,8 +20,6 @@ from dlkit.abstract_osid.logging_ import queries as abc_logging_queries
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching log entries.
 
@@ -29,7 +27,6 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
     the same method produce a nested ``OR``.
 
     """
-
     def __init__(self, runtime):
         self._namespace = 'logging.LogEntry'
         self._runtime = runtime
@@ -39,8 +36,6 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
-
-
     @utilities.arguments_not_none
     def match_priority(self, priority_type, match):
         """Matches a priority ``Type`` for the log entry.
@@ -325,6 +320,8 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         raise errors.Unimplemented()
 
 
+
+
 class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching for logs.
 
@@ -332,7 +329,6 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
     the same method produce a nested ``OR``.
 
     """
-
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('LOG_RECORD_TYPES', runtime)
@@ -355,8 +351,6 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
-
-
     @utilities.arguments_not_none
     def match_log_entry_id(self, log_entry_id, match):
         """Sets a log entry ``Id``.
@@ -582,5 +576,3 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
 
         """
         raise errors.Unimplemented()
-
-

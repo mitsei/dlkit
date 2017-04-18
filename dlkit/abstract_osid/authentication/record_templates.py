@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AgentRecord:
     """A record for an ``Agent``.
 
@@ -27,9 +24,6 @@ class AgentRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgentQueryRecord:
@@ -42,9 +36,6 @@ class AgentQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgentQueryInspectorRecord:
     """A record for an ``AgentQueryInspector``.
 
@@ -53,9 +44,6 @@ class AgentQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgentFormRecord:
@@ -68,9 +56,6 @@ class AgentFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgentSearchOrderRecord:
     """A record for an ``AgentSearchOrder``.
 
@@ -79,9 +64,6 @@ class AgentSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgentSearchRecord:
@@ -94,9 +76,6 @@ class AgentSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgentSearchResultsRecord:
     """A record for an ``AgentSearchResults``.
 
@@ -105,9 +84,6 @@ class AgentSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgencyRecord:
@@ -120,9 +96,6 @@ class AgencyRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgencyQueryRecord:
     """A record for an ``AgencyQuery``.
 
@@ -131,9 +104,6 @@ class AgencyQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgencyQueryInspectorRecord:
@@ -146,9 +116,6 @@ class AgencyQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgencyFormRecord:
     """A record for an ``AgencyForm``.
 
@@ -157,9 +124,6 @@ class AgencyFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AgencySearchOrderRecord:
@@ -172,9 +136,6 @@ class AgencySearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgencySearchRecord:
     """A record for an ``AgencySearch``.
 
@@ -185,9 +146,6 @@ class AgencySearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AgencySearchResultsRecord:
     """A record for an ``AgencySearchResults``.
 
@@ -196,8 +154,3 @@ class AgencySearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

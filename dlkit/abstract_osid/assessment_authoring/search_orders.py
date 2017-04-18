@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentPartSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_assessment(self, style):
@@ -48,7 +44,7 @@ class AssessmentPartSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_search_order(self):
@@ -62,7 +58,7 @@ class AssessmentPartSearchOrder:
         ``supports_assessment_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     assessment_search_order = property(fget=get_assessment_search_order)
 
@@ -122,13 +118,12 @@ class AssessmentPartSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartSearchOrderRecord
+        return  # osid.assessment.authoring.records.AssessmentPartSearchOrderRecord
 
 
 class SequenceRuleSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_assessment_part(self, style):
@@ -154,7 +149,7 @@ class SequenceRuleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_search_order(self):
@@ -168,7 +163,7 @@ class SequenceRuleSearchOrder:
         ``supports_assessment_part_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchOrder
+        return  # osid.assessment.authoring.AssessmentPartSearchOrder
 
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
@@ -196,7 +191,7 @@ class SequenceRuleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_next_assessment_part_search_order(self):
@@ -210,7 +205,7 @@ class SequenceRuleSearchOrder:
         ``supports_next_assessment_part_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartSearchOrder
+        return  # osid.assessment.authoring.AssessmentPartSearchOrder
 
     next_assessment_part_search_order = property(fget=get_next_assessment_part_search_order)
 
@@ -270,13 +265,12 @@ class SequenceRuleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleSearchOrderRecord
+        return  # osid.assessment.authoring.records.SequenceRuleSearchOrderRecord
 
 
 class SequenceRuleEnablerSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_search_order_record(self, sequence_rule_enabler_record_type):
@@ -295,6 +289,4 @@ class SequenceRuleEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerSearchOrderRecord
-
-
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerSearchOrderRecord

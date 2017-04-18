@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AgentQuery:
     """This is the query for searching agents.
 
@@ -29,21 +26,18 @@ class AgentQuery:
     "Tom" and whose "login name" is "tom" or "tjcoppet" in an agent
     record specified by ``companyAgentType``.
       Agent Query query = session.getAgentQuery();
-      
+
       query.matchDisplayName("Tom*", wildcardStringMatchType, true);
-      
+
       companyAgentQuery = query.getAgentQueryRecord(companyAgentType);
       companyAgentQuery.matchLoginName("tom");
       companyAgentQuery = query.getAgentQueryRecord(companyAgentType);
       companyAgentQuery.matchLoginName("tjcoppet");
-      
+
       AgentList agentList = session.getAgentsByQuery(query);
-
-
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_resource_id(self, agency_id, match):
@@ -84,7 +78,7 @@ class AgentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -100,7 +94,7 @@ class AgentQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -169,7 +163,7 @@ class AgentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_query(self):
@@ -185,7 +179,7 @@ class AgentQuery:
         ``supports_agency_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyQuery
+        return  # osid.authentication.AgencyQuery
 
     agency_query = property(fget=get_agency_query)
 
@@ -219,7 +213,7 @@ class AgentQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentQueryRecord
+        return  # osid.authentication.records.AgentQueryRecord
 
 
 class AgencyQuery:
@@ -230,7 +224,6 @@ class AgencyQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_agent_id(self, agent_id, match):
@@ -271,7 +264,7 @@ class AgencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self):
@@ -287,7 +280,7 @@ class AgencyQuery:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -356,7 +349,7 @@ class AgencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_ancestor_agency_query(self):
@@ -372,7 +365,7 @@ class AgencyQuery:
         ``supports_ancestor_agency_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     ancestor_agency_query = property(fget=get_ancestor_agency_query)
 
@@ -441,7 +434,7 @@ class AgencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_descendant_agency_query(self):
@@ -457,7 +450,7 @@ class AgencyQuery:
         ``supports_descendant_agency_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     descendant_agency_query = property(fget=get_descendant_agency_query)
 
@@ -504,6 +497,4 @@ class AgencyQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencyQueryRecord
-
-
+        return  # osid.authentication.records.AgencyQueryRecord

@@ -23,8 +23,6 @@ from dlkit.abstract_osid.authentication_process import objects as abc_authentica
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class Authentication(abc_authentication_process_objects.Authentication, osid_objects.OsidObject):
     """``Authentication`` represents an authentication credential which contains set of ``bytes`` and a format Type.
 
@@ -39,12 +37,9 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_obj
     credential is mapped.
 
     """
-
     def __init__(self):
         self._django_user = None
         self._credential = None
-
-
     def get_agent_id(self):
         """Gets the ``Id`` of the ``Agent`` identified in this authentication credential.
 
@@ -188,5 +183,3 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_obj
     def set_django_user(self, django_user):
         """Special method that excepts a django user. Should be a record."""
         self._django_user = django_user
-
-

@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestAssessmentPart(unittest.TestCase):
     """Tests for AssessmentPart"""
 
@@ -64,6 +66,8 @@ class TestAssessmentPart(unittest.TestCase):
         pass
 
 
+
+
 class TestAssessmentPartForm(unittest.TestCase):
     """Tests for AssessmentPartForm"""
 
@@ -104,6 +108,8 @@ class TestAssessmentPartForm(unittest.TestCase):
         pass
 
 
+
+
 class TestAssessmentPartList(unittest.TestCase):
     """Tests for AssessmentPartList"""
 
@@ -116,6 +122,8 @@ class TestAssessmentPartList(unittest.TestCase):
     def test_get_next_assessment_parts(self):
         """Tests get_next_assessment_parts"""
         pass
+
+
 
 
 class TestSequenceRule(unittest.TestCase):
@@ -174,6 +182,8 @@ class TestSequenceRule(unittest.TestCase):
         pass
 
 
+
+
 class TestSequenceRuleForm(unittest.TestCase):
     """Tests for SequenceRuleForm"""
 
@@ -223,6 +233,8 @@ class TestSequenceRuleForm(unittest.TestCase):
     def test_get_sequence_rule_form_record(self):
         """Tests get_sequence_rule_form_record"""
         pass
+
+
 
 
 class TestSequenceRuleList(unittest.TestCase):

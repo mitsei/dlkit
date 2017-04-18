@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestGradeQuery(unittest.TestCase):
     """Tests for GradeQuery"""
 
@@ -132,6 +134,8 @@ class TestGradeQuery(unittest.TestCase):
     def test_get_grade_query_record(self):
         """Tests get_grade_query_record"""
         pass
+
+
 
 
 class TestGradeSystemQuery(unittest.TestCase):
@@ -268,6 +272,8 @@ class TestGradeSystemQuery(unittest.TestCase):
     def test_get_grade_system_query_record(self):
         """Tests get_grade_system_query_record"""
         pass
+
+
 
 
 class TestGradeEntryQuery(unittest.TestCase):
@@ -526,6 +532,8 @@ class TestGradeEntryQuery(unittest.TestCase):
         pass
 
 
+
+
 class TestGradebookColumnQuery(unittest.TestCase):
     """Tests for GradebookColumnQuery"""
 
@@ -635,6 +643,8 @@ class TestGradebookColumnQuery(unittest.TestCase):
     def test_get_gradebook_column_query_record(self):
         """Tests get_gradebook_column_query_record"""
         pass
+
+
 
 
 class TestGradebookColumnSummaryQuery(unittest.TestCase):
@@ -819,6 +829,8 @@ class TestGradebookColumnSummaryQuery(unittest.TestCase):
     def test_get_gradebook_column_summary_query_record(self):
         """Tests get_gradebook_column_summary_query_record"""
         pass
+
+
 
 
 class TestGradebookQuery(unittest.TestCase):

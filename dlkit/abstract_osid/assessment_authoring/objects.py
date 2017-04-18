@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssessmentPart:
     """An ``AssessmentPart`` represents a section of an assessment.
 
@@ -28,7 +25,6 @@ class AssessmentPart:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_id(self):
@@ -41,7 +37,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_id = property(fget=get_assessment_id)
 
@@ -56,7 +52,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     assessment = property(fget=get_assessment)
 
@@ -71,7 +67,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_part_id(self):
@@ -84,7 +80,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_part_id = property(fget=get_assessment_part_id)
 
@@ -100,7 +96,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     assessment_part = property(fget=get_assessment_part)
 
@@ -119,7 +115,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_weight(self):
@@ -135,7 +131,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     weight = property(fget=get_weight)
 
@@ -153,7 +149,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     allocated_time = property(fget=get_allocated_time)
 
@@ -168,7 +164,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     child_assessment_part_ids = property(fget=get_child_assessment_part_ids)
 
@@ -183,7 +179,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     child_assessment_parts = property(fget=get_child_assessment_parts)
 
@@ -208,7 +204,7 @@ class AssessmentPart:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartRecord
+        return  # osid.assessment.authoring.records.AssessmentPartRecord
 
 
 class AssessmentPartForm:
@@ -223,7 +219,6 @@ class AssessmentPartForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_weight_metadata(self):
         """Gets the metadata for the weight.
@@ -235,7 +230,7 @@ class AssessmentPartForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     weight_metadata = property(fget=get_weight_metadata)
 
@@ -277,7 +272,7 @@ class AssessmentPartForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     allocated_time_metadata = property(fget=get_allocated_time_metadata)
 
@@ -323,7 +318,7 @@ class AssessmentPartForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.AssessmentPartFormRecord
+        return  # osid.assessment.authoring.records.AssessmentPartFormRecord
 
 
 class AssessmentPartList:
@@ -337,11 +332,8 @@ class AssessmentPartList:
            AssessmentPart[] assessmentParts = apl.hetNextAssessmentParts(apl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_assessment_part(self):
@@ -355,7 +347,7 @@ class AssessmentPartList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     next_assessment_part = property(fget=get_next_assessment_part)
 
@@ -373,13 +365,12 @@ class AssessmentPartList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
 
 class SequenceRule:
     """A ``SequenceRule`` defines the ordering of ``AssessmentParts``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessment_part_id(self):
@@ -392,7 +383,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_part_id = property(fget=get_assessment_part_id)
 
@@ -407,7 +398,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     assessment_part = property(fget=get_assessment_part)
 
@@ -422,7 +413,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     next_assessment_part_id = property(fget=get_next_assessment_part_id)
 
@@ -437,7 +428,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPart
+        return  # osid.assessment.authoring.AssessmentPart
 
     next_assessment_part = property(fget=get_next_assessment_part)
 
@@ -452,7 +443,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minimum_score = property(fget=get_minimum_score)
 
@@ -467,7 +458,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     maximum_score = property(fget=get_maximum_score)
 
@@ -482,7 +473,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_applied_assessment_part_ids(self):
@@ -498,7 +489,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     applied_assessment_part_ids = property(fget=get_applied_assessment_part_ids)
 
@@ -517,7 +508,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.AssessmentPartList
+        return  # osid.assessment.authoring.AssessmentPartList
 
     applied_assessment_parts = property(fget=get_applied_assessment_parts)
 
@@ -542,7 +533,7 @@ class SequenceRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleRecord
+        return  # osid.assessment.authoring.records.SequenceRuleRecord
 
 
 class SequenceRuleForm:
@@ -556,7 +547,6 @@ class SequenceRuleForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_minimum_score_metadata(self):
         """Gets the metadata for the minimum score.
@@ -568,7 +558,7 @@ class SequenceRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     minimum_score_metadata = property(fget=get_minimum_score_metadata)
 
@@ -599,7 +589,7 @@ class SequenceRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     maximum_score_metadata = property(fget=get_maximum_score_metadata)
 
@@ -630,7 +620,7 @@ class SequenceRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     cumulative_metadata = property(fget=get_cumulative_metadata)
 
@@ -661,7 +651,7 @@ class SequenceRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     applied_assessment_parts_metadata = property(fget=get_applied_assessment_parts_metadata)
 
@@ -695,7 +685,7 @@ class SequenceRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleFormRecord
+        return  # osid.assessment.authoring.records.SequenceRuleFormRecord
 
 
 class SequenceRuleList:
@@ -709,11 +699,8 @@ class SequenceRuleList:
            AssessmentSequenceRule[] rules = srl.getNextAssessmentSequenceRules(srl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_sequence_rule(self):
@@ -727,7 +714,7 @@ class SequenceRuleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRule
+        return  # osid.assessment.authoring.SequenceRule
 
     next_sequence_rule = property(fget=get_next_sequence_rule)
 
@@ -745,13 +732,12 @@ class SequenceRuleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRule
+        return  # osid.assessment.authoring.SequenceRule
 
 
 class SequenceRuleEnabler:
     """A ``SequenceRuleEnabler`` describes the rules for making a ``SequenceRule`` effective."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_record(self, sequence_rule_enabler_record_type):
@@ -775,7 +761,7 @@ class SequenceRuleEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerRecord
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerRecord
 
 
 class SequenceRuleEnablerForm:
@@ -789,7 +775,6 @@ class SequenceRuleEnablerForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequence_rule_enabler_form_record(self, sequence_rule_enabler_record_type):
@@ -806,7 +791,7 @@ class SequenceRuleEnablerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.records.SequenceRuleEnablerFormRecord
+        return  # osid.assessment.authoring.records.SequenceRuleEnablerFormRecord
 
 
 class SequenceRuleEnablerFormRecord:
@@ -817,9 +802,6 @@ class SequenceRuleEnablerFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleEnablerList:
@@ -833,11 +815,8 @@ class SequenceRuleEnablerList:
            SequenceRuleEnabler[] enablers = scel.getNextSequenceRuleEnablers(scel.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_sequence_rule_enabler(self):
@@ -851,7 +830,7 @@ class SequenceRuleEnablerList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnabler
+        return  # osid.assessment.authoring.SequenceRuleEnabler
 
     next_sequence_rule_enabler = property(fget=get_next_sequence_rule_enabler)
 
@@ -872,6 +851,4 @@ class SequenceRuleEnablerList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.authoring.SequenceRuleEnabler
-
-
+        return  # osid.assessment.authoring.SequenceRuleEnabler

@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.learning import managers as learning_managers
 
 
-
-
 class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfile):
     """Adapts underlying LearningProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
             return self._provider_manager.get_objective_bank_hierarchy_session()
         except Unimplemented:
             return None
-
     def supports_objective_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -198,9 +194,10 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
     objective_bank_search_record_types = property(fget=get_objective_bank_search_record_types)
 
 
+
+
 class LearningManager(osid_managers.OsidManager, LearningProfile, learning_managers.LearningManager):
     """Adapts underlying LearningManager methodswith authorization checks."""
-
     def __init__(self):
         LearningProfile.__init__(self)
 
@@ -211,8 +208,6 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('LEARNING', provider_impl)
         # need to add version argument
-
-
     def get_objective_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -742,9 +737,10 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
     learning_batch_manager = property(fget=get_learning_batch_manager)
 
 
+
+
 class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, learning_managers.LearningProxyManager):
     """Adapts underlying LearningProxyManager methodswith authorization checks."""
-
     def __init__(self):
         LearningProfile.__init__(self)
 
@@ -755,8 +751,6 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('LEARNING', provider_impl)
         # need to add version argument
-
-
     @raise_null_argument
     def get_objective_lookup_session(self, proxy):
         # Implemented from azosid template for -
@@ -1297,5 +1291,3 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
         raise Unimplemented()
 
     learning_batch_proxy_manager = property(fget=get_learning_batch_proxy_manager)
-
-

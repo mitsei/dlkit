@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.relationship import managers as relationship_managers
 
 
-
-
 class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.RelationshipProfile):
     """The relationship profile describes the interoperability among relationship services."""
 
@@ -185,6 +183,8 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
     family_search_record_types = property(fget=get_family_search_record_types)
 
 
+
+
 class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relationship_managers.RelationshipManager):
     """The relationship manager provides access to relationship sessions and provides interoperability tests for various aspects of this service.
 
@@ -216,12 +216,9 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_relationship_lookup_session(self):
         """Gets the ``OsidSession`` associated with the relationship lookup service.
@@ -472,6 +469,8 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
     relationship_rules_manager = property(fget=get_relationship_rules_manager)
 
 
+
+
 class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfile, relationship_managers.RelationshipProxyManager):
     """The relationship manager provides access to relationship sessions and provides interoperability tests for various aspects of this service.
 
@@ -504,12 +503,9 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_relationship_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the relationship lookup service.
@@ -758,5 +754,3 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
         raise errors.Unimplemented()
 
     relationship_rules_proxy_manager = property(fget=get_relationship_rules_proxy_manager)
-
-

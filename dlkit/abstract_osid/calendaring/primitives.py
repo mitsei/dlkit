@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Time:
@@ -36,7 +31,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -51,7 +46,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     hour = property(fget=get_hour)
 
@@ -66,7 +61,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minute = property(fget=get_minute)
 
@@ -81,7 +76,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     second = property(fget=get_second)
 
@@ -98,7 +93,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     milliseconds = property(fget=get_milliseconds)
 
@@ -115,7 +110,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     microseconds = property(fget=get_microseconds)
 
@@ -132,7 +127,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     nanoseconds = property(fget=get_nanoseconds)
 
@@ -149,7 +144,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     picoseconds = property(fget=get_picoseconds)
 
@@ -166,7 +161,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     femtoseconds = property(fget=get_femtoseconds)
 
@@ -183,7 +178,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     attoseconds = property(fget=get_attoseconds)
 
@@ -200,7 +195,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     zeptoseconds = property(fget=get_zeptoseconds)
 
@@ -218,7 +213,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     yoctoseconds = property(fget=get_yoctoseconds)
 
@@ -236,7 +231,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     xoxxoseconds = property(fget=get_xoxxoseconds)
 
@@ -253,7 +248,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     weebleseconds = property(fget=get_weebleseconds)
 
@@ -270,7 +265,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     vatoseconds = property(fget=get_vatoseconds)
 
@@ -287,7 +282,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     undaseconds = property(fget=get_undaseconds)
 
@@ -304,7 +299,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     planck_seconds = property(fget=get_planck_seconds)
 
@@ -323,7 +318,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     granularity = property(fget=get_granularity)
 
@@ -341,7 +336,7 @@ class Time:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     granularity_multiplier = property(fget=get_granularity_multiplier)
 
@@ -413,7 +408,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -430,7 +425,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     aeon = property(fget=get_aeon)
 
@@ -447,7 +442,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     epoch = property(fget=get_epoch)
 
@@ -464,7 +459,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     millennium = property(fget=get_millennium)
 
@@ -479,7 +474,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     century = property(fget=get_century)
 
@@ -494,7 +489,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     year = property(fget=get_year)
 
@@ -509,7 +504,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     month = property(fget=get_month)
 
@@ -524,7 +519,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     day = property(fget=get_day)
 
@@ -539,7 +534,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -554,7 +549,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     hour = property(fget=get_hour)
 
@@ -569,7 +564,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     minute = property(fget=get_minute)
 
@@ -584,7 +579,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     second = property(fget=get_second)
 
@@ -601,7 +596,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     milliseconds = property(fget=get_milliseconds)
 
@@ -618,7 +613,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     microseconds = property(fget=get_microseconds)
 
@@ -635,7 +630,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     nanoseconds = property(fget=get_nanoseconds)
 
@@ -652,7 +647,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     picoseconds = property(fget=get_picoseconds)
 
@@ -669,7 +664,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     femtoseconds = property(fget=get_femtoseconds)
 
@@ -686,7 +681,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     attoseconds = property(fget=get_attoseconds)
 
@@ -703,7 +698,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     zeptoseconds = property(fget=get_zeptoseconds)
 
@@ -721,7 +716,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     yoctoseconds = property(fget=get_yoctoseconds)
 
@@ -739,7 +734,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     xoxxoseconds = property(fget=get_xoxxoseconds)
 
@@ -756,7 +751,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     weebleseconds = property(fget=get_weebleseconds)
 
@@ -773,7 +768,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     vatoseconds = property(fget=get_vatoseconds)
 
@@ -790,7 +785,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     undaseconds = property(fget=get_undaseconds)
 
@@ -807,7 +802,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     planck_seconds = property(fget=get_planck_seconds)
 
@@ -826,7 +821,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     granularity = property(fget=get_granularity)
 
@@ -844,7 +839,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     granularity_multiplier = property(fget=get_granularity_multiplier)
 
@@ -859,7 +854,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_uncertainty_units(self):
@@ -872,7 +867,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     uncertainty_units = property(fget=get_uncertainty_units)
 
@@ -887,7 +882,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     uncertainty_minus = property(fget=get_uncertainty_minus)
 
@@ -902,7 +897,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     uncertainty_plus = property(fget=get_uncertainty_plus)
 
@@ -922,7 +917,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_uncertainty_time_inclusive(self):
@@ -940,7 +935,7 @@ class DateTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class Duration:
@@ -958,7 +953,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -973,7 +968,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -990,7 +985,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     aeons = property(fget=get_aeons)
 
@@ -1007,7 +1002,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     epochs = property(fget=get_epochs)
 
@@ -1024,7 +1019,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     millennia = property(fget=get_millennia)
 
@@ -1039,7 +1034,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     centuries = property(fget=get_centuries)
 
@@ -1054,7 +1049,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     scores = property(fget=get_scores)
 
@@ -1069,7 +1064,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     bluemoons = property(fget=get_bluemoons)
 
@@ -1084,7 +1079,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     years = property(fget=get_years)
 
@@ -1099,7 +1094,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     months = property(fget=get_months)
 
@@ -1114,7 +1109,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     weeks = property(fget=get_weeks)
 
@@ -1129,7 +1124,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     days = property(fget=get_days)
 
@@ -1144,7 +1139,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     hours = property(fget=get_hours)
 
@@ -1159,7 +1154,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     minutes = property(fget=get_minutes)
 
@@ -1174,7 +1169,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     seconds = property(fget=get_seconds)
 
@@ -1191,7 +1186,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     milliseconds = property(fget=get_milliseconds)
 
@@ -1208,7 +1203,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     microseconds = property(fget=get_microseconds)
 
@@ -1225,7 +1220,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     nanoseconds = property(fget=get_nanoseconds)
 
@@ -1242,7 +1237,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     picoseconds = property(fget=get_picoseconds)
 
@@ -1259,7 +1254,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     femtoseconds = property(fget=get_femtoseconds)
 
@@ -1276,7 +1271,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     attoseconds = property(fget=get_attoseconds)
 
@@ -1293,7 +1288,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     zeptoseconds = property(fget=get_zeptoseconds)
 
@@ -1311,7 +1306,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     yoctoseconds = property(fget=get_yoctoseconds)
 
@@ -1329,7 +1324,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     xoxxoseconds = property(fget=get_xoxxoseconds)
 
@@ -1346,7 +1341,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     weebleseconds = property(fget=get_weebleseconds)
 
@@ -1363,7 +1358,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     vatoseconds = property(fget=get_vatoseconds)
 
@@ -1380,7 +1375,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     undaseconds = property(fget=get_undaseconds)
 
@@ -1397,7 +1392,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     planck_seconds = property(fget=get_planck_seconds)
 
@@ -1416,7 +1411,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     granularity = property(fget=get_granularity)
 
@@ -1434,7 +1429,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     granularity_multiplier = property(fget=get_granularity_multiplier)
 
@@ -1449,7 +1444,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_uncertainty_units(self):
@@ -1462,7 +1457,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeResolution
+        return  # osid.calendaring.DateTimeResolution
 
     uncertainty_units = property(fget=get_uncertainty_units)
 
@@ -1477,7 +1472,7 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     uncertainty_minus = property(fget=get_uncertainty_minus)
 
@@ -1492,8 +1487,6 @@ class Duration:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     uncertainty_plus = property(fget=get_uncertainty_plus)
-
-

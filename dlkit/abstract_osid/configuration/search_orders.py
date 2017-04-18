@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterSearchOrder:
@@ -68,7 +63,7 @@ class ParameterSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterSearchOrderRecord
+        return  # osid.configuration.records.ParameterSearchOrderRecord
 
 
 class ValueSearchOrder:
@@ -112,7 +107,7 @@ class ValueSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_search_order(self):
@@ -126,7 +121,7 @@ class ValueSearchOrder:
         ``supports_parameter_search_order()`` is ``true``.*
 
         """
-        return # osid.configuration.ParameterSearchOrder
+        return  # osid.configuration.ParameterSearchOrder
 
     parameter_search_order = property(fget=get_parameter_search_order)
 
@@ -147,7 +142,7 @@ class ValueSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueSearchOrderRecord
+        return  # osid.configuration.records.ValueSearchOrderRecord
 
 
 class ConfigurationSearchOrder:
@@ -171,6 +166,4 @@ class ConfigurationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationSearchOrderRecord
-
-
+        return  # osid.configuration.records.ConfigurationSearchOrderRecord

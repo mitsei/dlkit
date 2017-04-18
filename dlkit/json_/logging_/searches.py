@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.logging_ import searches as abc_logging_searches
 
 
-
-
 class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSearch):
     """The search interface for governing log entry searches."""
 
@@ -70,6 +68,8 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
         raise errors.Unimplemented()
 
 
+
+
 class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -118,6 +118,8 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
@@ -169,6 +171,8 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
         raise errors.Unimplemented()
 
 
+
+
 class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -215,5 +219,3 @@ class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.Osid
 
         """
         raise errors.Unimplemented()
-
-

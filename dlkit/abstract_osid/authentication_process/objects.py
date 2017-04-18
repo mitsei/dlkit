@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Authentication:
     """``Authentication`` represents an authentication credential which contains set of ``bytes`` and a format Type.
 
@@ -35,7 +32,6 @@ class Authentication:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agent_id(self):
         """Gets the ``Id`` of the ``Agent`` identified in this authentication credential.
@@ -49,7 +45,7 @@ class Authentication:
         time this credential is created.
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agent_id = property(fget=get_agent_id)
 
@@ -64,7 +60,7 @@ class Authentication:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     agent = property(fget=get_agent)
 
@@ -84,7 +80,7 @@ class Authentication:
         of this credential should result in ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_expiration(self):
@@ -97,7 +93,7 @@ class Authentication:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_expiration(self):
@@ -113,7 +109,7 @@ class Authentication:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # timestamp
+        return  # timestamp
 
     expiration = property(fget=get_expiration)
 
@@ -128,7 +124,7 @@ class Authentication:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_credential(self, credential_type):
@@ -147,7 +143,7 @@ class Authentication:
         credential formats for a variety of applications.
 
         """
-        return # object
+        return  # object
 
     @abc.abstractmethod
     def get_authentication_record(self, authentication_record_type):
@@ -171,13 +167,12 @@ class Authentication:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.AuthenticationRecord
+        return  # osid.authentication.process.records.AuthenticationRecord
 
 
 class Challenge:
     """The challenge data."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_challenge_record(self, challenge_record_type):
@@ -201,7 +196,7 @@ class Challenge:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.ChallengeRecord
+        return  # osid.authentication.process.records.ChallengeRecord
 
 
 class Trust:
@@ -218,7 +213,6 @@ class Trust:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_trust_record(self, trust_record_type):
@@ -242,7 +236,7 @@ class Trust:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.TrustRecord
+        return  # osid.authentication.process.records.TrustRecord
 
 
 class TrustList:
@@ -255,11 +249,8 @@ class TrustList:
            Trust[] trusts = tl.getNextTrusts(tl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_trust(self):
@@ -273,7 +264,7 @@ class TrustList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     next_trust = property(fget=get_next_trust)
 
@@ -291,6 +282,4 @@ class TrustList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
-
-
+        return  # osid.authentication.process.Trust

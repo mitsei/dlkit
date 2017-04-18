@@ -37,10 +37,8 @@ DISABLED = -1
 
 class RepositoryProfile(osid.OsidProfile, repository_managers.RepositoryProfile):
     """RepositoryProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_asset_lookup(self):
         """Pass through to provider supports_asset_lookup"""
         # Implemented from kitosid template for -
@@ -236,7 +234,6 @@ class RepositoryProfile(osid.OsidProfile, repository_managers.RepositoryProfile)
 
 class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, repository_managers.RepositoryManager):
     """RepositoryManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -357,7 +354,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_asset_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_asset_lookup_session"""
         # Implemented from kitosid template for -
@@ -1316,7 +1312,6 @@ class RepositoryProxyManager(osid.OsidProxyManager, RepositoryProfile, repositor
 
 class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidCatalog):
     """Repository convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -1454,7 +1449,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_repository_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

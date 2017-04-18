@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class QuestionSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_question_search_order_record(self, question_record_type):
@@ -41,13 +37,12 @@ class QuestionSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.QuestionSearchOrderRecord
+        return  # osid.assessment.records.QuestionSearchOrderRecord
 
 
 class AnswerSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_answer_search_order_record(self, answer_record_type):
@@ -66,13 +61,12 @@ class AnswerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AnswerSearchOrderRecord
+        return  # osid.assessment.records.AnswerSearchOrderRecord
 
 
 class ItemSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_question(self, style):
@@ -98,7 +92,7 @@ class ItemSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_question_search_order(self):
@@ -112,7 +106,7 @@ class ItemSearchOrder:
         ``supports_question_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.QuestionSearchOrder
+        return  # osid.assessment.QuestionSearchOrder
 
     question_search_order = property(fget=get_question_search_order)
 
@@ -133,13 +127,12 @@ class ItemSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemSearchOrderRecord
+        return  # osid.assessment.records.ItemSearchOrderRecord
 
 
 class AssessmentSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_level(self, style):
@@ -165,7 +158,7 @@ class AssessmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_search_order(self):
@@ -179,7 +172,7 @@ class AssessmentSearchOrder:
         ``supports_level_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     level_search_order = property(fget=get_level_search_order)
 
@@ -207,7 +200,7 @@ class AssessmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_search_order(self):
@@ -221,7 +214,7 @@ class AssessmentSearchOrder:
         ``supports_rubric_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     rubric_search_order = property(fget=get_rubric_search_order)
 
@@ -242,13 +235,12 @@ class AssessmentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentSearchOrderRecord
+        return  # osid.assessment.records.AssessmentSearchOrderRecord
 
 
 class AssessmentOfferedSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_assessment(self, style):
@@ -274,7 +266,7 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_search_order(self):
@@ -288,7 +280,7 @@ class AssessmentOfferedSearchOrder:
         ``supports_assessment_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     assessment_search_order = property(fget=get_assessment_search_order)
 
@@ -316,7 +308,7 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_search_order(self):
@@ -330,7 +322,7 @@ class AssessmentOfferedSearchOrder:
         ``supports_level_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     level_search_order = property(fget=get_level_search_order)
 
@@ -423,7 +415,7 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_search_order(self):
@@ -437,7 +429,7 @@ class AssessmentOfferedSearchOrder:
         ``supports_score_system_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     score_system_search_order = property(fget=get_score_system_search_order)
 
@@ -465,7 +457,7 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_system_search_order(self):
@@ -479,7 +471,7 @@ class AssessmentOfferedSearchOrder:
         ``supports_grade_system_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
@@ -507,7 +499,7 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_search_order(self):
@@ -521,7 +513,7 @@ class AssessmentOfferedSearchOrder:
         ``supports_rubric_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchOrder
+        return  # osid.assessment.AssessmentOfferedSearchOrder
 
     rubric_search_order = property(fget=get_rubric_search_order)
 
@@ -542,13 +534,12 @@ class AssessmentOfferedSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedSearchOrderRecord
+        return  # osid.assessment.records.AssessmentOfferedSearchOrderRecord
 
 
 class AssessmentTakenSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_assessment_offered(self, style):
@@ -574,7 +565,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_search_order(self):
@@ -588,7 +579,7 @@ class AssessmentTakenSearchOrder:
         ``supports_assessment_offered_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchOrder
+        return  # osid.assessment.AssessmentOfferedSearchOrder
 
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
@@ -616,7 +607,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_taker_search_order(self):
@@ -630,7 +621,7 @@ class AssessmentTakenSearchOrder:
         ``supports_taker_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     taker_search_order = property(fget=get_taker_search_order)
 
@@ -658,7 +649,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_taking_agent_search_order(self):
@@ -672,7 +663,7 @@ class AssessmentTakenSearchOrder:
         ``supports_taking_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     taking_agent_search_order = property(fget=get_taking_agent_search_order)
 
@@ -739,7 +730,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_score_system_search_order(self):
@@ -753,7 +744,7 @@ class AssessmentTakenSearchOrder:
         ``supports_score_system_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSystemSearchOrder
+        return  # osid.grading.GradeSystemSearchOrder
 
     score_system_search_order = property(fget=get_score_system_search_order)
 
@@ -794,7 +785,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_search_order(self):
@@ -808,7 +799,7 @@ class AssessmentTakenSearchOrder:
         ``supports_grade_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     grade_search_order = property(fget=get_grade_search_order)
 
@@ -849,7 +840,7 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rubric_search_order(self):
@@ -863,7 +854,7 @@ class AssessmentTakenSearchOrder:
         ``supports_rubric_search_order()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchOrder
+        return  # osid.assessment.AssessmentTakenSearchOrder
 
     rubric_search_order = property(fget=get_rubric_search_order)
 
@@ -884,13 +875,12 @@ class AssessmentTakenSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenSearchOrderRecord
+        return  # osid.assessment.records.AssessmentTakenSearchOrderRecord
 
 
 class BankSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_search_order_record(self, bank_record_type):
@@ -909,6 +899,4 @@ class BankSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankSearchOrderRecord
-
-
+        return  # osid.assessment.records.BankSearchOrderRecord

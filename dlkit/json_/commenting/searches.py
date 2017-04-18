@@ -16,8 +16,6 @@ from ..osid import searches as osid_searches
 from dlkit.abstract_osid.commenting import searches as abc_commenting_searches
 
 
-
-
 class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSearch):
     """The search interface for governing comment searches."""
 
@@ -70,6 +68,8 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
+
+
 class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -118,6 +118,8 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
@@ -170,6 +172,8 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
         raise errors.Unimplemented()
 
 
+
+
 class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -217,5 +221,3 @@ class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches
 
         """
         raise errors.Unimplemented()
-
-

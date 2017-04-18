@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Agent:
     """An ``Agent`` represents an authenticatable identity.
 
@@ -27,7 +24,6 @@ class Agent:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agent_record(self, agent_record_type):
@@ -50,7 +46,7 @@ class Agent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentRecord
+        return  # osid.authentication.records.AgentRecord
 
 
 class AgentForm:
@@ -64,7 +60,6 @@ class AgentForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agent_form_record(self, agent_record_type):
@@ -81,7 +76,7 @@ class AgentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentFormRecord
+        return  # osid.authentication.records.AgentFormRecord
 
 
 class AgentList:
@@ -94,11 +89,8 @@ class AgentList:
            Agent[] agents = al.getNextAgents(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_agent(self):
@@ -112,7 +104,7 @@ class AgentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     next_agent = property(fget=get_next_agent)
 
@@ -130,13 +122,12 @@ class AgentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
 
 class Agency:
     """An agency defines a collection of agents."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_record(self, agency_record_type):
@@ -159,7 +150,7 @@ class Agency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencyRecord
+        return  # osid.authentication.records.AgencyRecord
 
 
 class AgencyForm:
@@ -173,7 +164,6 @@ class AgencyForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_form_record(self, agency_record_type):
@@ -190,7 +180,7 @@ class AgencyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencyFormRecord
+        return  # osid.authentication.records.AgencyFormRecord
 
 
 class AgencyList:
@@ -204,11 +194,8 @@ class AgencyList:
            Agency[] agencies = al.getNextAgencies(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_agency(self):
@@ -222,7 +209,7 @@ class AgencyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     next_agency = property(fget=get_next_agency)
 
@@ -240,7 +227,7 @@ class AgencyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
 
 class AgencyNode:
@@ -253,7 +240,6 @@ class AgencyNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency(self):
         """Gets the ``Agency`` at this node.
@@ -265,7 +251,7 @@ class AgencyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -280,7 +266,7 @@ class AgencyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyNodeList
+        return  # osid.authentication.AgencyNodeList
 
     parent_agency_nodes = property(fget=get_parent_agency_nodes)
 
@@ -295,7 +281,7 @@ class AgencyNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyNodeList
+        return  # osid.authentication.AgencyNodeList
 
     child_agency_nodes = property(fget=get_child_agency_nodes)
 
@@ -311,11 +297,8 @@ class AgencyNodeList:
            AgencyNode[] nodes = anl.getNextAgencyNodes(anl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_agency_node(self):
@@ -329,7 +312,7 @@ class AgencyNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyNode
+        return  # osid.authentication.AgencyNode
 
     next_agency_node = property(fget=get_next_agency_node)
 
@@ -347,6 +330,4 @@ class AgencyNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyNode
-
-
+        return  # osid.authentication.AgencyNode

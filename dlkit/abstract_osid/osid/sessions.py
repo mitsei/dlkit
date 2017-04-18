@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidSession:
     """The ``OsidSession`` is the top level interface for all OSID sessions.
 
@@ -38,7 +35,6 @@ class OsidSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_locale(self):
         """Gets the locale indicating the localization preferences in effect for this session.
@@ -50,7 +46,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.Locale
+        return  # osid.locale.Locale
 
     locale = property(fget=get_locale)
 
@@ -65,7 +61,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authenticated_agent_id(self):
@@ -81,7 +77,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     authenticated_agent_id = property(fget=get_authenticated_agent_id)
 
@@ -100,7 +96,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     authenticated_agent = property(fget=get_authenticated_agent)
 
@@ -121,7 +117,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     effective_agent_id = property(fget=get_effective_agent_id)
 
@@ -142,7 +138,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     effective_agent = property(fget=get_effective_agent)
 
@@ -157,7 +153,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # timestamp
+        return  # timestamp
 
     date = property(fget=get_date)
 
@@ -172,7 +168,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     clock_rate = property(fget=get_clock_rate)
 
@@ -187,7 +183,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     format_type = property(fget=get_format_type)
 
@@ -202,7 +198,7 @@ class OsidSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def start_transaction(self):
@@ -232,6 +228,4 @@ class OsidSession:
         transaction-at-a-time rule.
 
         """
-        return # osid.transaction.Transaction
-
-
+        return  # osid.transaction.Transaction

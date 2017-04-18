@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.repository import sessions as abc_repository_sessions
 
 
-
-
 class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AssetLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -67,7 +64,6 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         for repository_id in self._unauth_repository_ids:
             query.match_repository_id(repository_id, match=False)
         return self._query_session.get_assets_by_query(query)
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -321,9 +317,10 @@ class AssetContentLookupSession(abc_repository_sessions.AssetContentLookupSessio
                                                                                      asset_id)
 
 
+
+
 class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions.OsidSession):
     """Adapts underlying AssetQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -371,7 +368,6 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
 
         def match_repository_id(self, repository_id, match=True):
             self._cat_id_args_list.append({'repository_id': repository_id, 'match': match})
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -460,6 +456,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
             return result
 
 
+
+
 class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQuerySession):
     """Adapts underlying AssetSearchSession methodswith authorization checks."""
 
@@ -492,9 +490,10 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
         raise Unimplemented()
 
 
+
+
 class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AssetAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -520,7 +519,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
     def _can_for_asset(self, func_name, asset_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, asset_id, 'get_repository_ids_for_asset')
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -687,15 +685,14 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         return self._provider_session.delete_asset_content(asset_content_id)
 
 
+
+
 class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AssetNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
         self._id_namespace = 'repository.Asset'
-
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -810,15 +807,14 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         raise Unimplemented()
 
 
+
+
 class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osid_sessions.OsidSession):
     """Adapts underlying AssetRepositorySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'repository.AssetRepository'
-
-
     def can_lookup_asset_repository_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -883,15 +879,14 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         return self._provider_session.get_repositories_by_asset(asset_id)
 
 
+
+
 class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssetRepositoryAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'repository.AssetRepository'
-
-
     def can_assign_assets(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -934,6 +929,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_asset_from_repository(asset_id, repository_id)
+
+
 
 
 class AssetSmartRepositorySession(abc_repository_sessions.AssetSmartRepositorySession, osid_sessions.OsidSession):
@@ -983,6 +980,8 @@ class AssetSmartRepositorySession(abc_repository_sessions.AssetSmartRepositorySe
     @raise_null_argument
     def get_asset_query_from_inspector(self, asset_query_inspector):
         raise Unimplemented()
+
+
 
 
 class AssetTemporalSession(abc_repository_sessions.AssetTemporalSession, osid_sessions.OsidSession):
@@ -1049,6 +1048,8 @@ class AssetTemporalSession(abc_repository_sessions.AssetTemporalSession, osid_se
         raise Unimplemented()
 
 
+
+
 class AssetTemporalAssignmentSession(abc_repository_sessions.AssetTemporalAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssetTemporalAssignmentSession methodswith authorization checks."""
 
@@ -1079,6 +1080,8 @@ class AssetTemporalAssignmentSession(abc_repository_sessions.AssetTemporalAssign
     @raise_null_argument
     def remove_temporal_coverage(self, asset_id, begin, end):
         raise Unimplemented()
+
+
 
 
 class AssetSpatialSession(abc_repository_sessions.AssetSpatialSession, osid_sessions.OsidSession):
@@ -1161,6 +1164,8 @@ class AssetSpatialSession(abc_repository_sessions.AssetSpatialSession, osid_sess
         raise Unimplemented()
 
 
+
+
 class AssetSpatialAssignmentSession(abc_repository_sessions.AssetSpatialAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssetSpatialAssignmentSession methodswith authorization checks."""
 
@@ -1201,15 +1206,14 @@ class AssetSpatialAssignmentSession(abc_repository_sessions.AssetSpatialAssignme
         raise Unimplemented()
 
 
+
+
 class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, osid_sessions.OsidSession):
     """Adapts underlying AssetCompositionSession methodswith authorization checks."""
-
     def __init__(self, **kwargs):
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
         self._id_namespace = 'repository.AssetComposition'
-
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1273,15 +1277,14 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
             return self._provider_session.get_compositions_by_asset(asset_id)
 
 
+
+
 class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesignSession, osid_sessions.OsidSession):
     """Adapts underlying AssetCompositionDesignSession methodswith authorization checks."""
-
     def __init__(self, **kwargs):
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
         self._id_namespace = 'repository.AssetComposition'
-
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1338,9 +1341,10 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
             return self._provider_session.remove_asset(asset_id, composition_id)
 
 
+
+
 class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession, osid_sessions.OsidSession):
     """Adapts underlying CompositionLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -1385,7 +1389,6 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         for repository_id in self._unauth_repository_ids:
             query.match_repository_id(repository_id, match=False)
         return self._query_session.get_compositions_by_query(query)
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1533,9 +1536,10 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     compositions = property(fget=get_compositions)
 
 
+
+
 class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, osid_sessions.OsidSession):
     """Adapts underlying CompositionQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -1583,7 +1587,6 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
 
         def match_repository_id(self, repository_id, match=True):
             self._cat_id_args_list.append({'repository_id': repository_id, 'match': match})
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1661,6 +1664,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         return result
 
 
+
+
 class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession, CompositionQuerySession):
     """Adapts underlying CompositionSearchSession methodswith authorization checks."""
 
@@ -1693,9 +1698,10 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
         raise Unimplemented()
 
 
+
+
 class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, osid_sessions.OsidSession):
     """Adapts underlying CompositionAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
@@ -1721,7 +1727,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
     def _can_for_composition(self, func_name, composition_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, composition_id, 'get_repository_ids_for_composition')
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1834,15 +1839,14 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         return self._provider_session.alias_composition(composition_id, alias_id)
 
 
+
+
 class CompositionNotificationSession(abc_repository_sessions.CompositionNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying CompositionNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_repository_id()
         self._id_namespace = 'repository.Composition'
-
-
     def get_repository_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1933,15 +1937,14 @@ class CompositionNotificationSession(abc_repository_sessions.CompositionNotifica
         raise Unimplemented()
 
 
+
+
 class CompositionRepositorySession(abc_repository_sessions.CompositionRepositorySession, osid_sessions.OsidSession):
     """Adapts underlying CompositionRepositorySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'repository.CompositionRepository'
-
-
     def use_comparative_composition_repository_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -2006,15 +2009,14 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         return self._provider_session.get_repositories_by_composition(composition_id)
 
 
+
+
 class CompositionRepositoryAssignmentSession(abc_repository_sessions.CompositionRepositoryAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying CompositionRepositoryAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'repository.CompositionRepository'
-
-
     def can_assign_compositions(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -2057,6 +2059,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_composition_from_repository(composition_id, repository_id)
+
+
 
 
 class CompositionSmartRepositorySession(abc_repository_sessions.CompositionSmartRepositorySession, osid_sessions.OsidSession):
@@ -2108,17 +2112,16 @@ class CompositionSmartRepositorySession(abc_repository_sessions.CompositionSmart
         raise Unimplemented()
 
 
+
+
 class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'repository.Repository'
-
-
     def can_lookup_repositories(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2180,17 +2183,16 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
     repositories = property(fget=get_repositories)
 
 
+
+
 class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'repository.Repository'
-
-
     def can_search_repositories(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -2215,6 +2217,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
         return self._provider_session.get_repositories_by_query(repository_query)
 
 
+
+
 class RepositorySearchSession(abc_repository_sessions.RepositorySearchSession, RepositoryQuerySession):
     """Adapts underlying RepositorySearchSession methodswith authorization checks."""
 
@@ -2237,17 +2241,16 @@ class RepositorySearchSession(abc_repository_sessions.RepositorySearchSession, R
         raise Unimplemented()
 
 
+
+
 class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'repository.Repository'
-
-
     def can_create_repositories(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -2324,6 +2327,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         return self._provider_session.alias_repository(repository_id, alias_id)
 
 
+
+
 class RepositoryNotificationSession(abc_repository_sessions.RepositoryNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryNotificationSession methodswith authorization checks."""
 
@@ -2382,17 +2387,16 @@ class RepositoryNotificationSession(abc_repository_sessions.RepositoryNotificati
         raise Unimplemented()
 
 
+
+
 class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'repository.Repository'
-
-
     def get_repository_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2547,9 +2551,10 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
             include_siblings)
 
 
+
+
 class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying RepositoryHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -2557,8 +2562,6 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         self._qualifier_id = Id('repository.Repository%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'repository.Repository'
         # should this be 'repository.RepositoryHierarchy' ?
-
-
     def get_repository_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2611,5 +2614,3 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_repositories(repository_id)
-
-

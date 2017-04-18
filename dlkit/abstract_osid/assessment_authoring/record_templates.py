@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AssessmentPartRecord:
     """A record for an ``AssessmentPart``.
 
@@ -27,9 +24,6 @@ class AssessmentPartRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentPartQueryRecord:
@@ -42,9 +36,6 @@ class AssessmentPartQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentPartQueryInspectorRecord:
     """A record for an ``AssessmentPartQueryInspector``.
 
@@ -53,9 +44,6 @@ class AssessmentPartQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentPartFormRecord:
@@ -68,9 +56,6 @@ class AssessmentPartFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentPartSearchOrderRecord:
     """A record for an ``AssessmentPartSearchOrder``.
 
@@ -79,9 +64,6 @@ class AssessmentPartSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AssessmentPartSearchRecord:
@@ -94,9 +76,6 @@ class AssessmentPartSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class AssessmentPartSearchResultsRecord:
     """A record for an ``AssessmentPartSearchResults``.
 
@@ -105,9 +84,6 @@ class AssessmentPartSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleRecord:
@@ -120,9 +96,6 @@ class SequenceRuleRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleQueryRecord:
     """A record for a ``SequenceRuleQuery``.
 
@@ -131,9 +104,6 @@ class SequenceRuleQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleQueryInspectorRecord:
@@ -146,9 +116,6 @@ class SequenceRuleQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleFormRecord:
     """A record for a ``SequenceRuleForm``.
 
@@ -157,9 +124,6 @@ class SequenceRuleFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleSearchOrderRecord:
@@ -172,9 +136,6 @@ class SequenceRuleSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleSearchRecord:
     """A record for a ``SequenceRuleSearch``.
 
@@ -183,9 +144,6 @@ class SequenceRuleSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleSearchResultsRecord:
@@ -198,9 +156,6 @@ class SequenceRuleSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleEnablerRecord:
     """A record for a ``SequenceRuleEnabler``.
 
@@ -209,9 +164,6 @@ class SequenceRuleEnablerRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleEnablerQueryRecord:
@@ -224,9 +176,6 @@ class SequenceRuleEnablerQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleEnablerQueryInspectorRecord:
     """A record for a ``SequenceRuleEnablerQueryInspector``.
 
@@ -235,9 +184,6 @@ class SequenceRuleEnablerQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class SequenceRuleEnablerSearchOrderRecord:
@@ -250,9 +196,6 @@ class SequenceRuleEnablerSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleEnablerSearchRecord:
     """A record for a ``SequenceRuleEnablerSearch``.
 
@@ -263,9 +206,6 @@ class SequenceRuleEnablerSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class SequenceRuleEnablerSearchResultsRecord:
     """A record for a ``SequenceRuleEnablerSearchResults``.
 
@@ -274,8 +214,3 @@ class SequenceRuleEnablerSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

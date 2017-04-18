@@ -20,6 +20,8 @@ from dlkit.json_.grading.objects import GradebookColumnSummary
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestGradeSystemLookupSession(unittest.TestCase):
     """Tests for GradeSystemLookupSession"""
 
@@ -149,6 +151,8 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.grade_system_ids[0])
 
 
+
+
 class TestGradeSystemQuerySession(unittest.TestCase):
     """Tests for GradeSystemQuerySession"""
 
@@ -218,6 +222,8 @@ class TestGradeSystemQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_grade_systems_by_query(query).available(), 3)
+
+
 
 
 class TestGradeSystemAdminSession(unittest.TestCase):
@@ -354,6 +360,8 @@ class TestGradeSystemAdminSession(unittest.TestCase):
     def test_alias_grade(self):
         """Tests alias_grade"""
         pass
+
+
 
 
 class TestGradeEntryLookupSession(unittest.TestCase):
@@ -550,6 +558,8 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.grade_entry_ids[0])
 
 
+
+
 class TestGradeEntryQuerySession(unittest.TestCase):
     """Tests for GradeEntryQuerySession"""
 
@@ -628,6 +638,8 @@ class TestGradeEntryQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_grade_entries_by_query(query).available(), 3)
+
+
 
 
 class TestGradeEntryAdminSession(unittest.TestCase):
@@ -724,6 +736,8 @@ class TestGradeEntryAdminSession(unittest.TestCase):
     def test_alias_grade_entry(self):
         """Tests alias_grade_entry"""
         pass
+
+
 
 
 class TestGradebookColumnLookupSession(unittest.TestCase):
@@ -878,6 +892,8 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
                                    GradebookColumnSummary))
 
 
+
+
 class TestGradebookColumnQuerySession(unittest.TestCase):
     """Tests for GradebookColumnQuerySession"""
 
@@ -947,6 +963,8 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_gradebook_columns_by_query(query).available(), 3)
+
+
 
 
 class TestGradebookColumnAdminSession(unittest.TestCase):
@@ -1047,6 +1065,8 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestGradebookLookupSession(unittest.TestCase):
     """Tests for GradebookLookupSession"""
 
@@ -1116,6 +1136,8 @@ class TestGradebookLookupSession(unittest.TestCase):
     def test_get_gradebooks(self):
         """Tests get_gradebooks"""
         catalogs = self.svc_mgr.get_gradebooks()
+
+
 
 
 class TestGradebookAdminSession(unittest.TestCase):

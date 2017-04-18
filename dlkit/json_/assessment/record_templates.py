@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.assessment import records as abc_assessment_records
 
 
-
-
 class QuestionRecord(abc_assessment_records.QuestionRecord, osid_records.OsidRecord):
     """A record for a ``Question``.
 
@@ -25,6 +23,8 @@ class QuestionRecord(abc_assessment_records.QuestionRecord, osid_records.OsidRec
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class QuestionQueryRecord(abc_assessment_records.QuestionQueryRecord, osid_recor
 
 
 
+
+
 class QuestionFormRecord(abc_assessment_records.QuestionFormRecord, osid_records.OsidRecord):
     """A record for a ``QuestionForm``.
 
@@ -47,6 +49,8 @@ class QuestionFormRecord(abc_assessment_records.QuestionFormRecord, osid_records
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class AnswerRecord(abc_assessment_records.AnswerRecord, osid_records.OsidRecord)
 
 
 
+
+
 class AnswerQueryRecord(abc_assessment_records.AnswerQueryRecord, osid_records.OsidRecord):
     """A record for an ``AnswerQuery``.
 
@@ -69,6 +75,8 @@ class AnswerQueryRecord(abc_assessment_records.AnswerQueryRecord, osid_records.O
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class AnswerFormRecord(abc_assessment_records.AnswerFormRecord, osid_records.Osi
 
 
 
+
+
 class ItemRecord(abc_assessment_records.ItemRecord, osid_records.OsidRecord):
     """A record for an ``Item``.
 
@@ -91,6 +101,8 @@ class ItemRecord(abc_assessment_records.ItemRecord, osid_records.OsidRecord):
     underlying object.
 
     """
+
+
 
 
 
@@ -106,6 +118,8 @@ class ItemQueryRecord(abc_assessment_records.ItemQueryRecord, osid_records.OsidR
 
 
 
+
+
 class ItemFormRecord(abc_assessment_records.ItemFormRecord, osid_records.OsidRecord):
     """A record for an ``ItemForm``.
 
@@ -113,6 +127,8 @@ class ItemFormRecord(abc_assessment_records.ItemFormRecord, osid_records.OsidRec
     underlying object.
 
     """
+
+
 
 
 
@@ -128,6 +144,8 @@ class ItemSearchRecord(abc_assessment_records.ItemSearchRecord, osid_records.Osi
 
 
 
+
+
 class AssessmentRecord(abc_assessment_records.AssessmentRecord, osid_records.OsidRecord):
     """A record for an ``Assessment``.
 
@@ -135,6 +153,8 @@ class AssessmentRecord(abc_assessment_records.AssessmentRecord, osid_records.Osi
     underlying object.
 
     """
+
+
 
 
 
@@ -150,6 +170,8 @@ class AssessmentQueryRecord(abc_assessment_records.AssessmentQueryRecord, osid_r
 
 
 
+
+
 class AssessmentFormRecord(abc_assessment_records.AssessmentFormRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentForm``.
 
@@ -157,6 +179,8 @@ class AssessmentFormRecord(abc_assessment_records.AssessmentFormRecord, osid_rec
     underlying object.
 
     """
+
+
 
 
 
@@ -172,6 +196,8 @@ class AssessmentSearchRecord(abc_assessment_records.AssessmentSearchRecord, osid
 
 
 
+
+
 class AssessmentOfferedRecord(abc_assessment_records.AssessmentOfferedRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentOffered``.
 
@@ -179,6 +205,8 @@ class AssessmentOfferedRecord(abc_assessment_records.AssessmentOfferedRecord, os
     underlying object.
 
     """
+
+
 
 
 
@@ -194,6 +222,8 @@ class AssessmentOfferedQueryRecord(abc_assessment_records.AssessmentOfferedQuery
 
 
 
+
+
 class AssessmentOfferedFormRecord(abc_assessment_records.AssessmentOfferedFormRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentOfferedForm``.
 
@@ -201,6 +231,8 @@ class AssessmentOfferedFormRecord(abc_assessment_records.AssessmentOfferedFormRe
     underlying object.
 
     """
+
+
 
 
 
@@ -216,6 +248,8 @@ class AssessmentOfferedSearchRecord(abc_assessment_records.AssessmentOfferedSear
 
 
 
+
+
 class AssessmentTakenRecord(abc_assessment_records.AssessmentTakenRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentTaken``.
 
@@ -223,6 +257,8 @@ class AssessmentTakenRecord(abc_assessment_records.AssessmentTakenRecord, osid_r
     underlying object.
 
     """
+
+
 
 
 
@@ -238,6 +274,8 @@ class AssessmentTakenQueryRecord(abc_assessment_records.AssessmentTakenQueryReco
 
 
 
+
+
 class AssessmentTakenFormRecord(abc_assessment_records.AssessmentTakenFormRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentTakenForm``.
 
@@ -245,6 +283,8 @@ class AssessmentTakenFormRecord(abc_assessment_records.AssessmentTakenFormRecord
     underlying object.
 
     """
+
+
 
 
 
@@ -260,6 +300,8 @@ class AssessmentTakenSearchRecord(abc_assessment_records.AssessmentTakenSearchRe
 
 
 
+
+
 class AssessmentSectionRecord(abc_assessment_records.AssessmentSectionRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentSection``.
 
@@ -267,6 +309,8 @@ class AssessmentSectionRecord(abc_assessment_records.AssessmentSectionRecord, os
     underlying object.
 
     """
+
+
 
 
 
@@ -282,6 +326,8 @@ class BankRecord(abc_assessment_records.BankRecord, osid_records.OsidRecord):
 
 
 
+
+
 class BankQueryRecord(abc_assessment_records.BankQueryRecord, osid_records.OsidRecord):
     """A record for a ``BankQuery``.
 
@@ -289,6 +335,8 @@ class BankQueryRecord(abc_assessment_records.BankQueryRecord, osid_records.OsidR
     underlying object.
 
     """
+
+
 
 
 
@@ -304,6 +352,8 @@ class BankFormRecord(abc_assessment_records.BankFormRecord, osid_records.OsidRec
 
 
 
+
+
 class BankSearchRecord(abc_assessment_records.BankSearchRecord, osid_records.OsidRecord):
     """A record for a ``BankSearch``.
 
@@ -315,6 +365,8 @@ class BankSearchRecord(abc_assessment_records.BankSearchRecord, osid_records.Osi
 
 
 
+
+
 class ResponseRecord(abc_assessment_records.ResponseRecord, osid_records.OsidRecord):
     """A record for a ``Response``.
 
@@ -322,7 +374,3 @@ class ResponseRecord(abc_assessment_records.ResponseRecord, osid_records.OsidRec
     underlying object.
 
     """
-
-
-
-

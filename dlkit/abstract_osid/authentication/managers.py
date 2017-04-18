@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthenticationProfile:
     """The ``AuthenticationProfile`` describes the interoperability among authentication services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authentication_acquisition(self):
@@ -51,7 +47,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authentication_validation(self):
@@ -67,7 +63,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_lookup(self):
@@ -82,7 +78,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_query(self):
@@ -95,7 +91,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_search(self):
@@ -108,7 +104,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_admin(self):
@@ -121,7 +117,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_notification(self):
@@ -137,7 +133,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_agency(self):
@@ -150,7 +146,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_agency_assignment(self):
@@ -163,7 +159,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agent_smart_agency(self):
@@ -176,7 +172,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_lookup(self):
@@ -191,7 +187,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_query(self):
@@ -204,7 +200,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_search(self):
@@ -217,7 +213,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_admin(self):
@@ -230,7 +226,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_notification(self):
@@ -246,7 +242,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_hierarchy(self):
@@ -259,7 +255,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_agency_hierarchy_design(self):
@@ -272,7 +268,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authentication_keys(self):
@@ -285,7 +281,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authentication_process(self):
@@ -298,7 +294,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_record_types(self):
@@ -311,7 +307,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     agent_record_types = property(fget=get_agent_record_types)
 
@@ -328,7 +324,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_search_record_types(self):
@@ -341,7 +337,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     agent_search_record_types = property(fget=get_agent_search_record_types)
 
@@ -358,7 +354,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_record_types(self):
@@ -371,7 +367,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     agency_record_types = property(fget=get_agency_record_types)
 
@@ -388,7 +384,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_search_record_types(self):
@@ -401,7 +397,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     agency_search_record_types = property(fget=get_agency_search_record_types)
 
@@ -418,7 +414,7 @@ class AuthenticationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AuthenticationManager:
@@ -452,10 +448,8 @@ class AuthenticationManager:
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agent_lookup_session(self):
@@ -470,7 +464,7 @@ class AuthenticationManager:
         ``supports_agent_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentLookupSession
+        return  # osid.authentication.AgentLookupSession
 
     agent_lookup_session = property(fget=get_agent_lookup_session)
 
@@ -492,7 +486,7 @@ class AuthenticationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentLookupSession
+        return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
     def get_agent_query_session(self):
@@ -507,7 +501,7 @@ class AuthenticationManager:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuerySession
+        return  # osid.authentication.AgentQuerySession
 
     agent_query_session = property(fget=get_agent_query_session)
 
@@ -529,7 +523,7 @@ class AuthenticationManager:
         are ``true``.*
 
         """
-        return # osid.authentication.AgentQuerySession
+        return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
     def get_agent_search_session(self):
@@ -544,7 +538,7 @@ class AuthenticationManager:
         ``supports_agent_search()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchSession
+        return  # osid.authentication.AgentSearchSession
 
     agent_search_session = property(fget=get_agent_search_session)
 
@@ -566,7 +560,7 @@ class AuthenticationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentSearchSession
+        return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
     def get_agent_admin_session(self):
@@ -581,7 +575,7 @@ class AuthenticationManager:
         ``supports_agent_admin()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAdminSession
+        return  # osid.authentication.AgentAdminSession
 
     agent_admin_session = property(fget=get_agent_admin_session)
 
@@ -603,7 +597,7 @@ class AuthenticationManager:
         are ``true``.*
 
         """
-        return # osid.authentication.AgentAdminSession
+        return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
     def get_agent_notification_session(self, agent_receiver):
@@ -621,7 +615,7 @@ class AuthenticationManager:
         ``supports_agent_notification()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentNotificationSession
+        return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
     def get_agent_notification_session_for_agency(self, agent_receiver, agency_id):
@@ -643,7 +637,7 @@ class AuthenticationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentNotificationSession
+        return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
     def get_agent_agency_session(self):
@@ -658,7 +652,7 @@ class AuthenticationManager:
         ``supports_agent_agency()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAgencySession
+        return  # osid.authentication.AgentAgencySession
 
     agent_agency_session = property(fget=get_agent_agency_session)
 
@@ -675,7 +669,7 @@ class AuthenticationManager:
         ``supports_agent_agency_assignment()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAgencyAssignmentSession
+        return  # osid.authentication.AgentAgencyAssignmentSession
 
     agent_agency_assignment_session = property(fget=get_agent_agency_assignment_session)
 
@@ -697,7 +691,7 @@ class AuthenticationManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSmartAgencySession
+        return  # osid.authentication.AgentSmartAgencySession
 
     @abc.abstractmethod
     def get_agency_lookup_session(self):
@@ -712,7 +706,7 @@ class AuthenticationManager:
         ``supports_agency_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyLookupSession
+        return  # osid.authentication.AgencyLookupSession
 
     agency_lookup_session = property(fget=get_agency_lookup_session)
 
@@ -729,7 +723,7 @@ class AuthenticationManager:
         ``supports_agency_search()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencySearchSession
+        return  # osid.authentication.AgencySearchSession
 
     agency_search_session = property(fget=get_agency_search_session)
 
@@ -746,7 +740,7 @@ class AuthenticationManager:
         ``supports_agency_admin()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyAdminSession
+        return  # osid.authentication.AgencyAdminSession
 
     agency_admin_session = property(fget=get_agency_admin_session)
 
@@ -766,7 +760,7 @@ class AuthenticationManager:
         ``supports_agency_notification()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyNotificationSession
+        return  # osid.authentication.AgencyNotificationSession
 
     @abc.abstractmethod
     def get_agency_hierarchy_session(self):
@@ -781,7 +775,7 @@ class AuthenticationManager:
         ``supports_agency_hierarchy()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyHierarchySession
+        return  # osid.authentication.AgencyHierarchySession
 
     agency_hierarchy_session = property(fget=get_agency_hierarchy_session)
 
@@ -798,7 +792,7 @@ class AuthenticationManager:
         ``supports_agency_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyHierarchyDesignSession
+        return  # osid.authentication.AgencyHierarchyDesignSession
 
     agency_hierarchy_design_session = property(fget=get_agency_hierarchy_design_session)
 
@@ -815,7 +809,7 @@ class AuthenticationManager:
         ``supports_authentication_batch()`` is ``true``.*
 
         """
-        return # osid.authentication.batch.AuthenticationBatchManager
+        return  # osid.authentication.batch.AuthenticationBatchManager
 
     authentication_batch_manager = property(fget=get_authentication_batch_manager)
 
@@ -832,7 +826,7 @@ class AuthenticationManager:
         ``supports_authentication_keys()`` is ``true``.*
 
         """
-        return # osid.authentication.keys.AuthenticationKeysManager
+        return  # osid.authentication.keys.AuthenticationKeysManager
 
     authentication_keys_manager = property(fget=get_authentication_keys_manager)
 
@@ -849,7 +843,7 @@ class AuthenticationManager:
         ``supports_authentication_process()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationProcessManager
+        return  # osid.authentication.process.AuthenticationProcessManager
 
     authentication_process_manager = property(fget=get_authentication_process_manager)
 
@@ -886,10 +880,8 @@ class AuthenticationProxyManager:
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agent_lookup_session(self, proxy):
@@ -907,7 +899,7 @@ class AuthenticationProxyManager:
         ``supports_agent_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentLookupSession
+        return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
     def get_agent_lookup_session_for_agency(self, agency_id, proxy):
@@ -929,7 +921,7 @@ class AuthenticationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentLookupSession
+        return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
     def get_agent_query_session(self, proxy):
@@ -947,7 +939,7 @@ class AuthenticationProxyManager:
         ``supports_agent_query()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentQuerySession
+        return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
     def get_agent_query_session_for_agency(self, agency_id, proxy):
@@ -969,7 +961,7 @@ class AuthenticationProxyManager:
         are ``true``.*
 
         """
-        return # osid.authentication.AgentQuerySession
+        return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
     def get_agent_search_session(self, proxy):
@@ -987,7 +979,7 @@ class AuthenticationProxyManager:
         ``supports_agent_search()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchSession
+        return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
     def get_agent_search_session_for_agency(self, agency_id, proxy):
@@ -1009,7 +1001,7 @@ class AuthenticationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentSearchSession
+        return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
     def get_agent_admin_session(self, proxy):
@@ -1027,7 +1019,7 @@ class AuthenticationProxyManager:
         ``supports_agent_admin()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAdminSession
+        return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
     def get_agent_admin_session_for_agency(self, agency_id, proxy):
@@ -1049,7 +1041,7 @@ class AuthenticationProxyManager:
         are ``true``.*
 
         """
-        return # osid.authentication.AgentAdminSession
+        return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
     def get_agent_notification_session(self, agent_receiver, proxy):
@@ -1069,7 +1061,7 @@ class AuthenticationProxyManager:
         ``supports_agent_notification()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentNotificationSession
+        return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
     def get_agent_notification_session_for_agency(self, agent_receiver, agency_id, proxy):
@@ -1093,7 +1085,7 @@ class AuthenticationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authentication.AgentNotificationSession
+        return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
     def get_agent_agency_session(self, proxy):
@@ -1111,7 +1103,7 @@ class AuthenticationProxyManager:
         ``supports_agent_agency()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAgencySession
+        return  # osid.authentication.AgentAgencySession
 
     @abc.abstractmethod
     def get_agent_agency_assignment_session(self, proxy):
@@ -1129,7 +1121,7 @@ class AuthenticationProxyManager:
         ``supports_agent_agency_assignment()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentAgencyAssignmentSession
+        return  # osid.authentication.AgentAgencyAssignmentSession
 
     @abc.abstractmethod
     def get_agent_smart_agency_session(self, agency_id, proxy):
@@ -1151,7 +1143,7 @@ class AuthenticationProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSmartAgencySession
+        return  # osid.authentication.AgentSmartAgencySession
 
     @abc.abstractmethod
     def get_agency_lookup_session(self, proxy):
@@ -1169,7 +1161,7 @@ class AuthenticationProxyManager:
         ``supports_agency_lookup()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyLookupSession
+        return  # osid.authentication.AgencyLookupSession
 
     @abc.abstractmethod
     def get_agency_search_session(self, proxy):
@@ -1187,7 +1179,7 @@ class AuthenticationProxyManager:
         ``supports_agency_search()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencySearchSession
+        return  # osid.authentication.AgencySearchSession
 
     @abc.abstractmethod
     def get_agency_admin_session(self, proxy):
@@ -1205,7 +1197,7 @@ class AuthenticationProxyManager:
         ``supports_agency_admin()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyAdminSession
+        return  # osid.authentication.AgencyAdminSession
 
     @abc.abstractmethod
     def get_agency_notification_session(self, agency_receiver, proxy):
@@ -1225,7 +1217,7 @@ class AuthenticationProxyManager:
         ``supports_agency_notification()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyNotificationSession
+        return  # osid.authentication.AgencyNotificationSession
 
     @abc.abstractmethod
     def get_agency_hierarchy_session(self, proxy):
@@ -1243,7 +1235,7 @@ class AuthenticationProxyManager:
         ``supports_agency_hierarchy()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyHierarchySession
+        return  # osid.authentication.AgencyHierarchySession
 
     @abc.abstractmethod
     def get_agency_hierarchy_design_session(self, proxy):
@@ -1261,7 +1253,7 @@ class AuthenticationProxyManager:
         ``supports_agency_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.authentication.AgencyHierarchyDesignSession
+        return  # osid.authentication.AgencyHierarchyDesignSession
 
     @abc.abstractmethod
     def get_authentication_batch_proxy_manager(self):
@@ -1276,7 +1268,7 @@ class AuthenticationProxyManager:
         ``supports_authentication_batch()`` is ``true``.*
 
         """
-        return # osid.authentication.batch.AuthenticationBatchProxyManager
+        return  # osid.authentication.batch.AuthenticationBatchProxyManager
 
     authentication_batch_proxy_manager = property(fget=get_authentication_batch_proxy_manager)
 
@@ -1293,7 +1285,7 @@ class AuthenticationProxyManager:
         ``supports_authentication_keys()`` is ``true``.*
 
         """
-        return # osid.authentication.keys.AuthenticationKeysProxyManager
+        return  # osid.authentication.keys.AuthenticationKeysProxyManager
 
     authentication_keys_proxy_manager = property(fget=get_authentication_keys_proxy_manager)
 
@@ -1310,8 +1302,6 @@ class AuthenticationProxyManager:
         ``supports_authentication_process()`` is ``true``.*
 
         """
-        return # osid.authentication.process.AuthenticationProcessProxyManager
+        return  # osid.authentication.process.AuthenticationProcessProxyManager
 
     authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
-
-

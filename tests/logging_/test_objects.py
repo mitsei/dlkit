@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestLogEntry(unittest.TestCase):
     """Tests for LogEntry"""
 
@@ -42,6 +44,8 @@ class TestLogEntry(unittest.TestCase):
     def test_get_log_entry_record(self):
         """Tests get_log_entry_record"""
         pass
+
+
 
 
 class TestLogEntryForm(unittest.TestCase):
@@ -90,6 +94,8 @@ class TestLogEntryForm(unittest.TestCase):
         pass
 
 
+
+
 class TestLogEntryList(unittest.TestCase):
     """Tests for LogEntryList"""
 
@@ -104,6 +110,8 @@ class TestLogEntryList(unittest.TestCase):
         pass
 
 
+
+
 class TestLog(unittest.TestCase):
     """Tests for Log"""
 
@@ -115,6 +123,8 @@ class TestLog(unittest.TestCase):
         pass
 
 
+
+
 class TestLogForm(unittest.TestCase):
     """Tests for LogForm"""
 
@@ -124,6 +134,8 @@ class TestLogForm(unittest.TestCase):
     def test_get_log_form_record(self):
         """Tests get_log_form_record"""
         pass
+
+
 
 
 class TestLogList(unittest.TestCase):
@@ -138,6 +150,8 @@ class TestLogList(unittest.TestCase):
     def test_get_next_logs(self):
         """Tests get_next_logs"""
         pass
+
+
 
 
 class TestLogNode(unittest.TestCase):
@@ -157,6 +171,8 @@ class TestLogNode(unittest.TestCase):
     def test_get_child_log_nodes(self):
         """Tests get_child_log_nodes"""
         pass
+
+
 
 
 class TestLogNodeList(unittest.TestCase):

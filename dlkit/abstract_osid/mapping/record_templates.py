@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -27,8 +26,6 @@ class LocationRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class LocationQueryRecord:
     """A record for a ``LocationQuery``.
 
@@ -37,8 +34,6 @@ class LocationQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class LocationQueryInspectorRecord:
@@ -51,8 +46,6 @@ class LocationQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class LocationFormRecord:
     """A record for a ``LocationForm``.
 
@@ -61,8 +54,6 @@ class LocationFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class LocationSearchOrderRecord:
@@ -75,8 +66,6 @@ class LocationSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class LocationSearchRecord:
     """A record for a ``LocationSearch``.
 
@@ -85,8 +74,6 @@ class LocationSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class LocationSearchResultsRecord:
@@ -99,8 +86,6 @@ class LocationSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class MapRecord:
     """A record for a ``MapRecord``.
 
@@ -109,8 +94,6 @@ class MapRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class MapQueryRecord:
@@ -123,8 +106,6 @@ class MapQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class MapQueryInspectorRecord:
     """A record for a ``MapQueryInspector``.
 
@@ -133,8 +114,6 @@ class MapQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class MapFormRecord:
@@ -147,8 +126,6 @@ class MapFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class MapSearchOrderRecord:
     """A record for a ``MapSearchOrder``.
 
@@ -157,8 +134,6 @@ class MapSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class MapSearchRecord:
@@ -171,8 +146,6 @@ class MapSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class MapSearchResultsRecord:
     """A record for a ``MapSearchResults``.
 
@@ -181,8 +154,6 @@ class MapSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ResourceLocationRecord:
@@ -195,8 +166,6 @@ class ResourceLocationRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SpatialUnitRecord:
     """A record for a ``SpatialUnitRecord``.
 
@@ -205,7 +174,3 @@ class SpatialUnitRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

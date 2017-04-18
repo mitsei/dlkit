@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterRecord:
@@ -31,8 +26,6 @@ class ParameterRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ParameterQueryRecord:
     """A record for a ``ParameterQuery``.
 
@@ -41,8 +34,6 @@ class ParameterQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ParameterQueryInspectorRecord:
@@ -55,8 +46,6 @@ class ParameterQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ParameterFormRecord:
     """A record for a ``ParameterForm``.
 
@@ -65,8 +54,6 @@ class ParameterFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ParameterSearchOrderRecord:
@@ -79,8 +66,6 @@ class ParameterSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ParameterSearchRecord:
     """A record for a ``ParameterSearch``.
 
@@ -89,8 +74,6 @@ class ParameterSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ParameterSearchResultsRecord:
@@ -103,8 +86,6 @@ class ParameterSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ValueRecord:
     """A record for a ``Value``.
 
@@ -113,8 +94,6 @@ class ValueRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ValueQueryRecord:
@@ -127,8 +106,6 @@ class ValueQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ValueQueryInspectorRecord:
     """A record for a ``ValueQueryInspector``.
 
@@ -137,8 +114,6 @@ class ValueQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ValueFormRecord:
@@ -151,8 +126,6 @@ class ValueFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ValueSearchOrderRecord:
     """A record for a ``ValueSearchOrder``.
 
@@ -161,8 +134,6 @@ class ValueSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ValueSearchRecord:
@@ -175,8 +146,6 @@ class ValueSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ValueSearchResultsRecord:
     """A record for a ``ValueSearchResults``.
 
@@ -185,8 +154,6 @@ class ValueSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ValueConditionRecord:
@@ -199,8 +166,6 @@ class ValueConditionRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ConfigurationRecord:
     """A record for a ``Configuration``.
 
@@ -209,8 +174,6 @@ class ConfigurationRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ConfigurationQueryRecord:
@@ -223,8 +186,6 @@ class ConfigurationQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ConfigurationQueryInspectorRecord:
     """A record for a ``ConfigurationQueryInspector``.
 
@@ -233,8 +194,6 @@ class ConfigurationQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ConfigurationFormRecord:
@@ -247,8 +206,6 @@ class ConfigurationFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ConfigurationSearchOrderRecord:
     """A record for a ``ConfigurationSearchOrder``.
 
@@ -257,8 +214,6 @@ class ConfigurationSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ConfigurationSearchRecord:
@@ -271,8 +226,6 @@ class ConfigurationSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ConfigurationSearchResultsRecord:
     """A record for a ``ConfigurationSearchResults``.
 
@@ -281,7 +234,3 @@ class ConfigurationSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterQueryInspector:
@@ -36,7 +31,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SyntaxTerm
+        return  # osid.search.terms.SyntaxTerm
 
     value_syntax_terms = property(fget=get_value_syntax_terms)
 
@@ -51,7 +46,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     value_coordinate_type_terms = property(fget=get_value_coordinate_type_terms)
 
@@ -66,7 +61,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     value_heading_type_terms = property(fget=get_value_heading_type_terms)
 
@@ -81,7 +76,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     value_object_type_terms = property(fget=get_value_object_type_terms)
 
@@ -96,7 +91,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     value_spatial_unit_record_type_terms = property(fget=get_value_spatial_unit_record_type_terms)
 
@@ -111,7 +106,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     value_version_scheme_terms = property(fget=get_value_version_scheme_terms)
 
@@ -126,7 +121,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueQueryInspector
+        return  # osid.configuration.ValueQueryInspector
 
     value_terms = property(fget=get_value_terms)
 
@@ -141,7 +136,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     values_shuffled_terms = property(fget=get_values_shuffled_terms)
 
@@ -156,7 +151,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     configuration_id_terms = property(fget=get_configuration_id_terms)
 
@@ -171,7 +166,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQueryInspector
+        return  # osid.configuration.ConfigurationQueryInspector
 
     configuration_terms = property(fget=get_configuration_terms)
 
@@ -190,7 +185,7 @@ class ParameterQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterQueryInspectorRecord
+        return  # osid.configuration.records.ParameterQueryInspectorRecord
 
 
 class ValueQueryInspector:
@@ -208,7 +203,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     priority_terms = property(fget=get_priority_terms)
 
@@ -223,7 +218,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     boolean_value_terms = property(fget=get_boolean_value_terms)
 
@@ -238,7 +233,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BytesTerm
+        return  # osid.search.terms.BytesTerm
 
     bytes_value_terms = property(fget=get_bytes_value_terms)
 
@@ -253,7 +248,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     cardinal_value_terms = property(fget=get_cardinal_value_terms)
 
@@ -268,7 +263,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CoordinateTerm
+        return  # osid.search.terms.CoordinateTerm
 
     coordinate_value_terms = property(fget=get_coordinate_value_terms)
 
@@ -283,7 +278,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CurrencyTerm
+        return  # osid.search.terms.CurrencyTerm
 
     currency_value_terms = property(fget=get_currency_value_terms)
 
@@ -298,7 +293,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     date_time_value_terms = property(fget=get_date_time_value_terms)
 
@@ -313,7 +308,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DecimalRangeTerm
+        return  # osid.search.terms.DecimalRangeTerm
 
     decimal_value_terms = property(fget=get_decimal_value_terms)
 
@@ -328,7 +323,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DistanceTerm
+        return  # osid.search.terms.DistanceTerm
 
     distance_value_terms = property(fget=get_distance_value_terms)
 
@@ -343,7 +338,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DurationTerm
+        return  # osid.search.terms.DurationTerm
 
     duration_value_terms = property(fget=get_duration_value_terms)
 
@@ -358,7 +353,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.HeadingTerm
+        return  # osid.search.terms.HeadingTerm
 
     heading_value_terms = property(fget=get_heading_value_terms)
 
@@ -373,7 +368,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     id_value_terms = property(fget=get_id_value_terms)
 
@@ -388,7 +383,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IntegerRangeTerm
+        return  # osid.search.terms.IntegerRangeTerm
 
     integer_value_terms = property(fget=get_integer_value_terms)
 
@@ -403,7 +398,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     spatial_unit_value_terms = property(fget=get_spatial_unit_value_terms)
 
@@ -418,7 +413,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpeedTerm
+        return  # osid.search.terms.SpeedTerm
 
     speed_value_terms = property(fget=get_speed_value_terms)
 
@@ -433,7 +428,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     string_value_terms = property(fget=get_string_value_terms)
 
@@ -448,7 +443,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TimeTerm
+        return  # osid.search.terms.TimeTerm
 
     time_value_terms = property(fget=get_time_value_terms)
 
@@ -463,7 +458,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     type_value_terms = property(fget=get_type_value_terms)
 
@@ -478,7 +473,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.VersionRangeTerm
+        return  # osid.search.terms.VersionRangeTerm
 
     version_value_terms = property(fget=get_version_value_terms)
 
@@ -493,7 +488,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     object_value_type_terms = property(fget=get_object_value_type_terms)
 
@@ -508,7 +503,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.ObjectTerm
+        return  # osid.search.terms.ObjectTerm
 
     object_value_terms = property(fget=get_object_value_terms)
 
@@ -523,7 +518,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     parameter_id_terms = property(fget=get_parameter_id_terms)
 
@@ -538,7 +533,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQueryInspector
+        return  # osid.configuration.ParameterQueryInspector
 
     parameter_terms = property(fget=get_parameter_terms)
 
@@ -553,7 +548,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     configuration_id_terms = property(fget=get_configuration_id_terms)
 
@@ -568,7 +563,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQueryInspector
+        return  # osid.configuration.ConfigurationQueryInspector
 
     configuration_terms = property(fget=get_configuration_terms)
 
@@ -587,7 +582,7 @@ class ValueQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueQueryInspectorRecord
+        return  # osid.configuration.records.ValueQueryInspectorRecord
 
 
 class ConfigurationQueryInspector:
@@ -605,7 +600,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     registry_terms = property(fget=get_registry_terms)
 
@@ -620,7 +615,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     parameter_id_terms = property(fget=get_parameter_id_terms)
 
@@ -635,7 +630,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQueryInspector
+        return  # osid.configuration.ParameterQueryInspector
 
     parameter_terms = property(fget=get_parameter_terms)
 
@@ -650,7 +645,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_configuration_id_terms = property(fget=get_ancestor_configuration_id_terms)
 
@@ -665,7 +660,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQueryInspector
+        return  # osid.configuration.ConfigurationQueryInspector
 
     ancestor_configuration_terms = property(fget=get_ancestor_configuration_terms)
 
@@ -680,7 +675,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_configuration_id_terms = property(fget=get_descendant_configuration_id_terms)
 
@@ -695,7 +690,7 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQueryInspector
+        return  # osid.configuration.ConfigurationQueryInspector
 
     descendant_configuration_terms = property(fget=get_descendant_configuration_terms)
 
@@ -714,6 +709,4 @@ class ConfigurationQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationQueryInspectorRecord
-
-
+        return  # osid.configuration.records.ConfigurationQueryInspectorRecord

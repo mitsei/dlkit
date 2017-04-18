@@ -19,6 +19,8 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestObjectiveLookupSession(unittest.TestCase):
     """Tests for ObjectiveLookupSession"""
 
@@ -143,6 +145,8 @@ class TestObjectiveLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.objective_ids[0])
 
 
+
+
 class TestObjectiveQuerySession(unittest.TestCase):
     """Tests for ObjectiveQuerySession"""
 
@@ -212,6 +216,8 @@ class TestObjectiveQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_objectives_by_query(query).available(), 3)
+
+
 
 
 class TestObjectiveAdminSession(unittest.TestCase):
@@ -293,6 +299,8 @@ class TestObjectiveAdminSession(unittest.TestCase):
     def test_alias_objective(self):
         """Tests alias_objective"""
         pass
+
+
 
 
 class TestObjectiveHierarchySession(unittest.TestCase):
@@ -412,6 +420,8 @@ class TestObjectiveHierarchySession(unittest.TestCase):
         pass
 
 
+
+
 class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     """Tests for ObjectiveHierarchyDesignSession"""
 
@@ -492,6 +502,8 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     
 
 
+
+
 class TestObjectiveSequencingSession(unittest.TestCase):
     """Tests for ObjectiveSequencingSession"""
 
@@ -524,6 +536,8 @@ class TestObjectiveSequencingSession(unittest.TestCase):
     def test_sequence_objectives(self):
         """Tests sequence_objectives"""
         pass
+
+
 
 
 class TestObjectiveObjectiveBankSession(unittest.TestCase):
@@ -614,6 +628,8 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ObjectiveObjectiveBankAssignmentSession"""
 
@@ -651,6 +667,8 @@ class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
     def test_reassign_proficiency_to_objective_bank(self):
         """Tests reassign_proficiency_to_objective_bank"""
         pass
+
+
 
 
 class TestObjectiveRequisiteSession(unittest.TestCase):
@@ -766,6 +784,8 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
         pass
 
 
+
+
 class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
     """Tests for ObjectiveRequisiteAssignmentSession"""
 
@@ -833,6 +853,8 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
     def test_unassign_equivalent_objective(self):
         """Tests unassign_equivalent_objective"""
         pass
+
+
 
 
 class TestActivityLookupSession(unittest.TestCase):
@@ -983,6 +1005,8 @@ class TestActivityLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.activity_ids[0])
 
 
+
+
 class TestActivityAdminSession(unittest.TestCase):
     """Tests for ActivityAdminSession"""
 
@@ -1062,6 +1086,8 @@ class TestActivityAdminSession(unittest.TestCase):
     def test_alias_activity(self):
         """Tests alias_activity"""
         pass
+
+
 
 
 class TestActivityObjectiveBankSession(unittest.TestCase):
@@ -1156,6 +1182,8 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ActivityObjectiveBankAssignmentSession"""
 
@@ -1193,6 +1221,8 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
     def test_reassign_activity_to_objective_bank(self):
         """Tests reassign_activity_to_objective_bank"""
         pass
+
+
 
 
 class TestProficiencyLookupSession(unittest.TestCase):
@@ -1410,6 +1440,8 @@ class TestProficiencyLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.proficiency_ids[0])
 
 
+
+
 class TestProficiencyQuerySession(unittest.TestCase):
     """Tests for ProficiencyQuerySession"""
 
@@ -1481,6 +1513,8 @@ class TestProficiencyQuerySession(unittest.TestCase):
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
         self.assertEqual(self.catalog.get_proficiencies_by_query(query).available(), 3)
+
+
 
 
 class TestProficiencyAdminSession(unittest.TestCase):
@@ -1569,6 +1603,8 @@ class TestProficiencyAdminSession(unittest.TestCase):
         pass
 
 
+
+
 class TestObjectiveBankLookupSession(unittest.TestCase):
     """Tests for ObjectiveBankLookupSession"""
 
@@ -1638,6 +1674,8 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
     def test_get_objective_banks(self):
         """Tests get_objective_banks"""
         catalogs = self.svc_mgr.get_objective_banks()
+
+
 
 
 class TestObjectiveBankAdminSession(unittest.TestCase):
@@ -1735,6 +1773,8 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
     def test_alias_objective_bank(self):
         """Tests alias_objective_bank"""
         pass
+
+
 
 
 class TestObjectiveBankHierarchySession(unittest.TestCase):
@@ -1869,6 +1909,8 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         """Tests get_objective_bank_nodes"""
         nodes = self.svc_mgr.get_objective_bank_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
         # add some tests on the returned node
+
+
 
 
 class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssetQueryInspector:
     """This is the query inspector for examining asset queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_title_terms(self):
@@ -35,7 +31,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     title_terms = property(fget=get_title_terms)
 
@@ -50,7 +46,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     public_domain_terms = property(fget=get_public_domain_terms)
 
@@ -65,7 +61,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     copyright_terms = property(fget=get_copyright_terms)
 
@@ -80,7 +76,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     copyright_registration_terms = property(fget=get_copyright_registration_terms)
 
@@ -95,7 +91,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     distribute_verbatim_terms = property(fget=get_distribute_verbatim_terms)
 
@@ -110,7 +106,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     distribute_alterations_terms = property(fget=get_distribute_alterations_terms)
 
@@ -125,7 +121,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     distribute_compositions_terms = property(fget=get_distribute_compositions_terms)
 
@@ -140,7 +136,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     source_id_terms = property(fget=get_source_id_terms)
 
@@ -155,7 +151,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     source_terms = property(fget=get_source_terms)
 
@@ -170,7 +166,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     created_date_terms = property(fget=get_created_date_terms)
 
@@ -185,7 +181,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BooleanTerm
+        return  # osid.search.terms.BooleanTerm
 
     published_terms = property(fget=get_published_terms)
 
@@ -200,7 +196,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     published_date_terms = property(fget=get_published_date_terms)
 
@@ -215,7 +211,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     principal_credit_string_terms = property(fget=get_principal_credit_string_terms)
 
@@ -230,7 +226,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.DateTimeRangeTerm
+        return  # osid.search.terms.DateTimeRangeTerm
 
     temporal_coverage_terms = property(fget=get_temporal_coverage_terms)
 
@@ -245,7 +241,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     location_id_terms = property(fget=get_location_id_terms)
 
@@ -260,7 +256,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     location_terms = property(fget=get_location_terms)
 
@@ -275,7 +271,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     spatial_coverage_terms = property(fget=get_spatial_coverage_terms)
 
@@ -290,7 +286,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.SpatialUnitTerm
+        return  # osid.search.terms.SpatialUnitTerm
 
     spatial_coverage_overlap_terms = property(fget=get_spatial_coverage_overlap_terms)
 
@@ -305,7 +301,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     asset_content_id_terms = property(fget=get_asset_content_id_terms)
 
@@ -320,7 +316,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetContentQueryInspector
+        return  # osid.repository.AssetContentQueryInspector
 
     asset_content_terms = property(fget=get_asset_content_terms)
 
@@ -335,7 +331,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     composition_id_terms = property(fget=get_composition_id_terms)
 
@@ -350,7 +346,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     composition_terms = property(fget=get_composition_terms)
 
@@ -365,7 +361,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     repository_id_terms = property(fget=get_repository_id_terms)
 
@@ -380,7 +376,7 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQueryInspector
+        return  # osid.repository.RepositoryQueryInspector
 
     repository_terms = property(fget=get_repository_terms)
 
@@ -399,13 +395,12 @@ class AssetQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetQueryInspectorRecord
+        return  # osid.repository.records.AssetQueryInspectorRecord
 
 
 class AssetContentQueryInspector:
     """This is the query inspector for examining asset content queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_accessibility_type_terms(self):
@@ -418,7 +413,7 @@ class AssetContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.TypeTerm
+        return  # osid.search.terms.TypeTerm
 
     accessibility_type_terms = property(fget=get_accessibility_type_terms)
 
@@ -433,7 +428,7 @@ class AssetContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.CardinalRangeTerm
+        return  # osid.search.terms.CardinalRangeTerm
 
     data_length_terms = property(fget=get_data_length_terms)
 
@@ -448,7 +443,7 @@ class AssetContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.BytesTerm
+        return  # osid.search.terms.BytesTerm
 
     data_terms = property(fget=get_data_terms)
 
@@ -463,7 +458,7 @@ class AssetContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.StringTerm
+        return  # osid.search.terms.StringTerm
 
     url_terms = property(fget=get_url_terms)
 
@@ -482,13 +477,12 @@ class AssetContentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetContentQueryInspectorRecord
+        return  # osid.repository.records.AssetContentQueryInspectorRecord
 
 
 class CompositionQueryInspector:
     """This is the query inspector for examining composition queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_asset_id_terms(self):
@@ -501,7 +495,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     asset_id_terms = property(fget=get_asset_id_terms)
 
@@ -516,7 +510,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     asset_terms = property(fget=get_asset_terms)
 
@@ -531,7 +525,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     containing_composition_id_terms = property(fget=get_containing_composition_id_terms)
 
@@ -546,7 +540,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     containing_composition_terms = property(fget=get_containing_composition_terms)
 
@@ -561,7 +555,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     contained_composition_id_terms = property(fget=get_contained_composition_id_terms)
 
@@ -576,7 +570,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     contained_composition_terms = property(fget=get_contained_composition_terms)
 
@@ -591,7 +585,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     repository_id_terms = property(fget=get_repository_id_terms)
 
@@ -606,7 +600,7 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQueryInspector
+        return  # osid.repository.RepositoryQueryInspector
 
     repository_terms = property(fget=get_repository_terms)
 
@@ -625,13 +619,12 @@ class CompositionQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionQueryInspectorRecord
+        return  # osid.repository.records.CompositionQueryInspectorRecord
 
 
 class RepositoryQueryInspector:
     """This is the query inspector for examining repository queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_asset_id_terms(self):
@@ -644,7 +637,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     asset_id_terms = property(fget=get_asset_id_terms)
 
@@ -659,7 +652,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     asset_terms = property(fget=get_asset_terms)
 
@@ -674,7 +667,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     composition_id_terms = property(fget=get_composition_id_terms)
 
@@ -689,7 +682,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     composition_terms = property(fget=get_composition_terms)
 
@@ -704,7 +697,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_repository_id_terms = property(fget=get_ancestor_repository_id_terms)
 
@@ -719,7 +712,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQueryInspector
+        return  # osid.repository.RepositoryQueryInspector
 
     ancestor_repository_terms = property(fget=get_ancestor_repository_terms)
 
@@ -734,7 +727,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_repository_id_terms = property(fget=get_descendant_repository_id_terms)
 
@@ -749,7 +742,7 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQueryInspector
+        return  # osid.repository.RepositoryQueryInspector
 
     descendant_repository_terms = property(fget=get_descendant_repository_terms)
 
@@ -768,6 +761,4 @@ class RepositoryQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositoryQueryInspectorRecord
-
-
+        return  # osid.repository.records.RepositoryQueryInspectorRecord

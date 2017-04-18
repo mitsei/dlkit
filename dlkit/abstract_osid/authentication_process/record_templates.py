@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AuthenticationRecord:
     """A record for an ``Authentication``.
 
@@ -27,9 +24,6 @@ class AuthenticationRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class AuthenticationInputRecord:
@@ -42,9 +36,6 @@ class AuthenticationInputRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class ChallengeRecord:
     """A record for a ``Challenge``.
 
@@ -55,9 +46,6 @@ class ChallengeRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class TrustRecord:
     """A record for a ``Trust``.
 
@@ -66,8 +54,3 @@ class TrustRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

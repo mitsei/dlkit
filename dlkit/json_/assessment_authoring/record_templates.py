@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.assessment_authoring import records as abc_assessment_authoring_records
 
 
-
-
 class AssessmentPartRecord(abc_assessment_authoring_records.AssessmentPartRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentPart``.
 
@@ -25,6 +23,8 @@ class AssessmentPartRecord(abc_assessment_authoring_records.AssessmentPartRecord
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class AssessmentPartQueryRecord(abc_assessment_authoring_records.AssessmentPartQ
 
 
 
+
+
 class AssessmentPartFormRecord(abc_assessment_authoring_records.AssessmentPartFormRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentPartForm``.
 
@@ -47,6 +49,8 @@ class AssessmentPartFormRecord(abc_assessment_authoring_records.AssessmentPartFo
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class AssessmentPartSearchRecord(abc_assessment_authoring_records.AssessmentPart
 
 
 
+
+
 class SequenceRuleRecord(abc_assessment_authoring_records.SequenceRuleRecord, osid_records.OsidRecord):
     """A record for a ``SequenceRule``.
 
@@ -69,6 +75,8 @@ class SequenceRuleRecord(abc_assessment_authoring_records.SequenceRuleRecord, os
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class SequenceRuleQueryRecord(abc_assessment_authoring_records.SequenceRuleQuery
 
 
 
+
+
 class SequenceRuleFormRecord(abc_assessment_authoring_records.SequenceRuleFormRecord, osid_records.OsidRecord):
     """A record for a ``SequenceRuleForm``.
 
@@ -95,6 +105,8 @@ class SequenceRuleFormRecord(abc_assessment_authoring_records.SequenceRuleFormRe
 
 
 
+
+
 class SequenceRuleSearchRecord(abc_assessment_authoring_records.SequenceRuleSearchRecord, osid_records.OsidRecord):
     """A record for a ``SequenceRuleSearch``.
 
@@ -102,7 +114,3 @@ class SequenceRuleSearchRecord(abc_assessment_authoring_records.SequenceRuleSear
     underlying object.
 
     """
-
-
-
-

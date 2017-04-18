@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class Objective:
     """An ``Objective`` is a statable learning objective."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def has_assessment(self):
@@ -35,7 +31,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_id(self):
@@ -48,7 +44,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     assessment_id = property(fget=get_assessment_id)
 
@@ -64,7 +60,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     assessment = property(fget=get_assessment)
 
@@ -79,7 +75,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_knowledge_category_id(self):
@@ -92,7 +88,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     knowledge_category_id = property(fget=get_knowledge_category_id)
 
@@ -108,7 +104,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     knowledge_category = property(fget=get_knowledge_category)
 
@@ -123,7 +119,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cognitive_process_id(self):
@@ -136,7 +132,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     cognitive_process_id = property(fget=get_cognitive_process_id)
 
@@ -152,7 +148,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     cognitive_process = property(fget=get_cognitive_process)
 
@@ -177,7 +173,7 @@ class Objective:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveRecord
+        return  # osid.learning.records.ObjectiveRecord
 
 
 class ObjectiveForm:
@@ -192,7 +188,6 @@ class ObjectiveForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_metadata(self):
         """Gets the metadata for an assessment.
@@ -204,7 +199,7 @@ class ObjectiveForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     assessment_metadata = property(fget=get_assessment_metadata)
 
@@ -247,7 +242,7 @@ class ObjectiveForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     knowledge_category_metadata = property(fget=get_knowledge_category_metadata)
 
@@ -290,7 +285,7 @@ class ObjectiveForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     cognitive_process_metadata = property(fget=get_cognitive_process_metadata)
 
@@ -337,7 +332,7 @@ class ObjectiveForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveFormRecord
+        return  # osid.learning.records.ObjectiveFormRecord
 
 
 class ObjectiveList:
@@ -351,11 +346,8 @@ class ObjectiveList:
            Objective[] objectives = ol.getNextObjectives(ol.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_objective(self):
@@ -369,7 +361,7 @@ class ObjectiveList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     next_objective = property(fget=get_next_objective)
 
@@ -387,7 +379,7 @@ class ObjectiveList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
 
 class ObjectiveNode:
@@ -400,7 +392,6 @@ class ObjectiveNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective(self):
         """Gets the ``Objective`` at this node.
@@ -412,7 +403,7 @@ class ObjectiveNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     objective = property(fget=get_objective)
 
@@ -427,7 +418,7 @@ class ObjectiveNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveNodeList
+        return  # osid.learning.ObjectiveNodeList
 
     parent_objective_nodes = property(fget=get_parent_objective_nodes)
 
@@ -442,7 +433,7 @@ class ObjectiveNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveNodeList
+        return  # osid.learning.ObjectiveNodeList
 
     child_objective_nodes = property(fget=get_child_objective_nodes)
 
@@ -458,11 +449,8 @@ class ObjectiveNodeList:
            ObjectiveNode[] nodes = onl.getNextObjectiveNodes(onl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_objective_node(self):
@@ -476,7 +464,7 @@ class ObjectiveNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveNode
+        return  # osid.learning.ObjectiveNode
 
     next_objective_node = property(fget=get_next_objective_node)
 
@@ -494,7 +482,7 @@ class ObjectiveNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveNode
+        return  # osid.learning.ObjectiveNode
 
 
 class Activity:
@@ -513,7 +501,6 @@ class Activity:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_id(self):
         """Gets the ``Id`` of the related objective.
@@ -525,7 +512,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_id = property(fget=get_objective_id)
 
@@ -540,7 +527,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     objective = property(fget=get_objective)
 
@@ -555,7 +542,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_asset_ids(self):
@@ -568,7 +555,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     asset_ids = property(fget=get_asset_ids)
 
@@ -584,7 +571,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     assets = property(fget=get_assets)
 
@@ -599,7 +586,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_course_ids(self):
@@ -612,7 +599,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     course_ids = property(fget=get_course_ids)
 
@@ -628,7 +615,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.course.CourseList
+        return  # osid.course.CourseList
 
     courses = property(fget=get_courses)
 
@@ -646,7 +633,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_ids(self):
@@ -659,7 +646,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     assessment_ids = property(fget=get_assessment_ids)
 
@@ -675,7 +662,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     assessments = property(fget=get_assessments)
 
@@ -700,7 +687,7 @@ class Activity:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivityRecord
+        return  # osid.learning.records.ActivityRecord
 
 
 class ActivityForm:
@@ -715,7 +702,6 @@ class ActivityForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assets_metadata(self):
         """Gets the metadata for the assets.
@@ -727,7 +713,7 @@ class ActivityForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     assets_metadata = property(fget=get_assets_metadata)
 
@@ -770,7 +756,7 @@ class ActivityForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     courses_metadata = property(fget=get_courses_metadata)
 
@@ -813,7 +799,7 @@ class ActivityForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     assessments_metadata = property(fget=get_assessments_metadata)
 
@@ -860,7 +846,7 @@ class ActivityForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ActivityFormRecord
+        return  # osid.learning.records.ActivityFormRecord
 
 
 class ActivityList:
@@ -874,11 +860,8 @@ class ActivityList:
            Activity[] activities = al.getNextActivities(al.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_activity(self):
@@ -892,7 +875,7 @@ class ActivityList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Activity
+        return  # osid.learning.Activity
 
     next_activity = property(fget=get_next_activity)
 
@@ -910,13 +893,12 @@ class ActivityList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Activity
+        return  # osid.learning.Activity
 
 
 class Proficiency:
     """A ``Proficiency`` represents a competency of a leraning objective."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_id(self):
@@ -929,7 +911,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     resource_id = property(fget=get_resource_id)
 
@@ -944,7 +926,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = property(fget=get_resource)
 
@@ -959,7 +941,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     objective_id = property(fget=get_objective_id)
 
@@ -974,7 +956,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Objective
+        return  # osid.learning.Objective
 
     objective = property(fget=get_objective)
 
@@ -989,7 +971,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     completion = property(fget=get_completion)
 
@@ -1004,7 +986,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_level_id(self):
@@ -1017,7 +999,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     level_id = property(fget=get_level_id)
 
@@ -1033,7 +1015,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     level = property(fget=get_level)
 
@@ -1058,7 +1040,7 @@ class Proficiency:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencyRecord
+        return  # osid.learning.records.ProficiencyRecord
 
 
 class ProficiencyForm:
@@ -1073,7 +1055,6 @@ class ProficiencyForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_completion_metadata(self):
         """Gets the metadata for completion percentage.
@@ -1085,7 +1066,7 @@ class ProficiencyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     completion_metadata = property(fget=get_completion_metadata)
 
@@ -1127,7 +1108,7 @@ class ProficiencyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     level_metadata = property(fget=get_level_metadata)
 
@@ -1174,7 +1155,7 @@ class ProficiencyForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ProficiencyFormRecord
+        return  # osid.learning.records.ProficiencyFormRecord
 
 
 class ProficiencyList:
@@ -1188,11 +1169,8 @@ class ProficiencyList:
            Proficiency[] proficiencies = pl.getNextProficiencies(pl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_proficiency(self):
@@ -1206,7 +1184,7 @@ class ProficiencyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Proficiency
+        return  # osid.learning.Proficiency
 
     next_proficiency = property(fget=get_next_proficiency)
 
@@ -1227,13 +1205,12 @@ class ProficiencyList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.Proficiency
+        return  # osid.learning.Proficiency
 
 
 class ObjectiveBank:
     """an objective bank defines a collection of objectives."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_record(self, objective_bank_record_type):
@@ -1256,7 +1233,7 @@ class ObjectiveBank:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankRecord
+        return  # osid.learning.records.ObjectiveBankRecord
 
 
 class ObjectiveBankForm:
@@ -1270,7 +1247,6 @@ class ObjectiveBankForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_objective_bank_form_record(self, objective_bank_record_type):
@@ -1287,7 +1263,7 @@ class ObjectiveBankForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.records.ObjectiveBankFormRecord
+        return  # osid.learning.records.ObjectiveBankFormRecord
 
 
 class ObjectiveBankList:
@@ -1301,11 +1277,8 @@ class ObjectiveBankList:
            ObjectiveBank[] objectivBanks = obl.getNextObjectiveBanks(obl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_objective_bank(self):
@@ -1319,7 +1292,7 @@ class ObjectiveBankList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     next_objective_bank = property(fget=get_next_objective_bank)
 
@@ -1337,7 +1310,7 @@ class ObjectiveBankList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
 
 class ObjectiveBankNode:
@@ -1350,7 +1323,6 @@ class ObjectiveBankNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_objective_bank(self):
         """Gets the ``ObjectiveBank`` at this node.
@@ -1362,7 +1334,7 @@ class ObjectiveBankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBank
+        return  # osid.learning.ObjectiveBank
 
     objective_bank = property(fget=get_objective_bank)
 
@@ -1377,7 +1349,7 @@ class ObjectiveBankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankNodeList
+        return  # osid.learning.ObjectiveBankNodeList
 
     parent_objective_bank_nodes = property(fget=get_parent_objective_bank_nodes)
 
@@ -1392,7 +1364,7 @@ class ObjectiveBankNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankNodeList
+        return  # osid.learning.ObjectiveBankNodeList
 
     child_objective_bank_nodes = property(fget=get_child_objective_bank_nodes)
 
@@ -1408,11 +1380,8 @@ class ObjectiveBankNodeList:
            ObjectiveBankNode[] nodes = obnl.getNextObjectiveBankNodes(obnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_objective_bank_node(self):
@@ -1426,7 +1395,7 @@ class ObjectiveBankNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankNode
+        return  # osid.learning.ObjectiveBankNode
 
     next_objective_bank_node = property(fget=get_next_objective_bank_node)
 
@@ -1444,6 +1413,4 @@ class ObjectiveBankNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.learning.ObjectiveBankNode
-
-
+        return  # osid.learning.ObjectiveBankNode

@@ -21,6 +21,8 @@ AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'a
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestResourceLookupSession(unittest.TestCase):
     """Tests for ResourceLookupSession"""
 
@@ -145,6 +147,8 @@ class TestResourceLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.resource_ids[0])
 
 
+
+
 class TestResourceQuerySession(unittest.TestCase):
     """Tests for ResourceQuerySession"""
 
@@ -216,6 +220,8 @@ class TestResourceQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_resources_by_query(query).available(), 3)
 
 
+
+
 class TestResourceSearchSession(unittest.TestCase):
     """Tests for ResourceSearchSession"""
 
@@ -238,6 +244,8 @@ class TestResourceSearchSession(unittest.TestCase):
     def test_get_resource_query_from_inspector(self):
         """Tests get_resource_query_from_inspector"""
         pass
+
+
 
 
 class TestResourceAdminSession(unittest.TestCase):
@@ -319,6 +327,8 @@ class TestResourceAdminSession(unittest.TestCase):
     def test_alias_resource(self):
         """Tests alias_resource"""
         pass
+
+
 
 
 class TestResourceNotificationSession(unittest.TestCase):
@@ -418,6 +428,8 @@ class TestResourceNotificationSession(unittest.TestCase):
         pass
 
 
+
+
 class TestResourceBinSession(unittest.TestCase):
     """Tests for ResourceBinSession"""
 
@@ -506,6 +518,8 @@ class TestResourceBinSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
+
+
 class TestResourceBinAssignmentSession(unittest.TestCase):
     """Tests for ResourceBinAssignmentSession"""
 
@@ -538,6 +552,8 @@ class TestResourceBinAssignmentSession(unittest.TestCase):
     def test_unassign_resource_from_bin(self):
         """Tests unassign_resource_from_bin"""
         pass
+
+
 
 
 class TestResourceAgentSession(unittest.TestCase):
@@ -623,6 +639,8 @@ class TestResourceAgentSession(unittest.TestCase):
         
 
 
+
+
 class TestResourceAgentAssignmentSession(unittest.TestCase):
     """Tests for ResourceAgentAssignmentSession"""
 
@@ -687,6 +705,8 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
         self.catalog.unassign_agent_from_resource(AGENT_ID_1, self.resource_ids[1])
         with self.assertRaises(errors.NotFound):
             self.catalog.get_resource_by_agent(AGENT_ID_1)
+
+
 
 
 class TestBinLookupSession(unittest.TestCase):
@@ -760,6 +780,8 @@ class TestBinLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_bins()
 
 
+
+
 class TestBinQuerySession(unittest.TestCase):
     """Tests for BinQuerySession"""
 
@@ -777,6 +799,8 @@ class TestBinQuerySession(unittest.TestCase):
     def test_get_bins_by_query(self):
         """Tests get_bins_by_query"""
         pass
+
+
 
 
 class TestBinAdminSession(unittest.TestCase):
@@ -874,6 +898,8 @@ class TestBinAdminSession(unittest.TestCase):
     def test_alias_bin(self):
         """Tests alias_bin"""
         pass
+
+
 
 
 class TestBinHierarchySession(unittest.TestCase):
@@ -1008,6 +1034,8 @@ class TestBinHierarchySession(unittest.TestCase):
         """Tests get_bin_nodes"""
         nodes = self.svc_mgr.get_bin_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
         # add some tests on the returned node
+
+
 
 
 class TestBinHierarchyDesignSession(unittest.TestCase):

@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class AgentLookupSession:
     """This session provides methods for retrieving ``Agent`` objects.
 
@@ -57,7 +54,6 @@ class AgentLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -69,7 +65,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -85,7 +81,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -106,7 +102,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_agent_view(self):
@@ -185,7 +181,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     @abc.abstractmethod
     def get_agents_by_ids(self, agent_ids):
@@ -211,7 +207,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agents_by_genus_type(self, agent_genus_type):
@@ -232,7 +228,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agents_by_parent_genus_type(self, agent_genus_type):
@@ -253,7 +249,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agents_by_record_type(self, agent_record_type):
@@ -274,7 +270,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agents(self):
@@ -292,7 +288,7 @@ class AgentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     agents = property(fget=get_agents)
 
@@ -319,7 +315,6 @@ class AgentQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -331,7 +326,7 @@ class AgentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -347,7 +342,7 @@ class AgentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -368,7 +363,7 @@ class AgentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_agency_view(self):
@@ -408,7 +403,7 @@ class AgentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -428,7 +423,7 @@ class AgentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
 
 class AgentSearchSession:
@@ -462,7 +457,6 @@ class AgentSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agent_search(self):
         """Gets an agent search.
@@ -474,7 +468,7 @@ class AgentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentSearch
+        return  # osid.authentication.AgentSearch
 
     agent_search = property(fget=get_agent_search)
 
@@ -492,7 +486,7 @@ class AgentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     agent_search_order = property(fget=get_agent_search_order)
 
@@ -514,7 +508,7 @@ class AgentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentSearchResults
+        return  # osid.authentication.AgentSearchResults
 
     @abc.abstractmethod
     def get_agent_query_from_inspector(self, agent_query_inspector):
@@ -532,7 +526,7 @@ class AgentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
 
 class AgentAdminSession:
@@ -571,7 +565,6 @@ class AgentAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -583,7 +576,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -599,7 +592,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -620,7 +613,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_agent_with_record_types(self, agent_record_types):
@@ -641,7 +634,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_form_for_create(self, agent_record_types):
@@ -661,7 +654,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentForm
+        return  # osid.authentication.AgentForm
 
     @abc.abstractmethod
     def create_agent(self, agent_form):
@@ -681,7 +674,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     @abc.abstractmethod
     def can_update_agents(self):
@@ -700,7 +693,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_update_agent(self, agent_id):
@@ -724,7 +717,7 @@ class AgentAdminSession:
         update available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_form_for_update(self, agent_id):
@@ -745,7 +738,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentForm
+        return  # osid.authentication.AgentForm
 
     @abc.abstractmethod
     def update_agent(self, agent_form):
@@ -782,7 +775,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_delete_agent(self, agent_id):
@@ -806,7 +799,7 @@ class AgentAdminSession:
         delete available.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_agent(self, agent_id):
@@ -841,7 +834,7 @@ class AgentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_agent(self, agent_id, alias_id):
@@ -881,7 +874,6 @@ class AgentNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -893,7 +885,7 @@ class AgentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -909,7 +901,7 @@ class AgentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -930,7 +922,7 @@ class AgentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_agency_view(self):
@@ -1138,10 +1130,8 @@ class AgentAgencySession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_agent_agency_mappings(self):
@@ -1160,7 +1150,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_agency_view(self):
@@ -1207,7 +1197,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_agents_by_agency(self, agency_id):
@@ -1225,7 +1215,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agent_ids_by_agencies(self, agency_ids):
@@ -1242,7 +1232,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_agents_by_agencies(self, agency_ids):
@@ -1259,7 +1249,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
     @abc.abstractmethod
     def get_agency_ids_by_agent(self, agent_id):
@@ -1277,7 +1267,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_agencies_by_agent(self, agent_id):
@@ -1295,7 +1285,7 @@ class AgentAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
 
 class AgentAgencyAssignmentSession:
@@ -1309,7 +1299,6 @@ class AgentAgencyAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_agents(self):
@@ -1328,7 +1317,7 @@ class AgentAgencyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_agents_to_agency(self, agency_id):
@@ -1349,7 +1338,7 @@ class AgentAgencyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_agency_ids(self, agency_id):
@@ -1365,7 +1354,7 @@ class AgentAgencyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_agency_ids_for_agent(self, agency_id, agent_id):
@@ -1383,7 +1372,7 @@ class AgentAgencyAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_agent_to_agency(self, agent_id, agency_id):
@@ -1461,7 +1450,6 @@ class AgentSmartAgencySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_id(self):
         """Gets the ``Agency``  ``Id`` associated with this session.
@@ -1473,7 +1461,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_id = property(fget=get_agency_id)
 
@@ -1489,7 +1477,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     agency = property(fget=get_agency)
 
@@ -1510,7 +1498,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_query(self):
@@ -1523,7 +1511,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
     agent_query = property(fget=get_agent_query)
 
@@ -1538,7 +1526,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     agent_search_order = property(fget=get_agent_search_order)
 
@@ -1570,7 +1558,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     @abc.abstractmethod
     def apply_agent_sequencing(self, agent_search_order):
@@ -1602,7 +1590,7 @@ class AgentSmartAgencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQuery
+        return  # osid.authentication.AgentQuery
 
 
 class AgencyLookupSession:
@@ -1631,7 +1619,6 @@ class AgencyLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_agencies(self):
         """Tests if this user can perform ``Agency`` lookups.
@@ -1649,7 +1636,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_agency_view(self):
@@ -1701,7 +1688,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     @abc.abstractmethod
     def get_agencies_by_ids(self, agency_ids):
@@ -1727,7 +1714,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def get_agencies_by_genus_type(self, agency_genus_type):
@@ -1748,7 +1735,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def get_agencies_by_parent_genus_type(self, agency_genus_type):
@@ -1769,7 +1756,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def get_agencies_by_record_type(self, agency_record_type):
@@ -1790,7 +1777,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def get_agencies_by_provider(self, resource_id):
@@ -1811,7 +1798,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def get_agencies(self):
@@ -1829,7 +1816,7 @@ class AgencyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     agencies = property(fget=get_agencies)
 
@@ -1844,7 +1831,6 @@ class AgencyQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_agencies(self):
@@ -1862,7 +1848,7 @@ class AgencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_query(self):
@@ -1875,7 +1861,7 @@ class AgencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQuery
+        return  # osid.authentication.AgencyQuery
 
     agency_query = property(fget=get_agency_query)
 
@@ -1895,7 +1881,7 @@ class AgencyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
 
 class AgencySearchSession:
@@ -1918,7 +1904,6 @@ class AgencySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_agency_search(self):
         """Gets an agency search.
@@ -1930,7 +1915,7 @@ class AgencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencySearch
+        return  # osid.authentication.AgencySearch
 
     agency_search = property(fget=get_agency_search)
 
@@ -1948,7 +1933,7 @@ class AgencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencySearchOrder
+        return  # osid.authentication.AgencySearchOrder
 
     agency_search_order = property(fget=get_agency_search_order)
 
@@ -1970,7 +1955,7 @@ class AgencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencySearchResults
+        return  # osid.authentication.AgencySearchResults
 
     @abc.abstractmethod
     def get_agency_query_from_inspector(self, agency_query_inspector):
@@ -1988,7 +1973,7 @@ class AgencySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQuery
+        return  # osid.authentication.AgencyQuery
 
 
 class AgencyAdminSession:
@@ -2024,7 +2009,6 @@ class AgencyAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_agencies(self):
         """Tests if this user can create ``Agencies``.
@@ -2042,7 +2026,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_agency_with_record_types(self, agency_record_types):
@@ -2063,7 +2047,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_form_for_create(self, agency_record_types):
@@ -2083,7 +2067,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyForm
+        return  # osid.authentication.AgencyForm
 
     @abc.abstractmethod
     def create_agency(self, agency_form):
@@ -2103,7 +2087,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agency
+        return  # osid.authentication.Agency
 
     @abc.abstractmethod
     def can_update_agencies(self):
@@ -2122,7 +2106,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_form_for_update(self, agency_id):
@@ -2143,7 +2127,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyForm
+        return  # osid.authentication.AgencyForm
 
     @abc.abstractmethod
     def update_agency(self, agency_form):
@@ -2180,7 +2164,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_agency(self, agency_id):
@@ -2215,7 +2199,7 @@ class AgencyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_agency(self, agency_id, alias_id):
@@ -2252,7 +2236,6 @@ class AgencyNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_agency_notifications(self):
         """Tests if this user can register for ``Agency`` notifications.
@@ -2270,7 +2253,7 @@ class AgencyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_agency_notifications(self):
@@ -2516,10 +2499,8 @@ class AgencyHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_hierarchy_id(self):
@@ -2532,7 +2513,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_hierarchy_id = property(fget=get_agency_hierarchy_id)
 
@@ -2548,7 +2529,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     agency_hierarchy = property(fget=get_agency_hierarchy)
 
@@ -2569,7 +2550,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_agency_view(self):
@@ -2612,7 +2593,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_agency_ids = property(fget=get_root_agency_ids)
 
@@ -2628,7 +2609,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     root_agencies = property(fget=get_root_agencies)
 
@@ -2648,7 +2629,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_agency(self, id_, agency_id):
@@ -2669,7 +2650,7 @@ class AgencyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_agency_ids(self, agency_id):
@@ -2687,7 +2668,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_agencies(self, agency_id):
@@ -2705,7 +2686,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def is_ancestor_of_agency(self, id_, agency_id):
@@ -2726,7 +2707,7 @@ class AgencyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_agencies(self, agency_id):
@@ -2744,7 +2725,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_agency(self, id_, agency_id):
@@ -2765,7 +2746,7 @@ class AgencyHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_agency_ids(self, agency_id):
@@ -2783,7 +2764,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_agencies(self, agency_id):
@@ -2801,7 +2782,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyList
+        return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
     def is_descendant_of_agency(self, id_, agency_id):
@@ -2822,7 +2803,7 @@ class AgencyHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agency_node_ids(self, agency_id, ancestor_levels, descendant_levels, include_siblings):
@@ -2846,7 +2827,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_agency_nodes(self, agency_id, ancestor_levels, descendant_levels, include_siblings):
@@ -2870,7 +2851,7 @@ class AgencyHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyNode
+        return  # osid.authentication.AgencyNode
 
 
 class AgencyHierarchyDesignSession:
@@ -2880,7 +2861,6 @@ class AgencyHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agency_hierarchy_id(self):
@@ -2893,7 +2873,7 @@ class AgencyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agency_hierarchy_id = property(fget=get_agency_hierarchy_id)
 
@@ -2909,7 +2889,7 @@ class AgencyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     agency_hierarchy = property(fget=get_agency_hierarchy)
 
@@ -2930,7 +2910,7 @@ class AgencyHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_agency(self, agency_id):
@@ -3017,5 +2997,3 @@ class AgencyHierarchyDesignSession:
 
         """
         pass
-
-

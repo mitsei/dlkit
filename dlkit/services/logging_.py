@@ -37,10 +37,8 @@ DISABLED = -1
 
 class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
     """LoggingProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_logging(self):
         """Pass through to provider supports_logging"""
         # Implemented from kitosid template for -
@@ -128,7 +126,6 @@ class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
 
 class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging_managers.LoggingManager):
     """LoggingManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -249,7 +246,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_logging_session(self, *args, **kwargs):
         """Pass through to provider get_logging_session"""
         # Implemented from kitosid template for -
@@ -607,7 +603,6 @@ class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_manager
 
 class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
     """Log convenience adapter including related Session methods."""
-
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -745,7 +740,6 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_log_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

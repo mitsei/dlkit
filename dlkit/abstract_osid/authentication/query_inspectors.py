@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AgentQueryInspector:
     """This is the query inspector for examining agent queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_id_terms(self):
@@ -35,7 +31,7 @@ class AgentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     resource_id_terms = property(fget=get_resource_id_terms)
 
@@ -50,7 +46,7 @@ class AgentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     resource_terms = property(fget=get_resource_terms)
 
@@ -65,7 +61,7 @@ class AgentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agency_id_terms = property(fget=get_agency_id_terms)
 
@@ -80,7 +76,7 @@ class AgentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQueryInspector
+        return  # osid.authentication.AgencyQueryInspector
 
     agency_terms = property(fget=get_agency_terms)
 
@@ -99,13 +95,12 @@ class AgentQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentQueryInspectorRecord
+        return  # osid.authentication.records.AgentQueryInspectorRecord
 
 
 class AgencyQueryInspector:
     """This is the query inspector for examining queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_agent_id_terms(self):
@@ -118,7 +113,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     agent_id_terms = property(fget=get_agent_id_terms)
 
@@ -133,7 +128,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentQueryInspector
+        return  # osid.authentication.AgentQueryInspector
 
     agent_terms = property(fget=get_agent_terms)
 
@@ -148,7 +143,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     ancestor_agency_id_terms = property(fget=get_ancestor_agency_id_terms)
 
@@ -163,7 +158,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQueryInspector
+        return  # osid.authentication.AgencyQueryInspector
 
     ancestor_agency_terms = property(fget=get_ancestor_agency_terms)
 
@@ -178,7 +173,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     descendant_agency_id_terms = property(fget=get_descendant_agency_id_terms)
 
@@ -193,7 +188,7 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgencyQueryInspector
+        return  # osid.authentication.AgencyQueryInspector
 
     descendant_agency_terms = property(fget=get_descendant_agency_terms)
 
@@ -212,6 +207,4 @@ class AgencyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgencyQueryInspectorRecord
-
-
+        return  # osid.authentication.records.AgencyQueryInspectorRecord

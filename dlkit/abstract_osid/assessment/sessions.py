@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class MyAssessmentTakenSession:
     """This session defines methods for retrieving assessments taken by the authenticated agent.
 
@@ -33,7 +30,6 @@ class MyAssessmentTakenSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -45,7 +41,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -61,7 +57,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -82,7 +78,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessments_started_during(self, start, end):
@@ -102,7 +98,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_started(self):
@@ -116,7 +112,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     assessments_started = property(fget=get_assessments_started)
 
@@ -138,7 +134,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_in_progress(self):
@@ -152,7 +148,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     assessments_in_progress = property(fget=get_assessments_in_progress)
 
@@ -168,7 +164,7 @@ class MyAssessmentTakenSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     assessments_completed = property(fget=get_assessments_completed)
 
@@ -207,7 +203,6 @@ class AssessmentSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -219,7 +214,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -235,7 +230,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -256,7 +251,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_assessment_begun(self, assessment_taken_id):
@@ -279,7 +274,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_assessment_over(self, assessment_taken_id):
@@ -300,7 +295,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def requires_synchronous_sections(self, assessment_taken_id):
@@ -336,7 +331,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_first_assessment_section(self, assessment_taken_id):
@@ -357,7 +352,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
     def has_next_assessment_section(self, assessment_section_id):
@@ -376,7 +371,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_next_assessment_section(self, assessment_section_id):
@@ -395,7 +390,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
     def has_previous_assessment_section(self, assessment_section_id):
@@ -414,7 +409,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_previous_assessment_section(self, assessment_section_id):
@@ -433,7 +428,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
     def get_assessment_section(self, assessment_section_id):
@@ -452,7 +447,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSection
+        return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
     def get_assessment_sections(self, assessment_taken_id):
@@ -471,7 +466,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSectionList
+        return  # osid.assessment.AssessmentSectionList
 
     @abc.abstractmethod
     def is_assessment_section_complete(self, assessment_section_id):
@@ -494,7 +489,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_incomplete_assessment_sections(self, assessment_taken_id):
@@ -513,7 +508,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSectionList
+        return  # osid.assessment.AssessmentSectionList
 
     @abc.abstractmethod
     def has_assessment_section_begun(self, assessment_section_id):
@@ -537,7 +532,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_assessment_section_over(self, assessment_section_id):
@@ -559,7 +554,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def requires_synchronous_responses(self, assessment_section_id):
@@ -595,7 +590,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_first_question(self, assessment_section_id):
@@ -614,7 +609,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def has_next_question(self, assessment_section_id, item_id):
@@ -635,7 +630,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_next_question(self, assessment_section_id, item_id):
@@ -656,7 +651,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def has_previous_question(self, assessment_section_id, item_id):
@@ -677,7 +672,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_previous_question(self, assessment_section_id, item_id):
@@ -698,7 +693,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def get_question(self, assessment_section_id, item_id):
@@ -719,7 +714,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def get_questions(self, assessment_section_id):
@@ -738,7 +733,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.QuestionList
+        return  # osid.assessment.QuestionList
 
     @abc.abstractmethod
     def get_response_form(self, assessment_section_id, item_id):
@@ -759,7 +754,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerForm
+        return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
     def submit_response(self, assessment_section_id, item_id, answer_form):
@@ -822,7 +817,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_unanswered_questions(self, assessment_section_id):
@@ -841,7 +836,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.QuestionList
+        return  # osid.assessment.QuestionList
 
     @abc.abstractmethod
     def has_unanswered_questions(self, assessment_section_id):
@@ -860,7 +855,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_first_unanswered_question(self, assessment_section_id):
@@ -879,7 +874,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def has_next_unanswered_question(self, assessment_section_id, item_id):
@@ -900,7 +895,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_next_unanswered_question(self, assessment_section_id, item_id):
@@ -921,7 +916,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def has_previous_unanswered_question(self, assessment_section_id, item_id):
@@ -942,7 +937,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_previous_unanswered_question(self, assessment_section_id, item_id):
@@ -963,7 +958,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def get_response(self, assessment_section_id, item_id):
@@ -984,7 +979,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Response
+        return  # osid.assessment.Response
 
     @abc.abstractmethod
     def get_responses(self, assessment_section_id):
@@ -1003,7 +998,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ResponseList
+        return  # osid.assessment.ResponseList
 
     @abc.abstractmethod
     def clear_response(self, assessment_section_id, item_id):
@@ -1063,7 +1058,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_answers(self, assessment_section_id, item_id):
@@ -1084,7 +1079,7 @@ class AssessmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerList
+        return  # osid.assessment.AnswerList
 
     @abc.abstractmethod
     def finish_assessment(self, assessment_taken_id):
@@ -1113,7 +1108,6 @@ class AssessmentResultsSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1125,7 +1119,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1141,7 +1135,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1162,7 +1156,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_items(self, assessment_taken_id):
@@ -1180,7 +1174,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_responses(self, assessment_taken_id):
@@ -1198,7 +1192,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ResponseList
+        return  # osid.assessment.ResponseList
 
     @abc.abstractmethod
     def are_results_available(self, assessment_taken_id):
@@ -1216,7 +1210,7 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_entries(self, assessment_taken_id):
@@ -1238,13 +1232,12 @@ class AssessmentResultsSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
 
 class ItemLookupSession:
     """This session provides methods for retrieving ``Item`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -1257,7 +1250,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1273,7 +1266,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1294,7 +1287,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_item_view(self):
@@ -1374,7 +1367,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Item
+        return  # osid.assessment.Item
 
     @abc.abstractmethod
     def get_items_by_ids(self, item_ids):
@@ -1400,7 +1393,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_genus_type(self, item_genus_type):
@@ -1422,7 +1415,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_parent_genus_type(self, item_genus_type):
@@ -1444,7 +1437,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_record_type(self, item_record_type):
@@ -1465,7 +1458,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_question(self, question_id):
@@ -1486,7 +1479,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_answer(self, answer_id):
@@ -1507,7 +1500,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_learning_objective(self, objective_id):
@@ -1528,7 +1521,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items_by_learning_objectives(self, objective_ids):
@@ -1549,7 +1542,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_items(self):
@@ -1567,7 +1560,7 @@ class ItemLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     items = property(fget=get_items)
 
@@ -1595,7 +1588,6 @@ class ItemQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1607,7 +1599,7 @@ class ItemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1623,7 +1615,7 @@ class ItemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1644,7 +1636,7 @@ class ItemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -1686,7 +1678,7 @@ class ItemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
     item_query = property(fget=get_item_query)
 
@@ -1706,7 +1698,7 @@ class ItemQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
 
 class ItemSearchSession:
@@ -1742,7 +1734,6 @@ class ItemSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_item_search(self):
         """Gets an assessment item search.
@@ -1754,7 +1745,7 @@ class ItemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemSearch
+        return  # osid.assessment.ItemSearch
 
     item_search = property(fget=get_item_search)
 
@@ -1772,7 +1763,7 @@ class ItemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemSearchOrder
+        return  # osid.assessment.ItemSearchOrder
 
     item_search_order = property(fget=get_item_search_order)
 
@@ -1794,7 +1785,7 @@ class ItemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemSearchResults
+        return  # osid.assessment.ItemSearchResults
 
     @abc.abstractmethod
     def get_item_query_from_inspector(self, item_query_inspector):
@@ -1812,7 +1803,7 @@ class ItemSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
 
 class ItemAdminSession:
@@ -1851,7 +1842,6 @@ class ItemAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -1863,7 +1853,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -1879,7 +1869,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -1900,7 +1890,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_item_with_record_types(self, item_record_types):
@@ -1921,7 +1911,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_form_for_create(self, item_record_types):
@@ -1941,7 +1931,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemForm
+        return  # osid.assessment.ItemForm
 
     @abc.abstractmethod
     def create_item(self, item_form):
@@ -1961,7 +1951,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Item
+        return  # osid.assessment.Item
 
     @abc.abstractmethod
     def can_update_items(self):
@@ -1980,7 +1970,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_form_for_update(self, item_id):
@@ -2000,7 +1990,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemForm
+        return  # osid.assessment.ItemForm
 
     @abc.abstractmethod
     def update_item(self, item_form):
@@ -2037,7 +2027,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_item(self, item_id):
@@ -2072,7 +2062,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_item(self, item_id, alias_id):
@@ -2115,7 +2105,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_question_with_record_types(self, question_record_types):
@@ -2136,7 +2126,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_question_form_for_create(self, item_id, question_record_types):
@@ -2158,7 +2148,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.QuestionForm
+        return  # osid.assessment.QuestionForm
 
     @abc.abstractmethod
     def create_question(self, question_form):
@@ -2179,7 +2169,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Question
+        return  # osid.assessment.Question
 
     @abc.abstractmethod
     def can_update_questions(self):
@@ -2198,7 +2188,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_question_form_for_update(self, question_id):
@@ -2219,7 +2209,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.QuestionForm
+        return  # osid.assessment.QuestionForm
 
     @abc.abstractmethod
     def update_question(self, question_form):
@@ -2256,7 +2246,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_question(self, question_id):
@@ -2291,7 +2281,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_answers_with_record_types(self, answer_record_types):
@@ -2312,7 +2302,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_answer_form_for_create(self, item_id, answer_record_types):
@@ -2334,7 +2324,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerForm
+        return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
     def create_answer(self, answer_form):
@@ -2354,7 +2344,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Answer
+        return  # osid.assessment.Answer
 
     @abc.abstractmethod
     def can_update_answers(self):
@@ -2373,7 +2363,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_answer_form_for_update(self, answer_id):
@@ -2394,7 +2384,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AnswerForm
+        return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
     def update_answer(self, answer_form):
@@ -2431,7 +2421,7 @@ class ItemAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_answer(self, answer_id):
@@ -2463,7 +2453,6 @@ class ItemNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -2475,7 +2464,7 @@ class ItemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -2491,7 +2480,7 @@ class ItemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -2512,7 +2501,7 @@ class ItemNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -2723,10 +2712,8 @@ class ItemBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_item_bank_mappings(self):
@@ -2745,7 +2732,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -2792,7 +2779,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_items_by_bank(self, bank_id):
@@ -2810,7 +2797,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_item_ids_by_banks(self, bank_ids):
@@ -2827,7 +2814,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_items_by_banks(self, bank_ids):
@@ -2844,7 +2831,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def get_bank_ids_by_item(self, item_id):
@@ -2862,7 +2849,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_item(self, item_id):
@@ -2880,7 +2867,7 @@ class ItemBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class ItemBankAssignmentSession:
@@ -2896,7 +2883,6 @@ class ItemBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_items(self):
@@ -2915,7 +2901,7 @@ class ItemBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_items_to_bank(self, bank_id):
@@ -2936,7 +2922,7 @@ class ItemBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -2952,7 +2938,7 @@ class ItemBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_item(self, bank_id, item_id):
@@ -2970,7 +2956,7 @@ class ItemBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_item_to_bank(self, item_id, bank_id):
@@ -3047,7 +3033,6 @@ class ItemSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -3059,7 +3044,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3075,7 +3060,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3096,7 +3081,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_query(self):
@@ -3109,7 +3094,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
     item_query = property(fget=get_item_query)
 
@@ -3124,7 +3109,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemSearchOrder
+        return  # osid.assessment.ItemSearchOrder
 
     item_search_order = property(fget=get_item_search_order)
 
@@ -3156,7 +3141,7 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQueryInspector
+        return  # osid.assessment.ItemQueryInspector
 
     @abc.abstractmethod
     def apply_item_sequencing(self, item_search_order):
@@ -3188,13 +3173,12 @@ class ItemSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQuery
+        return  # osid.assessment.ItemQuery
 
 
 class AssessmentLookupSession:
     """This session defines methods for retrieving assessments."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -3207,7 +3191,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3223,7 +3207,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3244,7 +3228,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_assessment_view(self):
@@ -3324,7 +3308,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     @abc.abstractmethod
     def get_assessments_by_ids(self, assessment_ids):
@@ -3350,7 +3334,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_assessments_by_genus_type(self, assessment_genus_type):
@@ -3372,7 +3356,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_assessments_by_parent_genus_type(self, assessment_genus_type):
@@ -3394,7 +3378,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_assessments_by_record_type(self, assessment_record_type):
@@ -3417,7 +3401,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_assessments(self):
@@ -3436,7 +3420,7 @@ class AssessmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     assessments = property(fget=get_assessments)
 
@@ -3463,7 +3447,6 @@ class AssessmentQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -3475,7 +3458,7 @@ class AssessmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3491,7 +3474,7 @@ class AssessmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3512,7 +3495,7 @@ class AssessmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -3552,7 +3535,7 @@ class AssessmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -3572,7 +3555,7 @@ class AssessmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
 
 class AssessmentSearchSession:
@@ -3606,7 +3589,6 @@ class AssessmentSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_search(self):
         """Gets an assessment search.
@@ -3618,7 +3600,7 @@ class AssessmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSearch
+        return  # osid.assessment.AssessmentSearch
 
     assessment_search = property(fget=get_assessment_search)
 
@@ -3636,7 +3618,7 @@ class AssessmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     assessment_search_order = property(fget=get_assessment_search_order)
 
@@ -3658,7 +3640,7 @@ class AssessmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSearchResults
+        return  # osid.assessment.AssessmentSearchResults
 
     @abc.abstractmethod
     def get_assessment_query_from_inspector(self, assessment_query_inspector):
@@ -3676,7 +3658,7 @@ class AssessmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
 
 class AssessmentAdminSession:
@@ -3716,7 +3698,6 @@ class AssessmentAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -3728,7 +3709,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -3744,7 +3725,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -3765,7 +3746,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_assessment_with_record_types(self, assessment_record_types):
@@ -3786,7 +3767,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_form_for_create(self, assessment_record_types):
@@ -3806,7 +3787,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentForm
+        return  # osid.assessment.AssessmentForm
 
     @abc.abstractmethod
     def create_assessment(self, assessment_form):
@@ -3826,7 +3807,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Assessment
+        return  # osid.assessment.Assessment
 
     @abc.abstractmethod
     def can_update_assessments(self):
@@ -3845,7 +3826,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_form_for_update(self, assessment_id):
@@ -3866,7 +3847,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentForm
+        return  # osid.assessment.AssessmentForm
 
     @abc.abstractmethod
     def update_assessment(self, assessment_form):
@@ -3903,7 +3884,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_assessment(self, assessment_id):
@@ -3938,7 +3919,7 @@ class AssessmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_assessment(self, assessment_id, alias_id):
@@ -3978,7 +3959,6 @@ class AssessmentNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -3990,7 +3970,7 @@ class AssessmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4006,7 +3986,7 @@ class AssessmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4027,7 +4007,7 @@ class AssessmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -4236,10 +4216,8 @@ class AssessmentBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_assessment_bank_mappings(self):
@@ -4258,7 +4236,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -4305,7 +4283,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_by_bank(self, bank_id):
@@ -4323,7 +4301,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_assessment_ids_by_banks(self, bank_ids):
@@ -4340,7 +4318,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_by_banks(self, bank_ids):
@@ -4357,7 +4335,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
     def get_bank_ids_by_assessment(self, assessment_id):
@@ -4375,7 +4353,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_assessment(self, assessment_id):
@@ -4393,7 +4371,7 @@ class AssessmentBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class AssessmentBankAssignmentSession:
@@ -4409,7 +4387,6 @@ class AssessmentBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_assessments(self):
@@ -4428,7 +4405,7 @@ class AssessmentBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_assessments_to_bank(self, bank_id):
@@ -4449,7 +4426,7 @@ class AssessmentBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -4465,7 +4442,7 @@ class AssessmentBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_assessment(self, bank_id, assessment_id):
@@ -4483,7 +4460,7 @@ class AssessmentBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_assessment_to_bank(self, assessment_id, bank_id):
@@ -4561,7 +4538,6 @@ class AssessmentSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -4573,7 +4549,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4589,7 +4565,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4610,7 +4586,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_query(self):
@@ -4623,7 +4599,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
     assessment_query = property(fget=get_assessment_query)
 
@@ -4638,7 +4614,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentSearchOrder
+        return  # osid.assessment.AssessmentSearchOrder
 
     assessment_search_order = property(fget=get_assessment_search_order)
 
@@ -4670,7 +4646,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     @abc.abstractmethod
     def apply_assessment_sequencing(self, assessment_search_order):
@@ -4702,7 +4678,7 @@ class AssessmentSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQuery
+        return  # osid.assessment.AssessmentQuery
 
 
 class AssessmentBasicAuthoringSession:
@@ -4715,7 +4691,6 @@ class AssessmentBasicAuthoringSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -4727,7 +4702,7 @@ class AssessmentBasicAuthoringSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4743,7 +4718,7 @@ class AssessmentBasicAuthoringSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4764,7 +4739,7 @@ class AssessmentBasicAuthoringSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_items(self, assessment_id):
@@ -4782,7 +4757,7 @@ class AssessmentBasicAuthoringSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     @abc.abstractmethod
     def add_item(self, assessment_id, item_id):
@@ -4863,7 +4838,6 @@ class AssessmentOfferedLookupSession:
     """This session defines methods for retrieving assessments offered."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -4875,7 +4849,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -4891,7 +4865,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -4912,7 +4886,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_assessment_offered_view(self):
@@ -4992,7 +4966,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
     @abc.abstractmethod
     def get_assessments_offered_by_ids(self, assessment_offered_ids):
@@ -5018,7 +4992,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered_by_genus_type(self, assessment_offered_genus_type):
@@ -5040,7 +5014,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered_by_parent_genus_type(self, assessment_offered_genus_type):
@@ -5062,7 +5036,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered_by_record_type(self, assessment_record_type):
@@ -5085,7 +5059,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered_by_date(self, start, end):
@@ -5109,7 +5083,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered_for_assessment(self, assessment_id):
@@ -5131,7 +5105,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessments_offered(self):
@@ -5150,7 +5124,7 @@ class AssessmentOfferedLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     assessments_offered = property(fget=get_assessments_offered)
 
@@ -5178,7 +5152,6 @@ class AssessmentOfferedQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -5190,7 +5163,7 @@ class AssessmentOfferedQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5206,7 +5179,7 @@ class AssessmentOfferedQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5227,7 +5200,7 @@ class AssessmentOfferedQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -5267,7 +5240,7 @@ class AssessmentOfferedQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
@@ -5287,7 +5260,7 @@ class AssessmentOfferedQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
 
 class AssessmentOfferedSearchSession:
@@ -5323,7 +5296,6 @@ class AssessmentOfferedSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_offered_search(self):
         """Gets an assessment offered search.
@@ -5335,7 +5307,7 @@ class AssessmentOfferedSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearch
+        return  # osid.assessment.AssessmentOfferedSearch
 
     assessment_offered_search = property(fget=get_assessment_offered_search)
 
@@ -5353,7 +5325,7 @@ class AssessmentOfferedSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchOrder
+        return  # osid.assessment.AssessmentOfferedSearchOrder
 
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
@@ -5375,7 +5347,7 @@ class AssessmentOfferedSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchResults
+        return  # osid.assessment.AssessmentOfferedSearchResults
 
     @abc.abstractmethod
     def get_assessment_offered_query_from_inspector(self, assessment_offered_query_inspector):
@@ -5394,7 +5366,7 @@ class AssessmentOfferedSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
 
 class AssessmentOfferedAdminSession:
@@ -5436,7 +5408,6 @@ class AssessmentOfferedAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -5448,7 +5419,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5464,7 +5435,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5485,7 +5456,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_assessment_offered_with_record_types(self, assessment_offered_record_types):
@@ -5506,7 +5477,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_form_for_create(self, assessment_id, assessment_offered_record_types):
@@ -5529,7 +5500,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedForm
+        return  # osid.assessment.AssessmentOfferedForm
 
     @abc.abstractmethod
     def create_assessment_offered(self, assessment_offered_form):
@@ -5549,7 +5520,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOffered
+        return  # osid.assessment.AssessmentOffered
 
     @abc.abstractmethod
     def can_update_assessments_offered(self):
@@ -5568,7 +5539,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_form_for_update(self, assessment_offered_id):
@@ -5589,7 +5560,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedForm
+        return  # osid.assessment.AssessmentOfferedForm
 
     @abc.abstractmethod
     def update_assessment_offered(self, assessment_offered_form):
@@ -5626,7 +5597,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_assessment_offered(self, assessment_offered_id):
@@ -5661,7 +5632,7 @@ class AssessmentOfferedAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_assessment_offered(self, assessment_offered_id, alias_id):
@@ -5701,7 +5672,6 @@ class AssessmentOfferedNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -5713,7 +5683,7 @@ class AssessmentOfferedNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -5729,7 +5699,7 @@ class AssessmentOfferedNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -5750,7 +5720,7 @@ class AssessmentOfferedNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -6022,10 +5992,8 @@ class AssessmentOfferedBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_assessment_offered_bank_mappings(self):
@@ -6044,7 +6012,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -6091,7 +6059,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_offered_by_bank(self, bank_id):
@@ -6109,7 +6077,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_assessment_offered_ids_by_banks(self, bank_ids):
@@ -6126,7 +6094,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_offered_by_banks(self, bank_ids):
@@ -6143,7 +6111,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
     def get_bank_ids_by_assessment_offered(self, assessment_offered_id):
@@ -6161,7 +6129,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_assessment_offered(self, assessment_offered_id):
@@ -6179,7 +6147,7 @@ class AssessmentOfferedBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class AssessmentOfferedBankAssignmentSession:
@@ -6195,7 +6163,6 @@ class AssessmentOfferedBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_assessments_offered(self):
@@ -6214,7 +6181,7 @@ class AssessmentOfferedBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_assessments_offered_to_bank(self, bank_id):
@@ -6235,7 +6202,7 @@ class AssessmentOfferedBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -6251,7 +6218,7 @@ class AssessmentOfferedBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_assessment_offered(self, bank_id, assessment_offered_id):
@@ -6269,7 +6236,7 @@ class AssessmentOfferedBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id):
@@ -6348,7 +6315,6 @@ class AssessmentOfferedSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -6360,7 +6326,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -6376,7 +6342,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -6397,7 +6363,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_query(self):
@@ -6410,7 +6376,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
@@ -6425,7 +6391,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchOrder
+        return  # osid.assessment.AssessmentOfferedSearchOrder
 
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
@@ -6457,7 +6423,7 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     @abc.abstractmethod
     def apply_assessment_offered_sequencing(self, assessment_offered_search_order):
@@ -6489,13 +6455,12 @@ class AssessmentOfferedSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuery
+        return  # osid.assessment.AssessmentOfferedQuery
 
 
 class AssessmentTakenLookupSession:
     """This session defines methods for retrieving assessments taken."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_id(self):
@@ -6508,7 +6473,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -6524,7 +6489,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -6545,7 +6510,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_assessment_taken_view(self):
@@ -6625,7 +6590,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
     @abc.abstractmethod
     def get_assessments_taken_by_ids(self, assessment_taken_ids):
@@ -6651,7 +6616,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_genus_type(self, assessment_taken_genus_type):
@@ -6673,7 +6638,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_parent_genus_type(self, assessment_taken_genus_type):
@@ -6695,7 +6660,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_record_type(self, assessment_taken_record_type):
@@ -6719,7 +6684,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date(self, from_, to):
@@ -6745,7 +6710,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_for_taker(self, resource_id):
@@ -6767,7 +6732,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date_for_taker(self, resource_id, from_, to):
@@ -6794,7 +6759,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_for_assessment(self, assessment_id):
@@ -6816,7 +6781,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date_for_assessment(self, assessment_id, from_, to):
@@ -6843,7 +6808,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_for_taker_and_assessment(self, resource_id, assessment_id):
@@ -6867,7 +6832,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date_for_taker_and_assessment(self, resource_id, assessment_id, from_, to):
@@ -6896,7 +6861,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_for_assessment_offered(self, assessment_offered_id):
@@ -6918,7 +6883,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date_for_assessment_offered(self, assessment_offered_id, from_, to):
@@ -6945,7 +6910,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id):
@@ -6969,7 +6934,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken_by_date_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id, from_, to):
@@ -6998,7 +6963,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessments_taken(self):
@@ -7017,7 +6982,7 @@ class AssessmentTakenLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     assessments_taken = property(fget=get_assessments_taken)
 
@@ -7043,7 +7008,6 @@ class AssessmentTakenQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -7055,7 +7019,7 @@ class AssessmentTakenQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -7071,7 +7035,7 @@ class AssessmentTakenQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -7092,7 +7056,7 @@ class AssessmentTakenQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -7132,7 +7096,7 @@ class AssessmentTakenQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
@@ -7152,7 +7116,7 @@ class AssessmentTakenQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
 
 class AssessmentTakenSearchSession:
@@ -7186,7 +7150,6 @@ class AssessmentTakenSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_assessment_taken_search(self):
         """Gets an assessment taken search.
@@ -7198,7 +7161,7 @@ class AssessmentTakenSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenSearch
+        return  # osid.assessment.AssessmentTakenSearch
 
     assessment_taken_search = property(fget=get_assessment_taken_search)
 
@@ -7216,7 +7179,7 @@ class AssessmentTakenSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchOrder
+        return  # osid.assessment.AssessmentTakenSearchOrder
 
     assessment_taken_search_order = property(fget=get_assessment_taken_search_order)
 
@@ -7238,7 +7201,7 @@ class AssessmentTakenSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchResults
+        return  # osid.assessment.AssessmentTakenSearchResults
 
     @abc.abstractmethod
     def get_assessment_taken_query_from_inspector(self, assessment_taken_query_inspector):
@@ -7257,7 +7220,7 @@ class AssessmentTakenSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
 
 class AssessmentTakenAdminSession:
@@ -7299,7 +7262,6 @@ class AssessmentTakenAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -7311,7 +7273,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -7327,7 +7289,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -7348,7 +7310,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_assessment_taken_with_record_types(self, assessment_taken_record_types):
@@ -7369,7 +7331,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_form_for_create(self, assessment_offered_id, assessment_taken_record_types):
@@ -7392,7 +7354,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenForm
+        return  # osid.assessment.AssessmentTakenForm
 
     @abc.abstractmethod
     def create_assessment_taken(self, assessment_taken_form):
@@ -7412,7 +7374,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTaken
+        return  # osid.assessment.AssessmentTaken
 
     @abc.abstractmethod
     def can_update_assessments_taken(self):
@@ -7431,7 +7393,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_form_for_update(self, assessment_taken_id):
@@ -7452,7 +7414,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenForm
+        return  # osid.assessment.AssessmentTakenForm
 
     @abc.abstractmethod
     def update_assessment_taken(self, assessment_taken_form):
@@ -7489,7 +7451,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_assessment_taken(self, assessment_taken_id):
@@ -7524,7 +7486,7 @@ class AssessmentTakenAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_assessment_taken(self, assessment_taken_id, alias_id):
@@ -7564,7 +7526,6 @@ class AssessmentTakenNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -7576,7 +7537,7 @@ class AssessmentTakenNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -7592,7 +7553,7 @@ class AssessmentTakenNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -7613,7 +7574,7 @@ class AssessmentTakenNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bank_view(self):
@@ -7990,10 +7951,8 @@ class AssessmentTakenBankSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_lookup_assessment_taken_bank_mappings(self):
@@ -8012,7 +7971,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -8059,7 +8018,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_taken_by_bank(self, bank_id):
@@ -8077,7 +8036,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_assessment_taken_ids_by_banks(self, bank_ids):
@@ -8094,7 +8053,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assessments_taken_by_banks(self, bank_ids):
@@ -8111,7 +8070,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
     def get_bank_ids_by_assessment_taken(self, assessment_taken_id):
@@ -8129,7 +8088,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_banks_by_assessment_taken(self, assessment_taken_id):
@@ -8147,7 +8106,7 @@ class AssessmentTakenBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class AssessmentTakenBankAssignmentSession:
@@ -8163,7 +8122,6 @@ class AssessmentTakenBankAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_assessments_taken(self):
@@ -8182,7 +8140,7 @@ class AssessmentTakenBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_assessments_taken_to_bank(self, bank_id):
@@ -8203,7 +8161,7 @@ class AssessmentTakenBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bank_ids(self, bank_id):
@@ -8219,7 +8177,7 @@ class AssessmentTakenBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bank_ids_for_assessment_taken(self, bank_id, assessment_taken_id):
@@ -8237,7 +8195,7 @@ class AssessmentTakenBankAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id):
@@ -8316,7 +8274,6 @@ class AssessmentTakenSmartBankSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
@@ -8328,7 +8285,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_id = property(fget=get_bank_id)
 
@@ -8344,7 +8301,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     bank = property(fget=get_bank)
 
@@ -8365,7 +8322,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_query(self):
@@ -8378,7 +8335,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
@@ -8393,7 +8350,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchOrder
+        return  # osid.assessment.AssessmentTakenSearchOrder
 
     assessment_taken_search_order = property(fget=get_assessment_taken_search_order)
 
@@ -8425,7 +8382,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQueryInspector
+        return  # osid.assessment.AssessmentTakenQueryInspector
 
     @abc.abstractmethod
     def apply_assessment_taken_sequencing(self, assessment_taken_search_order):
@@ -8457,7 +8414,7 @@ class AssessmentTakenSmartBankSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQuery
+        return  # osid.assessment.AssessmentTakenQuery
 
 
 class BankLookupSession:
@@ -8487,7 +8444,6 @@ class BankLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_banks(self):
         """Tests if this user can perform ``Bank`` lookups.
@@ -8505,7 +8461,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -8557,7 +8513,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     @abc.abstractmethod
     def get_banks_by_ids(self, bank_ids):
@@ -8583,7 +8539,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def get_banks_by_genus_type(self, bank_genus_type):
@@ -8604,7 +8560,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def get_banks_by_parent_genus_type(self, bank_genus_type):
@@ -8625,7 +8581,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def get_banks_by_record_type(self, bank_record_type):
@@ -8646,7 +8602,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def get_banks_by_provider(self, resource_id):
@@ -8667,7 +8623,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def get_banks(self):
@@ -8685,7 +8641,7 @@ class BankLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     banks = property(fget=get_banks)
 
@@ -8700,7 +8656,6 @@ class BankQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_banks(self):
@@ -8719,7 +8674,7 @@ class BankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_query(self):
@@ -8732,7 +8687,7 @@ class BankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
     bank_query = property(fget=get_bank_query)
 
@@ -8752,7 +8707,7 @@ class BankQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
 
 class BankSearchSession:
@@ -8775,7 +8730,6 @@ class BankSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bank_search(self):
         """Gets a bank search.
@@ -8787,7 +8741,7 @@ class BankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankSearch
+        return  # osid.assessment.BankSearch
 
     bank_search = property(fget=get_bank_search)
 
@@ -8805,7 +8759,7 @@ class BankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankSearchOrder
+        return  # osid.assessment.BankSearchOrder
 
     bank_search_order = property(fget=get_bank_search_order)
 
@@ -8827,7 +8781,7 @@ class BankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankSearchResults
+        return  # osid.assessment.BankSearchResults
 
     @abc.abstractmethod
     def get_bank_query_from_inspector(self, bank_query_inspector):
@@ -8845,7 +8799,7 @@ class BankSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQuery
+        return  # osid.assessment.BankQuery
 
 
 class BankAdminSession:
@@ -8881,7 +8835,6 @@ class BankAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_banks(self):
         """Tests if this user can create ``Banks``.
@@ -8899,7 +8852,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_bank_with_record_types(self, bank_record_types):
@@ -8920,7 +8873,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_form_for_create(self, bank_record_types):
@@ -8940,7 +8893,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankForm
+        return  # osid.assessment.BankForm
 
     @abc.abstractmethod
     def create_bank(self, bank_form):
@@ -8960,7 +8913,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.Bank
+        return  # osid.assessment.Bank
 
     @abc.abstractmethod
     def can_update_banks(self):
@@ -8979,7 +8932,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_form_for_update(self, bank_id):
@@ -8999,7 +8952,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankForm
+        return  # osid.assessment.BankForm
 
     @abc.abstractmethod
     def update_bank(self, bank_form):
@@ -9036,7 +8989,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_bank(self, bank_id):
@@ -9071,7 +9024,7 @@ class BankAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_bank(self, bank_id, alias_id):
@@ -9108,7 +9061,6 @@ class BankNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_bank_notifications(self):
         """Tests if this user can register for ``Bank`` notifications.
@@ -9126,7 +9078,7 @@ class BankNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_bank_notifications(self):
@@ -9372,10 +9324,8 @@ class BankHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_hierarchy_id(self):
@@ -9388,7 +9338,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_hierarchy_id = property(fget=get_bank_hierarchy_id)
 
@@ -9404,7 +9354,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     bank_hierarchy = property(fget=get_bank_hierarchy)
 
@@ -9425,7 +9375,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bank_view(self):
@@ -9468,7 +9418,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_bank_ids = property(fget=get_root_bank_ids)
 
@@ -9484,7 +9434,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     root_banks = property(fget=get_root_banks)
 
@@ -9504,7 +9454,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_bank(self, id_, bank_id):
@@ -9525,7 +9475,7 @@ class BankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_bank_ids(self, bank_id):
@@ -9543,7 +9493,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_banks(self, bank_id):
@@ -9561,7 +9511,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def is_ancestor_of_bank(self, id_, bank_id):
@@ -9582,7 +9532,7 @@ class BankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_banks(self, bank_id):
@@ -9600,7 +9550,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_bank(self, id_, bank_id):
@@ -9621,7 +9571,7 @@ class BankHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_bank_ids(self, bank_id):
@@ -9639,7 +9589,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_banks(self, bank_id):
@@ -9657,7 +9607,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     @abc.abstractmethod
     def is_descendant_of_bank(self, id_, bank_id):
@@ -9678,7 +9628,7 @@ class BankHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_node_ids(self, bank_id, ancestor_levels, descendant_levels, include_siblings):
@@ -9702,7 +9652,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_bank_nodes(self, bank_id, ancestor_levels, descendant_levels, include_siblings):
@@ -9726,7 +9676,7 @@ class BankHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankNode
+        return  # osid.assessment.BankNode
 
 
 class BankHierarchyDesignSession:
@@ -9736,7 +9686,6 @@ class BankHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bank_hierarchy_id(self):
@@ -9749,7 +9698,7 @@ class BankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bank_hierarchy_id = property(fget=get_bank_hierarchy_id)
 
@@ -9765,7 +9714,7 @@ class BankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     bank_hierarchy = property(fget=get_bank_hierarchy)
 
@@ -9786,7 +9735,7 @@ class BankHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_bank(self, bank_id):
@@ -9873,5 +9822,3 @@ class BankHierarchyDesignSession:
 
         """
         pass
-
-

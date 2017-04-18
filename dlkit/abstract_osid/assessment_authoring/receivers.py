@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentPartReceiver:
     """The assessment part receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted assessment parts."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_assessment_parts(self, notification_id, assessment_part_ids):
@@ -74,7 +70,6 @@ class SequenceRuleReceiver:
     """The sequence rule receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted sequence rules."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_sequence_rules(self, notification_id, sequence_rule_ids):
         """The callback for notifications of new sequence rules.
@@ -125,7 +120,6 @@ class SequenceRuleEnablerReceiver:
     """The sequence rule enabler receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted sequence rule enablers."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids):
         """The callback for notifications of new sequence rule enablers.
@@ -170,5 +164,3 @@ class SequenceRuleEnablerReceiver:
 
         """
         pass
-
-

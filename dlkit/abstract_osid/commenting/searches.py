@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentSearch:
     """The search interface for governing comment searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_comments(self, comment_ids):
@@ -69,13 +65,12 @@ class CommentSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentSearchRecord
+        return  # osid.commenting.records.CommentSearchRecord
 
 
 class CommentSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_comments(self):
@@ -88,7 +83,7 @@ class CommentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentList
+        return  # osid.commenting.CommentList
 
     comments = property(fget=get_comments)
 
@@ -103,7 +98,7 @@ class CommentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.CommentQueryInspector
+        return  # osid.commenting.CommentQueryInspector
 
     comment_query_inspector = property(fget=get_comment_query_inspector)
 
@@ -125,13 +120,12 @@ class CommentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentSearchResultsRecord
+        return  # osid.commenting.records.CommentSearchResultsRecord
 
 
 class BookSearch:
     """The search interface for governing book searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_books(self, book_ids):
@@ -178,13 +172,12 @@ class BookSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookSearchRecord
+        return  # osid.commenting.records.BookSearchRecord
 
 
 class BookSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_books(self):
@@ -197,7 +190,7 @@ class BookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookList
+        return  # osid.commenting.BookList
 
     books = property(fget=get_books)
 
@@ -212,7 +205,7 @@ class BookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookQueryInspector
+        return  # osid.commenting.BookQueryInspector
 
     book_query_inspector = property(fget=get_book_query_inspector)
 
@@ -234,6 +227,4 @@ class BookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookSearchResultsRecord
-
-
+        return  # osid.commenting.records.BookSearchResultsRecord

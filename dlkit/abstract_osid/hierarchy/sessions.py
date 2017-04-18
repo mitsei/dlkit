@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class HierarchyTraversalSession:
     """This session defines methods for traversing a hierarchy.
 
@@ -44,7 +41,6 @@ class HierarchyTraversalSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -56,7 +52,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     hierarchy_id = property(fget=get_hierarchy_id)
 
@@ -72,7 +68,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     hierarchy = property(fget=get_hierarchy)
 
@@ -93,7 +89,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_roots(self):
@@ -107,7 +103,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     roots = property(fget=get_roots)
 
@@ -127,7 +123,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent(self, id_, parent_id):
@@ -149,7 +145,7 @@ class HierarchyTraversalSession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parents(self, id_):
@@ -167,7 +163,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def is_ancestor(self, id_, ancestor_id):
@@ -189,7 +185,7 @@ class HierarchyTraversalSession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_children(self, id_):
@@ -207,7 +203,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child(self, id_, child_id):
@@ -229,7 +225,7 @@ class HierarchyTraversalSession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_children(self, id_):
@@ -247,7 +243,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def is_descendant(self, id_, descendant_id):
@@ -268,7 +264,7 @@ class HierarchyTraversalSession:
         *implementation notes*: If not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_nodes(self, id_, ancestor_levels, descendant_levels, include_siblings):
@@ -292,7 +288,7 @@ class HierarchyTraversalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
 
 class HierarchyDesignSession:
@@ -306,7 +302,6 @@ class HierarchyDesignSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -318,7 +313,7 @@ class HierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     hierarchy_id = property(fget=get_hierarchy_id)
 
@@ -334,7 +329,7 @@ class HierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     hierarchy = property(fget=get_hierarchy)
 
@@ -355,7 +350,7 @@ class HierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root(self, id_):
@@ -448,7 +443,6 @@ class HierarchySequencingSession:
     """This session provides methods to sequence the nodes in a hierarchy."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -460,7 +454,7 @@ class HierarchySequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     hierarchy_id = property(fget=get_hierarchy_id)
 
@@ -476,7 +470,7 @@ class HierarchySequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     hierarchy = property(fget=get_hierarchy)
 
@@ -497,7 +491,7 @@ class HierarchySequencingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def move_node_ahead(self, parent_id, reference_id, id_):
@@ -572,7 +566,6 @@ class HierarchyStructureNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
@@ -584,7 +577,7 @@ class HierarchyStructureNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     hierarchy_id = property(fget=get_hierarchy_id)
 
@@ -600,7 +593,7 @@ class HierarchyStructureNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     hierarchy = property(fget=get_hierarchy)
 
@@ -621,7 +614,7 @@ class HierarchyStructureNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_hierarchy_structure_notifications(self):
@@ -833,7 +826,6 @@ class HierarchyLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_hierarchies(self):
         """Tests if this user can perform ``Hierarchy`` lookups.
@@ -851,7 +843,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_hierarchy_view(self):
@@ -904,7 +896,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     @abc.abstractmethod
     def get_hierarchies_by_ids(self, hierarchy_ids):
@@ -930,7 +922,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     @abc.abstractmethod
     def get_hierarchies_by_genus_type(self, hierarchy_genus_type):
@@ -952,7 +944,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     @abc.abstractmethod
     def get_hierarchies_by_parent_genus_type(self, hierarchy_genus_type):
@@ -974,7 +966,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     @abc.abstractmethod
     def get_hierarchies_by_record_type(self, hierarchy_record_type):
@@ -997,7 +989,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     @abc.abstractmethod
     def get_hierarchies_by_provider(self, resource_id):
@@ -1020,7 +1012,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     @abc.abstractmethod
     def get_hierarchies(self):
@@ -1039,7 +1031,7 @@ class HierarchyLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
     hierarchies = property(fget=get_hierarchies)
 
@@ -1055,7 +1047,6 @@ class HierarchyQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_hierarchies(self):
@@ -1074,7 +1065,7 @@ class HierarchyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_hierarchy_query(self):
@@ -1087,7 +1078,7 @@ class HierarchyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyQuery
+        return  # osid.hierarchy.HierarchyQuery
 
     hierarchy_query = property(fget=get_hierarchy_query)
 
@@ -1107,7 +1098,7 @@ class HierarchyQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyList
+        return  # osid.hierarchy.HierarchyList
 
 
 class HierarchySearchSession:
@@ -1132,7 +1123,6 @@ class HierarchySearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_hierarchy_search(self):
         """Gets a hierarchy search.
@@ -1144,7 +1134,7 @@ class HierarchySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchySearch
+        return  # osid.hierarchy.HierarchySearch
 
     hierarchy_search = property(fget=get_hierarchy_search)
 
@@ -1162,7 +1152,7 @@ class HierarchySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchySearchOrder
+        return  # osid.hierarchy.HierarchySearchOrder
 
     hierarchy_search_order = property(fget=get_hierarchy_search_order)
 
@@ -1184,7 +1174,7 @@ class HierarchySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchySearchResults
+        return  # osid.hierarchy.HierarchySearchResults
 
     @abc.abstractmethod
     def get_hierarchy_query_from_inspector(self, hierarchy_query_inspector):
@@ -1202,7 +1192,7 @@ class HierarchySearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyQuery
+        return  # osid.hierarchy.HierarchyQuery
 
 
 class HierarchyAdminSession:
@@ -1238,7 +1228,6 @@ class HierarchyAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_hierarchies(self):
         """Tests if this user can create ``Hierarchy`` objects.
@@ -1256,7 +1245,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_hierarchy_with_record_types(self, hierarchy_record_types):
@@ -1277,7 +1266,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_hierarchy_form_for_create(self, hierarchy_record_types):
@@ -1299,7 +1288,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyForm
+        return  # osid.hierarchy.HierarchyForm
 
     @abc.abstractmethod
     def create_hierarchy(self, hierarchy_form):
@@ -1319,7 +1308,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     @abc.abstractmethod
     def can_update_hierarchies(self):
@@ -1338,7 +1327,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_hierarchy_form_for_update(self, hierarchy_id):
@@ -1359,7 +1348,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.HierarchyForm
+        return  # osid.hierarchy.HierarchyForm
 
     @abc.abstractmethod
     def update_hierarchy(self, hierarchy_form):
@@ -1396,7 +1385,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_hierarchy(self, hierarchy_id):
@@ -1431,7 +1420,7 @@ class HierarchyAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_hierarchy(self, hierarchy_id, alias_id):
@@ -1472,7 +1461,6 @@ class HierarchyNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_hierarchy_notifications(self):
         """Tests if this user can register for ``Hierarchy`` notifications.
@@ -1490,7 +1478,7 @@ class HierarchyNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_hierarchy_notifications(self):
@@ -1656,5 +1644,3 @@ class HierarchyNotificationSession:
 
         """
         pass
-
-

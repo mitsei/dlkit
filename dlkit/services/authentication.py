@@ -36,10 +36,8 @@ DISABLED = -1
 
 class AuthenticationProfile(osid.OsidProfile, authentication_managers.AuthenticationProfile):
     """AuthenticationProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def get_agent_record_types(self):
         """Pass through to provider get_agent_record_types"""
         # Implemented from kitosid template for -
@@ -116,7 +114,6 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
 
 class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationProfile, authentication_managers.AuthenticationManager):
     """AuthenticationManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -237,7 +234,6 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_authentication_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')

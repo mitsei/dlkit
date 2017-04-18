@@ -21,11 +21,8 @@ FEDERATED = 0
 ISOLATED = 1
 
 
-
-
 class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     """Adapts underlying OsidProfile methodswith authorization checks."""
-
     def __init__(self):
         self._provider_manager = None
         self._my_runtime = None
@@ -81,7 +78,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         session = self._get_authz_manager().get_authorization_lookup_session_for_vault(vault.get_id())
         session.use_isolated_vault_view()
         return session
-
     def get_id(self):
         pass
 
@@ -144,12 +140,12 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         pass
 
 
+
+
 class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
     """Adapts underlying OsidManager methodswith authorization checks."""
-
     def __init__(self):
         OsidProfile.__init__(self)
-
     @raise_null_argument
     def initialize(self, runtime):
         OsidProfile.initialize(self, runtime)
@@ -163,12 +159,12 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
         raise Unimplemented()
 
 
+
+
 class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     """Adapts underlying OsidProxyManager methodswith authorization checks."""
-
     def __init__(self):
         OsidProfile.__init__(self)
-
     @raise_null_argument
     def initialize(self, runtime):
         OsidProfile.initialize(self, runtime)
@@ -182,11 +178,15 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         raise Unimplemented()
 
 
+
+
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
     """Adapts underlying OsidRuntimeProfile methodswith authorization checks."""
 
     def supports_configuration(self):
         raise Unimplemented()
+
+
 
 
 class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, OsidRuntimeProfile):
@@ -204,5 +204,3 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         raise Unimplemented()
 
     configuration = property(fget=get_configuration)
-
-

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class HierarchyProfile:
     """The hierarchy profile describes the interoperability among hierarchy services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -38,7 +34,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_traversal(self):
@@ -51,7 +47,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_design(self):
@@ -64,7 +60,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_sequencing(self):
@@ -77,7 +73,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_structure_notification(self):
@@ -90,7 +86,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_lookup(self):
@@ -103,7 +99,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_query(self):
@@ -116,7 +112,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_search(self):
@@ -129,7 +125,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_admin(self):
@@ -142,7 +138,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_hierarchy_notification(self):
@@ -158,7 +154,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_hierarchy_record_types(self):
@@ -171,7 +167,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     hierarchy_record_types = property(fget=get_hierarchy_record_types)
 
@@ -188,7 +184,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_hierarchy_search_record_types(self):
@@ -201,7 +197,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
 
@@ -218,7 +214,7 @@ class HierarchyProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class HierarchyManager:
@@ -242,10 +238,8 @@ class HierarchyManager:
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchy_traversal_session(self):
@@ -260,7 +254,7 @@ class HierarchyManager:
         ``supports_hierarchy_traversal()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyTraversalSession
+        return  # osid.hierarchy.HierarchyTraversalSession
 
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
@@ -282,7 +276,7 @@ class HierarchyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyTraversalSession
+        return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
     def get_hierarchy_design_session(self):
@@ -297,7 +291,7 @@ class HierarchyManager:
         ``supports_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyDesignSession
+        return  # osid.hierarchy.HierarchyDesignSession
 
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
@@ -319,7 +313,7 @@ class HierarchyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyDesignSession
+        return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
     def get_hierarchy_sequencing_session(self):
@@ -334,7 +328,7 @@ class HierarchyManager:
         ``supports_hierarchy_sequencing()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySequencingSession
+        return  # osid.hierarchy.HierarchySequencingSession
 
     hierarchy_sequencing_session = property(fget=get_hierarchy_sequencing_session)
 
@@ -356,7 +350,7 @@ class HierarchyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySequencingSession
+        return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
     def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver):
@@ -374,7 +368,7 @@ class HierarchyManager:
         ``supports_hierarchy_structure_notification()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyStructureNotificationSession
+        return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
     def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id):
@@ -396,7 +390,7 @@ class HierarchyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyStructureNotificationSession
+        return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
     def get_hierarchy_lookup_session(self):
@@ -411,7 +405,7 @@ class HierarchyManager:
         ``supports_hierarchy_lookup()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyLookupSession
+        return  # osid.hierarchy.HierarchyLookupSession
 
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
@@ -428,7 +422,7 @@ class HierarchyManager:
         ``supports_hierarchy_query()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyQuerySession
+        return  # osid.hierarchy.HierarchyQuerySession
 
     hierarchy_query_session = property(fget=get_hierarchy_query_session)
 
@@ -445,7 +439,7 @@ class HierarchyManager:
         ``supports_hierarchy_search()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySearchSession
+        return  # osid.hierarchy.HierarchySearchSession
 
     hierarchy_search_session = property(fget=get_hierarchy_search_session)
 
@@ -462,7 +456,7 @@ class HierarchyManager:
         ``supports_hierarchy_admin()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyAdminSession
+        return  # osid.hierarchy.HierarchyAdminSession
 
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
@@ -482,7 +476,7 @@ class HierarchyManager:
         ``supports_hierarchy_notification()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyNotificationSession
+        return  # osid.hierarchy.HierarchyNotificationSession
 
 
 class HierarchyProxyManager:
@@ -507,10 +501,8 @@ class HierarchyProxyManager:
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_hierarchy_traversal_session(self, proxy):
@@ -528,7 +520,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_traversal()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyTraversalSession
+        return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
     def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, proxy):
@@ -550,7 +542,7 @@ class HierarchyProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyTraversalSession
+        return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
     def get_hierarchy_design_session(self, proxy):
@@ -568,7 +560,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyDesignSession
+        return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
     def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, proxy):
@@ -590,7 +582,7 @@ class HierarchyProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyDesignSession
+        return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
     def get_hierarchy_sequencing_session(self, proxy):
@@ -608,7 +600,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_sequencing()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySequencingSession
+        return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
     def get_hierarchy_sequencing_session_for_hierarchy(self, hierarchy_id, proxy):
@@ -630,7 +622,7 @@ class HierarchyProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySequencingSession
+        return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
     def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver, proxy):
@@ -650,7 +642,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_structure_notification()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyStructureNotificationSession
+        return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
     def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id, proxy):
@@ -674,7 +666,7 @@ class HierarchyProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyStructureNotificationSession
+        return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
     def get_hierarchy_lookup_session(self, proxy):
@@ -692,7 +684,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_lookup()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyLookupSession
+        return  # osid.hierarchy.HierarchyLookupSession
 
     @abc.abstractmethod
     def get_hierarchy_query_session(self, proxy):
@@ -710,7 +702,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_query()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyQuerySession
+        return  # osid.hierarchy.HierarchyQuerySession
 
     @abc.abstractmethod
     def get_hierarchy_search_session(self, proxy):
@@ -728,7 +720,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_search()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySearchSession
+        return  # osid.hierarchy.HierarchySearchSession
 
     @abc.abstractmethod
     def get_hierarchy_admin_session(self, proxy):
@@ -746,7 +738,7 @@ class HierarchyProxyManager:
         ``supports_hierarchy_admin()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyAdminSession
+        return  # osid.hierarchy.HierarchyAdminSession
 
     @abc.abstractmethod
     def get_hierarchy_notification_session(self, hierarchy_receiver, proxy):
@@ -766,6 +758,4 @@ class HierarchyProxyManager:
         ``supports_hierarchy_notification()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchyNotificationSession
-
-
+        return  # osid.hierarchy.HierarchyNotificationSession

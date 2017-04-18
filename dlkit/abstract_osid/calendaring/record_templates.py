@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventRecord:
@@ -31,8 +26,6 @@ class EventRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class EventQueryRecord:
     """A record for an ``EventQuery``.
 
@@ -41,8 +34,6 @@ class EventQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class EventQueryInspectorRecord:
@@ -55,8 +46,6 @@ class EventQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class EventFormRecord:
     """A record for an ``EventForm``.
 
@@ -65,8 +54,6 @@ class EventFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class EventSearchOrderRecord:
@@ -79,8 +66,6 @@ class EventSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class EventSearchRecord:
     """A record for an ``EventSearch``.
 
@@ -89,8 +74,6 @@ class EventSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class EventSearchResultsRecord:
@@ -103,8 +86,6 @@ class EventSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class RecurringEventRecord:
     """A record for a ``RecurringEvent``.
 
@@ -113,8 +94,6 @@ class RecurringEventRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class RecurringEventQueryRecord:
@@ -127,8 +106,6 @@ class RecurringEventQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class RecurringEventQueryInspectorRecord:
     """A record for a ``RecurringEventQueryInspector``.
 
@@ -137,8 +114,6 @@ class RecurringEventQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class RecurringEventFormRecord:
@@ -151,8 +126,6 @@ class RecurringEventFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class RecurringEventSearchOrderRecord:
     """A record for a ``RecurringEventSearchOrder``.
 
@@ -161,8 +134,6 @@ class RecurringEventSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class RecurringEventSearchRecord:
@@ -175,8 +146,6 @@ class RecurringEventSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class RecurringEventSearchResultsRecord:
     """A record for a ``RecurringEventSearchResults``.
 
@@ -185,8 +154,6 @@ class RecurringEventSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SupersedingEventRecord:
@@ -199,8 +166,6 @@ class SupersedingEventRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SupersedingEventQueryRecord:
     """A record for a ``SupersedingEventQuery``.
 
@@ -209,8 +174,6 @@ class SupersedingEventQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SupersedingEventQueryInspectorRecord:
@@ -223,8 +186,6 @@ class SupersedingEventQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SupersedingEventFormRecord:
     """A record for a ``SupersedingEventForm``.
 
@@ -233,8 +194,6 @@ class SupersedingEventFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SupersedingEventSearchOrderRecord:
@@ -247,8 +206,6 @@ class SupersedingEventSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SupersedingEventSearchRecord:
     """A record for a ``SupersedingEventSearch``.
 
@@ -257,8 +214,6 @@ class SupersedingEventSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SupersedingEventSearchResultsRecord:
@@ -271,8 +226,6 @@ class SupersedingEventSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class OffsetEventRecord:
     """A record for an ``OffsetEvent``.
 
@@ -281,8 +234,6 @@ class OffsetEventRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class OffsetEventQueryRecord:
@@ -295,8 +246,6 @@ class OffsetEventQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class OffsetEventQueryInspectorRecord:
     """A record for an ``OffsetEventQueryInspector``.
 
@@ -305,8 +254,6 @@ class OffsetEventQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class OffsetEventFormRecord:
@@ -319,8 +266,6 @@ class OffsetEventFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class OffsetEventSearchOrderRecord:
     """A record for an ``OffsetEventSearchOrder``.
 
@@ -329,8 +274,6 @@ class OffsetEventSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class OffsetEventSearchRecord:
@@ -343,8 +286,6 @@ class OffsetEventSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class OffsetEventSearchResultsRecord:
     """A record for an ``OffsetEventSearchResults``.
 
@@ -353,8 +294,6 @@ class OffsetEventSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleRecord:
@@ -367,8 +306,6 @@ class ScheduleRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleQueryRecord:
     """A record for a ``ScheduleQuery``.
 
@@ -377,8 +314,6 @@ class ScheduleQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleQueryInspectorRecord:
@@ -391,8 +326,6 @@ class ScheduleQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleFormRecord:
     """A record for a ``ScheduleForm``.
 
@@ -401,8 +334,6 @@ class ScheduleFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleSearchOrderRecord:
@@ -415,8 +346,6 @@ class ScheduleSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleSearchRecord:
     """A record for a ``ScheduleSearch``.
 
@@ -425,8 +354,6 @@ class ScheduleSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleSearchResultsRecord:
@@ -439,8 +366,6 @@ class ScheduleSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleSlotRecord:
     """A record for a ``ScheduleSlot``.
 
@@ -449,8 +374,6 @@ class ScheduleSlotRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleSlotQueryRecord:
@@ -463,8 +386,6 @@ class ScheduleSlotQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleSlotQueryInspectorRecord:
     """A record for a ``ScheduleSlotQueryInspector``.
 
@@ -473,8 +394,6 @@ class ScheduleSlotQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleSlotFormRecord:
@@ -487,8 +406,6 @@ class ScheduleSlotFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleSlotSearchOrderRecord:
     """A record for a ``ScheduleSlotSearchOrder``.
 
@@ -497,8 +414,6 @@ class ScheduleSlotSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class ScheduleSlotSearchRecord:
@@ -511,8 +426,6 @@ class ScheduleSlotSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ScheduleSlotSearchResultsRecord:
     """A record for a ``ScheduleSlotSearchResults``.
 
@@ -521,8 +434,6 @@ class ScheduleSlotSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class TimePeriodRecord:
@@ -535,8 +446,6 @@ class TimePeriodRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class TimePeriodQueryRecord:
     """A record for a ``TimePeriodQuery``.
 
@@ -545,8 +454,6 @@ class TimePeriodQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class TimePeriodQueryInspectorRecord:
@@ -559,8 +466,6 @@ class TimePeriodQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class TimePeriodFormRecord:
     """A record for a ``TimePeriodForm``.
 
@@ -569,8 +474,6 @@ class TimePeriodFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class TimePeriodSearchOrderRecord:
@@ -583,8 +486,6 @@ class TimePeriodSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class TimePeriodSearchRecord:
     """A record for a ``TimePeriodSearch``.
 
@@ -593,8 +494,6 @@ class TimePeriodSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class TimePeriodSearchResultsRecord:
@@ -607,8 +506,6 @@ class TimePeriodSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CommitmentRecord:
     """A record for a ``Commitment``.
 
@@ -617,8 +514,6 @@ class CommitmentRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CommitmentQueryRecord:
@@ -631,8 +526,6 @@ class CommitmentQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CommitmentQueryInspectorRecord:
     """A record for a ``CommitmentQueryInspector``.
 
@@ -641,8 +534,6 @@ class CommitmentQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CommitmentFormRecord:
@@ -655,8 +546,6 @@ class CommitmentFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CommitmentSearchOrderRecord:
     """A record for a ``CommitmentSearchOrder``.
 
@@ -665,8 +554,6 @@ class CommitmentSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CommitmentSearchRecord:
@@ -679,8 +566,6 @@ class CommitmentSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CommitmentSearchResultsRecord:
     """A record for a ``CommitmentSearchResults``.
 
@@ -689,8 +574,6 @@ class CommitmentSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CalendarRecord:
@@ -703,8 +586,6 @@ class CalendarRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CalendarQueryRecord:
     """A record for a ``CalendarQuery``.
 
@@ -713,8 +594,6 @@ class CalendarQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CalendarQueryInspectorRecord:
@@ -727,8 +606,6 @@ class CalendarQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CalendarFormRecord:
     """A record for a ``CalendarForm``.
 
@@ -737,8 +614,6 @@ class CalendarFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class CalendarSearchOrderRecord:
@@ -751,8 +626,6 @@ class CalendarSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CalendarSearchRecord:
     """A record for a ``CalendarSearch``.
 
@@ -763,8 +636,6 @@ class CalendarSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class CalendarSearchResultsRecord:
     """A record for a ``CalendarSearchResults``.
 
@@ -773,7 +644,3 @@ class CalendarSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

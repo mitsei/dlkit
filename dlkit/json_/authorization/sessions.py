@@ -45,11 +45,8 @@ COMPARATIVE = 0
 PLENARY = 1
 
 
-
-
 class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid_sessions.OsidSession):
     """This is the basic session for verifying authorizations."""
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         self._catalog_class = objects.Vault
         self._catalog_name = 'Vault'
@@ -180,7 +177,6 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
             parent_ids = self._get_hierarchy_session(hierarchy_id).get_parents(qualifier_id)
             parent_id_list = [str(parent_id) for parent_id in parent_ids]
         return parent_id_list
-
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
 
@@ -383,9 +379,10 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         raise errors.Unimplemented()
 
 
+
+
 class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupSession, osid_sessions.OsidSession):
     """This session defines methods to search and retrieve ``Authorization`` mappings."""
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -399,7 +396,6 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
             cat_name='Vault',
             cat_class=objects.Vault)
         self._kwargs = kwargs
-
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
 
@@ -1042,6 +1038,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
     authorizations = property(fget=get_authorizations)
 
 
+
+
 class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``Authorization`` objects.
 
@@ -1059,9 +1057,7 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
       * explicit authorization view: only explicit authorizations are
         returned
 
-
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -1075,7 +1071,6 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
             cat_name='Vault',
             cat_class=objects.Vault)
         self._kwargs = kwargs
-
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
 
@@ -1232,6 +1227,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         return objects.AuthorizationList(result, runtime=self._runtime, proxy=self._proxy)
 
 
+
+
 class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Authorizations``.
 
@@ -1269,7 +1266,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
     external ``Id`` to an internally assigned Id.
 
     """
-
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -1284,7 +1280,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
             cat_class=objects.Vault)
         self._forms = dict()
         self._kwargs = kwargs
-
     def get_vault_id(self):
         """Gets the ``Vault``  ``Id`` associated with this session.
 
@@ -1798,6 +1793,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         self._alias_id(primary_id=authorization_id, equivalent_id=alias_id)
 
 
+
+
 class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Vault`` objects.
 
@@ -1823,7 +1820,6 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
     ``Vault``.
 
     """
-
     _session_namespace = 'authorization.VaultLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1834,7 +1830,6 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
-
     def can_lookup_vaults(self):
         """Tests if this user can perform ``Vault`` lookups.
 
@@ -2072,6 +2067,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
     vaults = property(fget=get_vaults)
 
 
+
+
 class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Vault`` objects.
 
@@ -2081,14 +2078,12 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
     types. The query record is accessed via the ``VaultQuery``.
 
     """
-
     _session_namespace = 'authorization.VaultQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_search_vaults(self):
         """Tests if this user can perform ``Vault`` searches.
 
@@ -2148,6 +2143,8 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         return objects.VaultList(result, runtime=self._runtime)
 
 
+
+
 class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Vaults``.
 
@@ -2180,7 +2177,6 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
     external ``Id`` to an internally assigned Id.
 
     """
-
     _session_namespace = 'authorization.VaultAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2190,7 +2186,6 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
-
     def can_create_vaults(self):
         """Tests if this user can create ``Vaults``.
 
@@ -2512,5 +2507,3 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=vault_id, alias_id=osid.id.Id)
         self._alias_id(primary_id=vault_id, equivalent_id=alias_id)
-
-

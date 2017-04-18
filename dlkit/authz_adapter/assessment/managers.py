@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.assessment import managers as assessment_managers
 
 
-
-
 class AssessmentProfile(osid_managers.OsidProfile, assessment_managers.AssessmentProfile):
     """Adapts underlying AssessmentProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class AssessmentProfile(osid_managers.OsidProfile, assessment_managers.Assessmen
             return self._provider_manager.get_bank_hierarchy_session()
         except Unimplemented:
             return None
-
     def supports_assessment(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -264,9 +260,10 @@ class AssessmentProfile(osid_managers.OsidProfile, assessment_managers.Assessmen
     bank_search_record_types = property(fget=get_bank_search_record_types)
 
 
+
+
 class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment_managers.AssessmentManager):
     """Adapts underlying AssessmentManager methodswith authorization checks."""
-
     def __init__(self):
         AssessmentProfile.__init__(self)
 
@@ -277,8 +274,6 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('ASSESSMENT', provider_impl)
         # need to add version argument
-
-
     def get_assessment_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -1004,9 +999,10 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
     assessment_batch_manager = property(fget=get_assessment_batch_manager)
 
 
+
+
 class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, assessment_managers.AssessmentProxyManager):
     """Adapts underlying AssessmentProxyManager methodswith authorization checks."""
-
     def __init__(self):
         AssessmentProfile.__init__(self)
 
@@ -1017,8 +1013,6 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('ASSESSMENT', provider_impl)
         # need to add version argument
-
-
     @raise_null_argument
     def get_assessment_session(self, proxy):
         # Implemented from azosid template for -
@@ -1758,5 +1752,3 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
         raise Unimplemented()
 
     assessment_batch_proxy_manager = property(fget=get_assessment_batch_proxy_manager)
-
-

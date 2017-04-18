@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidQuery:
     """The ``OsidQuery`` is used to assemble search queries.
 
@@ -58,7 +55,6 @@ class OsidQuery:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_string_match_types(self):
         """Gets the string matching types supported.
@@ -74,7 +70,7 @@ class OsidQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     string_match_types = property(fget=get_string_match_types)
 
@@ -91,7 +87,7 @@ class OsidQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def match_keyword(self, keyword, string_match_type, match):
@@ -173,7 +169,6 @@ class OsidIdentifiableQuery:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def match_id(self, id_, match):
         """Adds an ``Id`` to match.
@@ -221,7 +216,6 @@ class OsidExtensibleQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_record_type(self, record_type, match):
@@ -282,9 +276,6 @@ class OsidBrowsableQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidTemporalQuery:
     """This is the query interface for searching temporal objects.
 
@@ -293,7 +284,6 @@ class OsidTemporalQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_effective(self, match):
@@ -446,15 +436,9 @@ class OsidSubjugateableQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidAggregateableQuery:
     """The ``OsidAggregateableQuery`` is used to assemble search queries for assemblages."""
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidContainableQuery:
@@ -465,7 +449,6 @@ class OsidContainableQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_sequestered(self, match):
@@ -497,7 +480,6 @@ class OsidContainableQuery:
 class OsidSourceableQuery:
     """The ``OsidSourceableQuery`` is used to assemble search queries for sourceables."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_provider_id(self, resource_id, match):
@@ -538,7 +520,7 @@ class OsidSourceableQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_provider_query(self, match):
@@ -556,7 +538,7 @@ class OsidSourceableQuery:
         ``supports_provider_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
     def match_any_provider(self, match):
@@ -623,7 +605,7 @@ class OsidSourceableQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_branding_query(self, match):
@@ -641,7 +623,7 @@ class OsidSourceableQuery:
         ``supports_branding_query()`` is ``true``.*
 
         """
-        return # osid.repository.AssetQuery
+        return  # osid.repository.AssetQuery
 
     @abc.abstractmethod
     def match_any_branding(self, match):
@@ -723,9 +705,6 @@ class OsidFederateableQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidOperableQuery:
     """This is the query interface for searching operables.
 
@@ -734,7 +713,6 @@ class OsidOperableQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_active(self, match):
@@ -888,17 +866,14 @@ class OsidObjectQuery:
       query.matchDisplayName("Fred*", wildcardStringMatchType, true);
       query.matchDisplayName("Barney*", wildcardStringMatchType, true);
       query.matchDescriptionMatch("dinosaur", wordStringMatchType, false);
-      
+
       ColorQuery recordQuery;
       recordQuery = query.getObjectRecord(colorRecordType);
       recordQuery.matchColor("purple", false);
       ObjectList list = session.getObjectsByQuery(query);
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_display_name(self, display_name, string_match_type, match):
@@ -1111,7 +1086,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_subject_query(self):
@@ -1127,7 +1102,7 @@ class OsidObjectQuery:
         ``supports_subject_query()`` is ``true``.*
 
         """
-        return # osid.ontology.SubjectQuery
+        return  # osid.ontology.SubjectQuery
 
     subject_query = property(fget=get_subject_query)
 
@@ -1168,7 +1143,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_subject_relevancy_query(self):
@@ -1184,7 +1159,7 @@ class OsidObjectQuery:
         ``supports_subject_relevancy_query()`` is ``true``.*
 
         """
-        return # osid.ontology.RelevancyQuery
+        return  # osid.ontology.RelevancyQuery
 
     subject_relevancy_query = property(fget=get_subject_relevancy_query)
 
@@ -1240,7 +1215,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_state_query(self):
@@ -1256,7 +1231,7 @@ class OsidObjectQuery:
         ``supports_state_query()`` is ``true``.*
 
         """
-        return # osid.process.StateQuery
+        return  # osid.process.StateQuery
 
     state_query = property(fget=get_state_query)
 
@@ -1325,7 +1300,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_query(self):
@@ -1341,7 +1316,7 @@ class OsidObjectQuery:
         ``supports_comment_query()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentQuery
+        return  # osid.commenting.CommentQuery
 
     comment_query = property(fget=get_comment_query)
 
@@ -1410,7 +1385,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_journal_entry_query(self):
@@ -1426,7 +1401,7 @@ class OsidObjectQuery:
         ``supports_journal_entry_query()`` is ``true``.*
 
         """
-        return # osid.journaling.JournalEntryQuery
+        return  # osid.journaling.JournalEntryQuery
 
     journal_entry_query = property(fget=get_journal_entry_query)
 
@@ -1467,7 +1442,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_statistic_query(self):
@@ -1483,7 +1458,7 @@ class OsidObjectQuery:
         ``supports_statistic_query()`` is ``true``.*
 
         """
-        return # osid.metering.StatisticQuery
+        return  # osid.metering.StatisticQuery
 
     statistic_query = property(fget=get_statistic_query)
 
@@ -1552,7 +1527,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_credit_query(self):
@@ -1568,7 +1543,7 @@ class OsidObjectQuery:
         ``supports_credit_query()`` is ``true``.*
 
         """
-        return # osid.acknowledgement.CreditQuery
+        return  # osid.acknowledgement.CreditQuery
 
     credit_query = property(fget=get_credit_query)
 
@@ -1637,7 +1612,7 @@ class OsidObjectQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relationship_query(self):
@@ -1653,7 +1628,7 @@ class OsidObjectQuery:
         ``supports_relationship_query()`` is ``true``.*
 
         """
-        return # osid.relationship.RelationshipQuery
+        return  # osid.relationship.RelationshipQuery
 
     relationship_query = property(fget=get_relationship_query)
 
@@ -1721,7 +1696,6 @@ class OsidRelationshipQuery:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def match_end_reason_id(self, state_id, match):
         """Match the ``Id`` of the end reason state.
@@ -1761,7 +1735,7 @@ class OsidRelationshipQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_end_reason_query(self, match):
@@ -1779,7 +1753,7 @@ class OsidRelationshipQuery:
         ``supports_end_reason_query()`` is ``true``.*
 
         """
-        return # osid.process.StateQuery
+        return  # osid.process.StateQuery
 
     @abc.abstractmethod
     def match_any_end_reason(self, match):
@@ -1813,9 +1787,6 @@ class OsidCatalogQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidRuleQuery:
     """This is the query interface for searching rules.
 
@@ -1824,7 +1795,6 @@ class OsidRuleQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_rule_id(self, rule_id, match):
@@ -1865,7 +1835,7 @@ class OsidRuleQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rule_query(self, match):
@@ -1883,7 +1853,7 @@ class OsidRuleQuery:
         ``supports_rule_query()`` is ``true``.*
 
         """
-        return # osid.rules.RuleQuery
+        return  # osid.rules.RuleQuery
 
     @abc.abstractmethod
     def match_any_rule(self, match):
@@ -1920,7 +1890,6 @@ class OsidEnablerQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_schedule_id(self, schedule_id, match):
@@ -1961,7 +1930,7 @@ class OsidEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_query(self, match):
@@ -1979,7 +1948,7 @@ class OsidEnablerQuery:
         ``supports_schedule_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
     @abc.abstractmethod
     def match_any_schedule(self, match):
@@ -2046,7 +2015,7 @@ class OsidEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self, match):
@@ -2064,7 +2033,7 @@ class OsidEnablerQuery:
         ``supports_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     @abc.abstractmethod
     def match_any_event(self, match):
@@ -2131,7 +2100,7 @@ class OsidEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cyclic_event_query(self):
@@ -2147,7 +2116,7 @@ class OsidEnablerQuery:
         ``supports_cyclic_event_query()`` is ``true``.*
 
         """
-        return # osid.calendaring.cycle.CyclicEventQuery
+        return  # osid.calendaring.cycle.CyclicEventQuery
 
     cyclic_event_query = property(fget=get_cyclic_event_query)
 
@@ -2216,7 +2185,7 @@ class OsidEnablerQuery:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_demographic_query(self, match):
@@ -2234,7 +2203,7 @@ class OsidEnablerQuery:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
     def match_any_demographic(self, match):
@@ -2273,9 +2242,6 @@ class OsidConstrainerQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidProcessorQuery:
     """This is the query interface for searching processors.
 
@@ -2284,9 +2250,6 @@ class OsidProcessorQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidGovernatorQuery:
@@ -2299,9 +2262,6 @@ class OsidGovernatorQuery:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidCompendiumQuery:
     """This is the query interface for searching reports.
 
@@ -2310,7 +2270,6 @@ class OsidCompendiumQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def match_start_date(self, start, end, match):
@@ -2461,8 +2420,3 @@ class OsidCapsuleQuery:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

@@ -13,7 +13,6 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
 import abc
 
 
@@ -32,7 +31,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -48,7 +47,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -69,7 +68,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_location_view(self):
@@ -149,7 +148,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     @abc.abstractmethod
     def get_locations_by_ids(self, location_ids):
@@ -175,7 +174,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations_by_genus_type(self, location_genus_type):
@@ -196,7 +195,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations_by_parent_genus_type(self, location_genus_type):
@@ -217,7 +216,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations_by_record_type(self, location_record_type):
@@ -238,7 +237,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations(self):
@@ -256,7 +255,7 @@ class LocationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     locations = abc.abstractproperty(fget=get_locations)
 
@@ -293,7 +292,7 @@ class LocationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -309,7 +308,7 @@ class LocationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -330,7 +329,7 @@ class LocationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_map_view(self):
@@ -370,7 +369,7 @@ class LocationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = abc.abstractproperty(fget=get_location_query)
 
@@ -390,7 +389,7 @@ class LocationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
 
 class LocationSearchSession:
@@ -435,7 +434,7 @@ class LocationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationSearch
+        return  # osid.mapping.LocationSearch
 
     location_search = abc.abstractproperty(fget=get_location_search)
 
@@ -453,7 +452,7 @@ class LocationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationSearchOrder
+        return  # osid.mapping.LocationSearchOrder
 
     location_search_order = abc.abstractproperty(fget=get_location_search_order)
 
@@ -475,7 +474,7 @@ class LocationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationSearchResults
+        return  # osid.mapping.LocationSearchResults
 
     @abc.abstractmethod
     def get_location_query_from_inspector(self, location_query_inspector):
@@ -493,7 +492,7 @@ class LocationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
 
 class LocationAdminSession:
@@ -544,7 +543,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -560,7 +559,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -581,7 +580,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_location_with_record_types(self, location_record_types):
@@ -602,7 +601,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_form_for_create(self, location_record_types):
@@ -622,7 +621,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationForm
+        return  # osid.mapping.LocationForm
 
     @abc.abstractmethod
     def create_location(self, location_form):
@@ -642,7 +641,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     @abc.abstractmethod
     def can_update_locations(self):
@@ -661,7 +660,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_form_for_update(self, location_id):
@@ -682,7 +681,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationForm
+        return  # osid.mapping.LocationForm
 
     @abc.abstractmethod
     def update_location(self, location_form):
@@ -719,7 +718,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_location(self, location_id):
@@ -754,7 +753,7 @@ class LocationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_location(self, location_id, alias_id):
@@ -807,7 +806,7 @@ class LocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -823,7 +822,7 @@ class LocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -844,7 +843,7 @@ class LocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_map_view(self):
@@ -1091,7 +1090,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_hierarchy_id = abc.abstractproperty(fget=get_location_hierarchy_id)
 
@@ -1107,7 +1106,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     location_hierarchy = abc.abstractproperty(fget=get_location_hierarchy)
 
@@ -1128,7 +1127,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_location_view(self):
@@ -1171,7 +1170,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_location_ids = abc.abstractproperty(fget=get_root_location_ids)
 
@@ -1192,7 +1191,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     root_locations = abc.abstractproperty(fget=get_root_locations)
 
@@ -1212,7 +1211,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_location(self, id_, location_id):
@@ -1233,7 +1232,7 @@ class LocationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_location_ids(self, location_id):
@@ -1251,7 +1250,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_locations(self, location_id):
@@ -1269,7 +1268,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def is_ancestor_of_location(self, id_, location_id):
@@ -1290,7 +1289,7 @@ class LocationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_locations(self, location_id):
@@ -1308,7 +1307,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_location(self, id_, location_id):
@@ -1329,7 +1328,7 @@ class LocationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_location_ids(self, location_id):
@@ -1347,7 +1346,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_locations(self, location_id):
@@ -1365,7 +1364,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def is_descendant_of_location(self, id_, location_id):
@@ -1386,7 +1385,7 @@ class LocationHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_node_ids(self, location_id, ancestor_levels, descendant_levels, include_siblings):
@@ -1410,7 +1409,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_location_nodes(self, location_id, ancestor_levels, descendant_levels, include_siblings):
@@ -1434,7 +1433,7 @@ class LocationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationNode
+        return  # osid.mapping.LocationNode
 
 
 class LocationHierarchyDesignSession:
@@ -1456,7 +1455,7 @@ class LocationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_hierarchy_id = abc.abstractproperty(fget=get_location_hierarchy_id)
 
@@ -1472,7 +1471,7 @@ class LocationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     location_hierarchy = abc.abstractproperty(fget=get_location_hierarchy)
 
@@ -1493,7 +1492,7 @@ class LocationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_location(self, location_id):
@@ -1565,7 +1564,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_location_map_view(self):
@@ -1612,7 +1611,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_locations_by_map(self, map_id):
@@ -1630,7 +1629,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_location_ids_by_maps(self, map_ids):
@@ -1647,7 +1646,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_locations_by_maps(self, map_ids):
@@ -1664,7 +1663,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_map_ids_by_location(self, location_id):
@@ -1682,7 +1681,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_maps_by_location(self, location_id):
@@ -1700,7 +1699,7 @@ class LocationMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
 
 class LocationMapAssignmentSession:
@@ -1732,7 +1731,7 @@ class LocationMapAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_locations_to_map(self, map_id):
@@ -1753,7 +1752,7 @@ class LocationMapAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_map_ids(self, map_id):
@@ -1769,7 +1768,7 @@ class LocationMapAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_map_ids_for_location(self, map_id, location_id):
@@ -1787,7 +1786,7 @@ class LocationMapAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_location_to_map(self, location_id, map_id):
@@ -1876,7 +1875,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -1892,7 +1891,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -1913,7 +1912,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_query(self):
@@ -1926,7 +1925,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
     location_query = abc.abstractproperty(fget=get_location_query)
 
@@ -1941,7 +1940,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationSearchOrder
+        return  # osid.mapping.LocationSearchOrder
 
     location_search_order = abc.abstractproperty(fget=get_location_search_order)
 
@@ -1973,7 +1972,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQueryInspector
+        return  # osid.mapping.LocationQueryInspector
 
     @abc.abstractmethod
     def apply_location_sequencing(self, location_search_order):
@@ -2005,7 +2004,7 @@ class LocationSmartMapSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationQuery
+        return  # osid.mapping.LocationQuery
 
 
 class LocationAdjacencySession:
@@ -2023,7 +2022,7 @@ class LocationAdjacencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2039,7 +2038,7 @@ class LocationAdjacencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -2059,7 +2058,7 @@ class LocationAdjacencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_location_view(self):
@@ -2138,7 +2137,7 @@ class LocationAdjacencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def is_adjacent(self, location_id, another_location_id):
@@ -2160,7 +2159,7 @@ class LocationAdjacencySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class LocationSpatialSession:
@@ -2178,7 +2177,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2194,7 +2193,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -2215,7 +2214,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_location_view(self):
@@ -2289,7 +2288,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     @abc.abstractmethod
     def get_locations_by_coordinates(self, coordinates):
@@ -2311,7 +2310,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations_in_spatial_unit(self, spatial_unit):
@@ -2331,7 +2330,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     @abc.abstractmethod
     def get_locations_overlapping_spatial_unit(self, spatial_unit):
@@ -2351,7 +2350,7 @@ class LocationSpatialSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
 
 class ResourceLocationSession:
@@ -2369,7 +2368,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2385,7 +2384,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -2406,7 +2405,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_resource_location_view(self):
@@ -2483,7 +2482,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocation
+        return  # osid.mapping.ResourceLocation
 
     @abc.abstractmethod
     def get_resource_locations(self, resource_ids):
@@ -2506,7 +2505,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocationList
+        return  # osid.mapping.ResourceLocationList
 
     @abc.abstractmethod
     def get_resources_at_location(self, location_id):
@@ -2524,7 +2523,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocationList
+        return  # osid.mapping.ResourceLocationList
 
     @abc.abstractmethod
     def get_resources_at_location_by_genus_type(self, location_id, resource_genus_type):
@@ -2544,7 +2543,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocationList
+        return  # osid.mapping.ResourceLocationList
 
     @abc.abstractmethod
     def get_resources_at_spatial_unit(self, spatial_unit):
@@ -2561,7 +2560,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocationList
+        return  # osid.mapping.ResourceLocationList
 
     @abc.abstractmethod
     def get_resources_at_spatial_unit_by_genus_type(self, spatial_unit, resource_genus_type):
@@ -2580,7 +2579,7 @@ class ResourceLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.ResourceLocationList
+        return  # osid.mapping.ResourceLocationList
 
 
 class ResourceLocationUpdateSession:
@@ -2598,7 +2597,7 @@ class ResourceLocationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2614,7 +2613,7 @@ class ResourceLocationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -2635,7 +2634,7 @@ class ResourceLocationUpdateSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def update_resource_location(self, resource_id, location_id):
@@ -2696,7 +2695,7 @@ class ResourceLocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2712,7 +2711,7 @@ class ResourceLocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -2733,7 +2732,7 @@ class ResourceLocationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_map_view(self):
@@ -2964,7 +2963,7 @@ class ResourcePositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -2980,7 +2979,7 @@ class ResourcePositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -3001,7 +3000,7 @@ class ResourcePositionNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_map_view(self):
@@ -3221,7 +3220,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_id = abc.abstractproperty(fget=get_map_id)
 
@@ -3237,7 +3236,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     map = abc.abstractproperty(fget=get_map)
 
@@ -3258,7 +3257,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def at_designated_location(self):
@@ -3271,7 +3270,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_my_location(self):
@@ -3286,7 +3285,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     my_location = abc.abstractproperty(fget=get_my_location)
 
@@ -3302,7 +3301,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     my_coordinate = abc.abstractproperty(fget=get_my_coordinate)
 
@@ -3318,7 +3317,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
     nearest_locations_to_me = abc.abstractproperty(fget=get_nearest_locations_to_me)
 
@@ -3337,7 +3336,7 @@ class MyLocationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.LocationList
+        return  # osid.mapping.LocationList
 
 
 class MapLookupSession:
@@ -3380,7 +3379,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_map_view(self):
@@ -3432,7 +3431,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     @abc.abstractmethod
     def get_maps_by_ids(self, map_ids):
@@ -3458,7 +3457,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def get_maps_by_genus_type(self, map_genus_type):
@@ -3479,7 +3478,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def get_maps_by_parent_genus_type(self, map_genus_type):
@@ -3500,7 +3499,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def get_maps_by_record_type(self, map_record_type):
@@ -3521,7 +3520,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def get_maps_by_provider(self, resource_id):
@@ -3542,7 +3541,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def get_maps(self):
@@ -3560,7 +3559,7 @@ class MapLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     maps = abc.abstractproperty(fget=get_maps)
 
@@ -3593,7 +3592,7 @@ class MapQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_query(self):
@@ -3606,7 +3605,7 @@ class MapQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQuery
+        return  # osid.mapping.MapQuery
 
     map_query = abc.abstractproperty(fget=get_map_query)
 
@@ -3626,7 +3625,7 @@ class MapQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
 
 class MapSearchSession:
@@ -3660,7 +3659,7 @@ class MapSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapSearch
+        return  # osid.mapping.MapSearch
 
     map_search = abc.abstractproperty(fget=get_map_search)
 
@@ -3678,7 +3677,7 @@ class MapSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapSearchOrder
+        return  # osid.mapping.MapSearchOrder
 
     map_search_order = abc.abstractproperty(fget=get_map_search_order)
 
@@ -3700,7 +3699,7 @@ class MapSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapSearchResults
+        return  # osid.mapping.MapSearchResults
 
     @abc.abstractmethod
     def get_map_query_from_inspector(self, map_query_inspector):
@@ -3718,7 +3717,7 @@ class MapSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapQuery
+        return  # osid.mapping.MapQuery
 
 
 class MapAdminSession:
@@ -3770,7 +3769,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_map_with_record_types(self, map_record_types):
@@ -3791,7 +3790,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_form_for_create(self, map_record_types):
@@ -3811,7 +3810,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapForm
+        return  # osid.mapping.MapForm
 
     @abc.abstractmethod
     def create_map(self, map_form):
@@ -3831,7 +3830,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Map
+        return  # osid.mapping.Map
 
     @abc.abstractmethod
     def can_update_maps(self):
@@ -3850,7 +3849,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_form_for_update(self, map_id):
@@ -3870,7 +3869,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapForm
+        return  # osid.mapping.MapForm
 
     @abc.abstractmethod
     def update_map(self, map_form):
@@ -3907,7 +3906,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_map(self, map_id):
@@ -3942,7 +3941,7 @@ class MapAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_map(self, map_id, alias_id):
@@ -3996,7 +3995,7 @@ class MapNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_map_notifications(self):
@@ -4214,7 +4213,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_hierarchy_id = abc.abstractproperty(fget=get_map_hierarchy_id)
 
@@ -4230,7 +4229,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     map_hierarchy = abc.abstractproperty(fget=get_map_hierarchy)
 
@@ -4251,7 +4250,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_map_view(self):
@@ -4294,7 +4293,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_map_ids = abc.abstractproperty(fget=get_root_map_ids)
 
@@ -4315,7 +4314,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     root_maps = abc.abstractproperty(fget=get_root_maps)
 
@@ -4335,7 +4334,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_map(self, id_, map_id):
@@ -4356,7 +4355,7 @@ class MapHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_map_ids(self, map_id):
@@ -4374,7 +4373,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_maps(self, map_id):
@@ -4392,7 +4391,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def is_ancestor_of_map(self, id_, map_id):
@@ -4413,7 +4412,7 @@ class MapHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_maps(self, map_id):
@@ -4431,7 +4430,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_map(self, id_, map_id):
@@ -4452,7 +4451,7 @@ class MapHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_map_ids(self, map_id):
@@ -4470,7 +4469,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_maps(self, map_id):
@@ -4488,7 +4487,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapList
+        return  # osid.mapping.MapList
 
     @abc.abstractmethod
     def is_descendant_of_map(self, id_, map_id):
@@ -4509,7 +4508,7 @@ class MapHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_map_node_ids(self, map_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4533,7 +4532,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_map_nodes(self, map_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4557,7 +4556,7 @@ class MapHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.MapNode
+        return  # osid.mapping.MapNode
 
 
 class MapHierarchyDesignSession:
@@ -4579,7 +4578,7 @@ class MapHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     map_hierarchy_id = abc.abstractproperty(fget=get_map_hierarchy_id)
 
@@ -4595,7 +4594,7 @@ class MapHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     map_hierarchy = abc.abstractproperty(fget=get_map_hierarchy)
 
@@ -4616,7 +4615,7 @@ class MapHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_map(self, map_id):
@@ -4703,5 +4702,3 @@ class MapHierarchyDesignSession:
 
         """
         pass
-
-

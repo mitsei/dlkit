@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssetReceiver:
     """The asset receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Asset`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_assets(self, notification_id, asset_ids):
@@ -74,7 +70,6 @@ class CompositionReceiver:
     """The composition receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Composition`` objects."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_compositions(self, notification_id, composition_ids):
         """The callback for notifications of new compositions.
@@ -124,7 +119,6 @@ class CompositionReceiver:
 class RepositoryReceiver:
     """The repository receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Repository`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_repositories(self, notification_id, repository_ids):
@@ -241,5 +235,3 @@ class RepositoryReceiver:
 
         """
         pass
-
-

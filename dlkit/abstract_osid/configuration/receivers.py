@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterReceiver:
@@ -187,5 +182,3 @@ class ConfigurationReceiver:
 
         """
         pass
-
-

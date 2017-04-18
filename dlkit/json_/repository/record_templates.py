@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.repository import records as abc_repository_records
 
 
-
-
 class AssetRecord(abc_repository_records.AssetRecord, osid_records.OsidRecord):
     """A record for an ``Asset``.
 
@@ -25,6 +23,8 @@ class AssetRecord(abc_repository_records.AssetRecord, osid_records.OsidRecord):
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class AssetQueryRecord(abc_repository_records.AssetQueryRecord, osid_records.Osi
 
 
 
+
+
 class AssetFormRecord(abc_repository_records.AssetFormRecord, osid_records.OsidRecord):
     """A record for an ``AssetForm``.
 
@@ -47,6 +49,8 @@ class AssetFormRecord(abc_repository_records.AssetFormRecord, osid_records.OsidR
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class AssetSearchRecord(abc_repository_records.AssetSearchRecord, osid_records.O
 
 
 
+
+
 class AssetContentRecord(abc_repository_records.AssetContentRecord, osid_records.OsidRecord):
     """A record for an ``AssetContent``.
 
@@ -69,6 +75,8 @@ class AssetContentRecord(abc_repository_records.AssetContentRecord, osid_records
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class AssetContentQueryRecord(abc_repository_records.AssetContentQueryRecord, os
 
 
 
+
+
 class AssetContentFormRecord(abc_repository_records.AssetContentFormRecord, osid_records.OsidRecord):
     """A record for an ``AssetForm``.
 
@@ -91,6 +101,8 @@ class AssetContentFormRecord(abc_repository_records.AssetContentFormRecord, osid
     underlying object.
 
     """
+
+
 
 
 
@@ -106,6 +118,8 @@ class CompositionRecord(abc_repository_records.CompositionRecord, osid_records.O
 
 
 
+
+
 class CompositionQueryRecord(abc_repository_records.CompositionQueryRecord, osid_records.OsidRecord):
     """A record for a ``CompositionQuery``.
 
@@ -113,6 +127,8 @@ class CompositionQueryRecord(abc_repository_records.CompositionQueryRecord, osid
     underlying object.
 
     """
+
+
 
 
 
@@ -128,6 +144,8 @@ class CompositionFormRecord(abc_repository_records.CompositionFormRecord, osid_r
 
 
 
+
+
 class CompositionSearchRecord(abc_repository_records.CompositionSearchRecord, osid_records.OsidRecord):
     """A record for a ``CompositionSearch``.
 
@@ -135,6 +153,8 @@ class CompositionSearchRecord(abc_repository_records.CompositionSearchRecord, os
     underlying object.
 
     """
+
+
 
 
 
@@ -150,6 +170,8 @@ class RepositoryRecord(abc_repository_records.RepositoryRecord, osid_records.Osi
 
 
 
+
+
 class RepositoryQueryRecord(abc_repository_records.RepositoryQueryRecord, osid_records.OsidRecord):
     """A record for a ``RepositoryQuery``.
 
@@ -157,6 +179,8 @@ class RepositoryQueryRecord(abc_repository_records.RepositoryQueryRecord, osid_r
     underlying object.
 
     """
+
+
 
 
 
@@ -172,6 +196,8 @@ class RepositoryFormRecord(abc_repository_records.RepositoryFormRecord, osid_rec
 
 
 
+
+
 class RepositorySearchRecord(abc_repository_records.RepositorySearchRecord, osid_records.OsidRecord):
     """A record for a ``RepositorySearch``.
 
@@ -179,7 +205,3 @@ class RepositorySearchRecord(abc_repository_records.RepositorySearchRecord, osid
     underlying object.
 
     """
-
-
-
-

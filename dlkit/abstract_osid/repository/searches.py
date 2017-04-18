@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssetSearch:
     """The search interface for governing asset searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_assets(self, asset_ids):
@@ -69,13 +65,12 @@ class AssetSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetSearchRecord
+        return  # osid.repository.records.AssetSearchRecord
 
 
 class AssetSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assets(self):
@@ -88,7 +83,7 @@ class AssetSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     assets = property(fget=get_assets)
 
@@ -103,7 +98,7 @@ class AssetSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetQueryInspector
+        return  # osid.repository.AssetQueryInspector
 
     asset_query_inspector = property(fget=get_asset_query_inspector)
 
@@ -125,13 +120,12 @@ class AssetSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.AssetSearchResultsRecord
+        return  # osid.repository.records.AssetSearchResultsRecord
 
 
 class CompositionSearch:
     """The interface for governing composition searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_compositions(self, composition_ids):
@@ -178,13 +172,12 @@ class CompositionSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionSearchRecord
+        return  # osid.repository.records.CompositionSearchRecord
 
 
 class CompositionSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_compositions(self):
@@ -197,7 +190,7 @@ class CompositionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionList
+        return  # osid.repository.CompositionList
 
     compositions = property(fget=get_compositions)
 
@@ -212,7 +205,7 @@ class CompositionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.CompositionQueryInspector
+        return  # osid.repository.CompositionQueryInspector
 
     composition_query_inspector = property(fget=get_composition_query_inspector)
 
@@ -234,13 +227,12 @@ class CompositionSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.CompositionSearchResultsRecord
+        return  # osid.repository.records.CompositionSearchResultsRecord
 
 
 class RepositorySearch:
     """The interface for governing repository searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_repositories(self, repository_ids):
@@ -287,13 +279,12 @@ class RepositorySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositorySearchRecord
+        return  # osid.repository.records.RepositorySearchRecord
 
 
 class RepositorySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_repositories(self):
@@ -306,7 +297,7 @@ class RepositorySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryList
+        return  # osid.repository.RepositoryList
 
     repositories = property(fget=get_repositories)
 
@@ -321,7 +312,7 @@ class RepositorySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.RepositoryQueryInspector
+        return  # osid.repository.RepositoryQueryInspector
 
     repository_query_inspector = property(fget=get_repository_query_inspector)
 
@@ -343,6 +334,4 @@ class RepositorySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.records.RepositorySearchResultsRecord
-
-
+        return  # osid.repository.records.RepositorySearchResultsRecord

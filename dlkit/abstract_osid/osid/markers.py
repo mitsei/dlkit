@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidPrimitive:
     """A marker interface for an interface that behaves like a language primitive.
 
@@ -32,13 +29,9 @@ class OsidPrimitive:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class Identifiable:
     """A marker interface for objects uniquely identified with an OSID ``Id``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_id(self):
@@ -75,7 +68,7 @@ class Identifiable:
         in a modular manner.
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     id_ = property(fget=get_id)
 
@@ -105,13 +98,12 @@ class Identifiable:
         instantiated, or set an error, to ensure some data availability.
 
         """
-        return # boolean
+        return  # boolean
 
 
 class Extensible:
     """A marker interface for objects that contain ``OsidRecords``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_record_types(self):
@@ -131,7 +123,7 @@ class Extensible:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     record_types = property(fget=get_record_types)
 
@@ -152,13 +144,12 @@ class Extensible:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class Browsable:
     """A marker interface for objects that offer property inspection."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_properties(self):
@@ -178,7 +169,7 @@ class Browsable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.PropertyList
+        return  # osid.PropertyList
 
     properties = property(fget=get_properties)
 
@@ -206,7 +197,7 @@ class Browsable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.PropertyList
+        return  # osid.PropertyList
 
 
 class Suppliable:
@@ -214,13 +205,9 @@ class Suppliable:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class Temporal:
     """``Temporal`` is used to indicate the object endures for a period of time."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def is_effective(self):
@@ -233,7 +220,7 @@ class Temporal:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_start_date(self):
@@ -246,7 +233,7 @@ class Temporal:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     start_date = property(fget=get_start_date)
 
@@ -261,7 +248,7 @@ class Temporal:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     end_date = property(fget=get_end_date)
 
@@ -277,9 +264,6 @@ class Subjugateable:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class Aggregateable:
@@ -305,13 +289,9 @@ class Aggregateable:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class Containable:
     """A ``Containable`` is a kind of aggregate where an ``OsidObject`` is defined as a recursive composition of itself directly accessible without knowledge of the originating service."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def is_sequestered(self):
@@ -324,7 +304,7 @@ class Containable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class Sourceable:
@@ -335,7 +315,6 @@ class Sourceable:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_provider_id(self):
@@ -348,7 +327,7 @@ class Sourceable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     provider_id = property(fget=get_provider_id)
 
@@ -363,7 +342,7 @@ class Sourceable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     provider = property(fget=get_provider)
 
@@ -378,7 +357,7 @@ class Sourceable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     branding_ids = property(fget=get_branding_ids)
 
@@ -393,7 +372,7 @@ class Sourceable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.repository.AssetList
+        return  # osid.repository.AssetList
 
     branding = property(fget=get_branding)
 
@@ -410,7 +389,7 @@ class Sourceable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     license_ = property(fget=get_license)
 
@@ -423,9 +402,6 @@ class Federateable:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class Operable:
@@ -462,7 +438,6 @@ class Operable:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def is_active(self):
         """Tests if this operable is active.
@@ -478,7 +453,7 @@ class Operable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_enabled(self):
@@ -495,7 +470,7 @@ class Operable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_disabled(self):
@@ -512,7 +487,7 @@ class Operable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_operational(self):
@@ -528,6 +503,4 @@ class Operable:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
-
-
+        return  # boolean

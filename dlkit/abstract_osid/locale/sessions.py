@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class TranslationSession:
     """This session defines methods to translate text between a source and target locale."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_language_type(self):
@@ -35,7 +31,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_language_type = property(fget=get_source_language_type)
 
@@ -50,7 +46,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_script_type = property(fget=get_source_script_type)
 
@@ -65,7 +61,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_language_type = property(fget=get_target_language_type)
 
@@ -80,7 +76,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_script_type = property(fget=get_target_script_type)
 
@@ -101,7 +97,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_translation(self, string):
@@ -119,7 +115,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def translate_string(self, string, default_string):
@@ -138,7 +134,7 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def translate_strings(self, strings, default_strings):
@@ -157,13 +153,12 @@ class TranslationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
 
 class TranslationAdminSession:
     """This session defines methods to translate and format text between a source and target locale."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_language_type(self):
@@ -176,7 +171,7 @@ class TranslationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_language_type = property(fget=get_source_language_type)
 
@@ -191,7 +186,7 @@ class TranslationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_script_type = property(fget=get_source_script_type)
 
@@ -206,7 +201,7 @@ class TranslationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_language_type = property(fget=get_target_language_type)
 
@@ -221,7 +216,7 @@ class TranslationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_script_type = property(fget=get_target_script_type)
 
@@ -242,7 +237,7 @@ class TranslationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_translation(self, source_text, target_text):
@@ -281,7 +276,6 @@ class NumericFormattingSession:
     """This session defines methods to format and parse numbers."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_numeric_format_type(self):
         """Gets the numeric format type used in this session.
@@ -296,7 +290,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     numeric_format_type = property(fget=get_numeric_format_type)
 
@@ -317,7 +311,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def cardinal_to_string(self, c):
@@ -333,7 +327,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def cardinals_to_strings(self, c):
@@ -350,7 +344,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_cardinal(self, str_):
@@ -368,7 +362,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def decimal_to_string(self, d):
@@ -384,7 +378,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def decimals_to_strings(self, d):
@@ -401,7 +395,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def decimal_to_string(self, str_):
@@ -419,7 +413,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def integer_to_string(self, i):
@@ -435,7 +429,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def integers_to_strings(self, i):
@@ -452,7 +446,7 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def integer_to_string(self, str_):
@@ -470,13 +464,12 @@ class NumericFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
 
 class CalendarFormattingSession:
     """This session defines methods to format and parse date times of the calendar and time type defined."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_calendar_type(self):
@@ -489,7 +482,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -504,7 +497,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -519,7 +512,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     date_format_type = property(fget=get_date_format_type)
 
@@ -534,7 +527,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_format_type = property(fget=get_time_format_type)
 
@@ -555,7 +548,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def datetime_to_string(self, datetime):
@@ -573,7 +566,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def datetimes_to_strings(self, datetimes):
@@ -591,7 +584,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_date_time(self, s):
@@ -609,7 +602,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     @abc.abstractmethod
     def time_to_string(self, time):
@@ -627,7 +620,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def times_to_strings(self, times):
@@ -645,7 +638,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_time(self, s):
@@ -663,7 +656,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     @abc.abstractmethod
     def duration_to_string(self, duration):
@@ -681,7 +674,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def durations_to_strings(self, durations):
@@ -699,7 +692,7 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_duration(self, s):
@@ -717,13 +710,12 @@ class CalendarFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
 
 class CurrencyFormattingSession:
     """This session defines methods to format and parse currency amounts."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_currency_type(self):
@@ -736,7 +728,7 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     currency_type = property(fget=get_currency_type)
 
@@ -751,7 +743,7 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     numeric_format_type = property(fget=get_numeric_format_type)
 
@@ -772,7 +764,7 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def currency_to_string(self, amount):
@@ -789,7 +781,7 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def currencies_to_strings(self, amounts):
@@ -807,7 +799,7 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_currency(self, s):
@@ -825,13 +817,12 @@ class CurrencyFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
 
 class CoordinateFormattingSession:
     """This session defines methods to format and parse coordinates."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_coordinate_type(self):
@@ -844,7 +835,7 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     coordinate_type = property(fget=get_coordinate_type)
 
@@ -859,7 +850,7 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     coordinate_format_type = property(fget=get_coordinate_format_type)
 
@@ -880,7 +871,7 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def coordinate_to_string(self, coordinate):
@@ -898,7 +889,7 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def ccoordinates_to_strings(self, coordinates):
@@ -916,7 +907,7 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def string_to_coordinate(self, s):
@@ -934,13 +925,12 @@ class CoordinateFormattingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
 
 class UnitConversionSession:
     """This session defines methods to convert units across measurement systems."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_convert_units(self):
@@ -959,7 +949,7 @@ class UnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_unit(self, source_unit, source_unit_type, target_unit_type):
@@ -981,7 +971,7 @@ class UnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     @abc.abstractmethod
     def convert_units(self, source_units, source_unit_type, target_unit_type):
@@ -1003,13 +993,12 @@ class UnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
 
 class CurrencyConversionSession:
     """This session defines methods to convert currency."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_currency_type(self):
@@ -1022,7 +1011,7 @@ class CurrencyConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_currency_type = property(fget=get_source_currency_type)
 
@@ -1037,7 +1026,7 @@ class CurrencyConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_currency_type = property(fget=get_target_currency_type)
 
@@ -1058,7 +1047,7 @@ class CurrencyConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_currency(self, source_currency_amount):
@@ -1075,7 +1064,7 @@ class CurrencyConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
     @abc.abstractmethod
     def convert_currencies(self, source_currency_amounts):
@@ -1093,13 +1082,12 @@ class CurrencyConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.financials.Currency
+        return  # osid.financials.Currency
 
 
 class CalendarConversionSession:
     """This session defines methods to convert dates across calendar systems."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_calendar_type(self):
@@ -1112,7 +1100,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_calendar_type = property(fget=get_source_calendar_type)
 
@@ -1127,7 +1115,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_time_type = property(fget=get_source_time_type)
 
@@ -1142,7 +1130,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_calendar_type = property(fget=get_target_calendar_type)
 
@@ -1157,7 +1145,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_time_type = property(fget=get_target_time_type)
 
@@ -1178,7 +1166,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_calendar(self, source_date):
@@ -1196,7 +1184,7 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     @abc.abstractmethod
     def convert_calendars(self, source_date_list):
@@ -1214,13 +1202,12 @@ class CalendarConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeList
+        return  # osid.calendaring.DateTimeList
 
 
 class CoordinateConversionSession:
     """This session defines methods to convert coordinates across coordinate systems."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_coordinate_type(self):
@@ -1233,7 +1220,7 @@ class CoordinateConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_coordinate_type = property(fget=get_source_coordinate_type)
 
@@ -1248,7 +1235,7 @@ class CoordinateConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_coordinate_type = property(fget=get_target_coordinate_type)
 
@@ -1269,7 +1256,7 @@ class CoordinateConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_coordinate(self, source_coordinate):
@@ -1287,7 +1274,7 @@ class CoordinateConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Coordinate
+        return  # osid.mapping.Coordinate
 
     @abc.abstractmethod
     def convert_coordinates(self, source_coordinate_list):
@@ -1305,13 +1292,12 @@ class CoordinateConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.CoordinateList
+        return  # osid.mapping.CoordinateList
 
 
 class SpatialUnitConversionSession:
     """This session defines methods to convert spatial units."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_spatial_unit_record_type(self):
@@ -1324,7 +1310,7 @@ class SpatialUnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_spatial_unit_record_type = property(fget=get_source_spatial_unit_record_type)
 
@@ -1339,7 +1325,7 @@ class SpatialUnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_spatial_unit_record_type = property(fget=get_target_spatial_unit_record_type)
 
@@ -1360,7 +1346,7 @@ class SpatialUnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_spatial_unit(self, source_spatial_unit):
@@ -1378,7 +1364,7 @@ class SpatialUnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnit
+        return  # osid.mapping.SpatialUnit
 
     @abc.abstractmethod
     def convert_spatial_units(self, source_spatial_unit_list):
@@ -1396,13 +1382,12 @@ class SpatialUnitConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.SpatialUnitList
+        return  # osid.mapping.SpatialUnitList
 
 
 class FormatConversionSession:
     """This session defines methods to convert text formats."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_source_format_type(self):
@@ -1415,7 +1400,7 @@ class FormatConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     source_format_type = property(fget=get_source_format_type)
 
@@ -1430,7 +1415,7 @@ class FormatConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     target_format_type = property(fget=get_target_format_type)
 
@@ -1451,7 +1436,7 @@ class FormatConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def convert_format(self, source_text):
@@ -1469,7 +1454,7 @@ class FormatConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     @abc.abstractmethod
     def convert_formats(self, source_texts):
@@ -1487,13 +1472,12 @@ class FormatConversionSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
 
 class CalendarInfoSession:
     """This session defines methods to examine a calendar."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_calendar_type(self):
@@ -1506,7 +1490,7 @@ class CalendarInfoSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     calendar_type = property(fget=get_calendar_type)
 
@@ -1521,7 +1505,7 @@ class CalendarInfoSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     time_type = property(fget=get_time_type)
 
@@ -1542,7 +1526,7 @@ class CalendarInfoSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_info(self):
@@ -1556,7 +1540,7 @@ class CalendarInfoSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.CalendarInfo
+        return  # osid.locale.CalendarInfo
 
     calendar_info = property(fget=get_calendar_info)
 
@@ -1572,8 +1556,6 @@ class CalendarInfoSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.TimeInfo
+        return  # osid.locale.TimeInfo
 
     time_info = property(fget=get_time_info)
-
-

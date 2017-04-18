@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationCondition:
     """An authorization condition interface."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorization_condition_record(self, authorization_condition_record_type):
@@ -46,6 +42,4 @@ class AuthorizationCondition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationConditionRecord
-
-
+        return  # osid.authorization.records.AuthorizationConditionRecord

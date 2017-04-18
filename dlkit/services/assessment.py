@@ -39,10 +39,8 @@ DISABLED = -1
 
 class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile):
     """AssessmentProfile convenience adapter including related Session methods."""
-
     def __init__(self):
         self._provider_manager = None
-
     def supports_assessment(self):
         """Pass through to provider supports_assessment"""
         # Implemented from kitosid template for -
@@ -375,7 +373,6 @@ class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile)
 
 class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, assessment_managers.AssessmentManager):
     """AssessmentManager convenience adapter including related Session methods."""
-
     def __init__(self, proxy=None):
         self._runtime = None
         self._provider_manager = None
@@ -496,7 +493,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_assessment_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_session"""
         # Implemented from kitosid template for -
@@ -1880,7 +1876,6 @@ class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessmen
 
 class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
     """Bank convenience adapter including related Session methods."""
-
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
         self._catalog = catalog
@@ -2065,7 +2060,6 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
-
     def get_bank_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))

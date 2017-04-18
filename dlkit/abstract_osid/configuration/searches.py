@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ParameterSearch:
@@ -70,7 +65,7 @@ class ParameterSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterSearchRecord
+        return  # osid.configuration.records.ParameterSearchRecord
 
 
 class ParameterSearchResults:
@@ -88,7 +83,7 @@ class ParameterSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     parameters = property(fget=get_parameters)
 
@@ -103,7 +98,7 @@ class ParameterSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQueryInspector
+        return  # osid.configuration.ParameterQueryInspector
 
     parameter_query_inspector = property(fget=get_parameter_query_inspector)
 
@@ -125,7 +120,7 @@ class ParameterSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ParameterSearchResultsRecord
+        return  # osid.configuration.records.ParameterSearchResultsRecord
 
 
 class ValueSearch:
@@ -177,7 +172,7 @@ class ValueSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueSearchRecord
+        return  # osid.configuration.records.ValueSearchRecord
 
 
 class ValueSearchResults:
@@ -195,7 +190,7 @@ class ValueSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     values = property(fget=get_values)
 
@@ -210,7 +205,7 @@ class ValueSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueQueryInspector
+        return  # osid.configuration.ValueQueryInspector
 
     value_query_inspector = property(fget=get_value_query_inspector)
 
@@ -232,7 +227,7 @@ class ValueSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ValueSearchResultsRecord
+        return  # osid.configuration.records.ValueSearchResultsRecord
 
 
 class ConfigurationSearch:
@@ -284,7 +279,7 @@ class ConfigurationSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationSearchRecord
+        return  # osid.configuration.records.ConfigurationSearchRecord
 
 
 class ConfigurationSearchResults:
@@ -302,7 +297,7 @@ class ConfigurationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     configurations = property(fget=get_configurations)
 
@@ -317,7 +312,7 @@ class ConfigurationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQueryInspector
+        return  # osid.configuration.ConfigurationQueryInspector
 
     configuration_query_inspector = property(fget=get_configuration_query_inspector)
 
@@ -339,6 +334,4 @@ class ConfigurationSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.records.ConfigurationSearchResultsRecord
-
-
+        return  # osid.configuration.records.ConfigurationSearchResultsRecord

@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestLoggingProfile(unittest.TestCase):
     """Tests for LoggingProfile"""
 
@@ -70,6 +72,8 @@ class TestLoggingProfile(unittest.TestCase):
     def test_supports_log_entry_admin(self):
         """Tests supports_log_entry_admin"""
         self.assertTrue(isinstance(self.mgr.supports_log_entry_admin(), bool))
+
+
 
 
 class TestLoggingManager(unittest.TestCase):
@@ -147,6 +151,8 @@ class TestLoggingManager(unittest.TestCase):
         #     self.mgr.get_logging_batch_manager()
         if self.svc_mgr.supports_logging_batch():
             self.svc_mgr.get_logging_batch_manager()
+
+
 
 
 class TestLoggingProxyManager(unittest.TestCase):

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ItemSearch:
     """``ItemSearch`` defines the interface for specifying item search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_items(self, item_ids):
@@ -69,13 +65,12 @@ class ItemSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemSearchRecord
+        return  # osid.assessment.records.ItemSearchRecord
 
 
 class ItemSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_items(self):
@@ -88,7 +83,7 @@ class ItemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemList
+        return  # osid.assessment.ItemList
 
     items = property(fget=get_items)
 
@@ -103,7 +98,7 @@ class ItemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.ItemQueryInspector
+        return  # osid.assessment.ItemQueryInspector
 
     item_query_inspector = property(fget=get_item_query_inspector)
 
@@ -125,13 +120,12 @@ class ItemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.ItemSearchResultsRecord
+        return  # osid.assessment.records.ItemSearchResultsRecord
 
 
 class AssessmentSearch:
     """``AssessmentSearch`` defines the interface for specifying assessment search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_assessments(self, assessment_ids):
@@ -178,13 +172,12 @@ class AssessmentSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentSearchRecord
+        return  # osid.assessment.records.AssessmentSearchRecord
 
 
 class AssessmentSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessments(self):
@@ -197,7 +190,7 @@ class AssessmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentList
+        return  # osid.assessment.AssessmentList
 
     assessments = property(fget=get_assessments)
 
@@ -212,7 +205,7 @@ class AssessmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentQueryInspector
+        return  # osid.assessment.AssessmentQueryInspector
 
     assessment_query_inspector = property(fget=get_assessment_query_inspector)
 
@@ -234,13 +227,12 @@ class AssessmentSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentSearchResultsRecord
+        return  # osid.assessment.records.AssessmentSearchResultsRecord
 
 
 class AssessmentOfferedSearch:
     """``AssessmentOfferedSearch`` defines the interface for specifying assessment search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_assessments_offered(self, assessment_offrered_ids):
@@ -287,13 +279,12 @@ class AssessmentOfferedSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedSearchRecord
+        return  # osid.assessment.records.AssessmentOfferedSearchRecord
 
 
 class AssessmentOfferedSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessments_offered(self):
@@ -306,7 +297,7 @@ class AssessmentOfferedSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedList
+        return  # osid.assessment.AssessmentOfferedList
 
     assessments_offered = property(fget=get_assessments_offered)
 
@@ -321,7 +312,7 @@ class AssessmentOfferedSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentOfferedQueryInspector
+        return  # osid.assessment.AssessmentOfferedQueryInspector
 
     assessment_offered_query_inspector = property(fget=get_assessment_offered_query_inspector)
 
@@ -343,13 +334,12 @@ class AssessmentOfferedSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentOfferedSearchResultsRecord
+        return  # osid.assessment.records.AssessmentOfferedSearchResultsRecord
 
 
 class AssessmentTakenSearch:
     """``AssessmentTakenSearch`` defines the interface for specifying assessment search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_assessments_taken(self, assessment_taken_ids):
@@ -396,13 +386,12 @@ class AssessmentTakenSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenSearchRecord
+        return  # osid.assessment.records.AssessmentTakenSearchRecord
 
 
 class AssessmentTakenSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_assessments_taken(self):
@@ -415,7 +404,7 @@ class AssessmentTakenSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenList
+        return  # osid.assessment.AssessmentTakenList
 
     assessments_taken = property(fget=get_assessments_taken)
 
@@ -430,7 +419,7 @@ class AssessmentTakenSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.AssessmentTakenQueryInspector
+        return  # osid.assessment.AssessmentTakenQueryInspector
 
     assessment_taken_query_inspector = property(fget=get_assessment_taken_query_inspector)
 
@@ -452,13 +441,12 @@ class AssessmentTakenSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.AssessmentTakenSearchResultsRecord
+        return  # osid.assessment.records.AssessmentTakenSearchResultsRecord
 
 
 class BankSearch:
     """The interface for governing bank searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_banks(self, bank_ids):
@@ -505,13 +493,12 @@ class BankSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankSearchRecord
+        return  # osid.assessment.records.BankSearchRecord
 
 
 class BankSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_banks(self):
@@ -524,7 +511,7 @@ class BankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankList
+        return  # osid.assessment.BankList
 
     banks = property(fget=get_banks)
 
@@ -539,7 +526,7 @@ class BankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.BankQueryInspector
+        return  # osid.assessment.BankQueryInspector
 
     bank_query_inspector = property(fget=get_bank_query_inspector)
 
@@ -561,6 +548,4 @@ class BankSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.assessment.records.BankSearchResultsRecord
-
-
+        return  # osid.assessment.records.BankSearchResultsRecord

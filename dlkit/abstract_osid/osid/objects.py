@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidObject:
     """``OsidObject`` is the top level interface for all OSID Objects.
 
@@ -87,7 +84,6 @@ class OsidObject:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_display_name(self):
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.
@@ -108,7 +104,7 @@ class OsidObject:
         naming.
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -130,7 +126,7 @@ class OsidObject:
         description into a specific locale using the Locale service.
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -145,7 +141,7 @@ class OsidObject:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     genus_type = property(fget=get_genus_type)
 
@@ -165,7 +161,7 @@ class OsidObject:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class OsidRelationship:
@@ -212,7 +208,6 @@ class OsidRelationship:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def has_end_reason(self):
         """Tests if a reason this relationship came to an end is known.
@@ -224,7 +219,7 @@ class OsidRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_end_reason_id(self):
@@ -237,7 +232,7 @@ class OsidRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     end_reason_id = property(fget=get_end_reason_id)
 
@@ -253,7 +248,7 @@ class OsidRelationship:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.process.State
+        return  # osid.process.State
 
     end_reason = property(fget=get_end_reason)
 
@@ -295,9 +290,6 @@ class OsidCatalog:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidRule:
     """An ``OsidRule`` identifies an explicit or implicit rule evaluation.
 
@@ -326,7 +318,6 @@ class OsidRule:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def has_rule(self):
         """Tests if an explicit rule is available.
@@ -338,7 +329,7 @@ class OsidRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rule_id(self):
@@ -351,7 +342,7 @@ class OsidRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     rule_id = property(fget=get_rule_id)
 
@@ -367,7 +358,7 @@ class OsidRule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.rules.Rule
+        return  # osid.rules.Rule
 
     rule = property(fget=get_rule)
 
@@ -410,7 +401,6 @@ class OsidEnabler:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def is_effective_by_schedule(self):
         """Tests if the effectiveness of the enabler is governed by a ``Schedule``.
@@ -427,7 +417,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_id(self):
@@ -440,7 +430,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     schedule_id = property(fget=get_schedule_id)
 
@@ -456,7 +446,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Schedule
+        return  # osid.calendaring.Schedule
 
     schedule = property(fget=get_schedule)
 
@@ -478,7 +468,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_id(self):
@@ -491,7 +481,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     event_id = property(fget=get_event_id)
 
@@ -507,7 +497,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     event = property(fget=get_event)
 
@@ -527,7 +517,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cyclic_event_id(self):
@@ -540,7 +530,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     cyclic_event_id = property(fget=get_cyclic_event_id)
 
@@ -556,7 +546,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.cycle.CyclicEvent
+        return  # osid.calendaring.cycle.CyclicEvent
 
     cyclic_event = property(fget=get_cyclic_event)
 
@@ -571,7 +561,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_demographic_id(self):
@@ -584,7 +574,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     demographic_id = property(fget=get_demographic_id)
 
@@ -600,7 +590,7 @@ class OsidEnabler:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     demographic = property(fget=get_demographic)
 
@@ -615,9 +605,6 @@ class OsidConstrainer:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidProcessor:
     """An ``OsidProcessor`` is an interface describing the operation of another object.
 
@@ -626,9 +613,6 @@ class OsidProcessor:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidGovernator:
@@ -652,9 +636,6 @@ class OsidGovernator:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidCompendium:
@@ -708,7 +689,6 @@ class OsidCompendium:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_start_date(self):
         """Gets the start date used in the evaluation of the transactional data on which this report is based.
@@ -720,7 +700,7 @@ class OsidCompendium:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     start_date = property(fget=get_start_date)
 
@@ -735,7 +715,7 @@ class OsidCompendium:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     end_date = property(fget=get_end_date)
 
@@ -753,7 +733,7 @@ class OsidCompendium:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_extrapolated(self):
@@ -771,7 +751,7 @@ class OsidCompendium:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class OsidCapsule:
@@ -782,9 +762,6 @@ class OsidCapsule:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidForm:
@@ -824,11 +801,8 @@ class OsidForm:
       recordForm.setColor("green");
       session.updateObject(objectId, form);
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def is_for_update(self):
@@ -841,7 +815,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_default_locale(self):
@@ -854,7 +828,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.Locale
+        return  # osid.locale.Locale
 
     default_locale = property(fget=get_default_locale)
 
@@ -869,7 +843,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.LocaleList
+        return  # osid.locale.LocaleList
 
     locales = property(fget=get_locales)
 
@@ -911,7 +885,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     journal_comment_metadata = property(fget=get_journal_comment_metadata)
 
@@ -946,7 +920,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_validation_messages(self):
@@ -959,7 +933,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     validation_messages = property(fget=get_validation_messages)
 
@@ -974,7 +948,7 @@ class OsidForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     invalid_metadata = property(fget=get_invalid_metadata)
 
@@ -989,9 +963,6 @@ class OsidIdentifiableForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidExtensibleForm:
     """The ``OsidExtensibleForm`` is used to create and update extensible objects.
 
@@ -1000,7 +971,6 @@ class OsidExtensibleForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_required_record_types(self):
@@ -1016,7 +986,7 @@ class OsidExtensibleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     required_record_types = property(fget=get_required_record_types)
 
@@ -1031,13 +1001,9 @@ class OsidBrowsableForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidTemporalForm:
     """This form is used to create and update temporals."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_start_date_metadata(self):
@@ -1050,7 +1016,7 @@ class OsidTemporalForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     start_date_metadata = property(fget=get_start_date_metadata)
 
@@ -1093,7 +1059,7 @@ class OsidTemporalForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     end_date_metadata = property(fget=get_end_date_metadata)
 
@@ -1131,21 +1097,14 @@ class OsidSubjugateableForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidAggregateableForm:
     """This form is used to create and update assemblages."""
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidContainableForm:
     """This form is used to create and update containers."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_sequestered_metadata(self):
@@ -1158,7 +1117,7 @@ class OsidContainableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     sequestered_metadata = property(fget=get_sequestered_metadata)
 
@@ -1194,7 +1153,6 @@ class OsidSourceableForm:
     """This form is used to create and update sourceables."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_provider_metadata(self):
         """Gets the metadata for a provider.
@@ -1206,7 +1164,7 @@ class OsidSourceableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     provider_metadata = property(fget=get_provider_metadata)
 
@@ -1249,7 +1207,7 @@ class OsidSourceableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     branding_metadata = property(fget=get_branding_metadata)
 
@@ -1292,7 +1250,7 @@ class OsidSourceableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     license_metadata = property(fget=get_license_metadata)
 
@@ -1330,13 +1288,9 @@ class OsidFederateableForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidOperableForm:
     """This form is used to create and update operables."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_enabled_metadata(self):
@@ -1349,7 +1303,7 @@ class OsidOperableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     enabled_metadata = property(fget=get_enabled_metadata)
 
@@ -1391,7 +1345,7 @@ class OsidOperableForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     disabled_metadata = property(fget=get_disabled_metadata)
 
@@ -1460,11 +1414,8 @@ class OsidObjectForm:
       recordForm.setColor("green");
       session.updateObject(objectId, form);
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_display_name_metadata(self):
@@ -1477,7 +1428,7 @@ class OsidObjectForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     display_name_metadata = property(fget=get_display_name_metadata)
 
@@ -1523,7 +1474,7 @@ class OsidObjectForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     description_metadata = property(fget=get_description_metadata)
 
@@ -1566,7 +1517,7 @@ class OsidObjectForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     genus_type_metadata = property(fget=get_genus_type_metadata)
 
@@ -1607,21 +1558,14 @@ class OsidRelationshipForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidCatalogForm:
     """This form is used to create and update catalogs."""
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidRuleForm:
     """This form is used to create and update rules."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_rule_metadata(self):
@@ -1634,7 +1578,7 @@ class OsidRuleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     rule_metadata = property(fget=get_rule_metadata)
 
@@ -1671,7 +1615,6 @@ class OsidEnablerForm:
     """This form is used to create and update enablers."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_schedule_metadata(self):
         """Gets the metadata for an associated schedule.
@@ -1683,7 +1626,7 @@ class OsidEnablerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     schedule_metadata = property(fget=get_schedule_metadata)
 
@@ -1726,7 +1669,7 @@ class OsidEnablerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     event_metadata = property(fget=get_event_metadata)
 
@@ -1769,7 +1712,7 @@ class OsidEnablerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     cyclic_event_metadata = property(fget=get_cyclic_event_metadata)
 
@@ -1812,7 +1755,7 @@ class OsidEnablerForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     demographic_metadata = property(fget=get_demographic_metadata)
 
@@ -1850,15 +1793,9 @@ class OsidConstrainerForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidProcessorForm:
     """This form is used to create and update processors."""
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidGovernatorForm:
@@ -1866,13 +1803,9 @@ class OsidGovernatorForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidCompendiumForm:
     """This form is used to create and update governators."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_start_date_metadata(self):
@@ -1885,7 +1818,7 @@ class OsidCompendiumForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     start_date_metadata = property(fget=get_start_date_metadata)
 
@@ -1928,7 +1861,7 @@ class OsidCompendiumForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     end_date_metadata = property(fget=get_end_date_metadata)
 
@@ -1971,7 +1904,7 @@ class OsidCompendiumForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     interpolated_metadata = property(fget=get_interpolated_metadata)
 
@@ -2013,7 +1946,7 @@ class OsidCompendiumForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     extrapolated_metadata = property(fget=get_extrapolated_metadata)
 
@@ -2050,9 +1983,6 @@ class OsidCapsuleForm:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidList:
     """``OsidList`` is the top-level interface for all OSID lists.
 
@@ -2079,7 +2009,6 @@ class OsidList:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def has_next(self):
         """Tests if there are more elements in this list.
@@ -2095,7 +2024,7 @@ class OsidList:
         return ``true`` for this method.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def available(self):
@@ -2127,7 +2056,7 @@ class OsidList:
         as a parameter to the bulk retrieval method.
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def skip(self, n):
@@ -2156,7 +2085,6 @@ class OsidNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def is_root(self):
         """Tests if this node is a root in the hierarchy (has no parents).
@@ -2173,7 +2101,7 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_parents(self):
@@ -2189,7 +2117,7 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_ids(self):
@@ -2202,7 +2130,7 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     parent_ids = property(fget=get_parent_ids)
 
@@ -2223,7 +2151,7 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_children(self):
@@ -2239,7 +2167,7 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_ids(self):
@@ -2252,8 +2180,6 @@ class OsidNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     child_ids = property(fget=get_child_ids)
-
-

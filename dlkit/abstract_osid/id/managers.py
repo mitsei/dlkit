@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class IdProfile:
     """The ``IdProfile`` describes the interoperability among id services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_id_lookup(self):
@@ -35,7 +31,7 @@ class IdProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_id_issue(self):
@@ -48,7 +44,7 @@ class IdProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_id_admin(self):
@@ -61,7 +57,7 @@ class IdProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_id_batch(self):
@@ -74,7 +70,7 @@ class IdProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class IdManager:
@@ -89,7 +85,6 @@ class IdManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_id_lookup_session(self):
         """Gets the session associated with the id lookup service.
@@ -103,7 +98,7 @@ class IdManager:
         ``supports_id_lookup()`` is ``true``.*
 
         """
-        return # osid.id.IdLookupSession
+        return  # osid.id.IdLookupSession
 
     id_lookup_session = property(fget=get_id_lookup_session)
 
@@ -120,7 +115,7 @@ class IdManager:
         ``supports_id_issue()`` is ``true``.*
 
         """
-        return # osid.id.IdIssueSession
+        return  # osid.id.IdIssueSession
 
     id_issue_session = property(fget=get_id_issue_session)
 
@@ -137,7 +132,7 @@ class IdManager:
         ``supports_id_admin()`` is ``true``.*
 
         """
-        return # osid.id.IdAdminSession
+        return  # osid.id.IdAdminSession
 
     id_admin_session = property(fget=get_id_admin_session)
 
@@ -154,7 +149,7 @@ class IdManager:
         ``supports_id_batch()`` is ``true``.*
 
         """
-        return # osid.id.batch.IdBatchManager
+        return  # osid.id.batch.IdBatchManager
 
     id_batch_manager = property(fget=get_id_batch_manager)
 
@@ -173,7 +168,6 @@ class IdProxyManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_id_lookup_session(self, proxy):
         """Gets the session associated with the id lookup service.
@@ -190,7 +184,7 @@ class IdProxyManager:
         ``supports_id_lookup()`` is ``true``.*
 
         """
-        return # osid.id.IdLookupSession
+        return  # osid.id.IdLookupSession
 
     @abc.abstractmethod
     def get_id_issue_session(self, proxy):
@@ -208,7 +202,7 @@ class IdProxyManager:
         ``supports_id_issue()`` is ``true``.*
 
         """
-        return # osid.id.IdIssueSession
+        return  # osid.id.IdIssueSession
 
     @abc.abstractmethod
     def get_id_admin_session(self, proxy):
@@ -226,7 +220,7 @@ class IdProxyManager:
         ``supports_id_admin()`` is ``true``.*
 
         """
-        return # osid.id.IdAdminSession
+        return  # osid.id.IdAdminSession
 
     @abc.abstractmethod
     def get_id_batch_proxy_manager(self):
@@ -241,8 +235,6 @@ class IdProxyManager:
         ``supports_id_batch()`` is ``true``.*
 
         """
-        return # osid.id.batch.IdBatchProxyManager
+        return  # osid.id.batch.IdBatchProxyManager
 
     id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)
-
-

@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class ValueRetrievalSession:
@@ -58,7 +53,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -74,7 +69,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -95,7 +90,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_value_view(self):
@@ -205,7 +200,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
     @abc.abstractmethod
     def get_values_by_parameter(self, parameter_id):
@@ -223,7 +218,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values_by_parameters(self, parameter_ids):
@@ -241,7 +236,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_value_condition(self, parameter_id):
@@ -256,7 +251,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueCondition
+        return  # osid.configuration.ValueCondition
 
     @abc.abstractmethod
     def get_value_by_parameter_on_condition(self, parameter_id, value_condition):
@@ -281,7 +276,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
     @abc.abstractmethod
     def get_values_by_parameter_on_condition(self, parameter_id, value_condition):
@@ -305,7 +300,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values_by_parameters_on_condition(self, parameter_ids, value_condition):
@@ -331,7 +326,7 @@ class ValueRetrievalSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
 
 class ValueLookupSession:
@@ -405,7 +400,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
     @abc.abstractmethod
     def get_values_by_ids(self, value_ids):
@@ -431,7 +426,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values_by_genus_type(self, value_genus_type):
@@ -449,7 +444,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values_by_parent_genus_type(self, value_genus_type):
@@ -467,7 +462,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values_by_record_type(self, value_record_type):
@@ -485,7 +480,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     @abc.abstractmethod
     def get_values(self):
@@ -509,7 +504,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
     values = property(fget=get_values)
 
@@ -534,7 +529,7 @@ class ValueLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
 
 class ValueQuerySession:
@@ -563,7 +558,7 @@ class ValueQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -579,7 +574,7 @@ class ValueQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -600,7 +595,7 @@ class ValueQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_configuration_view(self):
@@ -640,7 +635,7 @@ class ValueQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueQuery
+        return  # osid.configuration.ValueQuery
 
     value_query = property(fget=get_value_query)
 
@@ -660,7 +655,7 @@ class ValueQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueList
+        return  # osid.configuration.ValueList
 
 
 class ValueSearchSession:
@@ -698,7 +693,7 @@ class ValueSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueSearch
+        return  # osid.configuration.ValueSearch
 
     value_search = property(fget=get_value_search)
 
@@ -716,7 +711,7 @@ class ValueSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueSearchOrder
+        return  # osid.configuration.ValueSearchOrder
 
     value_search_order = property(fget=get_value_search_order)
 
@@ -738,7 +733,7 @@ class ValueSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueSearchResults
+        return  # osid.configuration.ValueSearchResults
 
     @abc.abstractmethod
     def get_value_query_from_inspector(self, value_query_inspector):
@@ -756,7 +751,7 @@ class ValueSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueQuery
+        return  # osid.configuration.ValueQuery
 
 
 class ValueAdminSession:
@@ -801,7 +796,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -817,7 +812,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -832,7 +827,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_values(self):
@@ -851,7 +846,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_value_with_record_types(self, value_record_types):
@@ -872,7 +867,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_form_for_create(self, parameter_id, value_record_types):
@@ -895,7 +890,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueForm
+        return  # osid.configuration.ValueForm
 
     @abc.abstractmethod
     def create_value(self, value_form):
@@ -915,7 +910,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Value
+        return  # osid.configuration.Value
 
     @abc.abstractmethod
     def can_update_values(self):
@@ -934,7 +929,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_value_form_for_update(self, value_id):
@@ -955,7 +950,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ValueForm
+        return  # osid.configuration.ValueForm
 
     @abc.abstractmethod
     def update_value(self, value_form):
@@ -992,7 +987,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_value(self, value_id):
@@ -1027,7 +1022,7 @@ class ValueAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_value(self, value_id, alias_id):
@@ -1092,7 +1087,7 @@ class ValueNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -1108,7 +1103,7 @@ class ValueNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -1129,7 +1124,7 @@ class ValueNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_configuration_view(self):
@@ -1353,7 +1348,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -1369,7 +1364,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -1390,7 +1385,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_parameter_view(self):
@@ -1487,7 +1482,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Parameter
+        return  # osid.configuration.Parameter
 
     @abc.abstractmethod
     def get_parameters_by_ids(self, parameter_ids):
@@ -1505,7 +1500,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_parameters_by_genus_type(self, parameter_genus_type):
@@ -1523,7 +1518,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_parameters_by_parent_genus_type(self, parameter_genus_type):
@@ -1541,7 +1536,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_parameters_by_record_type(self, parameter_record_type):
@@ -1559,7 +1554,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_parameters(self):
@@ -1573,7 +1568,7 @@ class ParameterLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     parameters = property(fget=get_parameters)
 
@@ -1604,7 +1599,7 @@ class ParameterQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -1620,7 +1615,7 @@ class ParameterQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -1641,7 +1636,7 @@ class ParameterQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_configuration_view(self):
@@ -1681,7 +1676,7 @@ class ParameterQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
     parameter_query = property(fget=get_parameter_query)
 
@@ -1701,7 +1696,7 @@ class ParameterQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
 
 class ParameterSearchSession:
@@ -1740,7 +1735,7 @@ class ParameterSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterSearch
+        return  # osid.configuration.ParameterSearch
 
     parameter_search = property(fget=get_parameter_search)
 
@@ -1758,7 +1753,7 @@ class ParameterSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterSearchOrder
+        return  # osid.configuration.ParameterSearchOrder
 
     parameter_search_order = property(fget=get_parameter_search_order)
 
@@ -1780,7 +1775,7 @@ class ParameterSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterSearchResults
+        return  # osid.configuration.ParameterSearchResults
 
     @abc.abstractmethod
     def get_parameter_query_from_inspector(self, parameter_query_inspector):
@@ -1798,7 +1793,7 @@ class ParameterSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
 
 class ParameterAdminSession:
@@ -1850,7 +1845,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -1866,7 +1861,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -1887,7 +1882,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_parameter_with_record_types(self, parameter_record_types):
@@ -1909,7 +1904,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_form_for_create(self, parameter_record_types):
@@ -1927,7 +1922,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterForm
+        return  # osid.configuration.ParameterForm
 
     @abc.abstractmethod
     def create_parameter(self, parameter_form):
@@ -1947,7 +1942,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Parameter
+        return  # osid.configuration.Parameter
 
     @abc.abstractmethod
     def can_update_parameters(self):
@@ -1966,7 +1961,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_form_for_update(self, parameter_id):
@@ -1984,7 +1979,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterForm
+        return  # osid.configuration.ParameterForm
 
     @abc.abstractmethod
     def update_parameter(self, parameter_form):
@@ -2021,7 +2016,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_parameter(self, parameter_id):
@@ -2056,7 +2051,7 @@ class ParameterAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_parameter(self, parameter_id, alias_id):
@@ -2117,7 +2112,7 @@ class ParameterNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -2133,7 +2128,7 @@ class ParameterNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -2154,7 +2149,7 @@ class ParameterNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_configuration_view(self):
@@ -2342,7 +2337,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_parameter_view(self):
@@ -2390,7 +2385,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parameters_by_configuration(self, configuration_id):
@@ -2408,7 +2403,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_parameter_ids_by_configurations(self, configuration_ids):
@@ -2425,7 +2420,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parameters_by_configurations(self, configuration_ids):
@@ -2442,7 +2437,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterList
+        return  # osid.configuration.ParameterList
 
     @abc.abstractmethod
     def get_configuration_ids_by_parameter(self, parameter_id):
@@ -2460,7 +2455,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_configurations_by_parameter(self, parameter_id):
@@ -2478,7 +2473,7 @@ class ParameterConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
 
 class ParameterConfigurationAssignmentSession:
@@ -2514,7 +2509,7 @@ class ParameterConfigurationAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_parameters_to_configuration(self, configuration_id):
@@ -2535,7 +2530,7 @@ class ParameterConfigurationAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_configuration_ids(self, configuration_id):
@@ -2552,7 +2547,7 @@ class ParameterConfigurationAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_configuration_ids_for_parameter(self, configuration_id, parameter_id):
@@ -2571,7 +2566,7 @@ class ParameterConfigurationAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_parameter_to_configuration(self, parameter_id, configuration_id):
@@ -2662,7 +2657,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_id = property(fget=get_configuration_id)
 
@@ -2678,7 +2673,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     configuration = property(fget=get_configuration)
 
@@ -2699,7 +2694,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parameter_query(self):
@@ -2712,7 +2707,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
     parameter_query = property(fget=get_parameter_query)
 
@@ -2727,7 +2722,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterSearchOrder
+        return  # osid.configuration.ParameterSearchOrder
 
     parameter_search_order = property(fget=get_parameter_search_order)
 
@@ -2759,7 +2754,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQueryInspector
+        return  # osid.configuration.ParameterQueryInspector
 
     @abc.abstractmethod
     def apply_parameter_sequencing(self, parameter_search_order):
@@ -2791,7 +2786,7 @@ class ParameterSmartConfigurationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ParameterQuery
+        return  # osid.configuration.ParameterQuery
 
 
 class ConfigurationLookupSession:
@@ -2840,7 +2835,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_configuration_view(self):
@@ -2894,7 +2889,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     @abc.abstractmethod
     def get_configurations_by_ids(self, configuration_ids):
@@ -2920,7 +2915,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def get_configurations_by_genus_type(self, configuration_genus_type):
@@ -2943,7 +2938,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def get_configurations_by_parent_genus_type(self, configuration_genus_type):
@@ -2966,7 +2961,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def get_configurations_by_record_type(self, configuration_record_type):
@@ -2988,7 +2983,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def get_configurations_by_provider(self, resource_id):
@@ -3010,7 +3005,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def get_configurations(self):
@@ -3028,7 +3023,7 @@ class ConfigurationLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     configurations = property(fget=get_configurations)
 
@@ -3063,7 +3058,7 @@ class ConfigurationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_query(self):
@@ -3076,7 +3071,7 @@ class ConfigurationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
     configuration_query = property(fget=get_configuration_query)
 
@@ -3096,7 +3091,7 @@ class ConfigurationQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
 
 class ConfigurationSearchSession:
@@ -3133,7 +3128,7 @@ class ConfigurationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationSearch
+        return  # osid.configuration.ConfigurationSearch
 
     configuration_search = property(fget=get_configuration_search)
 
@@ -3151,7 +3146,7 @@ class ConfigurationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationSearchOrder
+        return  # osid.configuration.ConfigurationSearchOrder
 
     configuration_search_order = property(fget=get_configuration_search_order)
 
@@ -3175,7 +3170,7 @@ class ConfigurationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationSearchResults
+        return  # osid.configuration.ConfigurationSearchResults
 
     @abc.abstractmethod
     def get_configuration_query_from_inspector(self, configuration_query_inspector):
@@ -3194,7 +3189,7 @@ class ConfigurationSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationQuery
+        return  # osid.configuration.ConfigurationQuery
 
 
 class ConfigurationAdminSession:
@@ -3248,7 +3243,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_configuration_with_record_types(self, configuration_record_types):
@@ -3270,7 +3265,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_form_for_create(self, configuration_record_types):
@@ -3290,7 +3285,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationForm
+        return  # osid.configuration.ConfigurationForm
 
     @abc.abstractmethod
     def create_configuration(self, configuration_form):
@@ -3310,7 +3305,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.Configuration
+        return  # osid.configuration.Configuration
 
     @abc.abstractmethod
     def can_update_configurations(self):
@@ -3329,7 +3324,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_form_for_update(self, configuration_id):
@@ -3350,7 +3345,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationForm
+        return  # osid.configuration.ConfigurationForm
 
     @abc.abstractmethod
     def update_configuration(self, configuration_form):
@@ -3387,7 +3382,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_configuration(self, configuration_id):
@@ -3422,7 +3417,7 @@ class ConfigurationAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_configuration(self, configuration_id, alias_id):
@@ -3478,7 +3473,7 @@ class ConfigurationNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_configuration_notifications(self):
@@ -3699,7 +3694,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_hierarchy_id = property(fget=get_configuration_hierarchy_id)
 
@@ -3715,7 +3710,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     configuration_hierarchy = property(fget=get_configuration_hierarchy)
 
@@ -3736,7 +3731,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_configuration_view(self):
@@ -3780,7 +3775,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_configuration_ids = property(fget=get_root_configuration_ids)
 
@@ -3801,7 +3796,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     root_configurations = property(fget=get_root_configurations)
 
@@ -3821,7 +3816,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_configuration(self, id_, configuration_id):
@@ -3842,7 +3837,7 @@ class ConfigurationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_configuration_ids(self, configuration_id):
@@ -3860,7 +3855,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_configurations(self, configuration_id):
@@ -3878,7 +3873,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def is_ancestor_of_configuration(self, id_, configuration_id):
@@ -3899,7 +3894,7 @@ class ConfigurationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_configurations(self, configuration_id):
@@ -3917,7 +3912,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_configuration(self, id_, configuration_id):
@@ -3938,7 +3933,7 @@ class ConfigurationHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_configuration_ids(self, configuration_id):
@@ -3956,7 +3951,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_configurations(self, configuration_id):
@@ -3974,7 +3969,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationList
+        return  # osid.configuration.ConfigurationList
 
     @abc.abstractmethod
     def is_descendant_of_configuration(self, id_, configuration_id):
@@ -3995,7 +3990,7 @@ class ConfigurationHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_configuration_node_ids(self, configuration_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4021,7 +4016,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_configuration_nodes(self, configuration_id, ancestor_levels, descendant_levels, include_siblings):
@@ -4047,7 +4042,7 @@ class ConfigurationHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.configuration.ConfigurationNode
+        return  # osid.configuration.ConfigurationNode
 
 
 class ConfigurationHierarchyDesignSession:
@@ -4069,7 +4064,7 @@ class ConfigurationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     configuration_hierarchy_id = property(fget=get_configuration_hierarchy_id)
 
@@ -4085,7 +4080,7 @@ class ConfigurationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     configuration_hierarchy = property(fget=get_configuration_hierarchy)
 
@@ -4106,7 +4101,7 @@ class ConfigurationHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_configuration(self, configuration_id):
@@ -4193,5 +4188,3 @@ class ConfigurationHierarchyDesignSession:
 
         """
         pass
-
-

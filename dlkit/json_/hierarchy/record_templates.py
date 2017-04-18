@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.hierarchy import records as abc_hierarchy_records
 
 
-
-
 class HierarchyRecord(abc_hierarchy_records.HierarchyRecord, osid_records.OsidRecord):
     """A record for a ``Hierarchy``.
 
@@ -25,6 +23,8 @@ class HierarchyRecord(abc_hierarchy_records.HierarchyRecord, osid_records.OsidRe
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class HierarchyQueryRecord(abc_hierarchy_records.HierarchyQueryRecord, osid_reco
 
 
 
+
+
 class HierarchyFormRecord(abc_hierarchy_records.HierarchyFormRecord, osid_records.OsidRecord):
     """A record for a ``HierarchyForm``.
 
@@ -51,6 +53,8 @@ class HierarchyFormRecord(abc_hierarchy_records.HierarchyFormRecord, osid_record
 
 
 
+
+
 class HierarchySearchRecord(abc_hierarchy_records.HierarchySearchRecord, osid_records.OsidRecord):
     """A record for a ``HierarchySearch``.
 
@@ -58,7 +62,3 @@ class HierarchySearchRecord(abc_hierarchy_records.HierarchySearchRecord, osid_re
     underlying object.
 
     """
-
-
-
-

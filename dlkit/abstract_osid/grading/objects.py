@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class Grade:
     """A ``Grade``.
 
@@ -27,7 +24,6 @@ class Grade:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_id(self):
@@ -40,7 +36,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grade_system_id = property(fget=get_grade_system_id)
 
@@ -55,7 +51,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     grade_system = property(fget=get_grade_system)
 
@@ -70,7 +66,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     input_score_start_range = property(fget=get_input_score_start_range)
 
@@ -85,7 +81,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     input_score_end_range = property(fget=get_input_score_end_range)
 
@@ -100,7 +96,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     output_score = property(fget=get_output_score)
 
@@ -125,7 +121,7 @@ class Grade:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeRecord
+        return  # osid.grading.records.GradeRecord
 
 
 class GradeForm:
@@ -140,7 +136,6 @@ class GradeForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_input_score_start_range_metadata(self):
         """Gets the metadata for the input score start range.
@@ -152,7 +147,7 @@ class GradeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     input_score_start_range_metadata = property(fget=get_input_score_start_range_metadata)
 
@@ -194,7 +189,7 @@ class GradeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     input_score_end_range_metadata = property(fget=get_input_score_end_range_metadata)
 
@@ -236,7 +231,7 @@ class GradeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     output_score_metadata = property(fget=get_output_score_metadata)
 
@@ -282,7 +277,7 @@ class GradeForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeFormRecord
+        return  # osid.grading.records.GradeFormRecord
 
 
 class GradeList:
@@ -295,11 +290,8 @@ class GradeList:
            Grade[] grades = gl.getNextGrades(gl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_grade(self):
@@ -313,7 +305,7 @@ class GradeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     next_grade = property(fget=get_next_grade)
 
@@ -331,7 +323,7 @@ class GradeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
 
 class GradeSystem:
@@ -342,7 +334,6 @@ class GradeSystem:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def is_based_on_grades(self):
@@ -355,7 +346,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_ids(self):
@@ -368,7 +359,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     grade_ids = property(fget=get_grade_ids)
 
@@ -384,7 +375,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeList
+        return  # osid.grading.GradeList
 
     grades = property(fget=get_grades)
 
@@ -399,7 +390,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     lowest_numeric_score = property(fget=get_lowest_numeric_score)
 
@@ -414,7 +405,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     numeric_score_increment = property(fget=get_numeric_score_increment)
 
@@ -429,7 +420,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     highest_numeric_score = property(fget=get_highest_numeric_score)
 
@@ -454,7 +445,7 @@ class GradeSystem:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemRecord
+        return  # osid.grading.records.GradeSystemRecord
 
 
 class GradeSystemForm:
@@ -469,7 +460,6 @@ class GradeSystemForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_based_on_grades_metadata(self):
         """Gets the metadata for a grade-based designation.
@@ -481,7 +471,7 @@ class GradeSystemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     based_on_grades_metadata = property(fget=get_based_on_grades_metadata)
 
@@ -523,7 +513,7 @@ class GradeSystemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     lowest_numeric_score_metadata = property(fget=get_lowest_numeric_score_metadata)
 
@@ -565,7 +555,7 @@ class GradeSystemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     numeric_score_increment_metadata = property(fget=get_numeric_score_increment_metadata)
 
@@ -607,7 +597,7 @@ class GradeSystemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     highest_numeric_score_metadata = property(fget=get_highest_numeric_score_metadata)
 
@@ -653,7 +643,7 @@ class GradeSystemForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemFormRecord
+        return  # osid.grading.records.GradeSystemFormRecord
 
 
 class GradeSystemList:
@@ -667,11 +657,8 @@ class GradeSystemList:
            GradeSystem[] systems = gsl.getNextGradeSystems(gsl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_grade_system(self):
@@ -685,7 +672,7 @@ class GradeSystemList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     next_grade_system = property(fget=get_next_grade_system)
 
@@ -703,13 +690,12 @@ class GradeSystemList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
 
 class GradeEntry:
     """A ``GradeEntry`` represents an entry in a ``Gradebook``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_column_id(self):
@@ -722,7 +708,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
@@ -737,7 +723,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
     gradebook_column = property(fget=get_gradebook_column)
 
@@ -755,7 +741,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     key_resource_id = property(fget=get_key_resource_id)
 
@@ -773,7 +759,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     key_resource = property(fget=get_key_resource)
 
@@ -788,7 +774,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def overrides_calculated_entry(self):
@@ -801,7 +787,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_overridden_calculated_entry_id(self):
@@ -814,7 +800,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     overridden_calculated_entry_id = property(fget=get_overridden_calculated_entry_id)
 
@@ -830,7 +816,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
     overridden_calculated_entry = property(fget=get_overridden_calculated_entry)
 
@@ -845,7 +831,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_graded(self):
@@ -860,7 +846,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_grade_id(self):
@@ -873,7 +859,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grade_id = property(fget=get_grade_id)
 
@@ -889,7 +875,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     grade = property(fget=get_grade)
 
@@ -904,7 +890,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     score = property(fget=get_score)
 
@@ -919,7 +905,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     time_graded = property(fget=get_time_graded)
 
@@ -934,7 +920,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grader_id = property(fget=get_grader_id)
 
@@ -950,7 +936,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     grader = property(fget=get_grader)
 
@@ -965,7 +951,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grading_agent_id = property(fget=get_grading_agent_id)
 
@@ -981,7 +967,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     grading_agent = property(fget=get_grading_agent)
 
@@ -1006,7 +992,7 @@ class GradeEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntryRecord
+        return  # osid.grading.records.GradeEntryRecord
 
 
 class GradeEntryForm:
@@ -1021,7 +1007,6 @@ class GradeEntryForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_ignored_for_calculations_metadata(self):
         """Gets the metadata for the ignore flag.
@@ -1033,7 +1018,7 @@ class GradeEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     ignored_for_calculations_metadata = property(fget=get_ignored_for_calculations_metadata)
 
@@ -1075,7 +1060,7 @@ class GradeEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     grade_metadata = property(fget=get_grade_metadata)
 
@@ -1118,7 +1103,7 @@ class GradeEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     score_metadata = property(fget=get_score_metadata)
 
@@ -1164,7 +1149,7 @@ class GradeEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntryFormRecord
+        return  # osid.grading.records.GradeEntryFormRecord
 
 
 class GradeEntryList:
@@ -1178,11 +1163,8 @@ class GradeEntryList:
            GradeEntry[] entries = gel.getNextGradeEntries(gel.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_grade_entry(self):
@@ -1196,7 +1178,7 @@ class GradeEntryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
     next_grade_entry = property(fget=get_next_grade_entry)
 
@@ -1214,7 +1196,7 @@ class GradeEntryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntry
+        return  # osid.grading.GradeEntry
 
 
 class GradebookColumn:
@@ -1224,7 +1206,6 @@ class GradebookColumn:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_system_id(self):
@@ -1237,7 +1218,7 @@ class GradebookColumn:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     grade_system_id = property(fget=get_grade_system_id)
 
@@ -1252,7 +1233,7 @@ class GradebookColumn:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystem
+        return  # osid.grading.GradeSystem
 
     grade_system = property(fget=get_grade_system)
 
@@ -1277,7 +1258,7 @@ class GradebookColumn:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnRecord
+        return  # osid.grading.records.GradebookColumnRecord
 
 
 class GradebookColumnForm:
@@ -1292,7 +1273,6 @@ class GradebookColumnForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_grade_system_metadata(self):
         """Gets the metadata for a grade system.
@@ -1304,7 +1284,7 @@ class GradebookColumnForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     grade_system_metadata = property(fget=get_grade_system_metadata)
 
@@ -1351,7 +1331,7 @@ class GradebookColumnForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnFormRecord
+        return  # osid.grading.records.GradebookColumnFormRecord
 
 
 class GradebookColumnList:
@@ -1365,11 +1345,8 @@ class GradebookColumnList:
            GradebookColumn[] columns = gcl.getNextGradebookColumns(gcl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_gradebook_column(self):
@@ -1383,7 +1360,7 @@ class GradebookColumnList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
     next_gradebook_column = property(fget=get_next_gradebook_column)
 
@@ -1401,13 +1378,12 @@ class GradebookColumnList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
 
 class GradebookColumnSummary:
     """A ``GradebookColumnSummary`` is a summary of all entries within a gradebook column."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_column_id(self):
@@ -1420,7 +1396,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
@@ -1435,7 +1411,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumn
+        return  # osid.grading.GradebookColumn
 
     gradebook_column = property(fget=get_gradebook_column)
 
@@ -1453,7 +1429,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     mean = property(fget=get_mean)
 
@@ -1471,7 +1447,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     median = property(fget=get_median)
 
@@ -1489,7 +1465,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     mode = property(fget=get_mode)
 
@@ -1507,7 +1483,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     rms = property(fget=get_rms)
 
@@ -1525,7 +1501,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     standard_deviation = property(fget=get_standard_deviation)
 
@@ -1543,7 +1519,7 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     sum = property(fget=get_sum)
 
@@ -1569,13 +1545,12 @@ class GradebookColumnSummary:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSummaryRecord
+        return  # osid.grading.records.GradebookColumnSummaryRecord
 
 
 class Gradebook:
     """A gradebook defines a collection of grade entries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_record(self, gradebook_record_type):
@@ -1598,7 +1573,7 @@ class Gradebook:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookRecord
+        return  # osid.grading.records.GradebookRecord
 
 
 class GradebookForm:
@@ -1612,7 +1587,6 @@ class GradebookForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_form_record(self, gradebook_record_type):
@@ -1629,7 +1603,7 @@ class GradebookForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookFormRecord
+        return  # osid.grading.records.GradebookFormRecord
 
 
 class GradebookList:
@@ -1643,11 +1617,8 @@ class GradebookList:
            Gradebook[] gradebooks = gl.getNextGradebooks(gl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_gradebook(self):
@@ -1661,7 +1632,7 @@ class GradebookList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     next_gradebook = property(fget=get_next_gradebook)
 
@@ -1679,7 +1650,7 @@ class GradebookList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
 
 class GradebookNode:
@@ -1692,7 +1663,6 @@ class GradebookNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_gradebook(self):
         """Gets the ``Gradebook`` at this node.
@@ -1704,7 +1674,7 @@ class GradebookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Gradebook
+        return  # osid.grading.Gradebook
 
     gradebook = property(fget=get_gradebook)
 
@@ -1719,7 +1689,7 @@ class GradebookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookNodeList
+        return  # osid.grading.GradebookNodeList
 
     parent_gradebook_nodes = property(fget=get_parent_gradebook_nodes)
 
@@ -1734,7 +1704,7 @@ class GradebookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookNodeList
+        return  # osid.grading.GradebookNodeList
 
     child_gradebook_nodes = property(fget=get_child_gradebook_nodes)
 
@@ -1750,11 +1720,8 @@ class GradebookNodeList:
            GradebookNode[] nodes = gnl.getNextGradebookNodes(gnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_gradebook_node(self):
@@ -1768,7 +1735,7 @@ class GradebookNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookNode
+        return  # osid.grading.GradebookNode
 
     next_gradebook_node = property(fget=get_next_gradebook_node)
 
@@ -1786,6 +1753,4 @@ class GradebookNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookNode
-
-
+        return  # osid.grading.GradebookNode

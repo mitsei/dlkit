@@ -16,8 +16,6 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.authentication_process import sessions as abc_authentication_process_sessions
 
 
-
-
 class AuthenticationAcquisitionSession(abc_authentication_process_sessions.AuthenticationAcquisitionSession, osid_sessions.OsidSession):
     """Adapts underlying AuthenticationAcquisitionSession methodswith authorization checks."""
 
@@ -25,6 +23,8 @@ class AuthenticationAcquisitionSession(abc_authentication_process_sessions.Authe
         raise Unimplemented()
 
     authentication = property(fget=get_authentication)
+
+
 
 
 class AuthenticationValidationSession(abc_authentication_process_sessions.AuthenticationValidationSession, osid_sessions.OsidSession):
@@ -44,9 +44,10 @@ class AuthenticationValidationSession(abc_authentication_process_sessions.Authen
         raise Unimplemented()
 
 
+
+
 class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession, osid_sessions.OsidSession):
     """Adapts underlying TrustLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_agency_id()
@@ -91,7 +92,6 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         for agency_id in self._unauth_agency_ids:
             query.match_agency_id(agency_id, match=False)
         return self._query_session.get_trusts_by_query(query)
-
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -219,6 +219,8 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
     trusts = property(fget=get_trusts)
 
 
+
+
 class CircleOfTrustSession(abc_authentication_process_sessions.CircleOfTrustSession, osid_sessions.OsidSession):
     """Adapts underlying CircleOfTrustSession methodswith authorization checks."""
 
@@ -265,5 +267,3 @@ class CircleOfTrustSession(abc_authentication_process_sessions.CircleOfTrustSess
     @raise_null_argument
     def is_in_circle(self, agent_id):
         raise Unimplemented()
-
-

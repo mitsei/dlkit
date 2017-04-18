@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class Comment:
     """A ``Comment`` represents a comment and/or rating related to a reference object in a book."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_reference_id(self):
@@ -35,7 +31,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     reference_id = property(fget=get_reference_id)
 
@@ -50,7 +46,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     commentor_id = property(fget=get_commentor_id)
 
@@ -65,7 +61,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     commentor = property(fget=get_commentor)
 
@@ -80,7 +76,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     commenting_agent_id = property(fget=get_commenting_agent_id)
 
@@ -95,7 +91,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     commenting_agent = property(fget=get_commenting_agent)
 
@@ -110,7 +106,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     text = property(fget=get_text)
 
@@ -125,7 +121,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rating_id(self):
@@ -138,7 +134,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     rating_id = property(fget=get_rating_id)
 
@@ -154,7 +150,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.Grade
+        return  # osid.grading.Grade
 
     rating = property(fget=get_rating)
 
@@ -179,7 +175,7 @@ class Comment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentRecord
+        return  # osid.commenting.records.CommentRecord
 
 
 class CommentForm:
@@ -194,7 +190,6 @@ class CommentForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_text_metadata(self):
         """Gets the metadata for the text.
@@ -206,7 +201,7 @@ class CommentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     text_metadata = property(fget=get_text_metadata)
 
@@ -249,7 +244,7 @@ class CommentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     rating_metadata = property(fget=get_rating_metadata)
 
@@ -296,7 +291,7 @@ class CommentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentFormRecord
+        return  # osid.commenting.records.CommentFormRecord
 
 
 class CommentList:
@@ -310,11 +305,8 @@ class CommentList:
            Comment[] comments = cl.getNextComments(cl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_comment(self):
@@ -328,7 +320,7 @@ class CommentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Comment
+        return  # osid.commenting.Comment
 
     next_comment = property(fget=get_next_comment)
 
@@ -349,7 +341,7 @@ class CommentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Comment
+        return  # osid.commenting.Comment
 
 
 class Book:
@@ -360,7 +352,6 @@ class Book:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_record(self, book_record_type):
@@ -383,7 +374,7 @@ class Book:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookRecord
+        return  # osid.commenting.records.BookRecord
 
 
 class BookForm:
@@ -397,7 +388,6 @@ class BookForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_form_record(self, book_record_type):
@@ -414,7 +404,7 @@ class BookForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookFormRecord
+        return  # osid.commenting.records.BookFormRecord
 
 
 class BookList:
@@ -427,11 +417,8 @@ class BookList:
            Book[] books = bl.getNextBooks(bl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_book(self):
@@ -445,7 +432,7 @@ class BookList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     next_book = property(fget=get_next_book)
 
@@ -466,7 +453,7 @@ class BookList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
 
 class BookNode:
@@ -479,7 +466,6 @@ class BookNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_book(self):
         """Gets the ``Book`` at this node.
@@ -491,7 +477,7 @@ class BookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.Book
+        return  # osid.commenting.Book
 
     book = property(fget=get_book)
 
@@ -506,7 +492,7 @@ class BookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookNodeList
+        return  # osid.commenting.BookNodeList
 
     parent_book_nodes = property(fget=get_parent_book_nodes)
 
@@ -521,7 +507,7 @@ class BookNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookNodeList
+        return  # osid.commenting.BookNodeList
 
     child_book_nodes = property(fget=get_child_book_nodes)
 
@@ -537,11 +523,8 @@ class BookNodeList:
            BookNode[] nodes = bnl.getNextBookNodes(bnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_book_node(self):
@@ -555,7 +538,7 @@ class BookNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookNode
+        return  # osid.commenting.BookNode
 
     next_book_node = property(fget=get_next_book_node)
 
@@ -576,6 +559,4 @@ class BookNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.BookNode
-
-
+        return  # osid.commenting.BookNode

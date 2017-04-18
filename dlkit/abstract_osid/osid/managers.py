@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidProfile:
     """The ``OsidProfile`` defines the interoperability areas of an OSID.
 
@@ -29,7 +26,6 @@ class OsidProfile:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_id(self):
@@ -47,7 +43,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     id_ = property(fget=get_id)
 
@@ -64,7 +60,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     display_name = property(fget=get_display_name)
 
@@ -79,7 +75,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     description = property(fget=get_description)
 
@@ -94,7 +90,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.installation.Version
+        return  # osid.installation.Version
 
     version = property(fget=get_version)
 
@@ -109,7 +105,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     release_date = property(fget=get_release_date)
 
@@ -128,7 +124,7 @@ class OsidProfile:
         versions of an OSID.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_locales(self):
@@ -141,7 +137,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.LocaleList
+        return  # osid.locale.LocaleList
 
     locales = property(fget=get_locales)
 
@@ -156,7 +152,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_journal_branching(self):
@@ -169,7 +165,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_branch_id(self):
@@ -182,7 +178,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     branch_id = property(fget=get_branch_id)
 
@@ -198,7 +194,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.journaling.Branch
+        return  # osid.journaling.Branch
 
     branch = property(fget=get_branch)
 
@@ -215,7 +211,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     proxy_record_types = property(fget=get_proxy_record_types)
 
@@ -232,7 +228,7 @@ class OsidProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class OsidManager:
@@ -250,7 +246,6 @@ class OsidManager:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def initialize(self, runtime):
@@ -292,7 +287,7 @@ class OsidManager:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.journaling.JournalEntry
+        return  # osid.journaling.JournalEntry
 
     @abc.abstractmethod
     def change_branch(self, branch_id):
@@ -335,7 +330,6 @@ class OsidProxyManager:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def initialize(self, runtime):
@@ -380,7 +374,7 @@ class OsidProxyManager:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.journaling.JournalEntry
+        return  # osid.journaling.JournalEntry
 
     @abc.abstractmethod
     def change_branch(self, branch_id, proxy):
@@ -406,7 +400,6 @@ class OsidRuntimeProfile:
     """The ``OsidRuntimeProfile`` defines the service aspects of the OSID runtime service."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def supports_configuration(self):
         """Tests if a configuration service is provided within this runtime environment.
@@ -418,13 +411,12 @@ class OsidRuntimeProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class OsidRuntimeManager:
     """The ``OsidRuntimeManager`` represents and OSID platform and contains the information required for running OSID implementations such as search paths and configurations."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_manager(self, osid, impl_class_name, version):
@@ -461,7 +453,7 @@ class OsidRuntimeManager:
         instantiated.
 
         """
-        return # osid.OsidManager
+        return  # osid.OsidManager
 
     @abc.abstractmethod
     def get_proxy_manager(self, osid, implementation, version):
@@ -498,7 +490,7 @@ class OsidRuntimeManager:
         instantiated.
 
         """
-        return # osid.OsidProxyManager
+        return  # osid.OsidProxyManager
 
     @abc.abstractmethod
     def get_configuration(self):
@@ -514,8 +506,6 @@ class OsidRuntimeManager:
         ``supports_configuration()`` is ``true``.*
 
         """
-        return # osid.configuration.ValueLookupSession
+        return  # osid.configuration.ValueLookupSession
 
     configuration = property(fget=get_configuration)
-
-

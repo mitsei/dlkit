@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidSearchOrder:
     """``OsidSearchOrder`` specifies preferred ordering of search results.
 
@@ -36,9 +33,6 @@ class OsidSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidIdentifiableSearchOrder:
     """``OsidIdentifiableSearchOrder`` specifies preferred ordering of search results.
 
@@ -47,7 +41,6 @@ class OsidIdentifiableSearchOrder:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_id(self, style):
@@ -73,9 +66,6 @@ class OsidExtensibleSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidBrowsableSearchOrder:
     """``OsidBrowsableSearchOrder`` specifies preferred ordering of search results.
 
@@ -86,13 +76,9 @@ class OsidBrowsableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidTemporalSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_effective(self, style):
@@ -139,21 +125,14 @@ class OsidSubjugateableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidAggregateableSearchOrder:
     """An interface for specifying the ordering of assemblage search results."""
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidContainableSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_sequestered(self, style):
@@ -172,7 +151,6 @@ class OsidContainableSearchOrder:
 class OsidSourceableSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_provider(self, style):
@@ -201,7 +179,7 @@ class OsidSourceableSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_provider_search_order(self):
@@ -215,7 +193,7 @@ class OsidSourceableSearchOrder:
         ``supports_provider_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     provider_search_order = property(fget=get_provider_search_order)
 
@@ -225,13 +203,9 @@ class OsidFederateableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidOperableSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_active(self, style):
@@ -301,7 +275,6 @@ class OsidObjectSearchOrder:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_display_name(self, style):
@@ -418,7 +391,6 @@ class OsidRelationshipSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def order_by_end_reason(self, style):
         """Specifies a preference for ordering the results by the end reason state.
@@ -443,7 +415,7 @@ class OsidRelationshipSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_end_reason_search_order(self):
@@ -457,7 +429,7 @@ class OsidRelationshipSearchOrder:
         ``supports_end_reason_search_order()`` is ``true``.*
 
         """
-        return # osid.process.StateSearchOrder
+        return  # osid.process.StateSearchOrder
 
     end_reason_search_order = property(fget=get_end_reason_search_order)
 
@@ -467,13 +439,9 @@ class OsidCatalogSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidRuleSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_rule(self, style):
@@ -502,7 +470,7 @@ class OsidRuleSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rule_search_order(self):
@@ -516,7 +484,7 @@ class OsidRuleSearchOrder:
         ``supports_rule_search_order()`` is ``true``.*
 
         """
-        return # osid.rules.RuleSearchOrder
+        return  # osid.rules.RuleSearchOrder
 
     rule_search_order = property(fget=get_rule_search_order)
 
@@ -524,7 +492,6 @@ class OsidRuleSearchOrder:
 class OsidEnablerSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_schedule(self, style):
@@ -550,7 +517,7 @@ class OsidEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_search_order(self):
@@ -564,7 +531,7 @@ class OsidEnablerSearchOrder:
         ``supports_schedule_search_order()`` is true.*
 
         """
-        return # osid.calendaring.ScheduleSearchOrder
+        return  # osid.calendaring.ScheduleSearchOrder
 
     schedule_search_order = property(fget=get_schedule_search_order)
 
@@ -592,7 +559,7 @@ class OsidEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_search_order(self):
@@ -606,7 +573,7 @@ class OsidEnablerSearchOrder:
         ``supports_event_search_order()`` is true.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     event_search_order = property(fget=get_event_search_order)
 
@@ -634,7 +601,7 @@ class OsidEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_cyclic_event_search_order(self):
@@ -647,7 +614,7 @@ class OsidEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.cycle.CyclicEventSearchOrder
+        return  # osid.calendaring.cycle.CyclicEventSearchOrder
 
     cyclic_event_search_order = property(fget=get_cyclic_event_search_order)
 
@@ -675,7 +642,7 @@ class OsidEnablerSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_demographic_search_order(self):
@@ -689,7 +656,7 @@ class OsidEnablerSearchOrder:
         ``supports_demographic_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     demographic_search_order = property(fget=get_demographic_search_order)
 
@@ -699,15 +666,9 @@ class OsidConstrainerSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidProcessorSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
-
-
 
 
 class OsidGovernatorSearchOrder:
@@ -715,13 +676,9 @@ class OsidGovernatorSearchOrder:
     __metaclass__ = abc.ABCMeta
 
 
-
-
-
 class OsidCompendiumSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_start_date(self, style):
@@ -779,8 +736,3 @@ class OsidCompendiumSearchOrder:
 class OsidCapsuleSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
-
-
-
-

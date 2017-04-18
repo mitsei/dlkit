@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestLogEntryQuery(unittest.TestCase):
     """Tests for LogEntryQuery"""
 
@@ -122,6 +124,8 @@ class TestLogEntryQuery(unittest.TestCase):
     def test_get_log_entry_query_record(self):
         """Tests get_log_entry_query_record"""
         pass
+
+
 
 
 class TestLogQuery(unittest.TestCase):

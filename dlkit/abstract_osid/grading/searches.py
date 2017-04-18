@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class GradeSystemSearch:
     """The interface for governing grade system searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_grade_systems(self, grade_system_ids):
@@ -69,13 +65,12 @@ class GradeSystemSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemSearchRecord
+        return  # osid.grading.records.GradeSystemSearchRecord
 
 
 class GradeSystemSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_systems(self):
@@ -88,7 +83,7 @@ class GradeSystemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemList
+        return  # osid.grading.GradeSystemList
 
     grade_systems = property(fget=get_grade_systems)
 
@@ -103,7 +98,7 @@ class GradeSystemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeSystemQueryInspector
+        return  # osid.grading.GradeSystemQueryInspector
 
     grade_system_query_inspector = property(fget=get_grade_system_query_inspector)
 
@@ -125,13 +120,12 @@ class GradeSystemSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeSystemSearchResultsRecord
+        return  # osid.grading.records.GradeSystemSearchResultsRecord
 
 
 class GradeEntrySearch:
     """``GradeEntrySearch`` defines the interface for specifying package search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_grade_entries(self, grade_entry_ids):
@@ -178,13 +172,12 @@ class GradeEntrySearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntrySearchRecord
+        return  # osid.grading.records.GradeEntrySearchRecord
 
 
 class GradeEntrySearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_grade_entries(self):
@@ -197,7 +190,7 @@ class GradeEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryList
+        return  # osid.grading.GradeEntryList
 
     grade_entries = property(fget=get_grade_entries)
 
@@ -212,7 +205,7 @@ class GradeEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradeEntryQueryInspector
+        return  # osid.grading.GradeEntryQueryInspector
 
     grade_entry_query_inspector = property(fget=get_grade_entry_query_inspector)
 
@@ -234,13 +227,12 @@ class GradeEntrySearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradeEntrySearchResultsRecord
+        return  # osid.grading.records.GradeEntrySearchResultsRecord
 
 
 class GradebookColumnSearch:
     """``GradebookColumnSearch`` defines the interface for specifying grading search options."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_gradebook_columns(self, gradebook_column_ids):
@@ -287,13 +279,12 @@ class GradebookColumnSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSearchRecord
+        return  # osid.grading.records.GradebookColumnSearchRecord
 
 
 class GradebookColumnSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebook_columns(self):
@@ -306,7 +297,7 @@ class GradebookColumnSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnList
+        return  # osid.grading.GradebookColumnList
 
     gradebook_columns = property(fget=get_gradebook_columns)
 
@@ -321,7 +312,7 @@ class GradebookColumnSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookColumnQueryInspector
+        return  # osid.grading.GradebookColumnQueryInspector
 
     gradebook_column_query_inspector = property(fget=get_gradebook_column_query_inspector)
 
@@ -343,13 +334,12 @@ class GradebookColumnSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookColumnSearchResultsRecord
+        return  # osid.grading.records.GradebookColumnSearchResultsRecord
 
 
 class GradebookSearch:
     """The interface for governing gradebook searches."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def search_among_gradebooks(self, gradebook_ids):
@@ -396,13 +386,12 @@ class GradebookSearch:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookSearchRecord
+        return  # osid.grading.records.GradebookSearchRecord
 
 
 class GradebookSearchResults:
     """This interface provides a means to capture results of a search."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_gradebooks(self):
@@ -415,7 +404,7 @@ class GradebookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookList
+        return  # osid.grading.GradebookList
 
     gradebooks = property(fget=get_gradebooks)
 
@@ -430,7 +419,7 @@ class GradebookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.GradebookQueryInspector
+        return  # osid.grading.GradebookQueryInspector
 
     gradebook_query_inspector = property(fget=get_gradebook_query_inspector)
 
@@ -452,6 +441,4 @@ class GradebookSearchResults:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.grading.records.GradebookSearchResultsRecord
-
-
+        return  # osid.grading.records.GradebookSearchResultsRecord

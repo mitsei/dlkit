@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LogEntryReceiver:
     """The log entry receiver is the consumer supplied interface for receiving notifications pertaining to new log entries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_log_entries(self, notification_id, entry_ids):
@@ -73,7 +69,6 @@ class LogEntryReceiver:
 class LogReceiver:
     """The log receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Log`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_logs(self, notification_id, log_ids):
@@ -134,5 +129,3 @@ class LogReceiver:
 
         """
         pass
-
-

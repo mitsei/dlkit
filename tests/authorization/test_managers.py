@@ -15,6 +15,8 @@ from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.abstract_osid.osid import errors
 
 
+
+
 class TestAuthorizationProfile(unittest.TestCase):
     """Tests for AuthorizationProfile"""
 
@@ -86,6 +88,8 @@ class TestAuthorizationProfile(unittest.TestCase):
     def test_get_authorization_condition_record_types(self):
         """Tests get_authorization_condition_record_types"""
         self.assertTrue(isinstance(self.mgr.get_authorization_condition_record_types(), abc_type_list))
+
+
 
 
 class TestAuthorizationManager(unittest.TestCase):
@@ -191,6 +195,8 @@ class TestAuthorizationManager(unittest.TestCase):
         #     self.mgr.get_authorization_rules_manager()
         if self.svc_mgr.supports_authorization_rules():
             self.svc_mgr.get_authorization_rules_manager()
+
+
 
 
 class TestAuthorizationProxyManager(unittest.TestCase):

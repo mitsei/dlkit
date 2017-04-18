@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LogEntry:
     """A log entry consists of a time, an agent, and a priority type."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_priority(self):
@@ -35,7 +31,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     priority = property(fget=get_priority)
 
@@ -50,7 +46,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     timestamp = property(fget=get_timestamp)
 
@@ -65,7 +61,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     resource_id = property(fget=get_resource_id)
 
@@ -80,7 +76,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = property(fget=get_resource)
 
@@ -95,7 +91,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     agent_id = property(fget=get_agent_id)
 
@@ -110,7 +106,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     agent = property(fget=get_agent)
 
@@ -135,7 +131,7 @@ class LogEntry:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntryRecord
+        return  # osid.logging.records.LogEntryRecord
 
 
 class LogEntryForm:
@@ -150,7 +146,6 @@ class LogEntryForm:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_priority_metadata(self):
         """Gets the metadata for a priority type.
@@ -162,7 +157,7 @@ class LogEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     priority_metadata = property(fget=get_priority_metadata)
 
@@ -205,7 +200,7 @@ class LogEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     timestamp_metadata = property(fget=get_timestamp_metadata)
 
@@ -237,7 +232,7 @@ class LogEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     agent_metadata = property(fget=get_agent_metadata)
 
@@ -273,7 +268,7 @@ class LogEntryForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogEntryFormRecord
+        return  # osid.logging.records.LogEntryFormRecord
 
 
 class LogEntryList:
@@ -287,11 +282,8 @@ class LogEntryList:
            LogEntry[] entries = lel.getNextLogEntries(lel.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_log_entry(self):
@@ -305,7 +297,7 @@ class LogEntryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntry
+        return  # osid.logging.LogEntry
 
     next_log_entry = property(fget=get_next_log_entry)
 
@@ -326,7 +318,7 @@ class LogEntryList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogEntry
+        return  # osid.logging.LogEntry
 
 
 class Log:
@@ -337,7 +329,6 @@ class Log:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_record(self, log_record_type):
@@ -360,7 +351,7 @@ class Log:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogRecord
+        return  # osid.logging.records.LogRecord
 
 
 class LogForm:
@@ -373,7 +364,6 @@ class LogForm:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_log_form_record(self, log_record_type):
@@ -390,7 +380,7 @@ class LogForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.records.LogFormRecord
+        return  # osid.logging.records.LogFormRecord
 
 
 class LogList:
@@ -403,11 +393,8 @@ class LogList:
            Log[] logs = ll.getNextLogs(ll.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_log(self):
@@ -421,7 +408,7 @@ class LogList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     next_log = property(fget=get_next_log)
 
@@ -442,7 +429,7 @@ class LogList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
 
 class LogNode:
@@ -455,7 +442,6 @@ class LogNode:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_log(self):
         """Gets the ``Log`` at this node.
@@ -467,7 +453,7 @@ class LogNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.Log
+        return  # osid.logging.Log
 
     log = property(fget=get_log)
 
@@ -482,7 +468,7 @@ class LogNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogNodeList
+        return  # osid.logging.LogNodeList
 
     parent_log_nodes = property(fget=get_parent_log_nodes)
 
@@ -497,7 +483,7 @@ class LogNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogNodeList
+        return  # osid.logging.LogNodeList
 
     child_log_nodes = property(fget=get_child_log_nodes)
 
@@ -513,11 +499,8 @@ class LogNodeList:
            LogNode[] nodes = lnl.getNextLogNodes(lnl.available());
       }
 
-
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_next_log_node(self):
@@ -531,7 +514,7 @@ class LogNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogNode
+        return  # osid.logging.LogNode
 
     next_log_node = property(fget=get_next_log_node)
 
@@ -552,6 +535,4 @@ class LogNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.logging.LogNode
-
-
+        return  # osid.logging.LogNode

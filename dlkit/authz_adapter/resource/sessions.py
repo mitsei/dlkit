@@ -18,11 +18,8 @@ from ..utilities import raise_null_argument
 from dlkit.abstract_osid.resource import sessions as abc_resource_sessions
 
 
-
-
 class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -67,7 +64,6 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         for bin_id in self._unauth_bin_ids:
             query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resources_by_query(query)
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -191,9 +187,10 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
     resources = property(fget=get_resources)
 
 
+
+
 class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sessions.OsidSession):
     """Adapts underlying ResourceQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -241,7 +238,6 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
 
         def match_bin_id(self, bin_id, match=True):
             self._cat_id_args_list.append({'bin_id': bin_id, 'match': match})
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -309,6 +305,8 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
         return result
 
 
+
+
 class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, ResourceQuerySession):
     """Adapts underlying ResourceSearchSession methodswith authorization checks."""
 
@@ -341,9 +339,10 @@ class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, Resourc
         raise Unimplemented()
 
 
+
+
 class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -369,7 +368,6 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
     def _can_for_resource(self, func_name, resource_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, resource_id, 'get_bin_ids_for_resource')
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -470,15 +468,14 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         return self._provider_session.alias_resource(resource_id, alias_id)
 
 
+
+
 class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceNotificationSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.Resource'
-
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -569,15 +566,14 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         raise Unimplemented()
 
 
+
+
 class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceBinSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'resource.ResourceBin'
-
-
     def use_comparative_bin_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -642,15 +638,14 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         return self._provider_session.get_bins_by_resource(resource_id)
 
 
+
+
 class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceBinAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'resource.ResourceBin'
-
-
     def can_assign_resources(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -693,6 +688,8 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_resource_from_bin(resource_id, bin_id)
+
+
 
 
 class ResourceSmartBinSession(abc_resource_sessions.ResourceSmartBinSession, osid_sessions.OsidSession):
@@ -744,6 +741,8 @@ class ResourceSmartBinSession(abc_resource_sessions.ResourceSmartBinSession, osi
         raise Unimplemented()
 
 
+
+
 class MembershipSession(abc_resource_sessions.MembershipSession, osid_sessions.OsidSession):
     """Adapts underlying MembershipSession methodswith authorization checks."""
 
@@ -786,6 +785,8 @@ class MembershipSession(abc_resource_sessions.MembershipSession, osid_sessions.O
     @raise_null_argument
     def is_member(self, member_resource_id, resource_id):
         raise Unimplemented()
+
+
 
 
 class GroupSession(abc_resource_sessions.GroupSession, osid_sessions.OsidSession):
@@ -870,6 +871,8 @@ class GroupSession(abc_resource_sessions.GroupSession, osid_sessions.OsidSession
         raise Unimplemented()
 
 
+
+
 class GroupAssignmentSession(abc_resource_sessions.GroupAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying GroupAssignmentSession methodswith authorization checks."""
 
@@ -904,6 +907,8 @@ class GroupAssignmentSession(abc_resource_sessions.GroupAssignmentSession, osid_
     @raise_null_argument
     def unassign_resource_from_group(self, resource_id, resource_group_id):
         raise Unimplemented()
+
+
 
 
 class GroupNotificationSession(abc_resource_sessions.GroupNotificationSession, osid_sessions.OsidSession):
@@ -978,6 +983,8 @@ class GroupNotificationSession(abc_resource_sessions.GroupNotificationSession, o
         raise Unimplemented()
 
 
+
+
 class GroupHierarchySession(abc_resource_sessions.GroupHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying GroupHierarchySession methodswith authorization checks."""
 
@@ -1042,15 +1049,14 @@ class GroupHierarchySession(abc_resource_sessions.GroupHierarchySession, osid_se
         raise Unimplemented()
 
 
+
+
 class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAgentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.ResourceAgent'
-
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1124,15 +1130,14 @@ class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sess
         return self._provider_session.get_agents_by_resource(resource_id)
 
 
+
+
 class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAgentAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.ResourceAgent'
-
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1170,9 +1175,10 @@ class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignme
         return self._provider_session.unassign_agent_from_resource(agent_id, resource_id)
 
 
+
+
 class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationshipLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -1217,7 +1223,6 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         for bin_id in self._unauth_bin_ids:
             query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resource_relationships_by_query(query)
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1415,9 +1420,10 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
     resource_relationships = property(fget=get_resource_relationships)
 
 
+
+
 class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshipQuerySession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -1465,7 +1471,6 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
 
         def match_bin_id(self, bin_id, match=True):
             self._cat_id_args_list.append({'bin_id': bin_id, 'match': match})
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1533,6 +1538,8 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
         return result
 
 
+
+
 class ResourceRelationshipSearchSession(abc_resource_sessions.ResourceRelationshipSearchSession, ResourceRelationshipQuerySession):
     """Adapts underlying ResourceRelationshipSearchSession methodswith authorization checks."""
 
@@ -1565,9 +1572,10 @@ class ResourceRelationshipSearchSession(abc_resource_sessions.ResourceRelationsh
         raise Unimplemented()
 
 
+
+
 class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshipAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipAdminSession methodswith authorization checks."""
-
     def __init__(self, provider_manager, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
@@ -1593,7 +1601,6 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
     def _can_for_resource_relationship(self, func_name, resource_relationship_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, resource_relationship_id, 'get_bin_ids_for_resource_relationship')
-
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1692,6 +1699,8 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
         if not self._can_for_resource_relationship('alias', resource_relationship_id):
             raise PermissionDenied()
         return self._provider_session.alias_resource_relationship(resource_relationship_id, alias_id)
+
+
 
 
 class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRelationshipNotificationSession, osid_sessions.OsidSession):
@@ -1859,15 +1868,14 @@ class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRela
         raise Unimplemented()
 
 
+
+
 class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipBinSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipBinSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'resource.ResourceRelationshipBin'
-
-
     def use_comparative_bin_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -1932,15 +1940,14 @@ class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipB
         return self._provider_session.get_bins_by_resource_relationship(resource_relationship_id)
 
 
+
+
 class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRelationshipBinAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipBinAssignmentSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
         self._id_namespace = 'resource.ResourceRelationshipBin'
-
-
     def can_assign_resource_relationships(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1983,6 +1990,8 @@ class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRel
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_resource_relationship_from_bin(resource_relationship_id, bin_id)
+
+
 
 
 class ResourceRelationshipSmartBinSession(abc_resource_sessions.ResourceRelationshipSmartBinSession, osid_sessions.OsidSession):
@@ -2034,17 +2043,16 @@ class ResourceRelationshipSmartBinSession(abc_resource_sessions.ResourceRelation
         raise Unimplemented()
 
 
+
+
 class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.OsidSession):
     """Adapts underlying BinLookupSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
-
-
     def can_lookup_bins(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2106,17 +2114,16 @@ class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.Osi
     bins = property(fget=get_bins)
 
 
+
+
 class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidSession):
     """Adapts underlying BinQuerySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
-
-
     def can_search_bins(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -2141,6 +2148,8 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         return self._provider_session.get_bins_by_query(bin_query)
 
 
+
+
 class BinSearchSession(abc_resource_sessions.BinSearchSession, BinQuerySession):
     """Adapts underlying BinSearchSession methodswith authorization checks."""
 
@@ -2163,17 +2172,16 @@ class BinSearchSession(abc_resource_sessions.BinSearchSession, BinQuerySession):
         raise Unimplemented()
 
 
+
+
 class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidSession):
     """Adapts underlying BinAdminSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
-
-
     def can_create_bins(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -2250,6 +2258,8 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         return self._provider_session.alias_bin(bin_id, alias_id)
 
 
+
+
 class BinNotificationSession(abc_resource_sessions.BinNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying BinNotificationSession methodswith authorization checks."""
 
@@ -2308,17 +2318,16 @@ class BinNotificationSession(abc_resource_sessions.BinNotificationSession, osid_
         raise Unimplemented()
 
 
+
+
 class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying BinHierarchySession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
-
-
     def get_bin_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2473,9 +2482,10 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
             include_siblings)
 
 
+
+
 class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying BinHierarchyDesignSession methodswith authorization checks."""
-
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         # This needs to be done right
@@ -2483,8 +2493,6 @@ class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession,
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
         # should this be 'resource.BinHierarchy' ?
-
-
     def get_bin_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2537,5 +2545,3 @@ class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession,
         if not self._can('modify'):
             raise PermissionDenied()
         return self._provider_session.remove_child_bins(bin_id)
-
-

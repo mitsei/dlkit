@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class HierarchyQueryInspector:
     """This is the query inspector for examining hierarchy queries."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_node_id_terms(self):
@@ -35,7 +31,7 @@ class HierarchyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.search.terms.IdTerm
+        return  # osid.search.terms.IdTerm
 
     node_id_terms = property(fget=get_node_id_terms)
 
@@ -54,6 +50,4 @@ class HierarchyQueryInspector:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.records.HierarchyQueryInspectorRecord
-
-
+        return  # osid.hierarchy.records.HierarchyQueryInspectorRecord

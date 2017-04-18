@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class Event:
@@ -35,11 +30,10 @@ class Event:
         :return: ``true`` if this event is implicit, ``false`` if explicitly defined
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_in_recurring_series(self):
@@ -50,11 +44,10 @@ class Event:
         :return: ``true`` if this event is part of a recurring series, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_superseding_event(self):
@@ -65,11 +58,10 @@ class Event:
         :return: ``true`` if this event is superseding event, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_offset_event(self):
@@ -80,11 +72,10 @@ class Event:
         :return: ``true`` if this event is an offset event, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_duration(self, units):
@@ -99,7 +90,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     @abc.abstractmethod
     def get_location_description(self):
@@ -108,11 +99,10 @@ class Event:
         :return: the location
         :rtype: ``osid.locale.DisplayText``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     location_description = property(fget=get_location_description)
 
@@ -123,11 +113,10 @@ class Event:
         :return: ``true`` if there is an associated location, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_id(self):
@@ -140,7 +129,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_id = property(fget=get_location_id)
 
@@ -156,7 +145,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = property(fget=get_location)
 
@@ -167,11 +156,10 @@ class Event:
         :return: ``true`` if there is an associated sponsor. ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_ids(self):
@@ -184,7 +172,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     sponsor_ids = property(fget=get_sponsor_ids)
 
@@ -200,7 +188,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     sponsors = property(fget=get_sponsors)
 
@@ -225,7 +213,7 @@ class Event:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventRecord
+        return  # osid.calendaring.records.EventRecord
 
 
 class EventForm:
@@ -247,11 +235,10 @@ class EventForm:
         :return: metadata for the location description
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     location_description_metadata = property(fget=get_location_description_metadata)
 
@@ -290,11 +277,10 @@ class EventForm:
         :return: metadata for the location
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     location_metadata = property(fget=get_location_metadata)
 
@@ -333,11 +319,10 @@ class EventForm:
         :return: metadata for the sponsor
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     sponsor_metadata = property(fget=get_sponsor_metadata)
 
@@ -384,7 +369,7 @@ class EventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.EventFormRecord
+        return  # osid.calendaring.records.EventFormRecord
 
 
 class EventList:
@@ -415,7 +400,7 @@ class EventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     next_event = property(fget=get_next_event)
 
@@ -434,7 +419,7 @@ class EventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
 
 class RecurringEvent:
@@ -453,11 +438,10 @@ class RecurringEvent:
         :return: the recurring schedule ``Ids``
         :rtype: ``osid.id.IdList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     schedule_ids = property(fget=get_schedule_ids)
 
@@ -472,7 +456,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     schedules = property(fget=get_schedules)
 
@@ -485,11 +469,10 @@ class RecurringEvent:
         :return: list of superseding event ``Ids``
         :rtype: ``osid.id.IdList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     superseding_event_ids = property(fget=get_superseding_event_ids)
 
@@ -506,7 +489,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     superseding_events = property(fget=get_superseding_events)
 
@@ -519,11 +502,10 @@ class RecurringEvent:
         :return: speciifc list of dates
         :rtype: ``osid.calendaring.MeetingTimeList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.MeetingTimeList
+        return  # osid.calendaring.MeetingTimeList
 
     specific_meeting_times = property(fget=get_specific_meeting_times)
 
@@ -534,11 +516,10 @@ class RecurringEvent:
         :return: list of event ``Ids``
         :rtype: ``osid.id.IdList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     event_ids = property(fget=get_event_ids)
 
@@ -553,7 +534,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     events = property(fget=get_events)
 
@@ -567,11 +548,10 @@ class RecurringEvent:
         :return: recurring event exceptions
         :rtype: ``osid.calendaring.DateTimeIntervalList``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeIntervalList
+        return  # osid.calendaring.DateTimeIntervalList
 
     blackouts = property(fget=get_blackouts)
 
@@ -582,11 +562,10 @@ class RecurringEvent:
         :return: ``true`` if there is an associated sponsor. ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_ids(self):
@@ -599,7 +578,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     sponsor_ids = property(fget=get_sponsor_ids)
 
@@ -615,7 +594,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     sponsors = property(fget=get_sponsors)
 
@@ -640,7 +619,7 @@ class RecurringEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventRecord
+        return  # osid.calendaring.records.RecurringEventRecord
 
 
 class RecurringEventForm:
@@ -662,11 +641,10 @@ class RecurringEventForm:
         :return: metadata for the sponsor
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     sponsor_metadata = property(fget=get_sponsor_metadata)
 
@@ -713,7 +691,7 @@ class RecurringEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.RecurringEventFormRecord
+        return  # osid.calendaring.records.RecurringEventFormRecord
 
 
 class RecurringEventList:
@@ -745,7 +723,7 @@ class RecurringEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEvent
+        return  # osid.calendaring.RecurringEvent
 
     next_recurring_event = property(fget=get_next_recurring_event)
 
@@ -766,7 +744,7 @@ class RecurringEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEvent
+        return  # osid.calendaring.RecurringEvent
 
 
 class SupersedingEvent:
@@ -787,11 +765,10 @@ class SupersedingEvent:
         :return: the superseding event ``Id``
         :rtype: ``osid.id.Id``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     superseded_event_id = property(fget=get_superseded_event_id)
 
@@ -806,7 +783,7 @@ class SupersedingEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     superseded_event = property(fget=get_superseded_event)
 
@@ -817,11 +794,10 @@ class SupersedingEvent:
         :return: the superseding event ``Id``
         :rtype: ``osid.id.Id``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     superseding_event_id = property(fget=get_superseding_event_id)
 
@@ -836,7 +812,7 @@ class SupersedingEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     superseding_event = property(fget=get_superseding_event)
 
@@ -850,11 +826,10 @@ class SupersedingEvent:
         :return: ``true`` if an event is superseded by date, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseded_date(self):
@@ -867,7 +842,7 @@ class SupersedingEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     superseded_date = property(fget=get_superseded_date)
 
@@ -883,11 +858,10 @@ class SupersedingEvent:
         :return: ``true`` if an event is superseded by position, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseded_event_position(self):
@@ -903,7 +877,7 @@ class SupersedingEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     superseded_event_position = property(fget=get_superseded_event_position)
 
@@ -928,7 +902,7 @@ class SupersedingEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventRecord
+        return  # osid.calendaring.records.SupersedingEventRecord
 
 
 class SupersedingEventForm:
@@ -950,11 +924,10 @@ class SupersedingEventForm:
         :return: metadata for a superseded date
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     superseded_date_metadata = property(fget=get_superseded_date_metadata)
 
@@ -993,11 +966,10 @@ class SupersedingEventForm:
         :return: metadata for a superseded date
         :rtype: ``osid.Metadata``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     superseded_event_position_metadata = property(fget=get_superseded_event_position_metadata)
 
@@ -1045,7 +1017,7 @@ class SupersedingEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.SupersedingEventFormRecord
+        return  # osid.calendaring.records.SupersedingEventFormRecord
 
 
 class SupersedingEventList:
@@ -1077,7 +1049,7 @@ class SupersedingEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEvent
+        return  # osid.calendaring.SupersedingEvent
 
     next_superseding_event = property(fget=get_next_superseding_event)
 
@@ -1098,7 +1070,7 @@ class SupersedingEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEvent
+        return  # osid.calendaring.SupersedingEvent
 
 
 class OffsetEvent:
@@ -1123,11 +1095,10 @@ class OffsetEvent:
         :return: ``true`` if this offset is based on a fixed start time, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_fixed_start_time(self):
@@ -1140,7 +1111,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     fixed_start_time = property(fget=get_fixed_start_time)
 
@@ -1155,7 +1126,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     start_reference_event_id = property(fget=get_start_reference_event_id)
 
@@ -1171,7 +1142,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     start_reference_event = property(fget=get_start_reference_event)
 
@@ -1186,7 +1157,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_fixed_start_offset(self):
@@ -1199,7 +1170,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     fixed_start_offset = property(fget=get_fixed_start_offset)
 
@@ -1214,7 +1185,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relative_weekday_start_offset(self):
@@ -1229,7 +1200,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     relative_weekday_start_offset = property(fget=get_relative_weekday_start_offset)
 
@@ -1247,7 +1218,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     relative_start_weekday = property(fget=get_relative_start_weekday)
 
@@ -1258,11 +1229,10 @@ class OffsetEvent:
         :return: ``true`` if this offset is based on a fixed duration, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_fixed_duration(self, units):
@@ -1278,7 +1248,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     @abc.abstractmethod
     def get_end_reference_event_id(self):
@@ -1291,7 +1261,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     end_reference_event_id = property(fget=get_end_reference_event_id)
 
@@ -1307,7 +1277,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     end_reference_event = property(fget=get_end_reference_event)
 
@@ -1322,7 +1292,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_fixed_end_offset(self):
@@ -1335,7 +1305,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     fixed_end_offset = property(fget=get_fixed_end_offset)
 
@@ -1350,7 +1320,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_relative_weekday_end_offset(self):
@@ -1365,7 +1335,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     relative_weekday_end_offset = property(fget=get_relative_weekday_end_offset)
 
@@ -1383,7 +1353,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     relative_end_weekday = property(fget=get_relative_end_weekday)
 
@@ -1394,11 +1364,10 @@ class OffsetEvent:
         :return: the location
         :rtype: ``osid.locale.DisplayText``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     location_description = property(fget=get_location_description)
 
@@ -1409,11 +1378,10 @@ class OffsetEvent:
         :return: ``true`` if there is an associated location, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_id(self):
@@ -1426,7 +1394,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_id = property(fget=get_location_id)
 
@@ -1442,7 +1410,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = property(fget=get_location)
 
@@ -1453,11 +1421,10 @@ class OffsetEvent:
         :return: ``true`` if there is an associated sponsor. ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_sponsor_ids(self):
@@ -1470,7 +1437,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     sponsor_ids = property(fget=get_sponsor_ids)
 
@@ -1486,7 +1453,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     sponsors = property(fget=get_sponsors)
 
@@ -1511,7 +1478,7 @@ class OffsetEvent:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventRecord
+        return  # osid.calendaring.records.OffsetEventRecord
 
 
 class OffsetEventForm:
@@ -1537,7 +1504,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     fixed_start_time_metadata = property(fget=get_fixed_start_time_metadata)
 
@@ -1580,7 +1547,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     start_reference_event_metadata = property(fget=get_start_reference_event_metadata)
 
@@ -1623,7 +1590,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     fixed_start_offset_metadata = property(fget=get_fixed_start_offset_metadata)
 
@@ -1666,7 +1633,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     relative_weekday_start_offset_metadata = property(fget=get_relative_weekday_start_offset_metadata)
 
@@ -1708,7 +1675,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     relative_start_weekday_metadata = property(fget=get_relative_start_weekday_metadata)
 
@@ -1750,7 +1717,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     fixed_duration_metadata = property(fget=get_fixed_duration_metadata)
 
@@ -1793,7 +1760,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     end_reference_event_metadata = property(fget=get_end_reference_event_metadata)
 
@@ -1836,7 +1803,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     fixed_end_offset_metadata = property(fget=get_fixed_end_offset_metadata)
 
@@ -1879,7 +1846,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     relative_weekday_end_offset_metadata = property(fget=get_relative_weekday_end_offset_metadata)
 
@@ -1921,7 +1888,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     relative_end_weekday_metadata = property(fget=get_relative_end_weekday_metadata)
 
@@ -1963,7 +1930,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     location_description_metadata = property(fget=get_location_description_metadata)
 
@@ -2006,7 +1973,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     location_metadata = property(fget=get_location_metadata)
 
@@ -2049,7 +2016,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     sponsor_metadata = property(fget=get_sponsor_metadata)
 
@@ -2096,7 +2063,7 @@ class OffsetEventForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.OffsetEventFormRecord
+        return  # osid.calendaring.records.OffsetEventFormRecord
 
 
 class OffsetEventList:
@@ -2128,7 +2095,7 @@ class OffsetEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEvent
+        return  # osid.calendaring.OffsetEvent
 
     next_offset_event = property(fget=get_next_offset_event)
 
@@ -2148,7 +2115,7 @@ class OffsetEventList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEvent
+        return  # osid.calendaring.OffsetEvent
 
 
 class Schedule:
@@ -2171,7 +2138,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     schedule_slot_id = property(fget=get_schedule_slot_id)
 
@@ -2186,7 +2153,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlot
+        return  # osid.calendaring.ScheduleSlot
 
     schedule_slot = property(fget=get_schedule_slot)
 
@@ -2204,7 +2171,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_id(self):
@@ -2220,7 +2187,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     time_period_id = property(fget=get_time_period_id)
 
@@ -2239,7 +2206,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriod
+        return  # osid.calendaring.TimePeriod
 
     time_period = property(fget=get_time_period)
 
@@ -2257,7 +2224,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     schedule_start = property(fget=get_schedule_start)
 
@@ -2275,7 +2242,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     schedule_end = property(fget=get_schedule_end)
 
@@ -2290,7 +2257,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_limit(self):
@@ -2303,7 +2270,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     limit = property(fget=get_limit)
 
@@ -2318,7 +2285,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     location_description = property(fget=get_location_description)
 
@@ -2333,7 +2300,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_id(self):
@@ -2346,7 +2313,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_id = property(fget=get_location_id)
 
@@ -2362,7 +2329,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = property(fget=get_location)
 
@@ -2378,7 +2345,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     total_duration = property(fget=get_total_duration)
 
@@ -2403,7 +2370,7 @@ class Schedule:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleRecord
+        return  # osid.calendaring.records.ScheduleRecord
 
 
 class ScheduleForm:
@@ -2429,7 +2396,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     schedule_slot_metadata = property(fget=get_schedule_slot_metadata)
 
@@ -2472,7 +2439,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     time_period_metadata = property(fget=get_time_period_metadata)
 
@@ -2515,7 +2482,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     schedule_start_metadata = property(fget=get_schedule_start_metadata)
 
@@ -2561,7 +2528,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     schedule_end_metadata = property(fget=get_schedule_end_metadata)
 
@@ -2607,7 +2574,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     limit_metadata = property(fget=get_limit_metadata)
 
@@ -2678,7 +2645,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     location_metadata = property(fget=get_location_metadata)
 
@@ -2725,7 +2692,7 @@ class ScheduleForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleFormRecord
+        return  # osid.calendaring.records.ScheduleFormRecord
 
 
 class ScheduleList:
@@ -2757,7 +2724,7 @@ class ScheduleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Schedule
+        return  # osid.calendaring.Schedule
 
     next_schedule = property(fget=get_next_schedule)
 
@@ -2777,7 +2744,7 @@ class ScheduleList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Schedule
+        return  # osid.calendaring.Schedule
 
 
 class ScheduleSlot:
@@ -2800,7 +2767,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     schedule_slot_ids = property(fget=get_schedule_slot_ids)
 
@@ -2815,7 +2782,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     schedule_slots = property(fget=get_schedule_slots)
 
@@ -2832,7 +2799,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_weekdays(self):
@@ -2847,7 +2814,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     weekdays = property(fget=get_weekdays)
 
@@ -2865,7 +2832,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_weekly_interval(self):
@@ -2882,7 +2849,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     weekly_interval = property(fget=get_weekly_interval)
 
@@ -2901,7 +2868,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # integer
+        return  # integer
 
     week_of_month = property(fget=get_week_of_month)
 
@@ -2916,7 +2883,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     weekday_time = property(fget=get_weekday_time)
 
@@ -2931,7 +2898,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_fixed_interval(self):
@@ -2944,7 +2911,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     fixed_interval = property(fget=get_fixed_interval)
 
@@ -2959,7 +2926,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     duration = property(fget=get_duration)
 
@@ -2984,7 +2951,7 @@ class ScheduleSlot:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotRecord
+        return  # osid.calendaring.records.ScheduleSlotRecord
 
 
 class ScheduleSlotForm:
@@ -3010,7 +2977,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     weekday_metadata = property(fget=get_weekday_metadata)
 
@@ -3042,7 +3009,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     weekly_interval_metadata = property(fget=get_weekly_interval_metadata)
 
@@ -3073,7 +3040,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     week_of_month_metadata = property(fget=get_week_of_month_metadata)
 
@@ -3104,7 +3071,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     weekday_time_metadata = property(fget=get_weekday_time_metadata)
 
@@ -3149,7 +3116,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     fixed_interval_metadata = property(fget=get_fixed_interval_metadata)
 
@@ -3192,7 +3159,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     duration_metadata = property(fget=get_duration_metadata)
 
@@ -3239,7 +3206,7 @@ class ScheduleSlotForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.ScheduleSlotFormRecord
+        return  # osid.calendaring.records.ScheduleSlotFormRecord
 
 
 class ScheduleSlotList:
@@ -3271,7 +3238,7 @@ class ScheduleSlotList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlot
+        return  # osid.calendaring.ScheduleSlot
 
     next_schedule_slot = property(fget=get_next_schedule_slot)
 
@@ -3292,7 +3259,7 @@ class ScheduleSlotList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlot
+        return  # osid.calendaring.ScheduleSlot
 
 
 class TimePeriod:
@@ -3310,7 +3277,7 @@ class TimePeriod:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     start = property(fget=get_start)
 
@@ -3325,7 +3292,7 @@ class TimePeriod:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     end = property(fget=get_end)
 
@@ -3343,7 +3310,7 @@ class TimePeriod:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     exception_ids = property(fget=get_exception_ids)
 
@@ -3361,7 +3328,7 @@ class TimePeriod:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     exceptions = property(fget=get_exceptions)
 
@@ -3386,7 +3353,7 @@ class TimePeriod:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodRecord
+        return  # osid.calendaring.records.TimePeriodRecord
 
 
 class TimePeriodForm:
@@ -3412,7 +3379,7 @@ class TimePeriodForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     start_metadata = property(fget=get_start_metadata)
 
@@ -3455,7 +3422,7 @@ class TimePeriodForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.Metadata
+        return  # osid.Metadata
 
     end_metadata = property(fget=get_end_metadata)
 
@@ -3502,7 +3469,7 @@ class TimePeriodForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.TimePeriodFormRecord
+        return  # osid.calendaring.records.TimePeriodFormRecord
 
 
 class TimePeriodList:
@@ -3534,7 +3501,7 @@ class TimePeriodList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriod
+        return  # osid.calendaring.TimePeriod
 
     next_time_period = property(fget=get_next_time_period)
 
@@ -3554,7 +3521,7 @@ class TimePeriodList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriod
+        return  # osid.calendaring.TimePeriod
 
 
 class Commitment:
@@ -3572,7 +3539,7 @@ class Commitment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     event_id = property(fget=get_event_id)
 
@@ -3587,7 +3554,7 @@ class Commitment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     event = property(fget=get_event)
 
@@ -3602,7 +3569,7 @@ class Commitment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     resource_id = property(fget=get_resource_id)
 
@@ -3617,7 +3584,7 @@ class Commitment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     resource = property(fget=get_resource)
 
@@ -3642,7 +3609,7 @@ class Commitment:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentRecord
+        return  # osid.calendaring.records.CommitmentRecord
 
 
 class CommitmentForm:
@@ -3664,7 +3631,7 @@ class CommitmentForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CommitmentFormRecord
+        return  # osid.calendaring.records.CommitmentFormRecord
 
 
 class CommitmentList:
@@ -3696,7 +3663,7 @@ class CommitmentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Commitment
+        return  # osid.calendaring.Commitment
 
     next_commitment = property(fget=get_next_commitment)
 
@@ -3716,7 +3683,7 @@ class CommitmentList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Commitment
+        return  # osid.calendaring.Commitment
 
 
 class Calendar:
@@ -3744,7 +3711,7 @@ class Calendar:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarRecord
+        return  # osid.calendaring.records.CalendarRecord
 
 
 class CalendarForm:
@@ -3774,7 +3741,7 @@ class CalendarForm:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.records.CalendarFormRecord
+        return  # osid.calendaring.records.CalendarFormRecord
 
 
 class CalendarList:
@@ -3806,7 +3773,7 @@ class CalendarList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     next_calendar = property(fget=get_next_calendar)
 
@@ -3826,7 +3793,7 @@ class CalendarList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
 
 class CalendarNode:
@@ -3850,7 +3817,7 @@ class CalendarNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -3865,7 +3832,7 @@ class CalendarNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarNodeList
+        return  # osid.calendaring.CalendarNodeList
 
     parent_calendar_nodes = property(fget=get_parent_calendar_nodes)
 
@@ -3880,7 +3847,7 @@ class CalendarNode:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarNodeList
+        return  # osid.calendaring.CalendarNodeList
 
     child_calendar_nodes = property(fget=get_child_calendar_nodes)
 
@@ -3914,7 +3881,7 @@ class CalendarNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarNode
+        return  # osid.calendaring.CalendarNode
 
     next_calendar_node = property(fget=get_next_calendar_node)
 
@@ -3934,7 +3901,7 @@ class CalendarNodeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarNode
+        return  # osid.calendaring.CalendarNode
 
 
 class MeetingTime:
@@ -3952,7 +3919,7 @@ class MeetingTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     date = property(fget=get_date)
 
@@ -3967,7 +3934,7 @@ class MeetingTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.DisplayText
+        return  # osid.locale.DisplayText
 
     location_description = property(fget=get_location_description)
 
@@ -3982,7 +3949,7 @@ class MeetingTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_location_id(self):
@@ -3995,7 +3962,7 @@ class MeetingTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     location_id = property(fget=get_location_id)
 
@@ -4011,7 +3978,7 @@ class MeetingTime:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.mapping.Location
+        return  # osid.mapping.Location
 
     location = property(fget=get_location)
 
@@ -4045,7 +4012,7 @@ class MeetingTimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.MeetingTime
+        return  # osid.calendaring.MeetingTime
 
     next_meeting_time = property(fget=get_next_meeting_time)
 
@@ -4065,7 +4032,7 @@ class MeetingTimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.MeetingTime
+        return  # osid.calendaring.MeetingTime
 
 
 class TimeList:
@@ -4096,7 +4063,7 @@ class TimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
     next_time = property(fget=get_next_time)
 
@@ -4115,7 +4082,7 @@ class TimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Time
+        return  # osid.calendaring.Time
 
 
 class DateTimeList:
@@ -4147,7 +4114,7 @@ class DateTimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     next_date_time = property(fget=get_next_date_time)
 
@@ -4167,7 +4134,7 @@ class DateTimeList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
 
 class DurationList:
@@ -4199,7 +4166,7 @@ class DurationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
     next_duration = property(fget=get_next_duration)
 
@@ -4219,7 +4186,7 @@ class DurationList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Duration
+        return  # osid.calendaring.Duration
 
 
 class DateTimeInterval:
@@ -4237,7 +4204,7 @@ class DateTimeInterval:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     start = property(fget=get_start)
 
@@ -4254,7 +4221,7 @@ class DateTimeInterval:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTime
+        return  # osid.calendaring.DateTime
 
     end = property(fget=get_end)
 
@@ -4288,7 +4255,7 @@ class DateTimeIntervalList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeInterval
+        return  # osid.calendaring.DateTimeInterval
 
     next_date_time_interval = property(fget=get_next_date_time_interval)
 
@@ -4309,6 +4276,4 @@ class DateTimeIntervalList:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.DateTimeInterval
-
-
+        return  # osid.calendaring.DateTimeInterval

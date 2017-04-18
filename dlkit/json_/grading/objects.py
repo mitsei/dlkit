@@ -38,8 +38,6 @@ from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 
 
-
-
 class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Subjugateable):
     """A ``Grade``.
 
@@ -47,14 +45,11 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
     grading system.
 
     """
-
     _namespace = 'grading.Grade'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='GRADE', **kwargs)
         self._catalog_name = 'Gradebook'
-
-
     def get_grade_system_id(self):
         """Gets the ``GradeSystem Id`` in which this grade belongs.
 
@@ -152,6 +147,8 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         return self._get_record(grade_record_type)
 
 
+
+
 class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
     """This is the form for creating and updating ``Grades``.
 
@@ -162,7 +159,6 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
     constraints.
 
     """
-
     _namespace = 'grading.Grade'
 
     def __init__(self, **kwargs):
@@ -187,8 +183,6 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         self._my_map['inputScoreEndRange'] = self._input_score_end_range_default
         self._my_map['inputScoreStartRange'] = self._input_score_start_range_default
         self._my_map['assignedGradebookIds'] = [str(kwargs['gradebook_id'])]
-
-
     def get_input_score_start_range_metadata(self):
         """Gets the metadata for the input score start range.
 
@@ -363,6 +357,8 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         return self._get_record(grade_record_type)
 
 
+
+
 class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradeList`` provides a means for accessing ``Grade`` elements sequentially either one at a time or many at a time.
 
@@ -372,8 +368,6 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
       while (gl.hasNext()) {
            Grade[] grades = gl.getNextGrades(gl.available());
       }
-
-
 
     """
 
@@ -414,6 +408,8 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid_markers.Aggregateable):
     """A ``GradeSystem`` represents a grading system.
 
@@ -421,14 +417,11 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
     scale.
 
     """
-
     _namespace = 'grading.GradeSystem'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='GRADE_SYSTEM', **kwargs)
         self._catalog_name = 'Gradebook'
-
-
     def is_based_on_grades(self):
         """Tests if the grading system is based on grades.
 
@@ -562,6 +555,8 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
     object_map = property(fget=get_object_map)
 
 
+
+
 class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObjectForm, osid_objects.OsidAggregateableForm):
     """This is the form for creating and updating ``GradeSystems``.
 
@@ -572,7 +567,6 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
     constraints.
 
     """
-
     _namespace = 'grading.GradeSystem'
 
     def __init__(self, **kwargs):
@@ -599,8 +593,6 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         self._my_map['highestNumericScore'] = self._highest_numeric_score_default
         self._my_map['assignedGradebookIds'] = [str(kwargs['gradebook_id'])]
         self._my_map['grades'] = []
-
-
     def get_based_on_grades_metadata(self):
         """Gets the metadata for a grade-based designation.
 
@@ -821,6 +813,8 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         return self._get_record(grade_system_record_type)
 
 
+
+
 class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradeSystemList`` provides a means for accessing ``GradeSystem`` elements sequentially either one at a time or many at a time.
 
@@ -831,8 +825,6 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
       while (gsl.hasNext()) {
            GradeSystem[] systems = gsl.getNextGradeSystems(gsl.available());
       }
-
-
 
     """
 
@@ -875,16 +867,15 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
         return self._get_next_n(n)
 
 
+
+
 class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
     """A ``GradeEntry`` represents an entry in a ``Gradebook``."""
-
     _namespace = 'grading.GradeEntry'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='GRADE_ENTRY', **kwargs)
         self._catalog_name = 'Gradebook'
-
-
     def get_gradebook_column_id(self):
         """Gets the ``Id`` of the ``GradebookColumn``.
 
@@ -1193,6 +1184,8 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         return self._get_record(grade_entry_record_type)
 
 
+
+
 class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelationshipForm):
     """This is the form for creating and updating ``GradeEntries``.
 
@@ -1203,7 +1196,6 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
     constraints.
 
     """
-
     _namespace = 'grading.GradeEntry'
 
     def __init__(self, **kwargs):
@@ -1256,8 +1248,6 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         self._my_map['derived'] = False  # This is probably not persisted data
         self._my_map['timeGraded'] = None
         self._my_map['overriddenCalculatedEntryId'] = ''  # This will soon do something different
-
-
     def get_ignored_for_calculations_metadata(self):
         """Gets the metadata for the ignore flag.
 
@@ -1442,6 +1432,8 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         return self._get_record(grade_entry_record_type)
 
 
+
+
 class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradeEntryList`` provides a means for accessing ``GradeEntry`` elements sequentially either one at a time or many at a time.
 
@@ -1452,8 +1444,6 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
       while (gel.hasNext()) {
            GradeEntry[] entries = gel.getNextGradeEntries(gel.available());
       }
-
-
 
     """
 
@@ -1496,20 +1486,19 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObject):
     """A ``GradebookColumn`` represents a series of grade entries in a gradebook.
 
     Each GradeEntry in a column share the same ``GradeSystem``.
 
     """
-
     _namespace = 'grading.GradebookColumn'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='GRADEBOOK_COLUMN', **kwargs)
         self._catalog_name = 'Gradebook'
-
-
     def get_grade_system_id(self):
         """Gets the ``GradeSystem Id`` in which this grade belongs.
 
@@ -1566,6 +1555,8 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
         return self._get_record(gradebook_column_record_type)
 
 
+
+
 class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``GradebookColumns``.
 
@@ -1576,7 +1567,6 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
     constraints.
 
     """
-
     _namespace = 'grading.GradebookColumn'
 
     def __init__(self, **kwargs):
@@ -1596,8 +1586,6 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['gradeSystemId'] = self._grade_system_default
         self._my_map['assignedGradebookIds'] = [str(kwargs['gradebook_id'])]
-
-
     def get_grade_system_metadata(self):
         """Gets the metadata for a grade system.
 
@@ -1666,6 +1654,8 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         return self._get_record(gradebook_column_record_type)
 
 
+
+
 class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradebookColumnList`` provides a means for accessing ``GradebookColumn`` elements sequentially either one at a time or many at a time.
 
@@ -1676,8 +1666,6 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
       while (gcl.hasNext()) {
            GradebookColumn[] columns = gcl.getNextGradebookColumns(gcl.available());
       }
-
-
 
     """
 
@@ -1721,9 +1709,10 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
         return self._get_next_n(n)
 
 
+
+
 class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_objects.OsidObject):
     """A ``GradebookColumnSummary`` is a summary of all entries within a gradebook column."""
-
     _record_type_data_sets = {}
     _namespace = 'grading.GradebookColumnSummary'
 
@@ -1753,7 +1742,6 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
             return [e.get_grade().get_output_score() for e in self._entries if e.is_graded()]
         else:
             return [e.get_score() for e in self._entries if e.is_graded()]
-
     def get_gradebook_column_id(self):
         """Gets the ``Id`` of the ``GradebookColumn``.
 
@@ -1896,14 +1884,14 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
         return self._get_record(gradebook_column_summary_record_type)
 
 
+
+
 class Gradebook(abc_grading_objects.Gradebook, osid_objects.OsidCatalog):
     """A gradebook defines a collection of grade entries."""
-
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='GRADEBOOK', **kwargs)
-
     @utilities.arguments_not_none
     def get_gradebook_record(self, gradebook_record_type):
         """Gets the gradebook record corresponding to the given ``Gradebook`` record ``Type``.
@@ -1928,6 +1916,8 @@ class Gradebook(abc_grading_objects.Gradebook, osid_objects.OsidCatalog):
         raise errors.Unimplemented()
 
 
+
+
 class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating ``Gradebooks``.
 
@@ -1938,7 +1928,6 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
     constraints.
 
     """
-
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
@@ -1955,8 +1944,6 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
-
-
     @utilities.arguments_not_none
     def get_gradebook_form_record(self, gradebook_record_type):
         """Gets the ``GradebookFormRecord`` corresponding to the given gradebook record ``Type``.
@@ -1975,6 +1962,8 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
         raise errors.Unimplemented()
 
 
+
+
 class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradebookList`` provides a means for accessing ``Gradebook`` elements sequentially either one at a time or many at a time.
 
@@ -1985,8 +1974,6 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
       while (gl.hasNext()) {
            Gradebook[] gradebooks = gl.getNextGradebooks(gl.available());
       }
-
-
 
     """
 
@@ -2029,6 +2016,8 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
+
+
 class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -2037,7 +2026,6 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
     ``GradebookHierarchySession``.
 
     """
-
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -2054,7 +2042,6 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
         for gradebook_node in self.get_child_gradebook_nodes():
             node_map['childNodes'].append(gradebook_node.get_object_node_map())
         return node_map
-
     def get_gradebook(self):
         """Gets the ``Gradebook`` at this node.
 
@@ -2109,6 +2096,8 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
     child_gradebook_nodes = property(fget=get_child_gradebook_nodes)
 
 
+
+
 class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``GradebookNodeList`` provides a means for accessing ``GradebookNode`` elements sequentially either one at a time or many at a time.
 
@@ -2119,8 +2108,6 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
       while (gnl.hasNext()) {
            GradebookNode[] nodes = gnl.getNextGradebookNodes(gnl.available());
       }
-
-
 
     """
 
@@ -2162,5 +2149,3 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

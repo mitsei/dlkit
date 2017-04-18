@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class ResourceProfile:
     """The resource profile describes interoperability among resource services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_lookup(self):
@@ -48,7 +44,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_query(self):
@@ -61,7 +57,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_search(self):
@@ -74,7 +70,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_admin(self):
@@ -87,7 +83,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_notification(self):
@@ -103,7 +99,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_bin(self):
@@ -116,7 +112,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_bin_assignment(self):
@@ -129,7 +125,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_smart_bin(self):
@@ -142,7 +138,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_membership(self):
@@ -155,7 +151,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_group(self):
@@ -168,7 +164,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_group_assignment(self):
@@ -181,7 +177,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_group_notification(self):
@@ -194,7 +190,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_group_hierarchy(self):
@@ -207,7 +203,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_agent(self):
@@ -220,7 +216,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_agent_assignment(self):
@@ -233,7 +229,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_lookup(self):
@@ -246,7 +242,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_query(self):
@@ -259,7 +255,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_search(self):
@@ -272,7 +268,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_admin(self):
@@ -285,7 +281,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_notification(self):
@@ -298,7 +294,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_bin(self):
@@ -311,7 +307,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_bin_assignment(self):
@@ -324,7 +320,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_relationship_smart_bin(self):
@@ -337,7 +333,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_lookup(self):
@@ -350,7 +346,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_query(self):
@@ -363,7 +359,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_search(self):
@@ -376,7 +372,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_admin(self):
@@ -389,7 +385,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_notification(self):
@@ -406,7 +402,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_hierarchy(self):
@@ -419,7 +415,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bin_hierarchy_design(self):
@@ -432,7 +428,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_batch(self):
@@ -445,7 +441,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_resource_demographic(self):
@@ -458,7 +454,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_record_types(self):
@@ -471,7 +467,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     resource_record_types = property(fget=get_resource_record_types)
 
@@ -488,7 +484,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_record_types(self):
@@ -501,7 +497,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     resource_search_record_types = property(fget=get_resource_search_record_types)
 
@@ -518,7 +514,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_record_types(self):
@@ -531,7 +527,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     resource_relationship_record_types = property(fget=get_resource_relationship_record_types)
 
@@ -548,7 +544,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_search_record_types(self):
@@ -561,7 +557,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     resource_relationship_search_record_types = property(fget=get_resource_relationship_search_record_types)
 
@@ -578,7 +574,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_record_types(self):
@@ -591,7 +587,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     bin_record_types = property(fget=get_bin_record_types)
 
@@ -608,7 +604,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_search_record_types(self):
@@ -621,7 +617,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     bin_search_record_types = property(fget=get_bin_search_record_types)
 
@@ -638,7 +634,7 @@ class ResourceProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class ResourceManager:
@@ -697,10 +693,8 @@ class ResourceManager:
       * ``BinHierarchyDesignSession:`` a session to manage bin
         hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_lookup_session(self):
@@ -715,7 +709,7 @@ class ResourceManager:
         ``supports_resource_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceLookupSession
+        return  # osid.resource.ResourceLookupSession
 
     resource_lookup_session = property(fget=get_resource_lookup_session)
 
@@ -737,7 +731,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceLookupSession
+        return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
     def get_resource_query_session(self):
@@ -752,7 +746,7 @@ class ResourceManager:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuerySession
+        return  # osid.resource.ResourceQuerySession
 
     resource_query_session = property(fget=get_resource_query_session)
 
@@ -774,7 +768,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceQuerySession
+        return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
     def get_resource_search_session(self):
@@ -789,7 +783,7 @@ class ResourceManager:
         ``supports_resource_search()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchSession
+        return  # osid.resource.ResourceSearchSession
 
     resource_search_session = property(fget=get_resource_search_session)
 
@@ -811,7 +805,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceSearchSession
+        return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
     def get_resource_admin_session(self):
@@ -826,7 +820,7 @@ class ResourceManager:
         ``supports_resource_admin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAdminSession
+        return  # osid.resource.ResourceAdminSession
 
     resource_admin_session = property(fget=get_resource_admin_session)
 
@@ -848,7 +842,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAdminSession
+        return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
     def get_resource_notification_session(self, resource_receiver):
@@ -866,7 +860,7 @@ class ResourceManager:
         ``supports_resource_notification()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceNotificationSession
+        return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id):
@@ -888,7 +882,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceNotificationSession
+        return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
     def get_resource_bin_session(self):
@@ -903,7 +897,7 @@ class ResourceManager:
         ``supports_resource_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceBinSession
+        return  # osid.resource.ResourceBinSession
 
     resource_bin_session = property(fget=get_resource_bin_session)
 
@@ -920,7 +914,7 @@ class ResourceManager:
         ``supports_resource_bin_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceBinAssignmentSession
+        return  # osid.resource.ResourceBinAssignmentSession
 
     resource_bin_assignment_session = property(fget=get_resource_bin_assignment_session)
 
@@ -941,7 +935,7 @@ class ResourceManager:
         ``supports_resource_smart_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSmartBinSession
+        return  # osid.resource.ResourceSmartBinSession
 
     @abc.abstractmethod
     def get_membership_session(self):
@@ -956,7 +950,7 @@ class ResourceManager:
         ``support_membership()`` is ``true``.*
 
         """
-        return # osid.resource.MembershipSession
+        return  # osid.resource.MembershipSession
 
     membership_session = property(fget=get_membership_session)
 
@@ -978,7 +972,7 @@ class ResourceManager:
         are ``true``.*
 
         """
-        return # osid.resource.MembershipSession
+        return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
     def get_group_session(self):
@@ -993,7 +987,7 @@ class ResourceManager:
         ``supports_group()`` is ``true``.*
 
         """
-        return # osid.resource.GroupSession
+        return  # osid.resource.GroupSession
 
     group_session = property(fget=get_group_session)
 
@@ -1015,7 +1009,7 @@ class ResourceManager:
         ``true``.*
 
         """
-        return # osid.resource.GroupSession
+        return  # osid.resource.GroupSession
 
     @abc.abstractmethod
     def get_group_assignment_session(self):
@@ -1030,7 +1024,7 @@ class ResourceManager:
         ``supports_group_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.GroupAssignmentSession
+        return  # osid.resource.GroupAssignmentSession
 
     group_assignment_session = property(fget=get_group_assignment_session)
 
@@ -1052,7 +1046,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupAssignmentSession
+        return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
     def get_group_notification_session(self, group_rceeiver):
@@ -1070,7 +1064,7 @@ class ResourceManager:
         ``supports_group_notification()`` is ``true``.*
 
         """
-        return # osid.resource.GroupNotificationSession
+        return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
     def get_group_notification_session_for_bin(self, group_rceeiver, bin_id):
@@ -1092,7 +1086,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupNotificationSession
+        return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
     def get_group_hierarchy_session(self):
@@ -1107,7 +1101,7 @@ class ResourceManager:
         ``supports_group_hierarchy()`` is ``true``.*
 
         """
-        return # osid.resource.GroupHierarchySession
+        return  # osid.resource.GroupHierarchySession
 
     group_hierarchy_session = property(fget=get_group_hierarchy_session)
 
@@ -1129,7 +1123,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupHierarchySession
+        return  # osid.resource.GroupHierarchySession
 
     @abc.abstractmethod
     def get_resource_agent_session(self):
@@ -1144,7 +1138,7 @@ class ResourceManager:
         ``supports_resource_agent()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAgentSession
+        return  # osid.resource.ResourceAgentSession
 
     resource_agent_session = property(fget=get_resource_agent_session)
 
@@ -1166,7 +1160,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAgentSession
+        return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
     def get_resource_agent_assignment_session(self):
@@ -1181,7 +1175,7 @@ class ResourceManager:
         ``supports_resource_agent_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAgentAssignmentSession
+        return  # osid.resource.ResourceAgentAssignmentSession
 
     resource_agent_assignment_session = property(fget=get_resource_agent_assignment_session)
 
@@ -1203,7 +1197,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAgentAssignmentSession
+        return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
     def get_resource_relationship_lookup_session(self):
@@ -1218,7 +1212,7 @@ class ResourceManager:
         ``supports_resource_relationship_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipLookupSession
+        return  # osid.resource.ResourceRelationshipLookupSession
 
     resource_relationship_lookup_session = property(fget=get_resource_relationship_lookup_session)
 
@@ -1240,7 +1234,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipLookupSession
+        return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
     def get_resource_relationship_query_session(self):
@@ -1255,7 +1249,7 @@ class ResourceManager:
         ``supports_resource_relationship_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipQuerySession
+        return  # osid.resource.ResourceRelationshipQuerySession
 
     resource_relationship_query_session = property(fget=get_resource_relationship_query_session)
 
@@ -1277,7 +1271,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipQuerySession
+        return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
     def get_resource_relationship_search_session(self):
@@ -1292,7 +1286,7 @@ class ResourceManager:
         ``supports_resource_relationship_search()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipSearchSession
+        return  # osid.resource.ResourceRelationshipSearchSession
 
     resource_relationship_search_session = property(fget=get_resource_relationship_search_session)
 
@@ -1314,7 +1308,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipSearchSession
+        return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
     def get_resource_relationship_admin_session(self):
@@ -1329,7 +1323,7 @@ class ResourceManager:
         ``supports_resource_relationship_admin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipAdminSession
+        return  # osid.resource.ResourceRelationshipAdminSession
 
     resource_relationship_admin_session = property(fget=get_resource_relationship_admin_session)
 
@@ -1351,7 +1345,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipAdminSession
+        return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
     def get_resource_relationship_notification_session(self, resource_relationship_receiver):
@@ -1369,7 +1363,7 @@ class ResourceManager:
         ``supports_resource_relationship_notification()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipNotificationSession
+        return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
     def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id):
@@ -1391,7 +1385,7 @@ class ResourceManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipNotificationSession
+        return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
     def get_resource_relationship_bin_session(self):
@@ -1406,7 +1400,7 @@ class ResourceManager:
         ``supports_resource_relationship_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipBinSession
+        return  # osid.resource.ResourceRelationshipBinSession
 
     resource_relationship_bin_session = property(fget=get_resource_relationship_bin_session)
 
@@ -1424,7 +1418,7 @@ class ResourceManager:
         ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipBinAssignmentSession
+        return  # osid.resource.ResourceRelationshipBinAssignmentSession
 
     resource_relationship_bin_assignment_session = property(fget=get_resource_relationship_bin_assignment_session)
 
@@ -1445,7 +1439,7 @@ class ResourceManager:
         ``supports_resource_relationship_smart_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipSmartBinSession
+        return  # osid.resource.ResourceRelationshipSmartBinSession
 
     @abc.abstractmethod
     def get_bin_lookup_session(self):
@@ -1460,7 +1454,7 @@ class ResourceManager:
         ``supports_bin_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.BinLookupSession
+        return  # osid.resource.BinLookupSession
 
     bin_lookup_session = property(fget=get_bin_lookup_session)
 
@@ -1477,7 +1471,7 @@ class ResourceManager:
         ``supports_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuerySession
+        return  # osid.resource.BinQuerySession
 
     bin_query_session = property(fget=get_bin_query_session)
 
@@ -1494,7 +1488,7 @@ class ResourceManager:
         ``supports_bin_search()`` is ``true``.*
 
         """
-        return # osid.resource.BinSearchSession
+        return  # osid.resource.BinSearchSession
 
     bin_search_session = property(fget=get_bin_search_session)
 
@@ -1511,7 +1505,7 @@ class ResourceManager:
         ``supports_bin_admin()`` is ``true``.*
 
         """
-        return # osid.resource.BinAdminSession
+        return  # osid.resource.BinAdminSession
 
     bin_admin_session = property(fget=get_bin_admin_session)
 
@@ -1531,7 +1525,7 @@ class ResourceManager:
         ``supports_bin_notification()`` is ``true``.*
 
         """
-        return # osid.resource.BinNotificationSession
+        return  # osid.resource.BinNotificationSession
 
     @abc.abstractmethod
     def get_bin_hierarchy_session(self):
@@ -1546,7 +1540,7 @@ class ResourceManager:
         ``supports_bin_hierarchy()`` is ``true``.*
 
         """
-        return # osid.resource.BinHierarchySession
+        return  # osid.resource.BinHierarchySession
 
     bin_hierarchy_session = property(fget=get_bin_hierarchy_session)
 
@@ -1563,7 +1557,7 @@ class ResourceManager:
         ``supports_bin_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.resource.BinHierarchyDesignSession
+        return  # osid.resource.BinHierarchyDesignSession
 
     bin_hierarchy_design_session = property(fget=get_bin_hierarchy_design_session)
 
@@ -1580,7 +1574,7 @@ class ResourceManager:
         ``supports_resource_batch()`` is ``true``.*
 
         """
-        return # osid.resource.batch.ResourceBatchManager
+        return  # osid.resource.batch.ResourceBatchManager
 
     resource_batch_manager = property(fget=get_resource_batch_manager)
 
@@ -1597,7 +1591,7 @@ class ResourceManager:
         ``supports_resource_demographic()`` is ``true``.*
 
         """
-        return # osid.resource.demographic.ResourceDemographicManager
+        return  # osid.resource.demographic.ResourceDemographicManager
 
     resource_demographic_manager = property(fget=get_resource_demographic_manager)
 
@@ -1659,10 +1653,8 @@ class ResourceProxyManager:
       * ``BinHierarchyDesignSession:`` a session to manage bin
         hierarchies
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_resource_lookup_session(self, proxy):
@@ -1680,7 +1672,7 @@ class ResourceProxyManager:
         ``supports_resource_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceLookupSession
+        return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
     def get_resource_lookup_session_for_bin(self, bin_id, proxy):
@@ -1702,7 +1694,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceLookupSession
+        return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
     def get_resource_query_session(self, proxy):
@@ -1720,7 +1712,7 @@ class ResourceProxyManager:
         ``supports_resource_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuerySession
+        return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
     def get_resource_query_session_for_bin(self, bin_id, proxy):
@@ -1742,7 +1734,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceQuerySession
+        return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
     def get_resource_search_session(self, proxy):
@@ -1760,7 +1752,7 @@ class ResourceProxyManager:
         ``supports_resource_search()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchSession
+        return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
     def get_resource_search_session_for_bin(self, bin_id, proxy):
@@ -1782,7 +1774,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceSearchSession
+        return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
     def get_resource_admin_session(self, proxy):
@@ -1800,7 +1792,7 @@ class ResourceProxyManager:
         ``supports_resource_admin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAdminSession
+        return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
     def get_resource_admin_session_for_bin(self, bin_id, proxy):
@@ -1822,7 +1814,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAdminSession
+        return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
     def get_resource_notification_session(self, resource_receiver, proxy):
@@ -1842,7 +1834,7 @@ class ResourceProxyManager:
         ``supports_resource_notification()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceNotificationSession
+        return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id, proxy):
@@ -1866,7 +1858,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceNotificationSession
+        return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
     def get_resource_bin_session(self, proxy):
@@ -1884,7 +1876,7 @@ class ResourceProxyManager:
         ``supports_resource_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceBinSession
+        return  # osid.resource.ResourceBinSession
 
     @abc.abstractmethod
     def get_resource_bin_assignment_session(self, proxy):
@@ -1902,7 +1894,7 @@ class ResourceProxyManager:
         ``supports_resource_bin_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceBinAssignmentSession
+        return  # osid.resource.ResourceBinAssignmentSession
 
     @abc.abstractmethod
     def get_resource_smart_bin_session(self, bin_id, proxy):
@@ -1923,7 +1915,7 @@ class ResourceProxyManager:
         ``supports_resource_smart_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSmartBinSession
+        return  # osid.resource.ResourceSmartBinSession
 
     @abc.abstractmethod
     def get_membership_session(self, proxy):
@@ -1941,7 +1933,7 @@ class ResourceProxyManager:
         ``support_membership()`` is ``true``.*
 
         """
-        return # osid.resource.MembershipSession
+        return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
     def get_membership_session_for_bin(self, bin_id, proxy):
@@ -1963,7 +1955,7 @@ class ResourceProxyManager:
         are ``true``.*
 
         """
-        return # osid.resource.MembershipSession
+        return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
     def get_group_session(self, proxy):
@@ -1981,7 +1973,7 @@ class ResourceProxyManager:
         ``supports_groups()`` is ``true``.*
 
         """
-        return # osid.resource.GroupSession
+        return  # osid.resource.GroupSession
 
     @abc.abstractmethod
     def get_group_session_for_bin(self, bin_id, proxy):
@@ -2003,7 +1995,7 @@ class ResourceProxyManager:
         ``true``.*
 
         """
-        return # osid.resource.GroupSession
+        return  # osid.resource.GroupSession
 
     @abc.abstractmethod
     def get_group_assignment_session(self, proxy):
@@ -2021,7 +2013,7 @@ class ResourceProxyManager:
         ``supports_group_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.GroupAssignmentSession
+        return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
     def get_group_assignment_session_for_bin(self, bin_id, proxy):
@@ -2043,7 +2035,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupAssignmentSession
+        return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
     def get_group_notification_session(self, group_rceeiver, proxy):
@@ -2063,7 +2055,7 @@ class ResourceProxyManager:
         ``supports_group_notification()`` is ``true``.*
 
         """
-        return # osid.resource.GroupNotificationSession
+        return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
     def get_group_notification_session_for_bin(self, group_rceeiver, bin_id, proxy):
@@ -2087,7 +2079,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupNotificationSession
+        return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
     def get_group_hierarchy_session(self, proxy):
@@ -2105,7 +2097,7 @@ class ResourceProxyManager:
         ``supports_group_hierarchy()`` is ``true``.*
 
         """
-        return # osid.resource.BinHierarchySession
+        return  # osid.resource.BinHierarchySession
 
     @abc.abstractmethod
     def get_group_hierarchy_session_for_bin(self, bin_id, proxy):
@@ -2127,7 +2119,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.GroupHierarchySession
+        return  # osid.resource.GroupHierarchySession
 
     @abc.abstractmethod
     def get_resource_agent_session(self, proxy):
@@ -2145,7 +2137,7 @@ class ResourceProxyManager:
         ``supports_resource_agents()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAgentSession
+        return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
     def get_resource_agent_session_for_bin(self, bin_id, proxy):
@@ -2167,7 +2159,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAgentSession
+        return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
     def get_resource_agent_assignment_session(self, proxy):
@@ -2185,7 +2177,7 @@ class ResourceProxyManager:
         ``supports_resource_agent_assignment()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceAgentAssignmentSession
+        return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
     def get_resource_agent_assignment_session_for_bin(self, bin_id, proxy):
@@ -2207,7 +2199,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.resource.ResourceAgentAssignmentSession
+        return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
     def get_resource_relationship_lookup_session(self, proxy):
@@ -2225,7 +2217,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipLookupSession
+        return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
     def get_resource_relationship_lookup_session_for_bin(self, bin_id, proxy):
@@ -2247,7 +2239,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipLookupSession
+        return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
     def get_resource_relationship_query_session(self, proxy):
@@ -2265,7 +2257,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_query()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipQuerySession
+        return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
     def get_resource_relationship_query_session_for_bin(self, bin_id, proxy):
@@ -2287,7 +2279,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipQuerySession
+        return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
     def get_resource_relationship_search_session(self, proxy):
@@ -2305,7 +2297,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_search()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipSearchSession
+        return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
     def get_resource_relationship_search_session_for_bin(self, bin_id, proxy):
@@ -2327,7 +2319,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipSearchSession
+        return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
     def get_resource_relationship_admin_session(self, proxy):
@@ -2345,7 +2337,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_admin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipAdminSession
+        return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
     def get_resource_relationship_admin_session_for_bin(self, bin_id, proxy):
@@ -2367,7 +2359,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipAdminSession
+        return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
     def get_resource_relationship_notification_session(self, resource_relationship_receiver, proxy):
@@ -2387,7 +2379,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_notification()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipNotificationSession
+        return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
     def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id, proxy):
@@ -2411,7 +2403,7 @@ class ResourceProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.resource.ResourceRelationshipNotificationSession
+        return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
     def get_resource_relationship_bin_session(self, proxy):
@@ -2429,7 +2421,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipBinSession
+        return  # osid.resource.ResourceRelationshipBinSession
 
     @abc.abstractmethod
     def get_resource_relationship_bin_assignment_session(self, proxy):
@@ -2448,7 +2440,7 @@ class ResourceProxyManager:
         ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipBinAssignmentSession
+        return  # osid.resource.ResourceRelationshipBinAssignmentSession
 
     @abc.abstractmethod
     def get_resource_relationship_smart_bin_session(self, bin_id, proxy):
@@ -2469,7 +2461,7 @@ class ResourceProxyManager:
         ``supports_resource_relationship_smart_bin()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceRelationshipSmartBinSession
+        return  # osid.resource.ResourceRelationshipSmartBinSession
 
     @abc.abstractmethod
     def get_bin_lookup_session(self, proxy):
@@ -2487,7 +2479,7 @@ class ResourceProxyManager:
         ``supports_bin_lookup()`` is ``true``.*
 
         """
-        return # osid.resource.BinLookupSession
+        return  # osid.resource.BinLookupSession
 
     @abc.abstractmethod
     def get_bin_query_session(self, proxy):
@@ -2505,7 +2497,7 @@ class ResourceProxyManager:
         ``supports_bin_query()`` is ``true``.*
 
         """
-        return # osid.resource.BinQuerySession
+        return  # osid.resource.BinQuerySession
 
     @abc.abstractmethod
     def get_bin_search_session(self, proxy):
@@ -2523,7 +2515,7 @@ class ResourceProxyManager:
         ``supports_bin_search()`` is ``true``.*
 
         """
-        return # osid.resource.BinSearchSession
+        return  # osid.resource.BinSearchSession
 
     @abc.abstractmethod
     def get_bin_admin_session(self, proxy):
@@ -2541,7 +2533,7 @@ class ResourceProxyManager:
         ``supports_bin_admin()`` is ``true``.*
 
         """
-        return # osid.resource.BinAdminSession
+        return  # osid.resource.BinAdminSession
 
     @abc.abstractmethod
     def get_bin_notification_session(self, bin_receiver, proxy):
@@ -2561,7 +2553,7 @@ class ResourceProxyManager:
         ``supports_bin_notification()`` is ``true``.*
 
         """
-        return # osid.resource.BinNotificationSession
+        return  # osid.resource.BinNotificationSession
 
     @abc.abstractmethod
     def get_bin_hierarchy_session(self, proxy):
@@ -2580,7 +2572,7 @@ class ResourceProxyManager:
         ``supports_bin_hierarchy()`` is ``true``.*
 
         """
-        return # osid.resource.BinHierarchySession
+        return  # osid.resource.BinHierarchySession
 
     @abc.abstractmethod
     def get_bin_hierarchy_design_session(self, proxy):
@@ -2599,7 +2591,7 @@ class ResourceProxyManager:
         ``supports_bin_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.resource.BinHierarchyDesignSession
+        return  # osid.resource.BinHierarchyDesignSession
 
     @abc.abstractmethod
     def get_resource_batch_proxy_manager(self):
@@ -2614,7 +2606,7 @@ class ResourceProxyManager:
         ``supports_resource_batch()`` is ``true``.*
 
         """
-        return # osid.resource.batch.ResourceBatchProxyManager
+        return  # osid.resource.batch.ResourceBatchProxyManager
 
     resource_batch_proxy_manager = property(fget=get_resource_batch_proxy_manager)
 
@@ -2631,8 +2623,6 @@ class ResourceProxyManager:
         ``supports_resource_demographic()`` is ``true``.*
 
         """
-        return # osid.resource.demographic.ResourceDemographicProxyManager
+        return  # osid.resource.demographic.ResourceDemographicProxyManager
 
     resource_demographic_proxy_manager = property(fget=get_resource_demographic_proxy_manager)
-
-

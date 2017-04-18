@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.authentication_process import records as abc_authentication_process_records
 
 
-
-
 class AuthenticationRecord(abc_authentication_process_records.AuthenticationRecord, osid_records.OsidRecord):
     """A record for an ``Authentication``.
 
@@ -25,7 +23,3 @@ class AuthenticationRecord(abc_authentication_process_records.AuthenticationReco
     underlying object.
 
     """
-
-
-
-

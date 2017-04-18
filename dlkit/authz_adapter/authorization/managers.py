@@ -17,11 +17,8 @@ from ..utilities import raise_null_argument
 from dlkit.manager_impls.authorization import managers as authorization_managers
 
 
-
-
 class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.AuthorizationProfile):
     """Adapts underlying AuthorizationProfile methodswith authorization checks."""
-
     def __init__(self):
         osid_managers.OsidProfile.__init__(self)
 
@@ -35,7 +32,6 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
             return self._provider_manager.get_vault_hierarchy_session()
         except Unimplemented:
             return None
-
     def supports_authorization(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -135,9 +131,10 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
 
 
+
+
 class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, authorization_managers.AuthorizationManager):
     """Adapts underlying AuthorizationManager methodswith authorization checks."""
-
     def __init__(self):
         AuthorizationProfile.__init__(self)
 
@@ -148,8 +145,6 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('AUTHORIZATION', provider_impl)
         # need to add version argument
-
-
     def get_authorization_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -335,9 +330,10 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 
 
+
+
 class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
     """Adapts underlying AuthorizationProxyManager methodswith authorization checks."""
-
     def __init__(self):
         AuthorizationProfile.__init__(self)
 
@@ -348,8 +344,6 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('AUTHORIZATION', provider_impl)
         # need to add version argument
-
-
     @raise_null_argument
     def get_authorization_session(self, proxy):
         # Implemented from azosid template for -
@@ -537,5 +531,3 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         raise Unimplemented()
 
     authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
-
-

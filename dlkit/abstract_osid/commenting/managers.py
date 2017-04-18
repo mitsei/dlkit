@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentingProfile:
     """The commenting profile describes the interoperability among commenting services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -40,7 +36,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_lookup(self):
@@ -53,7 +49,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_rating_lookup(self):
@@ -66,7 +62,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_query(self):
@@ -79,7 +75,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_search(self):
@@ -92,7 +88,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_admin(self):
@@ -105,7 +101,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_notification(self):
@@ -118,7 +114,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_book(self):
@@ -131,7 +127,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_book_assignment(self):
@@ -144,7 +140,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_comment_smart_book(self):
@@ -157,7 +153,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_lookup(self):
@@ -170,7 +166,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_query(self):
@@ -183,7 +179,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_search(self):
@@ -196,7 +192,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_admin(self):
@@ -209,7 +205,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_notification(self):
@@ -223,7 +219,7 @@ class CommentingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_hierarchy(self):
@@ -236,7 +232,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_book_hierarchy_design(self):
@@ -250,7 +246,7 @@ class CommentingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_commenting_batch(self):
@@ -264,7 +260,7 @@ class CommentingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_record_types(self):
@@ -277,7 +273,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     comment_record_types = property(fget=get_comment_record_types)
 
@@ -294,7 +290,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_comment_search_record_types(self):
@@ -307,7 +303,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     comment_search_record_types = property(fget=get_comment_search_record_types)
 
@@ -324,7 +320,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_record_types(self):
@@ -337,7 +333,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     book_record_types = property(fget=get_book_record_types)
 
@@ -354,7 +350,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_book_search_record_types(self):
@@ -367,7 +363,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     book_search_record_types = property(fget=get_book_search_record_types)
 
@@ -384,7 +380,7 @@ class CommentingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class CommentingManager:
@@ -424,7 +420,6 @@ class CommentingManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_comment_lookup_session(self):
         """Gets the ``OsidSession`` associated with the comment lookup service.
@@ -438,7 +433,7 @@ class CommentingManager:
         ``supports_comment_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentLookupSession
+        return  # osid.commenting.CommentLookupSession
 
     comment_lookup_session = property(fget=get_comment_lookup_session)
 
@@ -460,7 +455,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentLookupSession
+        return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
     def get_rating_lookup_session(self):
@@ -475,7 +470,7 @@ class CommentingManager:
         ``supports_rating_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.RatingLookupSession
+        return  # osid.commenting.RatingLookupSession
 
     rating_lookup_session = property(fget=get_rating_lookup_session)
 
@@ -497,7 +492,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.RatingLookupSession
+        return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
     def get_comment_query_session(self):
@@ -512,7 +507,7 @@ class CommentingManager:
         ``supports_comment_query()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentQuerySession
+        return  # osid.commenting.CommentQuerySession
 
     comment_query_session = property(fget=get_comment_query_session)
 
@@ -534,7 +529,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentQuerySession
+        return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
     def get_comment_search_session(self):
@@ -549,7 +544,7 @@ class CommentingManager:
         ``supports_comment_search()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentSearchSession
+        return  # osid.commenting.CommentSearchSession
 
     comment_search_session = property(fget=get_comment_search_session)
 
@@ -571,7 +566,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentSearchSession
+        return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
     def get_comment_admin_session(self):
@@ -586,7 +581,7 @@ class CommentingManager:
         ``supports_comment_admin()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentAdminSession
+        return  # osid.commenting.CommentAdminSession
 
     comment_admin_session = property(fget=get_comment_admin_session)
 
@@ -608,7 +603,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentAdminSession
+        return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
     def get_comment_notification_session(self, comment_receiver):
@@ -626,7 +621,7 @@ class CommentingManager:
         ``supports_comment_notification()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentNotificationSession
+        return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
     def get_comment_notification_session_for_book(self, comment_receiver, book_id):
@@ -648,7 +643,7 @@ class CommentingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentNotificationSession
+        return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
     def get_comment_book_session(self):
@@ -663,7 +658,7 @@ class CommentingManager:
         ``supports_comment_book()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentBookSession
+        return  # osid.commenting.CommentBookSession
 
     comment_book_session = property(fget=get_comment_book_session)
 
@@ -680,7 +675,7 @@ class CommentingManager:
         ``supports_comment_book_assignment()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentBookAssignmentSession
+        return  # osid.commenting.CommentBookAssignmentSession
 
     comment_book_assignment_session = property(fget=get_comment_book_assignment_session)
 
@@ -701,7 +696,7 @@ class CommentingManager:
         ``supports_comment_smart_book()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentSmartBookSession
+        return  # osid.commenting.CommentSmartBookSession
 
     @abc.abstractmethod
     def get_book_lookup_session(self):
@@ -716,7 +711,7 @@ class CommentingManager:
         ``supports_book_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.BookLookupSession
+        return  # osid.commenting.BookLookupSession
 
     book_lookup_session = property(fget=get_book_lookup_session)
 
@@ -733,7 +728,7 @@ class CommentingManager:
         ``supports_book_query()`` is ``true``.*
 
         """
-        return # osid.commenting.BookQuerySession
+        return  # osid.commenting.BookQuerySession
 
     book_query_session = property(fget=get_book_query_session)
 
@@ -750,7 +745,7 @@ class CommentingManager:
         ``supports_book_search()`` is ``true``.*
 
         """
-        return # osid.commenting.BookSearchSession
+        return  # osid.commenting.BookSearchSession
 
     book_search_session = property(fget=get_book_search_session)
 
@@ -767,7 +762,7 @@ class CommentingManager:
         ``supports_book_admin()`` is ``true``.*
 
         """
-        return # osid.commenting.BookAdminSession
+        return  # osid.commenting.BookAdminSession
 
     book_admin_session = property(fget=get_book_admin_session)
 
@@ -787,7 +782,7 @@ class CommentingManager:
         ``supports_book_notification()`` is ``true``.*
 
         """
-        return # osid.commenting.BookNotificationSession
+        return  # osid.commenting.BookNotificationSession
 
     @abc.abstractmethod
     def get_book_hierarchy_session(self):
@@ -802,7 +797,7 @@ class CommentingManager:
         ``supports_book_hierarchy()`` is ``true``.*
 
         """
-        return # osid.commenting.BookHierarchySession
+        return  # osid.commenting.BookHierarchySession
 
     book_hierarchy_session = property(fget=get_book_hierarchy_session)
 
@@ -819,7 +814,7 @@ class CommentingManager:
         ``supports_book_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.commenting.BookHierarchyDesignSession
+        return  # osid.commenting.BookHierarchyDesignSession
 
     book_hierarchy_design_session = property(fget=get_book_hierarchy_design_session)
 
@@ -836,7 +831,7 @@ class CommentingManager:
         ``supports_commenting_batch()`` is ``true``.*
 
         """
-        return # osid.commenting.batch.CommentingBatchManager
+        return  # osid.commenting.batch.CommentingBatchManager
 
     commenting_batch_manager = property(fget=get_commenting_batch_manager)
 
@@ -880,7 +875,6 @@ class CommentingProxyManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_comment_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the comment lookup service.
@@ -897,7 +891,7 @@ class CommentingProxyManager:
         ``supports_comment_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentLookupSession
+        return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
     def get_comment_lookup_session_for_book(self, book_id, proxy):
@@ -919,7 +913,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentLookupSession
+        return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
     def get_rating_lookup_session(self, proxy):
@@ -937,7 +931,7 @@ class CommentingProxyManager:
         ``supports_rating_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.RatingLookupSession
+        return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
     def get_rating_lookup_session_for_book(self, book_id, proxy):
@@ -959,7 +953,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.RatingLookupSession
+        return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
     def get_comment_query_session(self, proxy):
@@ -977,7 +971,7 @@ class CommentingProxyManager:
         ``supports_comment_query()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentQuerySession
+        return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
     def get_comment_query_session_for_book(self, book_id, proxy):
@@ -999,7 +993,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentQuerySession
+        return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
     def get_comment_search_session(self, proxy):
@@ -1017,7 +1011,7 @@ class CommentingProxyManager:
         ``supports_comment_search()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentSearchSession
+        return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
     def get_comment_search_session_for_book(self, book_id, proxy):
@@ -1039,7 +1033,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentSearchSession
+        return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
     def get_comment_admin_session(self, proxy):
@@ -1057,7 +1051,7 @@ class CommentingProxyManager:
         ``supports_comment_admin()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentAdminSession
+        return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
     def get_comment_admin_session_for_book(self, book_id, proxy):
@@ -1079,7 +1073,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentAdminSession
+        return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
     def get_comment_notification_session(self, comment_receiver, proxy):
@@ -1099,7 +1093,7 @@ class CommentingProxyManager:
         ``supports_comment_notification()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentNotificationSession
+        return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
     def get_comment_notification_session_for_book(self, comment_receiver, book_id, proxy):
@@ -1123,7 +1117,7 @@ class CommentingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.commenting.CommentNotificationSession
+        return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
     def get_comment_book_session(self, proxy):
@@ -1141,7 +1135,7 @@ class CommentingProxyManager:
         ``supports_comment_book()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentBookSession
+        return  # osid.commenting.CommentBookSession
 
     @abc.abstractmethod
     def get_comment_book_assignment_session(self, proxy):
@@ -1159,7 +1153,7 @@ class CommentingProxyManager:
         ``supports_comment_book_assignment()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentBookAssignmentSession
+        return  # osid.commenting.CommentBookAssignmentSession
 
     @abc.abstractmethod
     def get_comment_smart_book_session(self, book_id, proxy):
@@ -1180,7 +1174,7 @@ class CommentingProxyManager:
         ``supports_comment_smart_book()`` is ``true``.*
 
         """
-        return # osid.commenting.CommentSmartBookSession
+        return  # osid.commenting.CommentSmartBookSession
 
     @abc.abstractmethod
     def get_book_lookup_session(self, proxy):
@@ -1198,7 +1192,7 @@ class CommentingProxyManager:
         ``supports_book_lookup()`` is ``true``.*
 
         """
-        return # osid.commenting.BookLookupSession
+        return  # osid.commenting.BookLookupSession
 
     @abc.abstractmethod
     def get_book_query_session(self, proxy):
@@ -1216,7 +1210,7 @@ class CommentingProxyManager:
         ``supports_book_query()`` is ``true``.*
 
         """
-        return # osid.commenting.BookQuerySession
+        return  # osid.commenting.BookQuerySession
 
     @abc.abstractmethod
     def get_book_search_session(self, proxy):
@@ -1234,7 +1228,7 @@ class CommentingProxyManager:
         ``supports_book_search()`` is ``true``.*
 
         """
-        return # osid.commenting.BookSearchSession
+        return  # osid.commenting.BookSearchSession
 
     @abc.abstractmethod
     def get_book_admin_session(self, proxy):
@@ -1252,7 +1246,7 @@ class CommentingProxyManager:
         ``supports_book_admin()`` is ``true``.*
 
         """
-        return # osid.commenting.BookAdminSession
+        return  # osid.commenting.BookAdminSession
 
     @abc.abstractmethod
     def get_book_notification_session(self, book_receiver, proxy):
@@ -1272,7 +1266,7 @@ class CommentingProxyManager:
         ``supports_book_notification()`` is ``true``.*
 
         """
-        return # osid.commenting.BookNotificationSession
+        return  # osid.commenting.BookNotificationSession
 
     @abc.abstractmethod
     def get_book_hierarchy_session(self, proxy):
@@ -1290,7 +1284,7 @@ class CommentingProxyManager:
         ``supports_book_hierarchy()`` is ``true``.*
 
         """
-        return # osid.commenting.BookHierarchySession
+        return  # osid.commenting.BookHierarchySession
 
     @abc.abstractmethod
     def get_book_hierarchy_design_session(self, proxy):
@@ -1308,7 +1302,7 @@ class CommentingProxyManager:
         ``supports_book_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.commenting.BookHierarchyDesignSession
+        return  # osid.commenting.BookHierarchyDesignSession
 
     @abc.abstractmethod
     def get_commenting_batch_proxy_manager(self):
@@ -1323,8 +1317,6 @@ class CommentingProxyManager:
         ``supports_commenting_batch()`` is ``true``.*
 
         """
-        return # osid.commenting.batch.CommentingBatchProxyManager
+        return  # osid.commenting.batch.CommentingBatchProxyManager
 
     commenting_batch_proxy_manager = property(fget=get_commenting_batch_proxy_manager)
-
-

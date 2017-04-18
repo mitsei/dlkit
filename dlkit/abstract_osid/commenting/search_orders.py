@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_reference(self, style):
@@ -61,7 +57,7 @@ class CommentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commentor_search_order(self):
@@ -75,7 +71,7 @@ class CommentSearchOrder:
         ``supports_commentor_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     commentor_search_order = property(fget=get_commentor_search_order)
 
@@ -103,7 +99,7 @@ class CommentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commenting_agent_search_order(self):
@@ -117,7 +113,7 @@ class CommentSearchOrder:
         ``supports_commenting_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     commenting_agent_search_order = property(fget=get_commenting_agent_search_order)
 
@@ -158,7 +154,7 @@ class CommentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_rating_search_order(self):
@@ -172,7 +168,7 @@ class CommentSearchOrder:
         ``supports_rating_search_order()`` is ``true``.*
 
         """
-        return # osid.grading.GradeSearchOrder
+        return  # osid.grading.GradeSearchOrder
 
     rating_search_order = property(fget=get_rating_search_order)
 
@@ -193,13 +189,12 @@ class CommentSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.CommentSearchOrderRecord
+        return  # osid.commenting.records.CommentSearchOrderRecord
 
 
 class BookSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_book_search_order_record(self, book_record_type):
@@ -218,6 +213,4 @@ class BookSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.commenting.records.BookSearchOrderRecord
-
-
+        return  # osid.commenting.records.BookSearchOrderRecord

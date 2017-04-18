@@ -38,8 +38,6 @@ SIMPLE_SEQUENCE_RECORD_TYPE = Type(**{
     'identifier': 'simple-child-sequencing'})
 
 
-
-
 class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objects.OsidObject, osid_markers.Containable, osid_markers.Operable):
     """An ``AssessmentPart`` represents a section of an assessment.
 
@@ -48,14 +46,11 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
     rules.
 
     """
-
     _namespace = 'assessment_authoring.AssessmentPart'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_PART', **kwargs)
         self._catalog_name = 'Bank'
-
-
     def get_assessment_id(self):
         """Gets the assessment ``Id`` to which this rule belongs.
 
@@ -310,6 +305,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         return session
 
 
+
+
 class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, osid_objects.OsidObjectForm, osid_objects.OsidContainableForm, osid_objects.OsidOperableForm):
     """This is the form for creating and updating ``AssessmentParts``.
 
@@ -320,7 +317,6 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
     constraints.
 
     """
-
     _namespace = 'assessment_authoring.AssessmentPart'
 
     def __init__(self, **kwargs):
@@ -385,7 +381,6 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         self._my_map['itemsShuffled'] = self._items_shuffled_default
         if self._supports_simple_sequencing():
             self._my_map['childIds'] = []
-
     def get_weight_metadata(self):
         """Gets the metadata for the weight.
 
@@ -572,6 +567,8 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         return bool(str(SIMPLE_SEQUENCE_RECORD_TYPE) in self._my_map['recordTypeIds'])
 
 
+
+
 class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssessmentPartList`` provides a means for accessing ``AssessmentPart`` elements sequentially either one at a time or many at a time.
 
@@ -582,8 +579,6 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
       while (apl.hasNext()) {
            AssessmentPart[] assessmentParts = apl.hetNextAssessmentParts(apl.available());
       }
-
-
 
     """
 
@@ -627,16 +622,15 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
         return self._get_next_n(n)
 
 
+
+
 class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.OsidRule):
     """A ``SequenceRule`` defines the ordering of ``AssessmentParts``."""
-
     _namespace = 'assessment_authoring.SequenceRule'
 
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='SEQUENCE_RULE', **kwargs)
         self._catalog_name = 'Bank'
-
-
     def get_assessment_part_id(self):
         """Gets the assessment part ``Id`` to which this rule belongs.
 
@@ -784,6 +778,8 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         return self._get_record(sequence_rule_record_type)
 
 
+
+
 class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_objects.OsidRuleForm):
     """This is the form for creating and updating sequence rules.
 
@@ -793,7 +789,6 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
     provide display hints or data constraints.
 
     """
-
     _namespace = 'assessment_authoring.SequenceRule'
 
     def __init__(self, **kwargs):
@@ -815,8 +810,6 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         self._my_map['cumulative'] = self._cumulative_default
         self._my_map['assessmentPartId'] = str(kwargs['assessment_part_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
-
-
     def get_minimum_score_metadata(self):
         """Gets the metadata for the minimum score.
 
@@ -957,6 +950,8 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         return self._get_record(sequence_rule_record)
 
 
+
+
 class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``SequenceRuleList`` provides a means for accessing ``SequenceRule`` elements sequentially either one at a time or many at a time.
 
@@ -967,8 +962,6 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
       while (srl.hasNext()) {
            AssessmentSequenceRule[] rules = srl.getNextAssessmentSequenceRules(srl.available());
       }
-
-
 
     """
 
@@ -1009,5 +1002,3 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

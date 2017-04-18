@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EndpointRecord:
@@ -31,8 +26,6 @@ class EndpointRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class RequestRecord:
     """A record for a ``Request``.
 
@@ -43,8 +36,6 @@ class RequestRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ResponseRecord:
     """A record for a ``Response``.
 
@@ -53,7 +44,3 @@ class ResponseRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

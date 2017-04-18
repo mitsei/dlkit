@@ -20,11 +20,8 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.repository import searches as abc_repository_searches
 
 
-
-
 class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch):
     """The search interface for governing asset searches."""
-
     def __init__(self, runtime):
         self._namespace = 'repository.Asset'
         record_type_data_sets = get_registry('ASSET_RECORD_TYPES', runtime)
@@ -35,7 +32,6 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_searches.OsidSearch.__init__(self, runtime)
-
     @utilities.arguments_not_none
     def search_among_assets(self, asset_ids):
         """Execute this search among the given list of assets.
@@ -83,15 +79,15 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
         raise errors.Unimplemented()
 
 
+
+
 class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-
     def __init__(self, results, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         self._results = results
         self._runtime = runtime
         self.retrieved = False
-
     def get_assets(self):
         """Gets the asset list resulting from a search.
 
@@ -141,9 +137,10 @@ class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_search
         raise errors.Unimplemented()
 
 
+
+
 class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches.OsidSearch):
     """The interface for governing composition searches."""
-
     def __init__(self, runtime):
         self._namespace = 'repository.Composition'
         record_type_data_sets = get_registry('COMPOSITION_RECORD_TYPES', runtime)
@@ -154,7 +151,6 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_searches.OsidSearch.__init__(self, runtime)
-
     @utilities.arguments_not_none
     def search_among_compositions(self, composition_ids):
         """Execute this search among the given list of compositions.
@@ -204,15 +200,15 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
         raise errors.Unimplemented()
 
 
+
+
 class CompositionSearchResults(abc_repository_searches.CompositionSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-
     def __init__(self, results, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         self._results = results
         self._runtime = runtime
         self.retrieved = False
-
     def get_compositions(self):
         """Gets the composition list resulting from a search.
 
@@ -261,6 +257,8 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
 
         """
         raise errors.Unimplemented()
+
+
 
 
 class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.OsidSearch):
@@ -315,6 +313,8 @@ class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.O
         raise errors.Unimplemented()
 
 
+
+
 class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -363,5 +363,3 @@ class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, o
 
         """
         raise errors.Unimplemented()
-
-

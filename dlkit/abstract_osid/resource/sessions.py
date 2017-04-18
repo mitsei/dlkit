@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ResourceLookupSession:
     """This session defines methods for retrieving resources.
 
@@ -51,7 +48,6 @@ class ResourceLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -63,7 +59,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -79,7 +75,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -100,7 +96,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_resource_view(self):
@@ -180,7 +176,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     @abc.abstractmethod
     def get_resources_by_ids(self, resource_ids):
@@ -206,7 +202,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resources_by_genus_type(self, resource_genus_type):
@@ -227,7 +223,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resources_by_parent_genus_type(self, resource_genus_type):
@@ -248,7 +244,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resources_by_record_type(self, resource_record_type):
@@ -269,7 +265,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resources(self):
@@ -287,7 +283,7 @@ class ResourceLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     resources = property(fget=get_resources)
 
@@ -313,7 +309,6 @@ class ResourceQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -325,7 +320,7 @@ class ResourceQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -341,7 +336,7 @@ class ResourceQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -362,7 +357,7 @@ class ResourceQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -404,7 +399,7 @@ class ResourceQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -424,7 +419,7 @@ class ResourceQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
 
 class ResourceSearchSession:
@@ -457,7 +452,6 @@ class ResourceSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_resource_search(self):
         """Gets a resource search.
@@ -469,7 +463,7 @@ class ResourceSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceSearch
+        return  # osid.resource.ResourceSearch
 
     resource_search = property(fget=get_resource_search)
 
@@ -487,7 +481,7 @@ class ResourceSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -509,7 +503,7 @@ class ResourceSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceSearchResults
+        return  # osid.resource.ResourceSearchResults
 
     @abc.abstractmethod
     def get_resource_query_from_inspector(self, resource_query_inspector):
@@ -527,7 +521,7 @@ class ResourceSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
 
 class ResourceAdminSession:
@@ -567,7 +561,6 @@ class ResourceAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -579,7 +572,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -595,7 +588,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -616,7 +609,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_resource_with_record_types(self, resource_record_types):
@@ -637,7 +630,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_form_for_create(self, resource_record_types):
@@ -657,7 +650,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceForm
+        return  # osid.resource.ResourceForm
 
     @abc.abstractmethod
     def create_resource(self, resource_form):
@@ -677,7 +670,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     @abc.abstractmethod
     def can_update_resources(self):
@@ -696,7 +689,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_form_for_update(self, resource_id):
@@ -717,7 +710,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceForm
+        return  # osid.resource.ResourceForm
 
     @abc.abstractmethod
     def update_resource(self, resource_form):
@@ -754,7 +747,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_resource(self, resource_id):
@@ -789,7 +782,7 @@ class ResourceAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_resource(self, resource_id, alias_id):
@@ -831,7 +824,6 @@ class ResourceNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -843,7 +835,7 @@ class ResourceNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -859,7 +851,7 @@ class ResourceNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -880,7 +872,7 @@ class ResourceNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -1045,10 +1037,8 @@ class ResourceBinSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_bin_view(self):
@@ -1096,7 +1086,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_ids_by_bin(self, bin_id):
@@ -1114,7 +1104,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resources_by_bin(self, bin_id):
@@ -1132,7 +1122,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resource_ids_by_bins(self, bin_ids):
@@ -1149,7 +1139,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resources_by_bins(self, bin_ids):
@@ -1166,7 +1156,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_bin_ids_by_resource(self, resource_id):
@@ -1184,7 +1174,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_bins_by_resource(self, resource_id):
@@ -1202,7 +1192,7 @@ class ResourceBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
 
 class ResourceBinAssignmentSession:
@@ -1218,7 +1208,6 @@ class ResourceBinAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_resources(self):
@@ -1237,7 +1226,7 @@ class ResourceBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_resources_to_bin(self, bin_id):
@@ -1258,7 +1247,7 @@ class ResourceBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bin_ids(self, bin_id):
@@ -1274,7 +1263,7 @@ class ResourceBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bin_ids_for_resource(self, bin_id, resource_id):
@@ -1292,7 +1281,7 @@ class ResourceBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_resource_to_bin(self, resource_id, bin_id):
@@ -1348,7 +1337,6 @@ class ResourceSmartBinSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -1360,7 +1348,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -1376,7 +1364,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -1397,7 +1385,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_query(self):
@@ -1410,7 +1398,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
     resource_query = property(fget=get_resource_query)
 
@@ -1425,7 +1413,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -1457,7 +1445,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQueryInspector
+        return  # osid.resource.ResourceQueryInspector
 
     @abc.abstractmethod
     def apply_resource_sequencing(self, resource_search_order):
@@ -1489,7 +1477,7 @@ class ResourceSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
 
 class MembershipSession:
@@ -1500,7 +1488,6 @@ class MembershipSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -1513,7 +1500,7 @@ class MembershipSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -1529,7 +1516,7 @@ class MembershipSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -1550,7 +1537,7 @@ class MembershipSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -1596,7 +1583,7 @@ class MembershipSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class GroupSession:
@@ -1607,7 +1594,6 @@ class GroupSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -1620,7 +1606,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -1636,7 +1622,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -1657,7 +1643,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_resource_view(self):
@@ -1760,7 +1746,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resources_by_group(self, group_resource_id):
@@ -1780,7 +1766,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_resource_ids_by_groups(self, group_resource_ids):
@@ -1797,7 +1783,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resources_by_groups(self, group_resource_ids):
@@ -1814,7 +1800,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
     @abc.abstractmethod
     def get_group_ids_by_resource(self, resource_id):
@@ -1832,7 +1818,7 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_groups_by_resource(self, resource_id):
@@ -1850,13 +1836,12 @@ class GroupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceList
+        return  # osid.resource.ResourceList
 
 
 class GroupAssignmentSession:
     """This session provides methods to re-assign ``Resources`` to group ``Resources``."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -1869,7 +1854,7 @@ class GroupAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -1885,7 +1870,7 @@ class GroupAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -1906,7 +1891,7 @@ class GroupAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_resources_to_group(self, resource_id):
@@ -1927,7 +1912,7 @@ class GroupAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def assign_resource_to_group(self, resource_id, resource_group_id):
@@ -1977,7 +1962,6 @@ class GroupNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -1989,7 +1973,7 @@ class GroupNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -2005,7 +1989,7 @@ class GroupNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -2026,7 +2010,7 @@ class GroupNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -2156,10 +2140,8 @@ class GroupHierarchySession:
         re-ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -2172,7 +2154,7 @@ class GroupHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -2188,7 +2170,7 @@ class GroupHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -2209,7 +2191,7 @@ class GroupHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_resource_view(self):
@@ -2287,7 +2269,7 @@ class GroupHierarchySession:
         ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_node_ids(self, resource_id, ancestor_levels, descendant_levels, include_siblings):
@@ -2311,7 +2293,7 @@ class GroupHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_resource_nodes(self, resource_id, ancestor_levels, descendant_levels, include_siblings):
@@ -2335,7 +2317,7 @@ class GroupHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.acknowledgement.BillingNode
+        return  # osid.acknowledgement.BillingNode
 
 
 class ResourceAgentSession:
@@ -2350,10 +2332,8 @@ class ResourceAgentSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -2366,7 +2346,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -2382,7 +2362,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -2403,7 +2383,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_agent_view(self):
@@ -2477,7 +2457,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     @abc.abstractmethod
     def get_resource_by_agent(self, agent_id):
@@ -2495,7 +2475,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Resource
+        return  # osid.resource.Resource
 
     @abc.abstractmethod
     def get_agent_ids_by_resource(self, resource_id):
@@ -2513,7 +2493,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_agents_by_resource(self, resource_id):
@@ -2531,7 +2511,7 @@ class ResourceAgentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.AgentList
+        return  # osid.authentication.AgentList
 
 
 class ResourceAgentAssignmentSession:
@@ -2542,7 +2522,6 @@ class ResourceAgentAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_id(self):
@@ -2555,7 +2534,7 @@ class ResourceAgentAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -2571,7 +2550,7 @@ class ResourceAgentAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -2592,7 +2571,7 @@ class ResourceAgentAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_agents_to_resource(self, resource_id):
@@ -2613,7 +2592,7 @@ class ResourceAgentAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def assign_agent_to_resource(self, agent_id, resource_id):
@@ -2657,7 +2636,6 @@ class ResourceRelationshipLookupSession:
     """This session provides methods for examining resource relationships."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -2669,7 +2647,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -2685,7 +2663,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -2706,7 +2684,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_resource_relationship_view(self):
@@ -2802,7 +2780,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationship
+        return  # osid.resource.ResourceRelationship
 
     @abc.abstractmethod
     def get_resource_relationships_by_ids(self, resource_relationship_ids):
@@ -2820,7 +2798,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type(self, relationship_genus_type):
@@ -2837,7 +2815,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_parent_genus_type(self, relationship_genus_type):
@@ -2854,7 +2832,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_record_type(self, relationship_record_type):
@@ -2871,7 +2849,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_on_date(self, from_, to):
@@ -2891,7 +2869,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_source_resource(self, source_resource_id):
@@ -2908,7 +2886,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_source_resource_on_date(self, source_resource_id, from_, to):
@@ -2930,7 +2908,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_source_resource(self, source_resource_id, relationship_genus_type):
@@ -2949,7 +2927,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_source_resource_on_date(self, source_resource_id, relationship_genus_type, from_, to):
@@ -2973,7 +2951,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_destination_resource(self, destination_resource_id):
@@ -2990,7 +2968,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_destination_resource_on_date(self, source_resource_id, from_, to):
@@ -3012,7 +2990,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_destination_resource(self, destination_resource_id, relationship_genus_type):
@@ -3031,7 +3009,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_destination_resource_on_date(self, destination_resource_id, relationship_genus_type, from_, to):
@@ -3055,7 +3033,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_resources(self, source_resource_id, destination_resource_id):
@@ -3074,7 +3052,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_for_resources_on_date(self, source_resource_id, destination_resource_id, from_, to):
@@ -3098,7 +3076,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_resources(self, source_resource_id, destination_resource_id, relationship_genus_type):
@@ -3119,7 +3097,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_by_genus_type_for_resources_on_date(self, source_resource_id, destination_resource_id, relationship_genus_type, from_, to):
@@ -3145,7 +3123,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships(self):
@@ -3159,7 +3137,7 @@ class ResourceRelationshipLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     resource_relationships = property(fget=get_resource_relationships)
 
@@ -3187,7 +3165,6 @@ class ResourceRelationshipQuerySession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -3199,7 +3176,7 @@ class ResourceRelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -3215,7 +3192,7 @@ class ResourceRelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -3236,7 +3213,7 @@ class ResourceRelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -3276,7 +3253,7 @@ class ResourceRelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQuery
+        return  # osid.resource.ResourceRelationshipQuery
 
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
@@ -3296,7 +3273,7 @@ class ResourceRelationshipQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
 
 class ResourceRelationshipSearchSession:
@@ -3334,7 +3311,6 @@ class ResourceRelationshipSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_resource_relationship_search(self):
         """Gets a relationship search.
@@ -3346,7 +3322,7 @@ class ResourceRelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipSearch
+        return  # osid.resource.ResourceRelationshipSearch
 
     resource_relationship_search = property(fget=get_resource_relationship_search)
 
@@ -3365,7 +3341,7 @@ class ResourceRelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipSearchOrder
+        return  # osid.resource.ResourceRelationshipSearchOrder
 
     resource_relationship_search_order = property(fget=get_resource_relationship_search_order)
 
@@ -3387,7 +3363,7 @@ class ResourceRelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipSearchResults
+        return  # osid.resource.ResourceRelationshipSearchResults
 
     @abc.abstractmethod
     def get_resource_relationship_query_from_inspector(self, resource_relationship_query_inspector):
@@ -3406,7 +3382,7 @@ class ResourceRelationshipSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQuery
+        return  # osid.resource.ResourceRelationshipQuery
 
 
 class ResourceRelationshipAdminSession:
@@ -3449,7 +3425,6 @@ class ResourceRelationshipAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -3461,7 +3436,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -3477,7 +3452,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -3498,7 +3473,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_resource_relationship_with_record_types(self, resource_relationship_record_types):
@@ -3519,7 +3494,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_form_for_create(self, source_resource_id, destination_resource_id, resource_relationship_record_types):
@@ -3544,7 +3519,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipForm
+        return  # osid.resource.ResourceRelationshipForm
 
     @abc.abstractmethod
     def create_resource_relationship(self, resource_relationship_form):
@@ -3564,7 +3539,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationship
+        return  # osid.resource.ResourceRelationship
 
     @abc.abstractmethod
     def can_update_resource_relationships(self):
@@ -3583,7 +3558,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_form_for_update(self, resource_relationship_id):
@@ -3603,7 +3578,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipForm
+        return  # osid.resource.ResourceRelationshipForm
 
     @abc.abstractmethod
     def update_resource_relationship(self, resource_relationship_form):
@@ -3640,7 +3615,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_resource_relationship(self, resource_relationship_id):
@@ -3675,7 +3650,7 @@ class ResourceRelationshipAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_resource_relationship(self, resource_relationship_id, alias_id):
@@ -3716,7 +3691,6 @@ class ResourceRelationshipNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -3728,7 +3702,7 @@ class ResourceRelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -3744,7 +3718,7 @@ class ResourceRelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -3765,7 +3739,7 @@ class ResourceRelationshipNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_bin_view(self):
@@ -4093,10 +4067,8 @@ class ResourceRelationshipBinSession:
       * plenary view: provides a complete result set or is an error
         condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def use_comparative_bin_view(self):
@@ -4144,7 +4116,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_ids_by_bin(self, bin_id):
@@ -4162,7 +4134,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resource_relationships_by_bin(self, bin_id):
@@ -4180,7 +4152,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_resource_relationships_ids_by_bins(self, bin_ids):
@@ -4197,7 +4169,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_resource_relationships_by_bins(self, bin_ids):
@@ -4214,7 +4186,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipList
+        return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
     def get_bin_ids_by_resource_relationship(self, resource_relationship_id):
@@ -4232,7 +4204,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_bins_by_resource_relationship(self, resource_relationship_id):
@@ -4250,7 +4222,7 @@ class ResourceRelationshipBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
 
 class ResourceRelationshipBinAssignmentSession:
@@ -4267,7 +4239,6 @@ class ResourceRelationshipBinAssignmentSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_assign_resource_relationships(self):
@@ -4286,7 +4257,7 @@ class ResourceRelationshipBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_resource_relationships_to_bin(self, bin_id):
@@ -4307,7 +4278,7 @@ class ResourceRelationshipBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_bin_ids(self, bin_id):
@@ -4323,7 +4294,7 @@ class ResourceRelationshipBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_bin_ids_for_resource_relationship(self, bin_id, resource_relationship_id):
@@ -4341,7 +4312,7 @@ class ResourceRelationshipBinAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_resource_relationship_to_bin(self, resource_relationship_id, bin_id):
@@ -4399,7 +4370,6 @@ class ResourceRelationshipSmartBinSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
@@ -4411,7 +4381,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_id = property(fget=get_bin_id)
 
@@ -4427,7 +4397,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     bin = property(fget=get_bin)
 
@@ -4448,7 +4418,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_relationship_query(self):
@@ -4461,7 +4431,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQuery
+        return  # osid.resource.ResourceRelationshipQuery
 
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
@@ -4476,7 +4446,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipSearchOrder
+        return  # osid.resource.ResourceRelationshipSearchOrder
 
     resource_relationship_search_order = property(fget=get_resource_relationship_search_order)
 
@@ -4508,7 +4478,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceRelationshipQueryInspector
+        return  # osid.resource.ResourceRelationshipQueryInspector
 
     @abc.abstractmethod
     def apply_resource_relationship_sequencing(self, resource_relationship_search_order):
@@ -4540,7 +4510,7 @@ class ResourceRelationshipSmartBinSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.ResourceQuery
+        return  # osid.resource.ResourceQuery
 
 
 class BinLookupSession:
@@ -4569,7 +4539,6 @@ class BinLookupSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_lookup_bins(self):
         """Tests if this user can perform ``Bin`` lookups.
@@ -4587,7 +4556,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bin_view(self):
@@ -4639,7 +4608,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     @abc.abstractmethod
     def get_bins_by_ids(self, bin_ids):
@@ -4665,7 +4634,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def get_bins_by_genus_type(self, bin_genus_type):
@@ -4686,7 +4655,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def get_bins_by_parent_genus_type(self, bin_genus_type):
@@ -4707,7 +4676,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def get_bins_by_record_type(self, bin_record_type):
@@ -4728,7 +4697,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def get_bins_by_provider(self, resource_id):
@@ -4749,7 +4718,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def get_bins(self):
@@ -4767,7 +4736,7 @@ class BinLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     bins = property(fget=get_bins)
 
@@ -4782,7 +4751,6 @@ class BinQuerySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def can_search_bins(self):
@@ -4801,7 +4769,7 @@ class BinQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_query(self):
@@ -4816,7 +4784,7 @@ class BinQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
     bin_query = property(fget=get_bin_query)
 
@@ -4836,7 +4804,7 @@ class BinQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
 
 class BinSearchSession:
@@ -4859,7 +4827,6 @@ class BinSearchSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_bin_search(self):
         """Gets a bin search.
@@ -4871,7 +4838,7 @@ class BinSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinSearch
+        return  # osid.resource.BinSearch
 
     bin_search = property(fget=get_bin_search)
 
@@ -4889,7 +4856,7 @@ class BinSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinSearchOrder
+        return  # osid.resource.BinSearchOrder
 
     bin_search_order = property(fget=get_bin_search_order)
 
@@ -4911,7 +4878,7 @@ class BinSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinSearchResults
+        return  # osid.resource.BinSearchResults
 
     @abc.abstractmethod
     def get_bin_query_from_inspector(self, bin_query_inspector):
@@ -4929,7 +4896,7 @@ class BinSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinQuery
+        return  # osid.resource.BinQuery
 
 
 class BinAdminSession:
@@ -4964,7 +4931,6 @@ class BinAdminSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_create_bins(self):
         """Tests if this user can create ``Bins``.
@@ -4982,7 +4948,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_bin_with_record_types(self, bin_record_types):
@@ -5003,7 +4969,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_form_for_create(self, bin_record_types):
@@ -5021,7 +4987,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinForm
+        return  # osid.resource.BinForm
 
     @abc.abstractmethod
     def create_bin(self, bin_form):
@@ -5041,7 +5007,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.Bin
+        return  # osid.resource.Bin
 
     @abc.abstractmethod
     def can_update_bins(self):
@@ -5060,7 +5026,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_form_for_update(self, bin_id):
@@ -5080,7 +5046,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinForm
+        return  # osid.resource.BinForm
 
     @abc.abstractmethod
     def update_bin(self, bin_form):
@@ -5117,7 +5083,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_bin(self, bin_id):
@@ -5152,7 +5118,7 @@ class BinAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_bin(self, bin_id, alias_id):
@@ -5189,7 +5155,6 @@ class BinNotificationSession:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def can_register_for_bin_notifications(self):
         """Tests if this user can register for ``Bin`` notifications.
@@ -5207,7 +5172,7 @@ class BinNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def register_for_new_bins(self):
@@ -5428,10 +5393,8 @@ class BinHierarchySession:
         ordered
       * plenary view: provides a complete set or is an error condition
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_hierarchy_id(self):
@@ -5444,7 +5407,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_hierarchy_id = property(fget=get_bin_hierarchy_id)
 
@@ -5460,7 +5423,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     bin_hierarchy = property(fget=get_bin_hierarchy)
 
@@ -5481,7 +5444,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_bin_view(self):
@@ -5524,7 +5487,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_bin_ids = property(fget=get_root_bin_ids)
 
@@ -5545,7 +5508,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     root_bins = property(fget=get_root_bins)
 
@@ -5565,7 +5528,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_bin(self, id_, bin_id):
@@ -5586,7 +5549,7 @@ class BinHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_bin_ids(self, bin_id):
@@ -5604,7 +5567,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_bins(self, bin_id):
@@ -5622,7 +5585,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def is_ancestor_of_bin(self, id_, bin_id):
@@ -5643,7 +5606,7 @@ class BinHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_bins(self, bin_id):
@@ -5661,7 +5624,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_bin(self, id_, bin_id):
@@ -5682,7 +5645,7 @@ class BinHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_bin_ids(self, bin_id):
@@ -5700,7 +5663,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_bins(self, bin_id):
@@ -5718,7 +5681,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinList
+        return  # osid.resource.BinList
 
     @abc.abstractmethod
     def is_descendant_of_bin(self, id_, bin_id):
@@ -5739,7 +5702,7 @@ class BinHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bin_node_ids(self, bin_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5763,7 +5726,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_bin_nodes(self, bin_id, ancestor_levels, descendant_levels, include_siblings):
@@ -5787,7 +5750,7 @@ class BinHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.resource.BinNode
+        return  # osid.resource.BinNode
 
 
 class BinHierarchyDesignSession:
@@ -5797,7 +5760,6 @@ class BinHierarchyDesignSession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_bin_hierarchy_id(self):
@@ -5810,7 +5772,7 @@ class BinHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     bin_hierarchy_id = property(fget=get_bin_hierarchy_id)
 
@@ -5826,7 +5788,7 @@ class BinHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     bin_hierarchy = property(fget=get_bin_hierarchy)
 
@@ -5847,7 +5809,7 @@ class BinHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_bin(self, bin_id):
@@ -5934,5 +5896,3 @@ class BinHierarchyDesignSession:
 
         """
         pass
-
-

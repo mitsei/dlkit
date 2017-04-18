@@ -16,8 +16,6 @@ from ..osid import records as osid_records
 from dlkit.abstract_osid.learning import records as abc_learning_records
 
 
-
-
 class ObjectiveRecord(abc_learning_records.ObjectiveRecord, osid_records.OsidRecord):
     """A record for an ``Objective``.
 
@@ -25,6 +23,8 @@ class ObjectiveRecord(abc_learning_records.ObjectiveRecord, osid_records.OsidRec
     underlying object.
 
     """
+
+
 
 
 
@@ -40,6 +40,8 @@ class ObjectiveQueryRecord(abc_learning_records.ObjectiveQueryRecord, osid_recor
 
 
 
+
+
 class ObjectiveFormRecord(abc_learning_records.ObjectiveFormRecord, osid_records.OsidRecord):
     """A record for an ``ObjectiveForm``.
 
@@ -47,6 +49,8 @@ class ObjectiveFormRecord(abc_learning_records.ObjectiveFormRecord, osid_records
     underlying object.
 
     """
+
+
 
 
 
@@ -62,6 +66,8 @@ class ObjectiveSearchRecord(abc_learning_records.ObjectiveSearchRecord, osid_rec
 
 
 
+
+
 class ActivityRecord(abc_learning_records.ActivityRecord, osid_records.OsidRecord):
     """A record for a ``Activity``.
 
@@ -69,6 +75,8 @@ class ActivityRecord(abc_learning_records.ActivityRecord, osid_records.OsidRecor
     underlying object.
 
     """
+
+
 
 
 
@@ -84,6 +92,8 @@ class ActivityQueryRecord(abc_learning_records.ActivityQueryRecord, osid_records
 
 
 
+
+
 class ActivityFormRecord(abc_learning_records.ActivityFormRecord, osid_records.OsidRecord):
     """A record for a ``ActivityForm``.
 
@@ -91,6 +101,8 @@ class ActivityFormRecord(abc_learning_records.ActivityFormRecord, osid_records.O
     underlying object.
 
     """
+
+
 
 
 
@@ -106,6 +118,8 @@ class ActivitySearchRecord(abc_learning_records.ActivitySearchRecord, osid_recor
 
 
 
+
+
 class ProficiencyRecord(abc_learning_records.ProficiencyRecord, osid_records.OsidRecord):
     """A record for a ``Proficiency``.
 
@@ -113,6 +127,8 @@ class ProficiencyRecord(abc_learning_records.ProficiencyRecord, osid_records.Osi
     underlying object.
 
     """
+
+
 
 
 
@@ -128,6 +144,8 @@ class ProficiencyQueryRecord(abc_learning_records.ProficiencyQueryRecord, osid_r
 
 
 
+
+
 class ProficiencyFormRecord(abc_learning_records.ProficiencyFormRecord, osid_records.OsidRecord):
     """A record for a ``ProficiencyForm``.
 
@@ -135,6 +153,8 @@ class ProficiencyFormRecord(abc_learning_records.ProficiencyFormRecord, osid_rec
     underlying object.
 
     """
+
+
 
 
 
@@ -150,6 +170,8 @@ class ProficiencySearchRecord(abc_learning_records.ProficiencySearchRecord, osid
 
 
 
+
+
 class ObjectiveBankRecord(abc_learning_records.ObjectiveBankRecord, osid_records.OsidRecord):
     """A record for a ``ObjectiveBank``.
 
@@ -157,6 +179,8 @@ class ObjectiveBankRecord(abc_learning_records.ObjectiveBankRecord, osid_records
     underlying object.
 
     """
+
+
 
 
 
@@ -172,6 +196,8 @@ class ObjectiveBankQueryRecord(abc_learning_records.ObjectiveBankQueryRecord, os
 
 
 
+
+
 class ObjectiveBankFormRecord(abc_learning_records.ObjectiveBankFormRecord, osid_records.OsidRecord):
     """A record for a ``ObjectiveBankForm``.
 
@@ -183,6 +209,8 @@ class ObjectiveBankFormRecord(abc_learning_records.ObjectiveBankFormRecord, osid
 
 
 
+
+
 class ObjectiveBankSearchRecord(abc_learning_records.ObjectiveBankSearchRecord, osid_records.OsidRecord):
     """A record for a ``ObjectiveBankSearch``.
 
@@ -190,7 +218,3 @@ class ObjectiveBankSearchRecord(abc_learning_records.ObjectiveBankSearchRecord, 
     underlying object.
 
     """
-
-
-
-

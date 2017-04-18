@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class OsidRecord:
     """``OsidRecord`` is a top-level interface for all record objects.
 
@@ -29,7 +26,6 @@ class OsidRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def implements_record_type(self, record_type):
@@ -49,6 +45,4 @@ class OsidRecord:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
-
-
+        return  # boolean

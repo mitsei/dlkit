@@ -15,8 +15,6 @@ from .. import utilities
 from dlkit.abstract_osid.osid import records as abc_osid_records
 
 
-
-
 class OsidRecord(abc_osid_records.OsidRecord):
     """``OsidRecord`` is a top-level interface for all record objects.
 
@@ -44,5 +42,3 @@ class OsidRecord(abc_osid_records.OsidRecord):
 
         """
         return record_type.get_identifier() in self._implemented_record_type_identifiers
-
-

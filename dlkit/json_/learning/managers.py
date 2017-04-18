@@ -22,8 +22,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.manager_impls.learning import managers as learning_managers
 
 
-
-
 class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfile):
     """The ``LearningProfile`` describes the interoperability among learning services."""
 
@@ -427,6 +425,8 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
     objective_bank_search_record_types = property(fget=get_objective_bank_search_record_types)
 
 
+
+
 class LearningManager(osid_managers.OsidManager, LearningProfile, learning_managers.LearningManager):
     """The learning manager provides access to learning sessions and provides interoperability tests for various aspects of this service.
 
@@ -505,12 +505,9 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
     @utilities.remove_null_proxy_kwarg
     def get_objective_lookup_session(self):
         """Gets the ``OsidSession`` associated with the objective lookup service.
@@ -1305,6 +1302,8 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
     learning_batch_manager = property(fget=get_learning_batch_manager)
 
 
+
+
 class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, learning_managers.LearningProxyManager):
     """The learning manager provides access to learning sessions and provides interoperability tests for various aspects of this service.
 
@@ -1384,12 +1383,9 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
 
-
     """
-
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
     @utilities.arguments_not_none
     def get_objective_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the objective lookup service.
@@ -2195,5 +2191,3 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
         raise errors.Unimplemented()
 
     learning_batch_proxy_manager = property(fget=get_learning_batch_proxy_manager)
-
-

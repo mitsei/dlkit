@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class EventLookupSession:
@@ -36,7 +31,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -52,7 +47,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -73,7 +68,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_event_view(self):
@@ -214,7 +209,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     @abc.abstractmethod
     def get_events_by_ids(self, event_ids):
@@ -232,7 +227,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_genus_type(self, event_genus_type):
@@ -250,7 +245,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_parent_genus_type(self, event_genus_type):
@@ -268,7 +263,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_record_type(self, event_record_type):
@@ -285,7 +280,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_on_date(self, from_, to):
@@ -305,7 +300,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_in_date_range(self, from_, to):
@@ -325,7 +320,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_upcoming_events(self, number):
@@ -341,7 +336,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_location(self, location_id):
@@ -358,7 +353,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_location_on_date(self, location_id, from_, to):
@@ -381,7 +376,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_location_in_date_range(self, location_id, from_, to):
@@ -403,7 +398,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_sponsor(self, resource_id):
@@ -420,7 +415,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_sponsor_on_date(self, resource_id, from_, to):
@@ -443,7 +438,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events_by_sponsor_in_date_range(self, resource_id, from_, to):
@@ -465,7 +460,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_events(self):
@@ -479,7 +474,7 @@ class EventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     events = property(fget=get_events)
 
@@ -523,7 +518,7 @@ class EventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -539,7 +534,7 @@ class EventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -560,7 +555,7 @@ class EventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -644,7 +639,7 @@ class EventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -664,7 +659,7 @@ class EventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
 
 class EventSearchSession:
@@ -712,7 +707,7 @@ class EventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventSearch
+        return  # osid.calendaring.EventSearch
 
     event_search = property(fget=get_event_search)
 
@@ -730,7 +725,7 @@ class EventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     event_search_order = property(fget=get_event_search_order)
 
@@ -752,7 +747,7 @@ class EventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventSearchResults
+        return  # osid.calendaring.EventSearchResults
 
     @abc.abstractmethod
     def get_event_query_from_inspector(self, event_query_inspector):
@@ -770,7 +765,7 @@ class EventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
 
 class EventAdminSession:
@@ -821,7 +816,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -837,7 +832,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -858,7 +853,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_event_with_record_types(self, event_record_types):
@@ -879,7 +874,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_form_for_create(self, event_record_types):
@@ -899,7 +894,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventForm
+        return  # osid.calendaring.EventForm
 
     @abc.abstractmethod
     def create_event(self, event_form):
@@ -919,7 +914,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Event
+        return  # osid.calendaring.Event
 
     @abc.abstractmethod
     def can_update_events(self):
@@ -938,7 +933,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_form_for_update(self, event_id):
@@ -959,7 +954,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventForm
+        return  # osid.calendaring.EventForm
 
     @abc.abstractmethod
     def update_event(self, event_form):
@@ -996,7 +991,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_event(self, event_id):
@@ -1031,7 +1026,7 @@ class EventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_event(self, event_id, alias_id):
@@ -1082,7 +1077,7 @@ class EventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -1098,7 +1093,7 @@ class EventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -1119,7 +1114,7 @@ class EventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -1332,7 +1327,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -1402,7 +1397,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_events_by_calendar(self, calendar_id):
@@ -1420,7 +1415,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_event_ids_by_calendars(self, calendar_ids):
@@ -1437,7 +1432,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_events_by_calendars(self, calendar_ids):
@@ -1454,7 +1449,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_calendar_ids_by_event(self, event_id):
@@ -1472,7 +1467,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_event(self, event_id):
@@ -1490,7 +1485,7 @@ class EventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class EventCalendarAssignmentSession:
@@ -1524,7 +1519,7 @@ class EventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_events_to_calendar(self, calendar_id):
@@ -1545,7 +1540,7 @@ class EventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -1561,7 +1556,7 @@ class EventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_event(self, calendar_id, event_id):
@@ -1580,7 +1575,7 @@ class EventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_event_to_calendar(self, event_id, calendar_id):
@@ -1670,7 +1665,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -1686,7 +1681,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -1707,7 +1702,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_event_query(self):
@@ -1720,7 +1715,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
     event_query = property(fget=get_event_query)
 
@@ -1735,7 +1730,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventSearchOrder
+        return  # osid.calendaring.EventSearchOrder
 
     event_search_order = property(fget=get_event_search_order)
 
@@ -1767,7 +1762,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQueryInspector
+        return  # osid.calendaring.EventQueryInspector
 
     @abc.abstractmethod
     def apply_event_sequencing(self, event_search_order):
@@ -1799,7 +1794,7 @@ class EventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventQuery
+        return  # osid.calendaring.EventQuery
 
 
 class RecurringEventLookupSession:
@@ -1817,7 +1812,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -1833,7 +1828,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -1854,7 +1849,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_recurring_event_view(self):
@@ -1973,7 +1968,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEvent
+        return  # osid.calendaring.RecurringEvent
 
     @abc.abstractmethod
     def get_recurring_events_by_ids(self, recurring_event_ids):
@@ -1991,7 +1986,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events_by_genus_type(self, recurring_event_genus_type):
@@ -2009,7 +2004,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events_by_parent_genus_type(self, recurring_event_genus_type):
@@ -2027,7 +2022,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events_by_record_type(self, recurring_event_record_type):
@@ -2044,7 +2039,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events_by_schedule_slot(self, schedule_slot_id):
@@ -2061,7 +2056,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events(self):
@@ -2075,7 +2070,7 @@ class RecurringEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     recurring_events = property(fget=get_recurring_events)
 
@@ -2095,7 +2090,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -2111,7 +2106,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -2132,7 +2127,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_recurring_event_view(self):
@@ -2207,7 +2202,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEvent
+        return  # osid.calendaring.RecurringEvent
 
     @abc.abstractmethod
     def get_recurring_events_by_events(self, event_ids):
@@ -2234,7 +2229,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def expand_recurring_event(self, recurring_event_id):
@@ -2258,7 +2253,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def expand_recurring_event_in_date_range(self, recurring_event_id, from_, to):
@@ -2288,7 +2283,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def expand_recurring_events(self, recurring_event_ids):
@@ -2312,7 +2307,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def expand_recurring_events_in_date_range(self, recurring_event_ids, from_, to):
@@ -2342,7 +2337,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.EventList
+        return  # osid.calendaring.EventList
 
     @abc.abstractmethod
     def get_recurring_events_by_date(self, datetime):
@@ -2364,7 +2359,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_events_in_date_range(self, from_, to):
@@ -2390,7 +2385,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_number_of_events(self, recurring_event_id):
@@ -2408,7 +2403,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
     @abc.abstractmethod
     def get_number_of_events_in_date_range(self, recurring_event_id, from_, to):
@@ -2431,7 +2426,7 @@ class RecurringEventUnravellingSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # cardinal
+        return  # cardinal
 
 
 class RecurringEventQuerySession:
@@ -2469,7 +2464,7 @@ class RecurringEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -2485,7 +2480,7 @@ class RecurringEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -2506,7 +2501,7 @@ class RecurringEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -2546,7 +2541,7 @@ class RecurringEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQuery
+        return  # osid.calendaring.RecurringEventQuery
 
     recurring_event_query = property(fget=get_recurring_event_query)
 
@@ -2566,7 +2561,7 @@ class RecurringEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
 
 class RecurringEventSearchSession:
@@ -2614,7 +2609,7 @@ class RecurringEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventSearch
+        return  # osid.calendaring.RecurringEventSearch
 
     recurring_event_search = property(fget=get_recurring_event_search)
 
@@ -2632,7 +2627,7 @@ class RecurringEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventSearchOrder
+        return  # osid.calendaring.RecurringEventSearchOrder
 
     recurring_event_search_order = property(fget=get_recurring_event_search_order)
 
@@ -2654,7 +2649,7 @@ class RecurringEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventSearchResults
+        return  # osid.calendaring.RecurringEventSearchResults
 
     @abc.abstractmethod
     def get_recurring_event_query_from_inspector(self, recurring_event_query_inspector):
@@ -2673,7 +2668,7 @@ class RecurringEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQuery
+        return  # osid.calendaring.RecurringEventQuery
 
 
 class RecurringEventAdminSession:
@@ -2726,7 +2721,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -2742,7 +2737,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -2763,7 +2758,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_recurring_event_with_record_types(self, recurring_event_record_types):
@@ -2785,7 +2780,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_form_for_create(self, recurring_event_record_types):
@@ -2805,7 +2800,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventForm
+        return  # osid.calendaring.RecurringEventForm
 
     @abc.abstractmethod
     def create_recurring_event(self, recurring_event_form):
@@ -2825,7 +2820,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEvent
+        return  # osid.calendaring.RecurringEvent
 
     @abc.abstractmethod
     def can_update_recurring_events(self):
@@ -2844,7 +2839,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_form_for_update(self, recurring_event_id):
@@ -2865,7 +2860,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventForm
+        return  # osid.calendaring.RecurringEventForm
 
     @abc.abstractmethod
     def update_recurring_event(self, recurring_event_form):
@@ -2902,7 +2897,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_recurring_event(self, recurring_event_id):
@@ -2937,7 +2932,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_recurring_event(self, recurring_event_id, alias_id):
@@ -2980,7 +2975,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_schedule(self, recurring_event_id, schedule_id):
@@ -3001,7 +2996,7 @@ class RecurringEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     @abc.abstractmethod
     def remove_schedule(self, recurring_event_id, schedule_id):
@@ -3186,7 +3181,7 @@ class RecurringEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -3202,7 +3197,7 @@ class RecurringEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -3223,7 +3218,7 @@ class RecurringEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -3415,7 +3410,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -3463,7 +3458,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_recurring_events_by_calendar(self, calendar_id):
@@ -3481,7 +3476,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_recurring_event_ids_by_calendars(self, calendar_ids):
@@ -3498,7 +3493,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_recurring_events_by_calendars(self, calendar_ids):
@@ -3515,7 +3510,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventList
+        return  # osid.calendaring.RecurringEventList
 
     @abc.abstractmethod
     def get_calendar_ids_by_recurring_event(self, recurring_event_id):
@@ -3533,7 +3528,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_recurring_event(self, recurring_event_id):
@@ -3551,7 +3546,7 @@ class RecurringEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class RecurringEventCalendarAssignmentSession:
@@ -3586,7 +3581,7 @@ class RecurringEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_recurring_events_to_calendar(self, calendar_id):
@@ -3607,7 +3602,7 @@ class RecurringEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -3624,7 +3619,7 @@ class RecurringEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_recurring_event(self, calendar_id, recurring_event_id):
@@ -3643,7 +3638,7 @@ class RecurringEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_recurring_event_to_calendar(self, recurring_event_id, calendar_id):
@@ -3735,7 +3730,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -3751,7 +3746,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -3772,7 +3767,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_recurring_event_query(self):
@@ -3785,7 +3780,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQuery
+        return  # osid.calendaring.RecurringEventQuery
 
     recurring_event_query = property(fget=get_recurring_event_query)
 
@@ -3800,7 +3795,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventSearchOrder
+        return  # osid.calendaring.RecurringEventSearchOrder
 
     recurring_event_search_order = property(fget=get_recurring_event_search_order)
 
@@ -3832,7 +3827,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQueryInspector
+        return  # osid.calendaring.RecurringEventQueryInspector
 
     @abc.abstractmethod
     def apply_recurring_event_sequencing(self, recurring_event_search_order):
@@ -3864,7 +3859,7 @@ class RecurringEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.RecurringEventQuery
+        return  # osid.calendaring.RecurringEventQuery
 
 
 class SupersedingEventLookupSession:
@@ -3882,7 +3877,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -3898,7 +3893,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -3919,7 +3914,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_superseding_event_view(self):
@@ -4016,7 +4011,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEvent
+        return  # osid.calendaring.SupersedingEvent
 
     @abc.abstractmethod
     def get_superseding_events_by_ids(self, superseding_event_ids):
@@ -4034,7 +4029,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_events_by_genus_type(self, superseding_event_genus_type):
@@ -4052,7 +4047,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_events_by_parent_genus_type(self, superseding_event_genus_type):
@@ -4070,7 +4065,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_events_by_record_type(self, superseding_event_record_type):
@@ -4087,7 +4082,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_events_by_superseded_event(self, superseded_event_id):
@@ -4105,7 +4100,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_events(self):
@@ -4119,7 +4114,7 @@ class SupersedingEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     superseding_events = property(fget=get_superseding_events)
 
@@ -4159,7 +4154,7 @@ class SupersedingEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -4175,7 +4170,7 @@ class SupersedingEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -4196,7 +4191,7 @@ class SupersedingEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -4236,7 +4231,7 @@ class SupersedingEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
     superseding_event_query = property(fget=get_superseding_event_query)
 
@@ -4256,7 +4251,7 @@ class SupersedingEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
 
 class SupersedingEventSearchSession:
@@ -4304,7 +4299,7 @@ class SupersedingEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventSearch
+        return  # osid.calendaring.SupersedingEventSearch
 
     superseding_event_search = property(fget=get_superseding_event_search)
 
@@ -4322,7 +4317,7 @@ class SupersedingEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchOrder
+        return  # osid.calendaring.SupersedingEventSearchOrder
 
     superseding_event_search_order = property(fget=get_superseding_event_search_order)
 
@@ -4344,7 +4339,7 @@ class SupersedingEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchResults
+        return  # osid.calendaring.SupersedingEventSearchResults
 
     @abc.abstractmethod
     def get_superseding_event_query_from_inspector(self, superseding_event_query_inspector):
@@ -4363,7 +4358,7 @@ class SupersedingEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
 
 class SupersedingEventAdminSession:
@@ -4416,7 +4411,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -4432,7 +4427,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -4453,7 +4448,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_superseding_event_with_record_types(self, supersdeing_event_record_types):
@@ -4475,11 +4470,11 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_form_for_create(self, superseded_event_id, superseding_event_id,
-        supersdeing_event_record_types):
+                                              supersdeing_event_record_types):
         """Gets the superseding event form for creating new events.
 
         A new form should be requested for each create transaction.
@@ -4502,7 +4497,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventForm
+        return  # osid.calendaring.SupersedingEventForm
 
     @abc.abstractmethod
     def create_superseding_event(self, superseding_event_form):
@@ -4523,7 +4518,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEvent
+        return  # osid.calendaring.SupersedingEvent
 
     @abc.abstractmethod
     def can_update_superseding_events(self):
@@ -4542,7 +4537,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_form_for_update(self, superseding_event_id):
@@ -4563,7 +4558,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventForm
+        return  # osid.calendaring.SupersedingEventForm
 
     @abc.abstractmethod
     def update_superseding_event(self, superseding_event_form):
@@ -4601,7 +4596,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_superseding_event(self, superseding_event_id):
@@ -4636,7 +4631,7 @@ class SupersedingEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_superseding_event(self, superseding_event_id, alias_id):
@@ -4687,7 +4682,7 @@ class SupersedingEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -4703,7 +4698,7 @@ class SupersedingEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -4724,7 +4719,7 @@ class SupersedingEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -4916,7 +4911,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -4964,7 +4959,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_superseding_events_by_calendar(self, calendar_id):
@@ -4982,7 +4977,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_event_ids_by_calendars(self, calendar_ids):
@@ -4999,7 +4994,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_superseding_events_by_calendars(self, calendar_ids):
@@ -5016,7 +5011,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventList
+        return  # osid.calendaring.SupersedingEventList
 
     @abc.abstractmethod
     def get_superseding_ids_by_recurring_event(self, superseding_event_id):
@@ -5034,7 +5029,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_superseding_event(self, superseding_event_id):
@@ -5052,7 +5047,7 @@ class SupersedingEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class SupersedingEventCalendarAssignmentSession:
@@ -5087,7 +5082,7 @@ class SupersedingEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_superseding_events_to_calendar(self, calendar_id):
@@ -5108,7 +5103,7 @@ class SupersedingEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -5125,7 +5120,7 @@ class SupersedingEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_superseding_event(self, calendar_id, superseding_event_id):
@@ -5144,7 +5139,7 @@ class SupersedingEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_superseding_event_to_calendar(self, superseding_event_id, calendar_id):
@@ -5236,7 +5231,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -5252,7 +5247,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -5273,7 +5268,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_superseding_event_query(self):
@@ -5286,7 +5281,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
     superseding_event_query = property(fget=get_superseding_event_query)
 
@@ -5301,7 +5296,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventSearchOrder
+        return  # osid.calendaring.SupersedingEventSearchOrder
 
     superseding_event_search_order = property(fget=get_superseding_event_search_order)
 
@@ -5333,7 +5328,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQueryInspector
+        return  # osid.calendaring.SupersedingEventQueryInspector
 
     @abc.abstractmethod
     def apply_superseding_event_sequencing(self, superseding_event_search_order):
@@ -5365,7 +5360,7 @@ class SupersedingEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.SupersedingEventQuery
+        return  # osid.calendaring.SupersedingEventQuery
 
 
 class OffsetEventLookupSession:
@@ -5383,7 +5378,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -5399,7 +5394,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -5420,7 +5415,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_offset_event_view(self):
@@ -5517,7 +5512,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEvent
+        return  # osid.calendaring.OffsetEvent
 
     @abc.abstractmethod
     def get_offset_events_by_ids(self, offset_event_ids):
@@ -5535,7 +5530,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_events_by_genus_type(self, offset_event_genus_type):
@@ -5553,7 +5548,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_events_by_parent_genus_type(self, offset_event_genus_type):
@@ -5571,7 +5566,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_events_by_record_type(self, offset_eventrecord_type):
@@ -5588,7 +5583,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_events_by_event(self, event_id):
@@ -5605,7 +5600,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_events(self):
@@ -5619,7 +5614,7 @@ class OffsetEventLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     offset_events = property(fget=get_offset_events)
 
@@ -5659,7 +5654,7 @@ class OffsetEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -5675,7 +5670,7 @@ class OffsetEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -5696,7 +5691,7 @@ class OffsetEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -5736,7 +5731,7 @@ class OffsetEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQuery
+        return  # osid.calendaring.OffsetEventQuery
 
     offset_event_query = property(fget=get_offset_event_query)
 
@@ -5756,7 +5751,7 @@ class OffsetEventQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
 
 class OffsetEventSearchSession:
@@ -5804,7 +5799,7 @@ class OffsetEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventSearch
+        return  # osid.calendaring.OffsetEventSearch
 
     offset_event_search = property(fget=get_offset_event_search)
 
@@ -5822,7 +5817,7 @@ class OffsetEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventSearchOrder
+        return  # osid.calendaring.OffsetEventSearchOrder
 
     offset_event_search_order = property(fget=get_offset_event_search_order)
 
@@ -5844,7 +5839,7 @@ class OffsetEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventSearchResults
+        return  # osid.calendaring.OffsetEventSearchResults
 
     @abc.abstractmethod
     def get_offset_event_query_from_inspector(self, offset_event_query_inspector):
@@ -5862,7 +5857,7 @@ class OffsetEventSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQuery
+        return  # osid.calendaring.OffsetEventQuery
 
 
 class OffsetEventAdminSession:
@@ -5913,7 +5908,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -5929,7 +5924,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -5950,7 +5945,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_offset_event_with_record_types(self, offset_event_record_types):
@@ -5972,7 +5967,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_form_for_create(self, offset_event_record_types):
@@ -5992,7 +5987,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventForm
+        return  # osid.calendaring.OffsetEventForm
 
     @abc.abstractmethod
     def create_offset_event(self, offset_event_form):
@@ -6012,7 +6007,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEvent
+        return  # osid.calendaring.OffsetEvent
 
     @abc.abstractmethod
     def can_update_offset_events(self):
@@ -6031,7 +6026,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_form_for_update(self, offset_event_id):
@@ -6052,7 +6047,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventForm
+        return  # osid.calendaring.OffsetEventForm
 
     @abc.abstractmethod
     def update_offset_event(self, offset_event_form):
@@ -6089,7 +6084,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_offset_event(self, offset_event_id):
@@ -6124,7 +6119,7 @@ class OffsetEventAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_offset_event(self, offset_event_id, alias_id):
@@ -6175,7 +6170,7 @@ class OffsetEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -6191,7 +6186,7 @@ class OffsetEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -6212,7 +6207,7 @@ class OffsetEventNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -6399,7 +6394,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -6447,7 +6442,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_offset_events_by_calendar(self, calendar_id):
@@ -6465,7 +6460,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_offset_event_ids_by_calendars(self, calendar_ids):
@@ -6482,7 +6477,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_offset_events_by_calendars(self, calendar_ids):
@@ -6499,7 +6494,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventList
+        return  # osid.calendaring.OffsetEventList
 
     @abc.abstractmethod
     def get_calendar_ids_by_offset_event(self, offset_event_id):
@@ -6517,7 +6512,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_offset_event(self, offset_e_vent_id):
@@ -6535,7 +6530,7 @@ class OffsetEventCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class OffsetEventCalendarAssignmentSession:
@@ -6570,7 +6565,7 @@ class OffsetEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_offset_events_to_calendar(self, calendar_id):
@@ -6591,7 +6586,7 @@ class OffsetEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -6608,7 +6603,7 @@ class OffsetEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_offset_event(self, calendar_id, offset_event_id):
@@ -6627,7 +6622,7 @@ class OffsetEventCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_offset_event_to_calendar(self, offset_event_id, calendar_id):
@@ -6719,7 +6714,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -6735,7 +6730,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -6756,7 +6751,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_offset_event_query(self):
@@ -6769,7 +6764,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQuery
+        return  # osid.calendaring.OffsetEventQuery
 
     offset_event_query = property(fget=get_offset_event_query)
 
@@ -6784,7 +6779,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventSearchOrder
+        return  # osid.calendaring.OffsetEventSearchOrder
 
     offset_event_search_order = property(fget=get_offset_event_search_order)
 
@@ -6816,7 +6811,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQueryInspector
+        return  # osid.calendaring.OffsetEventQueryInspector
 
     @abc.abstractmethod
     def apply_offset_event_sequencing(self, offset_event_search_order):
@@ -6848,7 +6843,7 @@ class OffsetEventSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.OffsetEventQuery
+        return  # osid.calendaring.OffsetEventQuery
 
 
 class ScheduleLookupSession:
@@ -6866,7 +6861,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -6882,7 +6877,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -6903,7 +6898,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_schedule_view(self):
@@ -6984,7 +6979,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.Schedule
+        return  # osid.calendaring.Schedule
 
     @abc.abstractmethod
     def get_schedules_by_ids(self, schedule_ids):
@@ -7010,7 +7005,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_genus_type(self, schedule_genus_type):
@@ -7032,7 +7027,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_parent_genus_type(self, schedule_genus_type):
@@ -7054,7 +7049,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_record_type(self, schedule_record_type):
@@ -7075,7 +7070,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_schedule_slot(self, schedule_slot_id):
@@ -7096,7 +7091,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_location(self, location_id):
@@ -7117,7 +7112,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_date(self, date):
@@ -7138,7 +7133,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules_by_date_range(self, from_, to):
@@ -7162,7 +7157,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedules(self):
@@ -7180,7 +7175,7 @@ class ScheduleLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     schedules = property(fget=get_schedules)
 
@@ -7219,7 +7214,7 @@ class ScheduleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -7235,7 +7230,7 @@ class ScheduleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -7256,7 +7251,7 @@ class ScheduleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -7296,7 +7291,7 @@ class ScheduleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
     schedule_query = property(fget=get_schedule_query)
 
@@ -7316,7 +7311,7 @@ class ScheduleQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
 
 class ScheduleSearchSession:
@@ -7363,7 +7358,7 @@ class ScheduleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSearch
+        return  # osid.calendaring.ScheduleSearch
 
     schedule_search = property(fget=get_schedule_search)
 
@@ -7381,7 +7376,7 @@ class ScheduleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSearchOrder
+        return  # osid.calendaring.ScheduleSearchOrder
 
     schedule_search_order = property(fget=get_schedule_search_order)
 
@@ -7403,7 +7398,7 @@ class ScheduleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSearchResults
+        return  # osid.calendaring.ScheduleSearchResults
 
     @abc.abstractmethod
     def get_schedule_query_from_inspector(self, schedule_query_inspector):
@@ -7421,7 +7416,7 @@ class ScheduleSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
 
 class ScheduleAdminSession:
@@ -7472,7 +7467,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -7488,7 +7483,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -7509,7 +7504,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_schedule_with_record_types(self, schedule_record_types):
@@ -7531,7 +7526,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_form_for_create(self, schedule_record_types):
@@ -7551,7 +7546,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleForm
+        return  # osid.calendaring.ScheduleForm
 
     @abc.abstractmethod
     def create_schedule(self, schedule_form):
@@ -7571,7 +7566,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Schedule
+        return  # osid.calendaring.Schedule
 
     @abc.abstractmethod
     def can_update_schedules(self):
@@ -7590,7 +7585,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_form_for_update(self, schedule_id):
@@ -7611,7 +7606,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleForm
+        return  # osid.calendaring.ScheduleForm
 
     @abc.abstractmethod
     def update_schedule(self, schedule_form):
@@ -7648,7 +7643,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_schedule(self, schedule_id):
@@ -7683,7 +7678,7 @@ class ScheduleAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_schedule(self, schedule_id, alias_id):
@@ -7734,7 +7729,7 @@ class ScheduleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -7750,7 +7745,7 @@ class ScheduleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -7771,7 +7766,7 @@ class ScheduleNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -7958,7 +7953,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -8006,7 +8001,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_schedules_by_calendar(self, calendar_id):
@@ -8024,7 +8019,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_schedule_ids_by_calendars(self, calendar_ids):
@@ -8041,7 +8036,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_schedules_by_calendars(self, calendar_ids):
@@ -8058,7 +8053,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleList
+        return  # osid.calendaring.ScheduleList
 
     @abc.abstractmethod
     def get_calendar_ids_by_schedule(self, schedule_id):
@@ -8076,7 +8071,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_schedule(self, schedule_id):
@@ -8094,7 +8089,7 @@ class ScheduleCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class ScheduleCalendarAssignmentSession:
@@ -8129,7 +8124,7 @@ class ScheduleCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_schedules_to_calendar(self, calendar_id):
@@ -8150,7 +8145,7 @@ class ScheduleCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -8166,7 +8161,7 @@ class ScheduleCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_schedule(self, calendar_id, schedule_id):
@@ -8185,7 +8180,7 @@ class ScheduleCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_schedule_to_calendar(self, schedule_id, calendar_id):
@@ -8276,7 +8271,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -8292,7 +8287,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -8313,7 +8308,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_query(self):
@@ -8326,7 +8321,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
     schedule_query = property(fget=get_schedule_query)
 
@@ -8341,7 +8336,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSearchOrder
+        return  # osid.calendaring.ScheduleSearchOrder
 
     schedule_search_order = property(fget=get_schedule_search_order)
 
@@ -8373,7 +8368,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQueryInspector
+        return  # osid.calendaring.ScheduleQueryInspector
 
     @abc.abstractmethod
     def apply_schedule_sequencing(self, schedule_search_order):
@@ -8405,7 +8400,7 @@ class ScheduleSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleQuery
+        return  # osid.calendaring.ScheduleQuery
 
 
 class ScheduleSlotLookupSession:
@@ -8423,7 +8418,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -8439,7 +8434,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -8460,7 +8455,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_schedule_slot_view(self):
@@ -8557,7 +8552,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlot
+        return  # osid.calendaring.ScheduleSlot
 
     @abc.abstractmethod
     def get_schedule_slots_by_ids(self, schedule_slot_ids):
@@ -8575,7 +8570,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots_by_genus_type(self, schedule_slot_genus_type):
@@ -8593,7 +8588,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots_by_parent_genus_type(self, schedule_slot_genus_type):
@@ -8611,7 +8606,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots_by_record_type(self, schedule_slot_record_type):
@@ -8628,7 +8623,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots_by_weekdays(self, weekdays):
@@ -8646,7 +8641,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots_by_time(self, time):
@@ -8663,7 +8658,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slots(self):
@@ -8677,7 +8672,7 @@ class ScheduleSlotLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     schedule_slots = property(fget=get_schedule_slots)
 
@@ -8721,7 +8716,7 @@ class ScheduleSlotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -8737,7 +8732,7 @@ class ScheduleSlotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -8758,7 +8753,7 @@ class ScheduleSlotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -8820,7 +8815,7 @@ class ScheduleSlotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
     schedule_slot_query = property(fget=get_schedule_slot_query)
 
@@ -8840,7 +8835,7 @@ class ScheduleSlotQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
 
 class ScheduleSlotSearchSession:
@@ -8888,7 +8883,7 @@ class ScheduleSlotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearch
+        return  # osid.calendaring.ScheduleSlotSearch
 
     schedule_slot_search = property(fget=get_schedule_slot_search)
 
@@ -8906,7 +8901,7 @@ class ScheduleSlotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchOrder
+        return  # osid.calendaring.ScheduleSlotSearchOrder
 
     schedule_slot_search_order = property(fget=get_schedule_slot_search_order)
 
@@ -8928,7 +8923,7 @@ class ScheduleSlotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSearchResults
+        return  # osid.calendaring.ScheduleSearchResults
 
     @abc.abstractmethod
     def get_schedule_slot_query_from_inspector(self, schedule_slot_query_inspector):
@@ -8947,7 +8942,7 @@ class ScheduleSlotSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
 
 class ScheduleSlotAdminSession:
@@ -8999,7 +8994,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -9015,7 +9010,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -9036,7 +9031,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_schedule_slot_with_record_types(self, schedule_slot_record_types):
@@ -9058,7 +9053,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_form_for_create(self, schedule_slot_record_types):
@@ -9078,7 +9073,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotForm
+        return  # osid.calendaring.ScheduleSlotForm
 
     @abc.abstractmethod
     def create_schedule_slot(self, schedule_slot_form):
@@ -9098,7 +9093,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlot
+        return  # osid.calendaring.ScheduleSlot
 
     @abc.abstractmethod
     def can_update_schedule_slots(self):
@@ -9117,7 +9112,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_form_for_update(self, schedule_slot_id):
@@ -9138,7 +9133,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotForm
+        return  # osid.calendaring.ScheduleSlotForm
 
     @abc.abstractmethod
     def update_schedule_slot(self, schedule_slot_form):
@@ -9175,7 +9170,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_schedule_slot(self, schedule_slot_id):
@@ -9210,7 +9205,7 @@ class ScheduleSlotAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_schedule_slot(self, schedule_slot_id, alias_id):
@@ -9261,7 +9256,7 @@ class ScheduleSlotNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -9277,7 +9272,7 @@ class ScheduleSlotNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -9298,7 +9293,7 @@ class ScheduleSlotNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -9485,7 +9480,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -9533,7 +9528,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_schedule_slots_by_calendar(self, calendar_id):
@@ -9551,7 +9546,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_schedule_slot_ids_by_calendars(self, calendar_ids):
@@ -9568,7 +9563,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_schedule_slots_by_calendars(self, calendar_ids):
@@ -9585,7 +9580,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotList
+        return  # osid.calendaring.ScheduleSlotList
 
     @abc.abstractmethod
     def get_calendar_ids_by_schedule_slot(self, schedule_slot_id):
@@ -9603,7 +9598,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_schedule_slot(self, schedule_slot_id):
@@ -9621,7 +9616,7 @@ class ScheduleSlotCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class ScheduleSlotCalendarAssignmentSession:
@@ -9656,7 +9651,7 @@ class ScheduleSlotCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_schedule_slots_to_calendar(self, calendar_id):
@@ -9677,7 +9672,7 @@ class ScheduleSlotCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -9694,7 +9689,7 @@ class ScheduleSlotCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_schedule_slot(self, calendar_id, schedule_slot_id):
@@ -9713,7 +9708,7 @@ class ScheduleSlotCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_schedule_slot_to_calendar(self, schedule_slot_id, calendar_id):
@@ -9805,7 +9800,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -9821,7 +9816,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -9842,7 +9837,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_schedule_slot_query(self):
@@ -9855,7 +9850,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
     schedule_slot_query = property(fget=get_schedule_slot_query)
 
@@ -9870,7 +9865,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotSearchOrder
+        return  # osid.calendaring.ScheduleSlotSearchOrder
 
     schedule_slot_search_order = property(fget=get_schedule_slot_search_order)
 
@@ -9902,7 +9897,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQueryInspector
+        return  # osid.calendaring.ScheduleSlotQueryInspector
 
     @abc.abstractmethod
     def apply_schedule_slot_sequencing(self, schedule_slot_search_order):
@@ -9934,7 +9929,7 @@ class ScheduleSlotSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.ScheduleSlotQuery
+        return  # osid.calendaring.ScheduleSlotQuery
 
 
 class CommitmentLookupSession:
@@ -9952,7 +9947,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -9968,7 +9963,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -9989,7 +9984,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_commitment_view(self):
@@ -10086,7 +10081,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.Commitment
+        return  # osid.calendaring.Commitment
 
     @abc.abstractmethod
     def get_commitments_by_ids(self, commitment_ids):
@@ -10104,7 +10099,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type(self, commitment_genus_type):
@@ -10121,7 +10116,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_parent_genus_type(self, commitment_genus_type):
@@ -10139,7 +10134,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_record_type(self, commitment_record_type):
@@ -10156,7 +10151,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_on_date(self, from_, to):
@@ -10177,7 +10172,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_on_date(self, commitment_genus_type, from_, to):
@@ -10200,7 +10195,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_event(self, event_id):
@@ -10231,7 +10226,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_event_on_date(self, event_id, from_, to):
@@ -10254,7 +10249,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_event(self, event_id, commitment_genus_type):
@@ -10274,7 +10269,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_event_on_date(self, event_id, commitment_genus_type, from_, to):
@@ -10299,7 +10294,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_resource(self, resource_id):
@@ -10316,7 +10311,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_resource_on_date(self, resource_id, from_, to):
@@ -10339,7 +10334,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_resource(self, resource_id, commitment_genus_type):
@@ -10359,7 +10354,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_resource_on_date(self, resource_id, commitment_genus_type, from_, to):
@@ -10384,7 +10379,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_event_and_resource(self, event_id, resource_id):
@@ -10417,7 +10412,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_for_event_and_resource_on_date(self, event_id, resource_id, from_, to):
@@ -10442,7 +10437,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_event_and_resource(self, event_id, resource_id, commitment_genus_type):
@@ -10478,11 +10473,11 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments_by_genus_type_for_event_and_resource_on_date(self, event_id, resource_id, commitment_genus_type,
-        from_, to):
+                                                                     from_, to):
         """Gets a ``CommitmentList`` of the given genus type for the given event, resource, commitment genus type and
         effective during the entire given date range inclusive but not confined to the date range.
 
@@ -10506,7 +10501,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitments(self):
@@ -10520,7 +10515,7 @@ class CommitmentLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     commitments = property(fget=get_commitments)
 
@@ -10560,7 +10555,7 @@ class CommitmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -10576,7 +10571,7 @@ class CommitmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -10597,7 +10592,7 @@ class CommitmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -10637,7 +10632,7 @@ class CommitmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
     commitment_query = property(fget=get_commitment_query)
 
@@ -10657,7 +10652,7 @@ class CommitmentQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
 
 class CommitmentSearchSession:
@@ -10705,7 +10700,7 @@ class CommitmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentSearch
+        return  # osid.calendaring.CommitmentSearch
 
     commitment_search = property(fget=get_commitment_search)
 
@@ -10723,7 +10718,7 @@ class CommitmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentSearchOrder
+        return  # osid.calendaring.CommitmentSearchOrder
 
     commitment_search_order = property(fget=get_commitment_search_order)
 
@@ -10745,7 +10740,7 @@ class CommitmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentSearchResults
+        return  # osid.calendaring.CommitmentSearchResults
 
     @abc.abstractmethod
     def get_commitment_query_from_inspector(self, commitment_query_inspector):
@@ -10763,7 +10758,7 @@ class CommitmentSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
 
 class CommitmentAdminSession:
@@ -10815,7 +10810,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -10831,7 +10826,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -10852,7 +10847,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_commitment_with_record_types(self, commitment_record_types):
@@ -10874,7 +10869,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_form_for_create(self, event_id, resource_id, commitment_record_types):
@@ -10899,7 +10894,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentForm
+        return  # osid.calendaring.CommitmentForm
 
     @abc.abstractmethod
     def create_commitment(self, commitment_form):
@@ -10919,7 +10914,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Commitment
+        return  # osid.calendaring.Commitment
 
     @abc.abstractmethod
     def can_update_commitments(self):
@@ -10938,7 +10933,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_form_for_update(self, commitment_id):
@@ -10959,7 +10954,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentForm
+        return  # osid.calendaring.CommitmentForm
 
     @abc.abstractmethod
     def update_commitment(self, commitment_form):
@@ -10996,7 +10991,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_commitment(self, commitment_id):
@@ -11031,7 +11026,7 @@ class CommitmentAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_commitment(self, commitment_id, alias_id):
@@ -11082,7 +11077,7 @@ class CommitmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -11098,7 +11093,7 @@ class CommitmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -11119,7 +11114,7 @@ class CommitmentNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -11468,7 +11463,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -11516,7 +11511,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_commitments_by_calendar(self, calendar_id):
@@ -11534,7 +11529,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_commitment_ids_by_calendars(self, calendar_ids):
@@ -11551,7 +11546,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_commitments_by_calendars(self, calendar_ids):
@@ -11568,7 +11563,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentList
+        return  # osid.calendaring.CommitmentList
 
     @abc.abstractmethod
     def get_calendar_ids_by_commitment(self, commitment_id):
@@ -11586,7 +11581,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_commitment(self, commitment_id):
@@ -11604,7 +11599,7 @@ class CommitmentCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class CommitmentCalendarAssignmentSession:
@@ -11639,7 +11634,7 @@ class CommitmentCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_commitments_to_calendar(self, calendar_id):
@@ -11660,7 +11655,7 @@ class CommitmentCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -11676,7 +11671,7 @@ class CommitmentCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_commitment(self, calendar_id, commitment_id):
@@ -11695,7 +11690,7 @@ class CommitmentCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_commitment_to_calendar(self, commitment_id, calendar_id):
@@ -11787,7 +11782,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -11803,7 +11798,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -11824,7 +11819,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_commitment_query(self):
@@ -11837,7 +11832,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
     commitment_query = property(fget=get_commitment_query)
 
@@ -11852,7 +11847,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentSearchOrder
+        return  # osid.calendaring.CommitmentSearchOrder
 
     commitment_search_order = property(fget=get_commitment_search_order)
 
@@ -11884,7 +11879,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQueryInspector
+        return  # osid.calendaring.CommitmentQueryInspector
 
     @abc.abstractmethod
     def apply_commitment_sequencing(self, commitment_search_order):
@@ -11916,7 +11911,7 @@ class CommitmentSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CommitmentQuery
+        return  # osid.calendaring.CommitmentQuery
 
 
 class TimePeriodLookupSession:
@@ -11958,7 +11953,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -11974,7 +11969,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -11995,7 +11990,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_time_period_view(self):
@@ -12076,7 +12071,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriod
+        return  # osid.calendaring.TimePeriod
 
     @abc.abstractmethod
     def get_time_periods_by_ids(self, time_period_ids):
@@ -12102,7 +12097,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods_by_genus_type(self, time_period_genus_type):
@@ -12125,7 +12120,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods_by_parent_genus_type(self, time_period_genus_type):
@@ -12148,7 +12143,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods_by_record_type(self, time_period_record_type):
@@ -12170,7 +12165,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods_by_date(self, datetime):
@@ -12196,7 +12191,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods_in_date_range(self, start, end):
@@ -12225,7 +12220,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_periods(self):
@@ -12244,7 +12239,7 @@ class TimePeriodLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     time_periods = property(fget=get_time_periods)
 
@@ -12274,7 +12269,7 @@ class TimePeriodQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -12290,7 +12285,7 @@ class TimePeriodQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -12311,7 +12306,7 @@ class TimePeriodQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -12351,7 +12346,7 @@ class TimePeriodQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
     time_period_query = property(fget=get_time_period_query)
 
@@ -12371,7 +12366,7 @@ class TimePeriodQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
 
 class TimePeriodSearchSession:
@@ -12409,7 +12404,7 @@ class TimePeriodSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodSearch
+        return  # osid.calendaring.TimePeriodSearch
 
     time_period_search = property(fget=get_time_period_search)
 
@@ -12427,7 +12422,7 @@ class TimePeriodSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodSearchOrder
+        return  # osid.calendaring.TimePeriodSearchOrder
 
     time_period_search_order = property(fget=get_time_period_search_order)
 
@@ -12449,7 +12444,7 @@ class TimePeriodSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodSearchResults
+        return  # osid.calendaring.TimePeriodSearchResults
 
     @abc.abstractmethod
     def get_time_period_query_from_inspector(self, time_period_query_inspector):
@@ -12467,7 +12462,7 @@ class TimePeriodSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
 
 class TimePeriodAdminSession:
@@ -12518,7 +12513,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -12534,7 +12529,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -12555,7 +12550,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_time_period_with_record_types(self, time_period_record_types):
@@ -12577,7 +12572,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_form_for_create(self, time_period_record_types):
@@ -12597,7 +12592,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodForm
+        return  # osid.calendaring.TimePeriodForm
 
     @abc.abstractmethod
     def create_time_period(self, time_period_form):
@@ -12617,7 +12612,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriod
+        return  # osid.calendaring.TimePeriod
 
     @abc.abstractmethod
     def can_update_time_periods(self):
@@ -12636,7 +12631,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_form_for_update(self, time_period_id):
@@ -12657,7 +12652,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodForm
+        return  # osid.calendaring.TimePeriodForm
 
     @abc.abstractmethod
     def update_time_period(self, time_period_form):
@@ -12694,7 +12689,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_time_period(self, time_period_id):
@@ -12729,7 +12724,7 @@ class TimePeriodAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_time_period(self, time_period_id, alias_id):
@@ -12820,7 +12815,7 @@ class TimePeriodNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -12836,7 +12831,7 @@ class TimePeriodNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -12857,7 +12852,7 @@ class TimePeriodNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_federated_calendar_view(self):
@@ -13044,7 +13039,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -13092,7 +13087,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_time_periods_by_calendar(self, calendar_id):
@@ -13110,7 +13105,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_time_period_ids_by_calendars(self, calendar_ids):
@@ -13127,7 +13122,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_time_periods_by_calendars(self, calendar_ids):
@@ -13144,7 +13139,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodList
+        return  # osid.calendaring.TimePeriodList
 
     @abc.abstractmethod
     def get_calendar_ids_by_time_period(self, time_period_id):
@@ -13162,7 +13157,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_calendars_by_time_period(self, time_period_id):
@@ -13180,7 +13175,7 @@ class TimePeriodCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class TimePeriodCalendarAssignmentSession:
@@ -13215,7 +13210,7 @@ class TimePeriodCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_assign_time_periods_to_calendar(self, calendar_id):
@@ -13236,7 +13231,7 @@ class TimePeriodCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assignable_calendar_ids(self, calendar_id):
@@ -13253,7 +13248,7 @@ class TimePeriodCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_assignable_calendar_ids_for_time_period(self, calendar_id, time_period_id):
@@ -13272,7 +13267,7 @@ class TimePeriodCalendarAssignmentSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def assign_time_period_to_calendar(self, time_period_id, calendar_id):
@@ -13364,7 +13359,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_id = property(fget=get_calendar_id)
 
@@ -13380,7 +13375,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     calendar = property(fget=get_calendar)
 
@@ -13401,7 +13396,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_time_period_query(self):
@@ -13414,7 +13409,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
     time_period_query = property(fget=get_time_period_query)
 
@@ -13429,7 +13424,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodSearchOrder
+        return  # osid.calendaring.TimePeriodSearchOrder
 
     time_period_search_order = property(fget=get_time_period_search_order)
 
@@ -13461,7 +13456,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQueryInspector
+        return  # osid.calendaring.TimePeriodQueryInspector
 
     @abc.abstractmethod
     def apply_time_period_sequencing(self, time_period_search_order):
@@ -13493,7 +13488,7 @@ class TimePeriodSmartCalendarSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.TimePeriodQuery
+        return  # osid.calendaring.TimePeriodQuery
 
 
 class CalendarLookupSession:
@@ -13540,7 +13535,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -13594,7 +13589,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.Calendar
+        return  # osid.calendaring.Calendar
 
     @abc.abstractmethod
     def get_calendars_by_ids(self, calendar_ids):
@@ -13620,7 +13615,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def get_calendars_by_genus_type(self, calendar_genus_type):
@@ -13642,7 +13637,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def get_calendars_by_parent_genus_type(self, calendar_genus_type):
@@ -13664,7 +13659,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def get_calendars_by_record_type(self, calendar_record_type):
@@ -13685,7 +13680,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def get_calendars_by_provider(self, resource_id):
@@ -13706,7 +13701,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def get_calendars(self):
@@ -13724,7 +13719,7 @@ class CalendarLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     calendars = property(fget=get_calendars)
 
@@ -13758,7 +13753,7 @@ class CalendarQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_query(self):
@@ -13771,7 +13766,7 @@ class CalendarQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
     calendar_query = property(fget=get_calendar_query)
 
@@ -13791,7 +13786,7 @@ class CalendarQuerySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
 
 class CalendarSearchSession:
@@ -13833,7 +13828,7 @@ class CalendarSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_search(self):
@@ -13846,7 +13841,7 @@ class CalendarSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarSearch
+        return  # osid.calendaring.CalendarSearch
 
     calendar_search = property(fget=get_calendar_search)
 
@@ -13864,7 +13859,7 @@ class CalendarSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarSearchOrder
+        return  # osid.calendaring.CalendarSearchOrder
 
     calendar_search_order = property(fget=get_calendar_search_order)
 
@@ -13886,7 +13881,7 @@ class CalendarSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarSearchResults
+        return  # osid.calendaring.CalendarSearchResults
 
     @abc.abstractmethod
     def get_calendar_query_from_inspector(self, calendar_query_inspector):
@@ -13904,7 +13899,7 @@ class CalendarSearchSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarQuery
+        return  # osid.calendaring.CalendarQuery
 
 
 class CalendarAdminSession:
@@ -13956,7 +13951,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def can_create_calendar_with_record_types(self, calendar_record_types):
@@ -13977,7 +13972,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_form_for_create(self, calendar_record_types):
@@ -13997,7 +13992,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarForm
+        return  # osid.calendaring.CalendarForm
 
     @abc.abstractmethod
     def create_calendar(self, calendar_form):
@@ -14017,7 +14012,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarForm
+        return  # osid.calendaring.CalendarForm
 
     @abc.abstractmethod
     def can_update_calendars(self):
@@ -14036,7 +14031,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_form_for_update(self, calendar_id):
@@ -14057,7 +14052,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarForm
+        return  # osid.calendaring.CalendarForm
 
     @abc.abstractmethod
     def update_calendar(self, calendar_form):
@@ -14094,7 +14089,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def delete_calendar(self, calendar_id):
@@ -14129,7 +14124,7 @@ class CalendarAdminSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def alias_calendar(self, calendar_id, alias_id):
@@ -14183,7 +14178,7 @@ class CalendarNotificationSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def reliable_calendar_notifications(self):
@@ -14400,7 +14395,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_hierarchy_id = property(fget=get_calendar_hierarchy_id)
 
@@ -14416,7 +14411,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     calendar_hierarchy = property(fget=get_calendar_hierarchy)
 
@@ -14437,7 +14432,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_calendar_view(self):
@@ -14481,7 +14476,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     root_calendar_ids = property(fget=get_root_calendar_ids)
 
@@ -14497,7 +14492,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     root_calendars = property(fget=get_root_calendars)
 
@@ -14517,7 +14512,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_parent_of_calendar(self, id_, calendar_id):
@@ -14538,7 +14533,7 @@ class CalendarHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_parent_calendar_ids(self, calendar_id):
@@ -14556,7 +14551,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_parent_calendars(self, calendar_id):
@@ -14574,7 +14569,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def is_ancestor_of_calendar(self, id_, calendar_id):
@@ -14595,7 +14590,7 @@ class CalendarHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def has_child_calendars(self, calendar_id):
@@ -14613,7 +14608,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def is_child_of_calendar(self, id_, calendar_id):
@@ -14634,7 +14629,7 @@ class CalendarHierarchySession:
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_child_calendar_ids(self, calendar_id):
@@ -14652,7 +14647,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.IdList
+        return  # osid.id.IdList
 
     @abc.abstractmethod
     def get_child_calendars(self, calendar_id):
@@ -14670,7 +14665,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarList
+        return  # osid.calendaring.CalendarList
 
     @abc.abstractmethod
     def is_descendant_of_calendar(self, id_, calendar_id):
@@ -14691,7 +14686,7 @@ class CalendarHierarchySession:
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_calendar_node_ids(self, calendar_id, ancestor_levels, descendant_levels, include_siblings):
@@ -14717,7 +14712,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Node
+        return  # osid.hierarchy.Node
 
     @abc.abstractmethod
     def get_calendar_nodes(self, calendar_id, ancestor_levels, descendant_levels, include_siblings):
@@ -14743,7 +14738,7 @@ class CalendarHierarchySession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.calendaring.CalendarNode
+        return  # osid.calendaring.CalendarNode
 
 
 class CalendarHierarchyDesignSession:
@@ -14765,7 +14760,7 @@ class CalendarHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     calendar_hierarchy_id = property(fget=get_calendar_hierarchy_id)
 
@@ -14781,7 +14776,7 @@ class CalendarHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.hierarchy.Hierarchy
+        return  # osid.hierarchy.Hierarchy
 
     calendar_hierarchy = property(fget=get_calendar_hierarchy)
 
@@ -14802,7 +14797,7 @@ class CalendarHierarchyDesignSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def add_root_calendar(self, calendar_id):
@@ -14888,5 +14883,3 @@ class CalendarHierarchyDesignSession:
 
         """
         pass
-
-

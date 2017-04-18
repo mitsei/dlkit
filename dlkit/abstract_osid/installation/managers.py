@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class InstallationProfile:
@@ -36,7 +31,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_lookup(self):
@@ -49,7 +44,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_query(self):
@@ -62,7 +57,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_search(self):
@@ -75,7 +70,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_management(self):
@@ -88,7 +83,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_update(self):
@@ -101,7 +96,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_notification(self):
@@ -117,7 +112,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_site_lookup(self):
@@ -130,7 +125,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_lookup(self):
@@ -145,7 +140,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_query(self):
@@ -158,7 +153,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_search(self):
@@ -171,7 +166,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_admin(self):
@@ -184,7 +179,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_notification(self):
@@ -200,7 +195,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_depot(self):
@@ -213,7 +208,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_depot_assignment(self):
@@ -226,7 +221,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_package_smart_depot(self):
@@ -239,7 +234,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_lookup(self):
@@ -252,7 +247,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_query(self):
@@ -265,7 +260,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_search(self):
@@ -278,7 +273,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_admin(self):
@@ -291,7 +286,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_notification(self):
@@ -307,7 +302,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_hierarchy(self):
@@ -320,7 +315,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_depot_hierarchy_design(self):
@@ -333,7 +328,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_installation_batch(self):
@@ -346,7 +341,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_record_types(self):
@@ -359,7 +354,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     installation_record_types = property(fget=get_installation_record_types)
 
@@ -376,7 +371,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_search_record_types(self):
@@ -389,7 +384,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     installation_search_record_types = property(fget=get_installation_search_record_types)
 
@@ -406,7 +401,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_site_record_types(self):
@@ -419,7 +414,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     site_record_types = property(fget=get_site_record_types)
 
@@ -436,7 +431,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_record_types(self):
@@ -449,7 +444,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     package_record_types = property(fget=get_package_record_types)
 
@@ -466,7 +461,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_package_search_record_types(self):
@@ -479,7 +474,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     package_search_record_types = property(fget=get_package_search_record_types)
 
@@ -496,7 +491,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_installation_content_record_types(self):
@@ -509,7 +504,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     installation_content_record_types = property(fget=get_installation_content_record_types)
 
@@ -526,7 +521,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_record_types(self):
@@ -539,7 +534,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     depot_record_types = property(fget=get_depot_record_types)
 
@@ -556,7 +551,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_depot_search_record_types(self):
@@ -569,7 +564,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     depot_search_record_types = property(fget=get_depot_search_record_types)
 
@@ -586,7 +581,7 @@ class InstallationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class InstallationManager:
@@ -650,7 +645,7 @@ class InstallationManager:
         ``supports_installation_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationLookupSession
+        return  # osid.installation.InstallationLookupSession
 
     installation_lookup_session = property(fget=get_installation_lookup_session)
 
@@ -673,7 +668,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationLookupSession
+        return  # osid.installation.InstallationLookupSession
 
     @abc.abstractmethod
     def get_installation_query_session(self):
@@ -688,7 +683,7 @@ class InstallationManager:
         ``supports_installation_query()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationQuerySession
+        return  # osid.installation.InstallationQuerySession
 
     installation_query_session = property(fget=get_installation_query_session)
 
@@ -710,7 +705,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationQuerySession
+        return  # osid.installation.InstallationQuerySession
 
     @abc.abstractmethod
     def get_installation_search_session(self):
@@ -725,7 +720,7 @@ class InstallationManager:
         ``supports_installation_search()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationSearchSession
+        return  # osid.installation.InstallationSearchSession
 
     installation_search_session = property(fget=get_installation_search_session)
 
@@ -748,7 +743,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationSearchSession
+        return  # osid.installation.InstallationSearchSession
 
     @abc.abstractmethod
     def get_installation_management_session(self):
@@ -763,7 +758,7 @@ class InstallationManager:
         ``supports_installation_management()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationManagementSession
+        return  # osid.installation.InstallationManagementSession
 
     installation_management_session = property(fget=get_installation_management_session)
 
@@ -786,7 +781,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationManagementSession
+        return  # osid.installation.InstallationManagementSession
 
     @abc.abstractmethod
     def get_installation_update_session(self):
@@ -801,7 +796,7 @@ class InstallationManager:
         ``supports_installation_update()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationUpdateSession
+        return  # osid.installation.InstallationUpdateSession
 
     installation_update_session = property(fget=get_installation_update_session)
 
@@ -824,7 +819,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationUpdateSession
+        return  # osid.installation.InstallationUpdateSession
 
     @abc.abstractmethod
     def get_installation_notification_session(self, installation_receiver):
@@ -842,7 +837,7 @@ class InstallationManager:
         ``supports_installation_notification()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationNotificationSession
+        return  # osid.installation.InstallationNotificationSession
 
     @abc.abstractmethod
     def get_installation_notification_session_for_site(self, installation_receiver, site_id):
@@ -865,7 +860,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationNotificationSession
+        return  # osid.installation.InstallationNotificationSession
 
     @abc.abstractmethod
     def get_site_lookup_session(self):
@@ -880,7 +875,7 @@ class InstallationManager:
         ``supports_site_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.SiteLookupSession
+        return  # osid.installation.SiteLookupSession
 
     site_lookup_session = property(fget=get_site_lookup_session)
 
@@ -897,7 +892,7 @@ class InstallationManager:
         ``supports_package_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.PackageLookupSession
+        return  # osid.installation.PackageLookupSession
 
     package_lookup_session = property(fget=get_package_lookup_session)
 
@@ -919,7 +914,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageLookupSession
+        return  # osid.installation.PackageLookupSession
 
     @abc.abstractmethod
     def get_package_query_session(self):
@@ -934,7 +929,7 @@ class InstallationManager:
         ``supports_package_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuerySession
+        return  # osid.installation.PackageQuerySession
 
     package_query_session = property(fget=get_package_query_session)
 
@@ -956,7 +951,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.installation.PackageQuerySession
+        return  # osid.installation.PackageQuerySession
 
     @abc.abstractmethod
     def get_package_search_session(self):
@@ -971,7 +966,7 @@ class InstallationManager:
         ``supports_package_search()`` is ``true``.*
 
         """
-        return # osid.installation.PackageSearchSession
+        return  # osid.installation.PackageSearchSession
 
     package_search_session = property(fget=get_package_search_session)
 
@@ -993,7 +988,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageSearchSession
+        return  # osid.installation.PackageSearchSession
 
     @abc.abstractmethod
     def get_package_admin_session(self):
@@ -1008,7 +1003,7 @@ class InstallationManager:
         ``supports_package_admin()`` is ``true``.*
 
         """
-        return # osid.installation.PackageAdminSession
+        return  # osid.installation.PackageAdminSession
 
     package_admin_session = property(fget=get_package_admin_session)
 
@@ -1030,7 +1025,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageAdminSession
+        return  # osid.installation.PackageAdminSession
 
     @abc.abstractmethod
     def get_package_notification_session(self, package_receiver):
@@ -1048,7 +1043,7 @@ class InstallationManager:
         ``supports_package_notification()`` is ``true``.*
 
         """
-        return # osid.installation.PackageNotificationSession
+        return  # osid.installation.PackageNotificationSession
 
     @abc.abstractmethod
     def get_package_notification_session_for_depot(self, package_receiver, depot_id):
@@ -1071,7 +1066,7 @@ class InstallationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageNotificationSession
+        return  # osid.installation.PackageNotificationSession
 
     @abc.abstractmethod
     def get_package_depot_session(self):
@@ -1086,7 +1081,7 @@ class InstallationManager:
         ``supports_package_depot()`` is ``true``.*
 
         """
-        return # osid.installation.PackageDepotSession
+        return  # osid.installation.PackageDepotSession
 
     package_depot_session = property(fget=get_package_depot_session)
 
@@ -1103,7 +1098,7 @@ class InstallationManager:
         ``supports_package_depot_assignment()`` is ``true``.*
 
         """
-        return # osid.installation.PackageDepotSession
+        return  # osid.installation.PackageDepotSession
 
     package_depot_assignment_session = property(fget=get_package_depot_assignment_session)
 
@@ -1124,7 +1119,7 @@ class InstallationManager:
         ``supports_package_smart_depot()`` is ``true``.*
 
         """
-        return # osid.installation.PackageSmartDepotSession
+        return  # osid.installation.PackageSmartDepotSession
 
     @abc.abstractmethod
     def get_depot_lookup_session(self):
@@ -1139,7 +1134,7 @@ class InstallationManager:
         ``supports_depot_lookup()`` is true.*
 
         """
-        return # osid.installation.DepotLookupSession
+        return  # osid.installation.DepotLookupSession
 
     depot_lookup_session = property(fget=get_depot_lookup_session)
 
@@ -1156,7 +1151,7 @@ class InstallationManager:
         ``supports_depot_query()`` is ``true``.*
 
         """
-        return # osid.installation.DepotQuerySession
+        return  # osid.installation.DepotQuerySession
 
     depot_query_session = property(fget=get_depot_query_session)
 
@@ -1173,7 +1168,7 @@ class InstallationManager:
         ``supports_depot_search()`` is true.*
 
         """
-        return # osid.installation.DepotSearchSession
+        return  # osid.installation.DepotSearchSession
 
     depot_search_session = property(fget=get_depot_search_session)
 
@@ -1190,7 +1185,7 @@ class InstallationManager:
         ``supports_depot_admin()`` is true.*
 
         """
-        return # osid.installation.DepotAdminSession
+        return  # osid.installation.DepotAdminSession
 
     depot_admin_session = property(fget=get_depot_admin_session)
 
@@ -1210,7 +1205,7 @@ class InstallationManager:
         ``supports_depot_notification()`` is true.*
 
         """
-        return # osid.installation.DepotNotificationSession
+        return  # osid.installation.DepotNotificationSession
 
     @abc.abstractmethod
     def get_depot_hierarchy_session(self):
@@ -1225,7 +1220,7 @@ class InstallationManager:
         ``supports_depot_hierarchy()`` is true.*
 
         """
-        return # osid.installation.DepotHierarchySession
+        return  # osid.installation.DepotHierarchySession
 
     depot_hierarchy_session = property(fget=get_depot_hierarchy_session)
 
@@ -1242,7 +1237,7 @@ class InstallationManager:
         ``supports_depot_hierarchy_design()`` is true.*
 
         """
-        return # osid.installation.DepotHierarchyDesignSession
+        return  # osid.installation.DepotHierarchyDesignSession
 
     depot_hierarchy_design_session = property(fget=get_depot_hierarchy_design_session)
 
@@ -1259,7 +1254,7 @@ class InstallationManager:
         ``supports_installation_batch()`` is true.*
 
         """
-        return # osid.installation.batch.InstallationBatchManager
+        return  # osid.installation.batch.InstallationBatchManager
 
     installation_batch_manager = property(fget=get_installation_batch_manager)
 
@@ -1329,7 +1324,7 @@ class InstallationProxyManager:
         ``supports_installation_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationLookupSession
+        return  # osid.installation.InstallationLookupSession
 
     @abc.abstractmethod
     def get_installation_lookup_session_for_site(self, site_id, proxy):
@@ -1352,7 +1347,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationLookupSession
+        return  # osid.installation.InstallationLookupSession
 
     @abc.abstractmethod
     def get_installation_query_session(self, proxy):
@@ -1370,7 +1365,7 @@ class InstallationProxyManager:
         ``supports_installation_query()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationQuerySession
+        return  # osid.installation.InstallationQuerySession
 
     @abc.abstractmethod
     def get_installation_query_session_for_site(self, site_id, proxy):
@@ -1392,7 +1387,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationQuerySession
+        return  # osid.installation.InstallationQuerySession
 
     @abc.abstractmethod
     def get_installation_search_session(self, proxy):
@@ -1410,7 +1405,7 @@ class InstallationProxyManager:
         ``supports_installation_search()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationSearchSession
+        return  # osid.installation.InstallationSearchSession
 
     @abc.abstractmethod
     def get_installation_search_session_for_site(self, site_id, proxy):
@@ -1433,7 +1428,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationSearchSession
+        return  # osid.installation.InstallationSearchSession
 
     @abc.abstractmethod
     def get_installation_management_session(self, proxy):
@@ -1451,7 +1446,7 @@ class InstallationProxyManager:
         ``supports_installation_management()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationManagementSession
+        return  # osid.installation.InstallationManagementSession
 
     @abc.abstractmethod
     def get_installation_management_session_for_site(self, site_id, proxy):
@@ -1474,7 +1469,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationManagementSession
+        return  # osid.installation.InstallationManagementSession
 
     @abc.abstractmethod
     def get_installation_update_session(self, proxy):
@@ -1492,7 +1487,7 @@ class InstallationProxyManager:
         ``supports_installation_update()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationUpdateSession
+        return  # osid.installation.InstallationUpdateSession
 
     @abc.abstractmethod
     def get_installation_update_session_for_site(self, site_id, proxy):
@@ -1515,7 +1510,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationUpdateSession
+        return  # osid.installation.InstallationUpdateSession
 
     @abc.abstractmethod
     def get_installation_notification_session(self, installation_receiver, proxy):
@@ -1535,7 +1530,7 @@ class InstallationProxyManager:
         ``supports_installation_notification()`` is ``true``.*
 
         """
-        return # osid.installation.InstallationNotificationSession
+        return  # osid.installation.InstallationNotificationSession
 
     @abc.abstractmethod
     def get_installation_notification_session_for_site(self, installation_receiver, site_id, proxy):
@@ -1560,7 +1555,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.InstallationNotificationSession
+        return  # osid.installation.InstallationNotificationSession
 
     @abc.abstractmethod
     def get_site_lookup_session(self, proxy):
@@ -1578,7 +1573,7 @@ class InstallationProxyManager:
         ``supports_site_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.SiteLookupSession
+        return  # osid.installation.SiteLookupSession
 
     @abc.abstractmethod
     def get_package_lookup_session(self, proxy):
@@ -1596,7 +1591,7 @@ class InstallationProxyManager:
         ``supports_package_lookup()`` is ``true``.*
 
         """
-        return # osid.installation.PackageLookupSession
+        return  # osid.installation.PackageLookupSession
 
     @abc.abstractmethod
     def get_package_lookup_session_for_depot(self, depot_id, proxy):
@@ -1618,7 +1613,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageLookupSession
+        return  # osid.installation.PackageLookupSession
 
     @abc.abstractmethod
     def get_package_query_session(self, proxy):
@@ -1636,7 +1631,7 @@ class InstallationProxyManager:
         ``supports_package_query()`` is ``true``.*
 
         """
-        return # osid.installation.PackageQuerySession
+        return  # osid.installation.PackageQuerySession
 
     @abc.abstractmethod
     def get_package_query_session_for_depot(self, depot_id, proxy):
@@ -1658,7 +1653,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.installation.PackageQuerySession
+        return  # osid.installation.PackageQuerySession
 
     @abc.abstractmethod
     def get_package_search_session(self, proxy):
@@ -1676,7 +1671,7 @@ class InstallationProxyManager:
         ``supports_package_search()`` is ``true``.*
 
         """
-        return # osid.installation.PackageSearchSession
+        return  # osid.installation.PackageSearchSession
 
     @abc.abstractmethod
     def get_package_search_session_for_depot(self, depot_id, proxy):
@@ -1698,7 +1693,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageSearchSession
+        return  # osid.installation.PackageSearchSession
 
     @abc.abstractmethod
     def get_package_admin_session(self, proxy):
@@ -1716,7 +1711,7 @@ class InstallationProxyManager:
         ``supports_package_admin()`` is ``true``.*
 
         """
-        return # osid.installation.PackageAdminSession
+        return  # osid.installation.PackageAdminSession
 
     @abc.abstractmethod
     def get_package_admin_session_for_depot(self, depot_id, proxy):
@@ -1738,7 +1733,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageAdminSession
+        return  # osid.installation.PackageAdminSession
 
     @abc.abstractmethod
     def get_package_notification_session(self, package_receiver, proxy):
@@ -1758,7 +1753,7 @@ class InstallationProxyManager:
         ``supports_package_notification()`` is ``true``.*
 
         """
-        return # osid.installation.PackageNotificationSession
+        return  # osid.installation.PackageNotificationSession
 
     @abc.abstractmethod
     def get_package_notification_session_for_depot(self, package_receiver, depot_id, proxy):
@@ -1783,7 +1778,7 @@ class InstallationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.installation.PackageNotificationSession
+        return  # osid.installation.PackageNotificationSession
 
     @abc.abstractmethod
     def get_package_depot_session(self, proxy):
@@ -1801,7 +1796,7 @@ class InstallationProxyManager:
         ``supports_package_depot()`` is ``true``.*
 
         """
-        return # osid.installation.PackageDepotSession
+        return  # osid.installation.PackageDepotSession
 
     @abc.abstractmethod
     def get_package_depot_assignment_session(self, proxy):
@@ -1819,7 +1814,7 @@ class InstallationProxyManager:
         ``supports_package_depot_assignment()`` is ``true``.*
 
         """
-        return # osid.installation.PackageDepotSession
+        return  # osid.installation.PackageDepotSession
 
     @abc.abstractmethod
     def get_package_smart_depot_session(self, depot_id, proxy):
@@ -1840,7 +1835,7 @@ class InstallationProxyManager:
         ``supports_package_smart_depot()`` is ``true``.*
 
         """
-        return # osid.installation.PackageSmartDepotSession
+        return  # osid.installation.PackageSmartDepotSession
 
     @abc.abstractmethod
     def get_depot_lookup_session(self, proxy):
@@ -1858,7 +1853,7 @@ class InstallationProxyManager:
         ``supports_depot_lookup()`` is true.*
 
         """
-        return # osid.installation.DepotLookupSession
+        return  # osid.installation.DepotLookupSession
 
     @abc.abstractmethod
     def get_depot_query_session(self, proxy):
@@ -1876,7 +1871,7 @@ class InstallationProxyManager:
         ``supports_depot_query()`` is ``true``.*
 
         """
-        return # osid.installation.DepotQuerySession
+        return  # osid.installation.DepotQuerySession
 
     @abc.abstractmethod
     def get_depot_search_session(self, proxy):
@@ -1894,7 +1889,7 @@ class InstallationProxyManager:
         ``supports_depot_search()`` is true.*
 
         """
-        return # osid.installation.DepotSearchSession
+        return  # osid.installation.DepotSearchSession
 
     @abc.abstractmethod
     def get_depot_admin_session(self, proxy):
@@ -1912,7 +1907,7 @@ class InstallationProxyManager:
         ``supports_depot_admin()`` is true.*
 
         """
-        return # osid.installation.DepotAdminSession
+        return  # osid.installation.DepotAdminSession
 
     @abc.abstractmethod
     def get_depot_notification_session(self, depot_receiver, proxy):
@@ -1932,7 +1927,7 @@ class InstallationProxyManager:
         ``supports_depot_notification()`` is true.*
 
         """
-        return # osid.installation.DepotNotificationSession
+        return  # osid.installation.DepotNotificationSession
 
     @abc.abstractmethod
     def get_depot_hierarchy_session(self, proxy):
@@ -1950,7 +1945,7 @@ class InstallationProxyManager:
         ``supports_depot_hierarchy()`` is true.*
 
         """
-        return # osid.installation.DepotHierarchySession
+        return  # osid.installation.DepotHierarchySession
 
     @abc.abstractmethod
     def get_depot_hierarchy_design_session(self, proxy):
@@ -1968,7 +1963,7 @@ class InstallationProxyManager:
         ``supports_depot_hierarchy_design()`` is true.*
 
         """
-        return # osid.installation.DepotHierarchyDesignSession
+        return  # osid.installation.DepotHierarchyDesignSession
 
     @abc.abstractmethod
     def get_installation_batch_proxy_manager(self):
@@ -1983,8 +1978,6 @@ class InstallationProxyManager:
         ``supports_installation_batch()`` is true.*
 
         """
-        return # osid.installation.batch.InstallationBatchProxyManager
+        return  # osid.installation.batch.InstallationBatchProxyManager
 
     installation_batch_proxy_manager = property(fget=get_installation_batch_proxy_manager)
-
-

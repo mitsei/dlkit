@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class OutboundStreamSession:
@@ -45,7 +40,7 @@ class OutboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     endpoint_id = property(fget=get_endpoint_id)
 
@@ -61,7 +56,7 @@ class OutboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     endpoint = property(fget=get_endpoint)
 
@@ -76,7 +71,7 @@ class OutboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.DataOutputStream
+        return  # osid.transport.DataOutputStream
 
     @abc.abstractmethod
     def has_data_available(self):
@@ -89,7 +84,7 @@ class OutboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def receive_data(self):
@@ -103,7 +98,7 @@ class OutboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.DataInputStream
+        return  # osid.transport.DataInputStream
 
 
 class InboundStreamSession:
@@ -126,7 +121,7 @@ class InboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     endpoint_id = property(fget=get_endpoint_id)
 
@@ -142,7 +137,7 @@ class InboundStreamSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     endpoint = property(fget=get_endpoint)
 
@@ -193,7 +188,7 @@ class OutboundMessageSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     endpoint_id = property(fget=get_endpoint_id)
 
@@ -209,7 +204,7 @@ class OutboundMessageSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     endpoint = property(fget=get_endpoint)
 
@@ -226,7 +221,7 @@ class OutboundMessageSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Request
+        return  # osid.transport.Request
 
     request = property(fget=get_request)
 
@@ -285,7 +280,7 @@ class InboundMessageSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     endpoint_id = property(fget=get_endpoint_id)
 
@@ -301,7 +296,7 @@ class InboundMessageSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     endpoint = property(fget=get_endpoint)
 
@@ -356,7 +351,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def use_comparative_endpoint_view(self):
@@ -410,7 +405,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.Endpoint
+        return  # osid.transport.Endpoint
 
     @abc.abstractmethod
     def get_endpoints_by_ids(self, endpoint_ids):
@@ -436,7 +431,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     @abc.abstractmethod
     def get_endpoints_by_genus_type(self, endpoint_genus_type):
@@ -458,7 +453,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     @abc.abstractmethod
     def get_endpoints_by_parent_genus_type(self, endpoints_genus_type):
@@ -480,7 +475,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     @abc.abstractmethod
     def get_endpoints_by_record_type(self, endpoints_record_type):
@@ -501,7 +496,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     @abc.abstractmethod
     def get_endpoints_by_provider(self, resource_id):
@@ -522,7 +517,7 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     @abc.abstractmethod
     def get_endpoints(self):
@@ -540,8 +535,6 @@ class EndpointLookupSession:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.transport.EndpointList
+        return  # osid.transport.EndpointList
 
     endpoints = property(fget=get_endpoints)
-
-

@@ -16,8 +16,6 @@ from ..osid import markers as osid_markers
 from dlkit.abstract_osid.id import primitives as abc_id_primitives
 
 
-
-
 class Id(abc_id_primitives.Id, osid_markers.OsidPrimitive):
     """``Id`` represents an identifier object.
 
@@ -33,12 +31,10 @@ class Id(abc_id_primitives.Id, osid_markers.OsidPrimitive):
     an ``Id`` means persisting the above components.
 
     """
-
     def __init__(self, authority, namespace, identifier):
         self._authority = authority
         self._namespace = namespace
         self._identifier = identifier
-
     def get_authority(self):
         """Gets the authority of this ``Id``.
 
@@ -89,5 +85,3 @@ class Id(abc_id_primitives.Id, osid_markers.OsidPrimitive):
         return self._identifier
 
     identifier = property(fget=get_identifier)
-
-

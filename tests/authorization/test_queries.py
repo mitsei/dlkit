@@ -3,6 +3,8 @@
 import unittest
 
 
+
+
 class TestAuthorizationQuery(unittest.TestCase):
     """Tests for AuthorizationQuery"""
 
@@ -197,6 +199,8 @@ class TestAuthorizationQuery(unittest.TestCase):
     def test_get_authorization_query_record(self):
         """Tests get_authorization_query_record"""
         pass
+
+
 
 
 class TestVaultQuery(unittest.TestCase):

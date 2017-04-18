@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestAssessmentPartRecord(unittest.TestCase):
     """Tests for AssessmentPartRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestAssessmentPartQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestAssessmentPartFormRecord(unittest.TestCase):
     """Tests for AssessmentPartFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestAssessmentPartSearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestSequenceRuleRecord(unittest.TestCase):
     """Tests for SequenceRuleRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestSequenceRuleQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestSequenceRuleFormRecord(unittest.TestCase):
     """Tests for SequenceRuleFormRecord"""
+
+
 
 
 

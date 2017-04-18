@@ -13,12 +13,7 @@
 #     Argument signature defined in specification.
 # pylint: disable=duplicate-code
 #     All apparent duplicates have been inspected. They aren't.
-
-
-
 import abc
-
-
 
 
 class PackageRecord:
@@ -31,8 +26,6 @@ class PackageRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class PackageQueryRecord:
     """A record for a ``PackageQuery``.
 
@@ -41,8 +34,6 @@ class PackageQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class PackageQueryInspectorRecord:
@@ -55,8 +46,6 @@ class PackageQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class PackageFormRecord:
     """A record for a ``PackageForm``.
 
@@ -65,8 +54,6 @@ class PackageFormRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class PackageSearchOrderRecord:
@@ -79,8 +66,6 @@ class PackageSearchOrderRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class PackageSearchRecord:
     """A record for a ``PackageSearch``.
 
@@ -89,8 +74,6 @@ class PackageSearchRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class PackageSearchResultsRecord:
@@ -103,8 +86,6 @@ class PackageSearchResultsRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class InstallationContentRecord:
     """A record for an ``InstallationContent``.
 
@@ -113,8 +94,6 @@ class InstallationContentRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class InstallationContentQueryRecord:
@@ -127,8 +106,6 @@ class InstallationContentQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class InstallationContentQueryInspectorRecord:
     """A record for an ``InstallationContentQueryInspector``.
 
@@ -137,8 +114,6 @@ class InstallationContentQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class InstallationContentFormRecord:
@@ -151,8 +126,6 @@ class InstallationContentFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class DepotRecord:
     """A record for a ``Depot``.
 
@@ -161,8 +134,6 @@ class DepotRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class DepotQueryRecord:
@@ -175,8 +146,6 @@ class DepotQueryRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class DepotQueryInspectorRecord:
     """A record for a ``DepotQueryInspector``.
 
@@ -185,8 +154,6 @@ class DepotQueryInspectorRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class DepotFormRecord:
@@ -199,8 +166,6 @@ class DepotFormRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class DepotSearchOrderRecord:
     """A record for a ``DepotSearchOrder``.
 
@@ -209,8 +174,6 @@ class DepotSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class DepotSearchRecord:
@@ -223,8 +186,6 @@ class DepotSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class DepotSearchResultsRecord:
     """A record for a ``DepotSearchResults``.
 
@@ -233,8 +194,6 @@ class DepotSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class InstallationRecord:
@@ -247,8 +206,6 @@ class InstallationRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class InstallationQueryRecord:
     """A record for an ``InstallationQuery``.
 
@@ -257,8 +214,6 @@ class InstallationQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class InstallationQueryInspectorRecord:
@@ -271,8 +226,6 @@ class InstallationQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class InstallationSearchOrderRecord:
     """A record for an ``InstallationSearchOrder``.
 
@@ -281,8 +234,6 @@ class InstallationSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class InstallationSearchRecord:
@@ -295,8 +246,6 @@ class InstallationSearchRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class InstallationSearchResultsRecord:
     """A record for an ``InstallationSearchResults``.
 
@@ -305,8 +254,6 @@ class InstallationSearchResultsRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SiteRecord:
@@ -319,8 +266,6 @@ class SiteRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SiteQueryRecord:
     """A record for a ``SiteQuery``.
 
@@ -329,8 +274,6 @@ class SiteQueryRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
 
 
 class SiteQueryInspectorRecord:
@@ -343,8 +286,6 @@ class SiteQueryInspectorRecord:
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class SiteSearchOrderRecord:
     """A record for a ``SiteSearchOrder``.
 
@@ -353,7 +294,3 @@ class SiteSearchOrderRecord:
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

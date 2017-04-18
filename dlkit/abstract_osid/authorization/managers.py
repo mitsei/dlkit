@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationProfile:
     """The ``AuthorizationProfile`` describes the interoperability among authorization services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization(self):
@@ -48,7 +44,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_lookup(self):
@@ -64,7 +60,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_query(self):
@@ -77,7 +73,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_search(self):
@@ -90,7 +86,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_admin(self):
@@ -103,7 +99,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_notification(self):
@@ -119,7 +115,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_vault(self):
@@ -132,7 +128,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_vault_assignment(self):
@@ -145,7 +141,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_smart_vault(self):
@@ -158,7 +154,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_lookup(self):
@@ -174,7 +170,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_query(self):
@@ -187,7 +183,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_search(self):
@@ -200,7 +196,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_admin(self):
@@ -213,7 +209,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_notification(self):
@@ -229,7 +225,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_vault(self):
@@ -242,7 +238,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_vault_assignment(self):
@@ -255,7 +251,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_function_smart_vault(self):
@@ -268,7 +264,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_lookup(self):
@@ -284,7 +280,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_query(self):
@@ -297,7 +293,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_search(self):
@@ -310,7 +306,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_admin(self):
@@ -323,7 +319,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_notification(self):
@@ -339,7 +335,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_hierarchy(self):
@@ -352,7 +348,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_hierarchy_design(self):
@@ -365,7 +361,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_vault(self):
@@ -378,7 +374,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_vault_assignment(self):
@@ -391,7 +387,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_qualifier_smart_vault(self):
@@ -404,7 +400,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_lookup(self):
@@ -420,7 +416,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_query(self):
@@ -433,7 +429,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_search(self):
@@ -446,7 +442,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_admin(self):
@@ -459,7 +455,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_notification(self):
@@ -475,7 +471,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_hierarchy(self):
@@ -488,7 +484,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_vault_hierarchy_design(self):
@@ -501,7 +497,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_batch(self):
@@ -514,7 +510,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_authorization_rules(self):
@@ -527,7 +523,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_record_types(self):
@@ -540,7 +536,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     authorization_record_types = property(fget=get_authorization_record_types)
 
@@ -557,7 +553,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_search_record_types(self):
@@ -570,7 +566,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     authorization_search_record_types = property(fget=get_authorization_search_record_types)
 
@@ -587,7 +583,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_record_types(self):
@@ -600,7 +596,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     function_record_types = property(fget=get_function_record_types)
 
@@ -617,7 +613,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_search_record_types(self):
@@ -630,7 +626,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     function_search_record_types = property(fget=get_function_search_record_types)
 
@@ -647,7 +643,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_record_types(self):
@@ -660,7 +656,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     qualifier_record_types = property(fget=get_qualifier_record_types)
 
@@ -677,7 +673,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_search_record_types(self):
@@ -690,7 +686,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     qualifier_search_record_types = property(fget=get_qualifier_search_record_types)
 
@@ -707,7 +703,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_record_types(self):
@@ -720,7 +716,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     vault_record_types = property(fget=get_vault_record_types)
 
@@ -737,7 +733,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_vault_search_record_types(self):
@@ -750,7 +746,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     vault_search_record_types = property(fget=get_vault_search_record_types)
 
@@ -767,7 +763,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authorization_condition_record_types(self):
@@ -780,7 +776,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
 
@@ -797,7 +793,7 @@ class AuthorizationProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AuthorizationManager:
@@ -868,10 +864,8 @@ class AuthorizationManager:
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorization_session(self):
@@ -886,7 +880,7 @@ class AuthorizationManager:
         ``supports_authorization()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSession
+        return  # osid.authorization.AuthorizationSession
 
     authorization_session = property(fget=get_authorization_session)
 
@@ -908,7 +902,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSession
+        return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
     def get_authorization_lookup_session(self):
@@ -923,7 +917,7 @@ class AuthorizationManager:
         ``supports_authorization_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationLookupSession
+        return  # osid.authorization.AuthorizationLookupSession
 
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
@@ -945,7 +939,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationLookupSession
+        return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
     def get_authorization_query_session(self):
@@ -960,7 +954,7 @@ class AuthorizationManager:
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuerySession
+        return  # osid.authorization.AuthorizationQuerySession
 
     authorization_query_session = property(fget=get_authorization_query_session)
 
@@ -982,7 +976,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuerySession
+        return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
     def get_authorization_search_session(self):
@@ -997,7 +991,7 @@ class AuthorizationManager:
         ``supports_authorization_search()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSearchSession
+        return  # osid.authorization.AuthorizationSearchSession
 
     authorization_search_session = property(fget=get_authorization_search_session)
 
@@ -1019,7 +1013,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSearchSession
+        return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
     def get_authorization_admin_session(self):
@@ -1034,7 +1028,7 @@ class AuthorizationManager:
         ``supports_authorization_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationAdminSession
+        return  # osid.authorization.AuthorizationAdminSession
 
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
@@ -1056,7 +1050,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationAdminSession
+        return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
     def get_authorization_notification_session(self, authorization_receiver):
@@ -1074,7 +1068,7 @@ class AuthorizationManager:
         ``supports_authorization_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationNotificationSession
+        return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
     def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id):
@@ -1096,7 +1090,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationNotificationSession
+        return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
     def get_authorization_vault_session(self):
@@ -1111,7 +1105,7 @@ class AuthorizationManager:
         ``supports_authorization_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationVaultSession
+        return  # osid.authorization.AuthorizationVaultSession
 
     authorization_vault_session = property(fget=get_authorization_vault_session)
 
@@ -1128,7 +1122,7 @@ class AuthorizationManager:
         ``supports_authorization_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationVaultAssignmentSession
+        return  # osid.authorization.AuthorizationVaultAssignmentSession
 
     authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
 
@@ -1149,7 +1143,7 @@ class AuthorizationManager:
         ``supports_authorization_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSmartVaultSession
+        return  # osid.authorization.AuthorizationSmartVaultSession
 
     @abc.abstractmethod
     def get_function_lookup_session(self):
@@ -1164,7 +1158,7 @@ class AuthorizationManager:
         ``supports_function_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionLookupSession
+        return  # osid.authorization.FunctionLookupSession
 
     function_lookup_session = property(fget=get_function_lookup_session)
 
@@ -1186,7 +1180,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionLookupSession
+        return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
     def get_function_query_session(self):
@@ -1201,7 +1195,7 @@ class AuthorizationManager:
         ``supports_function_query()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionQuerySession
+        return  # osid.authorization.FunctionQuerySession
 
     function_query_session = property(fget=get_function_query_session)
 
@@ -1223,7 +1217,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionQuerySession
+        return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
     def get_function_search_session(self):
@@ -1238,7 +1232,7 @@ class AuthorizationManager:
         ``supports_function_search()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionSearchSession
+        return  # osid.authorization.FunctionSearchSession
 
     function_search_session = property(fget=get_function_search_session)
 
@@ -1260,7 +1254,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionSearchSession
+        return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
     def get_function_admin_session(self):
@@ -1275,7 +1269,7 @@ class AuthorizationManager:
         ``supports_function_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionAdminSession
+        return  # osid.authorization.FunctionAdminSession
 
     function_admin_session = property(fget=get_function_admin_session)
 
@@ -1297,7 +1291,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionAdminSession
+        return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
     def get_function_notification_session(self, function_receiver):
@@ -1315,7 +1309,7 @@ class AuthorizationManager:
         ``supports_function_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionNotificationSession
+        return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
     def get_function_notification_session_for_vault(self, function_receiver, vault_id):
@@ -1337,7 +1331,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionNotificationSession
+        return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
     def get_function_vault_session(self):
@@ -1352,7 +1346,7 @@ class AuthorizationManager:
         ``supports_function_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionVaultSession
+        return  # osid.authorization.FunctionVaultSession
 
     function_vault_session = property(fget=get_function_vault_session)
 
@@ -1369,7 +1363,7 @@ class AuthorizationManager:
         ``supports_function_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionVaultAssignmentSession
+        return  # osid.authorization.FunctionVaultAssignmentSession
 
     function_vault_assignment_session = property(fget=get_function_vault_assignment_session)
 
@@ -1390,7 +1384,7 @@ class AuthorizationManager:
         ``supports_function_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionSmartVaultSession
+        return  # osid.authorization.FunctionSmartVaultSession
 
     @abc.abstractmethod
     def get_qualifier_lookup_session(self):
@@ -1405,7 +1399,7 @@ class AuthorizationManager:
         ``supports_qualifier_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierLookupSession
+        return  # osid.authorization.QualifierLookupSession
 
     qualifier_lookup_session = property(fget=get_qualifier_lookup_session)
 
@@ -1427,7 +1421,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierLookupSession
+        return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
     def get_qualifier_query_session(self):
@@ -1442,7 +1436,7 @@ class AuthorizationManager:
         ``supports_qualifier_query()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuerySession
+        return  # osid.authorization.QualifierQuerySession
 
     qualifier_query_session = property(fget=get_qualifier_query_session)
 
@@ -1464,7 +1458,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierQuerySession
+        return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
     def get_qualifier_search_session(self):
@@ -1479,7 +1473,7 @@ class AuthorizationManager:
         ``supports_qualifier_search()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierSearchSession
+        return  # osid.authorization.QualifierSearchSession
 
     qualifier_search_session = property(fget=get_qualifier_search_session)
 
@@ -1501,7 +1495,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierSearchSession
+        return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
     def get_qualifier_admin_session(self):
@@ -1516,7 +1510,7 @@ class AuthorizationManager:
         ``supports_qualifier_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierAdminSession
+        return  # osid.authorization.QualifierAdminSession
 
     qualifier_admin_session = property(fget=get_qualifier_admin_session)
 
@@ -1538,7 +1532,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierAdminSession
+        return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
     def get_qualifier_notification_session(self, qualifier_receiver):
@@ -1556,7 +1550,7 @@ class AuthorizationManager:
         ``supports_qualifier_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierNotificationSession
+        return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
     def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id):
@@ -1578,7 +1572,7 @@ class AuthorizationManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierNotificationSession
+        return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id):
@@ -1600,7 +1594,7 @@ class AuthorizationManager:
         ``supports_qualifier_hierarchy()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierHierarchySession
+        return  # osid.authorization.QualifierHierarchySession
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id):
@@ -1619,7 +1613,7 @@ class AuthorizationManager:
         ``supports_qualifier_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierHierarchyDesignSession
+        return  # osid.authorization.QualifierHierarchyDesignSession
 
     @abc.abstractmethod
     def get_qualifier_vault_session(self):
@@ -1634,7 +1628,7 @@ class AuthorizationManager:
         ``supports_qualifier_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierVaultSession
+        return  # osid.authorization.QualifierVaultSession
 
     qualifier_vault_session = property(fget=get_qualifier_vault_session)
 
@@ -1651,7 +1645,7 @@ class AuthorizationManager:
         ``supports_qualifier_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierVaultSession
+        return  # osid.authorization.QualifierVaultSession
 
     qualifier_vault_assignment_session = property(fget=get_qualifier_vault_assignment_session)
 
@@ -1672,7 +1666,7 @@ class AuthorizationManager:
         ``supports_qualifier_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierSmartVaultSession
+        return  # osid.authorization.QualifierSmartVaultSession
 
     @abc.abstractmethod
     def get_vault_lookup_session(self):
@@ -1687,7 +1681,7 @@ class AuthorizationManager:
         ``supports_vault_lookup()`` is true.*
 
         """
-        return # osid.authorization.VaultLookupSession
+        return  # osid.authorization.VaultLookupSession
 
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
@@ -1704,7 +1698,7 @@ class AuthorizationManager:
         ``supports_vault_query()`` is true.*
 
         """
-        return # osid.authorization.VaultQuerySession
+        return  # osid.authorization.VaultQuerySession
 
     vault_query_session = property(fget=get_vault_query_session)
 
@@ -1721,7 +1715,7 @@ class AuthorizationManager:
         ``supports_vault_search()`` is true.*
 
         """
-        return # osid.authorization.VaultSearchSession
+        return  # osid.authorization.VaultSearchSession
 
     vault_search_session = property(fget=get_vault_search_session)
 
@@ -1738,7 +1732,7 @@ class AuthorizationManager:
         ``supports_vault_admin()`` is true.*
 
         """
-        return # osid.authorization.VaultAdminSession
+        return  # osid.authorization.VaultAdminSession
 
     vault_admin_session = property(fget=get_vault_admin_session)
 
@@ -1758,7 +1752,7 @@ class AuthorizationManager:
         ``supports_vault_notification()`` is true.*
 
         """
-        return # osid.authorization.VaultNotificationSession
+        return  # osid.authorization.VaultNotificationSession
 
     @abc.abstractmethod
     def get_vault_hierarchy_session(self):
@@ -1773,7 +1767,7 @@ class AuthorizationManager:
         ``supports_vault_hierarchy()`` is true.*
 
         """
-        return # osid.authorization.VaultHierarchySession
+        return  # osid.authorization.VaultHierarchySession
 
     vault_hierarchy_session = property(fget=get_vault_hierarchy_session)
 
@@ -1790,7 +1784,7 @@ class AuthorizationManager:
         ``supports_vault_hierarchy_design()`` is true.*
 
         """
-        return # osid.authorization.VaultHierarchyDesignSession
+        return  # osid.authorization.VaultHierarchyDesignSession
 
     vault_hierarchy_design_session = property(fget=get_vault_hierarchy_design_session)
 
@@ -1807,7 +1801,7 @@ class AuthorizationManager:
         ``supports_authorization_batch()`` is true.*
 
         """
-        return # osid.authorization.batch.AuthorizationBatchManager
+        return  # osid.authorization.batch.AuthorizationBatchManager
 
     authorization_batch_manager = property(fget=get_authorization_batch_manager)
 
@@ -1824,7 +1818,7 @@ class AuthorizationManager:
         ``supports_authorization_rules()`` is true.*
 
         """
-        return # osid.authorization.rules.AuthorizationRulesManager
+        return  # osid.authorization.rules.AuthorizationRulesManager
 
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 
@@ -1896,10 +1890,8 @@ class AuthorizationProxyManager:
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_authorization_session(self, proxy):
@@ -1917,7 +1909,7 @@ class AuthorizationProxyManager:
         ``supports_authorization()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSession
+        return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
     def get_authorization_session_for_vault(self, vault_id, proxy):
@@ -1939,7 +1931,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSession
+        return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
     def get_authorization_lookup_session(self, proxy):
@@ -1957,7 +1949,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationLookupSession
+        return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
     def get_authorization_lookup_session_for_vault(self, vault_id, proxy):
@@ -1979,7 +1971,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationLookupSession
+        return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
     def get_authorization_query_session(self, proxy):
@@ -1997,7 +1989,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuerySession
+        return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
     def get_authorization_query_session_for_vault(self, vault_id, proxy):
@@ -2019,7 +2011,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationQuerySession
+        return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
     def get_authorization_search_session(self, proxy):
@@ -2037,7 +2029,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_search()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSearchSession
+        return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
     def get_authorization_search_session_for_vault(self, vault_id, proxy):
@@ -2059,7 +2051,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSearchSession
+        return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
     def get_authorization_admin_session(self, proxy):
@@ -2077,7 +2069,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationAdminSession
+        return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
     def get_authorization_admin_session_for_vault(self, vault_id, proxy):
@@ -2099,7 +2091,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationAdminSession
+        return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
     def get_authorization_notification_session(self, authorization_receiver, proxy):
@@ -2119,7 +2111,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationNotificationSession
+        return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
     def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id, proxy):
@@ -2143,7 +2135,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.AuthorizationNotificationSession
+        return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
     def get_authorization_vault_session(self, proxy):
@@ -2161,7 +2153,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationVaultSession
+        return  # osid.authorization.AuthorizationVaultSession
 
     @abc.abstractmethod
     def get_authorization_vault_assignment_session(self, proxy):
@@ -2179,7 +2171,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationVaultAssignmentSession
+        return  # osid.authorization.AuthorizationVaultAssignmentSession
 
     @abc.abstractmethod
     def get_authorization_smart_vault_session(self, vault_id, proxy):
@@ -2200,7 +2192,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.AuthorizationSmartVaultSession
+        return  # osid.authorization.AuthorizationSmartVaultSession
 
     @abc.abstractmethod
     def get_function_lookup_session(self, proxy):
@@ -2218,7 +2210,7 @@ class AuthorizationProxyManager:
         ``supports_function_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionLookupSession
+        return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
     def get_function_lookup_session_for_vault(self, vault_id, proxy):
@@ -2240,7 +2232,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionLookupSession
+        return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
     def get_function_query_session(self, proxy):
@@ -2258,7 +2250,7 @@ class AuthorizationProxyManager:
         ``supports_function_query()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionQuerySession
+        return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
     def get_function_query_session_for_vault(self, vault_id, proxy):
@@ -2280,7 +2272,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionQuerySession
+        return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
     def get_function_search_session(self, proxy):
@@ -2298,7 +2290,7 @@ class AuthorizationProxyManager:
         ``supports_function_search()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionSearchSession
+        return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
     def get_function_search_session_for_vault(self, vault_id, proxy):
@@ -2320,7 +2312,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionSearchSession
+        return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
     def get_function_admin_session(self, proxy):
@@ -2338,7 +2330,7 @@ class AuthorizationProxyManager:
         ``supports_function_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionAdminSession
+        return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
     def get_function_admin_session_for_vault(self, vault_id, proxy):
@@ -2360,7 +2352,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionAdminSession
+        return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
     def get_function_notification_session(self, function_receiver, proxy):
@@ -2380,7 +2372,7 @@ class AuthorizationProxyManager:
         ``supports_function_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionNotificationSession
+        return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
     def get_function_notification_session_for_vault(self, function_receiver, vault_id, proxy):
@@ -2404,7 +2396,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.FunctionNotificationSession
+        return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
     def get_function_vault_session(self, proxy):
@@ -2422,7 +2414,7 @@ class AuthorizationProxyManager:
         ``supports_function_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionVaultSession
+        return  # osid.authorization.FunctionVaultSession
 
     @abc.abstractmethod
     def get_function_vault_assignment_session(self, proxy):
@@ -2440,7 +2432,7 @@ class AuthorizationProxyManager:
         ``supports_function_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionVaultAssignmentSession
+        return  # osid.authorization.FunctionVaultAssignmentSession
 
     @abc.abstractmethod
     def get_function_smart_vault_session(self, vault_id, proxy):
@@ -2461,7 +2453,7 @@ class AuthorizationProxyManager:
         ``supports_function_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionSmartVaultSession
+        return  # osid.authorization.FunctionSmartVaultSession
 
     @abc.abstractmethod
     def get_qualifier_lookup_session(self, proxy):
@@ -2479,7 +2471,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_lookup()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierLookupSession
+        return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
     def get_qualifier_lookup_session_for_vault(self, vault_id, proxy):
@@ -2501,7 +2493,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierLookupSession
+        return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
     def get_qualifier_query_session(self, proxy):
@@ -2519,7 +2511,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_search()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierQuerySession
+        return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
     def get_qualifier_query_session_for_vault(self, vault_id, proxy):
@@ -2541,7 +2533,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierQuerySession
+        return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
     def get_qualifier_search_session(self, proxy):
@@ -2559,7 +2551,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_search()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierSearchSession
+        return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
     def get_qualifier_search_session_for_vault(self, vault_id, proxy):
@@ -2581,7 +2573,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierSearchSession
+        return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
     def get_qualifier_admin_session(self, proxy):
@@ -2599,7 +2591,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_admin()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierAdminSession
+        return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
     def get_qualifier_admin_session_for_vault(self, vault_id, proxy):
@@ -2621,7 +2613,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierAdminSession
+        return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
     def get_qualifier_notification_session(self, qualifier_receiver, proxy):
@@ -2641,7 +2633,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_notification()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierNotificationSession
+        return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
     def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id, proxy):
@@ -2665,7 +2657,7 @@ class AuthorizationProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.authorization.QualifierNotificationSession
+        return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id, proxy):
@@ -2689,7 +2681,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_hierarchy()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierHierarchySession
+        return  # osid.authorization.QualifierHierarchySession
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id, proxy):
@@ -2710,7 +2702,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierHierarchyDesignSession
+        return  # osid.authorization.QualifierHierarchyDesignSession
 
     @abc.abstractmethod
     def get_qualifier_vault_session(self, proxy):
@@ -2728,7 +2720,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierVaultSession
+        return  # osid.authorization.QualifierVaultSession
 
     @abc.abstractmethod
     def get_qualifier_vault_assignment_session(self, proxy):
@@ -2746,7 +2738,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_vault_assignment()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierVaultSession
+        return  # osid.authorization.QualifierVaultSession
 
     @abc.abstractmethod
     def get_qualifier_smart_vault_session(self, vault_id, proxy):
@@ -2767,7 +2759,7 @@ class AuthorizationProxyManager:
         ``supports_qualifier_smart_vault()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierSmartVaultSession
+        return  # osid.authorization.QualifierSmartVaultSession
 
     @abc.abstractmethod
     def get_vault_lookup_session(self, proxy):
@@ -2785,7 +2777,7 @@ class AuthorizationProxyManager:
         ``supports_vault_lookup()`` is true.*
 
         """
-        return # osid.authorization.VaultLookupSession
+        return  # osid.authorization.VaultLookupSession
 
     @abc.abstractmethod
     def get_vault_query_session(self, proxy):
@@ -2803,7 +2795,7 @@ class AuthorizationProxyManager:
         ``supports_vault_query()`` is true.*
 
         """
-        return # osid.authorization.VaultQuerySession
+        return  # osid.authorization.VaultQuerySession
 
     @abc.abstractmethod
     def get_vault_search_session(self, proxy):
@@ -2821,7 +2813,7 @@ class AuthorizationProxyManager:
         ``supports_vault_search()`` is true.*
 
         """
-        return # osid.authorization.VaultSearchSession
+        return  # osid.authorization.VaultSearchSession
 
     @abc.abstractmethod
     def get_vault_admin_session(self, proxy):
@@ -2839,7 +2831,7 @@ class AuthorizationProxyManager:
         ``supports_vault_admin()`` is true.*
 
         """
-        return # osid.authorization.VaultAdminSession
+        return  # osid.authorization.VaultAdminSession
 
     @abc.abstractmethod
     def get_vault_notification_session(self, vault_receiver, proxy):
@@ -2859,7 +2851,7 @@ class AuthorizationProxyManager:
         ``supports_vault_notification()`` is true.*
 
         """
-        return # osid.authorization.VaultNotificationSession
+        return  # osid.authorization.VaultNotificationSession
 
     @abc.abstractmethod
     def get_vault_hierarchy_session(self, proxy):
@@ -2877,7 +2869,7 @@ class AuthorizationProxyManager:
         ``supports_vault_hierarchy()`` is true.*
 
         """
-        return # osid.authorization.VaultHierarchySession
+        return  # osid.authorization.VaultHierarchySession
 
     @abc.abstractmethod
     def get_vault_hierarchy_design_session(self, proxy):
@@ -2895,7 +2887,7 @@ class AuthorizationProxyManager:
         ``supports_vault_hierarchy_design()`` is true.*
 
         """
-        return # osid.authorization.VaultHierarchyDesignSession
+        return  # osid.authorization.VaultHierarchyDesignSession
 
     @abc.abstractmethod
     def get_authorization_batch_proxy_manager(self):
@@ -2910,7 +2902,7 @@ class AuthorizationProxyManager:
         ``supports_authorization_batch()`` is true.*
 
         """
-        return # osid.authorization.batch.AuthorizationBatchProxyManager
+        return  # osid.authorization.batch.AuthorizationBatchProxyManager
 
     authorization_batch_proxy_manager = property(fget=get_authorization_batch_proxy_manager)
 
@@ -2927,8 +2919,6 @@ class AuthorizationProxyManager:
         ``supports_authorization_rules()`` is true.*
 
         """
-        return # osid.authorization.rules.AuthorizationRulesProxyManager
+        return  # osid.authorization.rules.AuthorizationRulesProxyManager
 
     authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
-
-

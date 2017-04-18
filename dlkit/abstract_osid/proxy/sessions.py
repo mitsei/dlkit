@@ -16,9 +16,6 @@
 import abc
 
 
-
-
-
 class ProxySession:
     """This session converts external data into a proxy for use in OSID proxy managers.
 
@@ -26,7 +23,6 @@ class ProxySession:
 
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_proxy_condition(self):
@@ -41,7 +37,7 @@ class ProxySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.proxy.ProxyCondition
+        return  # osid.proxy.ProxyCondition
 
     proxy_condition = property(fget=get_proxy_condition)
 
@@ -61,6 +57,4 @@ class ProxySession:
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        return # osid.proxy.Proxy
-
-
+        return  # osid.proxy.Proxy

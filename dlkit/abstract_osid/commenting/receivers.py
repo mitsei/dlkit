@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class CommentReceiver:
     """The comment receiver is the consumer supplied interface for receiving notifications pertaining to new or deleted comments."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_comments(self, notification_id, comment_ids):
@@ -73,7 +69,6 @@ class CommentReceiver:
 class BookReceiver:
     """The book receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Book`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_books(self, notification_id, book_ids):
@@ -134,5 +129,3 @@ class BookReceiver:
 
         """
         pass
-
-

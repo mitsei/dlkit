@@ -21,11 +21,8 @@ FEDERATED = 0
 ISOLATED = 1
 
 
-
-
 class OsidSession(abc_osid_sessions.OsidSession):
     """Adapts underlying OsidSession methodswith authorization checks."""
-
     def __init__(self, provider_session, authz_session, override_lookup_session=None, proxy=None, **kwargs):
         self._provider_session = provider_session
         self._authz_session = authz_session
@@ -145,8 +142,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
     def _is_isolated_catalog_view(self):
         return bool(self._catalog_view)
-
-
     def get_locale(self):
         pass
 
@@ -222,5 +217,3 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
     def start_transaction(self):
         raise Unimplemented()
-
-

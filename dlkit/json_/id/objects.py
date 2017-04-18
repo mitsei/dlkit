@@ -18,8 +18,6 @@ from dlkit.abstract_osid.id import objects as abc_id_objects
 from dlkit.abstract_osid.osid import errors
 
 
-
-
 class IdForm(abc_id_objects.IdForm, osid_objects.OsidForm):
     """This form provides a means of creating an ``Id``."""
 
@@ -208,6 +206,8 @@ class IdForm(abc_id_objects.IdForm, osid_objects.OsidForm):
     identifier = property(fset=set_identifier, fdel=clear_identifier)
 
 
+
+
 class IdList(abc_id_objects.IdList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``IdList`` provides a means for accessing ``Id`` elements sequentially either one at a time or many at a time.
 
@@ -217,8 +217,6 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
       while (il.hasNext()) {
            Id[] ids = il.getNextIds(il.available());
       }
-
-
 
     """
 
@@ -259,5 +257,3 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class DisplayText:
     """Text to be displayed."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_language_type(self):
@@ -35,7 +31,7 @@ class DisplayText:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     language_type = property(fget=get_language_type)
 
@@ -50,7 +46,7 @@ class DisplayText:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     script_type = property(fget=get_script_type)
 
@@ -65,7 +61,7 @@ class DisplayText:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     format_type = property(fget=get_format_type)
 
@@ -80,8 +76,6 @@ class DisplayText:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # string
+        return  # string
 
     text = property(fget=get_text)
-
-

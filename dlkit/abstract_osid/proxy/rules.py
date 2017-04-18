@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class Proxy:
     """A ``Proxy`` is used to transfer external information from an application server into an OSID Provider."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def has_authentication(self):
@@ -35,7 +31,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_authentication(self):
@@ -48,7 +44,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Authentication
+        return  # osid.authentication.process.Authentication
 
     authentication = property(fget=get_authentication)
 
@@ -63,7 +59,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_effective_agent_id(self):
@@ -76,7 +72,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.id.Id
+        return  # osid.id.Id
 
     effective_agent_id = property(fget=get_effective_agent_id)
 
@@ -92,7 +88,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.Agent
+        return  # osid.authentication.Agent
 
     effective_agent = property(fget=get_effective_agent)
 
@@ -107,7 +103,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_effective_date(self):
@@ -120,7 +116,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # timestamp
+        return  # timestamp
 
     effective_date = property(fget=get_effective_date)
 
@@ -135,7 +131,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # decimal
+        return  # decimal
 
     effective_clock_rate = property(fget=get_effective_clock_rate)
 
@@ -150,7 +146,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.locale.Locale
+        return  # osid.locale.Locale
 
     locale = property(fget=get_locale)
 
@@ -165,7 +161,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_format_type(self):
@@ -178,7 +174,7 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.Type
+        return  # osid.type.Type
 
     format_type = property(fget=get_format_type)
 
@@ -203,13 +199,12 @@ class Proxy:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.proxy.records.ProxyRecord
+        return  # osid.proxy.records.ProxyRecord
 
 
 class ProxyCondition:
     """A ``ProxyCondition`` is used to transfer external information into a proxy."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def set_effective_agent_id(self, agent_id):
@@ -367,6 +362,4 @@ class ProxyCondition:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.proxy.records.ProxyConditionRecord
-
-
+        return  # osid.proxy.records.ProxyConditionRecord

@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AuthorizationSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_resource(self, style):
@@ -48,7 +44,7 @@ class AuthorizationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_resource_search_order(self):
@@ -62,7 +58,7 @@ class AuthorizationSearchOrder:
         ``supports_resource_search_order()`` is ``true``.*
 
         """
-        return # osid.resource.ResourceSearchOrder
+        return  # osid.resource.ResourceSearchOrder
 
     resource_search_order = property(fget=get_resource_search_order)
 
@@ -103,7 +99,7 @@ class AuthorizationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_agent_search_order(self):
@@ -117,7 +113,7 @@ class AuthorizationSearchOrder:
         ``supports_agent_search_order()`` is ``true``.*
 
         """
-        return # osid.authentication.AgentSearchOrder
+        return  # osid.authentication.AgentSearchOrder
 
     agent_search_order = property(fget=get_agent_search_order)
 
@@ -145,7 +141,7 @@ class AuthorizationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_function_search_order(self):
@@ -159,7 +155,7 @@ class AuthorizationSearchOrder:
         ``supports_qualifier_search_order()`` is ``true``.*
 
         """
-        return # osid.authorization.FunctionSearchOrder
+        return  # osid.authorization.FunctionSearchOrder
 
     function_search_order = property(fget=get_function_search_order)
 
@@ -187,7 +183,7 @@ class AuthorizationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_search_order(self):
@@ -201,7 +197,7 @@ class AuthorizationSearchOrder:
         ``supports_qualifier_search_order()`` is ``true``.*
 
         """
-        return # osid.authorization.QualifierSearchOrder
+        return  # osid.authorization.QualifierSearchOrder
 
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
@@ -222,13 +218,12 @@ class AuthorizationSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.AuthorizationSearchOrderRecord
+        return  # osid.authorization.records.AuthorizationSearchOrderRecord
 
 
 class FunctionSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def order_by_qualifier_hierarchy(self, style):
@@ -254,7 +249,7 @@ class FunctionSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_qualifier_hierarchy_search_order(self):
@@ -268,7 +263,7 @@ class FunctionSearchOrder:
         ``supports_qualifier_hierarchy_search_order()`` is ``true``.*
 
         """
-        return # osid.hierarchy.HierarchySearchOrder
+        return  # osid.hierarchy.HierarchySearchOrder
 
     qualifier_hierarchy_search_order = property(fget=get_qualifier_hierarchy_search_order)
 
@@ -289,13 +284,12 @@ class FunctionSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.FunctionSearchOrderRecord
+        return  # osid.authorization.records.FunctionSearchOrderRecord
 
 
 class QualifierSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_qualifier_search_order_record(self, qualifier_record_type):
@@ -314,13 +308,12 @@ class QualifierSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.QualifierSearchOrderRecord
+        return  # osid.authorization.records.QualifierSearchOrderRecord
 
 
 class VaultSearchOrder:
     """An interface for specifying the ordering of search results."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_vault_search_order_record(self, vault_record_type):
@@ -339,6 +332,4 @@ class VaultSearchOrder:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authorization.records.VaultSearchOrderRecord
-
-
+        return  # osid.authorization.records.VaultSearchOrderRecord

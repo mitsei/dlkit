@@ -3,8 +3,12 @@
 import unittest
 
 
+
+
 class TestResourceRecord(unittest.TestCase):
     """Tests for ResourceRecord"""
+
+
 
 
 
@@ -15,8 +19,12 @@ class TestResourceQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestResourceFormRecord(unittest.TestCase):
     """Tests for ResourceFormRecord"""
+
+
 
 
 
@@ -27,8 +35,12 @@ class TestResourceSearchRecord(unittest.TestCase):
 
 
 
+
+
 class TestBinRecord(unittest.TestCase):
     """Tests for BinRecord"""
+
+
 
 
 
@@ -39,8 +51,12 @@ class TestBinQueryRecord(unittest.TestCase):
 
 
 
+
+
 class TestBinFormRecord(unittest.TestCase):
     """Tests for BinFormRecord"""
+
+
 
 
 

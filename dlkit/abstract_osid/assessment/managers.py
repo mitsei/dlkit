@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class AssessmentProfile:
     """The ``AssessmentProfile`` describes the interoperability among assessment services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_my_assessment_taken(self):
@@ -48,7 +44,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment(self):
@@ -61,7 +57,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_results(self):
@@ -74,7 +70,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_lookup(self):
@@ -87,7 +83,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_query(self):
@@ -100,7 +96,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_search(self):
@@ -113,7 +109,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_admin(self):
@@ -126,7 +122,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_notification(self):
@@ -142,7 +138,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_bank(self):
@@ -155,7 +151,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_bank_assignment(self):
@@ -168,7 +164,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_item_smart_bank(self):
@@ -181,7 +177,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_lookup(self):
@@ -197,7 +193,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_query(self):
@@ -210,7 +206,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_search(self):
@@ -223,7 +219,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_admin(self):
@@ -236,7 +232,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_notification(self):
@@ -252,7 +248,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_bank(self):
@@ -265,7 +261,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_bank_assignment(self):
@@ -278,7 +274,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_smart_bank(self):
@@ -291,7 +287,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_basic_authoring(self):
@@ -304,7 +300,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_lookup(self):
@@ -317,7 +313,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_query(self):
@@ -330,7 +326,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_search(self):
@@ -343,7 +339,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_admin(self):
@@ -356,7 +352,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_notification(self):
@@ -372,7 +368,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_bank(self):
@@ -385,7 +381,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_bank_assignment(self):
@@ -398,7 +394,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_offered_smart_bank(self):
@@ -411,7 +407,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_lookup(self):
@@ -424,7 +420,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_query(self):
@@ -437,7 +433,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_search(self):
@@ -450,7 +446,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_admin(self):
@@ -463,7 +459,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_notification(self):
@@ -479,7 +475,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_bank(self):
@@ -492,7 +488,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_bank_assignment(self):
@@ -505,7 +501,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_taken_smart_bank(self):
@@ -518,7 +514,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_lookup(self):
@@ -534,7 +530,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_query(self):
@@ -547,7 +543,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_search(self):
@@ -560,7 +556,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_admin(self):
@@ -573,7 +569,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_notification(self):
@@ -589,7 +585,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_hierarchy(self):
@@ -602,7 +598,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_bank_hierarchy_design(self):
@@ -615,7 +611,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_authoring(self):
@@ -628,7 +624,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_assessment_batch(self):
@@ -641,7 +637,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_record_types(self):
@@ -654,7 +650,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     item_record_types = property(fget=get_item_record_types)
 
@@ -671,7 +667,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_item_search_record_types(self):
@@ -684,7 +680,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     item_search_record_types = property(fget=get_item_search_record_types)
 
@@ -701,7 +697,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_record_types(self):
@@ -714,7 +710,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_record_types = property(fget=get_assessment_record_types)
 
@@ -731,7 +727,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_search_record_types(self):
@@ -744,7 +740,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_search_record_types = property(fget=get_assessment_search_record_types)
 
@@ -761,7 +757,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_record_types(self):
@@ -774,7 +770,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_offered_record_types = property(fget=get_assessment_offered_record_types)
 
@@ -791,7 +787,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_offered_search_record_types(self):
@@ -804,7 +800,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_offered_search_record_types = property(fget=get_assessment_offered_search_record_types)
 
@@ -821,7 +817,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_record_types(self):
@@ -834,7 +830,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_taken_record_types = property(fget=get_assessment_taken_record_types)
 
@@ -851,7 +847,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_taken_search_record_types(self):
@@ -864,7 +860,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_taken_search_record_types = property(fget=get_assessment_taken_search_record_types)
 
@@ -881,7 +877,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_assessment_section_record_types(self):
@@ -894,7 +890,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     assessment_section_record_types = property(fget=get_assessment_section_record_types)
 
@@ -911,7 +907,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_record_types(self):
@@ -924,7 +920,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     bank_record_types = property(fget=get_bank_record_types)
 
@@ -941,7 +937,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_bank_search_record_types(self):
@@ -954,7 +950,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     bank_search_record_types = property(fget=get_bank_search_record_types)
 
@@ -971,7 +967,7 @@ class AssessmentProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class AssessmentManager:
@@ -1063,10 +1059,8 @@ class AssessmentManager:
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_my_assessment_taken_session(self):
@@ -1081,7 +1075,7 @@ class AssessmentManager:
         ``supports_my_assessment_taken()`` is ``true``.*
 
         """
-        return # osid.assessment.MyAssessmentTakenSession
+        return  # osid.assessment.MyAssessmentTakenSession
 
     my_assessment_taken_session = property(fget=get_my_assessment_taken_session)
 
@@ -1102,7 +1096,7 @@ class AssessmentManager:
         ``supports_my_assessment_taken()`` is ``true``.*
 
         """
-        return # osid.assessment.MyAssessmentTakenSession
+        return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
     def get_assessment_session(self):
@@ -1117,7 +1111,7 @@ class AssessmentManager:
         ``supports_assessment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSession
+        return  # osid.assessment.AssessmentSession
 
     assessment_session = property(fget=get_assessment_session)
 
@@ -1138,7 +1132,7 @@ class AssessmentManager:
         ``supports_assessment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSession
+        return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
     def get_assessment_results_session(self):
@@ -1153,7 +1147,7 @@ class AssessmentManager:
         ``supports_assessment_results()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentResultsSession
+        return  # osid.assessment.AssessmentResultsSession
 
     assessment_results_session = property(fget=get_assessment_results_session)
 
@@ -1174,7 +1168,7 @@ class AssessmentManager:
         ``supports_assessment_results()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentResultsSession
+        return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
     def get_item_lookup_session(self):
@@ -1189,7 +1183,7 @@ class AssessmentManager:
         ``supports_item_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemLookupSession
+        return  # osid.assessment.ItemLookupSession
 
     item_lookup_session = property(fget=get_item_lookup_session)
 
@@ -1211,7 +1205,7 @@ class AssessmentManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemLookupSession
+        return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
     def get_item_query_session(self):
@@ -1226,7 +1220,7 @@ class AssessmentManager:
         ``supports_item_query()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemQuerySession
+        return  # osid.assessment.ItemQuerySession
 
     item_query_session = property(fget=get_item_query_session)
 
@@ -1248,7 +1242,7 @@ class AssessmentManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemQuerySession
+        return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
     def get_item_search_session(self):
@@ -1263,7 +1257,7 @@ class AssessmentManager:
         ``supports_item_search()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemSearchSession
+        return  # osid.assessment.ItemSearchSession
 
     item_search_session = property(fget=get_item_search_session)
 
@@ -1285,7 +1279,7 @@ class AssessmentManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemSearchSession
+        return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
     def get_item_admin_session(self):
@@ -1300,7 +1294,7 @@ class AssessmentManager:
         ``supports_item_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemAdminSession
+        return  # osid.assessment.ItemAdminSession
 
     item_admin_session = property(fget=get_item_admin_session)
 
@@ -1322,7 +1316,7 @@ class AssessmentManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemAdminSession
+        return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
     def get_item_notification_session(self, item_receiver):
@@ -1340,7 +1334,7 @@ class AssessmentManager:
         ``supports_item_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_item_notification_session_for_bank(self, item_receiver, bank_id):
@@ -1362,7 +1356,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_item_bank_session(self):
@@ -1377,7 +1371,7 @@ class AssessmentManager:
         ``supports_item_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemBankSession
+        return  # osid.assessment.ItemBankSession
 
     item_bank_session = property(fget=get_item_bank_session)
 
@@ -1394,7 +1388,7 @@ class AssessmentManager:
         ``supports_item_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemBankAssignmentSession
+        return  # osid.assessment.ItemBankAssignmentSession
 
     item_bank_assignment_session = property(fget=get_item_bank_assignment_session)
 
@@ -1416,7 +1410,7 @@ class AssessmentManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemSmartBankSession
+        return  # osid.assessment.ItemSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_lookup_session(self):
@@ -1431,7 +1425,7 @@ class AssessmentManager:
         ``supports_assessment_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentLookupSession
+        return  # osid.assessment.AssessmentLookupSession
 
     assessment_lookup_session = property(fget=get_assessment_lookup_session)
 
@@ -1453,7 +1447,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentLookupSession
+        return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
     def get_assessment_query_session(self):
@@ -1468,7 +1462,7 @@ class AssessmentManager:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuerySession
+        return  # osid.assessment.AssessmentQuerySession
 
     assessment_query_session = property(fget=get_assessment_query_session)
 
@@ -1490,7 +1484,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuerySession
+        return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
     def get_assessment_search_session(self):
@@ -1505,7 +1499,7 @@ class AssessmentManager:
         ``supports_assessment_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchSession
+        return  # osid.assessment.AssessmentSearchSession
 
     assessment_search_session = property(fget=get_assessment_search_session)
 
@@ -1527,7 +1521,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchSession
+        return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
     def get_assessment_admin_session(self):
@@ -1542,7 +1536,7 @@ class AssessmentManager:
         ``supports_assessment_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentAdminSession
+        return  # osid.assessment.AssessmentAdminSession
 
     assessment_admin_session = property(fget=get_assessment_admin_session)
 
@@ -1564,7 +1558,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentAdminSession
+        return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
     def get_assessment_notification_session(self, assessment_receiver):
@@ -1582,7 +1576,7 @@ class AssessmentManager:
         ``supports_assessment_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id):
@@ -1604,7 +1598,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_assessment_bank_session(self):
@@ -1619,7 +1613,7 @@ class AssessmentManager:
         ``supports_assessment_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBankSession
+        return  # osid.assessment.AssessmentBankSession
 
     assessment_bank_session = property(fget=get_assessment_bank_session)
 
@@ -1636,7 +1630,7 @@ class AssessmentManager:
         ``supports_assessment_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBankAssignmentSession
+        return  # osid.assessment.AssessmentBankAssignmentSession
 
     assessment_bank_assignment_session = property(fget=get_assessment_bank_assignment_session)
 
@@ -1658,7 +1652,7 @@ class AssessmentManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSmartBankSession
+        return  # osid.assessment.AssessmentSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_basic_authoring_session(self):
@@ -1673,7 +1667,7 @@ class AssessmentManager:
         ``supports_assessment_basic_authoring()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBasicAuthoringSession
+        return  # osid.assessment.AssessmentBasicAuthoringSession
 
     assessment_basic_authoring_session = property(fget=get_assessment_basic_authoring_session)
 
@@ -1695,7 +1689,7 @@ class AssessmentManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBasicAuthoringSession
+        return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
     def get_assessment_offered_lookup_session(self):
@@ -1710,7 +1704,7 @@ class AssessmentManager:
         ``supports_assessment_offered_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedLookupSession
+        return  # osid.assessment.AssessmentOfferedLookupSession
 
     assessment_offered_lookup_session = property(fget=get_assessment_offered_lookup_session)
 
@@ -1732,7 +1726,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedLookupSession
+        return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
     def get_assessment_offered_query_session(self):
@@ -1747,7 +1741,7 @@ class AssessmentManager:
         ``supports_assessment_offered_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuerySession
+        return  # osid.assessment.AssessmentOfferedQuerySession
 
     assessment_offered_query_session = property(fget=get_assessment_offered_query_session)
 
@@ -1769,7 +1763,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuerySession
+        return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
     def get_assessment_offered_search_session(self):
@@ -1784,7 +1778,7 @@ class AssessmentManager:
         ``supports_assessment_offered_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchSession
+        return  # osid.assessment.AssessmentOfferedSearchSession
 
     assessment_offered_search_session = property(fget=get_assessment_offered_search_session)
 
@@ -1806,7 +1800,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchSession
+        return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
     def get_assessment_offered_admin_session(self):
@@ -1821,7 +1815,7 @@ class AssessmentManager:
         ``supports_assessment_offered_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedAdminSession
+        return  # osid.assessment.AssessmentOfferedAdminSession
 
     assessment_offered_admin_session = property(fget=get_assessment_offered_admin_session)
 
@@ -1843,7 +1837,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedAdminSession
+        return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
     def get_assessment_offered_notification_session(self, assessment_offered_receiver):
@@ -1861,7 +1855,7 @@ class AssessmentManager:
         ``supports_assessment_offered_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedNotificationSession
+        return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
     def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id):
@@ -1883,7 +1877,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedNotificationSession
+        return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
     def get_assessment_offered_bank_session(self):
@@ -1898,7 +1892,7 @@ class AssessmentManager:
         ``supports_assessment_offered_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedBankSession
+        return  # osid.assessment.AssessmentOfferedBankSession
 
     assessment_offered_bank_session = property(fget=get_assessment_offered_bank_session)
 
@@ -1915,7 +1909,7 @@ class AssessmentManager:
         ``supports_assessment_offered_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedBankAssignmentSession
+        return  # osid.assessment.AssessmentOfferedBankAssignmentSession
 
     assessment_offered_bank_assignment_session = property(fget=get_assessment_offered_bank_assignment_session)
 
@@ -1937,7 +1931,7 @@ class AssessmentManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSmartBankSession
+        return  # osid.assessment.AssessmentOfferedSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_taken_lookup_session(self):
@@ -1952,7 +1946,7 @@ class AssessmentManager:
         ``supports_assessment_taken_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenLookupSession
+        return  # osid.assessment.AssessmentTakenLookupSession
 
     assessment_taken_lookup_session = property(fget=get_assessment_taken_lookup_session)
 
@@ -1974,7 +1968,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenLookupSession
+        return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
     def get_assessment_taken_query_session(self):
@@ -1989,7 +1983,7 @@ class AssessmentManager:
         ``supports_assessment_taken_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuerySession
+        return  # osid.assessment.AssessmentTakenQuerySession
 
     assessment_taken_query_session = property(fget=get_assessment_taken_query_session)
 
@@ -2011,7 +2005,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuerySession
+        return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
     def get_assessment_taken_search_session(self):
@@ -2026,7 +2020,7 @@ class AssessmentManager:
         ``supports_assessment_taken_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchSession
+        return  # osid.assessment.AssessmentTakenSearchSession
 
     assessment_taken_search_session = property(fget=get_assessment_taken_search_session)
 
@@ -2048,7 +2042,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchSession
+        return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
     def get_assessment_taken_admin_session(self):
@@ -2063,7 +2057,7 @@ class AssessmentManager:
         ``supports_assessment_taken_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenAdminSession
+        return  # osid.assessment.AssessmentTakenAdminSession
 
     assessment_taken_admin_session = property(fget=get_assessment_taken_admin_session)
 
@@ -2085,7 +2079,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenAdminSession
+        return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
     def get_assessment_taken_notification_session(self, assessment_taken_receiver):
@@ -2103,7 +2097,7 @@ class AssessmentManager:
         ``supports_assessment_taken_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenNotificationSession
+        return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
     def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id):
@@ -2125,7 +2119,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenNotificationSession
+        return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
     def get_assessment_taken_bank_session(self):
@@ -2140,7 +2134,7 @@ class AssessmentManager:
         ``supports_assessment_taken_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenBankSession
+        return  # osid.assessment.AssessmentTakenBankSession
 
     assessment_taken_bank_session = property(fget=get_assessment_taken_bank_session)
 
@@ -2157,7 +2151,7 @@ class AssessmentManager:
         ``supports_assessment_taken_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenBankAssignmentSession
+        return  # osid.assessment.AssessmentTakenBankAssignmentSession
 
     assessment_taken_bank_assignment_session = property(fget=get_assessment_taken_bank_assignment_session)
 
@@ -2179,7 +2173,7 @@ class AssessmentManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSmartBankSession
+        return  # osid.assessment.AssessmentTakenSmartBankSession
 
     @abc.abstractmethod
     def get_bank_lookup_session(self):
@@ -2194,7 +2188,7 @@ class AssessmentManager:
         ``supports_bank_lookup()`` is true.*
 
         """
-        return # osid.assessment.BankLookupSession
+        return  # osid.assessment.BankLookupSession
 
     bank_lookup_session = property(fget=get_bank_lookup_session)
 
@@ -2211,7 +2205,7 @@ class AssessmentManager:
         ``supports_bank_query()`` is true.*
 
         """
-        return # osid.assessment.BankQuerySession
+        return  # osid.assessment.BankQuerySession
 
     bank_query_session = property(fget=get_bank_query_session)
 
@@ -2228,7 +2222,7 @@ class AssessmentManager:
         ``supports_bank_search()`` is true.*
 
         """
-        return # osid.assessment.BankSearchSession
+        return  # osid.assessment.BankSearchSession
 
     bank_search_session = property(fget=get_bank_search_session)
 
@@ -2245,7 +2239,7 @@ class AssessmentManager:
         ``supports_bank_admin()`` is true.*
 
         """
-        return # osid.assessment.BankAdminSession
+        return  # osid.assessment.BankAdminSession
 
     bank_admin_session = property(fget=get_bank_admin_session)
 
@@ -2265,7 +2259,7 @@ class AssessmentManager:
         ``supports_bank_notification()`` is true.*
 
         """
-        return # osid.assessment.BankNotificationSession
+        return  # osid.assessment.BankNotificationSession
 
     @abc.abstractmethod
     def get_bank_hierarchy_session(self):
@@ -2280,7 +2274,7 @@ class AssessmentManager:
         ``supports_bank_hierarchy()`` is true.*
 
         """
-        return # osid.assessment.BankHierarchySession
+        return  # osid.assessment.BankHierarchySession
 
     bank_hierarchy_session = property(fget=get_bank_hierarchy_session)
 
@@ -2297,7 +2291,7 @@ class AssessmentManager:
         ``supports_bank_hierarchy_design()`` is true.*
 
         """
-        return # osid.assessment.BankHierarchyDesignSession
+        return  # osid.assessment.BankHierarchyDesignSession
 
     bank_hierarchy_design_session = property(fget=get_bank_hierarchy_design_session)
 
@@ -2314,7 +2308,7 @@ class AssessmentManager:
         ``supports_assessment_authoring()`` is true.*
 
         """
-        return # osid.assessment.authoring.AssessmentAuthoringManager
+        return  # osid.assessment.authoring.AssessmentAuthoringManager
 
     assessment_authoring_manager = property(fget=get_assessment_authoring_manager)
 
@@ -2331,7 +2325,7 @@ class AssessmentManager:
         ``supports_assessment_batch()`` is true.*
 
         """
-        return # osid.assessment.batch.AssessmentBatchManager
+        return  # osid.assessment.batch.AssessmentBatchManager
 
     assessment_batch_manager = property(fget=get_assessment_batch_manager)
 
@@ -2426,10 +2420,8 @@ class AssessmentProxyManager:
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
 
-
     """
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def get_my_assessment_taken_session(self, proxy):
@@ -2447,7 +2439,7 @@ class AssessmentProxyManager:
         ``supports_my_assessment_taken()`` is ``true``.*
 
         """
-        return # osid.assessment.MyAssessmentTakenSession
+        return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
     def get_my_assessment_taken_session_for_bank(self, bank_id, proxy):
@@ -2468,7 +2460,7 @@ class AssessmentProxyManager:
         ``supports_my_assessment_taken()`` is ``true``.*
 
         """
-        return # osid.assessment.MyAssessmentTakenSession
+        return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
     def get_assessment_session(self, proxy):
@@ -2486,7 +2478,7 @@ class AssessmentProxyManager:
         ``supports_assessment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSession
+        return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
     def get_assessment_session_for_bank(self, bank_id, proxy):
@@ -2507,7 +2499,7 @@ class AssessmentProxyManager:
         ``supports_assessment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSession
+        return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
     def get_assessment_results_session(self, proxy):
@@ -2525,7 +2517,7 @@ class AssessmentProxyManager:
         ``supports_assessment_results()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentResultsSession
+        return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
     def get_assessment_results_session_for_bank(self, bank_id, proxy):
@@ -2546,7 +2538,7 @@ class AssessmentProxyManager:
         ``supports_assessment_results()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentResultsSession
+        return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
     def get_item_lookup_session(self, proxy):
@@ -2564,7 +2556,7 @@ class AssessmentProxyManager:
         ``supports_item_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemLookupSession
+        return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
     def get_item_lookup_session_for_bank(self, bank_id, proxy):
@@ -2586,7 +2578,7 @@ class AssessmentProxyManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemLookupSession
+        return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
     def get_item_query_session(self, proxy):
@@ -2604,7 +2596,7 @@ class AssessmentProxyManager:
         ``supports_item_query()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemQuerySession
+        return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
     def get_item_query_session_for_bank(self, bank_id, proxy):
@@ -2626,7 +2618,7 @@ class AssessmentProxyManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemQuerySession
+        return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
     def get_item_search_session(self, proxy):
@@ -2644,7 +2636,7 @@ class AssessmentProxyManager:
         ``supports_item_search()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemSearchSession
+        return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
     def get_item_search_session_for_bank(self, bank_id, proxy):
@@ -2666,7 +2658,7 @@ class AssessmentProxyManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemSearchSession
+        return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
     def get_item_admin_session(self, proxy):
@@ -2684,7 +2676,7 @@ class AssessmentProxyManager:
         ``supports_item_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemAdminSession
+        return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
     def get_item_admin_session_for_bank(self, bank_id, proxy):
@@ -2706,7 +2698,7 @@ class AssessmentProxyManager:
         are ``true``.*
 
         """
-        return # osid.assessment.ItemAdminSession
+        return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
     def get_item_notification_session(self, item_receiver, proxy):
@@ -2726,7 +2718,7 @@ class AssessmentProxyManager:
         ``supports_item_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_item_notification_session_for_bank(self, item_receiver, bank_id, proxy):
@@ -2750,7 +2742,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_item_bank_session(self, proxy):
@@ -2768,7 +2760,7 @@ class AssessmentProxyManager:
         ``supports_item_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemBankSession
+        return  # osid.assessment.ItemBankSession
 
     @abc.abstractmethod
     def get_item_bank_assignment_session(self, proxy):
@@ -2786,7 +2778,7 @@ class AssessmentProxyManager:
         ``supports_item_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemBankAssignmentSession
+        return  # osid.assessment.ItemBankAssignmentSession
 
     @abc.abstractmethod
     def get_item_smart_bank_session(self, bank_id, proxy):
@@ -2808,7 +2800,7 @@ class AssessmentProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.ItemSmartBankSession
+        return  # osid.assessment.ItemSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_lookup_session(self, proxy):
@@ -2826,7 +2818,7 @@ class AssessmentProxyManager:
         ``supports_assessment_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentLookupSession
+        return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
     def get_assessment_lookup_session_for_bank(self, bank_id, proxy):
@@ -2848,7 +2840,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentLookupSession
+        return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
     def get_assessment_query_session(self, proxy):
@@ -2866,7 +2858,7 @@ class AssessmentProxyManager:
         ``supports_assessment_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuerySession
+        return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
     def get_assessment_query_session_for_bank(self, bank_id, proxy):
@@ -2888,7 +2880,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentQuerySession
+        return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
     def get_assessment_search_session(self, proxy):
@@ -2906,7 +2898,7 @@ class AssessmentProxyManager:
         ``supports_assessment_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchSession
+        return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
     def get_assessment_search_session_for_bank(self, bank_id, proxy):
@@ -2928,7 +2920,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentSearchSession
+        return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
     def get_assessment_admin_session(self, proxy):
@@ -2946,7 +2938,7 @@ class AssessmentProxyManager:
         ``supports_assessment_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentAdminSession
+        return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
     def get_assessment_admin_session_for_bank(self, bank_id, proxy):
@@ -2968,7 +2960,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentAdminSession
+        return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
     def get_assessment_notification_session(self, assessment_receiver, proxy):
@@ -2988,7 +2980,7 @@ class AssessmentProxyManager:
         ``supports_assessment_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy):
@@ -3012,7 +3004,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
     def get_assessment_bank_session(self, proxy):
@@ -3030,7 +3022,7 @@ class AssessmentProxyManager:
         ``supports_assessment_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBankSession
+        return  # osid.assessment.AssessmentBankSession
 
     @abc.abstractmethod
     def get_assessment_bank_assignment_session(self, proxy):
@@ -3048,7 +3040,7 @@ class AssessmentProxyManager:
         ``supports_assessment_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBankAssignmentSession
+        return  # osid.assessment.AssessmentBankAssignmentSession
 
     @abc.abstractmethod
     def get_assessment_smart_bank_session(self, bank_id, proxy):
@@ -3070,7 +3062,7 @@ class AssessmentProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentSmartBankSession
+        return  # osid.assessment.AssessmentSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_basic_authoring_session(self, proxy):
@@ -3088,7 +3080,7 @@ class AssessmentProxyManager:
         ``supports_assessment_basic_authoring()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBasicAuthoringSession
+        return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
     def get_assessment_basic_authoring_session_for_bank(self, bank_id, proxy):
@@ -3110,7 +3102,7 @@ class AssessmentProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentBasicAuthoringSession
+        return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
     def get_assessment_offered_lookup_session(self, proxy):
@@ -3128,7 +3120,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedLookupSession
+        return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
     def get_assessment_offered_lookup_session_for_bank(self, bank_id, proxy):
@@ -3150,7 +3142,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedLookupSession
+        return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
     def get_assessment_offered_query_session(self, proxy):
@@ -3168,7 +3160,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuerySession
+        return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
     def get_assessment_offered_query_session_for_bank(self, bank_id, proxy):
@@ -3190,7 +3182,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedQuerySession
+        return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
     def get_assessment_offered_search_session(self, proxy):
@@ -3208,7 +3200,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchSession
+        return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
     def get_assessment_offered_search_session_for_bank(self, bank_id, proxy):
@@ -3230,7 +3222,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSearchSession
+        return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
     def get_assessment_offered_admin_session(self, proxy):
@@ -3248,7 +3240,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedAdminSession
+        return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
     def get_assessment_offered_admin_session_for_bank(self, bank_id, proxy):
@@ -3270,7 +3262,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedAdminSession
+        return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
     def get_assessment_offered_notification_session(self, assessment_offered_receiver, proxy):
@@ -3290,7 +3282,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedNotificationSession
+        return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
     def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id, proxy):
@@ -3314,7 +3306,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedNotificationSession
+        return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
     def get_assessment_offered_bank_session(self, proxy):
@@ -3332,7 +3324,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedBankSession
+        return  # osid.assessment.AssessmentOfferedBankSession
 
     @abc.abstractmethod
     def get_assessment_offered_bank_assignment_session(self, proxy):
@@ -3350,7 +3342,7 @@ class AssessmentProxyManager:
         ``supports_assessment_offered_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedBankAssignmentSession
+        return  # osid.assessment.AssessmentOfferedBankAssignmentSession
 
     @abc.abstractmethod
     def get_assessment_offered_smart_bank_session(self, bank_id, proxy):
@@ -3372,7 +3364,7 @@ class AssessmentProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentOfferedSmartBankSession
+        return  # osid.assessment.AssessmentOfferedSmartBankSession
 
     @abc.abstractmethod
     def get_assessment_taken_lookup_session(self, proxy):
@@ -3390,7 +3382,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_lookup()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenLookupSession
+        return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
     def get_assessment_taken_lookup_session_for_bank(self, bank_id, proxy):
@@ -3412,7 +3404,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenLookupSession
+        return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
     def get_assessment_taken_query_session(self, proxy):
@@ -3430,7 +3422,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_query()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuerySession
+        return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
     def get_assessment_taken_query_session_for_bank(self, bank_id, proxy):
@@ -3452,7 +3444,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenQuerySession
+        return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
     def get_assessment_taken_search_session(self, proxy):
@@ -3470,7 +3462,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_search()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchSession
+        return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
     def get_assessment_taken_search_session_for_bank(self, bank_id, proxy):
@@ -3492,7 +3484,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSearchSession
+        return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
     def get_assessment_taken_admin_session(self, proxy):
@@ -3510,7 +3502,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_admin()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenAdminSession
+        return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
     def get_assessment_taken_admin_session_for_bank(self, bank_id, proxy):
@@ -3532,7 +3524,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenAdminSession
+        return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
     def get_assessment_taken_notification_session(self, assessment_taken_receiver, proxy):
@@ -3552,7 +3544,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_notification()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenNotificationSession
+        return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
     def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id, proxy):
@@ -3576,7 +3568,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenNotificationSession
+        return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
     def get_assessment_taken_bank_session(self, proxy):
@@ -3594,7 +3586,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_bank()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenBankSession
+        return  # osid.assessment.AssessmentTakenBankSession
 
     @abc.abstractmethod
     def get_assessment_taken_bank_assignment_session(self, proxy):
@@ -3612,7 +3604,7 @@ class AssessmentProxyManager:
         ``supports_assessment_taken_bank_assignment()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenBankAssignmentSession
+        return  # osid.assessment.AssessmentTakenBankAssignmentSession
 
     @abc.abstractmethod
     def get_assessment_taken_smart_bank_session(self, bank_id, proxy):
@@ -3634,7 +3626,7 @@ class AssessmentProxyManager:
         ``supports_visibe_federation()`` is ``true``.*
 
         """
-        return # osid.assessment.AssessmentTakenSmartBankSession
+        return  # osid.assessment.AssessmentTakenSmartBankSession
 
     @abc.abstractmethod
     def get_bank_lookup_session(self, proxy):
@@ -3652,7 +3644,7 @@ class AssessmentProxyManager:
         ``supports_bank_lookup()`` is true.*
 
         """
-        return # osid.assessment.BankLookupSession
+        return  # osid.assessment.BankLookupSession
 
     @abc.abstractmethod
     def get_bank_query_session(self, proxy):
@@ -3670,7 +3662,7 @@ class AssessmentProxyManager:
         ``supports_bank_query()`` is true.*
 
         """
-        return # osid.assessment.BankQuerySession
+        return  # osid.assessment.BankQuerySession
 
     @abc.abstractmethod
     def get_bank_search_session(self, proxy):
@@ -3688,7 +3680,7 @@ class AssessmentProxyManager:
         ``supports_bank_search()`` is true.*
 
         """
-        return # osid.assessment.BankSearchSession
+        return  # osid.assessment.BankSearchSession
 
     @abc.abstractmethod
     def get_bank_admin_session(self, proxy):
@@ -3706,7 +3698,7 @@ class AssessmentProxyManager:
         ``supports_bank_admin()`` is true.*
 
         """
-        return # osid.assessment.BankAdminSession
+        return  # osid.assessment.BankAdminSession
 
     @abc.abstractmethod
     def get_bank_notification_session(self, bank_receiver, proxy):
@@ -3726,7 +3718,7 @@ class AssessmentProxyManager:
         ``supports_bank_notification()`` is true.*
 
         """
-        return # osid.assessment.BankNotificationSession
+        return  # osid.assessment.BankNotificationSession
 
     @abc.abstractmethod
     def get_bank_hierarchy_session(self, proxy):
@@ -3744,7 +3736,7 @@ class AssessmentProxyManager:
         ``supports_bank_hierarchy()`` is true.*
 
         """
-        return # osid.assessment.BankHierarchySession
+        return  # osid.assessment.BankHierarchySession
 
     @abc.abstractmethod
     def get_bank_hierarchy_design_session(self, proxy):
@@ -3762,7 +3754,7 @@ class AssessmentProxyManager:
         ``supports_bank_hierarchy_design()`` is true.*
 
         """
-        return # osid.assessment.BankHierarchyDesignSession
+        return  # osid.assessment.BankHierarchyDesignSession
 
     @abc.abstractmethod
     def get_assessment_authoring_proxy_manager(self):
@@ -3777,7 +3769,7 @@ class AssessmentProxyManager:
         ``supports_assessment_authoring()`` is true.*
 
         """
-        return # osid.assessment.authoring.AssessmentAuthoringProxyManager
+        return  # osid.assessment.authoring.AssessmentAuthoringProxyManager
 
     assessment_authoring_proxy_manager = property(fget=get_assessment_authoring_proxy_manager)
 
@@ -3794,8 +3786,6 @@ class AssessmentProxyManager:
         ``supports_assessment_batch()`` is true.*
 
         """
-        return # osid.assessment.batch.AssessmentBatchProxyManager
+        return  # osid.assessment.batch.AssessmentBatchProxyManager
 
     assessment_batch_proxy_manager = property(fget=get_assessment_batch_proxy_manager)
-
-

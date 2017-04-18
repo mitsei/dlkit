@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class GradeSystemReceiver:
     """The vault receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``GradeSystem`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_grade_systems(self, notification_id, grade_system_ids):
@@ -74,7 +70,6 @@ class GradeEntryReceiver:
     """The grade entry receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted grade entries."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_grade_entries(self, notification_id, grade_entry_ids):
         """The callback for notifications of new grade entries.
@@ -125,7 +120,6 @@ class GradebookColumnReceiver:
     """The grade receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``GradebookColumns``."""
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def new_gradebook_columns(self, notification_id, gradebook_column_ids):
         """The callback for notifications of new gradebook columns.
@@ -173,7 +167,6 @@ class GradebookColumnReceiver:
 class GradebookReceiver:
     """The vault receiver is the consumer supplied interface for receiving notifications pertaining to new, updated or deleted ``Gradebook`` objects."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def new_gradebooks(self, notification_id, gradebook_ids):
@@ -290,5 +283,3 @@ class GradebookReceiver:
 
         """
         pass
-
-

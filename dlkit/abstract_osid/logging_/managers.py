@@ -16,13 +16,9 @@
 import abc
 
 
-
-
-
 class LoggingProfile:
     """The logging profile describes the interoperability among logging services."""
     __metaclass__ = abc.ABCMeta
-
 
     @abc.abstractmethod
     def supports_visible_federation(self):
@@ -35,7 +31,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_logging(self):
@@ -48,7 +44,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_lookup(self):
@@ -61,7 +57,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_query(self):
@@ -74,7 +70,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_search(self):
@@ -87,7 +83,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_notification(self):
@@ -100,7 +96,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_log(self):
@@ -113,7 +109,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_log_assignment(self):
@@ -126,7 +122,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_smart_log(self):
@@ -139,7 +135,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_lookup(self):
@@ -152,7 +148,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_query(self):
@@ -165,7 +161,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_search(self):
@@ -178,7 +174,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_admin(self):
@@ -191,7 +187,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_notification(self):
@@ -205,7 +201,7 @@ class LoggingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_hierarchy(self):
@@ -218,7 +214,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_hierarchy_design(self):
@@ -232,7 +228,7 @@ class LoggingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_logging_batch(self):
@@ -246,7 +242,7 @@ class LoggingProfile:
         providers.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_record_types(self):
@@ -259,7 +255,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     log_entry_record_types = property(fget=get_log_entry_record_types)
 
@@ -276,7 +272,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_entry_search_record_types(self):
@@ -289,7 +285,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     log_entry_search_record_types = property(fget=get_log_entry_search_record_types)
 
@@ -306,7 +302,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_record_types(self):
@@ -319,7 +315,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     log_record_types = property(fget=get_log_record_types)
 
@@ -336,7 +332,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_log_search_record_types(self):
@@ -349,7 +345,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     log_search_record_types = property(fget=get_log_search_record_types)
 
@@ -366,7 +362,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_priority_types(self):
@@ -379,7 +375,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     priority_types = property(fget=get_priority_types)
 
@@ -396,7 +392,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def get_content_types(self):
@@ -409,7 +405,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.type.TypeList
+        return  # osid.type.TypeList
 
     content_types = property(fget=get_content_types)
 
@@ -426,7 +422,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
     @abc.abstractmethod
     def supports_log_entry_admin(self):
@@ -439,7 +435,7 @@ class LoggingProfile:
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # boolean
+        return  # boolean
 
 
 class LoggingManager:
@@ -478,7 +474,6 @@ class LoggingManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_logging_session(self):
         """Gets the ``OsidSession`` associated with the logging service.
@@ -492,7 +487,7 @@ class LoggingManager:
         ``supports_logging()`` is ``true``.*
 
         """
-        return # osid.logging.LoggingSession
+        return  # osid.logging.LoggingSession
 
     logging_session = property(fget=get_logging_session)
 
@@ -514,7 +509,7 @@ class LoggingManager:
         ``true``*
 
         """
-        return # osid.logging.LoggingSession
+        return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
     def get_log_entry_lookup_session(self):
@@ -529,7 +524,7 @@ class LoggingManager:
         ``supports_log_entry_lookup()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLookupSession
+        return  # osid.logging.LogEntryLookupSession
 
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
@@ -551,7 +546,7 @@ class LoggingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryLookupSession
+        return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
     def get_log_entry_query_session(self):
@@ -566,7 +561,7 @@ class LoggingManager:
         ``supports_log_entry_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryQuerySession
+        return  # osid.logging.LogEntryQuerySession
 
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
@@ -588,7 +583,7 @@ class LoggingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryQuerySession
+        return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
     def get_log_entry_search_session(self):
@@ -603,7 +598,7 @@ class LoggingManager:
         ``supports_log_entry_search()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntrySearchSession
+        return  # osid.logging.LogEntrySearchSession
 
     log_entry_search_session = property(fget=get_log_entry_search_session)
 
@@ -625,7 +620,7 @@ class LoggingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntrySearchSession
+        return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
     def get_log_entry_admin_session(self):
@@ -640,7 +635,7 @@ class LoggingManager:
         ``supports_log_entry_admin()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryAdminSession
+        return  # osid.logging.LogEntryAdminSession
 
     log_entry_admin_session = property(fget=get_log_entry_admin_session)
 
@@ -662,7 +657,7 @@ class LoggingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryAdminSession
+        return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
     def get_log_entry_notification_session(self, log_entry_receiver):
@@ -680,7 +675,7 @@ class LoggingManager:
         ``supports_log_entry_notification()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryNotificationSession
+        return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
     def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id):
@@ -702,7 +697,7 @@ class LoggingManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryNotificationSession
+        return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
     def get_log_entry_log_session(self):
@@ -717,7 +712,7 @@ class LoggingManager:
         ``supports_log_entry_log()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLogSession
+        return  # osid.logging.LogEntryLogSession
 
     log_entry_log_session = property(fget=get_log_entry_log_session)
 
@@ -734,7 +729,7 @@ class LoggingManager:
         ``supports_log_entry_log_assignment()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLogAssignmentSession
+        return  # osid.logging.LogEntryLogAssignmentSession
 
     log_entry_log_assignment_session = property(fget=get_log_entry_log_assignment_session)
 
@@ -755,7 +750,7 @@ class LoggingManager:
         ``supports_log_entry_smart_log()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntrySmartLogSession
+        return  # osid.logging.LogEntrySmartLogSession
 
     @abc.abstractmethod
     def get_log_lookup_session(self):
@@ -770,7 +765,7 @@ class LoggingManager:
         ``supports_log_lookup()`` is ``true``.*
 
         """
-        return # osid.logging.LogLookupSession
+        return  # osid.logging.LogLookupSession
 
     log_lookup_session = property(fget=get_log_lookup_session)
 
@@ -787,7 +782,7 @@ class LoggingManager:
         ``supports_log_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogQuerySession
+        return  # osid.logging.LogQuerySession
 
     log_query_session = property(fget=get_log_query_session)
 
@@ -804,7 +799,7 @@ class LoggingManager:
         ``supports_log_search()`` is ``true``.*
 
         """
-        return # osid.logging.LogSearchSession
+        return  # osid.logging.LogSearchSession
 
     log_search_session = property(fget=get_log_search_session)
 
@@ -821,7 +816,7 @@ class LoggingManager:
         ``supports_log_admin()`` is ``true``.*
 
         """
-        return # osid.logging.LogAdminSession
+        return  # osid.logging.LogAdminSession
 
     log_admin_session = property(fget=get_log_admin_session)
 
@@ -841,7 +836,7 @@ class LoggingManager:
         ``supports_log_notification()`` is ``true``.*
 
         """
-        return # osid.logging.LogNotificationSession
+        return  # osid.logging.LogNotificationSession
 
     @abc.abstractmethod
     def get_log_hierarchy_session(self):
@@ -856,7 +851,7 @@ class LoggingManager:
         ``supports_log_hierarchy()`` is ``true``.*
 
         """
-        return # osid.logging.LogHierarchySession
+        return  # osid.logging.LogHierarchySession
 
     log_hierarchy_session = property(fget=get_log_hierarchy_session)
 
@@ -873,7 +868,7 @@ class LoggingManager:
         ``supports_log_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.logging.LogHierarchyDesignSession
+        return  # osid.logging.LogHierarchyDesignSession
 
     log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
 
@@ -890,7 +885,7 @@ class LoggingManager:
         ``supports_logging_batch()`` is ``true``.*
 
         """
-        return # osid.logging.batch.LoggingBatchManager
+        return  # osid.logging.batch.LoggingBatchManager
 
     logging_batch_manager = property(fget=get_logging_batch_manager)
 
@@ -933,7 +928,6 @@ class LoggingProxyManager:
     """
     __metaclass__ = abc.ABCMeta
 
-
     @abc.abstractmethod
     def get_logging_session(self, proxy):
         """Gets the ``OsidSession`` associated with the logging service.
@@ -950,7 +944,7 @@ class LoggingProxyManager:
         ``supports_logging()`` is ``true``.*
 
         """
-        return # osid.logging.LoggingSession
+        return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
     def get_logging_session_for_log(self, log_id, proxy):
@@ -972,7 +966,7 @@ class LoggingProxyManager:
         ``true``*
 
         """
-        return # osid.logging.LoggingSession
+        return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
     def get_log_entry_lookup_session(self, proxy):
@@ -990,7 +984,7 @@ class LoggingProxyManager:
         ``supports_log_entry_lookup()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLookupSession
+        return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
     def get_log_entry_lookup_session_for_log(self, log_id, proxy):
@@ -1012,7 +1006,7 @@ class LoggingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryLookupSession
+        return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
     def get_log_entry_query_session(self, proxy):
@@ -1030,7 +1024,7 @@ class LoggingProxyManager:
         ``supports_log_entry_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryQuerySession
+        return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
     def get_log_entry_query_session_for_log(self, log_id, proxy):
@@ -1052,7 +1046,7 @@ class LoggingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryQuerySession
+        return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
     def get_log_entry_search_session(self, proxy):
@@ -1070,7 +1064,7 @@ class LoggingProxyManager:
         ``supports_log_entry_search()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntrySearchSession
+        return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
     def get_log_entry_search_session_for_log(self, log_id, proxy):
@@ -1092,7 +1086,7 @@ class LoggingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntrySearchSession
+        return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
     def get_log_entry_admin_session(self, proxy):
@@ -1110,7 +1104,7 @@ class LoggingProxyManager:
         ``supports_log_entry_admin()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryAdminSession
+        return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
     def get_log_entry_admin_session_for_log(self, log_id, proxy):
@@ -1132,7 +1126,7 @@ class LoggingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryAdminSession
+        return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
     def get_log_entry_notification_session(self, log_entry_receiver, proxy):
@@ -1152,7 +1146,7 @@ class LoggingProxyManager:
         ``supports_log_entry_notification()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryNotificationSession
+        return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
     def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id, proxy):
@@ -1176,7 +1170,7 @@ class LoggingProxyManager:
         ``supports_visible_federation()`` are ``true``*
 
         """
-        return # osid.logging.LogEntryNotificationSession
+        return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
     def get_log_entry_log_session(self, proxy):
@@ -1194,7 +1188,7 @@ class LoggingProxyManager:
         ``supports_log_entry_log()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLogSession
+        return  # osid.logging.LogEntryLogSession
 
     @abc.abstractmethod
     def get_log_entry_log_assignment_session(self, proxy):
@@ -1212,7 +1206,7 @@ class LoggingProxyManager:
         ``supports_log_entry_log_assignment()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntryLogAssignmentSession
+        return  # osid.logging.LogEntryLogAssignmentSession
 
     @abc.abstractmethod
     def get_log_entry_smart_log_session(self, log_id, proxy):
@@ -1233,7 +1227,7 @@ class LoggingProxyManager:
         ``supports_log_entry_smart_log()`` is ``true``.*
 
         """
-        return # osid.logging.LogEntrySmartLogSession
+        return  # osid.logging.LogEntrySmartLogSession
 
     @abc.abstractmethod
     def get_log_lookup_session(self, proxy):
@@ -1251,7 +1245,7 @@ class LoggingProxyManager:
         ``supports_log_lookup()`` is ``true``.*
 
         """
-        return # osid.logging.LogLookupSession
+        return  # osid.logging.LogLookupSession
 
     @abc.abstractmethod
     def get_log_query_session(self, proxy):
@@ -1269,7 +1263,7 @@ class LoggingProxyManager:
         ``supports_log_query()`` is ``true``.*
 
         """
-        return # osid.logging.LogQuerySession
+        return  # osid.logging.LogQuerySession
 
     @abc.abstractmethod
     def get_log_search_session(self, proxy):
@@ -1287,7 +1281,7 @@ class LoggingProxyManager:
         ``supports_log_search()`` is ``true``.*
 
         """
-        return # osid.logging.LogSearchSession
+        return  # osid.logging.LogSearchSession
 
     @abc.abstractmethod
     def get_log_admin_session(self, proxy):
@@ -1305,7 +1299,7 @@ class LoggingProxyManager:
         ``supports_log_admin()`` is ``true``.*
 
         """
-        return # osid.logging.LogAdminSession
+        return  # osid.logging.LogAdminSession
 
     @abc.abstractmethod
     def get_log_notification_session(self, log_receiver, proxy):
@@ -1325,7 +1319,7 @@ class LoggingProxyManager:
         ``supports_log_notification()`` is ``true``.*
 
         """
-        return # osid.logging.LogNotificationSession
+        return  # osid.logging.LogNotificationSession
 
     @abc.abstractmethod
     def get_log_hierarchy_session(self, proxy):
@@ -1343,7 +1337,7 @@ class LoggingProxyManager:
         ``supports_log_hierarchy()`` is ``true``.*
 
         """
-        return # osid.logging.LogHierarchySession
+        return  # osid.logging.LogHierarchySession
 
     @abc.abstractmethod
     def get_log_hierarchy_design_session(self, proxy):
@@ -1361,7 +1355,7 @@ class LoggingProxyManager:
         ``supports_log_hierarchy_design()`` is ``true``.*
 
         """
-        return # osid.logging.LogHierarchyDesignSession
+        return  # osid.logging.LogHierarchyDesignSession
 
     @abc.abstractmethod
     def get_logging_batch_proxy_manager(self):
@@ -1376,8 +1370,6 @@ class LoggingProxyManager:
         ``supports_logging_batch()`` is ``true``.*
 
         """
-        return # osid.logging.batch.LoggingBatchProxyManager
+        return  # osid.logging.batch.LoggingBatchProxyManager
 
     logging_batch_proxy_manager = property(fget=get_logging_batch_proxy_manager)
-
-
