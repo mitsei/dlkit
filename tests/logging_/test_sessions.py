@@ -144,6 +144,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entry(self):
         """Tests get_log_entry"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_log_view()
         obj = self.catalog.get_log_entry(self.log_entry_list[0].ident)
         self.assertEqual(obj.ident, self.log_entry_list[0].ident)
@@ -153,6 +154,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_ids(self):
         """Tests get_log_entries_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
         self.assertTrue(isinstance(objects, LogEntryList))
@@ -161,6 +163,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_genus_type(self):
         """Tests get_log_entries_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
@@ -169,6 +172,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_parent_genus_type(self):
         """Tests get_log_entries_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
@@ -177,6 +181,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries_by_record_type(self):
         """Tests get_log_entries_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
@@ -215,6 +220,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_entries(self):
         """Tests get_log_entries"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         objects = self.catalog.get_log_entries()
         self.assertTrue(isinstance(objects, LogEntryList))
@@ -288,9 +294,8 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     def test_get_log_entries_by_query(self):
         """Tests get_log_entries_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        import pdb
-        pdb.set_trace()
         query = self.catalog.get_log_entry_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 2)
@@ -328,10 +333,12 @@ class TestLogEntryAdminSession(unittest.TestCase):
 
     def test_can_create_log_entries(self):
         """Tests can_create_log_entries"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.catalog.can_create_log_entries(), bool))
 
     def test_can_create_log_entry_with_record_types(self):
         """Tests can_create_log_entry_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_log_entry_with_record_types(DEFAULT_TYPE), bool))
 
     @unittest.skip('unimplemented test')
@@ -478,14 +485,17 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_can_create_logs(self):
         """Tests can_create_logs"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_logs(), bool))
 
     def test_can_create_log_with_record_types(self):
         """Tests can_create_log_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_log_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_log_form_for_create(self):
         """Tests get_log_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.logging_.objects import LogForm
         catalog_form = self.svc_mgr.get_log_form_for_create([])
         self.assertTrue(isinstance(catalog_form, LogForm))
@@ -493,6 +503,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_create_log(self):
         """Tests create_log"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.logging_.objects import Log
         catalog_form = self.svc_mgr.get_log_form_for_create([])
         catalog_form.display_name = 'Test Log'
@@ -507,6 +518,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_get_log_form_for_update(self):
         """Tests get_log_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.logging_.objects import LogForm
         catalog_form = self.svc_mgr.get_log_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, LogForm))
@@ -514,6 +526,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_update_log(self):
         """Tests update_log"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_log_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_log(catalog_form)
@@ -525,6 +538,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_delete_log(self):
         """Tests delete_log"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_log(cat_id)
         with self.assertRaises(errors.NotFound):
@@ -539,3 +553,5 @@ class TestLogAdminSession(unittest.TestCase):
     def test_alias_log(self):
         """Tests alias_log"""
         pass
+
+

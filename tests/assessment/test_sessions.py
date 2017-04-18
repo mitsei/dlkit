@@ -382,6 +382,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_item(self):
         """Tests get_item"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_item(self.item_list[0].ident)
         self.assertEqual(obj.ident, self.item_list[0].ident)
@@ -391,6 +392,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_items_by_ids(self):
         """Tests get_items_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import ItemList
         objects = self.catalog.get_items_by_ids(self.item_ids)
         self.assertTrue(isinstance(objects, ItemList))
@@ -399,6 +401,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_items_by_genus_type(self):
         """Tests get_items_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import ItemList
         objects = self.catalog.get_items_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ItemList))
@@ -407,6 +410,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_items_by_parent_genus_type(self):
         """Tests get_items_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import ItemList
         objects = self.catalog.get_items_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ItemList))
@@ -415,6 +419,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_items_by_record_type(self):
         """Tests get_items_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import ItemList
         objects = self.catalog.get_items_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ItemList))
@@ -443,6 +448,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_items(self):
         """Tests get_items"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import ItemList
         objects = self.catalog.get_items()
         self.assertTrue(isinstance(objects, ItemList))
@@ -516,6 +522,7 @@ class TestItemQuerySession(unittest.TestCase):
 
     def test_get_items_by_query(self):
         """Tests get_items_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_item_query()
         query.match_display_name('orange')
@@ -1020,6 +1027,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessment(self):
         """Tests get_assessment"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_assessment(self.assessment_list[0].ident)
         self.assertEqual(obj.ident, self.assessment_list[0].ident)
@@ -1029,6 +1037,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessments_by_ids(self):
         """Tests get_assessments_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
         objects = self.catalog.get_assessments_by_ids(self.assessment_ids)
         self.assertTrue(isinstance(objects, AssessmentList))
@@ -1037,6 +1046,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessments_by_genus_type(self):
         """Tests get_assessments_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
         objects = self.catalog.get_assessments_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentList))
@@ -1045,6 +1055,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessments_by_parent_genus_type(self):
         """Tests get_assessments_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
         objects = self.catalog.get_assessments_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentList))
@@ -1053,6 +1064,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessments_by_record_type(self):
         """Tests get_assessments_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
         objects = self.catalog.get_assessments_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentList))
@@ -1061,6 +1073,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_assessments(self):
         """Tests get_assessments"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
         objects = self.catalog.get_assessments()
         self.assertTrue(isinstance(objects, AssessmentList))
@@ -1134,6 +1147,7 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     def test_get_assessments_by_query(self):
         """Tests get_assessments_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_assessment_query()
         query.match_display_name('orange')
@@ -1533,6 +1547,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessment_offered(self):
         """Tests get_assessment_offered"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
         self.assertEqual(obj.ident, self.assessment_offered_list[0].ident)
@@ -1542,6 +1557,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered_by_ids(self):
         """Tests get_assessments_offered_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
         objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
@@ -1550,6 +1566,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered_by_genus_type(self):
         """Tests get_assessments_offered_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
         objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
@@ -1558,6 +1575,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered_by_parent_genus_type(self):
         """Tests get_assessments_offered_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
         objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
@@ -1566,6 +1584,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered_by_record_type(self):
         """Tests get_assessments_offered_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
         objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
@@ -1584,6 +1603,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered(self):
         """Tests get_assessments_offered"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
         objects = self.catalog.get_assessments_offered()
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
@@ -1663,6 +1683,7 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     def test_get_assessments_offered_by_query(self):
         """Tests get_assessments_offered_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_assessment_offered_query()
         query.match_display_name('orange')
@@ -1962,6 +1983,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessment_taken(self):
         """Tests get_assessment_taken"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
         self.assertEqual(obj.ident, self.assessment_taken_list[0].ident)
@@ -1971,6 +1993,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_by_ids(self):
         """Tests get_assessments_taken_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
         objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
@@ -1979,6 +2002,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_by_genus_type(self):
         """Tests get_assessments_taken_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
         objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
@@ -1987,6 +2011,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_by_parent_genus_type(self):
         """Tests get_assessments_taken_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
         objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
@@ -1995,6 +2020,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_by_record_type(self):
         """Tests get_assessments_taken_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
         objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
@@ -2058,6 +2084,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken(self):
         """Tests get_assessments_taken"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
         objects = self.catalog.get_assessments_taken()
         self.assertTrue(isinstance(objects, AssessmentTakenList))
@@ -2144,6 +2171,7 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     def test_get_assessments_taken_by_query(self):
         """Tests get_assessments_taken_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_assessment_taken_query()
         query.match_display_name('orange')
@@ -2491,14 +2519,17 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_can_create_banks(self):
         """Tests can_create_banks"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_banks(), bool))
 
     def test_can_create_bank_with_record_types(self):
         """Tests can_create_bank_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_bank_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_bank_form_for_create(self):
         """Tests get_bank_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.assessment.objects import BankForm
         catalog_form = self.svc_mgr.get_bank_form_for_create([])
         self.assertTrue(isinstance(catalog_form, BankForm))
@@ -2506,6 +2537,7 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_create_bank(self):
         """Tests create_bank"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.assessment.objects import Bank
         catalog_form = self.svc_mgr.get_bank_form_for_create([])
         catalog_form.display_name = 'Test Bank'
@@ -2520,6 +2552,7 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_get_bank_form_for_update(self):
         """Tests get_bank_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.assessment.objects import BankForm
         catalog_form = self.svc_mgr.get_bank_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, BankForm))
@@ -2527,6 +2560,7 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_update_bank(self):
         """Tests update_bank"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_bank_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_bank(catalog_form)
@@ -2538,6 +2572,7 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_delete_bank(self):
         """Tests delete_bank"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_bank(cat_id)
         with self.assertRaises(errors.NotFound):

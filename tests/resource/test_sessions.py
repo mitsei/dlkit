@@ -86,6 +86,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resource(self):
         """Tests get_resource"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bin_view()
         obj = self.catalog.get_resource(self.resource_list[0].ident)
         self.assertEqual(obj.ident, self.resource_list[0].ident)
@@ -95,6 +96,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resources_by_ids(self):
         """Tests get_resources_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.resource.objects import ResourceList
         objects = self.catalog.get_resources_by_ids(self.resource_ids)
         self.assertTrue(isinstance(objects, ResourceList))
@@ -103,6 +105,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resources_by_genus_type(self):
         """Tests get_resources_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
         objects = self.catalog.get_resources_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ResourceList))
@@ -111,6 +114,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resources_by_parent_genus_type(self):
         """Tests get_resources_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
         objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ResourceList))
@@ -119,6 +123,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resources_by_record_type(self):
         """Tests get_resources_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
         objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ResourceList))
@@ -127,6 +132,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_resources(self):
         """Tests get_resources"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.resource.objects import ResourceList
         objects = self.catalog.get_resources()
         self.assertTrue(isinstance(objects, ResourceList))
@@ -200,6 +206,7 @@ class TestResourceQuerySession(unittest.TestCase):
 
     def test_get_resources_by_query(self):
         """Tests get_resources_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_resource_query()
         query.match_display_name('orange')
@@ -799,14 +806,17 @@ class TestBinAdminSession(unittest.TestCase):
 
     def test_can_create_bins(self):
         """Tests can_create_bins"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_bins(), bool))
 
     def test_can_create_bin_with_record_types(self):
         """Tests can_create_bin_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_bin_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_bin_form_for_create(self):
         """Tests get_bin_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.resource.objects import BinForm
         catalog_form = self.svc_mgr.get_bin_form_for_create([])
         self.assertTrue(isinstance(catalog_form, BinForm))
@@ -814,6 +824,7 @@ class TestBinAdminSession(unittest.TestCase):
 
     def test_create_bin(self):
         """Tests create_bin"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.resource.objects import Bin
         catalog_form = self.svc_mgr.get_bin_form_for_create([])
         catalog_form.display_name = 'Test Bin'
@@ -828,6 +839,7 @@ class TestBinAdminSession(unittest.TestCase):
 
     def test_get_bin_form_for_update(self):
         """Tests get_bin_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.resource.objects import BinForm
         catalog_form = self.svc_mgr.get_bin_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, BinForm))
@@ -835,6 +847,7 @@ class TestBinAdminSession(unittest.TestCase):
 
     def test_update_bin(self):
         """Tests update_bin"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_bin_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_bin(catalog_form)
@@ -846,6 +859,7 @@ class TestBinAdminSession(unittest.TestCase):
 
     def test_delete_bin(self):
         """Tests delete_bin"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_bin(cat_id)
         with self.assertRaises(errors.NotFound):

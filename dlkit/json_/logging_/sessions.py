@@ -325,11 +325,11 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # Implemented from template for
         # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         result = collection.find_one(
-            dict({'_id': ObjectId(self._get_id(log_entry_id, 'logging_').get_identifier())},
+            dict({'_id': ObjectId(self._get_id(log_entry_id, 'logging').get_identifier())},
                  **self._view_filter()))
         return objects.LogEntry(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
 
@@ -359,12 +359,12 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # Implemented from template for
         # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         object_id_list = []
         for i in log_entry_ids:
-            object_id_list.append(ObjectId(self._get_id(i, 'logging_').get_identifier()))
+            object_id_list.append(ObjectId(self._get_id(i, 'logging').get_identifier()))
         result = collection.find(
             dict({'_id': {'$in': object_id_list}},
                  **self._view_filter()))
@@ -398,7 +398,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # Implemented from template for
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         result = collection.find(
@@ -601,7 +601,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # Implemented from template for
         # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         result = collection.find(self._view_filter()).sort('_id', DESCENDING)
@@ -761,7 +761,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         result = collection.find(query_terms).sort('_id', DESCENDING)
@@ -1023,12 +1023,12 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         """
         # Implemented from template for
         # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         if not isinstance(log_entry_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if log_entry_id.get_identifier_namespace() != 'logging_.LogEntry':
+        if log_entry_id.get_identifier_namespace() != 'logging.LogEntry':
             if log_entry_id.get_authority() != self._authority:
                 raise errors.InvalidArgument()
             else:
@@ -1061,7 +1061,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
 
     @utilities.arguments_not_none
     def duplicate_log_entry(self, log_entry_id):
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         mgr = self._get_provider_manager('LOGGING')
@@ -1103,7 +1103,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         """
         # Implemented from template for
         # osid.resource.ResourceAdminSession.update_resource_template
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         if not isinstance(log_entry_form, ABCLogEntryForm):
@@ -1164,7 +1164,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         """
         # Implemented from template for
         # osid.resource.ResourceAdminSession.delete_resource_template
-        collection = JSONClientValidated('logging_',
+        collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
         if not isinstance(log_entry_id, ABCId):
@@ -1332,7 +1332,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         if log_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Log, cat_name='Log')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(log_id, 'logging_').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(log_id, 'logging').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Log.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(log_id, 'logging', 'Log')

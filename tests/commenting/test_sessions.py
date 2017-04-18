@@ -92,6 +92,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comment(self):
         """Tests get_comment"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_book_view()
         obj = self.catalog.get_comment(self.comment_list[0].ident)
         self.assertEqual(obj.ident, self.comment_list[0].ident)
@@ -101,6 +102,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments_by_ids(self):
         """Tests get_comments_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.commenting.objects import CommentList
         objects = self.catalog.get_comments_by_ids(self.comment_ids)
         self.assertTrue(isinstance(objects, CommentList))
@@ -109,6 +111,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments_by_genus_type(self):
         """Tests get_comments_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.commenting.objects import CommentList
         objects = self.catalog.get_comments_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CommentList))
@@ -117,6 +120,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments_by_parent_genus_type(self):
         """Tests get_comments_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.commenting.objects import CommentList
         objects = self.catalog.get_comments_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CommentList))
@@ -125,6 +129,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments_by_record_type(self):
         """Tests get_comments_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.commenting.objects import CommentList
         objects = self.catalog.get_comments_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CommentList))
@@ -203,6 +208,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments(self):
         """Tests get_comments"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.commenting.objects import CommentList
         objects = self.catalog.get_comments()
         self.assertTrue(isinstance(objects, CommentList))
@@ -276,6 +282,7 @@ class TestCommentQuerySession(unittest.TestCase):
 
     def test_get_comments_by_query(self):
         """Tests get_comments_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_comment_query()
         query.match_display_name('orange')
@@ -464,14 +471,17 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_can_create_books(self):
         """Tests can_create_books"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_books(), bool))
 
     def test_can_create_book_with_record_types(self):
         """Tests can_create_book_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_book_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_book_form_for_create(self):
         """Tests get_book_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.commenting.objects import BookForm
         catalog_form = self.svc_mgr.get_book_form_for_create([])
         self.assertTrue(isinstance(catalog_form, BookForm))
@@ -479,6 +489,7 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_create_book(self):
         """Tests create_book"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.commenting.objects import Book
         catalog_form = self.svc_mgr.get_book_form_for_create([])
         catalog_form.display_name = 'Test Book'
@@ -493,6 +504,7 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_get_book_form_for_update(self):
         """Tests get_book_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.commenting.objects import BookForm
         catalog_form = self.svc_mgr.get_book_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, BookForm))
@@ -500,6 +512,7 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_update_book(self):
         """Tests update_book"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_book_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_book(catalog_form)
@@ -511,6 +524,7 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_delete_book(self):
         """Tests delete_book"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_book(cat_id)
         with self.assertRaises(errors.NotFound):

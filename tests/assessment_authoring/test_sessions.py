@@ -130,6 +130,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
         self.assertEqual(obj.ident, self.assessment_part_list[0].ident)
@@ -139,6 +140,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts_by_ids(self):
         """Tests get_assessment_parts_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_ids(self.assessment_part_ids)
         self.assertTrue(isinstance(objects, AssessmentPartList))
@@ -147,6 +149,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts_by_genus_type(self):
         """Tests get_assessment_parts_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentPartList))
@@ -155,6 +158,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts_by_parent_genus_type(self):
         """Tests get_assessment_parts_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentPartList))
@@ -163,6 +167,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts_by_record_type(self):
         """Tests get_assessment_parts_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssessmentPartList))
@@ -176,6 +181,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts(self):
         """Tests get_assessment_parts"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts()
         self.assertTrue(isinstance(objects, AssessmentPartList))
@@ -531,6 +537,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rule(self):
         """Tests get_sequence_rule"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_bank_view()
         obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
         self.assertEqual(obj.ident, self.sequence_rule_list[0].ident)
@@ -540,6 +547,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_by_ids(self):
         """Tests get_sequence_rules_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
         objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
         self.assertTrue(isinstance(objects, SequenceRuleList))
@@ -548,6 +556,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_by_genus_type(self):
         """Tests get_sequence_rules_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
         objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, SequenceRuleList))
@@ -556,6 +565,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_by_parent_genus_type(self):
         """Tests get_sequence_rules_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
         objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, SequenceRuleList))
@@ -564,6 +574,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_by_record_type(self):
         """Tests get_sequence_rules_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
         objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, SequenceRuleList))
@@ -592,6 +603,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules(self):
         """Tests get_sequence_rules"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
         objects = self.catalog.get_sequence_rules()
         self.assertTrue(isinstance(objects, SequenceRuleList))

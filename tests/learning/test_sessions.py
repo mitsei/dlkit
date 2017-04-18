@@ -84,6 +84,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objective(self):
         """Tests get_objective"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_objective_bank_view()
         obj = self.catalog.get_objective(self.objective_list[0].ident)
         self.assertEqual(obj.ident, self.objective_list[0].ident)
@@ -93,6 +94,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objectives_by_ids(self):
         """Tests get_objectives_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.learning.objects import ObjectiveList
         objects = self.catalog.get_objectives_by_ids(self.objective_ids)
         self.assertTrue(isinstance(objects, ObjectiveList))
@@ -101,6 +103,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objectives_by_genus_type(self):
         """Tests get_objectives_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.learning.objects import ObjectiveList
         objects = self.catalog.get_objectives_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ObjectiveList))
@@ -109,6 +112,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objectives_by_parent_genus_type(self):
         """Tests get_objectives_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.learning.objects import ObjectiveList
         objects = self.catalog.get_objectives_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ObjectiveList))
@@ -117,6 +121,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objectives_by_record_type(self):
         """Tests get_objectives_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.learning.objects import ObjectiveList
         objects = self.catalog.get_objectives_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ObjectiveList))
@@ -125,6 +130,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
 
     def test_get_objectives(self):
         """Tests get_objectives"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.learning.objects import ObjectiveList
         objects = self.catalog.get_objectives()
         self.assertTrue(isinstance(objects, ObjectiveList))
@@ -198,6 +204,7 @@ class TestObjectiveQuerySession(unittest.TestCase):
 
     def test_get_objectives_by_query(self):
         """Tests get_objectives_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_objective_query()
         query.match_display_name('orange')
@@ -897,6 +904,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activity(self):
         """Tests get_activity"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_objective_bank_view()
         obj = self.catalog.get_activity(self.activity_list[0].ident)
         self.assertEqual(obj.ident, self.activity_list[0].ident)
@@ -906,6 +914,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activities_by_ids(self):
         """Tests get_activities_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.learning.objects import ActivityList
         objects = self.catalog.get_activities_by_ids(self.activity_ids)
         self.assertTrue(isinstance(objects, ActivityList))
@@ -914,6 +923,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activities_by_genus_type(self):
         """Tests get_activities_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.learning.objects import ActivityList
         objects = self.catalog.get_activities_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ActivityList))
@@ -922,6 +932,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activities_by_parent_genus_type(self):
         """Tests get_activities_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.learning.objects import ActivityList
         objects = self.catalog.get_activities_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ActivityList))
@@ -930,6 +941,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activities_by_record_type(self):
         """Tests get_activities_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.learning.objects import ActivityList
         objects = self.catalog.get_activities_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ActivityList))
@@ -958,6 +970,7 @@ class TestActivityLookupSession(unittest.TestCase):
 
     def test_get_activities(self):
         """Tests get_activities"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.learning.objects import ActivityList
         objects = self.catalog.get_activities()
         self.assertTrue(isinstance(objects, ActivityList))
@@ -1194,25 +1207,28 @@ class TestProficiencyLookupSession(unittest.TestCase):
         create_form.display_name = 'Test ObjectiveBank'
         create_form.description = 'Test ObjectiveBank for ProficiencyLookupSession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
-        for num in [0, 1]:
-            create_form = cls.catalog.get_proficiency_form_for_create(AGENT_ID, [])
-            create_form.display_name = 'Test Proficiency ' + str(num)
-            create_form.description = 'Test Proficiency for ProficiencyLookupSession tests'
-            object = cls.catalog.create_proficiency(create_form)
-            cls.proficiency_list.append(object)
-            cls.proficiency_ids.append(object.ident)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = "Test LO"
+        objective = cls.catalog.create_objective(form)
+
+        for color in ['Orange', 'Blue', 'Green', 'orange']:
+            create_form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
+            create_form.display_name = 'Test Proficiency ' + color
+            create_form.description = (
+                'Test Proficiency for ProficiencyLookupSession tests, did I mention green')
+            obj = cls.catalog.create_proficiency(create_form)
+            cls.proficiency_list.append(obj)
+            cls.proficiency_ids.append(obj.ident)
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_proficiencies():
-        #    cls.catalog.delete_proficiency(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_proficiencies():
                 catalog.delete_proficiency(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1255,6 +1271,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiency(self):
         """Tests get_proficiency"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_objective_bank_view()
         obj = self.catalog.get_proficiency(self.proficiency_list[0].ident)
         self.assertEqual(obj.ident, self.proficiency_list[0].ident)
@@ -1264,6 +1281,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiencies_by_ids(self):
         """Tests get_proficiencies_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.learning.objects import ProficiencyList
         objects = self.catalog.get_proficiencies_by_ids(self.proficiency_ids)
         self.assertTrue(isinstance(objects, ProficiencyList))
@@ -1272,6 +1290,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiencies_by_genus_type(self):
         """Tests get_proficiencies_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.learning.objects import ProficiencyList
         objects = self.catalog.get_proficiencies_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ProficiencyList))
@@ -1280,6 +1299,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiencies_by_parent_genus_type(self):
         """Tests get_proficiencies_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.learning.objects import ProficiencyList
         objects = self.catalog.get_proficiencies_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ProficiencyList))
@@ -1288,6 +1308,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiencies_by_record_type(self):
         """Tests get_proficiencies_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.learning.objects import ProficiencyList
         objects = self.catalog.get_proficiencies_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, ProficiencyList))
@@ -1376,6 +1397,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
 
     def test_get_proficiencies(self):
         """Tests get_proficiencies"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.learning.objects import ProficiencyList
         objects = self.catalog.get_proficiencies()
         self.assertTrue(isinstance(objects, ProficiencyList))
@@ -1400,8 +1422,13 @@ class TestProficiencyQuerySession(unittest.TestCase):
         create_form.display_name = 'Test ObjectiveBank'
         create_form.description = 'Test ObjectiveBank for ProficiencyQuerySession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = "Test LO"
+        objective = cls.catalog.create_objective(form)
+
         for color in ['Orange', 'Blue', 'Green', 'orange']:
-            create_form = cls.catalog.get_proficiency_form_for_create(AGENT_ID, [])
+            create_form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
             create_form.display_name = 'Test Proficiency ' + color
             create_form.description = (
                 'Test Proficiency for ProficiencyQuerySession tests, did I mention green')
@@ -1411,15 +1438,12 @@ class TestProficiencyQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_proficiencies():
-        #    cls.catalog.delete_proficiency(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_proficiencies():
                 catalog.delete_proficiency(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1449,6 +1473,7 @@ class TestProficiencyQuerySession(unittest.TestCase):
 
     def test_get_proficiencies_by_query(self):
         """Tests get_proficiencies_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_proficiency_query()
         query.match_display_name('orange')
@@ -1642,14 +1667,17 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     def test_can_create_objective_banks(self):
         """Tests can_create_objective_banks"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_objective_banks(), bool))
 
     def test_can_create_objective_bank_with_record_types(self):
         """Tests can_create_objective_bank_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_objective_bank_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_objective_bank_form_for_create(self):
         """Tests get_objective_bank_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.learning.objects import ObjectiveBankForm
         catalog_form = self.svc_mgr.get_objective_bank_form_for_create([])
         self.assertTrue(isinstance(catalog_form, ObjectiveBankForm))
@@ -1657,6 +1685,7 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     def test_create_objective_bank(self):
         """Tests create_objective_bank"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.learning.objects import ObjectiveBank
         catalog_form = self.svc_mgr.get_objective_bank_form_for_create([])
         catalog_form.display_name = 'Test ObjectiveBank'
@@ -1671,6 +1700,7 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     def test_get_objective_bank_form_for_update(self):
         """Tests get_objective_bank_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.learning.objects import ObjectiveBankForm
         catalog_form = self.svc_mgr.get_objective_bank_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, ObjectiveBankForm))
@@ -1678,6 +1708,7 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     def test_update_objective_bank(self):
         """Tests update_objective_bank"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_objective_bank_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_objective_bank(catalog_form)
@@ -1689,6 +1720,7 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     def test_delete_objective_bank(self):
         """Tests delete_objective_bank"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_objective_bank(cat_id)
         with self.assertRaises(errors.NotFound):

@@ -401,6 +401,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorization(self):
         """Tests get_authorization"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_vault_view()
         obj = self.catalog.get_authorization(self.authorization_list[0].ident)
         self.assertEqual(obj.ident, self.authorization_list[0].ident)
@@ -410,6 +411,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_by_ids(self):
         """Tests get_authorizations_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
         objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
         self.assertTrue(isinstance(objects, AuthorizationList))
@@ -418,6 +420,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_by_genus_type(self):
         """Tests get_authorizations_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
         objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AuthorizationList))
@@ -426,6 +429,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_by_parent_genus_type(self):
         """Tests get_authorizations_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
         objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AuthorizationList))
@@ -434,6 +438,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_by_record_type(self):
         """Tests get_authorizations_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
         objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AuthorizationList))
@@ -507,6 +512,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations(self):
         """Tests get_authorizations"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
         objects = self.catalog.get_authorizations()
         self.assertTrue(isinstance(objects, AuthorizationList))
@@ -594,6 +600,7 @@ class TestAuthorizationQuerySession(unittest.TestCase):
 
     def test_get_authorizations_by_query(self):
         """Tests get_authorizations_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_authorization_query()
         query.match_display_name('orange')
@@ -811,14 +818,17 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_can_create_vaults(self):
         """Tests can_create_vaults"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_vaults(), bool))
 
     def test_can_create_vault_with_record_types(self):
         """Tests can_create_vault_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_vault_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_vault_form_for_create(self):
         """Tests get_vault_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.authorization.objects import VaultForm
         catalog_form = self.svc_mgr.get_vault_form_for_create([])
         self.assertTrue(isinstance(catalog_form, VaultForm))
@@ -826,6 +836,7 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_create_vault(self):
         """Tests create_vault"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.authorization.objects import Vault
         catalog_form = self.svc_mgr.get_vault_form_for_create([])
         catalog_form.display_name = 'Test Vault'
@@ -840,6 +851,7 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_get_vault_form_for_update(self):
         """Tests get_vault_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.authorization.objects import VaultForm
         catalog_form = self.svc_mgr.get_vault_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, VaultForm))
@@ -847,6 +859,7 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_update_vault(self):
         """Tests update_vault"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_vault_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_vault(catalog_form)
@@ -858,6 +871,7 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_delete_vault(self):
         """Tests delete_vault"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_vault(cat_id)
         with self.assertRaises(errors.NotFound):

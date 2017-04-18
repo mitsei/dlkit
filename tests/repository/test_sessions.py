@@ -82,6 +82,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_asset(self):
         """Tests get_asset"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_repository_view()
         obj = self.catalog.get_asset(self.asset_list[0].ident)
         self.assertEqual(obj.ident, self.asset_list[0].ident)
@@ -91,6 +92,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_assets_by_ids(self):
         """Tests get_assets_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.repository.objects import AssetList
         objects = self.catalog.get_assets_by_ids(self.asset_ids)
         self.assertTrue(isinstance(objects, AssetList))
@@ -99,6 +101,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_assets_by_genus_type(self):
         """Tests get_assets_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
         objects = self.catalog.get_assets_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
@@ -107,6 +110,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_assets_by_parent_genus_type(self):
         """Tests get_assets_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
         objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
@@ -115,6 +119,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_assets_by_record_type(self):
         """Tests get_assets_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
         objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
@@ -128,6 +133,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_assets(self):
         """Tests get_assets"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.repository.objects import AssetList
         objects = self.catalog.get_assets()
         self.assertTrue(isinstance(objects, AssetList))
@@ -201,6 +207,7 @@ class TestAssetQuerySession(unittest.TestCase):
 
     def test_get_assets_by_query(self):
         """Tests get_assets_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_asset_query()
         query.match_display_name('orange')
@@ -856,6 +863,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_compositions_by_ids(self):
         """Tests get_compositions_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.repository.objects import CompositionList
         objects = self.catalog.get_compositions_by_ids(self.composition_ids)
         self.assertTrue(isinstance(objects, CompositionList))
@@ -864,6 +872,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_compositions_by_genus_type(self):
         """Tests get_compositions_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
         objects = self.catalog.get_compositions_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
@@ -872,6 +881,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_compositions_by_parent_genus_type(self):
         """Tests get_compositions_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
         objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
@@ -880,6 +890,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_compositions_by_record_type(self):
         """Tests get_compositions_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
         objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
@@ -1366,14 +1377,17 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     def test_can_create_repositories(self):
         """Tests can_create_repositories"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_repositories(), bool))
 
     def test_can_create_repository_with_record_types(self):
         """Tests can_create_repository_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_repository_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_repository_form_for_create(self):
         """Tests get_repository_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.repository.objects import RepositoryForm
         catalog_form = self.svc_mgr.get_repository_form_for_create([])
         self.assertTrue(isinstance(catalog_form, RepositoryForm))
@@ -1381,6 +1395,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     def test_create_repository(self):
         """Tests create_repository"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.repository.objects import Repository
         catalog_form = self.svc_mgr.get_repository_form_for_create([])
         catalog_form.display_name = 'Test Repository'
@@ -1395,6 +1410,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     def test_get_repository_form_for_update(self):
         """Tests get_repository_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.repository.objects import RepositoryForm
         catalog_form = self.svc_mgr.get_repository_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, RepositoryForm))
@@ -1402,6 +1418,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     def test_update_repository(self):
         """Tests update_repository"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_repository_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_repository(catalog_form)
@@ -1413,6 +1430,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     def test_delete_repository(self):
         """Tests delete_repository"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_repository(cat_id)
         with self.assertRaises(errors.NotFound):

@@ -85,6 +85,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_system(self):
         """Tests get_grade_system"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_gradebook_view()
         obj = self.catalog.get_grade_system(self.grade_system_list[0].ident)
         self.assertEqual(obj.ident, self.grade_system_list[0].ident)
@@ -99,6 +100,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_systems_by_ids(self):
         """Tests get_grade_systems_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
         objects = self.catalog.get_grade_systems_by_ids(self.grade_system_ids)
         self.assertTrue(isinstance(objects, GradeSystemList))
@@ -107,6 +109,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_systems_by_genus_type(self):
         """Tests get_grade_systems_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
         objects = self.catalog.get_grade_systems_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeSystemList))
@@ -115,6 +118,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_systems_by_parent_genus_type(self):
         """Tests get_grade_systems_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
         objects = self.catalog.get_grade_systems_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeSystemList))
@@ -123,6 +127,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_systems_by_record_type(self):
         """Tests get_grade_systems_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
         objects = self.catalog.get_grade_systems_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeSystemList))
@@ -131,6 +136,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_grade_systems(self):
         """Tests get_grade_systems"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
         objects = self.catalog.get_grade_systems()
         self.assertTrue(isinstance(objects, GradeSystemList))
@@ -204,6 +210,7 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 
     def test_get_grade_systems_by_query(self):
         """Tests get_grade_systems_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_grade_system_query()
         query.match_display_name('orange')
@@ -444,6 +451,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entry(self):
         """Tests get_grade_entry"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_gradebook_view()
         obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
         self.assertEqual(obj.ident, self.grade_entry_list[0].ident)
@@ -453,6 +461,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries_by_ids(self):
         """Tests get_grade_entries_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
         objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
         self.assertTrue(isinstance(objects, GradeEntryList))
@@ -461,6 +470,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries_by_genus_type(self):
         """Tests get_grade_entries_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
         objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeEntryList))
@@ -469,6 +479,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries_by_parent_genus_type(self):
         """Tests get_grade_entries_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
         objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeEntryList))
@@ -477,6 +488,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries_by_record_type(self):
         """Tests get_grade_entries_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
         objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradeEntryList))
@@ -525,6 +537,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries(self):
         """Tests get_grade_entries"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
         objects = self.catalog.get_grade_entries()
         self.assertTrue(isinstance(objects, GradeEntryList))
@@ -549,8 +562,18 @@ class TestGradeEntryQuerySession(unittest.TestCase):
         create_form.display_name = 'Test Gradebook'
         create_form.description = 'Test Gradebook for GradeEntryQuerySession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'Test grade system'
+        grade_system = cls.catalog.create_grade_system(form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'Test gradebook column'
+        form.set_grade_system(grade_system.ident)
+        gradebook_column = cls.catalog.create_gradebook_column(form)
+
         for color in ['Orange', 'Blue', 'Green', 'orange']:
-            create_form = cls.catalog.get_grade_entry_form_for_create(AGENT_ID, [])
+            create_form = cls.catalog.get_grade_entry_form_for_create(gradebook_column.ident, AGENT_ID, [])
             create_form.display_name = 'Test GradeEntry ' + color
             create_form.description = (
                 'Test GradeEntry for GradeEntryQuerySession tests, did I mention green')
@@ -560,15 +583,14 @@ class TestGradeEntryQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_grade_entries():
-        #    cls.catalog.delete_grade_entry(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             for obj in catalog.get_grade_entries():
                 catalog.delete_grade_entry(obj.ident)
+            for obj in catalog.get_gradebook_columns():
+                catalog.delete_gradebook_column(obj.ident)
+            for obj in catalog.get_grade_systems():
+                catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -598,6 +620,7 @@ class TestGradeEntryQuerySession(unittest.TestCase):
 
     def test_get_grade_entries_by_query(self):
         """Tests get_grade_entries_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_grade_entry_query()
         query.match_display_name('orange')
@@ -786,6 +809,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_column(self):
         """Tests get_gradebook_column"""
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         self.catalog.use_isolated_gradebook_view()
         obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
         self.assertEqual(obj.ident, self.gradebook_column_list[0].ident)
@@ -795,6 +819,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_columns_by_ids(self):
         """Tests get_gradebook_columns_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
         objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
         self.assertTrue(isinstance(objects, GradebookColumnList))
@@ -803,6 +828,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_columns_by_genus_type(self):
         """Tests get_gradebook_columns_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
         objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradebookColumnList))
@@ -811,6 +837,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_columns_by_parent_genus_type(self):
         """Tests get_gradebook_columns_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
         objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradebookColumnList))
@@ -819,6 +846,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_columns_by_record_type(self):
         """Tests get_gradebook_columns_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
         objects = self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
         self.assertTrue(isinstance(objects, GradebookColumnList))
@@ -827,6 +855,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_columns(self):
         """Tests get_gradebook_columns"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
         objects = self.catalog.get_gradebook_columns()
         self.assertTrue(isinstance(objects, GradebookColumnList))
@@ -910,6 +939,7 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 
     def test_get_gradebook_columns_by_query(self):
         """Tests get_gradebook_columns_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
         query = self.catalog.get_gradebook_column_query()
         query.match_display_name('orange')
@@ -948,10 +978,12 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
 
     def test_can_create_gradebook_columns(self):
         """Tests can_create_gradebook_columns"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.catalog.can_create_gradebook_columns(), bool))
 
     def test_can_create_gradebook_column_with_record_types(self):
         """Tests can_create_gradebook_column_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_gradebook_column_with_record_types(DEFAULT_TYPE), bool))
 
     @unittest.skip('unimplemented test')
@@ -1113,14 +1145,17 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     def test_can_create_gradebooks(self):
         """Tests can_create_gradebooks"""
+        # From test_templates/resource.py BinAdminSession.can_create_bins_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_gradebooks(), bool))
 
     def test_can_create_gradebook_with_record_types(self):
         """Tests can_create_gradebook_with_record_types"""
+        # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.svc_mgr.can_create_gradebook_with_record_types(DEFAULT_TYPE), bool))
 
     def test_get_gradebook_form_for_create(self):
         """Tests get_gradebook_form_for_create"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_create_template
         from dlkit.abstract_osid.grading.objects import GradebookForm
         catalog_form = self.svc_mgr.get_gradebook_form_for_create([])
         self.assertTrue(isinstance(catalog_form, GradebookForm))
@@ -1128,6 +1163,7 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     def test_create_gradebook(self):
         """Tests create_gradebook"""
+        # From test_templates/resource.py BinAdminSession.create_bin_template
         from dlkit.abstract_osid.grading.objects import Gradebook
         catalog_form = self.svc_mgr.get_gradebook_form_for_create([])
         catalog_form.display_name = 'Test Gradebook'
@@ -1142,6 +1178,7 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     def test_get_gradebook_form_for_update(self):
         """Tests get_gradebook_form_for_update"""
+        # From test_templates/resource.py BinAdminSession.get_bin_form_for_update_template
         from dlkit.abstract_osid.grading.objects import GradebookForm
         catalog_form = self.svc_mgr.get_gradebook_form_for_update(self.catalog.ident)
         self.assertTrue(isinstance(catalog_form, GradebookForm))
@@ -1149,6 +1186,7 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     def test_update_gradebook(self):
         """Tests update_gradebook"""
+        # From test_templates/resource.py BinAdminSession.update_bin_template
         catalog_form = self.svc_mgr.get_gradebook_form_for_update(self.catalog.ident)
         # Update some elements here?
         self.svc_mgr.update_gradebook(catalog_form)
@@ -1160,6 +1198,7 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     def test_delete_gradebook(self):
         """Tests delete_gradebook"""
+        # From test_templates/resource.py BinAdminSession.delete_bin_template
         cat_id = self.catalog_to_delete.ident
         self.svc_mgr.delete_gradebook(cat_id)
         with self.assertRaises(errors.NotFound):
