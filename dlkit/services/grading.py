@@ -317,12 +317,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_system_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_system_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_system_lookup_session=session)
 
     grade_system_lookup_session = property(fget=get_grade_system_lookup_session)
 
@@ -331,28 +325,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_system_lookup_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_system_lookup_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_system_lookup_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_system_lookup_session=session)
 
     def get_grade_system_query_session(self, *args, **kwargs):
         """Pass through to provider get_grade_system_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_system_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_system_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_system_query_session=session)
 
     grade_system_query_session = property(fget=get_grade_system_query_session)
 
@@ -361,28 +339,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_system_query_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_system_query_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_system_query_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_system_query_session=session)
 
     def get_grade_system_admin_session(self, *args, **kwargs):
         """Pass through to provider get_grade_system_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_system_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_system_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_system_admin_session=session)
 
     grade_system_admin_session = property(fget=get_grade_system_admin_session)
 
@@ -391,28 +353,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_system_admin_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_system_admin_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_system_admin_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_system_admin_session=session)
 
     def get_grade_entry_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_grade_entry_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_entry_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_entry_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_entry_lookup_session=session)
 
     grade_entry_lookup_session = property(fget=get_grade_entry_lookup_session)
 
@@ -421,28 +367,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_entry_lookup_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_entry_lookup_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_entry_lookup_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_entry_lookup_session=session)
 
     def get_grade_entry_query_session(self, *args, **kwargs):
         """Pass through to provider get_grade_entry_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_entry_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_entry_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_entry_query_session=session)
 
     grade_entry_query_session = property(fget=get_grade_entry_query_session)
 
@@ -451,28 +381,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_entry_query_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_entry_query_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_entry_query_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_entry_query_session=session)
 
     def get_grade_entry_admin_session(self, *args, **kwargs):
         """Pass through to provider get_grade_entry_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_grade_entry_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_grade_entry_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, grade_entry_admin_session=session)
 
     grade_entry_admin_session = property(fget=get_grade_entry_admin_session)
 
@@ -481,28 +395,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_entry_admin_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_grade_entry_admin_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_grade_entry_admin_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     grade_entry_admin_session=session)
 
     def get_gradebook_column_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_gradebook_column_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_gradebook_column_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_gradebook_column_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, gradebook_column_lookup_session=session)
 
     gradebook_column_lookup_session = property(fget=get_gradebook_column_lookup_session)
 
@@ -511,28 +409,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     gradebook_column_lookup_session=session)
 
     def get_gradebook_column_query_session(self, *args, **kwargs):
         """Pass through to provider get_gradebook_column_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_gradebook_column_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_gradebook_column_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, gradebook_column_query_session=session)
 
     gradebook_column_query_session = property(fget=get_gradebook_column_query_session)
 
@@ -541,28 +423,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_gradebook_column_query_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     gradebook_column_query_session=session)
 
     def get_gradebook_column_admin_session(self, *args, **kwargs):
         """Pass through to provider get_gradebook_column_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_gradebook_column_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_gradebook_column_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     session.get_gradebook(),
-        #     self._runtime,
-        #     self._proxy, gradebook_column_admin_session=session)
 
     gradebook_column_admin_session = property(fget=get_gradebook_column_admin_session)
 
@@ -571,25 +437,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_gradebook_column_admin_session_for_gradebook(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_gradebook_column_admin_session_for_gradebook(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_gradebook_column_admin_session_for_gradebook(*args, **kwargs)
-        # return Gradebook(
-        #     self._provider_manager,
-        #     self.get_gradebook(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     gradebook_column_admin_session=session)
 
     def get_gradebook_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_gradebook_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_gradebook_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('gradebook_lookup_session', *args, **kwargs)
-        # return self
 
     gradebook_lookup_session = property(fget=get_gradebook_lookup_session)
 
@@ -598,9 +451,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_gradebook_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('gradebook_admin_session', *args, **kwargs)
-        # return self
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 

@@ -211,9 +211,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_traversal_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_traversal_session', *args, **kwargs)
-        # return self
 
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
@@ -222,18 +219,12 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
         return self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_traversal_session', *args, **kwargs)
-        # return self
 
     def get_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_design_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_design_session', *args, **kwargs)
-        # return self
 
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
@@ -242,18 +233,12 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
         return self._provider_manager.get_hierarchy_design_session_for_hierarchy(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_design_session', *args, **kwargs)
-        # return self
 
     def get_hierarchy_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_lookup_session', *args, **kwargs)
-        # return self
 
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
@@ -262,9 +247,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('hierarchy_admin_session', *args, **kwargs)
-        # return self
 
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 ##

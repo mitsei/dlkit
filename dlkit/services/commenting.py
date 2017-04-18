@@ -245,12 +245,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_comment_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_comment_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     session.get_book(),
-        #     self._runtime,
-        #     self._proxy, comment_lookup_session=session)
 
     comment_lookup_session = property(fget=get_comment_lookup_session)
 
@@ -259,28 +253,12 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_comment_lookup_session_for_book(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_comment_lookup_session_for_book(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_comment_lookup_session_for_book(*args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     self.get_book(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     comment_lookup_session=session)
 
     def get_comment_query_session(self, *args, **kwargs):
         """Pass through to provider get_comment_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_comment_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_comment_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     session.get_book(),
-        #     self._runtime,
-        #     self._proxy, comment_query_session=session)
 
     comment_query_session = property(fget=get_comment_query_session)
 
@@ -289,28 +267,12 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_comment_query_session_for_book(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_comment_query_session_for_book(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_comment_query_session_for_book(*args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     self.get_book(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     comment_query_session=session)
 
     def get_comment_admin_session(self, *args, **kwargs):
         """Pass through to provider get_comment_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_comment_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_comment_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     session.get_book(),
-        #     self._runtime,
-        #     self._proxy, comment_admin_session=session)
 
     comment_admin_session = property(fget=get_comment_admin_session)
 
@@ -319,25 +281,12 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_comment_admin_session_for_book(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_comment_admin_session_for_book(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_comment_admin_session_for_book(*args, **kwargs)
-        # return Book(
-        #     self._provider_manager,
-        #     self.get_book(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     comment_admin_session=session)
 
     def get_book_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_book_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_book_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('book_lookup_session', *args, **kwargs)
-        # return self
 
     book_lookup_session = property(fget=get_book_lookup_session)
 
@@ -346,9 +295,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_book_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('book_admin_session', *args, **kwargs)
-        # return self
 
     book_admin_session = property(fget=get_book_admin_session)
 
@@ -357,9 +303,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_book_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('book_hierarchy_session', *args, **kwargs)
-        # return self
 
     book_hierarchy_session = property(fget=get_book_hierarchy_session)
 
@@ -368,9 +311,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_book_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('book_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     book_hierarchy_design_session = property(fget=get_book_hierarchy_design_session)
 

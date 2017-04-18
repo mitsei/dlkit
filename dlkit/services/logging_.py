@@ -255,9 +255,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_logging_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('logging_session', *args, **kwargs)
-        # return self
 
     logging_session = property(fget=get_logging_session)
 
@@ -266,21 +263,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
         return self._provider_manager.get_logging_session_for_log(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('logging_session', *args, **kwargs)
-        # return self
 
     def get_log_entry_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_log_entry_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_log_entry_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     session.get_log(),
-        #     self._runtime,
-        #     self._proxy, log_entry_lookup_session=session)
 
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
@@ -289,28 +277,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_log_entry_lookup_session_for_log(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_log_entry_lookup_session_for_log(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_log_entry_lookup_session_for_log(*args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     self.get_log(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     log_entry_lookup_session=session)
 
     def get_log_entry_query_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_log_entry_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_log_entry_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     session.get_log(),
-        #     self._runtime,
-        #     self._proxy, log_entry_query_session=session)
 
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
@@ -319,28 +291,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_log_entry_query_session_for_log(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_log_entry_query_session_for_log(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_log_entry_query_session_for_log(*args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     self.get_log(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     log_entry_query_session=session)
 
     def get_log_entry_admin_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_log_entry_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_log_entry_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     session.get_log(),
-        #     self._runtime,
-        #     self._proxy, log_entry_admin_session=session)
 
     log_entry_admin_session = property(fget=get_log_entry_admin_session)
 
@@ -349,25 +305,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_log_entry_admin_session_for_log(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_log_entry_admin_session_for_log(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_log_entry_admin_session_for_log(*args, **kwargs)
-        # return Log(
-        #     self._provider_manager,
-        #     self.get_log(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     log_entry_admin_session=session)
 
     def get_log_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_log_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_log_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('log_lookup_session', *args, **kwargs)
-        # return self
 
     log_lookup_session = property(fget=get_log_lookup_session)
 
@@ -376,9 +319,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_log_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('log_admin_session', *args, **kwargs)
-        # return self
 
     log_admin_session = property(fget=get_log_admin_session)
 

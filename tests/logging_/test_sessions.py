@@ -289,6 +289,8 @@ class TestLogEntryQuerySession(unittest.TestCase):
     def test_get_log_entries_by_query(self):
         """Tests get_log_entries_by_query"""
         # Need to add some tests with string types
+        import pdb
+        pdb.set_trace()
         query = self.catalog.get_log_entry_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 2)
@@ -537,5 +539,3 @@ class TestLogAdminSession(unittest.TestCase):
     def test_alias_log(self):
         """Tests alias_log"""
         pass
-
-

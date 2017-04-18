@@ -245,12 +245,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_relationship_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_relationship_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     session.get_family(),
-        #     self._runtime,
-        #     self._proxy, relationship_lookup_session=session)
 
     relationship_lookup_session = property(fget=get_relationship_lookup_session)
 
@@ -259,28 +253,12 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_relationship_lookup_session_for_family(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_relationship_lookup_session_for_family(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_relationship_lookup_session_for_family(*args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     self.get_family(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     relationship_lookup_session=session)
 
     def get_relationship_query_session(self, *args, **kwargs):
         """Pass through to provider get_relationship_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_relationship_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_relationship_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     session.get_family(),
-        #     self._runtime,
-        #     self._proxy, relationship_query_session=session)
 
     relationship_query_session = property(fget=get_relationship_query_session)
 
@@ -289,28 +267,12 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_relationship_query_session_for_family(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_relationship_query_session_for_family(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_relationship_query_session_for_family(*args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     self.get_family(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     relationship_query_session=session)
 
     def get_relationship_admin_session(self, *args, **kwargs):
         """Pass through to provider get_relationship_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_relationship_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_relationship_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     session.get_family(),
-        #     self._runtime,
-        #     self._proxy, relationship_admin_session=session)
 
     relationship_admin_session = property(fget=get_relationship_admin_session)
 
@@ -319,25 +281,12 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_relationship_admin_session_for_family(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_relationship_admin_session_for_family(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_relationship_admin_session_for_family(*args, **kwargs)
-        # return Family(
-        #     self._provider_manager,
-        #     self.get_family(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     relationship_admin_session=session)
 
     def get_family_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_family_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_family_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('family_lookup_session', *args, **kwargs)
-        # return self
 
     family_lookup_session = property(fget=get_family_lookup_session)
 
@@ -346,9 +295,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_family_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('family_admin_session', *args, **kwargs)
-        # return self
 
     family_admin_session = property(fget=get_family_admin_session)
 
@@ -357,9 +303,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_family_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('family_hierarchy_session', *args, **kwargs)
-        # return self
 
     family_hierarchy_session = property(fget=get_family_hierarchy_session)
 
@@ -368,9 +311,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_family_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('family_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     family_hierarchy_design_session = property(fget=get_family_hierarchy_design_session)
 

@@ -303,12 +303,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_lookup_session=session)
 
     resource_lookup_session = property(fget=get_resource_lookup_session)
 
@@ -317,28 +311,12 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_lookup_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_lookup_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_lookup_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_lookup_session=session)
 
     def get_resource_query_session(self, *args, **kwargs):
         """Pass through to provider get_resource_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_query_session=session)
 
     resource_query_session = property(fget=get_resource_query_session)
 
@@ -347,28 +325,12 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_query_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_query_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_query_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_query_session=session)
 
     def get_resource_search_session(self, *args, **kwargs):
         """Pass through to provider get_resource_search_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_search_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_search_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_search_session=session)
 
     resource_search_session = property(fget=get_resource_search_session)
 
@@ -377,28 +339,12 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_search_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_search_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_search_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_search_session=session)
 
     def get_resource_admin_session(self, *args, **kwargs):
         """Pass through to provider get_resource_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_admin_session=session)
 
     resource_admin_session = property(fget=get_resource_admin_session)
 
@@ -407,53 +353,24 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_admin_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_admin_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_admin_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_admin_session=session)
 
     def get_resource_notification_session(self, *args, **kwargs):
         """Pass through to provider get_resource_notification_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
         return self._provider_manager.get_resource_notification_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_notification_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_notification_session=session)
 
     def get_resource_notification_session_for_bin(self, *args, **kwargs):
         """Pass through to provider get_resource_notification_session_for_bin"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
         return self._provider_manager.get_resource_notification_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_notification_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_notification_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_notification_session=session)
 
     def get_resource_bin_session(self, *args, **kwargs):
         """Pass through to provider get_resource_bin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_resource_bin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('resource_bin_session', *args, **kwargs)
-        # return self
 
     resource_bin_session = property(fget=get_resource_bin_session)
 
@@ -462,9 +379,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_resource_bin_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('resource_bin_assignment_session', *args, **kwargs)
-        # return self
 
     resource_bin_assignment_session = property(fget=get_resource_bin_assignment_session)
 
@@ -473,12 +387,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_agent_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_agent_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_agent_session=session)
 
     resource_agent_session = property(fget=get_resource_agent_session)
 
@@ -487,28 +395,12 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_agent_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_agent_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_agent_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_agent_session=session)
 
     def get_resource_agent_assignment_session(self, *args, **kwargs):
         """Pass through to provider get_resource_agent_assignment_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_resource_agent_assignment_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_resource_agent_assignment_session', proxy=self._proxy, *args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     session.get_bin(),
-        #     self._runtime,
-        #     self._proxy, resource_agent_assignment_session=session)
 
     resource_agent_assignment_session = property(fget=get_resource_agent_assignment_session)
 
@@ -517,25 +409,12 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_resource_agent_assignment_session_for_bin(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_resource_agent_assignment_session_for_bin(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_resource_agent_assignment_session_for_bin(*args, **kwargs)
-        # return Bin(
-        #     self._provider_manager,
-        #     self.get_bin(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     resource_agent_assignment_session=session)
 
     def get_bin_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_bin_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bin_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bin_lookup_session', *args, **kwargs)
-        # return self
 
     bin_lookup_session = property(fget=get_bin_lookup_session)
 
@@ -544,9 +423,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bin_query_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bin_query_session', *args, **kwargs)
-        # return self
 
     bin_query_session = property(fget=get_bin_query_session)
 
@@ -555,9 +431,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bin_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bin_admin_session', *args, **kwargs)
-        # return self
 
     bin_admin_session = property(fget=get_bin_admin_session)
 
@@ -566,9 +439,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bin_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bin_hierarchy_session', *args, **kwargs)
-        # return self
 
     bin_hierarchy_session = property(fget=get_bin_hierarchy_session)
 
@@ -577,9 +447,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bin_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bin_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     bin_hierarchy_design_session = property(fget=get_bin_hierarchy_design_session)
 

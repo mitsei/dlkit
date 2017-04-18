@@ -1864,14 +1864,18 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
                 bank_id=self._catalog_id,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+                proxy=self._proxy,
+                next_assessment_part_id=next_assessment_part_id,
+                assessment_part_id=assessment_part_id)
         else:
             obj_form = objects.SequenceRuleForm(
                 bank_id=self._catalog_id,
                 record_types=sequence_rule_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+                proxy=self._proxy,
+                next_assessment_part_id=next_assessment_part_id,
+                assessment_part_id=assessment_part_id)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 

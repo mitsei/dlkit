@@ -502,12 +502,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_session=session)
 
     assessment_session = property(fget=get_assessment_session)
 
@@ -516,28 +510,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_session=session)
 
     def get_assessment_results_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_results_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_results_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_results_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_results_session=session)
 
     assessment_results_session = property(fget=get_assessment_results_session)
 
@@ -546,28 +524,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_results_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_results_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_results_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_results_session=session)
 
     def get_item_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_item_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_item_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_item_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, item_lookup_session=session)
 
     item_lookup_session = property(fget=get_item_lookup_session)
 
@@ -576,28 +538,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_item_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_item_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_item_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     item_lookup_session=session)
 
     def get_item_query_session(self, *args, **kwargs):
         """Pass through to provider get_item_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_item_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_item_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, item_query_session=session)
 
     item_query_session = property(fget=get_item_query_session)
 
@@ -606,28 +552,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_item_query_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_item_query_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_item_query_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     item_query_session=session)
 
     def get_item_search_session(self, *args, **kwargs):
         """Pass through to provider get_item_search_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_item_search_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_item_search_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, item_search_session=session)
 
     item_search_session = property(fget=get_item_search_session)
 
@@ -636,28 +566,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_item_search_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_item_search_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_item_search_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     item_search_session=session)
 
     def get_item_admin_session(self, *args, **kwargs):
         """Pass through to provider get_item_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_item_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_item_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, item_admin_session=session)
 
     item_admin_session = property(fget=get_item_admin_session)
 
@@ -666,37 +580,18 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_item_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_item_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_item_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     item_admin_session=session)
 
     def get_item_notification_session(self, *args, **kwargs):
         """Pass through to provider get_item_notification_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
         return self._provider_manager.get_item_notification_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_item_notification_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, item_notification_session=session)
 
     def get_item_bank_session(self, *args, **kwargs):
         """Pass through to provider get_item_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_item_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('item_bank_session', *args, **kwargs)
-        # return self
 
     item_bank_session = property(fget=get_item_bank_session)
 
@@ -705,9 +600,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_item_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('item_bank_assignment_session', *args, **kwargs)
-        # return self
 
     item_bank_assignment_session = property(fget=get_item_bank_assignment_session)
 
@@ -716,12 +608,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_lookup_session=session)
 
     assessment_lookup_session = property(fget=get_assessment_lookup_session)
 
@@ -730,28 +616,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_lookup_session=session)
 
     def get_assessment_query_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_query_session=session)
 
     assessment_query_session = property(fget=get_assessment_query_session)
 
@@ -760,28 +630,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_query_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_query_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_query_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_query_session=session)
 
     def get_assessment_admin_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_admin_session=session)
 
     assessment_admin_session = property(fget=get_assessment_admin_session)
 
@@ -790,25 +644,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_admin_session=session)
 
     def get_assessment_bank_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_bank_session', *args, **kwargs)
-        # return self
 
     assessment_bank_session = property(fget=get_assessment_bank_session)
 
@@ -817,9 +658,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_bank_assignment_session', *args, **kwargs)
-        # return self
 
     assessment_bank_assignment_session = property(fget=get_assessment_bank_assignment_session)
 
@@ -828,12 +666,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_basic_authoring_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_basic_authoring_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_basic_authoring_session=session)
 
     assessment_basic_authoring_session = property(fget=get_assessment_basic_authoring_session)
 
@@ -842,28 +674,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_basic_authoring_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_basic_authoring_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_basic_authoring_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_basic_authoring_session=session)
 
     def get_assessment_offered_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_offered_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_offered_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_offered_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_offered_lookup_session=session)
 
     assessment_offered_lookup_session = property(fget=get_assessment_offered_lookup_session)
 
@@ -872,28 +688,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_offered_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_offered_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_offered_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_offered_lookup_session=session)
 
     def get_assessment_offered_query_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_offered_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_offered_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_offered_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_offered_query_session=session)
 
     assessment_offered_query_session = property(fget=get_assessment_offered_query_session)
 
@@ -902,28 +702,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_offered_query_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_offered_query_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_offered_query_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_offered_query_session=session)
 
     def get_assessment_offered_admin_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_offered_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_offered_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_offered_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_offered_admin_session=session)
 
     assessment_offered_admin_session = property(fget=get_assessment_offered_admin_session)
 
@@ -932,25 +716,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_offered_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_offered_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_offered_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_offered_admin_session=session)
 
     def get_assessment_offered_bank_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_offered_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_offered_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_offered_bank_session', *args, **kwargs)
-        # return self
 
     assessment_offered_bank_session = property(fget=get_assessment_offered_bank_session)
 
@@ -959,9 +730,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_offered_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_offered_bank_assignment_session', *args, **kwargs)
-        # return self
 
     assessment_offered_bank_assignment_session = property(fget=get_assessment_offered_bank_assignment_session)
 
@@ -970,12 +738,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_taken_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_taken_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_taken_lookup_session=session)
 
     assessment_taken_lookup_session = property(fget=get_assessment_taken_lookup_session)
 
@@ -984,28 +746,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_taken_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_taken_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_taken_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_taken_lookup_session=session)
 
     def get_assessment_taken_query_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_taken_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_taken_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_taken_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_taken_query_session=session)
 
     assessment_taken_query_session = property(fget=get_assessment_taken_query_session)
 
@@ -1014,28 +760,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_taken_query_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_taken_query_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_taken_query_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_taken_query_session=session)
 
     def get_assessment_taken_admin_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_taken_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_taken_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_taken_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_taken_admin_session=session)
 
     assessment_taken_admin_session = property(fget=get_assessment_taken_admin_session)
 
@@ -1044,25 +774,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_taken_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_taken_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_taken_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_taken_admin_session=session)
 
     def get_assessment_taken_bank_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_taken_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_taken_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_taken_bank_session', *args, **kwargs)
-        # return self
 
     assessment_taken_bank_session = property(fget=get_assessment_taken_bank_session)
 
@@ -1071,9 +788,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_assessment_taken_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('assessment_taken_bank_assignment_session', *args, **kwargs)
-        # return self
 
     assessment_taken_bank_assignment_session = property(fget=get_assessment_taken_bank_assignment_session)
 
@@ -1082,9 +796,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bank_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bank_lookup_session', *args, **kwargs)
-        # return self
 
     bank_lookup_session = property(fget=get_bank_lookup_session)
 
@@ -1093,9 +804,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bank_query_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bank_query_session', *args, **kwargs)
-        # return self
 
     bank_query_session = property(fget=get_bank_query_session)
 
@@ -1104,9 +812,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bank_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bank_admin_session', *args, **kwargs)
-        # return self
 
     bank_admin_session = property(fget=get_bank_admin_session)
 
@@ -1115,9 +820,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bank_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bank_hierarchy_session', *args, **kwargs)
-        # return self
 
     bank_hierarchy_session = property(fget=get_bank_hierarchy_session)
 
@@ -1126,9 +828,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_bank_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('bank_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     bank_hierarchy_design_session = property(fget=get_bank_hierarchy_design_session)
 
@@ -1893,46 +1592,20 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
 
     ##Implemented from assessment.authoring - AssessmentAuthoringManager
     def get_assessment_part_lookup_session(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_assessment_part_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_part_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_part_lookup_session=session)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_lookup_session(*args, **kwargs)
 
     assessment_part_lookup_session = property(fget=get_assessment_part_lookup_session)
 
     def get_assessment_part_lookup_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_lookup_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_assessment_part_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_part_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_part_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_part_lookup_session=session)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_lookup_session_for_bank(*args, **kwargs)
 
     def get_assessment_part_admin_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_part_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_assessment_part_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_assessment_part_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, assessment_part_admin_session=session)
 
     assessment_part_admin_session = property(fget=get_assessment_part_admin_session)
 
@@ -1941,58 +1614,22 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_part_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_assessment_part_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_assessment_part_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     assessment_part_admin_session=session)
 
     def get_sequence_rule_lookup_session(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_sequence_rule_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_sequence_rule_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, sequence_rule_lookup_session=session)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_lookup_session(*args, **kwargs)
 
     sequence_rule_lookup_session = property(fget=get_sequence_rule_lookup_session)
 
     def get_sequence_rule_lookup_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_lookup_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_sequence_rule_lookup_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_sequence_rule_lookup_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_sequence_rule_lookup_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     sequence_rule_lookup_session=session)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_lookup_session_for_bank(*args, **kwargs)
 
     def get_sequence_rule_admin_session(self, *args, **kwargs):
         """Pass through to provider get_sequence_rule_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_sequence_rule_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_sequence_rule_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     session.get_bank(),
-        #     self._runtime,
-        #     self._proxy, sequence_rule_admin_session=session)
 
     sequence_rule_admin_session = property(fget=get_sequence_rule_admin_session)
 
@@ -2001,16 +1638,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_sequence_rule_admin_session_for_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_sequence_rule_admin_session_for_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_sequence_rule_admin_session_for_bank(*args, **kwargs)
-        # return Bank(
-        #     self._provider_manager,
-        #     self.get_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     sequence_rule_admin_session=session)
 
     ##Implemented from assessment.authoring - AssessmentAuthoringProxyManager
 

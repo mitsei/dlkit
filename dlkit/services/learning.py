@@ -361,12 +361,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_lookup_session=session)
 
     objective_lookup_session = property(fget=get_objective_lookup_session)
 
@@ -375,28 +369,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_lookup_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_lookup_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_lookup_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_lookup_session=session)
 
     def get_objective_query_session(self, *args, **kwargs):
         """Pass through to provider get_objective_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_query_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_query_session=session)
 
     objective_query_session = property(fget=get_objective_query_session)
 
@@ -405,28 +383,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_query_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_query_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_query_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_query_session=session)
 
     def get_objective_admin_session(self, *args, **kwargs):
         """Pass through to provider get_objective_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_admin_session=session)
 
     objective_admin_session = property(fget=get_objective_admin_session)
 
@@ -435,28 +397,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_admin_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_admin_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_admin_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_admin_session=session)
 
     def get_objective_hierarchy_session(self, *args, **kwargs):
         """Pass through to provider get_objective_hierarchy_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_hierarchy_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_hierarchy_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_hierarchy_session=session)
 
     objective_hierarchy_session = property(fget=get_objective_hierarchy_session)
 
@@ -465,28 +411,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_hierarchy_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_hierarchy_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_hierarchy_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_hierarchy_session=session)
 
     def get_objective_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider get_objective_hierarchy_design_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_hierarchy_design_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_hierarchy_design_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_hierarchy_design_session=session)
 
     objective_hierarchy_design_session = property(fget=get_objective_hierarchy_design_session)
 
@@ -495,28 +425,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_hierarchy_design_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_hierarchy_design_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_hierarchy_design_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_hierarchy_design_session=session)
 
     def get_objective_sequencing_session(self, *args, **kwargs):
         """Pass through to provider get_objective_sequencing_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_sequencing_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_sequencing_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_sequencing_session=session)
 
     objective_sequencing_session = property(fget=get_objective_sequencing_session)
 
@@ -525,25 +439,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_sequencing_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_sequencing_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_sequencing_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_sequencing_session=session)
 
     def get_objective_objective_bank_session(self, *args, **kwargs):
         """Pass through to provider get_objective_objective_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_objective_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_objective_bank_session', *args, **kwargs)
-        # return self
 
     objective_objective_bank_session = property(fget=get_objective_objective_bank_session)
 
@@ -552,9 +453,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_objective_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_objective_bank_assignment_session', *args, **kwargs)
-        # return self
 
     objective_objective_bank_assignment_session = property(fget=get_objective_objective_bank_assignment_session)
 
@@ -563,12 +461,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_requisite_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_requisite_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_requisite_session=session)
 
     objective_requisite_session = property(fget=get_objective_requisite_session)
 
@@ -577,28 +469,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_requisite_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_requisite_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_requisite_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_requisite_session=session)
 
     def get_objective_requisite_assignment_session(self, *args, **kwargs):
         """Pass through to provider get_objective_requisite_assignment_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_objective_requisite_assignment_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_objective_requisite_assignment_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, objective_requisite_assignment_session=session)
 
     objective_requisite_assignment_session = property(fget=get_objective_requisite_assignment_session)
 
@@ -607,28 +483,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_objective_requisite_assignment_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_objective_requisite_assignment_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_objective_requisite_assignment_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     objective_requisite_assignment_session=session)
 
     def get_activity_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_activity_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_activity_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_activity_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, activity_lookup_session=session)
 
     activity_lookup_session = property(fget=get_activity_lookup_session)
 
@@ -637,28 +497,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_activity_lookup_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_activity_lookup_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_activity_lookup_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     activity_lookup_session=session)
 
     def get_activity_admin_session(self, *args, **kwargs):
         """Pass through to provider get_activity_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_activity_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_activity_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, activity_admin_session=session)
 
     activity_admin_session = property(fget=get_activity_admin_session)
 
@@ -667,25 +511,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_activity_admin_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_activity_admin_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_activity_admin_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     activity_admin_session=session)
 
     def get_activity_objective_bank_session(self, *args, **kwargs):
         """Pass through to provider get_activity_objective_bank_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_activity_objective_bank_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('activity_objective_bank_session', *args, **kwargs)
-        # return self
 
     activity_objective_bank_session = property(fget=get_activity_objective_bank_session)
 
@@ -694,9 +525,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_activity_objective_bank_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('activity_objective_bank_assignment_session', *args, **kwargs)
-        # return self
 
     activity_objective_bank_assignment_session = property(fget=get_activity_objective_bank_assignment_session)
 
@@ -705,12 +533,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_proficiency_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_proficiency_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, proficiency_lookup_session=session)
 
     proficiency_lookup_session = property(fget=get_proficiency_lookup_session)
 
@@ -719,28 +541,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_proficiency_lookup_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_proficiency_lookup_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_proficiency_lookup_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     proficiency_lookup_session=session)
 
     def get_proficiency_query_session(self, *args, **kwargs):
         """Pass through to provider get_proficiency_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_proficiency_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_proficiency_query_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, proficiency_query_session=session)
 
     proficiency_query_session = property(fget=get_proficiency_query_session)
 
@@ -749,28 +555,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_proficiency_query_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_proficiency_query_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_proficiency_query_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     proficiency_query_session=session)
 
     def get_proficiency_admin_session(self, *args, **kwargs):
         """Pass through to provider get_proficiency_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_proficiency_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_proficiency_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     session.get_objective_bank(),
-        #     self._runtime,
-        #     self._proxy, proficiency_admin_session=session)
 
     proficiency_admin_session = property(fget=get_proficiency_admin_session)
 
@@ -779,25 +569,12 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_proficiency_admin_session_for_objective_bank(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_proficiency_admin_session_for_objective_bank(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_proficiency_admin_session_for_objective_bank(*args, **kwargs)
-        # return ObjectiveBank(
-        #     self._provider_manager,
-        #     self.get_objective_bank(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     proficiency_admin_session=session)
 
     def get_objective_bank_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_objective_bank_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_bank_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_bank_lookup_session', *args, **kwargs)
-        # return self
 
     objective_bank_lookup_session = property(fget=get_objective_bank_lookup_session)
 
@@ -806,9 +583,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_bank_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_bank_admin_session', *args, **kwargs)
-        # return self
 
     objective_bank_admin_session = property(fget=get_objective_bank_admin_session)
 
@@ -817,9 +591,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_bank_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_bank_hierarchy_session', *args, **kwargs)
-        # return self
 
     objective_bank_hierarchy_session = property(fget=get_objective_bank_hierarchy_session)
 
@@ -828,9 +599,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_objective_bank_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('objective_bank_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     objective_bank_hierarchy_design_session = property(fget=get_objective_bank_hierarchy_design_session)
 

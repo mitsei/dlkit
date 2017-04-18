@@ -288,12 +288,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_authorization_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_authorization_session', proxy=self._proxy, *args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     session.get_vault(),
-        #     self._runtime,
-        #     self._proxy, authorization_session=session)
 
     authorization_session = property(fget=get_authorization_session)
 
@@ -302,28 +296,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_authorization_session_for_vault(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_authorization_session_for_vault(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_authorization_session_for_vault(*args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     self.get_vault(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     authorization_session=session)
 
     def get_authorization_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_authorization_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_authorization_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     session.get_vault(),
-        #     self._runtime,
-        #     self._proxy, authorization_lookup_session=session)
 
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
@@ -332,28 +310,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_authorization_lookup_session_for_vault(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_authorization_lookup_session_for_vault(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_authorization_lookup_session_for_vault(*args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     self.get_vault(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     authorization_lookup_session=session)
 
     def get_authorization_query_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_authorization_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_authorization_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     session.get_vault(),
-        #     self._runtime,
-        #     self._proxy, authorization_query_session=session)
 
     authorization_query_session = property(fget=get_authorization_query_session)
 
@@ -362,28 +324,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_authorization_query_session_for_vault(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_authorization_query_session_for_vault(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_authorization_query_session_for_vault(*args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     self.get_vault(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     authorization_query_session=session)
 
     def get_authorization_admin_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_authorization_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_authorization_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     session.get_vault(),
-        #     self._runtime,
-        #     self._proxy, authorization_admin_session=session)
 
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
@@ -392,25 +338,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_authorization_admin_session_for_vault(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_authorization_admin_session_for_vault(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_authorization_admin_session_for_vault(*args, **kwargs)
-        # return Vault(
-        #     self._provider_manager,
-        #     self.get_vault(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     authorization_admin_session=session)
 
     def get_vault_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_vault_lookup_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_vault_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('vault_lookup_session', *args, **kwargs)
-        # return self
 
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
@@ -419,9 +352,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_vault_query_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('vault_query_session', *args, **kwargs)
-        # return self
 
     vault_query_session = property(fget=get_vault_query_session)
 
@@ -430,9 +360,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_vault_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('vault_admin_session', *args, **kwargs)
-        # return self
 
     vault_admin_session = property(fget=get_vault_admin_session)
 

@@ -49,10 +49,6 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessment_parts():
-        #    cls.catalog.delete_assessment_part(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         cls.catalog.use_unsequestered_assessment_part_view()
         for obj in cls.catalog.get_assessment_parts():
             cls.catalog.delete_assessment_part(obj.ident)

@@ -363,12 +363,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_lookup_session=session)
 
     asset_lookup_session = property(fget=get_asset_lookup_session)
 
@@ -377,28 +371,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_asset_lookup_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_asset_lookup_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_asset_lookup_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     asset_lookup_session=session)
 
     def get_asset_query_session(self, *args, **kwargs):
         """Pass through to provider get_asset_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_query_session=session)
 
     asset_query_session = property(fget=get_asset_query_session)
 
@@ -407,28 +385,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_asset_query_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_asset_query_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_asset_query_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     asset_query_session=session)
 
     def get_asset_search_session(self, *args, **kwargs):
         """Pass through to provider get_asset_search_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_search_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_search_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_search_session=session)
 
     asset_search_session = property(fget=get_asset_search_session)
 
@@ -437,28 +399,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_asset_search_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_asset_search_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_asset_search_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     asset_search_session=session)
 
     def get_asset_admin_session(self, *args, **kwargs):
         """Pass through to provider get_asset_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_admin_session=session)
 
     asset_admin_session = property(fget=get_asset_admin_session)
 
@@ -467,53 +413,24 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_asset_admin_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_asset_admin_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_asset_admin_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     asset_admin_session=session)
 
     def get_asset_notification_session(self, *args, **kwargs):
         """Pass through to provider get_asset_notification_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
         return self._provider_manager.get_asset_notification_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_notification_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_notification_session=session)
 
     def get_asset_notification_session_for_repository(self, *args, **kwargs):
         """Pass through to provider get_asset_notification_session_for_repository"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
         return self._provider_manager.get_asset_notification_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_asset_notification_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_asset_notification_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     asset_notification_session=session)
 
     def get_asset_repository_session(self, *args, **kwargs):
         """Pass through to provider get_asset_repository_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_asset_repository_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('asset_repository_session', *args, **kwargs)
-        # return self
 
     asset_repository_session = property(fget=get_asset_repository_session)
 
@@ -522,9 +439,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_asset_repository_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('asset_repository_assignment_session', *args, **kwargs)
-        # return self
 
     asset_repository_assignment_session = property(fget=get_asset_repository_assignment_session)
 
@@ -533,12 +447,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_composition_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_composition_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_composition_session=session)
 
     asset_composition_session = property(fget=get_asset_composition_session)
 
@@ -547,12 +455,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_asset_composition_design_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_asset_composition_design_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, asset_composition_design_session=session)
 
     asset_composition_design_session = property(fget=get_asset_composition_design_session)
 
@@ -561,12 +463,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_composition_lookup_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_composition_lookup_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, composition_lookup_session=session)
 
     composition_lookup_session = property(fget=get_composition_lookup_session)
 
@@ -575,28 +471,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_composition_lookup_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_composition_lookup_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_composition_lookup_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     composition_lookup_session=session)
 
     def get_composition_query_session(self, *args, **kwargs):
         """Pass through to provider get_composition_query_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_composition_query_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_composition_query_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, composition_query_session=session)
 
     composition_query_session = property(fget=get_composition_query_session)
 
@@ -605,28 +485,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_composition_query_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_composition_query_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_composition_query_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     composition_query_session=session)
 
     def get_composition_search_session(self, *args, **kwargs):
         """Pass through to provider get_composition_search_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_composition_search_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_composition_search_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, composition_search_session=session)
 
     composition_search_session = property(fget=get_composition_search_session)
 
@@ -635,28 +499,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_composition_search_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_composition_search_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_composition_search_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     composition_search_session=session)
 
     def get_composition_admin_session(self, *args, **kwargs):
         """Pass through to provider get_composition_admin_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
         return self._provider_manager.get_composition_admin_session(*args, **kwargs)
-        # session = self._instantiate_session(method_name='get_composition_admin_session', proxy=self._proxy, *args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     session.get_repository(),
-        #     self._runtime,
-        #     self._proxy, composition_admin_session=session)
 
     composition_admin_session = property(fget=get_composition_admin_session)
 
@@ -665,25 +513,12 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_composition_admin_session_for_repository(*args, **kwargs)
-        # if self._proxy:
-        #     session = self._provider_manager.get_composition_admin_session_for_repository(proxy=self._proxy, *args, **kwargs)
-        # else:
-        #     session = self._provider_manager.get_composition_admin_session_for_repository(*args, **kwargs)
-        # return Repository(
-        #     self._provider_manager,
-        #     self.get_repository(*args, **kwargs),
-        #     self._runtime,
-        #     self._proxy,
-        #     composition_admin_session=session)
 
     def get_composition_repository_session(self, *args, **kwargs):
         """Pass through to provider get_composition_repository_session"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_composition_repository_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('composition_repository_session', *args, **kwargs)
-        # return self
 
     composition_repository_session = property(fget=get_composition_repository_session)
 
@@ -692,9 +527,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_composition_repository_assignment_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('composition_repository_assignment_session', *args, **kwargs)
-        # return self
 
     composition_repository_assignment_session = property(fget=get_composition_repository_assignment_session)
 
@@ -703,9 +535,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_repository_lookup_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('repository_lookup_session', *args, **kwargs)
-        # return self
 
     repository_lookup_session = property(fget=get_repository_lookup_session)
 
@@ -714,9 +543,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_repository_query_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('repository_query_session', *args, **kwargs)
-        # return self
 
     repository_query_session = property(fget=get_repository_query_session)
 
@@ -725,9 +551,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_repository_admin_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('repository_admin_session', *args, **kwargs)
-        # return self
 
     repository_admin_session = property(fget=get_repository_admin_session)
 
@@ -736,9 +559,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_repository_hierarchy_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('repository_hierarchy_session', *args, **kwargs)
-        # return self
 
     repository_hierarchy_session = property(fget=get_repository_hierarchy_session)
 
@@ -747,9 +567,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_repository_hierarchy_design_session(*args, **kwargs)
-        # if self._session_management != DISABLED:
-        #     self._get_provider_session('repository_hierarchy_design_session', *args, **kwargs)
-        # return self
 
     repository_hierarchy_design_session = property(fget=get_repository_hierarchy_design_session)
 

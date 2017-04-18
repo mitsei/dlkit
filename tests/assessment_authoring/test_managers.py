@@ -77,7 +77,7 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for assessment.authoring manager tests'
@@ -155,10 +155,10 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for assessment.authoring proxy manager tests'
+        create_form.description = 'Test Bank for assessment.authoring manager tests'
         catalog = cls.svc_mgr.create_bank(create_form)
         cls.catalog_id = catalog.get_id()
-        # cls.mgr = Runtime().get_proxy_manager('ASSESSMENT', 'TEST_JSON_1', (3, 0, 0))
+        cls.mgr = Runtime().get_manager('ASSESSMENT_AUTHORING', 'TEST_JSON_1', (3, 0, 0))
 
     @classmethod
     def tearDownClass(cls):
