@@ -665,6 +665,55 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
 
     copyright = property(fset=set_copyright, fdel=clear_copyright)
 
+    def get_copyright_registration_metadata(self):
+        """Gets the metadata for the copyright registration.
+
+        return: (osid.Metadata) - metadata for the copyright
+                registration
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        metadata = dict(self._mdata['copyright_registration'])
+        metadata.update({'existing_string_values': self._my_map['copyrightRegistration']})
+        return Metadata(**metadata)
+
+    copyright_registration_metadata = property(fget=get_copyright_registration_metadata)
+
+    def set_copyright_registration(self, registration):
+        """Sets the copyright registration.
+
+        arg:    registration (string): the new copyright registration
+        raise:  InvalidArgument - ``copyright`` is invalid
+        raise:  NoAccess - ``Metadata.isReadOnly()`` is ``true``
+        raise:  NullArgument - ``copyright`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.repository.AssetContentForm.set_url_template
+        if self.get_copyright_registration_metadata().is_read_only():
+            raise NoAccess()
+        if not self._is_valid_string(
+                registration,
+                self.get_copyright_registration_metadata()):
+            raise InvalidArgument()
+        self._my_map['copyrightRegistration'] = registration
+
+    def clear_copyright_registration(self):
+        """Removes the copyright registration.
+
+        raise:  NoAccess - ``Metadata.isRequired()`` is ``true`` or
+                ``Metadata.isReadOnly()`` is ``true``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        if (self.get_copyright_registration_metadata().is_read_only() or
+                self.get_copyright_registration_metadata().is_required()):
+            raise NoAccess()
+        self._my_map['copyrightRegistration'] = dict(self._copyright_registration_default)
+
+    copyright_registration = property(fset=set_copyright_registration, fdel=clear_copyright_registration)
+
     def get_distribute_verbatim_metadata(self):
         """Gets the metadata for the distribute verbatim rights flag.
 

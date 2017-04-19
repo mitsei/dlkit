@@ -1,19 +1,24 @@
-##
 # Did the tests fail?  First, check make sure you are running them from outside
 # the package
 
 import unittest
 import random
-from . import utilities
-from . import settings
-from .primitives import Id, Type, DisplayText
-from .osid.osid_errors import AlreadyExists, NotFound, OperationFailed
-from .learning.managers import LearningManager
-from .repository.managers import RepositoryManager
-from .type.managers import TypeManager
-from ..abstract_osid.learning import sessions as abc_learning_sessions
-from ..abstract_osid.learning import objects as abc_learning_objects
-from ..abstract_osid.repository import objects as abc_repository_objects
+from dlkit.handcar import utilities
+from dlkit.handcar import settings
+from dlkit.handcar.primitives import Id, Type, DisplayText
+from dlkit.handcar.osid.osid_errors import AlreadyExists, NotFound, OperationFailed
+# from dlkit.handcar.learning.managers import LearningManager
+# from dlkit.handcar.repository.managers import RepositoryManager
+from dlkit.handcar.type.managers import TypeManager
+from dlkit.abstract_osid.learning import sessions as abc_learning_sessions
+from dlkit.abstract_osid.learning import objects as abc_learning_objects
+from dlkit.abstract_osid.repository import objects as abc_repository_objects
+
+from dlkit.runtime import PROXY_SESSION
+from dlkit.runtime.managers import Runtime
+
+CONDITION = PROXY_SESSION.get_proxy_condition()
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 SANDBOX_TYPE = Type({
     'authority': 'this.is.a.bogus.authority',
@@ -24,39 +29,41 @@ SANDBOX_TYPE = Type({
     'description': '',
     'displayLabel': ''})
 
+
 class TestLearningManager(unittest.TestCase):
 
     def setUp(self):
-        self.lm = LearningManager()
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
 
     def test_get_display_name(self):
         self.assertTrue(isinstance(
-                self.lm.get_display_name().get_text(), str))
+            self.lm.get_display_name().get_text(), str))
 
     def test_get_description(self):
         self.assertTrue(isinstance(
-                self.lm.get_description().get_text(), str))
+            self.lm.get_description().get_text(), str))
 
     def test_get_profile_language_type(self):
         # print self.lm.get_display_name()._my_map
         self.assertTrue(isinstance(
-                self.lm.get_display_name().get_language_type(), 
-                Type))
+            self.lm.get_display_name().get_language_type(),
+            Type))
 
     def test_get_profile_script_type(self):
         self.assertTrue(isinstance(
-                self.lm.get_display_name().get_script_type(), 
-                Type))
+            self.lm.get_display_name().get_script_type(),
+            Type))
 
     def test_get_profile_format_type(self):
         self.assertTrue(isinstance(
-                self.lm.get_display_name().get_format_type(), 
-                Type))
+            self.lm.get_display_name().get_format_type(),
+            Type))
 
     def test_display_name_turtles(self):
         self.assertTrue(isinstance(
-                self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
-                basestring)) # when handcar reports type domains again, include that too
+            self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
+            basestring))  # when handcar reports type domains again, include that too
 
     def test_supports_objective_bank_lookup(self):
         self.assertTrue(self.lm.supports_objective_bank_lookup())
@@ -65,43 +72,46 @@ class TestLearningManager(unittest.TestCase):
         self.assertTrue(self.lm.supports_objective_lookup())
 
     def test_supports_objective_query(self):
-        self.assertFalse(self.lm.supports_objective_query())
+        self.assertTrue(self.lm.supports_objective_query())
 
     def test_get_objective_bank_lookup_session(self):
         obls = self.lm.get_objective_bank_lookup_session()
-        self.assertTrue(isinstance(obls, 
-                        abc_learning_sessions.ObjectiveBankLookupSession))
+        self.assertTrue(isinstance(
+            obls,
+            abc_learning_sessions.ObjectiveBankLookupSession))
 
     def test_get_objective_lookup_session(self):
         ols = self.lm.get_objective_bank_lookup_session()
-        self.assertTrue(isinstance(ols, 
-                        abc_learning_sessions.ObjectiveBankLookupSession))
+        self.assertTrue(isinstance(
+            ols,
+            abc_learning_sessions.ObjectiveBankLookupSession))
 
     def test_get_objective_lookup_session_for_objective_bank(self):
         ols = self.lm.get_objective_lookup_session()
         ols_for_ob = self.lm.get_objective_lookup_session_for_objective_bank(ols.get_objective_bank_id())
-        self.assertTrue(ols.get_objective_bank_id().get_identifier() == 
+        self.assertTrue(ols.get_objective_bank_id().get_identifier() ==
                         ols_for_ob.get_objective_bank_id().get_identifier())
 
 
 class TestObjectiveBankLookup(unittest.TestCase):
 
     def setUp(self):
-        self.lm = LearningManager()
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
         self.obls = self.lm.get_objective_bank_lookup_session()
 
     def test_get_objective_banks(self):
         all_banks = self.obls.get_objective_banks()
         self.assertTrue(all_banks.available() > 0)
 
-    def test_get_objecive_bank(self):
+    def test_get_objective_bank(self):
         all_banks = self.obls.get_objective_banks()
         self.assertTrue(all_banks.available() > 0)
         for bank in all_banks:
             self.assertTrue(isinstance(bank, abc_learning_objects.ObjectiveBank))
 
     def test_get_objective_banks_by_ids(self):
-        from .id import objects as id_objects
+        from dlkit.handcar.id import objects as id_objects
         all_banks = self.obls.get_objective_banks()
         all_banks_count = all_banks.available()
         all_bank_ids = []
@@ -113,9 +123,6 @@ class TestObjectiveBankLookup(unittest.TestCase):
         self.assertTrue(all_banks_by_ids.available() == all_banks_count)
         for bank in all_banks_by_ids:
             self.assertTrue(isinstance(bank, abc_learning_objects.ObjectiveBank))
-
-# if __name__ == '__main__':
-#     unittest.main()
 
 
 class TestIdEquality(unittest.TestCase):
@@ -144,15 +151,17 @@ class TestObjectiveLookup(unittest.TestCase):
     def setUp(self):
         import urllib2
         import json
-        from .learning import objects
-        self.lm = LearningManager()
+        from dlkit.handcar.learning import objects
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
+
         self.obls = self.lm.get_objective_bank_lookup_session()
         # Get the first Objective Bank (I know... sketchy)
         all_banks = self.obls.get_objective_banks()
         self.first_bank = all_banks.get_next_objective_bank()
         self.ols = self.lm.get_objective_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Objective Types (Note: This does not use the osid contract)
-        url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + self.first_bank.get_id().get_identifier() + '/types/genus/objective'
+        url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/objective'
         url = urllib2.urlopen(url_string).read()
         self.objective_genus_types = json.loads(url)
 
@@ -172,7 +181,7 @@ class TestObjectiveLookup(unittest.TestCase):
         all_objectives.skip(random.randint(0, all_objectives.available() - 1))
         rand_objective = all_objectives.get_next_objective()
         objective = self.ols.get_objective(rand_objective.get_id())
-        self.assertTrue(objective.get_id().get_identifier() == 
+        self.assertTrue(objective.get_id().get_identifier() ==
                         rand_objective.get_id().get_identifier())
 
     def test_get_objectives_by_type(self):
@@ -189,34 +198,34 @@ class TestObjectiveLookup(unittest.TestCase):
         for objective in objectives:
             self.assertTrue(objective.is_of_genus_type(Type(rand_type_map)))
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestObjectiveRequisite(unittest.TestCase):
     def setUp(self):
-        from .learning import objects
-        from .learning import managers
-        self.lm = LearningManager()
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.learning import managers
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
+
         self.obls = self.lm.get_objective_bank_lookup_session()
         # Get the first Objective Bank (I know... sketchy)
         all_banks = self.obls.get_objective_banks()
         self.first_bank = all_banks.get_next_objective_bank()
         self.ors = self.lm.get_objective_requisite_session_for_objective_bank(self.first_bank.get_id())
         test_objective = utilities.get_objective_by_bank_id_and_name(
-                         utilities.get_bank_by_name('Crosslinks').ident,
-                         'Definite integral')
+            utilities.get_bank_by_name('Crosslinks').ident,
+            'Definite integral')
         self.test_objective_copy_id = Id(
-                            authority = test_objective.ident.authority,
-                            namespace = test_objective.ident.namespace,
-                            identifier = test_objective.ident.identifier)
-        self.test_objective_id = test_objective.ident      
+            authority=test_objective.ident.authority,
+            namespace=test_objective.ident.namespace,
+            identifier=test_objective.ident.identifier)
+        self.test_objective_id = test_objective.ident
         req_objective = utilities.get_objective_by_bank_id_and_name(
-                         utilities.get_bank_by_name('Crosslinks').ident,
-                         'Summation')
+            utilities.get_bank_by_name('Crosslinks').ident,
+            'Summation')
         self.req_objective_copy_id = Id(
-                            authority = req_objective.ident.authority,
-                            namespace = req_objective.ident.namespace,
-                            identifier = req_objective.ident.identifier)
+            authority=req_objective.ident.authority,
+            namespace=req_objective.ident.namespace,
+            identifier=req_objective.ident.identifier)
         self.req_objective_id = req_objective.ident
 
     def test_get_requisite_objectives(self):
@@ -255,38 +264,36 @@ class TestObjectiveRequisite(unittest.TestCase):
         # Don't know how to test this yet.  Probably need to replace all of the
         # Requisite tests with more of a CRuD pattern
         self.assertTrue(True)
-        
-# if __name__ == '__main__':
-#     unittest.main()
 
 
 class TestObjectiveHierarchy(unittest.TestCase):
     def setUp(self):
-        from .learning import objects
-        from .learning import managers
-        self.lm = LearningManager()
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.learning import managers
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
+
         self.test_bank = utilities.get_bank_by_name('Chemistry Bridge')
         self.ohs = self.lm.get_objective_hierarchy_session_for_objective_bank(self.test_bank.ident)
         self.test_objective = utilities.get_objective_by_bank_id_and_name(
-                         self.test_bank.ident,
-                         'Acids and Bases')
+            self.test_bank.ident,
+            'Acids and Bases')
         self.test_objective_id = self.test_objective.ident
         self.test_parent = utilities.get_objective_by_bank_id_and_name(
-                         self.test_bank.ident,
-                         'Buffers: A study of Chemical Equilibria')
+            self.test_bank.ident,
+            'Buffers: A study of Chemical Equilibria')
         self.test_parent_id = self.test_parent.ident
         self.test_child = utilities.get_objective_by_bank_id_and_name(
-                         self.test_bank.ident,
-                         'Strength of an acid/base')
+            self.test_bank.ident,
+            'Strength of an acid/base')
         self.test_child_id = self.test_child.ident
         self.test_final_child = utilities.get_objective_by_bank_id_and_name(
-                         self.test_bank.ident,
-                         'Auto-Ionization of Water outcome 3D1')
+            self.test_bank.ident,
+            'Auto-Ionization of Water outcome 3D1')
         self.test_final_child_id = self.test_final_child.ident
 
-
     def test_get_root_objective_ids(self):
-        from .id import objects as id_objects
+        from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_root_objective_ids()
         self.assertTrue(isinstance(objective_ids, id_objects.IdList))
         for objective_id in objective_ids:
@@ -304,12 +311,12 @@ class TestObjectiveHierarchy(unittest.TestCase):
 
     def test_is_parent_of_objective(self):
         self.assertTrue(self.ohs.is_parent_of_objective(self.test_parent_id,
-                                                       self.test_objective_id))
+                                                        self.test_objective_id))
         self.assertFalse(self.ohs.is_parent_of_objective(self.test_child_id,
-                                                       self.test_objective_id))
+                                                         self.test_objective_id))
 
     def test_get_parent_objective_ids(self):
-        from .id import objects as id_objects
+        from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_parent_objective_ids(self.test_objective_id)
         self.assertTrue(isinstance(objective_ids, id_objects.IdList))
         for objective_id in objective_ids:
@@ -329,10 +336,10 @@ class TestObjectiveHierarchy(unittest.TestCase):
         self.assertTrue(self.ohs.is_child_of_objective(self.test_child_id,
                                                        self.test_objective_id))
         self.assertFalse(self.ohs.is_child_of_objective(self.test_parent_id,
-                                                       self.test_objective_id))
+                                                        self.test_objective_id))
 
     def test_get_child_objective_ids(self):
-        from .id import objects as id_objects
+        from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_child_objective_ids(self.test_objective_id)
         self.assertTrue(isinstance(objective_ids, id_objects.IdList))
         for objective_id in objective_ids:
@@ -350,16 +357,18 @@ class TestActivityLookup(unittest.TestCase):
     def setUp(self):
         import urllib2
         import json
-        from .learning import objects
-        from .learning import managers
-        self.lm = LearningManager()
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.learning import managers
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
+
         self.obls = self.lm.get_objective_bank_lookup_session()
         # Get the first Objective Bank (I know... sketchy)
         all_banks = self.obls.get_objective_banks()
         self.first_bank = all_banks.get_next_objective_bank()
         self.als = self.lm.get_activity_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Activity Types (Note: This does not use the osid contract yet)
-        url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + self.first_bank.get_id().get_identifier() + '/types/genus/activity'
+        url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/activity'
         url = urllib2.urlopen(url_string).read()
         self.activity_genus_types = json.loads(url)
 
@@ -379,7 +388,7 @@ class TestActivityLookup(unittest.TestCase):
         all_activities.skip(random.randint(0, all_activities.available() - 1))
         rand_activity = all_activities.get_next_activity()
         activity = self.als.get_activity(rand_activity.get_id())
-        self.assertTrue(activity.get_id().get_identifier() == 
+        self.assertTrue(activity.get_id().get_identifier() ==
                         rand_activity.get_id().get_identifier())
 
     def test_get_activities_by_type(self):
@@ -396,14 +405,14 @@ class TestActivityLookup(unittest.TestCase):
         for activity in activities:
             self.assertTrue(activity.is_of_genus_type(Type(rand_type_map)))
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestObjectiveMetadata(unittest.TestCase):
     def setUp(self):
-        from .learning import objects
-        from .learning import managers
-        self.lm = LearningManager()
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.learning import managers
+        self.lm = Runtime().get_service_manager('LEARNING',
+                                                implementation='TEST_SERVICE_HANDCAR')
+
         self.obls = self.lm.get_objective_bank_lookup_session()
         # Get the first Objective Bank (I know... sketchy)
         all_banks = self.obls.get_objective_banks()
@@ -415,61 +424,60 @@ class TestObjectiveMetadata(unittest.TestCase):
         self.rand_objective = all_objectives.get_next_objective()
 
     def test_get_journal_comment_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_journal_comment_metadata()
         self.assertEqual(cm.get_syntax(), 'STRING')
 
     def test_get_display_name_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_display_name_metadata()
         self.assertEqual(cm.get_syntax(), 'STRING')
 
     def test_get_description_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_description_metadata()
         self.assertEqual(cm.get_syntax(), 'STRING')
 
     def test_get_genus_type_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_genus_type_metadata()
         self.assertEqual(cm.get_syntax(), 'TYPE')
 
     def test_get_assessment_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_assessment_metadata()
         self.assertEqual(cm.get_syntax(), 'ID')
 
     def test_get_cognitive_process_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_cognitive_process_metadata()
         self.assertEqual(cm.get_syntax(), 'ID')
 
     def test_get_knowledge_category_metadata(self):
-        from .learning import objects
-        from .osid import metadata
+        from dlkit.handcar.learning import objects
+        from dlkit.handcar.osid import metadata
         objective_form = objects.ObjectiveForm()
         cm = objective_form.get_knowledge_category_metadata()
         self.assertEqual(cm.get_syntax(), 'ID')
 
-# if __name__ == '__main__':
-#     unittest.main()
-
 
 class TestObjectiveBankCrUD(unittest.TestCase):
     def setUp(self):
-        lm = LearningManager()
+        lm = Runtime().get_service_manager('LEARNING',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         self.obas = lm.get_objective_bank_admin_session()
         self.obls = lm.get_objective_bank_lookup_session()
         self.sandbox_bank_type = SANDBOX_TYPE
@@ -497,13 +505,12 @@ class TestObjectiveBankCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
-# if __name__ == '__main__':
-#     unittest.main()
-
 
 class TestObjectiveCrUD(unittest.TestCase):
     def setUp(self):
-        lm = LearningManager()
+        lm = Runtime().get_service_manager('LEARNING',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         obls = lm.get_objective_bank_lookup_session()
         try:
             test_bank = utilities.get_bank_by_name('Python Test Sandbox')
@@ -538,13 +545,12 @@ class TestObjectiveCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
-# if __name__ == '__main__':
-#     unittest.main()
-
 
 class TestActivityCrUD(unittest.TestCase):
     def setUp(self):
-        lm = LearningManager()
+        lm = Runtime().get_service_manager('LEARNING',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         obls = lm.get_objective_bank_lookup_session()
         try:
             self.test_bank = utilities.get_bank_by_name('Python Test Sandbox')
@@ -561,20 +567,16 @@ class TestActivityCrUD(unittest.TestCase):
         ofc.set_description('This is a Test Objective for testing Activity CrUD')
         self.test_objective = self.oas.create_objective(ofc)
         self.test_objective_id = self.test_objective.get_id()
-#        print '\nTEST BANK ID', str(test_bank_id)
 
     def test_crud_activities(self):
         # test create:
-#        print 'TEST OBJECTIVE ID', str(self.test_objective_id), '\n'
         afc = self.aas.get_activity_form_for_create(self.test_objective_id, [])
-#        print afc._my_map
         afc.set_display_name('Test Activity')
         afc.set_description('This is a Test Activity')
         new_activity = self.aas.create_activity(afc)
         self.assertEqual(new_activity.get_display_name().get_text(), 'Test Activity')
         # test update:
         new_activity_id = new_activity.get_id()
-#        print 'NEW ACTIVITY ID', str(new_activity_id)
         afu = self.aas.get_activity_form_for_update(new_activity_id)
         afu.set_display_name('New Name for Test Activity')
         updated_activity = self.aas.update_activity(afu)
@@ -594,9 +596,12 @@ class TestActivityCrUD(unittest.TestCase):
         with self.assertRaises(NotFound):
             self.ols.get_objective(self.test_objective_id)
 
+
 class TestObjectiveDesignAndSeq(unittest.TestCase):
     def setUp(self):
-        lm = LearningManager()
+        lm = Runtime().get_service_manager('LEARNING',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         obls = lm.get_objective_bank_lookup_session()
         try:
             self.test_bank = utilities.get_bank_by_name('Python Test Sandbox')
@@ -606,20 +611,22 @@ class TestObjectiveDesignAndSeq(unittest.TestCase):
         self.ohds = lm.get_objective_hierarchy_design_session_for_objective_bank(self.test_bank_id)
         self.ohs = lm.get_objective_hierarchy_session_for_objective_bank(self.test_bank_id)
         self.oss = lm.get_objective_sequencing_session_for_objective_bank(self.test_bank_id)
-        self.parent_objective = utilities.create_objective(self.test_bank_id, 
+        self.parent_objective = utilities.create_objective(
+            self.test_bank_id,
             'parent objective', 'parent objective for testing hierarchy design')
         self.child_objectives = list()
-        i = 0 
+        i = 0
         while i < 5:
             i += 1
-            self.child_objectives.append(utilities.create_objective(self.test_bank_id, 
-                'child objective ' + str(i), 
-                '#' + str(i) + ' child objective for testing hierarchy design'))
+            self.child_objectives.append(utilities.create_objective(
+                self.test_bank_id,
+                'child objective ' + str(i),
+                '# ' + str(i) + ' child objective for testing hierarchy design'))
 
     def test_add_remove_child_objective(self):
         for child_objective in self.child_objectives:
             try:
-                self.ohds.add_child_objective(self.parent_objective.ident, 
+                self.ohds.add_child_objective(self.parent_objective.ident,
                                               child_objective.ident)
             except AlreadyExists:
                 pass
@@ -638,12 +645,12 @@ class TestObjectiveDesignAndSeq(unittest.TestCase):
     def test_five_children_in_list(self):
         self.assertEqual(len(self.child_objectives), 5)
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestObjectiveRequisiteAssignment(unittest.TestCase):
     def setUp(self):
-        lm = LearningManager()
+        lm = Runtime().get_service_manager('LEARNING',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         obls = lm.get_objective_bank_lookup_session()
         try:
             self.test_bank = utilities.get_bank_by_name('Python Test Sandbox')
@@ -652,20 +659,22 @@ class TestObjectiveRequisiteAssignment(unittest.TestCase):
         self.test_bank_id = self.test_bank.ident
         self.oras = lm.get_objective_requisite_assignment_session_for_objective_bank(self.test_bank_id)
         self.ors = lm.get_objective_requisite_session_for_objective_bank(self.test_bank_id)
-        self.dependent_objective = utilities.create_objective(self.test_bank_id, 
+        self.dependent_objective = utilities.create_objective(
+            self.test_bank_id,
             'dependent objective', 'dependent objective for testing requisite assignment')
         self.required_objectives = list()
-        i = 0 
+        i = 0
         while i < 3:
             i += 1
-            self.required_objectives.append(utilities.create_objective(self.test_bank_id, 
-                'required objective ' + str(i), 
-                '#' + str(i) + ' required objective for testing requisite assignment'))
+            self.required_objectives.append(utilities.create_objective(
+                self.test_bank_id,
+                'required objective ' + str(i),
+                '# ' + str(i) + ' required objective for testing requisite assignment'))
 
     def test_requisite_assignment(self):
         for required_objective in self.required_objectives:
             try:
-                self.oras.assign_objective_requisite(self.dependent_objective.ident, 
+                self.oras.assign_objective_requisite(self.dependent_objective.ident,
                                                      required_objective.ident)
             except AlreadyExists:
                 pass
@@ -679,36 +688,38 @@ class TestObjectiveRequisiteAssignment(unittest.TestCase):
     def test_five_children_in_list(self):
         self.assertEqual(len(self.required_objectives), 3)
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestTypeLookup(unittest.TestCase):
     def setUp(self):
-        tm = TypeManager()
+        tm = Runtime().get_service_manager('TYPE',
+                                           implementation='TEST_SERVICE_HANDCAR')
+
         self.tls = tm.get_type_lookup_session()
 
     def test_get_types(self):
-        from ..abstract_osid.type import primitives as abc_type_primitives
+        from dlkit.abstract_osid.type import primitives as abc_type_primitives
         for t in self.tls.get_types():
             self.assertTrue(isinstance(t, abc_type_primitives.Type))
 
     def test_get_type(self):
-        from ..abstract_osid.type import primitives as abc_type_primitives
+        from dlkit.abstract_osid.type import primitives as abc_type_primitives
         type_to_get = self.tls.get_types().get_next_type()
         type_elements = {'identifier': type_to_get.identifier,
                          'namespace': type_to_get.namespace,
-                         'authority': type_to_get.authority,}
+                         'authority': type_to_get.authority}
         self.assertTrue(isinstance(self.tls.get_type(**type_elements),
                                    abc_type_primitives.Type))
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestRepositoryLookup(unittest.TestCase):
 
     def setUp(self):
-        self.rm = RepositoryManager()
-        self.rls = self.rm.get_repository_lookup_session()
+        # Not sure why Repository requires the proxy...
+        self.rm = Runtime().get_service_manager('REPOSITORY',
+                                                proxy=PROXY,
+                                                implementation='TEST_SERVICE_HANDCAR')
+
+        self.rls = self.rm.get_repository_lookup_session(proxy=PROXY)
 
     def test_repositories(self):
         all_repositories = self.rls.get_repositories()
@@ -721,7 +732,7 @@ class TestRepositoryLookup(unittest.TestCase):
             self.assertTrue(isinstance(repository, abc_repository_objects.Repository))
 
     def test_get_repositories_by_ids(self):
-        from .id import objects as id_objects
+        from dlkit.handcar.id import objects as id_objects
         all_repositories = self.rls.get_repositories()
         all_repositories_count = all_repositories.available()
         all_repository_ids = []
@@ -734,14 +745,16 @@ class TestRepositoryLookup(unittest.TestCase):
         for repository in all_repositories_by_ids:
             self.assertTrue(isinstance(repository, abc_repository_objects.Repository))
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestRepositoryCrUD(unittest.TestCase):
     def setUp(self):
-        rm = RepositoryManager()
-        self.ras = rm.get_repository_admin_session()
-        self.rls = rm.get_repository_lookup_session()
+        # Not sure why Repository requires the proxy...
+        rm = Runtime().get_service_manager('REPOSITORY',
+                                           proxy=PROXY,
+                                           implementation='TEST_SERVICE_HANDCAR')
+
+        self.ras = rm.get_repository_admin_session(proxy=PROXY)
+        self.rls = rm.get_repository_lookup_session(proxy=PROXY)
         self.sandbox_repository_type = SANDBOX_TYPE
 
     def test_crud_repositories(self):
@@ -768,13 +781,15 @@ class TestRepositoryCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestAssetCrUD(unittest.TestCase):
     def setUp(self):
-        rm = RepositoryManager()
-        rls = rm.get_repository_lookup_session()
+        # Not sure why Repository requires the proxy...
+        rm = Runtime().get_service_manager('REPOSITORY',
+                                           proxy=PROXY,
+                                           implementation='TEST_SERVICE_HANDCAR')
+
+        rls = rm.get_repository_lookup_session(proxy=PROXY)
         try:
             test_repository = utilities.get_repository_by_name('Python Test Sandbox')
         except NotFound:
@@ -782,8 +797,10 @@ class TestAssetCrUD(unittest.TestCase):
         test_repository_id = test_repository.ident
         self.test_repository = rls.get_repository(test_repository_id)
         self.assertEqual(self.test_repository.get_display_name().get_text(), 'Python Test Sandbox')
-        self.als = rm.get_asset_lookup_session_for_repository(test_repository_id)
-        self.aas = rm.get_asset_admin_session_for_repository(test_repository_id)
+        self.als = rm.get_asset_lookup_session_for_repository(test_repository_id,
+                                                              proxy=PROXY)
+        self.aas = rm.get_asset_admin_session_for_repository(test_repository_id,
+                                                             proxy=PROXY)
 
     def test_crud_asset(self):
         # test create:
@@ -808,13 +825,15 @@ class TestAssetCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
-# if __name__ == '__main__':
-#     unittest.main()
 
 class TestAssetContentCrUD(unittest.TestCase):
     def setUp(self):
-        rm = RepositoryManager()
-        rls = rm.get_repository_lookup_session()
+        # Not sure why Repository requires the proxy...
+        rm = Runtime().get_service_manager('REPOSITORY',
+                                           proxy=PROXY,
+                                           implementation='TEST_SERVICE_HANDCAR')
+
+        rls = rm.get_repository_lookup_session(proxy=PROXY)
         try:
             test_repository = utilities.get_repository_by_name('Python Test Sandbox')
         except NotFound:
@@ -822,8 +841,10 @@ class TestAssetContentCrUD(unittest.TestCase):
         test_repository_id = test_repository.ident
         self.test_asset = utilities.create_asset(test_repository_id, 'AssetContent CrUD Asset', 'Asset for testing AssetContent CrUD')
         self.test_repository = rls.get_repository(test_repository_id)
-        self.als = rm.get_asset_lookup_session_for_repository(test_repository_id)
-        self.aas = rm.get_asset_admin_session_for_repository(test_repository_id)
+        self.als = rm.get_asset_lookup_session_for_repository(test_repository_id,
+                                                              proxy=PROXY)
+        self.aas = rm.get_asset_admin_session_for_repository(test_repository_id,
+                                                             proxy=PROXY)
 
     def test_crud_asset_content(self):
         # test create:
@@ -860,8 +881,3 @@ class TestAssetContentCrUD(unittest.TestCase):
 
     def tearDown(self):
         self.aas.delete_asset(self.test_asset.ident)
-
-
-if __name__ == '__main__':
-    unittest.main()
-

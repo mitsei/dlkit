@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #
-# This module contains primitives and primitive objects required by the 
+# This module contains primitives and primitive objects required by the
 # MIT Core Concept Catalog (MC3) Handcar learning service implementation
 
 from . import profile
@@ -11,7 +11,8 @@ from ..abstract_osid.id.primitives import Id as abc_id
 from ..abstract_osid.type.primitives import Type as abc_type
 from ..abstract_osid.locale.primitives import DisplayText as abc_displaytext
 from .osid.osid_errors import NullArgument, NotFound, OperationFailed
-#from .abstract_osid.abc_installation.primitives import Version as abc_version
+# from .abstract_osid.abc_installation.primitives import Version as abc_version
+
 
 class Id(abc_id, markers.OsidPrimitive):
 
@@ -28,7 +29,7 @@ class Id(abc_id, markers.OsidPrimitive):
             self._identifier = identifier
         else:
             raise NullArgument()
-    
+
     def __str__(self):
         if self._idstr is not None:
             return self._idstr
@@ -43,7 +44,7 @@ class Id(abc_id, markers.OsidPrimitive):
 
     def get_identifier(self):
         return self._identifier
-        
+
     authority = property(get_authority)
     identifier_namespace = property(get_identifier_namespace)
     namespace = property(get_identifier_namespace)
@@ -89,6 +90,7 @@ class Type(abc_type, markers.OsidPrimitive):
     identifier = property(get_identifier)
     object_map = property(get_object_map)
 
+
 class DisplayText(abc_displaytext, markers.OsidPrimitive):
 
     def __init__(self, display_text_map):
@@ -99,15 +101,20 @@ class DisplayText(abc_displaytext, markers.OsidPrimitive):
         import json
         import settings
         try:
-            url = urllib2.urlopen(settings.HANDCAR + 
-                  '/services/learning/types/' +
-                  type_identifier).read()
+            # url = urllib2.urlopen(settings.HANDCAR +
+            #                       '/services/learning/types/' +
+            #                       type_identifier).read()
+            url = urllib2.urlopen(settings.HANDCAR +
+                                  '/services/learning/types').read()
         except urllib2.HTTPError:
             raise NotFound('type_identifier not found or bad handcar base URL in settings.py')
-        try:     
-            return json.loads(url)
+        try:
+            matching_types = [t for t in json.loads(url) if t['id'] == type_identifier]
+            if len(matching_types) == 0:
+                raise NotFound('type_identifier not found')
+            return matching_types[0]
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
 
     def get_language_type(self):
         return Type(self._get_type_map(self._my_map['languageTypeId']))
@@ -132,7 +139,7 @@ class DisplayText(abc_displaytext, markers.OsidPrimitive):
 
 """
 class Version(abc_version, markers.OsidPrimitive):
-    
+
     def __init__(self, version_map):
         my_vesion
 
@@ -142,5 +149,3 @@ class Version(abc_version, markers.OsidPrimitive):
     def get_scheme(self):
         return self._scheme
 """
-
-

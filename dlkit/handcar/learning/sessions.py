@@ -2393,7 +2393,9 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         compliance: mandatory - This method must be implemented.
 
         """
-        return ObjectiveBankLookupSession().get_objective_bank(self._objective_bank_id)
+        url_path = construct_url('objective_banks',
+                                 bank_id=self._objective_bank_id)
+        return objects.ObjectiveBank(self._get_request(url_path))
 
     def can_lookup_activities(self):
         """Tests if this user can perform Activity lookups.
@@ -3247,14 +3249,14 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
       > comparative view: elements may be silently omitted or re-ordered
       > plenary view: provides a complete set or is an error condition
 
-    
+
     Generally, the comparative view should be used for most applications
     as it permits operation even if there is data that cannot be
     accessed. For example, a browsing application may only need to
     examine the ObjectiveBanks it can access, without breaking
     execution. However, an administrative application may require all
     ObjectiveBank elements to be available.
-    
+
     ObjectiveBanks may have an additional records indicated by their
     respective record types. The record may not be accessed through a
     cast of the ObjectiveBank.
@@ -3368,7 +3370,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
                     raise
                 else:
                     pass
-            if bank: 
+            if bank:
                 if not (self._objective_bank_view == COMPARATIVE and
                         bank in banks):
                     banks.append(bank)
@@ -3553,7 +3555,7 @@ class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSessio
     ObjectiveBankSearchResults that can be used to access the resulting
     ObjectiveBankList or be used to perform a search within the result
     set through ObjectiveBankSearch.
-    
+
     ObjectiveBanks may have a query record indicated by their respective
     record types. The query record is accessed via the
     ObjectiveBankQuery.
@@ -3636,17 +3638,17 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
     operation, it cannot be reused with another create operation unless
     the first operation was unsuccessful. Each ObjectiveBankForm
     corresponds to an attempted transaction.
-    
+
     For updates, ObjectiveBankForms are requested to the ObjectiveBank
     Id that is to be updated using get_objective_bank_form_for_update().
     Similarly, the ObjectiveBankForm has metadata about the data that
     can be updated and it can perform validation before submitting the
     update. The ObjectiveBankForm can only be used once for a successful
     update and cannot be reused.
-    
+
     The delete operations delete ObjectiveBanks. It is safer to remove
     all mappings to the ObjectiveBank catalogs before deletion.
-    
+
     This session includes an Id aliasing mechanism to assign an external
     Id to an internally assigned Id.
 
@@ -4177,7 +4179,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
     returns of get_parent_objective_banks() or
     get_child_objective_banks() in lieu of a PermissionDenied error
     that may disrupt the traversal through authorized pathways.
-    
+
     This session defines views that offer differing behaviors when
     retrieving multiple objects.
       > comparative view: objective bank elements may be silently
@@ -4719,4 +4721,3 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         self._objective_bank_view = ISOLATED
-

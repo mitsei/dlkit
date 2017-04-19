@@ -1,19 +1,32 @@
-from .learning.managers import LearningManager
-from .repository.managers import RepositoryManager
+import re
+
+# from .learning.managers import LearningManager
+# from .repository.managers import RepositoryManager
 from .primitives import Id, Type, DisplayText
 from .osid.osid_errors import AlreadyExists, NotFound
 
-import re
+from dlkit.runtime import PROXY_SESSION
+from dlkit.runtime.managers import Runtime
+
+CONDITION = PROXY_SESSION.get_proxy_condition()
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+LM = Runtime().get_service_manager('LEARNING',
+                                   implementation='TEST_SERVICE_HANDCAR')
+# not sure why Repository requires proxy...
+RM = Runtime().get_service_manager('REPOSITORY',
+                                   proxy=PROXY,
+                                   implementation='TEST_SERVICE_HANDCAR')
 
 SANDBOX_TYPE = Type({
     'id': 'mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT',
     'authority': 'MIT-OEIT',
-    'namespace': 'mc3.learning.objectivebank.sandbox',
-    'identifier': 'mc3.learning.activity.asset.based',
+    'identifierNamespace': 'mc3-objectivebank',
+    'identifier': 'mc3.learning.objectivebank.sandbox',
     'domain': '',
     'displayName': '',
     'description': '',
-    'displayLabel': ''})   
+    'displayLabel': ''})
 
 
 class BankHierarchyUrls(object):
@@ -81,7 +94,6 @@ class BankHierarchyUrls(object):
         :return:
         """
         return self._root + self._safe_alias(alias) + '/root/ids/'
-
 
 
 def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, asset_id=None, genus_type=None, descendents=0):
@@ -235,29 +247,33 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
         raise ValueError
     return url
 
+
 def get_id_str(id_):
     if not isinstance(id_, basestring):
         id_ = str(id_)
     return id_
 
+
 def get_bank_by_name(name):
-    obls = LearningManager().get_objective_bank_lookup_session()
+    obls = LM.get_objective_bank_lookup_session()
     for ob in obls.get_objective_banks():
         if ob.display_name.text == name:
             return ob
     raise NotFound()
 
+
 def get_objective_by_bank_id_and_name(objective_bank_id, name):
-    ols = LearningManager().get_objective_lookup_session_for_objective_bank(objective_bank_id)
+    ols = LM.get_objective_lookup_session_for_objective_bank(objective_bank_id)
     for o in ols.get_objectives():
         if o.display_name.text == name:
             return o
     raise NotFound()
 
+
 def create_sandbox_bank(display_name, description=None):
     if description is None:
         description = 'Catalog for ' + display_name
-    lm = LearningManager()
+    lm = LM
     obas = lm.get_objective_bank_admin_session()
     obls = lm.get_objective_bank_lookup_session()
     for ob in obls.get_objective_banks():
@@ -270,8 +286,9 @@ def create_sandbox_bank(display_name, description=None):
     obfc.genus_type = SANDBOX_TYPE
     return obas.create_objective_bank(obfc)
 
+
 def delete_bank_by_name(display_name):
-    lm = LearningManager()
+    lm = LM
     obas = lm.get_objective_bank_admin_session()
     obls = lm.get_objective_bank_lookup_session()
     found = False
@@ -294,7 +311,7 @@ def delete_bank_by_name(display_name):
 def create_objective(bank_id, display_name, description=None):
     if description is None:
         description = display_name + ' objective'
-    lm = LearningManager()
+    lm = LM
     ols = lm.get_objective_lookup_session_for_objective_bank(bank_id)
     oas = lm.get_objective_admin_session_for_objective_bank(bank_id)
     for o in ols.get_objectives():
@@ -304,26 +321,29 @@ def create_objective(bank_id, display_name, description=None):
     ofc.display_name = display_name
     ofc.description = description
     return oas.create_objective(ofc)
-    
+
 
 def get_repository_by_name(name):
-    rls = RepositoryManager().get_repository_lookup_session()
+    rls = RM.get_repository_lookup_session(proxy=PROXY)
     for r in rls.get_repositories():
         if r.display_name.text == name:
             return r
     raise NotFound()
 
+
 def get_asset_by_repository_id_and_name(repository_id, name):
-    als = RepositoryManager().get_asset_lookup_session_for_repository(repository_id)
+    als = RM.get_asset_lookup_session_for_repository(repository_id,
+                                                     proxy=PROXY)
     for a in als.get_assets():
         if a.display_name.text == name:
             return a
     raise NotFound()
 
+
 def create_sandbox_repository(display_name, description=None):
     if description is None:
         description = 'Catalog for ' + display_name
-    rm = RepositoryManager()
+    rm = RM
     ras = rm.get_repository_admin_session()
     rls = rm.get_repository_lookup_session()
     for r in rls.get_repositories():
@@ -336,8 +356,9 @@ def create_sandbox_repository(display_name, description=None):
     rfc.genus_type = SANDBOX_TYPE
     return ras.create_repository(rfc)
 
+
 def delete_repository_by_name(display_name):
-    rm = RepositoryManager()
+    rm = RM
     ras = rm.get_repository_admin_session()
     rls = rm.get_repository_lookup_session()
     found = False
@@ -357,9 +378,11 @@ def delete_repository_by_name(display_name):
 def create_asset(repository_id, display_name, description=None):
     if description is None:
         description = display_name + ' asset'
-    rm = RepositoryManager()
-    als = rm.get_asset_lookup_session_for_repository(repository_id)
-    aas = rm.get_asset_admin_session_for_repository(repository_id)
+    rm = RM
+    als = rm.get_asset_lookup_session_for_repository(repository_id,
+                                                     proxy=PROXY)
+    aas = rm.get_asset_admin_session_for_repository(repository_id,
+                                                    proxy=PROXY)
     for a in als.get_assets():
         if a.display_name.text == display_name:
             return a
@@ -367,7 +390,3 @@ def create_asset(repository_id, display_name, description=None):
     afc.display_name = display_name
     afc.description = description
     return aas.create_asset(afc)
-    
-
-
-    
