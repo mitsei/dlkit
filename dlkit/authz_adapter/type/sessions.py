@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
 from ..primitives import Id
@@ -90,8 +89,6 @@ class TypeLookupSession(abc_type_sessions.TypeLookupSession, osid_sessions.OsidS
     @raise_null_argument
     def get_source_types_by_destination_and_relation_type(self, destination_type, relation_type):
         raise Unimplemented()
-
-
 
 
 class TypeAdminSession(abc_type_sessions.TypeAdminSession, osid_sessions.OsidSession):

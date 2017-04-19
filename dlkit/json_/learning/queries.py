@@ -36,6 +36,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
         """Sets the assessment ``Id`` for this query.
@@ -779,8 +780,6 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         raise errors.Unimplemented()
 
 
-
-
 class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQuery, osid_queries.OsidSubjugateableQuery):
     """This is the query for searching activities.
 
@@ -797,6 +796,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_objective_id(self, objective_id, match):
         """Sets the objective ``Id`` for this query.
@@ -1157,8 +1157,6 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         raise errors.Unimplemented()
 
 
-
-
 class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidRelationshipQuery):
     """This is the query for searching proficiencies.
 
@@ -1175,6 +1173,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_resource_id(self, resource_id, match):
         """Sets the resource ``Id`` for this query.
@@ -1534,8 +1533,6 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         raise errors.Unimplemented()
 
 
-
-
 class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching objective banks.
 
@@ -1565,6 +1562,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_objective_id(self, objective_id, match):
         """Sets the objective ``Id`` for this query.

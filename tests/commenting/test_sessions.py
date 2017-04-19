@@ -53,6 +53,7 @@ class TestCommentLookupSession(unittest.TestCase):
             cls.svc_mgr.delete_book(catalog.ident)
 
 
+
     def test_get_book_id(self):
         """Tests get_book_id"""
         self.assertEqual(self.catalog.get_book_id(), self.catalog.ident)
@@ -223,8 +224,6 @@ class TestCommentLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.comment_ids[0])
 
 
-
-
 class TestCommentQuerySession(unittest.TestCase):
     """Tests for CommentQuerySession"""
 
@@ -256,6 +255,7 @@ class TestCommentQuerySession(unittest.TestCase):
             for obj in catalog.get_comments():
                 catalog.delete_comment(obj.ident)
             cls.svc_mgr.delete_book(catalog.ident)
+
 
 
     def test_get_book_id(self):
@@ -296,8 +296,6 @@ class TestCommentQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_comments_by_query(query).available(), 3)
 
 
-
-
 class TestCommentAdminSession(unittest.TestCase):
     """Tests for CommentAdminSession"""
 
@@ -314,6 +312,7 @@ class TestCommentAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_comments():
             cls.catalog.delete_comment(obj.ident)
         cls.svc_mgr.delete_book(cls.catalog.ident)
+
 
 
     def test_get_book_id(self):
@@ -379,8 +378,6 @@ class TestCommentAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestBookLookupSession(unittest.TestCase):
     """Tests for BookLookupSession"""
 
@@ -403,6 +400,7 @@ class TestBookLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -452,8 +450,6 @@ class TestBookLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_books()
 
 
-
-
 class TestBookAdminSession(unittest.TestCase):
     """Tests for BookAdminSession"""
 
@@ -477,6 +473,7 @@ class TestBookAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
+
 
 
     def test_can_create_books(self):
@@ -551,8 +548,6 @@ class TestBookAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestBookHierarchySession(unittest.TestCase):
     """Tests for BookHierarchySession"""
 
@@ -575,6 +570,7 @@ class TestBookHierarchySession(unittest.TestCase):
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_book(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_book_hierarchy_id(self):
@@ -687,8 +683,6 @@ class TestBookHierarchySession(unittest.TestCase):
         # add some tests on the returned node
 
 
-
-
 class TestBookHierarchyDesignSession(unittest.TestCase):
     """Tests for BookHierarchyDesignSession"""
 
@@ -711,6 +705,7 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_book(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_book_hierarchy_id(self):
@@ -750,5 +745,3 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
     def test_remove_child_books(self):
         """Tests remove_child_books"""
         pass
-
-

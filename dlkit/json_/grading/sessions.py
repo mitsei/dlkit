@@ -82,6 +82,7 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``GradeSystem``  ``Id`` associated with this session.
 
@@ -373,8 +374,6 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
     grade_systems = property(fget=get_grade_systems)
 
 
-
-
 class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``GradeSystems``.
 
@@ -408,6 +407,7 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -537,8 +537,6 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         return objects.GradeSystemList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``GradeSystems``.
 
@@ -589,6 +587,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             cat_class=objects.Gradebook)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -1357,8 +1356,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         
 
 
-
-
 class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``GradeEntrie`` s."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -1374,6 +1371,7 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -1810,8 +1808,6 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
     grade_entries = property(fget=get_grade_entries)
 
 
-
-
 class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``GradeEntry`` objects.
 
@@ -1847,6 +1843,7 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -1976,8 +1973,6 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         return objects.GradeEntryList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``GradeEntries``.
 
@@ -2027,6 +2022,7 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
             cat_class=objects.Gradebook)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -2453,8 +2449,6 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         self._alias_id(primary_id=grade_entry_id, equivalent_id=alias_id)
 
 
-
-
 class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``GradebookColumns``."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -2470,6 +2464,7 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -2787,8 +2782,6 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
                                       proxy=self._proxy)
 
 
-
-
 class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``GradebookColumn`` objects.
 
@@ -2821,6 +2814,7 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
             cat_name='Gradebook',
             cat_class=objects.Gradebook)
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -2952,8 +2946,6 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         return objects.GradebookColumnList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``GradebookColumns``.
 
@@ -3004,6 +2996,7 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
             cat_class=objects.Gradebook)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_gradebook_id(self):
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
@@ -3488,8 +3481,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         
 
 
-
-
 class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Gradebook`` objects.
 
@@ -3525,6 +3516,7 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_gradebooks(self):
         """Tests if this user can perform ``Gradebook`` lookups.
 
@@ -3771,8 +3763,6 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
     gradebooks = property(fget=get_gradebooks)
 
 
-
-
 class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Gradebooks``.
 
@@ -3813,6 +3803,7 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_gradebooks(self):
         """Tests if this user can create ``Gradebooks``.
 

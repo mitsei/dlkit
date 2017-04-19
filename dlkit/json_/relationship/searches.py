@@ -69,8 +69,6 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
         raise errors.Unimplemented()
 
 
-
-
 class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -125,8 +123,6 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         raise errors.Unimplemented()
 
 
-
-
 class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSearch):
     """The search interface for governing family searches."""
 
@@ -177,8 +173,6 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_searches.OsidSearchResults):

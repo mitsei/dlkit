@@ -57,6 +57,7 @@ class TestResourceLookupSession(unittest.TestCase):
             cls.svc_mgr.delete_bin(catalog.ident)
 
 
+
     def test_get_bin_id(self):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
@@ -147,8 +148,6 @@ class TestResourceLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.resource_ids[0])
 
 
-
-
 class TestResourceQuerySession(unittest.TestCase):
     """Tests for ResourceQuerySession"""
 
@@ -180,6 +179,7 @@ class TestResourceQuerySession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_get_bin_id(self):
@@ -220,8 +220,6 @@ class TestResourceQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_resources_by_query(query).available(), 3)
 
 
-
-
 class TestResourceSearchSession(unittest.TestCase):
     """Tests for ResourceSearchSession"""
 
@@ -246,8 +244,6 @@ class TestResourceSearchSession(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceAdminSession(unittest.TestCase):
     """Tests for ResourceAdminSession"""
 
@@ -264,6 +260,7 @@ class TestResourceAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_resources():
             cls.catalog.delete_resource(obj.ident)
         cls.svc_mgr.delete_bin(cls.catalog.ident)
+
 
 
     def test_get_bin_id(self):
@@ -329,8 +326,6 @@ class TestResourceAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceNotificationSession(unittest.TestCase):
     """Tests for ResourceNotificationSession"""
 
@@ -363,6 +358,7 @@ class TestResourceNotificationSession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_get_bin_id(self):
@@ -428,8 +424,6 @@ class TestResourceNotificationSession(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceBinSession(unittest.TestCase):
     """Tests for ResourceBinSession"""
 
@@ -472,6 +466,7 @@ class TestResourceBinSession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_use_comparative_bin_view(self):
@@ -518,8 +513,6 @@ class TestResourceBinSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestResourceBinAssignmentSession(unittest.TestCase):
     """Tests for ResourceBinAssignmentSession"""
 
@@ -554,8 +547,6 @@ class TestResourceBinAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceAgentSession(unittest.TestCase):
     """Tests for ResourceAgentSession"""
 
@@ -588,6 +579,7 @@ class TestResourceAgentSession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_get_bin_id(self):
@@ -639,8 +631,6 @@ class TestResourceAgentSession(unittest.TestCase):
         
 
 
-
-
 class TestResourceAgentAssignmentSession(unittest.TestCase):
     """Tests for ResourceAgentAssignmentSession"""
 
@@ -671,6 +661,7 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_get_bin_id(self):
@@ -707,8 +698,6 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
             self.catalog.get_resource_by_agent(AGENT_ID_1)
 
 
-
-
 class TestBinLookupSession(unittest.TestCase):
     """Tests for BinLookupSession"""
 
@@ -731,6 +720,7 @@ class TestBinLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -780,8 +770,6 @@ class TestBinLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_bins()
 
 
-
-
 class TestBinQuerySession(unittest.TestCase):
     """Tests for BinQuerySession"""
 
@@ -799,8 +787,6 @@ class TestBinQuerySession(unittest.TestCase):
     def test_get_bins_by_query(self):
         """Tests get_bins_by_query"""
         pass
-
-
 
 
 class TestBinAdminSession(unittest.TestCase):
@@ -826,6 +812,7 @@ class TestBinAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             cls.svc_mgr.delete_bin(catalog.ident)
+
 
 
     def test_can_create_bins(self):
@@ -900,8 +887,6 @@ class TestBinAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestBinHierarchySession(unittest.TestCase):
     """Tests for BinHierarchySession"""
 
@@ -924,6 +909,7 @@ class TestBinHierarchySession(unittest.TestCase):
         cls.svc_mgr.remove_child_bins(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bin(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_bin_hierarchy_id(self):
@@ -1036,8 +1022,6 @@ class TestBinHierarchySession(unittest.TestCase):
         # add some tests on the returned node
 
 
-
-
 class TestBinHierarchyDesignSession(unittest.TestCase):
     """Tests for BinHierarchyDesignSession"""
 
@@ -1060,6 +1044,7 @@ class TestBinHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.remove_child_bins(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bin(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_bin_hierarchy_id(self):
@@ -1099,5 +1084,3 @@ class TestBinHierarchyDesignSession(unittest.TestCase):
     def test_remove_child_bins(self):
         """Tests remove_child_bins"""
         pass
-
-

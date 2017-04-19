@@ -25,10 +25,6 @@ class LogEntryRecord(abc_logging_records.LogEntryRecord, osid_records.OsidRecord
     """
 
 
-
-
-
-
 class LogEntryQueryRecord(abc_logging_records.LogEntryQueryRecord, osid_records.OsidRecord):
     """A record for a ``LoglEntryQuery``.
 
@@ -36,10 +32,6 @@ class LogEntryQueryRecord(abc_logging_records.LogEntryQueryRecord, osid_records.
     underlying object.
 
     """
-
-
-
-
 
 
 class LogEntryFormRecord(abc_logging_records.LogEntryFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class LogEntryFormRecord(abc_logging_records.LogEntryFormRecord, osid_records.Os
     """
 
 
-
-
-
-
 class LogEntrySearchRecord(abc_logging_records.LogEntrySearchRecord, osid_records.OsidRecord):
     """A record for a ``LogEntrySearch``.
 
@@ -62,10 +50,6 @@ class LogEntrySearchRecord(abc_logging_records.LogEntrySearchRecord, osid_record
     underlying object.
 
     """
-
-
-
-
 
 
 class LogRecord(abc_logging_records.LogRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class LogRecord(abc_logging_records.LogRecord, osid_records.OsidRecord):
     """
 
 
-
-
-
-
 class LogQueryRecord(abc_logging_records.LogQueryRecord, osid_records.OsidRecord):
     """A record for a ``LogQuery``.
 
@@ -90,10 +70,6 @@ class LogQueryRecord(abc_logging_records.LogQueryRecord, osid_records.OsidRecord
     """
 
 
-
-
-
-
 class LogFormRecord(abc_logging_records.LogFormRecord, osid_records.OsidRecord):
     """A record for a ``LogForm``.
 
@@ -101,10 +77,6 @@ class LogFormRecord(abc_logging_records.LogFormRecord, osid_records.OsidRecord):
     underlying object.
 
     """
-
-
-
-
 
 
 class LogSearchRecord(abc_logging_records.LogSearchRecord, osid_records.OsidRecord):

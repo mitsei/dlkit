@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
             return self._provider_manager.get_family_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_relationship_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -96,8 +96,6 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
     family_search_record_types = property(fget=get_family_search_record_types)
 
 
-
-
 class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relationship_managers.RelationshipManager):
     """Adapts underlying RelationshipManager methodswith authorization checks."""
     def __init__(self):
@@ -110,6 +108,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('RELATIONSHIP', provider_impl)
         # need to add version argument
+
     def get_relationship_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -282,8 +281,6 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
     relationship_rules_manager = property(fget=get_relationship_rules_manager)
 
 
-
-
 class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfile, relationship_managers.RelationshipProxyManager):
     """Adapts underlying RelationshipProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -296,6 +293,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('RELATIONSHIP', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_relationship_lookup_session(self, proxy):
         # Implemented from azosid template for -

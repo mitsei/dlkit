@@ -38,6 +38,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='OBJECTIVE', **kwargs)
         self._catalog_name = 'ObjectiveBank'
+
     def has_assessment(self):
         """Tests if an assessment is associated with this objective.
 
@@ -209,8 +210,6 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
         return self._get_record(objective_record_type)
 
 
-
-
 class ObjectiveForm(abc_learning_objects.ObjectiveForm, osid_objects.OsidObjectForm, osid_objects.OsidFederateableForm):
     """This is the form for creating and updating ``Objectives``.
 
@@ -244,6 +243,7 @@ class ObjectiveForm(abc_learning_objects.ObjectiveForm, osid_objects.OsidObjectF
         self._my_map['cognitiveProcessId'] = self._cognitive_process_default
         self._my_map['assessmentId'] = self._assessment_default
         self._my_map['knowledgeCategoryId'] = self._knowledge_category_default
+
     def get_assessment_metadata(self):
         """Gets the metadata for an assessment.
 
@@ -406,8 +406,6 @@ class ObjectiveForm(abc_learning_objects.ObjectiveForm, osid_objects.OsidObjectF
         return self._get_record(objective_record_type)
 
 
-
-
 class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ObjectiveList`` provides a means for accessing ``Objective`` elements sequentially either one at a time or many at a time.
 
@@ -460,8 +458,6 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class ObjectiveNode(abc_learning_objects.ObjectiveNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -506,8 +502,6 @@ class ObjectiveNode(abc_learning_objects.ObjectiveNode, osid_objects.OsidNode):
         raise errors.Unimplemented()
 
     child_objective_nodes = property(fget=get_child_objective_nodes)
-
-
 
 
 class ObjectiveNodeList(abc_learning_objects.ObjectiveNodeList, osid_objects.OsidList):
@@ -563,8 +557,6 @@ class ObjectiveNodeList(abc_learning_objects.ObjectiveNodeList, osid_objects.Osi
         return self._get_next_n(n)
 
 
-
-
 class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_markers.Subjugateable):
     """An ``Activity`` represents learning material or other learning activities to meet an objective.
 
@@ -584,6 +576,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ACTIVITY', **kwargs)
         self._catalog_name = 'ObjectiveBank'
+
     def get_objective_id(self):
         """Gets the ``Id`` of the related objective.
 
@@ -776,8 +769,6 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         return self._get_record(activity_record_type)
 
 
-
-
 class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
     """This is the form for creating and updating ``Activities``.
 
@@ -812,6 +803,7 @@ class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectFor
         self._my_map['assessmentIds'] = self._assessments_default
         self._my_map['objectiveId'] = str(kwargs['objective_id'])
         self._my_map['assetIds'] = self._assets_default
+
     def get_assets_metadata(self):
         """Gets the metadata for the assets.
 
@@ -989,8 +981,6 @@ class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectFor
         return self._get_record(activity_record_type)
 
 
-
-
 class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ActivityList`` provides a means for accessing ``Activity`` elements sequentially either one at a time or many at a time.
 
@@ -1043,8 +1033,6 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationship):
     """A ``Proficiency`` represents a competency of a leraning objective."""
     _namespace = 'learning.Proficiency'
@@ -1052,6 +1040,7 @@ class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationshi
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='PROFICIENCY', **kwargs)
         self._catalog_name = 'ObjectiveBank'
+
     def get_resource_id(self):
         """Gets the resource ``Id`` to whom this proficiency applies.
 
@@ -1208,8 +1197,6 @@ class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationshi
     object_map = property(fget=get_object_map)
 
 
-
-
 class ProficiencyForm(abc_learning_objects.ProficiencyForm, osid_objects.OsidRelationshipForm):
     """This is the form for creating and updating ``Proficiencies``.
 
@@ -1243,6 +1230,7 @@ class ProficiencyForm(abc_learning_objects.ProficiencyForm, osid_objects.OsidRel
         self._my_map['objectiveId'] = str(kwargs['objective_id'])
         self._my_map['resourceId'] = str(kwargs['resource_id'])
         self._my_map['levelId'] = self._level_default
+
     def get_completion_metadata(self):
         """Gets the metadata for completion percentage.
 
@@ -1363,8 +1351,6 @@ class ProficiencyForm(abc_learning_objects.ProficiencyForm, osid_objects.OsidRel
         return self._get_record(proficiency_record_type)
 
 
-
-
 class ProficiencyList(abc_learning_objects.ProficiencyList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ProficiencyList`` provides a means for accessing ``Proficiency`` elements sequentially either one at a time or many at a time.
 
@@ -1420,14 +1406,13 @@ class ProficiencyList(abc_learning_objects.ProficiencyList, osid_objects.OsidLis
         return self._get_next_n(n)
 
 
-
-
 class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid_objects.OsidCatalog):
     """an objective bank defines a collection of objectives."""
     _namespace = 'learning.ObjectiveBank'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='OBJECTIVE_BANK', **kwargs)
+
     @utilities.arguments_not_none
     def get_objective_bank_record(self, objective_bank_record_type):
         """Gets the objective bank record corresponding to the given ``ObjectiveBank`` record ``Type``.
@@ -1452,8 +1437,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid_objects.OsidCatalog
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.OsidCatalogForm):
@@ -1482,6 +1465,7 @@ class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.Osi
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_objective_bank_form_record(self, objective_bank_record_type):
         """Gets the ``ObjectiveBankFormRecord`` corresponding to the given objective bank record ``Type``.
@@ -1500,8 +1484,6 @@ class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.Osi
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.OsidList):
@@ -1557,8 +1539,6 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
         return self._get_next_n(n)
 
 
-
-
 class ObjectiveBankNode(abc_learning_objects.ObjectiveBankNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -1583,6 +1563,7 @@ class ObjectiveBankNode(abc_learning_objects.ObjectiveBankNode, osid_objects.Osi
         for objective_bank_node in self.get_child_objective_bank_nodes():
             node_map['childNodes'].append(objective_bank_node.get_object_node_map())
         return node_map
+
     def get_objective_bank(self):
         """Gets the ``ObjectiveBank`` at this node.
 
@@ -1635,8 +1616,6 @@ class ObjectiveBankNode(abc_learning_objects.ObjectiveBankNode, osid_objects.Osi
         return ObjectiveBankNodeList(parent_objective_bank_nodes)
 
     child_objective_bank_nodes = property(fget=get_child_objective_bank_nodes)
-
-
 
 
 class ObjectiveBankNodeList(abc_learning_objects.ObjectiveBankNodeList, osid_objects.OsidList):

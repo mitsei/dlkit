@@ -35,6 +35,7 @@ class Id(abc_id_primitives.Id, osid_markers.OsidPrimitive):
         self._authority = authority
         self._namespace = namespace
         self._identifier = identifier
+
     def get_authority(self):
         """Gets the authority of this ``Id``.
 

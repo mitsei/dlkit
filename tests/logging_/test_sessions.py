@@ -44,6 +44,7 @@ class TestLoggingSession(unittest.TestCase):
             cls.svc_mgr.delete_log(catalog.ident)
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_log_id(self):
         """Tests get_log_id"""
@@ -80,8 +81,6 @@ class TestLoggingSession(unittest.TestCase):
         pass
 
 
-
-
 class TestLogEntryLookupSession(unittest.TestCase):
     """Tests for LogEntryLookupSession"""
 
@@ -114,6 +113,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
             for obj in catalog.get_log_entries():
                 catalog.delete_log_entry(obj.ident)
             cls.svc_mgr.delete_log(catalog.ident)
+
 
 
     def test_get_log_id(self):
@@ -237,8 +237,6 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.log_entry_ids[0])
 
 
-
-
 class TestLogEntryQuerySession(unittest.TestCase):
     """Tests for LogEntryQuerySession"""
 
@@ -270,6 +268,7 @@ class TestLogEntryQuerySession(unittest.TestCase):
             for obj in catalog.get_log_entries():
                 catalog.delete_log_entry(obj.ident)
             cls.svc_mgr.delete_log(catalog.ident)
+
 
 
     def test_get_log_id(self):
@@ -310,8 +309,6 @@ class TestLogEntryQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 3)
 
 
-
-
 class TestLogEntryAdminSession(unittest.TestCase):
     """Tests for LogEntryAdminSession"""
 
@@ -328,6 +325,7 @@ class TestLogEntryAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_log_entries():
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
+
 
 
     def test_get_log_id(self):
@@ -395,8 +393,6 @@ class TestLogEntryAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestLogLookupSession(unittest.TestCase):
     """Tests for LogLookupSession"""
 
@@ -419,6 +415,7 @@ class TestLogLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -468,8 +465,6 @@ class TestLogLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_logs()
 
 
-
-
 class TestLogAdminSession(unittest.TestCase):
     """Tests for LogAdminSession"""
 
@@ -493,6 +488,7 @@ class TestLogAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
+
 
 
     def test_can_create_logs(self):
@@ -565,5 +561,3 @@ class TestLogAdminSession(unittest.TestCase):
     def test_alias_log(self):
         """Tests alias_log"""
         pass
-
-

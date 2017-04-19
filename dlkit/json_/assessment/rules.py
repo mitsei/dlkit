@@ -88,6 +88,7 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
                 return getattr(self._my_answer, name)
             except:
                 raise
+
     def get_item_id(self):
         """Gets the ``Id`` of the ``Item``.
 

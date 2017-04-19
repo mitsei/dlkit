@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -42,7 +41,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('lookup', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -64,6 +63,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         for objective_bank_id in self._unauth_objective_bank_ids:
             query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_objectives_by_query(query)
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -121,7 +121,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_objective(objective_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         query.match_id(objective_id, match=True)
         results = self._try_harder(query)
@@ -135,7 +135,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_objectives_by_ids(objective_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         for objective_id in (objective_ids):
             query.match_id(objective_id, match=True)
@@ -147,7 +147,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_objectives_by_genus_type(objective_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         query.match_genus_type(objective_genus_type, match=True)
         return self._try_harder(query)
@@ -158,7 +158,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_objectives_by_parent_genus_type(objective_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         query.match_parent_genus_type(objective_genus_type, match=True)
         return self._try_harder(query)
@@ -169,7 +169,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_objectives_by_record_type(objective_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         query.match_record_type(objective_record_type, match=True)
         return self._try_harder(query)
@@ -179,14 +179,12 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_objectives()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_objective_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     objectives = property(fget=get_objectives)
-
-
 
 
 class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_sessions.OsidSession):
@@ -211,7 +209,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('search', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -232,12 +230,12 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
             query._provider_query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_objectives_by_query(query)
 
-
     class ObjectiveQueryWrapper(QueryWrapper):
         """Wrapper for ObjectiveQueries to override match_objective_bank_id method"""
 
         def match_objective_bank_id(self, objective_bank_id, match=True):
             self._cat_id_args_list.append({'objective_bank_id': objective_bank_id, 'match': match})
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -305,8 +303,6 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         return result
 
 
-
-
 class ObjectiveSearchSession(abc_learning_sessions.ObjectiveSearchSession, ObjectiveQuerySession):
     """Adapts underlying ObjectiveSearchSession methodswith authorization checks."""
 
@@ -339,8 +335,6 @@ class ObjectiveSearchSession(abc_learning_sessions.ObjectiveSearchSession, Objec
         raise Unimplemented()
 
 
-
-
 class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -368,6 +362,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
     def _can_for_objective(self, func_name, objective_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, objective_id, 'get_objective_bank_ids_for_objective')
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -395,8 +390,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if objective_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if objective_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -468,14 +463,13 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         return self._provider_session.alias_objective(objective_id, alias_id)
 
 
-
-
 class ObjectiveNotificationSession(abc_learning_sessions.ObjectiveNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_objective_bank_id()
         self._id_namespace = 'learning.Objective'
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -603,8 +597,6 @@ class ObjectiveNotificationSession(abc_learning_sessions.ObjectiveNotificationSe
         raise Unimplemented()
 
 
-
-
 class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -613,6 +605,7 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         # Build from authority in config
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
+
     def get_objective_hierarchy_id(self):
         raise Unimplemented()
 
@@ -697,8 +690,6 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         raise Unimplemented()
 
 
-
-
 class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -708,6 +699,7 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
         # should this be 'learning.ObjectiveBankHierarchy' ?
+
     def get_objective_hierarchy_id(self):
         raise Unimplemented()
 
@@ -742,8 +734,6 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         raise Unimplemented()
 
 
-
-
 class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveSequencingSession methodswith authorization checks."""
 
@@ -773,14 +763,13 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
         raise Unimplemented()
 
 
-
-
 class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBankSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveObjectiveBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ObjectiveObjectiveBank'
+
     def can_lookup_objective_objective_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -845,14 +834,13 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         return self._provider_session.get_objective_banks_by_objective(objective_id)
 
 
-
-
 class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObjectiveBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveObjectiveBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ObjectiveObjectiveBank'
+
     def can_assign_objectives(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -899,8 +887,6 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
     @raise_null_argument
     def reassign_proficiency_to_objective_bank(self, objective_id, from_objective_bank_id, to_objective_bank_id):
         raise Unimplemented()
-
-
 
 
 class ObjectiveSmartObjectiveBankSession(abc_learning_sessions.ObjectiveSmartObjectiveBankSession, osid_sessions.OsidSession):
@@ -950,8 +936,6 @@ class ObjectiveSmartObjectiveBankSession(abc_learning_sessions.ObjectiveSmartObj
     @raise_null_argument
     def get_objective_query_from_inspector(self, objective_query_inspector):
         raise Unimplemented()
-
-
 
 
 class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession, osid_sessions.OsidSession):
@@ -1026,8 +1010,6 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         raise Unimplemented()
 
 
-
-
 class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisiteAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveRequisiteAssignmentSession methodswith authorization checks."""
 
@@ -1068,8 +1050,6 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         raise Unimplemented()
 
 
-
-
 class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ActivityLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1094,7 +1074,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('lookup', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -1116,6 +1096,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         for objective_bank_id in self._unauth_objective_bank_ids:
             query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_activities_by_query(query)
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1173,7 +1154,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_activity(activity_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_id(activity_id, match=True)
         results = self._try_harder(query)
@@ -1187,7 +1168,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_activities_by_ids(activity_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         for activity_id in (activity_ids):
             query.match_id(activity_id, match=True)
@@ -1199,7 +1180,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_activities_by_genus_type(activity_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_genus_type(activity_genus_type, match=True)
         return self._try_harder(query)
@@ -1210,7 +1191,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_activities_by_parent_genus_type(activity_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_parent_genus_type(activity_genus_type, match=True)
         return self._try_harder(query)
@@ -1221,7 +1202,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_activities_by_record_type(activity_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_record_type(activity_record_type, match=True)
         return self._try_harder(query)
@@ -1232,7 +1213,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_activities_for_objective(objective_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_objective_id(objective_id, match=True)
         return self._try_harder(query)
@@ -1243,7 +1224,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.learning.ActivityLookupSession.get_activities_for_objectives_template
         if self._can('lookup'):
             return self._provider_session.get_activities_for_objectives(objective_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         for activity_id in (objective_ids):
             query.match_objective_id(activity_id, match=True)
@@ -1262,14 +1243,12 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_activities()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_activity_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     activities = property(fget=get_activities)
-
-
 
 
 class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sessions.OsidSession):
@@ -1294,7 +1273,7 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('search', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -1315,12 +1294,12 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
             query._provider_query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_activities_by_query(query)
 
-
     class ActivityQueryWrapper(QueryWrapper):
         """Wrapper for ActivityQueries to override match_objective_bank_id method"""
 
         def match_objective_bank_id(self, objective_bank_id, match=True):
             self._cat_id_args_list.append({'objective_bank_id': objective_bank_id, 'match': match})
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1388,8 +1367,6 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
         return result
 
 
-
-
 class ActivitySearchSession(abc_learning_sessions.ActivitySearchSession, ActivityQuerySession):
     """Adapts underlying ActivitySearchSession methodswith authorization checks."""
 
@@ -1422,8 +1399,6 @@ class ActivitySearchSession(abc_learning_sessions.ActivitySearchSession, Activit
         raise Unimplemented()
 
 
-
-
 class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ActivityAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -1451,6 +1426,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
     def _can_for_activity(self, func_name, activity_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, activity_id, 'get_objective_bank_ids_for_activity')
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1478,8 +1454,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if activity_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if activity_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -1551,14 +1527,13 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         return self._provider_session.alias_activity(activity_id, alias_id)
 
 
-
-
 class ActivityNotificationSession(abc_learning_sessions.ActivityNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying ActivityNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_objective_bank_id()
         self._id_namespace = 'learning.Activity'
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1687,14 +1662,13 @@ class ActivityNotificationSession(abc_learning_sessions.ActivityNotificationSess
         raise Unimplemented()
 
 
-
-
 class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSession, osid_sessions.OsidSession):
     """Adapts underlying ActivityObjectiveBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ActivityObjectiveBank'
+
     def can_lookup_activity_objective_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -1759,14 +1733,13 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         return self._provider_session.get_objective_banks_by_activity(activity_id)
 
 
-
-
 class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjectiveBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ActivityObjectiveBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ActivityObjectiveBank'
+
     def can_assign_activities(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1813,8 +1786,6 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
     @raise_null_argument
     def reassign_activity_to_objective_bank(self, activity_id, from_objective_bank_id, to_objective_bank_id):
         raise Unimplemented()
-
-
 
 
 class ActivitySmartObjectiveBankSession(abc_learning_sessions.ActivitySmartObjectiveBankSession, osid_sessions.OsidSession):
@@ -1866,8 +1837,6 @@ class ActivitySmartObjectiveBankSession(abc_learning_sessions.ActivitySmartObjec
         raise Unimplemented()
 
 
-
-
 class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ProficiencyLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1892,7 +1861,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('lookup', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -1914,6 +1883,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         for objective_bank_id in self._unauth_objective_bank_ids:
             query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_proficiencies_by_query(query)
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1977,7 +1947,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_proficiency(proficiency_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_id(proficiency_id, match=True)
         results = self._try_harder(query)
@@ -1991,7 +1961,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_by_ids(proficiency_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         for proficiency_id in (proficiency_ids):
             query.match_id(proficiency_id, match=True)
@@ -2003,7 +1973,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_by_genus_type(proficiency_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_genus_type(proficiency_genus_type, match=True)
         return self._try_harder(query)
@@ -2014,7 +1984,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_by_parent_genus_type(proficiency_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_parent_genus_type(proficiency_genus_type, match=True)
         return self._try_harder(query)
@@ -2025,7 +1995,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_by_record_type(proficiency_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_record_type(proficiency_record_type, match=True)
         return self._try_harder(query)
@@ -2061,10 +2031,10 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
     @raise_null_argument
     def get_proficiencies_for_resource(self, resource_id):
         # Implemented from azosid template for -
-        # osid.resource.RelationshipLookupSession.get_relationships_for_source_template
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_for_resource(resource_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_source_id(resource_id, match=True)
         return self._try_harder(query)
@@ -2076,7 +2046,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_for_resource_on_date(resource_id, from_, to)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_source_id(resource_id, match=True)
         query.match_date(from_, to, match=True)
@@ -2093,10 +2063,10 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
     @raise_null_argument
     def get_proficiencies_for_resources(self, resource_ids):
         # Implemented from azosid template for -
-        # osid.resource.RelationshipLookupSession.get_relationships_for_source_template
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies_for_resources(resource_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_source_id(resource_ids, match=True)
         return self._try_harder(query)
@@ -2122,14 +2092,12 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_proficiencies()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_proficiency_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     proficiencies = property(fget=get_proficiencies)
-
-
 
 
 class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osid_sessions.OsidSession):
@@ -2154,7 +2122,7 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
         if self._can('search', objective_bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(objective_bank_id)]
         if self._hierarchy_session.has_child_objective_banks(objective_bank_id):
@@ -2175,12 +2143,12 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
             query._provider_query.match_objective_bank_id(objective_bank_id, match=False)
         return self._query_session.get_proficiencies_by_query(query)
 
-
     class ProficiencyQueryWrapper(QueryWrapper):
         """Wrapper for ProficiencyQueries to override match_objective_bank_id method"""
 
         def match_objective_bank_id(self, objective_bank_id, match=True):
             self._cat_id_args_list.append({'objective_bank_id': objective_bank_id, 'match': match})
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2248,8 +2216,6 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         return result
 
 
-
-
 class ProficiencySearchSession(abc_learning_sessions.ProficiencySearchSession, ProficiencyQuerySession):
     """Adapts underlying ProficiencySearchSession methodswith authorization checks."""
 
@@ -2282,8 +2248,6 @@ class ProficiencySearchSession(abc_learning_sessions.ProficiencySearchSession, P
         raise Unimplemented()
 
 
-
-
 class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ProficiencyAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -2311,6 +2275,7 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
     def _can_for_proficiency(self, func_name, proficiency_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, proficiency_id, 'get_objective_bank_ids_for_proficiency')
+
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2338,14 +2303,14 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if proficiency_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if proficiency_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
     def get_proficiency_form_for_create(self, objective_id, resource_id, proficiency_record_types):
         # Implemented from azosid template for -
-        # osid.resource.RelationshipAdminSession.get_relationship_form_for_create_template
+        # osid.relationship.RelationshipAdminSession.get_relationship_form_for_create_template
         if not self._can('create'):
             raise PermissionDenied()
         return self._provider_session.get_proficiency_form_for_create(objective_id, resource_id, proficiency_record_types)
@@ -2412,8 +2377,6 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         if not self._can_for_proficiency('alias', proficiency_id):
             raise PermissionDenied()
         return self._provider_session.alias_proficiency(proficiency_id, alias_id)
-
-
 
 
 class ProficiencyNotificationSession(abc_learning_sessions.ProficiencyNotificationSession, osid_sessions.OsidSession):
@@ -2595,14 +2558,13 @@ class ProficiencyNotificationSession(abc_learning_sessions.ProficiencyNotificati
         raise Unimplemented()
 
 
-
-
 class ProficiencyObjectiveBankSession(abc_learning_sessions.ProficiencyObjectiveBankSession, osid_sessions.OsidSession):
     """Adapts underlying ProficiencyObjectiveBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ProficiencyObjectiveBank'
+
     def can_lookup_proficiency_objective_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -2667,14 +2629,13 @@ class ProficiencyObjectiveBankSession(abc_learning_sessions.ProficiencyObjective
         return self._provider_session.get_objective_banks_by_proficiency(proficiency_id)
 
 
-
-
 class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.ProficiencyObjectiveBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ProficiencyObjectiveBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'learning.ProficiencyObjectiveBank'
+
     def can_assign_proficiencies(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -2721,8 +2682,6 @@ class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.Proficienc
     @raise_null_argument
     def reassign_proficiency_to_objective_bank(self, proficiency_id, from_objective_bank_id, to_objective_bank_id):
         raise Unimplemented()
-
-
 
 
 class ProficiencySmartObjectiveBankSession(abc_learning_sessions.ProficiencySmartObjectiveBankSession, osid_sessions.OsidSession):
@@ -2772,8 +2731,6 @@ class ProficiencySmartObjectiveBankSession(abc_learning_sessions.ProficiencySmar
     @raise_null_argument
     def get_proficiency_query_from_inspector(self, proficiency_query_inspector):
         raise Unimplemented()
-
-
 
 
 class MyLearningPathSession(abc_learning_sessions.MyLearningPathSession, osid_sessions.OsidSession):
@@ -2840,8 +2797,6 @@ class MyLearningPathSession(abc_learning_sessions.MyLearningPathSession, osid_se
         raise Unimplemented()
 
 
-
-
 class LearningPathSession(abc_learning_sessions.LearningPathSession, osid_sessions.OsidSession):
     """Adapts underlying LearningPathSession methodswith authorization checks."""
 
@@ -2906,8 +2861,6 @@ class LearningPathSession(abc_learning_sessions.LearningPathSession, osid_sessio
         raise Unimplemented()
 
 
-
-
 class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveBankLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2916,6 +2869,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         # Build from authority in config
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
+
     def can_lookup_objective_banks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2977,8 +2931,6 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
     objective_banks = property(fget=get_objective_banks)
 
 
-
-
 class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveBankQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2987,6 +2939,7 @@ class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession,
         # Build from authority in config
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
+
     def can_search_objective_banks(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -3011,8 +2964,6 @@ class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession,
         return self._provider_session.get_objective_banks_by_query(objective_bank_query)
 
 
-
-
 class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSession, ObjectiveBankQuerySession):
     """Adapts underlying ObjectiveBankSearchSession methodswith authorization checks."""
 
@@ -3035,8 +2986,6 @@ class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSessio
         raise Unimplemented()
 
 
-
-
 class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveBankAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3045,6 +2994,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         # Build from authority in config
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
+
     def can_create_objective_banks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -3055,8 +3005,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if objective_bank_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if objective_bank_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -3119,8 +3069,6 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_objective_bank(objective_bank_id, alias_id)
-
-
 
 
 class ObjectiveBankNotificationSession(abc_learning_sessions.ObjectiveBankNotificationSession, osid_sessions.OsidSession):
@@ -3198,8 +3146,6 @@ class ObjectiveBankNotificationSession(abc_learning_sessions.ObjectiveBankNotifi
         raise Unimplemented()
 
 
-
-
 class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveBankHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3208,6 +3154,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         # Build from authority in config
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
+
     def get_objective_bank_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -3362,8 +3309,6 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
             include_siblings)
 
 
-
-
 class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveBankHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3373,6 +3318,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         self._qualifier_id = Id('learning.ObjectiveBank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'learning.ObjectiveBank'
         # should this be 'learning.ObjectiveBankHierarchy' ?
+
     def get_objective_bank_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id

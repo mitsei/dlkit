@@ -344,6 +344,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
         except (KeyError, ValueError):
             raise errors.NotFound()
         collection.save(obj_map)
+
     def get_locale(self):
         """Gets the locale indicating the localization preferences in effect for this session.
 

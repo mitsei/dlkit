@@ -67,8 +67,6 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
         raise errors.Unimplemented()
 
 
-
-
 class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 

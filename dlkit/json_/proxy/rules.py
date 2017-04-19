@@ -33,6 +33,7 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
         self._effective_clock_rate = effective_clock_rate
         self._locale = locale
         self._format_type = format_type
+
     def has_authentication(self):
         """Tests if an authentication is available.
 
@@ -196,8 +197,6 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
         raise errors.Unimplemented()
 
 
-
-
 class ProxyCondition(abc_proxy_rules.ProxyCondition, osid_rules.OsidCondition):
     """A ``ProxyCondition`` is used to transfer external information into a proxy."""
     def __init__(self):
@@ -210,6 +209,7 @@ class ProxyCondition(abc_proxy_rules.ProxyCondition, osid_rules.OsidCondition):
         self._unit_system_type = None
         self._format_type = None
         self._http_request = None
+
     @utilities.arguments_not_none
     def set_effective_agent_id(self, agent_id):
         """Sets the effective agent ``Id`` to indicate acting on behalf of.

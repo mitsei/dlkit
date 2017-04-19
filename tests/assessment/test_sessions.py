@@ -44,6 +44,7 @@ class TestAssessmentSession(unittest.TestCase):
             cls.svc_mgr.delete_bank(catalog.ident)
 
 
+
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -259,8 +260,6 @@ class TestAssessmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentResultsSession(unittest.TestCase):
     """Tests for AssessmentResultsSession"""
 
@@ -284,6 +283,7 @@ class TestAssessmentResultsSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -321,8 +321,6 @@ class TestAssessmentResultsSession(unittest.TestCase):
         pass
 
 
-
-
 class TestItemLookupSession(unittest.TestCase):
     """Tests for ItemLookupSession"""
 
@@ -355,6 +353,7 @@ class TestItemLookupSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -467,8 +466,6 @@ class TestItemLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.item_ids[0])
 
 
-
-
 class TestItemQuerySession(unittest.TestCase):
     """Tests for ItemQuerySession"""
 
@@ -500,6 +497,7 @@ class TestItemQuerySession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -540,8 +538,6 @@ class TestItemQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_items_by_query(query).available(), 3)
 
 
-
-
 class TestItemSearchSession(unittest.TestCase):
     """Tests for ItemSearchSession"""
 
@@ -566,8 +562,6 @@ class TestItemSearchSession(unittest.TestCase):
         pass
 
 
-
-
 class TestItemAdminSession(unittest.TestCase):
     """Tests for ItemAdminSession"""
 
@@ -584,6 +578,7 @@ class TestItemAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_items():
             cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -735,8 +730,6 @@ class TestItemAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestItemNotificationSession(unittest.TestCase):
     """Tests for ItemNotificationSession"""
 
@@ -769,6 +762,7 @@ class TestItemNotificationSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -849,8 +843,6 @@ class TestItemNotificationSession(unittest.TestCase):
         pass
 
 
-
-
 class TestItemBankSession(unittest.TestCase):
     """Tests for ItemBankSession"""
 
@@ -893,6 +885,7 @@ class TestItemBankSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -939,8 +932,6 @@ class TestItemBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestItemBankAssignmentSession(unittest.TestCase):
     """Tests for ItemBankAssignmentSession"""
 
@@ -980,8 +971,6 @@ class TestItemBankAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentLookupSession(unittest.TestCase):
     """Tests for AssessmentLookupSession"""
 
@@ -1014,6 +1003,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1106,8 +1096,6 @@ class TestAssessmentLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_ids[0])
 
 
-
-
 class TestAssessmentQuerySession(unittest.TestCase):
     """Tests for AssessmentQuerySession"""
 
@@ -1139,6 +1127,7 @@ class TestAssessmentQuerySession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1179,8 +1168,6 @@ class TestAssessmentQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assessments_by_query(query).available(), 3)
 
 
-
-
 class TestAssessmentAdminSession(unittest.TestCase):
     """Tests for AssessmentAdminSession"""
 
@@ -1197,6 +1184,7 @@ class TestAssessmentAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments():
             cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1262,8 +1250,6 @@ class TestAssessmentAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentBankSession(unittest.TestCase):
     """Tests for AssessmentBankSession"""
 
@@ -1306,6 +1292,7 @@ class TestAssessmentBankSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -1352,8 +1339,6 @@ class TestAssessmentBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestAssessmentBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentBankAssignmentSession"""
 
@@ -1391,8 +1376,6 @@ class TestAssessmentBankAssignmentSession(unittest.TestCase):
     def test_reassign_assessment_to_billing(self):
         """Tests reassign_assessment_to_billing"""
         pass
-
-
 
 
 class TestAssessmentBasicAuthoringSession(unittest.TestCase):
@@ -1435,6 +1418,7 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1508,8 +1492,6 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
             self.assessment.ident)
 
 
-
-
 class TestAssessmentOfferedLookupSession(unittest.TestCase):
     """Tests for AssessmentOfferedLookupSession"""
 
@@ -1546,6 +1528,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1648,8 +1631,6 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_offered_ids[0])
 
 
-
-
 class TestAssessmentOfferedQuerySession(unittest.TestCase):
     """Tests for AssessmentOfferedQuerySession"""
 
@@ -1687,6 +1668,7 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1727,8 +1709,6 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assessments_offered_by_query(query).available(), 3)
 
 
-
-
 class TestAssessmentOfferedAdminSession(unittest.TestCase):
     """Tests for AssessmentOfferedAdminSession"""
 
@@ -1745,6 +1725,7 @@ class TestAssessmentOfferedAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments_offered():
             cls.catalog.delete_assessment_offered(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -1810,8 +1791,6 @@ class TestAssessmentOfferedAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOfferedBankSession(unittest.TestCase):
     """Tests for AssessmentOfferedBankSession"""
 
@@ -1862,6 +1841,7 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
             cls.svc_mgr.delete_bank(catalog.ident)
 
 
+
     @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_offered_bank_mappings(self):
         """Tests can_lookup_assessment_offered_bank_mappings"""
@@ -1906,8 +1886,6 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentOfferedBankAssignmentSession"""
 
@@ -1945,8 +1923,6 @@ class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     def test_reassign_assessment_offered_to_billing(self):
         """Tests reassign_assessment_offered_to_billing"""
         pass
-
-
 
 
 class TestAssessmentTakenLookupSession(unittest.TestCase):
@@ -1991,6 +1967,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
 
@@ -2139,8 +2116,6 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_taken_ids[0])
 
 
-
-
 class TestAssessmentTakenQuerySession(unittest.TestCase):
     """Tests for AssessmentTakenQuerySession"""
 
@@ -2187,6 +2162,7 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
 
 
+
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -2225,8 +2201,6 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assessments_taken_by_query(query).available(), 3)
 
 
-
-
 class TestAssessmentTakenAdminSession(unittest.TestCase):
     """Tests for AssessmentTakenAdminSession"""
 
@@ -2243,6 +2217,7 @@ class TestAssessmentTakenAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments_taken():
             cls.catalog.delete_assessment_taken(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -2308,8 +2283,6 @@ class TestAssessmentTakenAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTakenBankSession(unittest.TestCase):
     """Tests for AssessmentTakenBankSession"""
 
@@ -2367,6 +2340,7 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_taken_bank_mappings(self):
         """Tests can_lookup_assessment_taken_bank_mappings"""
@@ -2411,8 +2385,6 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentTakenBankAssignmentSession"""
 
@@ -2452,8 +2424,6 @@ class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestBankLookupSession(unittest.TestCase):
     """Tests for BankLookupSession"""
 
@@ -2476,6 +2446,7 @@ class TestBankLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -2525,8 +2496,6 @@ class TestBankLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_banks()
 
 
-
-
 class TestBankQuerySession(unittest.TestCase):
     """Tests for BankQuerySession"""
 
@@ -2544,8 +2513,6 @@ class TestBankQuerySession(unittest.TestCase):
     def test_get_banks_by_query(self):
         """Tests get_banks_by_query"""
         pass
-
-
 
 
 class TestBankAdminSession(unittest.TestCase):
@@ -2571,6 +2538,7 @@ class TestBankAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_can_create_banks(self):
@@ -2645,8 +2613,6 @@ class TestBankAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestBankHierarchySession(unittest.TestCase):
     """Tests for BankHierarchySession"""
 
@@ -2669,6 +2635,7 @@ class TestBankHierarchySession(unittest.TestCase):
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bank(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_bank_hierarchy_id(self):
@@ -2781,8 +2748,6 @@ class TestBankHierarchySession(unittest.TestCase):
         # add some tests on the returned node
 
 
-
-
 class TestBankHierarchyDesignSession(unittest.TestCase):
     """Tests for BankHierarchyDesignSession"""
 
@@ -2805,6 +2770,7 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bank(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_bank_hierarchy_id(self):
@@ -2844,5 +2810,3 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
     def test_remove_child_banks(self):
         """Tests remove_child_banks"""
         pass
-
-

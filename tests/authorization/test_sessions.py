@@ -259,6 +259,7 @@ class TestAuthorizationSession(unittest.TestCase):
         #       3        4       5(t)      6     7(t)   (the 'blue' resource in bin 2 is also assigned to bin 7)
 
 
+
     def test_get_vault_id(self):
         """Tests get_vault_id"""
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
@@ -316,8 +317,6 @@ class TestAuthorizationSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAuthorizationLookupSession(unittest.TestCase):
     """Tests for AuthorizationLookupSession"""
 
@@ -352,6 +351,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
             for obj in catalog.get_authorizations():
                 catalog.delete_authorization(obj.ident)
             cls.svc_mgr.delete_vault(catalog.ident)
+
 
 
     def test_get_vault_id(self):
@@ -529,8 +529,6 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.authorization_ids[0])
 
 
-
-
 class TestAuthorizationQuerySession(unittest.TestCase):
     """Tests for AuthorizationQuerySession"""
 
@@ -566,6 +564,7 @@ class TestAuthorizationQuerySession(unittest.TestCase):
             for obj in catalog.get_authorizations():
                 catalog.delete_authorization(obj.ident)
             cls.svc_mgr.delete_vault(catalog.ident)
+
 
 
     def test_get_vault_id(self):
@@ -616,8 +615,6 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_authorizations_by_query(query).available(), 3)
 
 
-
-
 class TestAuthorizationAdminSession(unittest.TestCase):
     """Tests for AuthorizationAdminSession"""
 
@@ -634,6 +631,7 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_authorizations():
             cls.catalog.delete_authorization(obj.ident)
         cls.svc_mgr.delete_vault(cls.catalog.ident)
+
 
 
     def test_get_vault_id(self):
@@ -709,8 +707,6 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestVaultLookupSession(unittest.TestCase):
     """Tests for VaultLookupSession"""
 
@@ -733,6 +729,7 @@ class TestVaultLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_vault(catalog.ident)
         for catalog in cls.svc_mgr.get_vaults():
             cls.svc_mgr.delete_vault(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -782,8 +779,6 @@ class TestVaultLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_vaults()
 
 
-
-
 class TestVaultQuerySession(unittest.TestCase):
     """Tests for VaultQuerySession"""
 
@@ -801,8 +796,6 @@ class TestVaultQuerySession(unittest.TestCase):
     def test_get_vaults_by_query(self):
         """Tests get_vaults_by_query"""
         pass
-
-
 
 
 class TestVaultAdminSession(unittest.TestCase):
@@ -828,6 +821,7 @@ class TestVaultAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_vault(catalog.ident)
         for catalog in cls.svc_mgr.get_vaults():
             cls.svc_mgr.delete_vault(catalog.ident)
+
 
 
     def test_can_create_vaults(self):
@@ -900,5 +894,3 @@ class TestVaultAdminSession(unittest.TestCase):
     def test_alias_vault(self):
         """Tests alias_vault"""
         pass
-
-

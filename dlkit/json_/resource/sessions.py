@@ -90,6 +90,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
             cat_name='Bin',
             cat_class=objects.Bin)
         self._kwargs = kwargs
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -365,8 +366,6 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
     resources = property(fget=get_resources)
 
 
-
-
 class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Resource`` objects.
 
@@ -399,6 +398,7 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
             cat_name='Bin',
             cat_class=objects.Bin)
         self._kwargs = kwargs
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -529,8 +529,6 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
         return objects.ResourceList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, ResourceQuerySession):
     """This session provides methods for searching among ``Resource`` objects.
 
@@ -654,8 +652,6 @@ class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, Resourc
         raise errors.Unimplemented()
 
 
-
-
 class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Resources``.
 
@@ -705,6 +701,7 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
             cat_class=objects.Bin)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -1090,8 +1087,6 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         self._alias_id(primary_id=resource_id, equivalent_id=alias_id)
 
 
-
-
 class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSession, osid_sessions.OsidSession):
     """This session defines methods to receive notifications on adds/changes to ``Resource`` objects in this ``Bin``.
 
@@ -1146,6 +1141,7 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         """Make sure the receiver is removed from the listener"""
         del MONGO_LISTENER.receivers[self._ns][self._receiver]
         super(ResourceNotificationSession, self).__del__()
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -1344,8 +1340,6 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         raise errors.Unimplemented()
 
 
-
-
 class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Resource`` to ``Bin`` mappings.
 
@@ -1365,6 +1359,7 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def use_comparative_bin_view(self):
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
@@ -1540,8 +1535,6 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
             self.get_bin_ids_by_resource(resource_id))
 
 
-
-
 class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Resources`` to ``Bins``.
 
@@ -1561,6 +1554,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         self._catalog_name = 'Bin'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_resources(self):
         """Tests if this user can alter resource/bin mappings.
 
@@ -1689,8 +1683,6 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         self._unassign_object_from_catalog(resource_id, bin_id)
 
 
-
-
 class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Resource`` to ``Agent`` mappings.
 
@@ -1719,6 +1711,7 @@ class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sess
             cat_name='Bin',
             cat_class=objects.Bin)
         self._forms = dict()
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -1898,8 +1891,6 @@ class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sess
         return AgentList(agent_list)
 
 
-
-
 class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Resource`` to ``Agents``.
 
@@ -1922,6 +1913,7 @@ class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignme
             cat_name='Bin',
             cat_class=objects.Bin)
         self._forms = dict()
+
     def get_bin_id(self):
         """Gets the ``Bin``  ``Id`` associated with this session.
 
@@ -2047,8 +2039,6 @@ class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignme
         collection.save(resource)
 
 
-
-
 class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Bin`` objects.
 
@@ -2083,6 +2073,7 @@ class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.Osi
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_bins(self):
         """Tests if this user can perform ``Bin`` lookups.
 
@@ -2320,8 +2311,6 @@ class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.Osi
     bins = property(fget=get_bins)
 
 
-
-
 class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Bin`` objects.
 
@@ -2337,6 +2326,7 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_search_bins(self):
         """Tests if this user can perform ``Bin`` searches.
 
@@ -2396,8 +2386,6 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         return objects.BinList(result, runtime=self._runtime)
 
 
-
-
 class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Bins``.
 
@@ -2437,6 +2425,7 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_bins(self):
         """Tests if this user can create ``Bins``.
 
@@ -2756,8 +2745,6 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         self._alias_id(primary_id=bin_id, equivalent_id=alias_id)
 
 
-
-
 class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Bin`` objects.
 
@@ -2800,6 +2787,7 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
                    namespace='CATALOG',
                    identifier='BIN'),
                 proxy=self._proxy)
+
     def get_bin_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -3205,8 +3193,6 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession, osid_sessions.OsidSession):
     """This session defines methods for managing a hierarchy of ``Bin`` objects.
 
@@ -3229,6 +3215,7 @@ class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession,
                    namespace='CATALOG',
                    identifier='BIN'),
                 proxy=self._proxy)
+
     def get_bin_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 

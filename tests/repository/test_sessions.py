@@ -53,6 +53,7 @@ class TestAssetLookupSession(unittest.TestCase):
             cls.svc_mgr.delete_repository(catalog.ident)
 
 
+
     def test_get_repository_id(self):
         """Tests get_repository_id"""
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
@@ -148,8 +149,6 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.asset_ids[0])
 
 
-
-
 class TestAssetQuerySession(unittest.TestCase):
     """Tests for AssetQuerySession"""
 
@@ -181,6 +180,7 @@ class TestAssetQuerySession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -221,8 +221,6 @@ class TestAssetQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_assets_by_query(query).available(), 3)
 
 
-
-
 class TestAssetSearchSession(unittest.TestCase):
     """Tests for AssetSearchSession"""
 
@@ -247,8 +245,6 @@ class TestAssetSearchSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetAdminSession(unittest.TestCase):
     """Tests for AssetAdminSession"""
 
@@ -265,6 +261,7 @@ class TestAssetAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assets():
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -373,8 +370,6 @@ class TestAssetAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetNotificationSession(unittest.TestCase):
     """Tests for AssetNotificationSession"""
 
@@ -407,6 +402,7 @@ class TestAssetNotificationSession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -487,8 +483,6 @@ class TestAssetNotificationSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetRepositorySession(unittest.TestCase):
     """Tests for AssetRepositorySession"""
 
@@ -531,6 +525,7 @@ class TestAssetRepositorySession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -577,8 +572,6 @@ class TestAssetRepositorySession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     """Tests for AssetRepositoryAssignmentSession"""
 
@@ -611,8 +604,6 @@ class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     def test_unassign_asset_from_repository(self):
         """Tests unassign_asset_from_repository"""
         pass
-
-
 
 
 class TestAssetCompositionSession(unittest.TestCase):
@@ -648,6 +639,7 @@ class TestAssetCompositionSession(unittest.TestCase):
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -690,8 +682,6 @@ class TestAssetCompositionSession(unittest.TestCase):
         self.assertEqual(self.catalog.get_compositions_by_asset(self.asset_ids[0]).next().ident, self.composition.ident)
 
 
-
-
 class TestAssetCompositionDesignSession(unittest.TestCase):
     """Tests for AssetCompositionDesignSession"""
 
@@ -729,6 +719,7 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -786,8 +777,6 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
         self.assertEqual(self.catalog.get_composition_assets(self.composition_ids[4]).available(), 3)
 
 
-
-
 class TestCompositionLookupSession(unittest.TestCase):
     """Tests for CompositionLookupSession"""
 
@@ -821,6 +810,7 @@ class TestCompositionLookupSession(unittest.TestCase):
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -934,8 +924,6 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertEqual(self.catalog.get_compositions().available(), 2)
 
 
-
-
 class TestCompositionQuerySession(unittest.TestCase):
     """Tests for CompositionQuerySession"""
 
@@ -967,6 +955,7 @@ class TestCompositionQuerySession(unittest.TestCase):
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -1021,8 +1010,6 @@ class TestCompositionQuerySession(unittest.TestCase):
         self.catalog.update_composition(cfu)
 
 
-
-
 class TestCompositionSearchSession(unittest.TestCase):
     """Tests for CompositionSearchSession"""
 
@@ -1047,8 +1034,6 @@ class TestCompositionSearchSession(unittest.TestCase):
         pass
 
 
-
-
 class TestCompositionAdminSession(unittest.TestCase):
     """Tests for CompositionAdminSession"""
 
@@ -1065,6 +1050,7 @@ class TestCompositionAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
+
 
 
     def test_get_repository_id(self):
@@ -1164,8 +1150,6 @@ class TestCompositionAdminSession(unittest.TestCase):
 
 
 
-
-
 class TestCompositionRepositorySession(unittest.TestCase):
     """Tests for CompositionRepositorySession"""
 
@@ -1208,6 +1192,7 @@ class TestCompositionRepositorySession(unittest.TestCase):
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_use_comparative_composition_repository_view(self):
@@ -1254,8 +1239,6 @@ class TestCompositionRepositorySession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
     """Tests for CompositionRepositoryAssignmentSession"""
 
@@ -1290,8 +1273,6 @@ class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestRepositoryLookupSession(unittest.TestCase):
     """Tests for RepositoryLookupSession"""
 
@@ -1314,6 +1295,7 @@ class TestRepositoryLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -1363,8 +1345,6 @@ class TestRepositoryLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_repositories()
 
 
-
-
 class TestRepositoryQuerySession(unittest.TestCase):
     """Tests for RepositoryQuerySession"""
 
@@ -1382,8 +1362,6 @@ class TestRepositoryQuerySession(unittest.TestCase):
     def test_get_repositories_by_query(self):
         """Tests get_repositories_by_query"""
         pass
-
-
 
 
 class TestRepositoryAdminSession(unittest.TestCase):
@@ -1409,6 +1387,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
+
 
 
     def test_can_create_repositories(self):
@@ -1483,8 +1462,6 @@ class TestRepositoryAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestRepositoryHierarchySession(unittest.TestCase):
     """Tests for RepositoryHierarchySession"""
 
@@ -1507,6 +1484,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_repository(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_repository_hierarchy_id(self):
@@ -1619,8 +1597,6 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         # add some tests on the returned node
 
 
-
-
 class TestRepositoryHierarchyDesignSession(unittest.TestCase):
     """Tests for RepositoryHierarchyDesignSession"""
 
@@ -1643,6 +1619,7 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_repository(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_repository_hierarchy_id(self):
@@ -1682,5 +1659,3 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
     def test_remove_child_repositories(self):
         """Tests remove_child_repositories"""
         pass
-
-

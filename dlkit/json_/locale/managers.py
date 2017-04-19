@@ -405,8 +405,6 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
     source_format_types = property(fget=get_source_format_types)
 
 
-
-
 class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.LocaleManager):
     """The locale manager provides access to locale sessions and provides interoperability tests for various aspects of this service.
 
@@ -439,9 +437,6 @@ class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.Lo
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
-
-
 
 
 class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, locale_managers.LocaleProxyManager):

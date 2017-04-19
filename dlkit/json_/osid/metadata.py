@@ -26,6 +26,7 @@ class Metadata(abc_osid_metadata.Metadata):
     """
     def __init__(self, **kwargs):
         self._kwargs = kwargs
+
     def get_element_id(self):
         """Gets a unique ``Id`` for the data element.
 

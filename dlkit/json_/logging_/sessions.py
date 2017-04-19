@@ -56,6 +56,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         self._leas = lm.get_log_entry_admin_session_for_log(self._catalog_id, proxy=self._proxy)
         self._lels = lm.get_log_entry_lookup_session_for_log(self._catalog_id, proxy=self._proxy)
         self._content_types = lm.get_content_types()
+
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
 
@@ -180,8 +181,6 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         raise errors.Unimplemented()
 
 
-
-
 class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``log entries``."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -197,6 +196,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
             cat_name='Log',
             cat_class=objects.Log)
         self._kwargs = kwargs
+
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
 
@@ -606,8 +606,6 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
     log_entries = property(fget=get_log_entries)
 
 
-
-
 class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among log entries.
 
@@ -635,6 +633,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
             cat_name='Log',
             cat_class=objects.Log)
         self._kwargs = kwargs
+
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
 
@@ -763,8 +762,6 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         return objects.LogEntryList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``LogEntries``.
 
@@ -814,6 +811,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
             cat_class=objects.Log)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_log_id(self):
         """Gets the ``Log``  ``Id`` associated with this session.
 
@@ -1212,8 +1210,6 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         self._alias_id(primary_id=log_entry_id, equivalent_id=alias_id)
 
 
-
-
 class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Log`` objects.
 
@@ -1245,6 +1241,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_logs(self):
         """Tests if this user can perform ``Log`` lookups.
 
@@ -1482,8 +1479,6 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
     logs = property(fget=get_logs)
 
 
-
-
 class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Logs``.
 
@@ -1523,6 +1518,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_logs(self):
         """Tests if this user can create ``Logs``.
 

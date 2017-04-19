@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class ResourceProfile(osid_managers.OsidProfile, resource_managers.ResourceProfi
             return self._provider_manager.get_bin_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_resource_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -145,8 +145,6 @@ class ResourceProfile(osid_managers.OsidProfile, resource_managers.ResourceProfi
     bin_search_record_types = property(fget=get_bin_search_record_types)
 
 
-
-
 class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_managers.ResourceManager):
     """Adapts underlying ResourceManager methodswith authorization checks."""
     def __init__(self):
@@ -159,6 +157,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('RESOURCE', provider_impl)
         # need to add version argument
+
     def get_resource_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -462,8 +461,6 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     resource_demographic_manager = property(fget=get_resource_demographic_manager)
 
 
-
-
 class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, resource_managers.ResourceProxyManager):
     """Adapts underlying ResourceProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -476,6 +473,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('RESOURCE', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_resource_lookup_session(self, proxy):
         # Implemented from azosid template for -

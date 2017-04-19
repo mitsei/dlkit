@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
             return self._provider_manager.get_gradebook_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_grade_system_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -158,8 +158,6 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
     gradebook_search_record_types = property(fget=get_gradebook_search_record_types)
 
 
-
-
 class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers.GradingManager):
     """Adapts underlying GradingManager methodswith authorization checks."""
     def __init__(self):
@@ -172,6 +170,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('GRADING', provider_impl)
         # need to add version argument
+
     def get_grade_system_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -507,8 +506,6 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     grading_transform_manager = property(fget=get_grading_transform_manager)
 
 
-
-
 class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, grading_managers.GradingProxyManager):
     """Adapts underlying GradingProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -521,6 +518,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('GRADING', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_grade_system_lookup_session(self, proxy):
         # Implemented from azosid template for -

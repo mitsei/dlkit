@@ -146,6 +146,7 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
         return obj_map
 
     object_map = property(get_object_map)
+
     def get_display_name(self):
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.
 
@@ -217,8 +218,6 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
 
         """
         return genus_type == Type(idstr=self._my_map['genusTypeId'])
-
-
 
 
 class OsidRelationship(abc_osid_objects.OsidRelationship, OsidObject, osid_markers.Temporal):
@@ -301,8 +300,6 @@ class OsidRelationship(abc_osid_objects.OsidRelationship, OsidObject, osid_marke
     end_reason = property(fget=get_end_reason)
 
 
-
-
 class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, osid_markers.Sourceable, osid_markers.Federateable):
     """``OsidCatalog`` is the top level interface for all OSID catalog-like objects.
 
@@ -343,9 +340,6 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, osid_markers.Sourcea
         OsidObject.__init__(self, **kwargs)
         # Should we initialize Sourceable?
         # Should we initialize Federatable?
-
-
-
 
 
 class OsidRule(abc_osid_objects.OsidRule, OsidObject, osid_markers.Operable):
@@ -412,8 +406,6 @@ class OsidRule(abc_osid_objects.OsidRule, OsidObject, osid_markers.Operable):
         raise errors.IllegalState()
 
     rule = property(fget=get_rule)
-
-
 
 
 class OsidEnabler(abc_osid_objects.OsidEnabler, OsidRule, osid_markers.Temporal):
@@ -618,8 +610,6 @@ class OsidEnabler(abc_osid_objects.OsidEnabler, OsidRule, osid_markers.Temporal)
     demographic = property(fget=get_demographic)
 
 
-
-
 class OsidConstrainer(abc_osid_objects.OsidConstrainer, OsidRule):
     """An ``OsidConstrainer`` marks an interface as a control point to constrain another object.
 
@@ -629,10 +619,6 @@ class OsidConstrainer(abc_osid_objects.OsidConstrainer, OsidRule):
     """
 
 
-
-
-
-
 class OsidProcessor(abc_osid_objects.OsidProcessor, OsidRule):
     """An ``OsidProcessor`` is an interface describing the operation of another object.
 
@@ -640,10 +626,6 @@ class OsidProcessor(abc_osid_objects.OsidProcessor, OsidRule):
     incorporate external logic using a rule.
 
     """
-
-
-
-
 
 
 class OsidGovernator(abc_osid_objects.OsidGovernator, OsidObject, osid_markers.Operable, osid_markers.Sourceable):
@@ -666,10 +648,6 @@ class OsidGovernator(abc_osid_objects.OsidGovernator, OsidObject, osid_markers.O
     rule mapped to this ``OsidGovernator``.
 
     """
-
-
-
-
 
 
 class OsidCompendium(abc_osid_objects.OsidCompendium, OsidObject, osid_markers.Subjugateable):
@@ -773,8 +751,6 @@ class OsidCompendium(abc_osid_objects.OsidCompendium, OsidObject, osid_markers.S
         raise errors.Unimplemented()
 
 
-
-
 class OsidCapsule(abc_osid_objects.OsidCapsule):
     """``OsidCapsule`` wraps other objects.
 
@@ -782,10 +758,6 @@ class OsidCapsule(abc_osid_objects.OsidCapsule):
     semantically unrelated objects from a method.
 
     """
-
-
-
-
 
 
 class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_markers.Suppliable):
@@ -1063,6 +1035,7 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         if set_results is not None and inpt in set_results:
             return True
         return False
+
     def is_for_update(self):
         """Tests if this form is for an update operation.
 
@@ -1200,8 +1173,6 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
     invalid_metadata = property(fget=get_invalid_metadata)
 
 
-
-
 class OsidIdentifiableForm(abc_osid_objects.OsidIdentifiableForm, OsidForm):
     """The ``OsidIdentifiableForm`` is used to create and update identifiable objects.
 
@@ -1209,10 +1180,6 @@ class OsidIdentifiableForm(abc_osid_objects.OsidIdentifiableForm, OsidForm):
     method of a session.
 
     """
-
-
-
-
 
 
 class OsidExtensibleForm(abc_osid_objects.OsidExtensibleForm, OsidForm, osid_markers.Extensible):
@@ -1257,6 +1224,7 @@ class OsidExtensibleForm(abc_osid_objects.OsidExtensibleForm, OsidForm, osid_mar
             return True
         else:
             return False
+
     def get_required_record_types(self):
         """Gets the required record types for this form.
 
@@ -1272,8 +1240,6 @@ class OsidExtensibleForm(abc_osid_objects.OsidExtensibleForm, OsidForm, osid_mar
     required_record_types = property(fget=get_required_record_types)
 
 
-
-
 class OsidBrowsableForm(abc_osid_objects.OsidBrowsableForm, OsidForm):
     """The ``OsidBrowsableForm`` is used to create and update browsable objects.
 
@@ -1281,10 +1247,6 @@ class OsidBrowsableForm(abc_osid_objects.OsidBrowsableForm, OsidForm):
     method of a session.
 
     """
-
-
-
-
 
 
 class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
@@ -1308,6 +1270,7 @@ class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
         # this method is called from descendent __init__
         self._my_map['startDate'] = self._mdata['start_date']['default_date_time_values'][0]
         self._my_map['endDate'] = self._mdata['end_date']['default_date_time_values'][0]
+
     def get_start_date_metadata(self):
         """Gets the metadata for a start date.
 
@@ -1413,22 +1376,12 @@ class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
         }
 
 
-
-
 class OsidSubjugateableForm(abc_osid_objects.OsidSubjugateableForm, OsidForm):
     """This form is used to create and update dependent objects."""
 
 
-
-
-
-
 class OsidAggregateableForm(abc_osid_objects.OsidAggregateableForm, OsidForm):
     """This form is used to create and update assemblages."""
-
-
-
-
 
 
 class OsidContainableForm(abc_osid_objects.OsidContainableForm, OsidForm):
@@ -1445,6 +1398,7 @@ class OsidContainableForm(abc_osid_objects.OsidContainableForm, OsidForm):
 
     def _init_map(self):
         self._my_map['sequestered'] = self._sequestered_default
+
     def get_sequestered_metadata(self):
         """Gets the metadata for the sequestered flag.
 
@@ -1490,8 +1444,6 @@ class OsidContainableForm(abc_osid_objects.OsidContainableForm, OsidForm):
     sequestered = property(fset=set_sequestered, fdel=clear_sequestered)
 
 
-
-
 class OsidSourceableForm(abc_osid_objects.OsidSourceableForm, OsidForm):
     """This form is used to create and update sourceables."""
     def __init__(self):
@@ -1527,6 +1479,7 @@ class OsidSourceableForm(abc_osid_objects.OsidSourceableForm, OsidForm):
             self._my_map['providerId'] = self._provider_default
         self._my_map['brandingIds'] = self._branding_default
         self._my_map['license'] = dict(self._license_default)
+
     def get_provider_metadata(self):
         """Gets the metadata for a provider.
 
@@ -1662,15 +1615,10 @@ class OsidSourceableForm(abc_osid_objects.OsidSourceableForm, OsidForm):
     license_ = property(fset=set_license, fdel=clear_license)
 
 
-
-
 class OsidFederateableForm(abc_osid_objects.OsidFederateableForm, OsidForm):
     """This form is used to create and update federateables."""
     def __init__(self):
         pass
-
-
-
 
 
 class OsidOperableForm(abc_osid_objects.OsidOperableForm, OsidForm):
@@ -1686,6 +1634,7 @@ class OsidOperableForm(abc_osid_objects.OsidOperableForm, OsidForm):
     def _init_map(self):
         # Need to implement someday
         pass
+
     def get_enabled_metadata(self):
         """Gets the metadata for the enabled flag.
 
@@ -1755,8 +1704,6 @@ class OsidOperableForm(abc_osid_objects.OsidOperableForm, OsidForm):
         raise errors.Unimplemented()
 
     disabled = property(fset=set_disabled, fdel=clear_disabled)
-
-
 
 
 class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, OsidExtensibleForm, OsidBrowsableForm):
@@ -1837,6 +1784,7 @@ class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, Osid
         self._my_map['description'] = dict(self._description_default)
         self._my_map['genusTypeId'] = self._genus_type_default
         OsidExtensibleForm._init_map(self, record_types)
+
     def get_display_name_metadata(self):
         """Gets the metadata for a display name.
 
@@ -1971,8 +1919,6 @@ class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, Osid
     genus_type = property(fset=set_genus_type, fdel=clear_genus_type)
 
 
-
-
 class OsidRelationshipForm(abc_osid_objects.OsidRelationshipForm, OsidObjectForm, OsidTemporalForm):
     """This form is used to create and update relationshps."""
     def __init__(self, **kwargs):
@@ -1986,9 +1932,6 @@ class OsidRelationshipForm(abc_osid_objects.OsidRelationshipForm, OsidObjectForm
     def _init_map(self, record_types=None, **kwargs):
         OsidTemporalForm._init_map(self)
         OsidObjectForm._init_map(self, record_types=record_types, **kwargs)
-
-
-
 
 
 class OsidCatalogForm(abc_osid_objects.OsidCatalogForm, OsidObjectForm, OsidSourceableForm, OsidFederateableForm):
@@ -2007,9 +1950,6 @@ class OsidCatalogForm(abc_osid_objects.OsidCatalogForm, OsidObjectForm, OsidSour
         OsidSourceableForm._init_map(self, **kwargs)
         OsidFederateableForm._init_map(self)
         OsidObjectForm._init_map(self, record_types)
-
-
-
 
 
 class OsidRuleForm(abc_osid_objects.OsidRuleForm, OsidObjectForm, OsidOperableForm):
@@ -2050,8 +1990,6 @@ class OsidRuleForm(abc_osid_objects.OsidRuleForm, OsidObjectForm, OsidOperableFo
         raise errors.Unimplemented()
 
     rule = property(fset=set_rule, fdel=clear_rule)
-
-
 
 
 class OsidEnablerForm(abc_osid_objects.OsidEnablerForm, OsidRuleForm, OsidTemporalForm):
@@ -2202,30 +2140,16 @@ class OsidEnablerForm(abc_osid_objects.OsidEnablerForm, OsidRuleForm, OsidTempor
     demographic = property(fset=set_demographic, fdel=clear_demographic)
 
 
-
-
 class OsidConstrainerForm(abc_osid_objects.OsidConstrainerForm, OsidRuleForm):
     """This form is used to create and update constrainers."""
-
-
-
-
 
 
 class OsidProcessorForm(abc_osid_objects.OsidProcessorForm, OsidRuleForm):
     """This form is used to create and update processors."""
 
 
-
-
-
-
 class OsidGovernatorForm(abc_osid_objects.OsidGovernatorForm, OsidObjectForm, OsidOperableForm, OsidSourceableForm):
     """This form is used to create and update governators."""
-
-
-
-
 
 
 class OsidCompendiumForm(abc_osid_objects.OsidCompendiumForm, OsidObjectForm, OsidSubjugateableForm):
@@ -2374,14 +2298,8 @@ class OsidCompendiumForm(abc_osid_objects.OsidCompendiumForm, OsidObjectForm, Os
     extrapolated = property(fset=set_extrapolated, fdel=clear_extrapolated)
 
 
-
-
 class OsidCapsuleForm(abc_osid_objects.OsidCapsuleForm, OsidForm):
     """This form is used to create and update capsules."""
-
-
-
-
 
 
 class OsidList(abc_osid_objects.OsidList):
@@ -2479,6 +2397,7 @@ class OsidList(abc_osid_objects.OsidList):
     def len(self):
         """Returns number of available elements"""
         return self.available()
+
     def has_next(self):
         """Tests if there are more elements in this list.
 
@@ -2552,8 +2471,6 @@ class OsidList(abc_osid_objects.OsidList):
                 self.next()
 
 
-
-
 class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_markers.Containable):
     """A node interface for hierarchical objects.
 
@@ -2571,6 +2488,7 @@ class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_marker
     id_ = property(fget=get_id)
 
     ident = property(fget=get_id)
+
     def is_root(self):
         """Tests if this node is a root in the hierarchy (has no parents).
 

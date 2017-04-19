@@ -10,6 +10,7 @@ class TestGrade(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
@@ -41,10 +42,9 @@ class TestGrade(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeForm(unittest.TestCase):
     """Tests for GradeForm"""
+
 
 
 
@@ -99,8 +99,6 @@ class TestGradeForm(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeList(unittest.TestCase):
     """Tests for GradeList"""
 
@@ -115,10 +113,9 @@ class TestGradeList(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeSystem(unittest.TestCase):
     """Tests for GradeSystem"""
+
 
 
 
@@ -158,10 +155,9 @@ class TestGradeSystem(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeSystemForm(unittest.TestCase):
     """Tests for GradeSystemForm"""
+
 
 
 
@@ -231,8 +227,6 @@ class TestGradeSystemForm(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeSystemList(unittest.TestCase):
     """Tests for GradeSystemList"""
 
@@ -247,10 +241,9 @@ class TestGradeSystemList(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntry(unittest.TestCase):
     """Tests for GradeEntry"""
+
 
 
 
@@ -350,10 +343,9 @@ class TestGradeEntry(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntryForm(unittest.TestCase):
     """Tests for GradeEntryForm"""
+
 
 
 
@@ -408,8 +400,6 @@ class TestGradeEntryForm(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntryList(unittest.TestCase):
     """Tests for GradeEntryList"""
 
@@ -424,10 +414,9 @@ class TestGradeEntryList(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumn(unittest.TestCase):
     """Tests for GradebookColumn"""
+
 
 
 
@@ -447,10 +436,9 @@ class TestGradebookColumn(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnForm(unittest.TestCase):
     """Tests for GradebookColumnForm"""
+
 
 
 
@@ -475,8 +463,6 @@ class TestGradebookColumnForm(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnList(unittest.TestCase):
     """Tests for GradebookColumnList"""
 
@@ -491,10 +477,9 @@ class TestGradebookColumnList(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnSummary(unittest.TestCase):
     """Tests for GradebookColumnSummary"""
+
 
 
 
@@ -544,10 +529,9 @@ class TestGradebookColumnSummary(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebook(unittest.TestCase):
     """Tests for Gradebook"""
+
 
 
 
@@ -557,10 +541,9 @@ class TestGradebook(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookForm(unittest.TestCase):
     """Tests for GradebookForm"""
+
 
 
 
@@ -568,8 +551,6 @@ class TestGradebookForm(unittest.TestCase):
     def test_get_gradebook_form_record(self):
         """Tests get_gradebook_form_record"""
         pass
-
-
 
 
 class TestGradebookList(unittest.TestCase):
@@ -584,8 +565,6 @@ class TestGradebookList(unittest.TestCase):
     def test_get_next_gradebooks(self):
         """Tests get_next_gradebooks"""
         pass
-
-
 
 
 class TestGradebookNode(unittest.TestCase):
@@ -607,8 +586,6 @@ class TestGradebookNode(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookNodeList(unittest.TestCase):
     """Tests for GradebookNodeList"""
 
@@ -621,5 +598,3 @@ class TestGradebookNodeList(unittest.TestCase):
     def test_get_next_gradebook_nodes(self):
         """Tests get_next_gradebook_nodes"""
         pass
-
-

@@ -24,8 +24,6 @@ class TestResourceSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceSearchResults(unittest.TestCase):
     """Tests for ResourceSearchResults"""
 
@@ -43,8 +41,6 @@ class TestResourceSearchResults(unittest.TestCase):
     def test_get_resource_search_results_record(self):
         """Tests get_resource_search_results_record"""
         pass
-
-
 
 
 class TestBinSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestBinSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestBinSearchResults(unittest.TestCase):
     """Tests for BinSearchResults"""
 
@@ -85,5 +79,3 @@ class TestBinSearchResults(unittest.TestCase):
     def test_get_bin_search_results_record(self):
         """Tests get_bin_search_results_record"""
         pass
-
-

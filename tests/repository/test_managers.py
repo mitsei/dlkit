@@ -25,6 +25,7 @@ class TestRepositoryProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_asset_lookup(self):
         """Tests supports_asset_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_asset_lookup(), bool))
@@ -142,8 +143,6 @@ class TestRepositoryProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_coordinate_types(), abc_type_list))
 
 
-
-
 class TestRepositoryManager(unittest.TestCase):
     """Tests for RepositoryManager"""
 
@@ -161,6 +160,7 @@ class TestRepositoryManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_repository(cls.catalog_id)
+
 
 
     def test_get_asset_lookup_session(self):
@@ -355,8 +355,6 @@ class TestRepositoryManager(unittest.TestCase):
             self.svc_mgr.get_repository_rules_manager()
 
 
-
-
 class TestRepositoryProxyManager(unittest.TestCase):
     """Tests for RepositoryProxyManager"""
 
@@ -373,6 +371,7 @@ class TestRepositoryProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_repository(cls.catalog_id)
+
 
 
     def test_get_asset_lookup_session(self):
@@ -581,5 +580,3 @@ class TestRepositoryProxyManager(unittest.TestCase):
         #     self.mgr.get_repository_rules_proxy_manager()
         if self.svc_mgr.supports_repository_rules():
             self.svc_mgr.get_repository_rules_proxy_manager()
-
-

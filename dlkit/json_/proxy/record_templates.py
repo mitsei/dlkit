@@ -25,10 +25,6 @@ class ProxyRecord(abc_proxy_records.ProxyRecord, osid_records.OsidRecord):
     """
 
 
-
-
-
-
 class ProxyConditionRecord(abc_proxy_records.ProxyConditionRecord, osid_records.OsidRecord):
     """A record for a ``ProxyCondition``.
 

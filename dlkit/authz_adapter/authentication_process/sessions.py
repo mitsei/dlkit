@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -25,8 +24,6 @@ class AuthenticationAcquisitionSession(abc_authentication_process_sessions.Authe
     authentication = property(fget=get_authentication)
 
 
-
-
 class AuthenticationValidationSession(abc_authentication_process_sessions.AuthenticationValidationSession, osid_sessions.OsidSession):
     """Adapts underlying AuthenticationValidationSession methodswith authorization checks."""
 
@@ -42,8 +39,6 @@ class AuthenticationValidationSession(abc_authentication_process_sessions.Authen
     @raise_null_argument
     def get_challenge_data(self, input_):
         raise Unimplemented()
-
-
 
 
 class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession, osid_sessions.OsidSession):
@@ -70,7 +65,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
 
     def _get_unauth_agency_ids(self, agency_id):
         if self._can('lookup', agency_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(agency_id)]
         if self._hierarchy_session.has_child_agencies(agency_id):
@@ -92,6 +87,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         for agency_id in self._unauth_agency_ids:
             query.match_agency_id(agency_id, match=False)
         return self._query_session.get_trusts_by_query(query)
+
     def get_agency_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -149,7 +145,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_trust(trust_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         query.match_id(trust_id, match=True)
         results = self._try_harder(query)
@@ -163,7 +159,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_trusts_by_ids(trust_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         for trust_id in (trust_ids):
             query.match_id(trust_id, match=True)
@@ -175,7 +171,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_trusts_by_genus_type(trust_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         query.match_genus_type(trust_genus_type, match=True)
         return self._try_harder(query)
@@ -186,7 +182,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_trusts_by_parent_genus_type(trust_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         query.match_parent_genus_type(trust_genus_type, match=True)
         return self._try_harder(query)
@@ -197,7 +193,7 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_trusts_by_record_type(trust_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         query.match_record_type(trust_record_type, match=True)
         return self._try_harder(query)
@@ -211,14 +207,12 @@ class TrustLookupSession(abc_authentication_process_sessions.TrustLookupSession,
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_trusts()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_trust_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     trusts = property(fget=get_trusts)
-
-
 
 
 class CircleOfTrustSession(abc_authentication_process_sessions.CircleOfTrustSession, osid_sessions.OsidSession):

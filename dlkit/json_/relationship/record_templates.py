@@ -25,10 +25,6 @@ class RelationshipRecord(abc_relationship_records.RelationshipRecord, osid_recor
     """
 
 
-
-
-
-
 class RelationshipQueryRecord(abc_relationship_records.RelationshipQueryRecord, osid_records.OsidRecord):
     """A record for a ``RelationshipQuery``.
 
@@ -36,10 +32,6 @@ class RelationshipQueryRecord(abc_relationship_records.RelationshipQueryRecord, 
     underlying object.
 
     """
-
-
-
-
 
 
 class RelationshipFormRecord(abc_relationship_records.RelationshipFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class RelationshipFormRecord(abc_relationship_records.RelationshipFormRecord, os
     """
 
 
-
-
-
-
 class RelationshipSearchRecord(abc_relationship_records.RelationshipSearchRecord, osid_records.OsidRecord):
     """A record for a ``RelationshipSearch``.
 
@@ -62,10 +50,6 @@ class RelationshipSearchRecord(abc_relationship_records.RelationshipSearchRecord
     underlying object.
 
     """
-
-
-
-
 
 
 class FamilyRecord(abc_relationship_records.FamilyRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class FamilyRecord(abc_relationship_records.FamilyRecord, osid_records.OsidRecor
     """
 
 
-
-
-
-
 class FamilyQueryRecord(abc_relationship_records.FamilyQueryRecord, osid_records.OsidRecord):
     """A record for a ``FamilyQuery``.
 
@@ -90,10 +70,6 @@ class FamilyQueryRecord(abc_relationship_records.FamilyQueryRecord, osid_records
     """
 
 
-
-
-
-
 class FamilyFormRecord(abc_relationship_records.FamilyFormRecord, osid_records.OsidRecord):
     """A record for a ``FamilyForm``.
 
@@ -101,10 +77,6 @@ class FamilyFormRecord(abc_relationship_records.FamilyFormRecord, osid_records.O
     underlying object.
 
     """
-
-
-
-
 
 
 class FamilySearchRecord(abc_relationship_records.FamilySearchRecord, osid_records.OsidRecord):

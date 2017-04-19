@@ -72,6 +72,7 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
         self._my_map['displayLabel'] = self._display_label_metadata['default_string_values'][0]
         self._my_map['description'] = self._description_metadata['default_string_values'][0]
         self._my_map['domain'] = self._domain_metadata['default_string_values'][0]
+
     def get_display_name_metadata(self):
         """Gets the metadata for the display name.
 
@@ -244,8 +245,6 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
         raise errors.Unimplemented()
 
     domain = property(fset=set_domain, fdel=clear_domain)
-
-
 
 
 class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):

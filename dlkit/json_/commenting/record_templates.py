@@ -25,10 +25,6 @@ class CommentRecord(abc_commenting_records.CommentRecord, osid_records.OsidRecor
     """
 
 
-
-
-
-
 class CommentQueryRecord(abc_commenting_records.CommentQueryRecord, osid_records.OsidRecord):
     """A record for a ``CommentQuery``.
 
@@ -36,10 +32,6 @@ class CommentQueryRecord(abc_commenting_records.CommentQueryRecord, osid_records
     underlying object.
 
     """
-
-
-
-
 
 
 class CommentFormRecord(abc_commenting_records.CommentFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class CommentFormRecord(abc_commenting_records.CommentFormRecord, osid_records.O
     """
 
 
-
-
-
-
 class CommentSearchRecord(abc_commenting_records.CommentSearchRecord, osid_records.OsidRecord):
     """A record for a ``CommentSearch``.
 
@@ -62,10 +50,6 @@ class CommentSearchRecord(abc_commenting_records.CommentSearchRecord, osid_recor
     underlying object.
 
     """
-
-
-
-
 
 
 class BookRecord(abc_commenting_records.BookRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class BookRecord(abc_commenting_records.BookRecord, osid_records.OsidRecord):
     """
 
 
-
-
-
-
 class BookQueryRecord(abc_commenting_records.BookQueryRecord, osid_records.OsidRecord):
     """A record for a ``BookQuery``.
 
@@ -90,10 +70,6 @@ class BookQueryRecord(abc_commenting_records.BookQueryRecord, osid_records.OsidR
     """
 
 
-
-
-
-
 class BookFormRecord(abc_commenting_records.BookFormRecord, osid_records.OsidRecord):
     """A record for a ``BookForm``.
 
@@ -101,10 +77,6 @@ class BookFormRecord(abc_commenting_records.BookFormRecord, osid_records.OsidRec
     underlying object.
 
     """
-
-
-
-
 
 
 class BookSearchRecord(abc_commenting_records.BookSearchRecord, osid_records.OsidRecord):

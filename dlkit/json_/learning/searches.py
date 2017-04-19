@@ -68,8 +68,6 @@ class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidS
         raise errors.Unimplemented()
 
 
-
-
 class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -118,8 +116,6 @@ class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSearch):
@@ -174,8 +170,6 @@ class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
-
-
 class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -224,8 +218,6 @@ class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_se
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.OsidSearch):
@@ -280,8 +272,6 @@ class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.O
         raise errors.Unimplemented()
 
 
-
-
 class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -330,8 +320,6 @@ class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, o
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_searches.OsidSearch):
@@ -385,8 +373,6 @@ class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_search
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class ObjectiveBankSearchResults(abc_learning_searches.ObjectiveBankSearchResults, osid_searches.OsidSearchResults):

@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
             return self._provider_manager.get_book_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_comment_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -96,8 +96,6 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
     book_search_record_types = property(fget=get_book_search_record_types)
 
 
-
-
 class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting_managers.CommentingManager):
     """Adapts underlying CommentingManager methodswith authorization checks."""
     def __init__(self):
@@ -110,6 +108,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('COMMENTING', provider_impl)
         # need to add version argument
+
     def get_comment_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -277,8 +276,6 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
     commenting_batch_manager = property(fget=get_commenting_batch_manager)
 
 
-
-
 class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, commenting_managers.CommentingProxyManager):
     """Adapts underlying CommentingProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -291,6 +288,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('COMMENTING', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_comment_lookup_session(self, proxy):
         # Implemented from azosid template for -

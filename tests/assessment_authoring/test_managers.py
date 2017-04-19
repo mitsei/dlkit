@@ -25,6 +25,7 @@ class TestAssessmentAuthoringProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_assessment_part_lookup(self):
         """Tests supports_assessment_part_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_assessment_part_lookup(), bool))
@@ -74,8 +75,6 @@ class TestAssessmentAuthoringProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_sequence_rule_enabler_search_record_types(), abc_type_list))
 
 
-
-
 class TestAssessmentAuthoringManager(unittest.TestCase):
     """Tests for AssessmentAuthoringManager"""
 
@@ -92,6 +91,7 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
+
 
 
     def test_get_assessment_part_lookup_session(self):
@@ -151,8 +151,6 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentAuthoringProxyManager(unittest.TestCase):
     """Tests for AssessmentAuthoringProxyManager"""
 
@@ -169,6 +167,7 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
+
 
 
     def test_get_assessment_part_lookup_session(self):
@@ -234,5 +233,3 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
     def test_get_sequence_rule_admin_session_for_bank(self):
         """Tests get_sequence_rule_admin_session_for_bank"""
         pass
-
-

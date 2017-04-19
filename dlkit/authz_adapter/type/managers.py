@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented, OperationFailed
@@ -20,16 +19,8 @@ class TypeProfile(osid_managers.OsidProfile, type_managers.TypeProfile):
     """Adapts underlying TypeProfile methodswith authorization checks."""
 
 
-
-
-
-
 class TypeManager(osid_managers.OsidManager, TypeProfile, type_managers.TypeManager):
     """Adapts underlying TypeManager methodswith authorization checks."""
-
-
-
-
 
 
 class TypeProxyManager(osid_managers.OsidProxyManager, TypeProfile, type_managers.TypeProxyManager):

@@ -25,6 +25,7 @@ class TestResourceProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_resource_lookup(self):
         """Tests supports_resource_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_resource_lookup(), bool))
@@ -106,8 +107,6 @@ class TestResourceProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_bin_search_record_types(), abc_type_list))
 
 
-
-
 class TestResourceManager(unittest.TestCase):
     """Tests for ResourceManager"""
 
@@ -125,6 +124,7 @@ class TestResourceManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bin(cls.catalog_id)
+
 
 
     def test_get_resource_lookup_session(self):
@@ -263,8 +263,6 @@ class TestResourceManager(unittest.TestCase):
             self.svc_mgr.get_resource_demographic_manager()
 
 
-
-
 class TestResourceProxyManager(unittest.TestCase):
     """Tests for ResourceProxyManager"""
 
@@ -281,6 +279,7 @@ class TestResourceProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bin(cls.catalog_id)
+
 
 
     def test_get_resource_lookup_session(self):
@@ -430,5 +429,3 @@ class TestResourceProxyManager(unittest.TestCase):
         #     self.mgr.get_resource_demographic_proxy_manager()
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_proxy_manager()
-
-

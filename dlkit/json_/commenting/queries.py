@@ -36,6 +36,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_reference_id(self, source_id, match):
         """Sets reference ``Id``.
@@ -378,8 +379,6 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         raise errors.Unimplemented()
 
 
-
-
 class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching books.
 
@@ -409,6 +408,7 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_comment_id(self, comment_id, match):
         """Sets the comment ``Id`` for this query to match comments assigned to books.

@@ -10,6 +10,7 @@ class TestGradeQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
         """Tests match_grade_system_id"""
@@ -136,10 +137,9 @@ class TestGradeQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeSystemQuery(unittest.TestCase):
     """Tests for GradeSystemQuery"""
+
 
 
 
@@ -274,10 +274,9 @@ class TestGradeSystemQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntryQuery(unittest.TestCase):
     """Tests for GradeEntryQuery"""
+
 
 
 
@@ -532,10 +531,9 @@ class TestGradeEntryQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnQuery(unittest.TestCase):
     """Tests for GradebookColumnQuery"""
+
 
 
 
@@ -643,8 +641,6 @@ class TestGradebookColumnQuery(unittest.TestCase):
     def test_get_gradebook_column_query_record(self):
         """Tests get_gradebook_column_query_record"""
         pass
-
-
 
 
 class TestGradebookColumnSummaryQuery(unittest.TestCase):
@@ -831,8 +827,6 @@ class TestGradebookColumnSummaryQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookQuery(unittest.TestCase):
     """Tests for GradebookQuery"""
 
@@ -990,5 +984,3 @@ class TestGradebookQuery(unittest.TestCase):
     def test_get_gradebook_query_record(self):
         """Tests get_gradebook_query_record"""
         pass
-
-

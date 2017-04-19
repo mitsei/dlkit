@@ -10,12 +10,11 @@ class TestQuestion(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_question_record(self):
         """Tests get_question_record"""
         pass
-
-
 
 
 
@@ -25,12 +24,11 @@ class TestQuestionForm(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_question_form_record(self):
         """Tests get_question_form_record"""
         pass
-
-
 
 
 class TestQuestionList(unittest.TestCase):
@@ -47,10 +45,9 @@ class TestQuestionList(unittest.TestCase):
         pass
 
 
-
-
 class TestAnswer(unittest.TestCase):
     """Tests for Answer"""
+
 
 
 
@@ -60,10 +57,9 @@ class TestAnswer(unittest.TestCase):
         pass
 
 
-
-
 class TestAnswerForm(unittest.TestCase):
     """Tests for AnswerForm"""
+
 
 
 
@@ -71,8 +67,6 @@ class TestAnswerForm(unittest.TestCase):
     def test_get_answer_form_record(self):
         """Tests get_answer_form_record"""
         pass
-
-
 
 
 class TestAnswerList(unittest.TestCase):
@@ -89,10 +83,9 @@ class TestAnswerList(unittest.TestCase):
         pass
 
 
-
-
 class TestItem(unittest.TestCase):
     """Tests for Item"""
+
 
 
 
@@ -134,10 +127,9 @@ class TestItem(unittest.TestCase):
         pass
 
 
-
-
 class TestItemForm(unittest.TestCase):
     """Tests for ItemForm"""
+
 
 
 
@@ -162,8 +154,6 @@ class TestItemForm(unittest.TestCase):
         pass
 
 
-
-
 class TestItemList(unittest.TestCase):
     """Tests for ItemList"""
 
@@ -178,10 +168,9 @@ class TestItemList(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessment(unittest.TestCase):
     """Tests for Assessment"""
+
 
 
 
@@ -216,10 +205,9 @@ class TestAssessment(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentForm(unittest.TestCase):
     """Tests for AssessmentForm"""
+
 
 
 
@@ -259,8 +247,6 @@ class TestAssessmentForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentList(unittest.TestCase):
     """Tests for AssessmentList"""
 
@@ -275,10 +261,9 @@ class TestAssessmentList(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOffered(unittest.TestCase):
     """Tests for AssessmentOffered"""
+
 
 
 
@@ -395,10 +380,9 @@ class TestAssessmentOffered(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOfferedForm(unittest.TestCase):
     """Tests for AssessmentOfferedForm"""
+
 
 
 
@@ -527,8 +511,6 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOfferedList(unittest.TestCase):
     """Tests for AssessmentOfferedList"""
 
@@ -543,10 +525,9 @@ class TestAssessmentOfferedList(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTaken(unittest.TestCase):
     """Tests for AssessmentTaken"""
+
 
 
 
@@ -673,10 +654,9 @@ class TestAssessmentTaken(unittest.TestCase):
 
 
 
-
-
 class TestAssessmentTakenForm(unittest.TestCase):
     """Tests for AssessmentTakenForm"""
+
 
 
 
@@ -701,8 +681,6 @@ class TestAssessmentTakenForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTakenList(unittest.TestCase):
     """Tests for AssessmentTakenList"""
 
@@ -717,10 +695,9 @@ class TestAssessmentTakenList(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentSection(unittest.TestCase):
     """Tests for AssessmentSection"""
+
 
 
 
@@ -760,8 +737,6 @@ class TestAssessmentSection(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentSectionList(unittest.TestCase):
     """Tests for AssessmentSectionList"""
 
@@ -776,10 +751,9 @@ class TestAssessmentSectionList(unittest.TestCase):
         pass
 
 
-
-
 class TestBank(unittest.TestCase):
     """Tests for Bank"""
+
 
 
 
@@ -789,10 +763,9 @@ class TestBank(unittest.TestCase):
         pass
 
 
-
-
 class TestBankForm(unittest.TestCase):
     """Tests for BankForm"""
+
 
 
 
@@ -800,8 +773,6 @@ class TestBankForm(unittest.TestCase):
     def test_get_bank_form_record(self):
         """Tests get_bank_form_record"""
         pass
-
-
 
 
 class TestBankList(unittest.TestCase):
@@ -816,8 +787,6 @@ class TestBankList(unittest.TestCase):
     def test_get_next_banks(self):
         """Tests get_next_banks"""
         pass
-
-
 
 
 class TestBankNode(unittest.TestCase):
@@ -839,8 +808,6 @@ class TestBankNode(unittest.TestCase):
         pass
 
 
-
-
 class TestBankNodeList(unittest.TestCase):
     """Tests for BankNodeList"""
 
@@ -855,8 +822,6 @@ class TestBankNodeList(unittest.TestCase):
         pass
 
 
-
-
 class TestResponseList(unittest.TestCase):
     """Tests for ResponseList"""
 
@@ -869,5 +834,3 @@ class TestResponseList(unittest.TestCase):
     def test_get_next_responses(self):
         """Tests get_next_responses"""
         pass
-
-

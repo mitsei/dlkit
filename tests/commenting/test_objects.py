@@ -10,6 +10,7 @@ class TestComment(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_reference_id(self):
         """Tests get_reference_id"""
@@ -61,10 +62,9 @@ class TestComment(unittest.TestCase):
         pass
 
 
-
-
 class TestCommentForm(unittest.TestCase):
     """Tests for CommentForm"""
+
 
 
 
@@ -104,8 +104,6 @@ class TestCommentForm(unittest.TestCase):
         pass
 
 
-
-
 class TestCommentList(unittest.TestCase):
     """Tests for CommentList"""
 
@@ -120,10 +118,9 @@ class TestCommentList(unittest.TestCase):
         pass
 
 
-
-
 class TestBook(unittest.TestCase):
     """Tests for Book"""
+
 
 
 
@@ -133,10 +130,9 @@ class TestBook(unittest.TestCase):
         pass
 
 
-
-
 class TestBookForm(unittest.TestCase):
     """Tests for BookForm"""
+
 
 
 
@@ -144,8 +140,6 @@ class TestBookForm(unittest.TestCase):
     def test_get_book_form_record(self):
         """Tests get_book_form_record"""
         pass
-
-
 
 
 class TestBookList(unittest.TestCase):
@@ -160,8 +154,6 @@ class TestBookList(unittest.TestCase):
     def test_get_next_books(self):
         """Tests get_next_books"""
         pass
-
-
 
 
 class TestBookNode(unittest.TestCase):
@@ -183,8 +175,6 @@ class TestBookNode(unittest.TestCase):
         pass
 
 
-
-
 class TestBookNodeList(unittest.TestCase):
     """Tests for BookNodeList"""
 
@@ -197,5 +187,3 @@ class TestBookNodeList(unittest.TestCase):
     def test_get_next_book_nodes(self):
         """Tests get_next_book_nodes"""
         pass
-
-

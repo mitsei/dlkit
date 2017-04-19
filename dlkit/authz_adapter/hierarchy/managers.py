@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
             return self._provider_manager.get_hierarchy_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_hierarchy_traversal(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -67,8 +67,6 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
 
 
-
-
 class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_managers.HierarchyManager):
     """Adapts underlying HierarchyManager methodswith authorization checks."""
     def __init__(self):
@@ -81,6 +79,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('HIERARCHY', provider_impl)
         # need to add version argument
+
     def get_hierarchy_traversal_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -164,8 +163,6 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
 
-
-
 class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
     """Adapts underlying HierarchyProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -178,6 +175,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('HIERARCHY', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_hierarchy_traversal_session(self, proxy):
         # Implemented from azosid template for -

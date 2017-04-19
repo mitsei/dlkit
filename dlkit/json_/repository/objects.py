@@ -124,6 +124,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
             except AttributeError:
                 raise AttributeError()
         # HOW TO PASS TO EXTENSIBLE!!!!
+
     def get_title(self):
         """Gets the proper title of this asset.
 
@@ -538,8 +539,6 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
     object_map = property(fget=get_object_map)
 
 
-
-
 class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, osid_objects.OsidAggregateableForm, osid_objects.OsidSourceableForm):
     """This is the form for creating and updating ``Assets``.
 
@@ -603,6 +602,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         self._my_map['compositionId'] = self._composition_default
         self._my_map['published'] = self._published_default
         self._my_map['assetContents'] = []
+
     def get_title_metadata(self):
         """Gets the metadata for an asset title.
 
@@ -1295,8 +1295,6 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         return self._get_record(asset_record_type)
 
 
-
-
 class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssetList`` provides a means for accessing ``Asset`` elements sequentially either one at a time or many at a time.
 
@@ -1347,8 +1345,6 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject, osid_markers.Subjugateable):
     """``AssetContent`` represents a version of content represented by an ``Asset``.
 
@@ -1366,6 +1362,7 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ASSET_CONTENT', **kwargs)
         self._catalog_name = 'Repository'
+
     def get_asset_id(self):
         """Gets the ``Asset Id`` corresponding to this content.
 
@@ -1513,8 +1510,6 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         osid_objects.OsidObject._delete(self)
 
 
-
-
 class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
     """This is the form for creating and updating content for ``AssetContent``.
 
@@ -1549,6 +1544,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         self._my_map['accessibilityTypeId'] = self._accessibility_type_default
         self._my_map['assignedRepositoryIds'] = [str(kwargs['repository_id'])]
         self._my_map['assetId'] = str(kwargs['asset_id'])
+
     def get_accessibility_type_metadata(self):
         """Gets the metadata for an accessibility type.
 
@@ -1729,8 +1725,6 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         return self._get_record(asset_content_record_type)
 
 
-
-
 class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssetContentList`` provides a means for accessing ``AssetContent`` elements sequentially either one at a time or many at a time.
 
@@ -1783,8 +1777,6 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
         return self._get_next_n(n)
 
 
-
-
 class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, osid_markers.Containable, osid_markers.Operable, osid_markers.Sourceable):
     """A ``Composition`` represents an authenticatable identity.
 
@@ -1797,6 +1789,7 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='COMPOSITION', **kwargs)
         self._catalog_name = 'Repository'
+
     def get_children_ids(self):
         """Gets the child ``Ids`` of this composition.
 
@@ -1863,8 +1856,6 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
     object_map = property(fget=get_object_map)
 
 
-
-
 class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidObjectForm, osid_objects.OsidContainableForm, osid_objects.OsidOperableForm, osid_objects.OsidSourceableForm):
     """This is the form for creating and updating ``Compositions``.
 
@@ -1900,6 +1891,7 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['childIds'] = self._children_default
         self._my_map['assignedRepositoryIds'] = [str(kwargs['repository_id'])]
+
     @utilities.arguments_not_none
     def get_composition_form_record(self, composition_record_type):
         """Gets the ``CompositionFormRecord`` corresponding to the given repository record ``Type``.
@@ -1969,8 +1961,6 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
     children = property(fset=set_children, fdel=clear_children)
 
 
-
-
 class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``CompositionList`` provides a means for accessing ``Composition`` elements sequentially either one at a time or many at a time.
 
@@ -2023,14 +2013,13 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
         return self._get_next_n(n)
 
 
-
-
 class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
     """A repository defines a collection of assets."""
     _namespace = 'repository.Repository'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='REPOSITORY', **kwargs)
+
     @utilities.arguments_not_none
     def get_repository_record(self, repository_record_type):
         """Gets the record corresponding to the given ``Repository`` record ``Type``.
@@ -2053,8 +2042,6 @@ class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCatalogForm):
@@ -2083,6 +2070,7 @@ class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCat
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_repository_form_record(self, repository_record_type):
         """Gets the ``RepositoryFormRecord`` corresponding to the given repository record ``Type``.
@@ -2099,8 +2087,6 @@ class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCat
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidList):
@@ -2155,8 +2141,6 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
         return self._get_next_n(n)
 
 
-
-
 class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -2181,6 +2165,7 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
         for repository_node in self.get_child_repository_nodes():
             node_map['childNodes'].append(repository_node.get_object_node_map())
         return node_map
+
     def get_repository(self):
         """Gets the ``Repository`` at this node.
 
@@ -2233,8 +2218,6 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
         return RepositoryNodeList(parent_repository_nodes)
 
     child_repository_nodes = property(fget=get_child_repository_nodes)
-
-
 
 
 class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects.OsidList):

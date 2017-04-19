@@ -10,6 +10,7 @@ class TestResource(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_is_group(self):
         """Tests is_group"""
@@ -41,10 +42,9 @@ class TestResource(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceForm(unittest.TestCase):
     """Tests for ResourceForm"""
+
 
 
 
@@ -84,8 +84,6 @@ class TestResourceForm(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceList(unittest.TestCase):
     """Tests for ResourceList"""
 
@@ -98,8 +96,6 @@ class TestResourceList(unittest.TestCase):
     def test_get_next_resources(self):
         """Tests get_next_resources"""
         pass
-
-
 
 
 class TestResourceNode(unittest.TestCase):
@@ -121,8 +117,6 @@ class TestResourceNode(unittest.TestCase):
         pass
 
 
-
-
 class TestResourceNodeList(unittest.TestCase):
     """Tests for ResourceNodeList"""
 
@@ -137,10 +131,9 @@ class TestResourceNodeList(unittest.TestCase):
         pass
 
 
-
-
 class TestBin(unittest.TestCase):
     """Tests for Bin"""
+
 
 
 
@@ -150,10 +143,9 @@ class TestBin(unittest.TestCase):
         pass
 
 
-
-
 class TestBinForm(unittest.TestCase):
     """Tests for BinForm"""
+
 
 
 
@@ -161,8 +153,6 @@ class TestBinForm(unittest.TestCase):
     def test_get_bin_form_record(self):
         """Tests get_bin_form_record"""
         pass
-
-
 
 
 class TestBinList(unittest.TestCase):
@@ -177,8 +167,6 @@ class TestBinList(unittest.TestCase):
     def test_get_next_bins(self):
         """Tests get_next_bins"""
         pass
-
-
 
 
 class TestBinNode(unittest.TestCase):
@@ -200,8 +188,6 @@ class TestBinNode(unittest.TestCase):
         pass
 
 
-
-
 class TestBinNodeList(unittest.TestCase):
     """Tests for BinNodeList"""
 
@@ -214,5 +200,3 @@ class TestBinNodeList(unittest.TestCase):
     def test_get_next_bin_nodes(self):
         """Tests get_next_bin_nodes"""
         pass
-
-

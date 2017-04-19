@@ -76,8 +76,6 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
-
-
 class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search.
 

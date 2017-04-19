@@ -75,6 +75,7 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
             self._item_id = kwargs['item_id']
         else:
             self._item_id = Id(kwargs['osid_object_map']['itemId'])
+
     @utilities.arguments_not_none
     def get_question_record(self, question_record_type):
         """Gets the item record corresponding to the given ``Question`` record ``Type``.
@@ -149,8 +150,6 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
     object_map = property(fget=get_object_map)
 
 
-
-
 class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Questions``."""
     _namespace = 'assessment.Question'
@@ -170,6 +169,7 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['itemId'] = str(kwargs['item_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
+
     @utilities.arguments_not_none
     def get_question_form_record(self, question_record_type):
         """Gets the ``QuestionFormRecord`` corresponding to the given question record ``Type``.
@@ -186,8 +186,6 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
 
         """
         return self._get_record(question_record_type)
-
-
 
 
 class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
@@ -242,8 +240,6 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
     """An ``Answer`` represents the question portion of an assessment item.
 
@@ -256,6 +252,7 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ANSWER', **kwargs)
         self._catalog_name = 'Bank'
+
     @utilities.arguments_not_none
     def get_answer_record(self, answer_record_type):
         """Gets the answer record corresponding to the given ``Answer`` record ``Type``.
@@ -287,8 +284,6 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
     object_map = property(fget=get_object_map)
 
 
-
-
 class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Answers``."""
     _namespace = 'assessment.Answer'
@@ -308,6 +303,7 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['itemId'] = str(kwargs['item_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
+
     @utilities.arguments_not_none
     def get_answer_form_record(self, answer_record_type):
         """Gets the ``AnswerFormRecord`` corresponding to the given answer record ``Type``.
@@ -324,8 +320,6 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
 
         """
         return self._get_record(answer_record_type)
-
-
 
 
 class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
@@ -380,8 +374,6 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Aggregateable):
     """An ``Item`` represents an individual assessment item such as a question.
 
@@ -396,6 +388,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ITEM', **kwargs)
         self._catalog_name = 'Bank'
+
     def get_learning_objective_ids(self):
         """Gets the ``Ids`` of any ``Objectives`` corresponding to this item.
 
@@ -643,8 +636,6 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         raise errors.IllegalState()
 
 
-
-
 class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osid_objects.OsidAggregateableForm):
     """This is the form for creating and updating ``Items``.
 
@@ -676,6 +667,7 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
         self._my_map['question'] = None
         self._my_map['answers'] = []
+
     def get_learning_objectives_metadata(self):
         """Gets the metadata for learning objectives.
 
@@ -746,8 +738,6 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         return self._get_record(item_record_type)
 
 
-
-
 class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ItemList`` provides a means for accessing ``Item`` elements sequentially either one at a time or many at a time.
 
@@ -797,8 +787,6 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
     """An ``Assessment`` represents a sequence of assessment items.
 
@@ -815,6 +803,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT', **kwargs)
         self._catalog_name = 'Bank'
+
     def get_level_id(self):
         """Gets the ``Id`` of a ``Grade`` corresponding to the assessment difficulty.
 
@@ -985,8 +974,6 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
     object_map = property(fget=get_object_map)
 
 
-
-
 class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Assessments``.
 
@@ -1020,6 +1007,7 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         self._my_map['levelId'] = self._level_default
         if self._supports_simple_sequencing():
             self._my_map['childIds'] = []
+
     def get_level_metadata(self):
         """Gets the metadata for a grade level.
 
@@ -1143,8 +1131,6 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         self._my_map['childIds'] = [str(i) for i in child_ids]
 
 
-
-
 class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssessmentList`` provides a means for accessing ``Assessment`` elements sequentially either one at a time or many at a time.
 
@@ -1197,8 +1183,6 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
         return self._get_next_n(n)
 
 
-
-
 class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.OsidObject, osid_markers.Subjugateable):
     """An ``AssessmentOffered`` represents a sequence of assessment items.
 
@@ -1211,6 +1195,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_OFFERED', **kwargs)
         self._catalog_name = 'Bank'
+
     def get_assessment_id(self):
         """Gets the assessment ``Id`` corresponding to this assessment offering.
 
@@ -1627,8 +1612,6 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         return False
 
 
-
-
 class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
     """This is the form for creating and updating an ``AssessmentOffered``.
 
@@ -1673,6 +1656,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         self._my_map['duration'] = self._duration_default
         self._my_map['assessmentId'] = str(kwargs['assessment_id'])
         self._my_map['itemsSequential'] = self._items_sequential_default
+
     def get_level_metadata(self):
         """Gets the metadata for a grade level.
 
@@ -2079,8 +2063,6 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         return self._get_record(assessment_offered_record_type)
 
 
-
-
 class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssessmentOfferedList`` provides a means for accessing ``AssessmentTaken`` elements sequentially either one at a time or many at a time.
 
@@ -2134,8 +2116,6 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
         return self._get_next_n(n)
 
 
-
-
 class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidObject):
     """Represents a taken assessment or an assessment in progress."""
     _namespace = 'assessment.AssessmentTaken'
@@ -2144,6 +2124,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_TAKEN', **kwargs)
         self._catalog_name = 'Bank'
         self._assessment_sections = dict()
+
     def get_assessment_offered_id(self):
         """Gets the ``Id`` of the ``AssessmentOffered``.
 
@@ -2669,8 +2650,6 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
                 section._delete()
 
 
-
-
 class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating an ``AssessmentTaken``.
 
@@ -2705,6 +2684,7 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         self._my_map['gradeId'] = ''
         self._my_map['completionTime'] = None
         self._my_map['score'] = ''
+
     def get_taker_metadata(self):
         """Gets the metadata for a resource to manually set which resource will be taking the assessment.
 
@@ -2772,8 +2752,6 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         return self._get_record(assessment_taken_record_type)
 
 
-
-
 class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssessmentTakenList`` provides a means for accessing ``AssessmentTaken`` elements sequentially either one at a time or many at a time.
 
@@ -2825,8 +2803,6 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-
 
 
 class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.OsidObject):
@@ -2977,6 +2953,7 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
             except AttributeError:
                 return object.__getattribute__(self, name)
         return object.__getattribute__(self, name)
+
     def get_assessment_taken_id(self):
         """Gets the ``Id`` of the ``AssessmentTaken``.
 
@@ -3077,8 +3054,6 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
         return self._get_record(assessment_section_record_type)
 
 
-
-
 class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``AssessmentSectionList`` provides a means for accessing ``AssessmentSection`` elements sequentially either one at a time or many at a time.
 
@@ -3132,14 +3107,13 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
         return self._get_next_n(n)
 
 
-
-
 class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
     """A bank defines a collection of assessments and items."""
     _namespace = 'assessment.Bank'
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='BANK', **kwargs)
+
     @utilities.arguments_not_none
     def get_bank_record(self, bank_record_type):
         """Gets the bank record corresponding to the given ``Bank`` record ``Type``.
@@ -3160,8 +3134,6 @@ class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
@@ -3190,6 +3162,7 @@ class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_bank_form_record(self, bank_record_type):
         """Gets the ``BankFormRecord`` corresponding to the given bank record ``Type``.
@@ -3207,8 +3180,6 @@ class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
         # this should be templated from Resource, but
         # would have to update pattern mappers
         return self._get_record(bank_record_type)
-
-
 
 
 class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
@@ -3260,8 +3231,6 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -3286,6 +3255,7 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
         for bank_node in self.get_child_bank_nodes():
             node_map['childNodes'].append(bank_node.get_object_node_map())
         return node_map
+
     def get_bank(self):
         """Gets the ``Bank`` at this node.
 
@@ -3340,8 +3310,6 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
     child_bank_nodes = property(fget=get_child_bank_nodes)
 
 
-
-
 class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``BankNodeList`` provides a means for accessing ``BankNode`` elements sequentially either one at a time or many at a time.
 
@@ -3392,8 +3360,6 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(n)
-
-
 
 
 class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):

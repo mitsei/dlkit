@@ -37,6 +37,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='COMMENT', **kwargs)
         self._catalog_name = 'Book'
+
     def get_reference_id(self):
         """Gets the ``Id`` of the referenced object to which this comment pertains.
 
@@ -205,8 +206,6 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
     object_map = property(fget=get_object_map)
 
 
-
-
 class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelationshipForm):
     """This is the form for creating and updating ``Comment`` objects.
 
@@ -241,6 +240,7 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         self._my_map['commentorId'] = str(kwargs['effective_agent_id'])
         self._my_map['referenceId'] = str(kwargs['reference_id'])
         self._my_map['ratingId'] = self._rating_default
+
     def get_text_metadata(self):
         """Gets the metadata for the text.
 
@@ -351,8 +351,6 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         return self._get_record(comment_record_type)
 
 
-
-
 class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``CommentList`` provides a means for accessing ``Comment`` elements sequentially either one at a time or many at a time.
 
@@ -408,8 +406,6 @@ class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
     """A ``Book`` represents a collection of comments.
 
@@ -421,6 +417,7 @@ class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='BOOK', **kwargs)
+
     @utilities.arguments_not_none
     def get_book_record(self, book_record_type):
         """Gets the book record corresponding to the given ``Book`` record ``Type``.
@@ -442,8 +439,6 @@ class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
@@ -472,6 +467,7 @@ class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_book_form_record(self, book_record_type):
         """Gets the ``BookFormRecord`` corresponding to the given book record ``Type``.
@@ -487,8 +483,6 @@ class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
@@ -543,8 +537,6 @@ class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -569,6 +561,7 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
         for book_node in self.get_child_book_nodes():
             node_map['childNodes'].append(book_node.get_object_node_map())
         return node_map
+
     def get_book(self):
         """Gets the ``Book`` at this node.
 
@@ -621,8 +614,6 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
         return BookNodeList(parent_book_nodes)
 
     child_book_nodes = property(fget=get_child_book_nodes)
-
-
 
 
 class BookNodeList(abc_commenting_objects.BookNodeList, osid_objects.OsidList):

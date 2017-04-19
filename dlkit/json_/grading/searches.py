@@ -68,8 +68,6 @@ class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.Os
         raise errors.Unimplemented()
 
 
-
-
 class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -118,8 +116,6 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.OsidSearch):
@@ -174,8 +170,6 @@ class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.Osid
         raise errors.Unimplemented()
 
 
-
-
 class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -224,8 +218,6 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_searches.OsidSearch):
@@ -282,8 +274,6 @@ class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_sea
         raise errors.Unimplemented()
 
 
-
-
 class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -336,8 +326,6 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
         raise errors.Unimplemented()
 
 
-
-
 class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSearch):
     """The interface for governing gradebook searches."""
 
@@ -388,8 +376,6 @@ class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSe
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_searches.OsidSearchResults):

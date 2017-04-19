@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied
@@ -25,6 +24,7 @@ class MyAssessmentTakenSession(abc_assessment_sessions.MyAssessmentTakenSession,
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.AssessmentTaken'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -79,14 +79,13 @@ class MyAssessmentTakenSession(abc_assessment_sessions.MyAssessmentTakenSession,
     assessments_completed = property(fget=get_assessments_completed)
 
 
-
-
 class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentSession methodswith authorization checks."""
     def __init__(self, **kwargs):
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.Assessment'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -348,14 +347,13 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         self._provider_session.finish_assessment(assessment_taken_id)
 
 
-
-
 class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentResultsSession methodswith authorization checks."""
     def __init__(self, **kwargs):
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.AssessmentResults'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -401,8 +399,6 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
         return self._provider_session.get_grade_entries(assessment_taken_id)
 
 
-
-
 class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions.OsidSession):
     """Adapts underlying ItemLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -427,7 +423,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('lookup', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -449,6 +445,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_items_by_query(query)
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -506,7 +503,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_item(item_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         query.match_id(item_id, match=True)
         results = self._try_harder(query)
@@ -520,7 +517,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_items_by_ids(item_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         for item_id in (item_ids):
             query.match_id(item_id, match=True)
@@ -532,7 +529,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_items_by_genus_type(item_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         query.match_genus_type(item_genus_type, match=True)
         return self._try_harder(query)
@@ -543,7 +540,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_items_by_parent_genus_type(item_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         query.match_parent_genus_type(item_genus_type, match=True)
         return self._try_harder(query)
@@ -554,7 +551,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_items_by_record_type(item_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         query.match_record_type(item_record_type, match=True)
         return self._try_harder(query)
@@ -580,14 +577,12 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_items()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_item_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     items = property(fget=get_items)
-
-
 
 
 class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.OsidSession):
@@ -612,7 +607,7 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('search', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -633,12 +628,12 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
             query._provider_query.match_bank_id(bank_id, match=False)
         return self._query_session.get_items_by_query(query)
 
-
     class ItemQueryWrapper(QueryWrapper):
         """Wrapper for ItemQueries to override match_bank_id method"""
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -706,8 +701,6 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
         return result
 
 
-
-
 class ItemSearchSession(abc_assessment_sessions.ItemSearchSession, ItemQuerySession):
     """Adapts underlying ItemSearchSession methodswith authorization checks."""
 
@@ -740,8 +733,6 @@ class ItemSearchSession(abc_assessment_sessions.ItemSearchSession, ItemQuerySess
         raise Unimplemented()
 
 
-
-
 class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ItemAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -769,6 +760,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
     def _can_for_item(self, func_name, item_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, item_id, 'get_bank_ids_for_item')
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -796,8 +788,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if item_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if item_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -878,8 +870,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if question_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if question_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -944,8 +936,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if answer_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if answer_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -1001,14 +993,13 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         return self._provider_session.delete_answer(answer_id)
 
 
-
-
 class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying ItemNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.Item'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1113,14 +1104,13 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         raise Unimplemented()
 
 
-
-
 class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.OsidSession):
     """Adapts underlying ItemBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.ItemBank'
+
     def can_lookup_item_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -1185,14 +1175,13 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         return self._provider_session.get_banks_by_item(item_id)
 
 
-
-
 class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ItemBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.ItemBank'
+
     def can_assign_items(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1239,8 +1228,6 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
     @raise_null_argument
     def reassign_item_to_billing(self, item_id, from_bank_id, to_bank_id):
         raise Unimplemented()
-
-
 
 
 class ItemSmartBankSession(abc_assessment_sessions.ItemSmartBankSession, osid_sessions.OsidSession):
@@ -1292,8 +1279,6 @@ class ItemSmartBankSession(abc_assessment_sessions.ItemSmartBankSession, osid_se
         raise Unimplemented()
 
 
-
-
 class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1318,7 +1303,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('lookup', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -1340,6 +1325,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_by_query(query)
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1397,7 +1383,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_assessment(assessment_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         query.match_id(assessment_id, match=True)
         results = self._try_harder(query)
@@ -1411,7 +1397,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_by_ids(assessment_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         for assessment_id in (assessment_ids):
             query.match_id(assessment_id, match=True)
@@ -1423,7 +1409,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_by_genus_type(assessment_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         query.match_genus_type(assessment_genus_type, match=True)
         return self._try_harder(query)
@@ -1434,7 +1420,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_by_parent_genus_type(assessment_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         query.match_parent_genus_type(assessment_genus_type, match=True)
         return self._try_harder(query)
@@ -1445,7 +1431,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_by_record_type(assessment_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         query.match_record_type(assessment_record_type, match=True)
         return self._try_harder(query)
@@ -1455,14 +1441,12 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_assessments()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     assessments = property(fget=get_assessments)
-
-
 
 
 class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osid_sessions.OsidSession):
@@ -1487,7 +1471,7 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('search', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -1508,12 +1492,12 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
             query._provider_query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_by_query(query)
 
-
     class AssessmentQueryWrapper(QueryWrapper):
         """Wrapper for AssessmentQueries to override match_bank_id method"""
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1581,8 +1565,6 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
         return result
 
 
-
-
 class AssessmentSearchSession(abc_assessment_sessions.AssessmentSearchSession, AssessmentQuerySession):
     """Adapts underlying AssessmentSearchSession methodswith authorization checks."""
 
@@ -1615,8 +1597,6 @@ class AssessmentSearchSession(abc_assessment_sessions.AssessmentSearchSession, A
         raise Unimplemented()
 
 
-
-
 class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -1644,6 +1624,7 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
     def _can_for_assessment(self, func_name, assessment_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, assessment_id, 'get_bank_ids_for_assessment')
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1671,8 +1652,8 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if assessment_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if assessment_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -1744,14 +1725,13 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         return self._provider_session.alias_assessment(assessment_id, alias_id)
 
 
-
-
 class AssessmentNotificationSession(abc_assessment_sessions.AssessmentNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.Assessment'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1856,14 +1836,13 @@ class AssessmentNotificationSession(abc_assessment_sessions.AssessmentNotificati
         raise Unimplemented()
 
 
-
-
 class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentBank'
+
     def can_lookup_assessment_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -1928,14 +1907,13 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         return self._provider_session.get_banks_by_assessment(assessment_id)
 
 
-
-
 class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentBank'
+
     def can_assign_assessments(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1982,8 +1960,6 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
     @raise_null_argument
     def reassign_assessment_to_billing(self, assessment_id, from_bank_id, to_bank_id):
         raise Unimplemented()
-
-
 
 
 class AssessmentSmartBankSession(abc_assessment_sessions.AssessmentSmartBankSession, osid_sessions.OsidSession):
@@ -2035,14 +2011,13 @@ class AssessmentSmartBankSession(abc_assessment_sessions.AssessmentSmartBankSess
         raise Unimplemented()
 
 
-
-
 class AssessmentBasicAuthoringSession(abc_assessment_sessions.AssessmentBasicAuthoringSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentBasicAuthoringSession methodswith authorization checks."""
     def __init__(self, **kwargs):
         osid_sessions.OsidSession.__init__(self, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.Assessment'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2104,8 +2079,6 @@ class AssessmentBasicAuthoringSession(abc_assessment_sessions.AssessmentBasicAut
         self._provider_session.order_items(item_ids, assessment_id)
 
 
-
-
 class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentOfferedLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2130,7 +2103,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('lookup', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -2152,6 +2125,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_offered_by_query(query)
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2209,7 +2183,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_assessment_offered(assessment_offered_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_id(assessment_offered_id, match=True)
         results = self._try_harder(query)
@@ -2223,7 +2197,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered_by_ids(assessment_offered_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         for assessment_offered_id in (assessment_offered_ids):
             query.match_id(assessment_offered_id, match=True)
@@ -2235,7 +2209,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered_by_genus_type(assessment_offered_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_genus_type(assessment_offered_genus_type, match=True)
         return self._try_harder(query)
@@ -2246,7 +2220,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered_by_parent_genus_type(assessment_offered_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_parent_genus_type(assessment_offered_genus_type, match=True)
         return self._try_harder(query)
@@ -2257,7 +2231,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered_by_record_type(assessment_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_record_type(assessment_record_type, match=True)
         return self._try_harder(query)
@@ -2272,7 +2246,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered_for_assessment(assessment_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_assessment_id(assessment_id, match=True)
         return self._try_harder(query)
@@ -2282,14 +2256,12 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_offered()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_offered_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     assessments_offered = property(fget=get_assessments_offered)
-
-
 
 
 class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQuerySession, osid_sessions.OsidSession):
@@ -2314,7 +2286,7 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('search', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -2335,12 +2307,12 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
             query._provider_query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_offered_by_query(query)
 
-
     class AssessmentOfferedQueryWrapper(QueryWrapper):
         """Wrapper for AssessmentOfferedQueries to override match_bank_id method"""
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2408,8 +2380,6 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
         return result
 
 
-
-
 class AssessmentOfferedSearchSession(abc_assessment_sessions.AssessmentOfferedSearchSession, AssessmentOfferedQuerySession):
     """Adapts underlying AssessmentOfferedSearchSession methodswith authorization checks."""
 
@@ -2442,8 +2412,6 @@ class AssessmentOfferedSearchSession(abc_assessment_sessions.AssessmentOfferedSe
         raise Unimplemented()
 
 
-
-
 class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentOfferedAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -2471,6 +2439,7 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
     def _can_for_assessment_offered(self, func_name, assessment_offered_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, assessment_offered_id, 'get_bank_ids_for_assessment_offered')
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2498,8 +2467,8 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if assessment_offered_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if assessment_offered_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -2571,14 +2540,13 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         return self._provider_session.alias_assessment_offered(assessment_offered_id, alias_id)
 
 
-
-
 class AssessmentOfferedNotificationSession(abc_assessment_sessions.AssessmentOfferedNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentOfferedNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.AssessmentOffered'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2707,14 +2675,13 @@ class AssessmentOfferedNotificationSession(abc_assessment_sessions.AssessmentOff
         raise Unimplemented()
 
 
-
-
 class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBankSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentOfferedBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentOfferedBank'
+
     def can_lookup_assessment_offered_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -2779,14 +2746,13 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         return self._provider_session.get_banks_by_assessment_offered(assessment_offered_id)
 
 
-
-
 class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentOfferedBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentOfferedBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentOfferedBank'
+
     def can_assign_assessments_offered(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -2833,8 +2799,6 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
     @raise_null_argument
     def reassign_assessment_offered_to_billing(self, assessment_offered_id, from_bank_id, to_bank_id):
         raise Unimplemented()
-
-
 
 
 class AssessmentOfferedSmartBankSession(abc_assessment_sessions.AssessmentOfferedSmartBankSession, osid_sessions.OsidSession):
@@ -2886,8 +2850,6 @@ class AssessmentOfferedSmartBankSession(abc_assessment_sessions.AssessmentOffere
         raise Unimplemented()
 
 
-
-
 class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentTakenLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2912,7 +2874,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('lookup', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -2934,6 +2896,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         for bank_id in self._unauth_bank_ids:
             query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_taken_by_query(query)
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2991,7 +2954,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_assessment_taken(assessment_taken_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_id(assessment_taken_id, match=True)
         results = self._try_harder(query)
@@ -3005,7 +2968,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_by_ids(assessment_taken_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         for assessment_taken_id in (assessment_taken_ids):
             query.match_id(assessment_taken_id, match=True)
@@ -3017,7 +2980,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_by_genus_type(assessment_taken_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_genus_type(assessment_taken_genus_type, match=True)
         return self._try_harder(query)
@@ -3028,7 +2991,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_by_parent_genus_type(assessment_taken_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_parent_genus_type(assessment_taken_genus_type, match=True)
         return self._try_harder(query)
@@ -3039,7 +3002,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_by_record_type(assessment_taken_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_record_type(assessment_taken_record_type, match=True)
         return self._try_harder(query)
@@ -3062,7 +3025,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_for_assessment(assessment_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_assessment_id(assessment_id, match=True)
         return self._try_harder(query)
@@ -3085,7 +3048,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_for_assessment_offered(assessment_offered_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_assessment_offered_id(assessment_offered_id, match=True)
         return self._try_harder(query)
@@ -3113,14 +3076,12 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_assessment_taken_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     assessments_taken = property(fget=get_assessments_taken)
-
-
 
 
 class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySession, osid_sessions.OsidSession):
@@ -3145,7 +3106,7 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
 
     def _get_unauth_bank_ids(self, bank_id):
         if self._can('search', bank_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bank_id)]
         if self._hierarchy_session.has_child_banks(bank_id):
@@ -3166,12 +3127,12 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
             query._provider_query.match_bank_id(bank_id, match=False)
         return self._query_session.get_assessments_taken_by_query(query)
 
-
     class AssessmentTakenQueryWrapper(QueryWrapper):
         """Wrapper for AssessmentTakenQueries to override match_bank_id method"""
 
         def match_bank_id(self, bank_id, match=True):
             self._cat_id_args_list.append({'bank_id': bank_id, 'match': match})
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -3239,8 +3200,6 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
         return result
 
 
-
-
 class AssessmentTakenSearchSession(abc_assessment_sessions.AssessmentTakenSearchSession, AssessmentTakenQuerySession):
     """Adapts underlying AssessmentTakenSearchSession methodswith authorization checks."""
 
@@ -3273,8 +3232,6 @@ class AssessmentTakenSearchSession(abc_assessment_sessions.AssessmentTakenSearch
         raise Unimplemented()
 
 
-
-
 class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentTakenAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -3302,6 +3259,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
     def _can_for_assessment_taken(self, func_name, assessment_taken_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, assessment_taken_id, 'get_bank_ids_for_assessment_taken')
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -3329,8 +3287,8 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if assessment_taken_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if assessment_taken_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -3402,14 +3360,13 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         return self._provider_session.alias_assessment_taken(assessment_taken_id, alias_id)
 
 
-
-
 class AssessmentTakenNotificationSession(abc_assessment_sessions.AssessmentTakenNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentTakenNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bank_id()
         self._id_namespace = 'assessment.AssessmentTaken'
+
     def get_bank_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -3586,14 +3543,13 @@ class AssessmentTakenNotificationSession(abc_assessment_sessions.AssessmentTaken
         raise Unimplemented()
 
 
-
-
 class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentTakenBankSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentTakenBank'
+
     def can_lookup_assessment_taken_bank_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -3658,14 +3614,13 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         return self._provider_session.get_banks_by_assessment_taken(assessment_taken_id)
 
 
-
-
 class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTakenBankAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentTakenBankAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'assessment.AssessmentTakenBank'
+
     def can_assign_assessments_taken(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -3712,8 +3667,6 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
     @raise_null_argument
     def reassign_assessment_taken_to_billing(self, assessment_taken_id, from_bank_id, to_bank_id):
         raise Unimplemented()
-
-
 
 
 class AssessmentTakenSmartBankSession(abc_assessment_sessions.AssessmentTakenSmartBankSession, osid_sessions.OsidSession):
@@ -3765,8 +3718,6 @@ class AssessmentTakenSmartBankSession(abc_assessment_sessions.AssessmentTakenSma
         raise Unimplemented()
 
 
-
-
 class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions.OsidSession):
     """Adapts underlying BankLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3775,6 +3726,7 @@ class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions
         # Build from authority in config
         self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'assessment.Bank'
+
     def can_lookup_banks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -3836,8 +3788,6 @@ class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions
     banks = property(fget=get_banks)
 
 
-
-
 class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.OsidSession):
     """Adapts underlying BankQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3846,6 +3796,7 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
         # Build from authority in config
         self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'assessment.Bank'
+
     def can_search_banks(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -3870,8 +3821,6 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
         return self._provider_session.get_banks_by_query(bank_query)
 
 
-
-
 class BankSearchSession(abc_assessment_sessions.BankSearchSession, BankQuerySession):
     """Adapts underlying BankSearchSession methodswith authorization checks."""
 
@@ -3894,8 +3843,6 @@ class BankSearchSession(abc_assessment_sessions.BankSearchSession, BankQuerySess
         raise Unimplemented()
 
 
-
-
 class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.OsidSession):
     """Adapts underlying BankAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3904,6 +3851,7 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         # Build from authority in config
         self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'assessment.Bank'
+
     def can_create_banks(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -3914,8 +3862,8 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if bank_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if bank_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -3978,8 +3926,6 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_bank(bank_id, alias_id)
-
-
 
 
 class BankNotificationSession(abc_assessment_sessions.BankNotificationSession, osid_sessions.OsidSession):
@@ -4057,8 +4003,6 @@ class BankNotificationSession(abc_assessment_sessions.BankNotificationSession, o
         raise Unimplemented()
 
 
-
-
 class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying BankHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -4067,6 +4011,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
         # Build from authority in config
         self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'assessment.Bank'
+
     def get_bank_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -4221,8 +4166,6 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
             include_siblings)
 
 
-
-
 class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying BankHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -4232,6 +4175,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
         self._qualifier_id = Id('assessment.Bank%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'assessment.Bank'
         # should this be 'assessment.BankHierarchy' ?
+
     def get_bank_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id

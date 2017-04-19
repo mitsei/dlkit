@@ -10,6 +10,7 @@ class TestAssetQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_title(self):
         """Tests match_title"""
@@ -346,10 +347,9 @@ class TestAssetQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetContentQuery(unittest.TestCase):
     """Tests for AssetContentQuery"""
+
 
 
 
@@ -419,10 +419,9 @@ class TestAssetContentQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestCompositionQuery(unittest.TestCase):
     """Tests for CompositionQuery"""
+
 
 
 
@@ -545,8 +544,6 @@ class TestCompositionQuery(unittest.TestCase):
     def test_get_composition_query_record(self):
         """Tests get_composition_query_record"""
         pass
-
-
 
 
 class TestRepositoryQuery(unittest.TestCase):
@@ -676,5 +673,3 @@ class TestRepositoryQuery(unittest.TestCase):
     def test_get_repository_query_record(self):
         """Tests get_repository_query_record"""
         pass
-
-

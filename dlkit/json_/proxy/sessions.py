@@ -28,6 +28,7 @@ class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
     def __init__(self, proxy=None, runtime=None):
         self._proxy = proxy
         self._runtime = runtime
+
     def get_proxy_condition(self):
         """Gets a proxy condition for acquiring a proxy.
 

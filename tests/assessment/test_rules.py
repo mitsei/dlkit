@@ -10,6 +10,7 @@ class TestResponse(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_item_id(self):
         """Tests get_item_id"""
@@ -23,5 +24,3 @@ class TestResponse(unittest.TestCase):
     def test_get_response_record(self):
         """Tests get_response_record"""
         pass
-
-

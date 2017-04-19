@@ -68,8 +68,6 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
-
-
 class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -120,8 +118,6 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
         raise errors.Unimplemented()
 
 
-
-
 class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
     """The search interface for governing book searches."""
 
@@ -170,8 +166,6 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches.OsidSearchResults):

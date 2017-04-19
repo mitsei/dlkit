@@ -183,8 +183,6 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
     book_search_record_types = property(fget=get_book_search_record_types)
 
 
-
-
 class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting_managers.CommentingManager):
     """The commenting manager provides access to commenting sessions and provides interoperability tests for various aspects of this service.
 
@@ -222,6 +220,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_comment_lookup_session(self):
         """Gets the ``OsidSession`` associated with the comment lookup service.
@@ -455,8 +454,6 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
     commenting_batch_manager = property(fget=get_commenting_batch_manager)
 
 
-
-
 class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, commenting_managers.CommentingProxyManager):
     """The commenting manager provides access to commenting sessions and provides interoperability tests for various aspects of this service.
 
@@ -496,6 +493,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_comment_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the comment lookup service.

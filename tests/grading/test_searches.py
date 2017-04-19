@@ -24,8 +24,6 @@ class TestGradeSystemSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeSystemSearchResults(unittest.TestCase):
     """Tests for GradeSystemSearchResults"""
 
@@ -43,8 +41,6 @@ class TestGradeSystemSearchResults(unittest.TestCase):
     def test_get_grade_system_search_results_record(self):
         """Tests get_grade_system_search_results_record"""
         pass
-
-
 
 
 class TestGradeEntrySearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestGradeEntrySearch(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntrySearchResults(unittest.TestCase):
     """Tests for GradeEntrySearchResults"""
 
@@ -85,8 +79,6 @@ class TestGradeEntrySearchResults(unittest.TestCase):
     def test_get_grade_entry_search_results_record(self):
         """Tests get_grade_entry_search_results_record"""
         pass
-
-
 
 
 class TestGradebookColumnSearch(unittest.TestCase):
@@ -108,8 +100,6 @@ class TestGradebookColumnSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnSearchResults(unittest.TestCase):
     """Tests for GradebookColumnSearchResults"""
 
@@ -127,8 +117,6 @@ class TestGradebookColumnSearchResults(unittest.TestCase):
     def test_get_gradebook_column_search_results_record(self):
         """Tests get_gradebook_column_search_results_record"""
         pass
-
-
 
 
 class TestGradebookSearch(unittest.TestCase):
@@ -150,8 +138,6 @@ class TestGradebookSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookSearchResults(unittest.TestCase):
     """Tests for GradebookSearchResults"""
 
@@ -169,5 +155,3 @@ class TestGradebookSearchResults(unittest.TestCase):
     def test_get_gradebook_search_results_record(self):
         """Tests get_gradebook_search_results_record"""
         pass
-
-

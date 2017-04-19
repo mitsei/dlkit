@@ -21,10 +21,6 @@ class TypeProfile(osid_managers.OsidProfile, type_managers.TypeProfile):
     """The ``TypeProfile`` describes the interoperability among type services."""
 
 
-
-
-
-
 class TypeManager(osid_managers.OsidManager, TypeProfile, type_managers.TypeManager):
     """This manager provides access to the available sessions of the type service.
 
@@ -32,10 +28,6 @@ class TypeManager(osid_managers.OsidManager, TypeProfile, type_managers.TypeMana
     ``TypeAdminSession`` is used for managing and registering new Types.
 
     """
-
-
-
-
 
 
 class TypeProxyManager(osid_managers.OsidProxyManager, TypeProfile, type_managers.TypeProxyManager):

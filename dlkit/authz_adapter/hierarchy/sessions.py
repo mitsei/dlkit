@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -83,8 +82,6 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         raise Unimplemented()
 
 
-
-
 class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying HierarchyDesignSession methodswith authorization checks."""
 
@@ -129,8 +126,6 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
         raise Unimplemented()
 
 
-
-
 class HierarchySequencingSession(abc_hierarchy_sessions.HierarchySequencingSession, osid_sessions.OsidSession):
     """Adapts underlying HierarchySequencingSession methodswith authorization checks."""
 
@@ -165,8 +160,6 @@ class HierarchySequencingSession(abc_hierarchy_sessions.HierarchySequencingSessi
     @raise_null_argument
     def sequence_nodes(self, parent_id, ids):
         raise Unimplemented()
-
-
 
 
 class HierarchyStructureNotificationSession(abc_hierarchy_sessions.HierarchyStructureNotificationSession, osid_sessions.OsidSession):
@@ -268,8 +261,6 @@ class HierarchyStructureNotificationSession(abc_hierarchy_sessions.HierarchyStru
         raise Unimplemented()
 
 
-
-
 class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid_sessions.OsidSession):
     """Adapts underlying HierarchyLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -278,6 +269,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         # Build from authority in config
         self._qualifier_id = Id('hierarchy.Hierarchy%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'hierarchy.Hierarchy'
+
     def can_lookup_hierarchies(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -339,8 +331,6 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
     hierarchies = property(fget=get_hierarchies)
 
 
-
-
 class HierarchyQuerySession(abc_hierarchy_sessions.HierarchyQuerySession, osid_sessions.OsidSession):
     """Adapts underlying HierarchyQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -349,6 +339,7 @@ class HierarchyQuerySession(abc_hierarchy_sessions.HierarchyQuerySession, osid_s
         # Build from authority in config
         self._qualifier_id = Id('hierarchy.Hierarchy%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'hierarchy.Hierarchy'
+
     def can_search_hierarchies(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -373,8 +364,6 @@ class HierarchyQuerySession(abc_hierarchy_sessions.HierarchyQuerySession, osid_s
         return self._provider_session.get_hierarchies_by_query(hierarchy_query)
 
 
-
-
 class HierarchySearchSession(abc_hierarchy_sessions.HierarchySearchSession, HierarchyQuerySession):
     """Adapts underlying HierarchySearchSession methodswith authorization checks."""
 
@@ -397,8 +386,6 @@ class HierarchySearchSession(abc_hierarchy_sessions.HierarchySearchSession, Hier
         raise Unimplemented()
 
 
-
-
 class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_sessions.OsidSession):
     """Adapts underlying HierarchyAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -407,6 +394,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         # Build from authority in config
         self._qualifier_id = Id('hierarchy.Hierarchy%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'hierarchy.Hierarchy'
+
     def can_create_hierarchies(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -417,8 +405,8 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if hierarchy_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if hierarchy_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -477,8 +465,6 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_hierarchy(hierarchy_id, alias_id)
-
-
 
 
 class HierarchyNotificationSession(abc_hierarchy_sessions.HierarchyNotificationSession, osid_sessions.OsidSession):

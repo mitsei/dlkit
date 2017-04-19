@@ -110,8 +110,6 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
 
 
-
-
 class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_managers.HierarchyManager):
     """The hierarchy manager provides access sessions to traverse and manage hierrachies of ``Ids``.
 
@@ -136,6 +134,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_hierarchy_traversal_session(self):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
@@ -269,8 +268,6 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
 
-
-
 class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
     """The hierarchy manager provides access sessions to traverse and manage hierrachies of ``Ids``.
 
@@ -296,6 +293,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_hierarchy_traversal_session(self, proxy):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.

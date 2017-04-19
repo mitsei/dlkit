@@ -25,6 +25,7 @@ class TestLearningProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_objective_lookup(self):
         """Tests supports_objective_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_objective_lookup(), bool))
@@ -142,8 +143,6 @@ class TestLearningProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_objective_bank_search_record_types(), abc_type_list))
 
 
-
-
 class TestLearningManager(unittest.TestCase):
     """Tests for LearningManager"""
 
@@ -161,6 +160,7 @@ class TestLearningManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_objective_bank(cls.catalog_id)
+
 
 
     def test_get_objective_lookup_session(self):
@@ -381,8 +381,6 @@ class TestLearningManager(unittest.TestCase):
             self.svc_mgr.get_learning_batch_manager()
 
 
-
-
 class TestLearningProxyManager(unittest.TestCase):
     """Tests for LearningProxyManager"""
 
@@ -399,6 +397,7 @@ class TestLearningProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_objective_bank(cls.catalog_id)
+
 
 
     def test_get_objective_lookup_session(self):
@@ -637,5 +636,3 @@ class TestLearningProxyManager(unittest.TestCase):
         #     self.mgr.get_learning_batch_proxy_manager()
         if self.svc_mgr.supports_learning_batch():
             self.svc_mgr.get_learning_batch_proxy_manager()
-
-

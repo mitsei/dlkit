@@ -33,10 +33,6 @@ class OsidSearchOrder(abc_osid_search_orders.OsidSearchOrder, osid_markers.Suppl
     """
 
 
-
-
-
-
 class OsidIdentifiableSearchOrder(abc_osid_search_orders.OsidIdentifiableSearchOrder, OsidSearchOrder):
     """``OsidIdentifiableSearchOrder`` specifies preferred ordering of search results.
 
@@ -57,8 +53,6 @@ class OsidIdentifiableSearchOrder(abc_osid_search_orders.OsidIdentifiableSearchO
         raise errors.Unimplemented()
 
 
-
-
 class OsidExtensibleSearchOrder(abc_osid_search_orders.OsidExtensibleSearchOrder, OsidSearchOrder, osid_markers.Extensible):
     """``OsidExtensibleSearchOrder`` specifies preferred ordering of search results.
 
@@ -68,10 +62,6 @@ class OsidExtensibleSearchOrder(abc_osid_search_orders.OsidExtensibleSearchOrder
     """
 
 
-
-
-
-
 class OsidBrowsableSearchOrder(abc_osid_search_orders.OsidBrowsableSearchOrder, OsidSearchOrder):
     """``OsidBrowsableSearchOrder`` specifies preferred ordering of search results.
 
@@ -79,10 +69,6 @@ class OsidBrowsableSearchOrder(abc_osid_search_orders.OsidBrowsableSearchOrder, 
     supplied to an ``OsidSearch``.
 
     """
-
-
-
-
 
 
 class OsidTemporalSearchOrder(abc_osid_search_orders.OsidTemporalSearchOrder, OsidSearchOrder):
@@ -122,22 +108,12 @@ class OsidTemporalSearchOrder(abc_osid_search_orders.OsidTemporalSearchOrder, Os
         raise errors.Unimplemented()
 
 
-
-
 class OsidSubjugateableSearchOrder(abc_osid_search_orders.OsidSubjugateableSearchOrder, OsidSearchOrder):
     """An interface for specifying the ordering of dependent object search results."""
 
 
-
-
-
-
 class OsidAggregateableSearchOrder(abc_osid_search_orders.OsidAggregateableSearchOrder, OsidSearchOrder):
     """An interface for specifying the ordering of assemblage search results."""
-
-
-
-
 
 
 class OsidContainableSearchOrder(abc_osid_search_orders.OsidContainableSearchOrder, OsidSearchOrder):
@@ -153,8 +129,6 @@ class OsidContainableSearchOrder(abc_osid_search_orders.OsidContainableSearchOrd
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class OsidSourceableSearchOrder(abc_osid_search_orders.OsidSourceableSearchOrder, OsidSearchOrder):
@@ -200,14 +174,8 @@ class OsidSourceableSearchOrder(abc_osid_search_orders.OsidSourceableSearchOrder
     provider_search_order = property(fget=get_provider_search_order)
 
 
-
-
 class OsidFederateableSearchOrder(abc_osid_search_orders.OsidFederateableSearchOrder, OsidSearchOrder):
     """An interface for specifying the ordering of search results."""
-
-
-
-
 
 
 class OsidOperableSearchOrder(abc_osid_search_orders.OsidOperableSearchOrder, OsidSearchOrder):
@@ -256,8 +224,6 @@ class OsidOperableSearchOrder(abc_osid_search_orders.OsidOperableSearchOrder, Os
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class OsidObjectSearchOrder(abc_osid_search_orders.OsidObjectSearchOrder, OsidIdentifiableSearchOrder, OsidExtensibleSearchOrder, OsidBrowsableSearchOrder):
@@ -367,8 +333,6 @@ class OsidObjectSearchOrder(abc_osid_search_orders.OsidObjectSearchOrder, OsidId
         raise errors.Unimplemented()
 
 
-
-
 class OsidRelationshipSearchOrder(abc_osid_search_orders.OsidRelationshipSearchOrder, OsidObjectSearchOrder, OsidTemporalSearchOrder):
     """An interface for specifying the ordering of search results."""
 
@@ -408,14 +372,8 @@ class OsidRelationshipSearchOrder(abc_osid_search_orders.OsidRelationshipSearchO
     end_reason_search_order = property(fget=get_end_reason_search_order)
 
 
-
-
 class OsidCatalogSearchOrder(abc_osid_search_orders.OsidCatalogSearchOrder, OsidObjectSearchOrder, OsidSourceableSearchOrder, OsidFederateableSearchOrder):
     """An interface for specifying the ordering of catalog search results."""
-
-
-
-
 
 
 class OsidRuleSearchOrder(abc_osid_search_orders.OsidRuleSearchOrder, OsidObjectSearchOrder, OsidOperableSearchOrder):
@@ -458,8 +416,6 @@ class OsidRuleSearchOrder(abc_osid_search_orders.OsidRuleSearchOrder, OsidObject
         raise errors.Unimplemented()
 
     rule_search_order = property(fget=get_rule_search_order)
-
-
 
 
 class OsidEnablerSearchOrder(abc_osid_search_orders.OsidEnablerSearchOrder, OsidRuleSearchOrder, OsidTemporalSearchOrder):
@@ -609,30 +565,16 @@ class OsidEnablerSearchOrder(abc_osid_search_orders.OsidEnablerSearchOrder, Osid
     demographic_search_order = property(fget=get_demographic_search_order)
 
 
-
-
 class OsidConstrainerSearchOrder(abc_osid_search_orders.OsidConstrainerSearchOrder, OsidRuleSearchOrder):
     """An interface for specifying the ordering of search results."""
-
-
-
-
 
 
 class OsidProcessorSearchOrder(abc_osid_search_orders.OsidProcessorSearchOrder, OsidRuleSearchOrder):
     """An interface for specifying the ordering of search results."""
 
 
-
-
-
-
 class OsidGovernatorSearchOrder(abc_osid_search_orders.OsidGovernatorSearchOrder, OsidObjectSearchOrder, OsidOperableSearchOrder, OsidSourceableSearchOrder):
     """An interface for specifying the ordering of search results."""
-
-
-
-
 
 
 class OsidCompendiumSearchOrder(abc_osid_search_orders.OsidCompendiumSearchOrder, OsidObjectSearchOrder, OsidSubjugateableSearchOrder):
@@ -681,8 +623,6 @@ class OsidCompendiumSearchOrder(abc_osid_search_orders.OsidCompendiumSearchOrder
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class OsidCapsuleSearchOrder(abc_osid_search_orders.OsidCapsuleSearchOrder, OsidSearchOrder):

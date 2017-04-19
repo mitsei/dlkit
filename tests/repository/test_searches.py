@@ -24,8 +24,6 @@ class TestAssetSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetSearchResults(unittest.TestCase):
     """Tests for AssetSearchResults"""
 
@@ -43,8 +41,6 @@ class TestAssetSearchResults(unittest.TestCase):
     def test_get_asset_search_results_record(self):
         """Tests get_asset_search_results_record"""
         pass
-
-
 
 
 class TestCompositionSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestCompositionSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestCompositionSearchResults(unittest.TestCase):
     """Tests for CompositionSearchResults"""
 
@@ -85,8 +79,6 @@ class TestCompositionSearchResults(unittest.TestCase):
     def test_get_composition_search_results_record(self):
         """Tests get_composition_search_results_record"""
         pass
-
-
 
 
 class TestRepositorySearch(unittest.TestCase):
@@ -108,8 +100,6 @@ class TestRepositorySearch(unittest.TestCase):
         pass
 
 
-
-
 class TestRepositorySearchResults(unittest.TestCase):
     """Tests for RepositorySearchResults"""
 
@@ -127,5 +117,3 @@ class TestRepositorySearchResults(unittest.TestCase):
     def test_get_repository_search_results_record(self):
         """Tests get_repository_search_results_record"""
         pass
-
-

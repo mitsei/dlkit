@@ -10,6 +10,7 @@ class TestAuthorizationQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_explicit_authorizations(self):
         """Tests match_explicit_authorizations"""
@@ -201,8 +202,6 @@ class TestAuthorizationQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestVaultQuery(unittest.TestCase):
     """Tests for VaultQuery"""
 
@@ -360,5 +359,3 @@ class TestVaultQuery(unittest.TestCase):
     def test_get_vault_query_record(self):
         """Tests get_vault_query_record"""
         pass
-
-

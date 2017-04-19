@@ -41,6 +41,7 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, object_name='RELATIONSHIP', **kwargs)
         self._catalog_name = 'Family'
+
     def get_source_id(self):
         """Gets the from peer ``Id`` in this relationship.
 
@@ -91,8 +92,6 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
         return self._get_record(relationship_record_type)
 
 
-
-
 class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.OsidRelationshipForm):
     """This is the form for creating and updating ``Relationships``.
 
@@ -121,6 +120,7 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
         self._my_map['sourceId'] = str(kwargs['source_id'])
         self._my_map['destinationId'] = str(kwargs['destination_id'])
         self._my_map['assignedFamilyIds'] = [str(kwargs['family_id'])]
+
     @utilities.arguments_not_none
     def get_relationship_form_record(self, relationship_record_type):
         """Gets the ``RelationshipFormRecord`` corresponding to the given relationship record ``Type``.
@@ -139,8 +139,6 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
 
         """
         return self._get_record(relationship_record_type)
-
-
 
 
 class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.OsidList):
@@ -198,8 +196,6 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
         return self._get_next_n(n)
 
 
-
-
 class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
     """A ``Family`` represents a collection of relationships.
 
@@ -211,6 +207,7 @@ class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='FAMILY', **kwargs)
+
     @utilities.arguments_not_none
     def get_family_record(self, family_record_type):
         """Gets the famly record corresponding to the given ``Family`` record ``Type``.
@@ -234,8 +231,6 @@ class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogForm):
@@ -264,6 +259,7 @@ class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogFo
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_family_form_record(self, family_record_type):
         """Gets the ``FamilyFormRecord`` corresponding to the given family record ``Type``.
@@ -281,8 +277,6 @@ class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogFo
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
@@ -340,8 +334,6 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -366,6 +358,7 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
         for family_node in self.get_child_family_nodes():
             node_map['childNodes'].append(family_node.get_object_node_map())
         return node_map
+
     def get_family(self):
         """Gets the ``Family`` at this node.
 
@@ -418,8 +411,6 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
         return FamilyNodeList(parent_family_nodes)
 
     child_family_nodes = property(fget=get_child_family_nodes)
-
-
 
 
 class FamilyNodeList(abc_relationship_objects.FamilyNodeList, osid_objects.OsidList):

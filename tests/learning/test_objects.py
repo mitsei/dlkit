@@ -10,6 +10,7 @@ class TestObjective(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_has_assessment(self):
         """Tests has_assessment"""
@@ -61,10 +62,9 @@ class TestObjective(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveForm(unittest.TestCase):
     """Tests for ObjectiveForm"""
+
 
 
 
@@ -119,8 +119,6 @@ class TestObjectiveForm(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveList(unittest.TestCase):
     """Tests for ObjectiveList"""
 
@@ -133,8 +131,6 @@ class TestObjectiveList(unittest.TestCase):
     def test_get_next_objectives(self):
         """Tests get_next_objectives"""
         pass
-
-
 
 
 class TestObjectiveNode(unittest.TestCase):
@@ -156,8 +152,6 @@ class TestObjectiveNode(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveNodeList(unittest.TestCase):
     """Tests for ObjectiveNodeList"""
 
@@ -172,10 +166,9 @@ class TestObjectiveNodeList(unittest.TestCase):
         pass
 
 
-
-
 class TestActivity(unittest.TestCase):
     """Tests for Activity"""
+
 
 
 
@@ -240,10 +233,9 @@ class TestActivity(unittest.TestCase):
         pass
 
 
-
-
 class TestActivityForm(unittest.TestCase):
     """Tests for ActivityForm"""
+
 
 
 
@@ -298,8 +290,6 @@ class TestActivityForm(unittest.TestCase):
         pass
 
 
-
-
 class TestActivityList(unittest.TestCase):
     """Tests for ActivityList"""
 
@@ -314,10 +304,9 @@ class TestActivityList(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiency(unittest.TestCase):
     """Tests for Proficiency"""
+
 
 
 
@@ -367,10 +356,9 @@ class TestProficiency(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiencyForm(unittest.TestCase):
     """Tests for ProficiencyForm"""
+
 
 
 
@@ -410,8 +398,6 @@ class TestProficiencyForm(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiencyList(unittest.TestCase):
     """Tests for ProficiencyList"""
 
@@ -426,10 +412,9 @@ class TestProficiencyList(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBank(unittest.TestCase):
     """Tests for ObjectiveBank"""
+
 
 
 
@@ -439,10 +424,9 @@ class TestObjectiveBank(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankForm(unittest.TestCase):
     """Tests for ObjectiveBankForm"""
+
 
 
 
@@ -450,8 +434,6 @@ class TestObjectiveBankForm(unittest.TestCase):
     def test_get_objective_bank_form_record(self):
         """Tests get_objective_bank_form_record"""
         pass
-
-
 
 
 class TestObjectiveBankList(unittest.TestCase):
@@ -466,8 +448,6 @@ class TestObjectiveBankList(unittest.TestCase):
     def test_get_next_objective_banks(self):
         """Tests get_next_objective_banks"""
         pass
-
-
 
 
 class TestObjectiveBankNode(unittest.TestCase):
@@ -489,8 +469,6 @@ class TestObjectiveBankNode(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankNodeList(unittest.TestCase):
     """Tests for ObjectiveBankNodeList"""
 
@@ -503,5 +481,3 @@ class TestObjectiveBankNodeList(unittest.TestCase):
     def test_get_next_objective_bank_nodes(self):
         """Tests get_next_objective_bank_nodes"""
         pass
-
-

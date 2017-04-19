@@ -24,8 +24,6 @@ class TestCommentSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestCommentSearchResults(unittest.TestCase):
     """Tests for CommentSearchResults"""
 
@@ -43,8 +41,6 @@ class TestCommentSearchResults(unittest.TestCase):
     def test_get_comment_search_results_record(self):
         """Tests get_comment_search_results_record"""
         pass
-
-
 
 
 class TestBookSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestBookSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestBookSearchResults(unittest.TestCase):
     """Tests for BookSearchResults"""
 
@@ -85,5 +79,3 @@ class TestBookSearchResults(unittest.TestCase):
     def test_get_book_search_results_record(self):
         """Tests get_book_search_results_record"""
         pass
-
-

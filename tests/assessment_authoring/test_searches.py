@@ -24,8 +24,6 @@ class TestAssessmentPartSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentPartSearchResults(unittest.TestCase):
     """Tests for AssessmentPartSearchResults"""
 
@@ -43,8 +41,6 @@ class TestAssessmentPartSearchResults(unittest.TestCase):
     def test_get_assessment_part_search_results_record(self):
         """Tests get_assessment_part_search_results_record"""
         pass
-
-
 
 
 class TestSequenceRuleSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestSequenceRuleSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestSequenceRuleSearchResults(unittest.TestCase):
     """Tests for SequenceRuleSearchResults"""
 
@@ -85,5 +79,3 @@ class TestSequenceRuleSearchResults(unittest.TestCase):
     def test_get_sequence_rule_search_results_record(self):
         """Tests get_sequence_rule_search_results_record"""
         pass
-
-

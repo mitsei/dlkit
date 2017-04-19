@@ -25,10 +25,6 @@ class ResourceRecord(abc_resource_records.ResourceRecord, osid_records.OsidRecor
     """
 
 
-
-
-
-
 class ResourceQueryRecord(abc_resource_records.ResourceQueryRecord, osid_records.OsidRecord):
     """A record for a ``ResourceQuery``.
 
@@ -36,10 +32,6 @@ class ResourceQueryRecord(abc_resource_records.ResourceQueryRecord, osid_records
     underlying object.
 
     """
-
-
-
-
 
 
 class ResourceFormRecord(abc_resource_records.ResourceFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class ResourceFormRecord(abc_resource_records.ResourceFormRecord, osid_records.O
     """
 
 
-
-
-
-
 class ResourceSearchRecord(abc_resource_records.ResourceSearchRecord, osid_records.OsidRecord):
     """A record for a ``ResourceSearch``.
 
@@ -62,10 +50,6 @@ class ResourceSearchRecord(abc_resource_records.ResourceSearchRecord, osid_recor
     underlying object.
 
     """
-
-
-
-
 
 
 class BinRecord(abc_resource_records.BinRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class BinRecord(abc_resource_records.BinRecord, osid_records.OsidRecord):
     """
 
 
-
-
-
-
 class BinQueryRecord(abc_resource_records.BinQueryRecord, osid_records.OsidRecord):
     """A record for a ``BinQuery``.
 
@@ -90,10 +70,6 @@ class BinQueryRecord(abc_resource_records.BinQueryRecord, osid_records.OsidRecor
     """
 
 
-
-
-
-
 class BinFormRecord(abc_resource_records.BinFormRecord, osid_records.OsidRecord):
     """A record for a ``BinForm``.
 
@@ -101,10 +77,6 @@ class BinFormRecord(abc_resource_records.BinFormRecord, osid_records.OsidRecord)
     underlying object.
 
     """
-
-
-
-
 
 
 class BinSearchRecord(abc_resource_records.BinSearchRecord, osid_records.OsidRecord):

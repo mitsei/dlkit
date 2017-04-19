@@ -1,9 +1,10 @@
 import os
 
 from dlkit.runtime.primordium import Type
+from .handcar_configs import HANDCAR_MC3
 
 # Some default values for the settings.
-HANDCAR_IMPL = ''
+HANDCAR_IMPL = 'HANDCAR_MC3'
 CLOUDFRONT_PUBLIC_KEY = ''
 CLOUDFRONT_PRIVATE_KEY = ''
 CLOUDFRONT_SIGNING_KEYPAIR_ID = ''
@@ -1022,6 +1023,39 @@ TEST_SERVICE_FUNCTIONAL = {
             'description': 'Implementation for logging provider',
             'values': [
                 {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
+            ]
+        },
+    }
+}
+
+TEST_SERVICE_HANDCAR = {
+    'id': 'dlkit_runtime_bootstrap_configuration',
+    'displayName': 'DLKit Runtime Bootstrap Configuration',
+    'description': 'Bootstrap Configuration for DLKit Runtime',
+    'parameters': {
+        'implKey': impl_key_dict('service'),
+        'learningProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Learning Provider Implementation',
+            'description': 'Implementation for learning service provider',
+            'values': [
+                {'value': HANDCAR_IMPL, 'priority': 1}
+            ]
+        },
+        'typeProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Type Provider Implementation',
+            'description': 'Implementation for type service provider',
+            'values': [
+                {'value': HANDCAR_IMPL, 'priority': 1}
+            ]
+        },
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': HANDCAR_IMPL, 'priority': 1}
             ]
         },
     }

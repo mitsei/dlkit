@@ -80,6 +80,7 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
                          self.assessment.object_map)
 
 
+
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # this should not be here...
@@ -196,8 +197,6 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_part_ids[0])
 
 
-
-
 class TestAssessmentPartAdminSession(unittest.TestCase):
     """Tests for AssessmentPartAdminSession"""
 
@@ -214,6 +213,7 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessment_parts():
             cls.catalog.delete_assessment_part(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -289,8 +289,6 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentPartItemSession(unittest.TestCase):
     """Tests for AssessmentPartItemSession"""
 
@@ -331,6 +329,7 @@ class TestAssessmentPartItemSession(unittest.TestCase):
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
+
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -369,8 +368,6 @@ class TestAssessmentPartItemSession(unittest.TestCase):
         """Tests get_assessment_parts_by_item"""
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available(), 1)
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident, self.assessment_part.ident)
-
-
 
 
 class TestAssessmentPartItemDesignSession(unittest.TestCase):
@@ -415,6 +412,7 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
+
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -453,8 +451,6 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
     def test_remove_item(self):
         """Tests remove_item"""
         pass
-
-
 
 
 class TestSequenceRuleLookupSession(unittest.TestCase):
@@ -504,6 +500,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -626,8 +623,6 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.sequence_rule_ids[0])
 
 
-
-
 class TestSequenceRuleAdminSession(unittest.TestCase):
     """Tests for SequenceRuleAdminSession"""
 
@@ -644,6 +639,7 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_sequence_rules():
             cls.catalog.delete_sequence_rule(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
+
 
 
     def test_get_bank_id(self):
@@ -727,5 +723,3 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
     def test_order_sequence_rules(self):
         """Tests order_sequence_rules"""
         pass
-
-

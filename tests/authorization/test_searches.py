@@ -24,8 +24,6 @@ class TestAuthorizationSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAuthorizationSearchResults(unittest.TestCase):
     """Tests for AuthorizationSearchResults"""
 
@@ -43,8 +41,6 @@ class TestAuthorizationSearchResults(unittest.TestCase):
     def test_get_authorization_search_results_record(self):
         """Tests get_authorization_search_results_record"""
         pass
-
-
 
 
 class TestVaultSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestVaultSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestVaultSearchResults(unittest.TestCase):
     """Tests for VaultSearchResults"""
 
@@ -85,5 +79,3 @@ class TestVaultSearchResults(unittest.TestCase):
     def test_get_vault_search_results_record(self):
         """Tests get_vault_search_results_record"""
         pass
-
-

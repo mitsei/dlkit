@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid.osid_errors import IllegalState, Unimplemented
 from ..osid.osid_errors import PermissionDenied
 from ..primitives import Id
@@ -39,7 +38,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
         self._object_catalog_session = None
         self._id_namespace = None
         self._qualifier_id = None
-        self._authz_cache = dict() # Does this want to be a real cache???
+        self._authz_cache = dict()  # Does this want to be a real cache???
         self._overriding_catalog_ids = None
         self._object_view = COMPARATIVE
         self._catalog_view = FEDERATED
@@ -142,6 +141,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
     def _is_isolated_catalog_view(self):
         return bool(self._catalog_view)
+
     def get_locale(self):
         pass
 
@@ -186,10 +186,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
     effective_agent_id = property(fget=get_effective_agent_id)
 
     def get_effective_agent(self):
-        #effective_agent_id = self.get_effective_agent_id()
+        # effective_agent_id = self.get_effective_agent_id()
         # This may want to be extended to get the Agent directly from the Authentication
         # if available and if not effective agent is available in the proxy
-        #return Agent(
+        # return Agent(
         #    identifier=effective_agent_id.get_identifier(),
         #    namespace=effective_agent_id.get_namespace(),
         #    authority=effective_agent_id.get_authority())

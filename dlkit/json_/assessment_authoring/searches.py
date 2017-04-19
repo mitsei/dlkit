@@ -70,8 +70,6 @@ class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearc
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPartSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -123,8 +121,6 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, osid_searches.OsidSearch):
@@ -179,8 +175,6 @@ class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, o
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSearchResults, osid_searches.OsidSearchResults):

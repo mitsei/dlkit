@@ -56,6 +56,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
             cls.svc_mgr.delete_gradebook(catalog.ident)
 
 
+
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
@@ -151,8 +152,6 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.grade_system_ids[0])
 
 
-
-
 class TestGradeSystemQuerySession(unittest.TestCase):
     """Tests for GradeSystemQuerySession"""
 
@@ -184,6 +183,7 @@ class TestGradeSystemQuerySession(unittest.TestCase):
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -224,8 +224,6 @@ class TestGradeSystemQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_grade_systems_by_query(query).available(), 3)
 
 
-
-
 class TestGradeSystemAdminSession(unittest.TestCase):
     """Tests for GradeSystemAdminSession"""
 
@@ -242,6 +240,7 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_grade_systems():
             cls.catalog.delete_grade_system(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -362,8 +361,6 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestGradeEntryLookupSession(unittest.TestCase):
     """Tests for GradeEntryLookupSession"""
 
@@ -416,6 +413,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -558,8 +556,6 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.grade_entry_ids[0])
 
 
-
-
 class TestGradeEntryQuerySession(unittest.TestCase):
     """Tests for GradeEntryQuerySession"""
 
@@ -602,6 +598,7 @@ class TestGradeEntryQuerySession(unittest.TestCase):
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
 
+
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
@@ -640,8 +637,6 @@ class TestGradeEntryQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_grade_entries_by_query(query).available(), 3)
 
 
-
-
 class TestGradeEntryAdminSession(unittest.TestCase):
     """Tests for GradeEntryAdminSession"""
 
@@ -658,6 +653,7 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_grade_entries():
             cls.catalog.delete_grade_entry(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -738,8 +734,6 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookColumnLookupSession(unittest.TestCase):
     """Tests for GradebookColumnLookupSession"""
 
@@ -790,6 +784,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
     
+
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -892,8 +887,6 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
                                    GradebookColumnSummary))
 
 
-
-
 class TestGradebookColumnQuerySession(unittest.TestCase):
     """Tests for GradebookColumnQuerySession"""
 
@@ -925,6 +918,7 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
             for obj in catalog.get_gradebook_columns():
                 catalog.delete_gradebook_column(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -965,8 +959,6 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_gradebook_columns_by_query(query).available(), 3)
 
 
-
-
 class TestGradebookColumnAdminSession(unittest.TestCase):
     """Tests for GradebookColumnAdminSession"""
 
@@ -983,6 +975,7 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_gradebook_columns():
             cls.catalog.delete_gradebook_column(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
 
 
     def test_get_gradebook_id(self):
@@ -1065,8 +1058,6 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestGradebookLookupSession(unittest.TestCase):
     """Tests for GradebookLookupSession"""
 
@@ -1089,6 +1080,7 @@ class TestGradebookLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             cls.svc_mgr.delete_gradebook(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -1138,8 +1130,6 @@ class TestGradebookLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_gradebooks()
 
 
-
-
 class TestGradebookAdminSession(unittest.TestCase):
     """Tests for GradebookAdminSession"""
 
@@ -1163,6 +1153,7 @@ class TestGradebookAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             cls.svc_mgr.delete_gradebook(catalog.ident)
+
 
 
     def test_can_create_gradebooks(self):
@@ -1235,5 +1226,3 @@ class TestGradebookAdminSession(unittest.TestCase):
     def test_alias_gradebook(self):
         """Tests alias_gradebook"""
         pass
-
-

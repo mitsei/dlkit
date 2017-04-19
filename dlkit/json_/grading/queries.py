@@ -36,6 +36,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_grade_system_id(self, grade_system_id, match):
         """Sets the grade system ``Id`` for this query.
@@ -351,8 +352,6 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         raise errors.Unimplemented()
 
 
-
-
 class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidObjectQuery, osid_queries.OsidAggregateableQuery):
     """This is the query for searching grade systems.
 
@@ -369,6 +368,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_based_on_grades(self, match):
         """Matches grade systems based on grades.
@@ -698,8 +698,6 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         raise errors.Unimplemented()
 
 
-
-
 class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRelationshipQuery):
     """This is the query for searching grade entries.
 
@@ -716,6 +714,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_gradebook_column_id(self, gradebook_column_id, match):
         """Sets the gradebook column ``Id`` for this query.
@@ -1331,8 +1330,6 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         raise errors.Unimplemented()
 
 
-
-
 class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching gradings.
 
@@ -1349,6 +1346,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_grade_system_id(self, grade_system_id, match):
         """Sets the grade system ``Id`` for this query.
@@ -1615,8 +1613,6 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class GradebookColumnSummaryQuery(abc_grading_queries.GradebookColumnSummaryQuery, osid_queries.OsidRuleQuery):
@@ -2058,8 +2054,6 @@ class GradebookColumnSummaryQuery(abc_grading_queries.GradebookColumnSummaryQuer
         raise errors.Unimplemented()
 
 
-
-
 class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching gradebooks.
 
@@ -2089,6 +2083,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_grade_system_id(self, grade_system_id, match):
         """Sets the grade system ``Id`` for this query.

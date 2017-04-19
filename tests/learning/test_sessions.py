@@ -55,6 +55,7 @@ class TestObjectiveLookupSession(unittest.TestCase):
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
 
+
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
@@ -145,8 +146,6 @@ class TestObjectiveLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.objective_ids[0])
 
 
-
-
 class TestObjectiveQuerySession(unittest.TestCase):
     """Tests for ObjectiveQuerySession"""
 
@@ -178,6 +177,7 @@ class TestObjectiveQuerySession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -218,8 +218,6 @@ class TestObjectiveQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_objectives_by_query(query).available(), 3)
 
 
-
-
 class TestObjectiveAdminSession(unittest.TestCase):
     """Tests for ObjectiveAdminSession"""
 
@@ -236,6 +234,7 @@ class TestObjectiveAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_objectives():
             cls.catalog.delete_objective(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -301,8 +300,6 @@ class TestObjectiveAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveHierarchySession(unittest.TestCase):
     """Tests for ObjectiveHierarchySession"""
 
@@ -335,6 +332,7 @@ class TestObjectiveHierarchySession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -420,8 +418,6 @@ class TestObjectiveHierarchySession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     """Tests for ObjectiveHierarchyDesignSession"""
 
@@ -452,6 +448,7 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -502,8 +499,6 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     
 
 
-
-
 class TestObjectiveSequencingSession(unittest.TestCase):
     """Tests for ObjectiveSequencingSession"""
 
@@ -536,8 +531,6 @@ class TestObjectiveSequencingSession(unittest.TestCase):
     def test_sequence_objectives(self):
         """Tests sequence_objectives"""
         pass
-
-
 
 
 class TestObjectiveObjectiveBankSession(unittest.TestCase):
@@ -584,6 +577,7 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
 
+
     @unittest.skip('unimplemented test')
     def test_can_lookup_objective_objective_bank_mappings(self):
         """Tests can_lookup_objective_objective_bank_mappings"""
@@ -628,8 +622,6 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ObjectiveObjectiveBankAssignmentSession"""
 
@@ -669,8 +661,6 @@ class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveRequisiteSession(unittest.TestCase):
     """Tests for ObjectiveRequisiteSession"""
 
@@ -704,6 +694,7 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -784,8 +775,6 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
     """Tests for ObjectiveRequisiteAssignmentSession"""
 
@@ -818,6 +807,7 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -853,8 +843,6 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
     def test_unassign_equivalent_objective(self):
         """Tests unassign_equivalent_objective"""
         pass
-
-
 
 
 class TestActivityLookupSession(unittest.TestCase):
@@ -893,6 +881,7 @@ class TestActivityLookupSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -1005,8 +994,6 @@ class TestActivityLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.activity_ids[0])
 
 
-
-
 class TestActivityAdminSession(unittest.TestCase):
     """Tests for ActivityAdminSession"""
 
@@ -1023,6 +1010,7 @@ class TestActivityAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_activities():
             cls.catalog.delete_activity(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -1088,8 +1076,6 @@ class TestActivityAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestActivityObjectiveBankSession(unittest.TestCase):
     """Tests for ActivityObjectiveBankSession"""
 
@@ -1138,6 +1124,7 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
             cls.svc_mgr.delete_objective_bank(catalog.ident)
     
 
+
     @unittest.skip('unimplemented test')
     def test_can_lookup_activity_objective_bank_mappings(self):
         """Tests can_lookup_activity_objective_bank_mappings"""
@@ -1182,8 +1169,6 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
         self.assertEqual(cats.available(), 2)
 
 
-
-
 class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ActivityObjectiveBankAssignmentSession"""
 
@@ -1223,8 +1208,6 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiencyLookupSession(unittest.TestCase):
     """Tests for ProficiencyLookupSession"""
 
@@ -1259,6 +1242,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1440,8 +1424,6 @@ class TestProficiencyLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.proficiency_ids[0])
 
 
-
-
 class TestProficiencyQuerySession(unittest.TestCase):
     """Tests for ProficiencyQuerySession"""
 
@@ -1476,6 +1458,7 @@ class TestProficiencyQuerySession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1515,8 +1498,6 @@ class TestProficiencyQuerySession(unittest.TestCase):
         self.assertEqual(self.catalog.get_proficiencies_by_query(query).available(), 3)
 
 
-
-
 class TestProficiencyAdminSession(unittest.TestCase):
     """Tests for ProficiencyAdminSession"""
 
@@ -1533,6 +1514,7 @@ class TestProficiencyAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_proficiencies():
             cls.catalog.delete_proficiency(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
 
 
     def test_get_objective_bank_id(self):
@@ -1603,8 +1585,6 @@ class TestProficiencyAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankLookupSession(unittest.TestCase):
     """Tests for ObjectiveBankLookupSession"""
 
@@ -1627,6 +1607,7 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
         #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     @unittest.skip('unimplemented test')
@@ -1676,8 +1657,6 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
         catalogs = self.svc_mgr.get_objective_banks()
 
 
-
-
 class TestObjectiveBankAdminSession(unittest.TestCase):
     """Tests for ObjectiveBankAdminSession"""
 
@@ -1701,6 +1680,7 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             cls.svc_mgr.delete_objective_bank(catalog.ident)
+
 
 
     def test_can_create_objective_banks(self):
@@ -1775,8 +1755,6 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankHierarchySession(unittest.TestCase):
     """Tests for ObjectiveBankHierarchySession"""
 
@@ -1799,6 +1777,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         cls.svc_mgr.remove_child_objective_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_objective_bank(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_objective_bank_hierarchy_id(self):
@@ -1911,8 +1890,6 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         # add some tests on the returned node
 
 
-
-
 class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):
     """Tests for ObjectiveBankHierarchyDesignSession"""
 
@@ -1935,6 +1912,7 @@ class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.remove_child_objective_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_objective_bank(cls.catalogs[cat_name].ident)
+
 
 
     def test_get_objective_bank_hierarchy_id(self):
@@ -1974,5 +1952,3 @@ class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):
     def test_remove_child_objective_banks(self):
         """Tests remove_child_objective_banks"""
         pass
-
-

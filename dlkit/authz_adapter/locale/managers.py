@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
             return self._provider_manager.get_no_catalog_hierarchy_session()
         except Unimplemented:
             return None
+
     @raise_null_argument
     def get_language_types_for_source(self, source_language_type, source_script_type):
         raise Unimplemented()
@@ -176,8 +176,6 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
     source_format_types = property(fget=get_source_format_types)
 
 
-
-
 class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.LocaleManager):
     """Adapts underlying LocaleManager methodswith authorization checks."""
     def __init__(self):
@@ -190,9 +188,6 @@ class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.Lo
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('LOCALE', provider_impl)
         # need to add version argument
-
-
-
 
 
 class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, locale_managers.LocaleProxyManager):

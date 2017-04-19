@@ -64,6 +64,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -339,8 +340,6 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
     objectives = property(fget=get_objectives)
 
 
-
-
 class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``Objective`` objects.
 
@@ -376,6 +375,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -505,8 +505,6 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         return objects.ObjectiveList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Objectives``.
 
@@ -556,6 +554,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -947,8 +946,6 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         self._alias_id(primary_id=objective_id, equivalent_id=alias_id)
 
 
-
-
 class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Objective`` objects.
 
@@ -996,6 +993,7 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
                identifier='OBJECTIVE'),
             proxy=self._proxy
         )
+
     def get_objective_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -1306,8 +1304,6 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         raise errors.Unimplemented()
 
 
-
-
 class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDesignSession, osid_sessions.OsidSession):
     """This session defines methods for managing a hierarchy of ``Objective`` objects.
 
@@ -1334,6 +1330,7 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
                identifier='OBJECTIVE'),
             proxy=self._proxy
         )
+
     def get_objective_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -1466,8 +1463,6 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         return self._hierarchy_session.remove_children(id_=objective_id)
 
 
-
-
 class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSession, osid_sessions.OsidSession):
     """This session provides methods to sequence the objectives in the objective hierarchy."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None):
@@ -1482,6 +1477,7 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
+
     def get_objective_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -1591,8 +1587,6 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
         raise errors.Unimplemented()
 
 
-
-
 class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Objective`` to ``ObjectiveBank`` mappings.
 
@@ -1613,6 +1607,7 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_objective_objective_bank_mappings(self):
         """Tests if this user can perform lookups of objective/objective bank mappings.
 
@@ -1794,8 +1789,6 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
             self.get_objective_bank_ids_by_objective(objective_id))
 
 
-
-
 class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObjectiveBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Objectives`` to ``ObjectiveBanks``.
 
@@ -1816,6 +1809,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         self._catalog_name = 'ObjectiveBank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_objectives(self):
         """Tests if this user can alter objective/objective bank mappings.
 
@@ -1990,8 +1984,6 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
             raise
 
 
-
-
 class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving objective requisites.
 
@@ -2032,6 +2024,7 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -2271,8 +2264,6 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         raise errors.Unimplemented()
 
 
-
-
 class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisiteAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to manage requisites.
 
@@ -2296,6 +2287,7 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -2439,8 +2431,6 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         raise errors.Unimplemented()
 
 
-
-
 class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Activity`` objects.
 
@@ -2482,6 +2472,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -2856,8 +2847,6 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
     activities = property(fget=get_activities)
 
 
-
-
 class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Activities``.
 
@@ -2907,6 +2896,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -3305,8 +3295,6 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         self._alias_id(primary_id=activity_id, equivalent_id=alias_id)
 
 
-
-
 class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Activity`` to ``ObjectiveBank`` mappings.
 
@@ -3327,6 +3315,7 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_activity_objective_bank_mappings(self):
         """Tests if this user can perform lookups of activity/objective bank mappings.
 
@@ -3508,8 +3497,6 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
             self.get_objective_bank_ids_by_activity(activity_id))
 
 
-
-
 class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjectiveBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Activities`` to ``ObjectiveBanks``.
 
@@ -3530,6 +3517,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         self._catalog_name = 'ObjectiveBank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_activities(self):
         """Tests if this user can alter activity/objective bank mappings.
 
@@ -3700,8 +3688,6 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
             raise
 
 
-
-
 class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving proficiencies."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -3717,6 +3703,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -4378,8 +4365,6 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
     proficiencies = property(fget=get_proficiencies)
 
 
-
-
 class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Proficiency`` objects.
 
@@ -4413,6 +4398,7 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
             cat_name='ObjectiveBank',
             cat_class=objects.ObjectiveBank)
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -4542,8 +4528,6 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         return objects.ProficiencyList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Proficiencies``.
 
@@ -4595,6 +4579,7 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
             cat_class=objects.ObjectiveBank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_objective_bank_id(self):
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
@@ -5010,8 +4995,6 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         self._alias_id(primary_id=proficiency_id, equivalent_id=alias_id)
 
 
-
-
 class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``ObjectiveBank`` objects.
 
@@ -5047,6 +5030,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_objective_banks(self):
         """Tests if this user can perform ``ObjectiveBank`` lookups.
 
@@ -5301,8 +5285,6 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
     objective_banks = property(fget=get_objective_banks)
 
 
-
-
 class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``ObjectiveBanks``.
 
@@ -5346,6 +5328,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_objective_banks(self):
         """Tests if this user can create ``ObjectiveBanks``.
 
@@ -5678,8 +5661,6 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         self._alias_id(primary_id=objective_bank_id, equivalent_id=alias_id)
 
 
-
-
 class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``ObjectiveBank`` objects.
 
@@ -5723,6 +5704,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
                    namespace='CATALOG',
                    identifier='OBJECTIVEBANK'),
                 proxy=self._proxy)
+
     def get_objective_bank_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -6140,8 +6122,6 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHierarchyDesignSession, osid_sessions.OsidSession):
     """This session defines methods for managing a hierarchy of ``ObjectiveBank`` objects.
 
@@ -6164,6 +6144,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
                    namespace='CATALOG',
                    identifier='OBJECTIVEBANK'),
                 proxy=self._proxy)
+
     def get_objective_bank_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 

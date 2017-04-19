@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
             return self._provider_manager.get_log_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_logging(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -105,8 +105,6 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         return self._provider_manager.supports_log_entry_admin()
 
 
-
-
 class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers.LoggingManager):
     """Adapts underlying LoggingManager methodswith authorization checks."""
     def __init__(self):
@@ -119,6 +117,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('LOGGING', provider_impl)
         # need to add version argument
+
     def get_logging_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -261,8 +260,6 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     logging_batch_manager = property(fget=get_logging_batch_manager)
 
 
-
-
 class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
     """Adapts underlying LoggingProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -275,6 +272,7 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('LOGGING', provider_impl)
         # need to add version argument
+
     @raise_null_argument
     def get_logging_session(self, proxy):
         # Implemented from azosid template for -

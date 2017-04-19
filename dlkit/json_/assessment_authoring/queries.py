@@ -35,6 +35,7 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
         """Sets the assessment ``Id`` for this query.
@@ -424,8 +425,6 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class SequenceRuleQuery(abc_assessment_authoring_queries.SequenceRuleQuery, osid_queries.OsidRuleQuery):

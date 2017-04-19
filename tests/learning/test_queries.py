@@ -10,6 +10,7 @@ class TestObjectiveQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
@@ -311,10 +312,9 @@ class TestObjectiveQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestActivityQuery(unittest.TestCase):
     """Tests for ActivityQuery"""
+
 
 
 
@@ -464,10 +464,9 @@ class TestActivityQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiencyQuery(unittest.TestCase):
     """Tests for ProficiencyQuery"""
+
 
 
 
@@ -607,8 +606,6 @@ class TestProficiencyQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankQuery(unittest.TestCase):
     """Tests for ObjectiveBankQuery"""
 
@@ -736,5 +733,3 @@ class TestObjectiveBankQuery(unittest.TestCase):
     def test_get_objective_bank_query_record(self):
         """Tests get_objective_bank_query_record"""
         pass
-
-

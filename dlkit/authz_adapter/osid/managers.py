@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import markers as osid_markers
 from ..osid.osid_errors import Unimplemented, IllegalState, NullArgument
 from ..primitives import Id
@@ -38,7 +37,7 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         config = self._my_runtime.get_configuration()
         parameter_id = Id('parameter:authzAuthorityImpl@authz_adapter')
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
-        return self._my_runtime.get_manager('AUTHORIZATION', provider_impl) # need to add version argument
+        return self._my_runtime.get_manager('AUTHORIZATION', provider_impl)  # need to add version argument
 
     def _get_vault_lookup_session(self):
         return self._get_authz_manager().get_vault_lookup_session()
@@ -78,6 +77,7 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         session = self._get_authz_manager().get_authorization_lookup_session_for_vault(vault.get_id())
         session.use_isolated_vault_view()
         return session
+
     def get_id(self):
         pass
 
@@ -140,12 +140,11 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         pass
 
 
-
-
 class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
     """Adapts underlying OsidManager methodswith authorization checks."""
     def __init__(self):
         OsidProfile.__init__(self)
+
     @raise_null_argument
     def initialize(self, runtime):
         OsidProfile.initialize(self, runtime)
@@ -159,12 +158,11 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
         raise Unimplemented()
 
 
-
-
 class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     """Adapts underlying OsidProxyManager methodswith authorization checks."""
     def __init__(self):
         OsidProfile.__init__(self)
+
     @raise_null_argument
     def initialize(self, runtime):
         OsidProfile.initialize(self, runtime)
@@ -178,15 +176,11 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         raise Unimplemented()
 
 
-
-
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
     """Adapts underlying OsidRuntimeProfile methodswith authorization checks."""
 
     def supports_configuration(self):
         raise Unimplemented()
-
-
 
 
 class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, OsidRuntimeProfile):

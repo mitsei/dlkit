@@ -20,7 +20,9 @@ MANAGER_PATHS = {
         'RESOURCE': ('dlkit.services.resource.ResourceManager',
                      'dlkit.services.resource.ResourceManager'),
         'GRADING': ('dlkit.services.grading.GradingManager',
-                    'dlkit.services.grading.GradingManager')
+                    'dlkit.services.grading.GradingManager'),
+        'TYPE': ('dlkit.services.type.TypeManager',
+                 'dlkit.services.type.TypeManager')
     },
     'json': {
         'ASSESSMENT': ('dlkit.json_.assessment.managers.AssessmentManager',
@@ -64,7 +66,11 @@ MANAGER_PATHS = {
     },
     'handcar': {
         'LEARNING': ('dlkit.handcar.learning.managers.LearningManager',
-                     'dlkit.handcar.learning.managers.LearningProxyManager')
+                     'dlkit.handcar.learning.managers.LearningProxyManager'),
+        'TYPE': ('dlkit.handcar.type.managers.TypeManager',
+                 'dlkit.handcar.type.managers.TypeManager'),
+        'REPOSITORY': ('dlkit.handcar.repository.managers.RepositoryManager',
+                       'dlkit.handcar.repository.managers.RepositoryProxyManager'),
     },
     'aws_adapter': {
         'REPOSITORY': ('dlkit.aws_adapter.repository.managers.RepositoryManager',

@@ -36,6 +36,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_priority(self, priority_type, match):
         """Matches a priority ``Type`` for the log entry.
@@ -320,8 +321,6 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         raise errors.Unimplemented()
 
 
-
-
 class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching for logs.
 
@@ -351,6 +350,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_log_entry_id(self, log_entry_id, match):
         """Sets a log entry ``Id``.

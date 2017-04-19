@@ -60,6 +60,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
             cat_name='Book',
             cat_class=objects.Book)
         self._kwargs = kwargs
+
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
 
@@ -668,8 +669,6 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
     comments = property(fget=get_comments)
 
 
-
-
 class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``Comment`` objects.
 
@@ -695,6 +694,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
             cat_name='Book',
             cat_class=objects.Book)
         self._kwargs = kwargs
+
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
 
@@ -822,8 +822,6 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         return objects.CommentList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Comments``.
 
@@ -874,6 +872,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
             cat_class=objects.Book)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_book_id(self):
         """Gets the ``Book``  ``Id`` associated with this session.
 
@@ -1272,8 +1271,6 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         self._alias_id(primary_id=comment_id, equivalent_id=alias_id)
 
 
-
-
 class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Book`` objects.
 
@@ -1296,6 +1293,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_books(self):
         """Tests if this user can perform ``Book`` lookups.
 
@@ -1533,8 +1531,6 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
     books = property(fget=get_books)
 
 
-
-
 class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Books``.
 
@@ -1575,6 +1571,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_books(self):
         """Tests if this user can create ``Books``.
 
@@ -1897,8 +1894,6 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         self._alias_id(primary_id=book_id, equivalent_id=alias_id)
 
 
-
-
 class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Book`` objects.
 
@@ -1941,6 +1936,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
                    namespace='CATALOG',
                    identifier='BOOK'),
                 proxy=self._proxy)
+
     def get_book_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -2350,8 +2346,6 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSession, osid_sessions.OsidSession):
     """This session manages a hierarchy of books.
 
@@ -2377,6 +2371,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
                    namespace='CATALOG',
                    identifier='BOOK'),
                 proxy=self._proxy)
+
     def get_book_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 

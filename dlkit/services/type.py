@@ -43,15 +43,14 @@ class TypeProfile(osid.OsidProfile, type_managers.TypeProfile):
 class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers.TypeManager):
     """TypeManager convenience adapter including related Session methods."""
     def __init__(self, proxy=None):
-        import settings
-        import importlib
         self._runtime = None
-        provider_module = importlib.import_module(settings.TYPE_PROVIDER_MANAGER_PATH, settings.ANCHOR_PATH)
-        provider_manager_class = getattr(provider_module, 'TypeManager')
-        self._provider_manager = provider_manager_class()
+        self._provider_manager = None
         self._provider_sessions = dict()
+        self._session_management = AUTOMATIC
+        self._bin_view = DEFAULT
         # This is to initialize self._proxy
         osid.OsidSession.__init__(self, proxy)
+        self._sub_package_provider_managers = dict()
 
     def _get_provider_session(self, session):
         if session in self._provider_sessions:
@@ -83,6 +82,14 @@ class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers
         # Implemented from
         # osid.type.TypeLookupSession.get_types
         return self._get_provider_session('type_lookup_session').get_types(*args, **kwargs)
+
+    def get_type_lookup_session(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._provider_manager.get_type_lookup_session(*args, **kwargs)
+
+    def get_type_admin_session(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._provider_manager.get_type_admin_session(*args, **kwargs)
 
 
 

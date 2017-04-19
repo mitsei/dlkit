@@ -70,6 +70,7 @@ class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
                 'languageTypeId': language_type_str,
                 'scriptTypeId': script_type_str,
                 'formatTypeId': format_type_str}
+
     def get_display_name(self):
         """Gets the full display name of this ``Type``.
 

@@ -82,6 +82,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
             cat_name='Family',
             cat_class=objects.Family)
         self._kwargs = kwargs
+
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
 
@@ -700,8 +701,6 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
     relationships = property(fget=get_relationships)
 
 
-
-
 class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Relationship`` objects.
 
@@ -725,6 +724,7 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
             cat_name='Family',
             cat_class=objects.Family)
         self._kwargs = kwargs
+
     def get_family_id(self):
         """Gets the ``Family``  ``Id`` associated with this session.
 
@@ -855,8 +855,6 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         return objects.RelationshipList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Relationships``.
 
@@ -907,6 +905,7 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
             cat_class=objects.Family)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_family_id(self):
         """Gets the ``Familt``  ``Id`` associated with this session.
 
@@ -1314,8 +1313,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         self._alias_id(primary_id=relationship_id, equivalent_id=alias_id)
 
 
-
-
 class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Family`` objects.
 
@@ -1347,6 +1344,7 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_families(self):
         """Tests if this user can perform ``Family`` lookups.
 
@@ -1590,8 +1588,6 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
     families = property(fget=get_families)
 
 
-
-
 class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Families``.
 
@@ -1632,6 +1628,7 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_families(self):
         """Tests if this user can create families.
 
@@ -1957,8 +1954,6 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         self._alias_id(primary_id=family_id, equivalent_id=alias_id)
 
 
-
-
 class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Family`` objects.
 
@@ -2001,6 +1996,7 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
                    namespace='CATALOG',
                    identifier='FAMILY'),
                 proxy=self._proxy)
+
     def get_family_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -2412,8 +2408,6 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesignSession, osid_sessions.OsidSession):
     """This session manages a hierarchy of families may be organized into a hierarchy for organizing or federating.
 
@@ -2438,6 +2432,7 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
                    namespace='CATALOG',
                    identifier='FAMILY'),
                 proxy=self._proxy)
+
     def get_family_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 

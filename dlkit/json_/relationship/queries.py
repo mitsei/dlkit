@@ -36,6 +36,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_source_id(self, peer, match):
         """Matches a relationship peer.
@@ -191,8 +192,6 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         raise errors.Unimplemented()
 
 
-
-
 class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalogQuery):
     """This is the query interface for searching for families.
 
@@ -222,6 +221,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_relationship_id(self, relationship_id, match):
         """Matches a relationship ``Id``.

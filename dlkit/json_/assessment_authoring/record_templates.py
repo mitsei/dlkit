@@ -25,10 +25,6 @@ class AssessmentPartRecord(abc_assessment_authoring_records.AssessmentPartRecord
     """
 
 
-
-
-
-
 class AssessmentPartQueryRecord(abc_assessment_authoring_records.AssessmentPartQueryRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentPartQuery``.
 
@@ -36,10 +32,6 @@ class AssessmentPartQueryRecord(abc_assessment_authoring_records.AssessmentPartQ
     underlying object.
 
     """
-
-
-
-
 
 
 class AssessmentPartFormRecord(abc_assessment_authoring_records.AssessmentPartFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class AssessmentPartFormRecord(abc_assessment_authoring_records.AssessmentPartFo
     """
 
 
-
-
-
-
 class AssessmentPartSearchRecord(abc_assessment_authoring_records.AssessmentPartSearchRecord, osid_records.OsidRecord):
     """A record for an ``AssessmentPartSearch``.
 
@@ -62,10 +50,6 @@ class AssessmentPartSearchRecord(abc_assessment_authoring_records.AssessmentPart
     underlying object.
 
     """
-
-
-
-
 
 
 class SequenceRuleRecord(abc_assessment_authoring_records.SequenceRuleRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class SequenceRuleRecord(abc_assessment_authoring_records.SequenceRuleRecord, os
     """
 
 
-
-
-
-
 class SequenceRuleQueryRecord(abc_assessment_authoring_records.SequenceRuleQueryRecord, osid_records.OsidRecord):
     """A record for a ``SequenceRuleQuery``.
 
@@ -90,10 +70,6 @@ class SequenceRuleQueryRecord(abc_assessment_authoring_records.SequenceRuleQuery
     """
 
 
-
-
-
-
 class SequenceRuleFormRecord(abc_assessment_authoring_records.SequenceRuleFormRecord, osid_records.OsidRecord):
     """A record for a ``SequenceRuleForm``.
 
@@ -101,10 +77,6 @@ class SequenceRuleFormRecord(abc_assessment_authoring_records.SequenceRuleFormRe
     underlying object.
 
     """
-
-
-
-
 
 
 class SequenceRuleSearchRecord(abc_assessment_authoring_records.SequenceRuleSearchRecord, osid_records.OsidRecord):

@@ -10,6 +10,7 @@ class TestLogEntry(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_priority(self):
         """Tests get_priority"""
@@ -46,10 +47,9 @@ class TestLogEntry(unittest.TestCase):
         pass
 
 
-
-
 class TestLogEntryForm(unittest.TestCase):
     """Tests for LogEntryForm"""
+
 
 
 
@@ -94,8 +94,6 @@ class TestLogEntryForm(unittest.TestCase):
         pass
 
 
-
-
 class TestLogEntryList(unittest.TestCase):
     """Tests for LogEntryList"""
 
@@ -110,10 +108,9 @@ class TestLogEntryList(unittest.TestCase):
         pass
 
 
-
-
 class TestLog(unittest.TestCase):
     """Tests for Log"""
+
 
 
 
@@ -123,10 +120,9 @@ class TestLog(unittest.TestCase):
         pass
 
 
-
-
 class TestLogForm(unittest.TestCase):
     """Tests for LogForm"""
+
 
 
 
@@ -134,8 +130,6 @@ class TestLogForm(unittest.TestCase):
     def test_get_log_form_record(self):
         """Tests get_log_form_record"""
         pass
-
-
 
 
 class TestLogList(unittest.TestCase):
@@ -150,8 +144,6 @@ class TestLogList(unittest.TestCase):
     def test_get_next_logs(self):
         """Tests get_next_logs"""
         pass
-
-
 
 
 class TestLogNode(unittest.TestCase):
@@ -173,8 +165,6 @@ class TestLogNode(unittest.TestCase):
         pass
 
 
-
-
 class TestLogNodeList(unittest.TestCase):
     """Tests for LogNodeList"""
 
@@ -187,5 +177,3 @@ class TestLogNodeList(unittest.TestCase):
     def test_get_next_log_nodes(self):
         """Tests get_next_log_nodes"""
         pass
-
-

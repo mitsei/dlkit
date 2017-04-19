@@ -25,10 +25,6 @@ class AgentRecord(abc_authentication_records.AgentRecord, osid_records.OsidRecor
     """
 
 
-
-
-
-
 class AgentQueryRecord(abc_authentication_records.AgentQueryRecord, osid_records.OsidRecord):
     """A record for an ``AgentQuery``.
 
@@ -38,10 +34,6 @@ class AgentQueryRecord(abc_authentication_records.AgentQueryRecord, osid_records
     """
 
 
-
-
-
-
 class AgentFormRecord(abc_authentication_records.AgentFormRecord, osid_records.OsidRecord):
     """A record for an ``AgentForm``.
 
@@ -49,10 +41,6 @@ class AgentFormRecord(abc_authentication_records.AgentFormRecord, osid_records.O
     underlying object.
 
     """
-
-
-
-
 
 
 class AgentSearchRecord(abc_authentication_records.AgentSearchRecord, osid_records.OsidRecord):

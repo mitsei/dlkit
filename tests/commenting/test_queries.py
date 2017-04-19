@@ -10,6 +10,7 @@ class TestCommentQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_reference_id(self):
         """Tests match_reference_id"""
@@ -146,8 +147,6 @@ class TestCommentQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestBookQuery(unittest.TestCase):
     """Tests for BookQuery"""
 
@@ -245,5 +244,3 @@ class TestBookQuery(unittest.TestCase):
     def test_get_book_query_record(self):
         """Tests get_book_query_record"""
         pass
-
-

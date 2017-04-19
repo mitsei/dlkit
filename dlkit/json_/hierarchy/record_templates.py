@@ -25,10 +25,6 @@ class HierarchyRecord(abc_hierarchy_records.HierarchyRecord, osid_records.OsidRe
     """
 
 
-
-
-
-
 class HierarchyQueryRecord(abc_hierarchy_records.HierarchyQueryRecord, osid_records.OsidRecord):
     """A record for a ``HierarchyQuery``.
 
@@ -38,10 +34,6 @@ class HierarchyQueryRecord(abc_hierarchy_records.HierarchyQueryRecord, osid_reco
     """
 
 
-
-
-
-
 class HierarchyFormRecord(abc_hierarchy_records.HierarchyFormRecord, osid_records.OsidRecord):
     """A record for a ``HierarchyForm``.
 
@@ -49,10 +41,6 @@ class HierarchyFormRecord(abc_hierarchy_records.HierarchyFormRecord, osid_record
     underlying object.
 
     """
-
-
-
-
 
 
 class HierarchySearchRecord(abc_hierarchy_records.HierarchySearchRecord, osid_records.OsidRecord):

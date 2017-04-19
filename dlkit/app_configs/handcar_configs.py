@@ -1,17 +1,23 @@
 import os
 
 MC3_HOST = ''
-MC3_HANDCAR_APP_KEY = ''
+MC3_HANDCAR_APP_KEY = None
 
 try:
     from django.conf import settings
     MC3_HOST = settings.MC3_HOST
     MC3_HANDCAR_APP_KEY = settings.MC3_HANDCAR_APP_KEY
 except ImportError:
-    if 'MC3_HOST' in os.environ:
-        MC3_HOST = os.environ['MC3_HOST']
-    if 'MC3_HANDCAR_APP_KEY' in os.environ:
-        MC3_HANDCAR_APP_KEY = os.environ['MC3_HANDCAR_APP_KEY']
+    try:
+        from dlkit.handcar import settings
+        MC3_HOST = settings.HOST
+        # Keep the app_key None, since there are none in the
+        # settings file.
+    except ImportError:
+        if 'MC3_HOST' in os.environ:
+            MC3_HOST = os.environ['MC3_HOST']
+        if 'MC3_HANDCAR_APP_KEY' in os.environ:
+            MC3_HANDCAR_APP_KEY = os.environ['MC3_HANDCAR_APP_KEY']
 
 
 HANDCAR_MC3 = {

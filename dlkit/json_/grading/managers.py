@@ -338,8 +338,6 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
     gradebook_search_record_types = property(fget=get_gradebook_search_record_types)
 
 
-
-
 class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers.GradingManager):
     """The grading manager provides access to grading sessions and provides interoperability tests for various aspects of this service.
 
@@ -401,6 +399,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_grade_system_lookup_session(self):
         """Gets the ``OsidSession`` associated with the grade system lookup service.
@@ -901,8 +900,6 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     grading_transform_manager = property(fget=get_grading_transform_manager)
 
 
-
-
 class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, grading_managers.GradingProxyManager):
     """The grading manager provides access to grading sessions and provides interoperability tests for various aspects of this service.
 
@@ -967,6 +964,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_grade_system_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the grade system lookup service.

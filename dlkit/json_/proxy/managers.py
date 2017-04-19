@@ -74,8 +74,6 @@ class ProxyProfile(osid_managers.OsidProfile, proxy_managers.ProxyProfile):
     proxy_condition_record_types = property(fget=get_proxy_condition_record_types)
 
 
-
-
 class ProxyManager(osid_managers.OsidManager, ProxyProfile, proxy_managers.ProxyManager):
     """The proxy manager provides access to proxy sessions and provides interoperability tests for various aspects of this service.
 
@@ -86,6 +84,7 @@ class ProxyManager(osid_managers.OsidManager, ProxyProfile, proxy_managers.Proxy
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_proxy_session(self):
         """Gets a ``ProxySession`` which is responsible for acquiring authentication credentials on behalf of a service client.
@@ -106,8 +105,6 @@ class ProxyManager(osid_managers.OsidManager, ProxyProfile, proxy_managers.Proxy
     proxy_session = property(fget=get_proxy_session)
 
 
-
-
 class ProxyProxyManager(osid_managers.OsidProxyManager, ProxyProfile, proxy_managers.ProxyProxyManager):
     """The proxy proxy manager provides access to proxy sessions and provides interoperability tests for various aspects of this service.
 
@@ -119,6 +116,7 @@ class ProxyProxyManager(osid_managers.OsidProxyManager, ProxyProfile, proxy_mana
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_proxy_session(self, proxy):
         """Gets the ``OsidSession`` associated with the ``ProxySession`` using the supplied ``Proxy``.

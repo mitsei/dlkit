@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -59,8 +58,6 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         raise Unimplemented()
 
 
-
-
 class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_sessions.OsidSession):
     """Adapts underlying LogEntryLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -85,7 +82,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
 
     def _get_unauth_log_ids(self, log_id):
         if self._can('lookup', log_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(log_id)]
         if self._hierarchy_session.has_child_logs(log_id):
@@ -107,6 +104,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         for log_id in self._unauth_log_ids:
             query.match_log_id(log_id, match=False)
         return self._query_session.get_log_entries_by_query(query)
+
     def get_log_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -163,7 +161,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_log_entry(log_entry_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         query.match_id(log_entry_id, match=True)
         results = self._try_harder(query)
@@ -177,7 +175,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_log_entries_by_ids(log_entry_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         for log_entry_id in (log_entry_ids):
             query.match_id(log_entry_id, match=True)
@@ -189,7 +187,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_log_entries_by_genus_type(log_entry_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         query.match_genus_type(log_entry_genus_type, match=True)
         return self._try_harder(query)
@@ -200,7 +198,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_log_entries_by_parent_genus_type(log_entry_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         query.match_parent_genus_type(log_entry_genus_type, match=True)
         return self._try_harder(query)
@@ -211,7 +209,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_log_entries_by_record_type(log_entry_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         query.match_record_type(log_entry_genus_type, match=True)
         return self._try_harder(query)
@@ -245,14 +243,12 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_log_entries()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_log_entry_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     log_entries = property(fget=get_log_entries)
-
-
 
 
 class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessions.OsidSession):
@@ -277,7 +273,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
 
     def _get_unauth_log_ids(self, log_id):
         if self._can('search', log_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(log_id)]
         if self._hierarchy_session.has_child_logs(log_id):
@@ -298,12 +294,12 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
             query._provider_query.match_log_id(log_id, match=False)
         return self._query_session.get_log_entries_by_query(query)
 
-
     class LogEntryQueryWrapper(QueryWrapper):
         """Wrapper for LogEntryQueries to override match_log_id method"""
 
         def match_log_id(self, log_id, match=True):
             self._cat_id_args_list.append({'log_id': log_id, 'match': match})
+
     def get_log_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -371,8 +367,6 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         return result
 
 
-
-
 class LogEntrySearchSession(abc_logging_sessions.LogEntrySearchSession, LogEntryQuerySession):
     """Adapts underlying LogEntrySearchSession methodswith authorization checks."""
 
@@ -405,8 +399,6 @@ class LogEntrySearchSession(abc_logging_sessions.LogEntrySearchSession, LogEntry
         raise Unimplemented()
 
 
-
-
 class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessions.OsidSession):
     """Adapts underlying LogEntryAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -434,6 +426,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
     def _can_for_log_entry(self, func_name, log_entry_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, log_entry_id, 'get_log_ids_for_log_entry')
+
     def get_log_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -461,8 +454,8 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if log_entry_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if log_entry_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -532,14 +525,13 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         return self._provider_session.alias_log_entry(log_entry_id, alias_id)
 
 
-
-
 class LogEntryNotificationSession(abc_logging_sessions.LogEntryNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying LogEntryNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_log_id()
         self._id_namespace = 'logging.LogEntry'
+
     def get_log_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -692,14 +684,13 @@ class LogEntryNotificationSession(abc_logging_sessions.LogEntryNotificationSessi
         raise Unimplemented()
 
 
-
-
 class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.OsidSession):
     """Adapts underlying LogEntryLogSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'logging.LogEntryLog'
+
     def use_comparative_log_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -760,14 +751,13 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         raise Unimplemented()
 
 
-
-
 class LogEntryLogAssignmentSession(abc_logging_sessions.LogEntryLogAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying LogEntryLogAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'logging.LogEntryLog'
+
     def can_assign_log_entries(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -814,8 +804,6 @@ class LogEntryLogAssignmentSession(abc_logging_sessions.LogEntryLogAssignmentSes
     @raise_null_argument
     def reassign_log_entry_to_log(self, log_entry_id, from_log_id, to_log_id):
         raise Unimplemented()
-
-
 
 
 class LogEntrySmartLogSession(abc_logging_sessions.LogEntrySmartLogSession, osid_sessions.OsidSession):
@@ -867,8 +855,6 @@ class LogEntrySmartLogSession(abc_logging_sessions.LogEntrySmartLogSession, osid
         raise Unimplemented()
 
 
-
-
 class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.OsidSession):
     """Adapts underlying LogLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -877,6 +863,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         # Build from authority in config
         self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'logging.Log'
+
     def can_lookup_logs(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -938,8 +925,6 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
     logs = property(fget=get_logs)
 
 
-
-
 class LogQuerySession(abc_logging_sessions.LogQuerySession, osid_sessions.OsidSession):
     """Adapts underlying LogQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -948,6 +933,7 @@ class LogQuerySession(abc_logging_sessions.LogQuerySession, osid_sessions.OsidSe
         # Build from authority in config
         self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'logging.Log'
+
     def can_search_logs(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -972,8 +958,6 @@ class LogQuerySession(abc_logging_sessions.LogQuerySession, osid_sessions.OsidSe
         return self._provider_session.get_logs_by_query(log_query)
 
 
-
-
 class LogSearchSession(abc_logging_sessions.LogSearchSession, LogQuerySession):
     """Adapts underlying LogSearchSession methodswith authorization checks."""
 
@@ -996,8 +980,6 @@ class LogSearchSession(abc_logging_sessions.LogSearchSession, LogQuerySession):
         raise Unimplemented()
 
 
-
-
 class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSession):
     """Adapts underlying LogAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1006,6 +988,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         # Build from authority in config
         self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'logging.Log'
+
     def can_create_logs(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -1016,8 +999,8 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if log_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if log_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -1080,8 +1063,6 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_log(log_id, alias_id)
-
-
 
 
 class LogNotificationSession(abc_logging_sessions.LogNotificationSession, osid_sessions.OsidSession):
@@ -1159,8 +1140,6 @@ class LogNotificationSession(abc_logging_sessions.LogNotificationSession, osid_s
         raise Unimplemented()
 
 
-
-
 class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying LogHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1169,6 +1148,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         # Build from authority in config
         self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'logging.Log'
+
     def get_log_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -1323,8 +1303,6 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
             include_siblings)
 
 
-
-
 class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying LogHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1334,6 +1312,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         self._qualifier_id = Id('logging.Log%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'logging.Log'
         # should this be 'logging.LogHierarchy' ?
+
     def get_log_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id

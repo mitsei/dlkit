@@ -10,6 +10,7 @@ class TestAssessmentPart(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
@@ -66,10 +67,9 @@ class TestAssessmentPart(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentPartForm(unittest.TestCase):
     """Tests for AssessmentPartForm"""
+
 
 
 
@@ -108,8 +108,6 @@ class TestAssessmentPartForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentPartList(unittest.TestCase):
     """Tests for AssessmentPartList"""
 
@@ -124,10 +122,9 @@ class TestAssessmentPartList(unittest.TestCase):
         pass
 
 
-
-
 class TestSequenceRule(unittest.TestCase):
     """Tests for SequenceRule"""
+
 
 
 
@@ -182,10 +179,9 @@ class TestSequenceRule(unittest.TestCase):
         pass
 
 
-
-
 class TestSequenceRuleForm(unittest.TestCase):
     """Tests for SequenceRuleForm"""
+
 
 
 
@@ -235,8 +231,6 @@ class TestSequenceRuleForm(unittest.TestCase):
         pass
 
 
-
-
 class TestSequenceRuleList(unittest.TestCase):
     """Tests for SequenceRuleList"""
 
@@ -249,5 +243,3 @@ class TestSequenceRuleList(unittest.TestCase):
     def test_get_next_sequence_rules(self):
         """Tests get_next_sequence_rules"""
         pass
-
-

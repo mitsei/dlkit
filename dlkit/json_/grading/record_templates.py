@@ -25,10 +25,6 @@ class GradeRecord(abc_grading_records.GradeRecord, osid_records.OsidRecord):
     """
 
 
-
-
-
-
 class GradeQueryRecord(abc_grading_records.GradeQueryRecord, osid_records.OsidRecord):
     """A record for a ``GradeQuery``.
 
@@ -36,10 +32,6 @@ class GradeQueryRecord(abc_grading_records.GradeQueryRecord, osid_records.OsidRe
     underlying object.
 
     """
-
-
-
-
 
 
 class GradeFormRecord(abc_grading_records.GradeFormRecord, osid_records.OsidRecord):
@@ -51,10 +43,6 @@ class GradeFormRecord(abc_grading_records.GradeFormRecord, osid_records.OsidReco
     """
 
 
-
-
-
-
 class GradeSystemRecord(abc_grading_records.GradeSystemRecord, osid_records.OsidRecord):
     """A record for a ``GradeSystem``.
 
@@ -62,10 +50,6 @@ class GradeSystemRecord(abc_grading_records.GradeSystemRecord, osid_records.Osid
     underlying object.
 
     """
-
-
-
-
 
 
 class GradeSystemQueryRecord(abc_grading_records.GradeSystemQueryRecord, osid_records.OsidRecord):
@@ -77,10 +61,6 @@ class GradeSystemQueryRecord(abc_grading_records.GradeSystemQueryRecord, osid_re
     """
 
 
-
-
-
-
 class GradeSystemFormRecord(abc_grading_records.GradeSystemFormRecord, osid_records.OsidRecord):
     """A record for a ``GradeSystemForm``.
 
@@ -88,10 +68,6 @@ class GradeSystemFormRecord(abc_grading_records.GradeSystemFormRecord, osid_reco
     underlying object.
 
     """
-
-
-
-
 
 
 class GradeSystemSearchRecord(abc_grading_records.GradeSystemSearchRecord, osid_records.OsidRecord):
@@ -103,10 +79,6 @@ class GradeSystemSearchRecord(abc_grading_records.GradeSystemSearchRecord, osid_
     """
 
 
-
-
-
-
 class GradeEntryRecord(abc_grading_records.GradeEntryRecord, osid_records.OsidRecord):
     """A record for a ``GradeEntry``.
 
@@ -114,10 +86,6 @@ class GradeEntryRecord(abc_grading_records.GradeEntryRecord, osid_records.OsidRe
     underlying object.
 
     """
-
-
-
-
 
 
 class GradeEntryQueryRecord(abc_grading_records.GradeEntryQueryRecord, osid_records.OsidRecord):
@@ -129,10 +97,6 @@ class GradeEntryQueryRecord(abc_grading_records.GradeEntryQueryRecord, osid_reco
     """
 
 
-
-
-
-
 class GradeEntryFormRecord(abc_grading_records.GradeEntryFormRecord, osid_records.OsidRecord):
     """A record for a ``GradeEntryForm``.
 
@@ -140,10 +104,6 @@ class GradeEntryFormRecord(abc_grading_records.GradeEntryFormRecord, osid_record
     underlying object.
 
     """
-
-
-
-
 
 
 class GradeEntrySearchRecord(abc_grading_records.GradeEntrySearchRecord, osid_records.OsidRecord):
@@ -155,10 +115,6 @@ class GradeEntrySearchRecord(abc_grading_records.GradeEntrySearchRecord, osid_re
     """
 
 
-
-
-
-
 class GradebookColumnRecord(abc_grading_records.GradebookColumnRecord, osid_records.OsidRecord):
     """A record for a ``GradebookColumn``.
 
@@ -166,10 +122,6 @@ class GradebookColumnRecord(abc_grading_records.GradebookColumnRecord, osid_reco
     underlying object.
 
     """
-
-
-
-
 
 
 class GradebookColumnQueryRecord(abc_grading_records.GradebookColumnQueryRecord, osid_records.OsidRecord):
@@ -181,10 +133,6 @@ class GradebookColumnQueryRecord(abc_grading_records.GradebookColumnQueryRecord,
     """
 
 
-
-
-
-
 class GradebookColumnFormRecord(abc_grading_records.GradebookColumnFormRecord, osid_records.OsidRecord):
     """A record for a ``GradebookColumnForm``.
 
@@ -192,10 +140,6 @@ class GradebookColumnFormRecord(abc_grading_records.GradebookColumnFormRecord, o
     underlying object.
 
     """
-
-
-
-
 
 
 class GradebookColumnSearchRecord(abc_grading_records.GradebookColumnSearchRecord, osid_records.OsidRecord):
@@ -207,10 +151,6 @@ class GradebookColumnSearchRecord(abc_grading_records.GradebookColumnSearchRecor
     """
 
 
-
-
-
-
 class GradebookColumnSummaryRecord(abc_grading_records.GradebookColumnSummaryRecord, osid_records.OsidRecord):
     """A record for a ``GradebookColumnSummary``.
 
@@ -218,10 +158,6 @@ class GradebookColumnSummaryRecord(abc_grading_records.GradebookColumnSummaryRec
     underlying object.
 
     """
-
-
-
-
 
 
 class GradebookColumnSummaryQueryRecord(abc_grading_records.GradebookColumnSummaryQueryRecord, osid_records.OsidRecord):
@@ -233,10 +169,6 @@ class GradebookColumnSummaryQueryRecord(abc_grading_records.GradebookColumnSumma
     """
 
 
-
-
-
-
 class GradebookRecord(abc_grading_records.GradebookRecord, osid_records.OsidRecord):
     """A record for a ``Gradebook``.
 
@@ -244,10 +176,6 @@ class GradebookRecord(abc_grading_records.GradebookRecord, osid_records.OsidReco
     underlying object.
 
     """
-
-
-
-
 
 
 class GradebookQueryRecord(abc_grading_records.GradebookQueryRecord, osid_records.OsidRecord):
@@ -259,10 +187,6 @@ class GradebookQueryRecord(abc_grading_records.GradebookQueryRecord, osid_record
     """
 
 
-
-
-
-
 class GradebookFormRecord(abc_grading_records.GradebookFormRecord, osid_records.OsidRecord):
     """A record for a ``GradebookForm``.
 
@@ -270,10 +194,6 @@ class GradebookFormRecord(abc_grading_records.GradebookFormRecord, osid_records.
     underlying object.
 
     """
-
-
-
-
 
 
 class GradebookSearchRecord(abc_grading_records.GradebookSearchRecord, osid_records.OsidRecord):

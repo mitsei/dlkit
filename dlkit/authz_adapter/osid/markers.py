@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid.osid_errors import Unimplemented
 from ..utilities import raise_null_argument
 from dlkit.abstract_osid.osid import markers as abc_osid_markers

@@ -39,6 +39,7 @@ class QuestionQuery(abc_assessment_queries.QuestionQuery, osid_queries.OsidObjec
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def get_question_query_record(self, question_record_type):
         """Gets the question record query corresponding to the given ``Item`` record ``Type``.
@@ -59,8 +60,6 @@ class QuestionQuery(abc_assessment_queries.QuestionQuery, osid_queries.OsidObjec
         raise errors.Unimplemented()
 
 
-
-
 class AnswerQuery(abc_assessment_queries.AnswerQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching answers.
 
@@ -77,6 +76,7 @@ class AnswerQuery(abc_assessment_queries.AnswerQuery, osid_queries.OsidObjectQue
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def get_answer_query_record(self, answer_record_type):
         """Gets the answer record query corresponding to the given ``Answer`` record ``Type``.
@@ -97,8 +97,6 @@ class AnswerQuery(abc_assessment_queries.AnswerQuery, osid_queries.OsidObjectQue
         raise errors.Unimplemented()
 
 
-
-
 class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, osid_queries.OsidAggregateableQuery):
     """This is the query for searching items.
 
@@ -115,6 +113,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_learning_objective_id(self, objective_id, match):
         """Sets the learning objective ``Id`` for this query.
@@ -492,8 +491,6 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching assessments.
 
@@ -510,6 +507,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_level_id(self, grade_id, match):
         """Sets the level grade ``Id`` for this query.
@@ -954,8 +952,6 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid_queries.OsidObjectQuery, osid_queries.OsidSubjugateableQuery):
     """This is the query for searching assessments.
 
@@ -972,6 +968,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
         """Sets the assessment ``Id`` for this query.
@@ -1642,8 +1639,6 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_queries.OsidObjectQuery):
     """This is the query for searching assessments.
 
@@ -1660,6 +1655,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_assessment_offered_id(self, assessment_offered_id, match):
         """Sets the assessment offered ``Id`` for this query.
@@ -2321,8 +2317,6 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         raise errors.Unimplemented()
 
 
-
-
 class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching banks Each method specifies an ``AND`` term while multiple invocations of the same method produce a nested ``OR``."""
     def __init__(self, runtime):
@@ -2347,6 +2341,7 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_item_id(self, item_id, match):
         """Sets the item ``Id`` for this query.

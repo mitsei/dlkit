@@ -65,6 +65,7 @@ class Locale(abc_locale_objects.Locale):
         self._time_format_type_identifier = time_format_type_identifier
         self._currency_format_type_identifier = currency_format_type_identifier
         self._coordinate_format_type_identifier = coordinate_format_type_identifier
+
     def get_language_type(self):
         """Gets the language ``Type``.
 
@@ -185,8 +186,6 @@ class Locale(abc_locale_objects.Locale):
         return Type(**coordinate_format.get_type_data(self._coordinate_format_type_identifier))
 
     coordinate_format_type = property(fget=get_coordinate_format_type)
-
-
 
 
 class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):

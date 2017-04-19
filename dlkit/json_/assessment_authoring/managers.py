@@ -206,8 +206,6 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
     sequence_rule_enabler_search_record_types = property(fget=get_sequence_rule_enabler_search_record_types)
 
 
-
-
 class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringProfile, assessment_authoring_managers.AssessmentAuthoringManager):
     """The assessment authoring manager provides access to assessment authoring sessions and provides interoperability tests for various aspects of this service.
 
@@ -275,6 +273,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_assessment_part_lookup_session(self):
         """Gets the ``OsidSession`` associated with the assessment part lookup service.
@@ -558,8 +557,6 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         return sessions.AssessmentPartItemDesignSession(bank_id, runtime=self._runtime)
 
 
-
-
 class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, AssessmentAuthoringProfile, assessment_authoring_managers.AssessmentAuthoringProxyManager):
     """The assessment authoring manager provides access to assessment authoring sessions and provides interoperability tests for various aspects of this service.
 
@@ -628,6 +625,7 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_assessment_part_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the assessment part lookup service.

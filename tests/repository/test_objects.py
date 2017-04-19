@@ -10,6 +10,7 @@ class TestAsset(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_title(self):
         """Tests get_title"""
@@ -121,10 +122,9 @@ class TestAsset(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetForm(unittest.TestCase):
     """Tests for AssetForm"""
+
 
 
 
@@ -344,8 +344,6 @@ class TestAssetForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetList(unittest.TestCase):
     """Tests for AssetList"""
 
@@ -360,10 +358,9 @@ class TestAssetList(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetContent(unittest.TestCase):
     """Tests for AssetContent"""
+
 
 
 
@@ -413,10 +410,9 @@ class TestAssetContent(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetContentForm(unittest.TestCase):
     """Tests for AssetContentForm"""
+
 
 
 
@@ -476,8 +472,6 @@ class TestAssetContentForm(unittest.TestCase):
         pass
 
 
-
-
 class TestAssetContentList(unittest.TestCase):
     """Tests for AssetContentList"""
 
@@ -492,10 +486,9 @@ class TestAssetContentList(unittest.TestCase):
         pass
 
 
-
-
 class TestComposition(unittest.TestCase):
     """Tests for Composition"""
+
 
 
 
@@ -515,10 +508,9 @@ class TestComposition(unittest.TestCase):
         pass
 
 
-
-
 class TestCompositionForm(unittest.TestCase):
     """Tests for CompositionForm"""
+
 
 
 
@@ -526,8 +518,6 @@ class TestCompositionForm(unittest.TestCase):
     def test_get_composition_form_record(self):
         """Tests get_composition_form_record"""
         pass
-
-
 
 
 class TestCompositionList(unittest.TestCase):
@@ -544,10 +534,9 @@ class TestCompositionList(unittest.TestCase):
         pass
 
 
-
-
 class TestRepository(unittest.TestCase):
     """Tests for Repository"""
+
 
 
 
@@ -557,10 +546,9 @@ class TestRepository(unittest.TestCase):
         pass
 
 
-
-
 class TestRepositoryForm(unittest.TestCase):
     """Tests for RepositoryForm"""
+
 
 
 
@@ -568,8 +556,6 @@ class TestRepositoryForm(unittest.TestCase):
     def test_get_repository_form_record(self):
         """Tests get_repository_form_record"""
         pass
-
-
 
 
 class TestRepositoryList(unittest.TestCase):
@@ -584,8 +570,6 @@ class TestRepositoryList(unittest.TestCase):
     def test_get_next_repositories(self):
         """Tests get_next_repositories"""
         pass
-
-
 
 
 class TestRepositoryNode(unittest.TestCase):
@@ -607,8 +591,6 @@ class TestRepositoryNode(unittest.TestCase):
         pass
 
 
-
-
 class TestRepositoryNodeList(unittest.TestCase):
     """Tests for RepositoryNodeList"""
 
@@ -621,5 +603,3 @@ class TestRepositoryNodeList(unittest.TestCase):
     def test_get_next_repository_nodes(self):
         """Tests get_next_repository_nodes"""
         pass
-
-

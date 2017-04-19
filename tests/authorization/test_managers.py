@@ -25,6 +25,7 @@ class TestAuthorizationProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_authorization(self):
         """Tests supports_authorization"""
         self.assertTrue(isinstance(self.mgr.supports_authorization(), bool))
@@ -90,8 +91,6 @@ class TestAuthorizationProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_authorization_condition_record_types(), abc_type_list))
 
 
-
-
 class TestAuthorizationManager(unittest.TestCase):
     """Tests for AuthorizationManager"""
 
@@ -109,6 +108,7 @@ class TestAuthorizationManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_vault(cls.catalog_id)
+
 
 
     @unittest.skip('unimplemented test')
@@ -197,8 +197,6 @@ class TestAuthorizationManager(unittest.TestCase):
             self.svc_mgr.get_authorization_rules_manager()
 
 
-
-
 class TestAuthorizationProxyManager(unittest.TestCase):
     """Tests for AuthorizationProxyManager"""
 
@@ -215,6 +213,7 @@ class TestAuthorizationProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_vault(cls.catalog_id)
+
 
 
     @unittest.skip('unimplemented test')
@@ -309,5 +308,3 @@ class TestAuthorizationProxyManager(unittest.TestCase):
         #     self.mgr.get_authorization_rules_proxy_manager()
         if self.svc_mgr.supports_authorization_rules():
             self.svc_mgr.get_authorization_rules_proxy_manager()
-
-

@@ -33,6 +33,7 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
 
     def __init__(self, **kwargs):
         osid_objects.OsidCatalog.__init__(self, object_name='HIERARCHY', **kwargs)
+
     @utilities.arguments_not_none
     def get_hierarchy_record(self, hierarchy_record_type):
         """Gets the hierarchy record corresponding to the given ``Hierarchy`` record ``Type``.
@@ -55,8 +56,6 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalogForm):
@@ -85,6 +84,7 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidCatalogForm._init_map(self, record_types, **kwargs)
+
     @utilities.arguments_not_none
     def get_hierarchy_form_record(self, hierarchy_record_type):
         """Gets the ``HierarchyFormRecord`` corresponding to the given hierarchy record ``Type``.
@@ -101,8 +101,6 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
@@ -160,8 +158,6 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
         return self._get_next_n(n)
 
 
-
-
 class Node(abc_hierarchy_objects.Node, osid_objects.OsidNode):
     """This interface is a container for a partial hierarchy retrieval.
 
@@ -192,8 +188,6 @@ class Node(abc_hierarchy_objects.Node, osid_objects.OsidNode):
         return NodeList(self._my_map['childNodes'])
 
     children = property(fget=get_children)
-
-
 
 
 class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):

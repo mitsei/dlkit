@@ -305,8 +305,6 @@ class ResourceProfile(osid_managers.OsidProfile, resource_managers.ResourceProfi
     bin_search_record_types = property(fget=get_bin_search_record_types)
 
 
-
-
 class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_managers.ResourceManager):
     """The resource manager provides access to resource lookup and creation sessions and provides interoperability tests for various aspects of this service.
 
@@ -366,6 +364,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_resource_lookup_session(self):
         """Gets the ``OsidSession`` associated with the resource lookup service.
@@ -860,8 +859,6 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     resource_demographic_manager = property(fget=get_resource_demographic_manager)
 
 
-
-
 class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, resource_managers.ResourceProxyManager):
     """The resource manager provides access to resource lookup and creation session and provides interoperability tests for various aspects of this service.
 
@@ -922,6 +919,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_resource_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the resource lookup service.

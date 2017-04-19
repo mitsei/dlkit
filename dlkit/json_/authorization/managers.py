@@ -278,8 +278,6 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
 
 
-
-
 class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, authorization_managers.AuthorizationManager):
     """The authorization manager provides access to authorization sessions and provides interoperability tests for various aspects of this service.
 
@@ -351,6 +349,7 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
+
     @utilities.remove_null_proxy_kwarg
     def get_authorization_session(self):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
@@ -625,8 +624,6 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 
 
-
-
 class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
     """The authorization manager provides access to authorization sessions and provides interoperability tests for various aspects of this service.
 
@@ -697,6 +694,7 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
     @utilities.arguments_not_none
     def get_authorization_session(self, proxy):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.

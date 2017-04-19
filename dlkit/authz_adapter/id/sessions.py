@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
 from ..primitives import Id
@@ -61,8 +60,6 @@ class IdLookupSession(abc_id_sessions.IdLookupSession, osid_sessions.OsidSession
         raise Unimplemented()
 
 
-
-
 class IdIssueSession(abc_id_sessions.IdIssueSession, osid_sessions.OsidSession):
     """Adapts underlying IdIssueSession methodswith authorization checks."""
 
@@ -71,8 +68,6 @@ class IdIssueSession(abc_id_sessions.IdIssueSession, osid_sessions.OsidSession):
 
     def issue_id(self):
         raise Unimplemented()
-
-
 
 
 class IdAdminSession(abc_id_sessions.IdAdminSession, osid_sessions.OsidSession):

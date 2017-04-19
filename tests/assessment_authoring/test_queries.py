@@ -10,6 +10,7 @@ class TestAssessmentPartQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
@@ -166,8 +167,6 @@ class TestAssessmentPartQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestSequenceRuleQuery(unittest.TestCase):
     """Tests for SequenceRuleQuery"""
 
@@ -320,5 +319,3 @@ class TestSequenceRuleQuery(unittest.TestCase):
     def test_get_sequence_rule_query_record(self):
         """Tests get_sequence_rule_query_record"""
         pass
-
-

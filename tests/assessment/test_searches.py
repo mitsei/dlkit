@@ -24,8 +24,6 @@ class TestItemSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestItemSearchResults(unittest.TestCase):
     """Tests for ItemSearchResults"""
 
@@ -43,8 +41,6 @@ class TestItemSearchResults(unittest.TestCase):
     def test_get_item_search_results_record(self):
         """Tests get_item_search_results_record"""
         pass
-
-
 
 
 class TestAssessmentSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestAssessmentSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentSearchResults(unittest.TestCase):
     """Tests for AssessmentSearchResults"""
 
@@ -85,8 +79,6 @@ class TestAssessmentSearchResults(unittest.TestCase):
     def test_get_assessment_search_results_record(self):
         """Tests get_assessment_search_results_record"""
         pass
-
-
 
 
 class TestAssessmentOfferedSearch(unittest.TestCase):
@@ -108,8 +100,6 @@ class TestAssessmentOfferedSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOfferedSearchResults(unittest.TestCase):
     """Tests for AssessmentOfferedSearchResults"""
 
@@ -127,8 +117,6 @@ class TestAssessmentOfferedSearchResults(unittest.TestCase):
     def test_get_assessment_offered_search_results_record(self):
         """Tests get_assessment_offered_search_results_record"""
         pass
-
-
 
 
 class TestAssessmentTakenSearch(unittest.TestCase):
@@ -150,8 +138,6 @@ class TestAssessmentTakenSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTakenSearchResults(unittest.TestCase):
     """Tests for AssessmentTakenSearchResults"""
 
@@ -169,8 +155,6 @@ class TestAssessmentTakenSearchResults(unittest.TestCase):
     def test_get_assessment_taken_search_results_record(self):
         """Tests get_assessment_taken_search_results_record"""
         pass
-
-
 
 
 class TestBankSearch(unittest.TestCase):
@@ -192,8 +176,6 @@ class TestBankSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestBankSearchResults(unittest.TestCase):
     """Tests for BankSearchResults"""
 
@@ -211,5 +193,3 @@ class TestBankSearchResults(unittest.TestCase):
     def test_get_bank_search_results_record(self):
         """Tests get_bank_search_results_record"""
         pass
-
-

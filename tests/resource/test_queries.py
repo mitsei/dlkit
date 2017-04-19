@@ -10,6 +10,7 @@ class TestResourceQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_group(self):
         """Tests match_group"""
@@ -181,8 +182,6 @@ class TestResourceQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestBinQuery(unittest.TestCase):
     """Tests for BinQuery"""
 
@@ -280,5 +279,3 @@ class TestBinQuery(unittest.TestCase):
     def test_get_bin_query_record(self):
         """Tests get_bin_query_record"""
         pass
-
-

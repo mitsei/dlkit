@@ -206,8 +206,6 @@ class IdForm(abc_id_objects.IdForm, osid_objects.OsidForm):
     identifier = property(fset=set_identifier, fdel=clear_identifier)
 
 
-
-
 class IdList(abc_id_objects.IdList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``IdList`` provides a means for accessing ``Id`` elements sequentially either one at a time or many at a time.
 

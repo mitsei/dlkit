@@ -33,6 +33,7 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_searches.OsidSearch.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def search_among_resources(self, resource_ids):
         """Execute this search among the given list of resources.
@@ -81,8 +82,6 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
         raise errors.Unimplemented()
 
 
-
-
 class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
     def __init__(self, results, runtime):
@@ -91,6 +90,7 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
         self._results = results
         self._runtime = runtime
         self.retrieved = False
+
     def get_resources(self):
         """Gets the resource list resulting from a search.
 
@@ -141,8 +141,6 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
         raise errors.Unimplemented()
 
 
-
-
 class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
     """The interface for governing bin searches."""
 
@@ -190,8 +188,6 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.OsidSearchResults):

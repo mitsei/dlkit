@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
@@ -32,6 +31,7 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
             return self._provider_manager.get_repository_hierarchy_session()
         except Unimplemented:
             return None
+
     def supports_asset_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -196,8 +196,6 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
     coordinate_types = property(fget=get_coordinate_types)
 
 
-
-
 class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository_managers.RepositoryManager):
     """Adapts underlying RepositoryManager methodswith authorization checks."""
     def __init__(self):
@@ -246,6 +244,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
                 authz_session=self._authz_session)
         except AttributeError:
             raise OperationFailed('AssetContentLookupSession not implemented in authz_adapter')
+
     def get_asset_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -683,8 +682,6 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
     repository_rules_manager = property(fget=get_repository_rules_manager)
 
 
-
-
 class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
     """Adapts underlying RepositoryProxyManager methodswith authorization checks."""
     def __init__(self):
@@ -737,6 +734,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
                 proxy=proxy)
         except AttributeError:
             raise OperationFailed('AssetContentLookupSession not implemented in authz_adapter')
+
     @raise_null_argument
     def get_asset_lookup_session(self, proxy):
         # Implemented from azosid template for -

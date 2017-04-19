@@ -74,6 +74,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         if self._sequestered_view == SEQUESTERED:
             view_filter['sequestered'] = False
         return view_filter
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -413,8 +414,6 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         return objects.AssessmentPartList(result, runtime=self._runtime)
 
 
-
-
 class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPartAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``AssessmentParts``.
 
@@ -461,6 +460,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -953,8 +953,6 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         self._alias_id(primary_id=assessment_part_id, equivalent_id=alias_id)
 
 
-
-
 class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPartItemSession, osid_sessions.OsidSession):
     """This session defines methods for looking up ``Item`` to ``AssessmentPart`` mappings."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -970,6 +968,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1130,8 +1129,6 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         return objects.AssessmentPartList(result, runtime=self._runtime)
 
 
-
-
 class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.AssessmentPartItemDesignSession, osid_sessions.OsidSession):
     """This session provides the means for adding items to an assessment part.
 
@@ -1154,6 +1151,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1359,8 +1357,6 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         return assessment_part_map, collection
 
 
-
-
 class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``SequenceRules``."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -1376,6 +1372,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1726,8 +1723,6 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
     sequence_rules = property(fget=get_sequence_rules)
 
 
-
-
 class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdminSession, osid_sessions.OsidSession):
     """This session creates and removes sequence rules.
 
@@ -1749,6 +1744,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 

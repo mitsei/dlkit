@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -42,7 +41,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
 
     def _get_unauth_bin_ids(self, bin_id):
         if self._can('lookup', bin_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bin_id)]
         if self._hierarchy_session.has_child_bins(bin_id):
@@ -64,6 +63,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         for bin_id in self._unauth_bin_ids:
             query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resources_by_query(query)
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -121,7 +121,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_resource(resource_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         query.match_id(resource_id, match=True)
         results = self._try_harder(query)
@@ -135,7 +135,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_resources_by_ids(resource_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         for resource_id in (resource_ids):
             query.match_id(resource_id, match=True)
@@ -147,7 +147,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_resources_by_genus_type(resource_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         query.match_genus_type(resource_genus_type, match=True)
         return self._try_harder(query)
@@ -158,7 +158,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_resources_by_parent_genus_type(resource_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         query.match_parent_genus_type(resource_genus_type, match=True)
         return self._try_harder(query)
@@ -169,7 +169,7 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_resources_by_record_type(resource_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         query.match_record_type(resource_record_type, match=True)
         return self._try_harder(query)
@@ -179,14 +179,12 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_resources()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     resources = property(fget=get_resources)
-
-
 
 
 class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sessions.OsidSession):
@@ -211,7 +209,7 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
 
     def _get_unauth_bin_ids(self, bin_id):
         if self._can('search', bin_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bin_id)]
         if self._hierarchy_session.has_child_bins(bin_id):
@@ -232,12 +230,12 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
             query._provider_query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resources_by_query(query)
 
-
     class ResourceQueryWrapper(QueryWrapper):
         """Wrapper for ResourceQueries to override match_bin_id method"""
 
         def match_bin_id(self, bin_id, match=True):
             self._cat_id_args_list.append({'bin_id': bin_id, 'match': match})
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -305,8 +303,6 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
         return result
 
 
-
-
 class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, ResourceQuerySession):
     """Adapts underlying ResourceSearchSession methodswith authorization checks."""
 
@@ -339,8 +335,6 @@ class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, Resourc
         raise Unimplemented()
 
 
-
-
 class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -368,6 +362,7 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
     def _can_for_resource(self, func_name, resource_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, resource_id, 'get_bin_ids_for_resource')
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -395,8 +390,8 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if resource_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if resource_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -468,14 +463,13 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         return self._provider_session.alias_resource(resource_id, alias_id)
 
 
-
-
 class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.Resource'
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -566,14 +560,13 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         raise Unimplemented()
 
 
-
-
 class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceBinSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'resource.ResourceBin'
+
     def use_comparative_bin_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -638,14 +631,13 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         return self._provider_session.get_bins_by_resource(resource_id)
 
 
-
-
 class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceBinAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'resource.ResourceBin'
+
     def can_assign_resources(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -688,8 +680,6 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_resource_from_bin(resource_id, bin_id)
-
-
 
 
 class ResourceSmartBinSession(abc_resource_sessions.ResourceSmartBinSession, osid_sessions.OsidSession):
@@ -741,8 +731,6 @@ class ResourceSmartBinSession(abc_resource_sessions.ResourceSmartBinSession, osi
         raise Unimplemented()
 
 
-
-
 class MembershipSession(abc_resource_sessions.MembershipSession, osid_sessions.OsidSession):
     """Adapts underlying MembershipSession methodswith authorization checks."""
 
@@ -785,8 +773,6 @@ class MembershipSession(abc_resource_sessions.MembershipSession, osid_sessions.O
     @raise_null_argument
     def is_member(self, member_resource_id, resource_id):
         raise Unimplemented()
-
-
 
 
 class GroupSession(abc_resource_sessions.GroupSession, osid_sessions.OsidSession):
@@ -871,8 +857,6 @@ class GroupSession(abc_resource_sessions.GroupSession, osid_sessions.OsidSession
         raise Unimplemented()
 
 
-
-
 class GroupAssignmentSession(abc_resource_sessions.GroupAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying GroupAssignmentSession methodswith authorization checks."""
 
@@ -907,8 +891,6 @@ class GroupAssignmentSession(abc_resource_sessions.GroupAssignmentSession, osid_
     @raise_null_argument
     def unassign_resource_from_group(self, resource_id, resource_group_id):
         raise Unimplemented()
-
-
 
 
 class GroupNotificationSession(abc_resource_sessions.GroupNotificationSession, osid_sessions.OsidSession):
@@ -983,8 +965,6 @@ class GroupNotificationSession(abc_resource_sessions.GroupNotificationSession, o
         raise Unimplemented()
 
 
-
-
 class GroupHierarchySession(abc_resource_sessions.GroupHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying GroupHierarchySession methodswith authorization checks."""
 
@@ -1049,14 +1029,13 @@ class GroupHierarchySession(abc_resource_sessions.GroupHierarchySession, osid_se
         raise Unimplemented()
 
 
-
-
 class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAgentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.ResourceAgent'
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1130,14 +1109,13 @@ class ResourceAgentSession(abc_resource_sessions.ResourceAgentSession, osid_sess
         return self._provider_session.get_agents_by_resource(resource_id)
 
 
-
-
 class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceAgentAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_bin_id()
         self._id_namespace = 'resource.ResourceAgent'
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1160,7 +1138,7 @@ class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignme
 
     @raise_null_argument
     def can_assign_agents_to_resource(self, resource_id):
-        return False # don't have enough information yet
+        return False  # don't have enough information yet
 
     @raise_null_argument
     def assign_agent_to_resource(self, agent_id, resource_id):
@@ -1173,8 +1151,6 @@ class ResourceAgentAssignmentSession(abc_resource_sessions.ResourceAgentAssignme
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_agent_from_resource(agent_id, resource_id)
-
-
 
 
 class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationshipLookupSession, osid_sessions.OsidSession):
@@ -1201,7 +1177,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
 
     def _get_unauth_bin_ids(self, bin_id):
         if self._can('lookup', bin_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bin_id)]
         if self._hierarchy_session.has_child_bins(bin_id):
@@ -1223,6 +1199,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         for bin_id in self._unauth_bin_ids:
             query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resource_relationships_by_query(query)
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1286,7 +1263,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationship(resource_relationship_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_id(resource_relationship_id, match=True)
         results = self._try_harder(query)
@@ -1300,7 +1277,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_by_ids(resource_relationship_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         for resource_relationship_id in (resource_relationship_ids):
             query.match_id(resource_relationship_id, match=True)
@@ -1312,7 +1289,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_by_genus_type(relationship_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_genus_type(relationship_genus_type, match=True)
         return self._try_harder(query)
@@ -1323,7 +1300,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_by_parent_genus_type(relationship_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_parent_genus_type(relationship_genus_type, match=True)
         return self._try_harder(query)
@@ -1334,7 +1311,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_by_record_type(relationship_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_record_type(relationship_record_type, match=True)
         return self._try_harder(query)
@@ -1346,10 +1323,10 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
     @raise_null_argument
     def get_resource_relationships_for_source_resource(self, source_resource_id):
         # Implemented from azosid template for -
-        # osid.resource.RelationshipLookupSession.get_relationships_for_source_template
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_for_source_resource(source_resource_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_source_id(source_resource_id, match=True)
         return self._try_harder(query)
@@ -1361,7 +1338,7 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships_for_source_resource_on_date(source_resource_id, from_, to)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_source_id(source_resource_id, match=True)
         query.match_date(from_, to, match=True)
@@ -1412,14 +1389,12 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_resource_relationships()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_resource_relationship_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     resource_relationships = property(fget=get_resource_relationships)
-
-
 
 
 class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshipQuerySession, osid_sessions.OsidSession):
@@ -1444,7 +1419,7 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
 
     def _get_unauth_bin_ids(self, bin_id):
         if self._can('search', bin_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(bin_id)]
         if self._hierarchy_session.has_child_bins(bin_id):
@@ -1465,12 +1440,12 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
             query._provider_query.match_bin_id(bin_id, match=False)
         return self._query_session.get_resource_relationships_by_query(query)
 
-
     class ResourceRelationshipQueryWrapper(QueryWrapper):
         """Wrapper for ResourceRelationshipQueries to override match_bin_id method"""
 
         def match_bin_id(self, bin_id, match=True):
             self._cat_id_args_list.append({'bin_id': bin_id, 'match': match})
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1538,8 +1513,6 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
         return result
 
 
-
-
 class ResourceRelationshipSearchSession(abc_resource_sessions.ResourceRelationshipSearchSession, ResourceRelationshipQuerySession):
     """Adapts underlying ResourceRelationshipSearchSession methodswith authorization checks."""
 
@@ -1572,8 +1545,6 @@ class ResourceRelationshipSearchSession(abc_resource_sessions.ResourceRelationsh
         raise Unimplemented()
 
 
-
-
 class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshipAdminSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -1601,6 +1572,7 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
     def _can_for_resource_relationship(self, func_name, resource_relationship_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, resource_relationship_id, 'get_bin_ids_for_resource_relationship')
+
     def get_bin_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1628,14 +1600,14 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if resource_relationship_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if resource_relationship_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
     def get_resource_relationship_form_for_create(self, source_resource_id, destination_resource_id, resource_relationship_record_types):
         # Implemented from azosid template for -
-        # osid.resource.RelationshipAdminSession.get_relationship_form_for_create_template
+        # osid.relationship.RelationshipAdminSession.get_relationship_form_for_create_template
         if not self._can('create'):
             raise PermissionDenied()
         return self._provider_session.get_resource_relationship_form_for_create(source_resource_id, destination_resource_id, resource_relationship_record_types)
@@ -1699,8 +1671,6 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
         if not self._can_for_resource_relationship('alias', resource_relationship_id):
             raise PermissionDenied()
         return self._provider_session.alias_resource_relationship(resource_relationship_id, alias_id)
-
-
 
 
 class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRelationshipNotificationSession, osid_sessions.OsidSession):
@@ -1868,14 +1838,13 @@ class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRela
         raise Unimplemented()
 
 
-
-
 class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipBinSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipBinSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'resource.ResourceRelationshipBin'
+
     def use_comparative_bin_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -1940,14 +1909,13 @@ class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipB
         return self._provider_session.get_bins_by_resource_relationship(resource_relationship_id)
 
 
-
-
 class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRelationshipBinAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ResourceRelationshipBinAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'resource.ResourceRelationshipBin'
+
     def can_assign_resource_relationships(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1990,8 +1958,6 @@ class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRel
         if not self._can('assign'):
             raise PermissionDenied()
         return self._provider_session.unassign_resource_relationship_from_bin(resource_relationship_id, bin_id)
-
-
 
 
 class ResourceRelationshipSmartBinSession(abc_resource_sessions.ResourceRelationshipSmartBinSession, osid_sessions.OsidSession):
@@ -2043,8 +2009,6 @@ class ResourceRelationshipSmartBinSession(abc_resource_sessions.ResourceRelation
         raise Unimplemented()
 
 
-
-
 class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.OsidSession):
     """Adapts underlying BinLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2053,6 +2017,7 @@ class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.Osi
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
+
     def can_lookup_bins(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2114,8 +2079,6 @@ class BinLookupSession(abc_resource_sessions.BinLookupSession, osid_sessions.Osi
     bins = property(fget=get_bins)
 
 
-
-
 class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidSession):
     """Adapts underlying BinQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2124,6 +2087,7 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
+
     def can_search_bins(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -2148,8 +2112,6 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         return self._provider_session.get_bins_by_query(bin_query)
 
 
-
-
 class BinSearchSession(abc_resource_sessions.BinSearchSession, BinQuerySession):
     """Adapts underlying BinSearchSession methodswith authorization checks."""
 
@@ -2172,8 +2134,6 @@ class BinSearchSession(abc_resource_sessions.BinSearchSession, BinQuerySession):
         raise Unimplemented()
 
 
-
-
 class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidSession):
     """Adapts underlying BinAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2182,6 +2142,7 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
+
     def can_create_bins(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -2192,8 +2153,8 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if bin_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if bin_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -2258,8 +2219,6 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         return self._provider_session.alias_bin(bin_id, alias_id)
 
 
-
-
 class BinNotificationSession(abc_resource_sessions.BinNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying BinNotificationSession methodswith authorization checks."""
 
@@ -2318,8 +2277,6 @@ class BinNotificationSession(abc_resource_sessions.BinNotificationSession, osid_
         raise Unimplemented()
 
 
-
-
 class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying BinHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2328,6 +2285,7 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
         # Build from authority in config
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
+
     def get_bin_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -2482,8 +2440,6 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
             include_siblings)
 
 
-
-
 class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying BinHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2493,6 +2449,7 @@ class BinHierarchyDesignSession(abc_resource_sessions.BinHierarchyDesignSession,
         self._qualifier_id = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'resource.Bin'
         # should this be 'resource.BinHierarchy' ?
+
     def get_bin_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id

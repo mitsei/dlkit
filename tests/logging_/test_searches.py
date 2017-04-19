@@ -24,8 +24,6 @@ class TestLogEntrySearch(unittest.TestCase):
         pass
 
 
-
-
 class TestLogEntrySearchResults(unittest.TestCase):
     """Tests for LogEntrySearchResults"""
 
@@ -43,8 +41,6 @@ class TestLogEntrySearchResults(unittest.TestCase):
     def test_get_log_entry_search_results_record(self):
         """Tests get_log_entry_search_results_record"""
         pass
-
-
 
 
 class TestLogSearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestLogSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestLogSearchResults(unittest.TestCase):
     """Tests for LogSearchResults"""
 
@@ -85,5 +79,3 @@ class TestLogSearchResults(unittest.TestCase):
     def test_get_log_search_results_record(self):
         """Tests get_log_search_results_record"""
         pass
-
-

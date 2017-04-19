@@ -111,6 +111,7 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
             cat_class=objects.Bank)
         self._forms = dict()
         self._assessments_taken = dict()
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1201,8 +1202,6 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         return self._assessments_taken[assessment_taken_id]
 
 
-
-
 class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession, osid_sessions.OsidSession):
     """This session is used to access the tested assessment items and their associated responses.
 
@@ -1221,6 +1220,7 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
             db_name='assessment',
             cat_name='Bank',
             cat_class=objects.Bank)
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1361,8 +1361,6 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
         raise IllegalState()
 
 
-
-
 class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Item`` objects."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -1378,6 +1376,7 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1723,8 +1722,6 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
     items = property(fget=get_items)
 
 
-
-
 class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching ``Item`` objects.
 
@@ -1759,6 +1756,7 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -1887,8 +1885,6 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
         return objects.ItemList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class ItemSearchSession(abc_assessment_sessions.ItemSearchSession, ItemQuerySession):
     """This session provides methods for searching ``Item`` objects.
 
@@ -2014,8 +2010,6 @@ class ItemSearchSession(abc_assessment_sessions.ItemSearchSession, ItemQuerySess
         raise errors.Unimplemented()
 
 
-
-
 class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Items``.
 
@@ -2064,6 +2058,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -3067,8 +3062,6 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         collection.save(item)
 
 
-
-
 class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, osid_sessions.OsidSession):
     """This session defines methods to receive asynchronous notifications on adds/changes to ``Item`` objects.
 
@@ -3121,6 +3114,7 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         """Make sure the receiver is removed from the listener"""
         del MONGO_LISTENER.receivers[self._ns][self._receiver]
         super(ItemNotificationSession, self).__del__()
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -3364,8 +3358,6 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         raise errors.Unimplemented()
 
 
-
-
 class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Item`` to ``Bank`` mappings.
 
@@ -3385,6 +3377,7 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_item_bank_mappings(self):
         """Tests if this user can perform lookups of item/bank mappings.
 
@@ -3560,8 +3553,6 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
             self.get_bank_ids_by_item(item_id))
 
 
-
-
 class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Items`` to ``Banks``.
 
@@ -3581,6 +3572,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         self._catalog_name = 'Bank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_items(self):
         """Tests if this user can alter item/bank mappings.
 
@@ -3731,8 +3723,6 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving assessments."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -3748,6 +3738,7 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -4028,8 +4019,6 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
     assessments = property(fget=get_assessments)
 
 
-
-
 class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osid_sessions.OsidSession):
     """This session provides methods for querying ``Assessment`` objects.
 
@@ -4063,6 +4052,7 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -4226,8 +4216,6 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
             return objects.AssessmentList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Assessments``.
 
@@ -4277,6 +4265,7 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -4692,8 +4681,6 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         self._alias_id(primary_id=assessment_id, equivalent_id=alias_id)
 
 
-
-
 class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``Assessment`` to ``Bank`` mappings.
 
@@ -4714,6 +4701,7 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_assessment_bank_mappings(self):
         """Tests if this user can perform lookups of assessment/bank mappings.
 
@@ -4890,8 +4878,6 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
             self.get_bank_ids_by_assessment(assessment_id))
 
 
-
-
 class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``Assessments`` to ``Banks``.
 
@@ -4911,6 +4897,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         self._catalog_name = 'Bank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_assessments(self):
         """Tests if this user can alter assessment/bank mappings.
 
@@ -5069,8 +5056,6 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentBasicAuthoringSession(abc_assessment_sessions.AssessmentBasicAuthoringSession, osid_sessions.OsidSession):
     """This session defines methods to manage assessment items in an assessment.
 
@@ -5107,6 +5092,7 @@ class AssessmentBasicAuthoringSession(abc_assessment_sessions.AssessmentBasicAut
                 create=True,
                 bank_id=self._catalog_id)
         return self._first_part_index[assessment_id]
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -5254,8 +5240,6 @@ class AssessmentBasicAuthoringSession(abc_assessment_sessions.AssessmentBasicAut
         self._part_item_design_session.order_items(item_ids, self._get_first_part_id(assessment_id))
 
 
-
-
 class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving assessments offered."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -5271,6 +5255,7 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -5606,8 +5591,6 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
     assessments_offered = property(fget=get_assessments_offered)
 
 
-
-
 class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQuerySession, osid_sessions.OsidSession):
     """This session provides methods for querying ``AssessmentOffered`` objects.
 
@@ -5642,6 +5625,7 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -5773,8 +5757,6 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
         return objects.AssessmentOfferedList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``AssessmentsOffered``.
 
@@ -5826,6 +5808,7 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -6235,8 +6218,6 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         self._alias_id(primary_id=assessment_offered_id, equivalent_id=alias_id)
 
 
-
-
 class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``AssessmentOffered`` to ``Bank`` mappings.
 
@@ -6257,6 +6238,7 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_assessment_offered_bank_mappings(self):
         """Tests if this user can perform lookups of assessment offered/bank mappings.
 
@@ -6437,8 +6419,6 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
             self.get_bank_ids_by_assessment_offered(assessment_offered_id))
 
 
-
-
 class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentOfferedBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``AssessmentOffered`` objects to ``Banks``.
 
@@ -6458,6 +6438,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         self._catalog_name = 'Bank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_assessments_offered(self):
         """Tests if this user can alter assessment offered/bank mappings.
 
@@ -6618,8 +6599,6 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving assessments taken."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -6635,6 +6614,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -7226,8 +7206,6 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
     assessments_taken = property(fget=get_assessments_taken)
 
 
-
-
 class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``AssessmentTaken`` objects.
 
@@ -7260,6 +7238,7 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
             cat_name='Bank',
             cat_class=objects.Bank)
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -7391,8 +7370,6 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
         return objects.AssessmentTakenList(result, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``AssessmentsTaken``.
 
@@ -7444,6 +7421,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
             cat_class=objects.Bank)
         self._forms = dict()
         self._kwargs = kwargs
+
     def get_bank_id(self):
         """Gets the ``Bank``  ``Id`` associated with this session.
 
@@ -7882,8 +7860,6 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         self._alias_id(primary_id=assessment_taken_id, equivalent_id=alias_id)
 
 
-
-
 class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSession, osid_sessions.OsidSession):
     """This session provides methods to retrieve ``AssessmentTaken`` to ``Bank`` mappings.
 
@@ -7904,6 +7880,7 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         OsidSession._init_catalog(self, proxy, runtime)
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_assessment_taken_bank_mappings(self):
         """Tests if this user can perform lookups of assessment taken/bank mappings.
 
@@ -8084,8 +8061,6 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
             self.get_bank_ids_by_assessment_taken(assessment_taken_id))
 
 
-
-
 class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTakenBankAssignmentSession, osid_sessions.OsidSession):
     """This session provides methods to re-assign ``AssessmentTaken`` objects to ``Banks``.
 
@@ -8105,6 +8080,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         self._catalog_name = 'Bank'
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_assign_assessments_taken(self):
         """Tests if this user can alter assessment taken/bank mappings.
 
@@ -8265,8 +8241,6 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         raise errors.Unimplemented()
 
 
-
-
 class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Bank`` objects.
 
@@ -8302,6 +8276,7 @@ class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions
             self._catalog_session.use_comparative_catalog_view()
         self._catalog_view = COMPARATIVE
         self._kwargs = kwargs
+
     def can_lookup_banks(self):
         """Tests if this user can perform ``Bank`` lookups.
 
@@ -8539,8 +8514,6 @@ class BankLookupSession(abc_assessment_sessions.BankLookupSession, osid_sessions
     banks = property(fget=get_banks)
 
 
-
-
 class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ``Bank`` objects.
 
@@ -8556,6 +8529,7 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_search_banks(self):
         """Tests if this user can perform ``Bank`` searches.
 
@@ -8613,8 +8587,6 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
         return objects.BankList(result, runtime=self._runtime)
 
 
-
-
 class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Banks``.
 
@@ -8655,6 +8627,7 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
             self._catalog_session = self._cataloging_manager.get_catalog_admin_session()
         self._forms = dict()
         self._kwargs = kwargs
+
     def can_create_banks(self):
         """Tests if this user can create ``Banks``.
 
@@ -8979,8 +8952,6 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         self._alias_id(primary_id=bank_id, equivalent_id=alias_id)
 
 
-
-
 class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_sessions.OsidSession):
     """This session defines methods for traversing a hierarchy of ``Bank`` objects.
 
@@ -9023,6 +8994,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
                    namespace='CATALOG',
                    identifier='BANK'),
                 proxy=self._proxy)
+
     def get_bank_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 
@@ -9423,8 +9395,6 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
             include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
 
 
-
-
 class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSession, osid_sessions.OsidSession):
     """This session defines methods for managing a hierarchy of ``Bank`` objects.
 
@@ -9447,6 +9417,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
                    namespace='CATALOG',
                    identifier='BANK'),
                 proxy=self._proxy)
+
     def get_bank_hierarchy_id(self):
         """Gets the hierarchy ``Id`` associated with this session.
 

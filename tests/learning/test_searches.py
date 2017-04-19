@@ -24,8 +24,6 @@ class TestObjectiveSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveSearchResults(unittest.TestCase):
     """Tests for ObjectiveSearchResults"""
 
@@ -43,8 +41,6 @@ class TestObjectiveSearchResults(unittest.TestCase):
     def test_get_objective_search_results_record(self):
         """Tests get_objective_search_results_record"""
         pass
-
-
 
 
 class TestActivitySearch(unittest.TestCase):
@@ -66,8 +62,6 @@ class TestActivitySearch(unittest.TestCase):
         pass
 
 
-
-
 class TestActivitySearchResults(unittest.TestCase):
     """Tests for ActivitySearchResults"""
 
@@ -85,8 +79,6 @@ class TestActivitySearchResults(unittest.TestCase):
     def test_get_activity_search_results_record(self):
         """Tests get_activity_search_results_record"""
         pass
-
-
 
 
 class TestProficiencySearch(unittest.TestCase):
@@ -108,8 +100,6 @@ class TestProficiencySearch(unittest.TestCase):
         pass
 
 
-
-
 class TestProficiencySearchResults(unittest.TestCase):
     """Tests for ProficiencySearchResults"""
 
@@ -127,8 +117,6 @@ class TestProficiencySearchResults(unittest.TestCase):
     def test_get_proficiency_search_results_record(self):
         """Tests get_proficiency_search_results_record"""
         pass
-
-
 
 
 class TestObjectiveBankSearch(unittest.TestCase):
@@ -150,8 +138,6 @@ class TestObjectiveBankSearch(unittest.TestCase):
         pass
 
 
-
-
 class TestObjectiveBankSearchResults(unittest.TestCase):
     """Tests for ObjectiveBankSearchResults"""
 
@@ -169,5 +155,3 @@ class TestObjectiveBankSearchResults(unittest.TestCase):
     def test_get_objective_bank_search_results_record(self):
         """Tests get_objective_bank_search_results_record"""
         pass
-
-

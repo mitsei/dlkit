@@ -20,10 +20,6 @@ class AuthorizationRecord(abc_authorization_records.AuthorizationRecord, osid_re
     """A record for an ``Authorization`` The methods specified by the record type are available through the underlying object."""
 
 
-
-
-
-
 class AuthorizationQueryRecord(abc_authorization_records.AuthorizationQueryRecord, osid_records.OsidRecord):
     """A record for an ``AuthorizationQuery``.
 
@@ -31,10 +27,6 @@ class AuthorizationQueryRecord(abc_authorization_records.AuthorizationQueryRecor
     underlying object.
 
     """
-
-
-
-
 
 
 class AuthorizationFormRecord(abc_authorization_records.AuthorizationFormRecord, osid_records.OsidRecord):
@@ -46,10 +38,6 @@ class AuthorizationFormRecord(abc_authorization_records.AuthorizationFormRecord,
     """
 
 
-
-
-
-
 class AuthorizationSearchRecord(abc_authorization_records.AuthorizationSearchRecord, osid_records.OsidRecord):
     """A record for an ``AuthorizationSearch``.
 
@@ -57,10 +45,6 @@ class AuthorizationSearchRecord(abc_authorization_records.AuthorizationSearchRec
     underlying object.
 
     """
-
-
-
-
 
 
 class VaultRecord(abc_authorization_records.VaultRecord, osid_records.OsidRecord):
@@ -72,10 +56,6 @@ class VaultRecord(abc_authorization_records.VaultRecord, osid_records.OsidRecord
     """
 
 
-
-
-
-
 class VaultQueryRecord(abc_authorization_records.VaultQueryRecord, osid_records.OsidRecord):
     """A record for a ``VaultQuery``.
 
@@ -85,10 +65,6 @@ class VaultQueryRecord(abc_authorization_records.VaultQueryRecord, osid_records.
     """
 
 
-
-
-
-
 class VaultFormRecord(abc_authorization_records.VaultFormRecord, osid_records.OsidRecord):
     """A record for a ``VaultForm``.
 
@@ -96,10 +72,6 @@ class VaultFormRecord(abc_authorization_records.VaultFormRecord, osid_records.Os
     underlying object.
 
     """
-
-
-
-
 
 
 class VaultSearchRecord(abc_authorization_records.VaultSearchRecord, osid_records.OsidRecord):

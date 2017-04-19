@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
@@ -58,8 +57,6 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         raise Unimplemented()
 
 
-
-
 class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupSession, osid_sessions.OsidSession):
     """Adapts underlying AuthorizationLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -84,7 +81,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('lookup', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -106,6 +103,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         for vault_id in self._unauth_vault_ids:
             query.match_vault_id(vault_id, match=False)
         return self._query_session.get_authorizations_by_query(query)
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -175,7 +173,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_authorization(authorization_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_id(authorization_id, match=True)
         results = self._try_harder(query)
@@ -189,7 +187,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations_by_ids(authorization_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         for authorization_id in (authorization_ids):
             query.match_id(authorization_id, match=True)
@@ -201,7 +199,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations_by_genus_type(authorization_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_genus_type(authorization_genus_type, match=True)
         return self._try_harder(query)
@@ -212,7 +210,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations_by_parent_genus_type(authorization_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_parent_genus_type(authorization_genus_type, match=True)
         return self._try_harder(query)
@@ -223,7 +221,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations_by_record_type(authorization_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_record_type(authorization_record_type, match=True)
         return self._try_harder(query)
@@ -254,7 +252,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations_for_function(function_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_function_id(function_id, match=True)
         return self._try_harder(query)
@@ -292,14 +290,12 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_authorizations()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_authorization_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     authorizations = property(fget=get_authorizations)
-
-
 
 
 class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySession, osid_sessions.OsidSession):
@@ -324,7 +320,7 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('search', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -345,12 +341,12 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
             query._provider_query.match_vault_id(vault_id, match=False)
         return self._query_session.get_authorizations_by_query(query)
 
-
     class AuthorizationQueryWrapper(QueryWrapper):
         """Wrapper for AuthorizationQueries to override match_vault_id method"""
 
         def match_vault_id(self, vault_id, match=True):
             self._cat_id_args_list.append({'vault_id': vault_id, 'match': match})
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -424,8 +420,6 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         return result
 
 
-
-
 class AuthorizationSearchSession(abc_authorization_sessions.AuthorizationSearchSession, AuthorizationQuerySession):
     """Adapts underlying AuthorizationSearchSession methodswith authorization checks."""
 
@@ -458,8 +452,6 @@ class AuthorizationSearchSession(abc_authorization_sessions.AuthorizationSearchS
         raise Unimplemented()
 
 
-
-
 class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSession, osid_sessions.OsidSession):
     """Adapts underlying AuthorizationAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -487,6 +479,7 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
     def _can_for_authorization(self, func_name, authorization_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, authorization_id, 'get_vault_ids_for_authorization')
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -514,8 +507,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if authorization_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if authorization_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -595,8 +588,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         if not self._can_for_authorization('alias', authorization_id):
             raise PermissionDenied()
         return self._provider_session.alias_authorization(authorization_id, alias_id)
-
-
 
 
 class AuthorizationNotificationSession(abc_authorization_sessions.AuthorizationNotificationSession, osid_sessions.OsidSession):
@@ -760,14 +751,13 @@ class AuthorizationNotificationSession(abc_authorization_sessions.AuthorizationN
         raise Unimplemented()
 
 
-
-
 class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSession, osid_sessions.OsidSession):
     """Adapts underlying AuthorizationVaultSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.AuthorizationVault'
+
     def use_comparative_vault_view(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.use_comparative_bin_view_template
@@ -828,14 +818,13 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         raise Unimplemented()
 
 
-
-
 class AuthorizationVaultAssignmentSession(abc_authorization_sessions.AuthorizationVaultAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying AuthorizationVaultAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.AuthorizationVault'
+
     def can_assign_authorizations(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -882,8 +871,6 @@ class AuthorizationVaultAssignmentSession(abc_authorization_sessions.Authorizati
     @raise_null_argument
     def reassign_authorization_to_vault(self, authorization_id, from_vault_id, to_vault_id):
         raise Unimplemented()
-
-
 
 
 class AuthorizationSmartVaultSession(abc_authorization_sessions.AuthorizationSmartVaultSession, osid_sessions.OsidSession):
@@ -935,8 +922,6 @@ class AuthorizationSmartVaultSession(abc_authorization_sessions.AuthorizationSma
         raise Unimplemented()
 
 
-
-
 class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, osid_sessions.OsidSession):
     """Adapts underlying FunctionLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -961,7 +946,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('lookup', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -983,6 +968,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         for vault_id in self._unauth_vault_ids:
             query.match_vault_id(vault_id, match=False)
         return self._query_session.get_functions_by_query(query)
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1050,7 +1036,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_function(function_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         query.match_id(function_id, match=True)
         results = self._try_harder(query)
@@ -1064,7 +1050,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_functions_by_ids(function_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         for function_id in (function_ids):
             query.match_id(function_id, match=True)
@@ -1076,7 +1062,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_functions_by_genus_type(function_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         query.match_genus_type(function_genus_type, match=True)
         return self._try_harder(query)
@@ -1087,7 +1073,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_functions_by_parent_genus_type(function_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         query.match_parent_genus_type(function_genus_type, match=True)
         return self._try_harder(query)
@@ -1098,7 +1084,7 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_functions_by_record_type(function_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         query.match_record_type(function_record_type, match=True)
         return self._try_harder(query)
@@ -1108,14 +1094,12 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_functions()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_function_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     functions = property(fget=get_functions)
-
-
 
 
 class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid_sessions.OsidSession):
@@ -1140,7 +1124,7 @@ class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('search', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -1161,12 +1145,12 @@ class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid
             query._provider_query.match_vault_id(vault_id, match=False)
         return self._query_session.get_functions_by_query(query)
 
-
     class FunctionQueryWrapper(QueryWrapper):
         """Wrapper for FunctionQueries to override match_vault_id method"""
 
         def match_vault_id(self, vault_id, match=True):
             self._cat_id_args_list.append({'vault_id': vault_id, 'match': match})
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1234,8 +1218,6 @@ class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid
         return result
 
 
-
-
 class FunctionSearchSession(abc_authorization_sessions.FunctionSearchSession, FunctionQuerySession):
     """Adapts underlying FunctionSearchSession methodswith authorization checks."""
 
@@ -1268,8 +1250,6 @@ class FunctionSearchSession(abc_authorization_sessions.FunctionSearchSession, Fu
         raise Unimplemented()
 
 
-
-
 class FunctionAdminSession(abc_authorization_sessions.FunctionAdminSession, osid_sessions.OsidSession):
     """Adapts underlying FunctionAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -1297,6 +1277,7 @@ class FunctionAdminSession(abc_authorization_sessions.FunctionAdminSession, osid
     def _can_for_function(self, func_name, function_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, function_id, 'get_vault_ids_for_function')
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1324,8 +1305,8 @@ class FunctionAdminSession(abc_authorization_sessions.FunctionAdminSession, osid
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if function_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if function_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -1397,14 +1378,13 @@ class FunctionAdminSession(abc_authorization_sessions.FunctionAdminSession, osid
         return self._provider_session.alias_function(function_id, alias_id)
 
 
-
-
 class FunctionNotificationSession(abc_authorization_sessions.FunctionNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying FunctionNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_vault_id()
         self._id_namespace = 'authorization.Function'
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1509,14 +1489,13 @@ class FunctionNotificationSession(abc_authorization_sessions.FunctionNotificatio
         raise Unimplemented()
 
 
-
-
 class FunctionVaultSession(abc_authorization_sessions.FunctionVaultSession, osid_sessions.OsidSession):
     """Adapts underlying FunctionVaultSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.FunctionVault'
+
     def can_lookup_function_vault_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -1581,14 +1560,13 @@ class FunctionVaultSession(abc_authorization_sessions.FunctionVaultSession, osid
         return self._provider_session.get_vaults_by_function(function_id)
 
 
-
-
 class FunctionVaultAssignmentSession(abc_authorization_sessions.FunctionVaultAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying FunctionVaultAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.FunctionVault'
+
     def can_assign_functions(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -1635,8 +1613,6 @@ class FunctionVaultAssignmentSession(abc_authorization_sessions.FunctionVaultAss
     @raise_null_argument
     def reassign_function_to_vault(self, function_id, from_vault_id, to_vault_id):
         raise Unimplemented()
-
-
 
 
 class FunctionSmartVaultSession(abc_authorization_sessions.FunctionSmartVaultSession, osid_sessions.OsidSession):
@@ -1688,8 +1664,6 @@ class FunctionSmartVaultSession(abc_authorization_sessions.FunctionSmartVaultSes
         raise Unimplemented()
 
 
-
-
 class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -1714,7 +1688,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('lookup', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -1736,6 +1710,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         for vault_id in self._unauth_vault_ids:
             query.match_vault_id(vault_id, match=False)
         return self._query_session.get_qualifiers_by_query(query)
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1793,7 +1768,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resource_template
         if self._can('lookup'):
             return self._provider_session.get_qualifier(qualifier_id)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         query.match_id(qualifier_id, match=True)
         results = self._try_harder(query)
@@ -1807,7 +1782,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resources_by_ids_template
         if self._can('lookup'):
             return self._provider_session.get_qualifiers_by_ids(qualifier_ids)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         for qualifier_id in (qualifier_ids):
             query.match_id(qualifier_id, match=True)
@@ -1819,7 +1794,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_qualifiers_by_genus_type(qualifier_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         query.match_genus_type(qualifier_genus_type, match=True)
         return self._try_harder(query)
@@ -1830,7 +1805,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
         if self._can('lookup'):
             return self._provider_session.get_qualifiers_by_parent_genus_type(qualifier_genus_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         query.match_parent_genus_type(qualifier_genus_type, match=True)
         return self._try_harder(query)
@@ -1841,7 +1816,7 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
         if self._can('lookup'):
             return self._provider_session.get_qualifiers_by_record_type(qualifier_record_type)
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         query.match_record_type(qualifier_record_type, match=True)
         return self._try_harder(query)
@@ -1851,14 +1826,12 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
         # osid.resource.ResourceLookupSession.get_resources_template
         if self._can('lookup'):
             return self._provider_session.get_qualifiers()
-        self._check_lookup_conditions() # raises PermissionDenied
+        self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_qualifier_query()
         query.match_any(match=True)
         return self._try_harder(query)
 
     qualifiers = property(fget=get_qualifiers)
-
-
 
 
 class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, osid_sessions.OsidSession):
@@ -1883,7 +1856,7 @@ class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, os
 
     def _get_unauth_vault_ids(self, vault_id):
         if self._can('search', vault_id):
-            return [] # Don't go further - assumes authorizations inherited
+            return []  # Don't go further - assumes authorizations inherited
         else:
             unauth_list = [str(vault_id)]
         if self._hierarchy_session.has_child_vaults(vault_id):
@@ -1904,12 +1877,12 @@ class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, os
             query._provider_query.match_vault_id(vault_id, match=False)
         return self._query_session.get_qualifiers_by_query(query)
 
-
     class QualifierQueryWrapper(QueryWrapper):
         """Wrapper for QualifierQueries to override match_vault_id method"""
 
         def match_vault_id(self, vault_id, match=True):
             self._cat_id_args_list.append({'vault_id': vault_id, 'match': match})
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -1977,8 +1950,6 @@ class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, os
         return result
 
 
-
-
 class QualifierSearchSession(abc_authorization_sessions.QualifierSearchSession, QualifierQuerySession):
     """Adapts underlying QualifierSearchSession methodswith authorization checks."""
 
@@ -2011,8 +1982,6 @@ class QualifierSearchSession(abc_authorization_sessions.QualifierSearchSession, 
         raise Unimplemented()
 
 
-
-
 class QualifierAdminSession(abc_authorization_sessions.QualifierAdminSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierAdminSession methodswith authorization checks."""
     def __init__(self, provider_manager, *args, **kwargs):
@@ -2040,6 +2009,7 @@ class QualifierAdminSession(abc_authorization_sessions.QualifierAdminSession, os
     def _can_for_qualifier(self, func_name, qualifier_id):
         """Checks if agent can perform function for object"""
         return self._can_for_object(func_name, qualifier_id, 'get_vault_ids_for_qualifier')
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2067,8 +2037,8 @@ class QualifierAdminSession(abc_authorization_sessions.QualifierAdminSession, os
         # Implemented from azosid template for -
         # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # This would like to be a real implementation someday:
-        if qualifier_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if qualifier_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -2140,14 +2110,13 @@ class QualifierAdminSession(abc_authorization_sessions.QualifierAdminSession, os
         return self._provider_session.alias_qualifier(qualifier_id, alias_id)
 
 
-
-
 class QualifierNotificationSession(abc_authorization_sessions.QualifierNotificationSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierNotificationSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
         self._qualifier_id = self._provider_session.get_vault_id()
         self._id_namespace = 'authorization.Qualifier'
+
     def get_vault_id(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceLookupSession.get_bin_id_template
@@ -2275,8 +2244,6 @@ class QualifierNotificationSession(abc_authorization_sessions.QualifierNotificat
         raise Unimplemented()
 
 
-
-
 class QualifierHierarchySession(abc_authorization_sessions.QualifierHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying QualifierHierarchySession methodswith authorization checks."""
 
@@ -2364,8 +2331,6 @@ class QualifierHierarchySession(abc_authorization_sessions.QualifierHierarchySes
         raise Unimplemented()
 
 
-
-
 class QualifierHierarchyDesignSession(abc_authorization_sessions.QualifierHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierHierarchyDesignSession methodswith authorization checks."""
 
@@ -2403,14 +2368,13 @@ class QualifierHierarchyDesignSession(abc_authorization_sessions.QualifierHierar
         raise Unimplemented()
 
 
-
-
 class QualifierVaultSession(abc_authorization_sessions.QualifierVaultSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierVaultSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.QualifierVault'
+
     def can_lookup_qualifier_vault_mappings(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
@@ -2475,14 +2439,13 @@ class QualifierVaultSession(abc_authorization_sessions.QualifierVaultSession, os
         return self._provider_session.get_vaults_by_qualifier(qualifier_id)
 
 
-
-
 class QualifierVaultAssignmentSession(abc_authorization_sessions.QualifierVaultAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying QualifierVaultAssignmentSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
         osid_sessions.OsidSession.__init__(self, *args, **kwargs)
-        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU') # This could be better
+        self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')  # This could be better
         self._id_namespace = 'authorization.QualifierVault'
+
     def can_assign_qualifiers(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinAssignmentSession.can_assign_resources
@@ -2529,8 +2492,6 @@ class QualifierVaultAssignmentSession(abc_authorization_sessions.QualifierVaultA
     @raise_null_argument
     def reassign_qualifier_to_vault(self, qualifier_id, from_vault_id, to_vault_id):
         raise Unimplemented()
-
-
 
 
 class QualifierSmartVaultSession(abc_authorization_sessions.QualifierSmartVaultSession, osid_sessions.OsidSession):
@@ -2582,8 +2543,6 @@ class QualifierSmartVaultSession(abc_authorization_sessions.QualifierSmartVaultS
         raise Unimplemented()
 
 
-
-
 class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_sessions.OsidSession):
     """Adapts underlying VaultLookupSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2592,6 +2551,7 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         # Build from authority in config
         self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authorization.Vault'
+
     def can_lookup_vaults(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
@@ -2651,8 +2611,6 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
     vaults = property(fget=get_vaults)
 
 
-
-
 class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessions.OsidSession):
     """Adapts underlying VaultQuerySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2661,6 +2619,7 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         # Build from authority in config
         self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authorization.Vault'
+
     def can_search_vaults(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
@@ -2685,8 +2644,6 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         return self._provider_session.get_vaults_by_query(vault_query)
 
 
-
-
 class VaultSearchSession(abc_authorization_sessions.VaultSearchSession, VaultQuerySession):
     """Adapts underlying VaultSearchSession methodswith authorization checks."""
 
@@ -2709,8 +2666,6 @@ class VaultSearchSession(abc_authorization_sessions.VaultSearchSession, VaultQue
         raise Unimplemented()
 
 
-
-
 class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessions.OsidSession):
     """Adapts underlying VaultAdminSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2719,6 +2674,7 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         # Build from authority in config
         self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authorization.Vault'
+
     def can_create_vaults(self):
         # Implemented from azosid template for -
         # osid.resource.BinLookupSession.can_create_bins_template
@@ -2729,8 +2685,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         # Implemented from azosid template for -
         # osid.resource.BinAdminSession.can_create_bin_with_record_types_template
         # This would like to be a real implementation someday:
-        if vault_record_types == None:
-            raise NullArgument() # Just 'cause the spec says to :)
+        if vault_record_types is None:
+            raise NullArgument()  # Just 'cause the spec says to :)
         return self._can('create')
 
     @raise_null_argument
@@ -2793,8 +2749,6 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         if not self._can('alias'):
             raise PermissionDenied()
         return self._provider_session.alias_vault(vault_id, alias_id)
-
-
 
 
 class VaultNotificationSession(abc_authorization_sessions.VaultNotificationSession, osid_sessions.OsidSession):
@@ -2872,8 +2826,6 @@ class VaultNotificationSession(abc_authorization_sessions.VaultNotificationSessi
         raise Unimplemented()
 
 
-
-
 class VaultHierarchySession(abc_authorization_sessions.VaultHierarchySession, osid_sessions.OsidSession):
     """Adapts underlying VaultHierarchySession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -2882,6 +2834,7 @@ class VaultHierarchySession(abc_authorization_sessions.VaultHierarchySession, os
         # Build from authority in config
         self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authorization.Vault'
+
     def get_vault_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id
@@ -3036,8 +2989,6 @@ class VaultHierarchySession(abc_authorization_sessions.VaultHierarchySession, os
             include_siblings)
 
 
-
-
 class VaultHierarchyDesignSession(abc_authorization_sessions.VaultHierarchyDesignSession, osid_sessions.OsidSession):
     """Adapts underlying VaultHierarchyDesignSession methodswith authorization checks."""
     def __init__(self, *args, **kwargs):
@@ -3047,6 +2998,7 @@ class VaultHierarchyDesignSession(abc_authorization_sessions.VaultHierarchyDesig
         self._qualifier_id = Id('authorization.Vault%3AROOT%40ODL.MIT.EDU')
         self._id_namespace = 'authorization.Vault'
         # should this be 'authorization.VaultHierarchy' ?
+
     def get_vault_hierarchy_id(self):
         # Implemented from azosid template for -
         # osid.resource.BinHierarchySession.get_bin_hierarchy_id

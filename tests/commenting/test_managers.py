@@ -25,6 +25,7 @@ class TestCommentingProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_comment_lookup(self):
         """Tests supports_comment_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_comment_lookup(), bool))
@@ -70,8 +71,6 @@ class TestCommentingProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_book_search_record_types(), abc_type_list))
 
 
-
-
 class TestCommentingManager(unittest.TestCase):
     """Tests for CommentingManager"""
 
@@ -89,6 +88,7 @@ class TestCommentingManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
+
 
 
     def test_get_comment_lookup_session(self):
@@ -165,8 +165,6 @@ class TestCommentingManager(unittest.TestCase):
             self.svc_mgr.get_commenting_batch_manager()
 
 
-
-
 class TestCommentingProxyManager(unittest.TestCase):
     """Tests for CommentingProxyManager"""
 
@@ -183,6 +181,7 @@ class TestCommentingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
+
 
 
     def test_get_comment_lookup_session(self):
@@ -265,5 +264,3 @@ class TestCommentingProxyManager(unittest.TestCase):
         #     self.mgr.get_commenting_batch_proxy_manager()
         if self.svc_mgr.supports_commenting_batch():
             self.svc_mgr.get_commenting_batch_proxy_manager()
-
-

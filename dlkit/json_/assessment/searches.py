@@ -33,6 +33,7 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_searches.OsidSearch.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def search_among_items(self, item_ids):
         """Execute this search among the given list of items.
@@ -80,8 +81,6 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
         raise errors.Unimplemented()
 
 
-
-
 class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
     def __init__(self, results, runtime):
@@ -89,6 +88,7 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
         self._results = results
         self._runtime = runtime
         self.retrieved = False
+
     def get_items(self):
         """Gets the item list resulting from the search.
 
@@ -136,8 +136,6 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.OsidSearch):
@@ -192,8 +190,6 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -243,8 +239,6 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, osid_searches.OsidSearch):
@@ -301,8 +295,6 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -354,8 +346,6 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_searches.OsidSearch):
@@ -412,8 +402,6 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
         raise errors.Unimplemented()
 
 
-
-
 class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
 
@@ -467,8 +455,6 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
         raise errors.Unimplemented()
 
 
-
-
 class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
     """The interface for governing bank searches."""
 
@@ -517,8 +503,6 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
 
         """
         raise errors.Unimplemented()
-
-
 
 
 class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches.OsidSearchResults):

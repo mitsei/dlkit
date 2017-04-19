@@ -25,6 +25,7 @@ class TestGradingProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_grade_system_lookup(self):
         """Tests supports_grade_system_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_grade_system_lookup(), bool))
@@ -110,8 +111,6 @@ class TestGradingProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_gradebook_search_record_types(), abc_type_list))
 
 
-
-
 class TestGradingManager(unittest.TestCase):
     """Tests for GradingManager"""
 
@@ -129,6 +128,7 @@ class TestGradingManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
+
 
 
     def test_get_grade_system_lookup_session(self):
@@ -285,8 +285,6 @@ class TestGradingManager(unittest.TestCase):
             self.svc_mgr.get_grading_transform_manager()
 
 
-
-
 class TestGradingProxyManager(unittest.TestCase):
     """Tests for GradingProxyManager"""
 
@@ -303,6 +301,7 @@ class TestGradingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
+
 
 
     def test_get_grade_system_lookup_session(self):
@@ -473,5 +472,3 @@ class TestGradingProxyManager(unittest.TestCase):
         #     self.mgr.get_grading_transform_proxy_manager()
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_proxy_manager()
-
-

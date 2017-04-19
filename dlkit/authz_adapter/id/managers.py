@@ -7,7 +7,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented, OperationFailed
@@ -20,10 +19,6 @@ class IdProfile(osid_managers.OsidProfile, id_managers.IdProfile):
     """Adapts underlying IdProfile methodswith authorization checks."""
 
 
-
-
-
-
 class IdManager(osid_managers.OsidManager, IdProfile, id_managers.IdManager):
     """Adapts underlying IdManager methodswith authorization checks."""
 
@@ -31,8 +26,6 @@ class IdManager(osid_managers.OsidManager, IdProfile, id_managers.IdManager):
         raise Unimplemented()
 
     id_batch_manager = property(fget=get_id_batch_manager)
-
-
 
 
 class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, id_managers.IdProxyManager):

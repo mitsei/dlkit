@@ -10,6 +10,7 @@ class TestLogEntryQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_match_priority(self):
         """Tests match_priority"""
@@ -126,8 +127,6 @@ class TestLogEntryQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestLogQuery(unittest.TestCase):
     """Tests for LogQuery"""
 
@@ -225,5 +224,3 @@ class TestLogQuery(unittest.TestCase):
     def test_get_log_query_record(self):
         """Tests get_log_query_record"""
         pass
-
-

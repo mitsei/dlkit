@@ -25,6 +25,7 @@ class TestAssessmentProfile(unittest.TestCase):
         cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
 
 
+
     def test_supports_assessment(self):
         """Tests supports_assessment"""
         self.assertTrue(isinstance(self.mgr.supports_assessment(), bool))
@@ -190,8 +191,6 @@ class TestAssessmentProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_bank_search_record_types(), abc_type_list))
 
 
-
-
 class TestAssessmentManager(unittest.TestCase):
     """Tests for AssessmentManager"""
 
@@ -209,6 +208,7 @@ class TestAssessmentManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
+
 
 
     @unittest.skip('unimplemented test')
@@ -520,8 +520,6 @@ class TestAssessmentManager(unittest.TestCase):
             self.svc_mgr.get_assessment_batch_manager()
 
 
-
-
 class TestAssessmentProxyManager(unittest.TestCase):
     """Tests for AssessmentProxyManager"""
 
@@ -538,6 +536,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
+
 
 
     @unittest.skip('unimplemented test')
@@ -879,5 +878,3 @@ class TestAssessmentProxyManager(unittest.TestCase):
         #     self.mgr.get_assessment_batch_proxy_manager()
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_proxy_manager()
-
-

@@ -40,6 +40,7 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_obj
     def __init__(self):
         self._django_user = None
         self._credential = None
+
     def get_agent_id(self):
         """Gets the ``Id`` of the ``Agent`` identified in this authentication credential.
 

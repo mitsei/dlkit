@@ -36,6 +36,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_group(self, match):
         """Matches resources that are also groups.
@@ -450,8 +451,6 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         raise errors.Unimplemented()
 
 
-
-
 class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching bins.
 
@@ -481,6 +480,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_resource_id(self, resource_id, match):
         """Sets the resource ``Id`` for this query.

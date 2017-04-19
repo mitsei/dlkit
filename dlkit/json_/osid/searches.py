@@ -58,6 +58,7 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
             pass
         self._limit_result_set_start = None
         self._limit_result_set_end = None
+
     @utilities.arguments_not_none
     def limit_result_set(self, start, end):
         """By default, searches return all matching results.
@@ -94,8 +95,6 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
     @property
     def end(self):
         return self._limit_result_set_end
-
-
 
 
 class OsidSearchResults(abc_osid_searches.OsidSearchResults, osid_rules.OsidResult):

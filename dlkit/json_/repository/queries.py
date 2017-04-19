@@ -37,6 +37,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_title(self, title, string_match_type, match):
         """Adds a title for this query.
@@ -883,8 +884,6 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         raise errors.Unimplemented()
 
 
-
-
 class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.OsidObjectQuery, osid_queries.OsidSubjugateableQuery):
     """This is the query for searching asset contents.
 
@@ -901,6 +900,7 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_accessibility_type(self, accessibility_type, match):
         """Sets the accessibility types for this query.
@@ -1079,8 +1079,6 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
         raise errors.Unimplemented()
 
 
-
-
 class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.OsidObjectQuery, osid_queries.OsidContainableQuery, osid_queries.OsidOperableQuery, osid_queries.OsidSourceableQuery):
     """This is the query for searching compositions.
 
@@ -1097,6 +1095,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         osid_queries.OsidObjectQuery.__init__(self, runtime)
+
     @utilities.arguments_not_none
     def match_asset_id(self, asset_id, match):
         """Sets the asset ``Id`` for this query.
@@ -1394,8 +1393,6 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         raise errors.Unimplemented()
 
 
-
-
 class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching repositories.
 
@@ -1425,6 +1422,7 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
                 descendants += list(self._get_descendant_catalog_ids(child_id))
                 descendants.append(child_id)
         return IdList(descendants)
+
     @utilities.arguments_not_none
     def match_asset_id(self, asset_id, match):
         """Sets the asset ``Id`` for this query.

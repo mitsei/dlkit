@@ -10,16 +10,16 @@ class TestQuestionQuery(unittest.TestCase):
 
 
 
+
     @unittest.skip('unimplemented test')
     def test_get_question_query_record(self):
         """Tests get_question_query_record"""
         pass
 
 
-
-
 class TestAnswerQuery(unittest.TestCase):
     """Tests for AnswerQuery"""
+
 
 
 
@@ -29,10 +29,9 @@ class TestAnswerQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestItemQuery(unittest.TestCase):
     """Tests for ItemQuery"""
+
 
 
 
@@ -187,10 +186,9 @@ class TestItemQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentQuery(unittest.TestCase):
     """Tests for AssessmentQuery"""
+
 
 
 
@@ -375,10 +373,9 @@ class TestAssessmentQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentOfferedQuery(unittest.TestCase):
     """Tests for AssessmentOfferedQuery"""
+
 
 
 
@@ -653,10 +650,9 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTakenQuery(unittest.TestCase):
     """Tests for AssessmentTakenQuery"""
+
 
 
 
@@ -926,8 +922,6 @@ class TestAssessmentTakenQuery(unittest.TestCase):
         pass
 
 
-
-
 class TestBankQuery(unittest.TestCase):
     """Tests for BankQuery"""
 
@@ -1085,5 +1079,3 @@ class TestBankQuery(unittest.TestCase):
     def test_get_bank_query_record(self):
         """Tests get_bank_query_record"""
         pass
-
-
