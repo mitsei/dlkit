@@ -12,6 +12,7 @@ from ..osid.osid_errors import NullArgument, InvalidArgument, NotFound, NoAccess
 INVALID = 0
 VALID = 1
 
+
 class IdList(abc_id_objects.IdList, osid_objects.OsidList):
     """Like all OsidLists,  IdList provides a means for accessing Id
     elements sequentially either one at a time or many at a time.
@@ -44,7 +45,7 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
             raise OperationFailed()
         else:
             return next_item
-            
+
     def next(self):
         try:
             next_item = osid_objects.OsidList.next(self)
@@ -86,4 +87,3 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
             return next_list
 
     next_id = property(get_next_id)
-

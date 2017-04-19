@@ -1,7 +1,5 @@
 import re
 
-# from .learning.managers import LearningManager
-# from .repository.managers import RepositoryManager
 from .primitives import Id, Type, DisplayText
 from .osid.osid_errors import AlreadyExists, NotFound
 
@@ -134,49 +132,49 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
     elif type == 'childids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/childids/')
+                    get_id_str(obj_id) + '/childids/')
         else:
             raise ValueError
     elif type == 'children':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/children')
+                    get_id_str(obj_id) + '/children')
         else:
             raise ValueError
     elif type == 'dependents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/dependents')
+                    get_id_str(obj_id) + '/dependents')
         else:
             raise ValueError
     elif type == 'equivalents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/equivalents')
+                    get_id_str(obj_id) + '/equivalents')
         else:
             raise ValueError
     elif type == 'parentids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/parentids/')
+                    get_id_str(obj_id) + '/parentids/')
         else:
             raise ValueError
     elif type == 'parents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/parents/')
+                    get_id_str(obj_id) + '/parents/')
         else:
             raise ValueError
     elif type == 'requisites':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/requisites/')
+                    get_id_str(obj_id) + '/requisites/')
         else:
             raise ValueError
     elif type == 'requisiteids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
-                        get_id_str(obj_id) + '/requisiteids/')
+                    get_id_str(obj_id) + '/requisiteids/')
         else:
             raise ValueError
     elif type == 'rootids':
@@ -194,7 +192,7 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
             url += get_id_str(bank_id) + '/activities/' + get_id_str(act_id)
         elif obj_id and bank_id:
             url += (get_id_str(bank_id) + '/objectives/' + get_id_str(obj_id) +
-                        '/activities/')
+                    '/activities/')
         elif bank_id:
             url += get_id_str(bank_id) + '/activities/'
         else:
@@ -202,7 +200,7 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
     elif type == 'activities_by_genus':
         if bank_id and genus_type:
             url += (get_id_str(bank_id) + '/activities?genustypeid=' +
-                        get_id_str(genus_type))
+                    get_id_str(genus_type))
         else:
             raise ValueError
     elif type == 'assets':
@@ -210,7 +208,7 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
             url += get_id_str(bank_id) + '/assets/' + get_id_str(asset_id)
         elif act_id and bank_id:
             url += (get_id_str(bank_id) + '/activities/' + get_id_str(act_id) +
-                            '/assets/')
+                    '/assets/')
         elif bank_id:
             url += get_id_str(bank_id) + '/assets/'
         else:
@@ -218,14 +216,14 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
     elif type == 'assets_by_genus':
         if bank_id and genus_type:
             url += (get_id_str(bank_id) + '/assets?genustypeid=' +
-                        get_id_str(genus_type))
+                    get_id_str(genus_type))
         else:
             raise ValueError
     elif type == 'authorization':
         if bank_id:
             url += get_id_str(bank_id) + '/authorization/'
         else:
-            url = '/handcar/services/learning/authorization' # yuck!
+            url = '/handcar/services/learning/authorization'  # yuck!
     elif type == 'objective_bank_types':
         url += 'types/genus/'
     elif type == 'extension_record':

@@ -24,6 +24,7 @@ FEDERATED = 1
 CREATED = True
 UPDATED = True
 
+
 class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving Objectives."""
 
@@ -32,7 +33,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         self._objective_bank_view = FEDERATED
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -42,7 +43,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         self._credential = None
         if proxy is not None and proxy.has_authentication():
             authentication = proxy.get_authentication()
-            ## I LEFT OFF HERE 
+            # I LEFT OFF HERE
 
     def get_objective_bank_id(self):
         """Gets the ObjectiveBank  Id associated with this session.
@@ -137,9 +138,9 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier +
-                   '/objectives/' + objective_id.get_identifier())
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier +
+                    '/objectives/' + objective_id.get_identifier())
         return objects.Objective(self._get_request(url_path))
 
     def get_objectives_by_ids(self, objective_ids=None):
@@ -167,9 +168,9 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         objectives = []
         for i in objective_ids:
             objective = None
-            url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier +
-                   '/objectives/' + i.get_identifier())
+            url_path = ('/handcar/services/learning/objectivebanks/' +
+                        self._objective_bank_identifier +
+                        '/objectives/' + i.get_identifier())
             try:
                 objective = self._get_request(url_path)
             except NotFound, OperationFailed:
@@ -177,7 +178,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
                     raise
                 else:
                     pass
-            if objective: 
+            if objective:
                 if not (self._objective_view == COMPARATIVE and
                         objective in objectives):
                     objectives.append(objective)
@@ -203,8 +204,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         if objective_genus_type is None:
             raise NullArgument()
         url_path = ('/handcar/services/learning/objectivebanks/' +
-                   self._objective_bank_identifier + '/objectives?genustypeid=' +
-                   objective_genus_type.get_identifier())
+                    self._objective_bank_identifier + '/objectives?genustypeid=' +
+                    objective_genus_type.get_identifier())
         return objects.ObjectiveList(self._get_request(url_path))
 
     def get_objectives_by_parent_genus_type(self, objective_genus_type=None):
@@ -255,8 +256,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         compliance: mandatory - This method must be implemented.
 
         """
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives')
         return objects.ObjectiveList(self._get_request(url_path))
 
     objective_bank_id = property(get_objective_bank_id)
@@ -279,7 +280,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
       > isolated objective bank view: searches are restricted to
         objectives in this objective bank
 
-    
+
     Objectives may have a query record indicated by their respective
     record types. The query record is accessed via the ObjectiveQuery.
 
@@ -389,7 +390,7 @@ class ObjectiveSearchSession(abc_learning_sessions.ObjectiveSearchSession, Objec
     get_objectives_by_search() returns an ObjectiveSearchResults that
     can be used to access the resulting ObjectiveList or be used to
     perform a search within the result set through ObjectiveSearch.
-    
+
     This session defines views that offer differing behaviors for
     searching.
       > federated objective bank view: searches include objectives in
@@ -398,7 +399,7 @@ class ObjectiveSearchSession(abc_learning_sessions.ObjectiveSearchSession, Objec
       > isolated objective bank view: searches are restricted to
         objectives in this objective bank
 
-    
+
     Objectives may have a query record indicated by their respective
     record types. The query record is accessed via the ObjectiveQuery.
 
@@ -479,28 +480,28 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
     reused with another create operation unless the first operation was
     unsuccessful. Each ObjectiveForm corresponds to an attempted
     transaction.
-    
+
     For updates, ObjectiveForms are requested to the Objective  Id that
     is to be updated using get_objective_form_for_update(). Similarly,
     the ObjectiveForm has metadata about the data that can be updated
     and it can perform validation before submitting the update. The
     ObjectiveForm can only be used once for a successful update and
     cannot be reused.
-    
+
     The delete operations delete Objectives. To unmap an Objective from
     the current ObjectiveBank, the
     ObjectiveObjectiveBankAssignmentSession should be used. These delete
     operations attempt to remove the Objective itself thus removing it
     from all known ObjectiveBank catalogs.
-    
+
     This session includes an Id aliasing mechanism to assign an external
     Id to an internally assigned Id.
 
     """
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -518,7 +519,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
 
         """
         return self._objective_bank_id
-        
+
     def get_objective_bank(self):
         """Gets the ObjectiveBank associated with this session.
 
@@ -578,7 +579,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
 
         """
         if objective_record_types is None:
-            pass # Still need to deal with the record_types argument
+            pass  # Still need to deal with the record_types argument
         objective_form = objects.ObjectiveForm()
         self._forms[objective_form.get_id().get_identifier()] = not CREATED
         return objective_form
@@ -615,15 +616,15 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         if not objective_form.is_valid():
             raise INVALID_ARGUMENT('one or more of the form elements is invalid')
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives')
         try:
             result = self._post_request(url_path, objective_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[objective_form.get_id().get_identifier()] = CREATED
         return objects.Objective(result)
-        
+
     def can_update_objectives(self):
         """Tests if this user can update Objectives.
         A return of true does not guarantee successful authorization. A
@@ -691,14 +692,14 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         if not objective_form.is_valid():
             raise INVALID_ARGUMENT('one or more of the form elements is invalid')
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives')
         try:
             result = self._put_request(url_path, objective_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[objective_form.get_id().get_identifier()] = UPDATED
-        return objects.Objective(result) # Not expected to return anything
+        return objects.Objective(result)  # Not expected to return anything
 
     def can_delete_objectives(self):
         """Tests if this user can delete Objectives.
@@ -731,12 +732,12 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
             raise NullArgument()
         if not isinstance(objective_id, Id):
             raise InvalidArgument('argument type is not an osid Id')
-        
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' + 
-                   objective_id.get_identifier())
+
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier())
         result = self._delete_request(url_path)
-        return objects.Objective(result) # Not expected to return anything
+        return objects.Objective(result)  # Not expected to return anything
 
     def can_manage_objective_aliases(self):
         """Tests if this user can manage Id aliases for Objectives.
@@ -750,7 +751,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         compliance: mandatory - This method must be implemented.
 
         """
-        return False # Not yet implemented
+        return False  # Not yet implemented
 
     def alias_objective(self, objective_id=None, alias_id=None):
         """Adds an Id to an Objective for the purpose of creating
@@ -793,10 +794,10 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
     returns of get_parent_objectives() or get_child_objectives() in lieu
     of a PermissionDenied error that may disrupt the traversal through
     authorized pathways.
-    
+
     This session defines views that offer differing behaviors when
     retrieving multiple objects.
-    
+
       > comparative view: objective elements may be silently omitted or
         re-ordered
       > plenary view: provides a complete set or is an error condition
@@ -804,11 +805,11 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
 
     """
 
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._objective_view = COMPARATIVE
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -824,7 +825,7 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         compliance: mandatory - This method must be implemented.
 
         """
-        ## OK, No. This isn't returning a Hierarchy Id
+        # OK, No. This isn't returning a Hierarchy Id
         return self._objective_bank_id
 
     def get_objective_hierarchy(self):
@@ -837,7 +838,7 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         compliance: mandatory - This method must be implemented.
 
         """
-        ## OK, No. This isn't returning a Hierarchy
+        # OK, No. This isn't returning a Hierarchy
         return ObjectiveBankLookupSession().get_objective_bank(self._objective_bank_id)
 
     def can_access_objective_hierarchy(self):
@@ -890,13 +891,13 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         compliance: mandatory - This method must be implemented.
 
         """
-        url_path = (self._base_path + '/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/rootids')
+        url_path = (self._base_path + '/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/rootids')
         id_list = list()
         for identifier in self._get_request(url_path)['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def get_root_objectives(self):
@@ -908,8 +909,8 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         compliance: mandatory - This method is must be implemented.
 
         """
-        url_path = (self._base_path + '/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/roots?descendentlevels=0')
+        url_path = (self._base_path + '/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/roots?descendentlevels=0')
         return objects.ObjectiveList(self._get_request(url_path))
 
     def has_parent_objectives(self, objective_id=None):
@@ -962,16 +963,15 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = (self._base_path + '/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/parentids')
+        url_path = (self._base_path + '/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/parentids')
         id_list = list()
         for identifier in self._get_request(url_path)['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
-
 
     def get_parent_objectives(self, objective_id=None):
         """Gets the parents of the given objective.
@@ -988,9 +988,9 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/parents')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/parents')
         return objects.ObjectiveList(self._get_request(url_path))
 
     def is_ancestor_of_objective(self, id=None, objective_id=None):
@@ -1060,14 +1060,14 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = (self._base_path + '/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/childids')
+        url_path = (self._base_path + '/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/childids')
         id_list = list()
         for identifier in self._get_request(url_path)['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def get_child_objectives(self, objective_id=None):
@@ -1085,9 +1085,9 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/children')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/children')
         return objects.ObjectiveList(self._get_request(url_path))
 
     def is_descendant_of_objective(self, id=None, objective_id=None):
@@ -1159,18 +1159,17 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
     Each node in the hierarchy is a unique Objective.
 
     """
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._objective_view = COMPARATIVE
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
         else:
             self._objective_bank_id = objective_bank_id
         self._objective_bank_identifier = self._objective_bank_id.get_identifier()
-
 
     def get_objective_hierarchy_id(self):
         """Gets the hierarchy Id associated with this session.
@@ -1192,7 +1191,7 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         compliance: mandatory - This method must be implemented.
 
         """
-        ## OK, No. This isn't returning a Hierarchy
+        # OK, No. This isn't returning a Hierarchy
         return ObjectiveBankLookupSession().get_objective_bank(self._objective_bank_id)
 
     def can_modify_objective_hierarchy(self):
@@ -1262,9 +1261,9 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
             ids_arg['ids'].append(ident.get_identifier())
         ids_arg['ids'].append(child_id.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/childids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/childids')
         print url_path
         print '    ', ids_arg
         try:
@@ -1273,9 +1272,9 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
             raise
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def remove_child_objective(self, objective_id=None, child_id=None):
@@ -1300,18 +1299,18 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
             if ident != child_id:
                 ids_arg['ids'].append(ident.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/childids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/childids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def remove_child_objectives(self, objective_id=None):
@@ -1331,33 +1330,32 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         try:
             ols.get_objective(objective_id)
         except:
-            raise # If no objective, get_objectives will raise NotFound
+            raise  # If no objective, get_objectives will raise NotFound
         ids_arg = {'ids': []}
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/childids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/childids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
-
 
 
 class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSession, osid_sessions.OsidSession):
     """This session provides methods to sequence the objectives in the
     objective hierarchy."""
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._objective_view = COMPARATIVE
         self._objective_bank_view = FEDERATED
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -1385,7 +1383,7 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
         compliance: mandatory - This method must be implemented.
 
         """
-        ## OK, No. This isn't returning a Hierarchy
+        # OK, No. This isn't returning a Hierarchy
         return ObjectiveBankLookupSession().get_objective_bank(self._objective_bank_id)
 
     def can_sequence_objectives(self):
@@ -1424,14 +1422,14 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
         compliance: mandatory - This method must be implemented.
 
         """
-        ## NOT YET TESTED:
-        if (parent_objective_id is None or 
-            reference_objective_id is None or 
-            objective_id is None):
+        # NOT YET TESTED:
+        if (parent_objective_id is None or
+                reference_objective_id is None or
+                objective_id is None):
             raise NullArgument()
         ohs = ObjectiveHierarchySession(self._objective_bank_id)
         if (not ohs.is_child_of_objective(objective_id, parent_objective_id) or
-            not ohs.is_child_of_objective(reference_objective_id, parent_objective_id)):
+                not ohs.is_child_of_objective(reference_objective_id, parent_objective_id)):
             raise NotFound('The parent objective identified is not the parent of one or both of the other objectives')
         ids_arg = {'ids': []}
         for ident in ohs.get_child_objective_ids(parent_objective_id):
@@ -1441,20 +1439,20 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
             index = ids_arg['ids'].index(reference_objective_id.get_identifier())
             ids_arg['ids'].insert(index, objective_id.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   parent_objective_id.get_identifier() + '/childids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    parent_objective_id.get_identifier() + '/childids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
 
-        ## The following is not required by the osid specification:
+        # The following is not required by the osid specification:
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def move_objective_behind(self, parent_objective_id=None, reference_objective_id=None, objective_id=None):
@@ -1477,14 +1475,14 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
         compliance: mandatory - This method must be implemented.
 
         """
-        ## NOT YET TESTED:
-        if (parent_objective_id is None or 
-            reference_objective_id is None or 
-            objective_id is None):
+        # NOT YET TESTED:
+        if (parent_objective_id is None or
+                reference_objective_id is None or
+                objective_id is None):
             raise NullArgument()
         ohs = ObjectiveHierarchySession(self._objective_bank_id)
         if (not ohs.is_child_of_objective(objective_id, parent_objective_id) or
-            not ohs.is_child_of_objective(reference_objective_id, parent_objective_id)):
+                not ohs.is_child_of_objective(reference_objective_id, parent_objective_id)):
             raise NotFound('The parent objective identified is not the parent of one or both of the other objectives')
         ids_arg = {'ids': []}
         for ident in ohs.get_child_objective_ids(parent_objective_id):
@@ -1494,20 +1492,20 @@ class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSessio
             index = ids_arg['ids'].index(reference_objective_id.get_identifier())
             ids_arg['ids'].insert(index + 1, objective_id.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   parent_objective_id.get_identifier() + '/childids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    parent_objective_id.get_identifier() + '/childids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
 
-        ## The following is not required by the osid specification:
+        # The following is not required by the osid specification:
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def sequence_objectives(self, parent_objective_id=None, objective_ids=None):
@@ -1536,7 +1534,7 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
 
     This session defines views that offer differing behaviors when
     retrieving multiple objects.
-    
+
       > comparative view: elements may be silently omitted or re-ordered
       > plenary view: provides a complete set or is an error condition
       > isolated objective bank view: All objective methods in this
@@ -1550,18 +1548,18 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         available in this objective bank through objective bank
         inheritence.
 
-    
+
     Objectives may have an additional records indicated by their
     respective record types. The record may not be accessed through a
     cast of the Objective.
 
     """
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._objective_view = COMPARATIVE
         self._objective_bank_view = FEDERATED
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -1676,9 +1674,9 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/requisites')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/requisites')
         return objects.ObjectiveList(self._get_request(url_path))
 
     def _get_requisites_recursively(self, objective_id, requisites, requisite_ids):
@@ -1709,13 +1707,12 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         compliance: mandatory - This method must be implemented.
 
         """
-        # This should be re-implemented if and when handcar supports 
+        # This should be re-implemented if and when handcar supports
         # getting all requisites directly
         requisites = list()
         requisite_ids = list()
         all_requisites = self._get_requisites_recursively(objective_id, requisites, requisite_ids)
         return objects.ObjectiveList(all_requisites)
-
 
     def get_dependent_objectives(self, objective_id=None):
         """Gets a list of Objectives that require the given Objective.
@@ -1738,9 +1735,9 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/dependents')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/dependents')
         return objects.ObjectiveList(self._get_request(url_path))
 
     def is_objective_required(self, objective_id=None, required_objective_id=None):
@@ -1789,9 +1786,9 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         """
         if objective_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/equivalents')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/equivalents')
         return objects.ObjectiveList(self._get_request(url_path))
 
 
@@ -1805,12 +1802,12 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
     ObjectiveBank is not a copy operation (eg: does not change its Id ).
 
     """
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._objective_view = COMPARATIVE
         self._objective_bank_view = FEDERATED
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -1884,18 +1881,18 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
             ids_arg['ids'].append(objective.get_id().get_identifier())
         ids_arg['ids'].append(requisite_objective_id.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/requisiteids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/requisiteids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def unassign_objective_requisite(self, objective_id=None, requisite_objective_id=None):
@@ -1924,18 +1921,18 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
             raise NotFound()
         ids_arg['ids'].remove(requisite_objective_id.get_identifier())
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/objectives/' +
-                   objective_id.get_identifier() + '/requisiteids')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/objectives/' +
+                    objective_id.get_identifier() + '/requisiteids')
         try:
             result = self._put_request(url_path, ids_arg)
         except Exception:
             raise
         id_list = list()
         for identifier in result['ids']:
-            id_list.append(Id(authority = settings.AUTHORITY,
-                              namespace = 'learning.Objective',
-                              identifier = identifier))
+            id_list.append(Id(authority=settings.AUTHORITY,
+                              namespace='learning.Objective',
+                              identifier=identifier))
         return id_objects.IdList(id_list)
 
     def assign_equivalent_objective(self, objective_id=None, equivalent_objective_id=None):
@@ -1999,19 +1996,18 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         available in this objective bank through objective bank
         inheritence.
 
-    
     Activities may have an additional records indicated by their
     respective record types. The record may not be accessed through a
     cast of the Activity.
 
     """
 
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         self._activity_view = COMPARATIVE
         self._objective_bank_view = FEDERATED
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -2111,9 +2107,9 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         """
         if activity_id is None:
             raise NullArgument()
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier +
-                   '/activities/' + activity_id.get_identifier())
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier +
+                    '/activities/' + activity_id.get_identifier())
         return objects.Activity(self._get_request(url_path))
 
     def get_activities_by_ids(self, activity_ids=None):
@@ -2141,9 +2137,9 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         activities = []
         for i in activity_ids:
             activity = None
-            url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier +
-                   '/activities/' + i.get_identifier())
+            url_path = ('/handcar/services/learning/objectivebanks/' +
+                        self._objective_bank_identifier +
+                        '/activities/' + i.get_identifier())
             try:
                 activity = self._get_request(url_path)
             except NotFound, OperationFailed:
@@ -2151,7 +2147,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
                     raise
                 else:
                     pass
-            if activity: 
+            if activity:
                 if not (self._activity_view == COMPARATIVE and
                         activity in activities):
                     activities.append(activity)
@@ -2177,8 +2173,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         if activity_genus_type is None:
             raise NullArgument()
         url_path = ('/handcar/services/learning/objectivebanks/' +
-                   self._objective_bank_identifier + '/activities?genustypeid=' +
-                   activity_genus_type.get_identifier())
+                    self._objective_bank_identifier + '/activities?genustypeid=' +
+                    activity_genus_type.get_identifier())
         return objects.ActivityList(self._get_request(url_path))
 
     def get_activities_by_parent_genus_type(self, activity_genus_type=None):
@@ -2242,7 +2238,6 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
             if activity.get_objective_id() == objective_id:
                 activity_list.append(activity)
         return objects.ActivityList(activity_list)
-            
 
     def get_activities_for_objectives(self, objective_ids=None):
         """Gets the activities for the given objectives.
@@ -2313,8 +2308,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         compliance: mandatory - This method must be implemented.
 
         """
-        url_path = ('/handcar/services/learning/objectivebanks/' + 
-                   self._objective_bank_identifier + '/activities')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/activities')
         return objects.ActivityList(self._get_request(url_path))
 
     objective_bank_id = property(get_objective_bank_id)
@@ -2337,7 +2332,7 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
       > isolated objective bank view: searches are restricted to
         activities in this objective bank
 
-    
+
     Activities may have a query record indicated by their respective
     record types. The query record is accessed via the ActivityQuery.
 
@@ -2446,7 +2441,7 @@ class ActivitySearchSession(abc_learning_sessions.ActivitySearchSession, Activit
     get_activities_by_search() returns an ActivitySearchResults that can
     be used to access the resulting ActivityList or be used to perform a
     search within the result set through ActivitySearch.
-    
+
     This session defines views that offer differing behaviors for
     searching.
       > federated objective bank view: searches include activities in
@@ -2455,7 +2450,7 @@ class ActivitySearchSession(abc_learning_sessions.ActivitySearchSession, Activit
       > isolated objective bank view: searches are restricted to
         activities in this objective bank
 
-    
+
     Activities may have a query record indicated by their respective
     record types. The query record is accessed via the ActivityQuery.
 
@@ -2535,28 +2530,28 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
     operation, it cannot be reused with another create operation unless
     the first operation was unsuccessful. Each ActivityForm corresponds
     to an attempted transaction.
-    
+
     For updates, ActivityForms are requested to the Activity  Id that is
     to be updated using get_activity_form_for_update(). Similarly, the
     ActivityForm has metadata about the data that can be updated and it
     can perform validation before submitting the update. The
     ActivityForm can only be used once for a successful update and
     cannot be reused.
-    
+
     The delete operations delete Activities. To unmap an Activity from
     the current ObjectiveBank, the
     ActivityObjectiveBankAssignmentSession should be used. These delete
     operations attempt to remove the Activity itself thus removing it
     from all known ObjectiveBank catalogs.
-    
+
     This session includes an Id aliasing mechanism to assign an external
     Id to an internally assigned Id.
 
     """
-    def __init__(self, objective_bank_id = None):
+    def __init__(self, objective_bank_id=None):
         if objective_bank_id is None:
             # For now we are just going to find the first objective bank
-            # This needs to change!          
+            # This needs to change!
             url_path = '/handcar/services/learning/objectivebanks'
             objective_bank = objects.ObjectiveBank(self._get_request(url_path)[0])
             self._objective_bank_id = objective_bank.get_id()
@@ -2638,7 +2633,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         if objective_id is None:
             raise NullArgument()
         if activity_record_types is None:
-            pass # Still need to deal with the record_types argument
+            pass  # Still need to deal with the record_types argument
         activity_form = objects.ActivityForm(osid_object_map=None, objective_id=objective_id)
         self._forms[activity_form.get_id().get_identifier()] = not CREATED
         return activity_form
@@ -2675,12 +2670,12 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         if not activity_form.is_valid():
             raise INVALID_ARGUMENT('one or more of the form elements is invalid')
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/activities')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/activities')
         try:
             result = self._post_request(url_path, activity_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[activity_form.get_id().get_identifier()] = CREATED
         return objects.Activity(result)
 
@@ -2751,14 +2746,14 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         if not activity_form.is_valid():
             raise INVALID_ARGUMENT('one or more of the form elements is invalid')
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/activities')
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/activities')
         try:
             result = self._put_request(url_path, activity_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[activity_form.get_id().get_identifier()] = UPDATED
-        return objects.Activity(result) # Not expected to return anything
+        return objects.Activity(result)  # Not expected to return anything
 
     def can_delete_activities(self):
         """Tests if this user can delete Activities.
@@ -2791,12 +2786,12 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
             raise NullArgument()
         if not isinstance(activity_id, Id):
             raise InvalidArgument('argument type is not an osid Id')
-        
-        url_path = ('/handcar/services/learning/objectivebanks/'+
-                   self._objective_bank_identifier + '/activities/' + 
-                   activity_id.get_identifier())
+
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    self._objective_bank_identifier + '/activities/' +
+                    activity_id.get_identifier())
         result = self._delete_request(url_path)
-        return objects.Activity(result) # Not expected to return anything
+        return objects.Activity(result)  # Not expected to return anything
 
     def can_manage_activity_aliases(self):
         """Tests if this user can manage Id aliases for activities.
@@ -2810,7 +2805,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         compliance: mandatory - This method must be implemented.
 
         """
-        return False # Not yet implemented
+        return False  # Not yet implemented
 
     def alias_activity(self, activity_id=None, alias_id=None):
         """Adds an Id to an Activity for the purpose of creating
@@ -2845,14 +2840,14 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
       > comparative view: elements may be silently omitted or re-ordered
       > plenary view: provides a complete set or is an error condition
 
-    
+
     Generally, the comparative view should be used for most applications
     as it permits operation even if there is data that cannot be
     accessed. For example, a browsing application may only need to
     examine the ObjectiveBanks it can access, without breaking
     execution. However, an administrative application may require all
     ObjectiveBank elements to be available.
-    
+
     ObjectiveBanks may have an additional records indicated by their
     respective record types. The record may not be accessed through a
     cast of the ObjectiveBank.
@@ -2950,7 +2945,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
                     raise
                 else:
                     pass
-            if bank: 
+            if bank:
                 if not (self._objective_bank_view == COMPARATIVE and
                         bank in banks):
                     banks.append(bank)
@@ -3058,6 +3053,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
 
     objective_banks = property(get_objective_banks)
 
+
 class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession, osid_sessions.OsidSession):
     """This session provides methods for searching among ObjectiveBank
     objects.
@@ -3113,6 +3109,7 @@ class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession,
 
     objective_bank_query = property(get_objective_bank_query)
 
+
 class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSession, ObjectiveBankQuerySession):
     """This session provides methods for searching among ObjectiveBank
     objects.
@@ -3128,7 +3125,7 @@ class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSessio
     ObjectiveBankSearchResults that can be used to access the resulting
     ObjectiveBankList or be used to perform a search within the result
     set through ObjectiveBankSearch.
-    
+
     ObjectiveBanks may have a query record indicated by their respective
     record types. The query record is accessed via the
     ObjectiveBankQuery.
@@ -3194,6 +3191,7 @@ class ObjectiveBankSearchSession(abc_learning_sessions.ObjectiveBankSearchSessio
     objective_bank_search = property(get_objective_bank_search)
     objective_bank_search_order = property(get_objective_bank_search_order)
 
+
 class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ObjectiveBanks.
 
@@ -3211,17 +3209,17 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
     operation, it cannot be reused with another create operation unless
     the first operation was unsuccessful. Each ObjectiveBankForm
     corresponds to an attempted transaction.
-    
+
     For updates, ObjectiveBankForms are requested to the ObjectiveBank
     Id that is to be updated using get_objective_bank_form_for_update().
     Similarly, the ObjectiveBankForm has metadata about the data that
     can be updated and it can perform validation before submitting the
     update. The ObjectiveBankForm can only be used once for a successful
     update and cannot be reused.
-    
+
     The delete operations delete ObjectiveBanks. It is safer to remove
     all mappings to the ObjectiveBank catalogs before deletion.
-    
+
     This session includes an Id aliasing mechanism to assign an external
     Id to an internally assigned Id.
 
@@ -3277,7 +3275,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
 
         """
         if objective_bank_record_types is None:
-            pass # Still need to deal with the record_types argument
+            pass  # Still need to deal with the record_types argument
         objective_bank_form = objects.ObjectiveBankForm()
         self._forms[objective_bank_form.get_id().get_identifier()] = not CREATED
         return objective_bank_form
@@ -3308,7 +3306,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         if objective_bank_form.is_for_update():
             raise InvalidArgument('form is for update only, not create')
 
-        ## Check for "sandbox" genus type.  Hardcoded for now:
+        # Check for "sandbox" genus type.  Hardcoded for now:
         if objective_bank_form._my_map['genusTypeId'] != 'mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT':
             raise PermissionDenied('Handcar only supports creating \'sandbox\' type ObjectiveBanks')
 
@@ -3324,7 +3322,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         try:
             result = self._post_request(url_path, objective_bank_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[objective_bank_form.get_id().get_identifier()] = CREATED
         return objects.ObjectiveBank(result)
 
@@ -3384,7 +3382,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         compliance: mandatory - This method must be implemented.
 
         """
-        ## NOTE: Not really using objective_bank_id since its part of the form.
+        # NOTE: Not really using objective_bank_id since its part of the form.
         #   Is that correct?  Not the same pattern as ObjectiveForm or ActivityForm
         if objective_bank_form is None or objective_bank_id is None:
             raise NullArgument()
@@ -3393,7 +3391,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         if not objective_bank_form.is_for_update():
             raise InvalidArgument('form is for create only, not update')
 
-        ## Check for "sandbox" genus type.  Hardcoded for now:
+        # Check for "sandbox" genus type.  Hardcoded for now:
         if objective_bank_form._my_map['genusTypeId'] != 'mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT':
             raise PermissionDenied('Handcar only supports updating \'sandbox\' type ObjectiveBanks')
 
@@ -3409,9 +3407,9 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         try:
             result = self._put_request(url_path, objective_bank_form._my_map)
         except Exception:
-            raise #OperationFailed
+            raise  # OperationFailed
         self._forms[objective_bank_form.get_id().get_identifier()] = UPDATED
-        return objects.ObjectiveBank(result) # Not expected to return anything
+        return objects.ObjectiveBank(result)  # Not expected to return anything
 
     def can_delete_objective_banks(self):
         """Tests if this user can delete objective banks.
@@ -3444,7 +3442,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         if not isinstance(objective_bank_id, Id):
             raise InvalidArgument('argument type is not an osid Id')
 
-        ## Check for "sandbox" genus type.  Hardcoded for now:
+        # Check for "sandbox" genus type.  Hardcoded for now:
         try:
             objective_bank = ObjectiveBankLookupSession().get_objective_bank(objective_bank_id)
         except Exception:
@@ -3452,10 +3450,10 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         if objective_bank._my_map['genusTypeId'] != 'mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT':
             raise PermissionDenied('Handcar only supports deleting \'sandbox\' type ObjectiveBanks')
 
-        url_path = ('/handcar/services/learning/objectivebanks/'+ 
-                   objective_bank_id.get_identifier())
+        url_path = ('/handcar/services/learning/objectivebanks/' +
+                    objective_bank_id.get_identifier())
         result = self._delete_request(url_path)
-        return objects.ObjectiveBank(result) # Not expected to return anything
+        return objects.ObjectiveBank(result)  # Not expected to return anything
 
     def can_manage_objective_bank_aliases(self):
         """Tests if this user can manage Id aliases for ObjectiveBanks.
@@ -3469,7 +3467,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         compliance: mandatory - This method must be implemented.
 
         """
-        return False # Not yet implemented
+        return False  # Not yet implemented
 
     def alias_objective_bank(self, objective_bank_id=None, alias_id=None):
         """Adds an Id to an ObjectiveBank for the purpose of creating
@@ -3658,13 +3656,12 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
     returns of get_parent_objective_banks() or
     get_child_objective_banks() in lieu of a PermissionDenied error
     that may disrupt the traversal through authorized pathways.
-    
+
     This session defines views that offer differing behaviors when
     retrieving multiple objects.
       > comparative view: objective bank elements may be silently
         omitted or re-ordered
       > plenary view: provides a complete set or is an error condition
-
 
     """
 

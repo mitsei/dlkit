@@ -643,7 +643,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         requisites
       > ObjectiveRequisiteAssignmentSession: a session to manage
         objective requisites
-    
+
       > ActivityLookupSession: a session to look up activities
       > ActivityQuerySession: a session to query activities None
       > ActivitySearchSession: a session to search activities
@@ -657,7 +657,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         activity and objective bank mappings
       > ActivitySmartObjectiveBankSession: a session for managing
         dynamic objective banks of activities
-    
+
       > ProficiencyLookupSession: a session to retrieve proficiencies
       > ProficiencyQuerySession: a session to query proficiencies
       > ProficiencySearchSession: a session to search for proficiencies
@@ -675,7 +675,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         objectives
       > LearningPathSession: a session to examine learning paths of
         objectives
-    
+
       > ObjectiveBankLookupSession: a session to lookup objective banks
       > ObjectiveBankQuerySession: a session to query objective banks
       > ObjectiveBankSearchSession : a session to search objective banks
@@ -707,11 +707,11 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         try:
             from . import sessions
         except ImportError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         try:
             session = sessions.ObjectiveLookupSession()
         except AttributeError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         return session
 
     def get_objective_lookup_session_for_objective_bank(self, objective_bank_id=None):
@@ -2256,5 +2256,3 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
 
         """
         pass
-
-

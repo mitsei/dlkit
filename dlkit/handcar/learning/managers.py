@@ -643,7 +643,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         requisites
       > ObjectiveRequisiteAssignmentSession: a session to manage
         objective requisites
-    
+
       > ActivityLookupSession: a session to look up activities
       > ActivityQuerySession: a session to query activities None
       > ActivitySearchSession: a session to search activities
@@ -657,7 +657,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         activity and objective bank mappings
       > ActivitySmartObjectiveBankSession: a session for managing
         dynamic objective banks of activities
-    
+
       > ProficiencyLookupSession: a session to retrieve proficiencies
       > ProficiencyQuerySession: a session to query proficiencies
       > ProficiencySearchSession: a session to search for proficiencies
@@ -675,7 +675,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         objectives
       > LearningPathSession: a session to examine learning paths of
         objectives
-    
+
       > ObjectiveBankLookupSession: a session to lookup objective banks
       > ObjectiveBankQuerySession: a session to query objective banks
       > ObjectiveBankSearchSession : a session to search objective banks
@@ -707,11 +707,11 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         try:
             from . import sessions
         except ImportError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         try:
             session = sessions.ObjectiveLookupSession(runtime=self._runtime)
         except AttributeError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         return session
 
     def get_objective_lookup_session_for_objective_bank(self, objective_bank_id=None):
@@ -2257,6 +2257,7 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         """
         pass
 
+
 class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_managers.OsidProxyManager, LearningProfile):
     """The learning manager provides access to learning sessions and provides interoperability tests for various aspects of this service.
 
@@ -2286,7 +2287,7 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         requisites
       * ``ObjectiveRequisiteAssignmentSession:`` a session to manage
         objective requisites
-    
+
       * ``ActivityLookupSession:`` a session to look up activities
       * ``ActivityQuerySession:`` a session to query activities ``None``
       * ``ActivitySearchSession:`` a session to search activities
@@ -2300,7 +2301,7 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         managing activity and objective bank mappings
       * ``ActivitySmartObjectiveBankSession:`` a session for managing
         dynamic objective banks of activities
-    
+
       * ``ProficiencyLookupSession:`` a session to retrieve
         proficiencies
       * ``ProficiencyQuerySession:`` a session to query proficiencies
@@ -2320,7 +2321,7 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         of objectives
       * ``LearningPathSession:`` a session to examine learning paths of
         objectives
-    
+
       * ``ObjectiveBankLookupSession:`` a session to lookup objective
         banks
       * ``ObjectiveBankQuerySession:`` a session to query objective
@@ -2338,7 +2339,7 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
 
 
     """
-    
+
     def get_objective_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the objective lookup service.
 
@@ -2363,7 +2364,7 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         try:
             session = sessions.ObjectiveLookupSession(proxy=proxy, runtime=self._runtime)
         except AttributeError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         return session
 
     def get_objective_lookup_session_for_objective_bank(self, objective_bank_id, proxy, *args, **kwargs):

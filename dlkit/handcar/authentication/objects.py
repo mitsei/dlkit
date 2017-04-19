@@ -3,6 +3,7 @@ from ..osid import objects as osid_objects
 from ..primitives import Id
 from .. import settings
 
+
 class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     """An ``Agent`` represents an authenticatable identity.
 
@@ -11,7 +12,7 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
 
     """
 
-    def __init__(self, identifier, namespace, authority, 
+    def __init__(self, identifier, namespace, authority,
                  display_name=None, description=None, genus_type=None):
         self._identifier = identifier
         self._namespace = namespace
@@ -24,8 +25,8 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
             genus_type = settings.DEFAULT_GENUS_TYPES['authentication.Agent']
         agent_map = {}
         agent_map['id'] = str(Id(identifier=identifier,
-                             namespace=namespace,
-                             authority=authority))
+                                 namespace=namespace,
+                                 authority=authority))
         agent_map['displayName'] = {
             'languageTypeId': settings.LANGUAGE_TYPE_ID,
             'scriptTypeId': settings.SCRIPT_TYPE_ID,
@@ -40,7 +41,6 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         }
         agent_map['genusType'] = genus_type
         osid_objects.OsidObject.__init__(self, agent_map)
-
 
     def get_agent_record(self, agent_record_type):
         """Gets the agent record corresponding to the given ``Agent`` record ``Type``.
@@ -62,5 +62,4 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentRecord
-
+        return  # osid.authentication.records.AgentRecord

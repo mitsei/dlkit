@@ -153,10 +153,10 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, markers.Aggre
             return DisplayText(self._my_map['copyright'])
         except:
             return DisplayText({
-                "formatTypeId"      : "format.text%3APlain%40okapia.net",
-                "languageTypeId"    : "639-2%3AENG%40iso.org",
-                "scriptTypeId"      : "15924%3ALATN%40iso.org",
-                "text"              : ""
+                "formatTypeId": "format.text%3APlain%40okapia.net",
+                "languageTypeId": "639-2%3AENG%40iso.org",
+                "scriptTypeId": "15924%3ALATN%40iso.org",
+                "text": ""
             })
 
     def get_copyright_registration(self):

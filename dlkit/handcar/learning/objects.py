@@ -17,6 +17,7 @@ from ..osid.osid_errors import NullArgument, InvalidArgument, NotFound, NoAccess
 INVALID = 0
 VALID = 1
 
+
 class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, markers.Federateable):
     """An Objective is a statable learning objective."""
     _namespace = 'learning.Objective'
@@ -24,13 +25,13 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, markers
     def _get_extension_map(self):
         if self._my_extension_map is None:
             url_path = ('/handcar/services/learning/objectivebanks/' +
-                self._my_map['objectiveBankId'] + '/objectives/' +
-                self._my_map['id'] + '/extension')
+                        self._my_map['objectiveBankId'] + '/objectives/' +
+                        self._my_map['id'] + '/extension')
             self._my_extension_map = self._get_request(url_path)
 
     def _get_grade_map(self, grade_identifier):
         url_str = (self._base_url + '/objectivebanks/' +
-            self._my_map['objectiveBankId'] + '/grades/' + grade_identifier)
+                   self._my_map['objectiveBankId'] + '/grades/' + grade_identifier)
         return self._load_json(url_str)
 
     def has_assessment(self):
@@ -117,7 +118,6 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, markers
         """
         return 'cognitiveProcessId' in self._my_map and bool(self._my_map['cognitiveProcessId'])
 
-
     def get_cognitive_process_id(self):
         """Gets the grade Id associated with the cognitive process.
 
@@ -165,7 +165,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, markers
         """
         if not self.has_record_type():
             raise Unsupported()
-        else: # This should never get called:
+        else:  # This should never get called:
             raise Unimplemented()
 
     assessment_id = property(get_assessment_id)
@@ -342,7 +342,7 @@ class ObjectiveForm(abc_learning_objects.ObjectiveForm, osid_objects.OsidObjectF
         """
         if not self.has_record_type():
             raise Unsupported()
-        else: # This should never get called:
+        else:  # This should never get called:
             raise Unimplemented()
 
     assessment_metadata = property(get_assessment_metadata)
@@ -388,7 +388,7 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
             raise OperationFailed()
         else:
             return next_object
-            
+
     def next(self):
         try:
             next_object = osid_objects.OsidList.next(self)
@@ -424,7 +424,7 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
                 try:
                     next_list.append(self.next())
                 except Exception:  # Need to specify exceptions here!
-                    raise #OperationFailed()
+                    raise  # OperationFailed()
                 x = x + 1
             return next_list
 
@@ -450,8 +450,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject):
     def _get_extension_map(self):
         if self._my_extension_map is None:
             url_path = ('/handcar/services/learning/objectivebanks/' +
-                self._my_map['objectiveBankId'] + '/activities/' +
-                self._my_map['id'] + '/extension')
+                        self._my_map['objectiveBankId'] + '/activities/' +
+                        self._my_map['id'] + '/extension')
             self._my_extension_map = self._get_request(url_path)
 
     def get_objective_id(self):
@@ -474,9 +474,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject):
         # Note that this makes the generic objectives call to Handcar
         # without specifying the objectiveBank:
         url_str = (self._base_url + '/objectives/' +
-            self._my_map['objectiveId'])
+                   self._my_map['objectiveId'])
         return Objective(self._load_json(url_str))
-
 
     def is_asset_based_activity(self):
         """Tests if this is an asset based activity.
@@ -513,16 +512,15 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject):
         compliance: mandatory - This method must be implemented.
 
         """
-        # This includes a kludge to get the objectiveBankId directly from 
+        # This includes a kludge to get the objectiveBankId directly from
         # this Activity's Objective's private _my_map :o
         from ..repository.objects import AssetList
         if not self.is_asset_based_activity():
             raise IllegalState()
         url_str = (self._base_url + '/objectivebanks/' +
-            self.get_objective()._my_map['objectiveBankId'] + 
-            '/assets/bulk?id=' + '&id='.join(self._my_map['assetIds']))
+                   self.get_objective()._my_map['objectiveBankId'] +
+                   '/assets/bulk?id=' + '&id='.join(self._my_map['assetIds']))
         return AssetList(self._load_json(url_str))
-
 
     def is_course_based_activity(self):
         """Tests if this is a course based activity.
@@ -618,7 +616,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject):
         """
         if not self.has_record_type():
             raise IllegalState()
-        else: # This should never get called:
+        else:  # This should never get called:
             raise Unimplemented()
 
     objective_id = property(get_objective_id)
@@ -632,7 +630,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject):
 
 
 class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectForm):
-                            ### need to add osid_objects.OsidSubjugateableForm  ^^
+    # need to add osid_objects.OsidSubjugateableForm  ^^
     """This is the form for creating and updating Activities.
 
     Like all OsidForm objects, various data elements may be set here for
@@ -772,7 +770,6 @@ class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectFor
         else:
             raise InvalidArgument
 
-
     def clear_assessments(self):
         """Clears the assessments.
 
@@ -802,7 +799,7 @@ class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectFor
         """
         if not self.has_record_type():
             raise Unsupported()
-        else: # This should never get called:
+        else:  # This should never get called:
             raise Unimplemented()
 
     assets_metadata = property(get_assets_metadata)
@@ -825,9 +822,6 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
       while (al.hasNext()) {
            Activity[] activities = al.getNextActivities(al.available());
       }
-    
-
-
     """
 
     def get_next_activity(self):
@@ -849,7 +843,7 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
             raise OperationFailed()
         else:
             return next_object
-            
+
     def next(self):
         try:
             next_object = osid_objects.OsidList.next(self)
@@ -885,7 +879,7 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
             while x < n:
                 try:
                     next_list.append(self.next())
-                except Exception: # Need to specify exceptions here!
+                except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
             return next_list
@@ -918,17 +912,17 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid_objects.OsidCatalog
         """
         if not self.has_record_type():
             raise IllegalState()
-        else: # This should never get called.
+        else:  # This should never get called.
             raise Unimplemented()
 
     def get_cognitive_process_grade_system(self):
         from ..grading.objects import GradeSystem
         url_path = ('/handcar/services/learning/objectivebanks/' +
-           self._my_map['id'] + '/gradesystems/cognitiveprocess')
+                    self._my_map['id'] + '/gradesystems/cognitiveprocess')
         return GradeSystem(self._get_request(url_path))
 
     cognitive_process_grade_system = property(get_cognitive_process_grade_system)
-    
+
 
 class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.OsidCatalogForm):
     """This is the form for creating and updating objective banks.
@@ -965,9 +959,8 @@ class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.Osi
         """
         if not self.has_record_type():
             raise Unsupported()
-        else: # This should never get called:
+        else:  # This should never get called:
             raise Unimplemented()
-
 
 
 class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.OsidList):
@@ -982,9 +975,6 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
       while (obl.hasNext()) {
            ObjectiveBank[] objectivBanks = obl.getNextObjectiveBanks(obl.available());
       }
-    
-
-
     """
 
     def get_next_objective_bank(self):
@@ -1007,7 +997,7 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
             raise OperationFailed()
         else:
             return next_object
-            
+
     def next(self):
         try:
             next_object = osid_objects.OsidList.next(self)
@@ -1043,7 +1033,7 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
             while x < n:
                 try:
                     next_list.append(self.next())
-                except Exception: # Need to specify exceptions here!
+                except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
             return next_list

@@ -44,9 +44,9 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
 
         """
         return DisplayText({'text': profile.DISPLAYNAME,
-                           'languageTypeId': profile.LANGUAGETYPEID,
-                           'scriptTypeId': profile.SCRIPTTYPEID,
-                           'formatTypeId': profile.FORMATTYPEID})
+                            'languageTypeId': profile.LANGUAGETYPEID,
+                            'scriptTypeId': profile.SCRIPTTYPEID,
+                            'formatTypeId': profile.FORMATTYPEID})
 
     def get_description(self):
         """Gets a description of this service implementation.
@@ -56,9 +56,9 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
 
         """
         return DisplayText({'text': profile.DESCRIPTION,
-                           'languageTypeId': profile.LANGUAGETYPEID,
-                           'scriptTypeId': profile.SCRIPTTYPEID,
-                           'formatTypeId': profile.FORMATTYPEID})
+                            'languageTypeId': profile.LANGUAGETYPEID,
+                            'scriptTypeId': profile.SCRIPTTYPEID,
+                            'formatTypeId': profile.FORMATTYPEID})
 
     def get_version(self):
         """Gets the version of this service implementation.

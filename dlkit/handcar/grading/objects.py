@@ -2,7 +2,7 @@
 
 # This module contains all the Object classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID Learning Service.
-# Note that it includes the core objects typically found in the osid 
+# Note that it includes the core objects typically found in the osid
 # package as well as the learning package objects for Objectives, Activities
 # and ObjectiveBanks that inherit from the core obejcts.
 
@@ -18,6 +18,7 @@ from ..osid.osid_errors import NullArgument, InvalidArgument, NotFound, NoAccess
 INVALID = 0
 VALID = 1
 
+
 class Grade(abc_grading_objects.Grade, osid_objects.OsidObject):
     """A Grade.
 
@@ -31,8 +32,8 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject):
         if self._grade_system_map is not None:
             return self._grade_system_map
         else:
-            raise Unimplemented() ## Handcar currently gives us no way to get a grade system by Id
-            
+            raise Unimplemented()  # Handcar currently gives us no way to get a grade system by Id
+
     def get_grade_system_id(self):
         """Gets the GradeSystem Id in which this grade belongs.
 
@@ -101,7 +102,7 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject):
         """
         if not self.has_record_type():
             raise IllegalState()
-        else: # This should never get called.
+        else:  # This should never get called.
             raise Unimplemented()
 
     grade_system_id = property(get_grade_system_id)
@@ -120,9 +121,6 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
       while (gl.hasNext()) {
            Grade[] grades = gl.getNextGrades(gl.available());
       }
-    
-
-
     """
 
     def get_next_grade(self):
@@ -144,7 +142,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
             raise OperationFailed()
         else:
             return next_object
-            
+
     def next(self):
         try:
             next_object = osid_objects.OsidList.next(self)
@@ -181,7 +179,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
             while x < n:
                 try:
                     next_list.append(self.next())
-                except Exception: # Need to specify exceptions here!
+                except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
             return next_list
@@ -285,7 +283,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject):
         """
         if not self.has_record_type():
             raise IllegalState()
-        else: # This should never get called.
+        else:  # This should never get called.
             raise Unimplemented()
 
     grade_ids = property(get_grade_ids)

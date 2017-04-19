@@ -27,7 +27,6 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_mar
         :return: the ``Agent Id``
         :rtype: ``osid.id.Id``
 
-
         *compliance: mandatory -- This method must be implemented.*
         *implementation notes*: The Agent should be determined at the
         time this credential is created.
@@ -60,14 +59,13 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_mar
         :return: ``true`` if this authentication credential is valid, ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
         *implementation notes*: Any problem in determining the validity
         of this credential should result in ``false``.
 
         """
-        url_str = ('/handcar/services/authentication/agentkeys/check/active/' + 
-                    self._credential)
+        url_str = ('/handcar/services/authentication/agentkeys/check/active/' +
+                   self._credential)
         return bool(self._get_request(url_str))
 
     def has_expiration(self):
@@ -157,7 +155,7 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_mar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.AuthenticationRecord
+        return  # osid.authentication.process.records.AuthenticationRecord
 
 
 class Challenge(abc_authentication_process_objects.Challenge, osid_markers.Extensible, osid_markers.Browsable):
@@ -184,7 +182,7 @@ class Challenge(abc_authentication_process_objects.Challenge, osid_markers.Exten
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.ChallengeRecord
+        return  # osid.authentication.process.records.ChallengeRecord
 
 
 class Trust(abc_authentication_process_objects.Trust, osid_objects.OsidObject):
@@ -222,7 +220,7 @@ class Trust(abc_authentication_process_objects.Trust, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.TrustRecord
+        return  # osid.authentication.process.records.TrustRecord
 
 
 class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidList):
@@ -234,7 +232,7 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
       while (tl.hasNext()) {
            Trust[] trusts = tl.getNextTrusts(tl.available());
       }
-    
+
 
 
     """
@@ -250,7 +248,7 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     next_trust = property(fget=get_next_trust)
 
@@ -267,6 +265,4 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
-
-
+        return  # osid.authentication.process.Trust

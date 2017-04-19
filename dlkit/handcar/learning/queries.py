@@ -1396,5 +1396,3 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
 
         """
         raise errors.Unimplemented()
-
-
