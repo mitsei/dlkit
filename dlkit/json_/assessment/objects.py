@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 import json
@@ -164,6 +161,7 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
+
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
@@ -298,6 +296,7 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
+
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
@@ -413,7 +412,9 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():
             raise errors.OperationFailed('Learning does not support Objective lookup')
-        lookup_session = mgr.get_objective_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_objective_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_objective_bank_view()
         return lookup_session.get_objectives_by_ids(self.get_learning_objective_ids())
 
@@ -472,9 +473,10 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
 
         """
         # Implemented from template for osid.repository.Asset.get_asset_contents_template
-        return AnswerList(self._my_map['answers'],
-                                             runtime=self._runtime,
-                                             proxy=self._proxy)
+        return AnswerList(
+            self._my_map['answers'],
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def _delete(self):
         for answer in self.get_answers():
@@ -504,7 +506,6 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
 
         """
         return self._get_record(item_record_type)
-
 
     def get_configuration(self):
         config = dict()
@@ -554,7 +555,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
 
         """
         if self.is_feedback_available():
-            pass # what is feedback anyway? Just a DisplayText or something more?
+            pass  # what is feedback anyway? Just a DisplayText or something more?
         raise errors.IllegalState()
 
     def is_solution_available(self):
@@ -1601,13 +1602,13 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
     def are_sections_sequential(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing(): # Records should check this
+        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
             return True
         return True
 
     def are_sections_shuffled(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing(): # Records should check this
+        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
             return False
         return False
 
@@ -1928,8 +1929,9 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         # Implemented from template for osid.assessment.AssessmentOfferedForm.set_duration_template
         if self.get_duration_metadata().is_read_only():
             raise errors.NoAccess()
-        if not self._is_valid_duration(duration,
-                                self.get_duration_metadata()):
+        if not self._is_valid_duration(
+                duration,
+                self.get_duration_metadata()):
             raise errors.InvalidArgument()
         map = dict()
         map['days'] = duration.days
@@ -2846,11 +2848,11 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
             return None
 
         def reorder_choices(choices, magic_id):
-            ## We may want to do this with the magic lookup session instead
+            # We may want to do this with the magic lookup session instead
             # reorder the choices list according to the order in the magic_id
             identifier = unquote(Id(magic_id).identifier)
             if '?' in identifier:
-                #it is a magic ID, by our convention
+                # it is a magic ID, by our convention
                 magic_params = json.loads(identifier.split('?')[1])
                 choice_ids = [c['id'] for c in choices]
                 if (isinstance(magic_params, list) and
@@ -2928,10 +2930,9 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
                     'responded': responded
                 })
 
-                if is_correct is not None:
-                    question_map.update({
-                        'isCorrect': is_correct
-                    })
+                question_map.update({
+                    'isCorrect': is_correct
+                })
 
                 questions.append(question_map)
 

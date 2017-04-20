@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 from importlib import import_module
 
@@ -741,7 +740,7 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
             assessment_section_id=assessment_section_id,
             runtime=self._runtime,
             proxy=self._proxy)
-        obj_form._for_update = False # This may be redundant
+        obj_form._for_update = False  # This may be redundant
         self._forms[obj_form.get_id().get_identifier()] = not SUBMITTED
         return obj_form
 
@@ -1190,12 +1189,11 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         else:
             raise errors.IllegalState()
 
-
     def _get_assessment_taken(self, assessment_taken_id):
         """Helper method for getting an AssessmentTaken objects given an Id."""
         if assessment_taken_id not in self._assessments_taken:
             mgr = self._get_provider_manager('ASSESSMENT')
-            lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy) # Should this be _for_bank?
+            lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy)  # Should this be _for_bank?
             lookup_session.use_federated_bank_view()
             self._assessments_taken[assessment_taken_id] = (
                 lookup_session.get_assessment_taken(assessment_taken_id))
@@ -2521,7 +2519,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if question_record_types == []:
-            ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.QuestionForm(
                 bank_id=self._catalog_id,
                 item_id=item_id,
@@ -2584,7 +2582,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         if item['question'] is None:
             item['question'] = question_form._my_map
         else:
-            item['question'] = question_form._my_map # Let's just assume we can overwrite it
+            item['question'] = question_form._my_map  # Let's just assume we can overwrite it
         collection.save(item)
         self._forms[question_form.get_id().get_identifier()] = CREATED
         return objects.Question(osid_object_map=question_form._my_map,
@@ -2676,7 +2674,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         item['question'] = question_form._my_map
         try:
             collection.save(item)
-        except: # what exceptions does mongodb save raise?
+        except:  # what exceptions does mongodb save raise?
             raise errors.OperationFailed()
         self._forms[question_form.get_id().get_identifier()] = UPDATED
         # Note: this is out of spec. The OSIDs don't require an object to be returned:
@@ -2738,9 +2736,10 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             found = True
         if not found:
             raise errors.OperationFailed()
-        Question(osid_object_map=question_map,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)._delete()
+        Question(
+            osid_object_map=question_map,
+            runtime=self._runtime,
+            proxy=self._proxy)._delete()
         collection.save(item)
 
     def can_create_answers(self):
@@ -2816,7 +2815,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if answer_record_types == []:
-            ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.AnswerForm(
                 bank_id=self._catalog_id,
                 item_id=item_id,
@@ -2875,15 +2874,16 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         item_id = Id(answer_form._my_map['itemId']).get_identifier()
         item = collection.find_one(
             {'$and': [{'_id': ObjectId(item_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         item['answers'].append(answer_form._my_map)
         result = collection.save(item)
 
         self._forms[answer_form.get_id().get_identifier()] = CREATED
         from .objects import Answer
-        return Answer(osid_object_map=answer_form._my_map,
-                              runtime=self._runtime,
-                              proxy=self._proxy)
+        return Answer(
+            osid_object_map=answer_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def can_update_answers(self):
         """Tests if this user can update ``Answers``.
@@ -2931,12 +2931,13 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         if not isinstance(answer_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         document = collection.find_one({'answers._id': ObjectId(answer_id.get_identifier())})
-        for sub_doc in document['answers']: # There may be a MongoDB shortcut for this
+        for sub_doc in document['answers']:  # There may be a MongoDB shortcut for this
             if sub_doc['_id'] == ObjectId(answer_id.get_identifier()):
                 result = sub_doc
-        obj_form = AnswerForm(osid_object_map=result,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)
+        obj_form = AnswerForm(
+            osid_object_map=result,
+            runtime=self._runtime,
+            proxy=self._proxy)
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -2978,7 +2979,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         item_id = Id(answer_form._my_map['itemId']).get_identifier()
         item = collection.find_one(
             {'$and': [{'_id': ObjectId(item_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         index = 0
         found = False
         for i in item['answers']:
@@ -2992,15 +2993,16 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             raise errors.NotFound()
         try:
             collection.save(item)
-        except: # what exceptions does mongodb save raise?
+        except:  # what exceptions does mongodb save raise?
             raise errors.OperationFailed()
         self._forms[answer_form.get_id().get_identifier()] = UPDATED
         # Note: this is out of spec. The OSIDs don't require an object to be returned:
         from .objects import Answer
 
-        return Answer(osid_object_map=answer_form._my_map,
-                                         runtime=self._runtime,
-                                         proxy=self._proxy)
+        return Answer(
+            osid_object_map=answer_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def can_delete_answers(self):
         """Tests if this user can delete ``Answers``.
@@ -3056,9 +3058,10 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             found = True
         if not found:
             raise errors.OperationFailed()
-        Answer(osid_object_map=answer_map,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)._delete()
+        Answer(
+            osid_object_map=answer_map,
+            runtime=self._runtime,
+            proxy=self._proxy)._delete()
         collection.save(item)
 
 
@@ -3097,7 +3100,7 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
             db_prefix = runtime.get_configuration().get_value_by_parameter(db_prefix_param_id).get_string_value()
         except (AttributeError, KeyError, errors.NotFound):
             pass
-        self._ns='{0}assessment.Item'.format(db_prefix)
+        self._ns = '{0}assessment.Item'.format(db_prefix)
 
         if self._ns not in MONGO_LISTENER.receivers:
             MONGO_LISTENER.receivers[self._ns] = dict()
@@ -3274,7 +3277,7 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_changed_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(item_id.get_identifier())
@@ -3313,7 +3316,7 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_deleted_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
             self.MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(item_id.get_identifier())
@@ -3676,7 +3679,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_bank(bank_id) # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._assign_object_to_catalog(item_id, bank_id)
 
     @utilities.arguments_not_none
@@ -3697,7 +3700,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id) # to raise NotFound
+        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(item_id, bank_id)
 
     @utilities.arguments_not_none
@@ -5005,7 +5008,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_bank(bank_id) # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._assign_object_to_catalog(assessment_id, bank_id)
 
     @utilities.arguments_not_none
@@ -5028,7 +5031,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id) # to raise NotFound
+        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_id, bank_id)
 
     @utilities.arguments_not_none
@@ -5915,7 +5918,7 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if assessment_offered_record_types == []:
-            ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.AssessmentOfferedForm(
                 bank_id=self._catalog_id,
                 assessment_id=assessment_id,
@@ -6547,7 +6550,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_bank(bank_id) # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._assign_object_to_catalog(assessment_offered_id, bank_id)
 
     @utilities.arguments_not_none
@@ -6571,7 +6574,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id) # to raise NotFound
+        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_offered_id, bank_id)
 
     @utilities.arguments_not_none
@@ -7150,7 +7153,7 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
         result = collection.find(
             dict({'assessmentOfferedId': str(assessment_offered_id),
                   'takingAgentId': str(resource_id)},
-                  **self._view_filter())).sort('_id', DESCENDING)
+                 **self._view_filter())).sort('_id', DESCENDING)
         return objects.AssessmentTakenList(result, runtime=self._runtime, proxy=self._proxy)
 
     @utilities.arguments_not_none
@@ -7539,7 +7542,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
             pass
 
         if assessment_taken_record_types == []:
-            ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.AssessmentTakenForm(
                 bank_id=self._catalog_id,
                 assessment_offered_id=assessment_offered_id,
@@ -7580,7 +7583,6 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        ##
         # This impl differs from the usual create_osid_object method in that it
         # sets an agent id and default display name based on the underlying Assessment
         # and checks for exceeding max attempts...
@@ -7598,7 +7600,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
             raise errors.Unsupported('assessment_taken_form did not originate from this session')
         if not assessment_taken_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        ##
+
         # ...here:
         assessment_offered_id = Id(assessment_taken_form._my_map['assessmentOfferedId'])
         aols = AssessmentOfferedLookupSession(
@@ -8189,7 +8191,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_bank(bank_id) # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._assign_object_to_catalog(assessment_taken_id, bank_id)
 
     @utilities.arguments_not_none
@@ -8213,7 +8215,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id) # to raise NotFound
+        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_taken_id, bank_id)
 
     @utilities.arguments_not_none
@@ -8705,13 +8707,13 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
             result = objects.BankForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.BankForm(
                 record_types=bank_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -8850,7 +8852,7 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
             raise errors.Unsupported('bank_form did not originate from this session')
         if not bank_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(bank_form._my_map) # save is deprecated - change to replace_one
+        collection.save(bank_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[bank_form.get_id().get_identifier()] = UPDATED
 

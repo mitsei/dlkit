@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import queries as osid_queries
@@ -2076,7 +2075,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
             Id(authority='GRADING',
                namespace='CATALOG',
                identifier='GRADEBOOK')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import rules as osid_rules
 from dlkit.abstract_osid.osid import errors

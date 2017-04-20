@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 import datetime
 import importlib
 import itertools

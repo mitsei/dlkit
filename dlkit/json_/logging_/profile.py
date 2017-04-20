@@ -17,28 +17,29 @@ DISPLAYNAME = 'Mongo logging'
 
 DESCRIPTION = 'MongoDB based logging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
     'supports_logging',
     'supports_log_entry_lookup',
     'supports_log_entry_query',
-    '#supports_log_entry_search',
-    '#supports_log_entry_notification',
-    '#supports_log_entry_log',
-    '#supports_log_entry_log_assignment',
-    '#supports_log_entry_smart_log',
+    # 'supports_log_entry_search',
+    # 'supports_log_entry_notification',
+    # 'supports_log_entry_log',
+    # 'supports_log_entry_log_assignment',
+    # 'supports_log_entry_smart_log',
     'supports_log_lookup',
-    '#supports_log_query',
-    '#supports_log_search',
+    # 'supports_log_query',
+    # 'supports_log_search',
     'supports_log_admin',
-    '#supports_log_notification',
-    '#supports_log_hierarchy',
-    '#supports_log_hierarchy_design',
-    '#supports_logging_batch',
-    'supports_log_entry_admin']
+    # 'supports_log_notification',
+    # 'supports_log_hierarchy',
+    # 'supports_log_hierarchy_design',
+    # 'supports_logging_batch',
+    'supports_log_entry_admin',
+]

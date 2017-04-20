@@ -26,7 +26,7 @@ and contains:
 
 
 Example
-  Type type = lookupSession.getType("asset", "uri",         
+  Type type = lookupSession.getType("asset", "uri",
                                     "http://harvestroad.com/osidTypes/image",
                                     "harvestroad.com");
   print type.getDisplayName();

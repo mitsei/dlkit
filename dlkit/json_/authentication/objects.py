@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 
@@ -40,12 +37,11 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     def __init__(self, user):
         self.my_user = user
 
-    ##
     # Override get_id method to return an id related to Django'
     # native user model
     def get_id(self):
         from django.contrib.auth.models import AnonymousUser
-#        identifier = self.my_user.username # Which one should we use?
+        # identifier = self.my_user.username  # Which one should we use?
         identifier = self.my_user.id       # Which one should we use?
         if isinstance(self.my_user, AnonymousUser):
             identifier = long(0)
@@ -53,11 +49,10 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
                 from ..id.primitives import Id
             except:
                 from ..osid.common import Id
-        return Id(identifier = identifier,
-                  namespace = self._namespace,
-                  authority = self._authority)
+        return Id(identifier=identifier,
+                  namespace=self._namespace,
+                  authority=self._authority)
 
-    ##
     # Override get_display_name method to return username
     def get_display_name(self):
         from django.contrib.auth.models import AnonymousUser
@@ -67,7 +62,6 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         else:
             return DisplayText(self.my_user.username)
 
-    ##
     # Override get_description method to return something
     def get_description(self):
         from ..locale.primitives import DisplayText
@@ -119,6 +113,7 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
+
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)

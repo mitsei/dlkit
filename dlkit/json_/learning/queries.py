@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import queries as osid_queries
@@ -1555,7 +1554,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
             Id(authority='LEARNING',
                namespace='CATALOG',
                identifier='OBJECTIVEBANK')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

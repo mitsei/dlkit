@@ -17,39 +17,40 @@ DISPLAYNAME = 'Mongo assessment.authoring'
 
 DESCRIPTION = 'MongoDB based assessment.authoring implementation'
 
-VERSIONCOMPONENTS = [0, 1, 92]
+VERSIONCOMPONENTS = [0, 1, 104]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
     'supports_assessment_part_lookup',
-    '#supports_assessment_part_query',
-    '#supports_assessment_part_search',
+    # 'supports_assessment_part_query',
+    # 'supports_assessment_part_search',
     'supports_assessment_part_admin',
-    '#supports_assessment_part_notification',
-    '#supports_assessment_part_bank',
-    '#supports_assessment_part_bank_assignment',
-    '#supports_assessment_part_smart_bank',
+    # 'supports_assessment_part_notification',
+    # 'supports_assessment_part_bank',
+    # 'supports_assessment_part_bank_assignment',
+    # 'supports_assessment_part_smart_bank',
     'supports_assessment_part_item',
     'supports_assessment_part_item_design',
     'supports_sequence_rule_lookup',
-    '#supports_sequence_rule_query',
-    '#supports_sequence_rule_search',
+    # 'supports_sequence_rule_query',
+    # 'supports_sequence_rule_search',
     'supports_sequence_rule_admin',
-    '#supports_sequence_rule_notification',
-    '#supports_sequence_rule_bank',
-    '#supports_sequence_rule_bank_assignment',
-    '#supports_sequence_rule_smart_bank',
-    '#supports_sequence_rule_enabler_lookup',
-    '#supports_sequence_rule_enabler_query',
-    '#supports_sequence_rule_enabler_search',
-    '#supports_sequence_rule_enabler_admin',
-    '#supports_sequence_rule_enabler_notification',
-    '#supports_sequence_rule_enabler_bank',
-    '#supports_sequence_rule_enabler_bank_assignment',
-    '#supports_sequence_rule_enabler_smart_bank',
-    '#supports_sequence_rule_enabler_rule_lookup',
-    '#supports_sequence_rule_enabler_rule_application']
+    # 'supports_sequence_rule_notification',
+    # 'supports_sequence_rule_bank',
+    # 'supports_sequence_rule_bank_assignment',
+    # 'supports_sequence_rule_smart_bank',
+    # 'supports_sequence_rule_enabler_lookup',
+    # 'supports_sequence_rule_enabler_query',
+    # 'supports_sequence_rule_enabler_search',
+    # 'supports_sequence_rule_enabler_admin',
+    # 'supports_sequence_rule_enabler_notification',
+    # 'supports_sequence_rule_enabler_bank',
+    # 'supports_sequence_rule_enabler_bank_assignment',
+    # 'supports_sequence_rule_enabler_smart_bank',
+    # 'supports_sequence_rule_enabler_rule_lookup',
+    # 'supports_sequence_rule_enabler_rule_application',
+]

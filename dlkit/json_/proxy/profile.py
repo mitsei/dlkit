@@ -17,11 +17,12 @@ DISPLAYNAME = 'Mongo proxy'
 
 DESCRIPTION = 'MongoDB based proxy implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    'supports_proxy']
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    'supports_proxy',
+]

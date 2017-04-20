@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import profile
 from . import sessions
 from .. import utilities

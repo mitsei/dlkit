@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import queries as osid_queries
@@ -1415,7 +1414,7 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
             Id(authority='REPOSITORY',
                namespace='CATALOG',
                identifier='REPOSITORY')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

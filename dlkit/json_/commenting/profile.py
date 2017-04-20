@@ -17,28 +17,29 @@ DISPLAYNAME = 'Mongo commenting'
 
 DESCRIPTION = 'MongoDB based commenting implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
     'supports_comment_lookup',
-    '#supports_rating_lookup',
+    # 'supports_rating_lookup',
     'supports_comment_query',
-    '#supports_comment_search',
+    # 'supports_comment_search',
     'supports_comment_admin',
-    '#supports_comment_notification',
-    '#supports_comment_book',
-    '#supports_comment_book_assignment',
-    '#supports_comment_smart_book',
+    # 'supports_comment_notification',
+    # 'supports_comment_book',
+    # 'supports_comment_book_assignment',
+    # 'supports_comment_smart_book',
     'supports_book_lookup',
-    '#supports_book_query',
-    '#supports_book_search',
+    # 'supports_book_query',
+    # 'supports_book_search',
     'supports_book_admin',
-    '#supports_book_notification',
+    # 'supports_book_notification',
     'supports_book_hierarchy',
     'supports_book_hierarchy_design',
-    '#supports_commenting_batch']
+    # 'supports_commenting_batch',
+]

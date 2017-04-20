@@ -70,14 +70,14 @@ Client side authentication:
       manager.supportsAcquisitionInputType(krb5ServiceType) &amp;&amp;
       manager.supportsCredentialType(serialKRB5Type)) {
       AuthenticationAcquisitionSession aas = manager.getAuthenticationAcquisitionSession();
-  
+
       // specify input parameters (interface extension)
       KRB5Service kService = new KRB5Service();
       kService.setName("host");
       kService.setInstance("server.osid.org");
       kService.setRealm("OSID.ORG");
-  
-      // get Credential (interface type) 
+
+      // get Credential (interface type)
       Authentication auth = aas.getAuthentication(kService, krb5ServiceType);
       SerializedKRB5Ticket ticket = (SerializedKRB5Ticket)        auth.getCredential(serialKRB5Type);
       send_data_to_peer(ticket); // app specific protocol
@@ -91,14 +91,12 @@ Server side authentication:
   if (manager.supportsAuthenticationValidation() &amp;&amp;
       manager.supportsCredentialType(serialSAML2Type)) {
       AuthenticationValidationSession avs = manager.getAuthenticationValidationSession();
-  
+
       Authentication auth = authenticate(SAML2Token, serialSAML2Type);
-  
+
       if (auth.isValid()) {
           Agent agent = auth.getAgent(); // identity established
       }
   }
-
-
 
 """

@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import searches as osid_searches
 from dlkit.abstract_osid.authentication import searches as abc_authentication_searches

@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import objects
 from .. import utilities
 from ..osid import searches as osid_searches

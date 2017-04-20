@@ -29,6 +29,4 @@ Id Mapping Example
       return (other_impl.getAsset(assetId));
   }
 
-
-
 """

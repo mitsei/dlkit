@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import rules as osid_rules
 from ..primitives import Id

@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import queries as osid_queries
@@ -523,7 +522,7 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
             Id(authority='AUTHORIZATION',
                namespace='CATALOG',
                identifier='VAULT')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

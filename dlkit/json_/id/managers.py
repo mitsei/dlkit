@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import managers as osid_managers
 from dlkit.manager_impls.id import managers as id_managers

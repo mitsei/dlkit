@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import rules
 from .. import utilities
 from ..authentication_process.objects import Authentication

@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import base64
 import gridfs
@@ -368,7 +365,9 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         mgr = self._get_provider_manager('RESOURCE')
         if not mgr.supports_resource_lookup():
             raise errors.OperationFailed('Resource does not support Resource lookup')
-        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bin_view()
         return lookup_session.get_resources_by_ids(self.get_provider_link_ids())
 
@@ -455,9 +454,10 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.repository.Asset.get_asset_contents_template
-        return AssetContentList(self._my_map['assetContents'],
-                                             runtime=self._runtime,
-                                             proxy=self._proxy)
+        return AssetContentList(
+            self._my_map['assetContents'],
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def _delete(self):
         for asset_content in self.get_asset_contents():
@@ -1817,7 +1817,9 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_composition_lookup():
             raise errors.OperationFailed('Repository does not support Composition lookup')
-        lookup_session = mgr.get_composition_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_composition_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_repository_view()
         return lookup_session.get_compositions_by_ids(self.get_child_ids())
 

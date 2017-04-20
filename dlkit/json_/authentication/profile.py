@@ -17,30 +17,31 @@ DISPLAYNAME = 'Mongo authentication'
 
 DESCRIPTION = 'MongoDB based authentication implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
-    '#supports_authentication_acquisition',
-    '#supports_authentication_validation',
-    '#supports_agent_lookup',
-    '#supports_agent_query',
-    '#supports_agent_search',
-    '#supports_agent_admin',
-    '#supports_agent_notification',
-    '#supports_agent_agency',
-    '#supports_agent_agency_assignment',
-    '#supports_agent_smart_agency',
-    '#supports_agency_lookup',
-    '#supports_agency_query',
-    '#supports_agency_search',
-    '#supports_agency_admin',
-    '#supports_agency_notification',
-    '#supports_agency_hierarchy',
-    '#supports_agency_hierarchy_design',
-    '#supports_authentication_keys',
-    '#supports_authentication_process']
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
+    # 'supports_authentication_acquisition',
+    # 'supports_authentication_validation',
+    # 'supports_agent_lookup',
+    # 'supports_agent_query',
+    # 'supports_agent_search',
+    # 'supports_agent_admin',
+    # 'supports_agent_notification',
+    # 'supports_agent_agency',
+    # 'supports_agent_agency_assignment',
+    # 'supports_agent_smart_agency',
+    # 'supports_agency_lookup',
+    # 'supports_agency_query',
+    # 'supports_agency_search',
+    # 'supports_agency_admin',
+    # 'supports_agency_notification',
+    # 'supports_agency_hierarchy',
+    # 'supports_agency_hierarchy_design',
+    # 'supports_authentication_keys',
+    # 'supports_authentication_process',
+]

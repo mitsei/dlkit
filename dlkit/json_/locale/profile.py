@@ -17,24 +17,25 @@ DISPLAYNAME = 'Mongo locale'
 
 DESCRIPTION = 'MongoDB based locale implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
-    '#supports_translation',
-    '#supports_translation_admin',
-    '#supports_numeric_formatting',
-    '#supports_calendar_formatting',
-    '#supports_currency_formatting',
-    '#supports_coordinate_formatting',
-    '#supports_unit_conversion',
-    '#supports_currency_conversion',
-    '#supports_calendar_conversion',
-    '#supports_coordinate_conversion',
-    '#supports_spatial_unit_conversion',
-    '#supports_format_conversion',
-    '#supports_calendar_info']
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
+    # 'supports_translation',
+    # 'supports_translation_admin',
+    # 'supports_numeric_formatting',
+    # 'supports_calendar_formatting',
+    # 'supports_currency_formatting',
+    # 'supports_coordinate_formatting',
+    # 'supports_unit_conversion',
+    # 'supports_currency_conversion',
+    # 'supports_calendar_conversion',
+    # 'supports_coordinate_conversion',
+    # 'supports_spatial_unit_conversion',
+    # 'supports_format_conversion',
+    # 'supports_calendar_info',
+]

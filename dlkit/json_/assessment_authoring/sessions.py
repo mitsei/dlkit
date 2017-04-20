@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -567,7 +566,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if assessment_part_record_types == []:
-            ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.AssessmentPartForm(
                 bank_id=self._catalog_id,
                 assessment_id=assessment_id,
@@ -679,7 +678,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
                 mdata['sequestered']['default_boolean_values'] = [False]
             else:
                 mdata['sequestered']['default_boolean_values'] = [True]
-        ## WHY are we passing bank_id = self._catalog_id below, seems redundant:
+        # WHY are we passing bank_id = self._catalog_id below, seems redundant:
         obj_form = objects.AssessmentPartForm(
             bank_id=self._catalog_id,
             record_types=assessment_part_record_types,

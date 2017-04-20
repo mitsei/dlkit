@@ -13,14 +13,12 @@ parent of another log makes visible the log entries of its children.
 Example
   LoggingSession out = manager.getLoggingSession();
   out.log(warningLogEntryPriorityType, "hello world", stringLogEntryContentType);
-  
+
   LogReadingSession in = manager.getLogReadingSession();
   LogEntryList entries = inn.getLogEntries();
   while (entries.hasNext()) {
       LogEntry entry = entries.getNextLogEntry();
       printEntry(entry);
   }
-
-
 
 """

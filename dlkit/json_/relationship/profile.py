@@ -17,28 +17,29 @@ DISPLAYNAME = 'Mongo relationship'
 
 DESCRIPTION = 'MongoDB based relationship implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_visible_federation',
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_visible_federation',
     'supports_relationship_lookup',
     'supports_relationship_query',
-    '#supports_relationship_search',
+    # 'supports_relationship_search',
     'supports_relationship_admin',
-    '#supports_relationship_notification',
-    '#supports_relationship_family',
-    '#supports_relationship_family_assignment',
-    '#supports_relationship_smart_family',
+    # 'supports_relationship_notification',
+    # 'supports_relationship_family',
+    # 'supports_relationship_family_assignment',
+    # 'supports_relationship_smart_family',
     'supports_family_lookup',
-    '#supports_family_query',
-    '#supports_family_search',
+    # 'supports_family_query',
+    # 'supports_family_search',
     'supports_family_admin',
-    '#supports_family_notification',
+    # 'supports_family_notification',
     'supports_family_hierarchy',
     'supports_family_hierarchy_design',
-    '#supports_relationship_batch',
-    '#supports_relationship_rules']
+    # 'supports_relationship_batch',
+    # 'supports_relationship_rules',
+]

@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import markers as osid_markers
 from dlkit.abstract_osid.type import primitives as abc_type_primitives

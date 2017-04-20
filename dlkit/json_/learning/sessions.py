@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1924,7 +1923,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_objective_bank(objective_bank_id) # to raise NotFound
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
         self._assign_object_to_catalog(objective_id, objective_bank_id)
 
     @utilities.arguments_not_none
@@ -1949,7 +1948,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_objective_bank(objective_bank_id) # to raise NotFound
+        cat = lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(objective_id, objective_bank_id)
 
     @utilities.arguments_not_none
@@ -3000,7 +2999,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if activity_record_types == []:
-            ## WHY are we passing objective_bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing objective_bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.ActivityForm(
                 objective_bank_id=self._catalog_id,
                 objective_id=objective_id,
@@ -3630,7 +3629,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        lookup_session.get_objective_bank(objective_bank_id) # to raise NotFound
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
         self._assign_object_to_catalog(activity_id, objective_bank_id)
 
     @utilities.arguments_not_none
@@ -3654,7 +3653,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_objective_bank(objective_bank_id) # to raise NotFound
+        cat = lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(activity_id, objective_bank_id)
 
     @utilities.arguments_not_none
@@ -5409,13 +5408,13 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
             result = objects.ObjectiveBankForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.ObjectiveBankForm(
                 record_types=objective_bank_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -5558,7 +5557,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
             raise errors.Unsupported('objective_bank_form did not originate from this session')
         if not objective_bank_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(objective_bank_form._my_map) # save is deprecated - change to replace_one
+        collection.save(objective_bank_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[objective_bank_form.get_id().get_identifier()] = UPDATED
 

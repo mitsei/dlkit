@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1596,13 +1595,13 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
             result = objects.LogForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.LogForm(
                 record_types=log_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -1741,7 +1740,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
             raise errors.Unsupported('log_form did not originate from this session')
         if not log_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(log_form._my_map) # save is deprecated - change to replace_one
+        collection.save(log_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[log_form.get_id().get_identifier()] = UPDATED
 

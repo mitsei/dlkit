@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 import numpy as np
@@ -456,9 +453,10 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
 
         """
         # Implemented from template for osid.repository.Asset.get_asset_contents_template
-        return GradeList(self._my_map['grades'],
-                                             runtime=self._runtime,
-                                             proxy=self._proxy)
+        return GradeList(
+            self._my_map['grades'],
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def _delete(self):
         for grade in self.get_grades():

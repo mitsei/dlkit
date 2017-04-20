@@ -8,7 +8,6 @@
 #     Access to protected methods allowed in package json package scope
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
-
 # import inflection
 
 

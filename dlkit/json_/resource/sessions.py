@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1124,7 +1123,7 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
             db_prefix = runtime.get_configuration().get_value_by_parameter(db_prefix_param_id).get_string_value()
         except (AttributeError, KeyError, errors.NotFound):
             pass
-        self._ns='{0}resource.Resource'.format(db_prefix)
+        self._ns = '{0}resource.Resource'.format(db_prefix)
 
         if self._ns not in MONGO_LISTENER.receivers:
             MONGO_LISTENER.receivers[self._ns] = dict()
@@ -1258,7 +1257,7 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_changed_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(resource_id.get_identifier())
@@ -1295,7 +1294,7 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_deleted_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
             self.MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(resource_id.get_identifier())
@@ -1658,7 +1657,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_bin_lookup_session(proxy=self._proxy)
-        lookup_session.get_bin(bin_id) # to raise NotFound
+        lookup_session.get_bin(bin_id)  # to raise NotFound
         self._assign_object_to_catalog(resource_id, bin_id)
 
     @utilities.arguments_not_none
@@ -1679,7 +1678,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_bin_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bin(bin_id) # to raise NotFound
+        cat = lookup_session.get_bin(bin_id)  # to raise NotFound
         self._unassign_object_from_catalog(resource_id, bin_id)
 
 
@@ -2500,13 +2499,13 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
             result = objects.BinForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.BinForm(
                 record_types=bin_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -2645,7 +2644,7 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
             raise errors.Unsupported('bin_form did not originate from this session')
         if not bin_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(bin_form._my_map) # save is deprecated - change to replace_one
+        collection.save(bin_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[bin_form.get_id().get_identifier()] = UPDATED
 

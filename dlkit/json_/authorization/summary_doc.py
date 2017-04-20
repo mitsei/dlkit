@@ -34,7 +34,7 @@ application (a server process needing to protect some resource).
 
 Example
   Authentication auth = authNValidationSession.authenticate(creds);
-  
+
   AuthorizationSession session = authZManager.getAuthorizationSession();
   boolean authorized = session.isAuthorized(auth.getAgentId(), functionId, qualifierId);
 
@@ -87,10 +87,10 @@ Authorization supports notifications via
 ``AuthorizatioNotificationSession,``  ``FunctionNotificationSession``
 and ``VaultNotificationSession``.
   if (manager.supportsAuthorizationNotification()) {
-      AuthorizationNotificationSession ans = manager.getAuthorizationNotificationSession(receiver);           
+      AuthorizationNotificationSession ans = manager.getAuthorizationNotificationSession(receiver);
       ans.registerForDeletedAuthorizations();
   }
-  
+
   AuthorizationReceiver receiver {
       newAuthorization(Authorization a) {print("authorization created");}
       deletedAuthorization(Authorization a) {print("authorization removed");}

@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 
@@ -646,7 +643,9 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():
             raise errors.OperationFailed('Repository does not support Asset lookup')
-        lookup_session = mgr.get_asset_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_asset_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_repository_view()
         return lookup_session.get_assets_by_ids(self.get_asset_ids())
 
@@ -691,7 +690,9 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         mgr = self._get_provider_manager('COURSE')
         if not mgr.supports_course_lookup():
             raise errors.OperationFailed('Course does not support Course lookup')
-        lookup_session = mgr.get_course_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_course_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_no_catalog_view()
         return lookup_session.get_courses_by_ids(self.get_course_ids())
 
@@ -739,7 +740,9 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
-        lookup_session = mgr.get_assessment_lookup_session(proxy=getattr(self, "_proxy", None)) # What about the Proxy?
+
+        # What about the Proxy?
+        lookup_session = mgr.get_assessment_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
         return lookup_session.get_assessments_by_ids(self.get_assessment_ids())
 

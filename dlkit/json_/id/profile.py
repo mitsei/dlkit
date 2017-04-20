@@ -17,14 +17,15 @@ DISPLAYNAME = 'Mongo id'
 
 DESCRIPTION = 'MongoDB based id implementation'
 
-VERSIONCOMPONENTS = [0, 1, 91]
+VERSIONCOMPONENTS = [0, 1, 103]
 
-RELEASEDATE = "2017-04-19"
+RELEASEDATE = "2017-04-20"
 
-SUPPORTS = [   '# Remove the # when implementations exist:',
-    '#supports_journal_rollback',
-    '#supports_journal_branching',
-    '#supports_id_lookup',
-    '#supports_id_issue',
-    '#supports_id_admin',
-    '#supports_id_batch']
+SUPPORTS = [  # 'Remove the # when implementations exist:'
+    # 'supports_journal_rollback',
+    # 'supports_journal_branching',
+    # 'supports_id_lookup',
+    # 'supports_id_issue',
+    # 'supports_id_admin',
+    # 'supports_id_batch',
+]

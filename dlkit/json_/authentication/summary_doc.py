@@ -48,7 +48,7 @@ Authentication supports notifications via an
       ans.registerForNewAgents();
       hangAround();
   }
-  
+
   AgentReceiver receiver {
       newAgent(Id agentId) { print("new agent"); }
       changedAgent(Id agentId) { print("updated agent"); }

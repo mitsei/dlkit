@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 
@@ -114,6 +111,7 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
         osid_objects.OsidRelationshipForm._init_metadata(self, **kwargs)
+
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidRelationshipForm._init_map(self, record_types=record_types)

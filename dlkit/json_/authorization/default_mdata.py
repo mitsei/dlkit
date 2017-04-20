@@ -8,7 +8,6 @@ DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data("DEFAULT"))
 DEFAULT_GENUS_TYPE = Type(**types.Genus().get_type_data("DEFAULT"))
 
 
-
 def get_authorization_mdata():
     """Return default mdata map for Authorization"""
     return {

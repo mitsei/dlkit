@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid import metadata as abc_osid_metadata

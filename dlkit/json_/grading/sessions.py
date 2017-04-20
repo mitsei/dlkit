@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1059,7 +1058,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if grade_record_types == []:
-            ## WHY are we passing gradebook_id = self._catalog_id below, seems redundant:
+            # WHY are we passing gradebook_id = self._catalog_id below, seems redundant:
             obj_form = objects.GradeForm(
                 gradebook_id=self._catalog_id,
                 grade_system_id=grade_system_id,
@@ -1118,15 +1117,16 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         grade_system_id = Id(grade_form._my_map['gradeSystemId']).get_identifier()
         grade_system = collection.find_one(
             {'$and': [{'_id': ObjectId(grade_system_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         grade_system['grades'].append(grade_form._my_map)
         result = collection.save(grade_system)
 
         self._forms[grade_form.get_id().get_identifier()] = CREATED
         from .objects import Grade
-        return Grade(osid_object_map=grade_form._my_map,
-                              runtime=self._runtime,
-                              proxy=self._proxy)
+        return Grade(
+            osid_object_map=grade_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     @utilities.arguments_not_none
     def can_update_grades(self, grade_system_id):
@@ -1174,12 +1174,13 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         if not isinstance(grade_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         document = collection.find_one({'grades._id': ObjectId(grade_id.get_identifier())})
-        for sub_doc in document['grades']: # There may be a MongoDB shortcut for this
+        for sub_doc in document['grades']:  # There may be a MongoDB shortcut for this
             if sub_doc['_id'] == ObjectId(grade_id.get_identifier()):
                 result = sub_doc
-        obj_form = GradeForm(osid_object_map=result,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)
+        obj_form = GradeForm(
+            osid_object_map=result,
+            runtime=self._runtime,
+            proxy=self._proxy)
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -1222,7 +1223,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         grade_system_id = Id(grade_form._my_map['grade_systemId']).get_identifier()
         grade_system = collection.find_one(
             {'$and': [{'_id': ObjectId(grade_system_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         index = 0
         found = False
         for i in grade_system['grades']:
@@ -1236,15 +1237,16 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             raise errors.NotFound()
         try:
             collection.save(grade_system)
-        except: # what exceptions does mongodb save raise?
+        except:  # what exceptions does mongodb save raise?
             raise errors.OperationFailed()
         self._forms[grade_form.get_id().get_identifier()] = UPDATED
         # Note: this is out of spec. The OSIDs don't require an object to be returned:
         from .objects import Grade
 
-        return Grade(osid_object_map=grade_form._my_map,
-                                         runtime=self._runtime,
-                                         proxy=self._proxy)
+        return Grade(
+            osid_object_map=grade_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     @utilities.arguments_not_none
     def can_delete_grades(self, grade_system_id):
@@ -1303,9 +1305,10 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             found = True
         if not found:
             raise errors.OperationFailed()
-        Grade(osid_object_map=grade_map,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)._delete()
+        Grade(
+            osid_object_map=grade_map,
+            runtime=self._runtime,
+            proxy=self._proxy)._delete()
         collection.save(grade_system)
 
     def can_manage_grade_aliases(self):
@@ -3880,13 +3883,13 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
             result = objects.GradebookForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.GradebookForm(
                 record_types=gradebook_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -4027,7 +4030,7 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
             raise errors.Unsupported('gradebook_form did not originate from this session')
         if not gradebook_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(gradebook_form._my_map) # save is deprecated - change to replace_one
+        collection.save(gradebook_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[gradebook_form.get_id().get_identifier()] = UPDATED
 

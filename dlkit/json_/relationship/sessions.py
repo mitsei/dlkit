@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1706,13 +1705,13 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
             result = objects.FamilyForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.FamilyForm(
                 record_types=family_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -1853,7 +1852,7 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
             raise errors.Unsupported('family_form did not originate from this session')
         if not family_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(family_form._my_map) # save is deprecated - change to replace_one
+        collection.save(family_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[family_form.get_id().get_identifier()] = UPDATED
 

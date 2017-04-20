@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from importlib import import_module
 
 

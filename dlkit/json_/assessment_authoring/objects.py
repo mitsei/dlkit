@@ -9,9 +9,6 @@
 # pylint: disable=too-many-ancestors
 #     Inheritance defined in specification
 
-#from ..id.objects import IdList
-#import importlib
-
 
 import importlib
 
@@ -277,7 +274,7 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
     def has_next_assessment_part(self, assessment_part_id):
         """This supports the basic simple sequence case. Can be overriden in a record for other cases"""
         if not self.supports_child_ordering or not self.supports_simple_child_sequencing:
-            raise AttributeError() # Only available through a record extension
+            raise AttributeError()  # Only available through a record extension
         if 'childIds' in self._my_map and str(assessment_part_id) in self._my_map['childIds']:
             if self._my_map['childIds'][-1] != str(assessment_part_id):
                 return True
@@ -369,7 +366,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
                 self._my_map['sequestered'] = kwargs['mdata']['sequestered']['default_boolean_values'][0]
         else:
             self._my_map['assessmentPartId'] = self._assessment_part_default
-            self._my_map['sequestered'] = False # Parts under Assessments must be "Sections"
+            self._my_map['sequestered'] = False  # Parts under Assessments must be "Sections"
         if 'assessment_id' in kwargs:
             self._my_map['assessmentId'] = str(kwargs['assessment_id'])
         else:
@@ -446,8 +443,9 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         # Implemented from template for osid.assessment.AssessmentOfferedForm.set_duration_template
         if self.get_allocated_time_metadata().is_read_only():
             raise errors.NoAccess()
-        if not self._is_valid_duration(time,
-                                self.get_time_metadata()):
+        if not self._is_valid_duration(
+                time,
+                self.get_time_metadata()):
             raise errors.InvalidArgument()
         map = dict()
         map['days'] = time.days
@@ -497,7 +495,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
             raise AttributeError('This Assessment Part does not support simple child sequencing')
         self._my_map['itemsShuffled'] = shuffled
 
-    def set_children_sequential(self, sequential): # This should be set in a record
+    def set_children_sequential(self, sequential):  # This should be set in a record
         if not self._supports_simple_sequencing:
             raise AttributeError('This Assessment Part does not support simple child sequencing')
         self._my_map['childrenSequential'] = sequential

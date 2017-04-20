@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from . import profile
 from . import sessions
 from .. import utilities
@@ -471,7 +470,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         if self._proxy_in_args(*args, **kwargs):
             raise errors.InvalidArgument('A Proxy object was received but not expected.')
@@ -497,13 +496,12 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         if self._proxy_in_args(*args, **kwargs):
             raise errors.InvalidArgument('A Proxy object was received but not expected.')
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
         # pylint: disable=no-member
         return sessions.AssessmentPartItemSession(bank_id, runtime=self._runtime)
 
@@ -520,7 +518,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         if self._proxy_in_args(*args, **kwargs):
             raise errors.InvalidArgument('A Proxy object was received but not expected.')
@@ -546,13 +544,12 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         if self._proxy_in_args(*args, **kwargs):
             raise errors.InvalidArgument('A Proxy object was received but not expected.')
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
         # pylint: disable=no-member
         return sessions.AssessmentPartItemDesignSession(bank_id, runtime=self._runtime)
 
@@ -823,7 +820,7 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.AssessmentPartItemSession(proxy=proxy, runtime=self._runtime)
@@ -847,11 +844,10 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
         # pylint: disable=no-member
         return sessions.AssessmentPartItemSession(bank_id, proxy=proxy, runtime=self._runtime)
 
@@ -868,7 +864,7 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ``supports_assessment_part_lookup()`` is ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.AssessmentPartItemDesignSession(proxy=proxy, runtime=self._runtime)
@@ -892,10 +888,9 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        if not self.supports_assessment_part_lookup(): # This is kludgy, but only until Tom fixes spec
+        if not self.supports_assessment_part_lookup():  # This is kludgy, but only until Tom fixes spec
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
         # pylint: disable=no-member
         return sessions.AssessmentPartItemDesignSession(bank_id, proxy=proxy, runtime=self._runtime)

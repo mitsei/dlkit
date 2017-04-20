@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import queries as osid_queries
@@ -343,7 +342,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
             Id(authority='LOGGING',
                namespace='CATALOG',
                identifier='LOG')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

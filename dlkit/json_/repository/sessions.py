@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson.objectid import ObjectId
 
 
@@ -1660,7 +1659,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if asset_content_record_types == []:
-            ## WHY are we passing repository_id = self._catalog_id below, seems redundant:
+            # WHY are we passing repository_id = self._catalog_id below, seems redundant:
             obj_form = objects.AssetContentForm(
                 repository_id=self._catalog_id,
                 asset_id=asset_id,
@@ -1720,15 +1719,16 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         asset_id = Id(asset_content_form._my_map['assetId']).get_identifier()
         asset = collection.find_one(
             {'$and': [{'_id': ObjectId(asset_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         asset['assetContents'].append(asset_content_form._my_map)
         result = collection.save(asset)
 
         self._forms[asset_content_form.get_id().get_identifier()] = CREATED
         from .objects import AssetContent
-        return AssetContent(osid_object_map=asset_content_form._my_map,
-                              runtime=self._runtime,
-                              proxy=self._proxy)
+        return AssetContent(
+            osid_object_map=asset_content_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def can_update_asset_contents(self):
         """Tests if this user can update ``AssetContent``.
@@ -1777,12 +1777,13 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         if not isinstance(asset_content_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         document = collection.find_one({'assetContents._id': ObjectId(asset_content_id.get_identifier())})
-        for sub_doc in document['assetContents']: # There may be a MongoDB shortcut for this
+        for sub_doc in document['assetContents']:  # There may be a MongoDB shortcut for this
             if sub_doc['_id'] == ObjectId(asset_content_id.get_identifier()):
                 result = sub_doc
-        obj_form = AssetContentForm(osid_object_map=result,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)
+        obj_form = AssetContentForm(
+            osid_object_map=result,
+            runtime=self._runtime,
+            proxy=self._proxy)
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -1824,7 +1825,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         asset_id = Id(asset_content_form._my_map['assetId']).get_identifier()
         asset = collection.find_one(
             {'$and': [{'_id': ObjectId(asset_id)},
-                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
+                      {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})
         index = 0
         found = False
         for i in asset['assetContents']:
@@ -1838,15 +1839,16 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             raise errors.NotFound()
         try:
             collection.save(asset)
-        except: # what exceptions does mongodb save raise?
+        except:  # what exceptions does mongodb save raise?
             raise errors.OperationFailed()
         self._forms[asset_content_form.get_id().get_identifier()] = UPDATED
         # Note: this is out of spec. The OSIDs don't require an object to be returned:
         from .objects import AssetContent
 
-        return AssetContent(osid_object_map=asset_content_form._my_map,
-                                         runtime=self._runtime,
-                                         proxy=self._proxy)
+        return AssetContent(
+            osid_object_map=asset_content_form._my_map,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     def can_delete_asset_contents(self):
         """Tests if this user can delete ``AssetsContents``.
@@ -1901,9 +1903,10 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             found = True
         if not found:
             raise errors.OperationFailed()
-        AssetContent(osid_object_map=asset_content_map,
-                                  runtime=self._runtime,
-                                  proxy=self._proxy)._delete()
+        AssetContent(
+            osid_object_map=asset_content_map,
+            runtime=self._runtime,
+            proxy=self._proxy)._delete()
         collection.save(asset)
 
 
@@ -1944,7 +1947,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
             db_prefix = runtime.get_configuration().get_value_by_parameter(db_prefix_param_id).get_string_value()
         except (AttributeError, KeyError, errors.NotFound):
             pass
-        self._ns='{0}repository.Asset'.format(db_prefix)
+        self._ns = '{0}repository.Asset'.format(db_prefix)
 
         if self._ns not in MONGO_LISTENER.receivers:
             MONGO_LISTENER.receivers[self._ns] = dict()
@@ -2098,7 +2101,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_changed_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(asset_genus_type.get_identifier())
@@ -2120,7 +2123,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_changed_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(asset_id.get_identifier())
@@ -2157,7 +2160,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_deleted_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
             self.MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(asset_genus_type.get_identifier())
@@ -2179,7 +2182,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         """
         # Implemented from template for
         # osid.resource.ResourceNotificationSession.register_for_deleted_resource
-        if MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] == False:
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
             self.MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(asset_id.get_identifier())
@@ -2552,7 +2555,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        lookup_session.get_repository(repository_id) # to raise NotFound
+        lookup_session.get_repository(repository_id)  # to raise NotFound
         self._assign_object_to_catalog(asset_id, repository_id)
 
     @utilities.arguments_not_none
@@ -2575,7 +2578,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_repository(repository_id) # to raise NotFound
+        cat = lookup_session.get_repository(repository_id)  # to raise NotFound
         self._unassign_object_from_catalog(asset_id, repository_id)
 
 
@@ -4535,7 +4538,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        lookup_session.get_repository(repository_id) # to raise NotFound
+        lookup_session.get_repository(repository_id)  # to raise NotFound
         self._assign_object_to_catalog(composition_id, repository_id)
 
     @utilities.arguments_not_none
@@ -4560,7 +4563,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_repository(repository_id) # to raise NotFound
+        cat = lookup_session.get_repository(repository_id)  # to raise NotFound
         self._unassign_object_from_catalog(composition_id, repository_id)
 
 
@@ -5046,13 +5049,13 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
             result = objects.RepositoryForm(
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         else:
             result = objects.RepositoryForm(
                 record_types=repository_record_types,
                 runtime=self._runtime,
                 effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy) ## Probably don't need effective agent id now that we have proxy in form.
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         self._forms[result.get_id().get_identifier()] = not CREATED
         return result
 
@@ -5193,7 +5196,7 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
             raise errors.Unsupported('repository_form did not originate from this session')
         if not repository_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        collection.save(repository_form._my_map) # save is deprecated - change to replace_one
+        collection.save(repository_form._my_map)  # save is deprecated - change to replace_one
 
         self._forms[repository_form.get_id().get_identifier()] = UPDATED
 

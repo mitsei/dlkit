@@ -33,9 +33,7 @@ An example using a specifier record for an http request:
   ProxyCondition condition = proxySession.getProxyCondition();
   HttpRequestRecord record = condition.getProxyConditionRecord(httpRequestRecordType);
   record.setHttpRequest(servletRequest);
-  
+
   Proxy proxy = proxySession.getProxy(condition);
-
-
 
 """

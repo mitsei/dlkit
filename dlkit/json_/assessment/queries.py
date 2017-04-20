@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from bson import ObjectId
 
 
@@ -2334,7 +2333,7 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
             Id(authority='ASSESSMENT',
                namespace='CATALOG',
                identifier='BANK')
-        ) # What about the Proxy?
+        )  # What about the Proxy?
         descendants = []
         if hts.has_children(catalog_id):
             for child_id in hts.get_children(catalog_id):

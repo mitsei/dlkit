@@ -373,5 +373,4 @@ Knowledge Initiative (O.K.I) project 2001-2004.
   * University of Pennsylvania, O.K.I. Core Collaborator
   * University of Wisconsin, Madison, O.K.I. Core Collaborator
 
-
 """

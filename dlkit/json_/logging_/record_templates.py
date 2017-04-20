@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import records as osid_records
 from dlkit.abstract_osid.logging_ import records as abc_logging_records

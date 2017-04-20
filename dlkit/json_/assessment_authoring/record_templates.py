@@ -10,7 +10,6 @@
 #     Inheritance defined in specification
 
 
-
 from .. import utilities
 from ..osid import records as osid_records
 from dlkit.abstract_osid.assessment_authoring import records as abc_assessment_authoring_records
