@@ -100,7 +100,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
             config = self._runtime.get_configuration()
             parameter_id = Id('parameter:' + osid_name + 'CatalogingProviderImpl@mongo')
             provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
-            self._cataloging_manager = self._runtime.get_manager('CATALOGING', provider_impl) # need to add version argument
+            self._cataloging_manager = self._runtime.get_manager('CATALOGING', provider_impl)  # need to add version argument
         except (AttributeError, KeyError, errors.NotFound):
             pass
 
@@ -139,14 +139,14 @@ class OsidSession(abc_osid_sessions.OsidSession):
         """Creates a catalog in the current service orchestrated with a foreign service Id."""
         if (foreign_catalog_id.identifier_namespace == db_name + '.' + cat_name and
                 foreign_catalog_id.authority == self._authority):
-            raise errors.NotFound() # This is not a foreign catalog
+            raise errors.NotFound()  # This is not a foreign catalog
         foreign_service_name = foreign_catalog_id.get_identifier_namespace().split('.')[0]
         # foreign_cat_name = inflection.underscore(foreign_catalog_id.namespace.split('.')[1])
         # catalog_name = foreign_cat_name.lower()
         catalog_name = camel_to_under(foreign_catalog_id.namespace.split('.')[1])
         manager = self._get_provider_manager(foreign_service_name.upper())
         lookup_session = getattr(manager, 'get_{0}_lookup_session'.format(catalog_name))(proxy=self._proxy)
-        getattr(lookup_session, 'get_{0}'.format(catalog_name))(foreign_catalog_id) # Raises NotFound
+        getattr(lookup_session, 'get_{0}'.format(catalog_name))(foreign_catalog_id)  # Raises NotFound
         collection = JSONClientValidated(db_name,
                                          collection=cat_name,
                                          runtime=self._runtime)
@@ -195,7 +195,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
         collection = JSONClientValidated(pkg_name,
                                          collection=obj_name,
                                          runtime=self._runtime)
-        collection.find_one({'_id': ObjectId(primary_id.get_identifier())}) # to raise NotFound
+        collection.find_one({'_id': ObjectId(primary_id.get_identifier())})  # to raise NotFound
         collection = JSONClientValidated('id',
                                          collection=pkg_name + 'Ids',
                                          runtime=self._runtime)
@@ -427,7 +427,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return get_effective_agent_id_with_proxy(self._proxy) # Currently raises Unimplemented
+        return get_effective_agent_id_with_proxy(self._proxy)  # Currently raises Unimplemented
 
     effective_agent = property(fget=get_effective_agent)
 

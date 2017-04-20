@@ -1161,36 +1161,33 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_composition():
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetCompositionSession(repository_id, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetCompositionSession(repository_id, runtime=self._runtime)  # pylint: disable=no-member
 
     @utilities.arguments_not_none
     def get_asset_composition_design_session_for_repository(self, repository_id):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_composition():
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetCompositionDesignSession(repository_id, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetCompositionDesignSession(repository_id, runtime=self._runtime)  # pylint: disable=no-member
 
     def get_asset_content_lookup_session(self):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_lookup():  # should be asset_content_lookup
             raise errors.Unimplemented()
-        return sessions.AssetContentLookupSession(runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetContentLookupSession(runtime=self._runtime)  # pylint: disable=no-member
 
     @utilities.arguments_not_none
     def get_asset_content_lookup_session_for_repository(self, repository_id):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_lookup():  # should be asset_content_lookup
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetContentLookupSession(repository_id, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetContentLookupSession(repository_id, runtime=self._runtime)  # pylint: disable=no-member
 
 
 class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
@@ -1939,33 +1936,30 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_composition():
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetCompositionSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetCompositionSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime)  # pylint: disable=no-member
 
     @utilities.arguments_not_none
     def get_asset_composition_design_session_for_repository(self, repository_id, proxy):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_composition():
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetCompositionDesignSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetCompositionDesignSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime)  # pylint: disable=no-member
 
     def get_asset_content_lookup_session(self, proxy):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_lookup():  # should be asset_content_lookup
             raise errors.Unimplemented()
-        return sessions.AssetContentLookupSession(proxy=proxy, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetContentLookupSession(proxy=proxy, runtime=self._runtime)  # pylint: disable=no-member
 
     @utilities.arguments_not_none
     def get_asset_content_lookup_session_for_repository(self, repository_id, proxy):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         if not self.supports_asset_lookup():  # should be asset_content_lookup
             raise errors.Unimplemented()
-        ##
+
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        return sessions.AssetContentLookupSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime) # pylint: disable=no-member
+        return sessions.AssetContentLookupSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime)  # pylint: disable=no-member

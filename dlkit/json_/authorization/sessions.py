@@ -1444,7 +1444,7 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if authorization_record_types == []:
-            ## WHY are we passing vault_id = self._catalog_id below, seems redundant:
+            # WHY are we passing vault_id = self._catalog_id below, seems redundant:
             obj_form = objects.AuthorizationForm(
                 vault_id=self._catalog_id,
                 resource_id=resource_id,

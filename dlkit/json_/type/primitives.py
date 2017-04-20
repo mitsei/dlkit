@@ -36,18 +36,19 @@ class Type(abc_type_primitives.Type, osid_markers.OsidPrimitive):
     description and domain.
 
     """
-    def __init__(self, type_map=None,
-                       identifier=None,
-                       authority=None,
-                       namespace=None,
-                       display_name=None,
-                       display_label=None,
-                       description=None,
-                       domain=None):
+    def __init__(self,
+                 type_map=None,
+                 identifier=None,
+                 authority=None,
+                 namespace=None,
+                 display_name=None,
+                 display_label=None,
+                 description=None,
+                 domain=None):
         if type_map is not None:
             self._my_map = type_map
         elif (authority is not None and namespace is not None and identifier is not None and
-            display_name is not None and description is not None and domain is not None):
+                display_name is not None and description is not None and domain is not None):
             self._my_map = {}
             self._my_map['authority'] = authority
             self._my_map['namespace'] = namespace

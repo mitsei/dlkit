@@ -73,7 +73,7 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
         return DisplayText(
-            text = profile.DISPLAYNAME,
+            text=profile.DISPLAYNAME,
             language_type=Type(**profile.LANGUAGETYPE),
             script_type=Type(**profile.SCRIPTTYPE),
             format_type=Type(**profile.FORMATTYPE))
@@ -103,16 +103,16 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        ## THIS ALL NEEDS TO BE FIXED:
-        #try:
+        # THIS ALL NEEDS TO BE FIXED:
+        # try:
         #    from ..installation.primitives import Version
-        #except:
+        # except:
         #    from .common import Version
-        #try:
+        # try:
         #    from ..type.primitives import Type
-        #except:
+        # except:
         #    from .common import Type
-        #return Version(
+        # return Version(
         #    components=profile.VERSIONCOMPONENTS,
         #    scheme=Type(**profile.VERSIONSCHEME))
         raise errors.Unimplemented()
@@ -144,16 +144,16 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         versions of an OSID.
 
         """
-        ## THIS ALL NEEDS TO BE FIXED:
-        #try:
+        # THIS ALL NEEDS TO BE FIXED:
+        # try:
         #    from ..installation.primitives import Version
-        #except:
+        # except:
         #    from .common import Version
-        #try:
+        # try:
         #    from ..type.primitives import Type
-        #except:
+        # except:
         #    from .common import Type
-        #return Version(
+        # return Version(
         #    components=profile.OSIDVERSION,
         #    scheme=Type(**profile.VERSIONSCHEME))
         raise errors.Unimplemented()
@@ -439,7 +439,7 @@ class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
 
 class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, OsidRuntimeProfile):
     """The ``OsidRuntimeManager`` represents and OSID platform and contains the information required for running OSID implementations such as search paths and configurations."""
-    def __init__(self, configuration_key = None):
+    def __init__(self, configuration_key=None):
         self._configuration_key = configuration_key
 
     @utilities.arguments_not_none

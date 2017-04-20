@@ -96,7 +96,7 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         ident = Id(authority=self._authority,
                    namespace='hierarchy.Hierarchy',
                    identifier=str(ObjectId(seed_str[:12])))
-        return HierarchyLookupSession(proxy, runtime).get_hierarchy(ident).get_id() # Return the actual Id
+        return HierarchyLookupSession(proxy, runtime).get_hierarchy(ident).get_id()  # Return the actual Id
 
     def _create_catalog_hierarchy(self, catalog_id, proxy, runtime):
         """Creates a catalog hierarchy"""
@@ -113,7 +113,7 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         # This next tricks require serious inside knowledge:
         hfc._my_map['_id'] = ObjectId(seed_str[:12])
         hierarchy = has.create_hierarchy(hfc)
-        return hierarchy.get_id() # Return the Id of newly created catalog hierarchy
+        return hierarchy.get_id()  # Return the Id of newly created catalog hierarchy
 
     def _set_relationship_type(self, type_identifier, display_name=None, display_label=None, description=None, domain='Relationship'):
         """Sets the relationship type"""
@@ -376,10 +376,10 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         child_node_list = []
         if ancestor_levels != 0:
             for parent_id in self.get_parents(id_):
-                parent_node_list.append(self.get_nodes(parent_id, ancestor_levels-1, 0))
+                parent_node_list.append(self.get_nodes(parent_id, ancestor_levels - 1, 0))
         if descendant_levels != 0:
             for child_id in self.get_children(id_):
-                child_node_list.append(self.get_nodes(child_id, 0, descendant_levels-1))
+                child_node_list.append(self.get_nodes(child_id, 0, descendant_levels - 1))
         return objects.Node({'type': 'OsidNode',
                              'id': str(id_),
                              'childNodes': child_node_list,
@@ -445,7 +445,7 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
         # This next tricks require serious inside knowledge:
         hfc._my_map['_id'] = ObjectId(seed_str[:12])
         hierarchy = has.create_hierarchy(hfc)
-        return hierarchy.get_id() # Return the Id of newly created catalog hierarchy
+        return hierarchy.get_id()  # Return the Id of newly created catalog hierarchy
 
     def _set_relationship_type(self, type_identifier, display_name=None, display_label=None, description=None, domain='Relationship'):
         """Sets the relationship type"""

@@ -244,7 +244,7 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         if self.get_priority_metadata().is_read_only():
             raise errors.NoAccess()
         if not self._is_valid_type(priority,
-                                self.get_priority_metadata()):
+                                   self.get_priority_metadata()):
             raise errors.InvalidArgument()
         self._my_map['priority'] = str(priority)
 

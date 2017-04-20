@@ -333,7 +333,6 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         return osid_objects.OsidObject.get_object_map(self, obj_map)
 
     object_map = property(fget=get_object_map)
-    
 
 
 class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_objects.OsidRelationshipForm):

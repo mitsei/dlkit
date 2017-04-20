@@ -45,24 +45,24 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
         from ..osid.objects import OsidForm
         OsidForm._init_metadata(self)
         self._display_name_metadata = {
-            'element_id': Id(authority = self._authority,
-                             namespace = self._namespace,
-                             identifier = 'display_name')}
+            'element_id': Id(authority=self._authority,
+                             namespace=self._namespace,
+                             identifier='display_name')}
         self._display_name_metadata.update(mdata_conf.display_name)
         self._display_label_metadata = {
-            'element_id': Id(authority = self._authority,
-                             namespace = self._namespace,
-                             identifier = 'description')}
+            'element_id': Id(authority=self._authority,
+                             namespace=self._namespace,
+                             identifier='description')}
         self._display_label_metadata.update(mdata_conf.display_label)
         self._description_metadata = {
-            'element_id': Id(authority = self._authority,
-                             namespace = self._namespace,
-                             identifier = 'description')}
+            'element_id': Id(authority=self._authority,
+                             namespace=self._namespace,
+                             identifier='description')}
         self._description_metadata.update(mdata_conf.description)
         self._domain_metadata = {
-            'element_id': Id(authority = self._authority,
-                             namespace = self._namespace,
-                             identifier = 'description')}
+            'element_id': Id(authority=self._authority,
+                             namespace=self._namespace,
+                             identifier='description')}
         self._domain_metadata.update(mdata_conf.domain)
 
     def _init_map(self):
@@ -110,7 +110,7 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
 
         """
         if (self.get_display_name_metadata().is_read_only() or
-            self.get_display_name_metadata().is_required()):
+                self.get_display_name_metadata().is_required()):
             raise errors.NoAccess()
         self._my_map['displayName'] = self._display_name_metadata['default_string_values'][0]
 
@@ -154,7 +154,7 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
 
         """
         if (self.get_display_label_metadata().is_read_only() or
-            self.get_display_label_metadata().is_required()):
+                self.get_display_label_metadata().is_required()):
             raise errors.NoAccess()
         self._my_map['displayLabel'] = self._display_label_metadata['default_string_values'][0]
 
@@ -198,7 +198,7 @@ class TypeForm(abc_type_objects.TypeForm, osid_objects.OsidForm):
 
         """
         if (self.get_domain_metadata().is_read_only() or
-            self.get_domain_metadata().is_required()):
+                self.get_domain_metadata().is_required()):
             raise errors.NoAccess()
         self._my_map['domain'] = self._domain_metadata['default_string_values'][0]
 

@@ -973,8 +973,8 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if comment_record_types == []:
-            ## WHY are we passing book_id = self._catalog_id below, seems redundant:
-            ## Probably don't need to send effective_agent_id, since the form can get that from proxy.
+            # WHY are we passing book_id = self._catalog_id below, seems redundant:
+            # Probably don't need to send effective_agent_id, since the form can get that from proxy.
             obj_form = objects.CommentForm(
                 book_id=self._catalog_id,
                 reference_id=reference_id,

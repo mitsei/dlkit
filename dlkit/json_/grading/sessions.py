@@ -1356,7 +1356,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         querier.match_grade_system_id(grade_system_id, match=True)
         columns = gcqs.get_gradebook_columns_by_query(querier)
         return columns.available() > 0
-        
 
 
 class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid_sessions.OsidSession):
@@ -3481,7 +3480,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         gels.use_federated_gradebook_view()
         entries = gels.get_grade_entries_for_gradebook_column(gradebook_column_id)
         return entries.available() > 0
-        
 
 
 class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_sessions.OsidSession):

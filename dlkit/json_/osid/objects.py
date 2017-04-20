@@ -130,7 +130,7 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
             # catalogs do not have this attribute
             pass
 
-        try: # Need to implement records for catalogs one of these days
+        try:  # Need to implement records for catalogs one of these days
             for record in self._records:
                 try:
                     self._records[record]._update_object_map(obj_map)
@@ -862,12 +862,12 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         syntax = metadata.get_syntax
 
         # First check if this is a required data element
-        if metadata.is_required == True and not inpt:
+        if metadata.is_required and not inpt:
             return False
 
         valid = True  # Innocent until proven guilty
         # Recursively run through all the elements of an array
-        if array == True:
+        if array:
             if len(inpt) < metadata['minimum_elements']:
                 valid = False
             elif len(inpt) > metadata['maximum_elements']:
@@ -1298,7 +1298,7 @@ class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
             raise errors.NoAccess()
         if not self._is_valid_date_time(date, self.get_start_date_metadata()):
             raise errors.InvalidArgument()
-        #self._my_map['startDate'] = self._get_date_map(date)
+        # self._my_map['startDate'] = self._get_date_map(date)
         self._my_map['startDate'] = date
 
     def clear_start_date(self):
@@ -1344,7 +1344,7 @@ class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
             raise errors.NoAccess()
         if not self._is_valid_date_time(date, self.get_end_date_metadata()):
             raise errors.InvalidArgument()
-        #self._my_map['endDate'] = self._get_date_map(date)
+        # self._my_map['endDate'] = self._get_date_map(date)
         self._my_map['endDate'] = date
 
     def clear_end_date(self):
@@ -2389,7 +2389,7 @@ class OsidList(abc_osid_objects.OsidList):
     def next(self):
         """next method for iterator."""
         next_object = self._iter_object.next()
-        if self._count != None:
+        if self._count is not None:
             self._count -= 1
         return next_object
 
@@ -2410,7 +2410,7 @@ class OsidList(abc_osid_objects.OsidList):
         return ``true`` for this method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return bool(self._count)
         else:
@@ -2444,7 +2444,7 @@ class OsidList(abc_osid_objects.OsidList):
         as a parameter to the bulk retrieval method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return self._count
         else:

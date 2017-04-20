@@ -122,7 +122,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        if not content_type in self._content_types:
+        if content_type not in self._content_types:
             raise errors.Unsupported()
         lefc = self._leas.get_content_form_for_create([])
         lefc.set_timestamp(DateTime.utcnow())

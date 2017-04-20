@@ -1978,7 +1978,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         self.assign_objective_to_objective_bank(objective_id, to_objective_bank_id)
         try:
             self.unassign_objective_from_objective_bank(objective_id, from_objective_bank_id)
-        except: # something went wrong, roll back assignment to to_objective_bank_id
+        except:  # something went wrong, roll back assignment to to_objective_bank_id
             self.unassign_objective_from_objective_bank(objective_id, to_objective_bank_id)
             raise
 
@@ -3682,7 +3682,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         self.assign_activity_to_objective_bank(activity_id, to_objective_bank_id)
         try:
             self.unassign_activity_from_objective_bank(activity_id, from_objective_bank_id)
-        except: # something went wrong, roll back assignment to to_objective_bank_id
+        except:  # something went wrong, roll back assignment to to_objective_bank_id
             self.unassign_activity_from_objective_bank(activity_id, to_objective_bank_id)
             raise
 
@@ -4687,7 +4687,7 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if proficiency_record_types == []:
-            ## WHY are we passing objective_bank_id = self._catalog_id below, seems redundant:
+            # WHY are we passing objective_bank_id = self._catalog_id below, seems redundant:
             obj_form = objects.ProficiencyForm(
                 objective_bank_id=self._catalog_id,
                 objective_id=objective_id,

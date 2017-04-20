@@ -2,12 +2,8 @@
 
 from .. import types
 from ..primitives import Type
-DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data("DEFAULT"))
-DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data("DEFAULT"))
-DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data("DEFAULT"))
-DEFAULT_GENUS_TYPE = Type(**types.Genus().get_type_data("DEFAULT"))
-import datetime
 
+import datetime
 
 MIN_DATETIME = {
     'year': datetime.datetime.min.year,
@@ -18,6 +14,10 @@ MIN_DATETIME = {
     'second': datetime.datetime.min.second,
     'microsecond': datetime.datetime.min.microsecond,
 }
+DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data("DEFAULT"))
+DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data("DEFAULT"))
+DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data("DEFAULT"))
+DEFAULT_GENUS_TYPE = Type(**types.Genus().get_type_data("DEFAULT"))
 
 
 def get_log_entry_mdata():
@@ -35,15 +35,15 @@ def get_log_entry_mdata():
             'type_set': [],
         },
         'timestamp': {
-    'element_label': 'timestamp',
-    'instructions': 'enter a valid datetime object.',
-    'required': False,
-    'read_only': False,
-    'linked': False,
-    'array': False,
-    'default_date_time_values': [MIN_DATETIME],
-    'syntax': 'DATETIME',
-    'date_time_set': []
+            'element_label': 'timestamp',
+            'instructions': 'enter a valid datetime object.',
+            'required': False,
+            'read_only': False,
+            'linked': False,
+            'array': False,
+            'default_date_time_values': [MIN_DATETIME],
+            'syntax': 'DATETIME',
+            'date_time_set': []
         },
         'agent': {
             'element_label': 'agent',

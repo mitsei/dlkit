@@ -1012,7 +1012,7 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         if relationship_record_types == []:
-            ## WHY are we passing family_id = self._catalog_id below, seems redundant:
+            # WHY are we passing family_id = self._catalog_id below, seems redundant:
             obj_form = objects.RelationshipForm(
                 family_id=self._catalog_id,
                 source_id=source_id,

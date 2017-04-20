@@ -651,7 +651,6 @@ class AssetContentLookupSession(abc_repository_sessions.AssetContentLookupSessio
                               if ac['genusTypeId'] == str(asset_content_genus_type)]
         return objects.AssetContentList(asset_content_maps, runtime=self._runtime, proxy=self._proxy)
 
-
     @utilities.arguments_not_none
     def get_asset_contents_by_parent_genus_type(self, asset_content_genus_type):
         """Gets an ``AssetContentList`` corresponding to the given asset content genus ``Type`` and include any additional asset contents with genus types derived from the specified ``Type``.

@@ -1192,7 +1192,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         self._mdata = default_mdata.get_grade_entry_mdata()
         self._effective_agent_id = kwargs['effective_agent_id']
 
-        mgr = self._get_provider_manager('GRADING') # What about the Proxy?
+        mgr = self._get_provider_manager('GRADING')  # What about the Proxy?
         lookup_session = mgr.get_gradebook_column_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_gradebook_view()
         if 'gradebook_column_id' in kwargs:
@@ -1333,7 +1333,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
 
         """
         if not self._grade_system.is_based_on_grades():
-            return # do nothing, spec does not raise error
+            return  # do nothing, spec does not raise error
         if (self.get_grade_metadata().is_read_only() or
                 self.get_grade_metadata().is_required()):
             raise errors.NoAccess()
@@ -1393,7 +1393,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
 
         """
         if self._grade_system.is_based_on_grades():
-            return # do nothing, spec does not raise error
+            return  # do nothing, spec does not raise error
         if (self.get_score_metadata().is_read_only() or
                 self.get_score_metadata().is_required()):
             raise errors.NoAccess()
