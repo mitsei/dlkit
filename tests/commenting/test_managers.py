@@ -1,20 +1,21 @@
 """Unit tests of commenting managers."""
 
+
 import unittest
+
+
+from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
+from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
+
+
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
-
-from dlkit.primordium.type.primitives import Type
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
-from dlkit.abstract_osid.osid import errors
-
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
 class TestCommentingProfile(unittest.TestCase):
@@ -23,7 +24,6 @@ class TestCommentingProfile(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
-
 
 
     def test_supports_comment_lookup(self):
@@ -88,7 +88,6 @@ class TestCommentingManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
-
 
 
     def test_get_comment_lookup_session(self):
@@ -181,7 +180,6 @@ class TestCommentingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
-
 
 
     def test_get_comment_lookup_session(self):

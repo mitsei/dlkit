@@ -1,8 +1,7 @@
 """Unit tests of assessment objects."""
 
+
 import unittest
-
-
 
 
 class TestQuestion(unittest.TestCase):

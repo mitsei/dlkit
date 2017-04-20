@@ -1,8 +1,7 @@
 """Unit tests of authorization records."""
 
+
 import unittest
-
-
 
 
 class TestAuthorizationRecord(unittest.TestCase):

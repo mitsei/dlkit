@@ -1,8 +1,7 @@
 """Unit tests of learning records."""
 
+
 import unittest
-
-
 
 
 class TestObjectiveRecord(unittest.TestCase):

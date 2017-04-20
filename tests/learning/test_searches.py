@@ -1,8 +1,7 @@
 """Unit tests of learning searches."""
 
+
 import unittest
-
-
 
 
 class TestObjectiveSearch(unittest.TestCase):

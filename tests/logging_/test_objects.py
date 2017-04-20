@@ -1,8 +1,7 @@
 """Unit tests of logging objects."""
 
+
 import unittest
-
-
 
 
 class TestLogEntry(unittest.TestCase):

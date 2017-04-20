@@ -1,8 +1,7 @@
 """Unit tests of grading queries."""
 
+
 import unittest
-
-
 
 
 class TestGradeQuery(unittest.TestCase):

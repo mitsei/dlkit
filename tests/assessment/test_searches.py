@@ -1,8 +1,7 @@
 """Unit tests of assessment searches."""
 
+
 import unittest
-
-
 
 
 class TestItemSearch(unittest.TestCase):

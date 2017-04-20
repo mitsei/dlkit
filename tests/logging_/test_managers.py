@@ -1,20 +1,21 @@
 """Unit tests of logging managers."""
 
+
 import unittest
+
+
+from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
+from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
+
+
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
-
-from dlkit.primordium.type.primitives import Type
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
-from dlkit.abstract_osid.osid import errors
-
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
 class TestLoggingProfile(unittest.TestCase):
@@ -23,7 +24,6 @@ class TestLoggingProfile(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
-
 
 
     def test_supports_logging(self):
@@ -92,7 +92,6 @@ class TestLoggingManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
-
 
 
     @unittest.skip('unimplemented test')
@@ -169,7 +168,6 @@ class TestLoggingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
-
 
 
     @unittest.skip('unimplemented test')

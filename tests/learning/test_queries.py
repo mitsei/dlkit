@@ -1,8 +1,7 @@
 """Unit tests of learning queries."""
 
+
 import unittest
-
-
 
 
 class TestObjectiveQuery(unittest.TestCase):

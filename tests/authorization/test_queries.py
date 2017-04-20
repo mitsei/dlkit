@@ -1,8 +1,7 @@
 """Unit tests of authorization queries."""
 
+
 import unittest
-
-
 
 
 class TestAuthorizationQuery(unittest.TestCase):

@@ -1,20 +1,21 @@
 """Unit tests of grading managers."""
 
+
 import unittest
+
+
+from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
+from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
+
+
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
-
-from dlkit.primordium.type.primitives import Type
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
-from dlkit.abstract_osid.osid import errors
-
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
 class TestGradingProfile(unittest.TestCase):
@@ -23,7 +24,6 @@ class TestGradingProfile(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
-
 
 
     def test_supports_grade_system_lookup(self):
@@ -128,7 +128,6 @@ class TestGradingManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
-
 
 
     def test_get_grade_system_lookup_session(self):
@@ -301,7 +300,6 @@ class TestGradingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
-
 
 
     def test_get_grade_system_lookup_session(self):

@@ -1,8 +1,7 @@
 """Unit tests of resource records."""
 
+
 import unittest
-
-
 
 
 class TestResourceRecord(unittest.TestCase):

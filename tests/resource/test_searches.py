@@ -1,8 +1,7 @@
 """Unit tests of resource searches."""
 
+
 import unittest
-
-
 
 
 class TestResourceSearch(unittest.TestCase):

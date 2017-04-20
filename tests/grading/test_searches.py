@@ -1,8 +1,7 @@
 """Unit tests of grading searches."""
 
+
 import unittest
-
-
 
 
 class TestGradeSystemSearch(unittest.TestCase):

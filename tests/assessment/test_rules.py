@@ -1,8 +1,7 @@
 """Unit tests of assessment rules."""
 
+
 import unittest
-
-
 
 
 class TestResponse(unittest.TestCase):

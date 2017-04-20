@@ -1,8 +1,7 @@
 """Unit tests of resource objects."""
 
+
 import unittest
-
-
 
 
 class TestResource(unittest.TestCase):

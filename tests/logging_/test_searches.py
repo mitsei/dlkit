@@ -1,8 +1,7 @@
 """Unit tests of logging searches."""
 
+
 import unittest
-
-
 
 
 class TestLogEntrySearch(unittest.TestCase):

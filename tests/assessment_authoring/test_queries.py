@@ -1,8 +1,7 @@
 """Unit tests of assessment.authoring queries."""
 
+
 import unittest
-
-
 
 
 class TestAssessmentPartQuery(unittest.TestCase):

@@ -1,8 +1,7 @@
 """Unit tests of assessment.authoring searches."""
 
+
 import unittest
-
-
 
 
 class TestAssessmentPartSearch(unittest.TestCase):

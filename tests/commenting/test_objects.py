@@ -1,8 +1,7 @@
 """Unit tests of commenting objects."""
 
+
 import unittest
-
-
 
 
 class TestComment(unittest.TestCase):

@@ -1,8 +1,7 @@
 """Unit tests of repository objects."""
 
+
 import unittest
-
-
 
 
 class TestAsset(unittest.TestCase):

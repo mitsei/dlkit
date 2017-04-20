@@ -1,8 +1,7 @@
 """Unit tests of commenting searches."""
 
+
 import unittest
-
-
 
 
 class TestCommentSearch(unittest.TestCase):

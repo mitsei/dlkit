@@ -1,20 +1,21 @@
 """Unit tests of assessment.authoring managers."""
 
+
 import unittest
+
+
+from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
+from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
+
+
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
-
-from dlkit.primordium.type.primitives import Type
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
-from dlkit.abstract_osid.osid import errors
-
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
 class TestAssessmentAuthoringProfile(unittest.TestCase):
@@ -23,7 +24,6 @@ class TestAssessmentAuthoringProfile(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-
 
 
     def test_supports_assessment_part_lookup(self):

@@ -1,8 +1,7 @@
 """Unit tests of grading records."""
 
+
 import unittest
-
-
 
 
 class TestGradeRecord(unittest.TestCase):

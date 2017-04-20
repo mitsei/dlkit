@@ -1,8 +1,7 @@
 """Unit tests of learning objects."""
 
+
 import unittest
-
-
 
 
 class TestObjective(unittest.TestCase):

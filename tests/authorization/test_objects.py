@@ -1,8 +1,7 @@
 """Unit tests of authorization objects."""
 
+
 import unittest
-
-
 
 
 class TestAuthorization(unittest.TestCase):

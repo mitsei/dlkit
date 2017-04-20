@@ -1,8 +1,7 @@
 """Unit tests of assessment records."""
 
+
 import unittest
-
-
 
 
 class TestQuestionRecord(unittest.TestCase):

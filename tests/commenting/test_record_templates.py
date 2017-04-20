@@ -1,8 +1,7 @@
 """Unit tests of commenting records."""
 
+
 import unittest
-
-
 
 
 class TestCommentRecord(unittest.TestCase):

@@ -1,8 +1,7 @@
 """Unit tests of repository searches."""
 
+
 import unittest
-
-
 
 
 class TestAssetSearch(unittest.TestCase):

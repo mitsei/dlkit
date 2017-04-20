@@ -1,8 +1,7 @@
 """Unit tests of resource queries."""
 
+
 import unittest
-
-
 
 
 class TestResourceQuery(unittest.TestCase):
