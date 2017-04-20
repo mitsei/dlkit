@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.learning import managers as abc_learning_managers
 
 
-
-
 class LearningProfile(abc_learning_managers.LearningProfile, osid_managers.OsidProfile):
     """The ``LearningProfile`` describes the interoperability among learning services."""
 
@@ -731,7 +729,6 @@ class LearningManager(abc_learning_managers.LearningManager, osid_managers.OsidM
         objective bank hierarchy
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
-
 
     """
 
@@ -1946,7 +1943,6 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         objective bank hierarchy
       * ``ObjectiveBankHierarchyDesignSession:`` a session to manage the
         objective bank hierarchy
-
 
     """
 
@@ -3202,5 +3198,3 @@ class LearningProxyManager(abc_learning_managers.LearningProxyManager, osid_mana
         raise Unimplemented()
 
     learning_batch_proxy_manager = property(fget=get_learning_batch_proxy_manager)
-
-

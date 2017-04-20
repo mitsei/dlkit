@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.authentication import managers as abc_authentication_managers
 
 
-
-
 class AuthenticationProfile(abc_authentication_managers.AuthenticationProfile, osid_managers.OsidProfile):
     """The ``AuthenticationProfile`` describes the interoperability among authentication services."""
 
@@ -374,7 +372,6 @@ class AuthenticationManager(abc_authentication_managers.AuthenticationManager, o
         ``Agency`` hierarchy
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
-
 
     """
 
@@ -788,7 +785,6 @@ class AuthenticationProxyManager(abc_authentication_managers.AuthenticationProxy
         ``Agency`` hierarchy
       * ``AgencyHierarchyDesignSession`` : a session to manage the
         ``Agency`` hierarchy
-
 
     """
 
@@ -1209,5 +1205,3 @@ class AuthenticationProxyManager(abc_authentication_managers.AuthenticationProxy
         raise Unimplemented()
 
     authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
-
-

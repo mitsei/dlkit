@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.assessment_authoring import managers as abc_assessment_authoring_managers
 
 
-
-
 class AssessmentAuthoringProfile(abc_assessment_authoring_managers.AssessmentAuthoringProfile, osid_managers.OsidProfile):
     """The ``AssessmentAuthoringProfile`` describes the interoperability among assessment authoring services."""
 
@@ -544,7 +542,6 @@ class AssessmentAuthoringManager(abc_assessment_authoring_managers.AssessmentAut
         sequence rule enabler mappings
       * ``SequenceRuleEnablerRuleApplicationSession:`` a session to
         apply sequence rule enablers
-
 
     """
 
@@ -1446,7 +1443,6 @@ class AssessmentAuthoringProxyManager(abc_assessment_authoring_managers.Assessme
       * ``SequenceRuleEnablerRuleApplicationSession:`` a session to
         apply sequence rule enablers
 
-
     """
 
     def get_assessment_part_lookup_session(self, proxy=None):
@@ -2345,5 +2341,3 @@ class AssessmentAuthoringProxyManager(abc_assessment_authoring_managers.Assessme
         if bank_id is None or proxy is None:
             raise NullArgument
         raise Unimplemented()
-
-

@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.relationship import managers as abc_relationship_managers
 
 
-
-
 class RelationshipProfile(abc_relationship_managers.RelationshipProfile, osid_managers.OsidProfile):
     """The relationship profile describes the interoperability among relationship services."""
 
@@ -349,7 +347,6 @@ class RelationshipManager(abc_relationship_managers.RelationshipManager, osid_ma
         families
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
-
 
     """
 
@@ -766,7 +763,6 @@ class RelationshipProxyManager(abc_relationship_managers.RelationshipProxyManage
         families
       * ``FamilyHierarchyDesignSession:`` a session to manage a family
         hierarchy
-
 
     """
 
@@ -1190,5 +1186,3 @@ class RelationshipProxyManager(abc_relationship_managers.RelationshipProxyManage
         raise Unimplemented()
 
     relationship_rules_proxy_manager = property(fget=get_relationship_rules_proxy_manager)
-
-

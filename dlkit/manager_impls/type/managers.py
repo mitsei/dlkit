@@ -12,8 +12,6 @@ from ..osid.osid_errors import Unimplemented
 from dlkit.abstract_osid.type import managers as abc_type_managers
 
 
-
-
 class TypeProfile(abc_type_managers.TypeProfile, osid_managers.OsidProfile):
     """The ``TypeProfile`` describes the interoperability among type services."""
 
@@ -113,5 +111,3 @@ class TypeProxyManager(abc_type_managers.TypeProxyManager, osid_managers.OsidPro
 
         """
         raise Unimplemented()
-
-

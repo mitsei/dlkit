@@ -11,8 +11,6 @@ from .osid_errors import Unimplemented
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
 
 
-
-
 class Sourceable(abc_osid_markers.Sourceable):
     """``Sourceble`` is used for ``OsidObjects`` where information about a provider is appropriate.
 
@@ -29,7 +27,6 @@ class Sourceable(abc_osid_markers.Sourceable):
 
         """
 
-
     provider_id = property(fget=get_provider_id)
 
     def get_provider(self):
@@ -41,7 +38,6 @@ class Sourceable(abc_osid_markers.Sourceable):
 
         """
 
-
     provider = property(fget=get_provider)
 
     def get_branding_ids(self):
@@ -51,7 +47,6 @@ class Sourceable(abc_osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     branding_ids = property(fget=get_branding_ids)
 
@@ -63,7 +58,6 @@ class Sourceable(abc_osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     branding = property(fget=get_branding)
 
@@ -77,7 +71,4 @@ class Sourceable(abc_osid_markers.Sourceable):
 
         """
 
-
     license_ = property(fget=get_license)
-
-

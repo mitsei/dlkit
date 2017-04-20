@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.hierarchy import managers as abc_hierarchy_managers
 
 
-
-
 class HierarchyProfile(abc_hierarchy_managers.HierarchyProfile, osid_managers.OsidProfile):
     """The hierarchy profile describes the interoperability among hierarchy services."""
 
@@ -201,7 +199,6 @@ class HierarchyManager(abc_hierarchy_managers.HierarchyManager, osid_managers.Os
         hierarchies
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
-
 
     """
 
@@ -462,7 +459,6 @@ class HierarchyProxyManager(abc_hierarchy_managers.HierarchyProxyManager, osid_m
       * ``HierarchyNotificationSession:`` a session for subscribing to
         changes in hierarchies
 
-
     """
 
     def get_hierarchy_traversal_session(self, proxy=None):
@@ -721,5 +717,3 @@ class HierarchyProxyManager(abc_hierarchy_managers.HierarchyProxyManager, osid_m
         if proxy is None:
             raise NullArgument()
         raise Unimplemented()
-
-

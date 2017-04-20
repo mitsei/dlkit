@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.authorization import managers as abc_authorization_managers
 
 
-
-
 class AuthorizationProfile(abc_authorization_managers.AuthorizationProfile, osid_managers.OsidProfile):
     """The ``AuthorizationProfile`` describes the interoperability among authorization services."""
 
@@ -730,7 +728,6 @@ class AuthorizationManager(abc_authorization_managers.AuthorizationManager, osid
         hierarchy
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
-
 
     """
 
@@ -1733,7 +1730,6 @@ class AuthorizationProxyManager(abc_authorization_managers.AuthorizationProxyMan
         hierarchy
       * ``VaultHierarchyDesignSession`` : a session to manage the
         ``Vault`` hierarchy
-
 
     """
 
@@ -2760,5 +2756,3 @@ class AuthorizationProxyManager(abc_authorization_managers.AuthorizationProxyMan
         raise Unimplemented()
 
     authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
-
-

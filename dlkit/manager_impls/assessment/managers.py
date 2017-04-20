@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.assessment import managers as abc_assessment_managers
 
 
-
-
 class AssessmentProfile(abc_assessment_managers.AssessmentProfile, osid_managers.OsidProfile):
     """The ``AssessmentProfile`` describes the interoperability among assessment services."""
 
@@ -894,7 +892,6 @@ class AssessmentManager(abc_assessment_managers.AssessmentManager, osid_managers
         hierarchy
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
-
 
     """
 
@@ -2228,7 +2225,6 @@ class AssessmentProxyManager(abc_assessment_managers.AssessmentProxyManager, osi
         hierarchy
       * ``BankHierarchyDesignSession`` : a session to manage the
         ``Bank`` hierarchy
-
 
     """
 
@@ -3583,5 +3579,3 @@ class AssessmentProxyManager(abc_assessment_managers.AssessmentProxyManager, osi
         raise Unimplemented()
 
     assessment_batch_proxy_manager = property(fget=get_assessment_batch_proxy_manager)
-
-

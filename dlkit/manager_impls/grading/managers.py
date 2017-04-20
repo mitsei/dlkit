@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.grading import managers as abc_grading_managers
 
 
-
-
 class GradingProfile(abc_grading_managers.GradingProfile, osid_managers.OsidProfile):
     """The ``GradingProfile`` describes the interoperability among grading services."""
 
@@ -684,7 +682,6 @@ class GradingManager(abc_grading_managers.GradingManager, osid_managers.OsidMana
         gradebook hierarchy
       * ``GradebookHierarchyDesignSession:`` a session to manage the
         gradebook hierarchy
-
 
     """
 
@@ -1575,7 +1572,6 @@ class GradingProxyManager(abc_grading_managers.GradingProxyManager, osid_manager
         gradebook hierarchy
       * ``GradebookHierarchyDesignSession:`` a session to manage the
         gradebook hierarchy
-
 
     """
 
@@ -2482,5 +2478,3 @@ class GradingProxyManager(abc_grading_managers.GradingProxyManager, osid_manager
         raise Unimplemented()
 
     grading_transform_proxy_manager = property(fget=get_grading_transform_proxy_manager)
-
-

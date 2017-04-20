@@ -10,8 +10,6 @@
 from dlkit.abstract_osid.osid import objects as abc_osid_objects
 
 
-
-
 class OsidList(abc_osid_objects.OsidList):
     """``OsidList`` is the top-level interface for all OSID lists.
 
@@ -36,11 +34,10 @@ class OsidList(abc_osid_objects.OsidList):
     elements is not known.
 
     """
-
     def __init__(self, iter_object=None, count=None, db_prefix='', runtime=None):
         if iter_object is None:
             iter_object = []
-        if count != None:
+        if count is not None:
             self._count = count
         elif isinstance(iter_object, dict) or isinstance(iter_object, list):
             self._count = len(iter_object)
@@ -59,13 +56,12 @@ class OsidList(abc_osid_objects.OsidList):
             next_object = self._iter_object.next()
         except:
             raise
-        if self._count != None:
+        if self._count is not None:
             self._count -= 1
         return next_object
 
     def len(self):
         return self.available()
-
 
     def has_next(self):
         """Tests if there are more elements in this list.
@@ -80,7 +76,7 @@ class OsidList(abc_osid_objects.OsidList):
         return ``true`` for this method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return bool(self._count)
         else:
@@ -114,7 +110,7 @@ class OsidList(abc_osid_objects.OsidList):
         as a parameter to the bulk retrieval method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return self._count
         else:
@@ -132,7 +128,5 @@ class OsidList(abc_osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        ### STILL NEED TO IMPLEMENT THIS ###
+        # STILL NEED TO IMPLEMENT THIS ###
         pass
-
-

@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.proxy import managers as abc_proxy_managers
 
 
-
-
 class ProxyProfile(abc_proxy_managers.ProxyProfile, osid_managers.OsidProfile):
     """The ``ProxyProfile`` describes the interoperability among proxy services."""
 
@@ -92,7 +90,6 @@ class ProxyManager(abc_proxy_managers.ProxyManager, osid_managers.OsidManager, P
 
       * ``ProxySession:`` a session to acquire proxy interfaces
 
-
     """
 
     def get_proxy_session(self):
@@ -119,7 +116,6 @@ class ProxyProxyManager(abc_proxy_managers.ProxyProxyManager, osid_managers.Osid
 
       * ``ProxySession:`` a session to acquire proxies
 
-
     """
 
     def get_proxy_session(self, proxy=None):
@@ -137,5 +133,3 @@ class ProxyProxyManager(abc_proxy_managers.ProxyProxyManager, osid_managers.Osid
         if proxy is None:
             raise NullArgument()
         raise Unimplemented()
-
-

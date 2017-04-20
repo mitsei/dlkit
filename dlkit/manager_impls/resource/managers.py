@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.resource import managers as abc_resource_managers
 
 
-
-
 class ResourceProfile(abc_resource_managers.ResourceProfile, osid_managers.OsidProfile):
     """The resource profile describes interoperability among resource services."""
 
@@ -578,7 +576,6 @@ class ResourceManager(abc_resource_managers.ResourceManager, osid_managers.OsidM
       * ``BinHierarchySession:`` a session to traverse bin hierarchies
       * ``BinHierarchyDesignSession:`` a session to manage bin
         hierarchies
-
 
     """
 
@@ -1517,7 +1514,6 @@ class ResourceProxyManager(abc_resource_managers.ResourceProxyManager, osid_mana
       * ``BinHierarchySession:`` a session to traverse bin hierarchies
       * ``BinHierarchyDesignSession:`` a session to manage bin
         hierarchies
-
 
     """
 
@@ -2480,5 +2476,3 @@ class ResourceProxyManager(abc_resource_managers.ResourceProxyManager, osid_mana
         raise Unimplemented()
 
     resource_demographic_proxy_manager = property(fget=get_resource_demographic_proxy_manager)
-
-

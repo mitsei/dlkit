@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo grading'
 
 DESCRIPTION = 'MongoDB based grading implementation'
 
-VERSIONCOMPONENTS = [0, 1, 149]
+VERSIONCOMPONENTS = [0, 1, 154]
 
 RELEASEDATE = "2017-04-20"
 

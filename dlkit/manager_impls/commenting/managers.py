@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.commenting import managers as abc_commenting_managers
 
 
-
-
 class CommentingProfile(abc_commenting_managers.CommentingProfile, osid_managers.OsidProfile):
     """The commenting profile describes the interoperability among commenting services."""
 
@@ -1226,5 +1224,3 @@ class CommentingProxyManager(abc_commenting_managers.CommentingProxyManager, osi
         raise Unimplemented()
 
     commenting_batch_proxy_manager = property(fget=get_commenting_batch_proxy_manager)
-
-

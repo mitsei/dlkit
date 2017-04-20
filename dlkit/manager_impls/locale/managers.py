@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.locale import managers as abc_locale_managers
 
 
-
-
 class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile):
     """The locale profile describes the interoperability of locale services."""
 
@@ -179,7 +177,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_language_types_for_source(self, source_language_type=None, source_script_type=None):
         """Gets the list of target language types for a given source language type.
 
@@ -193,7 +190,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_language_types(self):
         """Gets all the source language types supported.
@@ -218,7 +214,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def supports_numeric_format_types(self, numeric_format_type=None):
         """Tests if a given numeric format type is supported.
 
@@ -230,7 +225,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_numeric_format_types(self):
         """Gets all the numeric format types supported.
@@ -261,7 +255,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_calendar_types_for_formatting(self):
         """Gets all the calendar types for which formats are available.
 
@@ -269,7 +262,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     calendar_types_for_formatting = property(fget=get_calendar_types_for_formatting)
 
@@ -284,7 +276,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_time_types_for_formatting(self):
         """Gets all the time types for which formatting is available.
 
@@ -292,7 +283,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     time_types_for_formatting = property(fget=get_time_types_for_formatting)
 
@@ -306,7 +296,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_currency_types_for_formatting(self, currency_type=None, numeric_format_type=None):
         """Tests if a given currency formatting is supported.
@@ -322,7 +311,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_currency_types_for_formatting(self):
         """Gets all the currency types for which formatting is available.
 
@@ -330,7 +318,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     currency_types_for_formatting = property(fget=get_currency_types_for_formatting)
 
@@ -344,7 +331,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_coordinate_types_for_formatting(self, coordinate_type=None, coordinate_format_type=None):
         """Tests if a given coordinate formatting is supported.
@@ -361,7 +347,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_coordinate_types_for_formatting(self):
         """Gets all the coordinate types for which formatting is available.
 
@@ -369,7 +354,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     coordinate_types_for_formatting = property(fget=get_coordinate_types_for_formatting)
 
@@ -384,7 +368,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_unit_types_for_conversion(self, source_unit_type=None, target_unit_type=None):
         """Tests if a given measure conversion is supported.
@@ -401,7 +384,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_unit_types_for_source(self, source_unit_type=None):
         """Gets the list of target measure types for a given source measure type.
 
@@ -413,7 +395,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_unit_types(self):
         """Gets all the source unit types supported.
@@ -442,7 +423,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_currency_types_for_source(self, source_currency_type=None):
         """Gets the list of target currency types for a given source currency type.
 
@@ -454,7 +434,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_currency_types(self):
         """Gets the list of source currency types.
@@ -483,7 +462,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_calendar_types_for_source(self, source_calendar_type=None):
         """Gets the list of target calendar types for a given source calendar type.
 
@@ -495,7 +473,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_calendar_types(self):
         """Gets the list of source calendar types.
@@ -524,7 +501,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_time_types_for_source(self, source_time_type=None):
         """Gets the list of target time types for a given source time type.
 
@@ -535,7 +511,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_time_types(self):
         """Gets the list of source time types.
@@ -559,7 +534,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_calendar_types_for_time_type(self, time_type=None):
         """Gets the list of calendar types supported for a given time type where they are both used in a ``DateTime``.
 
@@ -570,7 +544,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_calendar_time_types(self, calendar_type=None, time_type=None):
         """Tests if a given calendar and time type are used together in a ``DateTime``.
@@ -584,7 +557,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_coordinate_types_for_conversion(self, source_coordinate_type=None, target_coordinate_type=None):
         """Tests if a given coordinate type for conversion is supported.
@@ -601,7 +573,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_coordinate_types_for_source(self, source_coordinate_type=None):
         """Gets the list of target coordinate types for a given source coordinate type.
 
@@ -613,7 +584,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_coordinate_types(self):
         """Gets the list of source coordinate types.
@@ -642,7 +612,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_spatial_unit_record_types_for_source(self, source_spatial_unit_record_type=None):
         """Gets the list of target spatial unit types for a given source spatial unit type.
 
@@ -655,7 +624,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_spatial_unit_record_types(self):
         """Gets the list of source spatial unit record types.
@@ -684,7 +652,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
 
         """
 
-
     def get_format_types_for_source(self, source_format_type=None):
         """Gets the list of target format types for a given source spatial unit type.
 
@@ -696,7 +663,6 @@ class LocaleProfile(abc_locale_managers.LocaleProfile, osid_managers.OsidProfile
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_source_format_types(self):
         """Gets the list of source format types.
@@ -739,7 +705,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
       * ``FormatConversionSession:`` a session to convert text formats
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
-
 
     """
 
@@ -787,7 +752,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_translation_admin_session(self):
         """Gets a language translation administration service for updating a locale dictionary.
 
@@ -833,7 +797,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_numeric_formatting_session(self):
         """Gets an ``OsidSession`` associated with the numeric formatting service.
 
@@ -869,7 +832,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_calendar_formatting_session(self):
         """Gets an ``OsidSession`` associated with the calendar formatting service.
@@ -913,7 +875,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_currency_formatting_session(self):
         """Gets an ``OsidSession`` associated with the currency formatting service.
 
@@ -951,7 +912,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_coordinate_formatting_session(self):
         """Gets an ``OsidSession`` associated with the coordinate formatting service.
@@ -991,7 +951,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_unit_conversion_session(self):
         """Gets a unit conversion session.
@@ -1048,7 +1007,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_calendar_conversion_session(self):
         """Gets a calendar conversion session.
 
@@ -1095,7 +1053,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_coordinate_conversion_session(self):
         """Gets a coordinate conversion session.
 
@@ -1134,7 +1091,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_spatial_unit_conversion_session(self):
         """Gets a spatial unit conversion session.
@@ -1175,7 +1131,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_format_conversion_session(self):
         """Gets a text format conversion session.
 
@@ -1215,7 +1170,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
 
         """
 
-
     def get_calendar_info_session(self):
         """Gets a calendar informational session session.
 
@@ -1254,7 +1208,6 @@ class LocaleManager(abc_locale_managers.LocaleManager, osid_managers.OsidManager
         """
 
 
-
 class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.OsidProxyManager, LocaleProfile):
     """The locale manager provides access to locale sessions and provides interoperability tests for various aspects of this service.
 
@@ -1285,7 +1238,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
       * ``FormatConversionSession:`` a session to convert text formats
       * ``CalendarInfoSession:`` a session for examining calendaring and
         time systems
-
 
     """
 
@@ -1336,7 +1288,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_translation_admin_session(self, proxy=None):
         """Gets a language translation administration service for updating a locale dictionary.
 
@@ -1385,7 +1336,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_numeric_formatting_session(self, proxy=None):
         """Gets an ``OsidSession`` associated with the numeric formatting service.
 
@@ -1425,7 +1375,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_calendar_formatting_session(self, proxy=None):
         """Gets an ``OsidSession`` associated with the calendar formatting service.
@@ -1472,7 +1421,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_currency_formatting_session(self, proxy=None):
         """Gets an ``OsidSession`` associated with the currency formatting service.
 
@@ -1513,7 +1461,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_coordinate_formatting_session(self, proxy=None):
         """Gets an ``OsidSession`` associated with the coordinate formatting service.
@@ -1556,7 +1503,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_unit_conversion_session(self, proxy=None):
         """Gets a unit conversion session.
@@ -1618,7 +1564,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_calendar_conversion_session(self, proxy=None):
         """Gets a calendar conversion session.
 
@@ -1668,7 +1613,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_coordinate_conversion_session(self, proxy=None):
         """Gets a coordinate conversion session.
 
@@ -1710,7 +1654,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
 
     def get_spatial_unit_conversion_session(self, proxy=None):
         """Gets a spatial unit conversion session.
@@ -1754,7 +1697,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_format_conversion_session(self, proxy=None):
         """Gets a text format conversion session.
 
@@ -1797,7 +1739,6 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
 
         """
 
-
     def get_calendar_info_session(self, proxy=None):
         """Gets a calendar informational session session.
 
@@ -1837,6 +1778,3 @@ class LocaleProxyManager(abc_locale_managers.LocaleProxyManager, osid_managers.O
         ``supports_visible_federation()`` are ``true``.*
 
         """
-
-
-

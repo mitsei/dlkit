@@ -14,8 +14,6 @@ from ..primitives import Type
 from dlkit.abstract_osid.type import objects as abc_type_objects
 
 
-
-
 class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``TypeList`` provides a means for accessing ``Type`` elements sequentially either one at a time or many at a time.
 
@@ -25,8 +23,6 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
       while (tl.hasNext()) {
            Type[] types = tl.getNextTypes(tl.available());
       }
-
-
 
     """
 
@@ -45,7 +41,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             next_item = self.next()
         except StopIteration:
             raise IllegalState('no more elements available in this list')
-        except: #Need to specify exceptions here
+        except:  # Need to specify exceptions here
             raise OperationFailed()
         else:
             return next_item
@@ -88,9 +84,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             while i < n:
                 try:
                     next_list.append(self.next())
-                except: #Need to specify exceptions here
+                except:  # Need to specify exceptions here
                     raise OperationFailed()
                 i += 1
             return next_list
-
-

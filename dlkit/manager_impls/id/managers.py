@@ -11,8 +11,6 @@ from ..osid import managers as osid_managers
 from dlkit.abstract_osid.id import managers as abc_id_managers
 
 
-
-
 class IdProfile(abc_id_managers.IdProfile, osid_managers.OsidProfile):
     """The ``IdProfile`` describes the interoperability among id services."""
 
@@ -25,7 +23,6 @@ class IdProfile(abc_id_managers.IdProfile, osid_managers.OsidProfile):
 
         """
 
-
     def supports_id_issue(self):
         """Tests if an ``Id`` issue service is supported.
 
@@ -34,7 +31,6 @@ class IdProfile(abc_id_managers.IdProfile, osid_managers.OsidProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def supports_id_admin(self):
         """Tests if an ``Id`` administrative service is supported.
@@ -45,7 +41,6 @@ class IdProfile(abc_id_managers.IdProfile, osid_managers.OsidProfile):
 
         """
 
-
     def supports_id_batch(self):
         """Tests for the availability of an Id batch service.
 
@@ -54,7 +49,6 @@ class IdProfile(abc_id_managers.IdProfile, osid_managers.OsidProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
 
 class IdManager(abc_id_managers.IdManager, osid_managers.OsidManager, IdProfile):
@@ -79,7 +73,6 @@ class IdManager(abc_id_managers.IdManager, osid_managers.OsidManager, IdProfile)
 
         """
 
-
     id_lookup_session = property(fget=get_id_lookup_session)
 
     def get_id_issue_session(self):
@@ -92,7 +85,6 @@ class IdManager(abc_id_managers.IdManager, osid_managers.OsidManager, IdProfile)
         ``supports_id_issue()`` is ``true``.*
 
         """
-
 
     id_issue_session = property(fget=get_id_issue_session)
 
@@ -107,7 +99,6 @@ class IdManager(abc_id_managers.IdManager, osid_managers.OsidManager, IdProfile)
 
         """
 
-
     id_admin_session = property(fget=get_id_admin_session)
 
     def get_id_batch_manager(self):
@@ -120,7 +111,6 @@ class IdManager(abc_id_managers.IdManager, osid_managers.OsidManager, IdProfile)
         ``supports_id_batch()`` is ``true``.*
 
         """
-
 
     id_batch_manager = property(fget=get_id_batch_manager)
 
@@ -151,7 +141,6 @@ class IdProxyManager(abc_id_managers.IdProxyManager, osid_managers.OsidProxyMana
 
         """
 
-
     def get_id_issue_session(self, proxy=None):
         """Gets the session associated with the id issue service.
 
@@ -164,7 +153,6 @@ class IdProxyManager(abc_id_managers.IdProxyManager, osid_managers.OsidProxyMana
         ``supports_id_issue()`` is ``true``.*
 
         """
-
 
     def get_id_admin_session(self, proxy=None):
         """Gets the session associated with the id administrative service.
@@ -179,7 +167,6 @@ class IdProxyManager(abc_id_managers.IdProxyManager, osid_managers.OsidProxyMana
 
         """
 
-
     def get_id_batch_proxy_manager(self):
         """Gets an ``IdnProxyManager``.
 
@@ -192,7 +179,4 @@ class IdProxyManager(abc_id_managers.IdProxyManager, osid_managers.OsidProxyMana
 
         """
 
-
     id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)
-
-

@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.repository import managers as abc_repository_managers
 
 
-
-
 class RepositoryProfile(abc_repository_managers.RepositoryProfile, osid_managers.OsidProfile):
     """The repository profile describes interoperability among repository services."""
 
@@ -648,7 +646,6 @@ class RepositoryManager(abc_repository_managers.RepositoryManager, osid_managers
         hierarchies
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
-
 
     """
 
@@ -1507,7 +1504,6 @@ class RepositoryProxyManager(abc_repository_managers.RepositoryProxyManager, osi
         hierarchies
       * ``RepositoryHierarchyDesignSession:`` a session to manage
         repository hierarchies
-
 
     """
 
@@ -2394,5 +2390,3 @@ class RepositoryProxyManager(abc_repository_managers.RepositoryProxyManager, osi
         raise Unimplemented()
 
     repository_rules_proxy_manager = property(fget=get_repository_rules_proxy_manager)
-
-

@@ -13,8 +13,6 @@ from .osid_errors import Unimplemented
 from dlkit.abstract_osid.osid import managers as abc_osid_managers
 
 
-
-
 class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     """The ``OsidProfile`` defines the interoperability areas of an OSID.
 
@@ -38,7 +36,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     id_ = property(fget=get_id)
 
     ident = property(fget=get_id)
@@ -51,7 +48,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     display_name = property(fget=get_display_name)
 
     def get_description(self):
@@ -61,7 +57,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     description = property(fget=get_description)
 
@@ -74,7 +69,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     version = property(fget=get_version)
 
     def get_release_date(self):
@@ -84,7 +78,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     release_date = property(fget=get_release_date)
 
@@ -101,7 +94,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     def get_locales(self):
         """Gets the locales supported in this service.
 
@@ -109,7 +101,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     locales = property(fget=get_locales)
 
@@ -122,7 +113,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     def supports_journal_branching(self):
         """Test for support of a journal branching service.
 
@@ -131,7 +121,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def get_branch_id(self):
         """Gets the ``Branch Id`` representing this service branch.
@@ -142,7 +131,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     branch_id = property(fget=get_branch_id)
 
@@ -157,7 +145,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     branch = property(fget=get_branch)
 
     def get_proxy_record_types(self):
@@ -171,7 +158,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
 
         """
 
-
     proxy_record_types = property(fget=get_proxy_record_types)
 
     def supports_proxy_record_type(self, proxy_record_type=None):
@@ -184,7 +170,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
 
 class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
@@ -226,7 +211,6 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
 
         """
 
-
     def rollback_service(self, rollback_time=None):
         """Rolls back this service to a point in time.
 
@@ -241,7 +225,6 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
 
         """
 
-
     def change_branch(self, branch_id=None):
         """Changes the service branch.
 
@@ -255,7 +238,6 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
 
 class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
@@ -305,7 +287,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
 
         """
 
-
     def rollback_service(self, rollback_time=None, proxy=None):
         """Rolls back this service to a point in time.
 
@@ -321,7 +302,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
     def change_branch(self, branch_id=None, proxy=None):
         """Changes the service branch.
@@ -339,7 +319,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         """
 
 
-
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
     """The ``OsidRuntimeProfile`` defines the service aspects of the OSID runtime service."""
 
@@ -351,7 +330,6 @@ class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-
 
 
 class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, OsidRuntimeProfile):
@@ -391,7 +369,6 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
 
         """
 
-
     def get_proxy_manager(self, osid=None, implementation=None, version=None):
         """Finds, loads and instantiates providers of OSID managers.
 
@@ -426,7 +403,6 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
 
         """
 
-
     def get_configuration(self):
         """Gets the current configuration in the runtime environment.
 
@@ -440,7 +416,4 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
 
         """
 
-
     configuration = property(fget=get_configuration)
-
-

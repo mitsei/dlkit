@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.logging_ import managers as abc_logging_managers
 
 
-
-
 class LoggingProfile(abc_logging_managers.LoggingProfile, osid_managers.OsidProfile):
     """The logging profile describes the interoperability among logging services."""
 
@@ -1258,5 +1256,3 @@ class LoggingProxyManager(abc_logging_managers.LoggingProxyManager, osid_manager
         raise Unimplemented()
 
     logging_batch_proxy_manager = property(fget=get_logging_batch_proxy_manager)
-
-

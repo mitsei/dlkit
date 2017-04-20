@@ -14,8 +14,6 @@ from ..type.objects import TypeList
 from dlkit.abstract_osid.authentication_process import managers as abc_authentication_process_managers
 
 
-
-
 class AuthenticationProcessProfile(abc_authentication_process_managers.AuthenticationProcessProfile, osid_managers.OsidProfile):
     """The ``AuthenticationProcessProfile`` describes the interoperability among authentication process services."""
 
@@ -239,7 +237,6 @@ class AuthenticationProcessManager(abc_authentication_process_managers.Authentic
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
 
     def get_authentication_acquisition_session(self):
@@ -365,7 +362,6 @@ class AuthenticationProcessProxyManager(abc_authentication_process_managers.Auth
       * ``CircleOfTrustSession:`` a session to examine agent circles of
         trust
 
-
     """
 
     def get_authentication_acquisition_session(self, proxy=None):
@@ -482,5 +478,3 @@ class AuthenticationProcessProxyManager(abc_authentication_process_managers.Auth
         if agency_id is None or proxy is None:
             raise NullArgument
         raise Unimplemented()
-
-
