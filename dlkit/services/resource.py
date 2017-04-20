@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.resource import objects as abc_resource_objects
 from dlkit.manager_impls.resource import managers as resource_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class ResourceProfile(osid.OsidProfile, resource_managers.ResourceProfile):
     """ResourceProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_resource_lookup(self):
         """Pass through to provider supports_resource_lookup"""
         # Implemented from kitosid template for -
@@ -294,6 +293,7 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_resource_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_resource_lookup_session"""
         # Implemented from kitosid template for -
@@ -525,8 +525,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         for cat in catalogs:
             cat_list.append(Bin(self._provider_manager, cat, self._runtime, self._proxy))
         return BinList(cat_list)
-
-
 ##
 # The following methods are from osid.resource.ResourceBinAssignmentSession
 
@@ -565,8 +563,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         self._get_provider_session('resource_bin_assignment_session').unassign_resource_from_bin(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.BinLookupSession
 
@@ -580,10 +576,11 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         """Pass through to provider BinLookupSession.get_bin"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Bin(self._provider_manager,
-                           self._get_provider_session('bin_lookup_session').get_bin(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Bin(
+            self._provider_manager,
+            self._get_provider_session('bin_lookup_session').get_bin(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_bins_by_ids(self, *args, **kwargs):
         """Pass through to provider BinLookupSession.get_bins_by_ids"""
@@ -646,8 +643,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         return BinList(cat_list)
 
     bins = property(fget=get_bins)
-
-
 ##
 # The following methods are from osid.resource.BinQuerySession
 
@@ -670,8 +665,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.BinQuerySession.get_bins_by_query_template
         return self._get_provider_session('bin_query_session').get_bins_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.BinAdminSession
 
@@ -697,10 +690,11 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         """Pass through to provider BinAdminSession.create_bin"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Bin(self._provider_manager,
-                           self._get_provider_session('bin_admin_session').create_bin(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Bin(
+            self._provider_manager,
+            self._get_provider_session('bin_admin_session').create_bin(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_bins(self):
         """Pass through to provider BinAdminSession.can_update_bins"""
@@ -729,10 +723,11 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Bin(self._provider_manager,
-                           self._get_provider_session('bin_admin_session').update_bin(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Bin(
+            self._provider_manager,
+            self._get_provider_session('bin_admin_session').update_bin(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_bin(self, bin_form, *args, **kwargs):
         """Pass through to provider BinAdminSession.update_bin"""
@@ -764,8 +759,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('bin_admin_session').alias_bin(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.BinHierarchySession
 
@@ -878,8 +871,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchySession.get_bin_nodes
         return self._get_provider_session('bin_hierarchy_session').get_bin_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.BinHierarchyDesignSession
 
@@ -934,8 +925,6 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchyDesignSession.remove_child_bins
         self._get_provider_session('bin_hierarchy_design_session').remove_child_bins(*args, **kwargs)
-
-
 
 
 class ResourceProxyManager(osid.OsidProxyManager, ResourceProfile, resource_managers.ResourceProxyManager):
@@ -1057,8 +1046,8 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -1189,6 +1178,7 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_bin_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1278,8 +1268,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('resource_lookup_session').get_resources()
 
     resources = property(fget=get_resources)
-
-
 ##
 # The following methods are from osid.resource.ResourceQuerySession
 
@@ -1302,8 +1290,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('resource_query_session').get_resources_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.ResourceSearchSession
 
@@ -1330,8 +1316,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
     def get_resource_query_from_inspector(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.resource.ResourceAdminSession
 
@@ -1423,8 +1407,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         # Implemented from kitosid template for -
         # osid.resource.ResourceAdminSession.alias_resources
         self._get_provider_session('resource_admin_session').alias_resource(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.ResourceNotificationSession
 
@@ -1465,8 +1447,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
     def acknowledge_resource_notification(self, *args, **kwargs):
         """Pass through to provider ResourceNotificationSession.acknowledge_resource_notification"""
         self._get_provider_session('resource_notification_session').acknowledge_resource_notification(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.ResourceAgentSession
 
@@ -1505,8 +1485,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
 
     def get_agents_by_resource(self, *args, **kwargs):
         return self._get_provider_session('resource_agent_session').get_agents_by_resource(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.resource.ResourceAgentAssignmentSession
 
@@ -1521,8 +1499,6 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
 
     def unassign_agent_from_resource(self, *args, **kwargs):
         return self._get_provider_session('resource_agent_assignment_session').unassign_agent_from_resource(*args, **kwargs)
-
-
 
 
 class BinList(abc_resource_objects.BinList, osid.OsidList):
@@ -1565,5 +1541,3 @@ class BinList(abc_resource_objects.BinList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

@@ -13,11 +13,9 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.manager_impls.locale import managers as locale_managers
-
 
 
 DEFAULT = 0
@@ -38,6 +36,7 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
     """LocaleProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def get_language_types_for_source(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -319,10 +318,6 @@ class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_ma
         self.close_sessions()
 
 
-
 class LocaleProxyManager(osid.OsidProxyManager, LocaleProfile, locale_managers.LocaleProxyManager):
     """LocaleProxyManager convenience adapter including related Session methods."""
     pass
-
-
-

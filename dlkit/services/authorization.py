@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.authorization import objects as abc_authorization_objects
 from dlkit.manager_impls.authorization import managers as authorization_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
     """AuthorizationProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_authorization(self):
         """Pass through to provider supports_authorization"""
         # Implemented from kitosid template for -
@@ -152,9 +151,6 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
         return self._provider_manager.get_authorization_condition_record_types()
 
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
-
-    ##Implemented from authorization.batch - AuthorizationBatchProfile
-
 
 
 class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProfile, authorization_managers.AuthorizationManager):
@@ -279,6 +275,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_authorization_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_session"""
         # Implemented from kitosid template for -
@@ -403,10 +400,11 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         """Pass through to provider VaultLookupSession.get_vault"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Vault(self._provider_manager,
-                           self._get_provider_session('vault_lookup_session').get_vault(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Vault(
+            self._provider_manager,
+            self._get_provider_session('vault_lookup_session').get_vault(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_vaults_by_ids(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_ids"""
@@ -469,8 +467,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         return VaultList(cat_list)
 
     vaults = property(fget=get_vaults)
-
-
 ##
 # The following methods are from osid.authorization.VaultQuerySession
 
@@ -493,8 +489,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.BinQuerySession.get_bins_by_query_template
         return self._get_provider_session('vault_query_session').get_vaults_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.authorization.VaultAdminSession
 
@@ -520,10 +514,11 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         """Pass through to provider VaultAdminSession.create_vault"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Vault(self._provider_manager,
-                           self._get_provider_session('vault_admin_session').create_vault(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Vault(
+            self._provider_manager,
+            self._get_provider_session('vault_admin_session').create_vault(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_vaults(self):
         """Pass through to provider VaultAdminSession.can_update_vaults"""
@@ -552,10 +547,11 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Vault(self._provider_manager,
-                           self._get_provider_session('vault_admin_session').update_vault(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Vault(
+            self._provider_manager,
+            self._get_provider_session('vault_admin_session').update_vault(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_vault(self, vault_form, *args, **kwargs):
         """Pass through to provider VaultAdminSession.update_vault"""
@@ -587,14 +583,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('vault_admin_session').alias_vault(*args, **kwargs)
-
-
-
-    ##Implemented from authorization.batch - AuthorizationBatchManager
-
-
-    ##Implemented from authorization.batch - AuthorizationBatchProxyManager
-
 
 
 class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
@@ -664,9 +652,6 @@ class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, aut
 
     authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
 
-    ##Implemented from authorization.batch - AuthorizationBatchProxyManager
-
-
 
 class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog):
     """Vault convenience adapter including related Session methods."""
@@ -675,8 +660,8 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -807,6 +792,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_vault_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -828,8 +814,6 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
     def is_authorized_on_condition(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.authorization.AuthorizationLookupSession
 
@@ -986,8 +970,6 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         return self._get_provider_session('authorization_lookup_session').get_authorizations()
 
     authorizations = property(fget=get_authorizations)
-
-
 ##
 # The following methods are from osid.authorization.AuthorizationQuerySession
 
@@ -1010,8 +992,6 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('authorization_query_session').get_authorizations_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.authorization.AuthorizationAdminSession
 
@@ -1111,8 +1091,6 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         self._get_provider_session('authorization_admin_session').alias_authorization(*args, **kwargs)
 
 
-
-
 class VaultList(abc_authorization_objects.VaultList, osid.OsidList):
     """VaultList convenience adapter including related Session methods."""
 
@@ -1153,5 +1131,3 @@ class VaultList(abc_authorization_objects.VaultList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

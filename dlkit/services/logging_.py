@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.logging_ import objects as abc_logging_objects
 from dlkit.manager_impls.logging_ import managers as logging_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
     """LoggingProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_logging(self):
         """Pass through to provider supports_logging"""
         # Implemented from kitosid template for -
@@ -246,6 +245,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_logging_session(self, *args, **kwargs):
         """Pass through to provider get_logging_session"""
         # Implemented from kitosid template for -
@@ -352,8 +352,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
     def create_log_entry(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.logging.LogLookupSession
 
@@ -387,10 +385,11 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         """Pass through to provider LogLookupSession.get_log"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Log(self._provider_manager,
-                           self._get_provider_session('log_lookup_session').get_log(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Log(
+            self._provider_manager,
+            self._get_provider_session('log_lookup_session').get_log(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_logs_by_ids(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_ids"""
@@ -453,8 +452,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         return LogList(cat_list)
 
     logs = property(fget=get_logs)
-
-
 ##
 # The following methods are from osid.logging.LogAdminSession
 
@@ -480,10 +477,11 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         """Pass through to provider LogAdminSession.create_log"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Log(self._provider_manager,
-                           self._get_provider_session('log_admin_session').create_log(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Log(
+            self._provider_manager,
+            self._get_provider_session('log_admin_session').create_log(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_logs(self):
         """Pass through to provider LogAdminSession.can_update_logs"""
@@ -512,10 +510,11 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Log(self._provider_manager,
-                           self._get_provider_session('log_admin_session').update_log(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Log(
+            self._provider_manager,
+            self._get_provider_session('log_admin_session').update_log(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_log(self, log_form, *args, **kwargs):
         """Pass through to provider LogAdminSession.update_log"""
@@ -547,8 +546,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('log_admin_session').alias_log(*args, **kwargs)
-
-
 
 
 class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
@@ -608,8 +605,8 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -740,6 +737,7 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_log_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -853,8 +851,6 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('log_entry_lookup_session').get_log_entries()
 
     log_entries = property(fget=get_log_entries)
-
-
 ##
 # The following methods are from osid.logging.LogEntryQuerySession
 
@@ -877,8 +873,6 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('log_entry_query_session').get_log_entries_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.logging.LogEntryAdminSession
 
@@ -972,8 +966,6 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('log_entry_admin_session').alias_log_entry(*args, **kwargs)
 
 
-
-
 class LogList(abc_logging_objects.LogList, osid.OsidList):
     """LogList convenience adapter including related Session methods."""
 
@@ -1014,5 +1006,3 @@ class LogList(abc_logging_objects.LogList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

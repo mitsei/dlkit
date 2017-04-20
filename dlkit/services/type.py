@@ -13,11 +13,9 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.manager_impls.type import managers as type_managers
-
 
 
 DEFAULT = 0
@@ -39,7 +37,6 @@ class TypeProfile(osid.OsidProfile, type_managers.TypeProfile):
     pass
 
 
-
 class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers.TypeManager):
     """TypeManager convenience adapter including related Session methods."""
     def __init__(self, proxy=None):
@@ -59,7 +56,7 @@ class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers
             try:
                 get_session = getattr(self._provider_manager, 'get_' + session)
             except:
-                raise # Unimplemented???
+                raise  # Unimplemented???
             else:
                 self._provider_sessions[session] = get_session()
             return self._provider_sessions[session]
@@ -92,10 +89,6 @@ class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers
         return self._provider_manager.get_type_admin_session(*args, **kwargs)
 
 
-
 class TypeProxyManager(osid.OsidProxyManager, TypeProfile, type_managers.TypeProxyManager):
     """TypeProxyManager convenience adapter including related Session methods."""
     pass
-
-
-

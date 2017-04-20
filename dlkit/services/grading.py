@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.grading import objects as abc_grading_objects
 from dlkit.manager_impls.grading import managers as grading_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
     """GradingProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_grade_system_lookup(self):
         """Pass through to provider supports_grade_system_lookup"""
         # Implemented from kitosid template for -
@@ -308,6 +307,7 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_grade_system_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_grade_system_lookup_session"""
         # Implemented from kitosid template for -
@@ -500,10 +500,11 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         """Pass through to provider GradebookLookupSession.get_gradebook"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Gradebook(self._provider_manager,
-                           self._get_provider_session('gradebook_lookup_session').get_gradebook(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Gradebook(
+            self._provider_manager,
+            self._get_provider_session('gradebook_lookup_session').get_gradebook(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_gradebooks_by_ids(self, *args, **kwargs):
         """Pass through to provider GradebookLookupSession.get_gradebooks_by_ids"""
@@ -566,8 +567,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         return GradebookList(cat_list)
 
     gradebooks = property(fget=get_gradebooks)
-
-
 ##
 # The following methods are from osid.grading.GradebookAdminSession
 
@@ -593,10 +592,11 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         """Pass through to provider GradebookAdminSession.create_gradebook"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Gradebook(self._provider_manager,
-                           self._get_provider_session('gradebook_admin_session').create_gradebook(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Gradebook(
+            self._provider_manager,
+            self._get_provider_session('gradebook_admin_session').create_gradebook(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_gradebooks(self):
         """Pass through to provider GradebookAdminSession.can_update_gradebooks"""
@@ -625,10 +625,11 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Gradebook(self._provider_manager,
-                           self._get_provider_session('gradebook_admin_session').update_gradebook(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Gradebook(
+            self._provider_manager,
+            self._get_provider_session('gradebook_admin_session').update_gradebook(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_gradebook(self, gradebook_form, *args, **kwargs):
         """Pass through to provider GradebookAdminSession.update_gradebook"""
@@ -660,8 +661,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('gradebook_admin_session').alias_gradebook(*args, **kwargs)
-
-
 
 
 class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_managers.GradingProxyManager):
@@ -789,8 +788,8 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -921,6 +920,7 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_gradebook_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1014,8 +1014,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         return self._get_provider_session('grade_system_lookup_session').get_grade_systems()
 
     grade_systems = property(fget=get_grade_systems)
-
-
 ##
 # The following methods are from osid.grading.GradeSystemQuerySession
 
@@ -1038,8 +1036,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('grade_system_query_session').get_grade_systems_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.grading.GradeSystemAdminSession
 
@@ -1193,8 +1189,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
     def alias_grade(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.grading.GradeEntryLookupSession
 
@@ -1305,8 +1299,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         return self._get_provider_session('grade_entry_lookup_session').get_grade_entries()
 
     grade_entries = property(fget=get_grade_entries)
-
-
 ##
 # The following methods are from osid.grading.GradeEntryQuerySession
 
@@ -1329,8 +1321,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('grade_entry_query_session').get_grade_entries_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.grading.GradeEntryAdminSession
 
@@ -1434,8 +1424,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         # Implemented from kitosid template for -
         # osid.resource.ResourceAdminSession.alias_resources
         self._get_provider_session('grade_entry_admin_session').alias_grade_entry(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.grading.GradebookColumnLookupSession
 
@@ -1512,8 +1500,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         # Implemented from kitosid template for -
         # osid.resource.ResourceLookupSession.get_resource_template
         return self._get_provider_session('gradebook_column_lookup_session').get_gradebook_column_summary(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.grading.GradebookColumnQuerySession
 
@@ -1536,8 +1522,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('gradebook_column_query_session').get_gradebook_columns_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.grading.GradebookColumnAdminSession
 
@@ -1643,8 +1627,6 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._get_provider_session('gradebook_column_admin_session').alias_gradebook_column(*args, **kwargs)
 
 
-
-
 class GradebookList(abc_grading_objects.GradebookList, osid.OsidList):
     """GradebookList convenience adapter including related Session methods."""
 
@@ -1685,5 +1667,3 @@ class GradebookList(abc_grading_objects.GradebookList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

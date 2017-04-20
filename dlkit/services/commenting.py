@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.commenting import objects as abc_commenting_objects
 from dlkit.manager_impls.commenting import managers as commenting_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class CommentingProfile(osid.OsidProfile, commenting_managers.CommentingProfile)
     """CommentingProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_comment_lookup(self):
         """Pass through to provider supports_comment_lookup"""
         # Implemented from kitosid template for -
@@ -236,6 +235,7 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_comment_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_comment_lookup_session"""
         # Implemented from kitosid template for -
@@ -348,10 +348,11 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         """Pass through to provider BookLookupSession.get_book"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Book(self._provider_manager,
-                           self._get_provider_session('book_lookup_session').get_book(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Book(
+            self._provider_manager,
+            self._get_provider_session('book_lookup_session').get_book(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_books_by_ids(self, *args, **kwargs):
         """Pass through to provider BookLookupSession.get_books_by_ids"""
@@ -414,8 +415,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         return BookList(cat_list)
 
     books = property(fget=get_books)
-
-
 ##
 # The following methods are from osid.commenting.BookAdminSession
 
@@ -441,10 +440,11 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         """Pass through to provider BookAdminSession.create_book"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Book(self._provider_manager,
-                           self._get_provider_session('book_admin_session').create_book(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Book(
+            self._provider_manager,
+            self._get_provider_session('book_admin_session').create_book(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_books(self):
         """Pass through to provider BookAdminSession.can_update_books"""
@@ -473,10 +473,11 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Book(self._provider_manager,
-                           self._get_provider_session('book_admin_session').update_book(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Book(
+            self._provider_manager,
+            self._get_provider_session('book_admin_session').update_book(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_book(self, book_form, *args, **kwargs):
         """Pass through to provider BookAdminSession.update_book"""
@@ -508,8 +509,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('book_admin_session').alias_book(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.commenting.BookHierarchySession
 
@@ -622,8 +621,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchySession.get_bin_nodes
         return self._get_provider_session('book_hierarchy_session').get_book_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.commenting.BookHierarchyDesignSession
 
@@ -678,8 +675,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchyDesignSession.remove_child_bins
         self._get_provider_session('book_hierarchy_design_session').remove_child_books(*args, **kwargs)
-
-
 
 
 class CommentingProxyManager(osid.OsidProxyManager, CommentingProfile, commenting_managers.CommentingProxyManager):
@@ -747,8 +742,8 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -879,6 +874,7 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_book_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1036,8 +1032,6 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('comment_lookup_session').get_comments()
 
     comments = property(fget=get_comments)
-
-
 ##
 # The following methods are from osid.commenting.CommentQuerySession
 
@@ -1060,8 +1054,6 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('comment_query_session').get_comments_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.commenting.CommentAdminSession
 
@@ -1155,8 +1147,6 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('comment_admin_session').alias_comment(*args, **kwargs)
 
 
-
-
 class BookList(abc_commenting_objects.BookList, osid.OsidList):
     """BookList convenience adapter including related Session methods."""
 
@@ -1197,5 +1187,3 @@ class BookList(abc_commenting_objects.BookList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

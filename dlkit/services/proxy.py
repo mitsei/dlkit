@@ -13,11 +13,9 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.manager_impls.proxy import managers as proxy_managers
-
 
 
 DEFAULT = 0
@@ -38,6 +36,7 @@ class ProxyProfile(osid.OsidProfile, proxy_managers.ProxyProfile):
     """ProxyProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_proxy(self):
         """Pass through to provider supports_proxy"""
         # Implemented from kitosid template for -
@@ -78,10 +77,11 @@ class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, proxy_manag
             try:
                 get_session = getattr(self._provider_manager, 'get_' + session)
             except:
-                raise # Unimplemented???
+                raise  # Unimplemented???
             else:
                 self._provider_sessions[session] = get_session()
             return self._provider_sessions[session]
+
     def get_proxy_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -105,13 +105,9 @@ class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, proxy_manag
         return self._get_provider_session('proxy_session').get_proxy(*args, **kwargs)
 
 
-
-
 class ProxyProxyManager(osid.OsidProxyManager, ProxyProfile, proxy_managers.ProxyProxyManager):
     """ProxyProxyManager convenience adapter including related Session methods."""
 
     def get_proxy_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-

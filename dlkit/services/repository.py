@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.repository import objects as abc_repository_objects
 from dlkit.manager_impls.repository import managers as repository_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class RepositoryProfile(osid.OsidProfile, repository_managers.RepositoryProfile)
     """RepositoryProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_asset_lookup(self):
         """Pass through to provider supports_asset_lookup"""
         # Implemented from kitosid template for -
@@ -354,6 +353,7 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_asset_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_asset_lookup_session"""
         # Implemented from kitosid template for -
@@ -645,8 +645,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         for cat in catalogs:
             cat_list.append(Repository(self._provider_manager, cat, self._runtime, self._proxy))
         return RepositoryList(cat_list)
-
-
 ##
 # The following methods are from osid.repository.AssetRepositoryAssignmentSession
 
@@ -685,8 +683,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         self._get_provider_session('asset_repository_assignment_session').unassign_asset_from_repository(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.CompositionRepositorySession
 
@@ -755,8 +751,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         for cat in catalogs:
             cat_list.append(Repository(self._provider_manager, cat, self._runtime, self._proxy))
         return RepositoryList(cat_list)
-
-
 ##
 # The following methods are from osid.repository.CompositionRepositoryAssignmentSession
 
@@ -789,8 +783,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         self._get_provider_session('composition_repository_assignment_session').unassign_composition_from_repository(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.RepositoryLookupSession
 
@@ -804,10 +796,11 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         """Pass through to provider RepositoryLookupSession.get_repository"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Repository(self._provider_manager,
-                           self._get_provider_session('repository_lookup_session').get_repository(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Repository(
+            self._provider_manager,
+            self._get_provider_session('repository_lookup_session').get_repository(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_repositories_by_ids(self, *args, **kwargs):
         """Pass through to provider RepositoryLookupSession.get_repositories_by_ids"""
@@ -870,8 +863,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         return RepositoryList(cat_list)
 
     repositories = property(fget=get_repositories)
-
-
 ##
 # The following methods are from osid.repository.RepositoryQuerySession
 
@@ -894,8 +885,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.BinQuerySession.get_bins_by_query_template
         return self._get_provider_session('repository_query_session').get_repositories_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.RepositoryAdminSession
 
@@ -921,10 +910,11 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         """Pass through to provider RepositoryAdminSession.create_repository"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Repository(self._provider_manager,
-                           self._get_provider_session('repository_admin_session').create_repository(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Repository(
+            self._provider_manager,
+            self._get_provider_session('repository_admin_session').create_repository(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_repositories(self):
         """Pass through to provider RepositoryAdminSession.can_update_repositories"""
@@ -953,10 +943,11 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Repository(self._provider_manager,
-                           self._get_provider_session('repository_admin_session').update_repository(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Repository(
+            self._provider_manager,
+            self._get_provider_session('repository_admin_session').update_repository(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_repository(self, repository_form, *args, **kwargs):
         """Pass through to provider RepositoryAdminSession.update_repository"""
@@ -988,8 +979,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('repository_admin_session').alias_repository(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.RepositoryHierarchySession
 
@@ -1102,8 +1091,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchySession.get_bin_nodes
         return self._get_provider_session('repository_hierarchy_session').get_repository_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.RepositoryHierarchyDesignSession
 
@@ -1158,8 +1145,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchyDesignSession.remove_child_bins
         self._get_provider_session('repository_hierarchy_design_session').remove_child_repositories(*args, **kwargs)
-
-
 
 
 class RepositoryProxyManager(osid.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
@@ -1317,8 +1302,8 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -1449,6 +1434,7 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_repository_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1542,8 +1528,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         return self._get_provider_session('asset_lookup_session').get_assets()
 
     assets = property(fget=get_assets)
-
-
 ##
 # The following methods are from osid.repository.AssetQuerySession
 
@@ -1566,8 +1550,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('asset_query_session').get_assets_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.AssetSearchSession
 
@@ -1594,8 +1576,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def get_asset_query_from_inspector(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.repository.AssetAdminSession
 
@@ -1743,8 +1723,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         # osid.repository.AssetAdminSession.delete_asset_content_template
         # Note: The OSID spec does not require returning updated object
         self._get_provider_session('asset_admin_session').delete_asset_content(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.AssetNotificationSession
 
@@ -1797,8 +1775,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def acknowledge_asset_notification(self, *args, **kwargs):
         """Pass through to provider AssetNotificationSession.acknowledge_asset_notification"""
         self._get_provider_session('asset_notification_session').acknowledge_asset_notification(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.AssetCompositionSession
 
@@ -1833,8 +1809,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def get_compositions_by_asset(self, *args, **kwargs):
         """Pass through to provider AssetCompositionSession.get_compositions_by_asset"""
         return self._get_provider_session('asset_composition_session').get_compositions_by_asset(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.AssetCompositionDesignSession
 
@@ -1861,8 +1835,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def remove_asset(self, *args, **kwargs):
         """Pass through to provider AssetCompositionDesignSession.remove_asset"""
         return self._get_provider_session('asset_composition_design_session').remove_asset(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.CompositionLookupSession
 
@@ -1895,7 +1867,7 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def use_active_composition_view(self):
         """Pass through to provider CompositionLookupSession.use_active_composition_view"""
         self._operable_views['composition'] = ACTIVE
-        # self._get_provider_session('composition_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('composition_lookup_session')  # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_active_composition_view()
@@ -1905,7 +1877,7 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def use_any_status_composition_view(self):
         """Pass through to provider CompositionLookupSession.use_any_status_composition_view"""
         self._operable_views['composition'] = ANY_STATUS
-        # self._get_provider_session('composition_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('composition_lookup_session')  # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_any_status_composition_view()
@@ -1915,7 +1887,7 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def use_sequestered_composition_view(self):
         """Pass through to provider CompositionLookupSession.use_sequestered_composition_view"""
         self._containable_views['composition'] = SEQUESTERED
-        # self._get_provider_session('composition_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('composition_lookup_session')  # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_sequestered_composition_view()
@@ -1973,8 +1945,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         return self._get_provider_session('composition_lookup_session').get_compositions()
 
     compositions = property(fget=get_compositions)
-
-
 ##
 # The following methods are from osid.repository.CompositionQuerySession
 
@@ -1997,8 +1967,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('composition_query_session').get_compositions_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.repository.CompositionSearchSession
 
@@ -2025,8 +1993,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
     def get_composition_query_from_inspector(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.repository.CompositionAdminSession
 
@@ -2131,8 +2097,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         # osid.resource.ResourceAdminSession.alias_resources
         self._get_provider_session('composition_admin_session').alias_composition(*args, **kwargs)
 
-
-
     def can_lookup_asset_contents(self, *args, **kwargs):
         """Pass through to provider AssetContentLookupSession.can_lookup_asset_contents
             Out-of-band, non-OSID convenience method
@@ -2234,5 +2198,3 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

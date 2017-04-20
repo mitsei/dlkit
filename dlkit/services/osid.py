@@ -13,16 +13,11 @@
 #     it just isn't.
 
 
-
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.osid import managers as abc_osid_managers
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
 from dlkit.abstract_osid.osid import objects as abc_osid_objects
 from dlkit.abstract_osid.osid import sessions as abc_osid_sessions
-
-
-
-
 
 
 DEFAULT = 0
@@ -44,15 +39,13 @@ class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     pass
 
 
-
 class Identifiable(abc_osid_markers.Identifiable):
     """Identifiable convenience adapter including related Session methods."""
-    def __init__(self, osid_object): # I will never be called :(
+    def __init__(self, osid_object):  # I will never be called :(
         self._osid_object = osid_object
+
     def get_id(self):
         return self._osid_object.get_id()
-
-    id_ = property(get_id) 
 
     id_ = property(fget=get_id)
 
@@ -66,8 +59,9 @@ class Identifiable(abc_osid_markers.Identifiable):
 
 class Extensible(abc_osid_markers.Extensible):
     """Extensible convenience adapter including related Session methods."""
-    def __init__(self, osid_object): # I will never be called :(
+    def __init__(self, osid_object):  # I will never be called :(
         self._osid_object = osid_object
+
     def get_record_types(self):
         return self._osid_object.get_record_types()
 
@@ -79,8 +73,9 @@ class Extensible(abc_osid_markers.Extensible):
 
 class Browsable(abc_osid_markers.Browsable):
     """Browsable convenience adapter including related Session methods."""
-    def __init__(self, osid_object): # I will never be called :(
+    def __init__(self, osid_object):  # I will never be called :(
         self._osid_object = osid_object
+
     def get_properties(self):
         return self._osid_object.get_properties()
 
@@ -94,7 +89,6 @@ class Browsable(abc_osid_markers.Browsable):
 class Suppliable(abc_osid_markers.Suppliable):
     """Suppliable convenience adapter including related Session methods."""
     pass
-
 
 
 class Temporal(abc_osid_markers.Temporal):
@@ -122,11 +116,9 @@ class Subjugateable(abc_osid_markers.Subjugateable):
     pass
 
 
-
 class Aggregateable(abc_osid_markers.Aggregateable):
     """Aggregateable convenience adapter including related Session methods."""
     pass
-
 
 
 class Containable(abc_osid_markers.Containable):
@@ -139,8 +131,9 @@ class Containable(abc_osid_markers.Containable):
 
 class Sourceable(abc_osid_markers.Sourceable):
     """Sourceable convenience adapter including related Session methods."""
-    def __init__(self, osid_object): # I will never be called :(
+    def __init__(self, osid_object):  # I will never be called :(
         self._osid_object = osid_object
+
     def get_provider_id(self):
         return self._osid_object.get_provider_id()
 
@@ -172,7 +165,6 @@ class Federateable(abc_osid_markers.Federateable):
     pass
 
 
-
 class Operable(abc_osid_markers.Operable):
     """Operable convenience adapter including related Session methods."""
 
@@ -197,6 +189,7 @@ class OsidProfile(abc_osid_managers.OsidProfile):
     """OsidProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def get_id(self):
         pass
 
@@ -332,6 +325,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
     def clear_proxy(self):
         """Sets proxy to None."""
         self._proxy = None
+
     def get_locale(self):
         pass
 
@@ -376,11 +370,11 @@ class OsidSession(abc_osid_sessions.OsidSession):
     effective_agent_id = property(fget=get_effective_agent_id)
 
     def get_effective_agent(self):
-        #from dlkit.services_impls.authentication.objects import Agent # This may want to be in Primordium?
-        #effective_agent_id = self.get_effective_agent_id()
+        # from dlkit.services_impls.authentication.objects import Agent # This may want to be in Primordium?
+        # effective_agent_id = self.get_effective_agent_id()
         # This may want to be extended to get the Agent directly from the Authentication
         # if available and if not effective agent is available in the proxy
-        #return Agent(identifier=effective_agent_id.get_identifier(),
+        # return Agent(identifier=effective_agent_id.get_identifier(),
         #             namespace=effective_agent_id.get_identifier_namespace(),
         #             authority=effective_agent_id.get_authority())
         raise Unimplemented()
@@ -417,6 +411,7 @@ class OsidObject(abc_osid_objects.OsidObject):
     """OsidObject convenience adapter including related Session methods."""
     def __init__(self, osid_object):
         self._osid_object = osid_object
+
     def get_display_name(self):
         return self._osid_object.get_display_name()
 
@@ -441,13 +436,12 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject):
     pass
 
 
-
 class OsidList(abc_osid_objects.OsidList):
     """OsidList convenience adapter including related Session methods."""
     def __init__(self, iter_object=None, count=None):
         if iter_object is None:
             iter_object = []
-        if count != None:
+        if count is not None:
             self._count = count
         elif isinstance(iter_object, dict) or isinstance(iter_object, list):
             self._count = len(iter_object)
@@ -458,14 +452,15 @@ class OsidList(abc_osid_objects.OsidList):
 
     def next(self):
         next_object = self._iter_object.next()
-        if self._count != None:
+        if self._count is not None:
             self._count -= 1
         return next_object
 
     def len(self):
         return self.available()
+
     def has_next(self):
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return bool(self._count)
         else:
@@ -473,7 +468,7 @@ class OsidList(abc_osid_objects.OsidList):
             return True
 
     def available(self):
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return self._count
         else:
@@ -481,7 +476,7 @@ class OsidList(abc_osid_objects.OsidList):
             return 0  # Don't know what to do here
 
     def skip(self, n):
-        ### STILL NEED TO IMPLEMENT THIS ###
+        # STILL NEED TO IMPLEMENT THIS ###
         pass
 
 
@@ -509,5 +504,3 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         raise Unimplemented('Unimplemented in dlkit.services')
 
     configuration = property(fget=get_configuration)
-
-

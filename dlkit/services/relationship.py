@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.relationship import objects as abc_relationship_objects
 from dlkit.manager_impls.relationship import managers as relationship_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class RelationshipProfile(osid.OsidProfile, relationship_managers.RelationshipPr
     """RelationshipProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_relationship_lookup(self):
         """Pass through to provider supports_relationship_lookup"""
         # Implemented from kitosid template for -
@@ -236,6 +235,7 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_relationship_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_relationship_lookup_session"""
         # Implemented from kitosid template for -
@@ -354,10 +354,11 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         """Pass through to provider FamilyLookupSession.get_family"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return Family(self._provider_manager,
-                           self._get_provider_session('family_lookup_session').get_family(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Family(
+            self._provider_manager,
+            self._get_provider_session('family_lookup_session').get_family(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_families_by_ids(self, *args, **kwargs):
         """Pass through to provider FamilyLookupSession.get_families_by_ids"""
@@ -420,8 +421,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         return FamilyList(cat_list)
 
     families = property(fget=get_families)
-
-
 ##
 # The following methods are from osid.relationship.FamilyAdminSession
 
@@ -447,10 +446,11 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         """Pass through to provider FamilyAdminSession.create_family"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Family(self._provider_manager,
-                           self._get_provider_session('family_admin_session').create_family(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Family(
+            self._provider_manager,
+            self._get_provider_session('family_admin_session').create_family(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_families(self):
         """Pass through to provider FamilyAdminSession.can_update_families"""
@@ -479,10 +479,11 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Family(self._provider_manager,
-                           self._get_provider_session('family_admin_session').update_family(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Family(
+            self._provider_manager,
+            self._get_provider_session('family_admin_session').update_family(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_family(self, family_form, *args, **kwargs):
         """Pass through to provider FamilyAdminSession.update_family"""
@@ -514,8 +515,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('family_admin_session').alias_family(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.relationship.FamilyHierarchySession
 
@@ -628,8 +627,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchySession.get_bin_nodes
         return self._get_provider_session('family_hierarchy_session').get_family_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.relationship.FamilyHierarchyDesignSession
 
@@ -684,8 +681,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchyDesignSession.remove_child_bins
         self._get_provider_session('family_hierarchy_design_session').remove_child_families(*args, **kwargs)
-
-
 
 
 class RelationshipProxyManager(osid.OsidProxyManager, RelationshipProfile, relationship_managers.RelationshipProxyManager):
@@ -759,8 +754,8 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -891,6 +886,7 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_family_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1044,8 +1040,6 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         return self._get_provider_session('relationship_lookup_session').get_relationships()
 
     relationships = property(fget=get_relationships)
-
-
 ##
 # The following methods are from osid.relationship.RelationshipQuerySession
 
@@ -1068,8 +1062,6 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('relationship_query_session').get_relationships_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.relationship.RelationshipAdminSession
 
@@ -1163,8 +1155,6 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         self._get_provider_session('relationship_admin_session').alias_relationship(*args, **kwargs)
 
 
-
-
 class FamilyList(abc_relationship_objects.FamilyList, osid.OsidList):
     """FamilyList convenience adapter including related Session methods."""
 
@@ -1205,5 +1195,3 @@ class FamilyList(abc_relationship_objects.FamilyList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.hierarchy import objects as abc_hierarchy_objects
 from dlkit.manager_impls.hierarchy import managers as hierarchy_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class HierarchyProfile(osid.OsidProfile, hierarchy_managers.HierarchyProfile):
     """HierarchyProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_hierarchy_traversal(self):
         """Pass through to provider supports_hierarchy_traversal"""
         # Implemented from kitosid template for -
@@ -202,6 +201,7 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_hierarchy_traversal_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_traversal_session"""
         # Implemented from kitosid template for -
@@ -293,8 +293,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
     def get_nodes(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.hierarchy.HierarchyDesignSession
 
@@ -323,8 +321,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
     def remove_children(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.hierarchy.HierarchyLookupSession
 
@@ -415,8 +411,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         return HierarchyList(cat_list)
 
     hierarchies = property(fget=get_hierarchies)
-
-
 ##
 # The following methods are from osid.hierarchy.HierarchyAdminSession
 
@@ -442,10 +436,11 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         """Pass through to provider HierarchyAdminSession.create_hierarchy"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return Hierarchy(self._provider_manager,
-                           self._get_provider_session('hierarchy_admin_session').create_hierarchy(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Hierarchy(
+            self._provider_manager,
+            self._get_provider_session('hierarchy_admin_session').create_hierarchy(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_hierarchies(self):
         """Pass through to provider HierarchyAdminSession.can_update_hierarchies"""
@@ -474,10 +469,11 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return Hierarchy(self._provider_manager,
-                           self._get_provider_session('hierarchy_admin_session').update_hierarchy(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return Hierarchy(
+            self._provider_manager,
+            self._get_provider_session('hierarchy_admin_session').update_hierarchy(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_hierarchy(self, hierarchy_form, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.update_hierarchy"""
@@ -507,8 +503,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('hierarchy_admin_session').alias_hierarchy(*args, **kwargs)
-
-
 
 
 class HierarchyProxyManager(osid.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
@@ -546,8 +540,8 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid.OsidSession, osid.OsidCata
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -678,6 +672,7 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid.OsidSession, osid.OsidCata
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_hierarchy_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -723,5 +718,3 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

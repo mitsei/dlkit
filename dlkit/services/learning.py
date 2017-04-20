@@ -13,12 +13,10 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.learning import objects as abc_learning_objects
 from dlkit.manager_impls.learning import managers as learning_managers
-
 
 
 DEFAULT = 0
@@ -39,6 +37,7 @@ class LearningProfile(osid.OsidProfile, learning_managers.LearningProfile):
     """LearningProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def supports_objective_lookup(self):
         """Pass through to provider supports_objective_lookup"""
         # Implemented from kitosid template for -
@@ -352,6 +351,7 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_objective_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_objective_lookup_session"""
         # Implemented from kitosid template for -
@@ -671,8 +671,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         for cat in catalogs:
             cat_list.append(ObjectiveBank(self._provider_manager, cat, self._runtime, self._proxy))
         return ObjectiveBankList(cat_list)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveObjectiveBankAssignmentSession
 
@@ -715,8 +713,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
     def reassign_proficiency_to_objective_bank(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.learning.ActivityObjectiveBankSession
 
@@ -765,8 +761,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         for cat in catalogs:
             cat_list.append(ObjectiveBank(self._provider_manager, cat, self._runtime, self._proxy))
         return ObjectiveBankList(cat_list)
-
-
 ##
 # The following methods are from osid.learning.ActivityObjectiveBankAssignmentSession
 
@@ -803,8 +797,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
     def reassign_activity_to_objective_bank(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-
 ##
 # The following methods are from osid.learning.ObjectiveBankLookupSession
 
@@ -818,10 +810,11 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         """Pass through to provider ObjectiveBankLookupSession.get_objective_bank"""
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.get_bin
-        return ObjectiveBank(self._provider_manager,
-                           self._get_provider_session('objective_bank_lookup_session').get_objective_bank(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return ObjectiveBank(
+            self._provider_manager,
+            self._get_provider_session('objective_bank_lookup_session').get_objective_bank(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def get_objective_banks_by_ids(self, *args, **kwargs):
         """Pass through to provider ObjectiveBankLookupSession.get_objective_banks_by_ids"""
@@ -884,8 +877,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         return ObjectiveBankList(cat_list)
 
     objective_banks = property(fget=get_objective_banks)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveBankAdminSession
 
@@ -911,10 +902,11 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         """Pass through to provider ObjectiveBankAdminSession.create_objective_bank"""
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.create_bin
-        return ObjectiveBank(self._provider_manager,
-                           self._get_provider_session('objective_bank_admin_session').create_objective_bank(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return ObjectiveBank(
+            self._provider_manager,
+            self._get_provider_session('objective_bank_admin_session').create_objective_bank(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def can_update_objective_banks(self):
         """Pass through to provider ObjectiveBankAdminSession.can_update_objective_banks"""
@@ -943,10 +935,11 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.update_bin
         # OSID spec does not require returning updated catalog
-        return ObjectiveBank(self._provider_manager,
-                           self._get_provider_session('objective_bank_admin_session').update_objective_bank(*args, **kwargs),
-                           self._runtime,
-                           self._proxy)
+        return ObjectiveBank(
+            self._provider_manager,
+            self._get_provider_session('objective_bank_admin_session').update_objective_bank(*args, **kwargs),
+            self._runtime,
+            self._proxy)
 
     def save_objective_bank(self, objective_bank_form, *args, **kwargs):
         """Pass through to provider ObjectiveBankAdminSession.update_objective_bank"""
@@ -978,8 +971,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('objective_bank_admin_session').alias_objective_bank(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveBankHierarchySession
 
@@ -1092,8 +1083,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchySession.get_bin_nodes
         return self._get_provider_session('objective_bank_hierarchy_session').get_objective_bank_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveBankHierarchyDesignSession
 
@@ -1148,8 +1137,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.BinHierarchyDesignSession.remove_child_bins
         self._get_provider_session('objective_bank_hierarchy_design_session').remove_child_objective_banks(*args, **kwargs)
-
-
 
 
 class LearningProxyManager(osid.OsidProxyManager, LearningProfile, learning_managers.LearningProxyManager):
@@ -1325,8 +1312,8 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         self._provider_manager = provider_manager
         self._catalog = catalog
         self._runtime = runtime
-        osid.OsidObject.__init__(self, self._catalog) # This is to initialize self._object
-        osid.OsidSession.__init__(self, proxy) # This is to initialize self._proxy
+        osid.OsidObject.__init__(self, self._catalog)  # This is to initialize self._object
+        osid.OsidSession.__init__(self, proxy)  # This is to initialize self._proxy
         self._catalog_id = catalog.get_id()
         self._provider_sessions = kwargs
         self._session_management = AUTOMATIC
@@ -1457,6 +1444,7 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         """Session state will never be saved."""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_objective_bank_record(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1546,8 +1534,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         return self._get_provider_session('objective_lookup_session').get_objectives()
 
     objectives = property(fget=get_objectives)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveQuerySession
 
@@ -1570,8 +1556,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('objective_query_session').get_objectives_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveAdminSession
 
@@ -1663,8 +1647,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.resource.ResourceAdminSession.alias_resources
         self._get_provider_session('objective_admin_session').alias_objective(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveHierarchySession
 
@@ -1761,8 +1743,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.ontology.SubjectHierarchySession.get_subject_nodes_template
         return self._get_provider_session('objective_hierarchy_session').get_objective_nodes(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveHierarchyDesignSession
 
@@ -1801,8 +1781,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.ontology.SubjectHierarchyDesignSession.remove_child_subjects_template
         self._get_provider_session('objective_hierarchy_design_session').remove_child_objectives(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveSequencingSession
 
@@ -1821,8 +1799,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
     def sequence_objectives(self, *args, **kwargs):
         """Pass through to provider method"""
         return self._get_provider_session('objective_sequencing_session').sequence_objectives(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveRequisiteSession
 
@@ -1859,8 +1835,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.learning.ObjectiveRequisiteSession.get_equivalent_objectives
         return self._get_provider_session('objective_requisite_session').get_equivalent_objectives(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ObjectiveRequisiteAssignmentSession
 
@@ -1893,8 +1867,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.learning.ObjectiveRequisiteAssignmentSession.unassign_equivalent_objective
         return self._get_provider_session('objective_requisite_assignment_session').unassign_equivalent_objective(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ActivityLookupSession
 
@@ -1981,8 +1953,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         return self._get_provider_session('activity_lookup_session').get_activities()
 
     activities = property(fget=get_activities)
-
-
 ##
 # The following methods are from osid.learning.ActivityAdminSession
 
@@ -2074,8 +2044,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.resource.ResourceAdminSession.alias_resources
         self._get_provider_session('activity_admin_session').alias_activity(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ProficiencyLookupSession
 
@@ -2220,8 +2188,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         return self._get_provider_session('proficiency_lookup_session').get_proficiencies()
 
     proficiencies = property(fget=get_proficiencies)
-
-
 ##
 # The following methods are from osid.learning.ProficiencyQuerySession
 
@@ -2244,8 +2210,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         # Implemented from kitosid template for -
         # osid.resource.ResourceQuerySession.get_items_by_query_template
         return self._get_provider_session('proficiency_query_session').get_proficiencies_by_query(*args, **kwargs)
-
-
 ##
 # The following methods are from osid.learning.ProficiencyAdminSession
 
@@ -2343,8 +2307,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         self._get_provider_session('proficiency_admin_session').alias_proficiency(*args, **kwargs)
 
 
-
-
 class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid.OsidList):
     """ObjectiveBankList convenience adapter including related Session methods."""
 
@@ -2385,5 +2347,3 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid.OsidList):
                     break
                 i += 1
             return next_list
-
-

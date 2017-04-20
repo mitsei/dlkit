@@ -13,11 +13,9 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.manager_impls.authentication import managers as authentication_managers
-
 
 
 DEFAULT = 0
@@ -38,6 +36,7 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
     """AuthenticationProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None
+
     def get_agent_record_types(self):
         """Pass through to provider get_agent_record_types"""
         # Implemented from kitosid template for -
@@ -70,7 +69,8 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
 
     agency_search_record_types = property(fget=get_agency_search_record_types)
 
-    ##Implemented from authentication.process - AuthenticationProcessProfile
+    # -- Implemented from authentication.process - AuthenticationProcessProfile
+
     def get_authentication_record_types(self):
         """Pass through to provider get_authentication_record_types"""
         # Implemented from kitosid template for -
@@ -234,6 +234,7 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
         """Session state will never be saved"""
         self._session_management = DISABLED
         self.close_sessions()
+
     def get_authentication_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -251,12 +252,6 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
         raise Unimplemented('Unimplemented in dlkit.services')
 
     authentication_process_manager = property(fget=get_authentication_process_manager)
-
-    ##Implemented from authentication.process - AuthenticationProcessManager
-
-
-    ##Implemented from authentication.process - AuthenticationProcessProxyManager
-
 
 
 class AuthenticationProxyManager(osid.OsidProxyManager, AuthenticationProfile, authentication_managers.AuthenticationProxyManager):
@@ -279,8 +274,3 @@ class AuthenticationProxyManager(osid.OsidProxyManager, AuthenticationProfile, a
         raise Unimplemented('Unimplemented in dlkit.services')
 
     authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
-
-    ##Implemented from authentication.process - AuthenticationProcessProxyManager
-
-
-

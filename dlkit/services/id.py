@@ -13,11 +13,9 @@
 #     it just isn't.
 
 
-
 from . import osid
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.manager_impls.id import managers as id_managers
-
 
 
 DEFAULT = 0
@@ -39,7 +37,6 @@ class IdProfile(osid.OsidProfile, id_managers.IdProfile):
     pass
 
 
-
 class IdManager(osid.OsidManager, osid.OsidSession, IdProfile, id_managers.IdManager):
     """IdManager convenience adapter including related Session methods."""
 
@@ -58,5 +55,3 @@ class IdProxyManager(osid.OsidProxyManager, IdProfile, id_managers.IdProxyManage
         raise Unimplemented('Unimplemented in dlkit.services')
 
     id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)
-
-
