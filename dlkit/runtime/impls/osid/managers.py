@@ -2,7 +2,7 @@
 
 # This module contains all the Manager classes used by the Django Runtime
 # based implementation of the OSID Runtime related Services.
-# Note that it includes the core OsidProfile typically found in the osid 
+# Note that it includes the core OsidProfile typically found in the osid
 # package as well as the learning package managers.
 
 from importlib import import_module
@@ -12,6 +12,7 @@ from .. import profile
 from ..primitives import Id, DisplayText, Type
 from .osid_errors import *
 from ..configuration.sessions import ValueRetrievalSession
+
 
 class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
     """The OsidProfile defines the interoperability areas of an OSID.
@@ -34,7 +35,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
 
         """
         return Id(**profile.ID)
-        
 
     def get_display_name(self):
         """Gets a display name for this service implementation.
@@ -44,9 +44,9 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
 
         """
         return DisplayText({'text': profile.DISPLAYNAME,
-                           'languageTypeId': profile.LANGUAGETYPEID,
-                           'scriptTypeId': profile.SCRIPTTYPEID,
-                           'formatTypeId': profile.FORMATTYPEID})
+                            'languageTypeId': profile.LANGUAGETYPEID,
+                            'scriptTypeId': profile.SCRIPTTYPEID,
+                            'formatTypeId': profile.FORMATTYPEID})
 
     def get_description(self):
         """Gets a description of this service implementation.
@@ -56,9 +56,9 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
 
         """
         return DisplayText({'text': profile.DESCRIPTION,
-                           'languageTypeId': profile.LANGUAGETYPEID,
-                           'scriptTypeId': profile.SCRIPTTYPEID,
-                           'formatTypeId': profile.FORMATTYPEID})
+                            'languageTypeId': profile.LANGUAGETYPEID,
+                            'scriptTypeId': profile.SCRIPTTYPEID,
+                            'formatTypeId': profile.FORMATTYPEID})
 
     def get_version(self):
         """Gets the version of this service implementation.
@@ -187,6 +187,7 @@ class OsidProfile(abc_osid_managers.OsidProfile, markers.Sourceable):
     branch = property(get_branch)
     proxy_record_types = property(get_proxy_record_types)
 
+
 class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
     """The OsidManager is the top level interface for all OSID managers.
 
@@ -255,6 +256,7 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
         """
         # Perhaps someday I will support journaling
         raise Unimplemented()
+
 
 class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     """The ``OsidProxyManager`` is the top level interface for all OSID proxy managers.
@@ -342,6 +344,7 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
         # Perhaps someday I will support journaling
         raise Unimplemented()
 
+
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):
     """The ``OsidRuntimeProfile`` defines the service aspects of the OSID runtime service."""
 
@@ -392,9 +395,9 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         instantiated.
 
         """
-        # This implementation assumes that all osid impls reside as seperate 
-        # packages in the dlkit library, so that for instance the proxy manager for an 
-        # OSID = 'osidpackage' in an implementation named 'impl_name' manager can 
+        # This implementation assumes that all osid impls reside as seperate
+        # packages in the dlkit library, so that for instance the proxy manager for an
+        # OSID = 'osidpackage' in an implementation named 'impl_name' manager can
         # be found in the python path for the module: dlkit.impl_name.osid.managers
         # Also this implementation currently ignores the OSID specification version.
         from importlib import import_module
@@ -441,9 +444,9 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         instantiated.
 
         """
-        # This implementation assumes that all osid impls reside as seperate 
-        # packages in the dlkit library, so that for instance the proxy manager for an 
-        # OSID = 'osidpackage' in an implementation named 'impl_name' manager can 
+        # This implementation assumes that all osid impls reside as seperate
+        # packages in the dlkit library, so that for instance the proxy manager for an
+        # OSID = 'osidpackage' in an implementation named 'impl_name' manager can
         # be found in the python path for the module: dlkit.impl_name.osid.managers
         # Also this implementation currently ignores the OSID specification version.
         try:
@@ -470,5 +473,3 @@ class OsidRuntimeManager(abc_osid_managers.OsidRuntimeManager, OsidManager, Osid
         return self._configuration
 
     configuration = property(fget=get_configuration)
-
-

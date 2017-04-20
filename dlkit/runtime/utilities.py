@@ -1,5 +1,6 @@
 """utility methods"""
 
+
 def impl_key_dict(value, priority=1):
     """to reduce duplicate code in configs.py and handcar_configs.py"""
     return {

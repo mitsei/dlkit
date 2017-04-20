@@ -10,15 +10,17 @@ from .. import profile
 from ..primitives import Id, Type, DisplayText
 from ..osid.osid_errors import *
 
+
 class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
     """A ``Proxy`` is used to transfer external information from an application server into an OSID Provider."""
 
-    def __init__(self, authentication=None,
-                       effective_agent_id=None,
-                       effective_date=None,
-                       effective_clock_rate=None,
-                       locale=None,
-                       format_type=None):
+    def __init__(self,
+                 authentication=None,
+                 effective_agent_id=None,
+                 effective_date=None,
+                 effective_clock_rate=None,
+                 locale=None,
+                 format_type=None):
         self._authentication = authentication
         self._effective_agent_id = effective_agent_id
         self._effective_date = effective_date
@@ -31,8 +33,6 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
 
         :return: ``true`` if an ``Authentication`` is available, ``false`` otherwise
         :rtype: ``boolean``
-
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
@@ -104,8 +104,6 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
 
         :return: ``true`` if an effective date is available, ``false`` otherwise
         :rtype: ``boolean``
-
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
@@ -150,8 +148,6 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
 
         :return: a locale
         :rtype: ``osid.locale.Locale``
-
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
@@ -204,7 +200,7 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.proxy.records.ProxyRecord
+        return  # osid.proxy.records.ProxyRecord
 
 
 class ProxyCondition(abc_proxy_rules.ProxyCondition, osid_rules.OsidCondition):
@@ -393,9 +389,9 @@ class ProxyCondition(abc_proxy_rules.ProxyCondition, osid_rules.OsidCondition):
                 authority=authority,
                 namespace='osid.agent.Agent',
                 identifier=http_request.META['HTTP_LTI_USER_ID']))
-        else: # For now, assume a Django request
+        else:  # For now, assume a Django request
             self._use_user_id = use_user_id
-        
+
     http_request = property(fset=set_http_request)
 
     # The following methods support the XBlockUser ProxyConditionRecordType and

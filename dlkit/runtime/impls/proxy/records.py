@@ -12,8 +12,6 @@ class ProxyRecord(osid_records.OsidRecord):
     __metaclass__ = abc.ABCMeta
 
 
-
-
 class ProxyConditionRecord(osid_records.OsidRecord):
     """A record for a ``ProxyCondition``.
 
@@ -22,7 +20,3 @@ class ProxyConditionRecord(osid_records.OsidRecord):
 
     """
     __metaclass__ = abc.ABCMeta
-
-
-
-

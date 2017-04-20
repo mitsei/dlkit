@@ -22,19 +22,19 @@ class Runtime(OsidRuntimeManager):
         self._managers = {}
         self._proxy_managers = {}
 
-    def get_service_manager(self, osid, implementation='SERVICE', proxy=None, version=[3,0,0]):
+    def get_service_manager(self, osid, implementation='SERVICE', proxy=None, version=[3, 0, 0]):
         if proxy is None:
             proxy_key = NO_PROXY
         else:
             proxy_key = PROXY
         return self._load_mgr(osid, implementation, version, proxy_key, proxy)
 
-    def get_manager(self, osid, implementation, version=[3,0,0]):
+    def get_manager(self, osid, implementation, version=[3, 0, 0]):
         if implementation + osid not in self._managers:
             self._managers[implementation + osid] = self._load_mgr(osid, implementation, version, 0)
         return self._managers[implementation + osid]
 
-    def get_proxy_manager(self, osid, implementation, version=[3,0,0], proxy=None):
+    def get_proxy_manager(self, osid, implementation, version=[3, 0, 0], proxy=None):
         if implementation + osid not in self._proxy_managers:
             self._proxy_managers[implementation + osid] = self._load_mgr(osid, implementation, version, 1)
         return self._proxy_managers[implementation + osid]

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#
 # This module contains primitives required by the MIT Core Concept
 # Catalog (MC3) Handcar learning service implementation
 
@@ -11,7 +10,8 @@ from dlkit.abstract_osid.locale.primitives import DisplayText as abc_displaytext
 from .osid.osid_errors import NullArgument, NotFound, OperationFailed
 from . import types
 
-#from .abstract_osid.abc_installation.primitives import Version as abc_version
+# from .abstract_osid.abc_installation.primitives import Version as abc_version
+
 
 class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     """A marker interface for an interface that behaves like a language primitive.
@@ -23,7 +23,7 @@ class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     Consumer must be consumable by any OSID Provider.
 
     """
-    
+
     def _test_escape(self):
         print self._unescape(self._escape("here:there@okapia.net")) == "here:there@okapia.net"
         print self._unescape(self._escape("here:there/somewhere@okapia.net")) == "here:there/somewhere@okapia.net"
@@ -51,7 +51,7 @@ class Id(abc_id, OsidPrimitive):
             self._identifier = identifier
         else:
             raise NullArgument()
-    
+
     def __str__(self):
         if self._idstr is not None:
             return self._idstr
@@ -66,7 +66,7 @@ class Id(abc_id, OsidPrimitive):
 
     def get_identifier(self):
         return self._identifier
-        
+
     authority = property(get_authority)
     identifier_namespace = property(get_identifier_namespace)
     namespace = property(get_identifier_namespace)
@@ -75,15 +75,16 @@ class Id(abc_id, OsidPrimitive):
 
 class Type(abc_type, OsidPrimitive):
 
-    def __init__(self, identifier=None,
-                       authority=None,
-                       namespace=None,
-                       display_name=None,
-                       display_label=None,
-                       description=None,
-                       domain=None):
+    def __init__(self,
+                 identifier=None,
+                 authority=None,
+                 namespace=None,
+                 display_name=None,
+                 display_label=None,
+                 description=None,
+                 domain=None):
         if (authority is not None and namespace is not None and identifier is not None and
-            display_name is not None and description is not None and domain is not None):
+                display_name is not None and description is not None and domain is not None):
             self._authority = authority
             self._namespace = namespace
             self._identifier = identifier
@@ -93,30 +94,30 @@ class Type(abc_type, OsidPrimitive):
             self._domain = domain
         else:
             raise NullArgument()
-    
+
     def get_display_name(self):
-        return DisplayText(text = self._display_name,
-                           language_type = Type(**types.Language().get_type_data('DEFAULT')),
-                           script_type = Type(**types.Script().get_type_data('DEFAULT')),
-                           format_type = Type(**types.Format().get_type_data('DEFAULT')))
+        return DisplayText(text=self._display_name,
+                           language_type=Type(**types.Language().get_type_data('DEFAULT')),
+                           script_type=Type(**types.Script().get_type_data('DEFAULT')),
+                           format_type=Type(**types.Format().get_type_data('DEFAULT')))
 
     def get_display_label(self):
-        return DisplayText(text = self._display_label,
-                           language_type = Type(**types.Language().get_type_data('DEFAULT')),
-                           script_type = Type(**types.Script().get_type_data('DEFAULT')),
-                           format_type = Type(**types.Format().get_type_data('DEFAULT')))
+        return DisplayText(text=self._display_label,
+                           language_type=Type(**types.Language().get_type_data('DEFAULT')),
+                           script_type=Type(**types.Script().get_type_data('DEFAULT')),
+                           format_type=Type(**types.Format().get_type_data('DEFAULT')))
 
     def get_description(self):
-        return DisplayText(text = self._description,
-                           language_type = Type(**types.Language().get_type_data('DEFAULT')),
-                           script_type = Type(**types.Script().get_type_data('DEFAULT')),
-                           format_type = Type(**types.Format().get_type_data('DEFAULT')))
+        return DisplayText(text=self._description,
+                           language_type=Type(**types.Language().get_type_data('DEFAULT')),
+                           script_type=Type(**types.Script().get_type_data('DEFAULT')),
+                           format_type=Type(**types.Format().get_type_data('DEFAULT')))
 
     def get_domain(self):
-        return DisplayText(text = self._domain,
-                           language_type = Type(**types.Language().get_type_data('DEFAULT')),
-                           script_type = Type(**types.Script().get_type_data('DEFAULT')),
-                           format_type = Type(**types.Format().get_type_data('DEFAULT')))
+        return DisplayText(text=self._domain,
+                           language_type=Type(**types.Language().get_type_data('DEFAULT')),
+                           script_type=Type(**types.Script().get_type_data('DEFAULT')),
+                           format_type=Type(**types.Format().get_type_data('DEFAULT')))
 
     def get_authority(self):
         return self._authority
@@ -143,7 +144,7 @@ class DisplayText(abc_displaytext, OsidPrimitive):
         if display_text_map is not None:
             self._unfold_map(display_text_map)
         elif (text is not None and language_type is not None and
-            script_type is not None and format_type is not None):
+                script_type is not None and format_type is not None):
             self._text = text
             self._language_type = language_type
             self._script_type = script_type
@@ -159,17 +160,16 @@ class DisplayText(abc_displaytext, OsidPrimitive):
         try:
             self._language_type = Type(**locale_types.Language().get_type_data(lt_identifier))
         except AttributeError:
-            raise NotFound('Language Type: ' + lt_identifier) # or move on to another source
+            raise NotFound('Language Type: ' + lt_identifier)  # or move on to another source
         try:
             self._script_type = Type(**locale_types.Script().get_type_data(st_identifier))
         except AttributeError:
-            raise NotFound('Script Type: ' + st_identifier) # or move on to another source
+            raise NotFound('Script Type: ' + st_identifier)  # or move on to another source
         try:
             self._format_type = Type(**locale_types.Format().get_type_data(ft_identifier))
         except AttributeError:
-            raise NotFound('Format Type: ' + ft_identifier) # or move on to another source
+            raise NotFound('Format Type: ' + ft_identifier)  # or move on to another source
         self._text = display_text_map['text']
-        
 
     def get_language_type(self):
         return self._language_type
@@ -191,7 +191,7 @@ class DisplayText(abc_displaytext, OsidPrimitive):
 
 """
 class Version(abc_version, OsidPrimitive):
-    
+
     def __init__(self, version_map):
         my_vesion
 

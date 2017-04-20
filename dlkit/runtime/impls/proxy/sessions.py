@@ -11,6 +11,7 @@ from ..primitives import Id, Type, DisplayText
 from ..osid.osid_errors import *
 from . import rules
 
+
 class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
     """This session converts external data into a proxy for use in OSID proxy managers.
 
@@ -25,7 +26,6 @@ class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
 
         :return: a proxy condiiton
         :rtype: ``osid.proxy.ProxyCondition``
-
 
         *compliance: mandatory -- This method is must be implemented.*
 
@@ -70,5 +70,3 @@ class ProxySession(abc_proxy_sessions.ProxySession, osid_sessions.OsidSession):
         return rules.Proxy(authentication=authentication,
                            effective_agent_id=effective_agent_id,
                            locale=locale)
-
-

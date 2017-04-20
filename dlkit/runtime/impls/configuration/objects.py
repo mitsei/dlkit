@@ -208,9 +208,6 @@ class ParameterList(abc_configuration_objects.ParameterList, osid_objects.OsidLi
       while (pl.hasNext()) {
            Parameter[] parameters = pl.getNextParameters(pl.available());
       }
-    
-
-
     """
 
     def get_next_parameter(self):
@@ -230,13 +227,13 @@ class ParameterList(abc_configuration_objects.ParameterList, osid_objects.OsidLi
             next_item = self.next()
         except StopIteration:
             raise IllegalState('no more elements available in this list')
-        except: #Need to specify exceptions here
+        except:  # Need to specify exceptions here
             raise OperationFailed()
         else:
             return next_item
-            
+
     def next(self):
-        from .objects import Parameter 
+        from .objects import Parameter
         try:
             next_item = OsidList.next(self)
         except:
@@ -261,7 +258,7 @@ class ParameterList(abc_configuration_objects.ParameterList, osid_objects.OsidLi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-    # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         if n > self.available():
             # !!! This is not quite as specified (see method docs) !!!
             raise IllegalState('not enough elements available in this list')
@@ -271,7 +268,7 @@ class ParameterList(abc_configuration_objects.ParameterList, osid_objects.OsidLi
             while x < n:
                 try:
                     next_list.append(self.next())
-                except: #Need to specify exceptions here
+                except:  # Need to specify exceptions here
                     raise OperationFailed()
                 x = x + 1
             return next_list
@@ -288,9 +285,9 @@ class Value(abc_configuration_objects.Value, osid_objects.OsidObject, osid_marke
 
     def get_id(self):
         from .. import primitives
-        return primitives.Id(identifier = self._identifier,
-                             namespace = self._namespace,
-                             authority = self._authority)
+        return primitives.Id(identifier=self._identifier,
+                             namespace=self._namespace,
+                             authority=self._authority)
 
     def get_parameter_id(self):
         """Gets the parameter ``Id`` of this value.
@@ -587,6 +584,7 @@ class Value(abc_configuration_objects.Value, osid_objects.OsidObject, osid_marke
 
         """
 
+
 class ValueList(abc_configuration_objects.ValueList, osid_objects.OsidList):
     """Like all ``OsidLists,``  ``ValueList`` provides a means for accessing ``Value`` elements sequentially either one at a time or many at a time.
 
@@ -596,7 +594,7 @@ class ValueList(abc_configuration_objects.ValueList, osid_objects.OsidList):
       while (vl.hasNext()) {
            Value[] values = vl.getNextValues(vl.available());
       }
-    
+
 
 
     """
@@ -618,13 +616,13 @@ class ValueList(abc_configuration_objects.ValueList, osid_objects.OsidList):
             next_item = self.next()
         except StopIteration:
             raise IllegalState('no more elements available in this list')
-        except: #Need to specify exceptions here
+        except:  # Need to specify exceptions here
             raise OperationFailed()
         else:
             return next_item
-            
+
     def next(self):
-        from .objects import Value 
+        from .objects import Value
         try:
             next_item = OsidList.next(self)
         except:
@@ -658,7 +656,7 @@ class ValueList(abc_configuration_objects.ValueList, osid_objects.OsidList):
             while x < n:
                 try:
                     next_list.append(self.next())
-                except: #Need to specify exceptions here
+                except:  # Need to specify exceptions here
                     raise OperationFailed()
                 x = x + 1
             return next_list
@@ -714,8 +712,6 @@ class Configuration(abc_configuration_objects.Configuration, osid_objects.OsidCa
         """
         pass
 
-
-
     def set_registry(self, registry=None):
         """Sets the registry flag that indicates if the parameters mapped to this configuration contain no values.
 
@@ -758,7 +754,7 @@ class ConfigurationList(abc_configuration_objects.ConfigurationList, osid_object
       while (cl.hasNext()) {
            Configuration[] configs = cl.getNextConfigurations(cl.available());
       }
-    
+
 
 
     """
@@ -781,13 +777,13 @@ class ConfigurationList(abc_configuration_objects.ConfigurationList, osid_object
             next_item = self.next()
         except StopIteration:
             raise IllegalState('no more elements available in this list')
-        except: #Need to specify exceptions here
+        except:  # Need to specify exceptions here
             raise OperationFailed()
         else:
             return next_item
-            
+
     def next(self):
-        from .objects import Configuration 
+        from .objects import Configuration
         try:
             next_item = OsidList.next(self)
         except:
@@ -822,7 +818,7 @@ class ConfigurationList(abc_configuration_objects.ConfigurationList, osid_object
             while x < n:
                 try:
                     next_list.append(self.next())
-                except: #Need to specify exceptions here
+                except:  # Need to specify exceptions here
                     raise OperationFailed()
                 x = x + 1
             return next_list

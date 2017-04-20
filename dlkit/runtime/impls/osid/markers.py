@@ -1,6 +1,7 @@
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
 from .. import settings
 
+
 class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     """A marker interface for an interface that behaves like a language
     primitive.
@@ -17,14 +18,14 @@ class Identifiable(abc_osid_markers.Identifiable):
 
     def get_id(self):
         from .. import primitives
-        return primitives.Id(identifier = self._identifier,
-                             namespace = self._namespace,
-                             authority = self._authority)
+        return primitives.Id(identifier=self._identifier,
+                             namespace=self._namespace,
+                             authority=self._authority)
 
     def is_current(self):
         """Tests to see if the last method invoked retrieved up-to-date
         data."""
-        return True # I think, since this is all hard-coded anyway
+        return True  # I think, since this is all hard-coded anyway
 
     id_ = property(get_id)
     ident = property(get_id)
@@ -33,7 +34,7 @@ class Identifiable(abc_osid_markers.Identifiable):
 class Extensible(abc_osid_markers.Extensible):
     """A marker interface for objects that contain OsidRecords."""
 
-    def __init__(self): # This will never get called :)
+    def __init__(self):  # This will never get called :)
         from ..type.objects import TypeList
         self._record_types = TypeList([])
 
@@ -47,7 +48,7 @@ class Extensible(abc_osid_markers.Extensible):
         type_list = []
         for type_id in self._my_extension_map['recordTypeIds']:
             url_path = '/handcar/services/learning/types/' + type_id
-            type_list.append(self._get_request(url_path))        
+            type_list.append(self._get_request(url_path))
         return TypeList(type_list)"""
 
     def has_record_type(self, record_type=None):
@@ -74,7 +75,7 @@ class Browsable(abc_osid_markers.Browsable):
 
 class Suppliable(abc_osid_markers.Suppliable):
     pass
-    
+
 
 class Temporal(abc_osid_markers.Temporal):
     """``Temporal`` is used to indicate the object endures for a period of time."""
@@ -124,7 +125,7 @@ class Aggregateable(abc_osid_markers.Aggregateable):
     The AssetContent differs in there exists a explicit mapping to the
     Asset managed through an OsidSession but accessible directly within
     the Asset to enable its consumption outside the Repository OSID.
-    
+
     This marker has little practicality other than to identify a service
     pattern that is neither a data attribute nor a separately accessible
     relationship or mapping.
@@ -179,7 +180,7 @@ class Operable(abc_osid_markers.Operable):
     The operational status indicates the Operable is functioning. This
     status is not set administratively but instead refelects suitable
     conditions for operation.
-    
+
     Operables may be administratively turned on of off through the
     enabled and disabled administrative overrides. If there are no
     related ``OsidEnabler`` rules, then ``is_enabled()`` should be set
@@ -187,14 +188,14 @@ class Operable(abc_osid_markers.Operable):
     ``Operable`` to be on and ``is_enabled()`` set to ``false`` and
     ``is_disabled()`` set to true for the ``Operable`` to be ``off``.
     ``is_enabled()`` and ``is_disabled()`` cannot both be ``tru`` e.
-    
+
     If there are related ``OsidEnabler`` rules, the active status of at
     least one ``OsidEnabler`` results in a ``true`` value for
     ``isOperational()``. This active status can be overridden by setting
     ``is_disabled()`` to ``true``. If there are no active
     ``OsidEnabler`` rules, ``is_operational()`` is false resulting in an
     ``off``  ``Operable`` unless ``is_enabled()`` is ``true`` .
-    
+
     For the active status to be completely determined by the
     ``OsidEnablers,`` both ``is_enabled()`` and ``is_disabled()`` should
     be ``false`` where the ``is_active()`` status is completely driven
@@ -230,7 +231,7 @@ class Operable(abc_osid_markers.Operable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Someday I'll have a real implementation, but for now I just: 
+        # Someday I'll have a real implementation, but for now I just:
         return False
 
     def is_disabled(self):
@@ -275,4 +276,3 @@ class Subjugateable(abc_osid_markers.Subjugateable):
 
     """
     pass
-

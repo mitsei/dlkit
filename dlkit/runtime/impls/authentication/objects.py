@@ -2,6 +2,7 @@ from dlkit.abstract_osid.authentication import objects as abc_authentication_obj
 from ..osid import objects as osid_objects
 from .. import settings
 
+
 class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
     """An ``Agent`` represents an authenticatable identity.
 
@@ -10,7 +11,7 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
 
     """
 
-    def __init__(self, identifier, namespace, authority, 
+    def __init__(self, identifier, namespace, authority,
                  display_name=None, description=None, genus_type=None):
         self._identifier = identifier
         self._namespace = namespace
@@ -55,5 +56,4 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.records.AgentRecord
-
+        return  # osid.authentication.records.AgentRecord

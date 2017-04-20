@@ -1,12 +1,10 @@
 
-##
 # The display text types for this instance of hc_learning:
 LANGUAGE_TYPE_ID = '639-2%3AEnglish%40ISO'
 SCRIPT_TYPE_ID = '15924%3ALatin%40ISO'
 FORMAT_TYPE_ID = 'Text+Formats%3Aplain%40okapia.net'
 
-##
-# Dictionary of the default genusTypeIds for various objects, indexed by 
+# Dictionary of the default genusTypeIds for various objects, indexed by
 # Id namespace:
 DEFAULT_GENUS_TYPES = {
     'authentication.Agent': 'dlkit_authentication%3Adlkit_default_agent%40MIT-OEIT',

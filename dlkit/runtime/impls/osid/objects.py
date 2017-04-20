@@ -15,6 +15,7 @@ from . import markers
 INVALID = 0
 VALID = 1
 
+
 class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Extensible, markers.Browsable):
     """OsidObject is the top level interface for all OSID Objects.
 
@@ -32,11 +33,11 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
     determine what PropertyTypes are supported. The OsidManager is also
     used to create the appropriate OsidSession for object creation,
     updates and deletes.
-    
+
     All OsidObjects are identified by an immutable Id. An Id is assigned
     to an object upon creation of the object and cannot be changed once
     assigned.
-    
+
     An OsidObject may support one or more supplementary records which
     are expressed in the form of interfaces. Each record interface is
     identified by a Type. A record interface may extend another record
@@ -44,7 +45,7 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
     In this case of interface inheritance, support of the parent record
     type may be implied through has_record_type() and not explicit in
     get_record_types().
-    
+
     For example, if recordB extends recordA, typeB is a child of typeA.
     If a record implements typeB, than it also implements typeA. An
     application that only knows about typeA retrieves recordA. An
@@ -54,7 +55,7 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
     typeB as they may not exist until explicitly requested. The
     mechanics of this polymorphism is defined by the language binder.
     One mechanism might be the use of casting.
-    
+
     In addition to the record Types, OSID Objects also have a genus
     Type. A genus Type indicates a classification or kind of the object
     where an "is a" relationship exists. The purpose of of the genus
@@ -68,14 +69,14 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
     Book or Journal. While this distinction can aid a search, these
     genres should be treated in such a way that do not introduce
     interoperability problems.
-    
+
     Like record Types, the genus Types may also exist in an implicit
     type hierarchy. An OSID object always has at least one genus. Genus
     types should not be confused with subject tagging, which is managed
     externally to the object. Unlike record Types, an object's genus may
     be modified. However, once an object's record is created with a
     record Type, it cannot be changed.
-    
+
     Methods that return values are not permitted to return nulls. If a
     value is not set, it is indicated in the Metadata of the update
     form.
@@ -129,13 +130,13 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
 
     def is_of_genus_type(self, genus_type=None):
         """Tests if this object is of the given genus Type.
-        
+
         The given genus type may be supported by the object through the
         type hierarchy.
-        
-        | arg:    ``genus_type`` (``osid.type.Type``): a genus type 
+
+        | arg:    ``genus_type`` (``osid.type.Type``): a genus type
         | return: (``boolean``) - true if this object is of the given genus
-                Type,  false otherwise      
+                Type,  false otherwise
         | raise:  ``NullArgument`` - ``genus_type`` is null
         | *compliance: mandatory - This method must be implemented.*
 
@@ -166,31 +167,28 @@ class OsidRelationship(abc_osid_objects.OsidRelationship, OsidObject, markers.Te
     The relationship between the student and the course remains
     pertinent, independent of any journaled changes that may have
     occurred to either the student or the course.
-    
+
     Once the student has dropped the course, the relationship has
     expired such that ``is_effective()`` becomes false. It can be
     inferred that during the period of the effective dates, the student
     was actively registered in the course. Here is an example:
-    
+
       * T1. September 1: Student registers for course for grades
       * T2. September 10: Student drops course
       * T3. September 15: Student re-registers for course pass/fail
 
-    
     The relationships are:
       T1. R1 {effective,   September 1  -> end of term,  data=grades}
       T2. R1 {ineffective, September 1  -> September 10, data=grades}
       T3. R1 {ineffective, September 1  -> September 10, data=grades}
           R2 {effective,   September 10 -> end of term,  data=p/f}
-    
 
-    
     An OSID Provider may also permit dates to be set in the future in
     which case the relationship can become automatically become
     effective at a future time and later expire. More complex
     effectiveness management can be done through other rule-based
     services.
-    
+
     OSID Consumer lookups and queries of relationships need to consider
     that it may be only effective relationshps are of interest.
 
@@ -233,7 +231,6 @@ class OsidRelationship(abc_osid_objects.OsidRelationship, OsidObject, markers.Te
         raise IllegalState()
 
 
-
 class OsidList(abc_osid_objects.OsidList):
     """OsidList is the top-level interface for all OSID lists.
 
@@ -250,7 +247,7 @@ class OsidList(abc_osid_objects.OsidList):
     fixed buffer should be done with caution a awareness that an
     implementation may return a number of elements ranging from zero to
     infinity.
-    
+
     Lists are returned by methods when multiple return values are
     possible. There is no guarantee that successive calls to the same
     method will return the same set of elements in a list. Unless an
@@ -259,8 +256,8 @@ class OsidList(abc_osid_objects.OsidList):
 
     """
 
-    def __init__(self, iter_object = [], count = None):
-        if count != None:
+    def __init__(self, iter_object=[], count=None):
+        if count is not None:
             self._count = count
         elif isinstance(iter_object, dict) or isinstance(iter_object, list):
             self._count = len(iter_object)
@@ -277,9 +274,9 @@ class OsidList(abc_osid_objects.OsidList):
             next_object = self._iter_object.next()
         except StopIteration:
             raise
-        except Exception:  # Need to specify exceptions here! 
+        except Exception:  # Need to specify exceptions here!
             raise OperationFailed()
-        if self._count != None:
+        if self._count is not None:
             self._count -= 1
         return next_object
 
@@ -295,7 +292,7 @@ class OsidList(abc_osid_objects.OsidList):
         return true for this method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return bool(self._count)
         else:
@@ -327,14 +324,15 @@ class OsidList(abc_osid_objects.OsidList):
         as a parameter to the bulk retrieval method.
 
         """
-        if self._count != None:
+        if self._count is not None:
             # If count is available, use it
             return self._count
         else:
             # We really have no idea.
-            return 0  # Don't know what do do here, but for this
-                      # impl, which should only be constructed with
-                      # python lists, self._count should never be none.
+            # Don't know what do do here, but for this
+            # impl, which should only be constructed with
+            # python lists, self._count should never be none.
+            return 0
 
     def skip(self, n=None):
         """Skip the specified number of elements in the list.
@@ -363,7 +361,7 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, markers.Sourceable, 
 
     ``OsidCatalogs`` allow for the retrieval of a provider identity and
     branding.
-    
+
     Collections visible through an ``OsidCatalog`` may be the output of
     a dynamic query or some other rules-based evaluation. The facts
     surrounding the evaluation are the ``OsidObjects`` visible to the
@@ -371,7 +369,7 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, markers.Sourceable, 
     input conditions may satisifed on a service-wide basis using an
     ``OsidQuery`` or environmental conditions supplied to the services
     via a ``Proxy`` .
-    
+
     Often, the selection of an ``OsidCatalog`` in instantiating an
     ``OsidSession`` provides access to a set of ``OsidObjects`` .
     Because the view inside an ``OsidCatalog`` can also be produced
@@ -379,7 +377,7 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, markers.Sourceable, 
     alias) of the ``OsidCatalog`` may be used as an abstract means of
     requesting a predefined set of behaviors or data constraints from an
     OSID Provider.
-    
+
     The flexibility of interpretation together with its central role in
     federation to build a rich and complex service from a set of
     individual OSID Providers makes cataloging an essential pattern to
@@ -388,6 +386,7 @@ class OsidCatalog(abc_osid_objects.OsidCatalog, OsidObject, markers.Sourceable, 
 
     """
     pass
+
 
 class OsidRule(abc_osid_objects.OsidRule, OsidObject, markers.Operable):
     """An ``OsidRule`` identifies an explicit or implicit rule evaluation.
@@ -402,7 +401,7 @@ class OsidRule(abc_osid_objects.OsidRule, OsidObject, markers.Operable):
     evaluation, an enabled rule overrides any evaluation to return
     ``true`` and a disabled rule overrides any evaluation to return
     ``false``.
-    
+
     ``Rules`` are never required to consume or implement. They serve as
     a mechanism to offer a level of management not attainable in the
     immediate service definition. Each Rule implies evaluating a set of
@@ -455,4 +454,3 @@ class OsidRule(abc_osid_objects.OsidRule, OsidObject, markers.Operable):
         raise IllegalState()
 
     rule = property(fget=get_rule)
-

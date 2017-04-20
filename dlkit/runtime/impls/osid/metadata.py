@@ -2128,5 +2128,3 @@ class Metadata(abc_osid_metadata.Metadata):
             return self._kwargs['existing_version_values']
 
     existing_version_values = property(fget=get_existing_version_values)
-
-

@@ -11,8 +11,6 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
       while (tl.hasNext()) {
            Type[] types = tl.getNextTypes(tl.available());
       }
-    
-
 
     """
 
@@ -33,14 +31,14 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             next_item = self.next()
         except StopIteration:
             raise IllegalState('no more elements available in this list')
-        except: #Need to specify exceptions here
+        except:  # Need to specify exceptions here
             raise OperationFailed()
         else:
             return next_item
-            
+
     def next(self):
         from ..osid.objects import OsidList
-        from .primitives import Type 
+        from .primitives import Type
         try:
             next_item = OsidList.next(self)
         except:
@@ -80,9 +78,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             while x < n:
                 try:
                     next_list.append(self.next())
-                except: #Need to specify exceptions here
+                except:  # Need to specify exceptions here
                     raise OperationFailed()
                 x = x + 1
             return next_list
-
-

@@ -33,7 +33,6 @@ class DjangoAuthentication(abc_authentication_process_objects.Authentication, os
         :return: the ``Agent Id``
         :rtype: ``osid.id.Id``
 
-
         *compliance: mandatory -- This method must be implemented.*
         *implementation notes*: The Agent should be determined at the
         time this credential is created.
@@ -44,14 +43,14 @@ class DjangoAuthentication(abc_authentication_process_objects.Authentication, os
                 identifier = self._django_user.id
             else:
                 identifier = self._django_user.get_username()
-            return Id(identifier = identifier,
-                      namespace = 'osid.agent.Agent',
-                      authority = 'MIT-ODL')
+            return Id(identifier=identifier,
+                      namespace='osid.agent.Agent',
+                      authority='MIT-ODL')
         else:
             # perhaps this id should come from django settings?
-            return Id(identifier = 'MC3GUE$T@MIT.EDU',
-                      namespace = 'osid.agent.Agent',
-                      authority = 'MIT-ODL')
+            return Id(identifier='MC3GUE$T@MIT.EDU',
+                      namespace='osid.agent.Agent',
+                      authority='MIT-ODL')
 
     agent_id = property(fget=get_agent_id)
 
@@ -66,9 +65,9 @@ class DjangoAuthentication(abc_authentication_process_objects.Authentication, os
 
         """
         agent_id = self.get_agent_id()
-        return Agent(identifier = agent_id.identifier,
-                     namespace = agent_id.namespace,
-                     authority = agent_id.authority)
+        return Agent(identifier=agent_id.identifier,
+                     namespace=agent_id.namespace,
+                     authority=agent_id.authority)
 
     agent = property(fget=get_agent)
 
@@ -80,7 +79,6 @@ class DjangoAuthentication(abc_authentication_process_objects.Authentication, os
 
         :return: ``true`` if this authentication credential is valid, ``false`` otherwise
         :rtype: ``boolean``
-
 
         *compliance: mandatory -- This method must be implemented.*
         *implementation notes*: Any problem in determining the validity
@@ -181,11 +179,12 @@ class DjangoAuthentication(abc_authentication_process_objects.Authentication, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.AuthenticationRecord
+        return  # osid.authentication.process.records.AuthenticationRecord
 
     def set_django_user(self, django_user, use_user_id=False):
         self._django_user = django_user
         self._use_user_id = use_user_id
+
 
 class XBlockAuthentication(abc_authentication_process_objects.Authentication, osid_objects.OsidObject):
 
@@ -221,35 +220,34 @@ class XBlockAuthentication(abc_authentication_process_objects.Authentication, os
             except KeyError:
                 return False
         return False
-            
 
     def get_agent_id(self):
-        if (self._xblock_user is not None and 
-            self._xblock_user.opt_attrs != {} and
-            self._has_user_id(self._xblock_user) and
-            self._is_authenticated(self._xblock_user)):
+        if (self._xblock_user is not None and
+                self._xblock_user.opt_attrs != {} and
+                self._has_user_id(self._xblock_user) and
+                self._is_authenticated(self._xblock_user)):
             key = self._get_user_id_key(self._xblock_user)
-            return Id(identifier = self._xblock_user.opt_attrs[key],
-                      namespace = 'osid.agent.Agent',
-                      authority = key.split('.')[0])
+            return Id(identifier=self._xblock_user.opt_attrs[key],
+                      namespace='osid.agent.Agent',
+                      authority=key.split('.')[0])
         else:
-            return Id(identifier = 'MC3GUE$T@MIT.EDU',
-                      namespace = 'osid.agent.Agent',
-                      authority = 'MIT-ODL')
+            return Id(identifier='MC3GUE$T@MIT.EDU',
+                      namespace='osid.agent.Agent',
+                      authority='MIT-ODL')
 
     agent_id = property(fget=get_agent_id)
 
     def get_agent(self):
         agent_id = self.get_agent_id()
-        return Agent(identifier = agent_id.identifier,
-                     namespace = agent_id.namespace,
-                     authority = agent_id.authority)
+        return Agent(identifier=agent_id.identifier,
+                     namespace=agent_id.namespace,
+                     authority=agent_id.authority)
 
     agent = property(fget=get_agent)
 
     def is_valid(self):
-        if (self._xblock_user is not None and 
-            self._is_authenticated(self._xblock_user)):
+        if (self._xblock_user is not None and
+                self._is_authenticated(self._xblock_user)):
             return True
         else:
             return False
@@ -278,7 +276,7 @@ class XBlockAuthentication(abc_authentication_process_objects.Authentication, os
             raise IllegalState()
 
     def get_authentication_record(self, authentication_record_type):
-        return # osid.authentication.process.records.AuthenticationRecord
+        return  # osid.authentication.process.records.AuthenticationRecord
 
     def set_xblock_user(self, xblock_user):
         self._xblock_user = xblock_user
@@ -308,7 +306,7 @@ class Challenge(abc_authentication_process_objects.Challenge, osid_markers.Exten
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.ChallengeRecord
+        return  # osid.authentication.process.records.ChallengeRecord
 
 
 class Trust(abc_authentication_process_objects.Trust, osid_objects.OsidObject):
@@ -346,7 +344,7 @@ class Trust(abc_authentication_process_objects.Trust, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.records.TrustRecord
+        return  # osid.authentication.process.records.TrustRecord
 
 
 class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidList):
@@ -358,9 +356,6 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
       while (tl.hasNext()) {
            Trust[] trusts = tl.getNextTrusts(tl.available());
       }
-    
-
-
     """
 
     def get_next_trust(self):
@@ -374,7 +369,7 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
+        return  # osid.authentication.process.Trust
 
     next_trust = property(fget=get_next_trust)
 
@@ -391,6 +386,4 @@ class TrustList(abc_authentication_process_objects.TrustList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return # osid.authentication.process.Trust
-
-
+        return  # osid.authentication.process.Trust

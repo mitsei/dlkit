@@ -2,11 +2,10 @@
 
 # This module contains all the Session classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID Learning Service.
-# Note that it includes the core OsidSession typically found in the osid 
+# Note that it includes the core OsidSession typically found in the osid
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-#import urllib2
 import httplib
 import json
 from dlkit.abstract_osid.osid import sessions as abc_osid_sessions
@@ -21,6 +20,7 @@ FEDERATED = 1
 
 CREATED = True
 UPDATED = True
+
 
 class OsidSession(abc_osid_sessions.OsidSession):
     """The OsidSession is the top level interface for all OSID sessions.
@@ -58,7 +58,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
         """
         return False
-
 
     def get_authenticated_agent_id(self):
         """Gets the Id of the agent authenticated to this session.
@@ -184,4 +183,3 @@ class OsidSession(abc_osid_sessions.OsidSession):
     authenticated_agent = property(get_authenticated_agent)
     effective_agent_id = property(get_effective_agent_id)
     effective_agent = property(get_effective_agent)
-

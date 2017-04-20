@@ -20,7 +20,6 @@ class ProxyProfile(abc_proxy_managers.ProxyProfile, osid_managers.OsidProfile):
         :return: ``true`` if proxy is supported ``,``  ``false`` otherwise
         :rtype: ``boolean``
 
-
         *compliance: mandatory -- This method must be implemented.*
 
         """
@@ -31,7 +30,6 @@ class ProxyProfile(abc_proxy_managers.ProxyProfile, osid_managers.OsidProfile):
 
         :return: a list containing the supported ``Proxy`` record types
         :rtype: ``osid.type.TypeList``
-
 
         *compliance: mandatory -- This method must be implemented.*
 
@@ -90,8 +88,6 @@ class ProxyManager(abc_proxy_managers.ProxyManager, osid_managers.OsidManager, P
     The sessions included in this manager are:
 
       * ``ProxySession:`` a session to acquire proxy interfaces
-
-
     """
 
     def get_proxy_session(self):
@@ -110,11 +106,11 @@ class ProxyManager(abc_proxy_managers.ProxyManager, osid_managers.OsidManager, P
         try:
             from . import sessions
         except ImportError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         try:
             session = sessions.ProxySession()
         except AttributeError:
-            raise #OperationFailed()
+            raise  # OperationFailed()
         return session
 
     proxy_session = property(fget=get_proxy_session)
@@ -127,8 +123,6 @@ class ProxyProxyManager(abc_proxy_managers.ProxyProxyManager, osid_managers.Osid
     sessions included in this manager are:
 
       * ``ProxySession:`` a session to acquire proxies
-
-
     """
 
     def get_proxy_session(self, proxy):
@@ -146,5 +140,3 @@ class ProxyProxyManager(abc_proxy_managers.ProxyProxyManager, osid_managers.Osid
 
         """
         raise Unimplemented()
-
-

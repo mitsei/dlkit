@@ -92,9 +92,6 @@ class PropertyList(abc_osid_properties.Property, osid_objects.OsidList):
       while (pl.hasNext()) {
            Property[] properties = pl.getNextProperties(pl.available());
       }
-    
-
-
     """
 
     def get_next_property(self):
@@ -116,7 +113,7 @@ class PropertyList(abc_osid_properties.Property, osid_objects.OsidList):
             raise OperationFailed()
         else:
             return next_object
-            
+
     def next(self):
         try:
             next_object = osid_objects.OsidList.next(self)
@@ -156,6 +153,3 @@ class PropertyList(abc_osid_properties.Property, osid_objects.OsidList):
                     raise OperationFailed()
                 x = x + 1
             return next_list
-
-
-

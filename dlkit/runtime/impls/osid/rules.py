@@ -12,7 +12,3 @@ class OsidInput(abc_osid_rules.OsidInput, osid_markers.Extensible, osid_markers.
 
 class OsidResult(abc_osid_rules.OsidResult, osid_markers.Extensible, osid_markers.Browsable):
     """The ``OsidResult`` is used to retrieve the result of processing a rule."""
-
-
-
-

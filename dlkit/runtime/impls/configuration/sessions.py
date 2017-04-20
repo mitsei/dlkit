@@ -31,9 +31,8 @@ class ValueRetrievalSession(abc_configuration_sessions.ValueRetrievalSession, os
         the value that do not require explicit data for retrieval are
         ignored.
 
-    
     This session assumes an active view.
-    
+
     Values are not OSID objects and are obtained using a reference to a
     Parameter.
 
@@ -100,7 +99,7 @@ class ValueRetrievalSession(abc_configuration_sessions.ValueRetrievalSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for 
+        # Implemented from template for
         # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._object_view = COMPARATIVE
 
@@ -114,7 +113,7 @@ class ValueRetrievalSession(abc_configuration_sessions.ValueRetrievalSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for 
+        # Implemented from template for
         # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._object_view = PLENARY
 
@@ -127,7 +126,7 @@ class ValueRetrievalSession(abc_configuration_sessions.ValueRetrievalSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for 
+        # Implemented from template for
         # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._catalog_view = FEDERATED
 
@@ -311,4 +310,3 @@ class ValueRetrievalSession(abc_configuration_sessions.ValueRetrievalSession, os
 
         """
         pass
-
