@@ -6,6 +6,7 @@ from .wrong_answers import WrongAnswerItemRecord
 # from dlkit.json_.osid.osid_errors import InvalidArgument
 # from dlkit.primordium.id.primitives import Id
 
+
 class FeedbackAnswerItemRecord(WrongAnswerItemRecord):
     """
     This is really only a marker implementation to indicate that
@@ -15,6 +16,7 @@ class FeedbackAnswerItemRecord(WrongAnswerItemRecord):
         'answer-with-feedback',
         'wrong-answer'
     ]
+
 
 class FeedbackAnswerItemFormRecord(WrongAnswerItemRecord):
     """

@@ -85,7 +85,6 @@ class edXNumericResponseQuestionFormRecord(edXItemFormRecord,
         QuestionFilesFormRecord._init_metadata(self)
 
 
-
 class edXNumericResponseAnswerRecord(DecimalAnswerRecord,
                                      DecimalValuesRecord,
                                      TextAnswerRecord,

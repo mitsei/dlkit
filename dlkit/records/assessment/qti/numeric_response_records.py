@@ -87,6 +87,7 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
     _implemented_record_type_identifiers = [
         'qti-numeric-response'
     ]
+
     def __init__(self, *args, **kwargs):
         super(CalculationInteractionItemRecord, self).__init__(*args, **kwargs)
         self._magic_params = None
@@ -396,7 +397,7 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
                     try:
                         return float(str(response)) == float(str(self._value))
                     except Exception:
-                        ## response is empty string / not a float
+                        # response is empty string / not a float
                         return False
         else:
             return False
@@ -736,7 +737,7 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
                     try:
                         return float(str(response)) == float(str(self._value))
                     except Exception:
-                        ## response is empty string / not a float
+                        # response is empty string / not a float
                         return False
         else:
             return False

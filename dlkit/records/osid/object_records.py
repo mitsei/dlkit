@@ -50,8 +50,8 @@ class EnclosureRecord(ObjectInitRecord):
     def get_genus_type(self):
         """Overrides get_genus_type of extended object"""
         enclosed_object_id = self.get_enclosed_object_id()
-        package=enclosed_object_id.get_identifier_namespace().split('.')[0]
-        obj=enclosed_object_id.get_identifier_namespace().split('.')[1]
+        package = enclosed_object_id.get_identifier_namespace().split('.')[0]
+        obj = enclosed_object_id.get_identifier_namespace().split('.')[1]
         return Type(
             authority='OSID.ORG',
             namespace=package,
@@ -80,7 +80,7 @@ class EnclosureRecord(ObjectInitRecord):
                 lookup_session = getattr(mgr, 'get_' + obj_name.lower() + '_lookup_session')(self.my_osid_object._proxy)
             except TypeError:
                 lookup_session = getattr(mgr, 'get_' + obj_name.lower() + '_lookup_session')()
-            getattr(lookup_session,'use_federated_' + CATALOG_LOOKUP[package_name] + '_view')()
+            getattr(lookup_session, 'use_federated_' + CATALOG_LOOKUP[package_name] + '_view')()
             self._enclosed_object = getattr(
                 lookup_session, 'get_' + obj_name.lower())(enclosed_object_id)
         return self._enclosed_object
@@ -140,7 +140,6 @@ class EnclosureRecord(ObjectInitRecord):
         form = getattr(admin_session, 'get_' + obj_name + '_form_for_update')(new_asset.ident)
         form.set_enclosed_object(new_enclosed_object.ident)
         return getattr(admin_session, 'update_' + obj_name)(form)
-
 
 
 class EnclosureQueryRecord(QueryInitRecord):
@@ -271,6 +270,7 @@ class SimpleChildSequencingFormRecord(osid_records.OsidRecord):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
         super(SimpleChildSequencingFormRecord, self).__init__()
+
 
 class SimpleChildSequencingRecord(ObjectInitRecord):
     """supports simple child sequencing (like repository.objects.Composition)"""

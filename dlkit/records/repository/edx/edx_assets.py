@@ -66,12 +66,12 @@ class edXAssetContentRecord(AssetContentTextRecord,
                 edxml_soup.html['display_name'] = parent_asset.display_name.text
 
             attrs = {
-                'draggable'             : 'icon',
-                'drag_and_drop_input'   : 'img',
-                'files'                 : 'included_files',
-                'img'                   : 'src',
-                'a'                     : 'href',
-                'script'                : 'src'
+                'draggable': 'icon',
+                'drag_and_drop_input': 'img',
+                'files': 'included_files',
+                'img': 'src',
+                'a': 'href',
+                'script': 'src'
             }
             # replace all file listings with an appropriate path...
             for key, attr in attrs.iteritems():
@@ -105,8 +105,8 @@ class edXAssetContentRecord(AssetContentTextRecord,
             self.write_to_tarfile(tarball, my_xml_path, my_soup)
 
             # if only want to write a single XML file, do the following:
-            #my_soup = edxml_soup
-            #self.write_to_tarfile(tarball, my_xml_path, my_soup)
+            # my_soup = edxml_soup
+            # self.write_to_tarfile(tarball, my_xml_path, my_soup)
         else:
             if my_tag == 'video' or my_tag == 'videoalpha':
                 pass
@@ -126,12 +126,12 @@ class edXAssetContentRecord(AssetContentTextRecord,
             soup = BeautifulSoup('', 'xml').append(BeautifulSoup(edxml, 'html5lib'))
 
         attrs = {
-            'draggable'             : 'icon',
-            'drag_and_drop_input'   : 'img',
-            'files'                 : 'included_files',
-            'img'                   : 'src',
-            'a'                     : 'href',
-            'script'                : 'src'
+            'draggable': 'icon',
+            'drag_and_drop_input': 'img',
+            'files': 'included_files',
+            'img': 'src',
+            'a': 'href',
+            'script': 'src'
         }
         # replace all file listings with an appropriate path...
         for key, attr in attrs.iteritems():
@@ -150,6 +150,7 @@ class edXAssetContentRecord(AssetContentTextRecord,
             return soup.find('discussion').prettify()
         else:
             return soup.prettify()
+
 
 class edXAssetContentFormRecord(AssetContentTextFormRecord,
                                 FilesFormRecord,

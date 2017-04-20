@@ -27,7 +27,7 @@ from dlkit.primordium.id.primitives import Id
 from ...osid.base_records import ObjectInitRecord
 
 MAGIC_PART_AUTHORITY = 'magic-part-authority'
-ENDLESS = 10000 # For seemingly endless waypoints
+ENDLESS = 10000  # For seemingly endless waypoints
 
 
 def get_part_from_magic_part_lookup_session(section, part_id, *args, **kwargs):
@@ -36,11 +36,13 @@ def get_part_from_magic_part_lookup_session(section, part_id, *args, **kwargs):
     mpls.use_federated_bank_view()
     return mpls.get_assessment_part(part_id)
 
+
 class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
     """magic assessment part record for scaffold down adaptive questions"""
     _implemented_record_type_identifiers = [
         'scaffold-down'
     ]
+
     def __init__(self, *args, **kwargs):
         super(ScaffoldDownAssessmentPartRecord, self).__init__(*args, **kwargs)
         self._magic_identifier = None
@@ -78,13 +80,13 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
     def initialize(self, magic_identifier, assessment_section):
         """This method is to be called by a magic AssessmentPart lookup session.
-        
+
         magic_identifier_part includes:
             parent_id = id string of the parent part that created this part
             level = how many levels deep
             objective_id = the Objective Id to for which to select an item
             waypoint_index = the index of this item in its parent part
-        
+
         """
         arg_map = json.loads(unquote(magic_identifier).split('?')[-1], object_pairs_hook=OrderedDict)
         self._magic_identifier = magic_identifier
@@ -185,7 +187,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
     def has_magic_children(self):
         """checks if child parts are currently available for this part"""
-        if self._child_parts is not None: # generate_children has already been called
+        if self._child_parts is not None:  # generate_children has already been called
             return bool(self._child_parts)
         if self._assessment_section is not None:
             if (self.my_osid_object._my_map['maxLevels'] is None or
@@ -197,7 +199,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
                         return True
                 except IllegalState:
                     pass
-        return False # REALLY? What if this is the first, non-magic part?
+        return False  # REALLY? What if this is the first, non-magic part?
 
     def finished_generating_children(self):
         # self._child_parts gets set to empty list () in self.generate_children()
@@ -239,7 +241,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             return
 
         # Prepare common Id elements for children:
-        objective_id = scaffold_objective_ids.next() # Assume just one for now
+        objective_id = scaffold_objective_ids.next()  # Assume just one for now
         my_id = self.my_osid_object.get_id()
         namespace = 'assessment_authoring.AssessmentPart'
         level = self._level + 1
@@ -393,15 +395,15 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
     def get_assessment_part_id(self):
         if self._magic_parent_id is None:
             return Id(self.my_osid_object._my_map['assessmentPartId'])
-            # raise AttributeError() # let my_osid_object handle it
+            # raise AttributeError()  # let my_osid_object handle it
         return self._magic_parent_id
 
     def get_assessment_part(self):
         """If there's an AssessmentSection ask it first for the part.
-        
+
         This will take advantage of the fact that the AssessmentSection may
         have already cached the Part in question.
-        
+
         """
         if self._magic_parent_id is None:
             assessment_part_id = Id(self.my_osid_object._my_map['assessmentPartId'])
@@ -565,9 +567,9 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
 
     def set_item_ids(self, item_ids):
         '''the target Item
-        
+
         This can only be set if there is no learning objective set
-        
+
         '''
         if self.get_item_ids_metadata().is_read_only():
             raise NoAccess()
@@ -593,9 +595,9 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
 
     def set_learning_objective_ids(self, learning_objective_ids):
         """the learning objective to find related items for
-        
+
         This can only be set if there are no items specifically set
-        
+
         """
         if self.get_learning_objective_ids_metadata().is_read_only():
             raise NoAccess()
@@ -625,7 +627,7 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
         if not self.my_osid_object_form._is_valid_cardinal(max_levels):
             raise InvalidArgument()
         self.my_osid_object_form._my_map['maxLevels'] = max_levels
- 
+
     def clear_max_levels(self):
         if (self.get_max_levels_metadata().is_read_only() or
                 self.get_max_levels_metadata().is_required()):

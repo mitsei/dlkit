@@ -27,6 +27,7 @@ class AssessmentWithFollowOnPhaseFormRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'assessment-with-follow-on-phase'
     ]
+
     def __init__(self, osid_object_form):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
@@ -88,6 +89,7 @@ class GeneratedAssessmentFormRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'generated-assessment'
     ]
+
     def __init__(self, osid_object_form):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form

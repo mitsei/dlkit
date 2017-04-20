@@ -291,4 +291,3 @@ class MultiLanguageQuestionFormRecord(MultiLanguageUtils,
 
         self.my_osid_object_form._my_map['texts'][index] = \
             self._dict_display_text(new_text)
-

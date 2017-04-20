@@ -10,7 +10,8 @@ from dlkit.json_.osid import objects as osid_objects
 from dlkit.json_.osid.metadata import Metadata
 
 from dlkit.primordium.id.primitives import Id
-from  dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument, NoAccess, NotFound
+from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument,\
+    NoAccess, NotFound
 
 from ...osid.base_records import ObjectInitRecord
 
@@ -338,6 +339,7 @@ class ReviewOptionsAssessmentTakenRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'review-options'
     ]
+
     def _get_section_for_question(self, question_id):
         sections = self.my_osid_object._get_assessment_sections()
         for section in sections:

@@ -44,6 +44,7 @@ class ProvenanceAssetRecord(ProvenanceRecord):
     provenance_children = property(fget=get_provenance_children)
     provenance_parent = property(fget=get_provenance_parent)
 
+
 class ProvenanceCompositionRecord(ProvenanceRecord):
     def get_provenance_parent(self):
         if self.has_provenance():
@@ -78,4 +79,3 @@ class ProvenanceCompositionRecord(ProvenanceRecord):
 
     provenance_children = property(fget=get_provenance_children)
     provenance_parent = property(fget=get_provenance_parent)
-

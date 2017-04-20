@@ -225,7 +225,7 @@ class BaseMultiChoiceTextQuestionFormRecord(BaseMultiChoiceQuestionFormRecord):
             'id': identifier,
             'text': text,
             'name': name
-            }
+        }
         self.my_osid_object_form._my_map['choices'].append(choice)
         return choice
 
@@ -265,8 +265,6 @@ class BaseMultiChoiceTextQuestionFormRecord(BaseMultiChoiceQuestionFormRecord):
                     break
 
         self.my_osid_object_form._my_map['choices'] = reordered_choices
-
-
 
 
 class BaseMultiChoiceFileQuestionRecord(BaseMultiChoiceQuestionRecord):
@@ -357,6 +355,7 @@ class MultiChoiceTextAndFilesQuestionFormRecord(QuestionTextAndFilesMixin,
         'multi-choice-text',
         'multi-choice-files'
     ]
+
     def __init__(self, osid_object_form):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
@@ -423,6 +422,7 @@ class MultiChoiceTextQuestionFormRecord(BaseMultiChoiceTextQuestionFormRecord,
         QuestionTextFormRecord._init_metadata(self)
         super(MultiChoiceTextQuestionFormRecord, self)._init_metadata()
 
+
 class MultiChoiceFileQuestionRecord(BaseMultiChoiceQuestionRecord, QuestionTextRecord):
     """A record for a ``Question``.
 
@@ -467,6 +467,7 @@ class MultiChoiceFileQuestionFormRecord(BaseMultiChoiceFileQuestionFormRecord,
         """stub"""
         super(MultiChoiceFileQuestionFormRecord, self)._init_metadata()
 
+
 class MultiChoiceItemRecord(FeedbackAnswerItemRecord):
     """A record for a basic multi-choice ``Item``.
 
@@ -480,7 +481,7 @@ class MultiChoiceItemRecord(FeedbackAnswerItemRecord):
     def is_correctness_available_for_response(self, response):
         """is a measure of correctness available for a particular mc response"""
         return True
-    
+
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
         response_set = set([str(c) for c in response.get_choice_ids()])
@@ -531,7 +532,7 @@ class MultiChoiceItemRecord(FeedbackAnswerItemRecord):
             answer = self.get_answer_for_response(response)
         except NotFound:
             raise IllegalState('no answer matching response was found')
-        return answer.get_feedback() # raises IllegalState
+        return answer.get_feedback()  # raises IllegalState
 
     def get_confused_learning_objective_ids_for_response(self, response):
         try:
@@ -941,4 +942,3 @@ class MultiLanguageMultipleChoiceQuestionFormRecord(MultiLanguageQuestionFormRec
                     break
 
         self.my_osid_object_form._my_map['choices'] = reordered_choices
-

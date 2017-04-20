@@ -5,6 +5,7 @@ from datetime import datetime
 
 from io import BytesIO
 
+
 def clean_str(input):
     """
     Remove all non-words from a string
@@ -12,20 +13,23 @@ def clean_str(input):
     output = re.sub(r'[^\w]', '_', input)
     return output
 
+
 def get_byte_stream_size(stream):
     size = int(stream.tell())
     if size == 0:
         size = len(stream.read())
     return size
 
+
 def get_current_time_in_secs():
     # For Python 2.7+
-    #time = int((datetime.utcnow() - datetime(1970,1,1)).total_seconds())
+    # time = int((datetime.utcnow() - datetime(1970,1,1)).total_seconds())
     # For older versions:
     # https://bitbucket.org/wnielson/django-chronograph/issue/21/timedeltatotal_seconds-requires-python-27
-    td = datetime.utcnow() - datetime(1970,1,1)
+    td = datetime.utcnow() - datetime(1970, 1, 1)
     time = td.seconds + td.days * 24 * 3600
     return time
+
 
 def remove_redundant_drafts(path):
     """
@@ -33,11 +37,13 @@ def remove_redundant_drafts(path):
     """
     return path.replace('drafts/drafts', 'drafts')
 
+
 def remove_trailing_slash(path):
     if path[-1] == '/':
         return path[:-1]
     else:
         return path
+
 
 def slugify(string):
     try:

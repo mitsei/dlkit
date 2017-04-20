@@ -19,4 +19,3 @@ class FileCommentFormRecord(FileFormRecord):
     _implemented_record_type_identifiers = [
         'file-comment'
     ]
-

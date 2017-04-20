@@ -1,6 +1,7 @@
 from .base_records import QueryInitRecord
 from dlkit.abstract_osid.osid.errors import NotFound
 
+
 class edXQueryMethods(QueryInitRecord):
     def _get_descendant_ids(self, composition_id, repository_id, mgr=None):
         if mgr is None:

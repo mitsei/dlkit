@@ -258,5 +258,3 @@ class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
     def clear_confused_learning_objective_ids(self):
         self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = \
             self._confused_learning_objectives_metadata['default_list_values'][0]
-
-

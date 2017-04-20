@@ -149,4 +149,3 @@ class ExtendedTextAnswerFormRecord(TextAnswerFormRecord):
         if not self.my_osid_object_form.is_for_update():
             TextAnswerFormRecord._init_map(self)
         self.set_max_string_length(None)
-

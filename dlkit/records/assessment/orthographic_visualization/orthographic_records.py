@@ -35,6 +35,7 @@ class FirstAngleProjectionRecord(ObjectInitRecord):
         """stub"""
         return bool(self.my_osid_object._my_map['firstAngle'])
 
+
 class FirstAngleProjectionFormRecord(ObjectInitRecord):
     """form for including first-angle information"""
     _implemented_record_type_identifiers = [
@@ -174,7 +175,6 @@ class BaseInitMixin(QuestionTextAndFilesMixin,
         """stub"""
         FirstAngleProjectionFormRecord._init_metadata(self)
         super(BaseInitMixin, self)._init_metadata()
-
 
 
 class BaseOrthoQuestionFormRecord(BaseInitMixin):

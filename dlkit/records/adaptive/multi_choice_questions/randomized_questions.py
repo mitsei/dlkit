@@ -92,6 +92,7 @@ class MagicRandomizedMCItemRecord(ItemWithWrongAnswerLOsRecord):
     _implemented_record_type_identifiers = [
         'magic-randomized-multiple-choice'
     ]
+
     def __init__(self, *args, **kwargs):
         super(MagicRandomizedMCItemRecord, self).__init__(*args, **kwargs)
         self._magic_params = None
@@ -147,6 +148,7 @@ class MultiChoiceRandomizeChoicesQuestionFormRecord(MultiChoiceTextAndFilesQuest
     def _init_metadata(self):
         """stub"""
         super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_metadata()
+
 
 class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionRecord):
     _implemented_record_type_identifiers = [

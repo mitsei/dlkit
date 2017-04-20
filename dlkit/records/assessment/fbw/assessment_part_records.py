@@ -31,6 +31,7 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'learning-objective'
     ]
+
     def __init__(self, osid_object_form):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form

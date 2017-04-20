@@ -86,9 +86,9 @@ class EdXDragAndDropQuestionFormRecord(edXItemFormRecord,
 
 
 class EdXDragAndDropAnswerRecord(DecimalAnswerRecord,
-                                     DecimalValuesRecord,
-                                     TextAnswerRecord,
-                                     TextsRecord):
+                                 DecimalValuesRecord,
+                                 TextAnswerRecord,
+                                 TextsRecord):
     """answer record for numeric response"""
     _implemented_record_type_identifiers = [
         'decimal-answer',

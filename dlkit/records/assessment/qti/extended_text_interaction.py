@@ -360,4 +360,3 @@ class MultiLanguageQTIExtendedTextAnswerQuestionRecord(MultiLanguageQuestionReco
     max_strings = property(fget=get_max_strings)
     expected_length = property(fget=get_expected_length)
     expected_lines = property(fget=get_expected_lines)
-

@@ -71,7 +71,6 @@ class LoreRepositoryFormRecord(TextsFormRecord, abc_repository_records.Repositor
         TextsFormRecord._init_metadata(self)
 
 
-
 class LoreCourseRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord):
     """basic LORE repository content"""
     _implemented_record_type_identifiers = [
@@ -160,8 +159,8 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         course_repo = rhs.get_parent_repositories(run_repo.ident).next()
 
         filename = '{0}_{1}_{2}'.format(course_repo.display_name.text,
-                                               run_repo.display_name.text,
-                                               str(int(time.time())))
+                                        run_repo.display_name.text,
+                                        str(int(time.time())))
         filename = clean_str(filename) + '.tar.gz'
         root_path = '{0}/'.format(run_repo.display_name.text)
 

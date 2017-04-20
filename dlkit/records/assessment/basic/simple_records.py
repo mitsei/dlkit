@@ -564,11 +564,13 @@ class DecimalAnswersFormRecord(DecimalValuesFormRecord,
         'decimal-answers'
     ]
 
+
 class FileAnswerRecord(FileRecord, abc_assessment_records.AnswerRecord):
     """answer that is a file"""
     _implemented_record_type_identifiers = [
         'file-answer'
     ]
+
 
 class FileAnswerFormRecord(FileFormRecord, abc_assessment_records.AnswerFormRecord):
     """form for file-based answer"""

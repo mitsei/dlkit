@@ -62,13 +62,13 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
             if condition['droppableId'] not in spatial_unit_conditions[inc_exc]:
                 spatial_unit_conditions[inc_exc][condition['droppableId']] = []
             spatial_unit_conditions[inc_exc][condition['droppableId']].append(condition)
-                
+
         for condition in answer.get_coordinate_conditions():
             inc_exc = match_inc_exc[condition['match']]
             if condition['droppableId'] not in coordinate_conditions[inc_exc]:
                 coordinate_conditions[inc_exc][condition['droppableId']] = []
             coordinate_conditions[inc_exc][condition['droppableId']].append(condition)
-        
+
         return {'spatial_unit_conditions': spatial_unit_conditions, 'coordinate_conditions': coordinate_conditions}
 
     def _get_conditions_map(self, answer):
@@ -91,7 +91,7 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
                         break
                 coordinate_match = coordinate_match and answer_match
             return coordinate_match
-        
+
         # Did the consumer application already do the work for us?
         if response.has_zone_conditions():
             return bool(response.get_zone_conditions() == answer.get_zone_conditions())
@@ -120,7 +120,7 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
     def is_correctness_available_for_response(self, response):
         """is a measure of correctness available for a particular d&d response"""
         return True
-    
+
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
         for answer in self.my_osid_object.get_answers():
@@ -241,7 +241,7 @@ class DragAndDropAnswerRecord(osid_records.OsidRecord,
         for condition in condition_list:
             condition['spatialUnit'] = SpatialUnitFactory().get_spatial_unit(spatial_unit_map=condition['spatialUnit'])
         return condition_list
-        
+
 
 class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
                                   abc_assessment_records.AnswerFormRecord):
@@ -250,13 +250,13 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
     Drag-and-Drop Answer/Responses can be authored by defining multiple
     'conditions' of various kinds, whcih can be used together to describe
     more complex Answers.
-    
+
     Drag-and-Drop Answers consist of three primary member elements:
-    
+
         {'zoneConditions': [list of zone condition objects],
          'coordinateConditions': [list of coordinate condition objects],
          'spatialUnitConditions': [list of spatial unit condition objects]}
-    
+
         Object members of a Zone Condition: # Most likely used for defining Answers
             {'type': 'ZoneCondition',
              'droppableId': droppable_id,
@@ -278,7 +278,7 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
              'spatialUnit': a Spatial Unit # See examples for Question zones
              'containerId': container_id,
              'match': boolean - indicates inclusion, defaults to True}
-            
+
 
         Example of a Coordinate - this is a three dimensional one.
             {
@@ -552,11 +552,11 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         'reuse': int - number of times this droppable can be reused, 0 means unlimited.  Defaults to 1
         'dropBehaviorType': defines the drop behavior on this container}
 
-        We can imagine drop behavior types that would indicate to the palyer what to do 
+        We can imagine drop behavior types that would indicate to the palyer what to do
         when a droppable is dropped on a target or droppable container outside of a zone.
             Drop - 'drop.behavior%3Adrop%40ODL.MIT.EDU'
             Reject - 'drop.behavior%3Areject%40ODL.MIT.EDU'
-    
+
     Object members for a 'zone':
         {'id' str(ObjectId):
         'name': Display Text representing the name of the zone,
@@ -770,7 +770,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'names': [self._dict_display_text(name)],
             'reuse': reuse,
             'dropBehaviorType': drop_behavior_type
-            }
+        }
         self.my_osid_object_form._my_map['droppables'].append(droppable)
         return droppable
 
@@ -1213,5 +1213,3 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     break
 
         self.my_osid_object_form._my_map['zones'] = reordered_zones
-
-

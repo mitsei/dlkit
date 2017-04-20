@@ -24,7 +24,6 @@ from .utilities import EdXUtilitiesMixin, clean_str
 from ..basic.base_records import ProvenanceCompositionRecord
 
 
-
 def valid_for(whitelist):
     """ descriptor to check the genus type of an item, to see
     if the method is valid for that type
@@ -285,7 +284,6 @@ class EdXCompositionQueryRecord(edXQueryMethods, QueryInitRecord):
 
     def clear_match_composition_descendants(self):
         self._my_osid_query._clear_terms('_id')
-
 
 
 class EdXCompositionRecord(TextsRecord, TemporalRecord,
@@ -604,6 +602,7 @@ class EdXCourseRunCompositionFormRecord(TextsFormRecord):
 
     def clear_grading_policy(self):
         self.clear_text('grading_policy')
+
 
 class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRecord):
     """edX user course run composition"""

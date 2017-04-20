@@ -199,4 +199,3 @@ class IRTItemQueryRecord(QueryInitRecord):
     def clear_maximum_pseudo_guessing_terms(self):
         """stub"""
         self._my_osid_query._clear_maximum_terms('decimalValues.pseudo_guessing')
-

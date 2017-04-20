@@ -42,7 +42,7 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
     def __init__(self, osid_object, **kwargs):
         super(edXMultiChoiceQuestionRecord, self).__init__(osid_object)
 
-        #change my_map
+        # change my_map
         if ('rerandomize' in self.my_osid_object._my_map and
                 self.my_osid_object._my_map['rerandomize'] == 'always'):
             shuffle(self.my_osid_object._my_map['choices'])
@@ -53,7 +53,7 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
             try:
                 ils = am.get_item_lookup_session_for_bank(Id(self.my_osid_object._my_map['assignedBankIds'][0]),
                                                           proxy=self.my_osid_object._proxy)
-            except TypeError: # not a proxy manager
+            except TypeError:  # not a proxy manager
                 ils = am.get_item_lookup_session_for_bank(Id(self.my_osid_object._my_map['assignedBankIds'][0]))
             item = ils.get_item(Id(self.my_osid_object._my_map['itemId']))
             if 'rerandomize' in item._my_map and item._my_map['rerandomize'] == 'always':
@@ -76,6 +76,7 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
         raise IllegalState()
 
     rerandomize = property(fget=get_rerandomize)
+
 
 class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
                                        MultiChoiceTextQuestionFormRecord):
@@ -138,6 +139,7 @@ class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
         self.my_osid_object_form._my_map['rerandomize'] = \
             self._rerandomize_metadata['default_object_values'][0]
 
+
 class edXMultiChoiceAnswerRecord(MultiChoiceTextAnswerRecord):
     """answer to edX multi choice questions"""
     _implemented_record_type_identifiers = [
@@ -153,4 +155,3 @@ class edXMultiChoiceAnswerFormRecord(MultiChoiceTextAnswerFormRecord):
     _implemented_record_type_identifiers = [
         'multi-choice'
     ]
-

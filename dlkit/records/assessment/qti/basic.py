@@ -20,6 +20,7 @@ from dlkit.primordium.locale.objects import InitializableLocale
 from ...osid.base_records import ObjectInitRecord
 
 from ... import registry
+from ...repository import registry as repository_registry
 
 DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data('DEFAULT'))
 DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data('DEFAULT'))
@@ -101,9 +102,6 @@ MULTI_LANGUAGE_ASSET_CONTENTS = Type(**registry.ASSET_CONTENT_RECORD_TYPES['mult
 RIGHT_ANSWER_GENUS = Type(**registry.ANSWER_GENUS_TYPES['right-answer'])
 WRONG_ANSWER_GENUS = Type(**registry.ANSWER_GENUS_TYPES['wrong-answer'])
 
-
-from ...repository import registry as repository_registry
-
 AUDIO_ASSET_GENUS_TYPE = Type(**repository_registry.ASSET_GENUS_TYPES['audio'])
 IMAGE_ASSET_GENUS_TYPE = Type(**repository_registry.ASSET_GENUS_TYPES['image'])
 JPG_ASSET_CONTENT_GENUS_TYPE = Type(**repository_registry.ASSET_CONTENT_GENUS_TYPES['jpg'])
@@ -133,6 +131,7 @@ def _stringify(soup_tag, contents=False):
     else:
         return str(soup_tag)
 
+
 def create_display_text(text_string, language_code=None):
     if language_code is None:
         return DisplayText(display_text_map={
@@ -154,7 +153,7 @@ def create_display_text(text_string, language_code=None):
                 language_code = 'TEL'
                 script_code = 'TELU'
             locale = InitializableLocale(language_type_identifier=language_code,
-                                          script_type_identifier=script_code)
+                                         script_type_identifier=script_code)
             language_type_id = locale.language_type
             script_type_id = locale.script_type
         else:
@@ -188,7 +187,7 @@ class QTIFormWithMediaFiles(object):
             ac_genus_type = Type(identifier=extension,
                                  namespace='asset-content-genus-type',
                                  authority='ODL.MIT.EDU')
-            #ac_genus_type = GENERIC_ASSET_CONTENT_GENUS_TYPE
+            # ac_genus_type = GENERIC_ASSET_CONTENT_GENUS_TYPE
         return ac_genus_type
 
     @staticmethod
@@ -565,22 +564,22 @@ class QTIQuestionRecord(ObjectInitRecord):
                                     '</outcomeDeclaration>')
             item.append(BeautifulSoup(feedback_declaration, 'xml').outcomeDeclaration)
             max_score_response_declaration = ('<outcomeDeclaration identifier="MAXSCORE_RESPONSE_1" cardinality="single" baseType="float" view="testConstructor">'
-                                     '<defaultValue>'
-                                     '<value>1</value>'
-                                     '</defaultValue>'
-                                     '</outcomeDeclaration>')
+                                              '<defaultValue>'
+                                              '<value>1</value>'
+                                              '</defaultValue>'
+                                              '</outcomeDeclaration>')
             item.append(BeautifulSoup(max_score_response_declaration, 'xml').outcomeDeclaration)
             min_score_response_declaration = ('<outcomeDeclaration identifier="MINSCORE_RESPONSE_1" cardinality="single" baseType="float" view="testConstructor">'
-                                     '<defaultValue>'
-                                     '<value>0</value>'
-                                     '</defaultValue>'
-                                     '</outcomeDeclaration>')
+                                              '<defaultValue>'
+                                              '<value>0</value>'
+                                              '</defaultValue>'
+                                              '</outcomeDeclaration>')
             item.append(BeautifulSoup(min_score_response_declaration, 'xml').outcomeDeclaration)
             score_response_declaration = ('<outcomeDeclaration identifier="SCORE_RESPONSE_1" cardinality="single" baseType="float" view="testConstructor">'
-                                    '<defaultValue>'
-                                    '<value>0</value>'
-                                    '</defaultValue>'
-                                    '</outcomeDeclaration>')
+                                          '<defaultValue>'
+                                          '<value>0</value>'
+                                          '</defaultValue>'
+                                          '</outcomeDeclaration>')
             item.append(BeautifulSoup(score_response_declaration, 'xml').outcomeDeclaration)
 
             # ignore the template declarations here, because not needed for client-side
@@ -829,7 +828,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         if soup.itemBody.choiceInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             choice_interaction = soup.itemBody.choiceInteraction.extract()
 
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
@@ -854,7 +853,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         elif soup.itemBody.uploadInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_FILE_UPLOAD_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             upload_interaction = soup.itemBody.uploadInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -869,7 +868,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             # the answer has multiple choices used, not a single choice
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             order_interaction = soup.itemBody.orderInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -897,7 +896,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             # do not get wiped out
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_EXTENDED_TEXT_INTERACTION_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             text_interaction = soup.itemBody.extendedTextInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -913,7 +912,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         elif soup.itemBody.inlineChoiceInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_INLINE_CHOICE_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
 
             for inline_choice_interaction in soup.itemBody.find_all('inlineChoiceInteraction'):
                 region_identifier = inline_choice_interaction['responseIdentifier']
@@ -937,7 +936,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         elif soup.itemBody.textEntryInteraction and soup.templateDeclaration:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_NUMERIC_RESPONSE_QUESTION_RECORD)
             self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description) # Is there a description in QTI?
+            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             self.my_osid_object_form.set_genus_type(NUMERIC_RESPONSE_QUESTION_GENUS)
 
             soup.itemBody.textEntryInteraction['responseIdentifier'] = 'RESPONSE_1'  # let's standardize ...
@@ -1519,7 +1518,6 @@ class QTIItemFormRecord(osid_records.OsidRecord):
             self.my_osid_object_form.get_item_form_record(NUMERIC_RESPONSE_RECORD)
         else:
             raise OperationFailed('Item type not supported or unrecognized')
-
 
 
 class QTIAssessmentRecord(ObjectInitRecord):

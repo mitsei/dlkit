@@ -1236,7 +1236,7 @@ class DecimalValuesFormRecord(osid_records.OsidRecord):
     def clear_decimal_values(self):
         """stub"""
         if self._decimal_values_metadata['required'] or \
-            self._decimal_values_metadata['read_only']:
+                self._decimal_values_metadata['read_only']:
             raise NoAccess()
         self.my_osid_object_form._my_map['decimalValues'] = \
             self._decimal_values_metadata['default_object_values'][0]
@@ -1562,9 +1562,9 @@ class TimeValueFormRecord(osid_records.OsidRecord):
         min_, sec = divmod(time_secs, 60)
         hour, min_ = divmod(min_, 60)
         results = {
-            'hours'     : '%02d' % hour,
-            'minutes'   : '%02d' % min_,
-            'seconds'   : '%02d' % sec
+            'hours': '%02d' % hour,
+            'minutes': '%02d' % min_,
+            'seconds': '%02d' % sec
         }
 
         return results
@@ -1576,9 +1576,9 @@ class TimeValueFormRecord(osid_records.OsidRecord):
         if len(components) != 3:
             raise InvalidArgument('time input string must be hh:mm:ss format')
         return {
-            'hours'         : int(components[0]),
-            'minutes'       : int(components[1]),
-            'seconds'       : int(components[2])
+            'hours': int(components[0]),
+            'minutes': int(components[1]),
+            'seconds': int(components[2])
         }
 
     def get_time_value_metadata(self):
@@ -1602,9 +1602,9 @@ class TimeValueFormRecord(osid_records.OsidRecord):
         else:
             raise InvalidArgument()
         self.my_osid_object_form._my_map['timeValue'] = {
-            'hours'          : time['hours'],
-            'minutes'        : time['minutes'],
-            'seconds'        : time['seconds']
+            'hours': time['hours'],
+            'minutes': time['minutes'],
+            'seconds': time['seconds']
         }
 
     def clear_time_value(self):
@@ -2196,7 +2196,7 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
             raise NullArgument()
         if self.get_color_coordinate_metadata().is_read_only():
             raise NoAccess()
-        #if not self.my_osid_object_form._is_valid_coordinate(coordinate,
+        # if not self.my_osid_object_form._is_valid_coordinate(coordinate,
         #    self.get_coordiante_metadata()):
         #    raise InvalidArgument()
         self.my_osid_object_form._my_map['colorCoordinate']['values'] = \
@@ -2463,7 +2463,6 @@ class SourceableFormRecord(osid_records.OsidRecord):
             self.my_osid_object_form._my_map['providerId'] = self._provider_default
         self.my_osid_object_form._my_map['brandingIds'] = self._branding_default
         self.my_osid_object_form._my_map['license'] = dict(self._license_default)
-
 
     def get_provider_metadata(self):
         """Gets the metadata for a provider.

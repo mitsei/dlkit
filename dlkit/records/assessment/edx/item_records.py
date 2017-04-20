@@ -5,7 +5,6 @@ records.assessment.edx.item_records.py
 import re
 import time
 import tarfile
-# import requests
 import cStringIO
 
 from bson import ObjectId
@@ -77,14 +76,14 @@ class edXItemRecord(ItemTextsRecord,
             soup = BeautifulSoup(raw_text, 'xml')
             # replace all file listings with an appropriate path...
             attrs = {
-                'draggable'             : 'icon',
-                'drag_and_drop_input'   : 'img',
-                'files'                 : 'included_files',
-                'img'                   : 'src'
+                'draggable': 'icon',
+                'drag_and_drop_input': 'img',
+                'files': 'included_files',
+                'img': 'src'
             }
             local_regex = re.compile('[^http]')
             for key, attr in attrs.iteritems():
-                search = {attr : local_regex}
+                search = {attr: local_regex}
                 tags = soup.find_all(**search)
                 for item in tags:
                     if key == 'files' or item.name == key:
@@ -171,10 +170,10 @@ class edXItemRecord(ItemTextsRecord,
         soup = BeautifulSoup(edxml, 'xml')
 
         attrs = {
-            'draggable'             : 'icon',
-            'drag_and_drop_input'   : 'img',
-            'files'                 : 'included_files',
-            'img'                   : 'src'
+            'draggable': 'icon',
+            'drag_and_drop_input': 'img',
+            'files': 'included_files',
+            'img': 'src'
         }
         # replace all file listings with an appropriate path...
         if len(self.my_osid_object.object_map['fileIds']) > 0:
@@ -219,12 +218,12 @@ class edXItemRecord(ItemTextsRecord,
         #         my_soup.problem[attr] = getattr(self.my_osid_object, attr)
 
         attrs = {
-            'draggable'             : 'icon',
-            'drag_and_drop_input'   : 'img',
-            'files'                 : 'included_files',
-            'img'                   : 'src',
-            'a'                     : 'href',
-            'script'                : 'src'
+            'draggable': 'icon',
+            'drag_and_drop_input': 'img',
+            'files': 'included_files',
+            'img': 'src',
+            'a': 'href',
+            'script': 'src'
         }
         # replace all file listings with an appropriate path...
         if len(self.my_osid_object.object_map['fileIds']) > 0:
@@ -368,7 +367,7 @@ class edXItemRecord(ItemTextsRecord,
             return {'parameters': self.get_parameters()}
         except IllegalState:
             return {}
-    
+
     def _update_object_map(self, map):
         super(edXItemRecord, self)._update_object_map(map)
 

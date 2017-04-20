@@ -1613,7 +1613,7 @@ QUESTION_RECORD_TYPES = {
         'module_path': 'dlkit.records.assessment.basic.drag_and_drop_records',
         'object_record_class_name': 'MultiLanguageDragAndDropQuestionRecord',
         'form_record_class_name': 'MultiLanguageDragAndDropQuestionFormRecord'},
- }
+}
 
 QUESTION_RECORD_TYPES.update(osid_registry.__dict__.get('OSID_OBJECT_RECORD_TYPES', {}))
 

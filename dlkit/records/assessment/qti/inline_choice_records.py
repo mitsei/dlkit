@@ -106,6 +106,7 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'magic-randomized-inline-choice'
     ]
+
     def __init__(self, *args, **kwargs):
         super(MagicRandomizedInlineChoiceItemRecord, self).__init__(*args, **kwargs)
         self._magic_params = None
@@ -142,6 +143,7 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
     _implemented_record_type_identifiers = [
         'inline-choice-text'
     ]
+
     def __init__(self, osid_object_form=None):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
@@ -209,7 +211,7 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
             'id': identifier,
             'text': text,
             'name': name
-            }
+        }
         if inline_region in self.my_osid_object_form._my_map['choices']:
             self.my_osid_object_form._my_map['choices'][inline_region].append(choice)
         else:
@@ -282,6 +284,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
     _implemented_record_type_identifiers = [
         'inline-choice-text'
     ]
+
     def __init__(self, osid_object):
         self._original_choice_order = deepcopy(osid_object._my_map['choices'])
         super(InlineChoiceTextQuestionRecord, self).__init__(osid_object)
@@ -458,7 +461,7 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
             self.my_osid_object_form._my_map['inlineRegions'][inline_region] = \
                 {
                     "choiceIds": deepcopy(self._choice_ids_metadata['default_object_values'][0])
-                }
+            }
         else:
             raise IllegalState('that inline region already exists')
 
@@ -496,6 +499,7 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
     _implemented_record_type_identifiers = [
         'multi-language-inline-choice-text'
     ]
+
     def __init__(self, osid_object_form=None):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
@@ -691,6 +695,7 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
     _implemented_record_type_identifiers = [
         'multi-language-inline-choice-text'
     ]
+
     def __init__(self, osid_object):
         self._original_choice_order = deepcopy(osid_object._my_map['choices'])
         osid_object._my_map['multiLanguageChoices'] = deepcopy(osid_object._my_map['choices'])
@@ -906,7 +911,7 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
             self.my_osid_object_form._my_map['inlineRegions'][inline_region] = \
                 {
                     "choiceIds": deepcopy(self._choice_ids_metadata['default_object_values'][0])
-                }
+            }
         else:
             raise IllegalState('that inline region already exists')
 
