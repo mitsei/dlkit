@@ -869,6 +869,30 @@ ITEM_RECORD_TYPES = {
         'object_record_class_name': 'EdXMultipleChoiceItemRecord',
         'form_record_class_name': 'EdXMultipleChoiceItemFormRecord'},
 
+    'edx-numeric-response-item': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'item-record-type',
+        'identifier': 'edx-numeric-response-item',
+        'display_name': 'edX Numeric Response Item',
+        'display_label': 'edX Numeric Response Item',
+        'description': 'Assessment Item record extension for edX Numeric Response Items',
+        'domain': 'assessment.Item',
+        'module_path': 'dlkit.records.assessment.edx.numeric_response_records',
+        'object_record_class_name': 'EdXNumericResponseItemRecord',
+        'form_record_class_name': 'EdXNumericResponseItemFormRecord'},
+
+    'label-ortho-faces': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'item-record-type',
+        'identifier': 'label-ortho-faces',
+        'display_name': 'Ortho 3D Item',
+        'display_label': 'ORtho 3D Item',
+        'description': 'Assessment Item record extension for label ortho 3D face Items',
+        'domain': 'assessment.Item',
+        'module_path': 'dlkit.records.assessment.orthographic_visualization.orthographic_records',
+        'object_record_class_name': 'LabelOrthoFacesItemRecord',
+        'form_record_class_name': 'LabelOrthoFacesItemFormRecord'},
+
     'mecqbank-item': {
         'authority': 'ODL.MIT.EDU',
         'namespace': 'item-record-type',
