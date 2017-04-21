@@ -3,4 +3,5 @@
 test_datastore/
 .coverage
 htmlcov/
-.pypirc
+dist/
+dlkit.egg-info/
