@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div class="transcriptWrapper" id="{0}">
+<input type="checkbox" id="toggler"/>
+<label for="toggler" class="toggle-me span_3_of_12">{1}</label>
+<aside class="transcript">
+<h3>{2}</h3>
+{3}
+</aside>
+</div>

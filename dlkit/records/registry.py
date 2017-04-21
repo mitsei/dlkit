@@ -1,9 +1,9 @@
-from assessment import registry as assessment_registry
-from commenting import registry as commenting_registry
-from adaptive import registry as adaptive_registry
-from logging import registry as logging_registry
-from osid import registry as osid_registry
-from repository import registry as repository_registry
+from .assessment import registry as assessment_registry
+from .commenting import registry as commenting_registry
+from .adaptive import registry as adaptive_registry
+from .logging import registry as logging_registry
+from .osid import registry as osid_registry
+from .repository import registry as repository_registry
 
 # ASSESSMENT
 ANSWER_GENUS_TYPES = assessment_registry.__dict__.get('ANSWER_GENUS_TYPES', {})

@@ -264,6 +264,42 @@ ASSET_CONTENT_GENUS_TYPES = {
         'display_label': 'audio/mpeg',
         'description': 'MP3 content',
         'domain': 'repository.AssetContent'
+    },
+    'alt-text': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-genus-type',
+        'identifier': 'alt-text',
+        'display_name': 'Alt text',
+        'display_label': 'Alt text',
+        'description': 'Alt text for image tags',
+        'domain': 'repository.AssetContent'
+    },
+    'media-description': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-genus-type',
+        'identifier': 'media-description',
+        'display_name': 'Description',
+        'display_label': 'Description',
+        'description': 'Description for media tags',
+        'domain': 'repository.AssetContent'
+    },
+    'vtt': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-genus-type',
+        'identifier': 'vtt',
+        'display_name': 'Video caption file',
+        'display_label': 'Video caption file',
+        'description': 'Video caption file',
+        'domain': 'repository.AssetContent'
+    },
+    'transcript': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-genus-type',
+        'identifier': 'transcript',
+        'display_name': 'Video / Audio Transcript file',
+        'display_label': 'Video / Audio Transcript file',
+        'description': 'Video / Audio Transcript file',
+        'domain': 'repository.AssetContent'
     }
 }
 
@@ -306,6 +342,54 @@ ASSET_CONTENT_RECORD_TYPES = {
         'module_path': 'dlkit.records.repository.vcb.vcb_records',
         'object_record_class_name': 'TimeStampRecord',
         'form_record_class_name': 'TimeStampFormRecord'},
+
+    'multi-language-alt-texts': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-record-type',
+        'identifier': 'multi-language-alt-texts',
+        'display_name': 'Alt text',
+        'display_label': 'Alt text',
+        'description': 'AssetContent record extension for storing alt text',
+        'domain': 'repository.AssetContent',
+        'module_path': 'dlkit.records.repository.basic.media_accessibility',
+        'object_record_class_name': 'AssetContentMultiLanguageAltTextRecord',
+        'form_record_class_name': 'AssetContentMultiLanguageAltTextFormRecord'},
+
+    'multi-language-media-descriptions': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-record-type',
+        'identifier': 'multi-language-media-descriptions',
+        'display_name': 'Media Description',
+        'display_label': 'Media Description',
+        'description': 'AssetContent record extension for storing Media Descriptions',
+        'domain': 'repository.AssetContent',
+        'module_path': 'dlkit.records.repository.basic.media_accessibility',
+        'object_record_class_name': 'AssetContentMultiLanguageMediaDescriptionRecord',
+        'form_record_class_name': 'AssetContentMultiLanguageMediaDescriptionFormRecord'},
+
+    'multi-language-vtt-files': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-record-type',
+        'identifier': 'multi-language-vtt-files',
+        'display_name': 'VTT Caption Files',
+        'display_label': 'VTT Caption Files',
+        'description': 'AssetContent record extension for storing multi-language caption files',
+        'domain': 'repository.AssetContent',
+        'module_path': 'dlkit.records.repository.basic.media_accessibility',
+        'object_record_class_name': 'AssetContentMultiLanguageVTTRecord',
+        'form_record_class_name': 'AssetContentMultiLanguageVTTFormRecord'},
+
+    'multi-language-transcript-files': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'asset-content-record-type',
+        'identifier': 'multi-language-transcript-files',
+        'display_name': 'Transcript Files',
+        'display_label': 'Transcript Files',
+        'description': 'AssetContent record extension for storing multi-language transcript files',
+        'domain': 'repository.AssetContent',
+        'module_path': 'dlkit.records.repository.basic.media_accessibility',
+        'object_record_class_name': 'AssetContentMultiLanguageTranscriptRecord',
+        'form_record_class_name': 'AssetContentMultiLanguageTranscriptFormRecord'},
 }
 
 ASSET_CONTENT_RECORD_TYPES.update(osid_registry.__dict__.get('OSID_OBJECT_RECORD_TYPES', {}))
