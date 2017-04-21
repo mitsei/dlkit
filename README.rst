@@ -33,17 +33,18 @@ This `Jupyter notebook`_ is useful for learning about how to use ``dlkit``.
 
 Runtime Config
 --------------
-To use ``dlkit``, you need to include a runtime config in an ``app_configs``
+To use ``dlkit``, you need to include a runtime config in an ``dlkit_configs``
 directory::
 
-    app_configs
+    dlkit_configs
       |-configs.py
       |-registry.py
     your_app
       |-app.py
 
 
-Example ``app_config`` files are included in this repo and used for testing.
+Example / default ``dlkit_config`` files are included in this repo
+and used for testing.
 
 =====================
 Building This Library
