@@ -25,7 +25,6 @@ class TestCommentingProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_comment_lookup(self):
         """Tests supports_comment_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_comment_lookup(), bool))
@@ -89,20 +88,13 @@ class TestCommentingManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
 
-
     def test_get_comment_lookup_session(self):
         """Tests get_comment_lookup_session"""
-        # if self.mgr.supports_comment_lookup():
-        #     self.mgr.get_comment_lookup_session()
         if self.svc_mgr.supports_comment_lookup():
             self.svc_mgr.get_comment_lookup_session()
 
     def test_get_comment_lookup_session_for_book(self):
         """Tests get_comment_lookup_session_for_book"""
-        # if self.mgr.supports_comment_lookup():
-        #     self.mgr.get_comment_lookup_session_for_book(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_lookup_session_for_book()
         if self.svc_mgr.supports_comment_lookup():
             self.svc_mgr.get_comment_lookup_session_for_book(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -110,17 +102,11 @@ class TestCommentingManager(unittest.TestCase):
 
     def test_get_comment_query_session(self):
         """Tests get_comment_query_session"""
-        # if self.mgr.supports_comment_query():
-        #     self.mgr.get_comment_query_session()
         if self.svc_mgr.supports_comment_query():
             self.svc_mgr.get_comment_query_session()
 
     def test_get_comment_query_session_for_book(self):
         """Tests get_comment_query_session_for_book"""
-        # if self.mgr.supports_comment_query():
-        #     self.mgr.get_comment_query_session_for_book(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_query_session_for_book()
         if self.svc_mgr.supports_comment_query():
             self.svc_mgr.get_comment_query_session_for_book(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -158,8 +144,6 @@ class TestCommentingManager(unittest.TestCase):
 
     def test_get_commenting_batch_manager(self):
         """Tests get_commenting_batch_manager"""
-        # if self.mgr.supports_commenting_batch():
-        #     self.mgr.get_commenting_batch_manager()
         if self.svc_mgr.supports_commenting_batch():
             self.svc_mgr.get_commenting_batch_manager()
 
@@ -181,13 +165,8 @@ class TestCommentingProxyManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_book(cls.catalog_id)
 
-
     def test_get_comment_lookup_session(self):
         """Tests get_comment_lookup_session"""
-        # if self.mgr.supports_comment_lookup():
-        #     self.mgr.get_comment_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_lookup_session()
         if self.svc_mgr.supports_comment_lookup():
             self.svc_mgr.get_comment_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -195,10 +174,6 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_comment_lookup_session_for_book(self):
         """Tests get_comment_lookup_session_for_book"""
-        # if self.mgr.supports_comment_lookup():
-        #     self.mgr.get_comment_lookup_session_for_book(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_lookup_session_for_book()
         if self.svc_mgr.supports_comment_lookup():
             self.svc_mgr.get_comment_lookup_session_for_book(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -206,10 +181,6 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_comment_query_session(self):
         """Tests get_comment_query_session"""
-        # if self.mgr.supports_comment_query():
-        #     self.mgr.get_comment_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_query_session()
         if self.svc_mgr.supports_comment_query():
             self.svc_mgr.get_comment_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -217,10 +188,6 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_comment_query_session_for_book(self):
         """Tests get_comment_query_session_for_book"""
-        # if self.mgr.supports_comment_query():
-        #     self.mgr.get_comment_query_session_for_book(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_comment_query_session_for_book()
         if self.svc_mgr.supports_comment_query():
             self.svc_mgr.get_comment_query_session_for_book(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -258,7 +225,5 @@ class TestCommentingProxyManager(unittest.TestCase):
 
     def test_get_commenting_batch_proxy_manager(self):
         """Tests get_commenting_batch_proxy_manager"""
-        # if self.mgr.supports_commenting_batch():
-        #     self.mgr.get_commenting_batch_proxy_manager()
         if self.svc_mgr.supports_commenting_batch():
             self.svc_mgr.get_commenting_batch_proxy_manager()

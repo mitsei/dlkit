@@ -7,9 +7,6 @@ import unittest
 class TestAsset(unittest.TestCase):
     """Tests for Asset"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_title(self):
         """Tests get_title"""
@@ -123,9 +120,6 @@ class TestAsset(unittest.TestCase):
 
 class TestAssetForm(unittest.TestCase):
     """Tests for AssetForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_title_metadata(self):
@@ -360,9 +354,6 @@ class TestAssetList(unittest.TestCase):
 class TestAssetContent(unittest.TestCase):
     """Tests for AssetContent"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_asset_id(self):
         """Tests get_asset_id"""
@@ -411,9 +402,6 @@ class TestAssetContent(unittest.TestCase):
 
 class TestAssetContentForm(unittest.TestCase):
     """Tests for AssetContentForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_accessibility_type_metadata(self):
@@ -488,9 +476,6 @@ class TestAssetContentList(unittest.TestCase):
 class TestComposition(unittest.TestCase):
     """Tests for Composition"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_children_ids(self):
         """Tests get_children_ids"""
@@ -509,9 +494,6 @@ class TestComposition(unittest.TestCase):
 
 class TestCompositionForm(unittest.TestCase):
     """Tests for CompositionForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_composition_form_record(self):
@@ -536,9 +518,6 @@ class TestCompositionList(unittest.TestCase):
 class TestRepository(unittest.TestCase):
     """Tests for Repository"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_repository_record(self):
         """Tests get_repository_record"""
@@ -547,9 +526,6 @@ class TestRepository(unittest.TestCase):
 
 class TestRepositoryForm(unittest.TestCase):
     """Tests for RepositoryForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_repository_form_record(self):

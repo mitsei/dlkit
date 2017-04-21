@@ -7,9 +7,6 @@ import unittest
 class TestObjective(unittest.TestCase):
     """Tests for Objective"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_has_assessment(self):
         """Tests has_assessment"""
@@ -63,9 +60,6 @@ class TestObjective(unittest.TestCase):
 
 class TestObjectiveForm(unittest.TestCase):
     """Tests for ObjectiveForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_metadata(self):
@@ -168,9 +162,6 @@ class TestObjectiveNodeList(unittest.TestCase):
 class TestActivity(unittest.TestCase):
     """Tests for Activity"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
@@ -234,9 +225,6 @@ class TestActivity(unittest.TestCase):
 
 class TestActivityForm(unittest.TestCase):
     """Tests for ActivityForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assets_metadata(self):
@@ -306,9 +294,6 @@ class TestActivityList(unittest.TestCase):
 class TestProficiency(unittest.TestCase):
     """Tests for Proficiency"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
@@ -357,9 +342,6 @@ class TestProficiency(unittest.TestCase):
 
 class TestProficiencyForm(unittest.TestCase):
     """Tests for ProficiencyForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_completion_metadata(self):
@@ -414,9 +396,6 @@ class TestProficiencyList(unittest.TestCase):
 class TestObjectiveBank(unittest.TestCase):
     """Tests for ObjectiveBank"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_objective_bank_record(self):
         """Tests get_objective_bank_record"""
@@ -425,9 +404,6 @@ class TestObjectiveBank(unittest.TestCase):
 
 class TestObjectiveBankForm(unittest.TestCase):
     """Tests for ObjectiveBankForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_objective_bank_form_record(self):

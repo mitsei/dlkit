@@ -7,9 +7,6 @@ import unittest
 class TestLogEntryQuery(unittest.TestCase):
     """Tests for LogEntryQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_priority(self):
         """Tests match_priority"""

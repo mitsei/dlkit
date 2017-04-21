@@ -16,10 +16,8 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 
 
 class TestLoggingSession(unittest.TestCase):
@@ -41,12 +39,8 @@ class TestLoggingSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_log_id(self):
@@ -108,16 +102,10 @@ class TestLogEntryLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_log_entries():
-        #    cls.catalog.delete_log_entry(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             for obj in catalog.get_log_entries():
                 catalog.delete_log_entry(obj.ident)
             cls.svc_mgr.delete_log(catalog.ident)
-
-
 
     def test_get_log_id(self):
         """Tests get_log_id"""
@@ -263,16 +251,10 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_log_entries():
-        #    cls.catalog.delete_log_entry(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             for obj in catalog.get_log_entries():
                 catalog.delete_log_entry(obj.ident)
             cls.svc_mgr.delete_log(catalog.ident)
-
-
 
     def test_get_log_id(self):
         """Tests get_log_id"""
@@ -328,8 +310,6 @@ class TestLogEntryAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_log_entries():
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
-
-
 
     def test_get_log_id(self):
         """Tests get_log_id"""
@@ -414,12 +394,8 @@ class TestLogLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_logs(self):
@@ -487,12 +463,8 @@ class TestLogAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_log(catalog.ident)
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
-
-
 
     def test_can_create_logs(self):
         """Tests can_create_logs"""

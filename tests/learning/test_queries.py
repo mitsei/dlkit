@@ -7,9 +7,6 @@ import unittest
 class TestObjectiveQuery(unittest.TestCase):
     """Tests for ObjectiveQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
@@ -314,9 +311,6 @@ class TestObjectiveQuery(unittest.TestCase):
 class TestActivityQuery(unittest.TestCase):
     """Tests for ActivityQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_objective_id(self):
         """Tests match_objective_id"""
@@ -465,9 +459,6 @@ class TestActivityQuery(unittest.TestCase):
 
 class TestProficiencyQuery(unittest.TestCase):
     """Tests for ProficiencyQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_resource_id(self):

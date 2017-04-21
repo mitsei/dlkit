@@ -7,9 +7,6 @@ import unittest
 class TestAssessmentPartQuery(unittest.TestCase):
     """Tests for AssessmentPartQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""

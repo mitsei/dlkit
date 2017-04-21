@@ -16,12 +16,9 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
-AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 class TestObjectiveLookupSession(unittest.TestCase):
@@ -48,16 +45,10 @@ class TestObjectiveLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_objectives():
-        #    cls.catalog.delete_objective(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -172,16 +163,10 @@ class TestObjectiveQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_objectives():
-        #    cls.catalog.delete_objective(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -237,8 +222,6 @@ class TestObjectiveAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_objectives():
             cls.catalog.delete_objective(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
-
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -336,8 +319,6 @@ class TestObjectiveHierarchySession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-
-
     @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
@@ -361,54 +342,65 @@ class TestObjectiveHierarchySession(unittest.TestCase):
         """Tests use_plenary_objective_view"""
         self.catalog.use_plenary_objective_view()
 
+    @unittest.skip('unimplemented test')
     def test_get_root_objective_ids(self):
         """Tests get_root_objective_ids"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_root_objectives(self):
         """Tests get_root_objectives"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_has_parent_objectives(self):
         """Tests has_parent_objectives"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_is_parent_of_objective(self):
         """Tests is_parent_of_objective"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_parent_objective_ids(self):
         """Tests get_parent_objective_ids"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_parent_objectives(self):
         """Tests get_parent_objectives"""
-    
+        pass
 
     @unittest.skip('unimplemented test')
     def test_is_ancestor_of_objective(self):
         """Tests is_ancestor_of_objective"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_has_child_objectives(self):
         """Tests has_child_objectives"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_is_child_of_objective(self):
         """Tests is_child_of_objective"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_child_objective_ids(self):
         """Tests get_child_objective_ids"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_child_objectives(self):
         """Tests get_child_objectives"""
-    
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_is_descendant_of_objective(self):
         """Tests is_descendant_of_objective"""
-    
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_objective_node_ids(self):
@@ -452,8 +444,6 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-
-
     @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
@@ -467,31 +457,26 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     def test_can_modify_objective_hierarchy(self):
         """Tests can_modify_objective_hierarchy"""
         self.assertTrue(self.catalog.can_modify_objective_hierarchy())
-    
 
     def test_add_root_objective(self):
         """Tests add_root_objective"""
         self.catalog.add_root_objective(self.objective.ident)
-    
 
     def test_remove_root_objective(self):
         """Tests remove_root_objective"""
         self.catalog.add_root_objective(self.objective.ident)
         self.catalog.remove_root_objective(self.objective.ident)
-    
 
     def test_add_child_objective(self):
         """Tests add_child_objective"""
         self.catalog.add_root_objective(self.objective.ident)
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
-    
 
     def test_remove_child_objective(self):
         """Tests remove_child_objective"""
         self.catalog.add_root_objective(self.objective.ident)
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
         self.catalog.remove_child_objective(self.objective.ident, self.child_ids[0])
-    
 
     def test_remove_child_objectives(self):
         """Tests remove_child_objectives"""
@@ -499,7 +484,6 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[1])
         self.catalog.remove_child_objectives(self.objective.ident)
-    
 
 
 class TestObjectiveSequencingSession(unittest.TestCase):
@@ -566,10 +550,6 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_objectives():
-        #    cls.catalog.delete_objective(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         cls.svc_mgr.unassign_objective_from_objective_bank(
             cls.objective_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_objective_from_objective_bank(
@@ -578,8 +558,6 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_objective_objective_bank_mappings(self):
@@ -698,8 +676,6 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-
-
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
@@ -742,7 +718,6 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
                 req.ident,
                 self.requisite_ids
             )
-    
 
     @unittest.skip('unimplemented test')
     def test_get_all_requisite_objectives(self):
@@ -765,7 +740,6 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
             dependents.next().ident,
             self.objective.ident
         )
-    
 
     @unittest.skip('unimplemented test')
     def test_is_objective_required(self):
@@ -811,8 +785,6 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-
-
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
@@ -830,7 +802,6 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
     def test_assign_objective_requisite(self):
         """Tests assign_objective_requisite"""
         self.catalog.assign_objective_requisite(self.objective.ident, self.requisite_ids[0])
-    
 
     @unittest.skip('unimplemented test')
     def test_unassign_objective_requisite(self):
@@ -874,18 +845,12 @@ class TestActivityLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_activities():
-        #    cls.catalog.delete_activity(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_activities():
                 catalog.delete_activity(obj.ident)
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1014,8 +979,6 @@ class TestActivityAdminSession(unittest.TestCase):
             cls.catalog.delete_activity(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-
-
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
@@ -1125,8 +1088,6 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-    
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_activity_objective_bank_mappings(self):
@@ -1245,7 +1206,6 @@ class TestProficiencyLookupSession(unittest.TestCase):
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1462,7 +1422,6 @@ class TestProficiencyQuerySession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
@@ -1517,8 +1476,6 @@ class TestProficiencyAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_proficiencies():
             cls.catalog.delete_proficiency(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
-
-
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
@@ -1606,12 +1563,8 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_objective_banks(self):
@@ -1679,12 +1632,8 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_objective_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_objective_banks():
             cls.svc_mgr.delete_objective_bank(catalog.ident)
-
-
 
     def test_can_create_objective_banks(self):
         """Tests can_create_objective_banks"""
@@ -1774,14 +1723,13 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_objective_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_objective_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_objective_bank(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_objective_bank_hierarchy_id(self):
         """Tests get_objective_bank_hierarchy_id"""
@@ -1909,14 +1857,13 @@ class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_objective_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_objective_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_objective_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_objective_bank(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_objective_bank_hierarchy_id(self):
         """Tests get_objective_bank_hierarchy_id"""

@@ -7,22 +7,14 @@ import unittest
 class TestQuestion(unittest.TestCase):
     """Tests for Question"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_question_record(self):
         """Tests get_question_record"""
         pass
 
 
-
-
 class TestQuestionForm(unittest.TestCase):
     """Tests for QuestionForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_question_form_record(self):
@@ -47,9 +39,6 @@ class TestQuestionList(unittest.TestCase):
 class TestAnswer(unittest.TestCase):
     """Tests for Answer"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_answer_record(self):
         """Tests get_answer_record"""
@@ -58,9 +47,6 @@ class TestAnswer(unittest.TestCase):
 
 class TestAnswerForm(unittest.TestCase):
     """Tests for AnswerForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_answer_form_record(self):
@@ -84,9 +70,6 @@ class TestAnswerList(unittest.TestCase):
 
 class TestItem(unittest.TestCase):
     """Tests for Item"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_learning_objective_ids(self):
@@ -129,9 +112,6 @@ class TestItem(unittest.TestCase):
 class TestItemForm(unittest.TestCase):
     """Tests for ItemForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_learning_objectives_metadata(self):
         """Tests get_learning_objectives_metadata"""
@@ -170,9 +150,6 @@ class TestItemList(unittest.TestCase):
 class TestAssessment(unittest.TestCase):
     """Tests for Assessment"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_level_id(self):
         """Tests get_level_id"""
@@ -206,9 +183,6 @@ class TestAssessment(unittest.TestCase):
 
 class TestAssessmentForm(unittest.TestCase):
     """Tests for AssessmentForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_level_metadata(self):
@@ -262,9 +236,6 @@ class TestAssessmentList(unittest.TestCase):
 
 class TestAssessmentOffered(unittest.TestCase):
     """Tests for AssessmentOffered"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
@@ -382,9 +353,6 @@ class TestAssessmentOffered(unittest.TestCase):
 class TestAssessmentOfferedForm(unittest.TestCase):
     """Tests for AssessmentOfferedForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
@@ -465,9 +433,10 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests get_duration_metadata"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_set_duration(self):
         """Tests set_duration"""
-       
+        pass
 
     @unittest.skip('unimplemented test')
     def test_clear_duration(self):
@@ -526,9 +495,6 @@ class TestAssessmentOfferedList(unittest.TestCase):
 
 class TestAssessmentTaken(unittest.TestCase):
     """Tests for AssessmentTaken"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_offered_id(self):
@@ -651,13 +617,8 @@ class TestAssessmentTaken(unittest.TestCase):
         pass
 
 
-
-
 class TestAssessmentTakenForm(unittest.TestCase):
     """Tests for AssessmentTakenForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_taker_metadata(self):
@@ -696,9 +657,6 @@ class TestAssessmentTakenList(unittest.TestCase):
 
 class TestAssessmentSection(unittest.TestCase):
     """Tests for AssessmentSection"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_taken_id(self):
@@ -753,9 +711,6 @@ class TestAssessmentSectionList(unittest.TestCase):
 class TestBank(unittest.TestCase):
     """Tests for Bank"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_bank_record(self):
         """Tests get_bank_record"""
@@ -764,9 +719,6 @@ class TestBank(unittest.TestCase):
 
 class TestBankForm(unittest.TestCase):
     """Tests for BankForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_bank_form_record(self):

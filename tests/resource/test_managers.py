@@ -25,7 +25,6 @@ class TestResourceProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_resource_lookup(self):
         """Tests supports_resource_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_resource_lookup(), bool))
@@ -125,20 +124,13 @@ class TestResourceManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_bin(cls.catalog_id)
 
-
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
-        # if self.mgr.supports_resource_lookup():
-        #     self.mgr.get_resource_lookup_session()
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session()
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
-        # if self.mgr.supports_resource_lookup():
-        #     self.mgr.get_resource_lookup_session_for_bin(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_lookup_session_for_bin()
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -146,17 +138,11 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
-        # if self.mgr.supports_resource_query():
-        #     self.mgr.get_resource_query_session()
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session()
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
-        # if self.mgr.supports_resource_query():
-        #     self.mgr.get_resource_query_session_for_bin(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_query_session_for_bin()
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -249,15 +235,11 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_batch_manager(self):
         """Tests get_resource_batch_manager"""
-        # if self.mgr.supports_resource_batch():
-        #     self.mgr.get_resource_batch_manager()
         if self.svc_mgr.supports_resource_batch():
             self.svc_mgr.get_resource_batch_manager()
 
     def test_get_resource_demographic_manager(self):
         """Tests get_resource_demographic_manager"""
-        # if self.mgr.supports_resource_demographic():
-        #     self.mgr.get_resource_demographic_manager()
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_manager()
 
@@ -279,13 +261,8 @@ class TestResourceProxyManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_bin(cls.catalog_id)
 
-
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
-        # if self.mgr.supports_resource_lookup():
-        #     self.mgr.get_resource_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_lookup_session()
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -293,10 +270,6 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
-        # if self.mgr.supports_resource_lookup():
-        #     self.mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_lookup_session_for_bin()
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -304,10 +277,6 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
-        # if self.mgr.supports_resource_query():
-        #     self.mgr.get_resource_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_query_session()
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -315,10 +284,6 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
-        # if self.mgr.supports_resource_query():
-        #     self.mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_resource_query_session_for_bin()
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -416,14 +381,10 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_batch_proxy_manager(self):
         """Tests get_resource_batch_proxy_manager"""
-        # if self.mgr.supports_resource_batch():
-        #     self.mgr.get_resource_batch_proxy_manager()
         if self.svc_mgr.supports_resource_batch():
             self.svc_mgr.get_resource_batch_proxy_manager()
 
     def test_get_resource_demographic_proxy_manager(self):
         """Tests get_resource_demographic_proxy_manager"""
-        # if self.mgr.supports_resource_demographic():
-        #     self.mgr.get_resource_demographic_proxy_manager()
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_proxy_manager()

@@ -7,9 +7,6 @@ import unittest
 class TestGradeQuery(unittest.TestCase):
     """Tests for GradeQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
         """Tests match_grade_system_id"""
@@ -138,9 +135,6 @@ class TestGradeQuery(unittest.TestCase):
 
 class TestGradeSystemQuery(unittest.TestCase):
     """Tests for GradeSystemQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_based_on_grades(self):
@@ -275,9 +269,6 @@ class TestGradeSystemQuery(unittest.TestCase):
 
 class TestGradeEntryQuery(unittest.TestCase):
     """Tests for GradeEntryQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_gradebook_column_id(self):
@@ -532,9 +523,6 @@ class TestGradeEntryQuery(unittest.TestCase):
 
 class TestGradebookColumnQuery(unittest.TestCase):
     """Tests for GradebookColumnQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):

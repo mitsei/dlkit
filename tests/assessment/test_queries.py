@@ -7,9 +7,6 @@ import unittest
 class TestQuestionQuery(unittest.TestCase):
     """Tests for QuestionQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_question_query_record(self):
         """Tests get_question_query_record"""
@@ -19,9 +16,6 @@ class TestQuestionQuery(unittest.TestCase):
 class TestAnswerQuery(unittest.TestCase):
     """Tests for AnswerQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_answer_query_record(self):
         """Tests get_answer_query_record"""
@@ -30,9 +24,6 @@ class TestAnswerQuery(unittest.TestCase):
 
 class TestItemQuery(unittest.TestCase):
     """Tests for ItemQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_learning_objective_id(self):
@@ -187,9 +178,6 @@ class TestItemQuery(unittest.TestCase):
 
 class TestAssessmentQuery(unittest.TestCase):
     """Tests for AssessmentQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_level_id(self):
@@ -374,9 +362,6 @@ class TestAssessmentQuery(unittest.TestCase):
 
 class TestAssessmentOfferedQuery(unittest.TestCase):
     """Tests for AssessmentOfferedQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
@@ -651,9 +636,6 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
 
 class TestAssessmentTakenQuery(unittest.TestCase):
     """Tests for AssessmentTakenQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_offered_id(self):

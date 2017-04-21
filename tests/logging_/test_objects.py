@@ -7,9 +7,6 @@ import unittest
 class TestLogEntry(unittest.TestCase):
     """Tests for LogEntry"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_priority(self):
         """Tests get_priority"""
@@ -48,9 +45,6 @@ class TestLogEntry(unittest.TestCase):
 
 class TestLogEntryForm(unittest.TestCase):
     """Tests for LogEntryForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_priority_metadata(self):
@@ -110,9 +104,6 @@ class TestLogEntryList(unittest.TestCase):
 class TestLog(unittest.TestCase):
     """Tests for Log"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_log_record(self):
         """Tests get_log_record"""
@@ -121,9 +112,6 @@ class TestLog(unittest.TestCase):
 
 class TestLogForm(unittest.TestCase):
     """Tests for LogForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_log_form_record(self):

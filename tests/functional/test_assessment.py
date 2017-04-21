@@ -5099,7 +5099,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_clear_choice_texts(self):
@@ -5137,7 +5137,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5155,7 +5155,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': '',
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_clear_choices(self):
@@ -5193,7 +5193,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5245,7 +5245,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5267,7 +5267,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._hindi_text,
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_replace_a_choice_text(self):
@@ -5305,7 +5305,7 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         new_english_feedback = DisplayText(display_text_map={
@@ -5581,7 +5581,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_clear_choice_texts(self):
@@ -5619,7 +5619,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5637,7 +5637,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': '',
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_clear_choices(self):
@@ -5675,7 +5675,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5727,7 +5727,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         form = self._bank.get_question_form_for_update(question.ident)
@@ -5749,7 +5749,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._hindi_text,
                 'name': ''
-             }]
+            }]
         )
 
     def test_can_replace_a_choice_text(self):
@@ -5787,7 +5787,7 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
                 'id': choice_identifier,
                 'text': self._english_text,
                 'name': ''
-             }]
+            }]
         )
 
         new_english_feedback = DisplayText(display_text_map={

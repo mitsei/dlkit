@@ -16,12 +16,9 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 
 
 class TestCommentLookupSession(unittest.TestCase):
@@ -46,16 +43,10 @@ class TestCommentLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_comments():
-        #    cls.catalog.delete_comment(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             for obj in catalog.get_comments():
                 catalog.delete_comment(obj.ident)
             cls.svc_mgr.delete_book(catalog.ident)
-
-
 
     def test_get_book_id(self):
         """Tests get_book_id"""
@@ -250,16 +241,10 @@ class TestCommentQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_comments():
-        #    cls.catalog.delete_comment(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             for obj in catalog.get_comments():
                 catalog.delete_comment(obj.ident)
             cls.svc_mgr.delete_book(catalog.ident)
-
-
 
     def test_get_book_id(self):
         """Tests get_book_id"""
@@ -315,8 +300,6 @@ class TestCommentAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_comments():
             cls.catalog.delete_comment(obj.ident)
         cls.svc_mgr.delete_book(cls.catalog.ident)
-
-
 
     def test_get_book_id(self):
         """Tests get_book_id"""
@@ -399,12 +382,8 @@ class TestBookLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_books(self):
@@ -472,12 +451,8 @@ class TestBookAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_book(catalog.ident)
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
-
-
 
     def test_can_create_books(self):
         """Tests can_create_books"""
@@ -567,14 +542,13 @@ class TestBookHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_book(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_book_hierarchy_id(self):
         """Tests get_book_hierarchy_id"""
@@ -702,14 +676,13 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_book(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_book_hierarchy_id(self):
         """Tests get_book_hierarchy_id"""

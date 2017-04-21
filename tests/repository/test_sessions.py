@@ -16,10 +16,8 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 
 
 class TestAssetLookupSession(unittest.TestCase):
@@ -46,16 +44,10 @@ class TestAssetLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_assets():
-        #    cls.catalog.delete_asset(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -175,16 +167,10 @@ class TestAssetQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assets():
-        #    cls.catalog.delete_asset(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -264,8 +250,6 @@ class TestAssetAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assets():
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -397,16 +381,10 @@ class TestAssetNotificationSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_assets():
-        #    cls.catalog.delete_asset(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -516,10 +494,6 @@ class TestAssetRepositorySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assets():
-        #    cls.catalog.delete_asset(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         cls.svc_mgr.unassign_asset_from_repository(
             cls.asset_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_asset_from_repository(
@@ -528,8 +502,6 @@ class TestAssetRepositorySession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_asset_repository_mappings(self):
@@ -643,8 +615,6 @@ class TestAssetCompositionSession(unittest.TestCase):
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
 
-
-
     def test_get_repository_id(self):
         """Tests get_repository_id"""
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
@@ -722,8 +692,6 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
             for obj in catalog.get_assets():
                 catalog.delete_asset(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -804,17 +772,11 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_compositions():
-        #    cls.catalog.delete_composition(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             catalog.use_unsequestered_composition_view()
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -950,16 +912,10 @@ class TestCompositionQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_compositions():
-        #    cls.catalog.delete_composition(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -1053,8 +1009,6 @@ class TestCompositionAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
-
-
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
@@ -1152,7 +1106,6 @@ class TestCompositionAdminSession(unittest.TestCase):
         self.assertEqual(composition.get_children().available(), 3)
 
 
-
 class TestCompositionRepositorySession(unittest.TestCase):
     """Tests for CompositionRepositorySession"""
 
@@ -1183,10 +1136,6 @@ class TestCompositionRepositorySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_compositions():
-        #    cls.catalog.delete_composition(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         cls.svc_mgr.unassign_composition_from_repository(
             cls.composition_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_composition_from_repository(
@@ -1195,8 +1144,6 @@ class TestCompositionRepositorySession(unittest.TestCase):
             for obj in catalog.get_compositions():
                 catalog.delete_composition(obj.ident)
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_use_comparative_composition_repository_view(self):
         """Tests use_comparative_composition_repository_view"""
@@ -1294,12 +1241,8 @@ class TestRepositoryLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_repositories(self):
@@ -1386,12 +1329,8 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_repository(catalog.ident)
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
-
-
 
     def test_can_create_repositories(self):
         """Tests can_create_repositories"""
@@ -1481,14 +1420,13 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_repository(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_repository_hierarchy_id(self):
         """Tests get_repository_hierarchy_id"""
@@ -1616,14 +1554,13 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_repository(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_repository_hierarchy_id(self):
         """Tests get_repository_hierarchy_id"""

@@ -140,7 +140,6 @@ class ResponseCommentingTests(DLKitTestCase):
             data
         )
 
-
     def test_can_get_all_comments_for_response(self):
         self.send_comment(with_files=True)
         book = self.get_book(self._bank.ident)

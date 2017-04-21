@@ -25,7 +25,6 @@ class TestAssessmentProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_assessment(self):
         """Tests supports_assessment"""
         self.assertTrue(isinstance(self.mgr.supports_assessment(), bool))
@@ -209,7 +208,6 @@ class TestAssessmentManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
 
-
     @unittest.skip('unimplemented test')
     def test_get_assessment_session(self):
         """Tests get_assessment_session"""
@@ -232,17 +230,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_item_lookup_session(self):
         """Tests get_item_lookup_session"""
-        # if self.mgr.supports_item_lookup():
-        #     self.mgr.get_item_lookup_session()
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session()
 
     def test_get_item_lookup_session_for_bank(self):
         """Tests get_item_lookup_session_for_bank"""
-        # if self.mgr.supports_item_lookup():
-        #     self.mgr.get_item_lookup_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_lookup_session_for_bank()
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -250,17 +242,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_item_query_session(self):
         """Tests get_item_query_session"""
-        # if self.mgr.supports_item_query():
-        #     self.mgr.get_item_query_session()
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session()
 
     def test_get_item_query_session_for_bank(self):
         """Tests get_item_query_session_for_bank"""
-        # if self.mgr.supports_item_query():
-        #     self.mgr.get_item_query_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_query_session_for_bank()
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -303,17 +289,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_lookup_session(self):
         """Tests get_assessment_lookup_session"""
-        # if self.mgr.supports_assessment_lookup():
-        #     self.mgr.get_assessment_lookup_session()
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session()
 
     def test_get_assessment_lookup_session_for_bank(self):
         """Tests get_assessment_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_lookup():
-        #     self.mgr.get_assessment_lookup_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -321,17 +301,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_query_session(self):
         """Tests get_assessment_query_session"""
-        # if self.mgr.supports_assessment_query():
-        #     self.mgr.get_assessment_query_session()
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session()
 
     def test_get_assessment_query_session_for_bank(self):
         """Tests get_assessment_query_session_for_bank"""
-        # if self.mgr.supports_assessment_query():
-        #     self.mgr.get_assessment_query_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_query_session_for_bank()
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -369,17 +343,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_offered_lookup_session(self):
         """Tests get_assessment_offered_lookup_session"""
-        # if self.mgr.supports_assessment_offered_lookup():
-        #     self.mgr.get_assessment_offered_lookup_session()
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session()
 
     def test_get_assessment_offered_lookup_session_for_bank(self):
         """Tests get_assessment_offered_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_offered_lookup():
-        #     self.mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -387,17 +355,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session(self):
         """Tests get_assessment_offered_query_session"""
-        # if self.mgr.supports_assessment_offered_query():
-        #     self.mgr.get_assessment_offered_query_session()
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session()
 
     def test_get_assessment_offered_query_session_for_bank(self):
         """Tests get_assessment_offered_query_session_for_bank"""
-        # if self.mgr.supports_assessment_offered_query():
-        #     self.mgr.get_assessment_offered_query_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_query_session_for_bank()
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -425,17 +387,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_taken_lookup_session(self):
         """Tests get_assessment_taken_lookup_session"""
-        # if self.mgr.supports_assessment_taken_lookup():
-        #     self.mgr.get_assessment_taken_lookup_session()
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session()
 
     def test_get_assessment_taken_lookup_session_for_bank(self):
         """Tests get_assessment_taken_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_taken_lookup():
-        #     self.mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -443,17 +399,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session(self):
         """Tests get_assessment_taken_query_session"""
-        # if self.mgr.supports_assessment_taken_query():
-        #     self.mgr.get_assessment_taken_query_session()
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session()
 
     def test_get_assessment_taken_query_session_for_bank(self):
         """Tests get_assessment_taken_query_session_for_bank"""
-        # if self.mgr.supports_assessment_taken_query():
-        #     self.mgr.get_assessment_taken_query_session_for_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_query_session_for_bank()
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -506,15 +456,11 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_authoring_manager(self):
         """Tests get_assessment_authoring_manager"""
-        # if self.mgr.supports_assessment_authoring():
-        #     self.mgr.get_assessment_authoring_manager()
         if self.svc_mgr.supports_assessment_authoring():
             self.svc_mgr.get_assessment_authoring_manager()
 
     def test_get_assessment_batch_manager(self):
         """Tests get_assessment_batch_manager"""
-        # if self.mgr.supports_assessment_batch():
-        #     self.mgr.get_assessment_batch_manager()
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_manager()
 
@@ -535,7 +481,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_session(self):
@@ -559,10 +504,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_lookup_session(self):
         """Tests get_item_lookup_session"""
-        # if self.mgr.supports_item_lookup():
-        #     self.mgr.get_item_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_lookup_session()
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -570,10 +511,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_lookup_session_for_bank(self):
         """Tests get_item_lookup_session_for_bank"""
-        # if self.mgr.supports_item_lookup():
-        #     self.mgr.get_item_lookup_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_lookup_session_for_bank()
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -581,10 +518,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_query_session(self):
         """Tests get_item_query_session"""
-        # if self.mgr.supports_item_query():
-        #     self.mgr.get_item_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_query_session()
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -592,10 +525,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_query_session_for_bank(self):
         """Tests get_item_query_session_for_bank"""
-        # if self.mgr.supports_item_query():
-        #     self.mgr.get_item_query_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_item_query_session_for_bank()
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -638,10 +567,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_lookup_session(self):
         """Tests get_assessment_lookup_session"""
-        # if self.mgr.supports_assessment_lookup():
-        #     self.mgr.get_assessment_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_lookup_session()
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -649,10 +574,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_lookup_session_for_bank(self):
         """Tests get_assessment_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_lookup():
-        #     self.mgr.get_assessment_lookup_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -660,10 +581,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_query_session(self):
         """Tests get_assessment_query_session"""
-        # if self.mgr.supports_assessment_query():
-        #     self.mgr.get_assessment_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_query_session()
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -671,10 +588,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_query_session_for_bank(self):
         """Tests get_assessment_query_session_for_bank"""
-        # if self.mgr.supports_assessment_query():
-        #     self.mgr.get_assessment_query_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_query_session_for_bank()
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -712,10 +625,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_lookup_session(self):
         """Tests get_assessment_offered_lookup_session"""
-        # if self.mgr.supports_assessment_offered_lookup():
-        #     self.mgr.get_assessment_offered_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_lookup_session()
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -723,10 +632,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_lookup_session_for_bank(self):
         """Tests get_assessment_offered_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_offered_lookup():
-        #     self.mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -734,10 +639,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session(self):
         """Tests get_assessment_offered_query_session"""
-        # if self.mgr.supports_assessment_offered_query():
-        #     self.mgr.get_assessment_offered_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_query_session()
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -745,10 +646,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session_for_bank(self):
         """Tests get_assessment_offered_query_session_for_bank"""
-        # if self.mgr.supports_assessment_offered_query():
-        #     self.mgr.get_assessment_offered_query_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_offered_query_session_for_bank()
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -776,10 +673,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_lookup_session(self):
         """Tests get_assessment_taken_lookup_session"""
-        # if self.mgr.supports_assessment_taken_lookup():
-        #     self.mgr.get_assessment_taken_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_lookup_session()
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -787,10 +680,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_lookup_session_for_bank(self):
         """Tests get_assessment_taken_lookup_session_for_bank"""
-        # if self.mgr.supports_assessment_taken_lookup():
-        #     self.mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_lookup_session_for_bank()
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -798,10 +687,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session(self):
         """Tests get_assessment_taken_query_session"""
-        # if self.mgr.supports_assessment_taken_query():
-        #     self.mgr.get_assessment_taken_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_query_session()
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -809,10 +694,6 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session_for_bank(self):
         """Tests get_assessment_taken_query_session_for_bank"""
-        # if self.mgr.supports_assessment_taken_query():
-        #     self.mgr.get_assessment_taken_query_session_for_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_assessment_taken_query_session_for_bank()
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -865,14 +746,10 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_authoring_proxy_manager(self):
         """Tests get_assessment_authoring_proxy_manager"""
-        # if self.mgr.supports_assessment_authoring():
-        #     self.mgr.get_assessment_authoring_proxy_manager()
         if self.svc_mgr.supports_assessment_authoring():
             self.svc_mgr.get_assessment_authoring_proxy_manager()
 
     def test_get_assessment_batch_proxy_manager(self):
         """Tests get_assessment_batch_proxy_manager"""
-        # if self.mgr.supports_assessment_batch():
-        #     self.mgr.get_assessment_batch_proxy_manager()
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_proxy_manager()

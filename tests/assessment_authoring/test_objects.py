@@ -7,9 +7,6 @@ import unittest
 class TestAssessmentPart(unittest.TestCase):
     """Tests for AssessmentPart"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
@@ -69,9 +66,6 @@ class TestAssessmentPart(unittest.TestCase):
 class TestAssessmentPartForm(unittest.TestCase):
     """Tests for AssessmentPartForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_weight_metadata(self):
         """Tests get_weight_metadata"""
@@ -92,9 +86,10 @@ class TestAssessmentPartForm(unittest.TestCase):
         """Tests get_allocated_time_metadata"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_set_allocated_time(self):
         """Tests set_allocated_time"""
-       
+        pass
 
     @unittest.skip('unimplemented test')
     def test_clear_allocated_time(self):
@@ -123,9 +118,6 @@ class TestAssessmentPartList(unittest.TestCase):
 
 class TestSequenceRule(unittest.TestCase):
     """Tests for SequenceRule"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_part_id(self):
@@ -180,9 +172,6 @@ class TestSequenceRule(unittest.TestCase):
 
 class TestSequenceRuleForm(unittest.TestCase):
     """Tests for SequenceRuleForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_minimum_score_metadata(self):

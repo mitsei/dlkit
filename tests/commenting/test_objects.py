@@ -7,9 +7,6 @@ import unittest
 class TestComment(unittest.TestCase):
     """Tests for Comment"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_reference_id(self):
         """Tests get_reference_id"""
@@ -64,9 +61,6 @@ class TestComment(unittest.TestCase):
 class TestCommentForm(unittest.TestCase):
     """Tests for CommentForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_text_metadata(self):
         """Tests get_text_metadata"""
@@ -120,9 +114,6 @@ class TestCommentList(unittest.TestCase):
 class TestBook(unittest.TestCase):
     """Tests for Book"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_book_record(self):
         """Tests get_book_record"""
@@ -131,9 +122,6 @@ class TestBook(unittest.TestCase):
 
 class TestBookForm(unittest.TestCase):
     """Tests for BookForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_book_form_record(self):

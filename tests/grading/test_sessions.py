@@ -17,12 +17,9 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
-AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 class TestGradeSystemLookupSession(unittest.TestCase):
@@ -49,16 +46,10 @@ class TestGradeSystemLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_grade_systems():
-        #    cls.catalog.delete_grade_system(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -178,16 +169,10 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_grade_systems():
-        #    cls.catalog.delete_grade_system(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -243,8 +228,6 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_grade_systems():
             cls.catalog.delete_grade_system(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -404,10 +387,6 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_grade_entries():
-        #    cls.catalog.delete_grade_entry(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             for obj in catalog.get_grade_entries():
                 catalog.delete_grade_entry(obj.ident)
@@ -416,8 +395,6 @@ class TestGradeEntryLookupSession(unittest.TestCase):
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -601,7 +578,6 @@ class TestGradeEntryQuerySession(unittest.TestCase):
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
 
-
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
@@ -656,8 +632,6 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_grade_entries():
             cls.catalog.delete_grade_entry(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -786,8 +760,6 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
             for obj in catalog.get_grade_systems():
                 catalog.delete_grade_system(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-    
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -913,16 +885,10 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_gradebook_columns():
-        #    cls.catalog.delete_gradebook_column(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             for obj in catalog.get_gradebook_columns():
                 catalog.delete_gradebook_column(obj.ident)
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -978,8 +944,6 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_gradebook_columns():
             cls.catalog.delete_gradebook_column(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
-
-
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -1079,12 +1043,8 @@ class TestGradebookLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_gradebooks(self):
@@ -1152,12 +1112,8 @@ class TestGradebookAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_gradebook(catalog.ident)
         for catalog in cls.svc_mgr.get_gradebooks():
             cls.svc_mgr.delete_gradebook(catalog.ident)
-
-
 
     def test_can_create_gradebooks(self):
         """Tests can_create_gradebooks"""

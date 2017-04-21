@@ -7,9 +7,6 @@ import unittest
 class TestResourceQuery(unittest.TestCase):
     """Tests for ResourceQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_group(self):
         """Tests match_group"""

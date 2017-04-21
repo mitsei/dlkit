@@ -7,9 +7,6 @@ import unittest
 class TestResource(unittest.TestCase):
     """Tests for Resource"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_is_group(self):
         """Tests is_group"""
@@ -43,9 +40,6 @@ class TestResource(unittest.TestCase):
 
 class TestResourceForm(unittest.TestCase):
     """Tests for ResourceForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_group_metadata(self):
@@ -133,9 +127,6 @@ class TestResourceNodeList(unittest.TestCase):
 class TestBin(unittest.TestCase):
     """Tests for Bin"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_bin_record(self):
         """Tests get_bin_record"""
@@ -144,9 +135,6 @@ class TestBin(unittest.TestCase):
 
 class TestBinForm(unittest.TestCase):
     """Tests for BinForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_bin_form_record(self):

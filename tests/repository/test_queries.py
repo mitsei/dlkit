@@ -7,9 +7,6 @@ import unittest
 class TestAssetQuery(unittest.TestCase):
     """Tests for AssetQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_title(self):
         """Tests match_title"""
@@ -349,9 +346,6 @@ class TestAssetQuery(unittest.TestCase):
 class TestAssetContentQuery(unittest.TestCase):
     """Tests for AssetContentQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_accessibility_type(self):
         """Tests match_accessibility_type"""
@@ -420,9 +414,6 @@ class TestAssetContentQuery(unittest.TestCase):
 
 class TestCompositionQuery(unittest.TestCase):
     """Tests for CompositionQuery"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_match_asset_id(self):

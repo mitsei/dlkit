@@ -15,10 +15,8 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 
 
 class TestAssessmentPartLookupSession(unittest.TestCase):
@@ -81,8 +79,6 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
         check_dict_equal(self.assessment_part_list[0].get_assessment().object_map,
                          self.assessment.object_map)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -217,8 +213,6 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
             cls.catalog.delete_assessment_part(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-
-
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -332,7 +326,6 @@ class TestAssessmentPartItemSession(unittest.TestCase):
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
-
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -414,7 +407,6 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -503,8 +495,6 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -642,8 +632,6 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_sequence_rules():
             cls.catalog.delete_sequence_rule(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""

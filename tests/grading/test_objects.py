@@ -7,9 +7,6 @@ import unittest
 class TestGrade(unittest.TestCase):
     """Tests for Grade"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
@@ -43,9 +40,6 @@ class TestGrade(unittest.TestCase):
 
 class TestGradeForm(unittest.TestCase):
     """Tests for GradeForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_input_score_start_range_metadata(self):
@@ -115,9 +109,6 @@ class TestGradeList(unittest.TestCase):
 class TestGradeSystem(unittest.TestCase):
     """Tests for GradeSystem"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_is_based_on_grades(self):
         """Tests is_based_on_grades"""
@@ -156,9 +147,6 @@ class TestGradeSystem(unittest.TestCase):
 
 class TestGradeSystemForm(unittest.TestCase):
     """Tests for GradeSystemForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_based_on_grades_metadata(self):
@@ -242,9 +230,6 @@ class TestGradeSystemList(unittest.TestCase):
 
 class TestGradeEntry(unittest.TestCase):
     """Tests for GradeEntry"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_id(self):
@@ -345,9 +330,6 @@ class TestGradeEntry(unittest.TestCase):
 class TestGradeEntryForm(unittest.TestCase):
     """Tests for GradeEntryForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_ignored_for_calculations_metadata(self):
         """Tests get_ignored_for_calculations_metadata"""
@@ -416,9 +398,6 @@ class TestGradeEntryList(unittest.TestCase):
 class TestGradebookColumn(unittest.TestCase):
     """Tests for GradebookColumn"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
@@ -437,9 +416,6 @@ class TestGradebookColumn(unittest.TestCase):
 
 class TestGradebookColumnForm(unittest.TestCase):
     """Tests for GradebookColumnForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_grade_system_metadata(self):
@@ -478,9 +454,6 @@ class TestGradebookColumnList(unittest.TestCase):
 
 class TestGradebookColumnSummary(unittest.TestCase):
     """Tests for GradebookColumnSummary"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_id(self):
@@ -531,9 +504,6 @@ class TestGradebookColumnSummary(unittest.TestCase):
 class TestGradebook(unittest.TestCase):
     """Tests for Gradebook"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_gradebook_record(self):
         """Tests get_gradebook_record"""
@@ -542,9 +512,6 @@ class TestGradebook(unittest.TestCase):
 
 class TestGradebookForm(unittest.TestCase):
     """Tests for GradebookForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_form_record(self):

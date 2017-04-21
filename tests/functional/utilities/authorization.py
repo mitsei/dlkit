@@ -193,11 +193,12 @@ SUBPACKAGES = (
     ('assessment_authoring', 'assessment'),
 )
 
+
 def activate_managers(request):
     """
     Create initial managers and store them in the user session
     """
-    managers = [('authzm', 'AUTHORIZATION'),]
+    managers = [('authzm', 'AUTHORIZATION'), ]
 
     for manager in managers:
         nickname = manager[0]
@@ -209,6 +210,7 @@ def activate_managers(request):
             set_session_data(request, nickname, RUNTIME.get_service_manager(service_name,
                                                                             proxy=proxy))
     return request
+
 
 def add_user_authz_to_settings(role, username, catalog_id=None, authority='MIT-ODL'):
     if isinstance(catalog_id, basestring):
@@ -241,6 +243,7 @@ def add_user_authz_to_settings(role, username, catalog_id=None, authority='MIT-O
                                qualifiers,
                                STUDENT_FUNCTIONS)
 
+
 def authorization_iterator(vault, agent, qualifiers, authz_list):
     def first(namespace):
         return str(namespace).split('.')[0]
@@ -268,14 +271,17 @@ def authorization_iterator(vault, agent, qualifiers, authz_list):
                     is_subpackage):
                 create_authz(vault, agent, function, qualifier_id)
 
+
 def create_agent_id(username, authority='MIT-ODL'):
     return Id(identifier=username,
               namespace='osid.agent.Agent',
               authority=authority)
 
+
 def create_authz(vault, agent, function, qualifier):
     form = vault.get_authorization_form_for_create_for_agent(agent, function, qualifier, [])
     vault.create_authorization(form)
+
 
 def create_authz_superuser():
     original_config = open_up_services_config()
@@ -289,15 +295,18 @@ def create_authz_superuser():
 
     restore_services_config(original_config)
 
+
 def create_base_authorizations(vault, agent, qualifiers=()):
     if len(qualifiers) == 0:
         qualifiers = ('ROOT', 24 * '0')
     authorization_iterator(vault, agent, qualifiers, BASE_AUTHORIZATIONS)
 
+
 def create_function_id(function, namespace):
     return Id(identifier=function,
               namespace=namespace,
               authority='ODL.MIT.EDU')
+
 
 def create_qualifier_id(identifier, namespace, authority=CONFIGURED_AUTHORITY):
     if identifier == 'ROOT':
@@ -305,6 +314,7 @@ def create_qualifier_id(identifier, namespace, authority=CONFIGURED_AUTHORITY):
     return Id(identifier=identifier,
               namespace=namespace,
               authority=authority)
+
 
 def create_super_authz_authorizations(vault):
     req = get_super_authz_user_request()
@@ -317,6 +327,7 @@ def create_super_authz_authorizations(vault):
                                       function_tuple[1])
 
         create_authz(vault, agent_id, function, vault.ident)
+
 
 def create_test_request(test_user):
     # from django.http import HttpRequest
@@ -331,6 +342,7 @@ def create_test_request(test_user):
     # return test_request
     return SimpleRequest(username=test_user.username)
 
+
 def create_vault(request):
     authzm = get_session_data(request, 'authzm')
     form = authzm.get_vault_form_for_create([])
@@ -339,11 +351,13 @@ def create_vault(request):
     form.set_genus_type(BOOTSTRAP_VAULT_GENUS)
     return authzm.create_vault(form)
 
+
 def get_authz_user_request(username):
     authz_user = User(username=username, authenticated=True)
     req = create_test_request(authz_user)
     activate_managers(req)
     return req
+
 
 def get_session_data(request, item_type):
     # get a manager
@@ -355,12 +369,15 @@ def get_session_data(request, item_type):
     except Exception as ex:
         print "Exception! {0}".format(ex)
 
+
 def get_super_authz_user_request():
     return get_authz_user_request('dlkit-functional-tester')
+
 
 def get_vault(request):
     authzm = get_session_data(request, 'authzm')
     return authzm.get_vaults_by_genus_type(BOOTSTRAP_VAULT_GENUS).next()
+
 
 def open_up_services_config():
     previous_version = deepcopy(configs.SERVICE)
@@ -455,8 +472,10 @@ def open_up_services_config():
 
     return previous_version
 
+
 def restore_services_config(original_version):
     configs.SERVICE = original_version
+
 
 def set_session_data(request, item_type, data):
     request.session[item_type] = pickle.dumps(data)

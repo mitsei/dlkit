@@ -25,7 +25,6 @@ class TestGradingProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_grade_system_lookup(self):
         """Tests supports_grade_system_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_grade_system_lookup(), bool))
@@ -129,20 +128,13 @@ class TestGradingManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
 
-
     def test_get_grade_system_lookup_session(self):
         """Tests get_grade_system_lookup_session"""
-        # if self.mgr.supports_grade_system_lookup():
-        #     self.mgr.get_grade_system_lookup_session()
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session()
 
     def test_get_grade_system_lookup_session_for_gradebook(self):
         """Tests get_grade_system_lookup_session_for_gradebook"""
-        # if self.mgr.supports_grade_system_lookup():
-        #     self.mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_lookup_session_for_gradebook()
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -150,17 +142,11 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_system_query_session(self):
         """Tests get_grade_system_query_session"""
-        # if self.mgr.supports_grade_system_query():
-        #     self.mgr.get_grade_system_query_session()
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session()
 
     def test_get_grade_system_query_session_for_gradebook(self):
         """Tests get_grade_system_query_session_for_gradebook"""
-        # if self.mgr.supports_grade_system_query():
-        #     self.mgr.get_grade_system_query_session_for_gradebook(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_query_session_for_gradebook()
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -178,17 +164,11 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
-        # if self.mgr.supports_grade_entry_lookup():
-        #     self.mgr.get_grade_entry_lookup_session()
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session()
 
     def test_get_grade_entry_lookup_session_for_gradebook(self):
         """Tests get_grade_entry_lookup_session_for_gradebook"""
-        # if self.mgr.supports_grade_entry_lookup():
-        #     self.mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_lookup_session_for_gradebook()
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -196,17 +176,11 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session(self):
         """Tests get_grade_entry_query_session"""
-        # if self.mgr.supports_grade_entry_query():
-        #     self.mgr.get_grade_entry_query_session()
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session()
 
     def test_get_grade_entry_query_session_for_gradebook(self):
         """Tests get_grade_entry_query_session_for_gradebook"""
-        # if self.mgr.supports_grade_entry_query():
-        #     self.mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_query_session_for_gradebook()
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -264,22 +238,16 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grading_batch_manager(self):
         """Tests get_grading_batch_manager"""
-        # if self.mgr.supports_grading_batch():
-        #     self.mgr.get_grading_batch_manager()
         if self.svc_mgr.supports_grading_batch():
             self.svc_mgr.get_grading_batch_manager()
 
     def test_get_grading_calculation_manager(self):
         """Tests get_grading_calculation_manager"""
-        # if self.mgr.supports_grading_calculation():
-        #     self.mgr.get_grading_calculation_manager()
         if self.svc_mgr.supports_grading_calculation():
             self.svc_mgr.get_grading_calculation_manager()
 
     def test_get_grading_transform_manager(self):
         """Tests get_grading_transform_manager"""
-        # if self.mgr.supports_grading_transform():
-        #     self.mgr.get_grading_transform_manager()
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_manager()
 
@@ -301,13 +269,8 @@ class TestGradingProxyManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_gradebook(cls.catalog_id)
 
-
     def test_get_grade_system_lookup_session(self):
         """Tests get_grade_system_lookup_session"""
-        # if self.mgr.supports_grade_system_lookup():
-        #     self.mgr.get_grade_system_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_lookup_session()
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -315,10 +278,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_lookup_session_for_gradebook(self):
         """Tests get_grade_system_lookup_session_for_gradebook"""
-        # if self.mgr.supports_grade_system_lookup():
-        #     self.mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_lookup_session_for_gradebook()
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -326,10 +285,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_query_session(self):
         """Tests get_grade_system_query_session"""
-        # if self.mgr.supports_grade_system_query():
-        #     self.mgr.get_grade_system_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_query_session()
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -337,10 +292,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_query_session_for_gradebook(self):
         """Tests get_grade_system_query_session_for_gradebook"""
-        # if self.mgr.supports_grade_system_query():
-        #     self.mgr.get_grade_system_query_session_for_gradebook(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_system_query_session_for_gradebook()
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -358,10 +309,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
-        # if self.mgr.supports_grade_entry_lookup():
-        #     self.mgr.get_grade_entry_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_lookup_session()
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -369,10 +316,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_lookup_session_for_gradebook(self):
         """Tests get_grade_entry_lookup_session_for_gradebook"""
-        # if self.mgr.supports_grade_entry_lookup():
-        #     self.mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_lookup_session_for_gradebook()
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -380,10 +323,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session(self):
         """Tests get_grade_entry_query_session"""
-        # if self.mgr.supports_grade_entry_query():
-        #     self.mgr.get_grade_entry_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_query_session()
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -391,10 +330,6 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session_for_gradebook(self):
         """Tests get_grade_entry_query_session_for_gradebook"""
-        # if self.mgr.supports_grade_entry_query():
-        #     self.mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_grade_entry_query_session_for_gradebook()
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -452,21 +387,15 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grading_batch_proxy_manager(self):
         """Tests get_grading_batch_proxy_manager"""
-        # if self.mgr.supports_grading_batch():
-        #     self.mgr.get_grading_batch_proxy_manager()
         if self.svc_mgr.supports_grading_batch():
             self.svc_mgr.get_grading_batch_proxy_manager()
 
     def test_get_grading_calculation_proxy_manager(self):
         """Tests get_grading_calculation_proxy_manager"""
-        # if self.mgr.supports_grading_calculation():
-        #     self.mgr.get_grading_calculation_proxy_manager()
         if self.svc_mgr.supports_grading_calculation():
             self.svc_mgr.get_grading_calculation_proxy_manager()
 
     def test_get_grading_transform_proxy_manager(self):
         """Tests get_grading_transform_proxy_manager"""
-        # if self.mgr.supports_grading_transform():
-        #     self.mgr.get_grading_transform_proxy_manager()
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_proxy_manager()

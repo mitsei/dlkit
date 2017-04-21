@@ -35,6 +35,7 @@ ENCLOSED_ASSESSMENT_TYPE = Type(
        'namespace': 'assessment',
        'authority': 'OSID.ORG'})
 
+
 class FilesystemAdapterTests(DLKitTestCase):
     def create_asset_with_content(self):
         form = self._repo.get_asset_form_for_create([])
@@ -324,6 +325,7 @@ class CompositionTests(DLKitTestCase):
 
         self.is_streamable_url(asset.get_asset_contents().next().get_url())
 
+
 class EdXCompositionTests(CompositionTests):
     def create_composition_of_type(self, comp_type):
         form = self._repo.get_composition_form_for_create([EDX_COMPOSITION_RECORD_TYPE])
@@ -395,7 +397,6 @@ class EdXCompositionTests(CompositionTests):
                 pass
             else:
                 self.fail('This should have raised IllegalState().')
-
 
     def test_can_get_start_date_for_chapters_and_sequentials(self):
         test_cases = ['chapter', 'sequential']
@@ -583,6 +584,7 @@ class EdXCompositionTests(CompositionTests):
                 self.assertFalse(comp._my_map['draft'])
             else:
                 self.fail('This should have thrown IllegalState().')
+
 
 class EnclosureTests(DLKitTestCase):
     def add_item(self, bank):

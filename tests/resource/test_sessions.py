@@ -16,14 +16,10 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
-AGENT_ID_0 = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
-
-AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+AGENT_ID_0 = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 class TestResourceLookupSession(unittest.TestCase):
@@ -50,16 +46,10 @@ class TestResourceLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -174,16 +164,10 @@ class TestResourceQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -263,8 +247,6 @@ class TestResourceAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_resources():
             cls.catalog.delete_resource(obj.ident)
         cls.svc_mgr.delete_bin(cls.catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -353,16 +335,10 @@ class TestResourceNotificationSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -457,10 +433,6 @@ class TestResourceBinSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         cls.svc_mgr.unassign_resource_from_bin(
             cls.resource_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_resource_from_bin(
@@ -469,8 +441,6 @@ class TestResourceBinSession(unittest.TestCase):
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_use_comparative_bin_view(self):
         """Tests use_comparative_bin_view"""
@@ -574,16 +544,10 @@ class TestResourceAgentSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -629,9 +593,10 @@ class TestResourceAgentSession(unittest.TestCase):
         id_list = self.catalog.get_agent_ids_by_resource(self.resource_ids[0])
         self.assertEqual(id_list.next(), AGENT_ID_0)
 
+    @unittest.skip('unimplemented test')
     def test_get_agents_by_resource(self):
         """Tests get_agents_by_resource"""
-        
+        pass
 
 
 class TestResourceAgentAssignmentSession(unittest.TestCase):
@@ -656,16 +621,10 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_resources():
-        #    cls.catalog.delete_resource(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             for obj in catalog.get_resources():
                 catalog.delete_resource(obj.ident)
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
@@ -719,12 +678,8 @@ class TestBinLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_bins(self):
@@ -811,12 +766,8 @@ class TestBinAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bin(catalog.ident)
         for catalog in cls.svc_mgr.get_bins():
             cls.svc_mgr.delete_bin(catalog.ident)
-
-
 
     def test_can_create_bins(self):
         """Tests can_create_bins"""
@@ -906,14 +857,13 @@ class TestBinHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_bin(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_bin(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bin(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_bin(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_bins(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bin(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_bin_hierarchy_id(self):
         """Tests get_bin_hierarchy_id"""
@@ -1041,14 +991,13 @@ class TestBinHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_bin(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_bin(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bin(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_bin(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_bins(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bin(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_bin_hierarchy_id(self):
         """Tests get_bin_hierarchy_id"""

@@ -7,9 +7,6 @@ import unittest
 class TestAuthorizationQuery(unittest.TestCase):
     """Tests for AuthorizationQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_explicit_authorizations(self):
         """Tests match_explicit_authorizations"""

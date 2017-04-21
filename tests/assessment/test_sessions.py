@@ -16,10 +16,8 @@ CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
-DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT',})
-
-ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS',})
-
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 
 
 class TestAssessmentSession(unittest.TestCase):
@@ -45,8 +43,6 @@ class TestAssessmentSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -287,8 +283,6 @@ class TestAssessmentResultsSession(unittest.TestCase):
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
-
-
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -348,16 +342,10 @@ class TestItemLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_items():
-        #    cls.catalog.delete_item(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -492,16 +480,10 @@ class TestItemQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_items():
-        #    cls.catalog.delete_item(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -581,8 +563,6 @@ class TestItemAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_items():
             cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -757,16 +737,10 @@ class TestItemNotificationSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_items():
-        #    cls.catalog.delete_item(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -876,10 +850,6 @@ class TestItemBankSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_items():
-        #    cls.catalog.delete_item(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         cls.svc_mgr.unassign_item_from_bank(
             cls.item_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_item_from_bank(
@@ -888,8 +858,6 @@ class TestItemBankSession(unittest.TestCase):
             for obj in catalog.get_items():
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_item_bank_mappings(self):
@@ -998,16 +966,10 @@ class TestAssessmentLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        #for obj in cls.catalog.get_assessments():
-        #    cls.catalog.delete_assessment(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1122,16 +1084,10 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments():
-        #    cls.catalog.delete_assessment(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1187,8 +1143,6 @@ class TestAssessmentAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments():
             cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1283,10 +1237,6 @@ class TestAssessmentBankSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments():
-        #    cls.catalog.delete_assessment(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         cls.svc_mgr.unassign_assessment_from_bank(
             cls.assessment_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_from_bank(
@@ -1295,8 +1245,6 @@ class TestAssessmentBankSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_bank_mappings(self):
@@ -1422,8 +1370,6 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
                 catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
-
-
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
@@ -1452,7 +1398,6 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
         self.catalog.add_item(self.assessment.ident, additional_item.ident)
         self.assertEqual(self.catalog.get_assessment_items(self.assessment.ident).available(), 5)
         self.catalog.remove_item(self.assessment.ident, additional_item.ident)
-        
 
     def test_remove_item(self):
         """Tests remove_item"""
@@ -1521,18 +1466,12 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_offered():
-        #    cls.catalog.delete_assessment_offered(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments_offered():
                 catalog.delete_assessment_offered(obj.ident)
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1661,18 +1600,12 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_offered():
-        #    cls.catalog.delete_assessment_offered(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments_offered():
                 catalog.delete_assessment_offered(obj.ident)
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1728,8 +1661,6 @@ class TestAssessmentOfferedAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments_offered():
             cls.catalog.delete_assessment_offered(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -1828,10 +1759,6 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_offered():
-        #    cls.catalog.delete_assessment_offered(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         cls.svc_mgr.unassign_assessment_offered_from_bank(
             cls.assessment_offered_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_offered_from_bank(
@@ -1842,8 +1769,6 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_offered_bank_mappings(self):
@@ -1958,10 +1883,6 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_taken():
-        #    cls.catalog.delete_assessment_taken(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments_taken():
                 catalog.delete_assessment_taken(obj.ident)
@@ -1970,9 +1891,6 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -2150,10 +2068,6 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_taken():
-        #    cls.catalog.delete_assessment_taken(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessments_taken():
                 catalog.delete_assessment_taken(obj.ident)
@@ -2162,9 +2076,6 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -2220,8 +2131,6 @@ class TestAssessmentTakenAdminSession(unittest.TestCase):
         for obj in cls.catalog.get_assessments_taken():
             cls.catalog.delete_assessment_taken(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
-
-
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -2324,10 +2233,6 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for obj in cls.catalog.get_assessments_taken():
-        #    cls.catalog.delete_assessment_taken(obj.ident)
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         cls.svc_mgr.unassign_assessment_taken_from_bank(
             cls.assessment_taken_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_taken_from_bank(
@@ -2340,9 +2245,6 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_taken_bank_mappings(self):
@@ -2445,12 +2347,8 @@ class TestBankLookupSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_banks(self):
@@ -2537,12 +2435,8 @@ class TestBankAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #for catalog in cls.catalogs:
-        #    cls.svc_mgr.delete_bank(catalog.ident)
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
-
-
 
     def test_can_create_banks(self):
         """Tests can_create_banks"""
@@ -2632,14 +2526,13 @@ class TestBankHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bank(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_bank_hierarchy_id(self):
         """Tests get_bank_hierarchy_id"""
@@ -2767,14 +2660,13 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_bank(cls.catalogs[cat_name].ident)
-
-
 
     def test_get_bank_hierarchy_id(self):
         """Tests get_bank_hierarchy_id"""

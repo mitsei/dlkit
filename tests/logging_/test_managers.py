@@ -25,7 +25,6 @@ class TestLoggingProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_logging(self):
         """Tests supports_logging"""
         self.assertTrue(isinstance(self.mgr.supports_logging(), bool))
@@ -93,7 +92,6 @@ class TestLoggingManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
 
-
     @unittest.skip('unimplemented test')
     def test_get_logging_session(self):
         """Tests get_logging_session"""
@@ -146,8 +144,6 @@ class TestLoggingManager(unittest.TestCase):
 
     def test_get_logging_batch_manager(self):
         """Tests get_logging_batch_manager"""
-        # if self.mgr.supports_logging_batch():
-        #     self.mgr.get_logging_batch_manager()
         if self.svc_mgr.supports_logging_batch():
             self.svc_mgr.get_logging_batch_manager()
 
@@ -168,7 +164,6 @@ class TestLoggingProxyManager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
-
 
     @unittest.skip('unimplemented test')
     def test_get_logging_session(self):
@@ -222,7 +217,5 @@ class TestLoggingProxyManager(unittest.TestCase):
 
     def test_get_logging_batch_proxy_manager(self):
         """Tests get_logging_batch_proxy_manager"""
-        # if self.mgr.supports_logging_batch():
-        #     self.mgr.get_logging_batch_proxy_manager()
         if self.svc_mgr.supports_logging_batch():
             self.svc_mgr.get_logging_batch_proxy_manager()

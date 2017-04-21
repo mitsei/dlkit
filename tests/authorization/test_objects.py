@@ -7,9 +7,6 @@ import unittest
 class TestAuthorization(unittest.TestCase):
     """Tests for Authorization"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_is_implicit(self):
         """Tests is_implicit"""
@@ -89,9 +86,6 @@ class TestAuthorization(unittest.TestCase):
 class TestAuthorizationForm(unittest.TestCase):
     """Tests for AuthorizationForm"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_authorization_form_record(self):
         """Tests get_authorization_form_record"""
@@ -115,9 +109,6 @@ class TestAuthorizationList(unittest.TestCase):
 class TestVault(unittest.TestCase):
     """Tests for Vault"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_get_vault_record(self):
         """Tests get_vault_record"""
@@ -126,9 +117,6 @@ class TestVault(unittest.TestCase):
 
 class TestVaultForm(unittest.TestCase):
     """Tests for VaultForm"""
-
-
-
 
     @unittest.skip('unimplemented test')
     def test_get_vault_form_record(self):

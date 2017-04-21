@@ -7,9 +7,6 @@ import unittest
 class TestCommentQuery(unittest.TestCase):
     """Tests for CommentQuery"""
 
-
-
-
     @unittest.skip('unimplemented test')
     def test_match_reference_id(self):
         """Tests match_reference_id"""

@@ -265,7 +265,9 @@ class DLKitTestCase(MockTestCase):
                 _url
             )
 
-            expected_params = ['?Expires=','&Signature=','&Key-Pair-Id={0}'.format(settings.CLOUDFRONT_TEST_SIGNING_KEYPAIR_ID)]
+            expected_params = ['?Expires=',
+                               '&Signature=',
+                               '&Key-Pair-Id={0}'.format(settings.CLOUDFRONT_TEST_SIGNING_KEYPAIR_ID)]
 
             for param in expected_params:
                 self.assertIn(

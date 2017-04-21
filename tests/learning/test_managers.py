@@ -25,7 +25,6 @@ class TestLearningProfile(unittest.TestCase):
     def setUpClass(cls):
         cls.mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
 
-
     def test_supports_objective_lookup(self):
         """Tests supports_objective_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_objective_lookup(), bool))
@@ -161,20 +160,13 @@ class TestLearningManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_objective_bank(cls.catalog_id)
 
-
     def test_get_objective_lookup_session(self):
         """Tests get_objective_lookup_session"""
-        # if self.mgr.supports_objective_lookup():
-        #     self.mgr.get_objective_lookup_session()
         if self.svc_mgr.supports_objective_lookup():
             self.svc_mgr.get_objective_lookup_session()
 
     def test_get_objective_lookup_session_for_objective_bank(self):
         """Tests get_objective_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_objective_lookup():
-        #     self.mgr.get_objective_lookup_session_for_objective_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_objective_lookup():
             self.svc_mgr.get_objective_lookup_session_for_objective_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -182,17 +174,11 @@ class TestLearningManager(unittest.TestCase):
 
     def test_get_objective_query_session(self):
         """Tests get_objective_query_session"""
-        # if self.mgr.supports_objective_query():
-        #     self.mgr.get_objective_query_session()
         if self.svc_mgr.supports_objective_query():
             self.svc_mgr.get_objective_query_session()
 
     def test_get_objective_query_session_for_objective_bank(self):
         """Tests get_objective_query_session_for_objective_bank"""
-        # if self.mgr.supports_objective_query():
-        #     self.mgr.get_objective_query_session_for_objective_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_query_session_for_objective_bank()
         if self.svc_mgr.supports_objective_query():
             self.svc_mgr.get_objective_query_session_for_objective_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -270,17 +256,11 @@ class TestLearningManager(unittest.TestCase):
 
     def test_get_activity_lookup_session(self):
         """Tests get_activity_lookup_session"""
-        # if self.mgr.supports_activity_lookup():
-        #     self.mgr.get_activity_lookup_session()
         if self.svc_mgr.supports_activity_lookup():
             self.svc_mgr.get_activity_lookup_session()
 
     def test_get_activity_lookup_session_for_objective_bank(self):
         """Tests get_activity_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_activity_lookup():
-        #     self.mgr.get_activity_lookup_session_for_objective_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_activity_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_activity_lookup():
             self.svc_mgr.get_activity_lookup_session_for_objective_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -308,17 +288,11 @@ class TestLearningManager(unittest.TestCase):
 
     def test_get_proficiency_lookup_session(self):
         """Tests get_proficiency_lookup_session"""
-        # if self.mgr.supports_proficiency_lookup():
-        #     self.mgr.get_proficiency_lookup_session()
         if self.svc_mgr.supports_proficiency_lookup():
             self.svc_mgr.get_proficiency_lookup_session()
 
     def test_get_proficiency_lookup_session_for_objective_bank(self):
         """Tests get_proficiency_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_proficiency_lookup():
-        #     self.mgr.get_proficiency_lookup_session_for_objective_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_proficiency_lookup():
             self.svc_mgr.get_proficiency_lookup_session_for_objective_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -326,17 +300,11 @@ class TestLearningManager(unittest.TestCase):
 
     def test_get_proficiency_query_session(self):
         """Tests get_proficiency_query_session"""
-        # if self.mgr.supports_proficiency_query():
-        #     self.mgr.get_proficiency_query_session()
         if self.svc_mgr.supports_proficiency_query():
             self.svc_mgr.get_proficiency_query_session()
 
     def test_get_proficiency_query_session_for_objective_bank(self):
         """Tests get_proficiency_query_session_for_objective_bank"""
-        # if self.mgr.supports_proficiency_query():
-        #     self.mgr.get_proficiency_query_session_for_objective_bank(self.catalog_id)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_query_session_for_objective_bank()
         if self.svc_mgr.supports_proficiency_query():
             self.svc_mgr.get_proficiency_query_session_for_objective_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -374,8 +342,6 @@ class TestLearningManager(unittest.TestCase):
 
     def test_get_learning_batch_manager(self):
         """Tests get_learning_batch_manager"""
-        # if self.mgr.supports_learning_batch():
-        #     self.mgr.get_learning_batch_manager()
         if self.svc_mgr.supports_learning_batch():
             self.svc_mgr.get_learning_batch_manager()
 
@@ -397,13 +363,8 @@ class TestLearningProxyManager(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.delete_objective_bank(cls.catalog_id)
 
-
     def test_get_objective_lookup_session(self):
         """Tests get_objective_lookup_session"""
-        # if self.mgr.supports_objective_lookup():
-        #     self.mgr.get_objective_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_lookup_session()
         if self.svc_mgr.supports_objective_lookup():
             self.svc_mgr.get_objective_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -411,10 +372,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_objective_lookup_session_for_objective_bank(self):
         """Tests get_objective_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_objective_lookup():
-        #     self.mgr.get_objective_lookup_session_for_objective_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_objective_lookup():
             self.svc_mgr.get_objective_lookup_session_for_objective_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -422,10 +379,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_objective_query_session(self):
         """Tests get_objective_query_session"""
-        # if self.mgr.supports_objective_query():
-        #     self.mgr.get_objective_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_query_session()
         if self.svc_mgr.supports_objective_query():
             self.svc_mgr.get_objective_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -433,10 +386,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_objective_query_session_for_objective_bank(self):
         """Tests get_objective_query_session_for_objective_bank"""
-        # if self.mgr.supports_objective_query():
-        #     self.mgr.get_objective_query_session_for_objective_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_objective_query_session_for_objective_bank()
         if self.svc_mgr.supports_objective_query():
             self.svc_mgr.get_objective_query_session_for_objective_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -514,10 +463,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_activity_lookup_session(self):
         """Tests get_activity_lookup_session"""
-        # if self.mgr.supports_activity_lookup():
-        #     self.mgr.get_activity_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_activity_lookup_session()
         if self.svc_mgr.supports_activity_lookup():
             self.svc_mgr.get_activity_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -525,10 +470,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_activity_lookup_session_for_objective_bank(self):
         """Tests get_activity_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_activity_lookup():
-        #     self.mgr.get_activity_lookup_session_for_objective_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_activity_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_activity_lookup():
             self.svc_mgr.get_activity_lookup_session_for_objective_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -556,10 +497,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_proficiency_lookup_session(self):
         """Tests get_proficiency_lookup_session"""
-        # if self.mgr.supports_proficiency_lookup():
-        #     self.mgr.get_proficiency_lookup_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_lookup_session()
         if self.svc_mgr.supports_proficiency_lookup():
             self.svc_mgr.get_proficiency_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -567,10 +504,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_proficiency_lookup_session_for_objective_bank(self):
         """Tests get_proficiency_lookup_session_for_objective_bank"""
-        # if self.mgr.supports_proficiency_lookup():
-        #     self.mgr.get_proficiency_lookup_session_for_objective_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_lookup_session_for_objective_bank()
         if self.svc_mgr.supports_proficiency_lookup():
             self.svc_mgr.get_proficiency_lookup_session_for_objective_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -578,10 +511,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_proficiency_query_session(self):
         """Tests get_proficiency_query_session"""
-        # if self.mgr.supports_proficiency_query():
-        #     self.mgr.get_proficiency_query_session(PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_query_session()
         if self.svc_mgr.supports_proficiency_query():
             self.svc_mgr.get_proficiency_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -589,10 +518,6 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_proficiency_query_session_for_objective_bank(self):
         """Tests get_proficiency_query_session_for_objective_bank"""
-        # if self.mgr.supports_proficiency_query():
-        #     self.mgr.get_proficiency_query_session_for_objective_bank(self.catalog_id, PROXY)
-        # with self.assertRaises(errors.NullArgument):
-        #     self.mgr.get_proficiency_query_session_for_objective_bank()
         if self.svc_mgr.supports_proficiency_query():
             self.svc_mgr.get_proficiency_query_session_for_objective_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -630,7 +555,5 @@ class TestLearningProxyManager(unittest.TestCase):
 
     def test_get_learning_batch_proxy_manager(self):
         """Tests get_learning_batch_proxy_manager"""
-        # if self.mgr.supports_learning_batch():
-        #     self.mgr.get_learning_batch_proxy_manager()
         if self.svc_mgr.supports_learning_batch():
             self.svc_mgr.get_learning_batch_proxy_manager()
