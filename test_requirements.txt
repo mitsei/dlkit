@@ -1,11 +1,12 @@
 # Core project/common application testing requirements
 
-boto
-numpy
-pymongo
+boto==2.46.1
+numpy==1.12.1
+pymongo==3.4.0
 bs4==0.0.1
 lxml==3.7.3
 sympy==1.0
+minimocktest==0.5
 pytest
 pytest-pep8
 # pytest-pylint
