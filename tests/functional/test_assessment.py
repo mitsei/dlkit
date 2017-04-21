@@ -98,8 +98,8 @@ class EdXMultiChoiceTests(EdXTests):
 
     def set_item_irt(self, item):
         self.irt = {
-            'difficulty'     : -2.1,
-            'discrimination' : 1.5
+            'difficulty': -2.1,
+            'discrimination': 1.5
         }
 
         form = self._bank.get_item_form_for_update(item.ident)
@@ -257,11 +257,11 @@ class EdXMultiChoiceTests(EdXTests):
     def test_can_set_olx_metadata(self):
         item_map = self._bank.get_item(self._item.ident).object_map
         new_metadata = {
-            'attempts'      : item_map['attempts'] - 1,
-            'markdown'      : 'second fake markdown',
-            'rerandomize'   : 'second fake rerandomize',
-            'showanswer'    : 'second fake showanswer',
-            'weight'        : item_map['weight'] / 2
+            'attempts': item_map['attempts'] - 1,
+            'markdown': 'second fake markdown',
+            'rerandomize': 'second fake rerandomize',
+            'showanswer': 'second fake showanswer',
+            'weight': item_map['weight'] / 2
         }
 
         for attr, val in new_metadata.iteritems():
@@ -288,8 +288,8 @@ class EdXMultiChoiceTests(EdXTests):
 
     def test_can_set_irt_metadata(self):
         irt = {
-            'difficulty'     : -2.1,
-            'discrimination' : 1.5
+            'difficulty': -2.1,
+            'discrimination': 1.5
         }
 
         form = self._bank.get_item_form_for_update(self._item.ident)
@@ -709,7 +709,7 @@ class MecQBankAssessmentTests(MecQBankTests):
         super(MecQBankAssessmentTests, self).setUp()
 
         self.assessment_genus_types = {
-            'pset'          : Type(**{
+            'pset': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'assessment-type',
                 'identifier': 'pset',
@@ -717,7 +717,7 @@ class MecQBankAssessmentTests(MecQBankTests):
                 'display_label': 'Problem Set Assessment',
                 'description': 'Assessment used as a problem set',
                 'domain': 'assessment.Assessment'}),
-            'quiz'       : Type(**{
+            'quiz': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'assessment-type',
                 'identifier': 'quiz',
@@ -980,7 +980,7 @@ class MecQBankItemTests(MecQBankTests):
         })
 
         self.item_genus_types = {
-            'long'          : Type(**{
+            'long': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-long-question',
@@ -988,7 +988,7 @@ class MecQBankItemTests(MecQBankTests):
                 'display_label': 'MecQBank Long Format Question',
                 'description': 'Assessment Question that requires a long format Answer',
                 'domain': 'assessment.Question'}),
-            'concept'       : Type(**{
+            'concept': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-concept-question',
@@ -996,7 +996,7 @@ class MecQBankItemTests(MecQBankTests):
                 'display_label': 'MecQBank Concept Question',
                 'description': 'Assessment Question that requires a concept Answer',
                 'domain': 'assessment.Question'}),
-            'mcq'           : Type(**{
+            'mcq': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-mcq-question',
@@ -1004,7 +1004,7 @@ class MecQBankItemTests(MecQBankTests):
                 'display_label': 'MecQBank Multiple Choice Question',
                 'description': 'Assessment Question that requires a choice Answer',
                 'domain': 'assessment.Question'}),
-            'true/false'    : Type(**{
+            'true/false': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-tf-question',
@@ -1012,7 +1012,7 @@ class MecQBankItemTests(MecQBankTests):
                 'display_label': 'MecQBank True / False Question',
                 'description': 'Assessment Question that requires a true or false Answer',
                 'domain': 'assessment.Question'}),
-            'code'          : Type(**{
+            'code': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-code-question',
@@ -1020,7 +1020,7 @@ class MecQBankItemTests(MecQBankTests):
                 'display_label': 'MecQBank Code Question',
                 'description': 'Assessment Question that requires a code Answer',
                 'domain': 'assessment.Question'}),
-            'unknown'       : Type(**{
+            'unknown': Type(**{
                 'authority': 'ODL.MIT.EDU',
                 'namespace': 'question-type',
                 'identifier': 'mecqbank-unknown-question',
@@ -1426,8 +1426,8 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
         self.answer_type = Type('answer-record-type%3Alabel-ortho-faces%40ODL.MIT.EDU')
         self.answer = {
             "frontFaceValue": 1,
-            "sideFaceValue" : 2,
-            "topFaceValue"  : 3
+            "sideFaceValue": 2,
+            "topFaceValue": 3
         }
 
         self._item = self.add_item(self._bank)
@@ -1440,9 +1440,9 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
     def test_can_submit_wrong_answer(self):
         wrong_response = {
-            "frontFaceValue" : 0,
-            "sideFaceValue"  : 1,
-            "topFaceValue"   : 2
+            "frontFaceValue": 0,
+            "sideFaceValue": 1,
+            "topFaceValue": 2
         }
 
         first_section = self._bank.get_first_assessment_section(self._taken.ident)
