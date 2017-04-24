@@ -124,6 +124,94 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
     def set_params(self, params):
         self._magic_params = params
 
+    def _is_match(self, response, answer):
+        match = False
+        answer_choices = answer.get_inline_choice_ids()
+        response_choices = response.get_inline_choice_ids()
+        num_total_regions = len(answer_choices.keys())
+        num_matching_regions = 0
+        if len(response_choices.keys()) == len(answer_choices.keys()):
+            for inline_region, answer_region_choices in answer_choices.iteritems():
+                if set(list(answer_region_choices['choiceIds'])) == set(list(response_choices[inline_region]['choiceIds'])):
+                    num_matching_regions += 1
+            return num_matching_regions == num_total_regions
+        return match
+
+    def is_correctness_available_for_response(self, response):
+        """is a measure of correctness available for a particular mc response"""
+        return True
+
+    def is_response_correct(self, response):
+        """returns True if response evaluates to an Item Answer that is 100 percent correct"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return True
+        return False
+
+    def get_correctness_for_response(self, response):
+        """get measure of correctness available for a particular response"""
+        for answer in self.get_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 100
+        for answer in self.get_wrong_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 0
+
+    def get_answer_for_response(self, response):
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return answer
+
+        wrong_answers = None
+        try:
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+        except AttributeError:
+            pass
+        else:
+            for answer in wrong_answers:
+                if self._is_match(response, answer):
+                    return answer
+        # also look for generic incorrect answer
+        if wrong_answers is not None:
+            for answer in wrong_answers:
+                if len(answer.get_inline_choice_ids().keys()) == 0:
+                    return answer
+
+        raise NotFound('no matching answer found for response')
+
+    def is_feedback_available_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            return False
+        try:
+            return answer.has_feedback()
+        except AttributeError:
+            return False
+
+    def get_feedback_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        return answer.get_feedback()  # raises IllegalState
+
+    def get_confused_learning_objective_ids_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        try:
+            return answer.get_confused_learning_objective_ids()
+        except AttributeError:
+            return IdList([])
+
 
 class MagicRandomizedInlineChoiceItemFormRecord(osid_records.OsidRecord):
     """form for QTI numeric response question"""

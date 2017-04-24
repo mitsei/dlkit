@@ -9,7 +9,7 @@ from ..basic.simple_records import QuestionFilesRecord,\
 from ..basic.multi_choice_records import MultiChoiceTextQuestionRecord,\
     MultiChoiceTextQuestionFormRecord,\
     MultiChoiceTextAnswerRecord,\
-    MultiChoiceTextAnswerFormRecord
+    MultiChoiceTextAnswerFormRecord, MultiChoiceItemRecord
 from .base_records import edXProviderIdMixin
 from .item_records import edXItemRecord, edXItemFormRecord
 
@@ -20,6 +20,7 @@ from dlkit.abstract_osid.osid.errors import InvalidArgument, IllegalState, NotFo
 
 
 class EdXMultipleChoiceItemRecord(ItemWithWrongAnswerLOsRecord,
+                                  MultiChoiceItemRecord,
                                   edXItemRecord):
     pass
 

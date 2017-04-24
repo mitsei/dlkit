@@ -10,15 +10,21 @@ from bs4 import BeautifulSoup, Tag
 from dlkit.json_ import types
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.json_.id.objects import IdList
 
-from dlkit.abstract_osid.osid.errors import IllegalState, OperationFailed, InvalidArgument
+from dlkit.abstract_osid.osid.errors import IllegalState, OperationFailed,\
+    InvalidArgument, NotFound
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.primordium.transport.objects import DataInputStream
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.locale.objects import InitializableLocale
-from ...osid.base_records import ObjectInitRecord
 
+from .ordered_choice_records import OrderedChoiceItemRecord
+from .inline_choice_records import MagicRandomizedInlineChoiceItemRecord
+from .numeric_response_records import CalculationInteractionItemRecord
+from ..basic.multi_choice_records import MultiChoiceItemRecord
+from ...osid.base_records import ObjectInitRecord
 from ... import registry
 from ...repository import registry as repository_registry
 
@@ -234,7 +240,62 @@ class QTIFormWithMediaFiles(object):
                     media_file_element[key] = 'AssetContent:{0}'.format(media_file_name)
 
 
-class QTIQuestionRecord(ObjectInitRecord):
+class QTITypeRecordMixin(object):
+    """Helper mixing to detect item / question type based on genusTypeId"""
+    def _is_multiple_choice(self):
+        return str(self.my_osid_object.genus_type) in [str(CHOICE_INTERACTION_QUESTION_GENUS),
+                                                       str(CHOICE_INTERACTION_MULTI_QUESTION_GENUS),
+                                                       str(CHOICE_INTERACTION_GENUS),
+                                                       str(CHOICE_INTERACTION_MULTI_GENUS)]
+
+    def _is_reflection(self):
+        return str(self.my_osid_object.genus_type) in [str(CHOICE_INTERACTION_SURVEY_GENUS),
+                                                       str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_GENUS),
+                                                       str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS),
+                                                       str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_QUESTION_GENUS)]
+
+    def _is_file_upload(self):
+        return str(self.my_osid_object.genus_type) in [str(UPLOAD_INTERACTION_GENERIC_GENUS),
+                                                       str(UPLOAD_INTERACTION_GENERIC_QUESTION_GENUS)]
+
+    def _is_audio_record(self):
+        # excludes MW sandbox
+        return str(self.my_osid_object.genus_type) in [str(UPLOAD_INTERACTION_AUDIO_QUESTION_GENUS),
+                                                       str(UPLOAD_INTERACTION_AUDIO_GENUS)]
+
+    def _is_image_sequence(self):
+        return str(self.my_osid_object.genus_type) in [str(ORDER_INTERACTION_OBJECT_MANIPULATION_GENUS),
+                                                       str(ORDER_INTERACTION_OBJECT_MANIPULATION_QUESTION_GENUS)]
+
+    def _is_mw_sentence(self):
+        return str(self.my_osid_object.genus_type) in [str(ORDER_INTERACTION_MW_SENTENCE_QUESTION_GENUS),
+                                                       str(ORDER_INTERACTION_MW_SENTENCE_GENUS)]
+
+    def _is_mw_sandbox(self):
+        return str(self.my_osid_object.genus_type) in [str(ORDER_INTERACTION_MW_SANDBOX_GENUS),
+                                                       str(ORDER_INTERACTION_MW_SANDBOX_QUESTION_GENUS)]
+
+    def _is_fitb(self):
+        return str(self.my_osid_object.genus_type) in [str(INLINE_CHOICE_MW_FITB_INTERACTION_QUESTION_GENUS),
+                                                       str(INLINE_CHOICE_MW_FITB_INTERACTION_GENUS)]
+
+    def _is_numeric_response(self):
+        return str(self.my_osid_object.genus_type) in [str(NUMERIC_RESPONSE_QUESTION_GENUS),
+                                                       str(NUMERIC_RESPONSE_GENUS)]
+
+    def _is_short_answer(self):
+        return str(self.my_osid_object.genus_type) in [str(EXTENDED_TEXT_INTERACTION_QUESTION_GENUS),
+                                                       str(EXTENDED_TEXT_INTERACTION_GENUS)]
+
+    def _only_generic_right_feedback(self):
+        return (self._is_file_upload() or
+                self._is_audio_record() or
+                self._is_reflection() or
+                self._is_mw_sandbox() or
+                self._is_short_answer())
+
+
+class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
     """A record for an ``Answer``.
 
     The methods specified by the record type are available through the
@@ -287,10 +348,7 @@ class QTIQuestionRecord(ObjectInitRecord):
 
         object_map = self.my_osid_object.object_map
 
-        if str(self.my_osid_object.genus_type) in [str(CHOICE_INTERACTION_QUESTION_GENUS),
-                                                   str(CHOICE_INTERACTION_MULTI_QUESTION_GENUS),
-                                                   str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS),
-                                                   str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_QUESTION_GENUS)]:
+        if self._is_multiple_choice() or self._is_reflection():
             # scoring values
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
                                  '<defaultValue>'
@@ -367,8 +425,7 @@ class QTIQuestionRecord(ObjectInitRecord):
 
             item_body.append(choice_interaction)
             item.append(item_body)
-        elif str(self.my_osid_object.genus_type) in [str(UPLOAD_INTERACTION_AUDIO_QUESTION_GENUS),
-                                                     str(UPLOAD_INTERACTION_GENERIC_QUESTION_GENUS)]:
+        elif self._is_audio_record() or self._is_file_upload():
             # scoring values
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
                                  '<defaultValue>'
@@ -398,9 +455,7 @@ class QTIQuestionRecord(ObjectInitRecord):
             upload_interaction['responseIdentifier'] = 'RESPONSE_1'
             item_body.append(upload_interaction)
             item.append(item_body)
-        elif str(self.my_osid_object.genus_type) in [str(ORDER_INTERACTION_MW_SENTENCE_QUESTION_GENUS),
-                                                     str(ORDER_INTERACTION_MW_SANDBOX_QUESTION_GENUS),
-                                                     str(ORDER_INTERACTION_OBJECT_MANIPULATION_QUESTION_GENUS)]:
+        elif self._is_mw_sandbox() or self._is_mw_sentence() or self._is_image_sequence():
             # scoring values
             # we're not capturing score on create, so it is irrelevant here ...
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
@@ -446,7 +501,7 @@ class QTIQuestionRecord(ObjectInitRecord):
 
             item_body.append(order_interaction)
             item.append(item_body)
-        elif str(self.my_osid_object.genus_type) == str(EXTENDED_TEXT_INTERACTION_QUESTION_GENUS):
+        elif self._is_short_answer():
             # scoring values
             # we're not capturing score on create, so it is irrelevant here ...
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
@@ -487,7 +542,7 @@ class QTIQuestionRecord(ObjectInitRecord):
             text_interaction['expectedLines'] = self.my_osid_object.expected_lines
             item_body.append(text_interaction)
             item.append(item_body)
-        elif str(self.my_osid_object.genus_type) == str(INLINE_CHOICE_MW_FITB_INTERACTION_QUESTION_GENUS):
+        elif self._is_fitb():
             # scoring values
             # we're not capturing score on create, so it is irrelevant here ...
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
@@ -536,7 +591,7 @@ class QTIQuestionRecord(ObjectInitRecord):
                     inline_choice['identifier'] = choice['id']
                     inline_choice_interaction.append(inline_choice)
             item.append(item_body)
-        elif str(self.my_osid_object.genus_type) == str(NUMERIC_RESPONSE_QUESTION_GENUS):
+        elif self._is_numeric_response():
             # scoring values
             # we're not capturing score on create, so it is irrelevant here ...
             score_declaration = ('<outcomeDeclaration identifier="SCORE" cardinality="single" baseType="float">'
@@ -586,28 +641,6 @@ class QTIQuestionRecord(ObjectInitRecord):
             my_text = self._wrap_xml(object_map['text']['text'], 'itemBody')
             item_body = BeautifulSoup(my_text, 'xml').itemBody
             item.append(item_body)
-
-        # TODO: is there some way to parse the media files here, or
-        # does it have to be in the consuming app / RESTful layer
-        # because the redirect URL will be different depending on
-        # use case?
-        # if 'fileIds' in self.my_osid_object._my_map:
-        #     qti_media_regex = re.compile('(AssetContent:)')
-        #     media_file_elements = qti.find_all(src=qti_media_regex)
-        #     media_file_elements += qti.find_all(data=qti_media_regex)
-        #     item_files = self.my_osid_object._my_map['fileIds']
-        #     for media_file_element in media_file_elements:
-        #         if 'src' in media_file_element.attrs:
-        #             key = 'src'
-        #         else:
-        #             key = 'data'
-        #         media_file_name = media_file_element[key].split(':')[-1]
-        #         asset_id = item_files[media_file_name]['assetId']
-        #         ac_id = item_files[media_file_name]['assetContentId']
-        #
-        #         media_file_element[key] = '{0}/{1}/contents/{2}/stream'.format(media_file_root_path,
-        #                                                                        asset_id,
-        #                                                                        ac_id)
 
         return qti.prettify()
 
@@ -1037,24 +1070,6 @@ class QTIAnswerRecord(ObjectInitRecord):
             feedback['outcomeIdentifier'] = "FEEDBACKMODAL"
             feedback['showHide'] = "show"
 
-        # if 'fileIds' in self.my_osid_object._my_map:
-        #     qti_media_regex = re.compile('(AssetContent:)')
-        #     media_file_elements = qti.find_all(src=qti_media_regex)
-        #     media_file_elements += qti.find_all(data=qti_media_regex)
-        #     item_files = self.my_osid_object._my_map['fileIds']
-        #     for media_file_element in media_file_elements:
-        #         if 'src' in media_file_element.attrs:
-        #             key = 'src'
-        #         else:
-        #             key = 'data'
-        #         media_file_name = media_file_element[key].split(':')[-1]
-        #         asset_id = item_files[media_file_name]['assetId']
-        #         ac_id = item_files[media_file_name]['assetContentId']
-        #
-        #         media_file_element[key] = '{0}/{1}/contents/{2}/stream'.format(media_file_root_path,
-        #                                                                        asset_id,
-        #                                                                        ac_id)
-
         return qti.prettify()
 
 
@@ -1163,7 +1178,10 @@ class QTIAnswerFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 for value in soup.responseDeclaration.correctResponse.find_all('value'):
                     self.my_osid_object_form.add_choice_id(value.string)
             else:
-                self.my_osid_object_form.add_choice_id(feedback_choice_id)
+                if feedback_choice_id == 'incorrect' or feedback_choice_id == '':
+                    self.my_osid_object_form.add_choice_id(None)
+                else:
+                    self.my_osid_object_form.add_choice_id(feedback_choice_id)
             self.my_osid_object_form.set_genus_type(answer_genus)
 
             if len(keywords) > 0 and 'mcreflect' in [k.lower() for k in keywords]:
@@ -1269,7 +1287,9 @@ class QTIAnswerFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             raise OperationFailed('Item type not supported or unrecognized')
 
 
-class QTIItemRecord(ObjectInitRecord):
+class QTIItemRecord(QTITypeRecordMixin, MultiChoiceItemRecord, OrderedChoiceItemRecord,
+                    CalculationInteractionItemRecord, MagicRandomizedInlineChoiceItemRecord,
+                    ObjectInitRecord):
     """A record for an ``Item``.
 
     The methods specified by the record type are available through the
@@ -1279,6 +1299,103 @@ class QTIItemRecord(ObjectInitRecord):
     _implemented_record_type_identifiers = [
         'qti'
     ]
+
+    def _is_match(self, response, answer):
+        """For MC, can call through to MultiChoice Item Record?"""
+        # TODO: this varies depending on question type
+        if self._only_generic_right_feedback():
+            return str(answer.genus_type) == str(RIGHT_ANSWER_GENUS)
+        elif self._is_multiple_choice():
+            return MultiChoiceItemRecord._is_match(self, response, answer)
+        elif self._is_image_sequence() or self._is_mw_sentence():
+            return OrderedChoiceItemRecord._is_match(self, response, answer)
+        elif self._is_numeric_response():
+            return CalculationInteractionItemRecord._is_match(self, response, answer)
+        elif self._is_fitb():
+            return MagicRandomizedInlineChoiceItemRecord._is_match(self, response, answer)
+        return False
+
+    def is_correctness_available_for_response(self, response):
+        """is a measure of correctness available for a particular response"""
+        return True
+
+    def is_response_correct(self, response):
+        """returns True if response evaluates to an Item Answer that is 100 percent correct"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return True
+        return False
+
+    def get_correctness_for_response(self, response):
+        """get measure of correctness available for a particular response"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 100
+        for answer in self.my_osid_object.get_wrong_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 0
+        return 0
+
+    def get_answer_for_response(self, response):
+        # TODO: for certain QTI question types, need to find
+        # a generic right-answer (file upload, ART, reflection)
+        if self._only_generic_right_feedback():
+            for answer in self.my_osid_object.get_answers():
+                if self._is_match(response, answer):
+                    return answer
+
+            try:
+                wrong_answers = list(self.my_osid_object.get_wrong_answers())
+            except AttributeError:
+                pass
+            else:
+                for answer in wrong_answers:
+                    if self._is_match(response, answer):
+                        return answer
+        elif self._is_multiple_choice():
+            return MultiChoiceItemRecord.get_answer_for_response(self, response)
+        elif self._is_image_sequence() or self._is_mw_sentence():
+            return OrderedChoiceItemRecord.get_answer_for_response(self, response)
+        elif self._is_numeric_response():
+            return CalculationInteractionItemRecord.get_answer_for_response(self, response)
+        elif self._is_fitb():
+            return MagicRandomizedInlineChoiceItemRecord.get_answer_for_response(self, response)
+
+        raise NotFound('no matching answer found for response')
+
+    def is_feedback_available_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            return False
+        try:
+            return answer.has_feedback()
+        except AttributeError:
+            return False
+
+    def get_feedback_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        answer.object_map  # this will generate any source URLs from the adapter...kind of a hack
+        return answer.get_feedback()  # raises IllegalState
+
+    def get_confused_learning_objective_ids_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        try:
+            return answer.get_confused_learning_objective_ids()
+        except AttributeError:
+            return IdList([])
 
     def get_qti_xml(self, media_file_root_path=''):
         try:

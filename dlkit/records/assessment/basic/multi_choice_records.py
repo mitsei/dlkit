@@ -478,43 +478,56 @@ class MultiChoiceItemRecord(FeedbackAnswerItemRecord):
         'multi-choice'
     ]
 
+    def _is_match(self, response, answer):
+        response_set = set([str(c) for c in response.get_choice_ids()])
+        return response_set == set([str(c) for c in answer.get_choice_ids()])
+
     def is_correctness_available_for_response(self, response):
         """is a measure of correctness available for a particular mc response"""
         return True
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        response_set = set([str(c) for c in response.get_choice_ids()])
         for answer in self.my_osid_object.get_answers():
-            if response_set == set([str(c) for c in answer.get_choice_ids()]):
+            if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        answer = self.get_answer_for_response(response)
-        response_set = set([str(c) for c in response.get_choice_ids()])
-        for answer in self.get_answers():
-            if response_set == set([str(c) for c in answer.get_choice_ids()]):
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.get_wrong_answers():
-            if response_set == set([str(c) for c in answer.get_choice_ids()]):
+        for answer in self.my_osid_object.get_wrong_answers():
+            if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 0
 
     def get_answer_for_response(self, response):
-        response_set = set([str(c) for c in response.get_choice_ids()])
         for answer in self.my_osid_object.get_answers():
-            if response_set == set([str(c) for c in answer.get_choice_ids()]):
+            if self._is_match(response, answer):
                 return answer
-        for answer in self.my_osid_object.get_wrong_answers():
-            if response_set == set([str(c) for c in answer.get_choice_ids()]):
-                return answer
+
+        wrong_answers = None
+        try:
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+        except AttributeError:
+            pass
+        else:
+            for answer in wrong_answers:
+                if self._is_match(response, answer):
+                    return answer
+        # also look for generic incorrect answer
+        if wrong_answers is not None:
+            for answer in wrong_answers:
+                if not answer.has_choice_ids():
+                    return answer
+
         raise NotFound('no matching answer found for response')
 
     def is_feedback_available_for_response(self, response):
@@ -575,6 +588,10 @@ class MultiChoiceAnswerRecord(osid_records.OsidRecord,
     def get_choice_ids(self):
         """stub"""
         return IdList(self.my_osid_object._my_map['choiceIds'])
+
+    def has_choice_ids(self):
+        """see if has a set of choiceIds"""
+        return self.my_osid_object._my_map['choiceIds'] != []
 
 
 class MultiChoiceAnswerFormRecord(osid_records.OsidRecord,
@@ -637,7 +654,8 @@ class MultiChoiceAnswerFormRecord(osid_records.OsidRecord,
 
     def add_choice_id(self, choice_id):
         """stub"""
-        self.my_osid_object_form._my_map['choiceIds'].append(choice_id)
+        if choice_id is not None:
+            self.my_osid_object_form._my_map['choiceIds'].append(choice_id)
 
     def set_choice_ids(self, choice_ids):
         if not isinstance(choice_ids, list):

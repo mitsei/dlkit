@@ -7,7 +7,9 @@ from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.transport.objects import DataInputStream
 from dlkit.primordium.type.primitives import Type
-from dlkit.abstract_osid.osid.errors import InvalidArgument, NullArgument, NoAccess
+from dlkit.abstract_osid.osid.errors import InvalidArgument, NullArgument,\
+    NoAccess, NotFound, IllegalState
+from dlkit.json_.id.objects import IdList
 
 from ..basic.simple_records import QuestionTextRecord,\
     QuestionTextFormRecord,\
@@ -315,6 +317,102 @@ class LabelOrthoFacesQuestionFormRecord(BaseOrthoQuestionFormRecord):
         'question-text',
         'question-files'
     ]
+
+
+class LabelOrthoFacesItemFormRecord(ObjectInitRecord):
+    _implemented_record_type_identifiers = [
+        'label-ortho-faces'
+    ]
+    pass
+
+
+class LabelOrthoFacesItemRecord(ObjectInitRecord):
+    _implemented_record_type_identifiers = [
+        'label-ortho-faces'
+    ]
+
+    def _is_match(self, response, answer):
+        match = False
+        if (int(answer.get_front_face_value()) == int(response.get_front_face_value()) and
+                int(answer.get_side_face_value()) == int(response.get_side_face_value()) and
+                int(answer.get_top_face_value()) == int(response.get_top_face_value())):
+            match = True
+        return match
+
+    def is_correctness_available_for_response(self, response):
+        """is a measure of correctness available for a particular mc response"""
+        return True
+
+    def is_response_correct(self, response):
+        """returns True if response evaluates to an Item Answer that is 100 percent correct"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return True
+        return False
+
+    def get_correctness_for_response(self, response):
+        """get measure of correctness available for a particular response"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 100
+        for answer in self.my_osid_object.get_wrong_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 0
+
+    def get_answer_for_response(self, response):
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return answer
+
+        wrong_answers = None
+        try:
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+        except AttributeError:
+            pass
+        else:
+            for answer in wrong_answers:
+                if self._is_match(response, answer):
+                    return answer
+        # also look for generic incorrect answer
+        if wrong_answers is not None:
+            for answer in wrong_answers:
+                if not answer.has_face_values():
+                    return answer
+
+        raise NotFound('no matching answer found for response')
+
+    def is_feedback_available_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            return False
+        try:
+            return answer.has_feedback()
+        except AttributeError:
+            return False
+
+    def get_feedback_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        return answer.get_feedback()  # raises IllegalState
+
+    def get_confused_learning_objective_ids_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        try:
+            return answer.get_confused_learning_objective_ids()
+        except AttributeError:
+            return IdList([])
 
 
 class LabelOrthoFacesAnswerRecord(IntegerAnswersRecord):

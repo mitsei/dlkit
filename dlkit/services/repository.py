@@ -230,6 +230,16 @@ class RepositoryProfile(osid.OsidProfile, repository_managers.RepositoryProfile)
 
     coordinate_types = property(fget=get_coordinate_types)
 
+    def get_asset_content_lookup_session(self, *args, **kwargs):
+        """Pass through to provider """
+        return self._provider_manager.get_asset_content_lookup_session(*args, **kwargs)
+
+    asset_content_lookup_session = property(fget=get_asset_content_lookup_session)
+
+    def get_asset_content_lookup_session_for_repository(self, *args, **kwargs):
+        """Pass through to provider """
+        return self._provider_manager.get_asset_content_lookup_session_for_repository(args, kwargs)
+
 
 class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, repository_managers.RepositoryManager):
     """RepositoryManager convenience adapter including related Session methods."""
