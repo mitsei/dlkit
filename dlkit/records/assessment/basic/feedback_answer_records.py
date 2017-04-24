@@ -37,13 +37,19 @@ class FeedbackAnswerRecord(ObjectInitRecord):
 
     def get_feedback(self):
         if self.has_feedback():
-            return self.my_osid_object._my_map['feedback']
+            return DisplayText(display_text_map=self.my_osid_object._my_map['feedback'])
         raise IllegalState()
 
     feedback = property(fget=get_feedback)
 
+    def has_confused_learning_objective_ids(self):
+        return 'confusedLearningObjectiveIds' in self.my_osid_object._my_map
+
     def get_confused_learning_objective_ids(self):
-        return ObjectiveList(self.my_osid_object._my_map['confusedLearningObjectiveIds'],
+        confused_lo_ids = []
+        if self.my_osid_object.has_confused_learning_objective_ids():
+            confused_lo_ids = self.my_osid_object._my_map['confusedLearningObjectiveIds']
+        return ObjectiveList(confused_lo_ids,
                              runtime=self.my_osid_object._runtime,
                              proxy=self.my_osid_object._proxy)
 
@@ -154,8 +160,15 @@ class MultiLanguageFeedbacksAnswerRecord(MultiLanguageUtils,
 
     feedback = property(fget=get_feedback)
 
+    def has_confused_learning_objective_ids(self):
+        return 'confusedLearningObjectiveIds' in self.my_osid_object._my_map
+
     def get_confused_learning_objective_ids(self):
-        return ObjectiveList(self.my_osid_object._my_map['confusedLearningObjectiveIds'],
+        confused_lo_ids = []
+        if self.my_osid_object.has_confused_learning_objective_ids():
+            confused_lo_ids = self.my_osid_object._my_map['confusedLearningObjectiveIds']
+
+        return ObjectiveList(confused_lo_ids,
                              runtime=self.my_osid_object._runtime,
                              proxy=self.my_osid_object._proxy)
 

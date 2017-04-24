@@ -16,6 +16,7 @@ from dlkit.primordium.type.primitives import Type
 from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument
 
 from sympy import sympify
+from sympy.core.numbers import Rational, Float
 
 from urllib import quote, unquote
 
@@ -34,12 +35,15 @@ from ..basic.wrong_answers import WrongAnswerItemFormRecord, WrongAnswerItemReco
 from ...osid.base_records import ObjectInitRecord
 from ..basic.base_records import MultiLanguageQuestionFormRecord, MultiLanguageQuestionRecord
 
+from ..registry import ITEM_GENUS_TYPES
+
 
 DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data('DEFAULT'))
 DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data('DEFAULT'))
 DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data('DEFAULT'))
 
 MAGIC_AUTHORITY = 'qti-numeric-response'
+NUMERIC_RESPONSE_GENUS_TYPE = Type(**ITEM_GENUS_TYPES['qti-numeric-response'])
 
 
 class MagicNumericResponseItemLookupSession(ItemLookupSession):
@@ -106,38 +110,159 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
         self._magic_params = params
 
     def get_answers(self):
+        def get_var_sig_fig(_format):
+            return int(_format.split('.')[-1][0:-1])
+
         updated_answers = []
         # answers = AnswerList(self.my_osid_object._my_map['answers'],
         #                      runtime=self.my_osid_object._runtime,
         #                      proxy=self.my_osid_object._proxy)
         answers = super(CalculationInteractionItemRecord, self).get_answers()
-        try:
-            question = self.question
-        except TypeError:
-            # no question!
-            pass
+        if str(self.my_osid_object.genus_type) == str(NUMERIC_RESPONSE_GENUS_TYPE):
+            try:
+                question = self.question
+            except TypeError:
+                # no question!
+                pass
+            else:
+                soup = BeautifulSoup(question.get_text().text, 'xml')
+
+                numeric_choice_wrapper = None
+                interaction = soup.itemBody.textEntryInteraction
+                for parent in interaction.parents:
+                    if parent.name == 'p':
+                        numeric_choice_wrapper = parent
+                        break
+
+                numeric_choice_line_str = str(numeric_choice_wrapper)
+                expression = numeric_choice_line_str[3:numeric_choice_line_str.index('=')].strip()  # skip the opening <p> tag
+
+                output_format = None
+                # check if any of the variables are floats
+                # if so, take the one with the largest significant figures
+                for var in question._my_map['variables'].items():
+                    var_dict = var[1]
+                    if 'format' in var_dict and var_dict['format'] != '':
+                        var_format = var_dict['format']
+                        if output_format is None:
+                            output_format = var_format
+                            continue
+
+                        current_sig_figs = get_var_sig_fig(output_format)
+                        new_sig_figs = get_var_sig_fig(var_format)
+                        if new_sig_figs > current_sig_figs:
+                            output_format = var_format
+
+                for answer in answers:
+                    # send the actual value, because we need to use the
+                    # question variable params to limit the precision
+                    # of the expected value...
+                    expected_value = sympify(expression.split(':')[-1].split('=')[0].strip())
+
+                    if output_format is not None:
+                        expected_value = sympify(float(output_format % expected_value))
+
+                    answer.set_answer_value(expected_value)
+                    updated_answers.append(answer)
         else:
-            soup = BeautifulSoup(question.get_text().text, 'xml')
-
-            numeric_choice_wrapper = None
-            interaction = soup.itemBody.textEntryInteraction
-            for parent in interaction.parents:
-                if parent.name == 'p':
-                    numeric_choice_wrapper = parent
-                    break
-
-            numeric_choice_line_str = str(numeric_choice_wrapper)
-            expression = numeric_choice_line_str[3:numeric_choice_line_str.index('=')].strip()  # skip the opening <p> tag
-
-            for answer in answers:
-                answer.set_answer_value(expression.split(':')[-1].split('=')[0].strip())
-                updated_answers.append(answer)
+            updated_answers = answers
 
         return AnswerList(updated_answers,
                           runtime=self.my_osid_object._runtime,
                           proxy=self.my_osid_object._proxy)
 
     answers = property(fget=get_answers)
+
+    def _is_match(self, response, answer):
+        if answer._value is not None:
+            if isinstance(answer._value, Rational):
+                for label, value in response._my_map['integerValues'].iteritems():
+                    if not isinstance(value, int):
+                        continue
+                    return value == answer._value
+            elif isinstance(answer._value, Float):
+                for label, value in response._my_map['decimalValues'].iteritems():
+                    if not isinstance(value, float):
+                        continue
+                    return value == answer._value
+        return False
+
+    def is_correctness_available_for_response(self, response):
+        """is a measure of correctness available for a particular mc response"""
+        return True
+
+    def is_response_correct(self, response):
+        """returns True if response evaluates to an Item Answer that is 100 percent correct"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return True
+        return False
+
+    def get_correctness_for_response(self, response):
+        """get measure of correctness available for a particular response"""
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 100
+        for answer in self.my_osid_object.get_wrong_answers():
+            if self._is_match(response, answer):
+                try:
+                    return answer.get_score()
+                except AttributeError:
+                    return 0
+
+    def get_answer_for_response(self, response):
+        for answer in self.my_osid_object.get_answers():
+            if self._is_match(response, answer):
+                return answer
+
+        wrong_answers = None
+        try:
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+        except AttributeError:
+            pass
+        else:
+            for answer in wrong_answers:
+                if self._is_match(response, answer):
+                    return answer
+
+        # also look for generic incorrect answer
+        if wrong_answers is not None:
+            for answer in wrong_answers:
+                if (not answer.has_decimal_values() and
+                        not answer.has_integer_values()):
+                    return answer
+
+        raise NotFound('no matching answer found for response')
+
+    def is_feedback_available_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            return False
+        try:
+            return answer.has_feedback()
+        except AttributeError:
+            return False
+
+    def get_feedback_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        return answer.get_feedback()  # raises IllegalState
+
+    def get_confused_learning_objective_ids_for_response(self, response):
+        try:
+            answer = self.get_answer_for_response(response)
+        except NotFound:
+            raise IllegalState('no answer matching response was found')
+        try:
+            return answer.get_confused_learning_objective_ids()
+        except AttributeError:
+            return IdList([])
 
 
 class CalculationInteractionItemFormRecord(WrongAnswerItemFormRecord):
@@ -380,9 +505,8 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
 
     object_map = property(fget=get_object_map)
 
-    def set_answer_value(self, expression):
-        answer = sympify(expression.replace('=', '').strip())
-        self._value = answer
+    def set_answer_value(self, value):
+        self._value = value
 
     def is_match(self, response):
         if self._value is not None:
@@ -720,9 +844,8 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
 
     object_map = property(fget=get_object_map)
 
-    def set_answer_value(self, expression):
-        answer = sympify(expression.replace('=', '').strip())
-        self._value = answer
+    def set_answer_value(self, value):
+        self._value = value
 
     def is_match(self, response):
         if self._value is not None:

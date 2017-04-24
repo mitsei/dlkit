@@ -1,8 +1,8 @@
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid.metadata import Metadata
 
-from dlkit_runtime.primitives import Id
-from dlkit_runtime.errors import NotFound,\
+from dlkit.runtime.primitives import Id
+from dlkit.runtime.errors import NotFound,\
     IllegalState,\
     InvalidArgument,\
     NullArgument,\
