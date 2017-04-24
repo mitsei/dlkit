@@ -7,7 +7,7 @@ from dlkit.primordium.id.primitives import Id
 
 from ..qti.numeric_response_records import MagicNumericResponseItemLookupSession
 from ..qti.inline_choice_records import RandomizedInlineChoiceItemLookupSession
-from ...fbw_dlkit_adapters.multi_choice_questions.randomized_questions import RandomizedMCItemLookupSession
+from ...adaptive.multi_choice_questions.randomized_questions import RandomizedMCItemLookupSession
 
 from urllib import unquote
 
