@@ -1,0 +1,5 @@
+# include the transcript xml template
+include dlkit/records/osid/transcript_template.xml
+
+# include license
+include LICENSE.md
