@@ -14,7 +14,7 @@ from ..types import AWS_ASSET_CONTENT_RECORD_TYPE
 
 from bson.objectid import ObjectId
 
-from dlkit_runtime.primordium import DataInputStream
+from dlkit.runtime.primordium import DataInputStream
 
 
 class Asset(abc_repository_objects.Asset,
