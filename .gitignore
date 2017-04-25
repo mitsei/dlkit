@@ -5,3 +5,4 @@ test_datastore/
 htmlcov/
 dist/
 dlkit.egg-info/
+*.pem
