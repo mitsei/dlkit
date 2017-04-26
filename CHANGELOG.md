@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.4] - 2017-04-26
+### Added
+- Some basic tests for the `aws_adapter`. Requires setting
+  configurations for AWS S3 and CloudFront.
+
 ## [0.3.3] - 2017-04-25
 ### Added
 - Transcript XML template file added to `package_data` in
@@ -57,6 +62,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.3.4]: https://github.com/mitsei/dlkit/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/mitsei/dlkit/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/mitsei/dlkit/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/mitsei/dlkit/compare/0.3.0...0.3.1
