@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.hierarchy.objects import Hierarchy
+from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -1728,16 +1730,21 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
     def tearDownClass(cls):
         cls.svc_mgr.remove_child_objective_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_objective_banks(cls.catalogs['Root'].ident)
+        cls.svc_mgr.remove_root_objective_bank(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_objective_bank(cls.catalogs[cat_name].ident)
 
     def test_get_objective_bank_hierarchy_id(self):
         """Tests get_objective_bank_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
         hierarchy_id = self.svc_mgr.get_objective_bank_hierarchy_id()
+        self.assertTrue(isinstance(hierarchy_id, Id))
 
     def test_get_objective_bank_hierarchy(self):
         """Tests get_objective_bank_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
         hierarchy = self.svc_mgr.get_objective_bank_hierarchy()
+        self.assertTrue(isinstance(hierarchy, Hierarchy))
 
     @unittest.skip('unimplemented test')
     def test_can_access_objective_bank_hierarchy(self):
@@ -1754,14 +1761,22 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_get_root_objective_bank_ids(self):
         """Tests get_root_objective_bank_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bin_ids_template
         root_ids = self.svc_mgr.get_root_objective_bank_ids()
+        self.assertTrue(isinstance(root_ids, IdList))
+        self.assertTrue(root_ids.available() == 1)
 
     def test_get_root_objective_banks(self):
         """Tests get_root_objective_banks"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bins_template
+        from dlkit.abstract_osid.learning.objects import ObjectiveBankList
         roots = self.svc_mgr.get_root_objective_banks()
+        self.assertTrue(isinstance(roots, ObjectiveBankList))
+        self.assertTrue(roots.available() == 1)
 
     def test_has_parent_objective_banks(self):
         """Tests has_parent_objective_banks"""
+        # From test_templates/resource.py::BinHierarchySession::has_parent_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_parent_objective_banks(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_parent_objective_banks(self.catalogs['Child 1'].ident))
         self.assertTrue(self.svc_mgr.has_parent_objective_banks(self.catalogs['Child 2'].ident))
@@ -1770,6 +1785,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_is_parent_of_objective_bank(self):
         """Tests is_parent_of_objective_bank"""
+        # From test_templates/resource.py::BinHierarchySession::is_parent_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_parent_of_objective_bank(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_parent_of_objective_bank(self.catalogs['Root'].ident, self.catalogs['Child 1'].ident))
         self.assertTrue(self.svc_mgr.is_parent_of_objective_bank(self.catalogs['Child 1'].ident, self.catalogs['Grandchild 1'].ident))
@@ -1777,6 +1793,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_get_parent_objective_bank_ids(self):
         """Tests get_parent_objective_bank_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_parent_objective_bank_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -1784,16 +1801,29 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_get_parent_objective_banks(self):
         """Tests get_parent_objective_banks"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
         from dlkit.abstract_osid.learning.objects import ObjectiveBankList
         catalog_list = self.svc_mgr.get_parent_objective_banks(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, ObjectiveBankList))
         self.assertEqual(catalog_list.available(), 1)
         self.assertEqual(catalog_list.next().display_name.text, 'Root')
 
-    @unittest.skip('unimplemented test')
     def test_is_ancestor_of_objective_bank(self):
         """Tests is_ancestor_of_objective_bank"""
-        pass
+        # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
+        self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_objective_bank(
+            cls.catalogs['Root'].ident,
+            cls.catalogs['Child 1'].ident),
+            bool))
+        self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
+            cls.catalogs['Root'].ident,
+            cls.catalogs['Child 1'].ident))
+        self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
+            cls.catalogs['Root'].ident,
+            cls.catalogs['Grandchild 1'].ident))
+        self.assertFalse(self.svc_mgr.is_ancestor_of_objective_bank(
+            cls.catalogs['Child 1'].ident,
+            cls.catalogs['Root'].ident))
 
     def test_has_child_objective_banks(self):
         """Tests has_child_objective_banks"""
@@ -1825,10 +1855,21 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         self.assertEqual(catalog_list.available(), 1)
         self.assertEqual(catalog_list.next().display_name.text, 'Grandchild 1')
 
-    @unittest.skip('unimplemented test')
     def test_is_descendant_of_objective_bank(self):
         """Tests is_descendant_of_objective_bank"""
-        pass
+        self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_objective_bank(
+            cls.catalogs['Root'].ident,
+            cls.catalogs['Child 1'].ident),
+            bool))
+        self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
+            cls.catalogs['Child 1'].ident,
+            cls.catalogs['Root'].ident))
+        self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
+            cls.catalogs['Grandchild 1'].ident,
+            cls.catalogs['Root'].ident))
+        self.assertFalse(self.svc_mgr.is_descendant_of_objective_bank(
+            cls.catalogs['Root'].ident,
+            cls.catalogs['Child 1'].ident))
 
     def test_get_objective_bank_node_ids(self):
         """Tests get_objective_bank_node_ids"""
@@ -1867,38 +1908,42 @@ class TestObjectiveBankHierarchyDesignSession(unittest.TestCase):
 
     def test_get_objective_bank_hierarchy_id(self):
         """Tests get_objective_bank_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
         hierarchy_id = self.svc_mgr.get_objective_bank_hierarchy_id()
+        self.assertTrue(isinstance(hierarchy_id, Id))
 
     def test_get_objective_bank_hierarchy(self):
         """Tests get_objective_bank_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
         hierarchy = self.svc_mgr.get_objective_bank_hierarchy()
+        self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_modify_objective_bank_hierarchy(self):
         """Tests can_modify_objective_bank_hierarchy"""
-        pass
+        # this is tested in the setUpClass
+        self.assertTrue(True)
 
-    @unittest.skip('unimplemented test')
     def test_add_root_objective_bank(self):
         """Tests add_root_objective_bank"""
-        pass
+        # this is tested in the setUpClass
+        self.assertTrue(True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_root_objective_bank(self):
         """Tests remove_root_objective_bank"""
-        pass
+        # this is tested in the tearDownClass
+        self.assertTrue(True)
 
-    @unittest.skip('unimplemented test')
     def test_add_child_objective_bank(self):
         """Tests add_child_objective_bank"""
-        pass
+        # this is tested in the setUpClass
+        self.assertTrue(True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_child_objective_bank(self):
         """Tests remove_child_objective_bank"""
-        pass
+        # this is tested in the tearDownClass
+        self.assertTrue(True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_child_objective_banks(self):
         """Tests remove_child_objective_banks"""
-        pass
+        # this is tested in the tearDownClass
+        self.assertTrue(True)
