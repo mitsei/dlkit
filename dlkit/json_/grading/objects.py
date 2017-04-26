@@ -945,7 +945,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['derived']
+        return bool(self._my_map['derived'])
 
     def overrides_calculated_entry(self):
         """Tests if this is a manual entry that overrides a calculated entry.
@@ -1005,7 +1005,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['ignoredForCalculations']
+        return bool(self._my_map['ignoredForCalculations'])
 
     def is_graded(self):
         """Tests if a grade or score has been assigned to this entry.

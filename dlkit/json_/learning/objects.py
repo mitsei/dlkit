@@ -613,7 +613,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['assetBasedActivity']
+        return bool(self._my_map['assetBasedActivity'])
 
     def get_asset_ids(self):
         """Gets the ``Ids`` of any assets associated with this activity.
@@ -660,7 +660,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['courseBasedActivity']
+        return bool(self._my_map['courseBasedActivity'])
 
     def get_course_ids(self):
         """Gets the ``Ids`` of any courses associated with this activity.
@@ -710,7 +710,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['assessmentBasedActivity']
+        return bool(self._my_map['assessmentBasedActivity'])
 
     def get_assessment_ids(self):
         """Gets the ``Ids`` of any assessments associated with this activity.

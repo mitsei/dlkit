@@ -4,8 +4,44 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestQuestion(unittest.TestCase):
     """Tests for Question"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_form = cls.catalog.get_item_form_for_create([])
+        item_form.display_name = 'Item'
+        cls.item = cls.catalog.create_item(item_form)
+
+        form = cls.catalog.get_question_form_for_create(cls.item.ident, [])
+        form.display_name = 'Test question'
+        cls.question = cls.catalog.create_question(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_question_record(self):
@@ -39,6 +75,28 @@ class TestQuestionList(unittest.TestCase):
 class TestAnswer(unittest.TestCase):
     """Tests for Answer"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_form = cls.catalog.get_item_form_for_create([])
+        item_form.display_name = 'Item'
+        cls.item = cls.catalog.create_item(item_form)
+
+        form = cls.catalog.get_answer_form_for_create(cls.item.ident, [])
+        form.display_name = 'Test answer'
+        cls.answer = cls.catalog.create_answer(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_answer_record(self):
         """Tests get_answer_record"""
@@ -70,6 +128,24 @@ class TestAnswerList(unittest.TestCase):
 
 class TestItem(unittest.TestCase):
     """Tests for Item"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        form = cls.catalog.get_item_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_item(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_learning_objective_ids(self):
@@ -150,30 +226,53 @@ class TestItemList(unittest.TestCase):
 class TestAssessment(unittest.TestCase):
     """Tests for Assessment"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        form = cls.catalog.get_assessment_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_assessment(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_level_id(self):
         """Tests get_level_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_level_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_level(self):
         """Tests get_level"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_level)
 
-    @unittest.skip('unimplemented test')
     def test_has_rubric(self):
         """Tests has_rubric"""
-        pass
+        # From test_templates/resources.py::Resource::has_avatar_template
+        self.assertTrue(isinstance(self.object.has_rubric(), bool))
+        self.assertFalse(self.object.has_rubric())
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric_id(self):
         """Tests get_rubric_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_rubric_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric(self):
         """Tests get_rubric"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_rubric)
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_record(self):
@@ -237,6 +336,30 @@ class TestAssessmentList(unittest.TestCase):
 class TestAssessmentOffered(unittest.TestCase):
     """Tests for AssessmentOffered"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        form = cls.catalog.get_assessment_form_for_create([])
+        form.display_name = 'Assessment'
+        cls.assessment = cls.catalog.create_assessment(form)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        form.display_name = 'Test assessment offered'
+        cls.object = cls.catalog.create_assessment_offered(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                cls.catalog.delete_assessment_offered(offered.ident)
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
@@ -247,25 +370,29 @@ class TestAssessmentOffered(unittest.TestCase):
         """Tests get_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_level_id(self):
         """Tests get_level_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_level_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_level(self):
         """Tests get_level"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_level)
 
-    @unittest.skip('unimplemented test')
     def test_are_items_sequential(self):
         """Tests are_items_sequential"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.are_items_sequential(), bool))
+        self.assertFalse(self.object.are_items_sequential())
 
-    @unittest.skip('unimplemented test')
     def test_are_items_shuffled(self):
         """Tests are_items_shuffled"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.are_items_shuffled(), bool))
+        self.assertFalse(self.object.are_items_shuffled())
 
     @unittest.skip('unimplemented test')
     def test_has_start_time(self):
@@ -297,50 +424,64 @@ class TestAssessmentOffered(unittest.TestCase):
         """Tests get_duration"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_scored(self):
         """Tests is_scored"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set scored?
+        self.assertRaises(KeyError,
+                          self.object.is_scored)
 
-    @unittest.skip('unimplemented test')
     def test_get_score_system_id(self):
         """Tests get_score_system_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_score_system_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_score_system(self):
         """Tests get_score_system"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_score_system)
 
-    @unittest.skip('unimplemented test')
     def test_is_graded(self):
         """Tests is_graded"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set graded?
+        self.assertRaises(KeyError,
+                          self.object.is_graded)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_grade_system_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system(self):
         """Tests get_grade_system"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_grade_system)
 
-    @unittest.skip('unimplemented test')
     def test_has_rubric(self):
         """Tests has_rubric"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.has_rubric)
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric_id(self):
         """Tests get_rubric_id"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.get_rubric_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric(self):
         """Tests get_rubric"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.get_rubric)
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_offered_record(self):
@@ -496,6 +637,36 @@ class TestAssessmentOfferedList(unittest.TestCase):
 class TestAssessmentTaken(unittest.TestCase):
     """Tests for AssessmentTaken"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        form = cls.catalog.get_assessment_form_for_create([])
+        form.display_name = 'Assessment'
+        cls.assessment = cls.catalog.create_assessment(form)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        form.display_name = 'Test assessment offered'
+        cls.offered = cls.catalog.create_assessment_offered(form)
+
+        form = cls.catalog.get_assessment_taken_form_for_create(cls.offered.ident,
+                                                                [])
+        cls.object = cls.catalog.create_assessment_taken(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_assessment_offered_id(self):
         """Tests get_assessment_offered_id"""
@@ -556,60 +727,76 @@ class TestAssessmentTaken(unittest.TestCase):
         """Tests get_completion"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_scored(self):
         """Tests is_scored"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set scored?
+        self.assertRaises(KeyError,
+                          self.object.is_scored)
 
-    @unittest.skip('unimplemented test')
     def test_get_score_system_id(self):
         """Tests get_score_system_id"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set scoreSystemId?
+        self.assertRaises(KeyError,
+                          self.object.get_score_system_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_score_system(self):
         """Tests get_score_system"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set scoreSystemId?
+        self.assertRaises(KeyError,
+                          self.object.get_score_system)
 
     @unittest.skip('unimplemented test')
     def test_get_score(self):
         """Tests get_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_graded(self):
         """Tests is_graded"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set graded?
+        self.assertRaises(KeyError,
+                          self.object.is_graded)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_id(self):
         """Tests get_grade_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_grade_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade(self):
         """Tests get_grade"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_grade)
 
     @unittest.skip('unimplemented test')
     def test_get_feedback(self):
         """Tests get_feedback"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_has_rubric(self):
         """Tests has_rubric"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.has_rubric)
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric_id(self):
         """Tests get_rubric_id"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.get_rubric_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric(self):
         """Tests get_rubric"""
-        pass
+        # This may be an error in the spec -- not in _my_map
+        # since there are no form methods to set rubricId?
+        self.assertRaises(KeyError,
+                          self.object.get_rubric)
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_taken_record(self):

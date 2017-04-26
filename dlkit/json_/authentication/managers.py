@@ -24,6 +24,20 @@ from dlkit.manager_impls.authentication import managers as authentication_manage
 class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.AuthenticationProfile):
     """The ``AuthenticationProfile`` describes the interoperability among authentication services."""
 
+    def supports_agent_lookup(self):
+        """Tests if an agent lookup service is supported.
+
+        An agent lookup service defines methods to access agents.
+
+        return: (boolean) - ``true`` if agent lookup is supported,
+                ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_agent_lookup' in profile.SUPPORTS
+
     def get_agent_record_types(self):
         """Gets the supported ``Agent`` record types.
 
@@ -132,6 +146,51 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
 
+    @utilities.remove_null_proxy_kwarg
+    def get_agent_lookup_session(self):
+        """Gets the ``OsidSession`` associated with the agent lookup service.
+
+        return: (osid.authentication.AgentLookupSession) - an
+                ``AgentLookupSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_agent_lookup()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_agent_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_agent_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AgentLookupSession(runtime=self._runtime)
+
+    agent_lookup_session = property(fget=get_agent_lookup_session)
+
+    @utilities.remove_null_proxy_kwarg
+    @utilities.arguments_not_none
+    def get_agent_lookup_session_for_agency(self, agency_id):
+        """Gets the ``OsidSession`` associated with the agent lookup service for the given agency.
+
+        arg:    agency_id (osid.id.Id): the ``Id`` of the agency
+        return: (osid.authentication.AgentLookupSession) - ``an
+                _agent_lookup_session``
+        raise:  NotFound - ``agency_id`` not found
+        raise:  NullArgument - ``agency_id`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_agent_lookup()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_agent_lookup()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_agent_lookup():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AgentLookupSession(agency_id, runtime=self._runtime)
+
     def get_authentication_batch_manager(self):
         """Gets an ``AuthenticationBatchManager``.
 
@@ -217,6 +276,51 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
+    @utilities.arguments_not_none
+    def get_agent_lookup_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the agent lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authentication.AgentLookupSession) - an
+                ``AgentLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_agent_lookup()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_agent_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_agent_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AgentLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_agent_lookup_session_for_agency(self, agency_id, proxy):
+        """Gets the ``OsidSession`` associated with the agent lookup service for the given agency.
+
+        arg:    agency_id (osid.id.Id): the ``Id`` of the agency
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authentication.AgentLookupSession) - ``an
+                _agent_lookup_session``
+        raise:  NotFound - ``agency_id`` not found
+        raise:  NullArgument - ``agency_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_agent_lookup()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_agent_lookup()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_agent_lookup():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AgentLookupSession(agency_id, proxy, self._runtime)
 
     def get_authentication_batch_proxy_manager(self):
         """Gets an ``AuthenticationBatchProxyManager``.

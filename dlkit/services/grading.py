@@ -197,14 +197,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_gradebook_view(self, session):
         """Sets the underlying gradebook view to match current view"""
         if self._gradebook_view == COMPARATIVE:

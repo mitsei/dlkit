@@ -1386,7 +1386,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['scored']
+        return bool(self._my_map['scored'])
 
     def get_score_system_id(self):
         """Gets the grade system ``Id`` for the score.
@@ -1435,7 +1435,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['graded']
+        return bool(self._my_map['graded'])
 
     def get_grade_system_id(self):
         """Gets the grade system ``Id`` for the grade.
@@ -2318,7 +2318,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['scored']
+        return bool(self._my_map['scored'])
 
     def get_score_system_id(self):
         """Gets a score system ``Id`` for the assessment.
@@ -2385,7 +2385,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['graded']
+        return bool(self._my_map['graded'])
 
     def get_grade_id(self):
         """Gets a grade ``Id`` for the assessment.

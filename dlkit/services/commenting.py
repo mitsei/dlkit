@@ -125,14 +125,6 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_book_view(self, session):
         """Sets the underlying book view to match current view"""
         if self._book_view == COMPARATIVE:

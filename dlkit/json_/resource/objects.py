@@ -58,7 +58,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['group']
+        return bool(self._my_map['group'])
 
     def is_demographic(self):
         """Tests if this resource is a demographic.

@@ -253,14 +253,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_repository_view(self, session):
         """Sets the underlying repository view to match current view"""
         if self._repository_view == COMPARATIVE:

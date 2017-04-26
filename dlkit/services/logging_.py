@@ -135,14 +135,6 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_log_view(self, session):
         """Sets the underlying log view to match current view"""
         if self._log_view == COMPARATIVE:
