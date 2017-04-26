@@ -259,23 +259,7 @@ class DLKitTestCase(MockTestCase):
         return repo
 
     def is_streamable_url(self, _url):
-        if 'CLOUDFRONT_TEST_DISTRO' in os.environ:
-            self.assertIn(
-                'https://{0}/'.format(settings.CLOUDFRONT_TEST_DISTRO),
-                _url
-            )
-
-            expected_params = ['?Expires=',
-                               '&Signature=',
-                               '&Key-Pair-Id={0}'.format(settings.CLOUDFRONT_TEST_SIGNING_KEYPAIR_ID)]
-
-            for param in expected_params:
-                self.assertIn(
-                    param,
-                    _url
-                )
-        else:
-            self.assertIn('/stream', _url)
+        self.assertIn('/stream', _url)
 
     def json(self, _req):
         return json.loads(_req.content)
