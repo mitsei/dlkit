@@ -31,6 +31,13 @@ This `Jupyter notebook`_ is useful for learning about how to use ``dlkit``.
 
 .. _Jupyter notebook: https://github.com/mitsei/dlkit-tutorial
 
+Example Projects
+----------------
+For help understanding ``dlkit`` and how to configure it, you can also
+refer to an existing project, like `qbank`_.
+
+.. _qbank: https://github.com/CLIxIndia-Dev/qbank-lite
+
 Runtime Config
 --------------
 To use ``dlkit``, you need to include a runtime config in an ``dlkit_configs``
