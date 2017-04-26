@@ -76,7 +76,8 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['numpy', 'pymongo', 'boto', 'lxml', 'sympy',
-                      'inflection', 'bs4', 'python-memcached'],
+                      'inflection', 'bs4', 'python-memcached',
+                      'rsa'],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
@@ -86,6 +87,7 @@ setup(
         'dev': [],
         'test': ['pymongo', 'numpy', 'envoy', 'lxml', 'sympy',
                  'minimocktest', 'bs4', 'python-memcached',
+                 'rsa',
                  'pytest', 'pytest-pep8', 'pytest-cov'],
     },
 

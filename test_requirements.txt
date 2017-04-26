@@ -13,3 +13,4 @@ pytest-pep8
 # pytest-pylint
 pytest-cov
 envoy==0.0.3
+rsa==3.4.2
