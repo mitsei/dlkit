@@ -522,10 +522,13 @@ class TestBookAdminSession(unittest.TestCase):
         """Tests can_manage_book_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_book(self):
         """Tests alias_book"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('commenting.Book%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_book(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_book(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)
 
 
 class TestBookHierarchySession(unittest.TestCase):
@@ -630,19 +633,23 @@ class TestBookHierarchySession(unittest.TestCase):
     def test_is_ancestor_of_book(self):
         """Tests is_ancestor_of_book"""
         # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
-        self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_book(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_book(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_book(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Grandchild 1'].ident))
-        self.assertFalse(self.svc_mgr.is_ancestor_of_book(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_ancestor_of_book,
+                          self.catalogs['Root'].ident,
+                          self.catalogs['Child 1'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_book(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_book(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_book(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Grandchild 1'].ident))
+        # self.assertFalse(self.svc_mgr.is_ancestor_of_book(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
 
     def test_has_child_books(self):
         """Tests has_child_books"""
@@ -676,23 +683,29 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_is_descendant_of_book(self):
         """Tests is_descendant_of_book"""
-        self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_book(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_descendant_of_book(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertTrue(self.svc_mgr.is_descendant_of_book(
-            cls.catalogs['Grandchild 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertFalse(self.svc_mgr.is_descendant_of_book(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
+        # From test_templates/resource.py::BinHierarchySession::is_descendant_of_bin_template
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_descendant_of_book,
+                          self.catalogs['Child 1'].ident,
+                          self.catalogs['Root'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_book(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_book(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_book(
+        #     self.catalogs['Grandchild 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertFalse(self.svc_mgr.is_descendant_of_book(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
 
     def test_get_book_node_ids(self):
         """Tests get_book_node_ids"""
         node_ids = self.svc_mgr.get_book_node_ids(self.catalogs['Child 1'].ident, 1, 2, False)
+        self.assertTrue(isinstance(node_ids, IdList))
         # add some tests on the returned node
 
     def test_get_book_nodes(self):

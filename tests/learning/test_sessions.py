@@ -1703,10 +1703,13 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         """Tests can_manage_objective_bank_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_objective_bank(self):
         """Tests alias_objective_bank"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('learning.ObjectiveBank%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_objective_bank(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_objective_bank(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)
 
 
 class TestObjectiveBankHierarchySession(unittest.TestCase):
@@ -1811,19 +1814,23 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
     def test_is_ancestor_of_objective_bank(self):
         """Tests is_ancestor_of_objective_bank"""
         # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
-        self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_objective_bank(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Grandchild 1'].ident))
-        self.assertFalse(self.svc_mgr.is_ancestor_of_objective_bank(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_ancestor_of_objective_bank,
+                          self.catalogs['Root'].ident,
+                          self.catalogs['Child 1'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_objective_bank(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_objective_bank(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Grandchild 1'].ident))
+        # self.assertFalse(self.svc_mgr.is_ancestor_of_objective_bank(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
 
     def test_has_child_objective_banks(self):
         """Tests has_child_objective_banks"""
@@ -1857,23 +1864,29 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_is_descendant_of_objective_bank(self):
         """Tests is_descendant_of_objective_bank"""
-        self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_objective_bank(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
-            cls.catalogs['Grandchild 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertFalse(self.svc_mgr.is_descendant_of_objective_bank(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
+        # From test_templates/resource.py::BinHierarchySession::is_descendant_of_bin_template
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_descendant_of_objective_bank,
+                          self.catalogs['Child 1'].ident,
+                          self.catalogs['Root'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_objective_bank(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_objective_bank(
+        #     self.catalogs['Grandchild 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertFalse(self.svc_mgr.is_descendant_of_objective_bank(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
 
     def test_get_objective_bank_node_ids(self):
         """Tests get_objective_bank_node_ids"""
         node_ids = self.svc_mgr.get_objective_bank_node_ids(self.catalogs['Child 1'].ident, 1, 2, False)
+        self.assertTrue(isinstance(node_ids, IdList))
         # add some tests on the returned node
 
     def test_get_objective_bank_nodes(self):

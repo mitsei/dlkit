@@ -1181,7 +1181,10 @@ class TestGradebookAdminSession(unittest.TestCase):
         """Tests can_manage_gradebook_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_gradebook(self):
         """Tests alias_gradebook"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('grading.Gradebook%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_gradebook(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_gradebook(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)

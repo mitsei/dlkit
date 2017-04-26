@@ -1400,10 +1400,13 @@ class TestRepositoryAdminSession(unittest.TestCase):
         """Tests can_manage_repository_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_repository(self):
         """Tests alias_repository"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('repository.Repository%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_repository(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_repository(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)
 
 
 class TestRepositoryHierarchySession(unittest.TestCase):
@@ -1508,19 +1511,23 @@ class TestRepositoryHierarchySession(unittest.TestCase):
     def test_is_ancestor_of_repository(self):
         """Tests is_ancestor_of_repository"""
         # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
-        self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_repository(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_repository(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
-        self.assertTrue(self.svc_mgr.is_ancestor_of_repository(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Grandchild 1'].ident))
-        self.assertFalse(self.svc_mgr.is_ancestor_of_repository(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_ancestor_of_repository,
+                          self.catalogs['Root'].ident,
+                          self.catalogs['Child 1'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_repository(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_repository(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_repository(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Grandchild 1'].ident))
+        # self.assertFalse(self.svc_mgr.is_ancestor_of_repository(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
 
     def test_has_child_repositories(self):
         """Tests has_child_repositories"""
@@ -1554,23 +1561,29 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     def test_is_descendant_of_repository(self):
         """Tests is_descendant_of_repository"""
-        self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_repository(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident),
-            bool))
-        self.assertTrue(self.svc_mgr.is_descendant_of_repository(
-            cls.catalogs['Child 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertTrue(self.svc_mgr.is_descendant_of_repository(
-            cls.catalogs['Grandchild 1'].ident,
-            cls.catalogs['Root'].ident))
-        self.assertFalse(self.svc_mgr.is_descendant_of_repository(
-            cls.catalogs['Root'].ident,
-            cls.catalogs['Child 1'].ident))
+        # From test_templates/resource.py::BinHierarchySession::is_descendant_of_bin_template
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_descendant_of_repository,
+                          self.catalogs['Child 1'].ident,
+                          self.catalogs['Root'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_repository(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_repository(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_repository(
+        #     self.catalogs['Grandchild 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertFalse(self.svc_mgr.is_descendant_of_repository(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
 
     def test_get_repository_node_ids(self):
         """Tests get_repository_node_ids"""
         node_ids = self.svc_mgr.get_repository_node_ids(self.catalogs['Child 1'].ident, 1, 2, False)
+        self.assertTrue(isinstance(node_ids, IdList))
         # add some tests on the returned node
 
     def test_get_repository_nodes(self):

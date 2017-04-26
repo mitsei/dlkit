@@ -532,7 +532,10 @@ class TestLogAdminSession(unittest.TestCase):
         """Tests can_manage_log_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_log(self):
         """Tests alias_log"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('logging_.Log%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_log(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_log(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)

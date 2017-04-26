@@ -866,7 +866,10 @@ class TestVaultAdminSession(unittest.TestCase):
         """Tests can_manage_vault_aliases"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_alias_vault(self):
         """Tests alias_vault"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('authorization.Vault%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_vault(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_vault(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)
