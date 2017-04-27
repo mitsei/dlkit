@@ -457,6 +457,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         # pylint: disable=no-member
         return sessions.SequenceRuleAdminSession(bank_id, runtime=self._runtime)
 
+    @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
     def get_assessment_part_item_session(self, *args, **kwargs):
         """Gets the ``OsidSession`` associated with the assessment part item service.
@@ -479,6 +480,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
 
     assessment_part_item_session = property(fget=get_assessment_part_item_session)
 
+    @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
     def get_assessment_part_item_session_for_bank(self, bank_id, *args, **kwargs):
         """Gets the ``OsidSession`` associated with the assessment part item service for the given bank.
@@ -505,6 +507,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         # pylint: disable=no-member
         return sessions.AssessmentPartItemSession(bank_id, runtime=self._runtime)
 
+    @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
     def get_assessment_part_item_design_session(self, *args, **kwargs):
         """Gets the ``OsidSession`` associated with the assessment part item design service.
@@ -527,6 +530,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
 
     assessment_part_item_design_session = property(fget=get_assessment_part_item_design_session)
 
+    @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
     def get_assessment_part_item_design_session_for_bank(self, bank_id, *args, **kwargs):
         """Gets the ``OsidSession`` associated with the assessment part item design service for the given bank.

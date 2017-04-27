@@ -1569,18 +1569,14 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_lookup_session_for_bank(*args, **kwargs)
 
     def get_assessment_part_admin_session(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_assessment_part_admin_session(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_admin_session(*args, **kwargs)
 
     assessment_part_admin_session = property(fget=get_assessment_part_admin_session)
 
     def get_assessment_part_admin_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_admin_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_assessment_part_admin_session_for_bank(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_admin_session_for_bank(*args, **kwargs)
 
     def get_sequence_rule_lookup_session(self, *args, **kwargs):
         """Pass through to provider method"""
@@ -1593,18 +1589,14 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_lookup_session_for_bank(*args, **kwargs)
 
     def get_sequence_rule_admin_session(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_sequence_rule_admin_session(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_admin_session(*args, **kwargs)
 
     sequence_rule_admin_session = property(fget=get_sequence_rule_admin_session)
 
     def get_sequence_rule_admin_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_admin_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_sequence_rule_admin_session_for_bank(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_admin_session_for_bank(*args, **kwargs)
 
 
 class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessment_managers.AssessmentProxyManager):

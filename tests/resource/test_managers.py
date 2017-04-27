@@ -110,6 +110,9 @@ class TestResourceManager(unittest.TestCase):
     """Tests for ResourceManager"""
 
     # Implemented from resource.ResourceManager
+    class NotificationReceiver(object):
+        pass
+
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', implementation='TEST_SERVICE')
@@ -119,6 +122,7 @@ class TestResourceManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_bin(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
@@ -126,11 +130,13 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session()
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -138,114 +144,149 @@ class TestResourceManager(unittest.TestCase):
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session()
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_resource_query_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_session(self):
         """Tests get_resource_search_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_search():
+            self.svc_mgr.get_resource_search_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_session_for_bin(self):
         """Tests get_resource_search_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_search():
+            self.svc_mgr.get_resource_search_session_for_bin(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_search_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_admin_session(self):
         """Tests get_resource_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_admin():
+            self.svc_mgr.get_resource_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_admin_session_for_bin(self):
         """Tests get_resource_admin_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_admin():
+            self.svc_mgr.get_resource_admin_session_for_bin(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_admin_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_notification_session(self):
         """Tests get_resource_notification_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_resource_notification():
+            self.svc_mgr.get_resource_notification_session(self.receiver)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_notification_session_for_bin(self):
         """Tests get_resource_notification_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_resource_notification():
+            self.svc_mgr.get_resource_notification_session_for_bin(self.receiver, self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_notification_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_bin_session(self):
         """Tests get_resource_bin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_bin():
+            self.svc_mgr.get_resource_bin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_bin_assignment_session(self):
         """Tests get_resource_bin_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_bin_assignment():
+            self.svc_mgr.get_resource_bin_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_session(self):
         """Tests get_resource_agent_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_agent():
+            self.svc_mgr.get_resource_agent_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_session_for_bin(self):
         """Tests get_resource_agent_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_agent():
+            self.svc_mgr.get_resource_agent_session_for_bin(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_assignment_session(self):
         """Tests get_resource_agent_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_agent_assignment():
+            self.svc_mgr.get_resource_agent_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_assignment_session_for_bin(self):
         """Tests get_resource_agent_assignment_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_agent_assignment():
+            self.svc_mgr.get_resource_agent_assignment_session_for_bin(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_assignment_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_lookup_session(self):
         """Tests get_bin_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_lookup():
+            self.svc_mgr.get_bin_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query_session(self):
         """Tests get_bin_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_query():
+            self.svc_mgr.get_bin_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_admin_session(self):
         """Tests get_bin_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_admin():
+            self.svc_mgr.get_bin_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_hierarchy_session(self):
         """Tests get_bin_hierarchy_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_hierarchy():
+            self.svc_mgr.get_bin_hierarchy_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_hierarchy_design_session(self):
         """Tests get_bin_hierarchy_design_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_hierarchy_design():
+            self.svc_mgr.get_bin_hierarchy_design_session()
 
     def test_get_resource_batch_manager(self):
         """Tests get_resource_batch_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_resource_batch():
             self.svc_mgr.get_resource_batch_manager()
 
     def test_get_resource_demographic_manager(self):
         """Tests get_resource_demographic_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_manager()
 
 
 class TestResourceProxyManager(unittest.TestCase):
     """Tests for ResourceProxyManager"""
+
+    # Implemented from resource.ResourceProxyManager
+    class NotificationReceiver(object):
+        pass
 
     @classmethod
     def setUpClass(cls):
@@ -256,6 +297,7 @@ class TestResourceProxyManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_bin(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_proxy_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
@@ -263,6 +305,7 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -270,6 +313,7 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_lookup_session_for_bin(self):
         """Tests get_resource_lookup_session_for_bin"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -277,6 +321,7 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_query_session(self):
         """Tests get_resource_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -284,107 +329,161 @@ class TestResourceProxyManager(unittest.TestCase):
 
     def test_get_resource_query_session_for_bin(self):
         """Tests get_resource_query_session_for_bin"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_resource_query_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_session(self):
         """Tests get_resource_search_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_search():
+            self.svc_mgr.get_resource_search_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_search_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_session_for_bin(self):
         """Tests get_resource_search_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_search():
+            self.svc_mgr.get_resource_search_session_for_bin(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_search_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_admin_session(self):
         """Tests get_resource_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_admin():
+            self.svc_mgr.get_resource_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_admin_session_for_bin(self):
         """Tests get_resource_admin_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_admin():
+            self.svc_mgr.get_resource_admin_session_for_bin(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_admin_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_notification_session(self):
         """Tests get_resource_notification_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_resource_notification():
+            self.svc_mgr.get_resource_notification_session(self.receiver, proxy=PROXY)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_notification_session_for_bin(self):
         """Tests get_resource_notification_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_resource_notification():
+            self.svc_mgr.get_resource_notification_session_for_bin(self.receiver, self.catalog_id, proxy=PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_notification_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_bin_session(self):
         """Tests get_resource_bin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_bin():
+            self.svc_mgr.get_resource_bin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_bin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_bin_assignment_session(self):
         """Tests get_resource_bin_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_bin_assignment():
+            self.svc_mgr.get_resource_bin_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_bin_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_group_hierarchy_session(self):
         """Tests get_group_hierarchy_session"""
-        pass
+        if self.svc_mgr.supports_group_hierarchy():
+            self.svc_mgr.get_group_hierarchy_session(PROXY)
+        with self.assertRaises(errors.Unimplemented):
+            self.svc_mgr.get_group_hierarchy_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_session(self):
         """Tests get_resource_agent_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_agent():
+            self.svc_mgr.get_resource_agent_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_session_for_bin(self):
         """Tests get_resource_agent_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_agent():
+            self.svc_mgr.get_resource_agent_session_for_bin(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_assignment_session(self):
         """Tests get_resource_agent_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_resource_agent_assignment():
+            self.svc_mgr.get_resource_agent_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_agent_assignment_session_for_bin(self):
         """Tests get_resource_agent_assignment_session_for_bin"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_resource_agent_assignment():
+            self.svc_mgr.get_resource_agent_assignment_session_for_bin(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_resource_agent_assignment_session_for_bin()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_lookup_session(self):
         """Tests get_bin_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_lookup():
+            self.svc_mgr.get_bin_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bin_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query_session(self):
         """Tests get_bin_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_query():
+            self.svc_mgr.get_bin_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bin_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_admin_session(self):
         """Tests get_bin_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_admin():
+            self.svc_mgr.get_bin_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bin_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_hierarchy_session(self):
         """Tests get_bin_hierarchy_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_hierarchy():
+            self.svc_mgr.get_bin_hierarchy_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bin_hierarchy_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_hierarchy_design_session(self):
         """Tests get_bin_hierarchy_design_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bin_hierarchy_design():
+            self.svc_mgr.get_bin_hierarchy_design_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bin_hierarchy_design_session()
 
     def test_get_resource_batch_proxy_manager(self):
         """Tests get_resource_batch_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_resource_batch():
             self.svc_mgr.get_resource_batch_proxy_manager()
 
     def test_get_resource_demographic_proxy_manager(self):
         """Tests get_resource_demographic_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_resource_demographic():
             self.svc_mgr.get_resource_demographic_proxy_manager()

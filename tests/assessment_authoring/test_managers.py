@@ -93,47 +93,59 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
 
     def test_get_assessment_part_lookup_session(self):
         """Tests get_assessment_part_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_part_lookup():
             self.svc_mgr.get_assessment_part_lookup_session()
 
     def test_get_assessment_part_lookup_session_for_bank(self):
         """Tests get_assessment_part_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_part_lookup():
             self.svc_mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_lookup_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session(self):
         """Tests get_assessment_part_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_admin():
+            self.svc_mgr.get_assessment_part_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session_for_bank(self):
         """Tests get_assessment_part_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_part_admin():
+            self.svc_mgr.get_assessment_part_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_admin_session_for_bank()
 
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_sequence_rule_lookup():
             self.svc_mgr.get_sequence_rule_lookup_session()
 
     def test_get_sequence_rule_lookup_session_for_bank(self):
         """Tests get_sequence_rule_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_sequence_rule_lookup():
             self.svc_mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_sequence_rule_lookup_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session(self):
         """Tests get_sequence_rule_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_sequence_rule_admin():
+            self.svc_mgr.get_sequence_rule_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session_for_bank(self):
         """Tests get_sequence_rule_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_sequence_rule_admin():
+            self.svc_mgr.get_sequence_rule_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_sequence_rule_admin_session_for_bank()
 
 
 class TestAssessmentAuthoringProxyManager(unittest.TestCase):
@@ -155,6 +167,7 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
 
     def test_get_assessment_part_lookup_session(self):
         """Tests get_assessment_part_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_part_lookup():
             self.svc_mgr.get_assessment_part_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -162,23 +175,31 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
 
     def test_get_assessment_part_lookup_session_for_bank(self):
         """Tests get_assessment_part_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_part_lookup():
             self.svc_mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_lookup_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session(self):
         """Tests get_assessment_part_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_admin():
+            self.svc_mgr.get_assessment_part_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_admin_session_for_bank(self):
         """Tests get_assessment_part_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_part_admin():
+            self.svc_mgr.get_assessment_part_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_admin_session_for_bank()
 
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_sequence_rule_lookup():
             self.svc_mgr.get_sequence_rule_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -186,17 +207,24 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
 
     def test_get_sequence_rule_lookup_session_for_bank(self):
         """Tests get_sequence_rule_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_sequence_rule_lookup():
             self.svc_mgr.get_sequence_rule_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_sequence_rule_lookup_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session(self):
         """Tests get_sequence_rule_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_sequence_rule_admin():
+            self.svc_mgr.get_sequence_rule_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_sequence_rule_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_admin_session_for_bank(self):
         """Tests get_sequence_rule_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_sequence_rule_admin():
+            self.svc_mgr.get_sequence_rule_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_sequence_rule_admin_session_for_bank()

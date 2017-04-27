@@ -6,6 +6,8 @@ import re
 import glob
 import json
 import datetime
+import keyword
+
 from threading import Thread
 from pymongo import MongoClient, ASCENDING, DESCENDING
 from pymongo.errors import OperationFailure as PyMongoOperationFailed
@@ -194,6 +196,29 @@ def convert_ids_to_object_ids(obj_map):
         else:
             converted_map[key] = value
     return converted_map
+
+
+def fix_reserved_word(word, is_module=False):
+    """
+    Replaces words that may be problematic
+
+    In particular the term 'type' is used in the osid spec, primarily as an argument
+    parameter where a type is provided to a method.  'type' is a reserved word
+    in python, so we give ours a trailing underscore. If we come across any other
+    osid things that are reserved word they can be dealt with here.
+
+    Copied from the builder binder_helpers.py file
+
+    """
+    if is_module:
+        if word == 'logging':
+            word = 'logging_'  # Still deciding this
+    else:
+        if keyword.iskeyword(word):
+            word += '_'
+        elif word in ['id', 'type', 'str', 'max', 'input', 'license', 'copyright', 'credits', 'help']:
+            word += '_'
+    return word
 
 
 def query_is_match(query, contents):
@@ -693,7 +718,8 @@ def get_provider_manager(osid, runtime=None, proxy=None, local=False):
             mgr_str = 'Manager'
         else:
             mgr_str = 'ProxyManager'
-        module = import_module('dlkit.json_.' + osid.lower() + '.managers')
+        module = import_module(
+            'dlkit.json_.' + fix_reserved_word(osid.lower(), is_module=True) + '.managers')
         manager_name = ''.join((osid.title()).split('_')) + mgr_str
         manager = getattr(module, manager_name)()
     except (ImportError, AttributeError):
