@@ -743,8 +743,10 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
         self._get_provider_session('bin_admin_session').delete_bin(*args, **kwargs)
 
     def can_manage_bin_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider BinAdminSession.can_manage_bin_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('bin_admin_session').can_manage_bin_aliases()
 
     def alias_bin(self, *args, **kwargs):
         """Pass through to provider BinAdminSession.alias_bin"""
@@ -1391,8 +1393,10 @@ class Bin(abc_resource_objects.Bin, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('resource_admin_session').delete_resource(*args, **kwargs)
 
     def can_manage_resource_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ResourceAdminSession.can_manage_resource_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('resource_admin_session').can_manage_resource_aliases()
 
     def alias_resource(self, *args, **kwargs):
         """Pass through to provider ResourceAdminSession.alias_resource"""

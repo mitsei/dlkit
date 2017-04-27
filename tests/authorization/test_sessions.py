@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -32,6 +33,8 @@ OVERRIDE_VAULT_TYPE = Type(authority='ODL.MIT.EDU', namespace='authorization.Vau
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
 
 class TestAuthorizationSession(unittest.TestCase):
@@ -262,10 +265,11 @@ class TestAuthorizationSession(unittest.TestCase):
         """Tests get_vault_id"""
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_access_authorizations(self):
@@ -350,10 +354,11 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         """Tests get_vault_id"""
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_authorizations(self):
         """Tests can_lookup_authorizations"""
@@ -557,10 +562,11 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         """Tests get_vault_id"""
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_authorizations(self):
@@ -606,33 +612,60 @@ class TestAuthorizationAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.authorization_list = list()
+        cls.authorization_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_vault_form_for_create([])
         create_form.display_name = 'Test Vault'
         create_form.description = 'Test Vault for AuthorizationAdminSession tests'
         cls.catalog = cls.svc_mgr.create_vault(create_form)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_authorization_form_for_create_for_agent(
+                AGENT_ID,
+                LOOKUP_RESOURCE_FUNCTION_ID,
+                Id(**{'identifier': str(num), 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+                [])
+            create_form.display_name = 'Test Authorization ' + str(num)
+            create_form.description = 'Test Authorization for AuthorizationLookupSession tests'
+            object = cls.catalog.create_authorization(create_form)
+            cls.authorization_list.append(object)
+            cls.authorization_ids.append(object.ident)
+
+        form = cls.catalog.get_authorization_form_for_create_for_agent(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': 'foo', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+        form.display_name = 'new Authorization'
+        form.description = 'description of Authorization'
+        form.genus_type = NEW_TYPE
+        cls.osid_object = cls.catalog.create_authorization(form)
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_authorizations():
-            cls.catalog.delete_authorization(obj.ident)
-        cls.svc_mgr.delete_vault(cls.catalog.ident)
+        for catalog in cls.svc_mgr.get_vaults():
+            for obj in catalog.get_authorizations():
+                catalog.delete_authorization(obj.ident)
+            cls.svc_mgr.delete_vault(catalog.ident)
 
     def test_get_vault_id(self):
         """Tests get_vault_id"""
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_authorizations(self):
         """Tests can_create_authorizations"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_authorizations(), bool))
 
     def test_can_create_authorization_with_record_types(self):
         """Tests can_create_authorization_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_authorization_with_record_types(DEFAULT_TYPE), bool))
 
     @unittest.skip('unimplemented test')
@@ -650,45 +683,73 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         """Tests get_authorization_form_for_create_for_resource_and_trust"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_create_authorization(self):
         """Tests create_authorization"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.authorization.objects import Authorization
+        self.assertTrue(isinstance(self.osid_object, Authorization))
+        self.assertEqual(self.osid_object.display_name.text, 'new Authorization')
+        self.assertEqual(self.osid_object.description.text, 'description of Authorization')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_authorizations(self):
         """Tests can_update_authorizations"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_authorizations(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_form_for_update(self):
         """Tests get_authorization_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_authorization_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_authorization(self):
         """Tests update_authorization"""
-        pass
+        from dlkit.abstract_osid.authorization.objects import Authorization
+        form = self.catalog.get_authorization_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_authorization(form)
+        self.assertTrue(isinstance(updated_object, Authorization))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_authorizations(self):
         """Tests can_delete_authorizations"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_authorizations(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_authorization(self):
         """Tests delete_authorization"""
-        pass
+        form = self.catalog.get_authorization_form_for_create_for_agent(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': 'foo2', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+        form.display_name = 'new Authorization'
+        form.description = 'description of Authorization'
+        form.genus_type = NEW_TYPE
+        osid_object = self.catalog.create_authorization(form)
+        self.catalog.delete_authorization(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_authorization(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_authorization_aliases(self):
         """Tests can_manage_authorization_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_authorization_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_authorization(self):
         """Tests alias_authorization"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_authorization(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_authorization(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestVaultLookupSession(unittest.TestCase):
@@ -861,10 +922,10 @@ class TestVaultAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.svc_mgr.get_vault(cat_id)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_vault_aliases(self):
         """Tests can_manage_vault_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.svc_mgr.can_manage_vault_aliases(), bool))
 
     def test_alias_vault(self):
         """Tests alias_vault"""

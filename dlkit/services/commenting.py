@@ -493,8 +493,10 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         self._get_provider_session('book_admin_session').delete_book(*args, **kwargs)
 
     def can_manage_book_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider BookAdminSession.can_manage_book_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('book_admin_session').can_manage_book_aliases()
 
     def alias_book(self, *args, **kwargs):
         """Pass through to provider BookAdminSession.alias_book"""
@@ -1129,8 +1131,10 @@ class Book(abc_commenting_objects.Book, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('comment_admin_session').delete_comment(*args, **kwargs)
 
     def can_manage_comment_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider CommentAdminSession.can_manage_comment_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('comment_admin_session').can_manage_comment_aliases()
 
     def alias_comment(self, *args, **kwargs):
         """Pass through to provider CommentAdminSession.alias_comment"""

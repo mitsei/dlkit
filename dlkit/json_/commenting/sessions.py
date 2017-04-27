@@ -1243,7 +1243,9 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_comment(self, comment_id, alias_id):
@@ -1865,7 +1867,9 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_book(self, book_id, alias_id):

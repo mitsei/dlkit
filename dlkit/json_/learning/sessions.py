@@ -917,7 +917,9 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_objective(self, objective_id, alias_id):
@@ -3267,7 +3269,9 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_activity(self, activity_id, alias_id):
@@ -4966,7 +4970,9 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_proficiency(self, proficiency_id, alias_id):
@@ -5630,7 +5636,9 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_objective_bank(self, objective_bank_id, alias_id):

@@ -530,8 +530,10 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         self._get_provider_session('log_admin_session').delete_log(*args, **kwargs)
 
     def can_manage_log_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider LogAdminSession.can_manage_log_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('log_admin_session').can_manage_log_aliases()
 
     def alias_log(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.alias_log"""
@@ -948,8 +950,10 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('log_entry_admin_session').delete_log_entry(*args, **kwargs)
 
     def can_manage_log_entry_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider LogEntryAdminSession.can_manage_log_entry_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('log_entry_admin_session').can_manage_log_entry_aliases()
 
     def alias_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.alias_log_entry"""

@@ -2420,7 +2420,9 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_item(self, item_id, alias_id):
@@ -4655,7 +4657,9 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_assessment(self, assessment_id, alias_id):
@@ -6192,7 +6196,9 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_assessment_offered(self, assessment_offered_id, alias_id):
@@ -7833,7 +7839,9 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_assessment_taken(self, assessment_taken_id, alias_id):
@@ -8925,7 +8933,9 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_bank(self, bank_id, alias_id):

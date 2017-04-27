@@ -973,8 +973,10 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         self._get_provider_session('repository_admin_session').delete_repository(*args, **kwargs)
 
     def can_manage_repository_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider RepositoryAdminSession.can_manage_repository_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('repository_admin_session').can_manage_repository_aliases()
 
     def alias_repository(self, *args, **kwargs):
         """Pass through to provider RepositoryAdminSession.alias_repository"""
@@ -1661,8 +1663,10 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         self._get_provider_session('asset_admin_session').delete_asset(*args, **kwargs)
 
     def can_manage_asset_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssetAdminSession.can_manage_asset_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('asset_admin_session').can_manage_asset_aliases()
 
     def alias_asset(self, *args, **kwargs):
         """Pass through to provider AssetAdminSession.alias_asset"""
@@ -2090,8 +2094,10 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def can_manage_composition_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider CompositionAdminSession.can_manage_composition_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('composition_admin_session').can_manage_composition_aliases()
 
     def alias_composition(self, *args, **kwargs):
         """Pass through to provider CompositionAdminSession.alias_composition"""

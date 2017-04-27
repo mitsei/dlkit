@@ -487,8 +487,10 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def can_manage_hierarchy_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider HierarchyAdminSession.can_manage_hierarchy_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('hierarchy_admin_session').can_manage_hierarchy_aliases()
 
     def alias_hierarchy(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.alias_hierarchy"""

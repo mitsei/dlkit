@@ -1182,7 +1182,9 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_log_entry(self, log_entry_id, alias_id):
@@ -1812,7 +1814,9 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_log(self, log_id, alias_id):

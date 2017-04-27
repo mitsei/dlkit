@@ -7,6 +7,7 @@ import unittest
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -21,6 +22,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 AGENT_ID_0 = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
@@ -49,19 +52,19 @@ class TestResourceLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        for catalog in cls.svc_mgr.get_bins():
-            for obj in catalog.get_resources():
-                catalog.delete_resource(obj.ident)
-            cls.svc_mgr.delete_bin(catalog.ident)
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_resources(self):
         """Tests can_lookup_resources"""
@@ -167,19 +170,19 @@ class TestResourceQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_bins():
-            for obj in catalog.get_resources():
-                catalog.delete_resource(obj.ident)
-            cls.svc_mgr.delete_bin(catalog.ident)
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_resources(self):
@@ -237,6 +240,7 @@ class TestResourceSearchSession(unittest.TestCase):
 class TestResourceAdminSession(unittest.TestCase):
     """Tests for ResourceAdminSession"""
 
+    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
@@ -244,6 +248,12 @@ class TestResourceAdminSession(unittest.TestCase):
         create_form.display_name = 'Test Bin'
         create_form.description = 'Test Bin for ResourceAdminSession tests'
         cls.catalog = cls.svc_mgr.create_bin(create_form)
+
+        form = cls.catalog.get_resource_form_for_create([])
+        form.display_name = 'new Resource'
+        form.description = 'description of Resource'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_resource(form)
 
     @classmethod
     def tearDownClass(cls):
@@ -255,63 +265,94 @@ class TestResourceAdminSession(unittest.TestCase):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_resources(self):
         """Tests can_create_resources"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_resources(), bool))
 
     def test_can_create_resource_with_record_types(self):
         """Tests can_create_resource_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_resource_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_form_for_create(self):
         """Tests get_resource_form_for_create"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_create_template
+        form = self.catalog.get_resource_form_for_create([])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_resource(self):
         """Tests create_resource"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.resource.objects import Resource
+        self.assertTrue(isinstance(self.osid_object, Resource))
+        self.assertEqual(self.osid_object.display_name.text, 'new Resource')
+        self.assertEqual(self.osid_object.description.text, 'description of Resource')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_resources(self):
         """Tests can_update_resources"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_resources(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_form_for_update(self):
         """Tests get_resource_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_resource_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_resource(self):
         """Tests update_resource"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.resource.objects import Resource
+        form = self.catalog.get_resource_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_resource(form)
+        self.assertTrue(isinstance(updated_object, Resource))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_resources(self):
         """Tests can_delete_resources"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_resources(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_resource(self):
         """Tests delete_resource"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
+        form = self.catalog.get_resource_form_for_create([])
+        form.display_name = 'new Resource'
+        form.description = 'description of Resource'
+        form.set_genus_type(NEW_TYPE)
+        osid_object = self.catalog.create_resource(form)
+        self.catalog.delete_resource(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_resource(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_resource_aliases(self):
         """Tests can_manage_resource_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_resource_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_resource(self):
         """Tests alias_resource"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_resource(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_resource(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestResourceNotificationSession(unittest.TestCase):
@@ -338,19 +379,19 @@ class TestResourceNotificationSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        for catalog in cls.svc_mgr.get_bins():
-            for obj in catalog.get_resources():
-                catalog.delete_resource(obj.ident)
-            cls.svc_mgr.delete_bin(catalog.ident)
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_register_for_resource_notifications(self):
@@ -440,10 +481,10 @@ class TestResourceBinSession(unittest.TestCase):
             cls.resource_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_resource_from_bin(
             cls.resource_ids[2], cls.assigned_catalog.ident)
-        for catalog in cls.svc_mgr.get_bins():
-            for obj in catalog.get_resources():
-                catalog.delete_resource(obj.ident)
-            cls.svc_mgr.delete_bin(catalog.ident)
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_use_comparative_bin_view(self):
         """Tests use_comparative_bin_view"""
@@ -556,10 +597,11 @@ class TestResourceAgentSession(unittest.TestCase):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_resource_agent_mappings(self):
@@ -633,10 +675,11 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
         """Tests get_bin_id"""
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_assign_agents(self):
@@ -833,10 +876,10 @@ class TestBinAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.svc_mgr.get_bin(cat_id)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_bin_aliases(self):
         """Tests can_manage_bin_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.svc_mgr.can_manage_bin_aliases(), bool))
 
     def test_alias_bin(self):
         """Tests alias_bin"""

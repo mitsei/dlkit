@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -17,6 +19,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
 
 class TestAssessmentPartLookupSession(unittest.TestCase):
@@ -85,10 +89,11 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         # this should not be here...
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_assessment_parts(self):
         """Tests can_lookup_assessment_parts"""
@@ -207,27 +212,43 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         create_form.description = 'Test Bank for AssessmentPartAdminSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
+        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form.display_name = 'Test Assessment'
+        assessment_form.description = 'Test Assessment for AssessmentPartAdminSession tests'
+        cls.assessment = cls.catalog.create_assessment(assessment_form)
+
+        form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        form.display_name = 'new AssessmentPart'
+        form.description = 'description of AssessmentPart'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_assessment_part_for_assessment(form)
+
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_assessment_parts():
             cls.catalog.delete_assessment_part(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_assessment_parts(self):
         """Tests can_create_assessment_parts"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_assessment_parts(), bool))
 
     def test_can_create_assessment_part_with_record_types(self):
         """Tests can_create_assessment_part_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_assessment_part_with_record_types(DEFAULT_TYPE), bool))
 
     @unittest.skip('unimplemented test')
@@ -250,40 +271,45 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         """Tests create_assessment_part_for_assessment_part"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_update_assessment_parts(self):
         """Tests can_update_assessment_parts"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_assessment_parts(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_form_for_update(self):
         """Tests get_assessment_part_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
     @unittest.skip('unimplemented test')
     def test_update_assessment_part(self):
         """Tests update_assessment_part"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_assessment_parts(self):
         """Tests can_delete_assessment_parts"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_assessment_parts(), bool))
 
     @unittest.skip('unimplemented test')
     def test_delete_assessment_part(self):
         """Tests delete_assessment_part"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_assessment_part_aliases(self):
         """Tests can_manage_assessment_part_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_assessment_part_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_assessment_part(self):
         """Tests alias_assessment_part"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_assessment_part(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_assessment_part(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestAssessmentPartItemSession(unittest.TestCase):
@@ -330,10 +356,11 @@ class TestAssessmentPartItemSession(unittest.TestCase):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_access_assessment_part_items(self):
@@ -412,10 +439,11 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_design_assessment_parts(self):
@@ -500,10 +528,11 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_sequence_rules(self):
         """Tests can_lookup_sequence_rules"""
@@ -621,79 +650,151 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.sequence_rule_list = list()
+        cls.sequence_rule_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for SequenceRuleAdminSession tests'
+        create_form.description = 'Test Bank for SequenceRuleLookupSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for SequenceRuleLookupSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form.display_name = 'Test Assessment Part 1'
+        create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
+        cls.assessment_part_1 = cls.catalog.create_assessment_part_for_assessment(create_form)
+
+        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form.display_name = 'Test Assessment Part 2'
+        create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
+        cls.assessment_part_2 = cls.catalog.create_assessment_part_for_assessment(create_form)
+
+        for num in [0, 1]:
+            create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
+                                                                        cls.assessment_part_2.ident,
+                                                                        [])
+            create_form.display_name = 'Test Sequence Rule ' + str(num)
+            create_form.description = 'Test Sequence Rule for SequenceRuleLookupSession tests'
+            obj = cls.catalog.create_sequence_rule(create_form)
+            cls.sequence_rule_list.append(obj)
+            cls.sequence_rule_ids.append(obj.ident)
+
+        create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
+                                                                    cls.assessment_part_2.ident,
+                                                                    [])
+        create_form.display_name = 'new SequenceRule'
+        create_form.description = 'description of SequenceRule'
+        create_form.genus_type = NEW_TYPE
+        cls.osid_object = cls.catalog.create_sequence_rule(create_form)
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_sequence_rules():
-            cls.catalog.delete_sequence_rule(obj.ident)
-        cls.svc_mgr.delete_bank(cls.catalog.ident)
+        for catalog in cls.svc_mgr.get_banks():
+            for obj in catalog.get_sequence_rules():
+                catalog.delete_sequence_rule(obj.ident)
+            for obj in catalog.get_assessment_parts():
+                catalog.delete_assessment_part(obj.ident)
+            for obj in catalog.get_assessments():
+                catalog.delete_assessment(obj.ident)
+            cls.svc_mgr.delete_bank(catalog.ident)
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_bank(self):
         """Tests get_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_sequence_rule(self):
         """Tests can_create_sequence_rule"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_sequence_rule(), bool))
 
     def test_can_create_sequence_rule_with_record_types(self):
         """Tests can_create_sequence_rule_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_sequence_rule_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_form_for_create(self):
         """Tests get_sequence_rule_form_for_create"""
-        pass
+        form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
+                                                              self.assessment_part_2.ident,
+                                                              [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_sequence_rule(self):
         """Tests create_sequence_rule"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRule
+        self.assertTrue(isinstance(self.osid_object, SequenceRule))
+        self.assertEqual(self.osid_object.display_name.text, 'new SequenceRule')
+        self.assertEqual(self.osid_object.description.text, 'description of SequenceRule')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_sequence_rules(self):
         """Tests can_update_sequence_rules"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_sequence_rules(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_form_for_update(self):
         """Tests get_sequence_rule_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_sequence_rule(self):
         """Tests update_sequence_rule"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRule
+        form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_sequence_rule(form)
+        self.assertTrue(isinstance(updated_object, SequenceRule))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_sequence_rules(self):
         """Tests can_delete_sequence_rules"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_sequence_rules(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_sequence_rule(self):
         """Tests delete_sequence_rule"""
-        pass
+        create_form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
+                                                                     self.assessment_part_2.ident,
+                                                                     [])
+        create_form.display_name = 'new SequenceRule'
+        create_form.description = 'description of SequenceRule'
+        create_form.genus_type = NEW_TYPE
+        osid_object = self.catalog.create_sequence_rule(create_form)
+        self.catalog.delete_sequence_rule(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_sequence_rule(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_sequence_rule_aliases(self):
         """Tests can_manage_sequence_rule_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_sequence_rule_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_sequence_rule(self):
         """Tests alias_sequence_rule"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_sequence_rule(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_sequence_rule(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
     @unittest.skip('unimplemented test')
     def test_can_sequence_sequence_rules(self):

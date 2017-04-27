@@ -7,6 +7,7 @@ import unittest
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -21,6 +22,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
@@ -48,19 +51,19 @@ class TestObjectiveLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        for catalog in cls.svc_mgr.get_objective_banks():
-            for obj in catalog.get_objectives():
-                catalog.delete_objective(obj.ident)
-            cls.svc_mgr.delete_objective_bank(catalog.ident)
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_objectives(self):
         """Tests can_lookup_objectives"""
@@ -166,19 +169,19 @@ class TestObjectiveQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_objective_banks():
-            for obj in catalog.get_objectives():
-                catalog.delete_objective(obj.ident)
-            cls.svc_mgr.delete_objective_bank(catalog.ident)
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_objectives(self):
@@ -212,6 +215,7 @@ class TestObjectiveQuerySession(unittest.TestCase):
 class TestObjectiveAdminSession(unittest.TestCase):
     """Tests for ObjectiveAdminSession"""
 
+    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -219,6 +223,12 @@ class TestObjectiveAdminSession(unittest.TestCase):
         create_form.display_name = 'Test ObjectiveBank'
         create_form.description = 'Test ObjectiveBank for ObjectiveAdminSession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = 'new Objective'
+        form.description = 'description of Objective'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_objective(form)
 
     @classmethod
     def tearDownClass(cls):
@@ -230,63 +240,87 @@ class TestObjectiveAdminSession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_objectives(self):
         """Tests can_create_objectives"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_objectives(), bool))
 
     def test_can_create_objective_with_record_types(self):
         """Tests can_create_objective_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_objective_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_form_for_create(self):
         """Tests get_objective_form_for_create"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_create_template
+        form = self.catalog.get_objective_form_for_create([])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_objective(self):
         """Tests create_objective"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.learning.objects import Objective
+        self.assertTrue(isinstance(self.osid_object, Objective))
+        self.assertEqual(self.osid_object.display_name.text, 'new Objective')
+        self.assertEqual(self.osid_object.description.text, 'description of Objective')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_objectives(self):
         """Tests can_update_objectives"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_objectives(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_form_for_update(self):
         """Tests get_objective_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_objective_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_objective(self):
         """Tests update_objective"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.learning.objects import Objective
+        form = self.catalog.get_objective_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_objective(form)
+        self.assertTrue(isinstance(updated_object, Objective))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_objectives(self):
         """Tests can_delete_objectives"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_objectives(), bool))
 
     @unittest.skip('unimplemented test')
     def test_delete_objective(self):
         """Tests delete_objective"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_objective_aliases(self):
         """Tests can_manage_objective_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_objective_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_objective(self):
         """Tests alias_objective"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_objective(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_objective(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestObjectiveHierarchySession(unittest.TestCase):
@@ -557,10 +591,10 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
             cls.objective_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_objective_from_objective_bank(
             cls.objective_ids[2], cls.assigned_catalog.ident)
-        for catalog in cls.svc_mgr.get_objective_banks():
-            for obj in catalog.get_objectives():
-                catalog.delete_objective(obj.ident)
-            cls.svc_mgr.delete_objective_bank(catalog.ident)
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_objective_objective_bank_mappings(self):
@@ -683,10 +717,11 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_objective_prerequisites(self):
@@ -792,10 +827,11 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_assign_requisites(self):
@@ -859,10 +895,11 @@ class TestActivityLookupSession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_activities(self):
         """Tests can_lookup_activities"""
@@ -970,79 +1007,130 @@ class TestActivityAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.activity_list = list()
+        cls.activity_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test ObjectiveBank'
-        create_form.description = 'Test ObjectiveBank for ActivityAdminSession tests'
+        create_form.description = 'Test ObjectiveBank for ActivityLookupSession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+        create_form = cls.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for Activity Lookup'
+        create_form.description = 'Test Objective for ActivityLookupSession tests'
+        cls.objective = cls.catalog.create_objective(create_form)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_activity_form_for_create(cls.objective.ident, [])
+            create_form.display_name = 'Test Activity ' + str(num)
+            create_form.description = 'Test Activity for ActivityLookupSession tests'
+            obj = cls.catalog.create_activity(create_form)
+            cls.activity_list.append(obj)
+            cls.activity_ids.append(obj.ident)
+
+        create_form = cls.catalog.get_activity_form_for_create(cls.objective.ident, [])
+        create_form.display_name = 'new Activity'
+        create_form.description = 'description of Activity'
+        create_form.genus_type = NEW_TYPE
+        cls.osid_object = cls.catalog.create_activity(create_form)
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_activities():
-            cls.catalog.delete_activity(obj.ident)
-        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_activities():
+                catalog.delete_activity(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_activities(self):
         """Tests can_create_activities"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_activities(), bool))
 
     def test_can_create_activity_with_record_types(self):
         """Tests can_create_activity_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_activity_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_form_for_create(self):
         """Tests get_activity_form_for_create"""
-        pass
+        form = self.catalog.get_activity_form_for_create(self.objective.ident, [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_activity(self):
         """Tests create_activity"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.learning.objects import Activity
+        self.assertTrue(isinstance(self.osid_object, Activity))
+        self.assertEqual(self.osid_object.display_name.text, 'new Activity')
+        self.assertEqual(self.osid_object.description.text, 'description of Activity')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_activities(self):
         """Tests can_update_activities"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_activities(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_form_for_update(self):
         """Tests get_activity_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_activity_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_activity(self):
         """Tests update_activity"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.learning.objects import Activity
+        form = self.catalog.get_activity_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_activity(form)
+        self.assertTrue(isinstance(updated_object, Activity))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_activities(self):
         """Tests can_delete_activities"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_activities(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_activity(self):
         """Tests delete_activity"""
-        pass
+        form = self.catalog.get_activity_form_for_create(self.objective.ident, [])
+        form.display_name = 'new Activity'
+        form.description = 'description of Activity'
+        form.set_genus_type(NEW_TYPE)
+        osid_object = self.catalog.create_activity(form)
+        self.catalog.delete_activity(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_activity(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_activity_aliases(self):
         """Tests can_manage_activity_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_activity_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_activity(self):
         """Tests alias_activity"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_activity(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_activity(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestActivityObjectiveBankSession(unittest.TestCase):
@@ -1214,10 +1302,11 @@ class TestProficiencyLookupSession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_proficiencies(self):
         """Tests can_lookup_proficiencies"""
@@ -1429,10 +1518,11 @@ class TestProficiencyQuerySession(unittest.TestCase):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_proficiencies(self):
@@ -1468,84 +1558,137 @@ class TestProficiencyAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.proficiency_list = list()
+        cls.proficiency_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test ObjectiveBank'
-        create_form.description = 'Test ObjectiveBank for ProficiencyAdminSession tests'
+        create_form.description = 'Test ObjectiveBank for ProficiencyLookupSession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = "Test LO"
+        cls.objective = cls.catalog.create_objective(form)
+
+        for color in ['Orange', 'Blue', 'Green', 'orange']:
+            create_form = cls.catalog.get_proficiency_form_for_create(cls.objective.ident, AGENT_ID, [])
+            create_form.display_name = 'Test Proficiency ' + color
+            create_form.description = (
+                'Test Proficiency for ProficiencyLookupSession tests, did I mention green')
+            obj = cls.catalog.create_proficiency(create_form)
+            cls.proficiency_list.append(obj)
+            cls.proficiency_ids.append(obj.ident)
+
+        create_form = cls.catalog.get_proficiency_form_for_create(cls.objective.ident, AGENT_ID, [])
+        create_form.display_name = 'new Proficiency'
+        create_form.description = 'description of Proficiency'
+        create_form.genus_type = NEW_TYPE
+        cls.osid_object = cls.catalog.create_proficiency(create_form)
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_proficiencies():
-            cls.catalog.delete_proficiency(obj.ident)
-        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_proficiencies():
+                catalog.delete_proficiency(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
 
     def test_get_objective_bank_id(self):
         """Tests get_objective_bank_id"""
         self.assertEqual(self.catalog.get_objective_bank_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_proficiencies(self):
         """Tests can_create_proficiencies"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_proficiencies(), bool))
 
     def test_can_create_proficiency_with_record_types(self):
         """Tests can_create_proficiency_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_proficiency_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_form_for_create(self):
         """Tests get_proficiency_form_for_create"""
-        pass
+        form = self.catalog.get_proficiency_form_for_create(self.objective.ident, AGENT_ID, [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_proficiency(self):
         """Tests create_proficiency"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.learning.objects import Proficiency
+        self.assertTrue(isinstance(self.osid_object, Proficiency))
+        self.assertEqual(self.osid_object.display_name.text, 'new Proficiency')
+        self.assertEqual(self.osid_object.description.text, 'description of Proficiency')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_proficiencies(self):
         """Tests can_update_proficiencies"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_proficiencies(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_form_for_update(self):
         """Tests get_proficiency_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_proficiency_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_proficiency(self):
         """Tests update_proficiency"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.learning.objects import Proficiency
+        form = self.catalog.get_proficiency_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_proficiency(form)
+        self.assertTrue(isinstance(updated_object, Proficiency))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_proficiencies(self):
         """Tests can_delete_proficiencies"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_proficiencies(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_proficiency(self):
         """Tests delete_proficiency"""
-        pass
+        create_form = self.catalog.get_proficiency_form_for_create(self.objective.ident, AGENT_ID, [])
+        create_form.display_name = 'new Proficiency'
+        create_form.description = 'description of Proficiency'
+        create_form.genus_type = NEW_TYPE
+        osid_object = self.catalog.create_proficiency(create_form)
+        self.catalog.delete_proficiency(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_proficiency(osid_object.ident)
 
     @unittest.skip('unimplemented test')
     def test_delete_proficiencies(self):
         """Tests delete_proficiencies"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_proficiency_aliases(self):
         """Tests can_manage_proficiency_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_proficiency_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_proficiency(self):
         """Tests alias_proficiency"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_proficiency(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_proficiency(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestObjectiveBankLookupSession(unittest.TestCase):
@@ -1699,10 +1842,10 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.svc_mgr.get_objective_bank(cat_id)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_objective_bank_aliases(self):
         """Tests can_manage_objective_bank_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.svc_mgr.can_manage_objective_bank_aliases(), bool))
 
     def test_alias_objective_bank(self):
         """Tests alias_objective_bank"""
