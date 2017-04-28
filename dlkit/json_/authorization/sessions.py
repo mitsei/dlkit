@@ -1762,7 +1762,9 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_authorization(self, authorization_id, alias_id):
@@ -2475,7 +2477,9 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_vault(self, vault_id, alias_id):

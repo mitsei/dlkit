@@ -32,6 +32,11 @@ class AuthenticationProfile(osid_managers.OsidProfile, authentication_managers.A
         except Unimplemented:
             return None
 
+    def supports_agent_lookup(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_agent_lookup()
+
     def get_agent_record_types(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.get_resource_record_types
@@ -74,6 +79,45 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
         self._provider_manager = runtime.get_manager('AUTHENTICATION', provider_impl)
         # need to add version argument
 
+    def get_agent_lookup_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_agent_query_session()
+            query_session.use_federated_agency_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AgentLookupSession')(
+                provider_session=self._provider_manager.get_agent_lookup_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                hierarchy_session=self._get_hierarchy_session(),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    agent_lookup_session = property(fget=get_agent_lookup_session)
+
+    @raise_null_argument
+    def get_agent_lookup_session_for_agency(self, agency_id):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_agent_query_session_for_agency(agency_id)
+            query_session.use_federated_agency_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AgentLookupSession')(
+                provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                hierarchy_session=self._get_hierarchy_session(),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
     def get_authentication_batch_manager(self):
         raise Unimplemented()
 
@@ -102,6 +146,46 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('AUTHENTICATION', provider_impl)
         # need to add version argument
+
+    @raise_null_argument
+    def get_agent_lookup_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_agent_query_session(proxy)
+            query_session.use_federated_agency_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AgentLookupSession')(
+                provider_session=self._provider_manager.get_agent_lookup_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                proxy=proxy,
+                hierarchy_session=self._get_hierarchy_session(proxy),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_agent_lookup_session_for_agency(self, agency_id, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_agent_query_session_for_agency(agency_id, proxy)
+            query_session.use_federated_agency_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AgentLookupSession')(
+                provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                proxy=proxy,
+                hierarchy_session=self._get_hierarchy_session(proxy),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_authentication_batch_proxy_manager(self):
         raise Unimplemented()

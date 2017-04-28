@@ -1284,7 +1284,9 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_relationship(self, relationship_id, alias_id):
@@ -1925,7 +1927,9 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_family(self, family_id, alias_id):

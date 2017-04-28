@@ -1059,7 +1059,9 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_resource(self, resource_id, alias_id):
@@ -2716,7 +2718,9 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_bin(self, bin_id, alias_id):

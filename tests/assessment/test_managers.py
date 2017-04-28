@@ -194,6 +194,9 @@ class TestAssessmentManager(unittest.TestCase):
     """Tests for AssessmentManager"""
 
     # Implemented from resource.ResourceManager
+    class NotificationReceiver(object):
+        pass
+
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', implementation='TEST_SERVICE')
@@ -203,38 +206,49 @@ class TestAssessmentManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_bank(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_manager('ASSESSMENT', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_session(self):
         """Tests get_assessment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment():
+            self.svc_mgr.get_assessment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_session_for_bank(self):
         """Tests get_assessment_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment():
+            self.svc_mgr.get_assessment_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_results_session(self):
         """Tests get_assessment_results_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_results():
+            self.svc_mgr.get_assessment_results_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_results_session_for_bank(self):
         """Tests get_assessment_results_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_results():
+            self.svc_mgr.get_assessment_results_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_results_session_for_bank()
 
     def test_get_item_lookup_session(self):
         """Tests get_item_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session()
 
     def test_get_item_lookup_session_for_bank(self):
         """Tests get_item_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -242,58 +256,73 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_item_query_session(self):
         """Tests get_item_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session()
 
     def test_get_item_query_session_for_bank(self):
         """Tests get_item_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_item_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_search_session(self):
         """Tests get_item_search_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_search():
+            self.svc_mgr.get_item_search_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_search_session_for_bank(self):
         """Tests get_item_search_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_item_search():
+            self.svc_mgr.get_item_search_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_search_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_admin_session(self):
         """Tests get_item_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_admin():
+            self.svc_mgr.get_item_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_admin_session_for_bank(self):
         """Tests get_item_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_item_admin():
+            self.svc_mgr.get_item_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_notification_session(self):
         """Tests get_item_notification_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_item_notification():
+            self.svc_mgr.get_item_notification_session(self.receiver)
 
-    @unittest.skip('unimplemented test')
     def test_get_item_bank_session(self):
         """Tests get_item_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_bank():
+            self.svc_mgr.get_item_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_bank_assignment_session(self):
         """Tests get_item_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_bank_assignment():
+            self.svc_mgr.get_item_bank_assignment_session()
 
     def test_get_assessment_lookup_session(self):
         """Tests get_assessment_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session()
 
     def test_get_assessment_lookup_session_for_bank(self):
         """Tests get_assessment_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -301,53 +330,67 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_query_session(self):
         """Tests get_assessment_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session()
 
     def test_get_assessment_query_session_for_bank(self):
         """Tests get_assessment_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_admin_session(self):
         """Tests get_assessment_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_admin():
+            self.svc_mgr.get_assessment_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_admin_session_for_bank(self):
         """Tests get_assessment_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_admin():
+            self.svc_mgr.get_assessment_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_bank_session(self):
         """Tests get_assessment_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_bank():
+            self.svc_mgr.get_assessment_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_bank_assignment_session(self):
         """Tests get_assessment_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_bank_assignment():
+            self.svc_mgr.get_assessment_bank_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_basic_authoring_session(self):
         """Tests get_assessment_basic_authoring_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_basic_authoring():
+            self.svc_mgr.get_assessment_basic_authoring_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_basic_authoring_session_for_bank(self):
         """Tests get_assessment_basic_authoring_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_basic_authoring():
+            self.svc_mgr.get_assessment_basic_authoring_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_basic_authoring_session_for_bank()
 
     def test_get_assessment_offered_lookup_session(self):
         """Tests get_assessment_offered_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session()
 
     def test_get_assessment_offered_lookup_session_for_bank(self):
         """Tests get_assessment_offered_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -355,43 +398,53 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session(self):
         """Tests get_assessment_offered_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session()
 
     def test_get_assessment_offered_query_session_for_bank(self):
         """Tests get_assessment_offered_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_offered_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_admin_session(self):
         """Tests get_assessment_offered_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_admin():
+            self.svc_mgr.get_assessment_offered_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_admin_session_for_bank(self):
         """Tests get_assessment_offered_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_offered_admin():
+            self.svc_mgr.get_assessment_offered_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_offered_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_bank_session(self):
         """Tests get_assessment_offered_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_bank():
+            self.svc_mgr.get_assessment_offered_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_bank_assignment_session(self):
         """Tests get_assessment_offered_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_bank_assignment():
+            self.svc_mgr.get_assessment_offered_bank_assignment_session()
 
     def test_get_assessment_taken_lookup_session(self):
         """Tests get_assessment_taken_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session()
 
     def test_get_assessment_taken_lookup_session_for_bank(self):
         """Tests get_assessment_taken_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -399,74 +452,93 @@ class TestAssessmentManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session(self):
         """Tests get_assessment_taken_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session()
 
     def test_get_assessment_taken_query_session_for_bank(self):
         """Tests get_assessment_taken_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_taken_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_admin_session(self):
         """Tests get_assessment_taken_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_admin():
+            self.svc_mgr.get_assessment_taken_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_admin_session_for_bank(self):
         """Tests get_assessment_taken_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_taken_admin():
+            self.svc_mgr.get_assessment_taken_admin_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_taken_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_bank_session(self):
         """Tests get_assessment_taken_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_bank():
+            self.svc_mgr.get_assessment_taken_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_bank_assignment_session(self):
         """Tests get_assessment_taken_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_bank_assignment():
+            self.svc_mgr.get_assessment_taken_bank_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_lookup_session(self):
         """Tests get_bank_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_lookup():
+            self.svc_mgr.get_bank_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_query_session(self):
         """Tests get_bank_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_query():
+            self.svc_mgr.get_bank_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_admin_session(self):
         """Tests get_bank_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_admin():
+            self.svc_mgr.get_bank_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_hierarchy_session(self):
         """Tests get_bank_hierarchy_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_hierarchy():
+            self.svc_mgr.get_bank_hierarchy_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_hierarchy_design_session(self):
         """Tests get_bank_hierarchy_design_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_hierarchy_design():
+            self.svc_mgr.get_bank_hierarchy_design_session()
 
     def test_get_assessment_authoring_manager(self):
         """Tests get_assessment_authoring_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_assessment_authoring():
             self.svc_mgr.get_assessment_authoring_manager()
 
     def test_get_assessment_batch_manager(self):
         """Tests get_assessment_batch_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_manager()
 
 
 class TestAssessmentProxyManager(unittest.TestCase):
     """Tests for AssessmentProxyManager"""
+
+    # Implemented from resource.ResourceProxyManager
+    class NotificationReceiver(object):
+        pass
 
     @classmethod
     def setUpClass(cls):
@@ -477,33 +549,47 @@ class TestAssessmentProxyManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_bank(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_proxy_manager('ASSESSMENT', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_bank(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_session(self):
         """Tests get_assessment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment():
+            self.svc_mgr.get_assessment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_session_for_bank(self):
         """Tests get_assessment_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment():
+            self.svc_mgr.get_assessment_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_results_session(self):
         """Tests get_assessment_results_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_results():
+            self.svc_mgr.get_assessment_results_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_results_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_results_session_for_bank(self):
         """Tests get_assessment_results_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_results():
+            self.svc_mgr.get_assessment_results_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_results_session_for_bank()
 
     def test_get_item_lookup_session(self):
         """Tests get_item_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -511,6 +597,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_lookup_session_for_bank(self):
         """Tests get_item_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_item_lookup():
             self.svc_mgr.get_item_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -518,6 +605,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_query_session(self):
         """Tests get_item_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -525,48 +613,69 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_item_query_session_for_bank(self):
         """Tests get_item_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_item_query():
             self.svc_mgr.get_item_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_item_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_search_session(self):
         """Tests get_item_search_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_search():
+            self.svc_mgr.get_item_search_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_search_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_search_session_for_bank(self):
         """Tests get_item_search_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_item_search():
+            self.svc_mgr.get_item_search_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_search_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_admin_session(self):
         """Tests get_item_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_admin():
+            self.svc_mgr.get_item_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_admin_session_for_bank(self):
         """Tests get_item_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_item_admin():
+            self.svc_mgr.get_item_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_notification_session(self):
         """Tests get_item_notification_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_item_notification():
+            self.svc_mgr.get_item_notification_session(self.receiver, proxy=PROXY)
 
-    @unittest.skip('unimplemented test')
     def test_get_item_bank_session(self):
         """Tests get_item_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_bank():
+            self.svc_mgr.get_item_bank_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_item_bank_assignment_session(self):
         """Tests get_item_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_item_bank_assignment():
+            self.svc_mgr.get_item_bank_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_bank_assignment_session()
 
     def test_get_assessment_lookup_session(self):
         """Tests get_assessment_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -574,6 +683,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_lookup_session_for_bank(self):
         """Tests get_assessment_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_lookup():
             self.svc_mgr.get_assessment_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -581,6 +691,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_query_session(self):
         """Tests get_assessment_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -588,43 +699,63 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_query_session_for_bank(self):
         """Tests get_assessment_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_query():
             self.svc_mgr.get_assessment_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_admin_session(self):
         """Tests get_assessment_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_admin():
+            self.svc_mgr.get_assessment_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_admin_session_for_bank(self):
         """Tests get_assessment_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_admin():
+            self.svc_mgr.get_assessment_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_bank_session(self):
         """Tests get_assessment_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_bank():
+            self.svc_mgr.get_assessment_bank_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_bank_assignment_session(self):
         """Tests get_assessment_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_bank_assignment():
+            self.svc_mgr.get_assessment_bank_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_bank_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_basic_authoring_session(self):
         """Tests get_assessment_basic_authoring_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_basic_authoring():
+            self.svc_mgr.get_assessment_basic_authoring_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_basic_authoring_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_basic_authoring_session_for_bank(self):
         """Tests get_assessment_basic_authoring_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_basic_authoring():
+            self.svc_mgr.get_assessment_basic_authoring_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_basic_authoring_session_for_bank()
 
     def test_get_assessment_offered_lookup_session(self):
         """Tests get_assessment_offered_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -632,6 +763,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_lookup_session_for_bank(self):
         """Tests get_assessment_offered_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_offered_lookup():
             self.svc_mgr.get_assessment_offered_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -639,6 +771,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session(self):
         """Tests get_assessment_offered_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -646,33 +779,47 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_offered_query_session_for_bank(self):
         """Tests get_assessment_offered_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_offered_query():
             self.svc_mgr.get_assessment_offered_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_offered_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_admin_session(self):
         """Tests get_assessment_offered_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_admin():
+            self.svc_mgr.get_assessment_offered_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_offered_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_admin_session_for_bank(self):
         """Tests get_assessment_offered_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_offered_admin():
+            self.svc_mgr.get_assessment_offered_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_offered_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_bank_session(self):
         """Tests get_assessment_offered_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_bank():
+            self.svc_mgr.get_assessment_offered_bank_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_offered_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_bank_assignment_session(self):
         """Tests get_assessment_offered_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_offered_bank_assignment():
+            self.svc_mgr.get_assessment_offered_bank_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_offered_bank_assignment_session()
 
     def test_get_assessment_taken_lookup_session(self):
         """Tests get_assessment_taken_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -680,6 +827,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_lookup_session_for_bank(self):
         """Tests get_assessment_taken_lookup_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_taken_lookup():
             self.svc_mgr.get_assessment_taken_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -687,6 +835,7 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session(self):
         """Tests get_assessment_taken_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -694,62 +843,92 @@ class TestAssessmentProxyManager(unittest.TestCase):
 
     def test_get_assessment_taken_query_session_for_bank(self):
         """Tests get_assessment_taken_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_assessment_taken_query():
             self.svc_mgr.get_assessment_taken_query_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_taken_query_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_admin_session(self):
         """Tests get_assessment_taken_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_admin():
+            self.svc_mgr.get_assessment_taken_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_taken_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_admin_session_for_bank(self):
         """Tests get_assessment_taken_admin_session_for_bank"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_assessment_taken_admin():
+            self.svc_mgr.get_assessment_taken_admin_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_taken_admin_session_for_bank()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_bank_session(self):
         """Tests get_assessment_taken_bank_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_bank():
+            self.svc_mgr.get_assessment_taken_bank_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_taken_bank_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_bank_assignment_session(self):
         """Tests get_assessment_taken_bank_assignment_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_taken_bank_assignment():
+            self.svc_mgr.get_assessment_taken_bank_assignment_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_taken_bank_assignment_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_lookup_session(self):
         """Tests get_bank_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_lookup():
+            self.svc_mgr.get_bank_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bank_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_query_session(self):
         """Tests get_bank_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_query():
+            self.svc_mgr.get_bank_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bank_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_admin_session(self):
         """Tests get_bank_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_admin():
+            self.svc_mgr.get_bank_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bank_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_hierarchy_session(self):
         """Tests get_bank_hierarchy_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_hierarchy():
+            self.svc_mgr.get_bank_hierarchy_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bank_hierarchy_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_hierarchy_design_session(self):
         """Tests get_bank_hierarchy_design_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_bank_hierarchy_design():
+            self.svc_mgr.get_bank_hierarchy_design_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_bank_hierarchy_design_session()
 
     def test_get_assessment_authoring_proxy_manager(self):
         """Tests get_assessment_authoring_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_assessment_authoring():
             self.svc_mgr.get_assessment_authoring_proxy_manager()
 
     def test_get_assessment_batch_proxy_manager(self):
         """Tests get_assessment_batch_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_assessment_batch():
             self.svc_mgr.get_assessment_batch_proxy_manager()

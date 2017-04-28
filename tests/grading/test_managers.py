@@ -114,6 +114,9 @@ class TestGradingManager(unittest.TestCase):
     """Tests for GradingManager"""
 
     # Implemented from resource.ResourceManager
+    class NotificationReceiver(object):
+        pass
+
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('GRADING', implementation='TEST_SERVICE')
@@ -123,6 +126,7 @@ class TestGradingManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_gradebook(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_manager('GRADING', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
@@ -130,11 +134,13 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_system_lookup_session(self):
         """Tests get_grade_system_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session()
 
     def test_get_grade_system_lookup_session_for_gradebook(self):
         """Tests get_grade_system_lookup_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -142,33 +148,41 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_system_query_session(self):
         """Tests get_grade_system_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session()
 
     def test_get_grade_system_query_session_for_gradebook(self):
         """Tests get_grade_system_query_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_grade_system_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_admin_session(self):
         """Tests get_grade_system_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_admin():
+            self.svc_mgr.get_grade_system_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_admin_session_for_gradebook(self):
         """Tests get_grade_system_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_grade_system_admin():
+            self.svc_mgr.get_grade_system_admin_session_for_gradebook(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_system_admin_session_for_gradebook()
 
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session()
 
     def test_get_grade_entry_lookup_session_for_gradebook(self):
         """Tests get_grade_entry_lookup_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -176,84 +190,111 @@ class TestGradingManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session(self):
         """Tests get_grade_entry_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session()
 
     def test_get_grade_entry_query_session_for_gradebook(self):
         """Tests get_grade_entry_query_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_grade_entry_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_admin_session(self):
         """Tests get_grade_entry_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_entry_admin():
+            self.svc_mgr.get_grade_entry_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_admin_session_for_gradebook(self):
         """Tests get_grade_entry_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_grade_entry_admin():
+            self.svc_mgr.get_grade_entry_admin_session_for_gradebook(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_entry_admin_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_lookup_session(self):
         """Tests get_gradebook_column_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_lookup():
+            self.svc_mgr.get_gradebook_column_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_lookup_session_for_gradebook(self):
         """Tests get_gradebook_column_lookup_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_lookup():
+            self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_session(self):
         """Tests get_gradebook_column_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_query():
+            self.svc_mgr.get_gradebook_column_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_session_for_gradebook(self):
         """Tests get_gradebook_column_query_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_query():
+            self.svc_mgr.get_gradebook_column_query_session_for_gradebook(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_admin_session(self):
         """Tests get_gradebook_column_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_admin():
+            self.svc_mgr.get_gradebook_column_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_admin_session_for_gradebook(self):
         """Tests get_gradebook_column_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_admin():
+            self.svc_mgr.get_gradebook_column_admin_session_for_gradebook(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_admin_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_lookup_session(self):
         """Tests get_gradebook_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_lookup():
+            self.svc_mgr.get_gradebook_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_admin_session(self):
         """Tests get_gradebook_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_admin():
+            self.svc_mgr.get_gradebook_admin_session()
 
     def test_get_grading_batch_manager(self):
         """Tests get_grading_batch_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_grading_batch():
             self.svc_mgr.get_grading_batch_manager()
 
     def test_get_grading_calculation_manager(self):
         """Tests get_grading_calculation_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_grading_calculation():
             self.svc_mgr.get_grading_calculation_manager()
 
     def test_get_grading_transform_manager(self):
         """Tests get_grading_transform_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_manager()
 
 
 class TestGradingProxyManager(unittest.TestCase):
     """Tests for GradingProxyManager"""
+
+    # Implemented from resource.ResourceProxyManager
+    class NotificationReceiver(object):
+        pass
 
     @classmethod
     def setUpClass(cls):
@@ -264,6 +305,7 @@ class TestGradingProxyManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_gradebook(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_proxy_manager('GRADING', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
@@ -271,6 +313,7 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_lookup_session(self):
         """Tests get_grade_system_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -278,6 +321,7 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_lookup_session_for_gradebook(self):
         """Tests get_grade_system_lookup_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_system_lookup():
             self.svc_mgr.get_grade_system_lookup_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -285,6 +329,7 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_query_session(self):
         """Tests get_grade_system_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -292,23 +337,31 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_system_query_session_for_gradebook(self):
         """Tests get_grade_system_query_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_system_query():
             self.svc_mgr.get_grade_system_query_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_grade_system_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_admin_session(self):
         """Tests get_grade_system_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_admin():
+            self.svc_mgr.get_grade_system_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_system_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_admin_session_for_gradebook(self):
         """Tests get_grade_system_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_grade_system_admin():
+            self.svc_mgr.get_grade_system_admin_session_for_gradebook(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_system_admin_session_for_gradebook()
 
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -316,6 +369,7 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_lookup_session_for_gradebook(self):
         """Tests get_grade_entry_lookup_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_entry_lookup():
             self.svc_mgr.get_grade_entry_lookup_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -323,6 +377,7 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session(self):
         """Tests get_grade_entry_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -330,72 +385,106 @@ class TestGradingProxyManager(unittest.TestCase):
 
     def test_get_grade_entry_query_session_for_gradebook(self):
         """Tests get_grade_entry_query_session_for_gradebook"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_grade_entry_query():
             self.svc_mgr.get_grade_entry_query_session_for_gradebook(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_grade_entry_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_admin_session(self):
         """Tests get_grade_entry_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_entry_admin():
+            self.svc_mgr.get_grade_entry_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_entry_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_admin_session_for_gradebook(self):
         """Tests get_grade_entry_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_grade_entry_admin():
+            self.svc_mgr.get_grade_entry_admin_session_for_gradebook(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_grade_entry_admin_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_lookup_session(self):
         """Tests get_gradebook_column_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_lookup():
+            self.svc_mgr.get_gradebook_column_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_lookup_session_for_gradebook(self):
         """Tests get_gradebook_column_lookup_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_lookup():
+            self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_session(self):
         """Tests get_gradebook_column_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_query():
+            self.svc_mgr.get_gradebook_column_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_session_for_gradebook(self):
         """Tests get_gradebook_column_query_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_query():
+            self.svc_mgr.get_gradebook_column_query_session_for_gradebook(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_query_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_admin_session(self):
         """Tests get_gradebook_column_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_admin():
+            self.svc_mgr.get_gradebook_column_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_admin_session_for_gradebook(self):
         """Tests get_gradebook_column_admin_session_for_gradebook"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_gradebook_column_admin():
+            self.svc_mgr.get_gradebook_column_admin_session_for_gradebook(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_admin_session_for_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_lookup_session(self):
         """Tests get_gradebook_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_lookup():
+            self.svc_mgr.get_gradebook_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_admin_session(self):
         """Tests get_gradebook_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_admin():
+            self.svc_mgr.get_gradebook_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_admin_session()
 
     def test_get_grading_batch_proxy_manager(self):
         """Tests get_grading_batch_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_grading_batch():
             self.svc_mgr.get_grading_batch_proxy_manager()
 
     def test_get_grading_calculation_proxy_manager(self):
         """Tests get_grading_calculation_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_grading_calculation():
             self.svc_mgr.get_grading_calculation_proxy_manager()
 
     def test_get_grading_transform_proxy_manager(self):
         """Tests get_grading_transform_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_grading_transform():
             self.svc_mgr.get_grading_transform_proxy_manager()

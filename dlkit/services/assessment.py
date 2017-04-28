@@ -383,14 +383,6 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_bank_view(self, session):
         """Sets the underlying bank view to match current view"""
         if self._bank_view == COMPARATIVE:
@@ -1389,8 +1381,10 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         self._get_provider_session('bank_admin_session').delete_bank(*args, **kwargs)
 
     def can_manage_bank_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider BankAdminSession.can_manage_bank_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('bank_admin_session').can_manage_bank_aliases()
 
     def alias_bank(self, *args, **kwargs):
         """Pass through to provider BankAdminSession.alias_bank"""
@@ -1577,18 +1571,14 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_lookup_session_for_bank(*args, **kwargs)
 
     def get_assessment_part_admin_session(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_assessment_part_admin_session(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_admin_session(*args, **kwargs)
 
     assessment_part_admin_session = property(fget=get_assessment_part_admin_session)
 
     def get_assessment_part_admin_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_assessment_part_admin_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_assessment_part_admin_session_for_bank(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_admin_session_for_bank(*args, **kwargs)
 
     def get_sequence_rule_lookup_session(self, *args, **kwargs):
         """Pass through to provider method"""
@@ -1601,18 +1591,14 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_lookup_session_for_bank(*args, **kwargs)
 
     def get_sequence_rule_admin_session(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
-        return self._provider_manager.get_sequence_rule_admin_session(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_admin_session(*args, **kwargs)
 
     sequence_rule_admin_session = property(fget=get_sequence_rule_admin_session)
 
     def get_sequence_rule_admin_session_for_bank(self, *args, **kwargs):
-        """Pass through to provider get_sequence_rule_admin_session_for_bank"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
-        return self._provider_manager.get_sequence_rule_admin_session_for_bank(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_admin_session_for_bank(*args, **kwargs)
 
 
 class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessment_managers.AssessmentProxyManager):
@@ -2458,8 +2444,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('item_admin_session').delete_item(*args, **kwargs)
 
     def can_manage_item_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ItemAdminSession.can_manage_item_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('item_admin_session').can_manage_item_aliases()
 
     def alias_item(self, *args, **kwargs):
         """Pass through to provider ItemAdminSession.alias_item"""
@@ -2789,8 +2777,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('assessment_admin_session').delete_assessment(*args, **kwargs)
 
     def can_manage_assessment_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssessmentAdminSession.can_manage_assessment_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('assessment_admin_session').can_manage_assessment_aliases()
 
     def alias_assessment(self, *args, **kwargs):
         """Pass through to provider AssessmentAdminSession.alias_assessment"""
@@ -3017,8 +3007,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('assessment_offered_admin_session').delete_assessment_offered(*args, **kwargs)
 
     def can_manage_assessment_offered_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssessmentOfferedAdminSession.can_manage_assessment_offered_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('assessment_offered_admin_session').can_manage_assessment_offered_aliases()
 
     def alias_assessment_offered(self, *args, **kwargs):
         """Pass through to provider AssessmentOfferedAdminSession.alias_assessment_offered"""
@@ -3244,8 +3236,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('assessment_taken_admin_session').delete_assessment_taken(*args, **kwargs)
 
     def can_manage_assessment_taken_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssessmentTakenAdminSession.can_manage_assessment_taken_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('assessment_taken_admin_session').can_manage_assessment_taken_aliases()
 
     def alias_assessment_taken(self, *args, **kwargs):
         """Pass through to provider AssessmentTakenAdminSession.alias_assessment_taken"""
@@ -3473,8 +3467,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
                                                       'assessment_part_admin_session').delete_assessment_part(*args, **kwargs)
 
     def can_manage_assessment_part_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssessmentPartAdminSession.can_manage_assessment_part_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('assessment_part_admin_session').can_manage_assessment_part_aliases()
 
     def alias_assessment_part(self, *args, **kwargs):
         """Pass through to provider AssessmentPartAdminSession.alias_assessment_part"""
@@ -3790,8 +3786,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
                                                       'sequence_rule_admin_session').delete_sequence_rule(*args, **kwargs)
 
     def can_manage_sequence_rule_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider SequenceRuleAdminSession.can_manage_sequence_rule_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('sequence_rule_admin_session').can_manage_sequence_rule_aliases()
 
     def alias_sequence_rule(self, *args, **kwargs):
         """Pass through to provider SequenceRuleAdminSession.alias_sequence_rule"""
@@ -4101,8 +4099,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_provider_session('sequence_rule_enabler_admin_session').delete_sequence_rule_enabler(*args, **kwargs)
 
     def can_manage_sequence_rule_enabler_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider SequenceRuleEnablerAdminSession.can_manage_sequence_rule_enabler_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('sequence_rule_enabler_admin_session').can_manage_sequence_rule_enabler_aliases()
 
     def alias_sequence_rule_enabler(self, *args, **kwargs):
         """Pass through to provider SequenceRuleEnablerAdminSession.alias_sequence_rule_enabler"""

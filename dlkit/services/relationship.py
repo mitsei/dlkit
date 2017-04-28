@@ -125,14 +125,6 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_family_view(self, session):
         """Sets the underlying family view to match current view"""
         if self._family_view == COMPARATIVE:
@@ -507,8 +499,10 @@ class RelationshipManager(osid.OsidManager, osid.OsidSession, RelationshipProfil
         self._get_provider_session('family_admin_session').delete_family(*args, **kwargs)
 
     def can_manage_family_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider FamilyAdminSession.can_manage_family_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('family_admin_session').can_manage_family_aliases()
 
     def alias_family(self, *args, **kwargs):
         """Pass through to provider FamilyAdminSession.alias_family"""
@@ -1145,8 +1139,10 @@ class Family(abc_relationship_objects.Family, osid.OsidSession, osid.OsidCatalog
         self._get_provider_session('relationship_admin_session').delete_relationship(*args, **kwargs)
 
     def can_manage_relationship_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider RelationshipAdminSession.can_manage_relationship_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('relationship_admin_session').can_manage_relationship_aliases()
 
     def alias_relationship(self, *args, **kwargs):
         """Pass through to provider RelationshipAdminSession.alias_relationship"""

@@ -37,6 +37,12 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
     def __init__(self):
         self._provider_manager = None
 
+    def supports_agent_lookup(self):
+        """Pass through to provider supports_agent_lookup"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_agent_lookup()
+
     def get_agent_record_types(self):
         """Pass through to provider get_agent_record_types"""
         # Implemented from kitosid template for -
@@ -123,14 +129,6 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
         # This is to initialize self._proxy
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
-
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
 
     def _set_agency_view(self, session):
         """Sets the underlying agency view to match current view"""
@@ -235,6 +233,20 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
         self._session_management = DISABLED
         self.close_sessions()
 
+    def get_agent_lookup_session(self, *args, **kwargs):
+        """Pass through to provider get_agent_lookup_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        return self._provider_manager.get_agent_lookup_session(*args, **kwargs)
+
+    agent_lookup_session = property(fget=get_agent_lookup_session)
+
+    def get_agent_lookup_session_for_agency(self, *args, **kwargs):
+        """Pass through to provider get_agent_lookup_session_for_agency"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        return self._provider_manager.get_agent_lookup_session_for_agency(*args, **kwargs)
+
     def get_authentication_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -256,6 +268,18 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
 
 class AuthenticationProxyManager(osid.OsidProxyManager, AuthenticationProfile, authentication_managers.AuthenticationProxyManager):
     """AuthenticationProxyManager convenience adapter including related Session methods."""
+
+    def get_agent_lookup_session(self, *args, **kwargs):
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return AuthenticationManager.get_agent_lookup_session(*args, **kwargs)
+
+    def get_agent_lookup_session_for_agency(self, *args, **kwargs):
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return AuthenticationManager.get_agent_lookup_session_for_agency(*args, **kwargs)
 
     def get_authentication_batch_proxy_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""

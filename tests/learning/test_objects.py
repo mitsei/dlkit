@@ -4,53 +4,96 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+
+
 class TestObjective(unittest.TestCase):
     """Tests for Objective"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_objective(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     def test_has_assessment(self):
         """Tests has_assessment"""
-        pass
+        # From test_templates/resources.py::Resource::has_avatar_template
+        self.assertTrue(isinstance(self.object.has_assessment(), bool))
+        self.assertFalse(self.object.has_assessment())
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_assessment_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment(self):
         """Tests get_assessment"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_assessment)
 
-    @unittest.skip('unimplemented test')
     def test_has_knowledge_category(self):
         """Tests has_knowledge_category"""
-        pass
+        # From test_templates/resources.py::Resource::has_avatar_template
+        self.assertTrue(isinstance(self.object.has_knowledge_category(), bool))
+        self.assertFalse(self.object.has_knowledge_category())
 
-    @unittest.skip('unimplemented test')
     def test_get_knowledge_category_id(self):
         """Tests get_knowledge_category_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_knowledge_category_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_knowledge_category(self):
         """Tests get_knowledge_category"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_knowledge_category)
 
-    @unittest.skip('unimplemented test')
     def test_has_cognitive_process(self):
         """Tests has_cognitive_process"""
-        pass
+        # From test_templates/resources.py::Resource::has_avatar_template
+        self.assertTrue(isinstance(self.object.has_cognitive_process(), bool))
+        self.assertFalse(self.object.has_cognitive_process())
 
-    @unittest.skip('unimplemented test')
     def test_get_cognitive_process_id(self):
         """Tests get_cognitive_process_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_cognitive_process_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_cognitive_process(self):
         """Tests get_cognitive_process"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_cognitive_process)
 
     @unittest.skip('unimplemented test')
     def test_get_objective_record(self):
@@ -161,6 +204,30 @@ class TestObjectiveNodeList(unittest.TestCase):
 
 class TestActivity(unittest.TestCase):
     """Tests for Activity"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = 'Objective'
+        cls.objective = cls.catalog.create_objective(form)
+
+        form = cls.catalog.get_activity_form_for_create(cls.objective.ident,
+                                                        [])
+        form.display_name = 'Test activity'
+        cls.object = cls.catalog.create_activity(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_activities():
+            cls.catalog.delete_activity(obj.ident)
+        cls.catalog.delete_objective(cls.objective.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
@@ -293,6 +360,31 @@ class TestActivityList(unittest.TestCase):
 
 class TestProficiency(unittest.TestCase):
     """Tests for Proficiency"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = 'Objective'
+        cls.objective = cls.catalog.create_objective(form)
+
+        form = cls.catalog.get_proficiency_form_for_create(cls.objective.ident,
+                                                           AGENT_ID,
+                                                           [])
+        form.display_name = 'Test proficiency'
+        cls.object = cls.catalog.create_proficiency(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_proficiencies():
+            cls.catalog.delete_proficiency(obj.ident)
+        cls.catalog.delete_objective(cls.objective.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_resource_id(self):

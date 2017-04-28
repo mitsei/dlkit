@@ -253,14 +253,6 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_repository_view(self, session):
         """Sets the underlying repository view to match current view"""
         if self._repository_view == COMPARATIVE:
@@ -981,8 +973,10 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         self._get_provider_session('repository_admin_session').delete_repository(*args, **kwargs)
 
     def can_manage_repository_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider RepositoryAdminSession.can_manage_repository_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('repository_admin_session').can_manage_repository_aliases()
 
     def alias_repository(self, *args, **kwargs):
         """Pass through to provider RepositoryAdminSession.alias_repository"""
@@ -1669,8 +1663,10 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         self._get_provider_session('asset_admin_session').delete_asset(*args, **kwargs)
 
     def can_manage_asset_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AssetAdminSession.can_manage_asset_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('asset_admin_session').can_manage_asset_aliases()
 
     def alias_asset(self, *args, **kwargs):
         """Pass through to provider AssetAdminSession.alias_asset"""
@@ -2098,8 +2094,10 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def can_manage_composition_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider CompositionAdminSession.can_manage_composition_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('composition_admin_session').can_manage_composition_aliases()
 
     def alias_composition(self, *args, **kwargs):
         """Pass through to provider CompositionAdminSession.alias_composition"""

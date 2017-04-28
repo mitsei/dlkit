@@ -2526,7 +2526,7 @@ class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_marker
         id_list = []
         from ..id.objects import IdList
         for parent_node in self._my_map['parentNodes']:
-            id_list.append(parent_node['id'])
+            id_list.append(str(parent_node.ident))
         return IdList(id_list)
 
     parent_ids = property(fget=get_parent_ids)
@@ -2570,7 +2570,7 @@ class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_marker
         id_list = []
         from ..id.objects import IdList
         for child_node in self._my_map['childNodes']:
-            id_list.append(child_node['id'])
+            id_list.append(str(child_node.ident))
         return IdList(id_list)
 
     child_ids = property(fget=get_child_ids)

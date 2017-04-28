@@ -165,14 +165,6 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_vault_view(self, session):
         """Sets the underlying vault view to match current view"""
         if self._vault_view == COMPARATIVE:
@@ -575,8 +567,10 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         self._get_provider_session('vault_admin_session').delete_vault(*args, **kwargs)
 
     def can_manage_vault_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider VaultAdminSession.can_manage_vault_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('vault_admin_session').can_manage_vault_aliases()
 
     def alias_vault(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.alias_vault"""
@@ -1081,8 +1075,10 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         self._get_provider_session('authorization_admin_session').delete_authorization(*args, **kwargs)
 
     def can_manage_authorization_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider AuthorizationAdminSession.can_manage_authorization_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('authorization_admin_session').can_manage_authorization_aliases()
 
     def alias_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.alias_authorization"""

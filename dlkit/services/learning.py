@@ -241,14 +241,6 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_objective_bank_view(self, session):
         """Sets the underlying objective_bank view to match current view"""
         if self._objective_bank_view == COMPARATIVE:
@@ -963,8 +955,10 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         self._get_provider_session('objective_bank_admin_session').delete_objective_bank(*args, **kwargs)
 
     def can_manage_objective_bank_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ObjectiveBankAdminSession.can_manage_objective_bank_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('objective_bank_admin_session').can_manage_objective_bank_aliases()
 
     def alias_objective_bank(self, *args, **kwargs):
         """Pass through to provider ObjectiveBankAdminSession.alias_objective_bank"""
@@ -1639,8 +1633,10 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         self._get_provider_session('objective_admin_session').delete_objective(*args, **kwargs)
 
     def can_manage_objective_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ObjectiveAdminSession.can_manage_objective_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('objective_admin_session').can_manage_objective_aliases()
 
     def alias_objective(self, *args, **kwargs):
         """Pass through to provider ObjectiveAdminSession.alias_objective"""
@@ -2036,8 +2032,10 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         self._get_provider_session('activity_admin_session').delete_activity(*args, **kwargs)
 
     def can_manage_activity_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ActivityAdminSession.can_manage_activity_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('activity_admin_session').can_manage_activity_aliases()
 
     def alias_activity(self, *args, **kwargs):
         """Pass through to provider ActivityAdminSession.alias_activity"""
@@ -2297,8 +2295,10 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         raise Unimplemented('Unimplemented in dlkit.services')
 
     def can_manage_proficiency_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider ProficiencyAdminSession.can_manage_proficiency_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('proficiency_admin_session').can_manage_proficiency_aliases()
 
     def alias_proficiency(self, *args, **kwargs):
         """Pass through to provider ProficiencyAdminSession.alias_proficiency"""

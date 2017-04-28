@@ -4,33 +4,69 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestResource(unittest.TestCase):
     """Tests for Resource"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+
+        form = cls.catalog.get_resource_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_resource(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_is_group(self):
         """Tests is_group"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_group(), bool))
+        self.assertFalse(self.object.is_group())
 
     @unittest.skip('unimplemented test')
     def test_is_demographic(self):
         """Tests is_demographic"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_has_avatar(self):
         """Tests has_avatar"""
-        pass
+        # From test_templates/resources.py::Resource::has_avatar_template
+        self.assertTrue(isinstance(self.object.has_avatar(), bool))
+        self.assertFalse(self.object.has_avatar())
 
-    @unittest.skip('unimplemented test')
     def test_get_avatar_id(self):
         """Tests get_avatar_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_avatar_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_avatar(self):
         """Tests get_avatar"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_avatar)
 
     @unittest.skip('unimplemented test')
     def test_get_resource_record(self):

@@ -94,6 +94,9 @@ class TestAuthorizationManager(unittest.TestCase):
     """Tests for AuthorizationManager"""
 
     # Implemented from resource.ResourceManager
+    class NotificationReceiver(object):
+        pass
+
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', implementation='TEST_SERVICE')
@@ -103,28 +106,35 @@ class TestAuthorizationManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_vault(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_vault(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_session(self):
         """Tests get_authorization_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization():
+            self.svc_mgr.get_authorization_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_session_for_vault(self):
         """Tests get_authorization_session_for_vault"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_authorization():
+            self.svc_mgr.get_authorization_session_for_vault(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_session_for_vault()
 
     def test_get_authorization_lookup_session(self):
         """Tests get_authorization_lookup_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_authorization_lookup():
             self.svc_mgr.get_authorization_lookup_session()
 
     def test_get_authorization_lookup_session_for_vault(self):
         """Tests get_authorization_lookup_session_for_vault"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_authorization_lookup():
             self.svc_mgr.get_authorization_lookup_session_for_vault(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
@@ -132,54 +142,69 @@ class TestAuthorizationManager(unittest.TestCase):
 
     def test_get_authorization_query_session(self):
         """Tests get_authorization_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_authorization_query():
             self.svc_mgr.get_authorization_query_session()
 
     def test_get_authorization_query_session_for_vault(self):
         """Tests get_authorization_query_session_for_vault"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_authorization_query():
             self.svc_mgr.get_authorization_query_session_for_vault(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_authorization_query_session_for_vault()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session(self):
         """Tests get_authorization_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_admin():
+            self.svc_mgr.get_authorization_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session_for_vault(self):
         """Tests get_authorization_admin_session_for_vault"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_authorization_admin():
+            self.svc_mgr.get_authorization_admin_session_for_vault(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_admin_session_for_vault()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_lookup():
+            self.svc_mgr.get_vault_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_query_session(self):
         """Tests get_vault_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_query():
+            self.svc_mgr.get_vault_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_admin_session(self):
         """Tests get_vault_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_admin():
+            self.svc_mgr.get_vault_admin_session()
 
     def test_get_authorization_batch_manager(self):
         """Tests get_authorization_batch_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_authorization_batch():
             self.svc_mgr.get_authorization_batch_manager()
 
     def test_get_authorization_rules_manager(self):
         """Tests get_authorization_rules_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_authorization_rules():
             self.svc_mgr.get_authorization_rules_manager()
 
 
 class TestAuthorizationProxyManager(unittest.TestCase):
     """Tests for AuthorizationProxyManager"""
+
+    # Implemented from resource.ResourceProxyManager
+    class NotificationReceiver(object):
+        pass
 
     @classmethod
     def setUpClass(cls):
@@ -190,23 +215,31 @@ class TestAuthorizationProxyManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_vault(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_proxy_manager('AUTHORIZATION', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_vault(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_session(self):
         """Tests get_authorization_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization():
+            self.svc_mgr.get_authorization_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_session_for_vault(self):
         """Tests get_authorization_session_for_vault"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_authorization():
+            self.svc_mgr.get_authorization_session_for_vault(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_session_for_vault()
 
     def test_get_authorization_lookup_session(self):
         """Tests get_authorization_lookup_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_authorization_lookup():
             self.svc_mgr.get_authorization_lookup_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -214,6 +247,7 @@ class TestAuthorizationProxyManager(unittest.TestCase):
 
     def test_get_authorization_lookup_session_for_vault(self):
         """Tests get_authorization_lookup_session_for_vault"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_authorization_lookup():
             self.svc_mgr.get_authorization_lookup_session_for_vault(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -221,6 +255,7 @@ class TestAuthorizationProxyManager(unittest.TestCase):
 
     def test_get_authorization_query_session(self):
         """Tests get_authorization_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_authorization_query():
             self.svc_mgr.get_authorization_query_session(PROXY)
         with self.assertRaises(errors.NullArgument):
@@ -228,42 +263,60 @@ class TestAuthorizationProxyManager(unittest.TestCase):
 
     def test_get_authorization_query_session_for_vault(self):
         """Tests get_authorization_query_session_for_vault"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_authorization_query():
             self.svc_mgr.get_authorization_query_session_for_vault(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_authorization_query_session_for_vault()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session(self):
         """Tests get_authorization_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_admin():
+            self.svc_mgr.get_authorization_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_admin_session_for_vault(self):
         """Tests get_authorization_admin_session_for_vault"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_authorization_admin():
+            self.svc_mgr.get_authorization_admin_session_for_vault(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_authorization_admin_session_for_vault()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_lookup():
+            self.svc_mgr.get_vault_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_vault_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_query_session(self):
         """Tests get_vault_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_query():
+            self.svc_mgr.get_vault_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_vault_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_admin_session(self):
         """Tests get_vault_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_admin():
+            self.svc_mgr.get_vault_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_vault_admin_session()
 
     def test_get_authorization_batch_proxy_manager(self):
         """Tests get_authorization_batch_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_authorization_batch():
             self.svc_mgr.get_authorization_batch_proxy_manager()
 
     def test_get_authorization_rules_proxy_manager(self):
         """Tests get_authorization_rules_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_authorization_rules():
             self.svc_mgr.get_authorization_rules_proxy_manager()

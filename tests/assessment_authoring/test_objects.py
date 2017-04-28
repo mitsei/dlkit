@@ -4,6 +4,20 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestAssessmentPart(unittest.TestCase):
     """Tests for AssessmentPart"""
 

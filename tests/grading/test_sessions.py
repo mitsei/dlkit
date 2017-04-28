@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.json_.grading.objects import GradebookColumnSummary
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -19,6 +20,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
@@ -46,19 +49,19 @@ class TestGradeSystemLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        for catalog in cls.svc_mgr.get_gradebooks():
-            for obj in catalog.get_grade_systems():
-                catalog.delete_grade_system(obj.ident)
-            cls.svc_mgr.delete_gradebook(catalog.ident)
+        for obj in cls.catalog.get_grade_systems():
+            cls.catalog.delete_grade_system(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_grade_systems(self):
         """Tests can_lookup_grade_systems"""
@@ -169,19 +172,19 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_gradebooks():
-            for obj in catalog.get_grade_systems():
-                catalog.delete_grade_system(obj.ident)
-            cls.svc_mgr.delete_gradebook(catalog.ident)
+        for obj in cls.catalog.get_grade_systems():
+            cls.catalog.delete_grade_system(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_grade_systems(self):
@@ -215,6 +218,7 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 class TestGradeSystemAdminSession(unittest.TestCase):
     """Tests for GradeSystemAdminSession"""
 
+    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -222,6 +226,12 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         create_form.display_name = 'Test Gradebook'
         create_form.description = 'Test Gradebook for GradeSystemAdminSession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'new GradeSystem'
+        form.description = 'description of GradeSystem'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_grade_system(form)
 
     @classmethod
     def tearDownClass(cls):
@@ -233,63 +243,94 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_grade_systems(self):
         """Tests can_create_grade_systems"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_grade_systems(), bool))
 
     def test_can_create_grade_system_with_record_types(self):
         """Tests can_create_grade_system_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_grade_system_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_form_for_create(self):
         """Tests get_grade_system_form_for_create"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_create_template
+        form = self.catalog.get_grade_system_form_for_create([])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_grade_system(self):
         """Tests create_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeSystem
+        self.assertTrue(isinstance(self.osid_object, GradeSystem))
+        self.assertEqual(self.osid_object.display_name.text, 'new GradeSystem')
+        self.assertEqual(self.osid_object.description.text, 'description of GradeSystem')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_grade_systems(self):
         """Tests can_update_grade_systems"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_grade_systems(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_form_for_update(self):
         """Tests get_grade_system_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_grade_system_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_grade_system(self):
         """Tests update_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeSystem
+        form = self.catalog.get_grade_system_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_grade_system(form)
+        self.assertTrue(isinstance(updated_object, GradeSystem))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_grade_systems(self):
         """Tests can_delete_grade_systems"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_grade_systems(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_grade_system(self):
         """Tests delete_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
+        form = self.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'new GradeSystem'
+        form.description = 'description of GradeSystem'
+        form.set_genus_type(NEW_TYPE)
+        osid_object = self.catalog.create_grade_system(form)
+        self.catalog.delete_grade_system(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_grade_system(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_grade_system_aliases(self):
         """Tests can_manage_grade_system_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_grade_system_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_grade_system(self):
         """Tests alias_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_grade_system(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_grade_system(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
     @unittest.skip('unimplemented test')
     def test_can_create_grades(self):
@@ -336,10 +377,10 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         """Tests delete_grade"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_grade_aliases(self):
         """Tests can_manage_grade_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_grade_aliases(), bool))
 
     @unittest.skip('unimplemented test')
     def test_alias_grade(self):
@@ -400,10 +441,11 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_lookup_grade_entries(self):
         """Tests can_lookup_grade_entries"""
@@ -582,10 +624,11 @@ class TestGradeEntryQuerySession(unittest.TestCase):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_grade_entries(self):
@@ -621,44 +664,90 @@ class TestGradeEntryAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        cls.grade_entry_list = list()
+        cls.grade_entry_ids = list()
+        cls.gradebook_column_list = list()
+        cls.gradebook_column_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test Gradebook'
-        create_form.description = 'Test Gradebook for GradeEntryAdminSession tests'
+        create_form.description = 'Test Gradebook for GradeEntryLookupSession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+        create_form = cls.catalog.get_grade_system_form_for_create([])
+        create_form.display_name = 'Test Grade System'
+        create_form.description = 'Test Grade System for GradeEntryLookupSession tests'
+        create_form.based_on_grades = False
+        create_form.lowest_numeric_score = 0
+        create_form.highest_numeric_score = 5
+        create_form.numeric_score_increment = 0.25
+        cls.grade_system = cls.catalog.create_grade_system(create_form)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_gradebook_column_form_for_create([])
+            create_form.display_name = 'Test GradebookColumn ' + str(num)
+            create_form.description = 'Test GradebookColumn for GradeEntryLookupSession tests'
+            create_form.grade_system = cls.grade_system.ident
+            obj = cls.catalog.create_gradebook_column(create_form)
+            cls.gradebook_column_list.append(obj)
+            cls.gradebook_column_ids.append(obj.ident)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_grade_entry_form_for_create(cls.gradebook_column_ids[num], AGENT_ID, [])
+            create_form.display_name = 'Test GradeEntry ' + str(num)
+            create_form.description = 'Test GradeEntry for GradeEntryLookupSession tests'
+            object = cls.catalog.create_grade_entry(create_form)
+            cls.grade_entry_list.append(object)
+            cls.grade_entry_ids.append(object.ident)
+
+        create_form = cls.catalog.get_grade_entry_form_for_create(cls.gradebook_column_ids[0], AGENT_ID, [])
+        create_form.display_name = 'new GradeEntry'
+        create_form.description = 'description of GradeEntry'
+        create_form.genus_type = NEW_TYPE
+        cls.osid_object = cls.catalog.create_grade_entry(create_form)
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_grade_entries():
-            cls.catalog.delete_grade_entry(obj.ident)
-        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+        for catalog in cls.svc_mgr.get_gradebooks():
+            for obj in catalog.get_grade_entries():
+                catalog.delete_grade_entry(obj.ident)
+            for obj in catalog.get_gradebook_columns():
+                catalog.delete_gradebook_column(obj.ident)
+            for obj in catalog.get_grade_systems():
+                catalog.delete_grade_system(obj.ident)
+            cls.svc_mgr.delete_gradebook(catalog.ident)
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_grade_entries(self):
         """Tests can_create_grade_entries"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
         self.assertTrue(isinstance(self.catalog.can_create_grade_entries(), bool))
 
     def test_can_create_grade_entry_with_record_types(self):
         """Tests can_create_grade_entry_with_record_types"""
+        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_grade_entry_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_form_for_create(self):
         """Tests get_grade_entry_form_for_create"""
-        pass
+        form = self.catalog.get_grade_entry_form_for_create(self.gradebook_column_ids[0], AGENT_ID, [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_grade_entry(self):
         """Tests create_grade_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeEntry
+        self.assertTrue(isinstance(self.osid_object, GradeEntry))
+        self.assertEqual(self.osid_object.display_name.text, 'new GradeEntry')
+        self.assertEqual(self.osid_object.description.text, 'description of GradeEntry')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
     @unittest.skip('unimplemented test')
     def test_can_overridecalculated_grade_entries(self):
@@ -675,40 +764,61 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         """Tests override_calculated_grade_entry"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_can_update_grade_entries(self):
         """Tests can_update_grade_entries"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
+        self.assertTrue(isinstance(self.catalog.can_update_grade_entries(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_form_for_update(self):
         """Tests get_grade_entry_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_grade_entry_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_grade_entry(self):
         """Tests update_grade_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeEntry
+        form = self.catalog.get_grade_entry_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_grade_entry(form)
+        self.assertTrue(isinstance(updated_object, GradeEntry))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_grade_entries(self):
         """Tests can_delete_grade_entries"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
+        self.assertTrue(isinstance(self.catalog.can_delete_grade_entries(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_grade_entry(self):
         """Tests delete_grade_entry"""
-        pass
+        create_form = self.catalog.get_grade_entry_form_for_create(self.gradebook_column_ids[0], AGENT_ID, [])
+        create_form.display_name = 'new GradeEntry'
+        create_form.description = 'description of GradeEntry'
+        create_form.genus_type = NEW_TYPE
+        osid_object = self.catalog.create_grade_entry(create_form)
+        self.catalog.delete_grade_entry(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_grade_entry(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_grade_entry_aliases(self):
         """Tests can_manage_grade_entry_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_grade_entry_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_grade_entry(self):
         """Tests alias_grade_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_grade_entry(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_grade_entry(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestGradebookColumnLookupSession(unittest.TestCase):
@@ -765,10 +875,11 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_lookup_gradebook_columns(self):
@@ -885,19 +996,19 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_gradebooks():
-            for obj in catalog.get_gradebook_columns():
-                catalog.delete_gradebook_column(obj.ident)
-            cls.svc_mgr.delete_gradebook(catalog.ident)
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_gradebook_columns(self):
@@ -931,6 +1042,7 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 class TestGradebookColumnAdminSession(unittest.TestCase):
     """Tests for GradebookColumnAdminSession"""
 
+    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -938,6 +1050,12 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         create_form.display_name = 'Test Gradebook'
         create_form.description = 'Test Gradebook for GradebookColumnAdminSession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'new GradebookColumn'
+        form.description = 'description of GradebookColumn'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_gradebook_column(form)
 
     @classmethod
     def tearDownClass(cls):
@@ -949,10 +1067,11 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         """Tests get_gradebook_id"""
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_gradebook_columns(self):
         """Tests can_create_gradebook_columns"""
@@ -964,30 +1083,48 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_gradebook_column_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_form_for_create(self):
         """Tests get_gradebook_column_form_for_create"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_create_template
+        form = self.catalog.get_gradebook_column_form_for_create([])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_gradebook_column(self):
         """Tests create_gradebook_column"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.grading.objects import GradebookColumn
+        self.assertTrue(isinstance(self.osid_object, GradebookColumn))
+        self.assertEqual(self.osid_object.display_name.text, 'new GradebookColumn')
+        self.assertEqual(self.osid_object.description.text, 'description of GradebookColumn')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
     @unittest.skip('unimplemented test')
     def test_can_update_gradebook_columns(self):
         """Tests can_update_gradebook_columns"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_form_for_update(self):
         """Tests get_gradebook_column_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_gradebook_column_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_gradebook_column(self):
         """Tests update_gradebook_column"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.grading.objects import GradebookColumn
+        form = self.catalog.get_gradebook_column_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_gradebook_column(form)
+        self.assertTrue(isinstance(updated_object, GradebookColumn))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
     @unittest.skip('unimplemented test')
     def test_sequence_gradebook_columns(self):
@@ -1009,20 +1146,30 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         """Tests can_delete_gradebook_columns"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_delete_gradebook_column(self):
         """Tests delete_gradebook_column"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
+        form = self.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'new GradebookColumn'
+        form.description = 'description of GradebookColumn'
+        form.set_genus_type(NEW_TYPE)
+        osid_object = self.catalog.create_gradebook_column(form)
+        self.catalog.delete_gradebook_column(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_gradebook_column(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_gradebook_column_aliases(self):
         """Tests can_manage_gradebook_column_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_gradebook_column_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_gradebook_column(self):
         """Tests alias_gradebook_column"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_gradebook_column(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_gradebook_column(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestGradebookLookupSession(unittest.TestCase):
@@ -1176,12 +1323,15 @@ class TestGradebookAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.svc_mgr.get_gradebook(cat_id)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_gradebook_aliases(self):
         """Tests can_manage_gradebook_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.svc_mgr.can_manage_gradebook_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_gradebook(self):
         """Tests alias_gradebook"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('grading.Gradebook%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_gradebook(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_gradebook(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)

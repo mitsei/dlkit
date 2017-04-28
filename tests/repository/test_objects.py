@@ -4,23 +4,57 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestAsset(unittest.TestCase):
     """Tests for Asset"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        form = cls.catalog.get_asset_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_asset(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assets():
+            cls.catalog.delete_asset(obj.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_title(self):
         """Tests get_title"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_copyright_status_known(self):
         """Tests is_copyright_status_known"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_copyright_status_known(), bool))
+        self.assertFalse(self.object.is_copyright_status_known())
 
-    @unittest.skip('unimplemented test')
     def test_is_public_domain(self):
         """Tests is_public_domain"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_public_domain(), bool))
+        self.assertFalse(self.object.is_public_domain())
 
     @unittest.skip('unimplemented test')
     def test_get_copyright(self):
@@ -47,15 +81,17 @@ class TestAsset(unittest.TestCase):
         """Tests can_distribute_compositions"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_source_id(self):
         """Tests get_source_id"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_id_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_source_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_source(self):
         """Tests get_source"""
-        pass
+        # From test_templates/resources.py::Resource::get_avatar_template
+        self.assertRaises(errors.IllegalState,
+                          self.object.get_source)
 
     @unittest.skip('unimplemented test')
     def test_get_provider_link_ids(self):
@@ -72,10 +108,11 @@ class TestAsset(unittest.TestCase):
         """Tests get_created_date"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_published(self):
         """Tests is_published"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_published(), bool))
+        self.assertFalse(self.object.is_published())
 
     @unittest.skip('unimplemented test')
     def test_get_published_date(self):
@@ -354,6 +391,29 @@ class TestAssetList(unittest.TestCase):
 class TestAssetContent(unittest.TestCase):
     """Tests for AssetContent"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        form = cls.catalog.get_asset_form_for_create([])
+        form.display_name = 'Asset'
+        cls.asset = cls.catalog.create_asset(form)
+
+        form = cls.catalog.get_asset_content_form_for_create(cls.asset.ident,
+                                                             [])
+        form.display_name = 'Test asset content'
+        cls.object = cls.catalog.create_asset_content(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assets():
+            cls.catalog.delete_asset(obj.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_asset_id(self):
         """Tests get_asset_id"""
@@ -475,6 +535,24 @@ class TestAssetContentList(unittest.TestCase):
 
 class TestComposition(unittest.TestCase):
     """Tests for Composition"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        form = cls.catalog.get_composition_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_composition(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_compositions():
+            cls.catalog.delete_composition(obj.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_children_ids(self):

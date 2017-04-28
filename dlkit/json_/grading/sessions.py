@@ -950,7 +950,9 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_grade_system(self, grade_system_id, alias_id):
@@ -1325,7 +1327,9 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_grade(self, grade_id, alias_id):
@@ -2423,7 +2427,9 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_grade_entry(self, grade_entry_id, alias_id):
@@ -3447,7 +3453,9 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_gradebook_column(self, gradebook_column_id, alias_id):
@@ -4101,7 +4109,9 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
 
     @utilities.arguments_not_none
     def alias_gradebook(self, gradebook_id, alias_id):

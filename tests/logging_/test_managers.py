@@ -78,6 +78,9 @@ class TestLoggingManager(unittest.TestCase):
     """Tests for LoggingManager"""
 
     # Implemented from resource.ResourceManager
+    class NotificationReceiver(object):
+        pass
+
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', implementation='TEST_SERVICE')
@@ -87,69 +90,93 @@ class TestLoggingManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_logging_session(self):
         """Tests get_logging_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_logging():
+            self.svc_mgr.get_logging_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_logging_session_for_log(self):
         """Tests get_logging_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_logging():
+            self.svc_mgr.get_logging_session_for_log(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_logging_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_lookup_session(self):
         """Tests get_log_entry_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_lookup():
+            self.svc_mgr.get_log_entry_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_lookup_session_for_log(self):
         """Tests get_log_entry_lookup_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_lookup():
+            self.svc_mgr.get_log_entry_lookup_session_for_log(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_lookup_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query_session(self):
         """Tests get_log_entry_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_query():
+            self.svc_mgr.get_log_entry_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query_session_for_log(self):
         """Tests get_log_entry_query_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_query():
+            self.svc_mgr.get_log_entry_query_session_for_log(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_query_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_admin_session(self):
         """Tests get_log_entry_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_admin():
+            self.svc_mgr.get_log_entry_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_admin_session_for_log(self):
         """Tests get_log_entry_admin_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_admin():
+            self.svc_mgr.get_log_entry_admin_session_for_log(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_admin_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_lookup_session(self):
         """Tests get_log_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_lookup():
+            self.svc_mgr.get_log_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_admin_session(self):
         """Tests get_log_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_admin():
+            self.svc_mgr.get_log_admin_session()
 
     def test_get_logging_batch_manager(self):
         """Tests get_logging_batch_manager"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
         if self.svc_mgr.supports_logging_batch():
             self.svc_mgr.get_logging_batch_manager()
 
 
 class TestLoggingProxyManager(unittest.TestCase):
     """Tests for LoggingProxyManager"""
+
+    # Implemented from resource.ResourceProxyManager
+    class NotificationReceiver(object):
+        pass
 
     @classmethod
     def setUpClass(cls):
@@ -160,62 +187,94 @@ class TestLoggingProxyManager(unittest.TestCase):
         catalog = cls.svc_mgr.create_log(create_form)
         cls.catalog_id = catalog.get_id()
         # cls.mgr = Runtime().get_proxy_manager('LOGGING', 'TEST_JSON_1', (3, 0, 0))
+        cls.receiver = cls.NotificationReceiver()
 
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.delete_log(cls.catalog_id)
 
-    @unittest.skip('unimplemented test')
     def test_get_logging_session(self):
         """Tests get_logging_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_logging():
+            self.svc_mgr.get_logging_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_logging_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_logging_session_for_log(self):
         """Tests get_logging_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_logging():
+            self.svc_mgr.get_logging_session_for_log(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_logging_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_lookup_session(self):
         """Tests get_log_entry_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_lookup():
+            self.svc_mgr.get_log_entry_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_lookup_session_for_log(self):
         """Tests get_log_entry_lookup_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_lookup():
+            self.svc_mgr.get_log_entry_lookup_session_for_log(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_lookup_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query_session(self):
         """Tests get_log_entry_query_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_query():
+            self.svc_mgr.get_log_entry_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_query_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query_session_for_log(self):
         """Tests get_log_entry_query_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_query():
+            self.svc_mgr.get_log_entry_query_session_for_log(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_query_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_admin_session(self):
         """Tests get_log_entry_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_admin():
+            self.svc_mgr.get_log_entry_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_admin_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_admin_session_for_log(self):
         """Tests get_log_entry_admin_session_for_log"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        if self.svc_mgr.supports_log_entry_admin():
+            self.svc_mgr.get_log_entry_admin_session_for_log(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_admin_session_for_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_lookup_session(self):
         """Tests get_log_lookup_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_lookup():
+            self.svc_mgr.get_log_lookup_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_lookup_session()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_admin_session(self):
         """Tests get_log_admin_session"""
-        pass
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_admin():
+            self.svc_mgr.get_log_admin_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_log_admin_session()
 
     def test_get_logging_batch_proxy_manager(self):
         """Tests get_logging_batch_proxy_manager"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_batch_proxy_manager_template
         if self.svc_mgr.supports_logging_batch():
             self.svc_mgr.get_logging_batch_proxy_manager()

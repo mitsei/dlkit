@@ -197,14 +197,6 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_gradebook_view(self, session):
         """Sets the underlying gradebook view to match current view"""
         if self._gradebook_view == COMPARATIVE:
@@ -653,8 +645,10 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         self._get_provider_session('gradebook_admin_session').delete_gradebook(*args, **kwargs)
 
     def can_manage_gradebook_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider GradebookAdminSession.can_manage_gradebook_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('gradebook_admin_session').can_manage_gradebook_aliases()
 
     def alias_gradebook(self, *args, **kwargs):
         """Pass through to provider GradebookAdminSession.alias_gradebook"""
@@ -1119,8 +1113,10 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._get_provider_session('grade_system_admin_session').delete_grade_system(*args, **kwargs)
 
     def can_manage_grade_system_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider GradeSystemAdminSession.can_manage_grade_system_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('grade_system_admin_session').can_manage_grade_system_aliases()
 
     def alias_grade_system(self, *args, **kwargs):
         """Pass through to provider GradeSystemAdminSession.alias_grade_system"""
@@ -1183,8 +1179,10 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._get_provider_session('grade_system_admin_session').delete_grade(*args, **kwargs)
 
     def can_manage_grade_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider GradeSystemAdminSession.can_manage_grade_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('grade_system_admin_session').can_manage_grade_aliases()
 
     def alias_grade(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
@@ -1416,8 +1414,10 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._get_provider_session('grade_entry_admin_session').delete_grade_entry(*args, **kwargs)
 
     def can_manage_grade_entry_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider GradeEntryAdminSession.can_manage_grade_entry_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('grade_entry_admin_session').can_manage_grade_entry_aliases()
 
     def alias_grade_entry(self, *args, **kwargs):
         """Pass through to provider GradeEntryAdminSession.alias_grade_entry"""
@@ -1617,8 +1617,10 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         self._get_provider_session('gradebook_column_admin_session').delete_gradebook_column(*args, **kwargs)
 
     def can_manage_gradebook_column_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider GradebookColumnAdminSession.can_manage_gradebook_column_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('gradebook_column_admin_session').can_manage_gradebook_column_aliases()
 
     def alias_gradebook_column(self, *args, **kwargs):
         """Pass through to provider GradebookColumnAdminSession.alias_gradebook_column"""

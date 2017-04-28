@@ -91,14 +91,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         osid.OsidSession.__init__(self, proxy)
         self._sub_package_provider_managers = dict()
 
-    # def _get_view(self, view):
-    #     """Gets the currently set view"""
-    #     if view in self._views:
-    #         return self._views[view]
-    #     else:
-    #         self._views[view] = DEFAULT
-    #         return DEFAULT
-
     def _set_hierarchy_view(self, session):
         """Sets the underlying hierarchy view to match current view"""
         if self._hierarchy_view == COMPARATIVE:
@@ -495,8 +487,10 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def can_manage_hierarchy_aliases(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider HierarchyAdminSession.can_manage_hierarchy_aliases"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return self._get_provider_session('hierarchy_admin_session').can_manage_hierarchy_aliases()
 
     def alias_hierarchy(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.alias_hierarchy"""

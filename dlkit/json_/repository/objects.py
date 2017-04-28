@@ -148,8 +148,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['copyrightStatusKnown']
+        return bool(self._my_map['copyright']['text'])
 
     def is_public_domain(self):
         """Tests if this asset is in the public domain.
@@ -169,7 +168,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['publicDomain']
+        return bool(self._my_map['publicDomain'])
 
     def get_copyright(self):
         """Gets the copyright statement and of this asset which identifies the current copyright holder.
@@ -400,7 +399,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['published']
+        return bool(self._my_map['published'])
 
     def get_published_date(self):
         """Gets the published date of this asset.

@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -18,6 +19,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
+NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
 
 class TestLoggingSession(unittest.TestCase):
@@ -47,10 +50,11 @@ class TestLoggingSession(unittest.TestCase):
         """Tests get_log_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_log(self):
         """Tests get_log"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_log(self):
@@ -102,19 +106,19 @@ class TestLogEntryLookupSession(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
-        for catalog in cls.svc_mgr.get_logs():
-            for obj in catalog.get_log_entries():
-                catalog.delete_log_entry(obj.ident)
-            cls.svc_mgr.delete_log(catalog.ident)
+        for obj in cls.catalog.get_log_entries():
+            cls.catalog.delete_log_entry(obj.ident)
+        cls.svc_mgr.delete_log(cls.catalog.ident)
 
     def test_get_log_id(self):
         """Tests get_log_id"""
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_log(self):
         """Tests get_log"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_read_log(self):
@@ -251,19 +255,19 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_logs():
-            for obj in catalog.get_log_entries():
-                catalog.delete_log_entry(obj.ident)
-            cls.svc_mgr.delete_log(catalog.ident)
+        for obj in cls.catalog.get_log_entries():
+            cls.catalog.delete_log_entry(obj.ident)
+        cls.svc_mgr.delete_log(cls.catalog.ident)
 
     def test_get_log_id(self):
         """Tests get_log_id"""
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_log(self):
         """Tests get_log"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     @unittest.skip('unimplemented test')
     def test_can_search_log_entries(self):
@@ -297,6 +301,7 @@ class TestLogEntryQuerySession(unittest.TestCase):
 class TestLogEntryAdminSession(unittest.TestCase):
     """Tests for LogEntryAdminSession"""
 
+    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -304,6 +309,12 @@ class TestLogEntryAdminSession(unittest.TestCase):
         create_form.display_name = 'Test Log'
         create_form.description = 'Test Log for LogEntryAdminSession tests'
         cls.catalog = cls.svc_mgr.create_log(create_form)
+
+        form = cls.catalog.get_log_entry_form_for_create([])
+        form.display_name = 'new LogEntry'
+        form.description = 'description of LogEntry'
+        form.set_genus_type(NEW_TYPE)
+        cls.osid_object = cls.catalog.create_log_entry(form)
 
     @classmethod
     def tearDownClass(cls):
@@ -315,10 +326,11 @@ class TestLogEntryAdminSession(unittest.TestCase):
         """Tests get_log_id"""
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_log(self):
         """Tests get_log"""
-        pass
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
 
     def test_can_create_log_entries(self):
         """Tests can_create_log_entries"""
@@ -330,50 +342,78 @@ class TestLogEntryAdminSession(unittest.TestCase):
         # From test_templates/resource.py BinAdminSession.can_create_bin_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_log_entry_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_form_for_create(self):
         """Tests get_log_entry_form_for_create"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_create_template
+        form = self.catalog.get_log_entry_form_for_create([])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_log_entry(self):
         """Tests create_log_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.logging_.objects import LogEntry
+        self.assertTrue(isinstance(self.osid_object, LogEntry))
+        self.assertEqual(self.osid_object.display_name.text, 'new LogEntry')
+        self.assertEqual(self.osid_object.description.text, 'description of LogEntry')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
     @unittest.skip('unimplemented test')
     def test_can_update_log_entries(self):
         """Tests can_update_log_entries"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_form_for_update(self):
         """Tests get_log_entry_form_for_update"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
+        form = self.catalog.get_log_entry_form_for_update(self.osid_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_log_entry(self):
         """Tests update_log_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::update_resource_template
+        from dlkit.abstract_osid.logging_.objects import LogEntry
+        form = self.catalog.get_log_entry_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_log_entry(form)
+        self.assertTrue(isinstance(updated_object, LogEntry))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
     @unittest.skip('unimplemented test')
     def test_can_delete_log_entries(self):
         """Tests can_delete_log_entries"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_delete_log_entry(self):
         """Tests delete_log_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
+        form = self.catalog.get_log_entry_form_for_create([])
+        form.display_name = 'new LogEntry'
+        form.description = 'description of LogEntry'
+        form.set_genus_type(NEW_TYPE)
+        osid_object = self.catalog.create_log_entry(form)
+        self.catalog.delete_log_entry(osid_object.ident)
+        with self.assertRaises(errors.NotFound):
+            self.catalog.get_log_entry(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_log_entry_aliases(self):
         """Tests can_manage_log_entry_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.catalog.can_manage_log_entry_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_log_entry(self):
         """Tests alias_log_entry"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
+        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+        self.catalog.alias_log_entry(self.osid_object.ident, alias_id)
+        aliased_object = self.catalog.get_log_entry(alias_id)
+        self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
 
 class TestLogLookupSession(unittest.TestCase):
@@ -527,12 +567,15 @@ class TestLogAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.svc_mgr.get_log(cat_id)
 
-    @unittest.skip('unimplemented test')
     def test_can_manage_log_aliases(self):
         """Tests can_manage_log_aliases"""
-        pass
+        # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
+        self.assertTrue(isinstance(self.svc_mgr.can_manage_log_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_log(self):
         """Tests alias_log"""
-        pass
+        # From test_templates/resource.py BinAdminSession.alias_bin_template
+        alias_id = Id('logging_.Log%3Amy-alias%40ODL.MIT.EDU')
+        self.svc_mgr.alias_log(self.catalog_to_delete.ident, alias_id)
+        aliased_catalog = self.svc_mgr.get_log(alias_id)
+        self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)

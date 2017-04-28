@@ -72,7 +72,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['implicit']
+        return bool(self._my_map['implicit'])
 
     def has_resource(self):
         """Tests if this authorization has a ``Resource``.

@@ -4,8 +4,33 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+
+
 class TestGrade(unittest.TestCase):
     """Tests for Grade"""
+
+    # This really shouldn't be generated...should be GradeBook??
+    @classmethod
+    def setUpClass(cls):
+        cls.object = None
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
@@ -108,6 +133,24 @@ class TestGradeList(unittest.TestCase):
 
 class TestGradeSystem(unittest.TestCase):
     """Tests for GradeSystem"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_grade_system(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_grade_systems():
+            cls.catalog.delete_grade_system(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_is_based_on_grades(self):
@@ -231,6 +274,39 @@ class TestGradeSystemList(unittest.TestCase):
 class TestGradeEntry(unittest.TestCase):
     """Tests for GradeEntry"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'Grade system'
+        cls.grade_system = cls.catalog.create_grade_system(form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'Gradebook Column'
+        form.set_grade_system(cls.grade_system.ident)
+        cls.column = cls.catalog.create_gradebook_column(form)
+
+        form = cls.catalog.get_grade_entry_form_for_create(
+            cls.column.ident,
+            AGENT_ID,
+            [])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_grade_entry(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_grade_entries():
+            cls.catalog.delete_grade_entry(obj.ident)
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.catalog.delete_grade_system(cls.grade_system.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_id(self):
         """Tests get_gradebook_column_id"""
@@ -251,10 +327,11 @@ class TestGradeEntry(unittest.TestCase):
         """Tests get_key_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_derived(self):
         """Tests is_derived"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_derived(), bool))
+        self.assertFalse(self.object.is_derived())
 
     @unittest.skip('unimplemented test')
     def test_overrides_calculated_entry(self):
@@ -271,10 +348,11 @@ class TestGradeEntry(unittest.TestCase):
         """Tests get_overridden_calculated_entry"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_is_ignored_for_calculations(self):
         """Tests is_ignored_for_calculations"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_ignored_for_calculations(), bool))
+        self.assertFalse(self.object.is_ignored_for_calculations())
 
     @unittest.skip('unimplemented test')
     def test_is_graded(self):
@@ -397,6 +475,24 @@ class TestGradeEntryList(unittest.TestCase):
 
 class TestGradebookColumn(unittest.TestCase):
     """Tests for GradebookColumn"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'Test object'
+        cls.object = cls.catalog.create_gradebook_column(form)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):

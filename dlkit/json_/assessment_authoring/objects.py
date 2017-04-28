@@ -713,7 +713,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.is_group_template
-        return self._my_map['cumulative']
+        return bool(self._my_map['cumulative'])
 
     def get_applied_assessment_part_ids(self):
         """Qualifies ``is_cumulative()`` to apply to a specific list of assessment parts.
