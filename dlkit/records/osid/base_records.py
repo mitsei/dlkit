@@ -513,7 +513,7 @@ class ResourceIdRecord(ObjectInitRecord):
     def get_resource_id(self):
         """stub"""
         if self.has_resource_id():
-            return self.my_osid_object._my_map['resourceId']
+            return Id(self.my_osid_object._my_map['resourceId'])
         raise IllegalState()
 
     resource_id = property(fget=get_resource_id)
@@ -533,7 +533,7 @@ class ResourceFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['resourceId'] = \
-            self._resource_id_metadata['default_string_values'][0]
+            self._resource_id_metadata['default_id_values'][0]
 
     def _init_metadata(self):
         """stub"""
@@ -563,8 +563,7 @@ class ResourceFormRecord(osid_records.OsidRecord):
         if self.get_resource_id_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_id(
-                resource_id,
-                self.get_resource_id_metadata()):
+                resource_id):
             raise InvalidArgument()
         self.my_osid_object_form._my_map['resourceId'] = resource_id
 
@@ -584,11 +583,13 @@ class TextRecord(ObjectInitRecord):
 
     def has_text(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['text'])
+        return bool(self.my_osid_object._my_map['text']['text'])
 
     def get_text(self):
         """stub"""
-        return DisplayText(self.my_osid_object._my_map['text'])
+        if self.has_text():
+            return DisplayText(self.my_osid_object._my_map['text'])
+        raise IllegalState('no text available')
 
     text = property(fget=get_text)
 
@@ -607,7 +608,7 @@ class TextFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['text'] = \
-            self._text_metadata['default_string_values'][0]
+            dict(self._text_metadata['default_string_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -619,7 +620,7 @@ class TextFormRecord(osid_records.OsidRecord):
                              'text'),
             'element_label': 'text',
             'instructions': 'enter some text',
-            'required': True,
+            'required': False,
             'read_only': False,
             'linked': False,
             'array': False,
@@ -667,11 +668,13 @@ class IntegerValueRecord(ObjectInitRecord):
 
     def has_integer(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['integerValue'])
+        return bool(self.my_osid_object._my_map['integerValue'] is not None)
 
     def get_integer(self):
         """stub"""
-        return int(self.my_osid_object._my_map['integerValue'])
+        if self.has_integer():
+            return int(self.my_osid_object._my_map['integerValue'])
+        raise IllegalState('integerValue')
 
     integer = property(fget=get_integer)
 
@@ -727,7 +730,7 @@ class IntegerValueFormRecord(osid_records.OsidRecord):
                 value,
                 self.get_integer_value_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['integerValue'] = str(value)
+        self.my_osid_object_form._my_map['integerValue'] = int(value)
 
     def clear_integer_value(self):
         """stub"""
