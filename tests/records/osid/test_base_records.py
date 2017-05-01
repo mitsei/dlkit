@@ -403,7 +403,7 @@ class TestIntegerValueFormRecord(unittest.TestCase):
         self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
                          None)
 
-    def test_can_get_text_metadata(self):
+    def test_can_get_integer_metadata(self):
         form = IntegerValueFormRecord(self.osid_object_form)
         self.assertTrue(isinstance(form.get_integer_value_metadata(), Metadata))
 
@@ -447,3 +447,412 @@ class TestIntegerValueRecord(unittest.TestCase):
                                  osid_object_map=obj_map)
         integer_object = IntegerValueRecord(osid_object)
         self.assertTrue(self.integer_object.has_integer())
+
+
+class TestDecimalValueFormRecord(unittest.TestCase):
+    """Tests for DecimalValueFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_decimal_value(self):
+        """Tests set_decimal_value"""
+        form = DecimalValueFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         None)
+        form.set_decimal_value(-1.1)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         -1.1)
+
+    def test_cannot_send_none(self):
+        form = DecimalValueFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_decimal_value()
+
+    def test_cannot_send_non_decimal(self):
+        form = DecimalValueFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_decimal_value(1)
+
+    def test_can_update_decimal_value(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValue'] = 29.25
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = DecimalValueFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         29.25)
+        form.set_decimal_value(21.3)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         21.3)
+
+    def test_can_clear_decimal_value(self):
+        form = DecimalValueFormRecord(self.osid_object_form)
+        form.set_decimal_value(23.4)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         23.4)
+        form.clear_decimal_value()
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+                         None)
+
+    def test_can_get_decimal_metadata(self):
+        form = DecimalValueFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_decimal_value_metadata(), Metadata))
+
+
+class TestDecimalValueRecord(unittest.TestCase):
+    """Tests for DecimalValueRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValue'] = 42.12
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.decimal_object = DecimalValueRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_decimal_value(self):
+        self.assertTrue(isinstance(self.decimal_object.decimal, float))
+        self.assertEqual(self.decimal_object.decimal,
+                         42.12)
+
+    def test_can_check_decimal(self):
+        self.assertTrue(self.decimal_object.has_decimal())
+
+    def test_getting_decimal_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValue'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        decimal_object = DecimalValueRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            decimal_object.decimal
+
+    def test_zero_returns_as_valid_decimal(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValue'] = 0.0
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        decimal_object = DecimalValueRecord(osid_object)
+        self.assertTrue(self.decimal_object.has_decimal())
+
+
+class TestTextsFormRecord(unittest.TestCase):
+    """Tests for TextsFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_text_with_string(self):
+        """Tests set_text"""
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
+        form.add_text('bar', label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bar')
+
+    def test_can_set_text_with_display_text(self):
+        """Tests set_text"""
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
+        display_text = DisplayText(display_text_map={
+            'text': 'bar',
+            'languageTypeId': '639-2%3AHIN%40ISO',
+            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+            'scriptTypeId': '15924%3ADEVA%40ISO'
+        })
+        form.add_text(display_text, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bar')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['languageTypeId'],
+                         str(display_text.language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['scriptTypeId'],
+                         str(display_text.script_type))
+
+    def test_label_generated_if_not_provided(self):
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['texts'], {})
+        form.add_text('bar')
+        self.assertEqual(len(form.my_osid_object_form._my_map['texts'].keys()), 1)
+        label = form.my_osid_object_form._my_map['texts'].keys()[0]
+        self.assertEqual(len(label), 24)
+        self.assertEqual(form.my_osid_object_form._my_map['texts'][label]['text'],
+                         'bar')
+
+    def test_can_add_multiple_labels(self):
+        form = TextsFormRecord(self.osid_object_form)
+        form.add_text('bink', label='foo')
+        form.add_text('zing', label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bink')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+                         'zing')
+
+    def test_cannot_add_label_with_period(self):
+        form = TextsFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_text('boo', label='1.23')
+
+    def test_cannot_send_none(self):
+        form = TextsFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_text(None, label='foo')
+
+    def test_cannot_send_non_string_non_display_text(self):
+        form = TextsFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_text(1, label='foo')
+
+    def test_can_update_text(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['texts'] = {
+            'foo': {
+                'text': 'bar',
+                'languageTypeId': '639-2%3AENG%40ISO',
+                'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+                'scriptTypeId': '15924%3ALATN%40ISO'
+            }
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = TextsFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bar')
+        form.add_text('bim', label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bim')
+
+    def test_can_clear_texts(self):
+        form = TextsFormRecord(self.osid_object_form)
+        form.add_text('bink', label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bink')
+        form.clear_texts()
+        self.assertEqual(form.my_osid_object_form._my_map['texts'], {})
+
+    def test_can_clear_text(self):
+        form = TextsFormRecord(self.osid_object_form)
+        form.add_text('bink', label='foo')
+        form.add_text('zing', label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+                         'bink')
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+                         'zing')
+        form.clear_text('foo')
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
+        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+                         'zing')
+
+    def test_clearing_non_existent_label_throws_exception(self):
+        form = TextsFormRecord(self.osid_object_form)
+        form.add_text('bink', label='foo')
+        with self.assertRaises(errors.NotFound):
+            form.clear_text('zoom')
+
+    def test_can_get_texts_metadata(self):
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_texts_metadata(), Metadata))
+
+    def test_can_get_text_metadata(self):
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_text_metadata(), Metadata))
+
+    def test_can_get_label_metadata(self):
+        form = TextsFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+
+
+class TestTextsRecord(unittest.TestCase):
+    """Tests for TextsRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['texts'] = {
+            'foo': {
+                'text': 'bar',
+                'languageTypeId': '639-2%3AENG%40ISO',
+                'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+                'scriptTypeId': '15924%3ALATN%40ISO'
+            }
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.texts_object = TextsRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_texts_map(self):
+        texts_map = self.texts_object.texts_map
+        self.assertTrue(isinstance(texts_map, dict))
+        self.assertEqual(texts_map, {
+            'foo': {
+                'text': 'bar',
+                'languageTypeId': '639-2%3AENG%40ISO',
+                'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+                'scriptTypeId': '15924%3ALATN%40ISO'
+            }
+        })
+
+    def test_can_get_text_value(self):
+        self.assertTrue(isinstance(self.texts_object.get_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.texts_object.get_text('foo').text,
+                         'bar')
+
+    def test_can_check_texts(self):
+        self.assertTrue(self.texts_object.has_texts())
+
+    def test_can_check_text(self):
+        self.assertTrue(self.texts_object.has_text('foo'))
+
+    def test_getting_text_map_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['texts'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        texts_object = TextsRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            texts_object.texts_map
+
+    def test_getting_non_existent_label_throws_exception(self):
+        with self.assertRaises(errors.IllegalState):
+            self.texts_object.get_text('bim')
+
+
+class TestIntegerValuesFormRecord(unittest.TestCase):
+    """Tests for IntegerValuesFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_integer_value(self):
+        """Tests set_integer_value"""
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['integerValues'])
+        form.add_integer_value(0, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         0)
+
+    def test_label_generated_if_not_provided(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues'], {})
+        form.add_integer_value(23)
+        self.assertEqual(len(form.my_osid_object_form._my_map['integerValues'].keys()), 1)
+        label = form.my_osid_object_form._my_map['integerValues'].keys()[0]
+        self.assertEqual(len(label), 24)
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues'][label],
+                         23)
+
+    def test_can_add_multiple_labels(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        form.add_integer_value(123, label='foo')
+        form.add_integer_value(321, label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         123)
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+                         321)
+
+    def test_cannot_add_label_with_period(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_integer_value('boo', label='1.23')
+
+    def test_cannot_send_none(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_integer_value(None, label='foo')
+
+    def test_cannot_send_non_integer(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_integer_value(1.1, label='foo')
+
+    def test_can_update_integer(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['integerValues'] = {
+            'foo': 0
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = IntegerValuesFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         0)
+        form.add_integer_value(-1, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         -1)
+
+    def test_can_clear_integer_values(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        form.add_integer_value(0, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         0)
+        form.clear_integer_values()
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues'], {})
+
+    def test_can_clear_integer_value(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        form.add_integer_value(0, label='foo')
+        form.add_integer_value(23, label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+                         0)
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+                         23)
+        form.clear_integer_value('foo')
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['integerValues'])
+        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+                         23)
+
+    def test_clearing_non_existent_label_throws_exception(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        form.add_integer_value(123, label='foo')
+        with self.assertRaises(errors.NotFound):
+            form.clear_integer_value('zoom')
+
+    def test_can_get_integer_values_metadata(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_integer_values_metadata(), Metadata))
+
+    def test_can_get_integer_value_metadata(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_integer_value_metadata(), Metadata))
+
+    def test_can_get_label_metadata(self):
+        form = IntegerValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
