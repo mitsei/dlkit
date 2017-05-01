@@ -856,3 +856,215 @@ class TestIntegerValuesFormRecord(unittest.TestCase):
     def test_can_get_label_metadata(self):
         form = IntegerValuesFormRecord(self.osid_object_form)
         self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+
+
+class TestIntegerValuesRecord(unittest.TestCase):
+    """Tests for IntegerValuesRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['integerValues'] = {
+            'foo': 123
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.integer_values_object = IntegerValuesRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_integer_values_map(self):
+        integer_values_map = self.integer_values_object.integer_values_map
+        self.assertTrue(isinstance(integer_values_map, dict))
+        self.assertEqual(integer_values_map, {
+            'foo': 123
+        })
+
+    def test_can_get_integer_value(self):
+        self.assertTrue(isinstance(self.integer_values_object.get_integer_value('foo'),
+                                   int))
+        self.assertEqual(self.integer_values_object.get_integer_value('foo'),
+                         123)
+
+    def test_can_check_integer_values(self):
+        self.assertTrue(self.integer_values_object.has_integer_values())
+
+    def test_can_check_integer_value(self):
+        self.assertTrue(self.integer_values_object.has_integer_value('foo'))
+
+    def test_getting_integer_values_map_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['integerValues'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        integer_values_object = IntegerValuesRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            integer_values_object.integer_values_map
+
+    def test_getting_non_existent_label_throws_exception(self):
+        with self.assertRaises(errors.IllegalState):
+            self.integer_values_object.get_integer_value('bim')
+
+
+class TestDecimalValuesFormRecord(unittest.TestCase):
+    """Tests for DecimalValuesFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_decimal_value(self):
+        """Tests set_decimal_value"""
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['decimalValues'])
+        form.add_decimal_value(0.9, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         0.9)
+
+    def test_label_generated_if_not_provided(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'], {})
+        form.add_decimal_value(2.3)
+        self.assertEqual(len(form.my_osid_object_form._my_map['decimalValues'].keys()), 1)
+        label = form.my_osid_object_form._my_map['decimalValues'].keys()[0]
+        self.assertEqual(len(label), 24)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'][label],
+                         2.3)
+
+    def test_can_add_multiple_labels(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        form.add_decimal_value(1.23, label='foo')
+        form.add_decimal_value(3.21, label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         1.23)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+                         3.21)
+
+    def test_cannot_add_label_with_period(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_decimal_value(1.1, label='1.23')
+
+    def test_cannot_send_none(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_decimal_value(None, label='foo')
+
+    def test_cannot_send_non_decimal(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_decimal_value(1, label='foo')
+
+    def test_can_update_decimal(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValues'] = {
+            'foo': 0.3
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = DecimalValuesFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         0.3)
+        form.add_decimal_value(-1.5, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         -1.5)
+
+    def test_can_clear_decimal_values(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        form.add_decimal_value(0.1, label='foo')
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         0.1)
+        form.clear_decimal_values()
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'], {})
+
+    def test_can_clear_decimal_value(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        form.add_decimal_value(1.0, label='foo')
+        form.add_decimal_value(-2.3, label='bonk')
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+                         1.0)
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+                         -2.3)
+        form.clear_decimal_value('foo')
+        self.assertNotIn('foo', form.my_osid_object_form._my_map['decimalValues'])
+        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+                         -2.3)
+
+    def test_clearing_non_existent_label_throws_exception(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        form.add_decimal_value(1.23, label='foo')
+        with self.assertRaises(errors.NotFound):
+            form.clear_decimal_value('zoom')
+
+    def test_can_get_decimal_values_metadata(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_decimal_values_metadata(), Metadata))
+
+    def test_can_get_decimal_value_metadata(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_decimal_value_metadata(), Metadata))
+
+    def test_can_get_label_metadata(self):
+        form = DecimalValuesFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+
+
+class TestDecimalValuesRecord(unittest.TestCase):
+    """Tests for DecimalValuesRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValues'] = {
+            'foo': 123.45
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.decimal_values_object = DecimalValuesRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_decimal_values_map(self):
+        decimal_values_map = self.decimal_values_object.decimal_values_map
+        self.assertTrue(isinstance(decimal_values_map, dict))
+        self.assertEqual(decimal_values_map, {
+            'foo': 123.45
+        })
+
+    def test_can_get_decimal_value(self):
+        self.assertTrue(isinstance(self.decimal_values_object.get_decimal_value('foo'),
+                                   float))
+        self.assertEqual(self.decimal_values_object.get_decimal_value('foo'),
+                         123.45)
+
+    def test_can_check_integer_values(self):
+        self.assertTrue(self.decimal_values_object.has_decimal_values())
+
+    def test_can_check_integer_value(self):
+        self.assertTrue(self.decimal_values_object.has_decimal_value('foo'))
+
+    def test_getting_integer_values_map_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['decimalValues'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        decimal_values_object = DecimalValuesRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            decimal_values_object.decimal_values_map
+
+    def test_getting_non_existent_label_throws_exception(self):
+        with self.assertRaises(errors.IllegalState):
+            self.decimal_values_object.get_decimal_value('bim')
