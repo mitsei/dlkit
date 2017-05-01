@@ -68,3 +68,5 @@ Hand-written modules are:
   * handcar
   * records
   * tests/functional
+  * tests/learning/handcar_tests
+  * tests/records
