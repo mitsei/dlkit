@@ -1068,3 +1068,252 @@ class TestDecimalValuesRecord(unittest.TestCase):
     def test_getting_non_existent_label_throws_exception(self):
         with self.assertRaises(errors.IllegalState):
             self.decimal_values_object.get_decimal_value('bim')
+
+
+class TestedXBaseFormRecord(unittest.TestCase):
+    """Tests for edXBaseFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_cannot_send_none_to_attempts(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_attempts(None)
+
+    def test_cannot_send_non_integer_to_attempts(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_attempts(1.0)
+
+    def test_can_update_attempts(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['attempts'] = 3
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = edXBaseFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+                         3)
+        form.add_attempts(1)
+        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+                         1)
+
+    def test_cannot_send_none_to_weight(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_weight(None)
+
+    def test_cannot_send_non_float_to_weight(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_weight(1)
+
+    def test_can_update_weight(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['weight'] = 1.23
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = edXBaseFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+                         1.23)
+        form.add_weight(0.15)
+        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+                         0.15)
+
+    def test_cannot_send_none_to_showanswer(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_showanswer(None)
+
+    def test_cannot_send_non_string_to_showanswer(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_showanswer(1)
+
+    def test_can_update_showanswer(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['showanswer'] = 'always'
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = edXBaseFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+                         'always')
+        form.add_showanswer('sometimes')
+        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+                         'sometimes')
+
+    def test_cannot_send_none_for_markdown(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_markdown(None)
+
+    def test_cannot_send_non_string_to_markdown(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_markdown(1)
+
+    def test_can_update_markdown(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['markdown'] = '<here />'
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = edXBaseFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+                         '<here />')
+        form.add_markdown('<there />')
+        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+                         '<there />')
+
+    def test_can_clear_attempts(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        form.add_attempts(5)
+        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+                         5)
+        form.clear_attempts()
+        self.assertEqual(form.my_osid_object_form._my_map['attempts'], 0)
+
+    def test_can_clear_weight(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        form.add_weight(0.2)
+        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+                         0.2)
+        form.clear_weight()
+        self.assertEqual(form.my_osid_object_form._my_map['weight'], 1.0)
+
+    def test_can_clear_showanswer(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        form.add_showanswer('always')
+        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+                         'always')
+        form.clear_showanswer()
+        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+                         'closed')
+
+    def test_can_clear_markdown(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        form.add_markdown('# Title')
+        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+                         '# Title')
+        form.clear_markdown()
+        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+                         '')
+
+    def test_can_get_attempts_metadata(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_attempts_metadata(), Metadata))
+
+    def test_can_get_weight_metadata(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_weight_metadata(), Metadata))
+
+    def test_can_get_showanwer_metadata(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_showanswer_metadata(), Metadata))
+
+    def test_can_get_markdown_metadata(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_markdown_metadata(), Metadata))
+
+
+class TestedXBaseRecord(unittest.TestCase):
+    """Tests for edXBaseRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['attempts'] = 2
+        obj_map['weight'] = 0.75
+        obj_map['showanswer'] = 'always'
+        obj_map['markdown'] = '<here />'
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.edx_base_object = edXBaseRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_attempts(self):
+        self.assertTrue(isinstance(self.edx_base_object.attempts, int))
+        self.assertEqual(self.edx_base_object.attempts, 2)
+
+    def test_can_get_weight(self):
+        self.assertTrue(isinstance(self.edx_base_object.weight, float))
+        self.assertEqual(self.edx_base_object.weight, 0.75)
+
+    def test_can_get_showanswer(self):
+        self.assertTrue(isinstance(self.edx_base_object.showanswer,
+                                   basestring))
+        self.assertEqual(self.edx_base_object.showanswer, 'always')
+
+    def test_can_get_markdown(self):
+        self.assertTrue(isinstance(self.edx_base_object.markdown,
+                                   basestring))
+        self.assertEqual(self.edx_base_object.markdown, '<here />')
+
+    def test_can_check_attempts(self):
+        self.assertTrue(self.edx_base_object.has_attempts())
+
+    def test_can_check_weight(self):
+        self.assertTrue(self.edx_base_object.has_weight())
+
+    def test_can_check_showanswer(self):
+        self.assertTrue(self.edx_base_object.has_showanswer())
+
+    def test_can_check_markdown(self):
+        self.assertTrue(self.edx_base_object.has_markdown())
+
+    def test_getting_attempts_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['attempts'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        edx_base_object = edXBaseRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            edx_base_object.attempts
+
+    def test_getting_weight_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['weight'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        edx_base_object = edXBaseRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            edx_base_object.weight
+
+    def test_getting_showanswer_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['showanswer'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        edx_base_object = edXBaseRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            edx_base_object.showanswer
+
+    def test_getting_markdown_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['markdown'] = ''
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        edx_base_object = edXBaseRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            edx_base_object.markdown

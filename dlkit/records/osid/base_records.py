@@ -1299,7 +1299,7 @@ class edXBaseRecord(ObjectInitRecord):
 
     def has_markdown(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['markdown'] is not None)
+        return bool(self.my_osid_object._my_map['markdown'] != '')
 
     def get_markdown(self):
         """stub"""
@@ -1328,15 +1328,15 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['attempts'] = \
-            self._attempts_metadata['default_object_values'][0]
+            int(self._attempts_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['weight'] = \
-            self._weight_metadata['default_object_values'][0]
+            float(self._weight_metadata['default_object_values'][0])
         # self.my_osid_object_form._my_map['rerandomize'] = \
         #     self._rerandomize_metadata['default_object_values'][0]
         self.my_osid_object_form._my_map['showanswer'] = \
-            self._showanswer_metadata['default_object_values'][0]
+            str(self._showanswer_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['markdown'] = \
-            self._markdown_metadata['default_object_values'][0]
+            str(self._markdown_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1446,6 +1446,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def add_attempts(self, attempts):
         """stub"""
+        if attempts is None:
+            raise NullArgument('attempts cannot be None')
         if not self.my_osid_object_form._is_valid_integer(
                 attempts, self.get_attempts_metadata()):
             raise InvalidArgument('attempts')
@@ -1454,10 +1456,12 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_attempts(self):
         """stub"""
         self.my_osid_object_form._my_map['attempts'] = \
-            self._attempts_metadata['default_object_values'][0]
+            int(self._attempts_metadata['default_object_values'][0])
 
     def add_weight(self, weight):
         """stub"""
+        if weight is None:
+            raise NullArgument('weight cannot be None')
         if not self.my_osid_object_form._is_valid_decimal(
                 weight, self.get_weight_metadata()):
             raise InvalidArgument('weight')
@@ -1466,7 +1470,7 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_weight(self):
         """stub"""
         self.my_osid_object_form._my_map['weight'] = \
-            self._weight_metadata['default_object_values'][0]
+            float(self._weight_metadata['default_object_values'][0])
 
     # def add_rerandomize(self, rerandomize):
     #     """stub"""
@@ -1482,6 +1486,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def add_showanswer(self, showanswer):
         """stub"""
+        if showanswer is None:
+            raise NullArgument('showanswer cannot be None')
         if not self.my_osid_object_form._is_valid_string(
                 showanswer, self.get_showanswer_metadata()):
             raise InvalidArgument('showanswer')
@@ -1490,10 +1496,12 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_showanswer(self):
         """stub"""
         self.my_osid_object_form._my_map['showanswer'] = \
-            self._showanswer_metadata['default_object_values'][0]
+            str(self._showanswer_metadata['default_object_values'][0])
 
     def add_markdown(self, markdown):
         """stub"""
+        if markdown is None:
+            raise NullArgument('markdown cannot be None')
         if not self.my_osid_object_form._is_valid_string(
                 markdown, self.get_markdown_metadata()):
             raise InvalidArgument('markdown')
@@ -1502,7 +1510,7 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_markdown(self):
         """stub"""
         self.my_osid_object_form._my_map['markdown'] = \
-            self._markdown_metadata['default_object_values'][0]
+            str(self._markdown_metadata['default_object_values'][0])
 
 
 class TimeValueRecord(ObjectInitRecord):
