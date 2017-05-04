@@ -7,7 +7,7 @@ from copy import deepcopy
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.type.primitives import Type
-from dlkit.primordium.calendaring.primitives import DateTime
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.records.osid.base_records import *
@@ -1083,6 +1083,34 @@ class TestedXBaseFormRecord(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
+    def test_can_set_attempts(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertNotEqual(2, form.my_osid_object_form._my_map['attempts'])
+        form.add_attempts(2)
+        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+                         2)
+
+    def test_can_set_weight(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertNotEqual(2.1, form.my_osid_object_form._my_map['weight'])
+        form.add_weight(2.1)
+        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+                         2.1)
+
+    def test_can_set_showanswer(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertNotEqual('never', form.my_osid_object_form._my_map['showanswer'])
+        form.add_showanswer('never')
+        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+                         'never')
+
+    def test_can_set_markdown(self):
+        form = edXBaseFormRecord(self.osid_object_form)
+        self.assertNotEqual('<what />', form.my_osid_object_form._my_map['markdown'])
+        form.add_markdown('<what />')
+        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+                         '<what />')
+
     def test_cannot_send_none_to_attempts(self):
         form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
@@ -1317,3 +1345,150 @@ class TestedXBaseRecord(unittest.TestCase):
         edx_base_object = edXBaseRecord(osid_object)
         with self.assertRaises(errors.IllegalState):
             edx_base_object.markdown
+
+
+class TestTimeValueFormRecord(unittest.TestCase):
+    """Tests for TimeValueFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_time_value_with_string(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        self.assertNotEqual({
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        }, form.my_osid_object_form._my_map['timeValue'])
+        form.set_time_value('05:05:05')
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        })
+
+    def test_can_set_time_value_with_duration(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        test_duration = Duration(seconds=5 * 60 * 60 + 5 * 60 + 5)
+        self.assertNotEqual({
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        }, form.my_osid_object_form._my_map['timeValue'])
+        form.set_time_value(test_duration)
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        })
+
+    def test_cannot_send_none_to_time_value(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_time_value(None)
+
+    def test_cannot_send_non_duration_non_string_to_time_value(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_time_value(1)
+
+    def test_cannot_send_incorrectly_formatted_time_string(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_time_value('ninety')
+
+    def test_can_update_time_value(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['timeValue'] = {
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+
+        form = TimeValueFormRecord(osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 5,
+            'minutes': 5,
+            'seconds': 5
+        })
+        form.set_time_value('01:02:03')
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 1,
+            'minutes': 2,
+            'seconds': 3
+        })
+
+    def test_can_clear_time_value(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        form.set_time_value('01:02:03')
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 1,
+            'minutes': 2,
+            'seconds': 3
+        })
+        form.clear_time_value()
+        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+            'hours': 0,
+            'minutes': 0,
+            'seconds': 0
+        })
+
+    def test_can_get_time_value_metadata(self):
+        form = TimeValueFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_time_value_metadata(), Metadata))
+
+
+class TestTimeValueRecord(unittest.TestCase):
+    """Tests for TimeValueRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['timeValue'] = {
+            'hours': 1,
+            'minutes': 2,
+            'seconds': 3
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.time_value_object = TimeValueRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_time_value(self):
+        self.assertTrue(isinstance(self.time_value_object.time, dict))
+        self.assertEqual(self.time_value_object.time, {
+            'hours': 1,
+            'minutes': 2,
+            'seconds': 3
+        })
+
+    def test_can_check_time_value(self):
+        self.assertTrue(self.time_value_object.has_time())
+
+    def test_getting_time_value_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['timeValue'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        time_value_object = TimeValueRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            time_value_object.time
+
+    def test_can_get_time_string(self):
+        self.assertTrue(isinstance(self.time_value_object.time_str,
+                                   basestring))
+        self.assertEqual(self.time_value_object.time_str, '01:02:03')

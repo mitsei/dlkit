@@ -1518,11 +1518,13 @@ class TimeValueRecord(ObjectInitRecord):
 
     def has_time(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['timeValue'])
+        return bool(self.my_osid_object._my_map['timeValue'] is not None)
 
     def get_time(self):
         """stub"""
-        return self.my_osid_object._my_map['timeValue']
+        if self.has_time():
+            return self.my_osid_object._my_map['timeValue']
+        raise IllegalState()
 
     def get_time_as_string(self):
         """stub"""
@@ -1550,7 +1552,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['timeValue'] = \
-            self._time_value_metadata['default_time_values'][0]
+            dict(self._time_value_metadata['default_duration_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1561,12 +1563,12 @@ class TimeValueFormRecord(osid_records.OsidRecord):
                              self.my_osid_object_form._namespace,
                              'time_value'),
             'element_label': 'Time Value',
-            'instructions': 'enter a time value / duration',
+            'instructions': 'enter a time duration string / duration',
             'required': False,
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_time_values': [{
+            'default_duration_values': [{
                 'hours': 0,
                 'minutes': 0,
                 'seconds': 0
@@ -1582,9 +1584,9 @@ class TimeValueFormRecord(osid_records.OsidRecord):
         min_, sec = divmod(time_secs, 60)
         hour, min_ = divmod(min_, 60)
         results = {
-            'hours': '%02d' % hour,
-            'minutes': '%02d' % min_,
-            'seconds': '%02d' % sec
+            'hours': hour,
+            'minutes': min_,
+            'seconds': sec
         }
 
         return results
@@ -1620,7 +1622,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
             # assume something like hh:mm:ss, convert to dict
             time = self._convert_string_to_hhmmss(value)
         else:
-            raise InvalidArgument()
+            raise InvalidArgument('value must be a string or duration')
         self.my_osid_object_form._my_map['timeValue'] = {
             'hours': time['hours'],
             'minutes': time['minutes'],
@@ -1633,7 +1635,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
                 self.get_time_value_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['timeValue'] = \
-            self.get_time_value_metadata().get_default_time_values()[0]
+            dict(self.get_time_value_metadata().get_default_duration_values()[0])
 
     time_value = property(fset=set_time_value, fdel=clear_time_value)
 
