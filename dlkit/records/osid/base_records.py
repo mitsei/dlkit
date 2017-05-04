@@ -22,6 +22,7 @@ from dlkit.primordium.type.primitives import Type
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.mapping.color_primitives import RGBColorCoordinate
+from dlkit.primordium.transport.objects import DataInputStream
 
 if getattr(sys, 'frozen', False):
     ABS_PATH = os.path.dirname(sys.executable)
@@ -129,7 +130,7 @@ class AssetUtils(object):
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id,
                 self.my_osid_object_form._proxy)
-        except TypeError:  # not a ProxyManager, so don't pass it the proxy
+        except (TypeError, NullArgument):  # not a ProxyManager, so don't pass it the proxy
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id)
         afc = aas.get_asset_form_for_create([])
@@ -1866,7 +1867,7 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['fileIds'] = \
-            self._files_metadata['default_object_values'][0]
+            dict(self._files_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1925,6 +1926,14 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
 
     def add_asset(self, asset_id, asset_content_id=None, label=None, asset_content_type=None):
         """stub"""
+        if asset_id is None:
+            raise NullArgument('asset_id cannot be None')
+        if not isinstance(asset_id, Id):
+            raise InvalidArgument('asset_id must be an Id instance')
+        if asset_content_id is not None and not isinstance(asset_content_id, Id):
+            raise InvalidArgument('asset_content_id must be an Id instance')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be a Type instance')
         if label is None:
             label = self._label_metadata['default_string_values'][0]
         else:
@@ -1953,6 +1962,21 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
                  asset_name='',
                  asset_description=''):
         """stub"""
+        if asset_data is None:
+            raise NullArgument('asset_data cannot be None')
+        if not isinstance(asset_data, DataInputStream):
+            raise InvalidArgument('asset_data must be instance of DataInputStream')
+        if asset_type is not None and not isinstance(asset_type, Type):
+            raise InvalidArgument('asset_type must be an instance of Type')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be an instance of Type')
+        if asset_content_record_types is not None and not isinstance(asset_content_record_types, list):
+            raise InvalidArgument('asset_content_record_types must be an instance of list')
+        if asset_content_record_types is not None:
+            for record_type in asset_content_record_types:
+                if not isinstance(record_type, Type):
+                    raise InvalidArgument('non-Type present in asset_content_record_types')
+
         if label is None:
             label = self._label_metadata['default_string_values'][0]
         else:
@@ -1982,14 +2006,22 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
         elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
             catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
         try:
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         except AttributeError:
             # for update forms
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
 
         if label not in self.my_osid_object_form._my_map['fileIds']:
             raise NotFound()
@@ -2010,18 +2042,26 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
         elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
             catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
         try:
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         except AttributeError:
             # for update forms
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         for label, asset_data in self.my_osid_object_form._my_map['fileIds'].iteritems():
             aas.delete_asset(Id(asset_data['assetId']))
         self.my_osid_object_form._my_map['fileIds'] = \
-            self._files_metadata['default_object_values'][0]
+            dict(self._files_metadata['default_object_values'][0])
 
 
 class FileRecord(ObjectInitRecord, AssetUtils):
