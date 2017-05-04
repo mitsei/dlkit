@@ -815,6 +815,8 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         self._locale_map['scriptTypeId'] = str(locale.get_script_type())
         if runtime is not None:
             self._set_authority(runtime=runtime)
+        else:
+            self._authority = 'ODL.MIT.EDU'
         if 'catalog_id' in kwargs:
             self._catalog_id = kwargs['catalog_id']
 
