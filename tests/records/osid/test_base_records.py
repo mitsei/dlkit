@@ -50,6 +50,16 @@ TEST_OBJECT_MAP = {
 }
 
 
+def get_assessment_manager():
+    request = SimpleRequest(username='tester')
+    condition = PROXY_SESSION.get_proxy_condition()
+    condition.set_http_request(request)
+    proxy = PROXY_SESSION.get_proxy(condition)
+    return RUNTIME.get_service_manager('ASSESSMENT',
+                                       implementation='TEST_SERVICE',
+                                       proxy=proxy)
+
+
 def get_repository_manager():
     request = SimpleRequest(username='tester')
     condition = PROXY_SESSION.get_proxy_condition()
@@ -1812,3 +1822,105 @@ class TestFilesFormRecord(unittest.TestCase):
     def test_can_get_label_metadata(self):
         form = FilesFormRecord(self.osid_object_form)
         self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+
+
+# class TestFilesRecord(unittest.TestCase):
+#     """Tests for FilesRecord"""
+#
+#     @classmethod
+#     def setUpClass(cls):
+#         mgr = get_repository_manager()
+#         form = mgr.get_repository_form_for_create([])
+#         form.display_name = 'Test repository'
+#         cls.repo = mgr.create_repository(form)
+#
+#         form = cls.repo.get_asset_form_for_create([])
+#         form.display_name = 'Test asset'
+#         cls.asset = cls.repo.create_asset(form)
+#
+#         cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+#         form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
+#         form.display_name = 'Test asset content'
+#         form.set_data(DataInputStream(cls.test_image))
+#         cls.repo.create_asset_content(form)
+#         cls.asset = cls.repo.get_asset(cls.asset.ident)
+#
+#         obj_map = deepcopy(TEST_OBJECT_MAP)
+#         obj_map['fileIds'] = {
+#             'foo': {
+#                 'assetId': str(cls.asset.ident),
+#                 'assetContentId': str(cls.asset.get_asset_contents().next().ident),
+#                 'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
+#             }
+#         }
+#         obj_map['assignedBankIds'] = [str(cls.repo.ident)]
+#
+#         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+#                                      osid_object_map=obj_map,
+#                                      runtime=mgr._runtime)
+#
+#         cls.item = FilesRecord(cls.osid_object)
+#
+#     @classmethod
+#     def tearDownClass(cls):
+#         cls.test_image.close()
+#         # Delete the asset
+#         cls.repo.delete_asset(cls.asset.ident)
+#         # Delete the test repository (used for file creation)
+#         mgr = get_repository_manager()
+#         mgr.delete_repository(cls.repo.ident)
+#
+#         # Delete the test bank
+#         mgr = get_assessment_manager()
+#         mgr.delete_bank(cls.repo.ident)
+#
+#     def test_can_get_files_map(self):
+#         self.test_image.seek(0)
+#         self.assertTrue(isinstance(self.item.files_map, dict))
+#         self.assertEqual(self.item.files_map, {
+#             'foo': base64.b64encode(self.test_image.read())
+#         })
+#
+#     def test_can_check_files(self):
+#         self.assertTrue(self.item.has_time())
+#
+#     def test_getting_files_map_has_none_throws_exception(self):
+#         obj_map = deepcopy(TEST_OBJECT_MAP)
+#         obj_map['timeValue'] = None
+#         osid_object = OsidObject(object_name='TEST_OBJECT',
+#                                  osid_object_map=obj_map)
+#         files_object = FilesRecord(osid_object)
+#         with self.assertRaises(errors.IllegalState):
+#             files_object.time
+#
+#     def test_can_get_files_url_map(self):
+#         self.assertTrue(isinstance(self.files_object.time_str,
+#                                    basestring))
+#         self.assertEqual(self.files_object.time_str, '01:02:03')
+#
+#     def test_can_get_files(self):
+#         self.fail('finish writing the test')
+#
+#     def test_can_check_if_has_file(self):
+#         self.fail('finish writing hte test')
+#
+#     def test_can_get_asset_ids(self):
+#         self.fail('finish writing hte test')
+#
+#     def test_can_get_asset_ids_map(self):
+#         self.fail("finish writing the test")
+#
+#     def test_can_get_asset_id_by_label(self):
+#         self.fail("finish writing hte test")
+#
+#     def test_can_get_file_by_label(self):
+#         self.fail("finish writing the test")
+#
+#     def test_can_get_url_by_label(self):
+#         self.fail("finish writing the test")
+#
+#     def test_can_delete(self):
+#         self.fail('finish writing hte test')
+#
+#     def test_object_map_updated_with_transcript(self):
+#         self.fail('finish writing the test')

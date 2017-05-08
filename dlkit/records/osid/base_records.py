@@ -50,33 +50,32 @@ class AssetUtils(object):
     def _get_asset_content(self, asset_id, asset_content_type_str=None):
         """stub"""
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        try:
-            if 'assignedBankIds' in self.my_osid_object._my_map:
+        if 'assignedBankIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedBankIds'][0]),
                     self.my_osid_object._proxy)
-            elif 'assignedBookIds' in self.my_osid_object._my_map:
+            else:
+                als = rm.get_asset_lookup_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedBankIds'][0]))
+        elif 'assignedBookIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedBookIds'][0]),
                     self.my_osid_object._proxy)
-            elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
+            else:
+                als = rm.get_asset_lookup_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedBookIds'][0]))
+        elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
                     self.my_osid_object._proxy)
             else:
-                raise KeyError
-        except TypeError:
-            if 'assignedBankIds' in self.my_osid_object._my_map:
-                als = rm.get_asset_lookup_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedBankIds'][0]))
-            elif 'assignedBookIds' in self.my_osid_object._my_map:
-                als = rm.get_asset_lookup_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedBookIds'][0]))
-            elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
-            else:
-                raise KeyError
+        else:
+            raise KeyError
         if not asset_content_type_str:
             return als.get_asset(asset_id).get_asset_contents().next()  # Just return first one
         else:
@@ -1667,7 +1666,8 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     files_map[label] = asset_content._my_map['base64']
                 except KeyError:
                     files_map[label] = base64.b64encode(asset_content.get_data().read())
-        return files_map
+            return files_map
+        raise IllegalState('no files_map')
 
     files_map = property(fget=get_files_map)
 
