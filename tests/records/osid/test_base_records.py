@@ -15,6 +15,7 @@ from dlkit.records.osid.base_records import *
 
 from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.json_.id.objects import IdList
 from dlkit.runtime import configs
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.proxy_example import SimpleRequest
@@ -1824,103 +1825,208 @@ class TestFilesFormRecord(unittest.TestCase):
         self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
 
 
-# class TestFilesRecord(unittest.TestCase):
-#     """Tests for FilesRecord"""
-#
-#     @classmethod
-#     def setUpClass(cls):
-#         mgr = get_repository_manager()
-#         form = mgr.get_repository_form_for_create([])
-#         form.display_name = 'Test repository'
-#         cls.repo = mgr.create_repository(form)
-#
-#         form = cls.repo.get_asset_form_for_create([])
-#         form.display_name = 'Test asset'
-#         cls.asset = cls.repo.create_asset(form)
-#
-#         cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
-#         form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
-#         form.display_name = 'Test asset content'
-#         form.set_data(DataInputStream(cls.test_image))
-#         cls.repo.create_asset_content(form)
-#         cls.asset = cls.repo.get_asset(cls.asset.ident)
-#
-#         obj_map = deepcopy(TEST_OBJECT_MAP)
-#         obj_map['fileIds'] = {
-#             'foo': {
-#                 'assetId': str(cls.asset.ident),
-#                 'assetContentId': str(cls.asset.get_asset_contents().next().ident),
-#                 'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
-#             }
-#         }
-#         obj_map['assignedBankIds'] = [str(cls.repo.ident)]
-#
-#         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-#                                      osid_object_map=obj_map,
-#                                      runtime=mgr._runtime)
-#
-#         cls.item = FilesRecord(cls.osid_object)
-#
-#     @classmethod
-#     def tearDownClass(cls):
-#         cls.test_image.close()
-#         # Delete the asset
-#         cls.repo.delete_asset(cls.asset.ident)
-#         # Delete the test repository (used for file creation)
-#         mgr = get_repository_manager()
-#         mgr.delete_repository(cls.repo.ident)
-#
-#         # Delete the test bank
-#         mgr = get_assessment_manager()
-#         mgr.delete_bank(cls.repo.ident)
-#
-#     def test_can_get_files_map(self):
-#         self.test_image.seek(0)
-#         self.assertTrue(isinstance(self.item.files_map, dict))
-#         self.assertEqual(self.item.files_map, {
-#             'foo': base64.b64encode(self.test_image.read())
-#         })
-#
-#     def test_can_check_files(self):
-#         self.assertTrue(self.item.has_time())
-#
-#     def test_getting_files_map_has_none_throws_exception(self):
-#         obj_map = deepcopy(TEST_OBJECT_MAP)
-#         obj_map['timeValue'] = None
-#         osid_object = OsidObject(object_name='TEST_OBJECT',
-#                                  osid_object_map=obj_map)
-#         files_object = FilesRecord(osid_object)
-#         with self.assertRaises(errors.IllegalState):
-#             files_object.time
-#
-#     def test_can_get_files_url_map(self):
-#         self.assertTrue(isinstance(self.files_object.time_str,
-#                                    basestring))
-#         self.assertEqual(self.files_object.time_str, '01:02:03')
-#
-#     def test_can_get_files(self):
-#         self.fail('finish writing the test')
-#
-#     def test_can_check_if_has_file(self):
-#         self.fail('finish writing hte test')
-#
-#     def test_can_get_asset_ids(self):
-#         self.fail('finish writing hte test')
-#
-#     def test_can_get_asset_ids_map(self):
-#         self.fail("finish writing the test")
-#
-#     def test_can_get_asset_id_by_label(self):
-#         self.fail("finish writing hte test")
-#
-#     def test_can_get_file_by_label(self):
-#         self.fail("finish writing the test")
-#
-#     def test_can_get_url_by_label(self):
-#         self.fail("finish writing the test")
-#
-#     def test_can_delete(self):
-#         self.fail('finish writing hte test')
-#
-#     def test_object_map_updated_with_transcript(self):
-#         self.fail('finish writing the test')
+class TestFilesRecord(unittest.TestCase):
+    """Tests for FilesRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        mgr = get_repository_manager()
+        form = mgr.get_repository_form_for_create([])
+        form.display_name = 'Test repository'
+        cls.repo = mgr.create_repository(form)
+
+        form = cls.repo.get_asset_form_for_create([])
+        form.display_name = 'Test asset'
+        cls.asset = cls.repo.create_asset(form)
+
+        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
+        form.display_name = 'Test asset content'
+        form.set_data(DataInputStream(cls.test_image))
+        form.set_url('example.com')
+        cls.repo.create_asset_content(form)
+        cls.asset = cls.repo.get_asset(cls.asset.ident)
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {
+            'foo': {
+                'assetId': str(cls.asset.ident),
+                'assetContentId': str(cls.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
+            }
+        }
+        obj_map['assignedBankIds'] = [str(cls.repo.ident)]
+
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map,
+                                     runtime=mgr._runtime)
+
+        cls.item = FilesRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.test_image.close()
+        # Delete the asset
+        cls.repo.delete_asset(cls.asset.ident)
+        # Delete the test repository (used for file creation)
+        mgr = get_repository_manager()
+        mgr.delete_repository(cls.repo.ident)
+        # No test bank to delete, so no need to clean it up here
+
+    def test_can_get_files_map(self):
+        self.test_image.seek(0)
+        self.assertTrue(isinstance(self.item.files_map, dict))
+        self.assertEqual(self.item.files_map, {
+            'foo': base64.b64encode(self.test_image.read())
+        })
+
+    def test_can_check_files(self):
+        self.assertTrue(self.item.has_files())
+
+    def test_getting_files_map_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        files_object = FilesRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            files_object.files_map
+
+    def test_can_get_files_url_map(self):
+        self.assertTrue(isinstance(self.item.file_urls_map,
+                                   dict))
+        self.assertEqual(self.item.file_urls_map,
+                         {'foo': self.asset.get_asset_contents().next().url})
+
+    def test_getting_files_url_map_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        files_object = FilesRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            files_object.file_urls_map
+
+    def test_can_get_files_when_has_url(self):
+        self.assertTrue(isinstance(self.item.get_files(),
+                                   dict))
+        self.assertEqual(self.item.get_files(),
+                         {'foo': self.asset.get_asset_contents().next().url})
+
+    def test_can_get_files_when_no_url(self):
+        self.test_image.seek(0)
+        form = self.repo.get_asset_content_form_for_create(self.asset.ident, [])
+        form.display_name = 'Test asset content'
+        form.set_data(DataInputStream(self.test_image))
+        self.repo.create_asset_content(form)
+        asset = self.repo.get_asset(self.asset.ident)
+
+        ac_list = asset.get_asset_contents()
+        ac_list.next()
+        second_ac = ac_list.next()
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {
+            'foo': {
+                'assetId': str(asset.ident),
+                'assetContentId': str(second_ac.ident),
+                'assetContentTypeId': str(second_ac.genus_type)
+            }
+        }
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
+
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+
+        item = FilesRecord(osid_object)
+        self.test_image.seek(0)
+        self.assertTrue(isinstance(item.get_files(),
+                                   dict))
+        self.assertEqual(item.get_files(),
+                         {'foo': base64.b64encode(self.test_image.read())})
+
+        # cleaning up the new asset content
+        self.repo.delete_asset_content(second_ac.ident)
+
+    def test_can_check_if_has_file(self):
+        self.assertFalse(self.item.has_file('boo'))
+        self.assertTrue(self.item.has_file('foo'))
+
+    def test_can_get_asset_ids(self):
+        asset_ids = self.item.get_asset_ids()
+        self.assertTrue(isinstance(asset_ids, IdList))
+        self.assertTrue(asset_ids.available() == 1)
+        self.assertEqual(str(asset_ids.next()),
+                         str(self.asset.ident))
+
+    def test_can_get_asset_ids_map(self):
+        asset_ids_map = self.item.get_asset_ids_map()
+        self.assertTrue(isinstance(asset_ids_map, dict))
+        self.assertIn('foo', asset_ids_map)
+        self.assertEqual(asset_ids_map, {
+            'foo': {
+                'assetId': str(self.asset.ident),
+                'assetContentId': str(self.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
+            }})
+
+    def test_can_get_asset_id_by_label(self):
+        self.assertTrue(isinstance(self.item.get_asset_id_by_label('foo'), Id))
+        self.assertEqual(str(self.item.get_asset_id_by_label('foo')),
+                         str(self.asset.ident))
+
+    def test_getting_asset_id_by_label_throws_exception_if_not_exist(self):
+        with self.assertRaises(errors.IllegalState):
+            self.item.get_asset_id_by_label('boo')
+
+    def test_can_get_file_by_label(self):
+        self.test_image.seek(0)
+        self.assertTrue(isinstance(self.item.get_file_by_label('foo'),
+                                   DataInputStream))
+        self.assertEqual(self.item.get_file_by_label('foo').read(),
+                         self.test_image.read())
+
+    def test_getting_file_by_label_throws_exception_if_not_exist(self):
+        with self.assertRaises(errors.IllegalState):
+            self.item.get_file_by_label('boo')
+
+    def test_can_get_url_by_label(self):
+        self.assertTrue(isinstance(self.item.get_url_by_label('foo'),
+                                   basestring))
+        self.assertEqual(self.item.get_url_by_label('foo'),
+                         'example.com')
+
+    def test_getting_url_by_label_throws_exception_if_not_exist(self):
+        with self.assertRaises(errors.IllegalState):
+            self.item.get_url_by_label('boo')
+
+    def test_can_delete(self):
+        self.item._delete()
+        # Though really nothing should happen since this method is
+        #   `pass` in the implementation
+
+    def test_object_map_updated_with_url(self):
+        # Note that currently this does not handle the more complicated
+        #   case of multilanguage altText or transcripts. Those are
+        #   tested in `qbank` functional tests
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {
+            'foo': {
+                'assetId': str(self.asset.ident),
+                'assetContentId': str(self.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
+            }
+        }
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
+        obj_map['text'] = {
+            'text': '<img src="AssetContent:foo" />'
+        }
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+
+        item = FilesRecord(osid_object)
+        item._update_object_map(obj_map)
+        self.assertEqual(obj_map['text']['text'],
+                         '<img src="example.com"/>')

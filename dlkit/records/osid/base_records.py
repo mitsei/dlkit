@@ -47,7 +47,7 @@ RGB_COLOR_COORDINATE = Type(identifier='rgb_color',
 class AssetUtils(object):
     """Useful methods for getting and managing assets directly from a record"""
 
-    def _get_asset_content(self, asset_id, asset_content_type_str=None):
+    def _get_asset_content(self, asset_id, asset_content_type_str=None, asset_content_id=None):
         """stub"""
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
         if 'assignedBankIds' in self.my_osid_object._my_map:
@@ -76,6 +76,13 @@ class AssetUtils(object):
                     Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
         else:
             raise KeyError
+
+        if asset_content_id is not None:
+            ac_list = als.get_asset(asset_id).get_asset_contents()
+            for ac in ac_list:
+                if str(ac.ident) == str(asset_content_id):
+                    return ac
+
         if not asset_content_type_str:
             return als.get_asset(asset_id).get_asset_contents().next()  # Just return first one
         else:
@@ -1676,17 +1683,24 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
         file_urls_map = {}
         if self.has_files():
             for label in self.my_osid_object._my_map['fileIds']:
-                asset_content = self._get_asset_content(
-                    Id(self.my_osid_object._my_map['fileIds'][label]['assetId']),
-                    self.my_osid_object._my_map['fileIds'][label]['assetContentTypeId'])
+                label_map = self.my_osid_object._my_map['fileIds'][label]
+                if 'assetContentId' in label_map and bool(label_map['assetContentId']):
+                    asset_content = self._get_asset_content(
+                        Id(label_map['assetId']),
+                        asset_content_id=Id(label_map['assetContentId']))
+                else:
+                    asset_content = self._get_asset_content(
+                        Id(label_map['assetId']),
+                        asset_content_type_str=label_map['assetContentTypeId'])
                 file_urls_map[label] = asset_content.get_url()
-        return file_urls_map
+            return file_urls_map
+        raise IllegalState('no files_map')
 
     def get_files(self):
         """stub"""
         try:
             return self.get_file_urls_map()
-        except Exception:
+        except (IllegalState, NotFound):
             return self.get_files_map()
 
     file_urls_map = property(fget=get_file_urls_map)
@@ -1836,7 +1850,10 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
         # as the repositoryId
         manager = self.my_osid_object._get_provider_manager('REPOSITORY')
         try:
-            acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
+            if self.my_osid_object._proxy is not None:
+                acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
+            else:
+                acls = manager.get_asset_content_lookup_session()
         except AttributeError:
             pass
         else:
