@@ -1172,7 +1172,7 @@ class AssetContent(abc_repository_objects.AssetContent,
             file_handle.read()
         except UnicodeDecodeError:
             # non-Unicode file, like an image
-            file_handle = open(url, 'r')
+            file_handle = open(url, 'rb')
         file_handle.seek(0)
         return file_handle
 
