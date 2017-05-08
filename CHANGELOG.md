@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.6] - 2017-05-08
+### Fixed
+- For Windows, use `b` flag in `get_data()` of `filesystem_adapter`.
+
 ## [0.3.5] - 2017-04-28
 ### Added
 - Tests for various sessions and managers.
@@ -66,6 +70,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.3.6]: https://github.com/mitsei/dlkit/copmare/0.3.5...0.3.6
 [0.3.5]: https://github.com/mitsei/dlkit/compare/0.3.4...0.3.5
 [0.3.4]: https://github.com/mitsei/dlkit/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/mitsei/dlkit/compare/0.3.2...0.3.3
