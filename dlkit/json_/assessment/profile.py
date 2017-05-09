@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo assessment'
 
 DESCRIPTION = 'MongoDB based assessment implementation'
 
-VERSIONCOMPONENTS = [0, 1, 200]
+VERSIONCOMPONENTS = [0, 1, 213]
 
-RELEASEDATE = "2017-05-04"
+RELEASEDATE = "2017-05-09"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

@@ -13,6 +13,7 @@
 from importlib import import_module
 
 
+from .. import types
 from .. import utilities
 from ..primitives import DateTime
 from ..primitives import Id
@@ -468,9 +469,9 @@ class Sourceable(abc_osid_markers.Sourceable):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        mgr = self._get_provider_session('REPOSITORY')
+        mgr = self._get_provider_manager('REPOSITORY')
         lookup_session = mgr.get_asset_lookup_session()
-        lookup_session.get_federated_repository_view()
+        lookup_session.use_federated_repository_view()
         return lookup_session.get_assets_by_ids(self.get_branding_ids())
 
     branding = property(fget=get_branding)
@@ -486,9 +487,11 @@ class Sourceable(abc_osid_markers.Sourceable):
         """
         if 'license' in self._my_map:
             license_text = self._my_map['license']
-        else:
-            license_text = ''
-        return DisplayText('license_text')
+            return DisplayText(display_text_map=license_text)
+        return DisplayText(text='',
+                           language_type=types.Language().get_type_data('DEFAULT'),
+                           format_type=types.Format().get_type_data('DEFAULT'),
+                           script_type=types.Script().get_type_data('DEFAULT'))
 
     license_ = property(fget=get_license)
 

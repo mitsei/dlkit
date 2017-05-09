@@ -154,6 +154,8 @@ BRANDING = {
     'default_id_values': [],
     'syntax': 'ID',
     'id_set': [],
+    'minimum_elements': 0,
+    'maximum_elements': 999999999
 }
 
 LICENSE = {
