@@ -6,6 +6,8 @@ import unittest
 from copy import deepcopy
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.repository.objects import AssetList
+from dlkit.abstract_osid.resource.objects import Resource
 from dlkit.primordium.type.primitives import Type
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
@@ -68,6 +70,16 @@ def get_repository_manager():
     condition.set_http_request(request)
     proxy = PROXY_SESSION.get_proxy(condition)
     return RUNTIME.get_service_manager('REPOSITORY',
+                                       implementation='TEST_SERVICE',
+                                       proxy=proxy)
+
+
+def get_resource_manager():
+    request = SimpleRequest(username='tester')
+    condition = PROXY_SESSION.get_proxy_condition()
+    condition.set_http_request(request)
+    proxy = PROXY_SESSION.get_proxy(condition)
+    return RUNTIME.get_service_manager('RESOURCE',
                                        implementation='TEST_SERVICE',
                                        proxy=proxy)
 
@@ -2760,3 +2772,289 @@ class TestTemporalRecord(unittest.TestCase):
         self.check_is_effective(near_past, future, True)
         self.check_is_effective(past, near_future, True)
         self.check_is_effective(near_future, future, False)
+
+
+class TestSourceableFormRecord(unittest.TestCase):
+    """Tests for SourceableFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_branding(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.my_osid_object_form._my_map['brandingIds'],
+                                   list))
+        self.assertEqual(len(form.my_osid_object_form._my_map['brandingIds']), 0)
+        branding = [Id('repository.Asset%3A1%40ODL.MIT.EDU')]
+        form.set_branding(branding)
+        self.assertEqual(len(form.my_osid_object_form._my_map['brandingIds']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['brandingIds'][0],
+                         'repository.Asset%3A1%40ODL.MIT.EDU')
+
+    def test_can_set_provider(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['providerId'], '')
+        provider = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+        form.set_provider(provider)
+        self.assertEqual(form.my_osid_object_form._my_map['providerId'],
+                         'resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def test_can_set_license(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['license']['text'], '')
+        license_ = 'CC-BY'
+        form.set_license(license_)
+        self.assertEqual(form.my_osid_object_form._my_map['license']['text'],
+                         'CC-BY')
+
+    def test_branding_cannot_be_none(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_branding(None)
+
+    def test_provider_cannot_be_none(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_provider(None)
+
+    def test_license_cannot_be_none(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_license(None)
+
+    def test_branding_must_be_a_list(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_branding(Id('repository.Asset%3A1%40ODL.MIT.EDU'))
+
+    def test_provider_must_be_instance_of_id(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_provider('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def test_license_must_be_instance_of_string(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_license(2)
+
+    def test_can_update_branding(self):
+        id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
+        id_2 = Id('repository.Asset%3A2%40ODL.MIT.EDU')
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['brandingIds'] = [str(id_1)]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual([str(id_1)],
+                         form.my_osid_object_form._my_map['brandingIds'])
+
+        form.set_branding([id_2])
+        self.assertEqual([str(id_2)],
+                         form.my_osid_object_form._my_map['brandingIds'])
+
+    def test_can_update_provider(self):
+        id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+        id_2 = Id('resource.Resource%3A2%40ODL.MIT.EDU')
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['providerId'] = str(id_1)
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual(str(id_1),
+                         form.my_osid_object_form._my_map['providerId'])
+
+        form.set_provider(id_2)
+        self.assertEqual(str(id_2),
+                         form.my_osid_object_form._my_map['providerId'])
+
+    def test_can_update_license(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['license'] = {
+            'text': 'foo'
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual('foo',
+                         form.my_osid_object_form._my_map['license']['text'])
+
+        form.set_license('bar')
+        self.assertEqual('bar',
+                         form.my_osid_object_form._my_map['license']['text'])
+
+    def test_can_clear_branding(self):
+        id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['brandingIds'] = [str(id_1)]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual([str(id_1)],
+                         form.my_osid_object_form._my_map['brandingIds'])
+
+        form.clear_branding()
+        self.assertEqual([],
+                         form.my_osid_object_form._my_map['brandingIds'])
+
+    def test_can_clear_provider(self):
+        id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['providerId'] = str(id_1)
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual(str(id_1),
+                         form.my_osid_object_form._my_map['providerId'])
+
+        form.clear_provider()
+        self.assertEqual('',
+                         form.my_osid_object_form._my_map['providerId'])
+
+    def test_can_clear_license(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['license'] = {
+            'text': 'foo'
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = SourceableFormRecord(osid_object_form)
+        self.assertEqual('foo',
+                         form.my_osid_object_form._my_map['license']['text'])
+
+        form.clear_license()
+        self.assertEqual('',
+                         form.my_osid_object_form._my_map['license']['text'])
+
+    def test_can_get_branding_metadata(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_branding_metadata(), Metadata))
+
+    def test_can_get_provider_metadata(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_provider_metadata(), Metadata))
+
+    def test_can_get_license_metadata(self):
+        form = SourceableFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_license_metadata(), Metadata))
+
+
+class TestSourceableRecord(unittest.TestCase):
+    """Tests for SourceableRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        mgr = get_repository_manager()
+        form = mgr.get_repository_form_for_create([])
+        form.display_name = 'Test repository'
+        cls.repo = mgr.create_repository(form)
+
+        form = cls.repo.get_asset_form_for_create([])
+        form.display_name = 'Test asset'
+        cls.asset = cls.repo.create_asset(form)
+
+        mgr = get_resource_manager()
+        cls.bin = mgr.get_bin(cls.repo.ident)
+
+        form = cls.bin.get_resource_form_for_create([])
+        form.display_name = 'Test resource'
+        cls.resource = cls.bin.create_resource(form)
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['providerId'] = str(cls.resource.ident)
+        obj_map['brandingIds'] = [str(cls.asset.ident)]
+        obj_map['license'] = {
+            'text': 'old-license',
+            'languageTypeId': '639-2%3AENG%40ISO',
+            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+            'scriptTypeId': '15924%3ALATN%40ISO'
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map,
+                                     runtime=mgr._runtime)
+        cls.sourceable_object = SourceableRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.repo.delete_asset(cls.asset.ident)
+
+        mgr = get_repository_manager()
+        mgr.delete_repository(cls.repo.ident)
+
+        cls.bin.delete_resource(cls.resource.ident)
+
+        mgr = get_resource_manager()
+        mgr.delete_bin(cls.bin.ident)
+
+    def test_can_get_provider_id(self):
+        self.assertTrue(isinstance(self.sourceable_object.provider_id,
+                                   Id))
+        self.assertEqual(str(self.sourceable_object.provider_id),
+                         str(self.resource.ident))
+
+    def test_can_get_provider(self):
+        self.assertTrue(isinstance(self.sourceable_object.provider,
+                                   Resource))
+        self.assertEqual(str(self.sourceable_object.provider.ident),
+                         str(self.resource.ident))
+
+    def test_can_get_branding_ids(self):
+        self.assertTrue(isinstance(self.sourceable_object.branding_ids,
+                                   IdList))
+        self.assertEqual([str(bi) for bi in self.sourceable_object.branding_ids],
+                         [str(self.asset.ident)])
+
+    def test_can_get_branding(self):
+        self.assertTrue(isinstance(self.sourceable_object.branding,
+                                   AssetList))
+        self.assertEqual(self.sourceable_object.branding.available(), 1)
+        self.assertEqual(str(self.sourceable_object.branding.next().ident),
+                         str(self.asset.ident))
+
+    def test_can_get_license(self):
+        self.assertTrue(isinstance(self.sourceable_object.license_,
+                                   DisplayText))
+        self.assertEqual(self.sourceable_object.license_.text,
+                         'old-license')
+
+    def test_getting_provider_id_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+        sourceable_object = SourceableRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            sourceable_object.provider_id
+
+    def test_getting_provider_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+        sourceable_object = SourceableRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            sourceable_object.provider
+
+    def test_getting_branding_ids_when_has_none_returns_empty_id_list(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+        sourceable_object = SourceableRecord(osid_object)
+        self.assertEqual(sourceable_object.branding_ids.available(), 0)
+        self.assertTrue(isinstance(sourceable_object.branding_ids, IdList))
+
+    def test_getting_branding_when_has_none_returns_empty_asset_list(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+        sourceable_object = SourceableRecord(osid_object)
+        self.assertEqual(sourceable_object.branding.available(), 0)
+        self.assertTrue(isinstance(sourceable_object.branding, AssetList))

@@ -2556,21 +2556,21 @@ class SourceableFormRecord(osid_records.OsidRecord):
                              namespace=self.my_osid_object_form._namespace,
                              identifier='provider')}
         self._provider_metadata.update(mdata_conf.PROVIDER)
-        self._provider_default = self._provider_metadata['default_id_values'][0]
+        self._provider_default = str(self._provider_metadata['default_id_values'][0])
 
         self._branding_metadata = {
             'element_id': Id(authority=self.my_osid_object_form._authority,
                              namespace=self.my_osid_object_form._namespace,
                              identifier='branding')}
         self._branding_metadata.update(mdata_conf.BRANDING)
-        self._branding_default = self._branding_metadata['default_id_values']
+        self._branding_default = list(self._branding_metadata['default_id_values'])
 
         self._license_metadata = {
             'element_id': Id(authority=self.my_osid_object_form._authority,
                              namespace=self.my_osid_object_form._namespace,
                              identifier='license')}
         self._license_metadata.update(mdata_conf.LICENSE)
-        self._license_default = self._license_metadata['default_string_values'][0]
+        self._license_default = dict(self._license_metadata['default_string_values'][0])
 
     def _init_map(self, **kwargs):
         if 'effective_agent_id' in kwargs:
@@ -2588,7 +2588,7 @@ class SourceableFormRecord(osid_records.OsidRecord):
         else:
             self.my_osid_object_form._my_map['providerId'] = self._provider_default
         self.my_osid_object_form._my_map['brandingIds'] = self._branding_default
-        self.my_osid_object_form._my_map['license'] = dict(self._license_default)
+        self.my_osid_object_form._my_map['license'] = self._license_default
 
     def get_provider_metadata(self):
         """Gets the metadata for a provider.
@@ -2614,10 +2614,12 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if provider_id is None:
+            raise NullArgument('provider_id cannot be None')
         if self.get_provider_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_id(provider_id):
-            raise InvalidArgument()
+            raise InvalidArgument('provider_id must be instance of Id')
         self.my_osid_object_form._my_map['providerId'] = str(provider_id)
 
     def clear_provider(self):
@@ -2659,8 +2661,12 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if asset_ids is None:
+            raise NullArgument('asset_ids cannot be None')
         if self.get_branding_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(asset_ids, list):
+            raise InvalidArgument('asset_ids must be a list')
         if not self.my_osid_object_form._is_valid_input(asset_ids,
                                                         self.get_branding_metadata(),
                                                         array=True):
@@ -2709,11 +2715,15 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if license_ is None:
+            raise NullArgument('license cannot be None')
+        if not isinstance(license_, basestring):
+            raise InvalidArgument('license must be a string')
         if self.get_license_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_string(license, self.get_license_metadata()):
+        if not self.my_osid_object_form._is_valid_string(license_, self.get_license_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['license']['text'] = license
+        self.my_osid_object_form._my_map['license']['text'] = license_
 
     def clear_license(self):
         """Removes the license.
@@ -2791,9 +2801,9 @@ class SourceableRecord(ObjectInitRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        mgr = self.my_osid_object._get_provider_session('REPOSITORY')
+        mgr = self.my_osid_object._get_provider_manager('REPOSITORY')
         lookup_session = mgr.get_asset_lookup_session()
-        lookup_session.get_federated_repository_view()
+        lookup_session.use_federated_repository_view()
         return lookup_session.get_assets_by_ids(self.get_branding_ids())
 
     branding = property(fget=get_branding)
@@ -2809,9 +2819,11 @@ class SourceableRecord(ObjectInitRecord):
         """
         if 'license' in self.my_osid_object._my_map:
             license_text = self.my_osid_object._my_map['license']
-        else:
-            license_text = ''
-        return DisplayText('license_text')
+            return DisplayText(display_text_map=license_text)
+        return DisplayText(text='',
+                           language_type=DEFAULT_LANGUAGE_TYPE,
+                           format_type=DEFAULT_FORMAT_TYPE,
+                           script_type=DEFAULT_SCRIPT_TYPE)
 
     license_ = property(fget=get_license)
 
