@@ -2090,18 +2090,23 @@ class FileRecord(ObjectInitRecord, AssetUtils):
 
     def has_file_url(self):
         """stub"""
-        return bool(self.get_file_url())
+        return bool(self._get_asset_content(
+            Id(self.my_osid_object._my_map['fileId']['assetId']),
+            self.my_osid_object._my_map['fileId']['assetContentTypeId']).has_url())
 
     def get_file_asset_id(self):
         """stub"""
-        return self.my_osid_object._my_map['fileId']['asset_id']
+        if self.has_file_asset():
+            return Id(self.my_osid_object._my_map['fileId']['assetId'])
+        raise IllegalState()
 
     def get_file_url(self):
         """stub"""
-        if self.has_file_asset():
+        if self.has_file_url():
             return self._get_asset_content(
                 Id(self.my_osid_object._my_map['fileId']['assetId']),
                 self.my_osid_object._my_map['fileId']['assetContentTypeId']).get_url()
+        raise IllegalState()
 
     def get_file(self):
         """stub"""
@@ -2109,6 +2114,7 @@ class FileRecord(ObjectInitRecord, AssetUtils):
             return self._get_asset_content(
                 Id(self.my_osid_object._my_map['fileId']['assetId']),
                 self.my_osid_object._my_map['fileId']['assetContentTypeId']).get_data()
+        raise IllegalState()
 
     file_asset_id = property(fget=get_file_asset_id)
     file_url = property(fget=get_file_url)
@@ -2129,7 +2135,7 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['fileId'] = \
-            self._file_metadata['default_object_values'][0]
+            dict(self._file_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -2139,27 +2145,13 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
                              'file'),
             'element_label': 'File',
             'instructions': 'accepts an asset id and optional asset_content type',
-            'required': True,
+            'required': False,
             'read_only': False,
             'linked': False,
             'array': False,
             'default_object_values': [{}],
             'syntax': 'OBJECT',
             'object_set': []
-        }
-        self._file_asset_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
-                             'file'),
-            'element_label': 'File Asset',
-            'instructions': 'accepts an Asset Id',
-            'required': True,
-            'read_only': False,
-            'linked': False,
-            'array': False,
-            'default_id_values': [''],
-            'syntax': 'ID',
-            'id_set': []
         }
 
     def get_file_metadata(self):
@@ -2175,6 +2167,13 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
         """stub"""
         if asset_data is None:
             raise NullArgument()
+        if not isinstance(asset_data, DataInputStream):
+            raise InvalidArgument('asset_data must be instance of DataInputStream')
+        if asset_type is not None and not isinstance(asset_type, Type):
+            raise InvalidArgument('asset_type must be instance of Type')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be instance of Type')
+
         asset_id, asset_content_id = self.create_asset(asset_data=asset_data,
                                                        asset_type=asset_type,
                                                        asset_content_type=asset_content_type,
@@ -2185,6 +2184,12 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
 
     def set_asset(self, asset_id, asset_content_type=None):
         """stub"""
+        if asset_id is None:
+            raise NullArgument('asset_id cannot be None')
+        if not isinstance(asset_id, Id):
+            raise InvalidArgument('asset_id must be an instance of Id')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be instance of Type')
         if asset_content_type is None:
             asset_content_type = ''
         self.my_osid_object_form._my_map['fileId'] = {
@@ -2197,8 +2202,37 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
         if (self.get_file_metadata().is_read_only() or
                 self.get_file_metadata().is_required()):
             raise NoAccess()
+        if 'assetId' in self.my_osid_object_form._my_map['fileId']:
+            rm = self.my_osid_object_form._get_provider_manager('REPOSITORY')
+
+            catalog_id_str = ''
+
+            if 'assignedBankIds' in self.my_osid_object_form._my_map:
+                catalog_id_str = self.my_osid_object_form._my_map['assignedBankIds'][0]
+            elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
+                catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
+            try:
+                try:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str),
+                        self.my_osid_object_form._proxy)
+                except NullArgument:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str))
+            except AttributeError:
+                # for update forms
+                try:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str),
+                        self.my_osid_object_form._proxy)
+                except NullArgument:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str))
+
+            aas.delete_asset(Id(self.my_osid_object_form._my_map['fileId']['assetId']))
+
         self.my_osid_object_form._my_map['fileId'] = \
-            self.get_file_metadata().get_default_object_values()[0]
+            dict(self.get_file_metadata().get_default_object_values()[0])
 
     file_ = property(fset=set_file, fdel=clear_file)
 

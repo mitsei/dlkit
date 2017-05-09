@@ -2030,3 +2030,301 @@ class TestFilesRecord(unittest.TestCase):
         item._update_object_map(obj_map)
         self.assertEqual(obj_map['text']['text'],
                          '<img src="example.com"/>')
+
+
+class TestFileFormRecord(unittest.TestCase):
+    """Tests for FileFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        # Create a test repository for file creation
+        #   all of the OsidObjectForm maps need to have
+        #   ``assignedRepositoryIds[<test repository id>]``
+        mgr = get_repository_manager()
+        form = mgr.get_repository_form_for_create([])
+        form.display_name = 'Test repository'
+        cls.repo = mgr.create_repository(form)
+
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                              runtime=mgr._runtime)
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+        cls.osid_object_form._my_map['assignedRepositoryIds'] = [str(cls.repo.ident)]
+        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+
+    @classmethod
+    def tearDownClass(cls):
+        # NOTE: make sure to call form.clear_files() after any tests that
+        #   adds a file to the form -- that will also delete the
+        #   asset.
+        cls.test_file.close()
+        # Delete the test repository (used for file creation)
+        mgr = get_repository_manager()
+        mgr.delete_repository(cls.repo.ident)
+
+    def test_can_set_file(self):
+        form = FileFormRecord(self.osid_object_form)
+        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+        form.set_file(DataInputStream(self.test_file),
+                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                      asset_name='Test asset',
+                      asset_description='Test asset description')
+        for key in ['assetId', 'assetContentTypeId']:
+            self.assertIn(key,
+                          form.my_osid_object_form._my_map['fileId'])
+        self.assertEqual(form.my_osid_object_form._my_map['fileId']['assetContentTypeId'],
+                         'repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
+        form.clear_file()
+
+    def test_can_set_asset(self):
+        form = FileFormRecord(self.osid_object_form)
+        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+        asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
+        asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
+        form.set_asset(asset_id,
+                       asset_content_type=asset_content_type)
+        for key in ['assetId', 'assetContentTypeId']:
+            self.assertIn(key,
+                          form.my_osid_object_form._my_map['fileId'])
+        self.assertEqual(str(asset_id),
+                         form.my_osid_object_form._my_map['fileId']['assetId'])
+        self.assertEqual(str(asset_content_type),
+                         form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
+
+    def test_cannot_send_none_to_set_asset(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_asset(None)
+
+    def test_cannot_send_none_to_set_file(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_file(None)
+
+    def test_asset_data_must_be_data_input_stream(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_file(self.test_file,
+                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                          asset_name='Test asset',
+                          asset_description='Test asset description')
+
+    def test_asset_id_must_be_id(self):
+        form = FileFormRecord(self.osid_object_form)
+        asset_id = 'repository.Asset%3A1%40ODL.MIT.EDU'
+        asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_asset(asset_id,
+                           asset_content_type=asset_content_type)
+
+    def test_asset_type_must_be_type_for_set_file(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_file(DataInputStream(self.test_file),
+                          asset_type='repository.Asset%3Amy-type%40ODL.MIT.EDU',
+                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                          asset_name='Test asset',
+                          asset_description='Test asset description')
+
+    def test_asset_content_type_must_be_type_for_set_file(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_file(DataInputStream(self.test_file),
+                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                          asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU',
+                          asset_name='Test asset',
+                          asset_description='Test asset description')
+
+    def test_asset_content_type_must_be_type_for_set_asset(self):
+        form = FileFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_asset(Id('repository.Asset%3A1%40ODL.MIT.EDU'),
+                           asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
+
+    def test_can_update_file(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
+        obj_map['fileId'] = {}
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map,
+                                          runtime=self.repo._runtime)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        self.test_file.seek(0)
+        form = FileFormRecord(osid_object_form)
+        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+        form.set_file(DataInputStream(self.test_file))
+        self.assertIn('assetId', form.my_osid_object_form._my_map['fileId'])
+        self.assertIn('assetContentTypeId', form.my_osid_object_form._my_map['fileId'])
+        asset_id_str = form.my_osid_object_form._my_map['fileId']['assetId']
+        asset = self.repo.get_asset(Id(asset_id_str))
+        asset_content = asset.get_asset_contents().next()
+        self.test_file.seek(0)
+        self.assertEqual(asset_content.get_data().read(),
+                         self.test_file.read())
+        form.clear_file()
+
+    def test_can_update_asset(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
+        obj_map['fileId'] = {
+            'assetId': 'repository.Asset%3Aold-id%40ODL.MIT.EDU',
+            'assetContentTypeId': 'repository.AssetContent%3Aold-type%40ODL.MIT.EDU'
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map,
+                                          runtime=self.repo._runtime)
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        form = FileFormRecord(osid_object_form)
+        self.assertIn('old-id',
+                      form.my_osid_object_form._my_map['fileId']['assetId'])
+        self.assertIn('old-type',
+                      form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
+
+        form.set_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
+                       asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
+        self.assertTrue(len(form.my_osid_object_form._my_map['fileId'].keys()), 2)
+        self.assertIn('new-id',
+                      form.my_osid_object_form._my_map['fileId']['assetId'])
+        self.assertIn('new-type',
+                      form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
+
+    def test_can_clear_file(self):
+        form = FileFormRecord(self.osid_object_form)
+        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+        form.set_file(DataInputStream(self.test_file),
+                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                      asset_name='Test asset',
+                      asset_description='Test asset description')
+        self.assertIn('assetId',
+                      form.my_osid_object_form._my_map['fileId'])
+        form.clear_file()
+        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+
+    def test_can_get_file_metadata(self):
+        form = FileFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_file_metadata(), Metadata))
+
+
+class TestFileRecord(unittest.TestCase):
+    """Tests for FileRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        mgr = get_repository_manager()
+        form = mgr.get_repository_form_for_create([])
+        form.display_name = 'Test repository'
+        cls.repo = mgr.create_repository(form)
+
+        form = cls.repo.get_asset_form_for_create([])
+        form.display_name = 'Test asset'
+        cls.asset = cls.repo.create_asset(form)
+
+        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
+        form.display_name = 'Test asset content'
+        form.set_data(DataInputStream(cls.test_image))
+        form.set_url('example.com')
+        cls.repo.create_asset_content(form)
+        cls.asset = cls.repo.get_asset(cls.asset.ident)
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileId'] = {
+            'assetId': str(cls.asset.ident),
+            'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
+        }
+        obj_map['assignedBankIds'] = [str(cls.repo.ident)]
+
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map,
+                                     runtime=mgr._runtime)
+
+        cls.item = FileRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.test_image.close()
+        # Delete the asset
+        cls.repo.delete_asset(cls.asset.ident)
+        # Delete the test repository (used for file creation)
+        mgr = get_repository_manager()
+        mgr.delete_repository(cls.repo.ident)
+        # No test bank to delete, so no need to clean it up here
+
+    def test_can_get_file_asset_id(self):
+        self.test_image.seek(0)
+        self.assertTrue(isinstance(self.item.file_asset_id, Id))
+        self.assertEqual(str(self.item.file_asset_id),
+                         str(self.asset.ident))
+
+    def test_can_check_has_file_asset(self):
+        self.assertTrue(self.item.has_file_asset())
+
+    def test_getting_file_asset_id_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileId'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        file_object = FileRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            file_object.file_asset_id
+
+    def test_can_get_file_url(self):
+        self.assertTrue(isinstance(self.item.file_url,
+                                   basestring))
+        self.assertEqual(self.item.file_url,
+                         'example.com')
+
+    def test_can_check_has_file_url(self):
+        self.assertTrue(self.item.has_file_url)
+
+    def test_getting_file_url_when_has_none_throws_exception(self):
+        self.test_image.seek(0)
+        form = self.repo.get_asset_content_form_for_create(self.asset.ident, [])
+        form.display_name = 'Test asset content'
+        form.set_data(DataInputStream(self.test_image))
+        form.set_genus_type(Type('asset-content%3Atest-type%40ODL.MIT.EDU'))
+        self.repo.create_asset_content(form)
+        asset = self.repo.get_asset(self.asset.ident)
+
+        ac_list = asset.get_asset_contents()
+        ac_list.next()
+        second_ac = ac_list.next()
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileId'] = {
+            'assetId': str(asset.ident),
+            'assetContentTypeId': str(second_ac.genus_type)
+        }
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
+
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+
+        item = FileRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            item.file_url
+
+        # cleaning up the new asset content
+        self.repo.delete_asset_content(second_ac.ident)
+
+    def test_can_get_file(self):
+        self.assertTrue(isinstance(self.item.file_,
+                                   DataInputStream))
+        self.test_image.seek(0)
+        self.assertEqual(self.item.file_.read(),
+                         self.test_image.read())
+
+    def test_getting_file_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileId'] = {}
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        file_object = FileRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            file_object.file_
