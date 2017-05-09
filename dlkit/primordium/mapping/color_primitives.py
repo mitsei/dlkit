@@ -73,11 +73,11 @@ class RGBColorCoordinate(abc_mapping_primitives.Coordinate, OsidPrimitive):
         return self._uncertainty_minus or self._uncertainty_plus
 
     def get_uncertainty_minus(self):
-        return bool(self._uncertainty_minus)
+        return self._uncertainty_minus
 
     uncertainty_minus = property(fget=get_uncertainty_minus)
 
     def get_uncertainty_plus(self):
-        return bool(self._uncertainty_plus)
+        return self._uncertainty_plus
 
     uncertainty_plus = property(fget=get_uncertainty_plus)

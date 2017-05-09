@@ -2246,13 +2246,12 @@ class ColorCoordinateRecord(ObjectInitRecord):
 
     def get_color_coordinate(self):
         """stub"""
-        try:
+        if self.has_color_coordinate():
             color_dict = self.my_osid_object._my_map['colorCoordinate']
             return RGBColorCoordinate(values=color_dict['values'],
                                       uncertainty_minus=color_dict['uncertaintyMinus'],
                                       uncertainty_plus=color_dict['uncertaintyPlus'])
-        except KeyError:
-            raise IllegalState()
+        raise IllegalState('No color coordinate')
 
     color_coordinate = property(fget=get_color_coordinate)
 
@@ -2261,7 +2260,10 @@ class ColorCoordinateRecord(ObjectInitRecord):
         if self.has_color_coordinate() and \
                 self.get_color_coordinate().get_coordinate_type() == RGB_COLOR_COORDINATE:
             obj_map['colorCoordinate']['hexValue'] = str(self.get_color_coordinate())
-        super(ColorCoordinateRecord, self)._update_object_map(obj_map)
+        try:
+            super(ColorCoordinateRecord, self)._update_object_map(obj_map)
+        except AttributeError:
+            pass
 
 
 class ColorCoordinateFormRecord(osid_records.OsidRecord):
@@ -2278,7 +2280,7 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['colorCoordinate'] = \
-            self._color_coordinate_metadata['default_coordinate_values'][0]
+            dict(self._color_coordinate_metadata['default_coordinate_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -2309,9 +2311,8 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
             raise NullArgument()
         if self.get_color_coordinate_metadata().is_read_only():
             raise NoAccess()
-        # if not self.my_osid_object_form._is_valid_coordinate(coordinate,
-        #    self.get_coordiante_metadata()):
-        #    raise InvalidArgument()
+        if not isinstance(coordinate, RGBColorCoordinate):
+            raise InvalidArgument('coordinate must be instance of RGBColorCoordinate')
         self.my_osid_object_form._my_map['colorCoordinate']['values'] = \
             coordinate.get_values()
         self.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'] = \
@@ -2325,7 +2326,7 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
                 self.get_color_coordinate_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['colorCoordinate'] = \
-            self.get_color_coordinate_metadata().get_default_coordinate_values()[0]
+            dict(self.get_color_coordinate_metadata().get_default_coordinate_values()[0])
 
     color_coordinate = property(fset=set_color_coordinate, fdel=clear_color_coordinate)
 

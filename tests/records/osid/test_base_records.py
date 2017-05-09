@@ -11,6 +11,7 @@ from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.transport.objects import DataInputStream
+from dlkit.primordium.mapping.color_primitives import RGBColorCoordinate
 from dlkit.records.osid.base_records import *
 
 from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
@@ -2328,3 +2329,121 @@ class TestFileRecord(unittest.TestCase):
         file_object = FileRecord(osid_object)
         with self.assertRaises(errors.IllegalState):
             file_object.file_
+
+
+class TestColorCoordinateFormRecord(unittest.TestCase):
+    """Tests for ColorCoordinateFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_color_coordinate(self):
+        form = ColorCoordinateFormRecord(self.osid_object_form)
+        self.assertEqual({},
+                         form.my_osid_object_form._my_map['colorCoordinate'])
+        coordinate = RGBColorCoordinate(hexstr='0a21ff',
+                                        uncertainty_minus=[15, 15, 15],
+                                        uncertainty_plus=[15, 15, 15])
+
+        form.set_color_coordinate(coordinate)
+        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {
+            'values': [10, 33, 255],
+            'uncertaintyPlus': [15, 15, 15],
+            'uncertaintyMinus': [15, 15, 15]
+        })
+
+    def test_color_coordinate_cannot_be_none(self):
+        form = ColorCoordinateFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_color_coordinate(None)
+
+    def test_color_coordinate_must_be_instance_of_coordinate(self):
+        form = ColorCoordinateFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_color_coordinate('0a21ff')
+
+    def test_can_clear_color_coordinate(self):
+        form = ColorCoordinateFormRecord(self.osid_object_form)
+        coordinate = RGBColorCoordinate(hexstr='0a21ff',
+                                        uncertainty_minus=[15, 15, 15],
+                                        uncertainty_plus=[15, 15, 15])
+        form.set_color_coordinate(coordinate)
+        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {
+            'values': [10, 33, 255],
+            'uncertaintyPlus': [15, 15, 15],
+            'uncertaintyMinus': [15, 15, 15]
+        })
+        form.clear_color_coordinate()
+        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {})
+
+    def test_can_get_color_coordinate_metadata(self):
+        form = ColorCoordinateFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_color_coordinate_metadata(), Metadata))
+
+
+class TestColorCoordinateRecord(unittest.TestCase):
+    """Tests for ColorCoordinateRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['colorCoordinate'] = {
+            'values': [10, 33, 255],
+            'uncertaintyMinus': [15, 15, 15],
+            'uncertaintyPlus': [15, 15, 15]
+        }
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.color_coordinate_object = ColorCoordinateRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_color_coordinate(self):
+        self.assertTrue(isinstance(self.color_coordinate_object.color_coordinate,
+                                   RGBColorCoordinate))
+        coordinate = self.color_coordinate_object.color_coordinate
+        self.assertEqual(coordinate.values, [10, 33, 255])
+        self.assertEqual(coordinate.uncertainty_minus, [15, 15, 15])
+        self.assertEqual(coordinate.uncertainty_plus, [15, 15, 15])
+
+    def test_can_check_has_color_coordinate(self):
+        self.assertTrue(self.color_coordinate_object.has_color_coordinate())
+
+    def test_getting_color_coordinate_when_has_none_throws_exception(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['colorCoordinate'] = None
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        color_coordinate_object = ColorCoordinateRecord(osid_object)
+        with self.assertRaises(errors.IllegalState):
+            color_coordinate_object.color_coordinate
+
+    def test_object_map_updated(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['colorCoordinate'] = {
+            'values': [10, 33, 255],
+            'uncertaintyMinus': [15, 15, 15],
+            'uncertaintyPlus': [15, 15, 15]
+        }
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+
+        color_coordinate_object = ColorCoordinateRecord(osid_object)
+        color_coordinate_object._update_object_map(obj_map)
+        self.assertEqual(obj_map['colorCoordinate']['values'],
+                         [10, 33, 255])
+        self.assertEqual(obj_map['colorCoordinate']['uncertaintyMinus'],
+                         [15, 15, 15])
+        self.assertEqual(obj_map['colorCoordinate']['uncertaintyPlus'],
+                         [15, 15, 15])
+        self.assertEqual(obj_map['colorCoordinate']['hexValue'],
+                         '0a21ff')
