@@ -2383,6 +2383,34 @@ class TestColorCoordinateFormRecord(unittest.TestCase):
         form.clear_color_coordinate()
         self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {})
 
+    def test_can_update_color_coordinate(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['colorCoordinate'] = {
+            'values': [0, 0, 0],
+            'uncertaintyMinus': [5, 5, 5],
+            'uncertaintyPlus': [5, 5, 5]
+        }
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = ColorCoordinateFormRecord(osid_object_form)
+        self.assertEqual([0, 0, 0],
+                         form.my_osid_object_form._my_map['colorCoordinate']['values'])
+        self.assertEqual([5, 5, 5],
+                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyMinus'])
+        self.assertEqual([5, 5, 5],
+                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'])
+
+        coordinate = RGBColorCoordinate(hexstr='0a21ff',
+                                        uncertainty_minus=[15, 15, 15],
+                                        uncertainty_plus=[15, 15, 15])
+        form.set_color_coordinate(coordinate)
+        self.assertEqual([10, 33, 255],
+                         form.my_osid_object_form._my_map['colorCoordinate']['values'])
+        self.assertEqual([15, 15, 15],
+                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyMinus'])
+        self.assertEqual([15, 15, 15],
+                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'])
+
     def test_can_get_color_coordinate_metadata(self):
         form = ColorCoordinateFormRecord(self.osid_object_form)
         self.assertTrue(isinstance(form.get_color_coordinate_metadata(), Metadata))
@@ -2447,3 +2475,288 @@ class TestColorCoordinateRecord(unittest.TestCase):
                          [15, 15, 15])
         self.assertEqual(obj_map['colorCoordinate']['hexValue'],
                          '0a21ff')
+
+
+class TestTemporalFormRecord(unittest.TestCase):
+    """Tests for TemporalFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_set_start_date(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
+        start_date = DateTime(year=future_date.year,
+                              month=future_date.month,
+                              day=future_date.day,
+                              hour=future_date.hour,
+                              minute=future_date.minute,
+                              second=future_date.second,
+                              microsecond=future_date.microsecond)
+
+        self.assertTrue(isinstance(form.my_osid_object_form._my_map['startDate'],
+                                   DateTime))
+        self.assertNotEqual(start_date,
+                            form.my_osid_object_form._my_map['startDate'])
+
+        form.set_start_date(start_date)
+        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+                         start_date)
+
+    def test_can_set_end_date(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        now_date = datetime.datetime.utcnow()
+        end_date = DateTime(year=now_date.year,
+                            month=now_date.month,
+                            day=now_date.day,
+                            hour=now_date.hour,
+                            minute=now_date.minute,
+                            second=now_date.second,
+                            microsecond=now_date.microsecond)
+
+        self.assertTrue(isinstance(form.my_osid_object_form._my_map['endDate'],
+                                   DateTime))
+        self.assertNotEqual(end_date,
+                            form.my_osid_object_form._my_map['endDate'])
+
+        form.set_end_date(end_date)
+        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+                         end_date)
+
+    def test_start_date_cannot_be_none(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_start_date(None)
+
+    def test_end_date_cannot_be_none(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.set_end_date(None)
+
+    def test_start_date_must_be_instance_of_date_time(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_start_date(datetime.datetime.utcnow())
+
+    def test_end_date_must_be_instance_of_date_time(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.set_end_date(datetime.datetime.utcnow())
+
+    def test_can_update_start_date(self):
+        now_date = datetime.datetime.utcnow()
+        future_date = now_date + datetime.timedelta(days=4)
+        date_1 = DateTime(year=now_date.year,
+                          month=now_date.month,
+                          day=now_date.day,
+                          hour=now_date.hour,
+                          minute=now_date.minute,
+                          second=now_date.second,
+                          microsecond=now_date.microsecond)
+
+        date_2 = DateTime(year=future_date.year,
+                          month=future_date.month,
+                          day=future_date.day,
+                          hour=future_date.hour,
+                          minute=future_date.minute,
+                          second=future_date.second,
+                          microsecond=future_date.microsecond)
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['startDate'] = date_1
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = TemporalFormRecord(osid_object_form)
+        self.assertEqual(date_1,
+                         form.my_osid_object_form._my_map['startDate'])
+
+        form.set_start_date(date_2)
+        self.assertEqual(date_2,
+                         form.my_osid_object_form._my_map['startDate'])
+
+    def test_can_update_end_date(self):
+        now_date = datetime.datetime.utcnow()
+        future_date = now_date + datetime.timedelta(days=4)
+        date_1 = DateTime(year=now_date.year,
+                          month=now_date.month,
+                          day=now_date.day,
+                          hour=now_date.hour,
+                          minute=now_date.minute,
+                          second=now_date.second,
+                          microsecond=now_date.microsecond)
+
+        date_2 = DateTime(year=future_date.year,
+                          month=future_date.month,
+                          day=future_date.day,
+                          hour=future_date.hour,
+                          minute=future_date.minute,
+                          second=future_date.second,
+                          microsecond=future_date.microsecond)
+
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['endDate'] = date_1
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = TemporalFormRecord(osid_object_form)
+        self.assertEqual(date_1,
+                         form.my_osid_object_form._my_map['endDate'])
+
+        form.set_end_date(date_2)
+        self.assertEqual(date_2,
+                         form.my_osid_object_form._my_map['endDate'])
+
+    def test_can_clear_start_date(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        default_start_date = form._start_date_metadata['default_date_time_values'][0]
+        default_start_date = DateTime(year=default_start_date.year,
+                                      month=default_start_date.month,
+                                      day=default_start_date.day,
+                                      hour=default_start_date.hour,
+                                      minute=default_start_date.minute,
+                                      second=default_start_date.second,
+                                      microsecond=default_start_date.microsecond)
+        future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
+        start_date = DateTime(year=future_date.year,
+                              month=future_date.month,
+                              day=future_date.day,
+                              hour=future_date.hour,
+                              minute=future_date.minute,
+                              second=future_date.second,
+                              microsecond=future_date.microsecond)
+        form.set_start_date(start_date)
+        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+                         start_date)
+        form.clear_start_date()
+        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+                         default_start_date)
+
+    def test_can_clear_end_date(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        default_end_date = form._end_date_metadata['default_date_time_values'][0]
+        default_end_date = DateTime(**default_end_date)
+        future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
+        end_date = DateTime(year=future_date.year,
+                            month=future_date.month,
+                            day=future_date.day,
+                            hour=future_date.hour,
+                            minute=future_date.minute,
+                            second=future_date.second,
+                            microsecond=future_date.microsecond)
+        form.set_end_date(end_date)
+        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+                         end_date)
+        form.clear_end_date()
+        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+                         default_end_date)
+
+    def test_can_get_start_date_metadata(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_start_date_metadata(), Metadata))
+
+    def test_can_get_end_date_metadata(self):
+        form = TemporalFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_end_date_metadata(), Metadata))
+
+
+class TestTemporalRecord(unittest.TestCase):
+    """Tests for TemporalRecord"""
+
+    def check_is_effective(self, start_date, end_date, expected):
+        temporal_object = self.create_temporal(start_date, end_date)
+        self.assertEqual(temporal_object.is_effective(), expected)
+
+    def create_temporal(self, start_date, end_date):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['startDate'] = start_date
+        obj_map['endDate'] = end_date
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map)
+        return TemporalRecord(osid_object)
+
+    @classmethod
+    def setUpClass(cls):
+        start_date = datetime.datetime.utcnow() + datetime.timedelta(days=2)
+        cls.start_date = DateTime(year=start_date.year,
+                                  month=start_date.month,
+                                  day=start_date.day,
+                                  hour=start_date.hour,
+                                  minute=start_date.minute,
+                                  second=start_date.second,
+                                  microsecond=start_date.microsecond)
+        end_date = datetime.datetime.utcnow() + datetime.timedelta(days=5)
+        cls.end_date = DateTime(year=end_date.year,
+                                month=end_date.month,
+                                day=end_date.day,
+                                hour=end_date.hour,
+                                minute=end_date.minute,
+                                second=end_date.second,
+                                microsecond=end_date.microsecond)
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['startDate'] = cls.start_date
+        obj_map['endDate'] = cls.end_date
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.temporal_object = TemporalRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_start_date(self):
+        self.assertTrue(isinstance(self.temporal_object.start_date,
+                                   DateTime))
+        self.assertEqual(self.temporal_object.start_date,
+                         self.start_date)
+
+    def test_can_get_end_date(self):
+        self.assertTrue(isinstance(self.temporal_object.end_date,
+                                   DateTime))
+        self.assertEqual(self.temporal_object.end_date,
+                         self.end_date)
+
+    def test_accurately_returns_is_effective(self):
+        past = datetime.datetime.utcnow() - datetime.timedelta(days=1)
+        past = DateTime(year=past.year,
+                        month=past.month,
+                        day=past.day,
+                        hour=past.hour,
+                        minute=past.minute,
+                        second=past.second,
+                        microsecond=past.microsecond)
+        near_past = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
+        near_past = DateTime(year=near_past.year,
+                             month=near_past.month,
+                             day=near_past.day,
+                             hour=near_past.hour,
+                             minute=near_past.minute,
+                             second=near_past.second,
+                             microsecond=near_past.microsecond)
+        near_future = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+        near_future = DateTime(year=near_future.year,
+                               month=near_future.month,
+                               day=near_future.day,
+                               hour=near_future.hour,
+                               minute=near_future.minute,
+                               second=near_future.second,
+                               microsecond=near_future.microsecond)
+        future = datetime.datetime.utcnow() + datetime.timedelta(days=1)
+        future = DateTime(year=future.year,
+                          month=future.month,
+                          day=future.day,
+                          hour=future.hour,
+                          minute=future.minute,
+                          second=future.second,
+                          microsecond=future.microsecond)
+
+        self.check_is_effective(past, near_past, False)
+        self.check_is_effective(near_past, near_future, True)
+        self.check_is_effective(near_past, future, True)
+        self.check_is_effective(past, near_future, True)
+        self.check_is_effective(near_future, future, False)

@@ -2350,7 +2350,7 @@ class TemporalFormRecord(osid_records.OsidRecord):
                              identifier='start_date')}
         self._start_date_metadata.update(mdata_conf.START_DATE)
         self._start_date_metadata.update({
-            'default_date_time_values': [self._get_date_map(datetime.datetime.now())],
+            'default_date_time_values': [datetime.datetime.utcnow()],
             'required': False
         })
         self._end_date_metadata = {
@@ -2359,14 +2359,27 @@ class TemporalFormRecord(osid_records.OsidRecord):
                              identifier='end_date')}
         self._end_date_metadata.update(mdata_conf.END_DATE)
         self._end_date_metadata.update({'required': False})
-        super(TemporalFormRecord, self)._init_metadata()
+        try:
+            super(TemporalFormRecord, self)._init_metadata()
+        except AttributeError:
+            pass
 
     def _init_map(self):
         # pylint: disable=attribute-defined-outside-init
         # this method is called from descendent __init__
-        self.my_osid_object_form._my_map['startDate'] = self._start_date_metadata['default_date_time_values'][0]
-        self.my_osid_object_form._my_map['endDate'] = self._end_date_metadata['default_date_time_values'][0]
-        super(TemporalFormRecord, self)._init_map()
+        default_start_date = self._start_date_metadata['default_date_time_values'][0]
+        self.my_osid_object_form._my_map['startDate'] = DateTime(year=default_start_date.year,
+                                                                 month=default_start_date.month,
+                                                                 day=default_start_date.day,
+                                                                 hour=default_start_date.hour,
+                                                                 minute=default_start_date.minute,
+                                                                 second=default_start_date.second,
+                                                                 microsecond=default_start_date.microsecond)
+        self.my_osid_object_form._my_map['endDate'] = DateTime(**self._end_date_metadata['default_date_time_values'][0])
+        try:
+            super(TemporalFormRecord, self)._init_map()
+        except AttributeError:
+            pass
 
     def get_start_date_metadata(self):
         """Gets the metadata for a start date.
@@ -2392,11 +2405,13 @@ class TemporalFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if date is None:
+            raise NullArgument('date cannot be None')
         if self.get_start_date_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_date_time(date, self.get_start_date_metadata()):
-            raise InvalidArgument()
-        self.my_osid_object_form._my_map['startDate'] = self._get_date_map(date)
+            raise InvalidArgument('date must be instance of DateTime')
+        self.my_osid_object_form._my_map['startDate'] = date
 
     def clear_start_date(self):
         """Clears the start date.
@@ -2409,8 +2424,14 @@ class TemporalFormRecord(osid_records.OsidRecord):
         if (self.get_start_date_metadata().is_read_only() or
                 self.get_start_date_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['startDate'] = \
-            self._start_date_metadata['default_date_time_values'][0]
+        default_start_date = self._start_date_metadata['default_date_time_values'][0]
+        self.my_osid_object_form._my_map['startDate'] = DateTime(year=default_start_date.year,
+                                                                 month=default_start_date.month,
+                                                                 day=default_start_date.day,
+                                                                 hour=default_start_date.hour,
+                                                                 minute=default_start_date.minute,
+                                                                 second=default_start_date.second,
+                                                                 microsecond=default_start_date.microsecond)
 
     start_date = property(fset=set_start_date, fdel=clear_start_date)
 
@@ -2438,11 +2459,13 @@ class TemporalFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if date is None:
+            raise NullArgument('date cannot be None')
         if self.get_end_date_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_date_time(date, self.get_end_date_metadata()):
-            raise InvalidArgument()
-        self.my_osid_object_form._my_map['endDate'] = self._get_date_map(date)
+            raise InvalidArgument('date must be instance of DateTime')
+        self.my_osid_object_form._my_map['endDate'] = date
 
     def clear_end_date(self):
         """Clears the end date.
@@ -2456,20 +2479,9 @@ class TemporalFormRecord(osid_records.OsidRecord):
                 self.get_end_date_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['endDate'] = \
-            self._end_date_metadata['default_date_time_values'][0]
+            DateTime(**self._end_date_metadata['default_date_time_values'][0])
 
     end_date = property(fset=set_end_date, fdel=clear_end_date)
-
-    def _get_date_map(self, date):
-        return {
-            'year': date.year,
-            'month': date.month,
-            'day': date.day,
-            'hour': date.hour,
-            'minute': date.minute,
-            'second': date.second,
-            'microsecond': date.microsecond,
-        }
 
 
 class TemporalRecord(ObjectInitRecord):
@@ -2483,8 +2495,8 @@ class TemporalRecord(ObjectInitRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        now = DateTime.now()
-        return self.get_start_date() <= now and self.get_end_date() >= now
+        now = DateTime.utcnow()
+        return self.get_start_date() <= now <= self.get_end_date()
 
     def get_start_date(self):
         """Gets the start date.
@@ -2495,13 +2507,13 @@ class TemporalRecord(ObjectInitRecord):
         """
         sdate = self.my_osid_object._my_map['startDate']
         return DateTime(
-            sdate['year'],
-            sdate['month'],
-            sdate['day'],
-            sdate['hour'],
-            sdate['minute'],
-            sdate['second'],
-            sdate['microsecond'])
+            sdate.year,
+            sdate.month,
+            sdate.day,
+            sdate.hour,
+            sdate.minute,
+            sdate.second,
+            sdate.microsecond)
 
     start_date = property(fget=get_start_date)
 
@@ -2514,13 +2526,13 @@ class TemporalRecord(ObjectInitRecord):
         """
         edate = self.my_osid_object._my_map['endDate']
         return DateTime(
-            edate['year'],
-            edate['month'],
-            edate['day'],
-            edate['hour'],
-            edate['minute'],
-            edate['second'],
-            edate['microsecond'])
+            edate.year,
+            edate.month,
+            edate.day,
+            edate.hour,
+            edate.minute,
+            edate.second,
+            edate.microsecond)
 
     end_date = property(fget=get_end_date)
 
