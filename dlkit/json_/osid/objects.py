@@ -815,6 +815,8 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         self._locale_map['scriptTypeId'] = str(locale.get_script_type())
         if runtime is not None:
             self._set_authority(runtime=runtime)
+        else:
+            self._authority = 'ODL.MIT.EDU'
         if 'catalog_id' in kwargs:
             self._catalog_id = kwargs['catalog_id']
 
@@ -859,7 +861,7 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         """
         # pylint: disable=too-many-branches,no-self-use
         # Please redesign, and move to utility module
-        syntax = metadata.get_syntax
+        syntax = metadata.get_syntax()
 
         # First check if this is a required data element
         if metadata.is_required and not inpt:
@@ -868,12 +870,12 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
         valid = True  # Innocent until proven guilty
         # Recursively run through all the elements of an array
         if array:
-            if len(inpt) < metadata['minimum_elements']:
+            if len(inpt) < metadata.get_minimum_elements():
                 valid = False
-            elif len(inpt) > metadata['maximum_elements']:
+            elif len(inpt) > metadata.get_maximum_elements():
                 valid = False
             else:
-                for element in array:
+                for element in inpt:
                     valid = (valid and self._is_valid_input(element, metadata, False))
 
         # Run through all the possible syntax types
@@ -1457,9 +1459,9 @@ class OsidSourceableForm(abc_osid_objects.OsidSourceableForm, OsidForm):
         # this method is called from descendent __init__
         self._mdata.update(default_mdata.get_osid_sourceable_mdata())
         update_display_text_defaults(self._mdata['license'], self._locale_map)
-        self._provider_default = self._mdata['provider']['default_id_values'][0]
-        self._branding_default = self._mdata['branding']['default_id_values']
-        self._license_default = self._mdata['license']['default_string_values'][0]
+        self._provider_default = str(self._mdata['provider']['default_id_values'][0])
+        self._branding_default = list(self._mdata['branding']['default_id_values'])
+        self._license_default = dict(self._mdata['license']['default_string_values'][0])
 
     def _init_map(self, **kwargs):
         if 'effective_agent_id' in kwargs:

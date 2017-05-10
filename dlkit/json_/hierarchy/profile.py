@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo hierarchy'
 
 DESCRIPTION = 'MongoDB based hierarchy implementation'
 
-VERSIONCOMPONENTS = [0, 1, 197]
+VERSIONCOMPONENTS = [0, 1, 212]
 
-RELEASEDATE = "2017-04-27"
+RELEASEDATE = "2017-05-09"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

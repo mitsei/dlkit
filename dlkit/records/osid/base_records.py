@@ -22,6 +22,7 @@ from dlkit.primordium.type.primitives import Type
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.mapping.color_primitives import RGBColorCoordinate
+from dlkit.primordium.transport.objects import DataInputStream
 
 if getattr(sys, 'frozen', False):
     ABS_PATH = os.path.dirname(sys.executable)
@@ -46,36 +47,42 @@ RGB_COLOR_COORDINATE = Type(identifier='rgb_color',
 class AssetUtils(object):
     """Useful methods for getting and managing assets directly from a record"""
 
-    def _get_asset_content(self, asset_id, asset_content_type_str=None):
+    def _get_asset_content(self, asset_id, asset_content_type_str=None, asset_content_id=None):
         """stub"""
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        try:
-            if 'assignedBankIds' in self.my_osid_object._my_map:
+        if 'assignedBankIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedBankIds'][0]),
                     self.my_osid_object._proxy)
-            elif 'assignedBookIds' in self.my_osid_object._my_map:
+            else:
+                als = rm.get_asset_lookup_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedBankIds'][0]))
+        elif 'assignedBookIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedBookIds'][0]),
                     self.my_osid_object._proxy)
-            elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
+            else:
+                als = rm.get_asset_lookup_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedBookIds'][0]))
+        elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
+            if self.my_osid_object._proxy is not None:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
                     self.my_osid_object._proxy)
             else:
-                raise KeyError
-        except TypeError:
-            if 'assignedBankIds' in self.my_osid_object._my_map:
-                als = rm.get_asset_lookup_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedBankIds'][0]))
-            elif 'assignedBookIds' in self.my_osid_object._my_map:
-                als = rm.get_asset_lookup_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedBookIds'][0]))
-            elif 'assignedRepositoryIds' in self.my_osid_object._my_map:
                 als = rm.get_asset_lookup_session_for_repository(
                     Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
-            else:
-                raise KeyError
+        else:
+            raise KeyError
+
+        if asset_content_id is not None:
+            ac_list = als.get_asset(asset_id).get_asset_contents()
+            for ac in ac_list:
+                if str(ac.ident) == str(asset_content_id):
+                    return ac
+
         if not asset_content_type_str:
             return als.get_asset(asset_id).get_asset_contents().next()  # Just return first one
         else:
@@ -129,7 +136,7 @@ class AssetUtils(object):
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id,
                 self.my_osid_object_form._proxy)
-        except TypeError:  # not a ProxyManager, so don't pass it the proxy
+        except (TypeError, NullArgument):  # not a ProxyManager, so don't pass it the proxy
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id)
         afc = aas.get_asset_form_for_create([])
@@ -210,7 +217,7 @@ class AssetUtils(object):
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id,
                 self.my_osid_object_form._proxy)
-        except TypeError:  # not a ProxyManager, so don't pass it the proxy
+        except (TypeError, NullArgument):  # not a ProxyManager, so don't pass it the proxy
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id)
 
@@ -1299,7 +1306,7 @@ class edXBaseRecord(ObjectInitRecord):
 
     def has_markdown(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['markdown'] is not None)
+        return bool(self.my_osid_object._my_map['markdown'] != '')
 
     def get_markdown(self):
         """stub"""
@@ -1328,15 +1335,15 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['attempts'] = \
-            self._attempts_metadata['default_object_values'][0]
+            int(self._attempts_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['weight'] = \
-            self._weight_metadata['default_object_values'][0]
+            float(self._weight_metadata['default_object_values'][0])
         # self.my_osid_object_form._my_map['rerandomize'] = \
         #     self._rerandomize_metadata['default_object_values'][0]
         self.my_osid_object_form._my_map['showanswer'] = \
-            self._showanswer_metadata['default_object_values'][0]
+            str(self._showanswer_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['markdown'] = \
-            self._markdown_metadata['default_object_values'][0]
+            str(self._markdown_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1446,6 +1453,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def add_attempts(self, attempts):
         """stub"""
+        if attempts is None:
+            raise NullArgument('attempts cannot be None')
         if not self.my_osid_object_form._is_valid_integer(
                 attempts, self.get_attempts_metadata()):
             raise InvalidArgument('attempts')
@@ -1454,10 +1463,12 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_attempts(self):
         """stub"""
         self.my_osid_object_form._my_map['attempts'] = \
-            self._attempts_metadata['default_object_values'][0]
+            int(self._attempts_metadata['default_object_values'][0])
 
     def add_weight(self, weight):
         """stub"""
+        if weight is None:
+            raise NullArgument('weight cannot be None')
         if not self.my_osid_object_form._is_valid_decimal(
                 weight, self.get_weight_metadata()):
             raise InvalidArgument('weight')
@@ -1466,7 +1477,7 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_weight(self):
         """stub"""
         self.my_osid_object_form._my_map['weight'] = \
-            self._weight_metadata['default_object_values'][0]
+            float(self._weight_metadata['default_object_values'][0])
 
     # def add_rerandomize(self, rerandomize):
     #     """stub"""
@@ -1482,6 +1493,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def add_showanswer(self, showanswer):
         """stub"""
+        if showanswer is None:
+            raise NullArgument('showanswer cannot be None')
         if not self.my_osid_object_form._is_valid_string(
                 showanswer, self.get_showanswer_metadata()):
             raise InvalidArgument('showanswer')
@@ -1490,10 +1503,12 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_showanswer(self):
         """stub"""
         self.my_osid_object_form._my_map['showanswer'] = \
-            self._showanswer_metadata['default_object_values'][0]
+            str(self._showanswer_metadata['default_object_values'][0])
 
     def add_markdown(self, markdown):
         """stub"""
+        if markdown is None:
+            raise NullArgument('markdown cannot be None')
         if not self.my_osid_object_form._is_valid_string(
                 markdown, self.get_markdown_metadata()):
             raise InvalidArgument('markdown')
@@ -1502,7 +1517,7 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     def clear_markdown(self):
         """stub"""
         self.my_osid_object_form._my_map['markdown'] = \
-            self._markdown_metadata['default_object_values'][0]
+            str(self._markdown_metadata['default_object_values'][0])
 
 
 class TimeValueRecord(ObjectInitRecord):
@@ -1510,11 +1525,13 @@ class TimeValueRecord(ObjectInitRecord):
 
     def has_time(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['timeValue'])
+        return bool(self.my_osid_object._my_map['timeValue'] is not None)
 
     def get_time(self):
         """stub"""
-        return self.my_osid_object._my_map['timeValue']
+        if self.has_time():
+            return self.my_osid_object._my_map['timeValue']
+        raise IllegalState()
 
     def get_time_as_string(self):
         """stub"""
@@ -1542,7 +1559,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['timeValue'] = \
-            self._time_value_metadata['default_time_values'][0]
+            dict(self._time_value_metadata['default_duration_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1553,12 +1570,12 @@ class TimeValueFormRecord(osid_records.OsidRecord):
                              self.my_osid_object_form._namespace,
                              'time_value'),
             'element_label': 'Time Value',
-            'instructions': 'enter a time value / duration',
+            'instructions': 'enter a time duration string / duration',
             'required': False,
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_time_values': [{
+            'default_duration_values': [{
                 'hours': 0,
                 'minutes': 0,
                 'seconds': 0
@@ -1574,9 +1591,9 @@ class TimeValueFormRecord(osid_records.OsidRecord):
         min_, sec = divmod(time_secs, 60)
         hour, min_ = divmod(min_, 60)
         results = {
-            'hours': '%02d' % hour,
-            'minutes': '%02d' % min_,
-            'seconds': '%02d' % sec
+            'hours': hour,
+            'minutes': min_,
+            'seconds': sec
         }
 
         return results
@@ -1612,7 +1629,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
             # assume something like hh:mm:ss, convert to dict
             time = self._convert_string_to_hhmmss(value)
         else:
-            raise InvalidArgument()
+            raise InvalidArgument('value must be a string or duration')
         self.my_osid_object_form._my_map['timeValue'] = {
             'hours': time['hours'],
             'minutes': time['minutes'],
@@ -1625,7 +1642,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
                 self.get_time_value_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['timeValue'] = \
-            self.get_time_value_metadata().get_default_time_values()[0]
+            dict(self.get_time_value_metadata().get_default_duration_values()[0])
 
     time_value = property(fset=set_time_value, fdel=clear_time_value)
 
@@ -1656,7 +1673,8 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     files_map[label] = asset_content._my_map['base64']
                 except KeyError:
                     files_map[label] = base64.b64encode(asset_content.get_data().read())
-        return files_map
+            return files_map
+        raise IllegalState('no files_map')
 
     files_map = property(fget=get_files_map)
 
@@ -1665,17 +1683,24 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
         file_urls_map = {}
         if self.has_files():
             for label in self.my_osid_object._my_map['fileIds']:
-                asset_content = self._get_asset_content(
-                    Id(self.my_osid_object._my_map['fileIds'][label]['assetId']),
-                    self.my_osid_object._my_map['fileIds'][label]['assetContentTypeId'])
+                label_map = self.my_osid_object._my_map['fileIds'][label]
+                if 'assetContentId' in label_map and bool(label_map['assetContentId']):
+                    asset_content = self._get_asset_content(
+                        Id(label_map['assetId']),
+                        asset_content_id=Id(label_map['assetContentId']))
+                else:
+                    asset_content = self._get_asset_content(
+                        Id(label_map['assetId']),
+                        asset_content_type_str=label_map['assetContentTypeId'])
                 file_urls_map[label] = asset_content.get_url()
-        return file_urls_map
+            return file_urls_map
+        raise IllegalState('no files_map')
 
     def get_files(self):
         """stub"""
         try:
             return self.get_file_urls_map()
-        except Exception:
+        except (IllegalState, NotFound):
             return self.get_files_map()
 
     file_urls_map = property(fget=get_file_urls_map)
@@ -1825,7 +1850,10 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
         # as the repositoryId
         manager = self.my_osid_object._get_provider_manager('REPOSITORY')
         try:
-            acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
+            if self.my_osid_object._proxy is not None:
+                acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
+            else:
+                acls = manager.get_asset_content_lookup_session()
         except AttributeError:
             pass
         else:
@@ -1856,7 +1884,7 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['fileIds'] = \
-            self._files_metadata['default_object_values'][0]
+            dict(self._files_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -1915,6 +1943,14 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
 
     def add_asset(self, asset_id, asset_content_id=None, label=None, asset_content_type=None):
         """stub"""
+        if asset_id is None:
+            raise NullArgument('asset_id cannot be None')
+        if not isinstance(asset_id, Id):
+            raise InvalidArgument('asset_id must be an Id instance')
+        if asset_content_id is not None and not isinstance(asset_content_id, Id):
+            raise InvalidArgument('asset_content_id must be an Id instance')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be a Type instance')
         if label is None:
             label = self._label_metadata['default_string_values'][0]
         else:
@@ -1943,6 +1979,21 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
                  asset_name='',
                  asset_description=''):
         """stub"""
+        if asset_data is None:
+            raise NullArgument('asset_data cannot be None')
+        if not isinstance(asset_data, DataInputStream):
+            raise InvalidArgument('asset_data must be instance of DataInputStream')
+        if asset_type is not None and not isinstance(asset_type, Type):
+            raise InvalidArgument('asset_type must be an instance of Type')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be an instance of Type')
+        if asset_content_record_types is not None and not isinstance(asset_content_record_types, list):
+            raise InvalidArgument('asset_content_record_types must be an instance of list')
+        if asset_content_record_types is not None:
+            for record_type in asset_content_record_types:
+                if not isinstance(record_type, Type):
+                    raise InvalidArgument('non-Type present in asset_content_record_types')
+
         if label is None:
             label = self._label_metadata['default_string_values'][0]
         else:
@@ -1972,14 +2023,22 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
         elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
             catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
         try:
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         except AttributeError:
             # for update forms
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
 
         if label not in self.my_osid_object_form._my_map['fileIds']:
             raise NotFound()
@@ -2000,18 +2059,26 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
         elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
             catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
         try:
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         except AttributeError:
             # for update forms
-            aas = rm.get_asset_admin_session_for_repository(
-                Id(catalog_id_str),
-                self.my_osid_object_form._proxy)
+            try:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str),
+                    self.my_osid_object_form._proxy)
+            except NullArgument:
+                aas = rm.get_asset_admin_session_for_repository(
+                    Id(catalog_id_str))
         for label, asset_data in self.my_osid_object_form._my_map['fileIds'].iteritems():
             aas.delete_asset(Id(asset_data['assetId']))
         self.my_osid_object_form._my_map['fileIds'] = \
-            self._files_metadata['default_object_values'][0]
+            dict(self._files_metadata['default_object_values'][0])
 
 
 class FileRecord(ObjectInitRecord, AssetUtils):
@@ -2023,18 +2090,23 @@ class FileRecord(ObjectInitRecord, AssetUtils):
 
     def has_file_url(self):
         """stub"""
-        return bool(self.get_file_url())
+        return bool(self._get_asset_content(
+            Id(self.my_osid_object._my_map['fileId']['assetId']),
+            self.my_osid_object._my_map['fileId']['assetContentTypeId']).has_url())
 
     def get_file_asset_id(self):
         """stub"""
-        return self.my_osid_object._my_map['fileId']['asset_id']
+        if self.has_file_asset():
+            return Id(self.my_osid_object._my_map['fileId']['assetId'])
+        raise IllegalState()
 
     def get_file_url(self):
         """stub"""
-        if self.has_file_asset():
+        if self.has_file_url():
             return self._get_asset_content(
                 Id(self.my_osid_object._my_map['fileId']['assetId']),
                 self.my_osid_object._my_map['fileId']['assetContentTypeId']).get_url()
+        raise IllegalState()
 
     def get_file(self):
         """stub"""
@@ -2042,6 +2114,7 @@ class FileRecord(ObjectInitRecord, AssetUtils):
             return self._get_asset_content(
                 Id(self.my_osid_object._my_map['fileId']['assetId']),
                 self.my_osid_object._my_map['fileId']['assetContentTypeId']).get_data()
+        raise IllegalState()
 
     file_asset_id = property(fget=get_file_asset_id)
     file_url = property(fget=get_file_url)
@@ -2062,7 +2135,7 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['fileId'] = \
-            self._file_metadata['default_object_values'][0]
+            dict(self._file_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -2072,27 +2145,13 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
                              'file'),
             'element_label': 'File',
             'instructions': 'accepts an asset id and optional asset_content type',
-            'required': True,
+            'required': False,
             'read_only': False,
             'linked': False,
             'array': False,
             'default_object_values': [{}],
             'syntax': 'OBJECT',
             'object_set': []
-        }
-        self._file_asset_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
-                             'file'),
-            'element_label': 'File Asset',
-            'instructions': 'accepts an Asset Id',
-            'required': True,
-            'read_only': False,
-            'linked': False,
-            'array': False,
-            'default_id_values': [''],
-            'syntax': 'ID',
-            'id_set': []
         }
 
     def get_file_metadata(self):
@@ -2108,6 +2167,13 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
         """stub"""
         if asset_data is None:
             raise NullArgument()
+        if not isinstance(asset_data, DataInputStream):
+            raise InvalidArgument('asset_data must be instance of DataInputStream')
+        if asset_type is not None and not isinstance(asset_type, Type):
+            raise InvalidArgument('asset_type must be instance of Type')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be instance of Type')
+
         asset_id, asset_content_id = self.create_asset(asset_data=asset_data,
                                                        asset_type=asset_type,
                                                        asset_content_type=asset_content_type,
@@ -2118,6 +2184,12 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
 
     def set_asset(self, asset_id, asset_content_type=None):
         """stub"""
+        if asset_id is None:
+            raise NullArgument('asset_id cannot be None')
+        if not isinstance(asset_id, Id):
+            raise InvalidArgument('asset_id must be an instance of Id')
+        if asset_content_type is not None and not isinstance(asset_content_type, Type):
+            raise InvalidArgument('asset_content_type must be instance of Type')
         if asset_content_type is None:
             asset_content_type = ''
         self.my_osid_object_form._my_map['fileId'] = {
@@ -2130,8 +2202,37 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
         if (self.get_file_metadata().is_read_only() or
                 self.get_file_metadata().is_required()):
             raise NoAccess()
+        if 'assetId' in self.my_osid_object_form._my_map['fileId']:
+            rm = self.my_osid_object_form._get_provider_manager('REPOSITORY')
+
+            catalog_id_str = ''
+
+            if 'assignedBankIds' in self.my_osid_object_form._my_map:
+                catalog_id_str = self.my_osid_object_form._my_map['assignedBankIds'][0]
+            elif 'assignedRepositoryIds' in self.my_osid_object_form._my_map:
+                catalog_id_str = self.my_osid_object_form._my_map['assignedRepositoryIds'][0]
+            try:
+                try:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str),
+                        self.my_osid_object_form._proxy)
+                except NullArgument:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str))
+            except AttributeError:
+                # for update forms
+                try:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str),
+                        self.my_osid_object_form._proxy)
+                except NullArgument:
+                    aas = rm.get_asset_admin_session_for_repository(
+                        Id(catalog_id_str))
+
+            aas.delete_asset(Id(self.my_osid_object_form._my_map['fileId']['assetId']))
+
         self.my_osid_object_form._my_map['fileId'] = \
-            self.get_file_metadata().get_default_object_values()[0]
+            dict(self.get_file_metadata().get_default_object_values()[0])
 
     file_ = property(fset=set_file, fdel=clear_file)
 
@@ -2145,13 +2246,12 @@ class ColorCoordinateRecord(ObjectInitRecord):
 
     def get_color_coordinate(self):
         """stub"""
-        try:
+        if self.has_color_coordinate():
             color_dict = self.my_osid_object._my_map['colorCoordinate']
             return RGBColorCoordinate(values=color_dict['values'],
                                       uncertainty_minus=color_dict['uncertaintyMinus'],
                                       uncertainty_plus=color_dict['uncertaintyPlus'])
-        except KeyError:
-            raise IllegalState()
+        raise IllegalState('No color coordinate')
 
     color_coordinate = property(fget=get_color_coordinate)
 
@@ -2160,7 +2260,10 @@ class ColorCoordinateRecord(ObjectInitRecord):
         if self.has_color_coordinate() and \
                 self.get_color_coordinate().get_coordinate_type() == RGB_COLOR_COORDINATE:
             obj_map['colorCoordinate']['hexValue'] = str(self.get_color_coordinate())
-        super(ColorCoordinateRecord, self)._update_object_map(obj_map)
+        try:
+            super(ColorCoordinateRecord, self)._update_object_map(obj_map)
+        except AttributeError:
+            pass
 
 
 class ColorCoordinateFormRecord(osid_records.OsidRecord):
@@ -2177,7 +2280,7 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['colorCoordinate'] = \
-            self._color_coordinate_metadata['default_coordinate_values'][0]
+            dict(self._color_coordinate_metadata['default_coordinate_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -2208,9 +2311,8 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
             raise NullArgument()
         if self.get_color_coordinate_metadata().is_read_only():
             raise NoAccess()
-        # if not self.my_osid_object_form._is_valid_coordinate(coordinate,
-        #    self.get_coordiante_metadata()):
-        #    raise InvalidArgument()
+        if not isinstance(coordinate, RGBColorCoordinate):
+            raise InvalidArgument('coordinate must be instance of RGBColorCoordinate')
         self.my_osid_object_form._my_map['colorCoordinate']['values'] = \
             coordinate.get_values()
         self.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'] = \
@@ -2224,7 +2326,7 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
                 self.get_color_coordinate_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['colorCoordinate'] = \
-            self.get_color_coordinate_metadata().get_default_coordinate_values()[0]
+            dict(self.get_color_coordinate_metadata().get_default_coordinate_values()[0])
 
     color_coordinate = property(fset=set_color_coordinate, fdel=clear_color_coordinate)
 
@@ -2248,7 +2350,7 @@ class TemporalFormRecord(osid_records.OsidRecord):
                              identifier='start_date')}
         self._start_date_metadata.update(mdata_conf.START_DATE)
         self._start_date_metadata.update({
-            'default_date_time_values': [self._get_date_map(datetime.datetime.now())],
+            'default_date_time_values': [datetime.datetime.utcnow()],
             'required': False
         })
         self._end_date_metadata = {
@@ -2257,14 +2359,27 @@ class TemporalFormRecord(osid_records.OsidRecord):
                              identifier='end_date')}
         self._end_date_metadata.update(mdata_conf.END_DATE)
         self._end_date_metadata.update({'required': False})
-        super(TemporalFormRecord, self)._init_metadata()
+        try:
+            super(TemporalFormRecord, self)._init_metadata()
+        except AttributeError:
+            pass
 
     def _init_map(self):
         # pylint: disable=attribute-defined-outside-init
         # this method is called from descendent __init__
-        self.my_osid_object_form._my_map['startDate'] = self._start_date_metadata['default_date_time_values'][0]
-        self.my_osid_object_form._my_map['endDate'] = self._end_date_metadata['default_date_time_values'][0]
-        super(TemporalFormRecord, self)._init_map()
+        default_start_date = self._start_date_metadata['default_date_time_values'][0]
+        self.my_osid_object_form._my_map['startDate'] = DateTime(year=default_start_date.year,
+                                                                 month=default_start_date.month,
+                                                                 day=default_start_date.day,
+                                                                 hour=default_start_date.hour,
+                                                                 minute=default_start_date.minute,
+                                                                 second=default_start_date.second,
+                                                                 microsecond=default_start_date.microsecond)
+        self.my_osid_object_form._my_map['endDate'] = DateTime(**self._end_date_metadata['default_date_time_values'][0])
+        try:
+            super(TemporalFormRecord, self)._init_map()
+        except AttributeError:
+            pass
 
     def get_start_date_metadata(self):
         """Gets the metadata for a start date.
@@ -2290,11 +2405,13 @@ class TemporalFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if date is None:
+            raise NullArgument('date cannot be None')
         if self.get_start_date_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_date_time(date, self.get_start_date_metadata()):
-            raise InvalidArgument()
-        self.my_osid_object_form._my_map['startDate'] = self._get_date_map(date)
+            raise InvalidArgument('date must be instance of DateTime')
+        self.my_osid_object_form._my_map['startDate'] = date
 
     def clear_start_date(self):
         """Clears the start date.
@@ -2307,8 +2424,14 @@ class TemporalFormRecord(osid_records.OsidRecord):
         if (self.get_start_date_metadata().is_read_only() or
                 self.get_start_date_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['startDate'] = \
-            self._start_date_metadata['default_date_time_values'][0]
+        default_start_date = self._start_date_metadata['default_date_time_values'][0]
+        self.my_osid_object_form._my_map['startDate'] = DateTime(year=default_start_date.year,
+                                                                 month=default_start_date.month,
+                                                                 day=default_start_date.day,
+                                                                 hour=default_start_date.hour,
+                                                                 minute=default_start_date.minute,
+                                                                 second=default_start_date.second,
+                                                                 microsecond=default_start_date.microsecond)
 
     start_date = property(fset=set_start_date, fdel=clear_start_date)
 
@@ -2336,11 +2459,13 @@ class TemporalFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if date is None:
+            raise NullArgument('date cannot be None')
         if self.get_end_date_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_date_time(date, self.get_end_date_metadata()):
-            raise InvalidArgument()
-        self.my_osid_object_form._my_map['endDate'] = self._get_date_map(date)
+            raise InvalidArgument('date must be instance of DateTime')
+        self.my_osid_object_form._my_map['endDate'] = date
 
     def clear_end_date(self):
         """Clears the end date.
@@ -2354,20 +2479,9 @@ class TemporalFormRecord(osid_records.OsidRecord):
                 self.get_end_date_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['endDate'] = \
-            self._end_date_metadata['default_date_time_values'][0]
+            DateTime(**self._end_date_metadata['default_date_time_values'][0])
 
     end_date = property(fset=set_end_date, fdel=clear_end_date)
-
-    def _get_date_map(self, date):
-        return {
-            'year': date.year,
-            'month': date.month,
-            'day': date.day,
-            'hour': date.hour,
-            'minute': date.minute,
-            'second': date.second,
-            'microsecond': date.microsecond,
-        }
 
 
 class TemporalRecord(ObjectInitRecord):
@@ -2381,8 +2495,8 @@ class TemporalRecord(ObjectInitRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        now = DateTime.now()
-        return self.get_start_date() <= now and self.get_end_date() >= now
+        now = DateTime.utcnow()
+        return self.get_start_date() <= now <= self.get_end_date()
 
     def get_start_date(self):
         """Gets the start date.
@@ -2393,13 +2507,13 @@ class TemporalRecord(ObjectInitRecord):
         """
         sdate = self.my_osid_object._my_map['startDate']
         return DateTime(
-            sdate['year'],
-            sdate['month'],
-            sdate['day'],
-            sdate['hour'],
-            sdate['minute'],
-            sdate['second'],
-            sdate['microsecond'])
+            sdate.year,
+            sdate.month,
+            sdate.day,
+            sdate.hour,
+            sdate.minute,
+            sdate.second,
+            sdate.microsecond)
 
     start_date = property(fget=get_start_date)
 
@@ -2412,13 +2526,13 @@ class TemporalRecord(ObjectInitRecord):
         """
         edate = self.my_osid_object._my_map['endDate']
         return DateTime(
-            edate['year'],
-            edate['month'],
-            edate['day'],
-            edate['hour'],
-            edate['minute'],
-            edate['second'],
-            edate['microsecond'])
+            edate.year,
+            edate.month,
+            edate.day,
+            edate.hour,
+            edate.minute,
+            edate.second,
+            edate.microsecond)
 
     end_date = property(fget=get_end_date)
 
@@ -2442,21 +2556,21 @@ class SourceableFormRecord(osid_records.OsidRecord):
                              namespace=self.my_osid_object_form._namespace,
                              identifier='provider')}
         self._provider_metadata.update(mdata_conf.PROVIDER)
-        self._provider_default = self._provider_metadata['default_id_values'][0]
+        self._provider_default = str(self._provider_metadata['default_id_values'][0])
 
         self._branding_metadata = {
             'element_id': Id(authority=self.my_osid_object_form._authority,
                              namespace=self.my_osid_object_form._namespace,
                              identifier='branding')}
         self._branding_metadata.update(mdata_conf.BRANDING)
-        self._branding_default = self._branding_metadata['default_id_values']
+        self._branding_default = list(self._branding_metadata['default_id_values'])
 
         self._license_metadata = {
             'element_id': Id(authority=self.my_osid_object_form._authority,
                              namespace=self.my_osid_object_form._namespace,
                              identifier='license')}
         self._license_metadata.update(mdata_conf.LICENSE)
-        self._license_default = self._license_metadata['default_string_values'][0]
+        self._license_default = dict(self._license_metadata['default_string_values'][0])
 
     def _init_map(self, **kwargs):
         if 'effective_agent_id' in kwargs:
@@ -2474,7 +2588,7 @@ class SourceableFormRecord(osid_records.OsidRecord):
         else:
             self.my_osid_object_form._my_map['providerId'] = self._provider_default
         self.my_osid_object_form._my_map['brandingIds'] = self._branding_default
-        self.my_osid_object_form._my_map['license'] = dict(self._license_default)
+        self.my_osid_object_form._my_map['license'] = self._license_default
 
     def get_provider_metadata(self):
         """Gets the metadata for a provider.
@@ -2500,10 +2614,12 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if provider_id is None:
+            raise NullArgument('provider_id cannot be None')
         if self.get_provider_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_id(provider_id):
-            raise InvalidArgument()
+            raise InvalidArgument('provider_id must be instance of Id')
         self.my_osid_object_form._my_map['providerId'] = str(provider_id)
 
     def clear_provider(self):
@@ -2545,8 +2661,12 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if asset_ids is None:
+            raise NullArgument('asset_ids cannot be None')
         if self.get_branding_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(asset_ids, list):
+            raise InvalidArgument('asset_ids must be a list')
         if not self.my_osid_object_form._is_valid_input(asset_ids,
                                                         self.get_branding_metadata(),
                                                         array=True):
@@ -2595,11 +2715,15 @@ class SourceableFormRecord(osid_records.OsidRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if license_ is None:
+            raise NullArgument('license cannot be None')
+        if not isinstance(license_, basestring):
+            raise InvalidArgument('license must be a string')
         if self.get_license_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_string(license, self.get_license_metadata()):
+        if not self.my_osid_object_form._is_valid_string(license_, self.get_license_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['license']['text'] = license
+        self.my_osid_object_form._my_map['license']['text'] = license_
 
     def clear_license(self):
         """Removes the license.
@@ -2677,9 +2801,9 @@ class SourceableRecord(ObjectInitRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        mgr = self.my_osid_object._get_provider_session('REPOSITORY')
+        mgr = self.my_osid_object._get_provider_manager('REPOSITORY')
         lookup_session = mgr.get_asset_lookup_session()
-        lookup_session.get_federated_repository_view()
+        lookup_session.use_federated_repository_view()
         return lookup_session.get_assets_by_ids(self.get_branding_ids())
 
     branding = property(fget=get_branding)
@@ -2695,9 +2819,11 @@ class SourceableRecord(ObjectInitRecord):
         """
         if 'license' in self.my_osid_object._my_map:
             license_text = self.my_osid_object._my_map['license']
-        else:
-            license_text = ''
-        return DisplayText('license_text')
+            return DisplayText(display_text_map=license_text)
+        return DisplayText(text='',
+                           language_type=DEFAULT_LANGUAGE_TYPE,
+                           format_type=DEFAULT_FORMAT_TYPE,
+                           script_type=DEFAULT_SCRIPT_TYPE)
 
     license_ = property(fget=get_license)
 
