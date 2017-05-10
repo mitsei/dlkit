@@ -2044,6 +2044,31 @@ class TestFilesRecord(unittest.TestCase):
         self.assertEqual(obj_map['text']['text'],
                          '<img src="example.com"/>')
 
+    def test_none_text_field_does_not_break(self):
+        # Note that currently this does not handle the more complicated
+        #   case of multilanguage altText or transcripts. Those are
+        #   tested in `qbank` functional tests
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {
+            'foo': {
+                'assetId': str(self.asset.ident),
+                'assetContentId': str(self.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
+            }
+        }
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
+        obj_map['text'] = {
+            'text': None
+        }
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=self.repo._runtime)
+
+        item = FilesRecord(osid_object)
+        item._update_object_map(obj_map)
+        self.assertEqual(obj_map['text']['text'],
+                         None)
+
 
 class TestFileFormRecord(unittest.TestCase):
     """Tests for FileFormRecord"""
