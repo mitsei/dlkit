@@ -1208,11 +1208,8 @@ class MecQBankItemTests(MecQBankTests):
         form = self._bank.get_item_form_for_update(self._item.ident)
         form.clear_file('image_file')
         self._bank.update_item(form)
-        item_files = self._bank.get_item(self._item.ident).get_files()
-        self.assertEqual(
-            {},
-            item_files
-        )
+        with self.assertRaises(errors.IllegalState):
+            self._bank.get_item(self._item.ident).get_files()
         self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_pdf_question_preview(self):
@@ -1229,11 +1226,8 @@ class MecQBankItemTests(MecQBankTests):
         form = self._bank.get_question_form_for_update(self._item.ident)
         form.clear_file('preview')
         self._bank.update_question(form)
-        question_files = self._bank.get_item(self._item.ident).get_question().get_files()
-        self.assertEqual(
-            {},
-            question_files
-        )
+        with self.assertRaises(errors.IllegalState):
+            self._bank.get_item(self._item.ident).get_question().get_files()
         self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_pdf_answer_preview(self):
@@ -1250,11 +1244,8 @@ class MecQBankItemTests(MecQBankTests):
         form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
         form.clear_file('preview')
         self._bank.update_answer(form)
-        answer_files = self._bank.get_item(self._item.ident).get_answers().next().get_files()
-        self.assertEqual(
-            {},
-            answer_files
-        )
+        with self.assertRaises(errors.IllegalState):
+            self._bank.get_item(self._item.ident).get_answers().next().get_files()
         self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_non_pdf_question_preview(self):
@@ -1270,11 +1261,8 @@ class MecQBankItemTests(MecQBankTests):
         form = self._bank.get_question_form_for_update(self._item.ident)
         form.clear_file('preview')
         self._bank.update_question(form)
-        question_files = self._bank.get_item(self._item.ident).get_question().get_files()
-        self.assertEqual(
-            {},
-            question_files
-        )
+        with self.assertRaises(errors.IllegalState):
+            self._bank.get_item(self._item.ident).get_question().get_files()
         self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_delete_non_pdf_answer_preview(self):
@@ -1291,11 +1279,8 @@ class MecQBankItemTests(MecQBankTests):
         form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
         form.clear_file('preview')
         self._bank.update_answer(form)
-        answer_files = self._bank.get_item(self._item.ident).get_answers().next().get_files()
-        self.assertEqual(
-            {},
-            answer_files
-        )
+        with self.assertRaises(errors.IllegalState):
+            self._bank.get_item(self._item.ident).get_answers().next().get_files()
         self.assertFalse(self.file_exists(original_file_location))
 
     def test_can_set_difficulty(self):

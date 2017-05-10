@@ -217,7 +217,7 @@ class AssetUtils(object):
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id,
                 self.my_osid_object_form._proxy)
-        except TypeError:  # not a ProxyManager, so don't pass it the proxy
+        except (TypeError, NullArgument):  # not a ProxyManager, so don't pass it the proxy
             aas = rm.get_asset_admin_session_for_repository(
                 catalog_id)
 
