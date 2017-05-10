@@ -1755,6 +1755,7 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
 
         def replace_url_in_display_text(potential_display_text, dict_files_map):
             if ('text' in potential_display_text and
+                    potential_display_text['text'] is not None and
                     'AssetContent' in potential_display_text['text']):
                 # assume markup? Wrap this in case it's not a valid XML doc
                 # with a single parent object
