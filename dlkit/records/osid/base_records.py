@@ -261,7 +261,7 @@ class MultiLanguageUtils(object):
         except AttributeError:
             proxy = self.my_osid_object_form._proxy
         finally:
-            if proxy.locale is None:
+            if proxy is None or (proxy is not None and proxy.locale is None):
                 return {
                     'text': text_string,
                     'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
@@ -278,6 +278,8 @@ class MultiLanguageUtils(object):
 
     @staticmethod
     def _dict_display_text(display_text):
+        if not isinstance(display_text, DisplayText):
+            raise InvalidArgument('text must be instance of DisplayText')
         return {
             'text': display_text.text,
             'languageTypeId': str(display_text.language_type),
@@ -291,7 +293,7 @@ class MultiLanguageUtils(object):
         except AttributeError:
             proxy = self.my_osid_object_form._proxy
         finally:
-            if proxy.locale is None:
+            if proxy is None or proxy.locale is None:
                 return DisplayText(**{
                     'text': text_string,
                     'language_type': DEFAULT_LANGUAGE_TYPE,
@@ -306,20 +308,32 @@ class MultiLanguageUtils(object):
             })
 
     def add_or_replace_value(self, field, new_value, dictionary=None):
-        if dictionary is None:
-            dictionary = self.my_osid_object_form._my_map
-        if not isinstance(new_value, DisplayText):
-            raise IllegalState('{0} is not a DisplayText'.format(field))
+        try:
+            self.my_osid_object
+            raise IllegalState('Not a form object -- cannot call this method')
+        except AttributeError:
+            if dictionary is None:
+                dictionary = self.my_osid_object_form._my_map
+            if not isinstance(dictionary, dict):
+                raise InvalidArgument('dictionary is not a dict')
+            if not isinstance(new_value, DisplayText):
+                raise InvalidArgument('{0} is not a DisplayText'.format(field))
+            if field not in dictionary:
+                raise InvalidArgument('{0} is not in dictionary'.format(str(field)))
 
-        # need to check for an existing languageTypeId match. If found, replace that one
-        # instead. Otherwise, append.
-        current_language_types = [current_value['languageTypeId'] for current_value in dictionary[field]]
-        if str(new_value.language_type) in current_language_types:
-            dictionary[field][current_language_types.index(str(new_value.language_type))] = self._dict_display_text(new_value)
-        else:
-            dictionary[field].append(self._dict_display_text(new_value))
+            # need to check for an existing languageTypeId match. If found, replace that one
+            # instead. Otherwise, append.
+            current_language_types = [current_value['languageTypeId'] for current_value in dictionary[field]]
+            if str(new_value.language_type) in current_language_types:
+                dictionary[field][current_language_types.index(str(new_value.language_type))] = self._dict_display_text(new_value)
+            else:
+                dictionary[field].append(self._dict_display_text(new_value))
 
     def get_default_language_value(self, field, dictionary):
+        if not isinstance(dictionary, dict):
+            raise InvalidArgument('dictionary is not a dict')
+        if field not in dictionary:
+            raise InvalidArgument('{0} is not in the dictionary'.format(str(field)))
         default_texts = [t
                          for t in dictionary[field]
                          if t['languageTypeId'] == str(DEFAULT_LANGUAGE_TYPE)]
@@ -329,47 +343,69 @@ class MultiLanguageUtils(object):
             return DisplayText(display_text_map=default_texts[0])
 
     def get_matching_language_value(self, field, dictionary=None):
-        if dictionary is None:
-            dictionary = self.my_osid_object._my_map
+        try:
+            self.my_osid_object_form
+            raise IllegalState('This method cannot be used with form objects')
+        except AttributeError:
+            if dictionary is None:
+                dictionary = self.my_osid_object._my_map
+            if not isinstance(dictionary, dict):
+                raise InvalidArgument('dictionary is not instance of dict')
 
-        if (field not in dictionary or
-                len(dictionary[field]) == 0):
-            return self._empty_display_text()
+            if (field not in dictionary or
+                    len(dictionary[field]) == 0):
+                return self._empty_display_text()
 
-        proxy = self.my_osid_object._proxy
-        if proxy.locale is None:
-            return self.get_default_language_value(field, dictionary)
-        else:
-            matching_texts = [t
-                              for t in dictionary[field]
-                              if t['languageTypeId'] == str(proxy.locale.language_type)]
-            if len(matching_texts) == 0:
+            proxy = self.my_osid_object._proxy
+            if proxy is None or proxy.locale is None:
                 return self.get_default_language_value(field, dictionary)
             else:
-                return DisplayText(display_text_map=matching_texts[0])
+                matching_texts = [t
+                                  for t in dictionary[field]
+                                  if t['languageTypeId'] == str(proxy.locale.language_type)]
+                if len(matching_texts) == 0:
+                    return self.get_default_language_value(field, dictionary)
+                else:
+                    return DisplayText(display_text_map=matching_texts[0])
 
     def get_index_of_language_type(self, field, language_type, dictionary=None):
-        if dictionary is None:
-            dictionary = self.my_osid_object_form._my_map
+        try:
+            self.my_osid_object
+            raise IllegalState('This method can only be used with forms')
+        except AttributeError:
+            if dictionary is None:
+                dictionary = self.my_osid_object_form._my_map
+            if not isinstance(dictionary, dict):
+                raise InvalidArgument('dictionary is not instance of dict')
+            if field not in dictionary:
+                raise InvalidArgument('{0} is not in dictionary'.format(str(field)))
 
-        index = None
-        for ind, display_text_dict in enumerate(dictionary[field]):
-            if display_text_dict['languageTypeId'] == str(language_type):
-                index = ind
-                break
-        if index is None:
-            raise InvalidArgument('that language does not exist yet. Use the "add_{0}" method instead'.format(field))
-        return index
+            index = None
+            for ind, display_text_dict in enumerate(dictionary[field]):
+                if display_text_dict['languageTypeId'] == str(language_type):
+                    index = ind
+                    break
+            if index is None:
+                raise InvalidArgument('that language does not exist yet. Use the "add_{0}" method instead'.format(field))
+            return index
 
     def remove_field_by_language(self, field, language_type, dictionary=None):
-        if dictionary is None:
-            dictionary = self.my_osid_object_form._my_map
+        try:
+            self.my_osid_object
+            raise IllegalState('This method can only be used with forms')
+        except AttributeError:
+            if dictionary is None:
+                dictionary = self.my_osid_object_form._my_map
+            if not isinstance(dictionary, dict):
+                raise InvalidArgument('dictionary is not dict')
+            if field not in dictionary:
+                raise InvalidArgument('{0} not in dictionary'.format(str(field)))
 
-        if not isinstance(language_type, Type):
-            raise InvalidArgument('language_type is not a Type')
-        dictionary[field] = [t
-                             for t in dictionary[field]
-                             if t['languageTypeId'] != str(language_type)]
+            if not isinstance(language_type, Type):
+                raise InvalidArgument('language_type is not a Type')
+            dictionary[field] = [t
+                                 for t in dictionary[field]
+                                 if t['languageTypeId'] != str(language_type)]
 
 
 class ObjectInitRecord(osid_records.OsidRecord):

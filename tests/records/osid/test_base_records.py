@@ -21,6 +21,7 @@ from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.id.objects import IdList
 from dlkit.runtime import configs
 from dlkit.runtime import RUNTIME, PROXY_SESSION
+from dlkit.runtime.primitives import InitializableLocale
 from dlkit.runtime.proxy_example import SimpleRequest
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -82,6 +83,28 @@ def get_resource_manager():
     return RUNTIME.get_service_manager('RESOURCE',
                                        implementation='TEST_SERVICE',
                                        proxy=proxy)
+
+
+def get_proxy(with_locale=None):
+    request = SimpleRequest(username='tester')
+    condition = PROXY_SESSION.get_proxy_condition()
+    condition.set_http_request(request)
+    if with_locale is not None and with_locale in ['en', 'hi', 'te']:
+        if with_locale == 'en':
+            language_code = 'ENG'
+            script_code = 'LATN'
+        elif with_locale == 'hi':
+            language_code = 'HIN'
+            script_code = 'DEVA'
+        else:
+            language_code = 'TEL'
+            script_code = 'TELU'
+
+        locale = InitializableLocale(language_type_identifier=language_code,
+                                     script_type_identifier=script_code)
+
+        condition.set_locale(locale)
+    return PROXY_SESSION.get_proxy(condition)
 
 
 class TestProvenanceFormRecord(unittest.TestCase):
@@ -3083,3 +3106,1041 @@ class TestSourceableRecord(unittest.TestCase):
         sourceable_object = SourceableRecord(osid_object)
         self.assertEqual(sourceable_object.branding.available(), 0)
         self.assertTrue(isinstance(sourceable_object.branding, AssetList))
+
+
+class TestMultiLanguageUtils(unittest.TestCase):
+    """Tests for MultiLanguageUtils"""
+
+    def remove_osid_object(self, form=False):
+        if form:
+            del self.ml_obj.my_osid_object_form
+        else:
+            del self.ml_obj.my_osid_object
+
+    def set_no_proxy(self, form=False, map_initializer={}):
+        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map.update(map_initializer)
+
+        if form:
+            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                                             osid_object_map=osid_object_map)
+        else:
+            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
+                                                    osid_object_map=osid_object_map)
+
+    def set_proxy_with_no_locale(self, form=False, map_initializer={}):
+        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map.update(map_initializer)
+
+        if form:
+            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                                             osid_object_map=osid_object_map,
+                                                             proxy=get_proxy())
+        else:
+            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
+                                                    osid_object_map=osid_object_map,
+                                                    proxy=get_proxy())
+
+    def set_proxy_with_locale(self, locale, form=False, map_initializer={}):
+        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map.update(map_initializer)
+
+        if form:
+            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                                             osid_object_map=osid_object_map,
+                                                             proxy=get_proxy(with_locale=locale))
+        else:
+            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
+                                                    osid_object_map=osid_object_map,
+                                                    proxy=get_proxy(with_locale=locale))
+
+    @classmethod
+    def setUpClass(cls):
+        from dlkit.records.osid.base_records import DEFAULT_FORMAT_TYPE,\
+            DEFAULT_LANGUAGE_TYPE, DEFAULT_SCRIPT_TYPE
+        cls.ml_obj = MultiLanguageUtils()
+        cls.default_language_type = DEFAULT_LANGUAGE_TYPE
+        cls.default_format_type = DEFAULT_FORMAT_TYPE
+        cls.default_script_type = DEFAULT_SCRIPT_TYPE
+        cls.hindi_language_type = Type('639-2%3AHIN%40ISO')
+        cls.hindi_script_type = Type('15924%3ADEVA%40ISO')
+        cls.telugu_language_type = Type('639-2%3ATEL%40ISO')
+        cls.telugu_script_type = Type('15924%3ATELU%40ISO')
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_empty_display_text_returns_display_text_instance(self):
+        self.assertTrue(isinstance(self.ml_obj._empty_display_text(),
+                                   DisplayText))
+
+    def test_empty_display_text_text_is_empty_string(self):
+        self.assertEqual(self.ml_obj._empty_display_text().text,
+                         '')
+
+    def test_display_text_dict_for_object_converts_to_default_lang_when_no_proxy(self):
+        self.set_no_proxy()
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        })
+        self.remove_osid_object()
+
+    def test_display_text_dict_for_form_converts_to_default_lang_when_no_proxy(self):
+        self.set_no_proxy(form=True)
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        })
+        self.remove_osid_object(form=True)
+
+    def test_display_text_dict_for_object_converts_to_proxy_lang(self):
+        self.set_proxy_with_locale('hi')
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        })
+        self.remove_osid_object()
+
+    def test_display_text_dict_for_form_converts_to_proxy_lang(self):
+        self.set_proxy_with_locale('hi', form=True)
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        })
+        self.remove_osid_object(form=True)
+
+    def test_display_text_dict_for_object_converts_to_default_if_no_proxy_lang(self):
+        self.set_proxy_with_no_locale()
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        })
+        self.remove_osid_object()
+
+    def test_display_text_dict_for_form_converts_to_default_if_no_proxy_lang(self):
+        self.set_proxy_with_no_locale(form=True)
+        self.assertTrue(isinstance(self.ml_obj._display_text_dict('foo'),
+                                   dict))
+        self.assertEqual(self.ml_obj._display_text_dict('foo'), {
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        })
+        self.remove_osid_object(form=True)
+
+    def test_dict_display_text_throws_exception_if_not_display_text(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj._dict_display_text({
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            })
+
+    def test_dict_display_text_converts_display_text_to_dict(self):
+        result = self.ml_obj._dict_display_text(DisplayText(display_text_map={
+            'text': 'foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }))
+        self.assertTrue(isinstance(result, dict))
+        self.assertEqual(result['text'], 'foo')
+        self.assertEqual(result['languageTypeId'], str(self.telugu_language_type))
+        self.assertEqual(result['formatTypeId'], str(self.default_format_type))
+        self.assertEqual(result['scriptTypeId'], str(self.telugu_script_type))
+
+    def test_str_display_text_for_object_converts_string_to_display_text_no_proxy(self):
+        self.set_no_proxy()
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_str_display_text_for_form_converts_string_to_display_text_no_proxy(self):
+        self.set_no_proxy(form=True)
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object(form=True)
+
+    def test_str_display_text_for_object_converts_string_to_display_text_proxy(self):
+        self.set_proxy_with_locale('te')
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.telugu_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.telugu_script_type))
+        self.remove_osid_object()
+
+    def test_str_display_text_for_form_converts_string_to_display_text_proxy(self):
+        self.set_proxy_with_locale('te', form=True)
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.telugu_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.telugu_script_type))
+        self.remove_osid_object(form=True)
+
+    def test_str_display_text_for_object_converts_string_to_display_text_proxy_no_locale(self):
+        self.set_proxy_with_no_locale()
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_str_display_text_for_form_converts_string_to_display_text_proxy_no_locale(self):
+        self.set_proxy_with_no_locale(form=True)
+        self.assertTrue(isinstance(self.ml_obj._str_display_text('foo'),
+                                   DisplayText))
+        self.assertEqual(self.ml_obj._str_display_text('foo').text, 'foo')
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(self.ml_obj._str_display_text('foo').script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_throws_exception_if_not_form(self):
+        self.set_no_proxy()
+        with self.assertRaises(errors.IllegalState):
+            self.ml_obj.add_or_replace_value('foo', '123')
+        self.remove_osid_object()
+
+    def test_add_or_replace_value_throws_exception_for_non_display_text(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.add_or_replace_value('foo', {
+                'text': 'new foo',
+                'languageTypeId': str(self.telugu_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.telugu_script_type)
+            })
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_throws_exception_for_non_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.add_or_replace_value('foo',
+                                             DisplayText(display_text_map={
+                                                 'text': 'new foo',
+                                                 'languageTypeId': str(self.telugu_language_type),
+                                                 'formatTypeId': str(self.default_format_type),
+                                                 'scriptTypeId': str(self.telugu_script_type)
+                                             }),
+                                             dictionary=[])
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_throws_exception_if_field_not_in_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.add_or_replace_value('foo',
+                                             DisplayText(display_text_map={
+                                                 'text': 'new foo',
+                                                 'languageTypeId': str(self.telugu_language_type),
+                                                 'formatTypeId': str(self.default_format_type),
+                                                 'scriptTypeId': str(self.telugu_script_type)
+                                             }),
+                                             dictionary={
+                                                 'bim': 123,
+                                                 'bam': 'string'
+                                             })
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_with_no_dictionary_kwarg_can_add_new_lang(self):
+        self.set_no_proxy(form=True, map_initializer={'foo': [{
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }]})
+        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
+            'text': 'new foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }))
+        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 2)
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['text'],
+                         'new foo')
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['languageTypeId'],
+                         str(self.telugu_language_type))
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['scriptTypeId'],
+                         str(self.telugu_script_type))
+
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_with_no_dictionary_kwarg_can_update_existing_lang(self):
+        self.set_no_proxy(form=True, map_initializer={'foo': [{
+            'text': 'old foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }]})
+        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
+            'text': 'new foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }))
+        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['text'],
+                         'new foo')
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+                         str(self.telugu_language_type))
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['scriptTypeId'],
+                         str(self.telugu_script_type))
+
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_with_dictionary_kwarg_can_add_new_lang(self):
+        self.set_no_proxy(form=True)
+        dictionary_to_update = {
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        }
+        self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
+            'text': 'new foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }), dictionary=dictionary_to_update)
+        self.assertEqual(len(dictionary_to_update['foo']), 2)
+        self.assertEqual(dictionary_to_update['foo'][1]['text'],
+                         'new foo')
+        self.assertEqual(dictionary_to_update['foo'][1]['languageTypeId'],
+                         str(self.telugu_language_type))
+        self.assertEqual(dictionary_to_update['foo'][1]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(dictionary_to_update['foo'][1]['scriptTypeId'],
+                         str(self.telugu_script_type))
+
+        self.remove_osid_object(form=True)
+
+    def test_add_or_replace_value_with_dictionary_kwarg_can_update_existing_lang(self):
+        self.set_no_proxy(form=True)
+        dictionary_to_update = {
+            'foo': [{
+                'text': 'old foo',
+                'languageTypeId': str(self.telugu_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.telugu_script_type)
+            }]
+        }
+        self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
+            'text': 'new foo',
+            'languageTypeId': str(self.telugu_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.telugu_script_type)
+        }), dictionary=dictionary_to_update)
+        self.assertEqual(len(dictionary_to_update['foo']), 1)
+        self.assertEqual(dictionary_to_update['foo'][0]['text'],
+                         'new foo')
+        self.assertEqual(dictionary_to_update['foo'][0]['languageTypeId'],
+                         str(self.telugu_language_type))
+        self.assertEqual(dictionary_to_update['foo'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(dictionary_to_update['foo'][0]['scriptTypeId'],
+                         str(self.telugu_script_type))
+
+        self.remove_osid_object(form=True)
+
+    def test_get_default_language_value_throws_exception_if_not_dictionary(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_default_language_value('foo', {})
+
+    def test_get_default_language_value_throws_exception_if_field_not_in_dictionary(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_default_language_value('foo', {'bar': 'bim'})
+
+    def test_get_default_language_value_returns_default_if_available(self):
+        dictionary_to_inspect = {
+            'foo': [{
+                'text': 'my foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        }
+        result = self.ml_obj.get_default_language_value('foo',
+                                                        dictionary_to_inspect)
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'my foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+
+    def test_get_default_language_value_returns_first_if_no_default(self):
+        dictionary_to_inspect = {
+            'foo': [{
+                'text': 'my foo',
+                'languageTypeId': str(self.telugu_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.telugu_script_type)
+            }]
+        }
+        result = self.ml_obj.get_default_language_value('foo',
+                                                        dictionary_to_inspect)
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'my foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.telugu_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.telugu_script_type))
+
+    def test_get_matching_language_value_throws_exception_on_forms(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.IllegalState):
+            self.ml_obj.get_matching_language_value('foo', dictionary={
+                'foo': []
+            })
+        self.remove_osid_object(form=True)
+
+    def test_get_matching_language_value_throws_exception_if_not_dictionary(self):
+        self.set_no_proxy()
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_matching_language_value('foo', dictionary=[])
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_dictionary_returns_empty_display_text_if_field_not_in_dictionary(self):
+        self.set_no_proxy()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'bar': []
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         '')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_no_dictionary_returns_empty_display_text_if_field_not_in_dictionary(self):
+        self.set_no_proxy(map_initializer={
+            'bar': []
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         '')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_no_dictionary_returns_empty_display_text_if_field_not_populated(self):
+        self.set_no_proxy(map_initializer={
+            'foo': []
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         '')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_dictionary_returns_empty_display_text_if_field_not_populated(self):
+        self.set_no_proxy()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': []
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         '')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_returns_proxy_locale(self):
+        self.set_proxy_with_locale('hi', map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_proxy_locale_returns_default_language(self):
+        self.set_proxy_with_locale('te', map_initializer={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_proxy_locale_returns_first_available(self):
+        self.set_proxy_with_locale('te', map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_no_proxy_returns_default_locale(self):
+        self.set_no_proxy(map_initializer={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_no_proxy_returns_first_avail_lang(self):
+        self.set_no_proxy(map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_proxy_no_locale_returns_default_locale(self):
+        self.set_proxy_with_no_locale(map_initializer={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_no_dictionary_proxy_no_locale_returns_first_avail_lang(self):
+        self.set_proxy_with_no_locale(map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        result = self.ml_obj.get_matching_language_value('foo')
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_returns_proxy_locale(self):
+        self.set_proxy_with_locale('hi')
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_proxy_locale_returns_default_language(self):
+        self.set_proxy_with_locale('te')
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_proxy_locale_returns_first_available(self):
+        self.set_proxy_with_locale('te')
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_no_proxy_returns_default_locale(self):
+        self.set_no_proxy()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_no_proxy_returns_first_avail_lang(self):
+        self.set_no_proxy()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_proxy_no_locale_returns_default_language(self):
+        self.set_proxy_with_no_locale()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.default_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.default_script_type))
+        self.remove_osid_object()
+
+    def test_get_matching_language_value_with_dictionary_proxy_no_locale_returns_first_avail_lang(self):
+        self.set_proxy_with_no_locale()
+        result = self.ml_obj.get_matching_language_value('foo', dictionary={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text,
+                         'hindi foo')
+        self.assertEqual(str(result.language_type),
+                         str(self.hindi_language_type))
+        self.assertEqual(str(result.format_type),
+                         str(self.default_format_type))
+        self.assertEqual(str(result.script_type),
+                         str(self.hindi_script_type))
+        self.remove_osid_object()
+
+    def test_get_index_of_language_type_throws_exception_if_not_form(self):
+        self.set_no_proxy()
+        with self.assertRaises(errors.IllegalState):
+            self.ml_obj.get_index_of_language_type('foo',
+                                                   self.hindi_language_type,
+                                                   dictionary={
+                                                       'foo': []
+                                                   })
+        self.remove_osid_object()
+
+    def test_get_index_of_language_type_throws_exception_if_not_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_index_of_language_type('foo',
+                                                   self.hindi_language_type,
+                                                   dictionary=[])
+        self.remove_osid_object(form=True)
+
+    def test_get_index_of_language_type_throws_exception_if_field_not_in_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_index_of_language_type('foo',
+                                                   self.hindi_language_type,
+                                                   dictionary={
+                                                       'boo': 'bim'
+                                                   })
+        self.remove_osid_object(form=True)
+
+    def test_get_index_of_language_type_returns_index_of_match_no_dictionary(self):
+        self.set_no_proxy(form=True, map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }, {
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        result = self.ml_obj.get_index_of_language_type('foo',
+                                                        self.hindi_language_type)
+        self.assertEqual(result, 0)
+        self.remove_osid_object(form=True)
+
+    def test_get_index_of_language_type_raises_exception_if_no_match_no_dictionary(self):
+        self.set_no_proxy(form=True, map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }, {
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_index_of_language_type('foo',
+                                                   self.telugu_language_type)
+        self.remove_osid_object(form=True)
+
+    def test_get_index_of_language_type_returns_index_of_match_dictionary(self):
+        self.set_no_proxy(form=True)
+        result = self.ml_obj.get_index_of_language_type('foo',
+                                                        self.hindi_language_type,
+                                                        dictionary={
+                                                            'foo': [{
+                                                                'text': 'hindi foo',
+                                                                'languageTypeId': str(self.hindi_language_type),
+                                                                'formatTypeId': str(self.default_format_type),
+                                                                'scriptTypeId': str(self.hindi_script_type)
+                                                            }, {
+                                                                'text': 'foo',
+                                                                'languageTypeId': str(self.default_language_type),
+                                                                'formatTypeId': str(self.default_format_type),
+                                                                'scriptTypeId': str(self.default_script_type)
+                                                            }]
+                                                        })
+        self.assertEqual(result, 0)
+        self.remove_osid_object(form=True)
+
+    def test_get_index_of_language_type_raises_exception_if_no_match_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.get_index_of_language_type('foo',
+                                                   self.telugu_language_type,
+                                                   dictionary={
+                                                       'foo': [{
+                                                           'text': 'hindi foo',
+                                                           'languageTypeId': str(self.hindi_language_type),
+                                                           'formatTypeId': str(self.default_format_type),
+                                                           'scriptTypeId': str(self.hindi_script_type)
+                                                       }, {
+                                                           'text': 'foo',
+                                                           'languageTypeId': str(self.default_language_type),
+                                                           'formatTypeId': str(self.default_format_type),
+                                                           'scriptTypeId': str(self.default_script_type)
+                                                       }]
+                                                   })
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_throws_exception_if_not_form(self):
+        self.set_no_proxy()
+        with self.assertRaises(errors.IllegalState):
+            self.ml_obj.remove_field_by_language('foo',
+                                                 self.hindi_language_type)
+        self.remove_osid_object()
+
+    def test_remove_field_by_language_language_type_must_be_instance_of_type(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.remove_field_by_language('foo',
+                                                 str(self.hindi_language_type))
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_dictionary_must_be_dict(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.remove_field_by_language('foo',
+                                                 self.hindi_language_type,
+                                                 dictionary=[])
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_field_must_be_in_dictionary(self):
+        self.set_no_proxy(form=True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.ml_obj.remove_field_by_language('foo',
+                                                 self.hindi_language_type,
+                                                 dictionary={
+                                                     'boo': 'bim'
+                                                 })
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_no_change_if_language_type_not_present(self):
+        self.set_no_proxy(form=True)
+        dictionary_to_test = {
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        }
+        self.ml_obj.remove_field_by_language('foo',
+                                             self.telugu_language_type,
+                                             dictionary=dictionary_to_test)
+        self.assertTrue(len(dictionary_to_test.items()), 1)
+        self.assertEqual(dictionary_to_test.keys()[0], 'foo')
+        self.assertEqual(dictionary_to_test['foo'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_only_removes_the_one_language(self):
+        self.set_no_proxy(form=True)
+        dictionary_to_test = {
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }, {
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        }
+        self.ml_obj.remove_field_by_language('foo',
+                                             self.hindi_language_type,
+                                             dictionary=dictionary_to_test)
+        self.assertTrue(len(dictionary_to_test.items()), 1)
+        self.assertEqual(dictionary_to_test.keys()[0], 'foo')
+        self.assertEqual(dictionary_to_test['foo'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_no_change_if_language_type_not_present_no_dictionary(self):
+        self.set_no_proxy(form=True, map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }]
+        })
+        self.ml_obj.remove_field_by_language('foo',
+                                             self.telugu_language_type)
+        self.assertTrue(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.remove_osid_object(form=True)
+
+    def test_remove_field_by_language_only_removes_the_one_language_no_dictionary(self):
+        self.set_no_proxy(form=True, map_initializer={
+            'foo': [{
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }, {
+                'text': 'foo',
+                'languageTypeId': str(self.default_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.default_script_type)
+            }]
+        })
+        self.ml_obj.remove_field_by_language('foo',
+                                             self.hindi_language_type)
+        self.assertTrue(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.remove_osid_object(form=True)
