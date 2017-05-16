@@ -17,6 +17,7 @@ from dlkit.primordium.mapping.color_primitives import RGBColorCoordinate
 from dlkit.records.osid.base_records import *
 
 from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
+from dlkit.json_.osid.queries import OsidObjectQuery
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.id.objects import IdList
 from dlkit.runtime import configs
@@ -4632,3 +4633,107 @@ class TestMultiLanguageRecord(unittest.TestCase):
                          'TextFormats%3APLAIN%40okapia.net')
         self.assertEqual(str(name.script_type),
                          '15924%3ALATN%40ISO')
+
+
+class QueryWrapper(OsidObjectQuery):
+    def __init__(self):
+        self._all_supported_record_type_ids = []
+        super(QueryWrapper, self).__init__(None)
+
+
+class TestMultiLanguageQueryRecord(unittest.TestCase):
+    """Tests for MultiLanguageQueryRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_query = QueryWrapper()
+        cls.multi_language_query = MultiLanguageQueryRecord(cls.osid_query)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    # NOTE: we do not test for all possible scenarios of no
+    #   entries, default language, proxy locale, etc., because
+    #   those scenarios would be redundant with the tests for
+    #   MultiLanguageUtils
+
+    def test_can_match_descriptions(self):
+        osid_query = QueryWrapper()
+        multi_language_query = MultiLanguageQueryRecord(osid_query)
+        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+                         {})
+
+        multi_language_query.match_descriptions('foo', True)
+        self.assertIn('descriptions.text',
+                      multi_language_query._my_osid_query._query_terms)
+        self.assertEqual(multi_language_query._my_osid_query._query_terms['descriptions.text'],
+                         {'$in': ['foo']})
+
+    def test_can_clear_match_descriptions(self):
+        osid_query = QueryWrapper()
+        multi_language_query = MultiLanguageQueryRecord(osid_query)
+        multi_language_query._my_osid_query._query_terms = {
+            'descriptions.text': {
+                '$in': ['foo']
+            }
+        }
+        multi_language_query.clear_match_descriptions()
+        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+                         {})
+
+    def test_can_match_display_names(self):
+        osid_query = QueryWrapper()
+        multi_language_query = MultiLanguageQueryRecord(osid_query)
+        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+                         {})
+
+        multi_language_query.match_display_names('foo', True)
+        self.assertIn('displayNames.text',
+                      multi_language_query._my_osid_query._query_terms)
+        self.assertEqual(multi_language_query._my_osid_query._query_terms['displayNames.text'],
+                         {'$in': ['foo']})
+
+    def test_can_clear_match_display_names(self):
+        osid_query = QueryWrapper()
+        multi_language_query = MultiLanguageQueryRecord(osid_query)
+        multi_language_query._my_osid_query._query_terms = {
+            'displayNames.text': {
+                '$in': ['foo']
+            }
+        }
+        multi_language_query.clear_match_display_names()
+        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+                         {})
+
+    def test_null_value_throws_exception_match_descriptions(self):
+        with self.assertRaises(errors.NullArgument):
+            self.multi_language_query.match_descriptions(None, True)
+
+    def test_null_match_throws_exception_match_descriptions(self):
+        with self.assertRaises(errors.NullArgument):
+            self.multi_language_query.match_descriptions('foo', None)
+
+    def test_null_value_throws_exception_match_display_names(self):
+        with self.assertRaises(errors.NullArgument):
+            self.multi_language_query.match_display_names(None, True)
+
+    def test_null_match_throws_exception_match_display_names(self):
+        with self.assertRaises(errors.NullArgument):
+            self.multi_language_query.match_display_names('foo', None)
+
+    def test_non_string_value_throws_exception_match_descriptions(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.multi_language_query.match_descriptions(123, True)
+
+    def test_non_bool_match_throws_exception_match_descriptions(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.multi_language_query.match_descriptions('foo', 123)
+
+    def test_non_string_value_throws_exception_match_display_names(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.multi_language_query.match_display_names(123, True)
+
+    def test_non_bool_match_throws_exception_match_display_names(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.multi_language_query.match_display_names('foo', 123)

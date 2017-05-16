@@ -3096,16 +3096,32 @@ class MultiLanguageQueryRecord(QueryInitRecord):
 
     def match_display_names(self, value, match):
         """stub"""
+        if value is None:
+            raise NullArgument('value must not be None')
+        if not isinstance(value, basestring):
+            raise InvalidArgument('value must be a string')
+        if match is None:
+            raise NullArgument('match must not be None')
+        if not isinstance(match, bool):
+            raise InvalidArgument('match must be a bool')
         self._my_osid_query._add_match('displayNames.text', str(value).lower(), match)
 
     def clear_match_display_names(self):
         """stub"""
-        self._my_osid_query._add_match('displayNames.text')
+        self._my_osid_query._clear_terms('displayNames.text')
 
     def match_descriptions(self, value, match):
         """stub"""
+        if value is None:
+            raise NullArgument('value must not be None')
+        if not isinstance(value, basestring):
+            raise InvalidArgument('value must be a string')
+        if match is None:
+            raise NullArgument('match must not be None')
+        if not isinstance(match, bool):
+            raise InvalidArgument('match must be a bool')
         self._my_osid_query._add_match('descriptions.text', str(value).lower(), match)
 
     def clear_match_descriptions(self):
         """stub"""
-        self._my_osid_query._add_match('descriptions.text')
+        self._my_osid_query._clear_terms('descriptions.text')
