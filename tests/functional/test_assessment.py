@@ -4496,7 +4496,7 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._telugu()), item._my_map['displayNames'])
 
         form = self._bank.get_item_form_for_update(item.ident)
-        form.clear_display_name(self._english())
+        form.remove_display_name_by_language(self._english().language_type)
         item = self._bank.update_item(form)
         self.assertEqual(
             len(item._my_map['displayNames']),
@@ -4529,7 +4529,7 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._telugu()), item._my_map['descriptions'])
 
         form = self._bank.get_item_form_for_update(item.ident)
-        form.clear_description(self._english())
+        form.remove_description_by_language(self._english().language_type)
         item = self._bank.update_item(form)
         self.assertEqual(
             len(item._my_map['descriptions']),
@@ -4562,7 +4562,13 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._telugu()), item._my_map['displayNames'])
 
         form = self._bank.get_item_form_for_update(item.ident)
-        form.edit_display_name(self._english(), self._telugu())
+        new_display_name = {
+            'text': self._telugu().text,
+            'languageTypeId': str(self._english().language_type),
+            'formatTypeId': str(self._english().format_type),
+            'scriptTypeId': str(self._english().script_type)
+        }
+        form.edit_display_name(DisplayText(display_text_map=new_display_name))
         item = self._bank.update_item(form)
         self.assertEqual(
             len(item._my_map['displayNames']),
@@ -4571,10 +4577,6 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._hindi()), item._my_map['displayNames'])
         self.assertIn(self._str_txt(self._telugu()), item._my_map['displayNames'])
         self.assertNotIn(self._str_txt(self._english()), item._my_map['displayNames'])
-        self.assertEqual(
-            len([dn for dn in item._my_map['displayNames'] if dn == self._str_txt(self._telugu())]),
-            2
-        )
 
         self.assertEqual(
             item.description.text,
@@ -4600,7 +4602,13 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._telugu()), item._my_map['descriptions'])
 
         form = self._bank.get_item_form_for_update(item.ident)
-        form.edit_description(self._english(), self._telugu())
+        new_description = {
+            'text': self._telugu().text,
+            'languageTypeId': str(self._english().language_type),
+            'formatTypeId': str(self._english().format_type),
+            'scriptTypeId': str(self._english().script_type)
+        }
+        form.edit_description(DisplayText(display_text_map=new_description))
         item = self._bank.update_item(form)
         self.assertEqual(
             len(item._my_map['descriptions']),
@@ -4609,10 +4617,6 @@ class MultiLanguageItemTests(MultiLanguageBaseTestCase):
         self.assertIn(self._str_txt(self._hindi()), item._my_map['descriptions'])
         self.assertIn(self._str_txt(self._telugu()), item._my_map['descriptions'])
         self.assertNotIn(self._str_txt(self._english()), item._my_map['descriptions'])
-        self.assertEqual(
-            len([d for d in item._my_map['descriptions'] if d == self._str_txt(self._telugu())]),
-            2
-        )
 
         self.assertEqual(
             item.display_name.text,
