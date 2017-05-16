@@ -2952,6 +2952,8 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         """
         if self.get_display_names_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(display_name, DisplayText):
+            raise InvalidArgument('display_name must be instance of DisplayText')
         self.add_or_replace_value('displayNames', display_name)
 
     def clear_display_names(self):
@@ -2967,7 +2969,7 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         self.my_osid_object_form._my_map['displayNames'] = []
 
     @utilities.arguments_not_none
-    def clear_display_name(self, display_name):
+    def remove_display_name_by_language(self, language_type):
         """Removes the specified display_name.
 
         raise:  NoAccess - ``Metadata.isRequired()`` is ``true`` or
@@ -2977,20 +2979,26 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         """
         if self.get_display_names_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(language_type, Type):
+            raise InvalidArgument('language_type must be instance of Type')
         self.my_osid_object_form._my_map['displayNames'] = [t
                                                             for t in self.my_osid_object_form._my_map['displayNames']
-                                                            if t != self._dict_display_text(display_name)]
+                                                            if t['languageTypeId'] != str(language_type)]
 
     @utilities.arguments_not_none
-    def edit_display_name(self, old_display_name, new_display_name):
+    def edit_display_name(self, new_display_name):
         if self.get_display_names_metadata().is_read_only():
             raise NoAccess()
         if not isinstance(new_display_name, DisplayText):
             raise InvalidArgument()
-        if self._dict_display_text(old_display_name) not in self.my_osid_object_form._my_map['displayNames']:
-            raise InvalidArgument('old display name not present in this object')
-        self.my_osid_object_form._my_map['displayNames'][self.my_osid_object_form._my_map['displayNames'].index(self._dict_display_text(old_display_name))] = \
-            self._dict_display_text(new_display_name)
+
+        display_names = [d
+                         for d in self.my_osid_object_form._my_map['displayNames']
+                         if d['languageTypeId'] == str(new_display_name.language_type)]
+        if len(display_names) == 0:
+            raise InvalidArgument('That language type display name doesn\'t exist yet. Use add_display_name().')
+
+        self.add_or_replace_value('displayNames', new_display_name)
 
     @utilities.arguments_not_none
     def add_description(self, description):
@@ -3005,6 +3013,8 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         """
         if self.get_descriptions_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(description, DisplayText):
+            raise InvalidArgument('description must be instance of DisplayText')
         self.add_or_replace_value('descriptions', description)
 
     def clear_descriptions(self):
@@ -3020,7 +3030,7 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         self.my_osid_object_form._my_map['descriptions'] = []
 
     @utilities.arguments_not_none
-    def clear_description(self, description):
+    def remove_description_by_language(self, language_type):
         """Removes the specified description.
 
         raise:  NoAccess - ``Metadata.isRequired()`` is ``true`` or
@@ -3030,20 +3040,26 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         """
         if self.get_descriptions_metadata().is_read_only():
             raise NoAccess()
+        if not isinstance(language_type, Type):
+            raise InvalidArgument('language_type must be instance of Type')
         self.my_osid_object_form._my_map['descriptions'] = [t
                                                             for t in self.my_osid_object_form._my_map['descriptions']
-                                                            if t != self._dict_display_text(description)]
+                                                            if t['languageTypeId'] != str(language_type)]
 
     @utilities.arguments_not_none
-    def edit_description(self, old_description, new_description):
+    def edit_description(self, new_description):
         if self.get_descriptions_metadata().is_read_only():
             raise NoAccess()
         if not isinstance(new_description, DisplayText):
-            raise InvalidArgument()
-        if self._dict_display_text(old_description) not in self.my_osid_object_form._my_map['descriptions']:
-            raise InvalidArgument('old description not present in this object')
-        self.my_osid_object_form._my_map['descriptions'][self.my_osid_object_form._my_map['descriptions'].index(self._dict_display_text(old_description))] = \
-            self._dict_display_text(new_description)
+            raise InvalidArgument('new description is not a DisplayText object')
+
+        descriptions = [d
+                        for d in self.my_osid_object_form._my_map['descriptions']
+                        if d['languageTypeId'] == str(new_description.language_type)]
+        if len(descriptions) == 0:
+            raise InvalidArgument('That language type description doesn\'t exist yet. Use add_description().')
+
+        self.add_or_replace_value('descriptions', new_description)
 
 
 class MultiLanguageRecord(MultiLanguageUtils,

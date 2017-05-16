@@ -3156,8 +3156,6 @@ class TestMultiLanguageUtils(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        from dlkit.records.osid.base_records import DEFAULT_FORMAT_TYPE,\
-            DEFAULT_LANGUAGE_TYPE, DEFAULT_SCRIPT_TYPE
         cls.ml_obj = MultiLanguageUtils()
         cls.default_language_type = DEFAULT_LANGUAGE_TYPE
         cls.default_format_type = DEFAULT_FORMAT_TYPE
@@ -4144,3 +4142,405 @@ class TestMultiLanguageUtils(unittest.TestCase):
         self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
                          str(self.default_language_type))
         self.remove_osid_object(form=True)
+
+
+class TestMultiLanguageFormRecord(unittest.TestCase):
+    """Tests for MultiLanguageFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.default_language_type = DEFAULT_LANGUAGE_TYPE
+        cls.default_format_type = DEFAULT_FORMAT_TYPE
+        cls.default_script_type = DEFAULT_SCRIPT_TYPE
+        cls.hindi_language_type = Type('639-2%3AHIN%40ISO')
+        cls.hindi_script_type = Type('15924%3ADEVA%40ISO')
+        cls.telugu_language_type = Type('639-2%3ATEL%40ISO')
+        cls.telugu_script_type = Type('15924%3ATELU%40ISO')
+
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_edit_description(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['descriptions'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'foo')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+        form.edit_description(DisplayText(text='new foo',
+                                          language_type=self.default_language_type,
+                                          format_type=self.default_format_type,
+                                          script_type=self.default_script_type))
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'new foo')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+    def test_edit_description_requires_display_text(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['descriptions'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.edit_description('foo')
+
+    def test_edit_description_throws_exception_if_language_not_exist(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['descriptions'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.edit_description(DisplayText(display_text_map={
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }))
+
+    def test_can_add_display_name_new_language(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'],
+                         [])
+        form.add_display_name(DisplayText(display_text_map={
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'hindi foo')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+    def test_can_add_display_name_existing_language(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'],
+                         [])
+        form.add_display_name(DisplayText(display_text_map={
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'hindi foo')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+        form.add_display_name(DisplayText(display_text_map={
+            'text': 'hindi foo 2',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'hindi foo 2')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+    def test_add_display_name_requires_display_text(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_display_name('foo')
+
+    def test_can_add_description_new_language(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'],
+                         [])
+        form.add_description(DisplayText(display_text_map={
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'hindi foo')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+    def test_can_add_description_existing_language(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'],
+                         [])
+        form.add_description(DisplayText(display_text_map={
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'hindi foo')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+        form.add_description(DisplayText(display_text_map={
+            'text': 'hindi foo 2',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }))
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'hindi foo 2')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.hindi_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.hindi_script_type))
+
+    def test_add_description_requires_display_text(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.add_description('foo')
+
+    def test_remove_description_requires_type(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.remove_description_by_language(str(self.default_language_type))
+
+    def test_can_remove_description_by_language_type(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['descriptions'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        form.remove_description_by_language(self.default_language_type)
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
+
+    def test_remove_description_no_changes_if_language_not_exist(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['descriptions'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        form.remove_description_by_language(self.telugu_language_type)
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+                         'foo')
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+    def test_edit_display_name_throws_exception_if_language_not_exist(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['displayNames'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.edit_display_name(DisplayText(display_text_map={
+                'text': 'hindi foo',
+                'languageTypeId': str(self.hindi_language_type),
+                'formatTypeId': str(self.default_format_type),
+                'scriptTypeId': str(self.hindi_script_type)
+            }))
+
+    def test_can_edit_display_name(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['displayNames'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'foo')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+        form.edit_display_name(DisplayText(text='new foo',
+                                           language_type=self.default_language_type,
+                                           format_type=self.default_format_type,
+                                           script_type=self.default_script_type))
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'new foo')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+    def test_edit_display_name_requires_display_text(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['displayNames'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.edit_display_name('foo')
+
+    def test_remove_display_name_requires_type(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.InvalidArgument):
+            form.remove_display_name_by_language(str(self.default_language_type))
+
+    def test_remove_display_name_changes_nothing_if_language_not_present(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['displayNames'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        form.remove_display_name_by_language(self.telugu_language_type)
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+                         'foo')
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+                         str(self.default_language_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+                         str(self.default_format_type))
+        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+                         str(self.default_script_type))
+
+    def test_can_remove_display_name_by_language_type(self):
+        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map['displayNames'] = [{
+            'text': 'foo',
+            'languageTypeId': str(self.default_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.default_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=object_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        form.remove_display_name_by_language(self.default_language_type)
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 0)
+
+    def test_can_clear_descriptions(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['descriptions'] = [{
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+
+        form.clear_descriptions()
+        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
+
+    def test_can_clear_display_names(self):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['displayNames'] = [{
+            'text': 'hindi foo',
+            'languageTypeId': str(self.hindi_language_type),
+            'formatTypeId': str(self.default_format_type),
+            'scriptTypeId': str(self.hindi_script_type)
+        }]
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                          osid_object_map=obj_map)
+        form = MultiLanguageFormRecord(osid_object_form)
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+
+        form.clear_display_names()
+        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 0)
+
+    def test_can_get_descriptions_metadata(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_descriptions_metadata(), Metadata))
+
+    def test_can_get_display_names_metadata(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        self.assertTrue(isinstance(form.get_display_names_metadata(), Metadata))
