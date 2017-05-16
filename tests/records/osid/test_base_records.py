@@ -4574,3 +4574,61 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
         form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
             form.edit_description(None)
+
+
+class TestMultiLanguageRecord(unittest.TestCase):
+    """Tests for MultiLanguageRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map['descriptions'] = [{
+            'text': 'foo description',
+            'languageTypeId': '639-2%3AENG%40ISO',
+            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+            'scriptTypeId': '15924%3ALATN%40ISO'
+        }]
+        obj_map['displayNames'] = [{
+            'text': 'foo name',
+            'languageTypeId': '639-2%3AENG%40ISO',
+            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+            'scriptTypeId': '15924%3ALATN%40ISO'
+        }]
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+        cls.multi_language_object = MultiLanguageRecord(cls.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    # NOTE: we do not test for all possible scenarios of no
+    #   entries, default language, proxy locale, etc., because
+    #   those scenarios would be redundant with the tests for
+    #   MultiLanguageUtils
+
+    def test_can_get_description(self):
+        self.assertTrue(isinstance(self.multi_language_object.description,
+                                   DisplayText))
+        desc = self.multi_language_object.description
+        self.assertEqual(desc.text,
+                         'foo description')
+        self.assertEqual(str(desc.language_type),
+                         '639-2%3AENG%40ISO')
+        self.assertEqual(str(desc.format_type),
+                         'TextFormats%3APLAIN%40okapia.net')
+        self.assertEqual(str(desc.script_type),
+                         '15924%3ALATN%40ISO')
+
+    def test_can_get_display_name(self):
+        self.assertTrue(isinstance(self.multi_language_object.display_name,
+                                   DisplayText))
+        name = self.multi_language_object.display_name
+        self.assertEqual(name.text,
+                         'foo name')
+        self.assertEqual(str(name.language_type),
+                         '639-2%3AENG%40ISO')
+        self.assertEqual(str(name.format_type),
+                         'TextFormats%3APLAIN%40okapia.net')
+        self.assertEqual(str(name.script_type),
+                         '15924%3ALATN%40ISO')
