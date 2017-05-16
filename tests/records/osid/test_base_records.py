@@ -4544,3 +4544,33 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
     def test_can_get_display_names_metadata(self):
         form = MultiLanguageFormRecord(self.osid_object_form)
         self.assertTrue(isinstance(form.get_display_names_metadata(), Metadata))
+
+    def test_add_display_name_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_display_name(None)
+
+    def test_remove_display_name_by_language_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.remove_display_name_by_language(None)
+
+    def test_edit_display_name_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.edit_display_name(None)
+
+    def test_add_description_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.add_description(None)
+
+    def test_remove_description_by_language_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.remove_description_by_language(None)
+
+    def test_edit_description_throws_exception_if_passed_none(self):
+        form = MultiLanguageFormRecord(self.osid_object_form)
+        with self.assertRaises(errors.NullArgument):
+            form.edit_description(None)

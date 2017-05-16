@@ -3091,8 +3091,9 @@ class MultiLanguageRecord(MultiLanguageUtils,
 
 
 class MultiLanguageQueryRecord(QueryInitRecord):
-    # override match_display_name and match_description
-    # to look in the arrays!
+    # do **NOT** override match_display_name and match_description
+    # otherwise queries will break for non-multi-language objects
+
     def match_display_names(self, value, match):
         """stub"""
         self._my_osid_query._add_match('displayNames.text', str(value).lower(), match)
