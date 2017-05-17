@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -104,10 +105,24 @@ class TestObjective(unittest.TestCase):
 class TestObjectiveForm(unittest.TestCase):
     """Tests for ObjectiveForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.form = cls.catalog.get_objective_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     def test_get_assessment_metadata(self):
         """Tests get_assessment_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_assessment_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_assessment(self):
@@ -119,10 +134,10 @@ class TestObjectiveForm(unittest.TestCase):
         """Tests clear_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_knowledge_category_metadata(self):
         """Tests get_knowledge_category_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_knowledge_category_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_knowledge_category(self):
@@ -134,10 +149,10 @@ class TestObjectiveForm(unittest.TestCase):
         """Tests clear_knowledge_category"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_cognitive_process_metadata(self):
         """Tests get_cognitive_process_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_cognitive_process_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_cognitive_process(self):
@@ -149,10 +164,11 @@ class TestObjectiveForm(unittest.TestCase):
         """Tests clear_cognitive_process"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_form_record(self):
         """Tests get_objective_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_objective_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestObjectiveList(unittest.TestCase):
@@ -293,6 +309,29 @@ class TestActivity(unittest.TestCase):
 class TestActivityForm(unittest.TestCase):
     """Tests for ActivityForm"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ActivityLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+        create_form = cls.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for Activity Lookup'
+        create_form.description = 'Test Objective for ActivityLookupSession tests'
+        cls.objective = cls.catalog.create_objective(create_form)
+
+        cls.form = cls.catalog.get_activity_form_for_create(cls.objective.ident, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_activities():
+                catalog.delete_activity(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_assets_metadata(self):
         """Tests get_assets_metadata"""
@@ -338,10 +377,11 @@ class TestActivityForm(unittest.TestCase):
         """Tests clear_assessments"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_form_record(self):
         """Tests get_activity_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_activity_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestActivityList(unittest.TestCase):
@@ -435,10 +475,33 @@ class TestProficiency(unittest.TestCase):
 class TestProficiencyForm(unittest.TestCase):
     """Tests for ProficiencyForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ProficiencyLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        form = cls.catalog.get_objective_form_for_create([])
+        form.display_name = "Test LO"
+        objective = cls.catalog.create_objective(form)
+
+        cls.form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_proficiencies():
+                catalog.delete_proficiency(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
+
     def test_get_completion_metadata(self):
         """Tests get_completion_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_completion_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_completion(self):
@@ -450,10 +513,10 @@ class TestProficiencyForm(unittest.TestCase):
         """Tests clear_completion"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_level(self):
@@ -465,10 +528,11 @@ class TestProficiencyForm(unittest.TestCase):
         """Tests clear_level"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_form_record(self):
         """Tests get_proficiency_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_proficiency_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestProficiencyList(unittest.TestCase):

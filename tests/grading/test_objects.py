@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -23,7 +24,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 class TestGrade(unittest.TestCase):
     """Tests for Grade"""
 
-    # This really shouldn't be generated...should be GradeBook??
+    # This really shouldn't be generated...should be GradeEntry??
     @classmethod
     def setUpClass(cls):
         cls.object = None
@@ -65,6 +66,15 @@ class TestGrade(unittest.TestCase):
 
 class TestGradeForm(unittest.TestCase):
     """Tests for GradeForm"""
+
+    # This really shouldn't be generated...should be GradeEntryForm??
+    @classmethod
+    def setUpClass(cls):
+        cls.object = None
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_input_score_start_range_metadata(self):
@@ -191,25 +201,41 @@ class TestGradeSystem(unittest.TestCase):
 class TestGradeSystemForm(unittest.TestCase):
     """Tests for GradeSystemForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        cls.form = cls.catalog.get_grade_system_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_based_on_grades_metadata(self):
         """Tests get_based_on_grades_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_based_on_grades_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_based_on_grades(self):
         """Tests set_based_on_grades"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_grade_system_form_for_create([])
+        form.set_based_on_grades(True)
+        self.assertTrue(form._my_map['basedOnGrades'])
 
     @unittest.skip('unimplemented test')
     def test_clear_based_on_grades(self):
         """Tests clear_based_on_grades"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_lowest_numeric_score_metadata(self):
         """Tests get_lowest_numeric_score_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_lowest_numeric_score_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_lowest_numeric_score(self):
@@ -221,10 +247,10 @@ class TestGradeSystemForm(unittest.TestCase):
         """Tests clear_lowest_numeric_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_numeric_score_increment_metadata(self):
         """Tests get_numeric_score_increment_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_numeric_score_increment_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_numeric_score_increment(self):
@@ -236,10 +262,10 @@ class TestGradeSystemForm(unittest.TestCase):
         """Tests clear_numeric_score_increment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_highest_numeric_score_metadata(self):
         """Tests get_highest_numeric_score_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_highest_numeric_score_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_highest_numeric_score(self):
@@ -251,10 +277,11 @@ class TestGradeSystemForm(unittest.TestCase):
         """Tests clear_highest_numeric_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_form_record(self):
         """Tests get_grade_system_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_grade_system_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestGradeSystemList(unittest.TestCase):
@@ -408,25 +435,60 @@ class TestGradeEntry(unittest.TestCase):
 class TestGradeEntryForm(unittest.TestCase):
     """Tests for GradeEntryForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'Grade system'
+        cls.grade_system = cls.catalog.create_grade_system(form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'Gradebook Column'
+        form.set_grade_system(cls.grade_system.ident)
+        cls.column = cls.catalog.create_gradebook_column(form)
+
+        cls.form = cls.catalog.get_grade_entry_form_for_create(
+            cls.column.ident,
+            AGENT_ID,
+            [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_grade_entries():
+            cls.catalog.delete_grade_entry(obj.ident)
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.catalog.delete_grade_system(cls.grade_system.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_ignored_for_calculations_metadata(self):
         """Tests get_ignored_for_calculations_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_ignored_for_calculations_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_ignored_for_calculations(self):
         """Tests set_ignored_for_calculations"""
-        pass
+        form = self.catalog.get_grade_entry_form_for_create(
+            self.column.ident,
+            AGENT_ID,
+            [])
+        form.set_ignored_for_calculations(True)
+        self.assertTrue(form._my_map['ignoredForCalculations'])
 
     @unittest.skip('unimplemented test')
     def test_clear_ignored_for_calculations(self):
         """Tests clear_ignored_for_calculations"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_metadata(self):
         """Tests get_grade_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_grade_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_grade(self):
@@ -438,10 +500,10 @@ class TestGradeEntryForm(unittest.TestCase):
         """Tests clear_grade"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_score_metadata(self):
         """Tests get_score_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_score_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_score(self):
@@ -453,10 +515,11 @@ class TestGradeEntryForm(unittest.TestCase):
         """Tests clear_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_form_record(self):
         """Tests get_grade_entry_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_grade_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestGradeEntryList(unittest.TestCase):
@@ -513,10 +576,24 @@ class TestGradebookColumn(unittest.TestCase):
 class TestGradebookColumnForm(unittest.TestCase):
     """Tests for GradebookColumnForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        cls.form = cls.catalog.get_gradebook_column_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_grade_system(self):
@@ -528,10 +605,11 @@ class TestGradebookColumnForm(unittest.TestCase):
         """Tests clear_grade_system"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_form_record(self):
         """Tests get_gradebook_column_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_gradebook_column_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestGradebookColumnList(unittest.TestCase):

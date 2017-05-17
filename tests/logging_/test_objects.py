@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -78,10 +79,24 @@ class TestLogEntry(unittest.TestCase):
 class TestLogEntryForm(unittest.TestCase):
     """Tests for LogEntryForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_log(create_form)
+
+        cls.form = cls.catalog.get_log_entry_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_log(cls.catalog.ident)
+
     def test_get_priority_metadata(self):
         """Tests get_priority_metadata"""
-        pass
+        # From test_templates/logging.py::LogEntryForm::get_priority_metadata_template
+        self.assertTrue(isinstance(self.form.get_priority_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_priority(self):
@@ -93,30 +108,31 @@ class TestLogEntryForm(unittest.TestCase):
         """Tests clear_priority"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_timestamp_metadata(self):
         """Tests get_timestamp_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_timestamp_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_timestamp(self):
         """Tests set_timestamp"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_metadata(self):
         """Tests get_agent_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_agent_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_agent(self):
         """Tests set_agent"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_form_record(self):
         """Tests get_log_entry_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_log_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestLogEntryList(unittest.TestCase):

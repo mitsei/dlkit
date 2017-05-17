@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -131,10 +132,29 @@ class TestAuthorization(unittest.TestCase):
 class TestAuthorizationForm(unittest.TestCase):
     """Tests for AuthorizationForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_vault_form_for_create([])
+        create_form.display_name = 'Test Vault'
+        create_form.description = 'Test Vault for AuthorizationLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_vault(create_form)
+        cls.form = cls.catalog.get_authorization_form_for_create_for_agent(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': '1', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_vaults():
+            cls.svc_mgr.delete_vault(catalog.ident)
+
     def test_get_authorization_form_record(self):
         """Tests get_authorization_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_authorization_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAuthorizationList(unittest.TestCase):

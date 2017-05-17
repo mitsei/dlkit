@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -77,25 +78,41 @@ class TestResource(unittest.TestCase):
 class TestResourceForm(unittest.TestCase):
     """Tests for ResourceForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+
+        cls.form = cls.catalog.get_resource_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_get_group_metadata(self):
         """Tests get_group_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_group_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_group(self):
         """Tests set_group"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_resource_form_for_create([])
+        form.set_group(True)
+        self.assertTrue(form._my_map['group'])
 
     @unittest.skip('unimplemented test')
     def test_clear_group(self):
         """Tests clear_group"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_avatar_metadata(self):
         """Tests get_avatar_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_avatar_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_avatar(self):
@@ -107,10 +124,11 @@ class TestResourceForm(unittest.TestCase):
         """Tests clear_avatar"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_form_record(self):
         """Tests get_resource_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_resource_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestResourceList(unittest.TestCase):

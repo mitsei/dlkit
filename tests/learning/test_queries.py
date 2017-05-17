@@ -7,6 +7,20 @@ import unittest
 class TestObjectiveQuery(unittest.TestCase):
     """Tests for ObjectiveQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.query = cls.catalog.get_objective_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
@@ -32,10 +46,9 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_knowledge_category_id(self):
@@ -62,10 +75,9 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_knowledge_category"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_knowledge_category_terms(self):
         """Tests clear_knowledge_category_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_cognitive_process_id(self):
@@ -92,10 +104,9 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_cognitive_process"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_cognitive_process_terms(self):
         """Tests clear_cognitive_process_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_activity_id(self):
@@ -297,10 +308,9 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests get_objective_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_terms(self):
         """Tests clear_objective_bank_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_objective_query_record(self):
@@ -310,6 +320,20 @@ class TestObjectiveQuery(unittest.TestCase):
 
 class TestActivityQuery(unittest.TestCase):
     """Tests for ActivityQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.query = cls.catalog.get_activity_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_objective_id(self):
@@ -331,10 +355,9 @@ class TestActivityQuery(unittest.TestCase):
         """Tests get_objective_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_terms(self):
         """Tests clear_objective_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_asset_id(self):
@@ -446,10 +469,9 @@ class TestActivityQuery(unittest.TestCase):
         """Tests get_objective_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_terms(self):
         """Tests clear_objective_bank_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_activity_query_record(self):
@@ -459,6 +481,20 @@ class TestActivityQuery(unittest.TestCase):
 
 class TestProficiencyQuery(unittest.TestCase):
     """Tests for ProficiencyQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.query = cls.catalog.get_proficiency_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_resource_id(self):
@@ -480,10 +516,9 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests get_resource_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_terms(self):
         """Tests clear_resource_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_objective_id(self):
@@ -510,20 +545,18 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests match_any_objective"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_terms(self):
         """Tests clear_objective_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_completion(self):
         """Tests match_completion"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_completion_terms(self):
         """Tests clear_completion_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_minimum_completion(self):
@@ -560,10 +593,9 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests match_any_level"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_level_terms(self):
         """Tests clear_level_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_objective_bank_id(self):
@@ -585,10 +617,9 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests get_objective_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_terms(self):
         """Tests clear_objective_bank_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_proficiency_query_record(self):

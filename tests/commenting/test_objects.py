@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -17,6 +18,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 class TestComment(unittest.TestCase):
@@ -96,10 +98,24 @@ class TestComment(unittest.TestCase):
 class TestCommentForm(unittest.TestCase):
     """Tests for CommentForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'Test Book'
+        create_form.description = 'Test Book for CommentForm tests'
+        cls.catalog = cls.svc_mgr.create_book(create_form)
+        cls.form = cls.catalog.get_comment_form_for_create(AGENT_ID, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_books():
+            cls.svc_mgr.delete_book(catalog.ident)
+
     def test_get_text_metadata(self):
         """Tests get_text_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_text_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_text(self):
@@ -111,10 +127,10 @@ class TestCommentForm(unittest.TestCase):
         """Tests clear_text"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_rating_metadata(self):
         """Tests get_rating_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_rating_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_rating(self):
@@ -126,10 +142,11 @@ class TestCommentForm(unittest.TestCase):
         """Tests clear_rating"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comment_form_record(self):
         """Tests get_comment_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_comment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestCommentList(unittest.TestCase):

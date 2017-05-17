@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -52,10 +53,31 @@ class TestQuestion(unittest.TestCase):
 class TestQuestionForm(unittest.TestCase):
     """Tests for QuestionForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_form = cls.catalog.get_item_form_for_create([])
+        item_form.display_name = 'Item'
+        cls.item = cls.catalog.create_item(item_form)
+
+        cls.form = cls.catalog.get_question_form_for_create(cls.item.ident, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_question_form_record(self):
         """Tests get_question_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_question_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestQuestionList(unittest.TestCase):
@@ -106,10 +128,31 @@ class TestAnswer(unittest.TestCase):
 class TestAnswerForm(unittest.TestCase):
     """Tests for AnswerForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_form = cls.catalog.get_item_form_for_create([])
+        item_form.display_name = 'Item'
+        cls.item = cls.catalog.create_item(item_form)
+
+        cls.form = cls.catalog.get_answer_form_for_create(cls.item.ident, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_answer_form_record(self):
         """Tests get_answer_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_answer_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAnswerList(unittest.TestCase):
@@ -188,6 +231,20 @@ class TestItem(unittest.TestCase):
 class TestItemForm(unittest.TestCase):
     """Tests for ItemForm"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.form = cls.catalog.get_item_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_learning_objectives_metadata(self):
         """Tests get_learning_objectives_metadata"""
@@ -203,10 +260,11 @@ class TestItemForm(unittest.TestCase):
         """Tests clear_learning_objectives"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_item_form_record(self):
         """Tests get_item_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_item_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestItemList(unittest.TestCase):
@@ -283,10 +341,24 @@ class TestAssessment(unittest.TestCase):
 class TestAssessmentForm(unittest.TestCase):
     """Tests for AssessmentForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.form = cls.catalog.get_assessment_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_level(self):
@@ -298,10 +370,10 @@ class TestAssessmentForm(unittest.TestCase):
         """Tests clear_level"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_rubric_metadata(self):
         """Tests get_rubric_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_rubric_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_rubric(self):
@@ -313,10 +385,11 @@ class TestAssessmentForm(unittest.TestCase):
         """Tests clear_rubric"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_form_record(self):
         """Tests get_assessment_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_assessment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAssessmentList(unittest.TestCase):
@@ -494,10 +567,32 @@ class TestAssessmentOffered(unittest.TestCase):
 class TestAssessmentOfferedForm(unittest.TestCase):
     """Tests for AssessmentOfferedForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentOfferedLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentOfferedLookupSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+
+        cls.form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident,
+                                                                      [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_banks():
+            for obj in catalog.get_assessments():
+                catalog.delete_assessment(obj.ident)
+            cls.svc_mgr.delete_bank(catalog.ident)
+
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_level(self):
@@ -509,40 +604,44 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_level"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_items_sequential_metadata(self):
         """Tests get_items_sequential_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_items_sequential_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_items_sequential(self):
         """Tests set_items_sequential"""
-        pass
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
+                                                                   [])
+        form.set_items_sequential(True)
+        self.assertTrue(form._my_map['itemsSequential'])
 
     @unittest.skip('unimplemented test')
     def test_clear_items_sequential(self):
         """Tests clear_items_sequential"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_items_shuffled_metadata(self):
         """Tests get_items_shuffled_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_items_shuffled_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_items_shuffled(self):
         """Tests set_items_shuffled"""
-        pass
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
+                                                                   [])
+        form.set_items_shuffled(True)
+        self.assertTrue(form._my_map['itemsShuffled'])
 
     @unittest.skip('unimplemented test')
     def test_clear_items_shuffled(self):
         """Tests clear_items_shuffled"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_start_time_metadata(self):
         """Tests get_start_time_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_start_time_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_start_time(self):
@@ -554,10 +653,10 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_start_time"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_deadline_metadata(self):
         """Tests get_deadline_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_deadline_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_deadline(self):
@@ -569,10 +668,10 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_deadline"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_duration_metadata(self):
         """Tests get_duration_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_duration_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_duration(self):
@@ -584,10 +683,10 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_duration"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_score_system_metadata(self):
         """Tests get_score_system_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_score_system_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_score_system(self):
@@ -599,10 +698,10 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_score_system"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_grade_system(self):
@@ -614,10 +713,11 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         """Tests clear_grade_system"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_form_record(self):
         """Tests get_assessment_offered_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_assessment_offered_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAssessmentOfferedList(unittest.TestCase):
@@ -807,10 +907,37 @@ class TestAssessmentTaken(unittest.TestCase):
 class TestAssessmentTakenForm(unittest.TestCase):
     """Tests for AssessmentTakenForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentTakenLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentOfferedLookupSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+        create_form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        create_form.display_name = 'Test AssessmentOffered'
+        create_form.description = 'Test AssessmentOffered for AssessmentOfferedLookupSession tests'
+        cls.assessment_offered = cls.catalog.create_assessment_offered(create_form)
+
+        cls.form = cls.catalog.get_assessment_taken_form_for_create(cls.assessment_offered.ident, [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_banks():
+            for obj in catalog.get_assessments_offered():
+                catalog.delete_assessment_offered(obj.ident)
+            for obj in catalog.get_assessments():
+                catalog.delete_assessment(obj.ident)
+            cls.svc_mgr.delete_bank(catalog.ident)
+
     def test_get_taker_metadata(self):
         """Tests get_taker_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_taker_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_taker(self):
@@ -822,10 +949,11 @@ class TestAssessmentTakenForm(unittest.TestCase):
         """Tests clear_taker"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_form_record(self):
         """Tests get_assessment_taken_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_assessment_taken_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAssessmentTakenList(unittest.TestCase):

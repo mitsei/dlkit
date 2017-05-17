@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -158,10 +159,24 @@ class TestAsset(unittest.TestCase):
 class TestAssetForm(unittest.TestCase):
     """Tests for AssetForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        cls.form = cls.catalog.get_asset_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_title_metadata(self):
         """Tests get_title_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_title_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_title(self):
@@ -173,25 +188,27 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_title"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_public_domain_metadata(self):
         """Tests get_public_domain_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_public_domain_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_public_domain(self):
         """Tests set_public_domain"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_asset_form_for_create([])
+        form.set_public_domain(True)
+        self.assertTrue(form._my_map['publicDomain'])
 
     @unittest.skip('unimplemented test')
     def test_clear_public_domain(self):
         """Tests clear_public_domain"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_copyright_metadata(self):
         """Tests get_copyright_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_copyright_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_copyright(self):
@@ -203,10 +220,10 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_copyright"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_copyright_registration_metadata(self):
         """Tests get_copyright_registration_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_copyright_registration_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_copyright_registration(self):
@@ -218,55 +235,61 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_copyright_registration"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_distribute_verbatim_metadata(self):
         """Tests get_distribute_verbatim_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_distribute_verbatim_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_distribute_verbatim(self):
         """Tests set_distribute_verbatim"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_asset_form_for_create([])
+        form.set_distribute_verbatim(True)
+        self.assertTrue(form._my_map['distributeVerbatim'])
 
     @unittest.skip('unimplemented test')
     def test_clear_distribute_verbatim(self):
         """Tests clear_distribute_verbatim"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_distribute_alterations_metadata(self):
         """Tests get_distribute_alterations_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_distribute_alterations_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_distribute_alterations(self):
         """Tests set_distribute_alterations"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_asset_form_for_create([])
+        form.set_distribute_alterations(True)
+        self.assertTrue(form._my_map['distributeAlterations'])
 
     @unittest.skip('unimplemented test')
     def test_clear_distribute_alterations(self):
         """Tests clear_distribute_alterations"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_distribute_compositions_metadata(self):
         """Tests get_distribute_compositions_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_distribute_compositions_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_distribute_compositions(self):
         """Tests set_distribute_compositions"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_asset_form_for_create([])
+        form.set_distribute_compositions(True)
+        self.assertTrue(form._my_map['distributeCompositions'])
 
     @unittest.skip('unimplemented test')
     def test_clear_distribute_compositions(self):
         """Tests clear_distribute_compositions"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_source_metadata(self):
         """Tests get_source_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_source_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_source(self):
@@ -293,10 +316,10 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_provider_links"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_created_date_metadata(self):
         """Tests get_created_date_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_created_date_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_created_date(self):
@@ -308,25 +331,27 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_created_date"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_published_metadata(self):
         """Tests get_published_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_published_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_published(self):
         """Tests set_published"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        form = self.catalog.get_asset_form_for_create([])
+        form.set_published(True)
+        self.assertTrue(form._my_map['published'])
 
     @unittest.skip('unimplemented test')
     def test_clear_published(self):
         """Tests clear_published"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_published_date_metadata(self):
         """Tests get_published_date_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_published_date_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_published_date(self):
@@ -338,10 +363,10 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_published_date"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_principal_credit_string_metadata(self):
         """Tests get_principal_credit_string_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_principal_credit_string_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_principal_credit_string(self):
@@ -353,10 +378,10 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_principal_credit_string"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_metadata(self):
         """Tests get_composition_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
+        self.assertTrue(isinstance(self.form.get_composition_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_composition(self):
@@ -368,10 +393,11 @@ class TestAssetForm(unittest.TestCase):
         """Tests clear_composition"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_form_record(self):
         """Tests get_asset_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_asset_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAssetList(unittest.TestCase):
@@ -463,10 +489,31 @@ class TestAssetContent(unittest.TestCase):
 class TestAssetContentForm(unittest.TestCase):
     """Tests for AssetContentForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        form = cls.catalog.get_asset_form_for_create([])
+        form.display_name = 'Asset'
+        cls.asset = cls.catalog.create_asset(form)
+
+        cls.form = cls.catalog.get_asset_content_form_for_create(cls.asset.ident,
+                                                                 [])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assets():
+            cls.catalog.delete_asset(obj.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_accessibility_type_metadata(self):
         """Tests get_accessibility_type_metadata"""
-        pass
+        # From test_templates/logging.py::LogEntryForm::get_priority_metadata_template
+        self.assertTrue(isinstance(self.form.get_accessibility_type_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_add_accessibility_type(self):
@@ -483,10 +530,10 @@ class TestAssetContentForm(unittest.TestCase):
         """Tests clear_accessibility_types"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_data_metadata(self):
         """Tests get_data_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_data_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_data(self):
@@ -498,10 +545,10 @@ class TestAssetContentForm(unittest.TestCase):
         """Tests clear_data"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_url_metadata(self):
         """Tests get_url_metadata"""
-        pass
+        # From test_templates/resource.py::ResourceForm::get_group_metadata_template
+        self.assertTrue(isinstance(self.form.get_url_metadata(), Metadata))
 
     @unittest.skip('unimplemented test')
     def test_set_url(self):
@@ -513,10 +560,11 @@ class TestAssetContentForm(unittest.TestCase):
         """Tests clear_url"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_form_record(self):
         """Tests get_asset_content_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_asset_content_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestAssetContentList(unittest.TestCase):
@@ -573,10 +621,25 @@ class TestComposition(unittest.TestCase):
 class TestCompositionForm(unittest.TestCase):
     """Tests for CompositionForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+        cls.form = cls.catalog.get_composition_form_for_create([])
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_composition_form_record(self):
         """Tests get_composition_form_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.form.get_composition_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+        # Here check for a real record?
 
 
 class TestCompositionList(unittest.TestCase):

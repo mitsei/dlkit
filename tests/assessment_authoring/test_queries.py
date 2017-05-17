@@ -7,6 +7,20 @@ import unittest
 class TestAssessmentPartQuery(unittest.TestCase):
     """Tests for AssessmentPartQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.query = cls.catalog.get_assessment_part_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
@@ -27,10 +41,9 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests get_assessment_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_parent_assessment_part_id(self):
@@ -82,10 +95,9 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_any_weight"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_weight_terms(self):
         """Tests clear_weight_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_allocated_time(self):
@@ -97,10 +109,9 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_any_allocated_time"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_allocated_time_terms(self):
         """Tests clear_allocated_time_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_child_assessment_part_id(self):
@@ -152,10 +163,9 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_part_query_record(self):

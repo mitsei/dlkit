@@ -7,6 +7,20 @@ import unittest
 class TestAuthorizationQuery(unittest.TestCase):
     """Tests for AuthorizationQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_vault_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_vault(create_form)
+
+        cls.query = cls.catalog.get_authorization_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_vault(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_explicit_authorizations(self):
         """Tests match_explicit_authorizations"""
@@ -137,10 +151,9 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_function_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_function_terms(self):
         """Tests clear_function_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_qualifier_id(self):
@@ -162,10 +175,9 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_qualifier_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_qualifier_terms(self):
         """Tests clear_qualifier_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_vault_id(self):
@@ -187,10 +199,9 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_vault_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_vault_terms(self):
         """Tests clear_vault_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_authorization_query_record(self):

@@ -7,15 +7,28 @@ import unittest
 class TestResourceQuery(unittest.TestCase):
     """Tests for ResourceQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+
+        cls.query = cls.catalog.get_resource_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_group(self):
         """Tests match_group"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_group_terms(self):
         """Tests clear_group_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_demographic(self):
@@ -82,10 +95,9 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_any_avatar"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_avatar_terms(self):
         """Tests clear_avatar_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_agent_id(self):
@@ -167,10 +179,9 @@ class TestResourceQuery(unittest.TestCase):
         """Tests get_bin_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_bin_terms(self):
         """Tests clear_bin_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_resource_query_record(self):

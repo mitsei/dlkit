@@ -7,6 +7,20 @@ import unittest
 class TestLogEntryQuery(unittest.TestCase):
     """Tests for LogEntryQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_log(create_form)
+
+        cls.query = cls.catalog.get_log_entry_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_log(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_priority(self):
         """Tests match_priority"""
@@ -17,10 +31,9 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_any_priority"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_priority_terms(self):
         """Tests clear_priority_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_minimum_priority(self):
@@ -37,10 +50,9 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_timestamp"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_timestamp_terms(self):
         """Tests clear_timestamp_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_resource_id(self):
@@ -87,10 +99,9 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests get_agent_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_match_log_id(self):
@@ -112,10 +123,9 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests get_log_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_log_terms(self):
         """Tests clear_log_terms"""
-        pass
+        
 
     @unittest.skip('unimplemented test')
     def test_get_log_entry_query_record(self):
