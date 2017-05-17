@@ -4,6 +4,20 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestResourceQuery(unittest.TestCase):
     """Tests for ResourceQuery"""
 
@@ -26,9 +40,10 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_group"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_group_terms(self):
         """Tests clear_group_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_demographic(self):
@@ -95,9 +110,10 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_any_avatar"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_avatar_terms(self):
         """Tests clear_avatar_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_agent_id(self):
@@ -179,9 +195,10 @@ class TestResourceQuery(unittest.TestCase):
         """Tests get_bin_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_bin_terms(self):
         """Tests clear_bin_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_resource_query_record(self):

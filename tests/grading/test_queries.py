@@ -4,22 +4,32 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestGradeQuery(unittest.TestCase):
     """Tests for GradeQuery"""
 
+    # This really shouldn't be generated...should be GradeEntryQuery??
     @classmethod
     def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
-        create_form.display_name = 'Test catalog'
-        create_form.description = 'Test catalog description'
-        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
-
-        cls.query = cls.catalog.get_grade_query()
+        cls.object = None
 
     @classmethod
     def tearDownClass(cls):
-        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
@@ -41,27 +51,30 @@ class TestGradeQuery(unittest.TestCase):
         """Tests get_grade_system_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_grade_system_terms(self):
         """Tests clear_grade_system_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_input_score_start_range(self):
         """Tests match_input_score_start_range"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_input_score_start_range_terms(self):
         """Tests clear_input_score_start_range_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_input_score_end_range(self):
         """Tests match_input_score_end_range"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_input_score_end_range_terms(self):
         """Tests clear_input_score_end_range_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_input_score(self):
@@ -78,9 +91,10 @@ class TestGradeQuery(unittest.TestCase):
         """Tests match_output_score"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_output_score_terms(self):
         """Tests clear_output_score_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_entry_id(self):
@@ -132,9 +146,10 @@ class TestGradeQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_grade_query_record(self):
@@ -164,9 +179,10 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests match_based_on_grades"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_based_on_grades_terms(self):
         """Tests clear_based_on_grades_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_id(self):
@@ -203,27 +219,30 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests match_lowest_numeric_score"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_lowest_numeric_score_terms(self):
         """Tests clear_lowest_numeric_score_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_numeric_score_increment(self):
         """Tests match_numeric_score_increment"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_numeric_score_increment_terms(self):
         """Tests clear_numeric_score_increment_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_highest_numeric_score(self):
         """Tests match_highest_numeric_score"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_highest_numeric_score_terms(self):
         """Tests clear_highest_numeric_score_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_gradebook_column_id(self):
@@ -275,9 +294,10 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_grade_system_query_record(self):
@@ -322,9 +342,10 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests get_gradebook_column_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_gradebook_column_terms(self):
         """Tests clear_gradebook_column_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_key_resource_id(self):
@@ -401,9 +422,10 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_ignored_for_calculations"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_ignored_for_calculations_terms(self):
         """Tests clear_ignored_for_calculations_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_id(self):
@@ -430,9 +452,10 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_any_grade"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_grade_terms(self):
         """Tests clear_grade_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_score(self):
@@ -444,9 +467,10 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_any_score"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_score_terms(self):
         """Tests clear_score_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_time_graded(self):
@@ -538,9 +562,10 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_grade_entry_query_record(self):
@@ -590,9 +615,10 @@ class TestGradebookColumnQuery(unittest.TestCase):
         """Tests match_any_grade_system"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_grade_system_terms(self):
         """Tests clear_grade_system_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_entry_id(self):
@@ -659,9 +685,10 @@ class TestGradebookColumnQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_record(self):

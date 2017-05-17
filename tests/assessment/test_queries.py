@@ -4,6 +4,20 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestQuestionQuery(unittest.TestCase):
     """Tests for QuestionQuery"""
 
@@ -15,10 +29,14 @@ class TestQuestionQuery(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        cls.query = cls.catalog.get_question_query()
+        item_query = cls.catalog.get_item_query()
+        # cls.query = item_query.get_question_query()
+        # Currently raises Unsupported()
 
     @classmethod
     def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
@@ -38,10 +56,14 @@ class TestAnswerQuery(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        cls.query = cls.catalog.get_answer_query()
+        item_query = cls.catalog.get_item_query()
+        # cls.query = item_query.get_answer_query()
+        # Currently raises Unsupported()
 
     @classmethod
     def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
@@ -207,9 +229,10 @@ class TestItemQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_item_query_record(self):
@@ -259,9 +282,10 @@ class TestAssessmentQuery(unittest.TestCase):
         """Tests match_any_level"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_level_terms(self):
         """Tests clear_level_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_rubric_id(self):
@@ -288,9 +312,10 @@ class TestAssessmentQuery(unittest.TestCase):
         """Tests match_any_rubric"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_rubric_terms(self):
         """Tests clear_rubric_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_item_id(self):
@@ -402,9 +427,10 @@ class TestAssessmentQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_query_record(self):
@@ -449,9 +475,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests get_assessment_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_level_id(self):
@@ -478,27 +505,30 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_level"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_level_terms(self):
         """Tests clear_level_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_items_sequential(self):
         """Tests match_items_sequential"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_items_sequential_terms(self):
         """Tests clear_items_sequential_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_items_shuffled(self):
         """Tests match_items_shuffled"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_items_shuffled_terms(self):
         """Tests clear_items_shuffled_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_start_time(self):
@@ -510,9 +540,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_start_time"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_start_time_terms(self):
         """Tests clear_start_time_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_deadline(self):
@@ -524,9 +555,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_deadline"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_deadline_terms(self):
         """Tests clear_deadline_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_duration(self):
@@ -538,9 +570,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_duration"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_duration_terms(self):
         """Tests clear_duration_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_score_system_id(self):
@@ -567,9 +600,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_score_system"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_score_system_terms(self):
         """Tests clear_score_system_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
@@ -596,9 +630,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests match_any_grade_system"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_grade_system_terms(self):
         """Tests clear_grade_system_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_rubric_id(self):
@@ -680,9 +715,10 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_offered_query_record(self):
@@ -727,9 +763,10 @@ class TestAssessmentTakenQuery(unittest.TestCase):
         """Tests get_assessment_offered_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_assessment_offered_terms(self):
         """Tests clear_assessment_offered_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_taker_id(self):
@@ -751,9 +788,10 @@ class TestAssessmentTakenQuery(unittest.TestCase):
         """Tests get_taker_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_taker_terms(self):
         """Tests clear_taker_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_taking_agent_id(self):
@@ -960,9 +998,10 @@ class TestAssessmentTakenQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_taken_query_record(self):

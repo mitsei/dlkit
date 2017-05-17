@@ -4,6 +4,20 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestCommentQuery(unittest.TestCase):
     """Tests for CommentQuery"""
 
@@ -51,9 +65,10 @@ class TestCommentQuery(unittest.TestCase):
         """Tests get_commentor_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_commentor_terms(self):
         """Tests clear_commentor_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_commenting_agent_id(self):
@@ -90,9 +105,10 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_any_text"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_text_terms(self):
         """Tests clear_text_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_rating_id(self):
@@ -119,9 +135,10 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_any_rating"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_rating_terms(self):
         """Tests clear_rating_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_book_id(self):
@@ -143,9 +160,10 @@ class TestCommentQuery(unittest.TestCase):
         """Tests get_book_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_book_terms(self):
         """Tests clear_book_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_comment_query_record(self):

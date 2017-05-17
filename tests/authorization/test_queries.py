@@ -4,6 +4,20 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestAuthorizationQuery(unittest.TestCase):
     """Tests for AuthorizationQuery"""
 
@@ -151,9 +165,10 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_function_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_function_terms(self):
         """Tests clear_function_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_qualifier_id(self):
@@ -175,9 +190,10 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_qualifier_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_qualifier_terms(self):
         """Tests clear_qualifier_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_vault_id(self):
@@ -199,9 +215,10 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests get_vault_query"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_clear_vault_terms(self):
         """Tests clear_vault_terms"""
-        
+        pass
 
     @unittest.skip('unimplemented test')
     def test_get_authorization_query_record(self):
