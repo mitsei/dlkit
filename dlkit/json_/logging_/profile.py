@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo logging'
 
 DESCRIPTION = 'MongoDB based logging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 212]
+VERSIONCOMPONENTS = [0, 1, 221]
 
-RELEASEDATE = "2017-05-09"
+RELEASEDATE = "2017-05-17"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

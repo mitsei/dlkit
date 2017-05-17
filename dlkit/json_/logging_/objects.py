@@ -222,9 +222,9 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Implemented from template for osid.logging.LogEntryForm.get_priority_metadata
         metadata = dict(self._mdata['priority'])
-        metadata.update({'existing_type_values': self._my_map['priority']})
+        metadata.update({'existing_type_values': self._my_map['priorityId']})
         return Metadata(**metadata)
 
     priority_metadata = property(fget=get_priority_metadata)

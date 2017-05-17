@@ -11,6 +11,7 @@
 
 
 import base64
+import datetime
 import gridfs
 import importlib
 
@@ -22,6 +23,8 @@ from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..osid.markers import Extensible
 from ..osid.metadata import Metadata
+from ..osid.osid_errors import *
+from ..primitives import *
 from ..primitives import DataInputStream
 from ..primitives import DisplayText
 from ..primitives import Id
@@ -1551,9 +1554,9 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Implemented from template for osid.logging.LogEntryForm.get_priority_metadata
         metadata = dict(self._mdata['accessibility_type'])
-        metadata.update({'existing_type_values': self._my_map['accessibilityType']})
+        metadata.update({'existing_type_values': self._my_map['accessibilityTypeId']})
         return Metadata(**metadata)
 
     accessibility_type_metadata = property(fget=get_accessibility_type_metadata)
