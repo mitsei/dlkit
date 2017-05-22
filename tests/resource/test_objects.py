@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -46,10 +47,10 @@ class TestResource(unittest.TestCase):
         self.assertTrue(isinstance(self.object.is_group(), bool))
         self.assertFalse(self.object.is_group())
 
-    @unittest.skip('unimplemented test')
     def test_is_demographic(self):
         """Tests is_demographic"""
-        pass
+        with self.assertRaises(AttributeError):
+            self.object.is_demographic()
 
     def test_has_avatar(self):
         """Tests has_avatar"""
@@ -86,7 +87,8 @@ class TestResourceForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bin(create_form)
 
-        cls.form = cls.catalog.get_resource_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_resource_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -100,29 +102,38 @@ class TestResourceForm(unittest.TestCase):
     def test_set_group(self):
         """Tests set_group"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        form = self.catalog.get_resource_form_for_create([])
-        form.set_group(True)
-        self.assertTrue(form._my_map['group'])
+        self.form.set_group(True)
+        self.assertTrue(self.form._my_map['group'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_group(self):
         """Tests clear_group"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_group_template
+        self.form.set_group(True)
+        self.assertTrue(self.form._my_map['group'])
+        self.form.clear_group()
+        self.assertIsNone(self.form._my_map['group'])
 
     def test_get_avatar_metadata(self):
         """Tests get_avatar_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_avatar_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_avatar(self):
         """Tests set_avatar"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['avatarId'], '')
+        self.form.set_avatar(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['avatarId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_avatar(self):
         """Tests clear_avatar"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_avatar(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['avatarId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_avatar()
+        self.assertEqual(self.form._my_map['avatarId'], '')
 
     def test_get_resource_form_record(self):
         """Tests get_resource_form_record"""
@@ -134,15 +145,50 @@ class TestResourceForm(unittest.TestCase):
 class TestResourceList(unittest.TestCase):
     """Tests for ResourceList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test Bin'
+        create_form.description = 'Test Bin for ResourceList tests'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.resource.objects import ResourceList
+        self.resource_list = list()
+        self.resource_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_resource_form_for_create([])
+            create_form.display_name = 'Test Resource ' + str(num)
+            create_form.description = 'Test Resource for ResourceList tests'
+            obj = self.catalog.create_resource(create_form)
+            self.resource_list.append(obj)
+            self.resource_ids.append(obj.ident)
+        self.resource_list = ResourceList(self.resource_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_get_next_resource(self):
         """Tests get_next_resource"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.resource.objects import Resource
+        self.assertTrue(isinstance(self.resource_list.get_next_resource(), Resource))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_resources(self):
         """Tests get_next_resources"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.resource.objects import ResourceList, Resource
+        new_list = self.resource_list.get_next_resources(2)
+        self.assertTrue(isinstance(new_list, ResourceList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Resource))
 
 
 class TestResourceNode(unittest.TestCase):
@@ -199,15 +245,50 @@ class TestBinForm(unittest.TestCase):
 class TestBinList(unittest.TestCase):
     """Tests for BinList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test Bin'
+        create_form.description = 'Test Bin for BinList tests'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+        cls.bin_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.resource.objects import BinList
+        self.bin_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_bin_form_for_create([])
+            create_form.display_name = 'Test Bin ' + str(num)
+            create_form.description = 'Test Bin for BinList tests'
+            obj = self.svc_mgr.create_bin(create_form)
+            self.bin_list.append(obj)
+            self.bin_ids.append(obj.ident)
+        self.bin_list = BinList(self.bin_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.bin_ids:
+            cls.svc_mgr.delete_bin(obj)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_get_next_bin(self):
         """Tests get_next_bin"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.resource.objects import Bin
+        self.assertTrue(isinstance(self.bin_list.get_next_bin(), Bin))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_bins(self):
         """Tests get_next_bins"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.resource.objects import BinList, Bin
+        new_list = self.bin_list.get_next_bins(2)
+        self.assertTrue(isinstance(new_list, BinList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Bin))
 
 
 class TestBinNode(unittest.TestCase):
@@ -232,12 +313,52 @@ class TestBinNode(unittest.TestCase):
 class TestBinNodeList(unittest.TestCase):
     """Tests for BinNodeList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNodeList
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test Bin'
+        create_form.description = 'Test Bin for BinNodeList tests'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+        cls.bin_node_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNodeList
+        from dlkit.json_.resource.objects import BinNodeList, BinNode
+        self.bin_node_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_bin_form_for_create([])
+            create_form.display_name = 'Test BinNode ' + str(num)
+            create_form.description = 'Test BinNode for BinNodeList tests'
+            obj = self.svc_mgr.create_bin(create_form)
+            self.bin_node_list.append(BinNode(obj.object_map))
+            self.bin_node_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_bin(self.bin_node_list[0].ident)
+        self.svc_mgr.add_child_bin(
+            self.bin_node_list[0].ident,
+            self.bin_node_list[1].ident)
+        self.bin_node_list = BinNodeList(self.bin_node_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNodeList
+        for obj in cls.bin_node_ids:
+            cls.svc_mgr.delete_bin(obj)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_get_next_bin_node(self):
         """Tests get_next_bin_node"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.resource.objects import BinNode
+        self.assertTrue(isinstance(self.bin_node_list.get_next_bin_node(), BinNode))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_bin_nodes(self):
         """Tests get_next_bin_nodes"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.resource.objects import BinNodeList, BinNode
+        new_list = self.bin_node_list.get_next_bin_nodes(2)
+        self.assertTrue(isinstance(new_list, BinNodeList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, BinNode))

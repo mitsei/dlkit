@@ -160,15 +160,57 @@ class TestAuthorizationForm(unittest.TestCase):
 class TestAuthorizationList(unittest.TestCase):
     """Tests for AuthorizationList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_vault_form_for_create([])
+        create_form.display_name = 'Test Vault'
+        create_form.description = 'Test Vault for AuthorizationLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_vault(create_form)
+        cls.form = cls.catalog.get_authorization_form_for_create_for_agent(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': '1', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+
+    def setUp(self):
+        from dlkit.json_.authorization.objects import AuthorizationList
+        self.authorization_list = list()
+        self.authorization_ids = list()
+
+        for num in [0, 1]:
+            form = self.catalog.get_authorization_form_for_create_for_agent(
+                AGENT_ID,
+                LOOKUP_RESOURCE_FUNCTION_ID,
+                Id(**{'identifier': str(num), 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+                [])
+            obj = self.catalog.create_authorization(form)
+
+            self.authorization_list.append(obj)
+            self.authorization_ids.append(obj.ident)
+        self.authorization_list = AuthorizationList(self.authorization_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_vaults():
+            for authz in catalog.get_authorizations():
+                catalog.delete_authorization(authz.ident)
+            cls.svc_mgr.delete_vault(catalog.ident)
+
     def test_get_next_authorization(self):
         """Tests get_next_authorization"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.authorization.objects import Authorization
+        self.assertTrue(isinstance(self.authorization_list.get_next_authorization(), Authorization))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_authorizations(self):
         """Tests get_next_authorizations"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.authorization.objects import AuthorizationList, Authorization
+        new_list = self.authorization_list.get_next_authorizations(2)
+        self.assertTrue(isinstance(new_list, AuthorizationList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Authorization))
 
 
 class TestVault(unittest.TestCase):
@@ -192,15 +234,50 @@ class TestVaultForm(unittest.TestCase):
 class TestVaultList(unittest.TestCase):
     """Tests for VaultList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_vault_form_for_create([])
+        create_form.display_name = 'Test Vault'
+        create_form.description = 'Test Vault for VaultList tests'
+        cls.catalog = cls.svc_mgr.create_vault(create_form)
+        cls.vault_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.authorization.objects import VaultList
+        self.vault_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = 'Test Vault ' + str(num)
+            create_form.description = 'Test Vault for VaultList tests'
+            obj = self.svc_mgr.create_vault(create_form)
+            self.vault_list.append(obj)
+            self.vault_ids.append(obj.ident)
+        self.vault_list = VaultList(self.vault_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.vault_ids:
+            cls.svc_mgr.delete_vault(obj)
+        cls.svc_mgr.delete_vault(cls.catalog.ident)
+
     def test_get_next_vault(self):
         """Tests get_next_vault"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.authorization.objects import Vault
+        self.assertTrue(isinstance(self.vault_list.get_next_vault(), Vault))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_vaults(self):
         """Tests get_next_vaults"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.authorization.objects import VaultList, Vault
+        new_list = self.vault_list.get_next_vaults(2)
+        self.assertTrue(isinstance(new_list, VaultList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Vault))
 
 
 class TestVaultNode(unittest.TestCase):

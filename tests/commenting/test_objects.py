@@ -132,15 +132,22 @@ class TestCommentForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_rating_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_rating(self):
         """Tests set_rating"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['ratingId'], '')
+        self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['ratingId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_rating(self):
         """Tests clear_rating"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['ratingId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_rating()
+        self.assertEqual(self.form._my_map['ratingId'], '')
 
     def test_get_comment_form_record(self):
         """Tests get_comment_form_record"""
@@ -152,15 +159,50 @@ class TestCommentForm(unittest.TestCase):
 class TestCommentList(unittest.TestCase):
     """Tests for CommentList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'Test Book'
+        create_form.description = 'Test Book for CommentForm tests'
+        cls.catalog = cls.svc_mgr.create_book(create_form)
+        cls.form = cls.catalog.get_comment_form_for_create(AGENT_ID, [])
+
+    def setUp(self):
+        from dlkit.json_.commenting.objects import CommentList
+        self.comment_list = list()
+        self.comment_ids = list()
+
+        for num in [0, 1]:
+            form = self.catalog.get_comment_form_for_create(AGENT_ID, [])
+
+            obj = self.catalog.create_comment(form)
+
+            self.comment_list.append(obj)
+            self.comment_ids.append(obj.ident)
+        self.comment_list = CommentList(self.comment_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_books():
+            for comment in catalog.get_comments():
+                catalog.delete_comment(comment.ident)
+            cls.svc_mgr.delete_book(catalog.ident)
+
     def test_get_next_comment(self):
         """Tests get_next_comment"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.commenting.objects import Comment
+        self.assertTrue(isinstance(self.comment_list.get_next_comment(), Comment))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_comments(self):
         """Tests get_next_comments"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.commenting.objects import CommentList, Comment
+        new_list = self.comment_list.get_next_comments(2)
+        self.assertTrue(isinstance(new_list, CommentList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Comment))
 
 
 class TestBook(unittest.TestCase):
@@ -184,15 +226,50 @@ class TestBookForm(unittest.TestCase):
 class TestBookList(unittest.TestCase):
     """Tests for BookList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'Test Book'
+        create_form.description = 'Test Book for BookList tests'
+        cls.catalog = cls.svc_mgr.create_book(create_form)
+        cls.book_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.commenting.objects import BookList
+        self.book_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_book_form_for_create([])
+            create_form.display_name = 'Test Book ' + str(num)
+            create_form.description = 'Test Book for BookList tests'
+            obj = self.svc_mgr.create_book(create_form)
+            self.book_list.append(obj)
+            self.book_ids.append(obj.ident)
+        self.book_list = BookList(self.book_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.book_ids:
+            cls.svc_mgr.delete_book(obj)
+        cls.svc_mgr.delete_book(cls.catalog.ident)
+
     def test_get_next_book(self):
         """Tests get_next_book"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.commenting.objects import Book
+        self.assertTrue(isinstance(self.book_list.get_next_book(), Book))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_books(self):
         """Tests get_next_books"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.commenting.objects import BookList, Book
+        new_list = self.book_list.get_next_books(2)
+        self.assertTrue(isinstance(new_list, BookList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Book))
 
 
 class TestBookNode(unittest.TestCase):
@@ -217,12 +294,52 @@ class TestBookNode(unittest.TestCase):
 class TestBookNodeList(unittest.TestCase):
     """Tests for BookNodeList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNodeList
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'Test Book'
+        create_form.description = 'Test Book for BookNodeList tests'
+        cls.catalog = cls.svc_mgr.create_book(create_form)
+        cls.book_node_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNodeList
+        from dlkit.json_.commenting.objects import BookNodeList, BookNode
+        self.book_node_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_book_form_for_create([])
+            create_form.display_name = 'Test BookNode ' + str(num)
+            create_form.description = 'Test BookNode for BookNodeList tests'
+            obj = self.svc_mgr.create_book(create_form)
+            self.book_node_list.append(BookNode(obj.object_map))
+            self.book_node_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_book(self.book_node_list[0].ident)
+        self.svc_mgr.add_child_book(
+            self.book_node_list[0].ident,
+            self.book_node_list[1].ident)
+        self.book_node_list = BookNodeList(self.book_node_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNodeList
+        for obj in cls.book_node_ids:
+            cls.svc_mgr.delete_book(obj)
+        cls.svc_mgr.delete_book(cls.catalog.ident)
+
     def test_get_next_book_node(self):
         """Tests get_next_book_node"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.commenting.objects import BookNode
+        self.assertTrue(isinstance(self.book_node_list.get_next_book_node(), BookNode))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_book_nodes(self):
         """Tests get_next_book_nodes"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.commenting.objects import BookNodeList, BookNode
+        new_list = self.book_node_list.get_next_book_nodes(2)
+        self.assertTrue(isinstance(new_list, BookNodeList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, BookNode))

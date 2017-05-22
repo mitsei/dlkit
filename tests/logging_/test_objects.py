@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -87,7 +88,8 @@ class TestLogEntryForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_log(create_form)
 
-        cls.form = cls.catalog.get_log_entry_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_log_entry_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -123,10 +125,13 @@ class TestLogEntryForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_agent_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_agent(self):
         """Tests set_agent"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['agentId'], '')
+        self.form.set_agent(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['agentId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
     def test_get_log_entry_form_record(self):
         """Tests get_log_entry_form_record"""
@@ -138,15 +143,50 @@ class TestLogEntryForm(unittest.TestCase):
 class TestLogEntryList(unittest.TestCase):
     """Tests for LogEntryList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log'
+        create_form.description = 'Test Log for LogEntryList tests'
+        cls.catalog = cls.svc_mgr.create_log(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.logging_.objects import LogEntryList
+        self.log_entry_list = list()
+        self.log_entry_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_log_entry_form_for_create([])
+            create_form.display_name = 'Test LogEntry ' + str(num)
+            create_form.description = 'Test LogEntry for LogEntryList tests'
+            obj = self.catalog.create_log_entry(create_form)
+            self.log_entry_list.append(obj)
+            self.log_entry_ids.append(obj.ident)
+        self.log_entry_list = LogEntryList(self.log_entry_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_log_entries():
+            cls.catalog.delete_log_entry(obj.ident)
+        cls.svc_mgr.delete_log(cls.catalog.ident)
+
     def test_get_next_log_entry(self):
         """Tests get_next_log_entry"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.logging_.objects import LogEntry
+        self.assertTrue(isinstance(self.log_entry_list.get_next_log_entry(), LogEntry))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_log_entries(self):
         """Tests get_next_log_entries"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.logging_.objects import LogEntryList, LogEntry
+        new_list = self.log_entry_list.get_next_log_entries(2)
+        self.assertTrue(isinstance(new_list, LogEntryList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, LogEntry))
 
 
 class TestLog(unittest.TestCase):
@@ -170,15 +210,50 @@ class TestLogForm(unittest.TestCase):
 class TestLogList(unittest.TestCase):
     """Tests for LogList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log'
+        create_form.description = 'Test Log for LogList tests'
+        cls.catalog = cls.svc_mgr.create_log(create_form)
+        cls.log_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.logging_.objects import LogList
+        self.log_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_log_form_for_create([])
+            create_form.display_name = 'Test Log ' + str(num)
+            create_form.description = 'Test Log for LogList tests'
+            obj = self.svc_mgr.create_log(create_form)
+            self.log_list.append(obj)
+            self.log_ids.append(obj.ident)
+        self.log_list = LogList(self.log_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.log_ids:
+            cls.svc_mgr.delete_log(obj)
+        cls.svc_mgr.delete_log(cls.catalog.ident)
+
     def test_get_next_log(self):
         """Tests get_next_log"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.logging_.objects import Log
+        self.assertTrue(isinstance(self.log_list.get_next_log(), Log))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_logs(self):
         """Tests get_next_logs"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.logging_.objects import LogList, Log
+        new_list = self.log_list.get_next_logs(2)
+        self.assertTrue(isinstance(new_list, LogList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Log))
 
 
 class TestLogNode(unittest.TestCase):

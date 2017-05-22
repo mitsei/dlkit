@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -83,15 +84,51 @@ class TestQuestionForm(unittest.TestCase):
 class TestQuestionList(unittest.TestCase):
     """Tests for QuestionList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for QuestionList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        from dlkit.json_.assessment.objects import QuestionList
+        self.question_list = list()
+        self.question_ids = list()
+        for num in [0, 1]:
+            item_form = self.catalog.get_item_form_for_create([])
+            item_form.display_name = 'Item'
+            item = self.catalog.create_item(item_form)
+
+            create_form = self.catalog.get_question_form_for_create(item.ident, [])
+            create_form.display_name = 'Test Question ' + str(num)
+            create_form.description = 'Test Question for QuestionList tests'
+            obj = self.catalog.create_question(create_form)
+            self.question_list.append(obj)
+            self.question_ids.append(obj.ident)
+        self.question_list = QuestionList(self.question_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_question(self):
         """Tests get_next_question"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import Question
+        self.assertTrue(isinstance(self.question_list.get_next_question(), Question))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_questions(self):
         """Tests get_next_questions"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import QuestionList, Question
+        new_list = self.question_list.get_next_questions(2)
+        self.assertTrue(isinstance(new_list, QuestionList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Question))
 
 
 class TestAnswer(unittest.TestCase):
@@ -158,15 +195,51 @@ class TestAnswerForm(unittest.TestCase):
 class TestAnswerList(unittest.TestCase):
     """Tests for AnswerList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AnswerList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        from dlkit.json_.assessment.objects import AnswerList
+        self.answer_list = list()
+        self.answer_ids = list()
+        for num in [0, 1]:
+            item_form = self.catalog.get_item_form_for_create([])
+            item_form.display_name = 'Item'
+            item = self.catalog.create_item(item_form)
+
+            create_form = self.catalog.get_answer_form_for_create(item.ident, [])
+            create_form.display_name = 'Test Answer ' + str(num)
+            create_form.description = 'Test Answer for AnswerList tests'
+            obj = self.catalog.create_answer(create_form)
+            self.answer_list.append(obj)
+            self.answer_ids.append(obj.ident)
+        self.answer_list = AnswerList(self.answer_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_answer(self):
         """Tests get_next_answer"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import Answer
+        self.assertTrue(isinstance(self.answer_list.get_next_answer(), Answer))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_answers(self):
         """Tests get_next_answers"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import AnswerList, Answer
+        new_list = self.answer_list.get_next_answers(2)
+        self.assertTrue(isinstance(new_list, AnswerList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Answer))
 
 
 class TestItem(unittest.TestCase):
@@ -239,7 +312,8 @@ class TestItemForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        cls.form = cls.catalog.get_item_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_item_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -270,15 +344,50 @@ class TestItemForm(unittest.TestCase):
 class TestItemList(unittest.TestCase):
     """Tests for ItemList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for ItemList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.assessment.objects import ItemList
+        self.item_list = list()
+        self.item_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_item_form_for_create([])
+            create_form.display_name = 'Test Item ' + str(num)
+            create_form.description = 'Test Item for ItemList tests'
+            obj = self.catalog.create_item(create_form)
+            self.item_list.append(obj)
+            self.item_ids.append(obj.ident)
+        self.item_list = ItemList(self.item_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_item(self):
         """Tests get_next_item"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import Item
+        self.assertTrue(isinstance(self.item_list.get_next_item(), Item))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_items(self):
         """Tests get_next_items"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import ItemList, Item
+        new_list = self.item_list.get_next_items(2)
+        self.assertTrue(isinstance(new_list, ItemList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Item))
 
 
 class TestAssessment(unittest.TestCase):
@@ -349,7 +458,8 @@ class TestAssessmentForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        cls.form = cls.catalog.get_assessment_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_assessment_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -360,30 +470,44 @@ class TestAssessmentForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_level(self):
         """Tests set_level"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['levelId'], '')
+        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['levelId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_level(self):
         """Tests clear_level"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['levelId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_level()
+        self.assertEqual(self.form._my_map['levelId'], '')
 
     def test_get_rubric_metadata(self):
         """Tests get_rubric_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_rubric_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_rubric(self):
         """Tests set_rubric"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['rubricId'], '')
+        self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['rubricId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_rubric(self):
         """Tests clear_rubric"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['rubricId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_rubric()
+        self.assertEqual(self.form._my_map['rubricId'], '')
 
     def test_get_assessment_form_record(self):
         """Tests get_assessment_form_record"""
@@ -395,15 +519,50 @@ class TestAssessmentForm(unittest.TestCase):
 class TestAssessmentList(unittest.TestCase):
     """Tests for AssessmentList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.assessment.objects import AssessmentList
+        self.assessment_list = list()
+        self.assessment_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_assessment_form_for_create([])
+            create_form.display_name = 'Test Assessment ' + str(num)
+            create_form.description = 'Test Assessment for AssessmentList tests'
+            obj = self.catalog.create_assessment(create_form)
+            self.assessment_list.append(obj)
+            self.assessment_ids.append(obj.ident)
+        self.assessment_list = AssessmentList(self.assessment_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_assessment(self):
         """Tests get_next_assessment"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import Assessment
+        self.assertTrue(isinstance(self.assessment_list.get_next_assessment(), Assessment))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessments(self):
         """Tests get_next_assessments"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import AssessmentList, Assessment
+        new_list = self.assessment_list.get_next_assessments(2)
+        self.assertTrue(isinstance(new_list, AssessmentList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Assessment))
 
 
 class TestAssessmentOffered(unittest.TestCase):
@@ -582,27 +741,39 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         cls.form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident,
                                                                       [])
 
+    def setUp(self):
+        self.form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
+                                                                        [])
+
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_level(self):
         """Tests set_level"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['levelId'], '')
+        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['levelId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_level(self):
         """Tests clear_level"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['levelId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_level()
+        self.assertEqual(self.form._my_map['levelId'], '')
 
     def test_get_items_sequential_metadata(self):
         """Tests get_items_sequential_metadata"""
@@ -611,15 +782,17 @@ class TestAssessmentOfferedForm(unittest.TestCase):
 
     def test_set_items_sequential(self):
         """Tests set_items_sequential"""
-        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
-                                                                   [])
-        form.set_items_sequential(True)
-        self.assertTrue(form._my_map['itemsSequential'])
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        self.form.set_items_sequential(True)
+        self.assertTrue(self.form._my_map['itemsSequential'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_items_sequential(self):
         """Tests clear_items_sequential"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_group_template
+        self.form.set_items_sequential(True)
+        self.assertTrue(self.form._my_map['itemsSequential'])
+        self.form.clear_items_sequential()
+        self.assertIsNone(self.form._my_map['itemsSequential'])
 
     def test_get_items_shuffled_metadata(self):
         """Tests get_items_shuffled_metadata"""
@@ -628,15 +801,17 @@ class TestAssessmentOfferedForm(unittest.TestCase):
 
     def test_set_items_shuffled(self):
         """Tests set_items_shuffled"""
-        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
-                                                                   [])
-        form.set_items_shuffled(True)
-        self.assertTrue(form._my_map['itemsShuffled'])
+        # From test_templates/resource.py::ResourceForm::set_group_template
+        self.form.set_items_shuffled(True)
+        self.assertTrue(self.form._my_map['itemsShuffled'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_items_shuffled(self):
         """Tests clear_items_shuffled"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_group_template
+        self.form.set_items_shuffled(True)
+        self.assertTrue(self.form._my_map['itemsShuffled'])
+        self.form.clear_items_shuffled()
+        self.assertIsNone(self.form._my_map['itemsShuffled'])
 
     def test_get_start_time_metadata(self):
         """Tests get_start_time_metadata"""
@@ -688,30 +863,44 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_score_system_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_score_system(self):
         """Tests set_score_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['scoreSystemId'], '')
+        self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['scoreSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_score_system(self):
         """Tests clear_score_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['scoreSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_score_system()
+        self.assertEqual(self.form._my_map['scoreSystemId'], '')
 
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_grade_system(self):
         """Tests set_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['gradeSystemId'], '')
+        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['gradeSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['gradeSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_grade_system()
+        self.assertEqual(self.form._my_map['gradeSystemId'], '')
 
     def test_get_assessment_offered_form_record(self):
         """Tests get_assessment_offered_form_record"""
@@ -723,15 +912,57 @@ class TestAssessmentOfferedForm(unittest.TestCase):
 class TestAssessmentOfferedList(unittest.TestCase):
     """Tests for AssessmentOfferedList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentOfferedList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentOfferedList tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+
+        cls.form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident,
+                                                                      [])
+
+    def setUp(self):
+        from dlkit.json_.assessment.objects import AssessmentOfferedList
+        self.assessment_offered_list = list()
+        self.assessment_offered_ids = list()
+        for num in [0, 1]:
+            form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
+                                                                       [])
+            form.display_name = 'Test AssessmentOffered ' + str(num)
+            form.description = 'Test AssessmentOffered for AssessmentOfferedList tests'
+            obj = self.catalog.create_assessment_offered(form)
+            self.assessment_offered_list.append(obj)
+            self.assessment_offered_ids.append(obj.ident)
+        self.assessment_offered_list = AssessmentOfferedList(self.assessment_offered_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_assessment_offered(self):
         """Tests get_next_assessment_offered"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import AssessmentOffered
+        self.assertTrue(isinstance(self.assessment_offered_list.get_next_assessment_offered(), AssessmentOffered))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessments_offered(self):
         """Tests get_next_assessments_offered"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList, AssessmentOffered
+        new_list = self.assessment_offered_list.get_next_assessments_offered(2)
+        self.assertTrue(isinstance(new_list, AssessmentOfferedList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, AssessmentOffered))
 
 
 class TestAssessmentTaken(unittest.TestCase):
@@ -927,27 +1158,33 @@ class TestAssessmentTakenForm(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_taker_metadata(self):
         """Tests get_taker_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_taker_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_taker(self):
         """Tests set_taker"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['takerId'], '')
+        self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['takerId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_taker(self):
         """Tests clear_taker"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['takerId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_taker()
+        self.assertEqual(self.form._my_map['takerId'], '')
 
     def test_get_assessment_taken_form_record(self):
         """Tests get_assessment_taken_form_record"""
@@ -959,15 +1196,66 @@ class TestAssessmentTakenForm(unittest.TestCase):
 class TestAssessmentTakenList(unittest.TestCase):
     """Tests for AssessmentTakenList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentTakenList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentTakenList tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident,
+                                                                  [])
+        cls.assessment_offered = cls.catalog.create_assessment_offered(form)
+
+        cls.form = cls.catalog.get_assessment_taken_form_for_create(cls.assessment_offered.ident,
+                                                                    [])
+
+    def setUp(self):
+        from dlkit.json_.assessment.objects import AssessmentTakenList
+        self.assessment_taken_list = list()
+        self.assessment_taken_ids = list()
+        for num in [0, 1]:
+            form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident,
+                                                                       [])
+            form.display_name = 'Test AssessmentOffered ' + str(num)
+            form.description = 'Test AssessmentOffered for AssessmentTakenList tests'
+            obj = self.catalog.create_assessment_offered(form)
+
+            form = self.catalog.get_assessment_taken_form_for_create(obj.ident, [])
+            obj = self.catalog.create_assessment_taken(form)
+            self.assessment_taken_list.append(obj)
+            self.assessment_taken_ids.append(obj.ident)
+        self.assessment_taken_list = AssessmentTakenList(self.assessment_taken_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments_taken():
+            cls.catalog.delete_assessment_taken(obj.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_assessment_taken(self):
         """Tests get_next_assessment_taken"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import AssessmentTaken
+        self.assertTrue(isinstance(self.assessment_taken_list.get_next_assessment_taken(), AssessmentTaken))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessments_taken(self):
         """Tests get_next_assessments_taken"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import AssessmentTakenList, AssessmentTaken
+        new_list = self.assessment_taken_list.get_next_assessments_taken(2)
+        self.assertTrue(isinstance(new_list, AssessmentTakenList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, AssessmentTaken))
 
 
 class TestAssessmentSection(unittest.TestCase):
@@ -1012,15 +1300,54 @@ class TestAssessmentSection(unittest.TestCase):
 class TestAssessmentSectionList(unittest.TestCase):
     """Tests for AssessmentSectionList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentSectionList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentSectionList tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+
+        cls.form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident,
+                                                                                  [])
+
+    def setUp(self):
+        from dlkit.json_.assessment.objects import AssessmentSectionList
+        self.assessment_section_list = list()
+        self.assessment_section_ids = list()
+
+        for num in [0, 1]:
+            form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident, [])
+
+            obj = self.catalog.create_assessment_part_for_assessment(form)
+
+            self.assessment_section_list.append(obj)
+            self.assessment_section_ids.append(obj.ident)
+        self.assessment_section_list = AssessmentSectionList(self.assessment_section_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_assessment_section(self):
         """Tests get_next_assessment_section"""
-        pass
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
+        self.assertTrue(isinstance(self.assessment_section_list.get_next_assessment_section(), AssessmentPart))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessment_sections(self):
         """Tests get_next_assessment_sections"""
-        pass
+        from dlkit.abstract_osid.assessment.objects import AssessmentSectionList
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
+        new_list = self.assessment_section_list.get_next_assessment_sections(2)
+        self.assertTrue(isinstance(new_list, AssessmentSectionList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, AssessmentPart))
 
 
 class TestBank(unittest.TestCase):
@@ -1044,15 +1371,50 @@ class TestBankForm(unittest.TestCase):
 class TestBankList(unittest.TestCase):
     """Tests for BankList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for BankList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        cls.bank_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.assessment.objects import BankList
+        self.bank_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_bank_form_for_create([])
+            create_form.display_name = 'Test Bank ' + str(num)
+            create_form.description = 'Test Bank for BankList tests'
+            obj = self.svc_mgr.create_bank(create_form)
+            self.bank_list.append(obj)
+            self.bank_ids.append(obj.ident)
+        self.bank_list = BankList(self.bank_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.bank_ids:
+            cls.svc_mgr.delete_bank(obj)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_bank(self):
         """Tests get_next_bank"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import Bank
+        self.assertTrue(isinstance(self.bank_list.get_next_bank(), Bank))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_banks(self):
         """Tests get_next_banks"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import BankList, Bank
+        new_list = self.bank_list.get_next_banks(2)
+        self.assertTrue(isinstance(new_list, BankList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Bank))
 
 
 class TestBankNode(unittest.TestCase):
@@ -1077,15 +1439,55 @@ class TestBankNode(unittest.TestCase):
 class TestBankNodeList(unittest.TestCase):
     """Tests for BankNodeList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNodeList
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for BankNodeList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        cls.bank_node_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNodeList
+        from dlkit.json_.assessment.objects import BankNodeList, BankNode
+        self.bank_node_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_bank_form_for_create([])
+            create_form.display_name = 'Test BankNode ' + str(num)
+            create_form.description = 'Test BankNode for BankNodeList tests'
+            obj = self.svc_mgr.create_bank(create_form)
+            self.bank_node_list.append(BankNode(obj.object_map))
+            self.bank_node_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_bank(self.bank_node_list[0].ident)
+        self.svc_mgr.add_child_bank(
+            self.bank_node_list[0].ident,
+            self.bank_node_list[1].ident)
+        self.bank_node_list = BankNodeList(self.bank_node_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNodeList
+        for obj in cls.bank_node_ids:
+            cls.svc_mgr.delete_bank(obj)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_bank_node(self):
         """Tests get_next_bank_node"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.assessment.objects import BankNode
+        self.assertTrue(isinstance(self.bank_node_list.get_next_bank_node(), BankNode))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_bank_nodes(self):
         """Tests get_next_bank_nodes"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.assessment.objects import BankNodeList, BankNode
+        new_list = self.bank_node_list.get_next_bank_nodes(2)
+        self.assertTrue(isinstance(new_list, BankNodeList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, BankNode))
 
 
 class TestResponseList(unittest.TestCase):

@@ -130,6 +130,15 @@ class TestGradeForm(unittest.TestCase):
 class TestGradeList(unittest.TestCase):
     """Tests for GradeList"""
 
+    # This really shouldn't be generated...should be GradeEntryList??
+    @classmethod
+    def setUpClass(cls):
+        cls.object = None
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
     @unittest.skip('unimplemented test')
     def test_get_next_grade(self):
         """Tests get_next_grade"""
@@ -209,7 +218,8 @@ class TestGradeSystemForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        cls.form = cls.catalog.get_grade_system_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_grade_system_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -223,14 +233,16 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_set_based_on_grades(self):
         """Tests set_based_on_grades"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        form = self.catalog.get_grade_system_form_for_create([])
-        form.set_based_on_grades(True)
-        self.assertTrue(form._my_map['basedOnGrades'])
+        self.form.set_based_on_grades(True)
+        self.assertTrue(self.form._my_map['basedOnGrades'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_based_on_grades(self):
         """Tests clear_based_on_grades"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_group_template
+        self.form.set_based_on_grades(True)
+        self.assertTrue(self.form._my_map['basedOnGrades'])
+        self.form.clear_based_on_grades()
+        self.assertIsNone(self.form._my_map['basedOnGrades'])
 
     def test_get_lowest_numeric_score_metadata(self):
         """Tests get_lowest_numeric_score_metadata"""
@@ -287,15 +299,50 @@ class TestGradeSystemForm(unittest.TestCase):
 class TestGradeSystemList(unittest.TestCase):
     """Tests for GradeSystemList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradeSystemList tests'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.grading.objects import GradeSystemList
+        self.grade_system_list = list()
+        self.grade_system_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_grade_system_form_for_create([])
+            create_form.display_name = 'Test GradeSystem ' + str(num)
+            create_form.description = 'Test GradeSystem for GradeSystemList tests'
+            obj = self.catalog.create_grade_system(create_form)
+            self.grade_system_list.append(obj)
+            self.grade_system_ids.append(obj.ident)
+        self.grade_system_list = GradeSystemList(self.grade_system_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_grade_systems():
+            cls.catalog.delete_grade_system(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_next_grade_system(self):
         """Tests get_next_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeSystem
+        self.assertTrue(isinstance(self.grade_system_list.get_next_grade_system(), GradeSystem))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_grade_systems(self):
         """Tests get_next_grade_systems"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.grading.objects import GradeSystemList, GradeSystem
+        new_list = self.grade_system_list.get_next_grade_systems(2)
+        self.assertTrue(isinstance(new_list, GradeSystemList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, GradeSystem))
 
 
 class TestGradeEntry(unittest.TestCase):
@@ -445,6 +492,7 @@ class TestGradeEntryForm(unittest.TestCase):
 
         form = cls.catalog.get_grade_system_form_for_create([])
         form.display_name = 'Grade system'
+        form.set_based_on_grades(True)
         cls.grade_system = cls.catalog.create_grade_system(form)
 
         form = cls.catalog.get_gradebook_column_form_for_create([])
@@ -452,8 +500,9 @@ class TestGradeEntryForm(unittest.TestCase):
         form.set_grade_system(cls.grade_system.ident)
         cls.column = cls.catalog.create_gradebook_column(form)
 
-        cls.form = cls.catalog.get_grade_entry_form_for_create(
-            cls.column.ident,
+    def setUp(self):
+        self.form = self.catalog.get_grade_entry_form_for_create(
+            self.column.ident,
             AGENT_ID,
             [])
 
@@ -473,17 +522,16 @@ class TestGradeEntryForm(unittest.TestCase):
 
     def test_set_ignored_for_calculations(self):
         """Tests set_ignored_for_calculations"""
-        form = self.catalog.get_grade_entry_form_for_create(
-            self.column.ident,
-            AGENT_ID,
-            [])
-        form.set_ignored_for_calculations(True)
-        self.assertTrue(form._my_map['ignoredForCalculations'])
+        self.form.set_ignored_for_calculations(True)
+        self.assertTrue(self.form._my_map['ignoredForCalculations'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_ignored_for_calculations(self):
         """Tests clear_ignored_for_calculations"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_group_template
+        self.form.set_ignored_for_calculations(True)
+        self.assertTrue(self.form._my_map['ignoredForCalculations'])
+        self.form.clear_ignored_for_calculations()
+        self.assertIsNone(self.form._my_map['ignoredForCalculations'])
 
     def test_get_grade_metadata(self):
         """Tests get_grade_metadata"""
@@ -495,10 +543,16 @@ class TestGradeEntryForm(unittest.TestCase):
         """Tests set_grade"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade(self):
         """Tests clear_grade"""
-        pass
+        # Normally this would follow ResourceForm.clear_avatar_template
+        # Except we need a valid ``grade`` for the initial ``set_grade`` to
+        #   work, so we provide a hand-written impl here.
+        self.form._my_map['gradeId'] = 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+        self.assertEqual(self.form._my_map['gradeId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_grade()
+        self.assertEqual(self.form._my_map['gradeId'], '')
 
     def test_get_score_metadata(self):
         """Tests get_score_metadata"""
@@ -525,15 +579,64 @@ class TestGradeEntryForm(unittest.TestCase):
 class TestGradeEntryList(unittest.TestCase):
     """Tests for GradeEntryList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        form = cls.catalog.get_grade_system_form_for_create([])
+        form.display_name = 'Grade system'
+        form.set_based_on_grades(True)
+        cls.grade_system = cls.catalog.create_grade_system(form)
+
+        form = cls.catalog.get_gradebook_column_form_for_create([])
+        form.display_name = 'Gradebook Column'
+        form.set_grade_system(cls.grade_system.ident)
+        cls.column = cls.catalog.create_gradebook_column(form)
+
+    def setUp(self):
+        from dlkit.json_.grading.objects import GradeEntryList
+        self.grade_entry_list = list()
+        self.grade_entry_ids = list()
+
+        for num in [0, 1]:
+            form = self.catalog.get_grade_entry_form_for_create(
+                self.column.ident,
+                AGENT_ID,
+                [])
+
+            obj = self.catalog.create_grade_entry(form)
+
+            self.grade_entry_list.append(obj)
+            self.grade_entry_ids.append(obj.ident)
+        self.grade_entry_list = GradeEntryList(self.grade_entry_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_grade_entries():
+            cls.catalog.delete_grade_entry(obj.ident)
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.catalog.delete_grade_system(cls.grade_system.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_next_grade_entry(self):
         """Tests get_next_grade_entry"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.grading.objects import GradeEntry
+        self.assertTrue(isinstance(self.grade_entry_list.get_next_grade_entry(), GradeEntry))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_grade_entries(self):
         """Tests get_next_grade_entries"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.grading.objects import GradeEntryList, GradeEntry
+        new_list = self.grade_entry_list.get_next_grade_entries(2)
+        self.assertTrue(isinstance(new_list, GradeEntryList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, GradeEntry))
 
 
 class TestGradebookColumn(unittest.TestCase):
@@ -584,7 +687,8 @@ class TestGradebookColumnForm(unittest.TestCase):
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        cls.form = cls.catalog.get_gradebook_column_form_for_create([])
+    def setUp(self):
+        self.form = self.catalog.get_gradebook_column_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
@@ -595,15 +699,22 @@ class TestGradebookColumnForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
         self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_grade_system(self):
         """Tests set_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::set_avatar_template
+        self.assertEqual(self.form._my_map['gradeSystemId'], '')
+        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['gradeSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
-        pass
+        # From test_templates/resource.py::ResourceForm::clear_avatar_template
+        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['gradeSystemId'],
+                         'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        self.form.clear_grade_system()
+        self.assertEqual(self.form._my_map['gradeSystemId'], '')
 
     def test_get_gradebook_column_form_record(self):
         """Tests get_gradebook_column_form_record"""
@@ -615,15 +726,50 @@ class TestGradebookColumnForm(unittest.TestCase):
 class TestGradebookColumnList(unittest.TestCase):
     """Tests for GradebookColumnList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for ResourceList
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookColumnList tests'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+    def setUp(self):
+        # Implemented from init template for ResourceList
+        from dlkit.json_.grading.objects import GradebookColumnList
+        self.gradebook_column_list = list()
+        self.gradebook_column_ids = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_gradebook_column_form_for_create([])
+            create_form.display_name = 'Test GradebookColumn ' + str(num)
+            create_form.description = 'Test GradebookColumn for GradebookColumnList tests'
+            obj = self.catalog.create_gradebook_column(create_form)
+            self.gradebook_column_list.append(obj)
+            self.gradebook_column_ids.append(obj.ident)
+        self.gradebook_column_list = GradebookColumnList(self.gradebook_column_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for ResourceList
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_next_gradebook_column(self):
         """Tests get_next_gradebook_column"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.grading.objects import GradebookColumn
+        self.assertTrue(isinstance(self.gradebook_column_list.get_next_gradebook_column(), GradebookColumn))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_gradebook_columns(self):
         """Tests get_next_gradebook_columns"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.grading.objects import GradebookColumnList, GradebookColumn
+        new_list = self.gradebook_column_list.get_next_gradebook_columns(2)
+        self.assertTrue(isinstance(new_list, GradebookColumnList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, GradebookColumn))
 
 
 class TestGradebookColumnSummary(unittest.TestCase):
@@ -696,15 +842,50 @@ class TestGradebookForm(unittest.TestCase):
 class TestGradebookList(unittest.TestCase):
     """Tests for GradebookList"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinList
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookList tests'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+        cls.gradebook_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinList
+        from dlkit.json_.grading.objects import GradebookList
+        self.gradebook_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_gradebook_form_for_create([])
+            create_form.display_name = 'Test Gradebook ' + str(num)
+            create_form.description = 'Test Gradebook for GradebookList tests'
+            obj = self.svc_mgr.create_gradebook(create_form)
+            self.gradebook_list.append(obj)
+            self.gradebook_ids.append(obj.ident)
+        self.gradebook_list = GradebookList(self.gradebook_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinList
+        for obj in cls.gradebook_ids:
+            cls.svc_mgr.delete_gradebook(obj)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
+
     def test_get_next_gradebook(self):
         """Tests get_next_gradebook"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resource_template
+        from dlkit.abstract_osid.grading.objects import Gradebook
+        self.assertTrue(isinstance(self.gradebook_list.get_next_gradebook(), Gradebook))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_gradebooks(self):
         """Tests get_next_gradebooks"""
-        pass
+        # From test_templates/resource.py::ResourceList::get_next_resources_template
+        from dlkit.abstract_osid.grading.objects import GradebookList, Gradebook
+        new_list = self.gradebook_list.get_next_gradebooks(2)
+        self.assertTrue(isinstance(new_list, GradebookList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Gradebook))
 
 
 class TestGradebookNode(unittest.TestCase):
@@ -728,6 +909,41 @@ class TestGradebookNode(unittest.TestCase):
 
 class TestGradebookNodeList(unittest.TestCase):
     """Tests for GradebookNodeList"""
+
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNodeList
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookNodeList tests'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+        cls.gradebook_node_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNodeList
+        from dlkit.json_.grading.objects import GradebookNodeList, GradebookNode
+        self.gradebook_node_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_gradebook_form_for_create([])
+            create_form.display_name = 'Test GradebookNode ' + str(num)
+            create_form.description = 'Test GradebookNode for GradebookNodeList tests'
+            obj = self.svc_mgr.create_gradebook(create_form)
+            self.gradebook_node_list.append(GradebookNode(obj.object_map))
+            self.gradebook_node_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_gradebook(self.gradebook_node_list[0].ident)
+        self.svc_mgr.add_child_gradebook(
+            self.gradebook_node_list[0].ident,
+            self.gradebook_node_list[1].ident)
+        self.gradebook_node_list = GradebookNodeList(self.gradebook_node_list)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNodeList
+        for obj in cls.gradebook_node_ids:
+            cls.svc_mgr.delete_gradebook(obj)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_next_gradebook_node(self):
