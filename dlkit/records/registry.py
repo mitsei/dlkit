@@ -4,6 +4,7 @@ from .adaptive import registry as adaptive_registry
 from .logging import registry as logging_registry
 from .osid import registry as osid_registry
 from .repository import registry as repository_registry
+from .resource import registry as resource_registry
 
 # ASSESSMENT
 ANSWER_GENUS_TYPES = assessment_registry.__dict__.get('ANSWER_GENUS_TYPES', {})
@@ -51,3 +52,7 @@ COMPOSITION_GENUS_TYPES = repository_registry.__dict__.get('COMPOSITION_GENUS_TY
 COMPOSITION_RECORD_TYPES = repository_registry.__dict__.get('COMPOSITION_RECORD_TYPES', {})
 REPOSITORY_GENUS_TYPES = repository_registry.__dict__.get('REPOSITORY_GENUS_TYPES', {})
 REPOSITORY_RECORD_TYPES = repository_registry.__dict__.get('REPOSITORY_RECORD_TYPES', {})
+
+# RESOURCE
+BIN_RECORD_TYPES = resource_registry.__dict__.get('BIN_RECORD_TYPES', {})
+RESOURCE_RECORD_TYPES = resource_registry.__dict__.get('RESOURCE_RECORD_TYPES', {})
