@@ -452,7 +452,7 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ObjectiveList, number=n)
 
 
 class ObjectiveNode(abc_learning_objects.ObjectiveNode, osid_objects.OsidNode):
@@ -551,7 +551,7 @@ class ObjectiveNodeList(abc_learning_objects.ObjectiveNodeList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ObjectiveNodeList, number=n)
 
 
 class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_markers.Subjugateable):
@@ -1033,7 +1033,7 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ActivityList, number=n)
 
 
 class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationship):
@@ -1406,7 +1406,7 @@ class ProficiencyList(abc_learning_objects.ProficiencyList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ProficiencyList, number=n)
 
 
 class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid_objects.OsidCatalog):
@@ -1539,7 +1539,7 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ObjectiveBankList, number=n)
 
 
 class ObjectiveBankNode(abc_learning_objects.ObjectiveBankNode, osid_objects.OsidNode):
@@ -1671,4 +1671,4 @@ class ObjectiveBankNodeList(abc_learning_objects.ObjectiveBankNodeList, osid_obj
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ObjectiveBankNodeList, number=n)

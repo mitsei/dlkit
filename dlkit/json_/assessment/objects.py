@@ -235,7 +235,7 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(QuestionList, number=n)
 
 
 class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
@@ -370,7 +370,7 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AnswerList, number=n)
 
 
 class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Aggregateable):
@@ -785,7 +785,7 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ItemList, number=n)
 
 
 class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
@@ -1181,7 +1181,7 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentList, number=n)
 
 
 class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.OsidObject, osid_markers.Subjugateable):
@@ -2115,7 +2115,7 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentOfferedList, number=n)
 
 
 class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidObject):
@@ -2804,7 +2804,7 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentTakenList, number=n)
 
 
 class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.OsidObject):
@@ -3105,7 +3105,7 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentSectionList, number=n)
 
 
 class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
@@ -3229,7 +3229,7 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BankList, number=n)
 
 
 class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
@@ -3360,7 +3360,7 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BankNodeList, number=n)
 
 
 class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
@@ -3412,4 +3412,4 @@ class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ResponseList, number=n)

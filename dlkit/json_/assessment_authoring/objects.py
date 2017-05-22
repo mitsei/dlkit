@@ -616,7 +616,7 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentPartList, number=n)
 
 
 class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.OsidRule):
@@ -996,4 +996,4 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(SequenceRuleList, number=n)

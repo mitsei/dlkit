@@ -2348,7 +2348,7 @@ class OsidList(abc_osid_objects.OsidList):
     def __iter__(self):
         return self
 
-    def _get_next_n(self, number=None):
+    def _get_next_n(self, object_class, number=None):
         """Gets the next set of "n" elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -2377,7 +2377,7 @@ class OsidList(abc_osid_objects.OsidList):
                 except Exception:  # Need to specify exceptions here!
                     raise errors.OperationFailed()
                 counter += 1
-            return next_list
+            return object_class(next_list)
 
     def _get_next_object(self, object_class):
         """stub"""

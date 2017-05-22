@@ -1344,7 +1344,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssetList, number=n)
 
 
 class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject, osid_markers.Subjugateable):
@@ -1776,7 +1776,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssetContentList, number=n)
 
 
 class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, osid_markers.Containable, osid_markers.Operable, osid_markers.Sourceable):
@@ -2014,7 +2014,7 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(CompositionList, number=n)
 
 
 class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
@@ -2142,7 +2142,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(RepositoryList, number=n)
 
 
 class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNode):
@@ -2274,4 +2274,4 @@ class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(RepositoryNodeList, number=n)

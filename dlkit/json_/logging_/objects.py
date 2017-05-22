@@ -400,7 +400,7 @@ class LogEntryList(abc_logging_objects.LogEntryList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(LogEntryList, number=n)
 
 
 class Log(abc_logging_objects.Log, osid_objects.OsidCatalog):
@@ -530,7 +530,7 @@ class LogList(abc_logging_objects.LogList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(LogList, number=n)
 
 
 class LogNode(abc_logging_objects.LogNode, osid_objects.OsidNode):
@@ -661,4 +661,4 @@ class LogNodeList(abc_logging_objects.LogNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(LogNodeList, number=n)

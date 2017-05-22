@@ -351,7 +351,7 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ResourceList, number=n)
 
 
 class ResourceNode(abc_resource_objects.ResourceNode, osid_objects.OsidNode):
@@ -449,7 +449,7 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ResourceNodeList, number=n)
 
 
 class Bin(abc_resource_objects.Bin, osid_objects.OsidCatalog):
@@ -570,7 +570,7 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BinList, number=n)
 
 
 class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
@@ -698,4 +698,4 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BinNodeList, number=n)

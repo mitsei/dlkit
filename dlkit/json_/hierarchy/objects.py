@@ -154,7 +154,7 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(HierarchyList, number=n)
 
 
 class Node(abc_hierarchy_objects.Node, osid_objects.OsidNode):
@@ -238,4 +238,4 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(NodeList, number=n)

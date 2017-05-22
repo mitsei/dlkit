@@ -400,7 +400,7 @@ class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(CommentList, number=n)
 
 
 class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
@@ -531,7 +531,7 @@ class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BookList, number=n)
 
 
 class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
@@ -665,4 +665,4 @@ class BookNodeList(abc_commenting_objects.BookNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BookNodeList, number=n)
