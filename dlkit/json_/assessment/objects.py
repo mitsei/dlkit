@@ -2706,7 +2706,7 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         self._my_map['actualStartTime'] = None
         self._my_map['gradeId'] = ''
         self._my_map['completionTime'] = None
-        self._my_map['score'] = ''
+        self._my_map['score'] = 0.0
 
     def get_taker_metadata(self):
         """Gets the metadata for a resource to manually set which resource will be taking the assessment.

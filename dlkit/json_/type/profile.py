@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo type'
 
 DESCRIPTION = 'MongoDB based type implementation'
 
-VERSIONCOMPONENTS = [0, 1, 240]
+VERSIONCOMPONENTS = [0, 1, 242]
 
 RELEASEDATE = "2017-05-23"
 
