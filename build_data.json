@@ -1,1 +1,1 @@
-{"date": "2017-05-23 16:35:36.138740", "commit": "7f0f042", "command": "build_dlkit.py --buildto dlkit-pip/dlkit", "user": "cjshaw"}
+{"date": "2017-05-23 17:05:24.076322", "commit": "49a2673", "command": "build_dlkit.py --buildto dlkit-pip/dlkit", "user": "cjshaw"}

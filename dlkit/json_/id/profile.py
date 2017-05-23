@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo id'
 
 DESCRIPTION = 'MongoDB based id implementation'
 
-VERSIONCOMPONENTS = [0, 1, 244]
+VERSIONCOMPONENTS = [0, 1, 246]
 
 RELEASEDATE = "2017-05-23"
 

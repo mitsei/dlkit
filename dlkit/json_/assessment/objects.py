@@ -15,6 +15,7 @@ import json
 
 
 from bson.objectid import ObjectId
+from decimal import Decimal
 from urllib import unquote
 
 
@@ -2393,7 +2394,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.assessment.AssessmentTaken.get_score_template
-        return float(self._my_map['score'])
+        return Decimal(self._my_map['score'])
 
     score = property(fget=get_score)
 
