@@ -3,7 +3,16 @@
 # This module contains all the Object classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID  Service.
 
-import urllib2
+try:
+    import urllib2
+    urlopen = urllib2.urlopen
+    urlerrors = urllib2
+except ImportError:
+    import urllib.request
+    import urllib.errors
+    urlopen = urllib.request.urlopen
+    urlerrors = urllib.errors
+
 import httplib
 import json
 from ...abstract_osid.osid import objects as abc_osid_objects
@@ -237,8 +246,8 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
 
     def _load_json(self, url_string):
         try:
-            url = urllib2.urlopen(url_string).read()
-        except urllib2.HTTPError:
+            url = urlopen(url_string).read()
+        except urlerrors.HTTPError:
             raise NotFound()
         try:
             return json.loads(url)

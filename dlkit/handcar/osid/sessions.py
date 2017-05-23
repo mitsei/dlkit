@@ -6,7 +6,6 @@
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-# import urllib2
 import pdb
 import httplib
 import logging
