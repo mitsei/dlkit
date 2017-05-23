@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -120,14 +121,12 @@ class TestLogEntryForm(unittest.TestCase):
 
     def test_set_timestamp(self):
         """Tests set_timestamp"""
-        # From test_templates/assessment.py::AssessmentOfferedForm::set_start_time_template
         test_time = DateTime.utcnow()
-        self.assertIsNone(self.form._my_map['timestamp'])
+        # By default log entries have this set, so can't use the templated test
+        self.assertIsNotNone(self.form._my_map['timestamp'])
         self.form.set_timestamp(test_time)
         self.assertEqual(self.form._my_map['timestamp'],
                          test_time)
-        # reset this for other tests
-        self.form._my_map['timestamp'] = None
 
     def test_get_agent_metadata(self):
         """Tests get_agent_metadata"""

@@ -5,6 +5,9 @@ import datetime
 import unittest
 
 
+from decimal import Decimal
+
+
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment.objects import Assessment
 from dlkit.json_.assessment.objects import AssessmentOffered
@@ -1254,8 +1257,8 @@ class TestAssessmentTaken(unittest.TestCase):
     def test_get_score(self):
         """Tests get_score"""
         # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_score(), float))
-        self.assertEqual(self.object.get_score(), 0.0)
+        self.assertTrue(isinstance(self.object.get_score(), Decimal))
+        self.assertEqual(self.object.get_score(), Decimal(0.0))
 
     def test_is_graded(self):
         """Tests is_graded"""

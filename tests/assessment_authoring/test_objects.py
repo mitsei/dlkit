@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example

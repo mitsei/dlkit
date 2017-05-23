@@ -4,10 +4,16 @@
 import unittest
 
 
+from decimal import Decimal
+
+
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.assessment.objects import AssessmentOffered
+from dlkit.json_.grading.objects import GradebookColumn
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
+from dlkit.records import registry
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
 
@@ -19,6 +25,7 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+SEQUENCE_ASSESSMENT = Type(**registry.ASSESSMENT_RECORD_TYPES["simple-child-sequencing"])
 
 
 class TestGrade(unittest.TestCase):
@@ -781,51 +788,96 @@ class TestGradebookColumnList(unittest.TestCase):
 class TestGradebookColumnSummary(unittest.TestCase):
     """Tests for GradebookColumnSummary"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.grade_entry_list = list()
+        cls.grade_entry_ids = list()
+        cls.gradebook_column_list = list()
+        cls.gradebook_column_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookColumnLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+        create_form = cls.catalog.get_grade_system_form_for_create([])
+        create_form.display_name = 'Test Grade System'
+        create_form.description = 'Test Grade System for GradebookColumnLookupSession tests'
+        create_form.based_on_grades = False
+        create_form.lowest_numeric_score = 0
+        create_form.highest_numeric_score = 100
+        create_form.numeric_score_increment = 1
+        cls.grade_system = cls.catalog.create_grade_system(create_form)
+        for num in [0, 1]:
+            create_form = cls.catalog.get_gradebook_column_form_for_create([])
+            create_form.display_name = 'Test GradebookColumn ' + str(num)
+            create_form.description = 'Test GradebookColumn for GradebookColumnLookupSession tests'
+            create_form.grade_system = cls.grade_system.ident
+            obj = cls.catalog.create_gradebook_column(create_form)
+            cls.gradebook_column_list.append(obj)
+            cls.gradebook_column_ids.append(obj.ident)
+        for num in range(0, 100):
+            create_form = cls.catalog.get_grade_entry_form_for_create(cls.gradebook_column_ids[0], AGENT_ID, [])
+            create_form.display_name = 'Test GradeEntry ' + str(num)
+            create_form.description = 'Test GradeEntry for GradebookColumnLookupSession tests'
+            create_form.set_score(float(num))
+            object = cls.catalog.create_grade_entry(create_form)
+            cls.grade_entry_list.append(object)
+            cls.grade_entry_ids.append(object.ident)
+        cls.object = cls.catalog.get_gradebook_column_summary(cls.gradebook_column_ids[0])
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_gradebooks():
+            for obj in catalog.get_grade_entries():
+                catalog.delete_grade_entry(obj.ident)
+            for obj in catalog.get_gradebook_columns():
+                catalog.delete_gradebook_column(obj.ident)
+            for obj in catalog.get_grade_systems():
+                catalog.delete_grade_system(obj.ident)
+            cls.svc_mgr.delete_gradebook(catalog.ident)
+
     def test_get_gradebook_column_id(self):
         """Tests get_gradebook_column_id"""
-        pass
+        self.assertTrue(isinstance(self.object.get_gradebook_column_id(), Id))
+        self.assertEqual(str(self.object.get_gradebook_column_id()),
+                         str(self.gradebook_column_ids[0]))
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column(self):
         """Tests get_gradebook_column"""
-        pass
+        self.assertTrue(isinstance(self.object.get_gradebook_column(), GradebookColumn))
+        self.assertEqual(str(self.object.get_gradebook_column().ident),
+                         str(self.gradebook_column_ids[0]))
 
     def test_get_mean(self):
         """Tests get_mean"""
-        # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_mean(), float))
-        self.assertEqual(self.object.get_mean(), 0.0)
+        self.assertTrue(isinstance(self.object.get_mean(), Decimal))
+        self.assertEqual(self.object.get_mean(), Decimal(49.5))
 
     def test_get_median(self):
         """Tests get_median"""
-        # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_median(), float))
-        self.assertEqual(self.object.get_median(), 0.0)
+        self.assertTrue(isinstance(self.object.get_median(), Decimal))
+        self.assertEqual(self.object.get_median(), Decimal(49.5))
 
     def test_get_mode(self):
         """Tests get_mode"""
         # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_mode(), float))
-        self.assertEqual(self.object.get_mode(), 0.0)
+        self.assertTrue(isinstance(self.object.get_mode(), Decimal))
+        self.assertEqual(self.object.get_mode(), Decimal(0.0))
 
     def test_get_rms(self):
         """Tests get_rms"""
-        # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_rms(), float))
-        self.assertEqual(self.object.get_rms(), 0.0)
+        self.assertTrue(isinstance(self.object.get_rms(), Decimal))
+        self.assertEqual(self.object.get_rms(), Decimal('57.30183243143276652887614453'))
 
     def test_get_standard_deviation(self):
         """Tests get_standard_deviation"""
-        # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_standard_deviation(), float))
-        self.assertEqual(self.object.get_standard_deviation(), 0.0)
+        self.assertTrue(isinstance(self.object.get_standard_deviation(), Decimal))
+        self.assertEqual(self.object.get_standard_deviation(), Decimal('28.86607004772211800433171979'))
 
     def test_get_sum(self):
         """Tests get_sum"""
-        # From test_templates/assessment.py::AssessmentTaken::get_score_template
-        self.assertTrue(isinstance(self.object.get_sum(), float))
-        self.assertEqual(self.object.get_sum(), 0.0)
+        self.assertTrue(isinstance(self.object.get_sum(), Decimal))
+        self.assertEqual(self.object.get_sum(), Decimal('4950'))
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_summary_record(self):

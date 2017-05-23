@@ -6,6 +6,7 @@ import unittest
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -532,6 +533,7 @@ class TestAssetContent(unittest.TestCase):
         form = cls.catalog.get_asset_content_form_for_create(cls.asset.ident,
                                                              [])
         form.display_name = 'Test asset content'
+        form.set_url('https://www.google.com')
         cls.object = cls.catalog.create_asset_content(form)
 
     @classmethod
