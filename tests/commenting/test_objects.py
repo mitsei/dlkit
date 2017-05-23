@@ -275,20 +275,80 @@ class TestBookList(unittest.TestCase):
 class TestBookNode(unittest.TestCase):
     """Tests for BookNode"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNode
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'Test Book'
+        create_form.description = 'Test Book for BookNode tests'
+        cls.catalog = cls.svc_mgr.create_book(create_form)
+        cls.book_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNode
+        from dlkit.json_.commenting.objects import BookNode
+        self.book_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_book_form_for_create([])
+            create_form.display_name = 'Test Book ' + str(num)
+            create_form.description = 'Test Book for BookNode tests'
+            obj = self.svc_mgr.create_book(create_form)
+            self.book_list.append(BookNode(
+                obj.object_map,
+                runtime=self.svc_mgr._runtime,
+                proxy=self.svc_mgr._proxy))
+            self.book_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_book(self.book_list[0].ident)
+        self.svc_mgr.add_child_book(
+            self.book_list[0].ident,
+            self.book_list[1].ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNode
+        for obj in cls.book_ids:
+            cls.svc_mgr.delete_book(obj)
+        cls.svc_mgr.delete_book(cls.catalog.ident)
+
     def test_get_book(self):
         """Tests get_book"""
-        pass
+        # from test_templates/resource.py::BinNode::get_bin_template
+        from dlkit.abstract_osid.commenting.objects import Book
+        self.assertTrue(isinstance(self.book_list[0].get_book(), Book))
+        self.assertEqual(str(self.book_list[0].get_book().ident),
+                         str(self.book_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_book_nodes(self):
         """Tests get_parent_book_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_parent_bin_nodes
+        from dlkit.abstract_osid.commenting.objects import BookNodeList
+        node = self.svc_mgr.get_book_nodes(
+            self.book_list[1].ident,
+            1,
+            0,
+            False)
+        self.assertTrue(isinstance(node.get_parent_book_nodes(), BookNodeList))
+        self.assertEqual(node.get_parent_book_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_parent_book_nodes().next().ident),
+                         str(self.book_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_child_book_nodes(self):
         """Tests get_child_book_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_child_bin_nodes_template
+        from dlkit.abstract_osid.commenting.objects import BookNodeList
+        node = self.svc_mgr.get_book_nodes(
+            self.book_list[0].ident,
+            0,
+            1,
+            False)
+        self.assertTrue(isinstance(node.get_child_book_nodes(), BookNodeList))
+        self.assertEqual(node.get_child_book_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_child_book_nodes().next().ident),
+                         str(self.book_list[1].ident))
 
 
 class TestBookNodeList(unittest.TestCase):

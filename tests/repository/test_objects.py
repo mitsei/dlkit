@@ -162,6 +162,7 @@ class TestAssetForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -169,10 +170,12 @@ class TestAssetForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_asset_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_title_metadata(self):
@@ -318,35 +321,59 @@ class TestAssetForm(unittest.TestCase):
         self.form.clear_source()
         self.assertEqual(self.form._my_map['sourceId'], '')
 
-    @unittest.skip('unimplemented test')
     def test_get_provider_links_metadata(self):
         """Tests get_provider_links_metadata"""
-        pass
+        # From test_templates/learning.py::ActivityForm::get_assets_metadata_template
+        self.assertTrue(isinstance(self.form.get_provider_links_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_provider_links(self):
         """Tests set_provider_links"""
-        pass
+        # From test_templates/learning.py::ActivityForm::set_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_provider_links([test_id])
+        self.assertTrue(len(self.form._my_map['providerLinkIds']), 1)
+        self.assertEqual(self.form._my_map['providerLinkIds'][0],
+                         str(test_id))
+        # reset this for other tests
+        self.form._my_map['providerLinkIds'] = list()
 
-    @unittest.skip('unimplemented test')
     def test_clear_provider_links(self):
         """Tests clear_provider_links"""
-        pass
+        # From test_templates/learning.py::ActivityForm::clear_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_provider_links([test_id])
+        self.assertTrue(len(self.form._my_map['providerLinkIds']), 1)
+        self.assertEqual(self.form._my_map['providerLinkIds'][0],
+                         str(test_id))
+        self.form.clear_provider_links()
+        self.assertEqual(self.form._my_map['providerLinkIds'], [])
 
     def test_get_created_date_metadata(self):
         """Tests get_created_date_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
         self.assertTrue(isinstance(self.form.get_created_date_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_created_date(self):
         """Tests set_created_date"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::set_start_time_template
+        test_time = DateTime.utcnow()
+        self.assertIsNone(self.form._my_map['createdDate'])
+        self.form.set_created_date(test_time)
+        self.assertEqual(self.form._my_map['createdDate'],
+                         test_time)
+        # reset this for other tests
+        self.form._my_map['createdDate'] = None
 
-    @unittest.skip('unimplemented test')
     def test_clear_created_date(self):
         """Tests clear_created_date"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::clear_start_time_template
+        test_time = DateTime.utcnow()
+        self.assertIsNone(self.form._my_map['createdDate'])
+        self.form.set_created_date(test_time)
+        self.assertEqual(self.form._my_map['createdDate'],
+                         test_time)
+        self.form.clear_created_date()
+        self.assertIsNone(self.form._my_map['createdDate'])
 
     def test_get_published_metadata(self):
         """Tests get_published_metadata"""
@@ -372,15 +399,27 @@ class TestAssetForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
         self.assertTrue(isinstance(self.form.get_published_date_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_published_date(self):
         """Tests set_published_date"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::set_start_time_template
+        test_time = DateTime.utcnow()
+        self.assertIsNone(self.form._my_map['publishedDate'])
+        self.form.set_published_date(test_time)
+        self.assertEqual(self.form._my_map['publishedDate'],
+                         test_time)
+        # reset this for other tests
+        self.form._my_map['publishedDate'] = None
 
-    @unittest.skip('unimplemented test')
     def test_clear_published_date(self):
         """Tests clear_published_date"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::clear_start_time_template
+        test_time = DateTime.utcnow()
+        self.assertIsNone(self.form._my_map['publishedDate'])
+        self.form.set_published_date(test_time)
+        self.assertEqual(self.form._my_map['publishedDate'],
+                         test_time)
+        self.form.clear_published_date()
+        self.assertIsNone(self.form._my_map['publishedDate'])
 
     def test_get_principal_credit_string_metadata(self):
         """Tests get_principal_credit_string_metadata"""
@@ -531,10 +570,10 @@ class TestAssetContent(unittest.TestCase):
         """Tests get_data"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_has_url(self):
         """Tests has_url"""
-        pass
+        # From test_templates/repository.py::AssetContent::has_url_template
+        self.assertTrue(self.object.has_url())
 
     @unittest.skip('unimplemented test')
     def test_get_url(self):
@@ -725,6 +764,7 @@ class TestCompositionForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -732,10 +772,12 @@ class TestCompositionForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_composition_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_composition_form_record(self):
@@ -864,20 +906,80 @@ class TestRepositoryList(unittest.TestCase):
 class TestRepositoryNode(unittest.TestCase):
     """Tests for RepositoryNode"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNode
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository'
+        create_form.description = 'Test Repository for RepositoryNode tests'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+        cls.repository_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNode
+        from dlkit.json_.repository.objects import RepositoryNode
+        self.repository_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_repository_form_for_create([])
+            create_form.display_name = 'Test Repository ' + str(num)
+            create_form.description = 'Test Repository for RepositoryNode tests'
+            obj = self.svc_mgr.create_repository(create_form)
+            self.repository_list.append(RepositoryNode(
+                obj.object_map,
+                runtime=self.svc_mgr._runtime,
+                proxy=self.svc_mgr._proxy))
+            self.repository_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_repository(self.repository_list[0].ident)
+        self.svc_mgr.add_child_repository(
+            self.repository_list[0].ident,
+            self.repository_list[1].ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNode
+        for obj in cls.repository_ids:
+            cls.svc_mgr.delete_repository(obj)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_repository(self):
         """Tests get_repository"""
-        pass
+        # from test_templates/resource.py::BinNode::get_bin_template
+        from dlkit.abstract_osid.repository.objects import Repository
+        self.assertTrue(isinstance(self.repository_list[0].get_repository(), Repository))
+        self.assertEqual(str(self.repository_list[0].get_repository().ident),
+                         str(self.repository_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_repository_nodes(self):
         """Tests get_parent_repository_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_parent_bin_nodes
+        from dlkit.abstract_osid.repository.objects import RepositoryNodeList
+        node = self.svc_mgr.get_repository_nodes(
+            self.repository_list[1].ident,
+            1,
+            0,
+            False)
+        self.assertTrue(isinstance(node.get_parent_repository_nodes(), RepositoryNodeList))
+        self.assertEqual(node.get_parent_repository_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_parent_repository_nodes().next().ident),
+                         str(self.repository_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_child_repository_nodes(self):
         """Tests get_child_repository_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_child_bin_nodes_template
+        from dlkit.abstract_osid.repository.objects import RepositoryNodeList
+        node = self.svc_mgr.get_repository_nodes(
+            self.repository_list[0].ident,
+            0,
+            1,
+            False)
+        self.assertTrue(isinstance(node.get_child_repository_nodes(), RepositoryNodeList))
+        self.assertEqual(node.get_child_repository_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_child_repository_nodes().next().ident),
+                         str(self.repository_list[1].ident))
 
 
 class TestRepositoryNodeList(unittest.TestCase):

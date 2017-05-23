@@ -128,15 +128,29 @@ class TestAssessmentPartForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
         self.assertTrue(isinstance(self.form.get_allocated_time_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_allocated_time(self):
         """Tests set_allocated_time"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::set_duration_template
+        test_duration = Duration(hours=1)
+        self.assertIsNone(self.form._my_map['allocatedTime'])
+        self.form.set_allocated_time(test_duration)
+        self.assertEqual(self.form._my_map['allocatedTime']['seconds'], 3600)
+        self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
+        self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
+        # reset this for other tests
+        self.form._my_map['allocatedTime'] = None
 
-    @unittest.skip('unimplemented test')
     def test_clear_allocated_time(self):
         """Tests clear_allocated_time"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::clear_duration_template
+        test_duration = Duration(hours=1)
+        self.assertIsNone(self.form._my_map['allocatedTime'])
+        self.form.set_allocated_time(test_duration)
+        self.assertEqual(self.form._my_map['allocatedTime']['seconds'], 3600)
+        self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
+        self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
+        self.form.clear_allocated_time()
+        self.assertIsNone(self.form._my_map['allocatedTime'])
 
     def test_get_assessment_part_form_record(self):
         """Tests get_assessment_part_form_record"""

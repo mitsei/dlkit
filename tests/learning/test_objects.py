@@ -107,6 +107,7 @@ class TestObjectiveForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -114,10 +115,12 @@ class TestObjectiveForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_objective_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     def test_get_assessment_metadata(self):
@@ -406,6 +409,7 @@ class TestActivityForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/learning.py::ActivityForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test ObjectiveBank'
@@ -420,6 +424,7 @@ class TestActivityForm(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/learning.py::ActivityForm::init_template
         for catalog in cls.svc_mgr.get_objective_banks():
             for obj in catalog.get_activities():
                 catalog.delete_activity(obj.ident)
@@ -427,50 +432,86 @@ class TestActivityForm(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_metadata(self):
         """Tests get_assets_metadata"""
-        pass
+        # From test_templates/learning.py::ActivityForm::get_assets_metadata_template
+        self.assertTrue(isinstance(self.form.get_assets_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_assets(self):
         """Tests set_assets"""
-        pass
+        # From test_templates/learning.py::ActivityForm::set_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_assets([test_id])
+        self.assertTrue(len(self.form._my_map['assetIds']), 1)
+        self.assertEqual(self.form._my_map['assetIds'][0],
+                         str(test_id))
+        # reset this for other tests
+        self.form._my_map['assetIds'] = list()
 
-    @unittest.skip('unimplemented test')
     def test_clear_assets(self):
         """Tests clear_assets"""
-        pass
+        # From test_templates/learning.py::ActivityForm::clear_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_assets([test_id])
+        self.assertTrue(len(self.form._my_map['assetIds']), 1)
+        self.assertEqual(self.form._my_map['assetIds'][0],
+                         str(test_id))
+        self.form.clear_assets()
+        self.assertEqual(self.form._my_map['assetIds'], [])
 
-    @unittest.skip('unimplemented test')
     def test_get_courses_metadata(self):
         """Tests get_courses_metadata"""
-        pass
+        # From test_templates/learning.py::ActivityForm::get_assets_metadata_template
+        self.assertTrue(isinstance(self.form.get_courses_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_courses(self):
         """Tests set_courses"""
-        pass
+        # From test_templates/learning.py::ActivityForm::set_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_courses([test_id])
+        self.assertTrue(len(self.form._my_map['courseIds']), 1)
+        self.assertEqual(self.form._my_map['courseIds'][0],
+                         str(test_id))
+        # reset this for other tests
+        self.form._my_map['courseIds'] = list()
 
-    @unittest.skip('unimplemented test')
     def test_clear_courses(self):
         """Tests clear_courses"""
-        pass
+        # From test_templates/learning.py::ActivityForm::clear_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_courses([test_id])
+        self.assertTrue(len(self.form._my_map['courseIds']), 1)
+        self.assertEqual(self.form._my_map['courseIds'][0],
+                         str(test_id))
+        self.form.clear_courses()
+        self.assertEqual(self.form._my_map['courseIds'], [])
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_metadata(self):
         """Tests get_assessments_metadata"""
-        pass
+        # From test_templates/learning.py::ActivityForm::get_assets_metadata_template
+        self.assertTrue(isinstance(self.form.get_assessments_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_assessments(self):
         """Tests set_assessments"""
-        pass
+        # From test_templates/learning.py::ActivityForm::set_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_assessments([test_id])
+        self.assertTrue(len(self.form._my_map['assessmentIds']), 1)
+        self.assertEqual(self.form._my_map['assessmentIds'][0],
+                         str(test_id))
+        # reset this for other tests
+        self.form._my_map['assessmentIds'] = list()
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessments(self):
         """Tests clear_assessments"""
-        pass
+        # From test_templates/learning.py::ActivityForm::clear_assets_template
+        test_id = Id('osid.Osid%3A1%40ODL.MIT.EDU')
+        self.form.set_assessments([test_id])
+        self.assertTrue(len(self.form._my_map['assessmentIds']), 1)
+        self.assertEqual(self.form._my_map['assessmentIds'][0],
+                         str(test_id))
+        self.form.clear_assessments()
+        self.assertEqual(self.form._my_map['assessmentIds'], [])
 
     def test_get_activity_form_record(self):
         """Tests get_activity_form_record"""
@@ -798,20 +839,80 @@ class TestObjectiveBankList(unittest.TestCase):
 class TestObjectiveBankNode(unittest.TestCase):
     """Tests for ObjectiveBankNode"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNode
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ObjectiveBankNode tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+        cls.objective_bank_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNode
+        from dlkit.json_.learning.objects import ObjectiveBankNode
+        self.objective_bank_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_objective_bank_form_for_create([])
+            create_form.display_name = 'Test ObjectiveBank ' + str(num)
+            create_form.description = 'Test ObjectiveBank for ObjectiveBankNode tests'
+            obj = self.svc_mgr.create_objective_bank(create_form)
+            self.objective_bank_list.append(ObjectiveBankNode(
+                obj.object_map,
+                runtime=self.svc_mgr._runtime,
+                proxy=self.svc_mgr._proxy))
+            self.objective_bank_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_objective_bank(self.objective_bank_list[0].ident)
+        self.svc_mgr.add_child_objective_bank(
+            self.objective_bank_list[0].ident,
+            self.objective_bank_list[1].ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNode
+        for obj in cls.objective_bank_ids:
+            cls.svc_mgr.delete_objective_bank(obj)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     def test_get_objective_bank(self):
         """Tests get_objective_bank"""
-        pass
+        # from test_templates/resource.py::BinNode::get_bin_template
+        from dlkit.abstract_osid.learning.objects import ObjectiveBank
+        self.assertTrue(isinstance(self.objective_bank_list[0].get_objective_bank(), ObjectiveBank))
+        self.assertEqual(str(self.objective_bank_list[0].get_objective_bank().ident),
+                         str(self.objective_bank_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_objective_bank_nodes(self):
         """Tests get_parent_objective_bank_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_parent_bin_nodes
+        from dlkit.abstract_osid.learning.objects import ObjectiveBankNodeList
+        node = self.svc_mgr.get_objective_bank_nodes(
+            self.objective_bank_list[1].ident,
+            1,
+            0,
+            False)
+        self.assertTrue(isinstance(node.get_parent_objective_bank_nodes(), ObjectiveBankNodeList))
+        self.assertEqual(node.get_parent_objective_bank_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_parent_objective_bank_nodes().next().ident),
+                         str(self.objective_bank_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_child_objective_bank_nodes(self):
         """Tests get_child_objective_bank_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_child_bin_nodes_template
+        from dlkit.abstract_osid.learning.objects import ObjectiveBankNodeList
+        node = self.svc_mgr.get_objective_bank_nodes(
+            self.objective_bank_list[0].ident,
+            0,
+            1,
+            False)
+        self.assertTrue(isinstance(node.get_child_objective_bank_nodes(), ObjectiveBankNodeList))
+        self.assertEqual(node.get_child_objective_bank_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_child_objective_bank_nodes().next().ident),
+                         str(self.objective_bank_list[1].ident))
 
 
 class TestObjectiveBankNodeList(unittest.TestCase):

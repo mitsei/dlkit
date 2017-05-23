@@ -81,6 +81,7 @@ class TestResourceForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -88,10 +89,12 @@ class TestResourceForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_bin(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_resource_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_group_metadata(self):
@@ -294,20 +297,80 @@ class TestBinList(unittest.TestCase):
 class TestBinNode(unittest.TestCase):
     """Tests for BinNode"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # Implemented from init template for BinNode
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test Bin'
+        create_form.description = 'Test Bin for BinNode tests'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+        cls.bin_ids = list()
+
+    def setUp(self):
+        # Implemented from init template for BinNode
+        from dlkit.json_.resource.objects import BinNode
+        self.bin_list = list()
+        for num in [0, 1]:
+            create_form = self.svc_mgr.get_bin_form_for_create([])
+            create_form.display_name = 'Test Bin ' + str(num)
+            create_form.description = 'Test Bin for BinNode tests'
+            obj = self.svc_mgr.create_bin(create_form)
+            self.bin_list.append(BinNode(
+                obj.object_map,
+                runtime=self.svc_mgr._runtime,
+                proxy=self.svc_mgr._proxy))
+            self.bin_ids.append(obj.ident)
+        # Not put the catalogs in a hierarchy
+        self.svc_mgr.add_root_bin(self.bin_list[0].ident)
+        self.svc_mgr.add_child_bin(
+            self.bin_list[0].ident,
+            self.bin_list[1].ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # Implemented from init template for BinNode
+        for obj in cls.bin_ids:
+            cls.svc_mgr.delete_bin(obj)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_get_bin(self):
         """Tests get_bin"""
-        pass
+        # from test_templates/resource.py::BinNode::get_bin_template
+        from dlkit.abstract_osid.resource.objects import Bin
+        self.assertTrue(isinstance(self.bin_list[0].get_bin(), Bin))
+        self.assertEqual(str(self.bin_list[0].get_bin().ident),
+                         str(self.bin_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_bin_nodes(self):
         """Tests get_parent_bin_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_parent_bin_nodes
+        from dlkit.abstract_osid.resource.objects import BinNodeList
+        node = self.svc_mgr.get_bin_nodes(
+            self.bin_list[1].ident,
+            1,
+            0,
+            False)
+        self.assertTrue(isinstance(node.get_parent_bin_nodes(), BinNodeList))
+        self.assertEqual(node.get_parent_bin_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_parent_bin_nodes().next().ident),
+                         str(self.bin_list[0].ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_child_bin_nodes(self):
         """Tests get_child_bin_nodes"""
-        pass
+        # from test_templates/resource.py::BinNode::get_child_bin_nodes_template
+        from dlkit.abstract_osid.resource.objects import BinNodeList
+        node = self.svc_mgr.get_bin_nodes(
+            self.bin_list[0].ident,
+            0,
+            1,
+            False)
+        self.assertTrue(isinstance(node.get_child_bin_nodes(), BinNodeList))
+        self.assertEqual(node.get_child_bin_nodes().available(),
+                         1)
+        self.assertEqual(str(node.get_child_bin_nodes().next().ident),
+                         str(self.bin_list[1].ident))
 
 
 class TestBinNodeList(unittest.TestCase):

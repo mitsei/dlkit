@@ -212,6 +212,7 @@ class TestGradeSystemForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -219,10 +220,12 @@ class TestGradeSystemForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_grade_system_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_based_on_grades_metadata(self):
@@ -681,6 +684,7 @@ class TestGradebookColumnForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -688,10 +692,12 @@ class TestGradebookColumnForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_gradebook_column_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_grade_system_metadata(self):
@@ -785,35 +791,41 @@ class TestGradebookColumnSummary(unittest.TestCase):
         """Tests get_gradebook_column"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_mean(self):
         """Tests get_mean"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_mean(), float))
+        self.assertEqual(self.object.get_mean(), 0.0)
 
-    @unittest.skip('unimplemented test')
     def test_get_median(self):
         """Tests get_median"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_median(), float))
+        self.assertEqual(self.object.get_median(), 0.0)
 
-    @unittest.skip('unimplemented test')
     def test_get_mode(self):
         """Tests get_mode"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_mode(), float))
+        self.assertEqual(self.object.get_mode(), 0.0)
 
-    @unittest.skip('unimplemented test')
     def test_get_rms(self):
         """Tests get_rms"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_rms(), float))
+        self.assertEqual(self.object.get_rms(), 0.0)
 
-    @unittest.skip('unimplemented test')
     def test_get_standard_deviation(self):
         """Tests get_standard_deviation"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_standard_deviation(), float))
+        self.assertEqual(self.object.get_standard_deviation(), 0.0)
 
-    @unittest.skip('unimplemented test')
     def test_get_sum(self):
         """Tests get_sum"""
-        pass
+        # From test_templates/assessment.py::AssessmentTaken::get_score_template
+        self.assertTrue(isinstance(self.object.get_sum(), float))
+        self.assertEqual(self.object.get_sum(), 0.0)
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_summary_record(self):

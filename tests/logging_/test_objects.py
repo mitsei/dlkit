@@ -82,6 +82,7 @@ class TestLogEntryForm(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_log_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -89,10 +90,12 @@ class TestLogEntryForm(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_log(create_form)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceForm::init_template
         self.form = self.catalog.get_log_entry_form_for_create([])
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceForm::init_template
         cls.svc_mgr.delete_log(cls.catalog.ident)
 
     def test_get_priority_metadata(self):
@@ -115,10 +118,16 @@ class TestLogEntryForm(unittest.TestCase):
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
         self.assertTrue(isinstance(self.form.get_timestamp_metadata(), Metadata))
 
-    @unittest.skip('unimplemented test')
     def test_set_timestamp(self):
         """Tests set_timestamp"""
-        pass
+        # From test_templates/assessment.py::AssessmentOfferedForm::set_start_time_template
+        test_time = DateTime.utcnow()
+        self.assertIsNone(self.form._my_map['timestamp'])
+        self.form.set_timestamp(test_time)
+        self.assertEqual(self.form._my_map['timestamp'],
+                         test_time)
+        # reset this for other tests
+        self.form._my_map['timestamp'] = None
 
     def test_get_agent_metadata(self):
         """Tests get_agent_metadata"""
