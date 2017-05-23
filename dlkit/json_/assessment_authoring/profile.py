@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo assessment.authoring'
 
 DESCRIPTION = 'MongoDB based assessment.authoring implementation'
 
-VERSIONCOMPONENTS = [0, 1, 243]
+VERSIONCOMPONENTS = [0, 1, 245]
 
 RELEASEDATE = "2017-05-23"
 

@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo relationship'
 
 DESCRIPTION = 'MongoDB based relationship implementation'
 
-VERSIONCOMPONENTS = [0, 1, 242]
+VERSIONCOMPONENTS = [0, 1, 244]
 
 RELEASEDATE = "2017-05-23"
 

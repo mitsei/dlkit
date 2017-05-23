@@ -446,7 +446,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
             raise errors.NoAccess()
         if not self._is_valid_duration(
                 time,
-                self.get_time_metadata()):
+                self.get_allocated_time_metadata()):
             raise errors.InvalidArgument()
         map = dict()
         map['days'] = time.days
