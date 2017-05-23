@@ -47,6 +47,7 @@ from .rules import Response
 from dlkit.abstract_osid.assessment import objects as abc_assessment_objects
 from dlkit.abstract_osid.id.primitives import Id as abc_id
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 
 
@@ -2240,7 +2241,14 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         if self._my_map['actualStartTime'] is None:
             raise errors.IllegalState('this assessment has not yet been started by the taker')
         else:
-            return self._my_map['actualStartTime']
+            start_time = self._my_map['actualStartTime']
+            return DateTime(year=start_time.year,
+                            month=start_time.month,
+                            day=start_time.day,
+                            hour=start_time.hour,
+                            minute=start_time.minute,
+                            second=start_time.second,
+                            microsecond=start_time.microsecond)
 
     actual_start_time = property(fget=get_actual_start_time)
 
@@ -2282,7 +2290,14 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
             raise errors.IllegalState('this assessment has not yet ended')
         if not self._my_map['completionTime']:
             raise errors.OperationFailed('someone forgot to set the completion time')
-        return self._my_map['completionTime']
+        completion_time = self._my_map['completionTime']
+        return DateTime(year=completion_time.year,
+                        month=completion_time.month,
+                        day=completion_time.day,
+                        hour=completion_time.hour,
+                        minute=completion_time.minute,
+                        second=completion_time.second,
+                        microsecond=completion_time.microsecond)
 
     completion_time = property(fget=get_completion_time)
 
