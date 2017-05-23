@@ -161,7 +161,9 @@ class TestObjectiveLookup(unittest.TestCase):
             import urllib2
             urlopen = urllib2.urlopen
         except ImportError:
-            import urllib.request, urllib.error, urllib.parse
+            import urllib.request
+            import urllib.error
+            import urllib.parse
             urlopen = urllib.request.urlopen
 
         import json
@@ -375,7 +377,9 @@ class TestActivityLookup(unittest.TestCase):
             urlopen = urllib2.urlopen
         except ImportError:
             # python 3
-            import urllib.request, urllib.error, urllib.parse
+            import urllib.request
+            import urllib.error
+            import urllib.parse
             urlopen = urllib.request.urlopen
 
         import json
