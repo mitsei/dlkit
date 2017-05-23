@@ -439,7 +439,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         id_list = []
         for grade in self.get_grades():
             id_list.append(grade.get_id())
-        return GradeList(id_list)
+        return IdList(id_list)
 
     grade_ids = property(fget=get_grade_ids)
 

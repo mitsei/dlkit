@@ -443,7 +443,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         id_list = []
         for asset_content in self.get_asset_contents():
             id_list.append(asset_content.get_id())
-        return AssetContentList(id_list)
+        return IdList(id_list)
 
     asset_content_ids = property(fget=get_asset_content_ids)
 

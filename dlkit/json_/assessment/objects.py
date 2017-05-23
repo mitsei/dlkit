@@ -427,7 +427,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.get_question().get_id()
+        return self.get_question().get_id()
 
     question_id = property(fget=get_question_id)
 
@@ -460,7 +460,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         id_list = []
         for answer in self.get_answers():
             id_list.append(answer.get_id())
-        return AnswerList(id_list)
+        return IdList(id_list)
 
     answer_ids = property(fget=get_answer_ids)
 
