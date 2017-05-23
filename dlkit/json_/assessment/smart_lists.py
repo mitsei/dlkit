@@ -39,7 +39,7 @@ class AssessmentTakenSectionList(abc_assessment_objects.AssessmentSectionList, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return self.next()
+        return next(self)
 
     def next(self):
         if self._sections_sequential:
@@ -51,6 +51,8 @@ class AssessmentTakenSectionList(abc_assessment_objects.AssessmentSectionList, o
             # next_object = ask self._assessment_taken???
         if str(next_object.get_id()) not in self._assessment_taken._my_map['sections']:
             pass
+
+    __next__ = next
 
     next_assessment_section = property(fget=get_next_assessment_section)
 

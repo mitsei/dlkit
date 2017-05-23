@@ -162,10 +162,12 @@ class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Agent)
+
+    __next__ = next
 
     next_agent = property(fget=get_next_agent)
 

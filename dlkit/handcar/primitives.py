@@ -97,16 +97,26 @@ class DisplayText(abc_displaytext, markers.OsidPrimitive):
         self._my_map = display_text_map
 
     def _get_type_map(self, type_identifier):
-        import urllib2
+        try:
+            # Python 2
+            import urllib2
+            urlopen = urllib2.urlopen
+            urlerrors = urllib2
+        except ImportError:
+            # Python 3
+            import urllib.request, urllib.error
+            urlopen = urllib.request.urlopen
+            urlerrors = urllib.error
+
         import json
-        import settings
+        from . import settings
         try:
             # url = urllib2.urlopen(settings.HANDCAR +
             #                       '/services/learning/types/' +
             #                       type_identifier).read()
-            url = urllib2.urlopen(settings.HANDCAR +
-                                  '/services/learning/types').read()
-        except urllib2.HTTPError:
+            url = urlopen(settings.HANDCAR +
+                          '/services/learning/types').read()
+        except urlerrors.HTTPError:
             raise NotFound('type_identifier not found or bad handcar base URL in settings.py')
         try:
             matching_types = [t for t in json.loads(url) if t['id'] == type_identifier]

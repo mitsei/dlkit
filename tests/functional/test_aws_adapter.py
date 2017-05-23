@@ -25,7 +25,7 @@ class AWSAdapterTests(DLKitTestCase):
         rm = self._get_aws_manager('repository')
         querier = rm.get_repository_query()
         querier.match_genus_type(TEST_REPOSITORY_GENUS, True)
-        repo = rm.get_repositories_by_query(querier).next()
+        repo = next(rm.get_repositories_by_query(querier))
         return rm.get_repository(repo.ident)  # to make sure we get a services repository
 
     def create_asset_with_content(self):
@@ -99,7 +99,7 @@ class AWSAdapterTests(DLKitTestCase):
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
     def test_repository_assets_return_cloudfront_url_when_queried(self):
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
         url = asset_content.get_url()
         self.is_cloudfront_url(url)
 
@@ -107,7 +107,7 @@ class AWSAdapterTests(DLKitTestCase):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
 
         self._repo.delete_asset_content(asset_content.ident)
         self.assertFalse(self.s3_file_exists(expected_filekey))

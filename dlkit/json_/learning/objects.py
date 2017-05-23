@@ -429,10 +429,12 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Objective)
+
+    __next__ = next
 
     next_objective = property(fget=get_next_objective)
 
@@ -528,10 +530,12 @@ class ObjectiveNodeList(abc_learning_objects.ObjectiveNodeList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(ObjectiveNode)
+
+    __next__ = next
 
     next_objective_node = property(fget=get_next_objective_node)
 
@@ -1010,10 +1014,12 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Activity)
+
+    __next__ = next
 
     next_activity = property(fget=get_next_activity)
 
@@ -1380,10 +1386,12 @@ class ProficiencyList(abc_learning_objects.ProficiencyList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Proficiency)
+
+    __next__ = next
 
     next_proficiency = property(fget=get_next_proficiency)
 
@@ -1516,10 +1524,12 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(ObjectiveBank)
+
+    __next__ = next
 
     next_objective_bank = property(fget=get_next_objective_bank)
 
@@ -1648,10 +1658,12 @@ class ObjectiveBankNodeList(abc_learning_objects.ObjectiveBankNodeList, osid_obj
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(ObjectiveBankNode)
+
+    __next__ = next
 
     next_objective_bank_node = property(fget=get_next_objective_bank_node)
 

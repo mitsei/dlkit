@@ -1637,7 +1637,7 @@ class GradebookList(abc_grading_objects.GradebookList, osid.OsidList):
         # Implemented from kitosid template for -
         # osid.resource.ResourceList.get_next_resource
         try:
-            next_item = self.next()
+            next_item = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         else:
@@ -1649,6 +1649,8 @@ class GradebookList(abc_grading_objects.GradebookList, osid.OsidList):
         # osid.resource.ResourceList.get_next_resource
         next_item = osid.OsidList.next(self)
         return next_item
+
+    __next__ = next
 
     next_gradebook = property(fget=get_next_gradebook)
 
@@ -1664,7 +1666,7 @@ class GradebookList(abc_grading_objects.GradebookList, osid.OsidList):
             i = 0
             while i < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except StopIteration:
                     break
                 i += 1

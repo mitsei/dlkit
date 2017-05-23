@@ -37,7 +37,7 @@ class Locale(abc_locale_objects.Locale):
     culture.
 
     """
-    ##
+    #
     # This constructor should probably be referencing a locale settings
     # module for default values?
     def __init__(self,
@@ -211,11 +211,13 @@ class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        next_item = self.next()
+        next_item = next(self)
         return next_item
 
     def next(self):
         return self._get_next_object(Locale)
+
+    __next__ = next
 
     next_locale = property(fget=get_next_locale)
 

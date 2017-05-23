@@ -128,10 +128,12 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Hierarchy)
+
+    __next__ = next
 
     next_hierarchy = property(fget=get_next_hierarchy)
 
@@ -213,10 +215,12 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Node)
+
+    __next__ = next
 
     next_node = property(fget=get_next_node)
 

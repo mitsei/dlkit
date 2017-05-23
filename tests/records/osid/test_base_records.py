@@ -1,4 +1,5 @@
 """Unit tests of osid base_records."""
+import os
 
 import datetime
 import unittest
@@ -106,6 +107,15 @@ def get_proxy(with_locale=None):
 
         condition.set_locale(locale)
     return PROXY_SESSION.get_proxy(condition)
+
+
+def is_string(string_):
+    try:
+        # python 2
+        return isinstance(string_, basestring)
+    except NameError:
+        # python 3
+        return isinstance(string_, str)
 
 
 class TestProvenanceFormRecord(unittest.TestCase):
@@ -660,8 +670,8 @@ class TestTextsFormRecord(unittest.TestCase):
         form = TextsFormRecord(self.osid_object_form)
         self.assertEqual(form.my_osid_object_form._my_map['texts'], {})
         form.add_text('bar')
-        self.assertEqual(len(form.my_osid_object_form._my_map['texts'].keys()), 1)
-        label = form.my_osid_object_form._my_map['texts'].keys()[0]
+        self.assertEqual(len(list(form.my_osid_object_form._my_map['texts'].keys())), 1)
+        label = list(form.my_osid_object_form._my_map['texts'].keys())[0]
         self.assertEqual(len(label), 24)
         self.assertEqual(form.my_osid_object_form._my_map['texts'][label]['text'],
                          'bar')
@@ -837,8 +847,8 @@ class TestIntegerValuesFormRecord(unittest.TestCase):
         form = IntegerValuesFormRecord(self.osid_object_form)
         self.assertEqual(form.my_osid_object_form._my_map['integerValues'], {})
         form.add_integer_value(23)
-        self.assertEqual(len(form.my_osid_object_form._my_map['integerValues'].keys()), 1)
-        label = form.my_osid_object_form._my_map['integerValues'].keys()[0]
+        self.assertEqual(len(list(form.my_osid_object_form._my_map['integerValues'].keys())), 1)
+        label = list(form.my_osid_object_form._my_map['integerValues'].keys())[0]
         self.assertEqual(len(label), 24)
         self.assertEqual(form.my_osid_object_form._my_map['integerValues'][label],
                          23)
@@ -999,8 +1009,8 @@ class TestDecimalValuesFormRecord(unittest.TestCase):
         form = DecimalValuesFormRecord(self.osid_object_form)
         self.assertEqual(form.my_osid_object_form._my_map['decimalValues'], {})
         form.add_decimal_value(2.3)
-        self.assertEqual(len(form.my_osid_object_form._my_map['decimalValues'].keys()), 1)
-        label = form.my_osid_object_form._my_map['decimalValues'].keys()[0]
+        self.assertEqual(len(list(form.my_osid_object_form._my_map['decimalValues'].keys())), 1)
+        label = list(form.my_osid_object_form._my_map['decimalValues'].keys())[0]
         self.assertEqual(len(label), 24)
         self.assertEqual(form.my_osid_object_form._my_map['decimalValues'][label],
                          2.3)
@@ -1355,13 +1365,11 @@ class TestedXBaseRecord(unittest.TestCase):
         self.assertEqual(self.edx_base_object.weight, 0.75)
 
     def test_can_get_showanswer(self):
-        self.assertTrue(isinstance(self.edx_base_object.showanswer,
-                                   basestring))
+        self.assertTrue(is_string(self.edx_base_object.showanswer))
         self.assertEqual(self.edx_base_object.showanswer, 'always')
 
     def test_can_get_markdown(self):
-        self.assertTrue(isinstance(self.edx_base_object.markdown,
-                                   basestring))
+        self.assertTrue(is_string(self.edx_base_object.markdown))
         self.assertEqual(self.edx_base_object.markdown, '<here />')
 
     def test_can_check_attempts(self):
@@ -1556,7 +1564,7 @@ class TestTimeValueRecord(unittest.TestCase):
 
     def test_can_get_time_string(self):
         self.assertTrue(isinstance(self.time_value_object.time_str,
-                                   basestring))
+                                   str))
         self.assertEqual(self.time_value_object.time_str, '01:02:03')
 
 
@@ -1666,16 +1674,16 @@ class TestFilesFormRecord(unittest.TestCase):
         self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         form.add_asset(asset_id)
-        self.assertTrue(len(form.my_osid_object_form._my_map['fileIds'].keys()) == 1)
-        label = form.my_osid_object_form._my_map['fileIds'].keys()[0]
+        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds'].keys())) == 1)
+        label = list(form.my_osid_object_form._my_map['fileIds'].keys())[0]
         self.assertTrue(len(label), 24)
 
     def test_label_auto_generated_if_not_sent_to_add_file(self):
         form = FilesFormRecord(self.osid_object_form)
         self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
         form.add_file(DataInputStream(self.test_file))
-        self.assertTrue(len(form.my_osid_object_form._my_map['fileIds'].keys()) == 1)
-        label = form.my_osid_object_form._my_map['fileIds'].keys()[0]
+        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds'].keys())) == 1)
+        label = list(form.my_osid_object_form._my_map['fileIds'].keys())[0]
         self.assertTrue(len(label), 24)
         form.clear_files()
 
@@ -1766,7 +1774,7 @@ class TestFilesFormRecord(unittest.TestCase):
         self.assertIn('foo', form.my_osid_object_form._my_map['fileIds'])
         asset_id_str = form.my_osid_object_form._my_map['fileIds']['foo']['assetId']
         asset = self.repo.get_asset(Id(asset_id_str))
-        asset_content = asset.get_asset_contents().next()
+        asset_content = next(asset.get_asset_contents())
         self.test_file.seek(0)
         self.assertEqual(asset_content.get_data().read(),
                          self.test_file.read())
@@ -1799,7 +1807,7 @@ class TestFilesFormRecord(unittest.TestCase):
                        label='foo',
                        asset_content_id=Id('repository.AssetContent%3Anew-ac-id%40ODL.MIT.EDU'),
                        asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
-        self.assertTrue(len(form.my_osid_object_form._my_map['fileIds']['foo'].keys()), 1)
+        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds']['foo'].keys())), 1)
         self.assertIn('new-id',
                       form.my_osid_object_form._my_map['fileIds']['foo']['assetId'])
         self.assertIn('new-ac-id',
@@ -1959,8 +1967,8 @@ class TestFilesRecord(unittest.TestCase):
         asset = self.repo.get_asset(self.asset.ident)
 
         ac_list = asset.get_asset_contents()
-        ac_list.next()
-        second_ac = ac_list.next()
+        next(ac_list)
+        second_ac = next(ac_list)
 
         obj_map = deepcopy(TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
@@ -1994,7 +2002,7 @@ class TestFilesRecord(unittest.TestCase):
         asset_ids = self.item.get_asset_ids()
         self.assertTrue(isinstance(asset_ids, IdList))
         self.assertTrue(asset_ids.available() == 1)
-        self.assertEqual(str(asset_ids.next()),
+        self.assertEqual(str(next(asset_ids)),
                          str(self.asset.ident))
 
     def test_can_get_asset_ids_map(self):
@@ -2029,8 +2037,7 @@ class TestFilesRecord(unittest.TestCase):
             self.item.get_file_by_label('boo')
 
     def test_can_get_url_by_label(self):
-        self.assertTrue(isinstance(self.item.get_url_by_label('foo'),
-                                   basestring))
+        self.assertTrue(is_string(self.item.get_url_by_label('foo')))
         self.assertEqual(self.item.get_url_by_label('foo'),
                          'example.com')
 
@@ -2222,7 +2229,7 @@ class TestFileFormRecord(unittest.TestCase):
         self.assertIn('assetContentTypeId', form.my_osid_object_form._my_map['fileId'])
         asset_id_str = form.my_osid_object_form._my_map['fileId']['assetId']
         asset = self.repo.get_asset(Id(asset_id_str))
-        asset_content = asset.get_asset_contents().next()
+        asset_content = next(asset.get_asset_contents())
         self.test_file.seek(0)
         self.assertEqual(asset_content.get_data().read(),
                          self.test_file.read())
@@ -2248,7 +2255,7 @@ class TestFileFormRecord(unittest.TestCase):
 
         form.set_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
                        asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
-        self.assertTrue(len(form.my_osid_object_form._my_map['fileId'].keys()), 2)
+        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileId'].keys())), 2)
         self.assertIn('new-id',
                       form.my_osid_object_form._my_map['fileId']['assetId'])
         self.assertIn('new-type',
@@ -2336,8 +2343,7 @@ class TestFileRecord(unittest.TestCase):
             file_object.file_asset_id
 
     def test_can_get_file_url(self):
-        self.assertTrue(isinstance(self.item.file_url,
-                                   basestring))
+        self.assertTrue(is_string(self.item.file_url))
         self.assertEqual(self.item.file_url,
                          'example.com')
 
@@ -2354,8 +2360,8 @@ class TestFileRecord(unittest.TestCase):
         asset = self.repo.get_asset(self.asset.ident)
 
         ac_list = asset.get_asset_contents()
-        ac_list.next()
-        second_ac = ac_list.next()
+        next(ac_list)
+        second_ac = next(ac_list)
 
         obj_map = deepcopy(TEST_OBJECT_MAP)
         obj_map['fileId'] = {
@@ -4077,8 +4083,8 @@ class TestMultiLanguageUtils(unittest.TestCase):
         self.ml_obj.remove_field_by_language('foo',
                                              self.telugu_language_type,
                                              dictionary=dictionary_to_test)
-        self.assertTrue(len(dictionary_to_test.items()), 1)
-        self.assertEqual(dictionary_to_test.keys()[0], 'foo')
+        self.assertTrue(len(list(dictionary_to_test.items())), 1)
+        self.assertEqual(list(dictionary_to_test.keys())[0], 'foo')
         self.assertEqual(dictionary_to_test['foo'][0]['languageTypeId'],
                          str(self.hindi_language_type))
         self.remove_osid_object(form=True)
@@ -4101,8 +4107,8 @@ class TestMultiLanguageUtils(unittest.TestCase):
         self.ml_obj.remove_field_by_language('foo',
                                              self.hindi_language_type,
                                              dictionary=dictionary_to_test)
-        self.assertTrue(len(dictionary_to_test.items()), 1)
-        self.assertEqual(dictionary_to_test.keys()[0], 'foo')
+        self.assertTrue(len(list(dictionary_to_test.items())), 1)
+        self.assertEqual(list(dictionary_to_test.keys())[0], 'foo')
         self.assertEqual(dictionary_to_test['foo'][0]['languageTypeId'],
                          str(self.default_language_type))
         self.remove_osid_object(form=True)

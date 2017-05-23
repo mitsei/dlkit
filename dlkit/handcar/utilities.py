@@ -247,8 +247,14 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
 
 
 def get_id_str(id_):
-    if not isinstance(id_, basestring):
-        id_ = str(id_)
+    try:
+        # Python 2
+        if not isinstance(id_, basestring):
+            id_ = str(id_)
+    except NameError:
+        # Python 3
+        if not isinstance(id_, str):
+            id_ = str(id_)
     return id_
 
 
@@ -276,7 +282,7 @@ def create_sandbox_bank(display_name, description=None):
     obls = lm.get_objective_bank_lookup_session()
     for ob in obls.get_objective_banks():
         if ob.display_name.text == display_name:
-            print 'A sandbox bank named', display_name, 'already exists.'
+            print('A sandbox bank named', display_name, 'already exists.')
             return None
     obfc = obas.get_objective_bank_form_for_create()
     obfc.display_name = display_name
@@ -296,14 +302,14 @@ def delete_bank_by_name(display_name):
             ols = lm.get_objective_lookup_session_for_objective_bank(ob.ident)
             als = lm.get_activity_lookup_session_for_objective_bank(ob.ident)
             if ols.get_objectives().available() != 0:
-                print 'can not delete objective bank \'' + ob.display_name.text + '\'. It still contains objectives.'
+                print('can not delete objective bank \'' + ob.display_name.text + '\'. It still contains objectives.')
             elif als.get_activities().available() != 0:
-                print 'can not delete objective bank \'' + ob.display_name.text + '\'. It still contains activities.'
+                print('can not delete objective bank \'' + ob.display_name.text + '\'. It still contains activities.')
             else:
-                print 'deleting objective bank', ob
+                print('deleting objective bank', ob)
                 obas.delete_objective_bank(ob.ident)
     if not found:
-        print 'objective bank \'' + display_name + '\' not found.'
+        print('objective bank \'' + display_name + '\' not found.')
 
 
 def create_objective(bank_id, display_name, description=None):
@@ -346,7 +352,7 @@ def create_sandbox_repository(display_name, description=None):
     rls = rm.get_repository_lookup_session()
     for r in rls.get_repositories():
         if r.display_name.text == display_name:
-            print 'A sandbox repository named', display_name, 'already exists.'
+            print('A sandbox repository named', display_name, 'already exists.')
             return None
     rfc = ras.get_repository_form_for_create()
     rfc.display_name = display_name
@@ -365,12 +371,12 @@ def delete_repository_by_name(display_name):
             found = True
             als = rm.get_asset_lookup_session_for_repository(r.ident)
             if als.get_assets().available() != 0:
-                print 'can not delete repository \'' + ob.display_name.text + '\'. It still contains assets.'
+                print('can not delete repository \'' + ob.display_name.text + '\'. It still contains assets.')
             else:
-                print 'deleting repository', r
+                print('deleting repository', r)
                 ras.delete_repository(r.ident)
     if not found:
-        print 'repository \'' + display_name + '\' not found.'
+        print('repository \'' + display_name + '\' not found.')
 
 
 def create_asset(repository_id, display_name, description=None):

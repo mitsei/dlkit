@@ -119,7 +119,7 @@ class SearchPaginationTests(DLKitTestCase):
             if expected_name == '12':
                 new_id_to_search_on.append(resources_found.next().ident)
             else:
-                resources_found.next()
+                next(resources_found)
 
         querier = self._bin.get_resource_query()
         querier.match_keyword('2', WORDIGNORECASE_STRING_MATCH_TYPE, True)

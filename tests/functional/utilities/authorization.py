@@ -213,7 +213,8 @@ def activate_managers(request):
 
 
 def add_user_authz_to_settings(role, username, catalog_id=None, authority='MIT-ODL'):
-    if isinstance(catalog_id, basestring):
+    from .testing import is_string
+    if is_string(catalog_id):
         catalog_id = Id(catalog_id)
     agent = create_agent_id(username, authority=authority)
 
@@ -367,7 +368,7 @@ def get_session_data(request, item_type):
         else:
             return None
     except Exception as ex:
-        print "Exception! {0}".format(ex)
+        print("Exception! {0}".format(ex))
 
 
 def get_super_authz_user_request():
@@ -376,7 +377,7 @@ def get_super_authz_user_request():
 
 def get_vault(request):
     authzm = get_session_data(request, 'authzm')
-    return authzm.get_vaults_by_genus_type(BOOTSTRAP_VAULT_GENUS).next()
+    return next(authzm.get_vaults_by_genus_type(BOOTSTRAP_VAULT_GENUS))
 
 
 def open_up_services_config():

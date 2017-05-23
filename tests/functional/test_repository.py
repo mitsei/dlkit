@@ -72,7 +72,7 @@ class FilesystemAdapterTests(DLKitTestCase):
 
     def get_asset_content_full_path(self, asset):
         # For these tests, assume first assetContent
-        ac = asset.get_asset_contents().next()
+        ac = next(asset.get_asset_contents())
         # this is super hacky
         return os.path.join(ac._config_map['data_store_full_path'],
                             ac._my_map['url'])
@@ -96,7 +96,7 @@ class FilesystemAdapterTests(DLKitTestCase):
         self.assertTrue(self.file_exists(filepath))
 
     def test_repository_assets_return_cloudfront_url_when_queried(self):
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
         url = asset_content.get_url()
         self.is_streamable_url(url)
 
@@ -104,7 +104,7 @@ class FilesystemAdapterTests(DLKitTestCase):
         filepath = self.get_asset_content_full_path(self._asset)
         self.assertTrue(self.file_exists(filepath))
 
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
 
         self._repo.delete_asset_content(asset_content.ident)
         self.assertFalse(self.file_exists(filepath))
@@ -358,7 +358,7 @@ class EdXCompositionTests(CompositionTests):
 
     def test_can_set_start_date_for_chapters_and_sequentials(self):
         test_cases = ['chapter', 'sequential']
-        start_date = DateTime(year=2015, day=01, month=01)
+        start_date = DateTime(year=2015, day=1, month=1)
         for case in test_cases:
             try:
                 comp = self.create_composition_of_type(case)
@@ -376,7 +376,7 @@ class EdXCompositionTests(CompositionTests):
 
     def test_cannot_set_start_date_for_courses_split_tests_and_verticals(self):
         test_cases = ['course', 'split_test', 'vertical']
-        start_date = DateTime(year=2015, day=01, month=01)
+        start_date = DateTime(year=2015, day=1, month=1)
         for case in test_cases:
             comp = self.create_composition_of_type(case)
 
@@ -400,7 +400,7 @@ class EdXCompositionTests(CompositionTests):
 
     def test_can_get_start_date_for_chapters_and_sequentials(self):
         test_cases = ['chapter', 'sequential']
-        start_date = DateTime(year=2015, day=01, month=01)
+        start_date = DateTime(year=2015, day=1, month=1)
         for case in test_cases:
             comp = self.create_composition_of_type(case)
             form = self._repo.get_composition_form_for_update(comp.ident)
@@ -419,7 +419,7 @@ class EdXCompositionTests(CompositionTests):
 
     def test_cannot_get_start_date_for_courses_split_tests_and_verticals(self):
         test_cases = ['course', 'split_test', 'vertical']
-        start_date = DateTime(year=2015, day=01, month=01)
+        start_date = DateTime(year=2015, day=1, month=1)
         for case in test_cases:
             comp = self.create_composition_of_type(case)
 
@@ -840,7 +840,7 @@ class SearchAssetPaginationTests(DLKitTestCase):
             if expected_name == '12':
                 new_id_to_search_on.append(assets_found.next().ident)
             else:
-                assets_found.next()
+                next(assets_found)
 
         querier = self._repo.get_asset_query()
         querier.match_keyword('2', WORDIGNORECASE_STRING_MATCH_TYPE, True)
@@ -976,7 +976,7 @@ class SearchCompositionPaginationTests(DLKitTestCase):
             if expected_name == '12':
                 new_id_to_search_on.append(compositions_found.next().ident)
             else:
-                compositions_found.next()
+                next(compositions_found)
 
         querier = self._repo.get_composition_query()
         querier.match_keyword('2', WORDIGNORECASE_STRING_MATCH_TYPE, True)

@@ -60,7 +60,7 @@ class MyIterator(object):
 
     def __iter__(self):
         try:
-            yield self._data.next()
+            yield next(self._data)
         except AttributeError:
             self._i += 1
             if len(self._data) > 0 and self._i < len(self._data):
@@ -70,13 +70,15 @@ class MyIterator(object):
 
     def next(self):
         try:
-            return self._data.next()
+            return next(self._data)
         except AttributeError:
             self._i += 1
             if len(self._data) > 0 and self._i < len(self._data):
                 return self._data[self._i]
             else:
                 raise StopIteration
+
+    __next__ = next
 
 
 class ListFiller(object):
@@ -100,7 +102,7 @@ class ListFiller(object):
 def clean_up_datetime(obj_map):
     """convert datetime objects to dictionaries for storage"""
     clean_map = {}
-    for key, value in obj_map.iteritems():
+    for key, value in obj_map.items():
         if isinstance(value, datetime.datetime):
             clean_map[key] = {
                 'year': value.year,
@@ -132,18 +134,18 @@ def clean_up_datetime(obj_map):
 
 def clean_up_embedded_object_ids(obj_map):
     clean_map = {}
-    for key, value in obj_map.iteritems():
+    for key, value in obj_map.items():
         if isinstance(value, ObjectId):
             clean_map[key] = str(value)
         elif isinstance(value, dict):
             clean_map[key] = clean_up_embedded_object_ids(value)
         elif isinstance(value, list):
             new_list = []
-            for item in value:
-                if isinstance(item, dict):
-                    new_list.append(clean_up_embedded_object_ids(item))
+            for internal_item in value:
+                if isinstance(internal_item, dict):
+                    new_list.append(clean_up_embedded_object_ids(internal_item))
                 else:
-                    new_list.append(item)
+                    new_list.append(internal_item)
             clean_map[key] = new_list
         else:
             clean_map[key] = value
@@ -153,18 +155,18 @@ def clean_up_embedded_object_ids(obj_map):
 def convert_dict_to_datetime(obj_map):
     """converts dictionary representations of datetime back to datetime obj"""
     converted_map = {}
-    for key, value in obj_map.iteritems():
+    for key, value in obj_map.items():
         if isinstance(value, dict) and 'tzinfo' in value.keys():
             converted_map[key] = datetime.datetime(**value)
         elif isinstance(value, dict):
             converted_map[key] = convert_dict_to_datetime(value)
         elif isinstance(value, list):
             updated_list = []
-            for item in value:
-                if isinstance(item, dict):
-                    updated_list.append(convert_dict_to_datetime(item))
+            for internal_item in value:
+                if isinstance(internal_item, dict):
+                    updated_list.append(convert_dict_to_datetime(internal_item))
                 else:
-                    updated_list.append(item)
+                    updated_list.append(internal_item)
             converted_map[key] = updated_list
         else:
             converted_map[key] = value
@@ -174,7 +176,7 @@ def convert_dict_to_datetime(obj_map):
 def convert_ids_to_object_ids(obj_map):
     """converts string representations of _id back to ObjectId obj"""
     converted_map = {}
-    for key, value in obj_map.iteritems():
+    for key, value in obj_map.items():
         if key == '_id':
             # hacky, but using alias sends back the whole ID string, like
             #   assessment.Item%3A5758326b4a40452d6eee1fa1%40ODL.MIT.EDU
@@ -187,11 +189,11 @@ def convert_ids_to_object_ids(obj_map):
             converted_map[key] = convert_ids_to_object_ids(value)
         elif isinstance(value, list):
             new_list = []
-            for item in value:
-                if isinstance(item, dict):
-                    new_list.append(convert_ids_to_object_ids(item))
+            for internal_item in value:
+                if isinstance(internal_item, dict):
+                    new_list.append(convert_ids_to_object_ids(internal_item))
                 else:
-                    new_list.append(item)
+                    new_list.append(internal_item)
             converted_map[key] = new_list
         else:
             converted_map[key] = value
@@ -221,15 +223,24 @@ def fix_reserved_word(word, is_module=False):
     return word
 
 
+def is_string(string_):
+    try:
+        # python 2
+        return isinstance(string_, basestring)
+    except NameError:
+        # python 3
+        return isinstance(string_, str)
+
+
 def query_is_match(query, contents):
-    num_keys = len(query.keys())
+    num_keys = len(list(query.keys()))
     num_matches = 0
-    for key, value in query.iteritems():
+    for key, value in query.items():
         if key == '_id' and isinstance(value, ObjectId):
             value = str(value)
 
-        if isinstance(value, dict) and value.keys()[0] == '$in':
-            value_key = value.keys()[0]
+        if isinstance(value, dict) and list(value.keys()[0]) == '$in':
+            value_key = list(value.keys())[0]
 
             mod_value = value[value_key]
             matches_already_calculated = False
@@ -309,7 +320,7 @@ def query_is_match(query, contents):
                         num_matches += 1
         elif (key in contents and
               isinstance(contents[key], list) and
-              isinstance(value, basestring)):
+              is_string(value)):
             if key in contents and value in contents[key]:
                 num_matches += 1
         else:
@@ -319,7 +330,7 @@ def query_is_match(query, contents):
 
 
 def splice_and_query(query):
-    if '$and' in query.keys():
+    if '$and' in list(query.keys()):
         new_query = {}
         for item in query['$and']:
             new_query.update(item)
@@ -480,7 +491,7 @@ class JSONClientValidated(object):
             else:
                 query = self._convert_to_dict(query)
                 query = splice_and_query(query)
-                if '_id' in query.keys() and not isinstance(query['_id'], dict):
+                if '_id' in list(query.keys()) and not isinstance(query['_id'], dict):
                     potential_file = '{0}/{1}.json'.format(self._cursor,
                                                            query['_id'])
                     if os.path.isfile(potential_file):
@@ -531,8 +542,8 @@ class JSONClientValidated(object):
             results = None
             query = self._convert_to_dict(query)
             query = splice_and_query(query)
-            if '_id' in query.keys() or 'question._id' in query.keys():
-                if '_id' in query.keys():
+            if '_id' in list(query.keys()) or 'question._id' in query.keys():
+                if '_id' in list(query.keys()):
                     id_key = '_id'
                 else:
                     id_key = 'question._id'
@@ -583,7 +594,7 @@ class JSONClientValidated(object):
             write_target = '{}/{}.json'.format(self._cursor,
                                                doc['_id'])
             with open(write_target, 'wb') as write_file:
-                json.dump(doc, write_file)
+                json.dump(doc, write_file, ensure_ascii=False)
 
             self._validate_write(write_target)
             inserted_obj = Filler()
@@ -625,7 +636,7 @@ class JSONClientValidated(object):
                                                doc['_id'])
 
             with open(write_target, 'wb') as write_file:
-                json.dump(doc, write_file)
+                json.dump(doc, write_file, ensure_ascii=False)
             self._validate_write(write_target)
             inserted_obj = Filler()
             inserted_obj.inserted_id = doc['_id']
@@ -655,7 +666,7 @@ def arguments_not_none(func):
         for arg in args:
             if arg is None:
                 raise NullArgument()
-        for arg, val in kwargs.iteritems():
+        for arg, val in kwargs.items():
             if val is None:
                 raise NullArgument()
         try:

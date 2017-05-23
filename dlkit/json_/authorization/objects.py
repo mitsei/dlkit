@@ -416,10 +416,12 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Authorization)
+
+    __next__ = next
 
     next_authorization = property(fget=get_next_authorization)
 
@@ -541,10 +543,12 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Vault)
+
+    __next__ = next
 
     next_vault = property(fget=get_next_vault)
 
@@ -671,10 +675,12 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(VaultNode)
+
+    __next__ = next
 
     next_vault_node = property(fget=get_next_vault_node)
 

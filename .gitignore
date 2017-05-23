@@ -6,3 +6,4 @@ htmlcov/
 dist/
 dlkit.egg-info/
 *.pem
+*.bak

@@ -228,11 +228,13 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        next_item = self.next()
+        next_item = next(self)
         return next_item
 
     def next(self):
         return self._get_next_object(Id)
+
+    __next__ = next
 
     next_id = property(fget=get_next_id)
 

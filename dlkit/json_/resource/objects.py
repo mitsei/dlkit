@@ -328,10 +328,12 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Resource)
+
+    __next__ = next
 
     next_resource = property(fget=get_next_resource)
 
@@ -426,10 +428,12 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(ResourceNode)
+
+    __next__ = next
 
     next_resource_node = property(fget=get_next_resource_node)
 
@@ -548,10 +552,12 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Bin)
+
+    __next__ = next
 
     next_bin = property(fget=get_next_bin)
 
@@ -675,10 +681,12 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(BinNode)
+
+    __next__ = next
 
     next_bin_node = property(fget=get_next_bin_node)
 

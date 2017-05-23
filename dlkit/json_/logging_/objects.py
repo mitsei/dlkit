@@ -374,10 +374,12 @@ class LogEntryList(abc_logging_objects.LogEntryList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(LogEntry)
+
+    __next__ = next
 
     next_log_entry = property(fget=get_next_log_entry)
 
@@ -505,10 +507,12 @@ class LogList(abc_logging_objects.LogList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Log)
+
+    __next__ = next
 
     next_log = property(fget=get_next_log)
 
@@ -635,10 +639,12 @@ class LogNodeList(abc_logging_objects.LogNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(LogNode)
+
+    __next__ = next
 
     next_log_node = property(fget=get_next_log_node)
 

@@ -308,16 +308,16 @@ class TestItem(unittest.TestCase):
         lo_ids = self.item.get_learning_objective_ids()
         self.assertTrue(isinstance(lo_ids, IdList))
         self.assertEqual(lo_ids.available(), 2)
-        self.assertEqual(str(lo_ids.next()), str(self.objectives[0].ident))
-        self.assertEqual(str(lo_ids.next()), str(self.objectives[1].ident))
+        self.assertEqual(str(next(lo_ids)), str(self.objectives[0].ident))
+        self.assertEqual(str(next(lo_ids)), str(self.objectives[1].ident))
 
     def test_get_learning_objectives(self):
         """Tests get_learning_objectives"""
         los = self.item.get_learning_objectives()
         self.assertTrue(isinstance(los, ObjectiveList))
         self.assertEqual(los.available(), 2)
-        self.assertEqual(str(los.next().ident), str(self.objectives[0].ident))
-        self.assertEqual(str(los.next().ident), str(self.objectives[1].ident))
+        self.assertEqual(str(next(los).ident), str(self.objectives[0].ident))
+        self.assertEqual(str(next(los).ident), str(self.objectives[1].ident))
 
     def test_get_question_id(self):
         """Tests get_question_id"""
@@ -343,7 +343,7 @@ class TestItem(unittest.TestCase):
         answers = self.item.get_answers()
         self.assertTrue(isinstance(answers, AnswerList))
         self.assertEqual(answers.available(), 1)
-        self.assertEqual(str(answers.next().genus_type),
+        self.assertEqual(str(next(answers).genus_type),
                          'answer-genus%3Aright-answer%40ODL.MIT.EDU')
 
     @unittest.skip('unimplemented test')

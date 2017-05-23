@@ -61,7 +61,7 @@ class ConfigurationTests(DLKitTestCase):
                                               collection='Bank',
                                               runtime=self._bank._osid_object._runtime)
         current_indexes = test_collection.raw().index_information()
-        index_keys = [v['key'][0][0] for k, v in current_indexes.iteritems()]
+        index_keys = [v['key'][0][0] for k, v in current_indexes.items()]
         self.assertFalse(index_to_test in index_keys)
 
         dlkit.runtime.configs.TEST_JSON_1 = {
@@ -149,5 +149,5 @@ class ConfigurationTests(DLKitTestCase):
                                               collection='Bank',
                                               runtime=new_bank._osid_object._runtime)
         current_indexes = test_collection.raw().index_information()
-        index_keys = [v['key'][0][0] for k, v in current_indexes.iteritems()]
+        index_keys = [v['key'][0][0] for k, v in current_indexes.items()]
         self.assertTrue(index_to_test in index_keys)

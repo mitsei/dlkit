@@ -61,9 +61,16 @@ class TestLearningManager(unittest.TestCase):
             Type))
 
     def test_display_name_turtles(self):
-        self.assertTrue(isinstance(
-            self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
-            basestring))  # when handcar reports type domains again, include that too
+        try:
+            # Python 2
+            self.assertTrue(isinstance(
+                self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
+                basestring))  # when handcar reports type domains again, include that too
+        except NameError:
+            # Python 3
+            self.assertTrue(isinstance(
+                self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
+                str))  # when handcar reports type domains again, include that too
 
     def test_supports_objective_bank_lookup(self):
         self.assertTrue(self.lm.supports_objective_bank_lookup())
@@ -149,7 +156,14 @@ class TestIdEquality(unittest.TestCase):
 class TestObjectiveLookup(unittest.TestCase):
 
     def setUp(self):
-        import urllib2
+        try:
+            # python 2
+            import urllib2
+            urlopen = urllib2.urlopen
+        except ImportError:
+            import urllib.request, urllib.error, urllib.parse
+            urlopen = urllib.request.urlopen
+
         import json
         from dlkit.handcar.learning import objects
         self.lm = Runtime().get_service_manager('LEARNING',
@@ -162,7 +176,7 @@ class TestObjectiveLookup(unittest.TestCase):
         self.ols = self.lm.get_objective_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Objective Types (Note: This does not use the osid contract)
         url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/objective'
-        url = urllib2.urlopen(url_string).read()
+        url = urlopen(url_string).read()
         self.objective_genus_types = json.loads(url)
 
     def test_get_objective_bank(self):
@@ -355,7 +369,15 @@ class TestObjectiveHierarchy(unittest.TestCase):
 class TestActivityLookup(unittest.TestCase):
 
     def setUp(self):
-        import urllib2
+        try:
+            # python 2
+            import urllib2
+            urlopen = urllib2.urlopen
+        except ImportError:
+            # python 3
+            import urllib.request, urllib.error, urllib.parse
+            urlopen = urllib.request.urlopen
+
         import json
         from dlkit.handcar.learning import objects
         from dlkit.handcar.learning import managers
@@ -369,7 +391,7 @@ class TestActivityLookup(unittest.TestCase):
         self.als = self.lm.get_activity_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Activity Types (Note: This does not use the osid contract yet)
         url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/activity'
-        url = urllib2.urlopen(url_string).read()
+        url = urlopen(url_string).read()
         self.activity_genus_types = json.loads(url)
 
     def test_get_objective_bank(self):
@@ -854,7 +876,7 @@ class TestAssetContentCrUD(unittest.TestCase):
         acfc.set_url('http://web.mit.edu')
         self.aas.create_asset_content(acfc)
         new_asset = self.als.get_asset(self.test_asset.ident)
-        new_asset_content = new_asset.get_asset_contents().next()
+        new_asset_content = next(new_asset.get_asset_contents())
         self.assertEqual(new_asset_content.get_display_name().get_text(), 'Test Asset Content')
         self.assertEqual(new_asset_content.get_description().get_text(), 'This is a Test Asset Content')
         self.assertEqual(new_asset_content.get_url(), 'http://web.mit.edu')
@@ -868,7 +890,7 @@ class TestAssetContentCrUD(unittest.TestCase):
         updated_asset = self.als.get_asset(self.test_asset.ident)
         updated_asset_contents = updated_asset.get_asset_contents()
         self.assertEqual(updated_asset_contents.available(), 1)
-        updated_asset_content = updated_asset_contents.next()
+        updated_asset_content = next(updated_asset_contents)
         self.assertEqual(updated_asset_content.get_display_name().get_text(), 'New Name for Test Asset Content')
         self.assertEqual(updated_asset_content.get_description().get_text(), 'This is an updated description for Test Asset Content')
         self.assertEqual(updated_asset_content.get_url(), 'http://www.stanford.edu')

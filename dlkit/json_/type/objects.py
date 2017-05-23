@@ -269,11 +269,13 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return self.next()
+        return next(self)
 
     def next(self):
         from .primitives import Type
         return self._get_next_object(Type)
+
+    __next__ = next
 
     next_type = property(fget=get_next_type)
 

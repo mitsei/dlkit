@@ -1324,10 +1324,12 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Asset)
+
+    __next__ = next
 
     next_asset = property(fget=get_next_asset)
 
@@ -1755,10 +1757,12 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(AssetContent)
+
+    __next__ = next
 
     next_asset_content = property(fget=get_next_asset_content)
 
@@ -1993,10 +1997,12 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Composition)
+
+    __next__ = next
 
     next_composition = property(fget=get_next_composition)
 
@@ -2121,10 +2127,12 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Repository)
+
+    __next__ = next
 
     next_repository = property(fget=get_next_repository)
 
@@ -2253,10 +2261,12 @@ class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(RepositoryNode)
+
+    __next__ = next
 
     next_repository_node = property(fget=get_next_repository_node)
 
