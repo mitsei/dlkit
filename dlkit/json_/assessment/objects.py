@@ -1846,6 +1846,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_start_time_metadata().is_read_only() or
                 self.get_start_time_metadata().is_required()):
             raise errors.NoAccess()
@@ -1894,6 +1895,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_deadline_metadata().is_read_only() or
                 self.get_deadline_metadata().is_required()):
             raise errors.NoAccess()
@@ -1947,7 +1949,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
+        if (self.get_duration_metadata().is_read_only() or
+                self.get_duration_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['duration'] = self._duration_default
 
     duration = property(fset=set_duration, fdel=clear_duration)
 

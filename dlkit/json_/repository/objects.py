@@ -1085,6 +1085,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_created_date_metadata().is_read_only() or
                 self.get_created_date_metadata().is_required()):
             raise errors.NoAccess()
@@ -1181,6 +1182,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_published_date_metadata().is_read_only() or
                 self.get_published_date_metadata().is_required()):
             raise errors.NoAccess()

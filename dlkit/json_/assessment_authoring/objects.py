@@ -462,7 +462,11 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
+        if (self.get_allocated_time_metadata().is_read_only() or
+                self.get_allocated_time_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['allocatedTime'] = self._allocated_time_default
 
     allocated_time = property(fset=set_allocated_time, fdel=clear_allocated_time)
 
