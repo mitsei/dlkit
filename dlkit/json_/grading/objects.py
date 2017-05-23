@@ -400,7 +400,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradeList, number=n)
 
 
 class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid_markers.Aggregateable):
@@ -439,7 +439,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         id_list = []
         for grade in self.get_grades():
             id_list.append(grade.get_id())
-        return GradeList(id_list)
+        return IdList(id_list)
 
     grade_ids = property(fget=get_grade_ids)
 
@@ -856,7 +856,7 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradeSystemList, number=n)
 
 
 class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
@@ -1471,7 +1471,7 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradeEntryList, number=n)
 
 
 class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObject):
@@ -1690,7 +1690,7 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradebookColumnList, number=n)
 
 
 class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_objects.OsidObject):
@@ -1992,7 +1992,7 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradebookList, number=n)
 
 
 class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
@@ -2124,4 +2124,4 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(GradebookNodeList, number=n)

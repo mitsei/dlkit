@@ -191,7 +191,7 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(RelationshipList, number=n)
 
 
 class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
@@ -329,7 +329,7 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(FamilyList, number=n)
 
 
 class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
@@ -463,4 +463,4 @@ class FamilyNodeList(abc_relationship_objects.FamilyNodeList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(FamilyNodeList, number=n)

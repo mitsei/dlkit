@@ -11,6 +11,7 @@
 
 
 import base64
+import datetime
 import gridfs
 import importlib
 
@@ -22,6 +23,8 @@ from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..osid.markers import Extensible
 from ..osid.metadata import Metadata
+from ..osid.osid_errors import *
+from ..primitives import *
 from ..primitives import DataInputStream
 from ..primitives import DisplayText
 from ..primitives import Id
@@ -440,7 +443,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         id_list = []
         for asset_content in self.get_asset_contents():
             id_list.append(asset_content.get_id())
-        return AssetContentList(id_list)
+        return IdList(id_list)
 
     asset_content_ids = property(fget=get_asset_content_ids)
 
@@ -1082,6 +1085,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_created_date_metadata().is_read_only() or
                 self.get_created_date_metadata().is_required()):
             raise errors.NoAccess()
@@ -1178,6 +1182,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_published_date_metadata().is_read_only() or
                 self.get_published_date_metadata().is_required()):
             raise errors.NoAccess()
@@ -1341,7 +1346,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssetList, number=n)
 
 
 class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject, osid_markers.Subjugateable):
@@ -1551,9 +1556,9 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Implemented from template for osid.logging.LogEntryForm.get_priority_metadata
         metadata = dict(self._mdata['accessibility_type'])
-        metadata.update({'existing_type_values': self._my_map['accessibilityType']})
+        metadata.update({'existing_type_values': self._my_map['accessibilityTypeId']})
         return Metadata(**metadata)
 
     accessibility_type_metadata = property(fget=get_accessibility_type_metadata)
@@ -1773,7 +1778,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssetContentList, number=n)
 
 
 class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, osid_markers.Containable, osid_markers.Operable, osid_markers.Sourceable):
@@ -2011,7 +2016,7 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(CompositionList, number=n)
 
 
 class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
@@ -2139,7 +2144,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(RepositoryList, number=n)
 
 
 class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNode):
@@ -2271,4 +2276,4 @@ class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(RepositoryNodeList, number=n)

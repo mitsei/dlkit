@@ -4,8 +4,32 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestGradeQuery(unittest.TestCase):
     """Tests for GradeQuery"""
+
+    # This really shouldn't be generated...should be GradeEntryQuery??
+    @classmethod
+    def setUpClass(cls):
+        cls.object = None
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
@@ -135,6 +159,20 @@ class TestGradeQuery(unittest.TestCase):
 
 class TestGradeSystemQuery(unittest.TestCase):
     """Tests for GradeSystemQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        cls.query = cls.catalog.get_grade_system_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_based_on_grades(self):
@@ -269,6 +307,20 @@ class TestGradeSystemQuery(unittest.TestCase):
 
 class TestGradeEntryQuery(unittest.TestCase):
     """Tests for GradeEntryQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        cls.query = cls.catalog.get_grade_entry_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_gradebook_column_id(self):
@@ -523,6 +575,20 @@ class TestGradeEntryQuery(unittest.TestCase):
 
 class TestGradebookColumnQuery(unittest.TestCase):
     """Tests for GradebookColumnQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_gradebook(create_form)
+
+        cls.query = cls.catalog.get_gradebook_column_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):

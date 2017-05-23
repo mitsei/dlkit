@@ -4,8 +4,40 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestQuestionQuery(unittest.TestCase):
     """Tests for QuestionQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_query = cls.catalog.get_item_query()
+        # cls.query = item_query.get_question_query()
+        # Currently raises Unsupported()
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_get_question_query_record(self):
@@ -16,6 +48,24 @@ class TestQuestionQuery(unittest.TestCase):
 class TestAnswerQuery(unittest.TestCase):
     """Tests for AnswerQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        item_query = cls.catalog.get_item_query()
+        # cls.query = item_query.get_answer_query()
+        # Currently raises Unsupported()
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_get_answer_query_record(self):
         """Tests get_answer_query_record"""
@@ -24,6 +74,20 @@ class TestAnswerQuery(unittest.TestCase):
 
 class TestItemQuery(unittest.TestCase):
     """Tests for ItemQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.query = cls.catalog.get_item_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_learning_objective_id(self):
@@ -178,6 +242,20 @@ class TestItemQuery(unittest.TestCase):
 
 class TestAssessmentQuery(unittest.TestCase):
     """Tests for AssessmentQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.query = cls.catalog.get_assessment_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_level_id(self):
@@ -362,6 +440,20 @@ class TestAssessmentQuery(unittest.TestCase):
 
 class TestAssessmentOfferedQuery(unittest.TestCase):
     """Tests for AssessmentOfferedQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.query = cls.catalog.get_assessment_offered_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
@@ -636,6 +728,20 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
 
 class TestAssessmentTakenQuery(unittest.TestCase):
     """Tests for AssessmentTakenQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        cls.query = cls.catalog.get_assessment_taken_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_offered_id(self):

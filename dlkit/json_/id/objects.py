@@ -253,4 +253,4 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(IdList, number=n)

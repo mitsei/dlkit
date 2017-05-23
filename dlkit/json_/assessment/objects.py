@@ -15,6 +15,7 @@ import json
 
 
 from bson.objectid import ObjectId
+from decimal import Decimal
 from urllib import unquote
 
 
@@ -47,6 +48,7 @@ from .rules import Response
 from dlkit.abstract_osid.assessment import objects as abc_assessment_objects
 from dlkit.abstract_osid.id.primitives import Id as abc_id
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
 
 
@@ -235,7 +237,7 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(QuestionList, number=n)
 
 
 class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
@@ -370,7 +372,7 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AnswerList, number=n)
 
 
 class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Aggregateable):
@@ -427,7 +429,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.get_question().get_id()
+        return self.get_question().get_id()
 
     question_id = property(fget=get_question_id)
 
@@ -460,7 +462,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         id_list = []
         for answer in self.get_answers():
             id_list.append(answer.get_id())
-        return AnswerList(id_list)
+        return IdList(id_list)
 
     answer_ids = property(fget=get_answer_ids)
 
@@ -785,7 +787,7 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ItemList, number=n)
 
 
 class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
@@ -1181,7 +1183,7 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentList, number=n)
 
 
 class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.OsidObject, osid_markers.Subjugateable):
@@ -1846,6 +1848,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_start_time_metadata().is_read_only() or
                 self.get_start_time_metadata().is_required()):
             raise errors.NoAccess()
@@ -1894,6 +1897,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_deadline_metadata().is_read_only() or
                 self.get_deadline_metadata().is_required()):
             raise errors.NoAccess()
@@ -1947,7 +1951,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
+        if (self.get_duration_metadata().is_read_only() or
+                self.get_duration_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['duration'] = self._duration_default
 
     duration = property(fset=set_duration, fdel=clear_duration)
 
@@ -2115,7 +2123,7 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentOfferedList, number=n)
 
 
 class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidObject):
@@ -2234,7 +2242,14 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         if self._my_map['actualStartTime'] is None:
             raise errors.IllegalState('this assessment has not yet been started by the taker')
         else:
-            return self._my_map['actualStartTime']
+            start_time = self._my_map['actualStartTime']
+            return DateTime(year=start_time.year,
+                            month=start_time.month,
+                            day=start_time.day,
+                            hour=start_time.hour,
+                            minute=start_time.minute,
+                            second=start_time.second,
+                            microsecond=start_time.microsecond)
 
     actual_start_time = property(fget=get_actual_start_time)
 
@@ -2276,7 +2291,14 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
             raise errors.IllegalState('this assessment has not yet ended')
         if not self._my_map['completionTime']:
             raise errors.OperationFailed('someone forgot to set the completion time')
-        return self._my_map['completionTime']
+        completion_time = self._my_map['completionTime']
+        return DateTime(year=completion_time.year,
+                        month=completion_time.month,
+                        day=completion_time.day,
+                        hour=completion_time.hour,
+                        minute=completion_time.minute,
+                        second=completion_time.second,
+                        microsecond=completion_time.microsecond)
 
     completion_time = property(fget=get_completion_time)
 
@@ -2372,7 +2394,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.assessment.AssessmentTaken.get_score_template
-        return float(self._my_map['score'])
+        return Decimal(self._my_map['score'])
 
     score = property(fget=get_score)
 
@@ -2685,7 +2707,7 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         self._my_map['actualStartTime'] = None
         self._my_map['gradeId'] = ''
         self._my_map['completionTime'] = None
-        self._my_map['score'] = ''
+        self._my_map['score'] = 0.0
 
     def get_taker_metadata(self):
         """Gets the metadata for a resource to manually set which resource will be taking the assessment.
@@ -2804,7 +2826,7 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentTakenList, number=n)
 
 
 class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.OsidObject):
@@ -3105,7 +3127,7 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentSectionList, number=n)
 
 
 class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
@@ -3229,7 +3251,7 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BankList, number=n)
 
 
 class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
@@ -3360,7 +3382,7 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(BankNodeList, number=n)
 
 
 class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
@@ -3412,4 +3434,4 @@ class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(ResponseList, number=n)

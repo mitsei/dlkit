@@ -375,6 +375,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         self._my_map['allocatedTime'] = self._allocated_time_default
         self._my_map['itemsSequential'] = self._items_sequential_default
         self._my_map['itemsShuffled'] = self._items_shuffled_default
+        self._my_map['weight'] = self._weight_default
         if self._supports_simple_sequencing():
             self._my_map['childIds'] = []
 
@@ -445,7 +446,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
             raise errors.NoAccess()
         if not self._is_valid_duration(
                 time,
-                self.get_time_metadata()):
+                self.get_allocated_time_metadata()):
             raise errors.InvalidArgument()
         map = dict()
         map['days'] = time.days
@@ -461,7 +462,11 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
+        if (self.get_allocated_time_metadata().is_read_only() or
+                self.get_allocated_time_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['allocatedTime'] = self._allocated_time_default
 
     allocated_time = property(fset=set_allocated_time, fdel=clear_allocated_time)
 
@@ -615,7 +620,7 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AssessmentPartList, number=n)
 
 
 class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.OsidRule):
@@ -782,8 +787,6 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
     provide display hints or data constraints.
 
     """
-    _namespace = 'assessment_authoring.SequenceRule'
-
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, object_name='SEQUENCE_RULE', **kwargs)
         self._mdata = default_mdata.get_sequence_rule_mdata()
@@ -795,12 +798,16 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
         self._cumulative_default = self._mdata['cumulative']['default_boolean_values'][0]
+        self._minimum_score_default = self._mdata['minimum_score']['default_integer_values'][0]
+        self._maximum_score_default = self._mdata['maximum_score']['default_integer_values'][0]
 
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
         osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['nextAssessmentPartId'] = str(kwargs['next_assessment_part_id'])
         self._my_map['cumulative'] = self._cumulative_default
+        self._my_map['minimumScore'] = self._minimum_score_default
+        self._my_map['maximumScore'] = self._maximum_score_default
         self._my_map['assessmentPartId'] = str(kwargs['assessment_part_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
 
@@ -993,4 +1000,4 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(SequenceRuleList, number=n)

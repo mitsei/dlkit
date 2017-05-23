@@ -4,8 +4,36 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestObjectiveQuery(unittest.TestCase):
     """Tests for ObjectiveQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.query = cls.catalog.get_objective_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
@@ -311,6 +339,31 @@ class TestObjectiveQuery(unittest.TestCase):
 class TestActivityQuery(unittest.TestCase):
     """Tests for ActivityQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ActivityLookupSession tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+        create_form = cls.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for Activity Lookup'
+        create_form.description = 'Test Objective for ActivityLookupSession tests'
+        cls.objective = cls.catalog.create_objective(create_form)
+
+        objective_query = cls.catalog.get_objective_query()
+        # cls.query = objective_query.get_activity_query()
+        # Raises Unimplemented()
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_activities():
+                catalog.delete_activity(obj.ident)
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_objective_id(self):
         """Tests match_objective_id"""
@@ -459,6 +512,20 @@ class TestActivityQuery(unittest.TestCase):
 
 class TestProficiencyQuery(unittest.TestCase):
     """Tests for ProficiencyQuery"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        cls.query = cls.catalog.get_proficiency_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
     def test_match_resource_id(self):

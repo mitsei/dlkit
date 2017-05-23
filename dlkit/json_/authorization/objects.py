@@ -439,7 +439,7 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(AuthorizationList, number=n)
 
 
 class Vault(abc_authorization_objects.Vault, osid_objects.OsidCatalog):
@@ -563,7 +563,7 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(VaultList, number=n)
 
 
 class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
@@ -694,4 +694,4 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resources
-        return self._get_next_n(n)
+        return self._get_next_n(VaultNodeList, number=n)

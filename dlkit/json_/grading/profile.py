@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo grading'
 
 DESCRIPTION = 'MongoDB based grading implementation'
 
-VERSIONCOMPONENTS = [0, 1, 212]
+VERSIONCOMPONENTS = [0, 1, 246]
 
-RELEASEDATE = "2017-05-09"
+RELEASEDATE = "2017-05-23"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
