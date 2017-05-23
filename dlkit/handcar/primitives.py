@@ -104,7 +104,8 @@ class DisplayText(abc_displaytext, markers.OsidPrimitive):
             urlerrors = urllib2
         except ImportError:
             # Python 3
-            import urllib.request, urllib.error
+            import urllib.request
+            import urllib.error
             urlopen = urllib.request.urlopen
             urlerrors = urllib.error
 
