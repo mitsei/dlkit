@@ -79,7 +79,6 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             magic_identifier['parent_id'] = str(self._magic_parent_id)
         magic_identifier['waypoint_index'] = waypoint_index
 
-
         identifier = quote('{0}?{1}'.format(str(self.my_osid_object._my_map['_id']),
                                             json.dumps(magic_identifier)))
         return Id(namespace='assessment_authoring.AssessmentPart',
