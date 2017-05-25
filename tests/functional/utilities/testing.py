@@ -3,9 +3,9 @@ import os
 import json
 import envoy
 import shutil
-from pymongo import MongoClient
+import unittest
 
-from minimocktest import MockTestCase
+from pymongo import MongoClient
 
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.primordium import Id, DataInputStream, Type
@@ -30,7 +30,7 @@ TEST_OBJECTIVE_BANK_GENUS = Type('learning.ObjectiveBank%3Atest-catalog%40ODL.MI
 TEST_REPOSITORY_GENUS = Type('repository.Repository%3Atest-catalog%40ODL.MIT.EDU')
 
 
-class DLKitTestCase(MockTestCase):
+class DLKitTestCase(unittest.TestCase):
     """
     """
     dbs_to_delete = ['test_dlkit_assessment',
@@ -50,11 +50,11 @@ class DLKitTestCase(MockTestCase):
     def _delete_database(db_name):
         MongoClient().drop_database(db_name)
 
-    def _pre_setup(self):
-        MockTestCase.setUp(self)
+    # def _pre_setup(self):
+        # MockTestCase.setUp(self)
 
-    def _post_teardown(self):
-        MockTestCase.tearDown(self)
+    # def _post_teardown(self):
+        # MockTestCase.tearDown(self)
 
     def code(self, _req, _code):
         self.assertEqual(_req.status_code, _code)
@@ -286,8 +286,8 @@ class DLKitTestCase(MockTestCase):
 
         self.req = self.instructor_req
 
-        self.test_file1 = open(ABS_PATH + '/files/test_file_1.txt')
-        self.test_file2 = open(ABS_PATH + '/files/test_file_2.txt')
+        self.test_file1 = open(ABS_PATH + '/files/test_file_1.txt', 'rb')
+        self.test_file2 = open(ABS_PATH + '/files/test_file_2.txt', 'rb')
         if os.path.isdir(TEST_DATA_STORE_PATH):
             shutil.rmtree(TEST_DATA_STORE_PATH)
 

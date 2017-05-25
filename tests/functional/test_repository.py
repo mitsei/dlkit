@@ -1,8 +1,5 @@
 # let's make sure Filesystem adapter works -- files get sent there
 import os
-import boto
-
-from boto.s3.key import Key
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.locale.types import string as String

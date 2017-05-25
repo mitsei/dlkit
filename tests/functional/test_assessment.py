@@ -2,9 +2,6 @@
 from __future__ import unicode_literals
 
 import os
-import boto
-
-from boto.s3.key import Key
 
 from dlkit.runtime import errors
 from dlkit.runtime import configs
@@ -874,16 +871,8 @@ class MecQBankItemTests(MecQBankTests):
         self.solution_with_image.seek(0)
 
     def file_exists(self, file_):
-        if 'S3_TEST_PUBLIC_KEY' in os.environ and isinstance(file_, file):
-            expected_filekey = self._bank.ident.identifier + '/' + file_.name.split('/')[-1]
-            connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                         configs.S3_TEST_PRIVATE_KEY)
-            bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-            file_ = Key(bucket, expected_filekey)
-            return file_.exists()
-        else:
-            # check on the filesystem that the file is there
-            return os.path.isfile(file_)
+        # check on the filesystem that the file is there
+        return os.path.isfile(file_)
 
     def setUp(self):
         super(MecQBankItemTests, self).setUp()
@@ -1037,15 +1026,17 @@ class MecQBankItemTests(MecQBankTests):
                 'domain': 'assessment.Question'})
         }
 
-        self.solution_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.pdf')
-        self.solution_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.tex')
-        self.metadata_file = open(ABS_PATH + '/files/MecQBank/CONT0001.meta')
-        self.question_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001.pdf')
-        self.question_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001.tex')
-        self.figure_file = open(ABS_PATH + '/files/MecQBank/solution_with_image.pdf')
-        self.non_pdf_file = open(ABS_PATH + '/files/MecQBank/test_doc.docx')
-        self.solution_image_file = open(ABS_PATH + '/files/MecQBank/draggable.green.dot.png')
-        self.solution_with_image = open(ABS_PATH + '/files/MecQBank/solution_with_image.tex')
+        # for *.tex files that will be read in and stuck into a DisplayText object,
+        # don't read them in as binary -- that will break the DisplayText output.
+        self.solution_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.pdf', 'rb')
+        self.solution_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.tex', 'r')
+        self.metadata_file = open(ABS_PATH + '/files/MecQBank/CONT0001.meta', 'rb')
+        self.question_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001.pdf', 'rb')
+        self.question_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001.tex', 'r')
+        self.figure_file = open(ABS_PATH + '/files/MecQBank/solution_with_image.pdf', 'rb')
+        self.non_pdf_file = open(ABS_PATH + '/files/MecQBank/test_doc.docx', 'rb')
+        self.solution_image_file = open(ABS_PATH + '/files/MecQBank/draggable.green.dot.png', 'rb')
+        self.solution_with_image = open(ABS_PATH + '/files/MecQBank/solution_with_image.tex', 'r')
 
         self._item = self.add_item(self._bank)
 
@@ -1327,6 +1318,7 @@ class Ortho3DTests(DLKitTestCase):
             file1.read(),
             file2.read()
         )
+        file1.close()  # assumes file2 is always the class instance one...
 
     def reset_files(self):
         self.manip.seek(0)
@@ -1545,7 +1537,9 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
     def test_can_update_single_ovs_view(self):
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_top_view(), self.top)
+        top_view = question.get_top_view()
+        self.check_files(top_view, self.top)
+        top_view.close()
 
         update_form = self._bank.get_question_form_for_update(self._item.ident)
 
@@ -1555,7 +1549,9 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_top_view(), self.choice0big)
+        top_view = question.get_top_view()
+        self.check_files(top_view, self.choice0big)
+        top_view.close()
 
 
 class Ortho3DMultiChoiceTests(Ortho3DTests):
@@ -1621,7 +1617,9 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self._bank.update_question(update_form)
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_manip(), self.manip)
+        question_manip = question.get_manip()
+        self.check_files(question_manip, self.manip)
+        question_manip.close()
 
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
@@ -1643,7 +1641,9 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self._bank.update_question(update_form)
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_manip(), self.manip)
+        question_manip = question.get_manip()
+        self.check_files(question_manip, self.manip)
+        question_manip.close()
 
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
@@ -1917,7 +1917,8 @@ class QTITests(DLKitTestCase):
         super(QTITests, self).setUp()
 
         self._bank = self._get_test_bank()
-        self.test_file1 = open(ABS_PATH + '/files/qti_multi_choice.xml')
+        # don't use the 'b' flag when reading, because we need it as string, not bytes
+        self.test_file_1 = open(ABS_PATH + '/files/qti_multi_choice.xml', 'r')
         self.right_answer_choice_id = 'id8d815c87-4f7e-4ac6-b4ea-77124057eb33'
         self.item_types = [Type('item-record-type%3Aqti%40ODL.MIT.EDU'),
                            Type('osid-object%3Amulti-language%40ODL.MIT.EDU')]
@@ -1929,10 +1930,11 @@ class QTITests(DLKitTestCase):
     def tearDown(self):
         """
         """
+        self.test_file_1.close()
         super(QTITests, self).tearDown()
 
     def test_can_import_qti_multi_choice_xml(self):
-        qti_xml = self.test_file1.read()
+        qti_xml = self.test_file_1.read()
 
         form = self._bank.get_item_form_for_create(self.item_types)
         form.display_name = 'qti multiple choice test'
@@ -4137,6 +4139,7 @@ class ScaffoldDownTests(DLKitTestCase):
         self._assessment_bank.submit_response(section_2['section_id'],
                                               new_question.ident,
                                               form)
+
         sections = self.get_questions_for_taken(taken.ident)
         self.validate_number_sections_and_questions(sections, (2, (2, 5)))
 
@@ -5470,8 +5473,8 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
         form.display_name = 'testing for question text'
         item = self._bank.create_item(form)
 
-        form = self._bank.get_question_form_for_create(item.ident, [MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD,
-                                                                    MC_RANDOMIZED_RECORD])
+        form = self._bank.get_question_form_for_create(item.ident, [MC_RANDOMIZED_RECORD,
+                                                                    MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD])
         form.add_choice(self._english(), identifier='1')
         form.add_choice(self._hindi(), identifier='1')
         form.add_choice(self._telugu(), identifier='1')
@@ -5952,8 +5955,8 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
         form.display_name = 'testing for question text'
         item = self._bank.create_item(form)
 
-        form = self._bank.get_question_form_for_create(item.ident, [MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD,
-                                                                    MC_RANDOMIZED_RECORD])
+        form = self._bank.get_question_form_for_create(item.ident, [MC_RANDOMIZED_RECORD,
+                                                                    MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD])
         form.add_choice(self._english(), identifier='1')
         form.add_choice(self._hindi(), identifier='1')
         form.add_choice(self._telugu(), identifier='1')

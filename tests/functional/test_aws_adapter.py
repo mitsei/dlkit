@@ -1,6 +1,9 @@
-import boto
+# import boto
+#
+# from boto.s3.key import Key
+import boto3
 
-from boto.s3.key import Key
+from botocore.exceptions import ClientError
 
 import dlkit.runtime.configs
 from dlkit.runtime.primordium import DataInputStream, Type, Id, DateTime
@@ -74,11 +77,21 @@ class AWSAdapterTests(DLKitTestCase):
             )
 
     def s3_file_exists(self, key):
-        connection = boto.connect_s3(S3_TEST_PUBLIC_KEY,
-                                     S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(S3_TEST_BUCKET)
-        file_ = Key(bucket, key)
-        return file_.exists()
+        client = boto3.client(
+            's3',
+            aws_access_key_id=S3_TEST_PUBLIC_KEY,
+            aws_secret_access_key=S3_TEST_PRIVATE_KEY
+        )
+        try:
+            client.get_object(
+                Bucket=S3_TEST_BUCKET,
+                Key=key
+            )
+        except ClientError as ex:
+            if ex.response['Error']['Code'] == 'NoSuchKey':
+                return False
+            raise ex
+        return True
 
     def setUp(self):
         super(AWSAdapterTests, self).setUp()

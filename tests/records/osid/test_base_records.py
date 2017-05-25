@@ -1,4 +1,6 @@
 """Unit tests of osid base_records."""
+from __future__ import unicode_literals
+
 import os
 
 import datetime
@@ -21,6 +23,7 @@ from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
 from dlkit.json_.osid.queries import OsidObjectQuery
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.id.objects import IdList
+from dlkit.json_.utilities import is_string
 from dlkit.runtime import configs
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.primitives import InitializableLocale
@@ -107,15 +110,6 @@ def get_proxy(with_locale=None):
 
         condition.set_locale(locale)
     return PROXY_SESSION.get_proxy(condition)
-
-
-def is_string(string_):
-    try:
-        # python 2
-        return isinstance(string_, basestring)
-    except NameError:
-        # python 3
-        return isinstance(string_, str)
 
 
 class TestProvenanceFormRecord(unittest.TestCase):
@@ -1586,7 +1580,7 @@ class TestFilesFormRecord(unittest.TestCase):
         cls.osid_object_form._authority = 'TESTING.MIT.EDU'
         cls.osid_object_form._namespace = 'records.Testing'
         cls.osid_object_form._my_map['assignedRepositoryIds'] = [str(cls.repo.ident)]
-        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
 
     @classmethod
     def tearDownClass(cls):
@@ -1884,7 +1878,7 @@ class TestFilesRecord(unittest.TestCase):
         form.display_name = 'Test asset'
         cls.asset = cls.repo.create_asset(form)
 
-        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
         form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
         form.display_name = 'Test asset content'
         form.set_data(DataInputStream(cls.test_image))
@@ -2119,7 +2113,7 @@ class TestFileFormRecord(unittest.TestCase):
         cls.osid_object_form._authority = 'TESTING.MIT.EDU'
         cls.osid_object_form._namespace = 'records.Testing'
         cls.osid_object_form._my_map['assignedRepositoryIds'] = [str(cls.repo.ident)]
-        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
 
     @classmethod
     def tearDownClass(cls):
@@ -2293,7 +2287,7 @@ class TestFileRecord(unittest.TestCase):
         form.display_name = 'Test asset'
         cls.asset = cls.repo.create_asset(form)
 
-        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'r')
+        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
         form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
         form.display_name = 'Test asset content'
         form.set_data(DataInputStream(cls.test_image))

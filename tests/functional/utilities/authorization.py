@@ -364,7 +364,7 @@ def get_session_data(request, item_type):
     # get a manager
     try:
         if item_type in request.session:
-            return pickle.loads(str(request.session[item_type]))
+            return pickle.loads(request.session[item_type])
         else:
             return None
     except Exception as ex:

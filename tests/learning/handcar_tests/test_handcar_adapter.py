@@ -61,16 +61,8 @@ class TestLearningManager(unittest.TestCase):
             Type))
 
     def test_display_name_turtles(self):
-        try:
-            # Python 2
-            self.assertTrue(isinstance(
-                self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
-                basestring))  # when handcar reports type domains again, include that too
-        except NameError:
-            # Python 3
-            self.assertTrue(isinstance(
-                self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text(),
-                str))  # when handcar reports type domains again, include that too
+        self.assertTrue(utilities.is_string(
+            self.lm.get_display_name().get_language_type().get_display_name().get_script_type().get_display_label().get_text()))  # when handcar reports type domains again, include that too
 
     def test_supports_objective_bank_lookup(self):
         self.assertTrue(self.lm.supports_objective_bank_lookup())
