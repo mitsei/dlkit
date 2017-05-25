@@ -3,6 +3,9 @@
 # This module contains all the Object classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID  Service.
 
+import codecs
+import json
+
 try:
     import urllib2
     urlopen = urllib2.urlopen
@@ -18,7 +21,6 @@ try:
 except ImportError:
     import httplib
 
-import json
 from ...abstract_osid.osid import objects as abc_osid_objects
 from ...abstract_osid.id.primitives import Id as AbstractId
 from ...abstract_osid.type.primitives import Type as AbstractType
@@ -247,15 +249,17 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
         connection.request('GET', url_path)
         response = connection.getresponse()
         self._error_check(response)
-        return json.loads(response.read())
+        reader = codecs.getreader('utf8')
+        return json.load(reader(response))
 
     def _load_json(self, url_string):
         try:
-            url = urlopen(url_string).read()
+            response = urlopen(url_string)
         except urlerrors.HTTPError:
             raise NotFound()
         try:
-            return json.loads(url)
+            reader = codecs.getreader('utf8')
+            return json.load(reader(response))
         except Exception:
             raise OperationFailed()
 
@@ -268,7 +272,8 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
         connection.request('PUT', url_path, data, {'Content-Type': 'application/json'})
         response = connection.getresponse()
         self._error_check(response)
-        return json.loads(response.read())
+        reader = codecs.getreader('utf8')
+        return json.load(reader(response))
 
     def get_display_name(self):
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.

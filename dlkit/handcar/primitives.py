@@ -3,6 +3,7 @@
 #
 # This module contains primitives and primitive objects required by the
 # MIT Core Concept Catalog (MC3) Handcar learning service implementation
+import codecs
 
 from . import profile
 from . import settings
@@ -115,12 +116,13 @@ class DisplayText(abc_displaytext, markers.OsidPrimitive):
             # url = urllib2.urlopen(settings.HANDCAR +
             #                       '/services/learning/types/' +
             #                       type_identifier).read()
-            url = urlopen(settings.HANDCAR +
-                          '/services/learning/types').read()
+            response = urlopen(settings.HANDCAR +
+                               '/services/learning/types')
         except urlerrors.HTTPError:
             raise NotFound('type_identifier not found or bad handcar base URL in settings.py')
         try:
-            matching_types = [t for t in json.loads(url) if t['id'] == type_identifier]
+            reader = codecs.getreader('utf8')
+            matching_types = [t for t in json.load(reader(response)) if t['id'] == type_identifier]
             if len(matching_types) == 0:
                 raise NotFound('type_identifier not found')
             return matching_types[0]
