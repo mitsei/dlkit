@@ -25,15 +25,15 @@ class OsidPrimitive(abc_osid_markers.OsidPrimitive):
     """
 
     def _test_escape(self):
-        print self._unescape(self._escape("here:there@okapia.net")) == "here:there@okapia.net"
-        print self._unescape(self._escape("here:there/somewhere@okapia.net")) == "here:there/somewhere@okapia.net"
-        print self._unescape(self._escape("here:there%3asomewhere@okapia.net")) == "here:there%3asomewhere@okapia.net"
-        print self._unescape(self._escape("almost%3ahere:there%3asomewhere@okapia.net")) == "almost%3ahere:there%3asomewhere@okapia.net"
-        print self._unescape(self._escape("almost%3ahere:there%3asomewhere@okapia.net")) == "almost%3ahere:there%3asomewhere@okapia.net"
-        print self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@okapia.net")) == "almost%3ahere:there%3asomewhere%40else@okapia.net"
-        print self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@site%40okapia.net")) == "almost%3ahere:there%3asomewhere%40else@site%40okapia.net"
-        print self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@our%3asite%40okapia.net")) == "almost%3ahere:there%3asomewhere%40else@our%3asite%40okapia.net"
-        print self._unescape(self._escape("al!#$<>;^&*()_+|}{?//-=most%3ahere:there%3asome!#$<>;^&*()_+|}{?//-=where%40else@our%3asite%40ok!#$<>;^&*()_+|}{?//-=apia")) == "al!#$<>;^&*()_+|}{?//-=most%3ahere:there%3asome!#$<>;^&*()_+|}{?//-=where%40else@our%3asite%40ok!#$<>;^&*()_+|}{?//-=apia"
+        print(self._unescape(self._escape("here:there@okapia.net")) == "here:there@okapia.net")
+        print(self._unescape(self._escape("here:there/somewhere@okapia.net")) == "here:there/somewhere@okapia.net")
+        print(self._unescape(self._escape("here:there%3asomewhere@okapia.net")) == "here:there%3asomewhere@okapia.net")
+        print(self._unescape(self._escape("almost%3ahere:there%3asomewhere@okapia.net")) == "almost%3ahere:there%3asomewhere@okapia.net")
+        print(self._unescape(self._escape("almost%3ahere:there%3asomewhere@okapia.net")) == "almost%3ahere:there%3asomewhere@okapia.net")
+        print(self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@okapia.net")) == "almost%3ahere:there%3asomewhere%40else@okapia.net")
+        print(self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@site%40okapia.net")) == "almost%3ahere:there%3asomewhere%40else@site%40okapia.net")
+        print(self._unescape(self._escape("almost%3ahere:there%3asomewhere%40else@our%3asite%40okapia.net")) == "almost%3ahere:there%3asomewhere%40else@our%3asite%40okapia.net")
+        print(self._unescape(self._escape("al!#$<>;^&*()_+|}{?//-=most%3ahere:there%3asome!#$<>;^&*()_+|}{?//-=where%40else@our%3asite%40ok!#$<>;^&*()_+|}{?//-=apia")) == "al!#$<>;^&*()_+|}{?//-=most%3ahere:there%3asome!#$<>;^&*()_+|}{?//-=where%40else@our%3asite%40ok!#$<>;^&*()_+|}{?//-=apia")
 
 
 class Id(abc_id, OsidPrimitive):

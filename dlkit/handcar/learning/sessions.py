@@ -6,7 +6,6 @@
 # and ObjectiveBanks.
 
 import json
-import pdb
 import re
 from ...abstract_osid.learning import sessions as abc_learning_sessions
 from ...abstract_osid.learning import objects as abc_learning_objects
@@ -2808,7 +2807,7 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
         """
         url_path = construct_url('activities',
                                  bank_id=self._catalog_idstr)
-        query_terms = [v for k, v in activity_query._query_terms.iteritems()]
+        query_terms = [v for k, v in activity_query._query_terms.items()]
         url_path += '?' + '&'.join(query_terms)
         objects.ActivityList(self._get_request(url_path))
 

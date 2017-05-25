@@ -10,6 +10,9 @@
 #     Inheritance defined in specification
 
 
+from collections import OrderedDict
+
+
 from .. import utilities
 from ..osid import rules as osid_rules
 from ..primitives import Id
@@ -54,7 +57,7 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
         self._is_correct = None
         if 'isCorrect' in osid_object_map:
             self._is_correct = osid_object_map['isCorrect']
-        self._records = dict()
+        self._records = OrderedDict()
 
         # Consider that responses may want to have their own records separate
         # from the enclosed Answer records:

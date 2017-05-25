@@ -1,6 +1,8 @@
 """
 records.qti.basic
 """
+from __future__ import unicode_literals
+
 import json
 import os
 import re
@@ -308,9 +310,9 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
 
     @staticmethod
     def _wrap_xml(text, tag):
-        bracketed_tag = u'<{0}'.format(tag)
+        bracketed_tag = '<{0}'.format(tag)
         if bracketed_tag not in text:
-            return u'<{0}>{1}</{0}>'.format(tag, text)
+            return '<{0}>{1}</{0}>'.format(tag, text)
         return text
 
     @property
@@ -705,7 +707,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         # need to parse out the "type of word" here
         # [the bus]<noun> should become => <p class="noun">the bus</p>
         word_type_regex = re.compile('{(.*)}')
-        choice_regex = re.compile('\[(.*)\]')
+        choice_regex = re.compile(r'\[(.*)\]')
         choice_text = choice_regex.findall(_stringify(soup_tag, contents=True))
         if len(choice_text) > 0:
             choice_text = choice_text[0]
@@ -716,8 +718,8 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             word_type = word_type[0]
         else:
             word_type = ""
-        wrapped_choice = BeautifulSoup(u'<p class="{0}">{1}</p>'.format(word_type,
-                                                                        choice_text), 'xml').p
+        wrapped_choice = BeautifulSoup('<p class="{0}">{1}</p>'.format(word_type,
+                                                                       choice_text), 'xml').p
         return wrapped_choice
 
     def _recursively_wrap_words_in_item_body(self, soup_tag):
@@ -734,8 +736,8 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 indices_to_delete = []
                 for index_c, content_ in enumerate(content_list):
                     if not content_.startswith('['):
-                        clean_content.append(u'{0} {1}'.format(clean_content[index_c - 1],
-                                                               content_))
+                        clean_content.append('{0} {1}'.format(clean_content[index_c - 1],
+                                                              content_))
                         indices_to_delete.append(index_c - 1)
                     else:
                         clean_content.append(content_)
@@ -759,9 +761,9 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                         for symbol in ending_symbols:
                             content = content.replace(symbol, '')
                     # separated_content = content.strip().split(' ').split('\xa0')
-                    split_contents = re.split('(\[.*?})', content.strip())
+                    split_contents = re.split(r'(\[.*?})', content.strip())
                     separated_content = [item for item in split_contents
-                                         if item not in ['', ' ', u'\xa0']]
+                                         if item not in ['', ' ', '\xa0']]
                     # let's clean this up, because some of the words will break
                     # like [the bus]{noun}
                     cleaned_content = clean_list_content(separated_content)
@@ -1020,7 +1022,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                         # don't know what to do with things like "solution" or "RESPONSE_1"
                         pass
 
-            for var_name, var_data in variables.iteritems():
+            for var_name, var_data in variables.items():
                 if 'format'in var_data:
                     var_format = var_data['format']
                 else:
@@ -1058,7 +1060,7 @@ class QTIAnswerRecord(ObjectInitRecord):
                 feedback['identifier'] = str(self.my_osid_object.ident)
                 feedback['outcomeIdentifier'] = "FEEDBACKMODAL"
                 feedback['showHide'] = "show"
-                feedback_wrapped = u'<div>{0}</div>'.format(self.my_osid_object.feedback.text)
+                feedback_wrapped = '<div>{0}</div>'.format(self.my_osid_object.feedback.text)
                 feedback_soup = BeautifulSoup(feedback_wrapped, 'xml').div
                 feedback.append(feedback_soup)
             else:
@@ -1413,7 +1415,7 @@ class QTIItemRecord(QTITypeRecordMixin, MultiChoiceItemRecord, OrderedChoiceItem
 
             # TODO: this is a big assumption...that only one correct answer exists?
             try:
-                correct_answer = self.my_osid_object.get_answers().next()
+                correct_answer = next(self.my_osid_object.get_answers())
             except StopIteration:
                 # no correct answers
                 pass
@@ -1490,7 +1492,7 @@ class QTIItemRecord(QTITypeRecordMixin, MultiChoiceItemRecord, OrderedChoiceItem
 
             # TODO: this is a big assumption...that only one correct answer exists?
             try:
-                correct_answer = self.my_osid_object.get_answers().next()
+                correct_answer = next(self.my_osid_object.get_answers())
             except StopIteration:
                 # no correct answers
                 pass
@@ -1512,7 +1514,7 @@ class QTIItemRecord(QTITypeRecordMixin, MultiChoiceItemRecord, OrderedChoiceItem
             append_response = False
             if str(self.my_osid_object.genus_type) != str(ORDER_INTERACTION_MW_SANDBOX_GENUS):
                 try:
-                    correct_answer = self.my_osid_object.get_answers().next()
+                    correct_answer = next(self.my_osid_object.get_answers())
                 except StopIteration:
                     pass
                 else:
@@ -1536,7 +1538,7 @@ class QTIItemRecord(QTITypeRecordMixin, MultiChoiceItemRecord, OrderedChoiceItem
         elif str(self.my_osid_object.genus_type) == str(INLINE_CHOICE_MW_FITB_INTERACTION_GENUS):
             for answer in self.my_osid_object.get_answers():
                 if str(answer.genus_type) == str(RIGHT_ANSWER_GENUS):
-                    for response_id, data in answer.get_inline_choice_ids().iteritems():
+                    for response_id, data in answer.get_inline_choice_ids().items():
                         response = qti.new_tag('responseDeclaration')
                         response['identifier'] = response_id
                         response['cardinality'] = 'single'
@@ -1658,7 +1660,7 @@ class QTIAssessmentRecord(ObjectInitRecord):
         if str(self.my_osid_object.genus_type) == str(CHOICE_INTERACTION_GENUS):
 
             # TODO: this is a big assumption...that only one correct answer exists?
-            correct_answer = self.my_osid_object.get_answers().next()
+            correct_answer = next(self.my_osid_object.get_answers())
             response = qti.new_tag('responseDeclaration')
             response['identifier'] = 'RESPONSE_1'
             response['cardinality'] = 'single'

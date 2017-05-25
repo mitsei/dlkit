@@ -6,9 +6,16 @@ import json
 from bson import ObjectId
 from collections import OrderedDict
 from random import shuffle
-from urllib import quote, unquote
 
-from dlkit.abstract_osid.assessment_authoring import record_templates as abc_assessment_authoring_records
+try:
+    # python 2
+    from urllib import quote, unquote
+except ImportError:
+    # python 3
+    from urllib.parse import quote, unquote
+
+from collections import OrderedDict
+
 from dlkit.json_.assessment.assessment_utilities import get_assessment_part_lookup_session
 from dlkit.json_.assessment_authoring.objects import AssessmentPartList
 from dlkit.json_.assessment_authoring.sessions import AssessmentPartLookupSession
@@ -16,9 +23,6 @@ from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.utilities import JSONClientValidated
-
-from dlkit.primordium.id.primitives import Id
-from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument, NoAccess, NotFound, OperationFailed
 
 from dlkit.abstract_osid.assessment_authoring import record_templates as abc_assessment_authoring_records
 from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument, NoAccess, NotFound, OperationFailed
@@ -61,13 +65,20 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         waypoint_index = 0
         if 'waypointIndex' in self.my_osid_object._my_map:
             waypoint_index = self.my_osid_object._my_map['waypointIndex']
-        magic_identifier = {
+        # NOTE that the order of the dict **must** match the order in generate_children()
+        #   when creating the child_part_id
+        #   1) level
+        #   2) objective_ids
+        #   3) parent_id
+        #   4) waypoint_index
+        magic_identifier = OrderedDict({
             'level': self._level,
             'objective_ids': self.my_osid_object._my_map['learningObjectiveIds'],
-            'waypoint_index': waypoint_index
-        }
+        })
         if self._magic_parent_id is not None:
             magic_identifier['parent_id'] = str(self._magic_parent_id)
+        magic_identifier['waypoint_index'] = waypoint_index
+
 
         identifier = quote('{0}?{1}'.format(str(self.my_osid_object._my_map['_id']),
                                             json.dumps(magic_identifier)))
@@ -88,7 +99,8 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             waypoint_index = the index of this item in its parent part
 
         """
-        arg_map = json.loads(unquote(magic_identifier).split('?')[-1], object_pairs_hook=OrderedDict)
+        arg_map = json.loads(unquote(magic_identifier).split('?')[-1],
+                             object_pairs_hook=OrderedDict)
         self._magic_identifier = magic_identifier
         self._assessment_section = assessment_section
         if 'level' in arg_map:
@@ -129,8 +141,13 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             part.get_parts(parts, new_reference_level)
             # Don't need to append here, because parts is passed by reference
             # so appending is redundant
-            # child_parts = part.get_parts(parts, reference_level)
-            # parts += child_parts
+            # child_parts = part.get_parts(parts, new_reference_level)
+            # known_part_ids = [str(part.ident) for part in parts]
+            #
+            # for child_part in child_parts:
+            #     if str(child_part.ident) not in known_part_ids:
+            #         parts.append(child_part)
+            #         known_part_ids.append(str(child_part.ident))
         return parts
 
     def load_item_for_objective(self):
@@ -241,13 +258,19 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             return
 
         # Prepare common Id elements for children:
-        objective_id = scaffold_objective_ids.next()  # Assume just one for now
+        objective_id = next(scaffold_objective_ids)  # Assume just one for now
         my_id = self.my_osid_object.get_id()
         namespace = 'assessment_authoring.AssessmentPart'
         level = self._level + 1
-        arg_map = {'parent_id': str(my_id),
-                   'level': level,
-                   'objective_ids': [str(objective_id)]}
+        # NOTE that the order of the dict **must** match the order in get_id()
+        #    for the part record
+        #   1) level
+        #   2) objective_ids
+        #   3) parent_id
+        #   4) waypoint_index
+        arg_map = OrderedDict({'level': level,
+                               'objective_ids': [str(objective_id)]})
+        arg_map['parent_id'] = str(my_id)
         orig_identifier = unquote(my_id.get_identifier()).split('?')[0]
 
         # Generate all parts already known to the section:
@@ -297,6 +320,9 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
                 except IllegalState:
                     num_not_answered += 1
 
+                # NOTE: finished_generating_children() can also throw
+                #   OperationFailed if it has a child_part with
+                #   a new question
                 if part.finished_generating_children():
                     should_add_new_sibling = True
 
@@ -355,7 +381,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
     def has_waypoint_quota(self):
-        """is a quoata on the number of required correct waypoint answers available"""
+        """is a quota on the number of required correct waypoint answers available"""
         return bool(self.my_osid_object._my_map['waypointQuota'])
 
     def get_waypoint_quota(self):

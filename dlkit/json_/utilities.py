@@ -1,4 +1,5 @@
 """JSON utilities.py"""
+import binascii
 import time
 import sys
 import os
@@ -643,7 +644,7 @@ class JSONClientValidated(object):
             return inserted_obj
 
         # Mongo impl as default
-        result = self._mc.save(doc)
+        result = self._mc.replace_one({'_id': doc['_id']}, doc, upsert=True)
         self._validate_write(result)
         return result
 
@@ -672,7 +673,8 @@ def arguments_not_none(func):
         try:
             return func(*args, **kwargs)
         except TypeError as ex:
-            if 'takes exactly' in ex.args[0]:
+            if any(statement in ex.args[0] for statement in ['takes exactly',
+                                                             'required positional argument']):
                 raise NullArgument('Wrong number of arguments provided: ' + str(ex.args[0]))
             else:
                 raise
@@ -894,3 +896,26 @@ def make_catalog_map(cat_name, identifier=PHANTOM_ROOT_IDENTIFIER, default_text=
 def camel_to_under(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+
+def convert_catalog_id_to_object_id_string(catalog_id):
+    """When doing hierarchies, need to convert a catalogId into an
+    ObjectId, so convert to a string, then into a hex format.
+
+    i.e. Bank Assessment hierarchy should become
+         BANKASSESSME
+         '42414e4b4153534553534d45'
+     """
+
+    if not isinstance(catalog_id, Id):
+        raise TypeError('input needs to be an Id')
+    seed_str = catalog_id.get_identifier() + catalog_id.get_authority() + '000000000000'
+    seed_str = str.encode(seed_str[:12])
+    seed_str = binascii.hexlify(seed_str)
+    try:
+        # python 3
+        seed_str = str(seed_str, 'utf8')
+    except TypeError:
+        # python 2
+        seed_str = str(seed_str)
+    return seed_str

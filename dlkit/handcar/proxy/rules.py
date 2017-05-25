@@ -9,7 +9,12 @@
 # http://stackoverflow.com/questions/18669457/python-httplib-ssl23-get-server-hellounknown-protocol
 
 import ssl
-import httplib
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
+
 import json
 
 from functools import partial

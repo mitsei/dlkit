@@ -7,7 +7,12 @@
 # and ObjectiveBanks.
 
 import pdb
-import httplib
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
+
 import logging
 import json
 import ssl

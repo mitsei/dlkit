@@ -6,7 +6,6 @@
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-import httplib
 import json
 from dlkit.abstract_osid.osid import sessions as abc_osid_sessions
 from ..osid.osid_errors import *

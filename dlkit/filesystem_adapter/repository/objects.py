@@ -1035,17 +1035,19 @@ class AssetList(osid_objects.OsidList, abc_repository_objects.AssetList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         try:
-            next_object = self._payload_list.next()
+            next_object = next(self._payload_list)
         except StopIteration:
             raise
         except Exception as ex:  # Need to specify exceptions here!
             raise OperationFailed()
         next_object = Asset(next_object, self._config_map)
         return next_object
+
+    __next__ = next
 
     next_asset = property(fget=get_next_asset)
 
@@ -1171,6 +1173,7 @@ class AssetContent(abc_repository_objects.AssetContent,
         try:
             file_handle.read()
         except UnicodeDecodeError:
+            file_handle.close()
             # non-Unicode file, like an image
             file_handle = open(url, 'rb')
         file_handle.seek(0)
@@ -1379,7 +1382,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm,
 
         data.seek(0)
 
-        with open(file_location, 'w') as file_handle:
+        with open(file_location, 'wb') as file_handle:
             file_handle.write(data.read())
 
         # this URL should be a filesystem path...relative
@@ -1396,7 +1399,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm,
             file_location = '{0}/{1}.{2}'.format(secondary_data_store_path,
                                                  str(filename),
                                                  extension)
-            with open(file_location, 'w') as file_handle:
+            with open(file_location, 'wb') as file_handle:
                 file_handle.write(data.read())
 
     def clear_data(self):
@@ -1505,16 +1508,18 @@ class AssetContentList(abc_repository_objects.AssetContentList,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return self.next()
+        return next(self)
 
     def next(self):
-        asset_content = self._payload_list.next()
+        asset_content = next(self._payload_list)
         try:
             if asset_content.has_url() and 'repository/AssetContent' in asset_content.get_url():
                 return AssetContent(asset_content, self._config_map)
         except TypeError:
             pass
         return asset_content
+
+    __next__ = next
 
     next_asset_content = property(fget=get_next_asset_content)
 
@@ -1629,11 +1634,12 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Repository)
 
+    __next__ = next
     next_repository = property(fget=get_next_repository)
 
     def get_next_repositories(self, n=None):

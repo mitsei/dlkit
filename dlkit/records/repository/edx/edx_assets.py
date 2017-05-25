@@ -5,7 +5,13 @@ import re
 import time
 import tarfile
 import requests
-import cStringIO
+
+try:
+    # python 2
+    from cStringIO import StringIO
+except ImportError:
+    # python 3
+    from io import StringIO
 
 from bs4 import BeautifulSoup
 
@@ -74,7 +80,7 @@ class edXAssetContentRecord(AssetContentTextRecord,
                 'script': 'src'
             }
             # replace all file listings with an appropriate path...
-            for key, attr in attrs.iteritems():
+            for key, attr in attrs.items():
                 local_regex = re.compile('^repository.Asset')
                 search = {attr: local_regex}
                 tags = edxml_soup.find_all(**search)
@@ -82,7 +88,7 @@ class edXAssetContentRecord(AssetContentTextRecord,
                     asset_id = item[attr]
                     asset_content = self._get_asset_content(Id(asset_id))
                     asset_url = asset_content.get_url()
-                    asset_file = cStringIO.StringIO(requests.get(asset_url).content)
+                    asset_file = StringIO(requests.get(asset_url).content)
                     asset_file_name = asset_url.split('?')[0].split('/')[-1]
                     static_file_path = '{0}static/{1}'.format(root_path,
                                                               asset_file_name)
@@ -134,7 +140,7 @@ class edXAssetContentRecord(AssetContentTextRecord,
             'script': 'src'
         }
         # replace all file listings with an appropriate path...
-        for key, attr in attrs.iteritems():
+        for key, attr in attrs.items():
             local_regex = re.compile('^repository.Asset')
             search = {attr: local_regex}
             tags = soup.find_all(**search)
@@ -219,7 +225,7 @@ class edXAssetRecord(TextsRecord, ProvenanceAssetRecord, EdXUtilitiesMixin):
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
-        olx = cStringIO.StringIO()
+        olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
 

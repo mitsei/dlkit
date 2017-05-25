@@ -9,7 +9,12 @@ from ..qti.numeric_response_records import MagicNumericResponseItemLookupSession
 from ..qti.inline_choice_records import RandomizedInlineChoiceItemLookupSession
 from ...adaptive.multi_choice_questions.randomized_questions import RandomizedMCItemLookupSession
 
-from urllib import unquote
+try:
+    # python 2
+    from urllib import unquote
+except ImportError:
+    # python 3
+    from urllib.parse import unquote
 
 
 class CLIxMagicItemLookupSession(MagicNumericResponseItemLookupSession,

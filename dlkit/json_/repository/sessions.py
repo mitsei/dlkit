@@ -947,7 +947,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
                     if '.' in term:
                         # is nested
                         split_terms = term.split('.')  # assume 2 max
-                        for key, value in asset_content[split_terms[0]].iteritems():
+                        for key, value in asset_content[split_terms[0]].items():
                             if key == split_terms[1]:
                                 search_value = asset_content_query._query_terms[term]
                                 if isinstance(search_value, dict):
@@ -967,7 +967,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
                     if '.' in term:
                         # is nested
                         split_terms = term.split('.')
-                        for key, value in asset_content[split_terms[0]].iteritems():
+                        for key, value in asset_content[split_terms[0]].items():
                             if key == split_terms[1] and asset_content_query._keyword_terms[term] in value:
                                 is_match = True
                                 break

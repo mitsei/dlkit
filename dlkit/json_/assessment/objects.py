@@ -16,7 +16,11 @@ import json
 
 from bson.objectid import ObjectId
 from decimal import Decimal
-from urllib import unquote
+
+try:
+    from urllib import unquote
+except ImportError:
+    from urllib.parse import unquote
 
 
 from . import default_mdata

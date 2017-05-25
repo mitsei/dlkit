@@ -9,7 +9,12 @@ from dlkit.primordium.id.primitives import Id
 
 from random import shuffle
 
-from urllib import unquote, quote
+try:
+    # python 2
+    from urllib import quote, unquote
+except ImportError:
+    # python 3
+    from urllib.parse import quote, unquote
 
 from ...assessment.basic.multi_choice_records import MultiChoiceTextAndFilesQuestionFormRecord,\
     MultiChoiceTextAndFilesQuestionRecord

@@ -767,6 +767,8 @@ class OsidList(abc_osid_objects.OsidList):
         """This will be overridden by inheriting object"""
         pass
 
+    __next__ = next
+
     def has_next(self):
         """Tests if there are more elements in this list.
 

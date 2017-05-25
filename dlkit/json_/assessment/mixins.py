@@ -1,6 +1,8 @@
 """Mixins for use by assessment package implementations"""
 from bson import ObjectId
 
+from collections import OrderedDict
+
 import dlkit.abstract_osid.osid.errors as errors
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -256,7 +258,7 @@ class AssessmentSessionSection(object):
             except AttributeError:
                 pass
             else:
-                # First make sure all these magic parts ore cached
+                # First make sure all these magic parts are cached
                 for part in list(magic_parts):
                     part_id = part.get_id()
                     if part_id not in self._assessment_parts:
@@ -347,7 +349,10 @@ class AssessmentSessionSection(object):
                                  if p['level'] == 1]
             my_display_elements.append(all_level_1_parts.index(level_1_part) + 1)
 
-            for level, waypoints in parts_in_same_route.iteritems():
+            # With Python 3, need to sort parts_in_same_route so that
+            # the lowest level is first
+            parts_in_same_route = OrderedDict(sorted(parts_in_same_route.items(), key=lambda k: k[0]))
+            for level, waypoints in parts_in_same_route.items():
                 # for each part in the route at a given level, sum up the number of questions
                 # that have appeared in that part
                 # start the last level at 1, because the "current" question being injected

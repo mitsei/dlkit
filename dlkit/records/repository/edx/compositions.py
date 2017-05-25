@@ -2,8 +2,14 @@ import re
 import json
 import time
 import tarfile
-import cStringIO
 import functools
+
+try:
+    # python 2
+    from cStringIO import StringIO
+except ImportError:
+    # python 3
+    from io import StringIO
 
 from bs4 import BeautifulSoup
 
@@ -350,7 +356,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
             if parents.available() == 0:
                 found_course = True
             else:
-                parent = parents.next()
+                parent = next(parents)
                 if parent.genus_type.identifier == 'course':
                     found_course = True
                     course_node = parent
@@ -561,7 +567,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
-        olx = cStringIO.StringIO()
+        olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
 
@@ -629,7 +635,7 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         cqs.use_unsequestered_composition_view()
         querier = cqs.get_composition_query()
         querier.match_contained_composition_id(run_comp.ident, True)
-        course_comp = cqs.get_compositions_by_query(querier).next()
+        course_comp = next(cqs.get_compositions_by_query(querier))
 
         filename = '{0}_{1}_{2}'.format(course_comp.display_name.text,
                                         run_comp.display_name.text,
@@ -637,7 +643,7 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         filename = clean_str(filename) + '.tar.gz'
         root_path = '{0}/'.format(run_comp.display_name.text)
 
-        olx = cStringIO.StringIO()
+        olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
 
         # write the course.xml files first

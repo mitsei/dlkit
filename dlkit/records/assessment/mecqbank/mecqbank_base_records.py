@@ -5,6 +5,7 @@ records.assessment.mecqbank.mecqbank_base_records.py
 from dlkit.json_ import types
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid.metadata import Metadata
+from dlkit.json_.utilities import is_string
 
 from dlkit.abstract_osid.osid.errors import NotFound,\
     IllegalState,\
@@ -228,7 +229,7 @@ class SimpleDifficultyItemFormRecord(TextsFormRecord):
 
     def set_difficulty(self, difficulty):
         """stub"""
-        if not isinstance(difficulty, basestring):
+        if not is_string(difficulty):
             raise InvalidArgument('difficulty value must be a string')
         if difficulty.lower() not in ['low', 'medium', 'hard']:
             raise InvalidArgument('difficulty value must be low, medium, or hard')
@@ -329,7 +330,7 @@ class SourceItemFormRecord(TextsFormRecord):
 
     def set_source(self, source):
         """stub"""
-        if not isinstance(source, basestring):
+        if not is_string(source):
             raise InvalidArgument('source value must be a string')
         self.my_osid_object_form._my_map['texts']['source']['text'] = source
 
