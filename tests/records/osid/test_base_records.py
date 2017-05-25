@@ -1557,8 +1557,7 @@ class TestTimeValueRecord(unittest.TestCase):
             time_value_object.time
 
     def test_can_get_time_string(self):
-        self.assertTrue(isinstance(self.time_value_object.time_str,
-                                   str))
+        self.assertTrue(is_string(self.time_value_object.time_str))
         self.assertEqual(self.time_value_object.time_str, '01:02:03')
 
 
