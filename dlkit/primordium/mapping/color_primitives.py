@@ -7,6 +7,7 @@ Can be used by implementations and consumer applications alike.
 
 from dlkit.abstract_osid.mapping import primitives as abc_mapping_primitives
 from dlkit.abstract_osid.osid.errors import NullArgument, InvalidArgument
+from dlkit.json_.utilities import is_string
 from ..osid.primitives import OsidPrimitive
 from ..type.primitives import Type
 
@@ -28,7 +29,7 @@ class RGBColorCoordinate(abc_mapping_primitives.Coordinate, OsidPrimitive):
                 raise InvalidArgument()
             self._values = values
         elif hexstr is not None:
-            if not isinstance(hexstr, str) or len(hexstr) != 6:
+            if not is_string(hexstr) or len(hexstr) != 6:
                 raise InvalidArgument()
             try:
                 self._values = [int(hexstr[:-4], 16), int(hexstr[2:-2], 16), int(hexstr[4:], 16)]
