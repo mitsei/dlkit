@@ -3,23 +3,8 @@
 # This module contains all the Object classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID  Service.
 
-import codecs
 import json
-
-try:
-    import urllib2
-    urlopen = urllib2.urlopen
-    urlerrors = urllib2
-except ImportError:
-    import urllib.request
-    import urllib.error
-    urlopen = urllib.request.urlopen
-    urlerrors = urllib.error
-
-try:
-    import http.client as httplib
-except ImportError:
-    import httplib
+import requests
 
 from ...abstract_osid.osid import objects as abc_osid_objects
 from ...abstract_osid.id.primitives import Id as AbstractId
@@ -232,34 +217,30 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
 # ----------------------------------
 
     def _error_check(self, response):
-        if response.status == 200:
+        if response.status_code == 200:
             return
-        elif response.status == 404:
-            raise NotFound(response.reason)
-        elif response.status == 403:
-            raise PermissionDenied(response.reason)
+        elif response.status_code == 404:
+            raise NotFound(response.text)
+        elif response.status_code == 403:
+            raise PermissionDenied(response.text)
         else:
-            print(response.read())
-            raise OperationFailed(str(response.status) + ' Error: ' + response.reason)
+            print(response.text)
+            raise OperationFailed(str(response.status_code) + ' Error: ' + response.text)
+
+    def _full_url(self, url_path):
+        return 'https://{0}{1}'.format(self._host, url_path)
 
     # This is where the work gets done to process GET requests with handcar.
     # Here you can experiment with different libraries, etc.
     def _get_request(self, url_path):
-        connection = httplib.HTTPSConnection(self._host)
-        connection.request('GET', url_path)
-        response = connection.getresponse()
+        response = requests.get(self._full_url(url_path))
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        return json.load(reader(response))
+        return response.json()
 
     def _load_json(self, url_string):
+        response = requests.get(url_string)
         try:
-            response = urlopen(url_string)
-        except urlerrors.HTTPError:
-            raise NotFound()
-        try:
-            reader = codecs.getreader('utf8')
-            return json.load(reader(response))
+            return response.json()
         except Exception:
             raise OperationFailed()
 
@@ -268,12 +249,11 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
     def _put_request(self, url_path, data):
         if self._proxyname is not None:
             url_path += '?proxyname=' + self._proxyname
-        connection = httplib.HTTPSConnection(self._host)
-        connection.request('PUT', url_path, data, {'Content-Type': 'application/json'})
-        response = connection.getresponse()
+        response = requests.put(self._full_url(url_path),
+                                data=data,
+                                headers={'Content-Type': 'application/json'})
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        return json.load(reader(response))
+        return response.json()
 
     def get_display_name(self):
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.

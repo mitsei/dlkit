@@ -14,3 +14,6 @@ pytest-pep8
 pytest-cov
 envoy==0.0.3
 rsa==3.4.2
+requests==2.13.0
+vcrpy==1.11.0
+future==0.16.0
