@@ -1,0 +1,40 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: DELETE
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15959%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A15959%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective for testing Activity CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Activity
+        CrUD Test Objective"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['720']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:40 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A15959%40MIT-OEIT
+  response:
+    body: {string: 'mc3-objective:15959@MIT-OEIT'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['28']
+      Content-Type: [text/plain]
+      Date: ['Fri, 26 May 2017 18:07:40 GMT']
+      Server: [Apache]
+    status: {code: 404, message: Not Found}
+version: 1

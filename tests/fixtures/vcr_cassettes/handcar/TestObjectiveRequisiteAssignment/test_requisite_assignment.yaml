@@ -1,0 +1,329 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:47 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": ["mc3-objective%3A15740%40MIT-OEIT"]}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":["mc3-objective%3A15740%40MIT-OEIT"]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['44']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:47 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15740%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        1 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 1"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['719']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:47 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": ["mc3-objective%3A15740%40MIT-OEIT", "mc3-objective%3A15741%40MIT-OEIT"]}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":["mc3-objective%3A15740%40MIT-OEIT","mc3-objective%3A15741%40MIT-OEIT"]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['79']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:48 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15740%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        1 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 1"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1437']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:48 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": ["mc3-objective%3A15740%40MIT-OEIT", "mc3-objective%3A15741%40MIT-OEIT",
+      "mc3-objective%3A15742%40MIT-OEIT"]}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":["mc3-objective%3A15740%40MIT-OEIT","mc3-objective%3A15741%40MIT-OEIT","mc3-objective%3A15742%40MIT-OEIT"]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['114']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:48 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15740%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        1 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 1"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2155']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:48 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15740%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        1 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 1"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2155']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:48 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": ["mc3-objective%3A15741%40MIT-OEIT", "mc3-objective%3A15742%40MIT-OEIT"]}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":["mc3-objective%3A15741%40MIT-OEIT","mc3-objective%3A15742%40MIT-OEIT"]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['79']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1437']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1437']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15741%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:48"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        2 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 2"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1437']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": ["mc3-objective%3A15742%40MIT-OEIT"]}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":["mc3-objective%3A15742%40MIT-OEIT"]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['44']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[{"type":"Objective","id":"mc3-objective%3A15742%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-22T15:46:49"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"#
+        3 required objective for testing requisite assignment"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"required
+        objective 3"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2825%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['719']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:49 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"ids": []}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisiteids/
+  response:
+    body: {string: '{"ids":[]}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['10']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:50 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/objectives/mc3-objective%3A15739%40MIT-OEIT/requisites/
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:50 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

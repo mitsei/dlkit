@@ -1,0 +1,22 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: DELETE
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1377']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:08:00 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

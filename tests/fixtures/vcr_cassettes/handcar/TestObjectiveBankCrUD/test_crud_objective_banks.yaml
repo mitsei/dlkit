@@ -1,0 +1,190 @@
+interactions:
+- request:
+    body: !!python/unicode '{"journalComment": {"languageTypeId": "639-2%3AEnglish%40ISO",
+      "scriptTypeId": "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": ""}, "displayName": {"languageTypeId": "639-2%3AEnglish%40ISO", "scriptTypeId":
+      "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "CRuD-Test Objective Bank"}, "description": {"languageTypeId": "639-2%3AEnglish%40ISO",
+      "scriptTypeId": "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "This is a Test Objective Bank for CRuD"}, "genusTypeId": "mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'
+    headers:
+      Content-Type: [application/json]
+    method: POST
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"CRuD-Test
+        Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['608']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:36 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2976%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"CRuD-Test
+        Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['608']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:36 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"type": "ObjectiveBank", "id": "mc3-objectivebank%3A2976%40MIT-OEIT",
+      "auditTrail": {"addedBy": "MC3GUE$T", "addedOn": "2017-05-26T14:07:36"}, "current":
+      true, "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "This
+      is a Test Objective Bank for CRuD"}, "displayName": {"formatTypeId": "format.text%3APlain%40okapia.net",
+      "languageTypeId": "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org",
+      "text": "New Name for CRuD-Test Objective Bank"}, "genusTypeId": "mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for CRuD-Test Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['678']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:36 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2976%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for CRuD-Test Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['678']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:37 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2976%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for CRuD-Test Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['678']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:37 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: DELETE
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2976%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A2976%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:36","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Objective Bank for CRuD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for CRuD-Test Objective Bank"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.sandbox%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['678']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:37 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2976%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode 'org.osid.NotFoundException: mc3-objectivebank:2976@MIT-OEIT'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['59']
+      Content-Type: [text/plain]
+      Date: ['Fri, 26 May 2017 18:07:37 GMT']
+      Server: [Apache]
+    status: {code: 404, message: Not Found}
+- request:
+    body: !!python/unicode genusTypeId=mc3-objectivebank%253Amc3.learning.objectivebank.sandbox%2540MIT-OEIT&displayName=text&displayName=languageTypeId&displayName=formatTypeId&displayName=scriptTypeId&description=text&description=languageTypeId&description=formatTypeId&description=scriptTypeId&journalComment=text&journalComment=languageTypeId&journalComment=formatTypeId&journalComment=scriptTypeId
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['375']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.13.0]
+    method: POST
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/
+  response:
+    body: {string: !!python/unicode '<html><head><title>Apache Tomcat/7.0.57 - Error
+        report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;}
+        H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;}
+        H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;}
+        BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;}
+        B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;}
+        P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A
+        {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP
+        Status 400 - Bad Request</h1><HR size="1" noshade="noshade"><p><b>type</b>
+        Status report</p><p><b>message</b> <u>Bad Request</u></p><p><b>description</b>
+        <u>The request sent by the client was syntactically incorrect.</u></p><HR
+        size="1" noshade="noshade"><h3>Apache Tomcat/7.0.57</h3></body></html>'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, close']
+      content-language: [en]
+      content-length: ['990']
+      content-type: [text/html;charset=utf-8]
+      date: ['Fri, 26 May 2017 18:17:31 GMT']
+      server: [Apache]
+    status: {code: 400, message: Bad Request}
+version: 1
