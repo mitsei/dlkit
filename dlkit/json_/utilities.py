@@ -1,5 +1,6 @@
 """JSON utilities.py"""
 import binascii
+import codecs
 import time
 import sys
 import os
@@ -56,7 +57,6 @@ class Filler(object):
 
 class MyIterator(object):
     def __init__(self, data):
-        # make sure ._data is an iterator, otherwise next(self._data) will fail
         self._data = iter(data)
         self._i = -1
 
@@ -420,6 +420,11 @@ class JSONClientValidated(object):
                 except (AttributeError, KeyError, NotFound):
                     pass
 
+    @staticmethod
+    def _get_file_contents_as_json(file_path):
+        with codecs.open(file_path, 'rb', encoding='utf-8') as input_file:
+            return json.loads(input_file.read())
+
     def _impl(self, impl):
         return self._json_impl == impl.lower()
 
@@ -430,6 +435,11 @@ class JSONClientValidated(object):
             return query._query_terms
         except AttributeError:
             return query
+
+    @staticmethod
+    def _save_dict_as_json_file(file_path, dict):
+        with codecs.open(file_path, 'wb', encoding='utf-8') as output_file:
+            output_file.write(json.dumps(dict))
 
     def _validate_write(self, result):
         if self._impl('filesystem'):
@@ -457,13 +467,12 @@ class JSONClientValidated(object):
             results = 0
             query = self._convert_to_dict(query)
             for target_file in glob.iglob(self._cursor + '/*.json'):
-                with open(target_file, 'rb') as found_object:
-                    contents = json.load(found_object)
+                contents = self._get_file_contents_as_json(target_file)
 
-                    if query_is_match(query, contents):
-                        os.remove(target_file)
-                        results += 1
-                        break
+                if query_is_match(query, contents):
+                    os.remove(target_file)
+                    results += 1
+                    break
 
             if results == 0:
                 raise NotFound(str(query) + ' returned None.')
@@ -498,36 +507,33 @@ class JSONClientValidated(object):
                                                            query['_id'])
                     if os.path.isfile(potential_file):
                         del query['_id']
-                        with open(potential_file, 'rb') as found_object:
-                            contents = json.load(found_object)
-                            if query_is_match(query, contents):
-                                contents = convert_dict_to_datetime(contents)
-                                contents = convert_ids_to_object_ids(contents)
-                                results.append(contents)
+                        contents = self._get_file_contents_as_json(potential_file)
+                        if query_is_match(query, contents):
+                            contents = convert_dict_to_datetime(contents)
+                            contents = convert_ids_to_object_ids(contents)
+                            results.append(contents)
                 elif '_id' in query:
                     if '$in' in query['_id']:
                         for query_id in query['_id']['$in']:
                             potential_file = '{0}/{1}.json'.format(self._cursor,
                                                                    query_id)
                             if os.path.isfile(potential_file):
-                                with open(potential_file, 'rb') as found_object:
-                                    contents = json.load(found_object)
-                                    if query_is_match(query, contents):
-                                        contents = convert_dict_to_datetime(contents)
-                                        contents = convert_ids_to_object_ids(contents)
-                                        results.append(contents)
+                                contents = self._get_file_contents_as_json(potential_file)
+                                if query_is_match(query, contents):
+                                    contents = convert_dict_to_datetime(contents)
+                                    contents = convert_ids_to_object_ids(contents)
+                                    results.append(contents)
                     else:
                         # not match
                         pass
                 else:
                     for target_file in glob.iglob(self._cursor + '/*.json'):
-                        with open(target_file, 'rb') as found_object:
-                            contents = json.load(found_object)
+                        contents = self._get_file_contents_as_json(target_file)
 
-                            if query_is_match(query, contents):
-                                contents = convert_dict_to_datetime(contents)
-                                contents = convert_ids_to_object_ids(contents)
-                                results.append(contents)
+                        if query_is_match(query, contents):
+                            contents = convert_dict_to_datetime(contents)
+                            contents = convert_ids_to_object_ids(contents)
+                            results.append(contents)
 
             results = ListFiller(results)
             return results
@@ -553,25 +559,23 @@ class JSONClientValidated(object):
                                                        query[id_key])
                 if os.path.isfile(potential_file):
                     del query[id_key]
-                    with open(potential_file, 'rb') as found_object:
-                        contents = json.load(found_object)
-                        if query_is_match(query, contents):
-                            contents = convert_dict_to_datetime(contents)
-                            contents = convert_ids_to_object_ids(contents)
-                            results = contents
+                    contents = self._get_file_contents_as_json(potential_file)
+                    if query_is_match(query, contents):
+                        contents = convert_dict_to_datetime(contents)
+                        contents = convert_ids_to_object_ids(contents)
+                        results = contents
                 else:
                     raise NotFound(str(query) + ' returned None. Path: ' + self._cursor)
 
             if results is None:
                 for target_file in glob.iglob(self._cursor + '/*.json'):
-                    with open(target_file, 'rb') as found_object:
-                        contents = json.load(found_object)
+                    contents = self._get_file_contents_as_json(target_file)
 
-                        if query_is_match(query, contents):
-                            contents = convert_dict_to_datetime(contents)
-                            contents = convert_ids_to_object_ids(contents)
-                            results = contents
-                            break
+                    if query_is_match(query, contents):
+                        contents = convert_dict_to_datetime(contents)
+                        contents = convert_ids_to_object_ids(contents)
+                        results = contents
+                        break
 
             if results is None:
                 raise NotFound(str(query) + ' returned None. Path: ' + self._cursor)
@@ -595,8 +599,7 @@ class JSONClientValidated(object):
 
             write_target = '{}/{}.json'.format(self._cursor,
                                                doc['_id'])
-            with open(write_target, 'wb') as write_file:
-                json.dump(doc, write_file, ensure_ascii=False)
+            self._save_dict_as_json_file(write_target, doc)
 
             self._validate_write(write_target)
             inserted_obj = Filler()
@@ -637,8 +640,7 @@ class JSONClientValidated(object):
             write_target = '{}/{}.json'.format(self._cursor,
                                                doc['_id'])
 
-            with open(write_target, 'wb') as write_file:
-                json.dump(doc, write_file, ensure_ascii=False)
+            self._save_dict_as_json_file(write_target, doc)
             self._validate_write(write_target)
             inserted_obj = Filler()
             inserted_obj.inserted_id = doc['_id']
