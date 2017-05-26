@@ -1278,7 +1278,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -1296,6 +1296,8 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
         if isinstance(next_object, dict):
             next_object = Asset(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_assets(self, n=None):
         """Gets the next set of Assets in this list which must be less than
@@ -1319,7 +1321,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
@@ -1721,7 +1723,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -1739,6 +1741,8 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
         if isinstance(next_object, dict):
             next_object = AssetContent(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_asset_contents(self, n=None):
         """Gets the next set of AssetContents in this list which must be
@@ -1763,7 +1767,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
@@ -1865,7 +1869,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -1884,6 +1888,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
             next_object = Repository(next_object)
         return next_object
 
+    __next__ = next
     next_repository = property(fget=get_next_repository)
 
     def get_next_repositories(self, n):
@@ -1907,7 +1912,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1

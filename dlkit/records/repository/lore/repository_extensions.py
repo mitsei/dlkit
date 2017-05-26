@@ -1,7 +1,13 @@
 import re
 import time
 import tarfile
-import cStringIO
+
+try:
+    # python 2
+    from cStringIO import StringIO
+except ImportError:
+    # python 3
+    from io import StringIO
 
 from bs4 import BeautifulSoup
 
@@ -147,8 +153,8 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         cls = rm.get_composition_lookup_session_for_repository(self.my_osid_object.ident)
         cls.use_unsequestered_composition_view()
         try:
-            return cls.get_compositions_by_genus_type(
-                Type(**COMPOSITION_GENUS_TYPES['course'])).next()
+            return next(cls.get_compositions_by_genus_type(
+                Type(**COMPOSITION_GENUS_TYPES['course'])))
         except StopIteration:
             raise AttributeError
 
@@ -156,7 +162,7 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         run_repo = self.my_osid_object
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
         rhs = rm.get_repository_hierarchy_session()
-        course_repo = rhs.get_parent_repositories(run_repo.ident).next()
+        course_repo = next(rhs.get_parent_repositories(run_repo.ident))
 
         filename = '{0}_{1}_{2}'.format(course_repo.display_name.text,
                                         run_repo.display_name.text,
@@ -164,7 +170,7 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         filename = clean_str(filename) + '.tar.gz'
         root_path = '{0}/'.format(run_repo.display_name.text)
 
-        olx = cStringIO.StringIO()
+        olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
 
         # write the course.xml files first

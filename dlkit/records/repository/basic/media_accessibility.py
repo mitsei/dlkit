@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """
 records.repository.basic.media_accessibility.py
 """
@@ -269,7 +270,7 @@ class AssetContentMultiLanguageVTTRecord(FilesRecord):
         if proxy.locale is not None:
             locale = proxy.locale.language_type.identifier
 
-        valid_locales = self.my_osid_object._my_map['fileIds'].keys()
+        valid_locales = list(self.my_osid_object._my_map['fileIds'].keys())
         if locale in valid_locales:
             return locale
         elif DEFAULT_LANGUAGE_TYPE.identifier in valid_locales:
@@ -384,9 +385,9 @@ class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
         # Is there a way to derive this from the default language type?
         locale = self.my_osid_object.get_transcript_locale_identifier()
         if locale == 'HIN':
-            return u'वीडियो प्रतिलेख'
+            return 'वीडियो प्रतिलेख'
         elif locale == 'TEL':
-            return u'వీడియో ట్రాన్స్క్రిప్ట్'
+            return 'వీడియో ట్రాన్స్క్రిప్ట్'
         return 'Transcript'
 
     def get_transcript_locale_identifier(self):
@@ -395,7 +396,7 @@ class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
         if proxy.locale is not None:
             locale = proxy.locale.language_type.identifier
 
-        valid_locales = self.my_osid_object._my_map['fileIds'].keys()
+        valid_locales = list(self.my_osid_object._my_map['fileIds'].keys())
         if locale in valid_locales:
             return locale
         elif DEFAULT_LANGUAGE_TYPE.identifier in valid_locales:

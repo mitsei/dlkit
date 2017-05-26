@@ -2,7 +2,13 @@
 # pylint: disable=too-many-lines,too-many-ancestors,too-many-public-methods,protected-access
 import re
 import requests
-import cStringIO
+
+try:
+    # python 2
+    from cStringIO import StringIO
+except ImportError:
+    # python 3
+    from io import StringIO
 
 from ...abstract_osid.repository import objects as abc_repository_objects
 from ..osid import objects as osid_objects
@@ -1038,11 +1044,11 @@ class AssetList(osid_objects.OsidList, abc_repository_objects.AssetList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         try:
-            next_object = self._payload_list.next()
+            next_object = next(self._payload_list)
         except StopIteration:
             raise
         except Exception as ex:  # Need to specify exceptions here!
@@ -1050,6 +1056,7 @@ class AssetList(osid_objects.OsidList, abc_repository_objects.AssetList):
         next_object = Asset(next_object, self._config_map)
         return next_object
 
+    __next__ = next
     next_asset = property(fget=get_next_asset)
 
     def get_next_assets(self, n=None):
@@ -1170,7 +1177,7 @@ class AssetContent(abc_repository_objects.AssetContent,
         remote_url = self.get_url()
         filename = remote_url.split('/')[-1].split('?')[0]
         req = requests.get(remote_url)
-        buf = cStringIO.StringIO(req.content)
+        buf = StringIO(req.content)
         data = DataInputStream(buf)
         data.name = filename
         return data
@@ -1355,8 +1362,13 @@ class AssetContentForm(abc_repository_objects.AssetContentForm,
 
         data.seek(0)
 
-        odl_repo.key = remote_location
-        odl_repo.set_contents_from_file(data._my_data)
+        odl_repo.put_object(
+            Body=data.read(),
+            Bucket=self._config_map['s3_bucket'],
+            Key=remote_location
+        )
+        # odl_repo.key = remote_location
+        # odl_repo.set_contents_from_file(data._my_data)
 
         # this should set the original S3 location, so we can retrieve the
         # original document if needed
@@ -1380,8 +1392,14 @@ class AssetContentForm(abc_repository_objects.AssetContentForm,
         # try to clear from payload first, in case that fails we won't mess with AWS
         self._payload.clear_url()
         key_path = existing_url.replace(url, '')
-        odl_repo.key = key_path
-        odl_repo.delete()
+
+        # for boto3, remove leading /
+        if key_path[0] == '/':
+            key_path = key_path[1::]
+        odl_repo.delete_object(
+            Bucket=self._config_map['s3_bucket'],
+            Key=key_path
+        )
 
     data = property(fset=set_data, fdel=clear_data)
 
@@ -1473,10 +1491,10 @@ class AssetContentList(abc_repository_objects.AssetContentList,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return self.next()
+        return next(self)
 
     def next(self):
-        asset_content = self._payload_list.next()
+        asset_content = next(self._payload_list)
         try:
             if asset_content.has_url() and 'amazonaws.com' in asset_content.get_url():
                 return AssetContent(asset_content, self._config_map)
@@ -1484,6 +1502,7 @@ class AssetContentList(abc_repository_objects.AssetContentList,
             pass
         return asset_content
 
+    __next__ = next
     next_asset_content = property(fget=get_next_asset_content)
 
     def get_next_asset_contents(self, n=None):
@@ -1597,11 +1616,12 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Repository)
 
+    __next__ = next
     next_repository = property(fget=get_next_repository)
 
     def get_next_repositories(self, n=None):

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import base64
 import datetime
 import re
@@ -84,7 +86,7 @@ class AssetUtils(object):
                     return ac
 
         if not asset_content_type_str:
-            return als.get_asset(asset_id).get_asset_contents().next()  # Just return first one
+            return next(als.get_asset(asset_id).get_asset_contents())  # Just return first one
         else:
 
             if isinstance(asset_content_type_str, Type):
@@ -993,7 +995,7 @@ class TextsFormRecord(osid_records.OsidRecord):
         if not (self.my_osid_object_form._is_valid_string(
                 text, self.get_text_metadata()) or isinstance(text, DisplayText)):
             raise InvalidArgument('text')
-        if isinstance(text, basestring):
+        if utilities.is_string(text):
             self.my_osid_object_form._my_map['texts'][label] = {
                 'text': text,
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
@@ -1661,7 +1663,7 @@ class TimeValueFormRecord(osid_records.OsidRecord):
                 self.get_time_value_metadata()):
             # http://stackoverflow.com/questions/775049/python-time-seconds-to-hms
             time = self._convert_duration_to_hhmmss(value)
-        elif isinstance(value, basestring):
+        elif utilities.is_string(value):
             # assume something like hh:mm:ss, convert to dict
             time = self._convert_string_to_hhmmss(value)
         else:
@@ -1757,7 +1759,7 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
     def get_asset_ids_map(self):
         """stub"""
         asset_ids_map = {}
-        for label, asset_obj in self.my_osid_object._my_map['fileIds'].iteritems():
+        for label, asset_obj in self.my_osid_object._my_map['fileIds'].items():
             asset_ids_map[label] = asset_obj
         return asset_ids_map
 
@@ -1795,7 +1797,7 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     'AssetContent' in potential_display_text['text']):
                 # assume markup? Wrap this in case it's not a valid XML doc
                 # with a single parent object
-                wrapped_text = u'<wrapper>{0}</wrapper'.format(potential_display_text['text'])
+                wrapped_text = '<wrapper>{0}</wrapper'.format(potential_display_text['text'])
                 soup = BeautifulSoup(wrapped_text, 'xml')
                 media_file_elements = soup.find_all(src=media_regex)
                 media_file_elements += soup.find_all(data=media_regex)
@@ -1859,9 +1861,9 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                             except AttributeError:
                                 pass
 
-                potential_display_text['text'] = unicode(soup.wrapper.renderContents().decode('utf-8'))
+                potential_display_text['text'] = soup.wrapper.renderContents().decode('utf-8')
             else:
-                for new_key, value in potential_display_text.iteritems():
+                for new_key, value in potential_display_text.items():
                     if isinstance(value, list):
                         new_files_map = dict_files_map
                         if 'fileIds' in potential_display_text:
@@ -1900,7 +1902,7 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
             if 'fileIds' in obj_map:
                 original_files_map = obj_map['fileIds']
 
-            for key, data in obj_map.iteritems():
+            for key, data in obj_map.items():
                 if isinstance(data, dict):
                     obj_map[key] = replace_url_in_display_text(data, original_files_map)
                 elif isinstance(data, list):
@@ -2112,7 +2114,7 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
             except NullArgument:
                 aas = rm.get_asset_admin_session_for_repository(
                     Id(catalog_id_str))
-        for label, asset_data in self.my_osid_object_form._my_map['fileIds'].iteritems():
+        for label, asset_data in self.my_osid_object_form._my_map['fileIds'].items():
             aas.delete_asset(Id(asset_data['assetId']))
         self.my_osid_object_form._my_map['fileIds'] = \
             dict(self._files_metadata['default_object_values'][0])
@@ -2754,7 +2756,7 @@ class SourceableFormRecord(osid_records.OsidRecord):
         """
         if license_ is None:
             raise NullArgument('license cannot be None')
-        if not isinstance(license_, basestring):
+        if not utilities.is_string(license_):
             raise InvalidArgument('license must be a string')
         if self.get_license_metadata().is_read_only():
             raise NoAccess()
@@ -3098,7 +3100,7 @@ class MultiLanguageQueryRecord(QueryInitRecord):
         """stub"""
         if value is None:
             raise NullArgument('value must not be None')
-        if not isinstance(value, basestring):
+        if not utilities.is_string(value):
             raise InvalidArgument('value must be a string')
         if match is None:
             raise NullArgument('match must not be None')
@@ -3114,7 +3116,7 @@ class MultiLanguageQueryRecord(QueryInitRecord):
         """stub"""
         if value is None:
             raise NullArgument('value must not be None')
-        if not isinstance(value, basestring):
+        if not utilities.is_string(value):
             raise InvalidArgument('value must be a string')
         if match is None:
             raise NullArgument('match must not be None')

@@ -5,7 +5,13 @@ records.assessment.edx.item_records.py
 import re
 import time
 import tarfile
-import cStringIO
+
+try:
+    # python 2
+    from cStringIO import StringIO
+except ImportError:
+    # python 3
+    from io import StringIO
 
 from bson import ObjectId
 
@@ -82,7 +88,7 @@ class edXItemRecord(ItemTextsRecord,
                 'img': 'src'
             }
             local_regex = re.compile('[^http]')
-            for key, attr in attrs.iteritems():
+            for key, attr in attrs.items():
                 search = {attr: local_regex}
                 tags = soup.find_all(**search)
                 for item in tags:
@@ -124,7 +130,7 @@ class edXItemRecord(ItemTextsRecord,
                 for answer in answers:
                     answer_ids += answer['choiceIds']
                 # add the body text element (item.question.text)
-                soup = BeautifulSoup('<problem></problem>', ['lxml', 'xml'])
+                soup = BeautifulSoup('<problem></problem>', 'xml')
                 p = soup.new_tag('p')
                 p.string = self.get_text('questionString').text
                 problem = soup.find('problem')
@@ -178,9 +184,9 @@ class edXItemRecord(ItemTextsRecord,
         # replace all file listings with an appropriate path...
         if len(self.my_osid_object.object_map['fileIds']) > 0:
             file_map = self.my_osid_object.get_files()
-            for file_label, url in file_map.iteritems():
-                local_regex = re.compile(file_label + '\.')
-                for key, attr in attrs.iteritems():
+            for file_label, url in file_map.items():
+                local_regex = re.compile(file_label + r'\.')
+                for key, attr in attrs.items():
                     search = {attr: local_regex}
                     tags = soup.find_all(**search)
                     for item in tags:
@@ -228,24 +234,17 @@ class edXItemRecord(ItemTextsRecord,
         # replace all file listings with an appropriate path...
         if len(self.my_osid_object.object_map['fileIds']) > 0:
             file_map = self.my_osid_object.get_files()
-            for file_label, url in file_map.iteritems():
-                local_regex = re.compile(file_label + '\.')
-                for key, attr in attrs.iteritems():
+            for file_label, url in file_map.items():
+                local_regex = re.compile(file_label + r'\.')
+                for key, attr in attrs.items():
                     search = {attr: local_regex}
                     tags = edxml_soup.find_all(**search)
                     for item in tags:
                         asset_url = url
-                        # asset_file = cStringIO.StringIO(requests.get(asset_url).content)
                         asset_file_name = asset_url.split('?')[0].split('/')[-1]
-                        static_file_path = '{0}static/{1}'.format(root_path,
-                                                                  asset_file_name)
-
-                        # self.write_to_tarfile(tarball, static_file_path, asset_file)
-
                         relative_static_file_path = '/static/{0}'.format(asset_file_name)
                         item[attr] = relative_static_file_path
 
-        # my_soup.problem.append(edxml_soup)
         self.write_to_tarfile(tarball, my_xml_path, edxml_soup, prettify=False)
         return my_xml_path
 
@@ -255,7 +254,7 @@ class edXItemRecord(ItemTextsRecord,
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
-        olx = cStringIO.StringIO()
+        olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
 

@@ -378,10 +378,12 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Grade)
+
+    __next__ = next
 
     next_grade = property(fget=get_next_grade)
 
@@ -833,10 +835,12 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(GradeSystem)
+
+    __next__ = next
 
     next_grade_system = property(fget=get_next_grade_system)
 
@@ -1448,10 +1452,12 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(GradeEntry)
+
+    __next__ = next
 
     next_grade_entry = property(fget=get_next_grade_entry)
 
@@ -1667,10 +1673,12 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(GradebookColumn)
+
+    __next__ = next
 
     next_gradebook_column = property(fget=get_next_gradebook_column)
 
@@ -1969,10 +1977,12 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Gradebook)
+
+    __next__ = next
 
     next_gradebook = property(fget=get_next_gradebook)
 
@@ -2101,10 +2111,12 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(GradebookNode)
+
+    __next__ = next
 
     next_gradebook_node = property(fget=get_next_gradebook_node)
 

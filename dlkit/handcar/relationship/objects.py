@@ -149,7 +149,7 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -167,6 +167,8 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
         if isinstance(next_object, dict):
             next_object = Relationship(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_relationships(self, n=None):
         """Gets the next set of ``Relationships`` elements in this list.
@@ -193,7 +195,7 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise  # OperationFailed()
                 x = x + 1
@@ -316,7 +318,7 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -334,6 +336,8 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
         if isinstance(next_object, dict):
             next_object = Family(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_families(self, n=None):
         """Gets the next set of ``Family elements`` in this list.
@@ -360,7 +364,7 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1

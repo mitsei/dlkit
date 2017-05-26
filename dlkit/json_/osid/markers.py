@@ -10,6 +10,7 @@
 #     Inheritance defined in specification
 
 
+from collections import OrderedDict
 from importlib import import_module
 
 
@@ -122,7 +123,7 @@ class Identifiable(abc_osid_markers.Identifiable):
 class Extensible(abc_osid_markers.Extensible):
     """A marker interface for objects that contain ``OsidRecords``."""
     def __init__(self, object_name, runtime=None, proxy=None, **kwargs):
-        self._records = {}
+        self._records = OrderedDict()
         self._supported_record_type_ids = []
         self._record_type_data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
         self._runtime = runtime
@@ -139,7 +140,7 @@ class Extensible(abc_osid_markers.Extensible):
     def __getattribute__(self, name):
         if not name.startswith('_'):
             if '_records' in self.__dict__:
-                for record in self._records:
+                for record in reversed(self._records):
                     try:
                         return self._records[record][name]
                     except AttributeError:
@@ -148,7 +149,7 @@ class Extensible(abc_osid_markers.Extensible):
 
     def __getattr__(self, name):
         if '_records' in self.__dict__:
-            for record in self._records:
+            for record in reversed(self._records):
                 try:
                     return self._records[record][name]
                 except AttributeError:

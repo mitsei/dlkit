@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-import os
-import boto
+from __future__ import unicode_literals
 
-from boto.s3.key import Key
+import os
 
 from dlkit.runtime import errors
 from dlkit.runtime import configs
@@ -16,7 +15,12 @@ from dlkit.records.registry import ASSESSMENT_RECORD_TYPES, ITEM_RECORD_TYPES,\
 
 from random import randint
 
-from urllib import unquote
+try:
+    # python 3
+    from urllib.parse import unquote
+except ImportError:
+    # python 2
+    from urllib import unquote
 
 from .utilities.testing import DLKitTestCase, ABS_PATH, get_manager
 
@@ -215,11 +219,11 @@ class EdXMultiChoiceTests(EdXTests):
 
         item_files = item.get_files()
         self.assertEqual(
-            len(item_files.keys()),
+            len(list(item_files.keys())),
             1
         )
         self.assertEqual(
-            item_files.keys()[0],
+            list(item_files.keys())[0],
             'TopView'
         )
         self.is_streamable_url(item_files['TopView'])
@@ -237,7 +241,7 @@ class EdXMultiChoiceTests(EdXTests):
 
         question_map = self._bank.get_item(self._item.ident).get_question().object_map
 
-        form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
+        form = self._bank.get_answer_form_for_update(next(self._item.get_answer_ids()))
         form.add_choice_id(question_map['choices'][1]['id'])
         self._bank.update_answer(form)
 
@@ -264,7 +268,7 @@ class EdXMultiChoiceTests(EdXTests):
             'weight': item_map['weight'] / 2
         }
 
-        for attr, val in new_metadata.iteritems():
+        for attr, val in new_metadata.items():
             if attr == 'rerandomize':
                 form = self._bank.get_question_form_for_update(self._item.ident)
                 getattr(form, 'add_' + attr)(val)
@@ -811,7 +815,7 @@ class MecQBankItemTests(MecQBankTests):
             form = self._bank.get_question_form_for_update(self._item.ident)
             execute = self._bank.update_question
         else:
-            form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
+            form = self._bank.get_answer_form_for_update(next(self._item.get_answer_ids()))
             execute = self._bank.update_answer
 
         form.add_preview(file_, name)
@@ -867,16 +871,8 @@ class MecQBankItemTests(MecQBankTests):
         self.solution_with_image.seek(0)
 
     def file_exists(self, file_):
-        if 'S3_TEST_PUBLIC_KEY' in os.environ and isinstance(file_, file):
-            expected_filekey = self._bank.ident.identifier + '/' + file_.name.split('/')[-1]
-            connection = boto.connect_s3(configs.S3_TEST_PUBLIC_KEY,
-                                         configs.S3_TEST_PRIVATE_KEY)
-            bucket = connection.get_bucket(configs.S3_TEST_BUCKET)
-            file_ = Key(bucket, expected_filekey)
-            return file_.exists()
-        else:
-            # check on the filesystem that the file is there
-            return os.path.isfile(file_)
+        # check on the filesystem that the file is there
+        return os.path.isfile(file_)
 
     def setUp(self):
         super(MecQBankItemTests, self).setUp()
@@ -1030,15 +1026,17 @@ class MecQBankItemTests(MecQBankTests):
                 'domain': 'assessment.Question'})
         }
 
-        self.solution_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.pdf')
-        self.solution_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.tex')
-        self.metadata_file = open(ABS_PATH + '/files/MecQBank/CONT0001.meta')
-        self.question_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001.pdf')
-        self.question_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001.tex')
-        self.figure_file = open(ABS_PATH + '/files/MecQBank/solution_with_image.pdf')
-        self.non_pdf_file = open(ABS_PATH + '/files/MecQBank/test_doc.docx')
-        self.solution_image_file = open(ABS_PATH + '/files/MecQBank/draggable.green.dot.png')
-        self.solution_with_image = open(ABS_PATH + '/files/MecQBank/solution_with_image.tex')
+        # for *.tex files that will be read in and stuck into a DisplayText object,
+        # don't read them in as binary -- that will break the DisplayText output.
+        self.solution_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.pdf', 'rb')
+        self.solution_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001_Sol.tex', 'r')
+        self.metadata_file = open(ABS_PATH + '/files/MecQBank/CONT0001.meta', 'rb')
+        self.question_preview_file = open(ABS_PATH + '/files/MecQBank/CONT0001.pdf', 'rb')
+        self.question_tex_file = open(ABS_PATH + '/files/MecQBank/CONT0001.tex', 'r')
+        self.figure_file = open(ABS_PATH + '/files/MecQBank/solution_with_image.pdf', 'rb')
+        self.non_pdf_file = open(ABS_PATH + '/files/MecQBank/test_doc.docx', 'rb')
+        self.solution_image_file = open(ABS_PATH + '/files/MecQBank/draggable.green.dot.png', 'rb')
+        self.solution_with_image = open(ABS_PATH + '/files/MecQBank/solution_with_image.tex', 'r')
 
         self._item = self.add_item(self._bank)
 
@@ -1118,7 +1116,7 @@ class MecQBankItemTests(MecQBankTests):
                                    'image_file')
 
     def test_can_add_answer_latex(self):
-        form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
+        form = self._bank.get_answer_form_for_update(next(self._item.get_answer_ids()))
         form.add_text(self.solution_tex_file.read(), 'latex')
         self._bank.update_answer(form)
 
@@ -1241,7 +1239,7 @@ class MecQBankItemTests(MecQBankTests):
                                                                   source='answer')
         self.assertTrue(self.file_exists(original_file_location))
 
-        form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
+        form = self._bank.get_answer_form_for_update(next(self._item.get_answer_ids()))
         form.clear_file('preview')
         self._bank.update_answer(form)
         with self.assertRaises(errors.IllegalState):
@@ -1276,7 +1274,7 @@ class MecQBankItemTests(MecQBankTests):
                                                                   source='answer')
         self.assertTrue(self.file_exists(original_file_location))
 
-        form = self._bank.get_answer_form_for_update(self._item.get_answer_ids().next())
+        form = self._bank.get_answer_form_for_update(next(self._item.get_answer_ids()))
         form.clear_file('preview')
         self._bank.update_answer(form)
         with self.assertRaises(errors.IllegalState):
@@ -1320,6 +1318,7 @@ class Ortho3DTests(DLKitTestCase):
             file1.read(),
             file2.read()
         )
+        file1.close()  # assumes file2 is always the class instance one...
 
     def reset_files(self):
         self.manip.seek(0)
@@ -1450,7 +1449,7 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
         response = self._bank.get_response(first_section.ident, self._item.ident).object_map
 
-        for key, val in response['integerValues'].iteritems():
+        for key, val in response['integerValues'].items():
             self.assertEqual(
                 val,
                 wrong_response[key]
@@ -1478,7 +1477,7 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
         response = self._bank.get_response(first_section.ident, self._item.ident).object_map
 
-        for key, val in response['integerValues'].iteritems():
+        for key, val in response['integerValues'].items():
             self.assertEqual(
                 val,
                 self.answer[key]
@@ -1538,7 +1537,9 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
     def test_can_update_single_ovs_view(self):
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_top_view(), self.top)
+        top_view = question.get_top_view()
+        self.check_files(top_view, self.top)
+        top_view.close()
 
         update_form = self._bank.get_question_form_for_update(self._item.ident)
 
@@ -1548,7 +1549,9 @@ class Ortho3DLabelFacesTests(Ortho3DTests):
 
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_top_view(), self.choice0big)
+        top_view = question.get_top_view()
+        self.check_files(top_view, self.choice0big)
+        top_view.close()
 
 
 class Ortho3DMultiChoiceTests(Ortho3DTests):
@@ -1614,7 +1617,9 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self._bank.update_question(update_form)
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_manip(), self.manip)
+        question_manip = question.get_manip()
+        self.check_files(question_manip, self.manip)
+        question_manip.close()
 
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
@@ -1636,7 +1641,9 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self._bank.update_question(update_form)
         question = self._bank.get_item(self._item.ident).get_question()
 
-        self.check_files(question.get_manip(), self.manip)
+        question_manip = question.get_manip()
+        self.check_files(question_manip, self.manip)
+        question_manip.close()
 
         repo = self.get_repo(self._bank.ident)
         manip_asset = repo.get_asset(question.get_manip_id())
@@ -1710,7 +1717,7 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         self._bank.update_question(update_form)
 
         choice_id = self._bank.get_item(self._item.ident).get_question().object_map['choices'][0]['id']
-        answer_id = self._item.get_answer_ids().next()
+        answer_id = next(self._item.get_answer_ids())
         update_form = self._bank.get_answer_form_for_update(answer_id)
         update_form.add_choice_id(choice_id)
         self._bank.update_answer(update_form)
@@ -1739,7 +1746,7 @@ class Ortho3DMultiChoiceTests(Ortho3DTests):
         new_offered = self._bank.create_assessment_offered(offering_form)
 
         offered = self._bank.get_assessment_offered(new_offered.ident).object_map
-        for option, val in offered['reviewOptions']['whetherCorrect'].iteritems():
+        for option, val in offered['reviewOptions']['whetherCorrect'].items():
             self.assertTrue(val)
 
         update_offered(new_offered.ident, {'during_attempt': False})
@@ -1910,7 +1917,8 @@ class QTITests(DLKitTestCase):
         super(QTITests, self).setUp()
 
         self._bank = self._get_test_bank()
-        self.test_file1 = open(ABS_PATH + '/files/qti_multi_choice.xml')
+        # don't use the 'b' flag when reading, because we need it as string, not bytes
+        self.test_file_1 = open(ABS_PATH + '/files/qti_multi_choice.xml', 'r')
         self.right_answer_choice_id = 'id8d815c87-4f7e-4ac6-b4ea-77124057eb33'
         self.item_types = [Type('item-record-type%3Aqti%40ODL.MIT.EDU'),
                            Type('osid-object%3Amulti-language%40ODL.MIT.EDU')]
@@ -1922,10 +1930,11 @@ class QTITests(DLKitTestCase):
     def tearDown(self):
         """
         """
+        self.test_file_1.close()
         super(QTITests, self).tearDown()
 
     def test_can_import_qti_multi_choice_xml(self):
-        qti_xml = self.test_file1.read()
+        qti_xml = self.test_file_1.read()
 
         form = self._bank.get_item_form_for_create(self.item_types)
         form.display_name = 'qti multiple choice test'
@@ -2068,7 +2077,7 @@ class SearchItemPaginationTests(DLKitTestCase):
             if expected_name == '12':
                 new_id_to_search_on.append(items_found.next().ident)
             else:
-                items_found.next()
+                next(items_found)
 
         querier = self._bank.get_item_query()
         querier.match_keyword('2', WORDIGNORECASE_STRING_MATCH_TYPE, True)
@@ -2101,7 +2110,7 @@ class MagicMultipleChoiceItemTests(GeneralTests):
         new_assessment = self._bank.create_assessment(form)
 
         for item_id in item_ids:
-            if isinstance(item_id, basestring):
+            if isinstance(item_id, str):
                 item_id = Id(item_id)
             self._bank.add_item(new_assessment.ident, item_id)
 
@@ -2171,10 +2180,10 @@ class MagicMultipleChoiceItemTests(GeneralTests):
         first_section = self._bank.get_first_assessment_section(taken.ident)
         questions = self._bank.get_questions(first_section.ident)
 
-        question_1 = questions.next()
+        question_1 = next(questions)
         question_1_map = question_1.object_map
 
-        question_2 = questions.next()
+        question_2 = next(questions)
         question_2_map = question_2.object_map
 
         original_question_1_id = question_1_map['id']
@@ -2185,10 +2194,10 @@ class MagicMultipleChoiceItemTests(GeneralTests):
         for i in range(0, 10):
             questions = self._bank.get_questions(first_section.ident)
 
-            new_question_1 = questions.next()
+            new_question_1 = next(questions)
             new_question_1_map = new_question_1.object_map
 
-            new_question_2 = questions.next()
+            new_question_2 = next(questions)
             new_question_2_map = new_question_2.object_map
 
             self.assertEqual(
@@ -2218,10 +2227,10 @@ class MagicMultipleChoiceItemTests(GeneralTests):
 
         instructor_first_section = self._bank.get_first_assessment_section(taken.ident)
         instructor_questions = self._bank.get_questions(instructor_first_section.ident)
-        instructor_question_1 = instructor_questions.next()
+        instructor_question_1 = next(instructor_questions)
         instructor_question_1_map = instructor_question_1.object_map
 
-        instructor_question_2 = instructor_questions.next()
+        instructor_question_2 = next(instructor_questions)
         instructor_question_2_map = instructor_question_2.object_map
 
         # this might fail sometimes, so try multiple times
@@ -2233,10 +2242,10 @@ class MagicMultipleChoiceItemTests(GeneralTests):
             student_first_section = student_bank.get_first_assessment_section(student_taken.ident)
             student_questions = student_bank.get_questions(student_first_section.ident)
 
-            student_question_1 = student_questions.next()
+            student_question_1 = next(student_questions)
             student_question_1_map = student_question_1.object_map
 
-            student_question_2 = student_questions.next()
+            student_question_2 = next(student_questions)
             student_question_2_map = student_question_2.object_map
 
             # with unique question IDs, check that they are different, then
@@ -2520,8 +2529,8 @@ class AssessmentSectionLOTests(GeneralTests):
         # magic questions, so just check the original identifier is included
         # Aug 22, 2016: behavior changed -- all question IDs are unique now, so
         # update test to reflect that.
-        orig_question_1 = first_questions.next()
-        orig_question_2 = first_questions.next()
+        orig_question_1 = next(first_questions)
+        orig_question_2 = next(first_questions)
         self.assertNotIn(item1.ident.identifier, orig_question_1.ident.identifier)
         self.assertNotIn(item2.ident.identifier, orig_question_2.ident.identifier)
 
@@ -2554,8 +2563,8 @@ class AssessmentSectionLOTests(GeneralTests):
         # magic questions, so just check the original identifier is included
         # Aug 22, 2016: behavior changed -- all question IDs are unique now, so
         # update test to reflect that.
-        round_2_question_1 = first_questions.next()
-        round_2_question_2 = first_questions.next()
+        round_2_question_1 = next(first_questions)
+        round_2_question_2 = next(first_questions)
         self.assertNotIn(item2.ident.identifier, round_2_question_1.ident.identifier)
         self.assertNotIn(item3.ident.identifier, round_2_question_2.ident.identifier)
         self.assertEqual(
@@ -2570,8 +2579,8 @@ class AssessmentSectionLOTests(GeneralTests):
             items.available(),
             2
         )
-        round_3_question_1 = items.next()
-        round_3_question_2 = items.next()
+        round_3_question_1 = next(items)
+        round_3_question_2 = next(items)
         self.assertEqual(
             str(round_3_question_1.ident),
             str(item3.ident)
@@ -2600,8 +2609,8 @@ class AssessmentSectionLOTests(GeneralTests):
         # magic questions, so just check the original identifier is included
         # Aug 22, 2016: behavior changed -- all question IDs are unique now, so
         # update test to reflect that.
-        round_4_question_1 = first_questions.next()
-        round_4_question_2 = first_questions.next()
+        round_4_question_1 = next(first_questions)
+        round_4_question_2 = next(first_questions)
         self.assertNotIn(item3.ident.identifier, round_4_question_1.ident.identifier)
         self.assertNotIn(item2.ident.identifier, round_4_question_2.ident.identifier)
         self.assertEqual(
@@ -2620,8 +2629,8 @@ class AssessmentSectionLOTests(GeneralTests):
             items.available(),
             2
         )
-        round_5_question_1 = items.next()
-        round_5_question_2 = items.next()
+        round_5_question_1 = next(items)
+        round_5_question_2 = next(items)
         self.assertEqual(
             str(round_5_question_1.ident),
             str(item2.ident)
@@ -2650,8 +2659,8 @@ class AssessmentSectionLOTests(GeneralTests):
         # magic questions, so just check the original identifier is included
         # Aug 22, 2016: behavior changed -- all question IDs are unique now, so
         # update test to reflect that.
-        round_6_question_1 = first_questions.next()
-        round_6_question_2 = first_questions.next()
+        round_6_question_1 = next(first_questions)
+        round_6_question_2 = next(first_questions)
         self.assertNotIn(item2.ident.identifier, round_6_question_1.ident.identifier)
         self.assertNotIn(item3.ident.identifier, round_6_question_2.ident.identifier)
         self.assertEqual(
@@ -3124,7 +3133,7 @@ class ScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             right_answer['id']
         )
 
@@ -3177,7 +3186,7 @@ class ScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             wrong_answer['id']
         )
 
@@ -3230,7 +3239,7 @@ class ScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             wrong_answer['id']
         )
 
@@ -3301,7 +3310,7 @@ class ScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             right_answer['id']
         )
 
@@ -3378,7 +3387,7 @@ class ScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             wrong_answer['id']
         )
 
@@ -4130,6 +4139,7 @@ class ScaffoldDownTests(DLKitTestCase):
         self._assessment_bank.submit_response(section_2['section_id'],
                                               new_question.ident,
                                               form)
+
         sections = self.get_questions_for_taken(taken.ident)
         self.validate_number_sections_and_questions(sections, (2, (2, 5)))
 
@@ -4362,8 +4372,8 @@ class MultiLanguageBaseTestCase(DLKitTestCase):
         super(MultiLanguageBaseTestCase, self).setUp()
         self._bank = self._get_test_bank()
         self._english_text = 'english'
-        self._hindi_text = u'हिंदी'
-        self._telugu_text = u'తెలుగు'
+        self._hindi_text = 'हिंदी'
+        self._telugu_text = 'తెలుగు'
 
     def tearDown(self):
         super(MultiLanguageBaseTestCase, self).tearDown()
@@ -5463,8 +5473,8 @@ class MultiLanguageMultipleChoiceQuestionTests(MultiLanguageBaseTestCase):
         form.display_name = 'testing for question text'
         item = self._bank.create_item(form)
 
-        form = self._bank.get_question_form_for_create(item.ident, [MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD,
-                                                                    MC_RANDOMIZED_RECORD])
+        form = self._bank.get_question_form_for_create(item.ident, [MC_RANDOMIZED_RECORD,
+                                                                    MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD])
         form.add_choice(self._english(), identifier='1')
         form.add_choice(self._hindi(), identifier='1')
         form.add_choice(self._telugu(), identifier='1')
@@ -5945,8 +5955,8 @@ class MultiLanguageOrderedChoiceQuestionTests(MultiLanguageBaseTestCase):
         form.display_name = 'testing for question text'
         item = self._bank.create_item(form)
 
-        form = self._bank.get_question_form_for_create(item.ident, [MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD,
-                                                                    MC_RANDOMIZED_RECORD])
+        form = self._bank.get_question_form_for_create(item.ident, [MC_RANDOMIZED_RECORD,
+                                                                    MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD])
         form.add_choice(self._english(), identifier='1')
         form.add_choice(self._hindi(), identifier='1')
         form.add_choice(self._telugu(), identifier='1')
@@ -6036,7 +6046,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -6087,7 +6097,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -6126,7 +6136,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -6169,7 +6179,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -6234,7 +6244,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -6309,7 +6319,7 @@ class MultiLanguageInlineChoiceQuestionTests(MultiLanguageBaseTestCase):
         item = self._bank.get_item(item.ident)
         # 1 region
         self.assertEqual(
-            len(item._my_map['question']['choices'].keys()),
+            len(list(item._my_map['question']['choices'].keys())),
             1
         )
         # 1 choice in this region
@@ -7407,7 +7417,7 @@ class LOScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             wrong_answer['id']
         )
 
@@ -7439,7 +7449,7 @@ class LOScaffoldDownTests(DLKitTestCase):
             1
         )
         self.assertEqual(
-            str(response.get_choice_ids().next()),
+            str(next(response.get_choice_ids())),
             right_answer['id']
         )
 

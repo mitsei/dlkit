@@ -381,7 +381,7 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -399,6 +399,8 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
         if isinstance(next_object, dict):
             next_object = Objective(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_objectives(self, n=None):
         """Gets the next set of Objective elements in this list which must
@@ -422,7 +424,7 @@ class ObjectiveList(abc_learning_objects.ObjectiveList, osid_objects.OsidList):
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise  # OperationFailed()
                 x = x + 1
@@ -836,7 +838,7 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -854,6 +856,8 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
         if isinstance(next_object, dict):
             next_object = Activity(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_activities(self, n=None):
         """Gets the next set of Activity elements in this list which must
@@ -878,7 +882,7 @@ class ActivityList(abc_learning_objects.ActivityList, osid_objects.OsidList):
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1
@@ -990,7 +994,7 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -1008,6 +1012,8 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
         if isinstance(next_object, dict):
             next_object = ObjectiveBank(next_object)
         return next_object
+
+    __next__ = next
 
     def get_next_objective_banks(self, n=None):
         """Gets the next set of ObjectiveBank elements in this list which
@@ -1032,7 +1038,7 @@ class ObjectiveBankList(abc_learning_objects.ObjectiveBankList, osid_objects.Osi
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 x = x + 1

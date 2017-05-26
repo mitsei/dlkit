@@ -94,19 +94,19 @@ class BankHierarchyUrls(object):
         return self._root + self._safe_alias(alias) + '/root/ids/'
 
 
-def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, asset_id=None, genus_type=None, descendents=0):
+def construct_url(type_, bank_id=None, obj_id=None, obj_ids=None, act_id=None, asset_id=None, genus_type=None, descendents=0):
     url = '/handcar/services/learning/objectivebanks/'
-    if type == 'objective_banks':
+    if type_ == 'objective_banks':
         if bank_id:
             url += get_id_str(bank_id)
         else:
             pass
-    elif type == 'objective_banks_by_genus':
+    elif type_ == 'objective_banks_by_genus':
         if genus_type:
             url += '?genustypeid={0}'.format(get_id_str(genus_type))
         else:
             raise ValueError()
-    elif type == 'objectives':
+    elif type_ == 'objectives':
         if obj_id and bank_id:
             url += get_id_str(bank_id) + '/objectives/' + get_id_str(obj_id)
         elif bank_id:
@@ -115,13 +115,13 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
             url += '../objectives/' + get_id_str(obj_id)
         else:
             raise ValueError
-    elif type == 'objectives_by_genus':
+    elif type_ == 'objectives_by_genus':
         if bank_id and genus_type:
             url += '{0}/objectives?genustypeid={1}'.format(get_id_str(bank_id),
                                                            get_id_str(genus_type))
         else:
             raise ValueError
-    elif type == 'objectives_by_ids':
+    elif type_ == 'objectives_by_ids':
         if bank_id is not None and obj_ids is not None:
             url += '{0}/objectives/bulk/?{1}'.format(get_id_str(bank_id),
                                                      '&'.join(['id={0}'.format(get_id_str(i))
@@ -129,65 +129,65 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
         elif obj_ids is not None:
             url = '/handcar/services/learning/objectives/bulk/?{0}'.format('&'.join(['id={0}'.format(get_id_str(i))
                                                                            for i in obj_ids]))
-    elif type == 'childids':
+    elif type_ == 'childids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/childids/')
         else:
             raise ValueError
-    elif type == 'children':
+    elif type_ == 'children':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/children')
         else:
             raise ValueError
-    elif type == 'dependents':
+    elif type_ == 'dependents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/dependents')
         else:
             raise ValueError
-    elif type == 'equivalents':
+    elif type_ == 'equivalents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/equivalents')
         else:
             raise ValueError
-    elif type == 'parentids':
+    elif type_ == 'parentids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/parentids/')
         else:
             raise ValueError
-    elif type == 'parents':
+    elif type_ == 'parents':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/parents/')
         else:
             raise ValueError
-    elif type == 'requisites':
+    elif type_ == 'requisites':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/requisites/')
         else:
             raise ValueError
-    elif type == 'requisiteids':
+    elif type_ == 'requisiteids':
         if bank_id and obj_id:
             url += (get_id_str(bank_id) + '/objectives/' +
                     get_id_str(obj_id) + '/requisiteids/')
         else:
             raise ValueError
-    elif type == 'rootids':
+    elif type_ == 'rootids':
         if bank_id:
             url += get_id_str(bank_id) + '/objectives/rootids/'
         else:
             raise ValueError
-    elif type == 'roots':
+    elif type_ == 'roots':
         if bank_id:
             url += get_id_str(bank_id) + '/objectives/roots?descendentlevels=' + str(descendents)
         else:
             raise ValueError
-    elif type == 'activities':
+    elif type_ == 'activities':
         if act_id and bank_id and not obj_id:
             url += get_id_str(bank_id) + '/activities/' + get_id_str(act_id)
         elif obj_id and bank_id:
@@ -197,13 +197,13 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
             url += get_id_str(bank_id) + '/activities/'
         else:
             raise ValueError
-    elif type == 'activities_by_genus':
+    elif type_ == 'activities_by_genus':
         if bank_id and genus_type:
             url += (get_id_str(bank_id) + '/activities?genustypeid=' +
                     get_id_str(genus_type))
         else:
             raise ValueError
-    elif type == 'assets':
+    elif type_ == 'assets':
         if asset_id and bank_id and not act_id:
             url += get_id_str(bank_id) + '/assets/' + get_id_str(asset_id)
         elif act_id and bank_id:
@@ -213,20 +213,20 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
             url += get_id_str(bank_id) + '/assets/'
         else:
             raise ValueError
-    elif type == 'assets_by_genus':
+    elif type_ == 'assets_by_genus':
         if bank_id and genus_type:
             url += (get_id_str(bank_id) + '/assets?genustypeid=' +
                     get_id_str(genus_type))
         else:
             raise ValueError
-    elif type == 'authorization':
+    elif type_ == 'authorization':
         if bank_id:
             url += get_id_str(bank_id) + '/authorization/'
         else:
             url = '/handcar/services/learning/authorization'  # yuck!
-    elif type == 'objective_bank_types':
+    elif type_ == 'objective_bank_types':
         url += 'types/genus/'
-    elif type == 'extension_record':
+    elif type_ == 'extension_record':
         if bank_id:
             url += get_id_str(bank_id)
             if obj_id:
@@ -239,7 +239,7 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
                 url += '/extension'
         else:
             raise ValueError
-    elif type == 'objective_objective_bank_assignment':
+    elif type_ == 'objective_objective_bank_assignment':
         url += '../bankassignment/objective/' + get_id_str(obj_id) + '/' + get_id_str(bank_id) + '/'
     else:
         raise ValueError
@@ -247,7 +247,7 @@ def construct_url(type, bank_id=None, obj_id=None, obj_ids=None, act_id=None, as
 
 
 def get_id_str(id_):
-    if not isinstance(id_, basestring):
+    if not is_string(id_):
         id_ = str(id_)
     return id_
 
@@ -268,6 +268,15 @@ def get_objective_by_bank_id_and_name(objective_bank_id, name):
     raise NotFound()
 
 
+def is_string(string_):
+    try:
+        # python 2
+        return isinstance(string_, basestring)
+    except NameError:
+        # python 3
+        return isinstance(string_, str)
+
+
 def create_sandbox_bank(display_name, description=None):
     if description is None:
         description = 'Catalog for ' + display_name
@@ -276,7 +285,7 @@ def create_sandbox_bank(display_name, description=None):
     obls = lm.get_objective_bank_lookup_session()
     for ob in obls.get_objective_banks():
         if ob.display_name.text == display_name:
-            print 'A sandbox bank named', display_name, 'already exists.'
+            print('A sandbox bank named', display_name, 'already exists.')
             return None
     obfc = obas.get_objective_bank_form_for_create()
     obfc.display_name = display_name
@@ -296,14 +305,14 @@ def delete_bank_by_name(display_name):
             ols = lm.get_objective_lookup_session_for_objective_bank(ob.ident)
             als = lm.get_activity_lookup_session_for_objective_bank(ob.ident)
             if ols.get_objectives().available() != 0:
-                print 'can not delete objective bank \'' + ob.display_name.text + '\'. It still contains objectives.'
+                print('can not delete objective bank \'' + ob.display_name.text + '\'. It still contains objectives.')
             elif als.get_activities().available() != 0:
-                print 'can not delete objective bank \'' + ob.display_name.text + '\'. It still contains activities.'
+                print('can not delete objective bank \'' + ob.display_name.text + '\'. It still contains activities.')
             else:
-                print 'deleting objective bank', ob
+                print('deleting objective bank', ob)
                 obas.delete_objective_bank(ob.ident)
     if not found:
-        print 'objective bank \'' + display_name + '\' not found.'
+        print('objective bank \'' + display_name + '\' not found.')
 
 
 def create_objective(bank_id, display_name, description=None):
@@ -346,7 +355,7 @@ def create_sandbox_repository(display_name, description=None):
     rls = rm.get_repository_lookup_session()
     for r in rls.get_repositories():
         if r.display_name.text == display_name:
-            print 'A sandbox repository named', display_name, 'already exists.'
+            print('A sandbox repository named', display_name, 'already exists.')
             return None
     rfc = ras.get_repository_form_for_create()
     rfc.display_name = display_name
@@ -365,12 +374,12 @@ def delete_repository_by_name(display_name):
             found = True
             als = rm.get_asset_lookup_session_for_repository(r.ident)
             if als.get_assets().available() != 0:
-                print 'can not delete repository \'' + ob.display_name.text + '\'. It still contains assets.'
+                print('can not delete repository \'' + r.display_name.text + '\'. It still contains assets.')
             else:
-                print 'deleting repository', r
+                print('deleting repository', r)
                 ras.delete_repository(r.ident)
     if not found:
-        print 'repository \'' + display_name + '\' not found.'
+        print('repository \'' + display_name + '\' not found.')
 
 
 def create_asset(repository_id, display_name, description=None):

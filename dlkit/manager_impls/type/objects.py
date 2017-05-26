@@ -38,7 +38,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
 
         """
         try:
-            next_item = self.next()
+            next_item = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except:  # Need to specify exceptions here
@@ -55,6 +55,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             next_item = Type(next_item)
         return next_item
 
+    __next__ = next
     next_type = property(fget=get_next_type)
 
     next_type = property(fget=get_next_type)
@@ -83,7 +84,7 @@ class TypeList(abc_type_objects.TypeList, osid_objects.OsidList):
             i = 0
             while i < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except:  # Need to specify exceptions here
                     raise OperationFailed()
                 i += 1

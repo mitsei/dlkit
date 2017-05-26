@@ -745,7 +745,7 @@ class OsidList(abc_osid_objects.OsidList):
             counter = 0
             while counter < number:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
                 counter += 1
@@ -766,6 +766,8 @@ class OsidList(abc_osid_objects.OsidList):
     def next(self):
         """This will be overridden by inheriting object"""
         pass
+
+    __next__ = next
 
     def has_next(self):
         """Tests if there are more elements in this list.

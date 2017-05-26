@@ -10,6 +10,9 @@
 #     Inheritance defined in specification
 
 
+from collections import OrderedDict
+
+
 from .. import utilities
 from ..osid import rules as osid_rules
 from dlkit.abstract_osid.osid import errors
@@ -38,7 +41,7 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
 
     """
     def __init__(self, runtime):
-        self._records = dict()
+        self._records = OrderedDict()
         # _load_records is in OsidExtensibleQuery:
         # _all_supported_record_type_ids comes from inheriting query object
         # THIS SHOULD BE RE-DONE:

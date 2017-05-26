@@ -3301,7 +3301,7 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_sub_package_provider_session('assessment_authoring',
                                                'assessment_part_lookup_session')
         for session in self._provider_sessions:
-            for provider_session_name, provider_session in self._provider_sessions[session].iteritems():
+            for provider_session_name, provider_session in self._provider_sessions[session].items():
                 try:
                     provider_session.use_sequestered_assessment_part_view()
                 except AttributeError:
@@ -3314,7 +3314,7 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         self._get_sub_package_provider_session('assessment_authoring',
                                                'assessment_part_lookup_session')
         for session in self._provider_sessions:
-            for provider_session_name, provider_session in self._provider_sessions[session].iteritems():
+            for provider_session_name, provider_session in self._provider_sessions[session].items():
                 try:
                     provider_session.use_unsequestered_assessment_part_view()
                 except AttributeError:
@@ -4259,7 +4259,7 @@ class BankList(abc_assessment_objects.BankList, osid.OsidList):
         # Implemented from kitosid template for -
         # osid.resource.ResourceList.get_next_resource
         try:
-            next_item = self.next()
+            next_item = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         else:
@@ -4271,6 +4271,8 @@ class BankList(abc_assessment_objects.BankList, osid.OsidList):
         # osid.resource.ResourceList.get_next_resource
         next_item = osid.OsidList.next(self)
         return next_item
+
+    __next__ = next
 
     next_bank = property(fget=get_next_bank)
 
@@ -4286,7 +4288,7 @@ class BankList(abc_assessment_objects.BankList, osid.OsidList):
             i = 0
             while i < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except StopIteration:
                     break
                 i += 1

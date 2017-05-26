@@ -2174,7 +2174,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid.OsidList):
         # Implemented from kitosid template for -
         # osid.resource.ResourceList.get_next_resource
         try:
-            next_item = self.next()
+            next_item = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         else:
@@ -2186,6 +2186,8 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid.OsidList):
         # osid.resource.ResourceList.get_next_resource
         next_item = osid.OsidList.next(self)
         return next_item
+
+    __next__ = next
 
     next_repository = property(fget=get_next_repository)
 
@@ -2201,7 +2203,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid.OsidList):
             i = 0
             while i < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except StopIteration:
                     break
                 i += 1

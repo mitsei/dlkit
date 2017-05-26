@@ -16,7 +16,11 @@ import json
 
 from bson.objectid import ObjectId
 from decimal import Decimal
-from urllib import unquote
+
+try:
+    from urllib import unquote
+except ImportError:
+    from urllib.parse import unquote
 
 
 from . import default_mdata
@@ -214,10 +218,12 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Question)
+
+    __next__ = next
 
     next_question = property(fget=get_next_question)
 
@@ -349,10 +355,12 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Answer)
+
+    __next__ = next
 
     next_answer = property(fget=get_next_answer)
 
@@ -765,10 +773,12 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Item)
+
+    __next__ = next
 
     next_item = property(fget=get_next_item)
 
@@ -1160,10 +1170,12 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Assessment)
+
+    __next__ = next
 
     next_assessment = property(fget=get_next_assessment)
 
@@ -2100,10 +2112,12 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(AssessmentOffered)
+
+    __next__ = next
 
     next_assessment_offered = property(fget=get_next_assessment_offered)
 
@@ -2803,10 +2817,12 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(AssessmentTaken)
+
+    __next__ = next
 
     next_assessment_taken = property(fget=get_next_assessment_taken)
 
@@ -3104,10 +3120,12 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(AssessmentSection)
+
+    __next__ = next
 
     next_assessment_section = property(fget=get_next_assessment_section)
 
@@ -3229,10 +3247,12 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Bank)
+
+    __next__ = next
 
     next_bank = property(fget=get_next_bank)
 
@@ -3359,10 +3379,12 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(BankNode)
+
+    __next__ = next
 
     next_bank_node = property(fget=get_next_bank_node)
 
@@ -3411,10 +3433,12 @@ class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Response)
+
+    __next__ = next
 
     next_response = property(fget=get_next_response)
 

@@ -3,9 +3,9 @@ import os
 import json
 import envoy
 import shutil
-from pymongo import MongoClient
+import unittest
 
-from minimocktest import MockTestCase
+from pymongo import MongoClient
 
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.primordium import Id, DataInputStream, Type
@@ -30,7 +30,7 @@ TEST_OBJECTIVE_BANK_GENUS = Type('learning.ObjectiveBank%3Atest-catalog%40ODL.MI
 TEST_REPOSITORY_GENUS = Type('repository.Repository%3Atest-catalog%40ODL.MIT.EDU')
 
 
-class DLKitTestCase(MockTestCase):
+class DLKitTestCase(unittest.TestCase):
     """
     """
     dbs_to_delete = ['test_dlkit_assessment',
@@ -50,11 +50,11 @@ class DLKitTestCase(MockTestCase):
     def _delete_database(db_name):
         MongoClient().drop_database(db_name)
 
-    def _pre_setup(self):
-        MockTestCase.setUp(self)
+    # def _pre_setup(self):
+        # MockTestCase.setUp(self)
 
-    def _post_teardown(self):
-        MockTestCase.tearDown(self)
+    # def _post_teardown(self):
+        # MockTestCase.tearDown(self)
 
     def code(self, _req, _code):
         self.assertEqual(_req.status_code, _code)
@@ -74,7 +74,7 @@ class DLKitTestCase(MockTestCase):
         am = get_manager(self.req, 'assessment')
         querier = am.get_bank_query()
         querier.match_genus_type(TEST_BANK_GENUS, True)
-        bank = am.get_banks_by_query(querier).next()
+        bank = next(am.get_banks_by_query(querier))
         return am.get_bank(bank.ident)  # to make sure we get a services bank
 
     def create_new_bank(self, name="my new assessment bank"):
@@ -97,7 +97,7 @@ class DLKitTestCase(MockTestCase):
     def _get_test_bin(self):
         # assume the first one -- we're missing permissions to query?
         rm = get_manager(self.req, 'resource')
-        return rm.get_bins().next()
+        return next(rm.get_bins())
 
     def create_new_bin(self):
         rm = get_manager(self.req, 'resource')
@@ -119,7 +119,7 @@ class DLKitTestCase(MockTestCase):
     def _get_test_gradebook(self):
         # no gradebook query, so assume first gradebook
         gm = get_manager(self.req, 'grading')
-        return gm.get_gradebooks().next()
+        return next(gm.get_gradebooks())
 
     def create_new_gradebook(self):
         gm = get_manager(self.req, 'grading')
@@ -141,7 +141,7 @@ class DLKitTestCase(MockTestCase):
     def _get_test_log(self):
         # we don't have log query enabled ... so assume first log found
         logm = get_manager(self.req, 'logging')
-        return logm.get_logs().next()
+        return next(logm.get_logs())
 
     def create_new_log(self):
         logm = get_manager(self.req, 'logging')
@@ -163,7 +163,7 @@ class DLKitTestCase(MockTestCase):
     def _get_test_objective_bank(self):
         # get the first one because no objective bank query
         lm = get_manager(self.req, 'learning')
-        return lm.get_objective_banks().next()
+        return next(lm.get_objective_banks())
 
     def create_new_objective_bank(self):
         lm = get_manager(self.req, 'learning')
@@ -186,7 +186,7 @@ class DLKitTestCase(MockTestCase):
         rm = get_manager(self.req, 'repository')
         querier = rm.get_repository_query()
         querier.match_genus_type(TEST_REPOSITORY_GENUS, True)
-        repo = rm.get_repositories_by_query(querier).next()
+        repo = next(rm.get_repositories_by_query(querier))
         return rm.get_repository(repo.ident)  # to make sure we get a services repository
 
     def create_new_repo(self):
@@ -230,7 +230,7 @@ class DLKitTestCase(MockTestCase):
 
     def get_book(self, book_id):
         cm = get_manager(self.req, 'commenting')
-        if isinstance(book_id, basestring):
+        if is_string(book_id):
             book_id = Id(book_id)
         book = cm.get_book(book_id)
 
@@ -245,7 +245,7 @@ class DLKitTestCase(MockTestCase):
 
     def get_repo(self, repo_id):
         rm = get_manager(self.req, 'repository')
-        if isinstance(repo_id, basestring):
+        if isinstance(repo_id, str):
             repo_id = Id(repo_id)
         repo = rm.get_repository(repo_id)
 
@@ -286,8 +286,8 @@ class DLKitTestCase(MockTestCase):
 
         self.req = self.instructor_req
 
-        self.test_file1 = open(ABS_PATH + '/files/test_file_1.txt')
-        self.test_file2 = open(ABS_PATH + '/files/test_file_2.txt')
+        self.test_file1 = open(ABS_PATH + '/files/test_file_1.txt', 'rb')
+        self.test_file2 = open(ABS_PATH + '/files/test_file_2.txt', 'rb')
         if os.path.isdir(TEST_DATA_STORE_PATH):
             shutil.rmtree(TEST_DATA_STORE_PATH)
 
@@ -351,6 +351,15 @@ class DLKitTestCase(MockTestCase):
 
     def updated(self, _req):
         self.code(_req, 202)
+
+
+def is_string(string_):
+    try:
+        # python 2
+        return isinstance(string_, basestring)
+    except NameError:
+        # python 3
+        return isinstance(string_, str)
 
 
 def load_fixtures():

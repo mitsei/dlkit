@@ -16,7 +16,12 @@ from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.abstract_osid.assessment import record_templates as abc_assessment_records
 
-from urllib import quote
+try:
+    # python 2
+    from urllib import quote
+except ImportError:
+    # python 3
+    from urllib.parse import quote
 
 from ...osid.base_records import ObjectInitRecord
 from .feedback_answer_records import FeedbackAnswerFormRecord, FeedbackAnswerRecord,\
@@ -215,7 +220,7 @@ class BaseMultiChoiceTextQuestionFormRecord(BaseMultiChoiceQuestionFormRecord):
 
     def add_choice(self, text, name='', identifier=None):
         """stub"""
-        if not isinstance(text, basestring):
+        if not utilities.is_string(text):
             raise InvalidArgument('text is not a string')
         choice_display_text = self._choice_text_metadata['default_string_values'][0]
         choice_display_text['text'] = text

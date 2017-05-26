@@ -135,7 +135,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
 
         """
         try:
-            next_object = self.next()
+            next_object = next(self)
         except StopIteration:
             raise IllegalState('no more elements available in this list')
         except Exception:  # Need to specify exceptions here!
@@ -153,6 +153,8 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
         if isinstance(next_object, dict):
             next_object = Grade(next_object)
         return next_object
+
+    __next__ = next
 
     next_grade = property(fget=get_next_grade)
 
@@ -178,10 +180,10 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
             x = 0
             while x < n:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise OperationFailed()
-                x = x + 1
+                x += 1
             return next_list
 
 

@@ -6,11 +6,11 @@ from datetime import datetime
 from io import BytesIO
 
 
-def clean_str(input):
+def clean_str(input_):
     """
     Remove all non-words from a string
     """
-    output = re.sub(r'[^\w]', '_', input)
+    output = re.sub(r'[^\w]', '_', input_)
     return output
 
 
@@ -82,7 +82,7 @@ class EdXUtilitiesMixin(object):
         fixed_path = remove_redundant_drafts(path)
         f = tarfile.TarInfo(name=remove_trailing_slash(fixed_path))
         f.mtime = get_current_time_in_secs()
-        f.mode = 0755
+        f.mode = 755
         f.uname = 'MIT_ODL'
         f.gname = 'staff'
 

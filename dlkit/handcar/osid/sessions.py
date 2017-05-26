@@ -6,9 +6,13 @@
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-# import urllib2
-import pdb
-import httplib
+import codecs
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
+
 import logging
 import json
 import ssl
@@ -158,9 +162,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
         connection.request('GET', url_path)
         response = connection.getresponse()
         self._error_check(response)
-        result = response.read()
+        reader = codecs.getreader('utf8')
+        result = reader(response)
         try:
-            return json.loads(result)
+            return json.load(result)
         except ValueError:
             return result
 
@@ -176,9 +181,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
         connection.request('POST', url_path, data, {'Content-Type': 'application/json'})
         response = connection.getresponse()
         self._error_check(response)
-        result = response.read()
+        reader = codecs.getreader('utf8')
+        result = reader(response)
         try:
-            return json.loads(result)
+            return json.load(result)
         except ValueError:
             return result
 
@@ -194,9 +200,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
         connection.request('PUT', url_path, data, {'Content-Type': 'application/json'})
         response = connection.getresponse()
         self._error_check(response)
-        result = response.read()
+        reader = codecs.getreader('utf8')
+        result = reader(response)
         try:
-            return json.loads(result)
+            return json.load(result)
         except ValueError:
             return result
 
@@ -211,9 +218,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
         connection.request('DELETE', url_path)
         response = connection.getresponse()
         self._error_check(response)
-        result = response.read()
+        reader = codecs.getreader('utf8')
+        result = reader(response)
         try:
-            return json.loads(result)
+            return json.load(result)
         except ValueError:
             return result
 

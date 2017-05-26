@@ -1,7 +1,9 @@
+from __future__ import unicode_literals
+
 from dlkit.json_ import types
 from dlkit.json_.id.objects import IdList
 from dlkit.json_.assessment.objects import ItemList, Item
-from dlkit.json_.utilities import JSONClientValidated, arguments_not_none
+from dlkit.json_.utilities import JSONClientValidated, arguments_not_none, is_string
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid import objects as osid_objects
 from dlkit.json_.osid.metadata import Metadata
@@ -182,7 +184,7 @@ class ItemWithSolutionFormRecord(osid_records.OsidRecord):
         if not self.my_osid_object_form._is_valid_string(
                 text, self.get_solution_metadata()):
             raise InvalidArgument('text')
-        if isinstance(text, basestring):
+        if is_string(text):
             self.my_osid_object_form._my_map['solution'] = {
                 'text': text,
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
@@ -211,12 +213,8 @@ class MultiLanguageQuestionRecord(MultiLanguageUtils,
     def get_object_map(self):
         obj_map = dict(self.my_osid_object._my_map)
         del obj_map['itemId']
-        try:
-            lo_ids = self.my_osid_object.get_learning_objective_ids()
-            obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
-        except UnicodeEncodeError:
-            lo_ids = self.my_osid_object.get_learning_objective_ids()
-            obj_map['learningObjectiveIds'] = [unicode(lo_id) for lo_id in lo_ids]
+        lo_ids = self.my_osid_object.get_learning_objective_ids()
+        obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
 
         obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
         obj_map['id'] = str(self.my_osid_object.get_id())

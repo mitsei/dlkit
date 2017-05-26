@@ -3,9 +3,24 @@
 # This module contains all the Object classes used by the MIT Core Concept
 # Catalog (MC3) Handcar based implementation of the OSID  Service.
 
-import urllib2
-import httplib
+import codecs
 import json
+
+try:
+    import urllib2
+    urlopen = urllib2.urlopen
+    urlerrors = urllib2
+except ImportError:
+    import urllib.request
+    import urllib.error
+    urlopen = urllib.request.urlopen
+    urlerrors = urllib.error
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
+
 from ...abstract_osid.osid import objects as abc_osid_objects
 from ...abstract_osid.id.primitives import Id as AbstractId
 from ...abstract_osid.type.primitives import Type as AbstractType
@@ -16,6 +31,7 @@ from .osid_errors import NullArgument, InvalidArgument,\
     Unimplemented, Unsupported, PermissionDenied
 from .metadata import Metadata
 from . import markers
+
 
 INVALID = 0
 VALID = 1
@@ -223,7 +239,7 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
         elif response.status == 403:
             raise PermissionDenied(response.reason)
         else:
-            print response.read()
+            print(response.read())
             raise OperationFailed(str(response.status) + ' Error: ' + response.reason)
 
     # This is where the work gets done to process GET requests with handcar.
@@ -233,15 +249,17 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
         connection.request('GET', url_path)
         response = connection.getresponse()
         self._error_check(response)
-        return json.loads(response.read())
+        reader = codecs.getreader('utf8')
+        return json.load(reader(response))
 
     def _load_json(self, url_string):
         try:
-            url = urllib2.urlopen(url_string).read()
-        except urllib2.HTTPError:
+            response = urlopen(url_string)
+        except urlerrors.HTTPError:
             raise NotFound()
         try:
-            return json.loads(url)
+            reader = codecs.getreader('utf8')
+            return json.load(reader(response))
         except Exception:
             raise OperationFailed()
 
@@ -254,7 +272,8 @@ class OsidObject(abc_osid_objects.OsidObject, markers.Identifiable, markers.Exte
         connection.request('PUT', url_path, data, {'Content-Type': 'application/json'})
         response = connection.getresponse()
         self._error_check(response)
-        return json.loads(response.read())
+        reader = codecs.getreader('utf8')
+        return json.load(reader(response))
 
     def get_display_name(self):
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.
@@ -539,15 +558,16 @@ class OsidForm(abc_osid_objects.OsidForm, markers.Identifiable, markers.Suppliab
         else:
             return False
 
-    def _is_valid_string(self, input, metadata):
-        if not isinstance(input, basestring):
+    def _is_valid_string(self, input_, metadata):
+        from ..utilities import is_string
+        if not is_string(input_):
             return False
-        if len(input) < metadata.get_minimum_string_length():
+        if len(input_) < metadata.get_minimum_string_length():
             return False
-        elif len(input) > metadata.get_maximum_string_length():
+        elif len(input_) > metadata.get_maximum_string_length():
             return False
         if (metadata.get_string_set() and
-                input not in metadata.get_string_set()):
+                input_ not in metadata.get_string_set()):
             return False
         else:
             return True
@@ -1168,7 +1188,7 @@ class OsidList(abc_osid_objects.OsidList):
 
     def next(self):
         try:
-            next_object = self._iter_object.next()
+            next_object = next(self._iter_object)
         except StopIteration:
             raise
         except Exception:  # Need to specify exceptions here!
@@ -1176,6 +1196,8 @@ class OsidList(abc_osid_objects.OsidList):
         if self._count is not None:
             self._count -= 1
         return next_object
+
+    __next__ = next
 
     def has_next(self):
         """Tests if there are more elements in this list.
@@ -1242,7 +1264,7 @@ class OsidList(abc_osid_objects.OsidList):
         """
         while n > 0:
             try:
-                self.next()
+                next(self)
             except StopIteration:
                 break
             n -= 1

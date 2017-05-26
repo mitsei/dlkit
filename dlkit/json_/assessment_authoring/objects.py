@@ -597,10 +597,12 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(AssessmentPart)
+
+    __next__ = next
 
     next_assessment_part = property(fget=get_next_assessment_part)
 
@@ -977,10 +979,12 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(SequenceRule)
+
+    __next__ = next
 
     next_sequence_rule = property(fget=get_next_sequence_rule)
 

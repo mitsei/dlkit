@@ -1,6 +1,9 @@
-import boto
+# import boto
+#
+# from boto.s3.key import Key
+import boto3
 
-from boto.s3.key import Key
+from botocore.exceptions import ClientError
 
 import dlkit.runtime.configs
 from dlkit.runtime.primordium import DataInputStream, Type, Id, DateTime
@@ -25,7 +28,7 @@ class AWSAdapterTests(DLKitTestCase):
         rm = self._get_aws_manager('repository')
         querier = rm.get_repository_query()
         querier.match_genus_type(TEST_REPOSITORY_GENUS, True)
-        repo = rm.get_repositories_by_query(querier).next()
+        repo = next(rm.get_repositories_by_query(querier))
         return rm.get_repository(repo.ident)  # to make sure we get a services repository
 
     def create_asset_with_content(self):
@@ -74,11 +77,21 @@ class AWSAdapterTests(DLKitTestCase):
             )
 
     def s3_file_exists(self, key):
-        connection = boto.connect_s3(S3_TEST_PUBLIC_KEY,
-                                     S3_TEST_PRIVATE_KEY)
-        bucket = connection.get_bucket(S3_TEST_BUCKET)
-        file_ = Key(bucket, key)
-        return file_.exists()
+        client = boto3.client(
+            's3',
+            aws_access_key_id=S3_TEST_PUBLIC_KEY,
+            aws_secret_access_key=S3_TEST_PRIVATE_KEY
+        )
+        try:
+            client.get_object(
+                Bucket=S3_TEST_BUCKET,
+                Key=key
+            )
+        except ClientError as ex:
+            if ex.response['Error']['Code'] == 'NoSuchKey':
+                return False
+            raise ex
+        return True
 
     def setUp(self):
         super(AWSAdapterTests, self).setUp()
@@ -99,7 +112,7 @@ class AWSAdapterTests(DLKitTestCase):
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
     def test_repository_assets_return_cloudfront_url_when_queried(self):
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
         url = asset_content.get_url()
         self.is_cloudfront_url(url)
 
@@ -107,7 +120,7 @@ class AWSAdapterTests(DLKitTestCase):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
-        asset_content = self._asset.get_asset_contents().next()
+        asset_content = next(self._asset.get_asset_contents())
 
         self._repo.delete_asset_content(asset_content.ident)
         self.assertFalse(self.s3_file_exists(expected_filekey))

@@ -10,15 +10,22 @@ from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.osid import objects as osid_objects
 from dlkit.json_.assessment.objects import Question, AnswerList, ItemList
 from dlkit.json_.assessment.sessions import ItemLookupSession
+from dlkit.json_.id.objects import IdList
 
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
-from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument
+from dlkit.abstract_osid.osid.errors import IllegalState,\
+    InvalidArgument, NotFound
 
 from sympy import sympify
 from sympy.core.numbers import Rational, Float
 
-from urllib import quote, unquote
+try:
+    # python 2
+    from urllib import quote, unquote
+except ImportError:
+    # python 3
+    from urllib.parse import quote, unquote
 
 from ..basic.simple_records import QuestionFilesRecord,\
     TextAnswerFormRecord,\
@@ -176,12 +183,12 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
     def _is_match(self, response, answer):
         if answer._value is not None:
             if isinstance(answer._value, Rational):
-                for label, value in response._my_map['integerValues'].iteritems():
+                for label, value in response._my_map['integerValues'].items():
                     if not isinstance(value, int):
                         continue
                     return value == answer._value
             elif isinstance(answer._value, Float):
-                for label, value in response._my_map['decimalValues'].iteritems():
+                for label, value in response._my_map['decimalValues'].items():
                     if not isinstance(value, float):
                         continue
                     return value == answer._value
@@ -293,7 +300,7 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
         self._orig_question_text = str(self.my_osid_object._my_map['text']['text'])  # get a copy, not a pointer
-        for variable, params in self.my_osid_object._my_map['variables'].iteritems():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if params['type'] == 'integer':
                 self._vars[variable] = randint(int(params['min_value']), int(params['max_value']))
             elif params['type'] == 'float':
@@ -303,7 +310,7 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
             self._set_variable_value(variable, self._vars[variable])
 
     def _set_variable_value(self, variable_name, value):
-        for variable, params in self.my_osid_object._my_map['variables'].iteritems():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if variable == variable_name and params['min_value'] <= value <= params['max_value']:
                 if params['type'] == 'integer':
                     orig_text = self.my_osid_object._my_map['text']['text']
@@ -312,14 +319,14 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
                         self.my_osid_object._my_map['text']['text'] = orig_text.replace(simple_var_label,
                                                                                         str(value))
                     else:
-                        item_body_soup = BeautifulSoup(orig_text, 'lxml-xml').itemBody
+                        item_body_soup = BeautifulSoup(orig_text, 'xml').itemBody
                         placeholder = item_body_soup.find('printedVariable', identifier=variable)
                         if placeholder:
                             placeholder.replace_with(str(value))
                             self.my_osid_object._my_map['text']['text'] = str(item_body_soup)
                 elif params['type'] == 'float':
                     orig_text = self.my_osid_object._my_map['text']['text']
-                    item_body_soup = BeautifulSoup(orig_text, 'lxml-xml').itemBody
+                    item_body_soup = BeautifulSoup(orig_text, 'xml').itemBody
                     placeholder = item_body_soup.find('printedVariable', identifier=variable)
                     if placeholder:
                         if params['format'] != '':
@@ -347,7 +354,7 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
     def set_values(self, variable_values):
         self.my_osid_object._my_map['text']['text'] = str(self._orig_question_text)
         self._vars = variable_values
-        for variable, value in variable_values.iteritems():
+        for variable, value in variable_values.items():
             self._set_variable_value(variable, value)
 
 
@@ -499,7 +506,7 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
     def get_object_map(self):
         obj_map = dict(self.my_osid_object._my_map)
         obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
-        for label, value in obj_map['decimalValues'].iteritems():
+        for label, value in obj_map['decimalValues'].items():
             obj_map['decimalValues'][label] = float(value)
         return obj_map
 
@@ -630,7 +637,7 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
         self._orig_question_text = list(self.my_osid_object._my_map['texts'])  # get a copy, not a pointer
-        for variable, params in self.my_osid_object._my_map['variables'].iteritems():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if params['type'] == 'integer':
                 self._vars[variable] = randint(int(params['min_value']), int(params['max_value']))
             elif params['type'] == 'float':
@@ -640,7 +647,7 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
             self._set_variable_value(variable, self._vars[variable])
 
     def _set_variable_value(self, variable_name, value):
-        for variable, params in self.my_osid_object._my_map['variables'].iteritems():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if variable == variable_name and params['min_value'] <= value <= params['max_value']:
                 if params['type'] == 'integer':
                     # cannot do self.my_osid_object.get_text().text because it can't
@@ -690,7 +697,7 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
     def set_values(self, variable_values):
         self.my_osid_object._my_map['texts'] = list(self._orig_question_text)
         self._vars = variable_values
-        for variable, value in variable_values.iteritems():
+        for variable, value in variable_values.items():
             self._set_variable_value(variable, value)
 
 
@@ -838,7 +845,7 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
     def get_object_map(self):
         obj_map = dict(self.my_osid_object._my_map)
         obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
-        for label, value in obj_map['decimalValues'].iteritems():
+        for label, value in obj_map['decimalValues'].items():
             obj_map['decimalValues'][label] = float(value)
         return obj_map
 

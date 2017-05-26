@@ -8,9 +8,14 @@
 # how to handle SSL versions from here:
 # http://stackoverflow.com/questions/18669457/python-httplib-ssl23-get-server-hellounknown-protocol
 
-import ssl
-import httplib
+import codecs
 import json
+import ssl
+
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
 
 from functools import partial
 
@@ -114,9 +119,10 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
         connection.request('GET', url_path)
         response = connection.getresponse()
         self._error_check(response)
-        result = response.read()
+        reader = codecs.getreader('utf8')
+        result = reader(response)
         try:
-            return json.loads(result)
+            return json.load(result)
         except ValueError:
             return result
 

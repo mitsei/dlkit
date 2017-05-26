@@ -374,10 +374,12 @@ class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Comment)
+
+    __next__ = next
 
     next_comment = property(fget=get_next_comment)
 
@@ -506,10 +508,12 @@ class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(Book)
+
+    __next__ = next
 
     next_book = property(fget=get_next_book)
 
@@ -639,10 +643,12 @@ class BookNodeList(abc_commenting_objects.BookNodeList, osid_objects.OsidList):
 
         """
         # Implemented from template for osid.resource.ResourceList.get_next_resource
-        return self.next()
+        return next(self)
 
     def next(self):
         return self._get_next_object(BookNode)
+
+    __next__ = next
 
     next_book_node = property(fget=get_next_book_node)
 

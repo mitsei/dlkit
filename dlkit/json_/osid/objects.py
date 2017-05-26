@@ -27,8 +27,9 @@ from ..osid import markers as osid_markers
 from ..primitives import DisplayText
 from ..primitives import Id
 from ..primitives import Type
-from ..utilities import OsidListList
+from ..utilities import OsidListList, is_string
 from ..utilities import get_locale_with_proxy
+from ..utilities import is_string
 from ..utilities import update_display_text_defaults
 from .metadata import Metadata
 from dlkit.abstract_osid.locale.primitives import DisplayText as abc_display_text
@@ -931,7 +932,7 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
 
     def _is_valid_string(self, inpt, metadata):
         """Checks if input is a valid string"""
-        if not isinstance(inpt, basestring):
+        if not is_string(inpt):
             return False
         if metadata.get_minimum_string_length() and len(inpt) < metadata.get_minimum_string_length():
             return False
@@ -2373,7 +2374,7 @@ class OsidList(abc_osid_objects.OsidList):
             counter = 0
             while counter < number:
                 try:
-                    next_list.append(self.next())
+                    next_list.append(next(self))
                 except Exception:  # Need to specify exceptions here!
                     raise errors.OperationFailed()
                 counter += 1
@@ -2384,16 +2385,18 @@ class OsidList(abc_osid_objects.OsidList):
         next_object = OsidList.next(self)
         if isinstance(next_object, dict):
             next_object = object_class(osid_object_map=next_object, runtime=self._runtime, proxy=self._proxy)
-        elif isinstance(next_object, basestring) and object_class == Id:
+        elif is_string(next_object) and object_class == Id:
             next_object = Id(next_object)
         return next_object
 
     def next(self):
         """next method for iterator."""
-        next_object = self._iter_object.next()
+        next_object = next(self._iter_object)
         if self._count is not None:
             self._count -= 1
         return next_object
+
+    __next__ = next
 
     def len(self):
         """Returns number of available elements"""

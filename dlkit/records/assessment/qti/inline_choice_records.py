@@ -14,14 +14,20 @@ from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid.metadata import Metadata
 
 from dlkit.abstract_osid.assessment import record_templates as abc_assessment_records
-from dlkit.abstract_osid.osid.errors import IllegalState, NoAccess, InvalidArgument
+from dlkit.abstract_osid.osid.errors import IllegalState, NoAccess,\
+    InvalidArgument, NotFound
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 
 from random import shuffle
 
-from urllib import unquote, quote
+try:
+    # python 2
+    from urllib import unquote, quote
+except ImportError:
+    # python 3
+    from urllib.parse import unquote, quote
 
 from ..basic.feedback_answer_records import FeedbackAnswerFormRecord, FeedbackAnswerRecord
 from ..basic.simple_records import FilesAnswerRecord, FilesAnswerFormRecord,\
@@ -128,10 +134,10 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
         match = False
         answer_choices = answer.get_inline_choice_ids()
         response_choices = response.get_inline_choice_ids()
-        num_total_regions = len(answer_choices.keys())
+        num_total_regions = len(list(answer_choices.keys()))
         num_matching_regions = 0
-        if len(response_choices.keys()) == len(answer_choices.keys()):
-            for inline_region, answer_region_choices in answer_choices.iteritems():
+        if len(list(response_choices.keys())) == len(list(answer_choices.keys())):
+            for inline_region, answer_region_choices in answer_choices.items():
                 if set(list(answer_region_choices['choiceIds'])) == set(list(response_choices[inline_region]['choiceIds'])):
                     num_matching_regions += 1
             return num_matching_regions == num_total_regions
@@ -180,7 +186,7 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
         # also look for generic incorrect answer
         if wrong_answers is not None:
             for answer in wrong_answers:
-                if len(answer.get_inline_choice_ids().keys()) == 0:
+                if len(list(answer.get_inline_choice_ids().keys())) == 0:
                     return answer
 
         raise NotFound('no matching answer found for response')
@@ -380,7 +386,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
         #     raise IllegalState()
         choices = self.my_osid_object._my_map['choices']
         if self.my_osid_object._my_map['shuffle']:
-            for region, region_choices in choices.iteritems():
+            for region, region_choices in choices.items():
                 shuffle(region_choices)
                 choices[region] = region_choices
         self.my_osid_object._my_map['choices'] = choices
@@ -433,7 +439,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
         # if not self.my_osid_object._my_map['choices']:
         #     raise IllegalState()
         organized_regions = {}
-        for region, choice_ids in choice_ids.iteritems():
+        for region, choice_ids in choice_ids.items():
             organized_choice_ids = []
             for choice in choice_ids:
                 original_region_choices = self._original_choice_order[region]
@@ -575,7 +581,7 @@ class InlineChoiceFeedbackAndFilesAnswerRecord(FilesAnswerRecord,
     def get_inline_choice_ids(self):
         """stub"""
         return_data = {}
-        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].iteritems():
+        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].items():
             return_data[inline_region] = {
                 'choiceIds': IdList(data['choiceIds'])
             }
@@ -792,7 +798,7 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
         #     raise IllegalState()
         choices = self.my_osid_object._my_map['choices']
         if self.my_osid_object._my_map['shuffle']:
-            for region, region_choices in choices.iteritems():
+            for region, region_choices in choices.items():
                 shuffle(region_choices)
                 choices[region] = region_choices
         self.my_osid_object._my_map['choices'] = choices
@@ -823,8 +829,8 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
     def get_unrandomized_choices(self):
         # if not self.my_osid_object._my_map['choices']:
         #     raise IllegalState()
-        if len(self._original_choice_order.keys()) > 0:
-            for region, choices in self._original_choice_order.iteritems():
+        if len(list(self._original_choice_order.keys())) > 0:
+            for region, choices in self._original_choice_order.items():
                 if len(choices) > 0:
                     updated_region_choices = []
                     for choice in choices:
@@ -849,7 +855,7 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
         # if not self.my_osid_object._my_map['choices']:
         #     raise IllegalState()
         organized_regions = {}
-        for region, choice_ids in choice_ids.iteritems():
+        for region, choice_ids in choice_ids.items():
             organized_choice_ids = []
             for choice in choice_ids:
                 original_region_choices = self._original_choice_order[region]
@@ -863,8 +869,8 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
         # ideally would return a displayText object in text ... except for legacy
         # use cases like OEA, it expects a text string.
         choices = {}
-        # for region_name, region_choices in self.my_osid_object.object_map['choices'].iteritems():
-        for region_name, region_choices in self.my_osid_object._my_map['choices'].iteritems():
+        # for region_name, region_choices in self.my_osid_object.object_map['choices'].items():
+        for region_name, region_choices in self.my_osid_object._my_map['choices'].items():
             updated_region_choices = []
             for current_choice in region_choices:
                 filtered_choice = {
@@ -1023,7 +1029,7 @@ class InlineChoiceAnswerRecord(osid_records.OsidRecord,
     def get_inline_choice_ids(self):
         """stub"""
         return_data = {}
-        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].iteritems():
+        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].items():
             return_data[inline_region] = {
                 'choiceIds': IdList(data['choiceIds'])
             }
