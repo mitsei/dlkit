@@ -1,8 +1,9 @@
 # Did the tests fail?  First, check make sure you are running them from outside
 # the package
-
+import codecs
 import unittest
 import random
+
 from dlkit.handcar import utilities
 from dlkit.handcar import settings
 from dlkit.handcar.primitives import Id, Type, DisplayText
@@ -170,8 +171,9 @@ class TestObjectiveLookup(unittest.TestCase):
         self.ols = self.lm.get_objective_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Objective Types (Note: This does not use the osid contract)
         url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/objective'
-        url = urlopen(url_string).read()
-        self.objective_genus_types = json.loads(url)
+        response = urlopen(url_string)
+        reader = codecs.getreader('utf8')
+        self.objective_genus_types = json.load(reader(response))
 
     def test_get_objective_bank(self):
         test_bank_id = self.ols.get_objective_bank().get_id().get_identifier()
@@ -387,8 +389,9 @@ class TestActivityLookup(unittest.TestCase):
         self.als = self.lm.get_activity_lookup_session_for_objective_bank(self.first_bank.get_id())
         # Get list of supported Activity Types (Note: This does not use the osid contract yet)
         url_string = 'http://' + settings.HOST + '/handcar/services/learning/objectivebanks/' + str(self.first_bank.get_id()) + '/types/genus/activity'
-        url = urlopen(url_string).read()
-        self.activity_genus_types = json.loads(url)
+        response = urlopen(url_string)
+        reader = codecs.getreader('utf8')
+        self.activity_genus_types = json.load(reader(response))
 
     def test_get_objective_bank(self):
         test_bank_id = self.als.get_objective_bank().get_id().get_identifier()
