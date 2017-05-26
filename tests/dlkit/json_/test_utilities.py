@@ -4,6 +4,7 @@ import codecs
 import glob
 import json
 import os
+import shutil
 import unittest
 
 from dlkit.json_.utilities import MyIterator,\
@@ -112,7 +113,7 @@ class TestJSONClientValidated(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        pass
+        shutil.rmtree(cls._get_test_store_path(cls.mgr._provider_manager._runtime))
 
     def test_can_save_json_file(self):
         test_doc = {'_id': '123', 'foo': 'bar'}
