@@ -240,7 +240,7 @@ def query_is_match(query, contents):
         if key == '_id' and isinstance(value, ObjectId):
             value = str(value)
 
-        if isinstance(value, dict) and list(value.keys()[0]) == '$in':
+        if isinstance(value, dict) and list(value.keys())[0] == '$in':
             value_key = list(value.keys())[0]
 
             mod_value = value[value_key]
