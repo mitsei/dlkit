@@ -137,7 +137,12 @@ def _stringify(soup_tag, contents=False):
             # might just be a string!
             return soup_tag
     else:
-        return str(soup_tag)
+        try:
+            # python 2
+            return unicode(soup_tag)
+        except NameError:
+            # python 3
+            return str(soup_tag)
 
 
 def create_display_text(text_string, language_code=None):
@@ -325,7 +330,6 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
             return self.my_osid_object._my_map['shuffle']
 
     def get_qti_xml(self, media_file_root_path=''):
-        # TODO: update this to account for media files and our local URLs
         qti = BeautifulSoup('<assessmentItem></assessmentItem>', 'xml')
 
         item = qti.assessmentItem
@@ -447,9 +451,6 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                                      '</defaultValue>'
                                      '</outcomeDeclaration>')
             item.append(BeautifulSoup(min_score_declaration, 'xml').outcomeDeclaration)
-            # item_body = qti.new_tag('itemBody')
-            # for c in BeautifulSoup(self.my_osid_object.get_text().text, 'xml').contents:
-            #     item_body.append(c)
             my_text = self._wrap_xml(object_map['text']['text'], 'itemBody')
             item_body = BeautifulSoup(my_text, 'xml').itemBody
 
@@ -531,9 +532,6 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                                     '</outcomeDeclaration>')
             item.append(BeautifulSoup(feedback_declaration, 'xml').outcomeDeclaration)
 
-            # item_body = qti.new_tag('itemBody')
-            # for c in BeautifulSoup(self.my_osid_object.get_text().text, 'xml').contents:
-            #     item_body.append(c)
             my_text = self._wrap_xml(object_map['text']['text'], 'itemBody')
             item_body = BeautifulSoup(my_text, 'xml').itemBody
 
@@ -579,9 +577,6 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
             for inline_choice_interaction in item_body.find_all('inlineChoiceInteraction'):
                 inline_identifier = inline_choice_interaction['responseIdentifier']
                 for choice in choice_region_map[inline_identifier]:
-                    # inline_choice = qti.new_tag('inlineChoice')
-                    # inline_choice['identifier'] = choice['id']
-                    # inline_choice.string = choice['text']
                     if 'text' in choice:
                         choice_text = self._wrap_xml(choice['text'], 'inlineChoice')
                     else:
