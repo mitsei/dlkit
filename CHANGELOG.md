@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.1] - 2017-05-31
+### Added
+- Tests for json and filesystem utilities.
+- Mock handcar adapter tests with `vcrpy` library.
+
+### Changed
+- MongoListener handles filesystem and test cases better.
+- Filesystem `.json` encoding forced to `utf8`.
+- Handcar adapter uses `requests` library.
+
+### Fixed
+- Filesystem query method `len()` of keys check.
+- Helper iterator forces lists to be iterators.
+
 ## [0.4.0] - 2017-05-26
 ### Changed
 - Python 3.4+ compatibility.
@@ -82,6 +96,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.4.1]: https://github.com/mitsei/dlkit/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/mitsei/dlkit/compare/0.3.7...0.4.0
 [0.3.7]: https://github.com/mitsei/dlkit/compare/0.3.6...0.3.7
 [0.3.6]: https://github.com/mitsei/dlkit/compare/0.3.5...0.3.6
