@@ -57,6 +57,7 @@ class Filler(object):
 
 class MyIterator(object):
     def __init__(self, data):
+        # make sure ._data is an iterator, otherwise next(self._data) will fail
         self._data = iter(data)
         self._i = -1
 

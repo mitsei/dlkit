@@ -60,11 +60,16 @@ class MongoListener(Thread):
             raise IllegalState('notification thread is already initialized')
         if not JSON_CLIENT.is_json_client_set() and runtime is not None:
             JSON_CLIENT.set_json_client(runtime)
-        cursor = JSON_CLIENT.json_client['local']['oplog.rs'].find().sort('ts', DESCENDING).limit(-1)
         try:
-            self.last_timestamp = cursor.next()['ts']
-        except StopIteration:
-            self.last_timestamp = Timestamp(0, 0)
+            cursor = JSON_CLIENT.json_client['local']['oplog.rs'].find().sort('ts', DESCENDING).limit(-1)
+        except TypeError:
+            # filesystem, so .json_client is a bool and not iterable
+            pass
+        else:
+            try:
+                self.last_timestamp = cursor.next()['ts']
+            except StopIteration:
+                self.last_timestamp = Timestamp(0, 0)
 
     def _notify_receiver(self, receiver, params, doc):
         """Send notification to the receiver"""
@@ -87,14 +92,14 @@ class MongoListener(Thread):
                             'receiver': receiver,
                             'params': dict(params),
                             'doc': dict(doc),
-                            'ts': datetime.datetime.now(),
+                            'ts': datetime.datetime.utcnow(),
                             'attempts': 1}
 
     def _retry(self):
         """Deal with unacknowledged notifications."""
         notifications_to_delete = []
         for notification_id in self.notifications:
-            if datetime.datetime.now() > self.notifications[notification_id]['ts'] + self._wait_period:
+            if datetime.datetime.utcnow() > self.notifications[notification_id]['ts'] + self._wait_period:
                 self._notify_receiver(
                     self.notifications[notification_id]['receiver'],
                     self.notifications[notification_id]['params'],
@@ -102,7 +107,7 @@ class MongoListener(Thread):
                 if self.notifications[notification_id]['attempts'] >= self._max_attempts - 1:
                     notifications_to_delete.append(notification_id)
                 else:
-                    self.notifications[notification_id]['ts'] = datetime.datetime.now()
+                    self.notifications[notification_id]['ts'] = datetime.datetime.utcnow()
                     self.notifications[notification_id]['attempts'] += 1
         for notification_id in notifications_to_delete:
             del self.notifications[notification_id]
@@ -110,17 +115,22 @@ class MongoListener(Thread):
     def run(self):
         """main control loop for thread"""
         while True:
-            cursor = JSON_CLIENT.json_client['local']['oplog.rs'].find(
-                {'ts': {'$gt': self.last_timestamp}})
-            # http://stackoverflow.com/questions/30401063/pymongo-tailing-oplog
-            cursor.add_option(2)  # tailable
-            cursor.add_option(8)  # oplog_replay
-            cursor.add_option(32)  # await data
-            self._retry()
-            for doc in cursor:
-                self.last_timestamp = doc['ts']
-                if doc['ns'] in self.receivers:
-                    self._run_namespace(doc)
+            try:
+                cursor = JSON_CLIENT.json_client['local']['oplog.rs'].find(
+                    {'ts': {'$gt': self.last_timestamp}})
+            except TypeError:
+                # filesystem, so .json_client is a bool and not iterable
+                pass
+            else:
+                # http://stackoverflow.com/questions/30401063/pymongo-tailing-oplog
+                cursor.add_option(2)  # tailable
+                cursor.add_option(8)  # oplog_replay
+                cursor.add_option(32)  # await data
+                self._retry()
+                for doc in cursor:
+                    self.last_timestamp = doc['ts']
+                    if doc['ns'] in self.receivers:
+                        self._run_namespace(doc)
             time.sleep(1)
 
 MONGO_LISTENER = MongoListener()
