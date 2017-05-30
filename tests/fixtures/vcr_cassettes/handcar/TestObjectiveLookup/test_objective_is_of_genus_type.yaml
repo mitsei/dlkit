@@ -1,0 +1,66 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.outcome%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:01 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.degree.level%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['2']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:16:56 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.degree.level%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['2']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:20:44 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

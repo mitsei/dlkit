@@ -1,0 +1,59 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/roots?descendentlevels=0
+  response:
+    body: {string: !!python/unicode '[{"type":"ObjectiveNode","id":"mc3-objective%3A162%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:18","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Buffers:
+        A study of Chemical Equilibria"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Buffers:
+        A study of Chemical Equilibria"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A217%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:23","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Electrochem
+        and Redox"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Electrochem
+        and Redox"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A343%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:31","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"MO
+        Theory"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"MO
+        Theory"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A297%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:27","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Waves
+        and Particles"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Waves
+        and Particles"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2957']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:07 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/roots?descendentlevels=0
+  response:
+    body: {string: !!python/unicode '[{"type":"ObjectiveNode","id":"mc3-objective%3A162%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:18","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Buffers:
+        A study of Chemical Equilibria"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Buffers:
+        A study of Chemical Equilibria"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A217%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:23","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Electrochem
+        and Redox"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Electrochem
+        and Redox"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A343%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:31","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"MO
+        Theory"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"MO
+        Theory"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false},{"type":"ObjectiveNode","id":"mc3-objective%3A297%40MIT-OEIT","auditTrail":{"addedOn":"2013-11-13T14:42:27","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Waves
+        and Particles"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Waves
+        and Particles"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT","childNodes":[],"leaf":false,"root":true,"sequestered":false}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['2957']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:17:03 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

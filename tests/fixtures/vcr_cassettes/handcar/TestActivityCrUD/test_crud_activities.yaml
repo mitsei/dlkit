@@ -1,0 +1,138 @@
+interactions:
+- request:
+    body: '{"journalComment": {"languageTypeId": "639-2%3AEnglish%40ISO", "scriptTypeId":
+      "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": ""}, "displayName": {"languageTypeId": "639-2%3AEnglish%40ISO", "scriptTypeId":
+      "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "Test Activity"}, "description": {"languageTypeId": "639-2%3AEnglish%40ISO",
+      "scriptTypeId": "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "This is a Test Activity"}, "genusTypeId": "mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT",
+      "objectiveId": "mc3-objective%3A15959%40MIT-OEIT", "assessmentIds": [], "assetIds":
+      [], "courseIds": []}'
+    headers:
+      Content-Type: [application/json]
+    method: POST
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/
+  response:
+    body: {string: '{"type":"Activity","id":"mc3-activity%3A3965%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Activity"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Activity"},"genusTypeId":"mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT","assessmentIds":[],"assetIds":[],"courseIds":[],"objectiveId":"mc3-objective%3A15959%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['663']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:39 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/mc3-activity%3A3965%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Activity","id":"mc3-activity%3A3965%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Activity"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Activity"},"genusTypeId":"mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT","assessmentIds":[],"assetIds":[],"courseIds":[],"objectiveId":"mc3-objective%3A15959%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['663']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:39 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"type": "Activity", "id": "mc3-activity%3A3965%40MIT-OEIT", "auditTrail":
+      {"addedBy": "MC3GUE$T", "addedOn": "2017-05-26T14:07:39"}, "current": true,
+      "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "This
+      is a Test Activity"}, "displayName": {"formatTypeId": "format.text%3APlain%40okapia.net",
+      "languageTypeId": "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org",
+      "text": "New Name for Test Activity"}, "genusTypeId": "mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT",
+      "assessmentIds": [], "assetIds": [], "courseIds": [], "objectiveId": "mc3-objective%3A15959%40MIT-OEIT"}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/
+  response:
+    body: {string: '{"type":"Activity","id":"mc3-activity%3A3965%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Activity"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Activity"},"genusTypeId":"mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT","assessmentIds":[],"assetIds":[],"courseIds":[],"objectiveId":"mc3-objective%3A15959%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['733']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:39 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/mc3-activity%3A3965%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Activity","id":"mc3-activity%3A3965%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Activity"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Activity"},"genusTypeId":"mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT","assessmentIds":[],"assetIds":[],"courseIds":[],"objectiveId":"mc3-objective%3A15959%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['733']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:39 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: DELETE
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/mc3-activity%3A3965%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Activity","id":"mc3-activity%3A3965%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2017-05-26T14:07:39","updatedBy":"MC3GUE$T","updatedOn":"2017-05-26T14:07:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Activity"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Activity"},"genusTypeId":"mc3-activity%3Amc3.learning.activity.asset.based%40MIT-OEIT","assessmentIds":[],"assetIds":[],"courseIds":[],"objectiveId":"mc3-objective%3A15959%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['733']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:40 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/activities/mc3-activity%3A3965%40MIT-OEIT
+  response:
+    body: {string: 'org.osid.NotFoundException: mc3-activity:3965@MIT-OEIT was not
+        found in bank mc3-objectivebank:2825@MIT-OEIT it might exist in another bank'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['139']
+      Content-Type: [text/plain]
+      Date: ['Fri, 26 May 2017 18:07:40 GMT']
+      Server: [Apache]
+    status: {code: 404, message: Not Found}
+version: 1

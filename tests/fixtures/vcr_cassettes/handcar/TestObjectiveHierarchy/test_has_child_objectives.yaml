@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/mc3-objective%3A178%40MIT-OEIT/children
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A179%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:19","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Definitions
+        of Acids and Bases (specifically Bronsted-Lowry)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Definitions
+        of Acids and Bases (specifically Bronsted-Lowry)"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A182%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Chemical
+        equilibria and pH for acids and bases"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Chemical
+        equilibria and pH for acids and bases"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A187%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Strength
+        of an acid/base"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Strength
+        of an acid/base"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A192%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Auto-Ionization
+        of Water"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Auto-Ionization
+        of Water"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A194%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:21","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Indicators"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Indicators"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['3584']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:07 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/mc3-objective%3A193%40MIT-OEIT/children
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:08 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/mc3-objective%3A178%40MIT-OEIT/children
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A179%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:19","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Definitions
+        of Acids and Bases (specifically Bronsted-Lowry)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Definitions
+        of Acids and Bases (specifically Bronsted-Lowry)"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A182%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Chemical
+        equilibria and pH for acids and bases"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Chemical
+        equilibria and pH for acids and bases"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A187%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Strength
+        of an acid/base"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Strength
+        of an acid/base"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A192%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:20","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Auto-Ionization
+        of Water"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Auto-Ionization
+        of Water"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A194%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T14:42:21","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Indicators"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Indicators"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A2%40MIT-OEIT"}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['3584']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:17:04 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A2%40MIT-OEIT/objectives/mc3-objective%3A193%40MIT-OEIT/children
+  response:
+    body: {string: !!python/unicode '[]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['2']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:17:04 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

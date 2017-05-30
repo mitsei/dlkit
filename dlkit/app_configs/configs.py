@@ -874,6 +874,127 @@ TEST_JSON_AWS_1 = {
     }
 }
 
+TEST_JSON_FILESYSTEM_1 = {
+    'id': 'json_configuration_1',
+    'displayName': 'JSON Configuration',
+    'description': 'Configuration for JSON Implementation',
+    'parameters': {
+        'implKey': impl_key_dict('json'),
+        'mongoDBNamePrefix': {
+            'syntax': 'STRING',
+            'displayName': 'Mongo DB Name Prefix',
+            'description': 'Prefix for naming mongo databases.',
+            'values': [
+                {'value': 'test_dlkit_', 'priority': 1}
+            ]
+        },
+        'authority': {
+            'syntax': 'STRING',
+            'displayName': 'Mongo Authority',
+            'description': 'Authority.',
+            'values': [
+                {'value': DLKIT_AUTHORITY, 'priority': 1}
+            ]
+        },
+        'indexes': {
+            'syntax': 'OBJECT',
+            'displayName': 'Mongo DB Indexes',
+            'description': 'Indexes to set in MongoDB',
+            'values': [
+                {'value': DLKIT_MONGO_DB_INDEXES, 'priority': 1}
+            ]
+        },
+        'mongoHostURI': {
+            'syntax': 'STRING',
+            'displayName': 'Mongo Host URI',
+            'description': 'URI for setting the MongoClient host.',
+            'values': [
+                {'value': MONGO_HOST_URI, 'priority': 1}
+            ]
+        },
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
+            ]
+        },
+        'assetContentRecordTypeForFiles': {
+            'syntax': 'TYPE',
+            'displayName': 'Asset Content Type for Files',
+            'description': 'Asset Content Type for Records that store Files in a repository',
+            'values': [
+                {'value': FILESYSTEM_ASSET_CONTENT_TYPE, 'priority': 1}
+            ]
+        },
+        'recordsRegistry': {
+            'syntax': 'STRING',
+            'displayName': 'Python path to the extension records registry file',
+            'description': 'dot-separated path to the extension records registry file',
+            'values': [
+                {'value': 'dlkit.records.registry', 'priority': 1}
+            ]
+        },
+        'magicItemLookupSessions': {
+            'syntax': 'STRING',
+            'displayName': 'Which magic item lookup sessions to try',
+            'description': 'To handle magic IDs.',
+            'values': [
+                {'value': 'dlkit.records.adaptive.multi_choice_questions.randomized_questions.RandomizedMCItemLookupSession', 'priority': 1}
+            ]
+        },
+        'magicAssessmentPartLookupSessions': {
+            'syntax': 'STRING',
+            'displayName': 'Which magic assessment part lookup sessions to try',
+            'description': 'To handle magic IDs.',
+            'values': [
+                {'value': 'dlkit.records.adaptive.magic_parts.assessment_part_records.MagicAssessmentPartLookupSession', 'priority': 1}
+            ]
+        },
+        'localImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Implementation identifier for local service provider',
+            'description': 'Implementation identifier for local service provider.  Typically the same identifier as the Mongo configuration',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'useCachingForQualifierIds': {
+            'syntax': 'BOOLEAN',
+            'displayName': 'Flag to use memcached for authz qualifier_ids or not',
+            'description': 'Flag to use memcached for authz qualifier_ids or not',
+            'values': [
+                {'value': True, 'priority': 1}
+            ]
+        },
+        'useFilesystem': {
+            'syntax': 'BOOLEAN',
+            'displayName': 'Use the filesystem instead of MongoDB',
+            'description': 'Use the filesystem instead of MongoDB',
+            'values': [
+                {'value': True, 'priority': 1}
+            ]
+        },
+        'dataStorePath': {
+            'syntax': 'STRING',
+            'displayName': 'Path to local filesystem datastore',
+            'description': 'Filesystem path for setting the MongoClient host.',
+            'values': [
+                {'value': TEST_DATA_STORE_PATH, 'priority': 1}
+            ]
+        },
+        'dataStoreFullPath': {
+            'syntax': 'STRING',
+            'displayName': 'Full path to local filesystem datastore',
+            'description': 'Filesystem path for setting the MongoClient host.',
+            'values': [
+                {'value': ABS_PATH, 'priority': 1}
+            ]
+        },
+    }
+}
+
 TEST_AUTHZ_ADAPTER_1 = {
     'id': 'authz_adapter_configuration_1',
     'displayName': 'AuthZ Adapter Configuration',
@@ -1226,6 +1347,87 @@ TEST_SERVICE_HANDCAR = {
             'description': 'Implementation for repository service provider',
             'values': [
                 {'value': HANDCAR_IMPL, 'priority': 1}
+            ]
+        },
+    }
+}
+
+TEST_SERVICE_FILESYSTEM = {
+    'id': 'dlkit_runtime_bootstrap_configuration',
+    'displayName': 'DLKit Runtime Bootstrap Configuration',
+    'description': 'Bootstrap Configuration for DLKit Runtime',
+    'parameters': {
+        'implKey': impl_key_dict('service'),
+        'assessmentProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Provider Implementation',
+            'description': 'Implementation for assessment service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'assessment_authoringProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Authoring Provider Implementation',
+            'description': 'Implementation for assessment authoring service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'authorizationProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Authorization Provider Implementation',
+            'description': 'Implementation for authorization service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'learningProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Learning Provider Implementation',
+            'description': 'Implementation for learning service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'commentingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Commenting Provider Implementation',
+            'description': 'Implementation for commenting service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'resourceProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Resource Provider Implementation',
+            'description': 'Implementation for resource service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'gradingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Grading Provider Implementation',
+            'description': 'Implementation for grading provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'loggingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Logging Provider Implementation',
+            'description': 'Implementation for logging provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
             ]
         },
     }

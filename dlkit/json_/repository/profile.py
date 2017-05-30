@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo repository'
 
 DESCRIPTION = 'MongoDB based repository implementation'
 
-VERSIONCOMPONENTS = [0, 1, 268]
+VERSIONCOMPONENTS = [0, 1, 272]
 
-RELEASEDATE = "2017-05-25"
+RELEASEDATE = "2017-05-30"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

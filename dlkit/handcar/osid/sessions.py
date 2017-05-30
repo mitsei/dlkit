@@ -6,16 +6,15 @@
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-import codecs
+import logging
+import json
+import requests
+import ssl
 
 try:
     import http.client as httplib
 except ImportError:
     import httplib
-
-import logging
-import json
-import ssl
 
 from functools import partial
 
@@ -138,92 +137,86 @@ class OsidSession(abc_osid_sessions.OsidSession):
         return self._authz_hints[str(cat_id)]
 
     def _error_check(self, response):
-        if response.status == 200:
+        if response.status_code == 200:
             return
-        elif response.status == 404:
-            raise NotFound(response.reason)
-        elif response.status == 403:
-            raise PermissionDenied(response.reason)
-        elif 'org.osid.NotFoundException' in response.read():
-            raise NotFound(response.reason)
+        elif response.status_code == 404:
+            raise NotFound(response.text)
+        elif response.status_code == 403:
+            raise PermissionDenied(response.text)
+        elif 'org.osid.NotFoundException' in response.text:
+            raise NotFound(response.text)
         else:
-            raise OperationFailed(str(response.status) + ' Error: ' + response.reason)
+            raise OperationFailed(str(response.status_code) + ' Error: ' + response.text)
+
+    def _full_url(self, url_path):
+        return 'https://{0}{1}'.format(self._host, url_path)
 
     # This is where the work gets done to process GET requests with handcar.
     # Here you can experiment with different libraries, etc.
     def _get_request(self, url_path):
         # if datetime.now() - self._timestamp > self._duration:
         #    self._set_agent_query_str(username = self.get_effective_agent_id().get_identifier())
-        connection = httplib.HTTPSConnection(self._host)
-        url_path = url_path + self._get_agent_query_str()
+        url_path += self._get_agent_query_str()
         url_path = url_path.replace('?', '&')
         url_path = url_path.replace('&', '?', 1)
         # logging.info('get: ' + url_path)
-        connection.request('GET', url_path)
-        response = connection.getresponse()
+        response = requests.get(self._full_url(url_path))
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        result = reader(response)
         try:
-            return json.load(result)
+            return response.json()
         except ValueError:
-            return result
+            return response.text
 
     # This is where the work gets done to process POST requests with handcar.
     # Here you can experiment with different libraries, etc.
     def _post_request(self, url_path, data_map):
         # if datetime.now() - self._timestamp > self._duration:
         #    self._set_agent_query_str(username = self.get_effective_agent_id().get_identifier())
-        connection = httplib.HTTPSConnection(self._host)
-        url_path = url_path + self._get_agent_query_str()
+        # connection = httplib.HTTPSConnection(self._host)
+        url_path += self._get_agent_query_str()
         data = json.dumps(data_map)
         # logging.info('post: ' + url_path)
-        connection.request('POST', url_path, data, {'Content-Type': 'application/json'})
-        response = connection.getresponse()
+        response = requests.post(self._full_url(url_path),
+                                 data=data,
+                                 headers={'Content-Type': 'application/json'})
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        result = reader(response)
         try:
-            return json.load(result)
+            return response.json()
         except ValueError:
-            return result
+            return response.text
 
     # This is where the work gets done to process PUT requests with handcar.
     # Here you can experiment with different libraries, etc.
     def _put_request(self, url_path, data_map):
         # if datetime.now() - self._timestamp > self._duration:
         #    self._set_agent_query_str(username = self.get_effective_agent_id().get_identifier())
-        connection = httplib.HTTPSConnection(self._host)
-        url_path = url_path + self._get_agent_query_str()
+        # connection = httplib.HTTPSConnection(self._host)
+        url_path += self._get_agent_query_str()
         data = json.dumps(data_map)
         # logging.info('put: ' + url_path)
-        connection.request('PUT', url_path, data, {'Content-Type': 'application/json'})
-        response = connection.getresponse()
+        response = requests.put(self._full_url(url_path),
+                                data=data,
+                                headers={'Content-Type': 'application/json'})
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        result = reader(response)
         try:
-            return json.load(result)
+            return response.json()
         except ValueError:
-            return result
+            return response.text
 
     # This is where the work gets done to process DELETE requests with handcar.
     # Here you can experiment with different libraries, etc.
     def _delete_request(self, url_path):
         # if datetime.now() - self._timestamp > self._duration:
         #    self._agent_key_str = self._get_agent_key_str(username = self.get_effective_agent_id().get_identifier())
-        connection = httplib.HTTPSConnection(self._host)
-        url_path = url_path + self._get_agent_query_str()
+        # connection = httplib.HTTPSConnection(self._host)
+        url_path += self._get_agent_query_str()
         # logging.info('delete: ' + url_path)
-        connection.request('DELETE', url_path)
-        response = connection.getresponse()
+        response = requests.delete(self._full_url(url_path))
         self._error_check(response)
-        reader = codecs.getreader('utf8')
-        result = reader(response)
         try:
-            return json.load(result)
+            return response.json()
         except ValueError:
-            return result
+            return response.text
 
     def get_locale(self):
         """Gets the locale indicating the localization preferences in

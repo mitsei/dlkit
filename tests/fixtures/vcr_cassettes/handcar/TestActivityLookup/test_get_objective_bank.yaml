@@ -1,0 +1,45 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A1%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T13:55:58","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"These
+        objectives are loaded from the Crosslinks wiki"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Crosslinks"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.crosslinks%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['621']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:35 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT
+  response:
+    body: {string: !!python/unicode '{"type":"ObjectiveBank","id":"mc3-objectivebank%3A1%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2013-11-13T13:55:58","comment":""},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"These
+        objectives are loaded from the Crosslinks wiki"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Crosslinks"},"genusTypeId":"mc3-objectivebank%3Amc3.learning.objectivebank.crosslinks%40MIT-OEIT"}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['621']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:17:30 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

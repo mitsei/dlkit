@@ -90,8 +90,8 @@ setup(
     extras_require={
         'dev': [],
         'test': ['pymongo', 'numpy', 'envoy', 'lxml', 'sympy',
-                 'bs4', 'python-memcached',
-                 'rsa', 'requests',
+                 'bs4', 'python-memcached', 'requests',
+                 'rsa', 'requests', 'vcrpy', 'future',
                  'pytest', 'pytest-pep8', 'pytest-cov'],
     },
 

@@ -1,0 +1,53 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives/mc3-objective%3A3762%40MIT-OEIT/requisites/
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A3902%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:40","updatedBy":"MC3GUE$T","updatedOn":"2015-08-06T11:04:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"A
+        Riemann sum is an approximation of the signed area bounded by a function $f(x)$
+        and the $x$-axis: $$ A = \\sum_{k=1}^{n} y_k^* \\, \\Delta x_k $$ where $y_k^*
+        = f(x_k^*)$ is the height and $\\Delta x_k$ is the width of the $k^{th}$ vertical
+        strip.\n\n--- 18.01 notes (5th link in Learn section)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Riemann
+        sum"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A559833b0e7dde0867b34d088%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1076']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:03 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives/mc3-objective%3A3762%40MIT-OEIT/requisites/
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A3902%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:40","updatedBy":"MC3GUE$T","updatedOn":"2015-08-06T11:04:36"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"A
+        Riemann sum is an approximation of the signed area bounded by a function $f(x)$
+        and the $x$-axis: $$ A = \\sum_{k=1}^{n} y_k^* \\, \\Delta x_k $$ where $y_k^*
+        = f(x_k^*)$ is the height and $\\Delta x_k$ is the width of the $k^{th}$ vertical
+        strip.\n\n--- 18.01 notes (5th link in Learn section)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Riemann
+        sum"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A559833b0e7dde0867b34d088%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['1076']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:16:59 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

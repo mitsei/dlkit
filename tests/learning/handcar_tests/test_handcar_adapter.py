@@ -3,6 +3,7 @@
 import codecs
 import unittest
 import random
+import vcr
 
 from dlkit.handcar import utilities
 from dlkit.handcar import settings
@@ -100,16 +101,19 @@ class TestObjectiveBankLookup(unittest.TestCase):
                                                 implementation='TEST_SERVICE_HANDCAR')
         self.obls = self.lm.get_objective_bank_lookup_session()
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveBankLookup/test_get_objective_banks.yaml', record_mode='new_episodes')
     def test_get_objective_banks(self):
         all_banks = self.obls.get_objective_banks()
         self.assertTrue(all_banks.available() > 0)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveBankLookup/test_get_objective_bank.yaml', record_mode='new_episodes')
     def test_get_objective_bank(self):
         all_banks = self.obls.get_objective_banks()
         self.assertTrue(all_banks.available() > 0)
         for bank in all_banks:
             self.assertTrue(isinstance(bank, abc_learning_objects.ObjectiveBank))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveBankLookup/test_get_objective_banks_by_ids.yaml', record_mode='new_episodes')
     def test_get_objective_banks_by_ids(self):
         from dlkit.handcar.id import objects as id_objects
         all_banks = self.obls.get_objective_banks()
@@ -126,6 +130,8 @@ class TestObjectiveBankLookup(unittest.TestCase):
 
 
 class TestIdEquality(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestIdEquality/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         self.equiv_id1 = utilities.get_bank_by_name('Crosslinks').ident
         self.equiv_id2 = utilities.get_bank_by_name('Crosslinks').ident
@@ -148,6 +154,7 @@ class TestIdEquality(unittest.TestCase):
 
 class TestObjectiveLookup(unittest.TestCase):
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         try:
             # python 2
@@ -175,16 +182,19 @@ class TestObjectiveLookup(unittest.TestCase):
         reader = codecs.getreader('utf8')
         self.objective_genus_types = json.load(reader(response))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objective_bank.yaml', record_mode='new_episodes')
     def test_get_objective_bank(self):
         test_bank_id = self.ols.get_objective_bank().get_id().get_identifier()
         self.assertTrue(test_bank_id == self.first_bank.get_id().get_identifier())
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objectives.yaml', record_mode='new_episodes')
     def test_get_objectives(self):
         objectives = self.ols.get_objectives()
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objective.yaml', record_mode='new_episodes')
     def test_get_objective(self):
         # Get a random Objective
         all_objectives = self.ols.get_objectives()
@@ -194,6 +204,7 @@ class TestObjectiveLookup(unittest.TestCase):
         self.assertTrue(objective.get_id().get_identifier() ==
                         rand_objective.get_id().get_identifier())
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objectives_by_type.yaml', record_mode='new_episodes')
     def test_get_objectives_by_type(self):
         # Get a random Objective
         rand_type_map = self.objective_genus_types[random.randint(0, len(self.objective_genus_types) - 1)]
@@ -201,6 +212,7 @@ class TestObjectiveLookup(unittest.TestCase):
         for objective in objectives:
             self.assertTrue(objective.get_genus_type().get_identifier() == rand_type_map['identifier'])
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_objective_is_of_genus_type.yaml', record_mode='new_episodes')
     def test_objective_is_of_genus_type(self):
         # Get a random Objective
         rand_type_map = self.objective_genus_types[random.randint(0, len(self.objective_genus_types) - 1)]
@@ -210,6 +222,8 @@ class TestObjectiveLookup(unittest.TestCase):
 
 
 class TestObjectiveRequisite(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         from dlkit.handcar.learning import objects
         from dlkit.handcar.learning import managers
@@ -238,35 +252,42 @@ class TestObjectiveRequisite(unittest.TestCase):
             identifier=req_objective.ident.identifier)
         self.req_objective_id = req_objective.ident
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_get_requisite_objectives.yaml', record_mode='new_episodes')
     def test_get_requisite_objectives(self):
         objectives = self.ors.get_requisite_objectives(self.test_objective_id)
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_get_all_requisite_objectives.yaml', record_mode='new_episodes')
     def test_get_all_requisite_objectives(self):
         objectives = self.ors.get_all_requisite_objectives(self.test_objective_id)
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_get_dependent_objectives.yaml', record_mode='new_episodes')
     def test_get_dependent_objectives(self):
         objectives = self.ors.get_dependent_objectives(self.test_objective_id)
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_is_objective_required.yaml', record_mode='new_episodes')
     def test_is_objective_required(self):
         self.assertTrue(self.ors.is_objective_required(self.test_objective_id,
                                                        self.req_objective_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_is_objective_required_copy.yaml', record_mode='new_episodes')
     def test_is_objective_required_copy(self):
         self.assertTrue(self.ors.is_objective_required(self.test_objective_copy_id,
                                                        self.req_objective_copy_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_objective_id_copy.yaml', record_mode='new_episodes')
     def test_objective_id_copy(self):
         self.assertTrue(self.test_objective_id == self.test_objective_copy_id)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisite/test_req_objective_id_copy.yaml', record_mode='new_episodes')
     def test_req_objective_id_copy(self):
         self.assertTrue(self.req_objective_id == self.req_objective_copy_id)
 
@@ -277,6 +298,8 @@ class TestObjectiveRequisite(unittest.TestCase):
 
 
 class TestObjectiveHierarchy(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         from dlkit.handcar.learning import objects
         from dlkit.handcar.learning import managers
@@ -302,6 +325,7 @@ class TestObjectiveHierarchy(unittest.TestCase):
             'Auto-Ionization of Water outcome 3D1')
         self.test_final_child_id = self.test_final_child.ident
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_root_objective_ids.yaml', record_mode='new_episodes')
     def test_get_root_objective_ids(self):
         from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_root_objective_ids()
@@ -309,22 +333,26 @@ class TestObjectiveHierarchy(unittest.TestCase):
         for objective_id in objective_ids:
             self.assertTrue(isinstance(objective_id, Id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_root_objectives.yaml', record_mode='new_episodes')
     def test_get_root_objectives(self):
         objectives = self.ohs.get_root_objectives()
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_has_parent_objectives.yaml', record_mode='new_episodes')
     def test_has_parent_objectives(self):
         self.assertTrue(self.ohs.has_parent_objectives(self.test_objective_id))
         self.assertFalse(self.ohs.has_parent_objectives(self.test_parent_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_is_parent_of_objective.yaml', record_mode='new_episodes')
     def test_is_parent_of_objective(self):
         self.assertTrue(self.ohs.is_parent_of_objective(self.test_parent_id,
                                                         self.test_objective_id))
         self.assertFalse(self.ohs.is_parent_of_objective(self.test_child_id,
                                                          self.test_objective_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_parent_objective_ids.yaml', record_mode='new_episodes')
     def test_get_parent_objective_ids(self):
         from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_parent_objective_ids(self.test_objective_id)
@@ -332,22 +360,26 @@ class TestObjectiveHierarchy(unittest.TestCase):
         for objective_id in objective_ids:
             self.assertTrue(isinstance(objective_id, Id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_parent_objectives.yaml', record_mode='new_episodes')
     def test_get_parent_objectives(self):
         objectives = self.ohs.get_parent_objectives(self.test_objective_id)
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
         for objective in objectives:
             self.assertTrue(isinstance(objective, abc_learning_objects.Objective))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_has_child_objectives.yaml', record_mode='new_episodes')
     def test_has_child_objectives(self):
         self.assertTrue(self.ohs.has_child_objectives(self.test_objective_id))
         self.assertFalse(self.ohs.has_child_objectives(self.test_final_child_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_is_child_of_objective.yaml', record_mode='new_episodes')
     def test_is_child_of_objective(self):
         self.assertTrue(self.ohs.is_child_of_objective(self.test_child_id,
                                                        self.test_objective_id))
         self.assertFalse(self.ohs.is_child_of_objective(self.test_parent_id,
                                                         self.test_objective_id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_child_objective_ids.yaml', record_mode='new_episodes')
     def test_get_child_objective_ids(self):
         from dlkit.handcar.id import objects as id_objects
         objective_ids = self.ohs.get_child_objective_ids(self.test_objective_id)
@@ -355,6 +387,7 @@ class TestObjectiveHierarchy(unittest.TestCase):
         for objective_id in objective_ids:
             self.assertTrue(isinstance(objective_id, Id))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveHierarchy/test_get_child_objectives.yaml', record_mode='new_episodes')
     def test_get_child_objectives(self):
         objectives = self.ohs.get_child_objectives(self.test_child_id)
         self.assertTrue(isinstance(objectives, abc_learning_objects.ObjectiveList))
@@ -364,6 +397,7 @@ class TestObjectiveHierarchy(unittest.TestCase):
 
 class TestActivityLookup(unittest.TestCase):
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         try:
             # python 2
@@ -393,16 +427,19 @@ class TestActivityLookup(unittest.TestCase):
         reader = codecs.getreader('utf8')
         self.activity_genus_types = json.load(reader(response))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_objective_bank.yaml', record_mode='new_episodes')
     def test_get_objective_bank(self):
         test_bank_id = self.als.get_objective_bank().get_id().get_identifier()
         self.assertTrue(test_bank_id == self.first_bank.get_id().get_identifier())
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_activities.yaml', record_mode='new_episodes')
     def test_get_activities(self):
         activities = self.als.get_activities()
         self.assertTrue(isinstance(activities, abc_learning_objects.ActivityList))
         for activity in activities:
             self.assertTrue(isinstance(activity, abc_learning_objects.Activity))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_activity.yaml', record_mode='new_episodes')
     def test_get_activity(self):
         # Get a random Objective Bank
         all_activities = self.als.get_activities()
@@ -412,6 +449,7 @@ class TestActivityLookup(unittest.TestCase):
         self.assertTrue(activity.get_id().get_identifier() ==
                         rand_activity.get_id().get_identifier())
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_activities_by_type.yaml', record_mode='new_episodes')
     def test_get_activities_by_type(self):
         # Get a random activity genus type
         rand_type_map = self.activity_genus_types[random.randint(0, len(self.activity_genus_types) - 1)]
@@ -419,6 +457,7 @@ class TestActivityLookup(unittest.TestCase):
         for activity in activities:
             self.assertTrue(activity.get_genus_type().get_identifier() == rand_type_map['identifier'])
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_activity_is_of_genus_type.yaml', record_mode='new_episodes')
     def test_activity_is_of_genus_type(self):
         # Get a random activity genus type
         rand_type_map = self.activity_genus_types[random.randint(0, len(self.activity_genus_types) - 1)]
@@ -428,6 +467,8 @@ class TestActivityLookup(unittest.TestCase):
 
 
 class TestObjectiveMetadata(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveMetadata/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         from dlkit.handcar.learning import objects
         from dlkit.handcar.learning import managers
@@ -495,6 +536,8 @@ class TestObjectiveMetadata(unittest.TestCase):
 
 
 class TestObjectiveBankCrUD(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveBankCrUD/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         lm = Runtime().get_service_manager('LEARNING',
                                            implementation='TEST_SERVICE_HANDCAR')
@@ -503,6 +546,7 @@ class TestObjectiveBankCrUD(unittest.TestCase):
         self.obls = lm.get_objective_bank_lookup_session()
         self.sandbox_bank_type = SANDBOX_TYPE
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveBankCrUD/test_crud_objective_banks.yaml', record_mode='new_episodes')
     def test_crud_objective_banks(self):
         # test create:
         obfc = self.obas.get_objective_bank_form_for_create([])
@@ -528,6 +572,8 @@ class TestObjectiveBankCrUD(unittest.TestCase):
 
 
 class TestObjectiveCrUD(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveCrUD/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         lm = Runtime().get_service_manager('LEARNING',
                                            implementation='TEST_SERVICE_HANDCAR')
@@ -543,6 +589,7 @@ class TestObjectiveCrUD(unittest.TestCase):
         self.ols = lm.get_objective_lookup_session_for_objective_bank(test_bank_id)
         self.oas = lm.get_objective_admin_session_for_objective_bank(test_bank_id)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveCrUD/test_crud_objective.yaml', record_mode='new_episodes')
     def test_crud_objective(self):
         # test create:
         ofc = self.oas.get_objective_form_for_create([])
@@ -568,6 +615,8 @@ class TestObjectiveCrUD(unittest.TestCase):
 
 
 class TestActivityCrUD(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityCrUD/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         lm = Runtime().get_service_manager('LEARNING',
                                            implementation='TEST_SERVICE_HANDCAR')
@@ -589,6 +638,7 @@ class TestActivityCrUD(unittest.TestCase):
         self.test_objective = self.oas.create_objective(ofc)
         self.test_objective_id = self.test_objective.get_id()
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityCrUD/test_crud_activities.yaml', record_mode='new_episodes')
     def test_crud_activities(self):
         # test create:
         afc = self.aas.get_activity_form_for_create(self.test_objective_id, [])
@@ -612,6 +662,7 @@ class TestActivityCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityCrUD/tearDown.yaml', record_mode='new_episodes')
     def tearDown(self):
         self.oas.delete_objective(self.test_objective_id)
         with self.assertRaises(NotFound):
@@ -619,6 +670,8 @@ class TestActivityCrUD(unittest.TestCase):
 
 
 class TestObjectiveDesignAndSeq(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveDesignAndSeq/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         lm = Runtime().get_service_manager('LEARNING',
                                            implementation='TEST_SERVICE_HANDCAR')
@@ -644,6 +697,7 @@ class TestObjectiveDesignAndSeq(unittest.TestCase):
                 'child objective ' + str(i),
                 '# ' + str(i) + ' child objective for testing hierarchy design'))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveDesignAndSeq/test_add_remove_child_objective.yaml', record_mode='new_episodes')
     def test_add_remove_child_objective(self):
         for child_objective in self.child_objectives:
             try:
@@ -668,6 +722,8 @@ class TestObjectiveDesignAndSeq(unittest.TestCase):
 
 
 class TestObjectiveRequisiteAssignment(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisiteAssignment/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         lm = Runtime().get_service_manager('LEARNING',
                                            implementation='TEST_SERVICE_HANDCAR')
@@ -692,6 +748,7 @@ class TestObjectiveRequisiteAssignment(unittest.TestCase):
                 'required objective ' + str(i),
                 '# ' + str(i) + ' required objective for testing requisite assignment'))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveRequisiteAssignment/test_requisite_assignment.yaml', record_mode='new_episodes')
     def test_requisite_assignment(self):
         for required_objective in self.required_objectives:
             try:
@@ -711,17 +768,21 @@ class TestObjectiveRequisiteAssignment(unittest.TestCase):
 
 
 class TestTypeLookup(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestTypeLookup/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         tm = Runtime().get_service_manager('TYPE',
                                            implementation='TEST_SERVICE_HANDCAR')
 
         self.tls = tm.get_type_lookup_session()
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestTypeLookup/test_get_types.yaml', record_mode='new_episodes')
     def test_get_types(self):
         from dlkit.abstract_osid.type import primitives as abc_type_primitives
         for t in self.tls.get_types():
             self.assertTrue(isinstance(t, abc_type_primitives.Type))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestTypeLookup/test_get_type.yaml', record_mode='new_episodes')
     def test_get_type(self):
         from dlkit.abstract_osid.type import primitives as abc_type_primitives
         type_to_get = self.tls.get_types().get_next_type()
@@ -742,16 +803,19 @@ class TestRepositoryLookup(unittest.TestCase):
 
         self.rls = self.rm.get_repository_lookup_session(proxy=PROXY)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestRepositoryLookup/test_repositories.yaml', record_mode='new_episodes')
     def test_repositories(self):
         all_repositories = self.rls.get_repositories()
         self.assertTrue(all_repositories.available() > 0)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestRepositoryLookup/test_get_repository.yaml', record_mode='new_episodes')
     def test_get_repository(self):
         all_repositories = self.rls.get_repositories()
         self.assertTrue(all_repositories.available() > 0)
         for repository in all_repositories:
             self.assertTrue(isinstance(repository, abc_repository_objects.Repository))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestRepositoryLookup/test_get_repositories_by_ids.yaml', record_mode='new_episodes')
     def test_get_repositories_by_ids(self):
         from dlkit.handcar.id import objects as id_objects
         all_repositories = self.rls.get_repositories()
@@ -778,6 +842,7 @@ class TestRepositoryCrUD(unittest.TestCase):
         self.rls = rm.get_repository_lookup_session(proxy=PROXY)
         self.sandbox_repository_type = SANDBOX_TYPE
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestRepositoryCrUD/test_crud_repositories.yaml', record_mode='new_episodes')
     def test_crud_repositories(self):
         # test create:
         rfc = self.ras.get_repository_form_for_create([])
@@ -804,6 +869,8 @@ class TestRepositoryCrUD(unittest.TestCase):
 
 
 class TestAssetCrUD(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestAssetCrUD/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         # Not sure why Repository requires the proxy...
         rm = Runtime().get_service_manager('REPOSITORY',
@@ -823,6 +890,7 @@ class TestAssetCrUD(unittest.TestCase):
         self.aas = rm.get_asset_admin_session_for_repository(test_repository_id,
                                                              proxy=PROXY)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestAssetCrUD/test_crud_asset.yaml', record_mode='new_episodes')
     def test_crud_asset(self):
         # test create:
         afc = self.aas.get_asset_form_for_create([])
@@ -848,6 +916,8 @@ class TestAssetCrUD(unittest.TestCase):
 
 
 class TestAssetContentCrUD(unittest.TestCase):
+
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestAssetContentCrUD/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         # Not sure why Repository requires the proxy...
         rm = Runtime().get_service_manager('REPOSITORY',
@@ -867,6 +937,7 @@ class TestAssetContentCrUD(unittest.TestCase):
         self.aas = rm.get_asset_admin_session_for_repository(test_repository_id,
                                                              proxy=PROXY)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestAssetContentCrUD/test_crud_asset_content.yaml', record_mode='new_episodes')
     def test_crud_asset_content(self):
         # test create:
         acfc = self.aas.get_asset_content_form_for_create(self.test_asset.ident, [])
@@ -900,5 +971,6 @@ class TestAssetContentCrUD(unittest.TestCase):
     def test_truth(self):
         self.assertTrue(True)
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestAssetContentCrUD/tearDown.yaml', record_mode='new_episodes')
     def tearDown(self):
         self.aas.delete_asset(self.test_asset.ident)

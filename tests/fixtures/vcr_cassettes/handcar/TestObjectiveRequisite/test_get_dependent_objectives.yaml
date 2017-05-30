@@ -1,0 +1,141 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives/mc3-objective%3A3762%40MIT-OEIT/dependents
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A3757%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:21","updatedBy":"MC3GUE$T","updatedOn":"2015-08-03T10:49:51"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        convolution of two functions $f$ and $g$ is: $$(f \\ast g)(t) = \\int_{0^-}^{t^+}
+        f(s) g(t-s) \\, ds$$\n--- 18.03 notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Convolution"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55983327e7dde0867aa28b60%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3879%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:25","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T19:23:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        moment of inertia of a rigid body about a fixed axis passing through the center
+        of mass is given by: $$ I_{cm} = \\int_{body} r_{dm}^2\\,dm $$\n--- 8.01 course
+        notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Moment
+        of Inertia"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A5598338de7dde0cfadd61f0d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3794%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:49","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T14:42:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Integration
+        by parts states that if $u = u(x)$ and $du = u''(x) \\, dx$, while $v = v(x)$
+        and $dv = v''(x) \\, dx$, then: $$\\int u(x) \\, v''(x) \\, dx = u(x) \\,
+        v(x) - \\int v(x) \\, u''(x) \\, dx $$\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Integration
+        by parts"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10476%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T02:45:16","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T13:33:57"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Given
+        two curves $f(x)$ and $g(x)$ with points of intersection at $x = a$ and $x
+        = b$, the area between these two curves is given by: $$A = \\int_a^b [f(x)
+        - g(x)] \\, dx$$\n--- 18.01 lecture notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Area
+        between curves"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55983306e7dde0bbab57f954%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10479%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T03:22:03","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Informally,
+        the method of washers is a means of calculating the volume of a solid of revolution
+        when integrating along the axis of revolution, using \"washers\" to obtain
+        a \"hollow\" solid of revolution. \n\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Washer Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde0a16f106f80%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10458%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-23T09:21:36","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Let
+        $f$ be a nonnegative and continuous function on the closed interval $[a,b]$,
+        then the solid of revolution obtained by rotating the curve $f(x)$ about the
+        $x$-axis from $x=a$ to $x=b$ has volume given by\n\\[V = \\pi\\int_a^b[f(x)]^2dx\\]
+        ---Wolfram"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Disk Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde069fd553f5d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10473%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T00:35:26","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        method of shells is a means of calculating the volume of a solid of revolution,
+        when integrating along an axis perpendicular to the axis of revolution."},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Shell Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde06bd5601221%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10855%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-07-17T23:00:46","updatedBy":"MC3GUE$T","updatedOn":"2015-09-18T14:49:42"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Arc
+        length is the distance along a curve, given by: $$= \\int_a^b \\sqrt{1 + f''(x)^2}
+        \\, dx$$ --- 18.01sc lecture notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Arc
+        length"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a38e7dde0749e2bf613%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A11318%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-07-29T11:44:18","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T02:46:18"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"An
+        improper integral is a definite integral that has either or both limits infinite
+        or an integrand that approaches infinity at one or more points in the range
+        of integration. (Wolfram)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Improper
+        Integrals"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3778%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:37","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:23"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        first fundamental theorem of calculus state that if $f(x)$ is continuous and
+        $F''(x) = f(x)$, then $$ \\int_a^b f(x) \\, dx = F(b) - F(a) $$\n--- 18.01
+        Fall 2006 Lecture Notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"First
+        fundamental theorem of calculus"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a3be7dde0a179d17a75%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3905%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:41","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:27"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        second fundamental theorem of calculus states that if $f$ is continuous and
+        $G(x) = \\int_a^x f(t) \\, dt$, then $G''(x) = f(x)$. \n\n--- 18.01 lecture
+        notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Second
+        fundamental theorem of calculus"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a3fe7dde0a178df689d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A11893%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-09-18T13:51:36","updatedBy":"MC3GUE$T","updatedOn":"2015-09-18T14:00:22"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Define
+        the potential energy $PE$ at point $A$ to be zero. Then the potential energy
+        at point $B$ is: $$PE(B) = -\\int_A^B \\vec F \\cdot d \\vec s$$ --- 8.01L
+        lecture slides"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Potential
+        energy (mechanics)"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3770%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:31","updatedBy":"MC3GUE$T","updatedOn":"2015-08-01T15:16:05"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        divergence theorem (also called Gauss'' theorem) relates the flux of a vector
+        field across the boundary of a domain in $\\mathbf{R}^3$ to integral of the
+        gradient over the domain: $$\\iiint_V (\\nabla \\cdot F)\\,dV = \\iint_{\\partial
+        V} (F\\cdot n)\\, dS$$\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Divergence
+        theorem"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:03 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives/mc3-objective%3A3762%40MIT-OEIT/dependents
+  response:
+    body: {string: !!python/unicode '[{"type":"Objective","id":"mc3-objective%3A3757%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:21","updatedBy":"MC3GUE$T","updatedOn":"2015-08-03T10:49:51"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        convolution of two functions $f$ and $g$ is: $$(f \\ast g)(t) = \\int_{0^-}^{t^+}
+        f(s) g(t-s) \\, ds$$\n--- 18.03 notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Convolution"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55983327e7dde0867aa28b60%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3879%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:25","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T19:23:39"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        moment of inertia of a rigid body about a fixed axis passing through the center
+        of mass is given by: $$ I_{cm} = \\int_{body} r_{dm}^2\\,dm $$\n--- 8.01 course
+        notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Moment
+        of Inertia"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A5598338de7dde0cfadd61f0d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3794%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:49","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T14:42:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Integration
+        by parts states that if $u = u(x)$ and $du = u''(x) \\, dx$, while $v = v(x)$
+        and $dv = v''(x) \\, dx$, then: $$\\int u(x) \\, v''(x) \\, dx = u(x) \\,
+        v(x) - \\int v(x) \\, u''(x) \\, dx $$\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Integration
+        by parts"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10476%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T02:45:16","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T13:33:57"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Given
+        two curves $f(x)$ and $g(x)$ with points of intersection at $x = a$ and $x
+        = b$, the area between these two curves is given by: $$A = \\int_a^b [f(x)
+        - g(x)] \\, dx$$\n--- 18.01 lecture notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Area
+        between curves"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55983306e7dde0bbab57f954%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10479%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T03:22:03","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Informally,
+        the method of washers is a means of calculating the volume of a solid of revolution
+        when integrating along the axis of revolution, using \"washers\" to obtain
+        a \"hollow\" solid of revolution. \n\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Washer Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde0a16f106f80%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10458%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-23T09:21:36","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Let
+        $f$ be a nonnegative and continuous function on the closed interval $[a,b]$,
+        then the solid of revolution obtained by rotating the curve $f(x)$ about the
+        $x$-axis from $x=a$ to $x=b$ has volume given by\n\\[V = \\pi\\int_a^b[f(x)]^2dx\\]
+        ---Wolfram"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Disk Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde069fd553f5d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10473%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-06-24T00:35:26","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:29"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        method of shells is a means of calculating the volume of a solid of revolution,
+        when integrating along an axis perpendicular to the axis of revolution."},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Volume:
+        Shell Method"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a41e7dde06bd5601221%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A10855%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-07-17T23:00:46","updatedBy":"MC3GUE$T","updatedOn":"2015-09-18T14:49:42"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Arc
+        length is the distance along a curve, given by: $$= \\int_a^b \\sqrt{1 + f''(x)^2}
+        \\, dx$$ --- 18.01sc lecture notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Arc
+        length"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a38e7dde0749e2bf613%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A11318%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-07-29T11:44:18","updatedBy":"MC3GUE$T","updatedOn":"2015-08-04T02:46:18"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"An
+        improper integral is a definite integral that has either or both limits infinite
+        or an integrand that approaches infinity at one or more points in the range
+        of integration. (Wolfram)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Improper
+        Integrals"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3778%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:37","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:23"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        first fundamental theorem of calculus state that if $f(x)$ is continuous and
+        $F''(x) = f(x)$, then $$ \\int_a^b f(x) \\, dx = F(b) - F(a) $$\n--- 18.01
+        Fall 2006 Lecture Notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"First
+        fundamental theorem of calculus"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a3be7dde0a179d17a75%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3905%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:49:41","updatedBy":"MC3GUE$T","updatedOn":"2015-08-20T13:11:27"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        second fundamental theorem of calculus states that if $f$ is continuous and
+        $G(x) = \\int_a^x f(t) \\, dt$, then $G''(x) = f(x)$. \n\n--- 18.01 lecture
+        notes"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Second
+        fundamental theorem of calculus"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55d60a3fe7dde0a178df689d%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A11893%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-09-18T13:51:36","updatedBy":"MC3GUE$T","updatedOn":"2015-09-18T14:00:22"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Define
+        the potential energy $PE$ at point $A$ to be zero. Then the potential energy
+        at point $B$ is: $$PE(B) = -\\int_A^B \\vec F \\cdot d \\vec s$$ --- 8.01L
+        lecture slides"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Potential
+        energy (mechanics)"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"},{"type":"Objective","id":"mc3-objective%3A3770%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:31","updatedBy":"MC3GUE$T","updatedOn":"2015-08-01T15:16:05"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"The
+        divergence theorem (also called Gauss'' theorem) relates the flux of a vector
+        field across the boundary of a domain in $\\mathbf{R}^3$ to integral of the
+        gradient over the domain: $$\\iiint_V (\\nabla \\cdot F)\\,dV = \\iint_{\\partial
+        V} (F\\cdot n)\\, dS$$\n--- Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Divergence
+        theorem"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-type: [application/json]
+      date: ['Fri, 26 May 2017 18:16:58 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+version: 1

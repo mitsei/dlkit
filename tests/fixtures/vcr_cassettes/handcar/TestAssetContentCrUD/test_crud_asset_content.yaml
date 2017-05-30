@@ -1,0 +1,283 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1377']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:58 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"type": "Asset", "id": "mc3-asset%3A6111%40MIT-OEIT", "current": true,
+      "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "Asset
+      for testing AssetContent CrUD"}, "displayName": {"formatTypeId": "format.text%3APlain%40okapia.net",
+      "languageTypeId": "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org",
+      "text": "AssetContent CrUD Asset"}, "genusTypeId": "mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT",
+      "assetContents": [{"journalComment": {"languageTypeId": "639-2%3AEnglish%40ISO",
+      "scriptTypeId": "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": ""}, "displayName": {"languageTypeId": "639-2%3AEnglish%40ISO", "scriptTypeId":
+      "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "Test Asset Content"}, "description": {"languageTypeId": "639-2%3AEnglish%40ISO",
+      "scriptTypeId": "15924%3ALatin%40ISO", "formatTypeId": "Text+Formats%3Aplain%40okapia.net",
+      "text": "This is a Test Asset Content"}, "genusTypeId": "mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT",
+      "accessibilityTypeIds": [], "data": "", "url": "http://web.mit.edu", "assetId":
+      "mc3-asset%3A6111%40MIT-OEIT"}], "brandingIds": [], "canDistributeAlterations":
+      false, "canDistributeCompositions": false, "canDistributeVerbatim": false, "compositionId":
+      "", "copyright": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""},
+      "license": {"formatTypeId": "format.text:Plain@okapia.net", "languageTypeId":
+      "639-2:ENG@iso.org", "scriptTypeId": "15924:LATN@iso.org", "text": ""}, "principalCreditString":
+      {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId": "639-2%3AENG%40iso.org",
+      "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}, "providerLinkIds": [],
+      "publicDomain": false, "published": false, "sourceId": "nil:osid.resource.Resource@okapia.net",
+      "title": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://web.mit.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1987']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:58 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://web.mit.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1987']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/
+  response:
+    body: {string: '[{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://web.mit.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1989']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is a Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Test
+        Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://web.mit.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1987']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"type": "Asset", "id": "mc3-asset%3A6111%40MIT-OEIT", "current": true,
+      "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "Asset
+      for testing AssetContent CrUD"}, "displayName": {"formatTypeId": "format.text%3APlain%40okapia.net",
+      "languageTypeId": "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org",
+      "text": "AssetContent CrUD Asset"}, "genusTypeId": "mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT",
+      "assetContents": [{"id": "mc3-asset-content%3A12693%40MIT-OEIT", "current":
+      true, "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "This
+      is an updated description for Test Asset Content"}, "displayName": {"formatTypeId":
+      "format.text%3APlain%40okapia.net", "languageTypeId": "639-2%3AENG%40iso.org",
+      "scriptTypeId": "15924%3ALATN%40iso.org", "text": "New Name for Test Asset Content"},
+      "genusTypeId": "mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT",
+      "accessiblityTypeIds": [], "assetId": "mc3-asset%3A6111%40MIT-OEIT", "dataLength":
+      -1, "url": "http://www.stanford.edu"}], "brandingIds": [], "canDistributeAlterations":
+      false, "canDistributeCompositions": false, "canDistributeVerbatim": false, "compositionId":
+      "", "copyright": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""},
+      "license": {"formatTypeId": "format.text:Plain@okapia.net", "languageTypeId":
+      "639-2:ENG@iso.org", "scriptTypeId": "15924:LATN@iso.org", "text": ""}, "principalCreditString":
+      {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId": "639-2%3AENG%40iso.org",
+      "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}, "providerLinkIds": [],
+      "publicDomain": false, "published": false, "sourceId": "nil:osid.resource.Resource@okapia.net",
+      "title": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is an updated description for Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://www.stanford.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2030']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is an updated description for Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://www.stanford.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2030']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/
+  response:
+    body: {string: '[{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[{"id":"mc3-asset-content%3A12693%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"This
+        is an updated description for Test Asset Content"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"New
+        Name for Test Asset Content"},"genusTypeId":"mc3-asset-content%3Amc3.learning.asset.content.unknown%40MIT-OEIT","accessiblityTypeIds":[],"assetId":"mc3-asset%3A6111%40MIT-OEIT","dataLength":-1,"url":"http://www.stanford.edu"}],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['2032']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: '{"type": "Asset", "id": "mc3-asset%3A6111%40MIT-OEIT", "current": true,
+      "description": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": "Asset
+      for testing AssetContent CrUD"}, "displayName": {"formatTypeId": "format.text%3APlain%40okapia.net",
+      "languageTypeId": "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org",
+      "text": "AssetContent CrUD Asset"}, "genusTypeId": "mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT",
+      "assetContents": [], "brandingIds": [], "canDistributeAlterations": false, "canDistributeCompositions":
+      false, "canDistributeVerbatim": false, "compositionId": "", "copyright": {"formatTypeId":
+      "format.text%3APlain%40okapia.net", "languageTypeId": "639-2%3AENG%40iso.org",
+      "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}, "license": {"formatTypeId":
+      "format.text:Plain@okapia.net", "languageTypeId": "639-2:ENG@iso.org", "scriptTypeId":
+      "15924:LATN@iso.org", "text": ""}, "principalCreditString": {"formatTypeId":
+      "format.text%3APlain%40okapia.net", "languageTypeId": "639-2%3AENG%40iso.org",
+      "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}, "providerLinkIds": [],
+      "publicDomain": false, "published": false, "sourceId": "nil:osid.resource.Resource@okapia.net",
+      "title": {"formatTypeId": "format.text%3APlain%40okapia.net", "languageTypeId":
+      "639-2%3AENG%40iso.org", "scriptTypeId": "15924%3ALATN%40iso.org", "text": ""}}'
+    headers:
+      Content-Type: [application/json]
+    method: PUT
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1377']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers: {}
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A2825%40MIT-OEIT/assets/mc3-asset%3A6111%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Asset","id":"mc3-asset%3A6111%40MIT-OEIT","current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Asset
+        for testing AssetContent CrUD"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"AssetContent
+        CrUD Asset"},"genusTypeId":"mc3-asset%3Amc3.learning.asset.url%40MIT-OEIT","assetContents":[],"brandingIds":[],"canDistributeAlterations":false,"canDistributeCompositions":false,"canDistributeVerbatim":false,"compositionId":"","copyright":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"license":{"formatTypeId":"format.text:Plain@okapia.net","languageTypeId":"639-2:ENG@iso.org","scriptTypeId":"15924:LATN@iso.org","text":""},"principalCreditString":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"providerLinkIds":[],"publicDomain":false,"published":false,"sourceId":"nil:osid.resource.Resource@okapia.net","title":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""}}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: [keep-alive]
+      Content-Length: ['1377']
+      Content-Type: [application/json]
+      Date: ['Fri, 26 May 2017 18:07:59 GMT']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+version: 1
