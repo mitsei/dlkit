@@ -214,7 +214,12 @@ class MultiLanguageQuestionRecord(MultiLanguageUtils,
         obj_map = dict(self.my_osid_object._my_map)
         del obj_map['itemId']
         lo_ids = self.my_osid_object.get_learning_objective_ids()
-        obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
+        try:
+            # python 2
+            obj_map['learningObjectiveIds'] = [unicode(lo_id) for lo_id in lo_ids]
+        except NameError:
+            # python 3
+            obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
 
         obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
         obj_map['id'] = str(self.my_osid_object.get_id())
