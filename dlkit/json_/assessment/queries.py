@@ -207,7 +207,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('questionId', str(question_id, match))
+        self._add_match('questionId', str(question_id), match)
 
     def clear_question_id_terms(self):
         """Clears all question ``Id`` terms.
@@ -279,7 +279,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('answerId', str(answer_id, match))
+        self._add_match('answerId', str(answer_id), match)
 
     def clear_answer_id_terms(self):
         """Clears all answer ``Id`` terms.
@@ -350,7 +350,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentId', str(assessment_id, match))
+        self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
         """Clears all assessment ``Id`` terms.
@@ -519,7 +519,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('levelId', str(grade_id, match))
+        self._add_match('levelId', str(grade_id), match)
 
     def clear_level_id_terms(self):
         """Clears all level ``Id`` terms.
@@ -591,7 +591,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('rubricId', str(assessment_id, match))
+        self._add_match('rubricId', str(assessment_id), match)
 
     def clear_rubric_id_terms(self):
         """Clears all rubric assessment ``Id`` terms.
@@ -670,8 +670,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
-        self._clear_terms('itemId')
+        self._clear_terms('itemIds')
 
     item_id_terms = property(fdel=clear_item_id_terms)
 
@@ -808,7 +807,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentTakenId', str(assessment_taken_id, match))
+        self._add_match('assessmentTakenId', str(assessment_taken_id), match)
 
     def clear_assessment_taken_id_terms(self):
         """Clears all assessment taken ``Id`` terms.
@@ -1041,7 +1040,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('levelId', str(grade_id, match))
+        self._add_match('levelId', str(grade_id), match)
 
     def clear_level_id_terms(self):
         """Clears all level ``Id`` terms.
@@ -1270,7 +1269,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('scoreSystemId', str(grade_system_id, match))
+        self._add_match('scoreSystemId', str(grade_system_id), match)
 
     def clear_score_system_id_terms(self):
         """Clears all grade system ``Id`` terms.
@@ -1344,7 +1343,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeSystemId', str(grade_system_id, match))
+        self._add_match('gradeSystemId', str(grade_system_id), match)
 
     def clear_grade_system_id_terms(self):
         """Clears all grade system ``Id`` terms.
@@ -1419,7 +1418,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('rubricId', str(assessment_offered_id, match))
+        self._add_match('rubricId', str(assessment_offered_id), match)
 
     def clear_rubric_id_terms(self):
         """Clears all rubric assessment offered ``Id`` terms.
@@ -1493,7 +1492,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentTakenId', str(assessment_taken_id, match))
+        self._add_match('assessmentTakenId', str(assessment_taken_id), match)
 
     def clear_assessment_taken_id_terms(self):
         """Clears all assessment taken ``Id`` terms.
@@ -1729,7 +1728,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('takerId', str(resource_id, match))
+        self._add_match('takerId', str(resource_id), match)
 
     def clear_taker_id_terms(self):
         """Clears all resource ``Id`` terms.
@@ -1949,7 +1948,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('scoreSystemId', str(grade_system_id, match))
+        self._add_match('scoreSystemId', str(grade_system_id), match)
 
     def clear_score_system_id_terms(self):
         """Clears all grade system ``Id`` terms.
@@ -2057,7 +2056,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeId', str(grade_id, match))
+        self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
         """Clears all grade ``Id`` terms.
@@ -2172,7 +2171,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('rubricId', str(assessment_taken_id, match))
+        self._add_match('rubricId', str(assessment_taken_id), match)
 
     def clear_rubric_id_terms(self):
         """Clears all rubric assessment taken ``Id`` terms.

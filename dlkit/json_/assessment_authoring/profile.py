@@ -17,16 +17,16 @@ DISPLAYNAME = 'Mongo assessment.authoring'
 
 DESCRIPTION = 'MongoDB based assessment.authoring implementation'
 
-VERSIONCOMPONENTS = [0, 1, 273]
+VERSIONCOMPONENTS = [0, 1, 301]
 
-RELEASEDATE = "2017-05-30"
+RELEASEDATE = "2017-06-01"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
     # 'supports_journal_branching',
     # 'supports_visible_federation',
     'supports_assessment_part_lookup',
-    # 'supports_assessment_part_query',
+    'supports_assessment_part_query',
     # 'supports_assessment_part_search',
     'supports_assessment_part_admin',
     # 'supports_assessment_part_notification',

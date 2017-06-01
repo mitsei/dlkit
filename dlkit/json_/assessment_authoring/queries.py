@@ -47,7 +47,7 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentId', str(assessment_id, match))
+        self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
         """Clears all assessment ``Id`` terms.
@@ -110,7 +110,7 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('parentAssessmentPartId', str(assessment_part_id, match))
+        self._add_match('parentAssessmentPartId', str(assessment_part_id), match)
 
     def clear_parent_assessment_part_id_terms(self):
         """Clears all assessment part ``Id`` terms.
@@ -280,7 +280,7 @@ class AssessmentPartQuery(abc_assessment_authoring_queries.AssessmentPartQuery, 
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('childAssessmentPartId', str(assessment_part_id, match))
+        self._add_match('childAssessmentPartId', str(assessment_part_id), match)
 
     def clear_child_assessment_part_id_terms(self):
         """Clears all assessment part ``Id`` terms.

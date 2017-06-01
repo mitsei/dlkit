@@ -277,7 +277,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('sourceId', str(source_id, match))
+        self._add_match('sourceId', str(source_id), match)
 
     def clear_source_id_terms(self):
         """Clears the source ``Id`` terms.
@@ -532,7 +532,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('locationId', str(location_id, match))
+        self._add_match('locationId', str(location_id), match)
 
     def clear_location_id_terms(self):
         """Clears the location ``Id`` terms.
@@ -666,7 +666,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assetContentId', str(asset_content_id, match))
+        self._add_match('assetContentId', str(asset_content_id), match)
 
     def clear_asset_content_id_terms(self):
         """Clears the asset content ``Id`` terms.
@@ -739,7 +739,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('compositionId', str(composition_id, match))
+        self._add_match('compositionId', str(composition_id), match)
 
     def clear_composition_id_terms(self):
         """Clears the composition ``Id`` terms.
@@ -1114,8 +1114,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
-        self._clear_terms('assetId')
+        self._clear_terms('assetIds')
 
     asset_id_terms = property(fdel=clear_asset_id_terms)
 
@@ -1176,6 +1175,8 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # I'm not sure this does what the spec says it should do...
+        #   I think it should look at a hierarchy of compositions.
         self._add_match('_id', composition_id.identifier, match)
 
     def clear_containing_composition_id_terms(self):
@@ -1184,8 +1185,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
-        self._clear_terms('containingCompositionId')
+        self._clear_terms('_id')
 
     containing_composition_id_terms = property(fdel=clear_containing_composition_id_terms)
 
@@ -1256,8 +1256,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
-        self._clear_terms('containedCompositionId')
+        self._clear_terms('childIds')
 
     contained_composition_id_terms = property(fdel=clear_contained_composition_id_terms)
 

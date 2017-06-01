@@ -91,7 +91,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('containingGroupId', str(resource_id, match))
+        self._add_match('containingGroupId', str(resource_id), match)
 
     def clear_containing_group_id_terms(self):
         """Clears the group ``Id`` terms.
@@ -163,7 +163,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('avatarId', str(asset_id, match))
+        self._add_match('avatarId', str(asset_id), match)
 
     def clear_avatar_id_terms(self):
         """Clears the asset ``Id`` terms.
@@ -235,7 +235,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('agentId', str(agent_id, match))
+        self._add_match('agentId', str(agent_id), match)
 
     def clear_agent_id_terms(self):
         """Clears the agent ``Id`` terms.
@@ -307,7 +307,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('resourceRelationshipId', str(resource_relationship_id, match))
+        self._add_match('resourceRelationshipId', str(resource_relationship_id), match)
 
     def clear_resource_relationship_id_terms(self):
         """Clears the resource relationship ``Id`` terms.

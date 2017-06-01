@@ -48,7 +48,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('referenceId', str(source_id, match))
+        self._add_match('referenceId', str(source_id), match)
 
     def clear_reference_id_terms(self):
         """Clears the reference ``Id`` terms.
@@ -73,7 +73,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('commentorId', str(resource_id, match))
+        self._add_match('commentorId', str(resource_id), match)
 
     def clear_commentor_id_terms(self):
         """Clears the resource ``Id`` terms.
@@ -135,7 +135,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('commentingAgentId', str(agent_id, match))
+        self._add_match('commentingAgentId', str(agent_id), match)
 
     def clear_commenting_agent_id_terms(self):
         """Clears the agent ``Id`` terms.
@@ -237,7 +237,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('ratingId', str(grade_id, match))
+        self._add_match('ratingId', str(grade_id), match)
 
     def clear_rating_id_terms(self):
         """Clears the rating ``Id`` terms.
