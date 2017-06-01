@@ -315,10 +315,8 @@ class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile)
         return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_lookup()
 
     def supports_assessment_part_query(self):
-        """Pass through to provider supports_assessment_part_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return self._provider_manager.supports_assessment_part_query()
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_query()
 
     def supports_assessment_part_admin(self):
         """Pass through to provider method"""

@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo commenting'
 
 DESCRIPTION = 'MongoDB based commenting implementation'
 
-VERSIONCOMPONENTS = [0, 1, 300]
+VERSIONCOMPONENTS = [0, 1, 302]
 
 RELEASEDATE = "2017-06-01"
 
