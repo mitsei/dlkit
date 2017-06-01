@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -23,16 +24,20 @@ class TestLogEntryQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_log_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_log(create_form)
 
-        cls.query = cls.catalog.get_log_entry_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_log_entry_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_log(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
@@ -45,10 +50,13 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_any_priority"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_priority_terms(self):
         """Tests clear_priority_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['priority'] = 'foo'
+        self.query.clear_priority_terms()
+        self.assertNotIn('priority',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_minimum_priority(self):
@@ -65,20 +73,33 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_timestamp"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_timestamp_terms(self):
         """Tests clear_timestamp_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['timestamp'] = 'foo'
+        self.query.clear_timestamp_terms()
+        self.assertNotIn('timestamp',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_resource_id(self):
         """Tests match_resource_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['resourceId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_id_terms(self):
         """Tests clear_resource_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_id(test_id, match=True)
+        self.assertIn('resourceId',
+                      self.query._query_terms)
+        self.query.clear_resource_id_terms()
+        self.assertNotIn('resourceId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_resource_query(self):
@@ -95,15 +116,25 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests clear_resource_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_agent_id(self):
         """Tests match_agent_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_agent_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['agentId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_id_terms(self):
         """Tests clear_agent_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_agent_id(test_id, match=True)
+        self.assertIn('agentId',
+                      self.query._query_terms)
+        self.query.clear_agent_id_terms()
+        self.assertNotIn('agentId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_agent_query(self):
@@ -115,20 +146,33 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests get_agent_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['agent'] = 'foo'
+        self.query.clear_agent_terms()
+        self.assertNotIn('agent',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_log_id(self):
         """Tests match_log_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_log_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedLogIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_log_id_terms(self):
         """Tests clear_log_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_log_id(test_id, match=True)
+        self.assertIn('assignedLogIds',
+                      self.query._query_terms)
+        self.query.clear_log_id_terms()
+        self.assertNotIn('assignedLogIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_log_query(self):
@@ -140,10 +184,13 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests get_log_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_log_terms(self):
         """Tests clear_log_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['log'] = 'foo'
+        self.query.clear_log_terms()
+        self.assertNotIn('log',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_log_entry_query_record(self):

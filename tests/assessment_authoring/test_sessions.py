@@ -201,6 +201,82 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         self.assertEqual(obj.get_id(), self.assessment_part_ids[0])
 
 
+class TestAssessmentPartQuerySession(unittest.TestCase):
+    """Tests for AssessmentPartQuerySession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.assessment_part_list = list()
+        cls.assessment_part_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartQuerySession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        for color in ['Orange', 'Blue', 'Green', 'orange']:
+            create_form = cls.catalog.get_assessment_part_form_for_create([])
+            create_form.display_name = 'Test AssessmentPart ' + color
+            create_form.description = (
+                'Test AssessmentPart for AssessmentPartQuerySession tests, did I mention green')
+            obj = cls.catalog.create_assessment_part(create_form)
+            cls.assessment_part_list.append(obj)
+            cls.assessment_part_ids.append(obj.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessment_parts():
+            cls.catalog.delete_assessment_part(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
+    def test_get_bank_id(self):
+        """Tests get_bank_id"""
+        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+
+    def test_get_bank(self):
+        """Tests get_bank"""
+        # is this test really needed?
+        # From test_templates/resource.py::ResourceLookupSession::get_bin_template
+        self.assertIsNotNone(self.catalog)
+
+    @unittest.skip('unimplemented test')
+    def test_can_search_assessment_parts(self):
+        """Tests can_search_assessment_parts"""
+        pass
+
+    def test_use_federated_bank_view(self):
+        """Tests use_federated_bank_view"""
+        self.catalog.use_federated_bank_view()
+
+    def test_use_isolated_bank_view(self):
+        """Tests use_isolated_bank_view"""
+        self.catalog.use_isolated_bank_view()
+
+    @unittest.skip('unimplemented test')
+    def test_use_sequestered_assessment_part_view(self):
+        """Tests use_sequestered_assessment_part_view"""
+        pass
+
+    @unittest.skip('unimplemented test')
+    def test_use_unsequestered_assessment_part_view(self):
+        """Tests use_unsequestered_assessment_part_view"""
+        pass
+
+    def test_get_assessment_part_query(self):
+        """Tests get_assessment_part_query"""
+        query = self.catalog.get_assessment_part_query()
+
+    def test_get_assessment_parts_by_query(self):
+        """Tests get_assessment_parts_by_query"""
+        # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
+        # Need to add some tests with string types
+        query = self.catalog.get_assessment_part_query()
+        query.match_display_name('orange')
+        self.assertEqual(self.catalog.get_assessment_parts_by_query(query).available(), 2)
+        query.clear_display_name_terms()
+        query.match_display_name('blue', match=False)
+        self.assertEqual(self.catalog.get_assessment_parts_by_query(query).available(), 3)
+
+
 class TestAssessmentPartAdminSession(unittest.TestCase):
     """Tests for AssessmentPartAdminSession"""
 

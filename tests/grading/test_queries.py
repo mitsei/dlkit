@@ -162,16 +162,20 @@ class TestGradeSystemQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        cls.query = cls.catalog.get_grade_system_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_grade_system_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     @unittest.skip('unimplemented test')
@@ -179,20 +183,33 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests match_based_on_grades"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_based_on_grades_terms(self):
         """Tests clear_based_on_grades_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['basedOnGrades'] = 'foo'
+        self.query.clear_based_on_grades_terms()
+        self.assertNotIn('basedOnGrades',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_grade_id(self):
         """Tests match_grade_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradeId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_id_terms(self):
         """Tests clear_grade_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_id(test_id, match=True)
+        self.assertIn('gradeId',
+                      self.query._query_terms)
+        self.query.clear_grade_id_terms()
+        self.assertNotIn('gradeId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grade_query(self):
@@ -219,40 +236,59 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests match_lowest_numeric_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_lowest_numeric_score_terms(self):
         """Tests clear_lowest_numeric_score_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['lowestNumericScore'] = 'foo'
+        self.query.clear_lowest_numeric_score_terms()
+        self.assertNotIn('lowestNumericScore',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_numeric_score_increment(self):
         """Tests match_numeric_score_increment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_numeric_score_increment_terms(self):
         """Tests clear_numeric_score_increment_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['numericScoreIncrement'] = 'foo'
+        self.query.clear_numeric_score_increment_terms()
+        self.assertNotIn('numericScoreIncrement',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_highest_numeric_score(self):
         """Tests match_highest_numeric_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_highest_numeric_score_terms(self):
         """Tests clear_highest_numeric_score_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['highestNumericScore'] = 'foo'
+        self.query.clear_highest_numeric_score_terms()
+        self.assertNotIn('highestNumericScore',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_gradebook_column_id(self):
         """Tests match_gradebook_column_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_column_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradebookColumnId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_column_id_terms(self):
         """Tests clear_gradebook_column_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_column_id(test_id, match=True)
+        self.assertIn('gradebookColumnId',
+                      self.query._query_terms)
+        self.query.clear_gradebook_column_id_terms()
+        self.assertNotIn('gradebookColumnId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_gradebook_column_query(self):
@@ -274,15 +310,25 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests clear_gradebook_column_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_gradebook_id(self):
         """Tests match_gradebook_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedGradebookIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_id_terms(self):
         """Tests clear_gradebook_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertIn('assignedGradebookIds',
+                      self.query._query_terms)
+        self.query.clear_gradebook_id_terms()
+        self.assertNotIn('assignedGradebookIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_gradebook_query(self):
@@ -294,10 +340,13 @@ class TestGradeSystemQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['gradebook'] = 'foo'
+        self.query.clear_gradebook_terms()
+        self.assertNotIn('gradebook',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_grade_system_query_record(self):
@@ -310,27 +359,41 @@ class TestGradeEntryQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        cls.query = cls.catalog.get_grade_entry_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_grade_entry_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_gradebook_column_id(self):
         """Tests match_gradebook_column_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_column_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradebookColumnId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_column_id_terms(self):
         """Tests clear_gradebook_column_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_column_id(test_id, match=True)
+        self.assertIn('gradebookColumnId',
+                      self.query._query_terms)
+        self.query.clear_gradebook_column_id_terms()
+        self.assertNotIn('gradebookColumnId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_gradebook_column_query(self):
@@ -342,20 +405,33 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests get_gradebook_column_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_column_terms(self):
         """Tests clear_gradebook_column_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['gradebookColumn'] = 'foo'
+        self.query.clear_gradebook_column_terms()
+        self.assertNotIn('gradebookColumn',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_key_resource_id(self):
         """Tests match_key_resource_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_key_resource_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['keyResourceId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_key_resource_id_terms(self):
         """Tests clear_key_resource_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_key_resource_id(test_id, match=True)
+        self.assertIn('keyResourceId',
+                      self.query._query_terms)
+        self.query.clear_key_resource_id_terms()
+        self.assertNotIn('keyResourceId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_key_resource_query(self):
@@ -387,15 +463,25 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests clear_derived_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_overridden_grade_entry_id(self):
         """Tests match_overridden_grade_entry_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_overridden_grade_entry_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['overriddenGradeEntryId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_overridden_grade_entry_id_terms(self):
         """Tests clear_overridden_grade_entry_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_overridden_grade_entry_id(test_id, match=True)
+        self.assertIn('overriddenGradeEntryId',
+                      self.query._query_terms)
+        self.query.clear_overridden_grade_entry_id_terms()
+        self.assertNotIn('overriddenGradeEntryId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_overridden_grade_entry_query(self):
@@ -422,20 +508,33 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_ignored_for_calculations"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_ignored_for_calculations_terms(self):
         """Tests clear_ignored_for_calculations_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['ignoredForCalculations'] = 'foo'
+        self.query.clear_ignored_for_calculations_terms()
+        self.assertNotIn('ignoredForCalculations',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_grade_id(self):
         """Tests match_grade_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradeId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_id_terms(self):
         """Tests clear_grade_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_id(test_id, match=True)
+        self.assertIn('gradeId',
+                      self.query._query_terms)
+        self.query.clear_grade_id_terms()
+        self.assertNotIn('gradeId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grade_query(self):
@@ -452,10 +551,13 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_any_grade"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_terms(self):
         """Tests clear_grade_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['grade'] = 'foo'
+        self.query.clear_grade_terms()
+        self.assertNotIn('grade',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_score(self):
@@ -467,10 +569,13 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests match_any_score"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_score_terms(self):
         """Tests clear_score_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['score'] = 'foo'
+        self.query.clear_score_terms()
+        self.assertNotIn('score',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_time_graded(self):
@@ -482,15 +587,25 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests clear_time_graded_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_grader_id(self):
         """Tests match_grader_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grader_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['graderId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grader_id_terms(self):
         """Tests clear_grader_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grader_id(test_id, match=True)
+        self.assertIn('graderId',
+                      self.query._query_terms)
+        self.query.clear_grader_id_terms()
+        self.assertNotIn('graderId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grader_query(self):
@@ -512,15 +627,25 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests clear_grader_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_grading_agent_id(self):
         """Tests match_grading_agent_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grading_agent_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradingAgentId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grading_agent_id_terms(self):
         """Tests clear_grading_agent_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grading_agent_id(test_id, match=True)
+        self.assertIn('gradingAgentId',
+                      self.query._query_terms)
+        self.query.clear_grading_agent_id_terms()
+        self.assertNotIn('gradingAgentId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grading_agent_query(self):
@@ -542,15 +667,25 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests clear_grading_agent_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_gradebook_id(self):
         """Tests match_gradebook_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedGradebookIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_id_terms(self):
         """Tests clear_gradebook_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertIn('assignedGradebookIds',
+                      self.query._query_terms)
+        self.query.clear_gradebook_id_terms()
+        self.assertNotIn('assignedGradebookIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_gradebook_query(self):
@@ -562,10 +697,13 @@ class TestGradeEntryQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['gradebook'] = 'foo'
+        self.query.clear_gradebook_terms()
+        self.assertNotIn('gradebook',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_grade_entry_query_record(self):
@@ -578,27 +716,41 @@ class TestGradebookColumnQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        cls.query = cls.catalog.get_gradebook_column_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_gradebook_column_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_grade_system_id(self):
         """Tests match_grade_system_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_system_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradeSystemId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_system_id_terms(self):
         """Tests clear_grade_system_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_system_id(test_id, match=True)
+        self.assertIn('gradeSystemId',
+                      self.query._query_terms)
+        self.query.clear_grade_system_id_terms()
+        self.assertNotIn('gradeSystemId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grade_system_query(self):
@@ -615,20 +767,33 @@ class TestGradebookColumnQuery(unittest.TestCase):
         """Tests match_any_grade_system"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_system_terms(self):
         """Tests clear_grade_system_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['gradeSystem'] = 'foo'
+        self.query.clear_grade_system_terms()
+        self.assertNotIn('gradeSystem',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_grade_entry_id(self):
         """Tests match_grade_entry_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_entry_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['gradeEntryId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_grade_entry_id_terms(self):
         """Tests clear_grade_entry_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_grade_entry_id(test_id, match=True)
+        self.assertIn('gradeEntryId',
+                      self.query._query_terms)
+        self.query.clear_grade_entry_id_terms()
+        self.assertNotIn('gradeEntryId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_grade_entry_query(self):
@@ -665,15 +830,25 @@ class TestGradebookColumnQuery(unittest.TestCase):
         """Tests clear_gradebook_column_summary_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_gradebook_id(self):
         """Tests match_gradebook_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedGradebookIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_id_terms(self):
         """Tests clear_gradebook_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_gradebook_id(test_id, match=True)
+        self.assertIn('assignedGradebookIds',
+                      self.query._query_terms)
+        self.query.clear_gradebook_id_terms()
+        self.assertNotIn('assignedGradebookIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_gradebook_query(self):
@@ -685,10 +860,13 @@ class TestGradebookColumnQuery(unittest.TestCase):
         """Tests get_gradebook_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_gradebook_terms(self):
         """Tests clear_gradebook_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['gradebook'] = 'foo'
+        self.query.clear_gradebook_terms()
+        self.assertNotIn('gradebook',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_record(self):

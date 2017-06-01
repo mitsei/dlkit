@@ -29,6 +29,10 @@ class TestAssessmentAuthoringProfile(unittest.TestCase):
         """Tests supports_assessment_part_lookup"""
         self.assertTrue(isinstance(self.mgr.supports_assessment_part_lookup(), bool))
 
+    def test_supports_assessment_part_query(self):
+        """Tests supports_assessment_part_query"""
+        self.assertTrue(isinstance(self.mgr.supports_assessment_part_query(), bool))
+
     def test_supports_assessment_part_admin(self):
         """Tests supports_assessment_part_admin"""
         self.assertTrue(isinstance(self.mgr.supports_assessment_part_admin(), bool))
@@ -105,6 +109,20 @@ class TestAssessmentAuthoringManager(unittest.TestCase):
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_lookup_session_for_bank()
 
+    def test_get_assessment_part_query_session(self):
+        """Tests get_assessment_part_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
+        if self.svc_mgr.supports_assessment_part_query():
+            self.svc_mgr.get_assessment_part_query_session()
+
+    def test_get_assessment_part_query_session_for_bank(self):
+        """Tests get_assessment_part_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
+        if self.svc_mgr.supports_assessment_part_query():
+            self.svc_mgr.get_assessment_part_query_session_for_bank(self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_query_session_for_bank()
+
     def test_get_assessment_part_admin_session(self):
         """Tests get_assessment_part_admin_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -180,6 +198,22 @@ class TestAssessmentAuthoringProxyManager(unittest.TestCase):
             self.svc_mgr.get_assessment_part_lookup_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_lookup_session_for_bank()
+
+    def test_get_assessment_part_query_session(self):
+        """Tests get_assessment_part_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
+        if self.svc_mgr.supports_assessment_part_query():
+            self.svc_mgr.get_assessment_part_query_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_query_session()
+
+    def test_get_assessment_part_query_session_for_bank(self):
+        """Tests get_assessment_part_query_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
+        if self.svc_mgr.supports_assessment_part_query():
+            self.svc_mgr.get_assessment_part_query_session_for_bank(self.catalog_id, PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_query_session_for_bank()
 
     def test_get_assessment_part_admin_session(self):
         """Tests get_assessment_part_admin_session"""
