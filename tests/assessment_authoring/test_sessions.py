@@ -211,21 +211,33 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentPartQuerySession tests'
+        create_form.description = 'Test Bank for AssessmentPartLookupSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
-        for color in ['Orange', 'Blue', 'Green', 'orange']:
-            create_form = cls.catalog.get_assessment_part_form_for_create([])
-            create_form.display_name = 'Test AssessmentPart ' + color
-            create_form.description = (
-                'Test AssessmentPart for AssessmentPartQuerySession tests, did I mention green')
-            obj = cls.catalog.create_assessment_part(create_form)
+
+        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form.display_name = 'Test Assessment'
+        assessment_form.description = 'Test Assessment for AssessmentPartLookupSession tests'
+        cls.assessment = cls.catalog.create_assessment(assessment_form)
+
+        colors = ['Orange', 'Blue', 'Green', 'orange']
+
+        for num in [0, 1, 2, 3]:
+            create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident,
+                                                                                         [])
+            create_form.display_name = 'Test AssessmentPart ' + str(num) + colors[num]
+            create_form.description = 'Test AssessmentPart for AssessmentPartLookupSession tests'
+            obj = cls.catalog.create_assessment_part_for_assessment(create_form)
             cls.assessment_part_list.append(obj)
             cls.assessment_part_ids.append(obj.ident)
 
+        cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+
     @classmethod
     def tearDownClass(cls):
+        cls.catalog.use_unsequestered_assessment_part_view()
         for obj in cls.catalog.get_assessment_parts():
             cls.catalog.delete_assessment_part(obj.ident)
+        cls.catalog.delete_assessment(cls.assessment.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
