@@ -5,21 +5,15 @@ Also adds records for supporting AssessmentPart child management
 
 from dlkit.abstract_osid.assessment import record_templates as abc_assessment_records
 
-from dlkit.json_ import types, utilities
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid import objects as osid_objects
 from dlkit.json_.osid.metadata import Metadata
 
 from dlkit.primordium.id.primitives import Id
-from dlkit.primordium.type.primitives import Type
 from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument,\
     NoAccess, NotFound
 
 from ...osid.base_records import ObjectInitRecord
-
-DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data('DEFAULT'))
-DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data('DEFAULT'))
-DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data('DEFAULT'))
 
 
 class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
@@ -428,93 +422,3 @@ class ReviewOptionsAssessmentTakenFormRecord(abc_assessment_records.AssessmentTa
 
     def __init__(self, osid_object_form):
         super(ReviewOptionsAssessmentTakenFormRecord, self).__init__()
-
-
-class PreviousButtonAssessmentOfferedRecord(ObjectInitRecord):
-    """Offer a flag for the previous button setting, i.e. ``unlock_prev`` in OEA player"""
-    _implemented_record_type_identifiers = [
-        'previous-button'
-    ]
-
-    def has_unlock_previous(self):
-        """stub"""
-        if 'unlockPrevious' not in self.my_osid_object._my_map or \
-                self.my_osid_object._my_map['unlockPrevious'] is None:
-            return False
-        return True
-
-    def get_unlock_previous(self):
-        """stub"""
-        if self.has_unlock_previous():
-            return self.my_osid_object._my_map['unlockPrevious']['text']
-        raise IllegalState()
-
-    unlock_previous = property(fget=get_unlock_previous)
-
-
-class PreviousButtonAssessmentOfferedFormRecord(abc_assessment_records.AssessmentOfferedFormRecord,
-                                                osid_records.OsidRecord):
-    """Offer a flag for the previous button setting, i.e. ``unlock_prev`` in OEA player"""
-
-    _implemented_record_type_identifiers = [
-        'previous-button'
-    ]
-
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(PreviousButtonAssessmentOfferedFormRecord, self).__init__()
-
-    def _init_map(self):
-        """stub"""
-        self.my_osid_object_form._my_map['unlockPrevious'] = \
-            dict(self._unlock_previous_metadata['default_string_values'][0])
-
-    def _init_metadata(self):
-        """stub"""
-        self._min_string_length = None
-        self._max_string_length = None
-        self._unlock_previous_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
-                             'unlock_previous'),
-            'element_label': 'unlock_previous',
-            'instructions': 'Indicator to UI on how to treat the previous button',
-            'required': False,
-            'read_only': False,
-            'linked': False,
-            'array': False,
-            'default_string_values': [{
-                'text': 'always',
-                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
-                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
-                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
-            }],
-            'syntax': 'STRING',
-            'minimum_string_length': self._min_string_length,
-            'maximum_string_length': self._max_string_length,
-            'string_set': []
-        }
-
-    def get_unlock_previous_metadata(self):
-        """stub"""
-        return Metadata(**self._unlock_previous_metadata)
-
-    def set_unlock_previous(self, unlock_previous):
-        """use a string -- for now, ``always`` and ``never`` are the options"""
-        if unlock_previous is None:
-            raise InvalidArgument('unlock_previous cannot be None')
-        if unlock_previous is not None and not utilities.is_string(unlock_previous):
-            raise InvalidArgument('unlock_previous must be a string')
-        self.my_osid_object_form._my_map['unlockPrevious']['text'] = unlock_previous
-
-    def clear_unlock_previous(self):
-        """stub"""
-        if (self.get_unlock_previous_metadata().is_read_only() or
-                self.get_unlock_previous_metadata().is_required()):
-            raise NoAccess()
-        self.my_osid_object_form._my_map['unlockPrevious'] = \
-            dict(self._unlock_previous_metadata['default_string_values'][0])
