@@ -121,7 +121,7 @@ class UnlockPreviousButtonAssessmentOfferedRecord(ObjectInitRecord):
     def get_unlock_previous(self):
         """stub"""
         if self.has_unlock_previous():
-            return self.my_osid_object._my_map['unlockPrevious']['text']
+            return self.my_osid_object._my_map['unlockPrevious']
         raise IllegalState()
 
     unlock_previous = property(fget=get_unlock_previous)
@@ -145,7 +145,7 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['unlockPrevious'] = \
-            dict(self._unlock_previous_metadata['default_string_values'][0])
+            str(self._unlock_previous_metadata['default_string_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -161,12 +161,7 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_string_values': [{
-                'text': 'always',
-                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
-                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
-                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
-            }],
+            'default_string_values': ['always'],
             'syntax': 'STRING',
             'minimum_string_length': self._min_string_length,
             'maximum_string_length': self._max_string_length,
@@ -183,7 +178,7 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
             raise NullArgument('unlock_previous cannot be None')
         if unlock_previous is not None and not utilities.is_string(unlock_previous):
             raise InvalidArgument('unlock_previous must be a string')
-        self.my_osid_object_form._my_map['unlockPrevious']['text'] = unlock_previous
+        self.my_osid_object_form._my_map['unlockPrevious'] = unlock_previous
 
     def clear_unlock_previous(self):
         """stub"""
@@ -191,4 +186,4 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
                 self.get_unlock_previous_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['unlockPrevious'] = \
-            dict(self._unlock_previous_metadata['default_string_values'][0])
+            str(self._unlock_previous_metadata['default_string_values'][0])
