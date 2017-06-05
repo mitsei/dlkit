@@ -572,7 +572,18 @@ ASSESSMENT_OFFERED_RECORD_TYPES = {
         'domain': 'assessment.AssessmentOffered',
         'module_path': 'dlkit.records.assessment.clix.assessment_offered_records',
         'object_record_class_name': 'NofMAssessmentOfferedRecord',
-        'form_record_class_name': 'NofMAssessmentOfferedFormRecord'}
+        'form_record_class_name': 'NofMAssessmentOfferedFormRecord'},
+    'unlock-previous-button': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'assessment-offered-record-type',
+        'identifier': 'unlock-previous-button',
+        'display_name': 'Unlock Previous Button',
+        'display_label': 'Unlock Previous Button',
+        'description': 'AssessmentOffered record extension for that supports unlocking of previous button',
+        'domain': 'assessment.AssessmentOffered',
+        'module_path': 'dlkit.records.assessment.clix.assessment_offered_records',
+        'object_record_class_name': 'UnlockPreviousButtonAssessmentOfferedRecord',
+        'form_record_class_name': 'UnlockPreviousButtonAssessmentOfferedFormRecord'}
 }
 
 ASSESSMENT_OFFERED_RECORD_TYPES.update(osid_registry.__dict__.get('OSID_OBJECT_RECORD_TYPES', {}))

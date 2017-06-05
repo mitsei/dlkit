@@ -24,35 +24,35 @@ class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
 
     def can_review_whether_correct_during_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['duringAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
 
     def can_review_whether_correct_after_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
 
     def can_review_whether_correct_before_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['beforeDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
 
     def can_review_whether_correct_after_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
 
     def can_review_solution_during_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['duringAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['duringAttempt'])
 
     def can_review_solution_after_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['afterAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['afterAttempt'])
 
     def can_review_solution_before_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['beforeDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['beforeDeadline'])
 
     def can_review_solution_after_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['afterDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['afterDeadline'])
 
     def has_max_attempts(self):
         """stub"""
@@ -66,6 +66,8 @@ class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
         if self.has_max_attempts():
             return self.my_osid_object._my_map['maxAttempts']
         raise IllegalState()
+
+    max_attempts = property(fget=get_max_attempts)
 
     def get_object_map(self):
         obj_map = dict(self.my_osid_object._my_map)
@@ -114,30 +116,30 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['reviewOptions'] = \
-            self._review_options_metadata['default_object_values'][0]
+            dict(self._review_options_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect'] = \
-            self._whether_correct_metadata['default_object_values'][0]
+            dict(self._whether_correct_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'] = \
-            self._during_attempt_metadata['default_boolean_values'][0]
+            bool(self._during_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'] = \
-            self._after_attempt_metadata['default_boolean_values'][0]
+            bool(self._after_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'] = \
-            self._before_deadline_metadata['default_boolean_values'][0]
+            bool(self._before_deadline_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'] = \
-            self._after_deadline_metadata['default_boolean_values'][0]
+            bool(self._after_deadline_metadata['default_boolean_values'][0])
 
         self.my_osid_object_form._my_map['reviewOptions']['solution'] = \
-            self._solutions_metadata['default_object_values'][0]
+            dict(self._solutions_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['duringAttempt'] = False
         self.my_osid_object_form._my_map['reviewOptions']['solution']['afterAttempt'] = \
-            self._after_attempt_metadata['default_boolean_values'][0]
+            bool(self._after_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['beforeDeadline'] = \
-            self._before_deadline_metadata['default_boolean_values'][0]
+            bool(self._before_deadline_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['afterDeadline'] = \
-            self._after_deadline_metadata['default_boolean_values'][0]
+            bool(self._after_deadline_metadata['default_boolean_values'][0])
 
         self.my_osid_object_form._my_map['maxAttempts'] = \
-            self._max_attempts_metadata['default_integer_values'][0]
+            list(self._max_attempts_metadata['default_integer_values'])[0]
 
     def _init_metadata(self):
         """stub"""
@@ -316,13 +318,13 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
 
     def set_max_attempts(self, value):
         """stub"""
-        try:
-            value = int(value)
-        except:
-            raise InvalidArgument('value is not castable as an integer')
+        if value is None:
+            raise InvalidArgument('value must be an integer')
+        if value is not None and not isinstance(value, int):
+            raise InvalidArgument('value is not an integer')
         if not self.my_osid_object_form._is_valid_integer(value,
                                                           self.get_max_attempts_metadata()):
-            raise InvalidArgument('value')
+            raise InvalidArgument('value must be an integer')
         self.my_osid_object_form._my_map['maxAttempts'] = value
 
     def clear_max_attempts(self):
@@ -331,7 +333,7 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
                 self.get_max_attempts_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['maxAttempts'] = \
-            self._max_attempts_metadata['default_integer_values'][0]
+            list(self._max_attempts_metadata['default_integer_values'])[0]
 
 
 class ReviewOptionsAssessmentTakenRecord(ObjectInitRecord):
@@ -377,14 +379,8 @@ class ReviewOptionsAssessmentTakenRecord(ObjectInitRecord):
     def get_solution_for_question(self, question_id, section=None):
         try:
             if section is None:
-                sections = self.my_osid_object._get_assessment_sections()
-                # let's just read the section _my_map, because _get_questions() will update
-                # the question list again, which we don't need to do
-                all_questions = [q for section in sections for q in section.get_questions(update=False)]
-                my_items = [str(q.ident) for q in all_questions]
                 section = self._get_section_for_question(question_id)
 
-            # if self.can_review_solution(question_id) and str(question_id) in my_items:
             if self.can_review_solution(question_id):
                 item = section._get_item(question_id)
                 item_map = item.object_map
