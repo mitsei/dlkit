@@ -5,15 +5,21 @@ Also adds records for supporting AssessmentPart child management
 
 from dlkit.abstract_osid.assessment import record_templates as abc_assessment_records
 
+from dlkit.json_ import types, utilities
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid import objects as osid_objects
 from dlkit.json_.osid.metadata import Metadata
 
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
 from dlkit.abstract_osid.osid.errors import IllegalState, InvalidArgument,\
     NoAccess, NotFound
 
 from ...osid.base_records import ObjectInitRecord
+
+DEFAULT_LANGUAGE_TYPE = Type(**types.Language().get_type_data('DEFAULT'))
+DEFAULT_SCRIPT_TYPE = Type(**types.Script().get_type_data('DEFAULT'))
+DEFAULT_FORMAT_TYPE = Type(**types.Format().get_type_data('DEFAULT'))
 
 
 class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
@@ -24,35 +30,35 @@ class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
 
     def can_review_whether_correct_during_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['duringAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
 
     def can_review_whether_correct_after_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
 
     def can_review_whether_correct_before_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['beforeDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
 
     def can_review_whether_correct_after_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
 
     def can_review_solution_during_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['duringAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['duringAttempt'])
 
     def can_review_solution_after_attempt(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['afterAttempt']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['afterAttempt'])
 
     def can_review_solution_before_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['beforeDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['beforeDeadline'])
 
     def can_review_solution_after_deadline(self):
         """stub"""
-        return self.my_osid_object._my_map['reviewOptions']['solution']['afterDeadline']
+        return bool(self.my_osid_object._my_map['reviewOptions']['solution']['afterDeadline'])
 
     def has_max_attempts(self):
         """stub"""
@@ -66,6 +72,8 @@ class ReviewOptionsAssessmentOfferedRecord(ObjectInitRecord):
         if self.has_max_attempts():
             return self.my_osid_object._my_map['maxAttempts']
         raise IllegalState()
+
+    max_attempts = property(fget=get_max_attempts)
 
     def get_object_map(self):
         obj_map = dict(self.my_osid_object._my_map)
@@ -114,30 +122,30 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['reviewOptions'] = \
-            self._review_options_metadata['default_object_values'][0]
+            dict(self._review_options_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect'] = \
-            self._whether_correct_metadata['default_object_values'][0]
+            dict(self._whether_correct_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'] = \
-            self._during_attempt_metadata['default_boolean_values'][0]
+            bool(self._during_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'] = \
-            self._after_attempt_metadata['default_boolean_values'][0]
+            bool(self._after_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'] = \
-            self._before_deadline_metadata['default_boolean_values'][0]
+            bool(self._before_deadline_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'] = \
-            self._after_deadline_metadata['default_boolean_values'][0]
+            bool(self._after_deadline_metadata['default_boolean_values'][0])
 
         self.my_osid_object_form._my_map['reviewOptions']['solution'] = \
-            self._solutions_metadata['default_object_values'][0]
+            dict(self._solutions_metadata['default_object_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['duringAttempt'] = False
         self.my_osid_object_form._my_map['reviewOptions']['solution']['afterAttempt'] = \
-            self._after_attempt_metadata['default_boolean_values'][0]
+            bool(self._after_attempt_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['beforeDeadline'] = \
-            self._before_deadline_metadata['default_boolean_values'][0]
+            bool(self._before_deadline_metadata['default_boolean_values'][0])
         self.my_osid_object_form._my_map['reviewOptions']['solution']['afterDeadline'] = \
-            self._after_deadline_metadata['default_boolean_values'][0]
+            bool(self._after_deadline_metadata['default_boolean_values'][0])
 
         self.my_osid_object_form._my_map['maxAttempts'] = \
-            self._max_attempts_metadata['default_integer_values'][0]
+            list(self._max_attempts_metadata['default_integer_values'])[0]
 
     def _init_metadata(self):
         """stub"""
@@ -316,13 +324,13 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
 
     def set_max_attempts(self, value):
         """stub"""
-        try:
-            value = int(value)
-        except:
-            raise InvalidArgument('value is not castable as an integer')
+        if value is None:
+            raise InvalidArgument('value must be an integer')
+        if value is not None and not isinstance(value, int):
+            raise InvalidArgument('value is not an integer')
         if not self.my_osid_object_form._is_valid_integer(value,
                                                           self.get_max_attempts_metadata()):
-            raise InvalidArgument('value')
+            raise InvalidArgument('value must be an integer')
         self.my_osid_object_form._my_map['maxAttempts'] = value
 
     def clear_max_attempts(self):
@@ -331,7 +339,7 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
                 self.get_max_attempts_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['maxAttempts'] = \
-            self._max_attempts_metadata['default_integer_values'][0]
+            list(self._max_attempts_metadata['default_integer_values'])[0]
 
 
 class ReviewOptionsAssessmentTakenRecord(ObjectInitRecord):
@@ -377,14 +385,8 @@ class ReviewOptionsAssessmentTakenRecord(ObjectInitRecord):
     def get_solution_for_question(self, question_id, section=None):
         try:
             if section is None:
-                sections = self.my_osid_object._get_assessment_sections()
-                # let's just read the section _my_map, because _get_questions() will update
-                # the question list again, which we don't need to do
-                all_questions = [q for section in sections for q in section.get_questions(update=False)]
-                my_items = [str(q.ident) for q in all_questions]
                 section = self._get_section_for_question(question_id)
 
-            # if self.can_review_solution(question_id) and str(question_id) in my_items:
             if self.can_review_solution(question_id):
                 item = section._get_item(question_id)
                 item_map = item.object_map
@@ -426,3 +428,93 @@ class ReviewOptionsAssessmentTakenFormRecord(abc_assessment_records.AssessmentTa
 
     def __init__(self, osid_object_form):
         super(ReviewOptionsAssessmentTakenFormRecord, self).__init__()
+
+
+class PreviousButtonAssessmentOfferedRecord(ObjectInitRecord):
+    """Offer a flag for the previous button setting, i.e. ``unlock_prev`` in OEA player"""
+    _implemented_record_type_identifiers = [
+        'previous-button'
+    ]
+
+    def has_unlock_previous(self):
+        """stub"""
+        if 'unlockPrevious' not in self.my_osid_object._my_map or \
+                self.my_osid_object._my_map['unlockPrevious'] is None:
+            return False
+        return True
+
+    def get_unlock_previous(self):
+        """stub"""
+        if self.has_unlock_previous():
+            return self.my_osid_object._my_map['unlockPrevious']['text']
+        raise IllegalState()
+
+    unlock_previous = property(fget=get_unlock_previous)
+
+
+class PreviousButtonAssessmentOfferedFormRecord(abc_assessment_records.AssessmentOfferedFormRecord,
+                                                osid_records.OsidRecord):
+    """Offer a flag for the previous button setting, i.e. ``unlock_prev`` in OEA player"""
+
+    _implemented_record_type_identifiers = [
+        'previous-button'
+    ]
+
+    def __init__(self, osid_object_form):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not osid_object_form.is_for_update():
+            self._init_map()
+        super(PreviousButtonAssessmentOfferedFormRecord, self).__init__()
+
+    def _init_map(self):
+        """stub"""
+        self.my_osid_object_form._my_map['unlockPrevious'] = \
+            dict(self._unlock_previous_metadata['default_string_values'][0])
+
+    def _init_metadata(self):
+        """stub"""
+        self._min_string_length = None
+        self._max_string_length = None
+        self._unlock_previous_metadata = {
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
+                             'unlock_previous'),
+            'element_label': 'unlock_previous',
+            'instructions': 'Indicator to UI on how to treat the previous button',
+            'required': False,
+            'read_only': False,
+            'linked': False,
+            'array': False,
+            'default_string_values': [{
+                'text': 'always',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            }],
+            'syntax': 'STRING',
+            'minimum_string_length': self._min_string_length,
+            'maximum_string_length': self._max_string_length,
+            'string_set': []
+        }
+
+    def get_unlock_previous_metadata(self):
+        """stub"""
+        return Metadata(**self._unlock_previous_metadata)
+
+    def set_unlock_previous(self, unlock_previous):
+        """use a string -- for now, ``always`` and ``never`` are the options"""
+        if unlock_previous is None:
+            raise InvalidArgument('unlock_previous cannot be None')
+        if unlock_previous is not None and not utilities.is_string(unlock_previous):
+            raise InvalidArgument('unlock_previous must be a string')
+        self.my_osid_object_form._my_map['unlockPrevious']['text'] = unlock_previous
+
+    def clear_unlock_previous(self):
+        """stub"""
+        if (self.get_unlock_previous_metadata().is_read_only() or
+                self.get_unlock_previous_metadata().is_required()):
+            raise NoAccess()
+        self.my_osid_object_form._my_map['unlockPrevious'] = \
+            dict(self._unlock_previous_metadata['default_string_values'][0])

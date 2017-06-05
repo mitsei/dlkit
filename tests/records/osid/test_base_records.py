@@ -29,35 +29,10 @@ from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.primitives import InitializableLocale
 from dlkit.runtime.proxy_example import SimpleRequest
 
+from .. import utilities
+
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 ABS_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
-
-TEST_OBJECT_MAP = {
-    "displayName": {
-        "text": "Test object",
-        "languageTypeId": "639-2%3AENG%40ISO",
-        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
-        "scriptTypeId": "15924%3ALATN%40ISO"
-    },
-    "recordTypeIds": [],
-    "license": {
-        "text": "",
-        "languageTypeId": "639-2%3AENG%40ISO",
-        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
-        "scriptTypeId": "15924%3ALATN%40ISO"
-    },
-    "providerId": "",
-    "brandingIds": [],
-    "genusTypeId": "DEFAULT%3ADEFAULT%40DEFAULT",
-    "type": "Object",
-    "id": "testing.Object%3A577fcf75c89cd90cbd1216f8%40ODL.MIT.EDU",
-    "description": {
-        "text": "Test object",
-        "languageTypeId": "639-2%3AENG%40ISO",
-        "formatTypeId": "TextFormats%3APLAIN%40okapia.net",
-        "scriptTypeId": "15924%3ALATN%40ISO"
-    }
-}
 
 
 def get_assessment_manager():
@@ -140,7 +115,7 @@ class TestProvenanceFormRecord(unittest.TestCase):
             form.set_provenance(123)
 
     def test_can_update_provenance(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['provenanceId'] = 'test1'
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -173,7 +148,7 @@ class TestProvenanceRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['creatorId'] = 'foo%3Acreator%40ODL.MIT.EDU'
         cls.now = datetime.datetime.utcnow()
         obj_map['creationTime'] = cls.now
@@ -206,7 +181,7 @@ class TestProvenanceRecord(unittest.TestCase):
         self.assertTrue(self.provenance_object.has_provenance())
 
     def test_getting_provenance_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['creatorId'] = 'creator'
         obj_map['creationTime'] = datetime.datetime.utcnow()
         obj_map['provenanceId'] = ''
@@ -250,7 +225,7 @@ class TestResourceFormRecord(unittest.TestCase):
             form.set_resource_id('foo%3Afoo%40foo')
 
     def test_can_update_resource_id(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['resourceId'] = 'test1%3Atest1%40test1'
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -283,7 +258,7 @@ class TestResourceIdRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['resourceId'] = 'foo%3Aresource%40ODL.MIT.EDU'
         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
                                      osid_object_map=obj_map)
@@ -302,7 +277,7 @@ class TestResourceIdRecord(unittest.TestCase):
         self.assertTrue(self.resource_id_object.has_resource_id())
 
     def test_getting_resource_id_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['resourceId'] = ''
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -344,7 +319,7 @@ class TestTextFormRecord(unittest.TestCase):
             form.set_text(123)
 
     def test_can_update_text(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['text'] = {
             'text': 'test1'
         }
@@ -379,7 +354,7 @@ class TestTextRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['text'] = {
             'text': 'silly',
             'languageTypeId': '639-2%3AENG%40ISO',
@@ -403,7 +378,7 @@ class TestTextRecord(unittest.TestCase):
         self.assertTrue(self.text_object.has_text())
 
     def test_getting_text_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['text'] = {
             'text': '',
             'languageTypeId': '639-2%3AENG%40ISO',
@@ -450,7 +425,7 @@ class TestIntegerValueFormRecord(unittest.TestCase):
             form.set_integer_value('1')
 
     def test_can_update_integer_value(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValue'] = 29
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -483,7 +458,7 @@ class TestIntegerValueRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValue'] = 42
         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
                                      osid_object_map=obj_map)
@@ -502,7 +477,7 @@ class TestIntegerValueRecord(unittest.TestCase):
         self.assertTrue(self.integer_object.has_integer())
 
     def test_getting_integer_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -511,7 +486,7 @@ class TestIntegerValueRecord(unittest.TestCase):
             integer_object.integer
 
     def test_zero_returns_as_valid_integer(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValue'] = 0
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -552,7 +527,7 @@ class TestDecimalValueFormRecord(unittest.TestCase):
             form.set_decimal_value(1)
 
     def test_can_update_decimal_value(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValue'] = 29.25
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -585,7 +560,7 @@ class TestDecimalValueRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValue'] = 42.12
         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
                                      osid_object_map=obj_map)
@@ -604,7 +579,7 @@ class TestDecimalValueRecord(unittest.TestCase):
         self.assertTrue(self.decimal_object.has_decimal())
 
     def test_getting_decimal_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -613,7 +588,7 @@ class TestDecimalValueRecord(unittest.TestCase):
             decimal_object.decimal
 
     def test_zero_returns_as_valid_decimal(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValue'] = 0.0
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -695,7 +670,7 @@ class TestTextsFormRecord(unittest.TestCase):
             form.add_text(1, label='foo')
 
     def test_can_update_text(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {
             'foo': {
                 'text': 'bar',
@@ -761,7 +736,7 @@ class TestTextsRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {
             'foo': {
                 'text': 'bar',
@@ -803,7 +778,7 @@ class TestTextsRecord(unittest.TestCase):
         self.assertTrue(self.texts_object.has_text('foo'))
 
     def test_getting_text_map_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -872,7 +847,7 @@ class TestIntegerValuesFormRecord(unittest.TestCase):
             form.add_integer_value(1.1, label='foo')
 
     def test_can_update_integer(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValues'] = {
             'foo': 0
         }
@@ -933,7 +908,7 @@ class TestIntegerValuesRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValues'] = {
             'foo': 123
         }
@@ -965,7 +940,7 @@ class TestIntegerValuesRecord(unittest.TestCase):
         self.assertTrue(self.integer_values_object.has_integer_value('foo'))
 
     def test_getting_integer_values_map_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValues'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1034,7 +1009,7 @@ class TestDecimalValuesFormRecord(unittest.TestCase):
             form.add_decimal_value(1, label='foo')
 
     def test_can_update_decimal(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValues'] = {
             'foo': 0.3
         }
@@ -1095,7 +1070,7 @@ class TestDecimalValuesRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValues'] = {
             'foo': 123.45
         }
@@ -1127,7 +1102,7 @@ class TestDecimalValuesRecord(unittest.TestCase):
         self.assertTrue(self.decimal_values_object.has_decimal_value('foo'))
 
     def test_getting_integer_values_map_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValues'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1192,7 +1167,7 @@ class TestedXBaseFormRecord(unittest.TestCase):
             form.add_attempts(1.0)
 
     def test_can_update_attempts(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['attempts'] = 3
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -1217,7 +1192,7 @@ class TestedXBaseFormRecord(unittest.TestCase):
             form.add_weight(1)
 
     def test_can_update_weight(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['weight'] = 1.23
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -1242,7 +1217,7 @@ class TestedXBaseFormRecord(unittest.TestCase):
             form.add_showanswer(1)
 
     def test_can_update_showanswer(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['showanswer'] = 'always'
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -1267,7 +1242,7 @@ class TestedXBaseFormRecord(unittest.TestCase):
             form.add_markdown(1)
 
     def test_can_update_markdown(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['markdown'] = '<here />'
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -1337,7 +1312,7 @@ class TestedXBaseRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['attempts'] = 2
         obj_map['weight'] = 0.75
         obj_map['showanswer'] = 'always'
@@ -1379,7 +1354,7 @@ class TestedXBaseRecord(unittest.TestCase):
         self.assertTrue(self.edx_base_object.has_markdown())
 
     def test_getting_attempts_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['attempts'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1388,7 +1363,7 @@ class TestedXBaseRecord(unittest.TestCase):
             edx_base_object.attempts
 
     def test_getting_weight_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['weight'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1397,7 +1372,7 @@ class TestedXBaseRecord(unittest.TestCase):
             edx_base_object.weight
 
     def test_getting_showanswer_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['showanswer'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1406,7 +1381,7 @@ class TestedXBaseRecord(unittest.TestCase):
             edx_base_object.showanswer
 
     def test_getting_markdown_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['markdown'] = ''
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1473,7 +1448,7 @@ class TestTimeValueFormRecord(unittest.TestCase):
             form.set_time_value('ninety')
 
     def test_can_update_time_value(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['timeValue'] = {
             'hours': 5,
             'minutes': 5,
@@ -1522,7 +1497,7 @@ class TestTimeValueRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['timeValue'] = {
             'hours': 1,
             'minutes': 2,
@@ -1548,7 +1523,7 @@ class TestTimeValueRecord(unittest.TestCase):
         self.assertTrue(self.time_value_object.has_time())
 
     def test_getting_time_value_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['timeValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1751,7 +1726,7 @@ class TestFilesFormRecord(unittest.TestCase):
                           asset_description='Test asset description')
 
     def test_can_update_file(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
         obj_map['fileIds'] = {}
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
@@ -1774,7 +1749,7 @@ class TestFilesFormRecord(unittest.TestCase):
         form.clear_files()
 
     def test_can_update_asset(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
         obj_map['fileIds'] = {
             'foo': {
@@ -1885,7 +1860,7 @@ class TestFilesRecord(unittest.TestCase):
         cls.repo.create_asset_content(form)
         cls.asset = cls.repo.get_asset(cls.asset.ident)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
                 'assetId': str(cls.asset.ident),
@@ -1922,7 +1897,7 @@ class TestFilesRecord(unittest.TestCase):
         self.assertTrue(self.item.has_files())
 
     def test_getting_files_map_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1937,7 +1912,7 @@ class TestFilesRecord(unittest.TestCase):
                          {'foo': self.asset.get_asset_contents().next().url})
 
     def test_getting_files_url_map_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -1963,7 +1938,7 @@ class TestFilesRecord(unittest.TestCase):
         next(ac_list)
         second_ac = next(ac_list)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
                 'assetId': str(asset.ident),
@@ -2047,7 +2022,7 @@ class TestFilesRecord(unittest.TestCase):
         # Note that currently this does not handle the more complicated
         #   case of multilanguage altText or transcripts. Those are
         #   tested in `qbank` functional tests
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
                 'assetId': str(self.asset.ident),
@@ -2072,7 +2047,7 @@ class TestFilesRecord(unittest.TestCase):
         # Note that currently this does not handle the more complicated
         #   case of multilanguage altText or transcripts. Those are
         #   tested in `qbank` functional tests
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
                 'assetId': str(self.asset.ident),
@@ -2206,7 +2181,7 @@ class TestFileFormRecord(unittest.TestCase):
                            asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
 
     def test_can_update_file(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
         obj_map['fileId'] = {}
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
@@ -2229,7 +2204,7 @@ class TestFileFormRecord(unittest.TestCase):
         form.clear_file()
 
     def test_can_update_asset(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
         obj_map['fileId'] = {
             'assetId': 'repository.Asset%3Aold-id%40ODL.MIT.EDU',
@@ -2294,7 +2269,7 @@ class TestFileRecord(unittest.TestCase):
         cls.repo.create_asset_content(form)
         cls.asset = cls.repo.get_asset(cls.asset.ident)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileId'] = {
             'assetId': str(cls.asset.ident),
             'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
@@ -2327,7 +2302,7 @@ class TestFileRecord(unittest.TestCase):
         self.assertTrue(self.item.has_file_asset())
 
     def test_getting_file_asset_id_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileId'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -2356,7 +2331,7 @@ class TestFileRecord(unittest.TestCase):
         next(ac_list)
         second_ac = next(ac_list)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileId'] = {
             'assetId': str(asset.ident),
             'assetContentTypeId': str(second_ac.genus_type)
@@ -2382,7 +2357,7 @@ class TestFileRecord(unittest.TestCase):
                          self.test_image.read())
 
     def test_getting_file_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileId'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -2444,7 +2419,7 @@ class TestColorCoordinateFormRecord(unittest.TestCase):
         self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {})
 
     def test_can_update_color_coordinate(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['colorCoordinate'] = {
             'values': [0, 0, 0],
             'uncertaintyMinus': [5, 5, 5],
@@ -2481,7 +2456,7 @@ class TestColorCoordinateRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['colorCoordinate'] = {
             'values': [10, 33, 255],
             'uncertaintyMinus': [15, 15, 15],
@@ -2507,7 +2482,7 @@ class TestColorCoordinateRecord(unittest.TestCase):
         self.assertTrue(self.color_coordinate_object.has_color_coordinate())
 
     def test_getting_color_coordinate_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['colorCoordinate'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
@@ -2516,7 +2491,7 @@ class TestColorCoordinateRecord(unittest.TestCase):
             color_coordinate_object.color_coordinate
 
     def test_object_map_updated(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['colorCoordinate'] = {
             'values': [10, 33, 255],
             'uncertaintyMinus': [15, 15, 15],
@@ -2629,7 +2604,7 @@ class TestTemporalFormRecord(unittest.TestCase):
                           second=future_date.second,
                           microsecond=future_date.microsecond)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['startDate'] = date_1
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2660,7 +2635,7 @@ class TestTemporalFormRecord(unittest.TestCase):
                           second=future_date.second,
                           microsecond=future_date.microsecond)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['endDate'] = date_1
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2733,7 +2708,7 @@ class TestTemporalRecord(unittest.TestCase):
         self.assertEqual(temporal_object.is_effective(), expected)
 
     def create_temporal(self, start_date, end_date):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['startDate'] = start_date
         obj_map['endDate'] = end_date
         osid_object = OsidObject(object_name='TEST_OBJECT',
@@ -2758,7 +2733,7 @@ class TestTemporalRecord(unittest.TestCase):
                                 minute=end_date.minute,
                                 second=end_date.second,
                                 microsecond=end_date.microsecond)
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['startDate'] = cls.start_date
         obj_map['endDate'] = cls.end_date
         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
@@ -2895,7 +2870,7 @@ class TestSourceableFormRecord(unittest.TestCase):
     def test_can_update_branding(self):
         id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         id_2 = Id('repository.Asset%3A2%40ODL.MIT.EDU')
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['brandingIds'] = [str(id_1)]
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2910,7 +2885,7 @@ class TestSourceableFormRecord(unittest.TestCase):
     def test_can_update_provider(self):
         id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
         id_2 = Id('resource.Resource%3A2%40ODL.MIT.EDU')
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['providerId'] = str(id_1)
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2923,7 +2898,7 @@ class TestSourceableFormRecord(unittest.TestCase):
                          form.my_osid_object_form._my_map['providerId'])
 
     def test_can_update_license(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['license'] = {
             'text': 'foo'
         }
@@ -2939,7 +2914,7 @@ class TestSourceableFormRecord(unittest.TestCase):
 
     def test_can_clear_branding(self):
         id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['brandingIds'] = [str(id_1)]
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2953,7 +2928,7 @@ class TestSourceableFormRecord(unittest.TestCase):
 
     def test_can_clear_provider(self):
         id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['providerId'] = str(id_1)
         osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
@@ -2966,7 +2941,7 @@ class TestSourceableFormRecord(unittest.TestCase):
                          form.my_osid_object_form._my_map['providerId'])
 
     def test_can_clear_license(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['license'] = {
             'text': 'foo'
         }
@@ -3014,7 +2989,7 @@ class TestSourceableRecord(unittest.TestCase):
         form.display_name = 'Test resource'
         cls.resource = cls.bin.create_resource(form)
 
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['providerId'] = str(cls.resource.ident)
         obj_map['brandingIds'] = [str(cls.asset.ident)]
         obj_map['license'] = {
@@ -3072,7 +3047,7 @@ class TestSourceableRecord(unittest.TestCase):
                          'old-license')
 
     def test_getting_provider_id_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
@@ -3081,7 +3056,7 @@ class TestSourceableRecord(unittest.TestCase):
             sourceable_object.provider_id
 
     def test_getting_provider_when_has_none_throws_exception(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
@@ -3090,7 +3065,7 @@ class TestSourceableRecord(unittest.TestCase):
             sourceable_object.provider
 
     def test_getting_branding_ids_when_has_none_returns_empty_id_list(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
@@ -3099,7 +3074,7 @@ class TestSourceableRecord(unittest.TestCase):
         self.assertTrue(isinstance(sourceable_object.branding_ids, IdList))
 
     def test_getting_branding_when_has_none_returns_empty_asset_list(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
@@ -3118,7 +3093,7 @@ class TestMultiLanguageUtils(unittest.TestCase):
             del self.ml_obj.my_osid_object
 
     def set_no_proxy(self, form=False, map_initializer={}):
-        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object_map.update(map_initializer)
 
         if form:
@@ -3129,7 +3104,7 @@ class TestMultiLanguageUtils(unittest.TestCase):
                                                     osid_object_map=osid_object_map)
 
     def set_proxy_with_no_locale(self, form=False, map_initializer={}):
-        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object_map.update(map_initializer)
 
         if form:
@@ -3142,7 +3117,7 @@ class TestMultiLanguageUtils(unittest.TestCase):
                                                     proxy=get_proxy())
 
     def set_proxy_with_locale(self, locale, form=False, map_initializer={}):
-        osid_object_map = deepcopy(TEST_OBJECT_MAP)
+        osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         osid_object_map.update(map_initializer)
 
         if form:
@@ -4166,7 +4141,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
         pass
 
     def test_can_edit_description(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4201,7 +4176,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
                          str(self.default_script_type))
 
     def test_edit_description_requires_display_text(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4215,7 +4190,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             form.edit_description('foo')
 
     def test_edit_description_throws_exception_if_language_not_exist(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4361,7 +4336,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             form.remove_description_by_language(str(self.default_language_type))
 
     def test_can_remove_description_by_language_type(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4375,7 +4350,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
         self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
 
     def test_remove_description_no_changes_if_language_not_exist(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4397,7 +4372,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
                          str(self.default_script_type))
 
     def test_edit_display_name_throws_exception_if_language_not_exist(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4416,7 +4391,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             }))
 
     def test_can_edit_display_name(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4451,7 +4426,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
                          str(self.default_script_type))
 
     def test_edit_display_name_requires_display_text(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4470,7 +4445,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             form.remove_display_name_by_language(str(self.default_language_type))
 
     def test_remove_display_name_changes_nothing_if_language_not_present(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4492,7 +4467,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
                          str(self.default_script_type))
 
     def test_can_remove_display_name_by_language_type(self):
-        object_map = deepcopy(TEST_OBJECT_MAP)
+        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
         object_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
@@ -4506,7 +4481,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
         self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 0)
 
     def test_can_clear_descriptions(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['descriptions'] = [{
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
@@ -4522,7 +4497,7 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
         self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
 
     def test_can_clear_display_names(self):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['displayNames'] = [{
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
@@ -4581,7 +4556,7 @@ class TestMultiLanguageRecord(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        obj_map = deepcopy(TEST_OBJECT_MAP)
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['descriptions'] = [{
             'text': 'foo description',
             'languageTypeId': '639-2%3AENG%40ISO',
