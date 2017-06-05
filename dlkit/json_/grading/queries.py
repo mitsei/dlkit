@@ -48,7 +48,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeSystemId', str(grade_system_id, match))
+        self._add_match('gradeSystemId', str(grade_system_id), match)
 
     def clear_grade_system_id_terms(self):
         """Clears the grade system ``Id`` terms.
@@ -209,7 +209,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeEntryId', str(grade_entry_id, match))
+        self._add_match('gradeEntryId', str(grade_entry_id), match)
 
     def clear_grade_entry_id_terms(self):
         """Clears the grade entry ``Id`` terms.
@@ -402,7 +402,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeId', str(grade_id, match))
+        self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
         """Clears the grade ``Id`` terms.
@@ -552,7 +552,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradebookColumnId', str(gradebook_column_id, match))
+        self._add_match('gradebookColumnId', str(gradebook_column_id), match)
 
     def clear_gradebook_column_id_terms(self):
         """Clears the gradebook column ``Id`` terms.
@@ -727,7 +727,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         self._add_match('gradebookColumnId',
-                        gradebook_column_id,
+                        str(gradebook_column_id),
                         match)
 
     def clear_gradebook_column_id_terms(self):
@@ -791,7 +791,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('keyResourceId', str(resource_id, match))
+        self._add_match('keyResourceId', str(resource_id), match)
 
     def clear_key_resource_id_terms(self):
         """Clears the key resource ``Id`` terms.
@@ -885,7 +885,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('overriddenGradeEntryId', str(grade_entry_id, match))
+        self._add_match('overriddenGradeEntryId', str(grade_entry_id), match)
 
     def clear_overridden_grade_entry_id_terms(self):
         """Clears the overridden grade entry ``Id`` terms.
@@ -981,7 +981,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeId', str(grade_id, match))
+        self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
         """Clears the grade ``Id`` terms.
@@ -1113,7 +1113,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('graderId', str(resource_id, match))
+        self._add_match('graderId', str(resource_id), match)
 
     def clear_grader_id_terms(self):
         """Clears the grader ``Id`` terms.
@@ -1185,7 +1185,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradingAgentId', str(agent_id, match))
+        self._add_match('gradingAgentId', str(agent_id), match)
 
     def clear_grading_agent_id_terms(self):
         """Clears the grader ``Id`` terms.
@@ -1431,7 +1431,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('gradeEntryId', str(grade_entry_id, match))
+        self._add_match('gradeEntryId', str(grade_entry_id), match)
 
     def clear_grade_entry_id_terms(self):
         """Clears the grade entry ``Id`` terms.

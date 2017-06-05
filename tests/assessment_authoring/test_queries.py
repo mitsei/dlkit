@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -36,7 +37,8 @@ class TestAssessmentPartQuery(unittest.TestCase):
         assessment_form.description = 'Test Assessment for AssessmentPartLookupSession tests'
         cls.assessment = cls.catalog.create_assessment(assessment_form)
 
-        # cls.query = cls.catalog.get_assessment_part_query()
+    def setUp(self):
+        self.query = self.catalog.get_assessment_part_query()
 
     @classmethod
     def tearDownClass(cls):
@@ -44,15 +46,25 @@ class TestAssessmentPartQuery(unittest.TestCase):
         cls.catalog.delete_assessment(cls.assessment.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_assessment_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assessmentId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_id_terms(self):
         """Tests clear_assessment_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_assessment_id(test_id, match=True)
+        self.assertIn('assessmentId',
+                      self.query._query_terms)
+        self.query.clear_assessment_id_terms()
+        self.assertNotIn('assessmentId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_assessment_query(self):
@@ -64,20 +76,33 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests get_assessment_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['assessment'] = 'foo'
+        self.query.clear_assessment_terms()
+        self.assertNotIn('assessment',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_parent_assessment_part_id(self):
         """Tests match_parent_assessment_part_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_parent_assessment_part_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['parentAssessmentPartId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_parent_assessment_part_id_terms(self):
         """Tests clear_parent_assessment_part_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_parent_assessment_part_id(test_id, match=True)
+        self.assertIn('parentAssessmentPartId',
+                      self.query._query_terms)
+        self.query.clear_parent_assessment_part_id_terms()
+        self.assertNotIn('parentAssessmentPartId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_parent_assessment_part_query(self):
@@ -119,10 +144,13 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_any_weight"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_weight_terms(self):
         """Tests clear_weight_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['weight'] = 'foo'
+        self.query.clear_weight_terms()
+        self.assertNotIn('weight',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_allocated_time(self):
@@ -134,20 +162,33 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_any_allocated_time"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_allocated_time_terms(self):
         """Tests clear_allocated_time_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['allocatedTime'] = 'foo'
+        self.query.clear_allocated_time_terms()
+        self.assertNotIn('allocatedTime',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_child_assessment_part_id(self):
         """Tests match_child_assessment_part_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_child_assessment_part_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['childAssessmentPartId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_child_assessment_part_id_terms(self):
         """Tests clear_child_assessment_part_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_child_assessment_part_id(test_id, match=True)
+        self.assertIn('childAssessmentPartId',
+                      self.query._query_terms)
+        self.query.clear_child_assessment_part_id_terms()
+        self.assertNotIn('childAssessmentPartId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_child_assessment_part_query(self):
@@ -169,15 +210,25 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests clear_child_assessment_part_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_bank_id(self):
         """Tests match_bank_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_bank_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedBankIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_bank_id_terms(self):
         """Tests clear_bank_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_bank_id(test_id, match=True)
+        self.assertIn('assignedBankIds',
+                      self.query._query_terms)
+        self.query.clear_bank_id_terms()
+        self.assertNotIn('assignedBankIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_bank_query(self):
@@ -189,10 +240,13 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests get_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_bank_terms(self):
         """Tests clear_bank_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['bank'] = 'foo'
+        self.query.clear_bank_terms()
+        self.assertNotIn('bank',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_assessment_part_query_record(self):

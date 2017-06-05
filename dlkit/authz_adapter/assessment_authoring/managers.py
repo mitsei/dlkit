@@ -45,6 +45,11 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         # osid.assessment_authoring.AssessmentAuthoringProfile.supports_assessment_part_lookup
         return self._provider_manager.supports_assessment_part_lookup()
 
+    def supports_assessment_part_query(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_assessment_part_query()
+
     def supports_assessment_part_admin(self):
         # Implemented from azosid template for -
         # osid.assessment_authoring.AssessmentAuthoringProfile.supports_assessment_part_admin
@@ -170,6 +175,45 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         try:
             return getattr(sessions, 'AssessmentPartLookupSession')(
                 provider_session=self._provider_manager.get_assessment_part_lookup_session_for_bank(bank_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                hierarchy_session=self._get_hierarchy_session(),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    def get_assessment_part_query_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_assessment_part_query_session()
+            query_session.use_federated_bank_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AssessmentPartQuerySession')(
+                provider_session=self._provider_manager.get_assessment_part_query_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                hierarchy_session=self._get_hierarchy_session(),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    assessment_part_query_session = property(fget=get_assessment_part_query_session)
+
+    @raise_null_argument
+    def get_assessment_part_query_session_for_bank(self, bank_id):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_assessment_part_query_session_for_bank(bank_id)
+            query_session.use_federated_bank_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AssessmentPartQuerySession')(
+                provider_session=self._provider_manager.get_assessment_part_query_session_for_bank(bank_id),
                 authz_session=self._get_authz_session(),
                 override_lookup_session=self._get_override_lookup_session(),
                 hierarchy_session=self._get_hierarchy_session(),
@@ -332,6 +376,46 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         try:
             return getattr(sessions, 'AssessmentPartLookupSession')(
                 provider_session=self._provider_manager.get_assessment_part_lookup_session_for_bank(bank_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                proxy=proxy,
+                hierarchy_session=self._get_hierarchy_session(proxy),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_assessment_part_query_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_assessment_part_query_session(proxy)
+            query_session.use_federated_bank_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AssessmentPartQuerySession')(
+                provider_session=self._provider_manager.get_assessment_part_query_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                proxy=proxy,
+                hierarchy_session=self._get_hierarchy_session(proxy),
+                query_session=query_session)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_assessment_part_query_session_for_bank(self, bank_id, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_assessment_part_query_session_for_bank(bank_id, proxy)
+            query_session.use_federated_bank_view()
+        except Unimplemented:
+            query_session = None
+        try:
+            return getattr(sessions, 'AssessmentPartQuerySession')(
+                provider_session=self._provider_manager.get_assessment_part_query_session_for_bank(bank_id, proxy),
                 authz_session=self._get_authz_session(),
                 override_lookup_session=self._get_override_lookup_session(),
                 proxy=proxy,

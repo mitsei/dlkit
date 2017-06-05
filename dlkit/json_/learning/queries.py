@@ -48,7 +48,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentId', str(assessment_id, match))
+        self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
         """Clears the assessment ``Id`` terms.
@@ -122,7 +122,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('knowledgeCategoryId', str(grade_id, match))
+        self._add_match('knowledgeCategoryId', str(grade_id), match)
 
     def clear_knowledge_category_id_terms(self):
         """Clears the knowledge category ``Id`` terms.
@@ -196,7 +196,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('cognitiveProcessId', str(grade_id, match))
+        self._add_match('cognitiveProcessId', str(grade_id), match)
 
     def clear_cognitive_process_id_terms(self):
         """Clears the cognitive process ``Id`` terms.
@@ -270,7 +270,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('activityId', str(activity_id, match))
+        self._add_match('activityId', str(activity_id), match)
 
     def clear_activity_id_terms(self):
         """Clears the activity ``Id`` terms.
@@ -343,7 +343,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('requisiteObjectiveId', str(requisite_objective_id, match))
+        self._add_match('requisiteObjectiveId', str(requisite_objective_id), match)
 
     def clear_requisite_objective_id_terms(self):
         """Clears the requisite objective ``Id`` terms.
@@ -417,7 +417,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('dependentObjectiveId', str(dependent_objective_id, match))
+        self._add_match('dependentObjectiveId', str(dependent_objective_id), match)
 
     def clear_dependent_objective_id_terms(self):
         """Clears the dependent objective ``Id`` terms.
@@ -491,7 +491,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('equivalentObjectiveId', str(equivalent_objective_id, match))
+        self._add_match('equivalentObjectiveId', str(equivalent_objective_id), match)
 
     def clear_equivalent_objective_id_terms(self):
         """Clears the equivalent objective ``Id`` terms.
@@ -564,7 +564,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('ancestorObjectiveId', str(objective_id, match))
+        self._add_match('ancestorObjectiveId', str(objective_id), match)
 
     def clear_ancestor_objective_id_terms(self):
         """Clears the ancestor objective ``Id`` query terms.
@@ -636,7 +636,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('descendantObjectiveId', str(objective_id, match))
+        self._add_match('descendantObjectiveId', str(objective_id), match)
 
     def clear_descendant_objective_id_terms(self):
         """Clears the descendant objective ``Id`` query terms.
@@ -808,7 +808,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('objectiveId', str(objective_id, match))
+        self._add_match('objectiveId', str(objective_id), match)
 
     def clear_objective_id_terms(self):
         """Clears the objective ``Id`` terms.
@@ -870,7 +870,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assetId', str(asset_id, match))
+        self._add_match('assetId', str(asset_id), match)
 
     def clear_asset_id_terms(self):
         """Clears the asset ``Id`` terms.
@@ -941,7 +941,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('courseId', str(course_id, match))
+        self._add_match('courseId', str(course_id), match)
 
     def clear_course_id_terms(self):
         """Clears the course ``Id`` terms.
@@ -1012,7 +1012,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('assessmentId', str(assessment_id, match))
+        self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
         """Clears the assessment ``Id`` terms.

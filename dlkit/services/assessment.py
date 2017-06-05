@@ -314,6 +314,10 @@ class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile)
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_lookup()
 
+    def supports_assessment_part_query(self):
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_query()
+
     def supports_assessment_part_admin(self):
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_admin()
@@ -1569,6 +1573,16 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
     def get_assessment_part_lookup_session_for_bank(self, *args, **kwargs):
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_lookup_session_for_bank(*args, **kwargs)
+
+    def get_assessment_part_query_session(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_query_session(*args, **kwargs)
+
+    assessment_part_query_session = property(fget=get_assessment_part_query_session)
+
+    def get_assessment_part_query_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_query_session_for_bank(*args, **kwargs)
 
     def get_assessment_part_admin_session(self, *args, **kwargs):
         """Pass through to provider method"""
@@ -3371,10 +3385,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('assessment_part_query_session').can_search_assessment_parts()
 
     def get_assessment_part_query(self):
-        """Pass through to provider AssessmentPartQuerySession.get_assessment_part_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.get_item_query_template
-        return self._get_provider_session('assessment_part_query_session').get_assessment_part_query()
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_query_session').get_assessment_part_query()
 
     assessment_part_query = property(fget=get_assessment_part_query)
 

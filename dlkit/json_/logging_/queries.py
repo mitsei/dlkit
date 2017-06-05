@@ -136,7 +136,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('resourceId', str(resource_id, match))
+        self._add_match('resourceId', str(resource_id), match)
 
     def clear_resource_id_terms(self):
         """Clears the resource ``Id`` terms.

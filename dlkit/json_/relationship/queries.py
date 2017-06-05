@@ -48,7 +48,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('sourceId', str(peer, match))
+        self._add_match('sourceId', str(peer), match)
 
     def clear_source_id_terms(self):
         """Clears the peer ``Id`` terms.
@@ -73,7 +73,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('destinationId', str(peer, match))
+        self._add_match('destinationId', str(peer), match)
 
     def clear_destination_id_terms(self):
         """Clears the other peer ``Id`` terms.

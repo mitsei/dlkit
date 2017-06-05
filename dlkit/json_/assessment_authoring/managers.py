@@ -36,6 +36,18 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_assessment_part_lookup' in profile.SUPPORTS
 
+    def supports_assessment_part_query(self):
+        """Tests if querying assessment part is supported.
+
+        return: (boolean) - ``true`` if assessment part query is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_assessment_part_query' in profile.SUPPORTS
+
     def supports_assessment_part_admin(self):
         """Tests if an assessment part administrative service is supported.
 
@@ -318,6 +330,52 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ##
         # pylint: disable=no-member
         return sessions.AssessmentPartLookupSession(bank_id, runtime=self._runtime)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_assessment_part_query_session(self):
+        """Gets the ``OsidSession`` associated with the assessment part query service.
+
+        return: (osid.assessment.authoring.AssessmentPartQuerySession) -
+                an ``AssessmentPartQuerySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_query()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartQuerySession(runtime=self._runtime)
+
+    assessment_part_query_session = property(fget=get_assessment_part_query_session)
+
+    @utilities.remove_null_proxy_kwarg
+    @utilities.arguments_not_none
+    def get_assessment_part_query_session_for_bank(self, bank_id):
+        """Gets the ``OsidSession`` associated with the assessment part query service for the given bank.
+
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        return: (osid.assessment.authoring.AssessmentPartQuerySession) -
+                an ``AssessmentPartQuerySession``
+        raise:  NotFound - no ``Bank`` found by the given ``Id``
+        raise:  NullArgument - ``bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_assessment_part_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssessmentPartQuerySession(bank_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
     def get_assessment_part_admin_session(self):
@@ -672,6 +730,52 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ##
         # pylint: disable=no-member
         return sessions.AssessmentPartLookupSession(bank_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_assessment_part_query_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the assessment part query service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.assessment.authoring.AssessmentPartQuerySession) -
+                an ``AssessmentPartQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_query()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_assessment_part_query_session_for_bank(self, bank_id, proxy):
+        """Gets the ``OsidSession`` associated with the assessment part query service for the given bank.
+
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.assessment.authoring.AssessmentPartQuerySession) -
+                an ``AssessmentPartQuerySession``
+        raise:  NotFound - no ``Bank`` found by the given ``Id``
+        raise:  NullArgument - ``bank_id or proxy is null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_assessment_part_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssessmentPartQuerySession(bank_id, proxy, self._runtime)
 
     @utilities.arguments_not_none
     def get_assessment_part_admin_session(self, proxy):

@@ -14,6 +14,7 @@ from bson.objectid import ObjectId
 
 
 from . import objects
+from . import queries
 from .. import utilities
 from ..list_utilities import move_id_ahead, move_id_behind, order_ids
 from ..osid import sessions as osid_sessions
@@ -411,6 +412,205 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
             dict({'assessmentPartId': str(assessment_part_id)},
                  **self._view_filter()))
         return objects.AssessmentPartList(result, runtime=self._runtime)
+
+
+class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPartQuerySession, osid_sessions.OsidSession):
+    """This session provides methods for searching among ``AssessmentPart`` objects.
+
+    The search query is constructed using the ``AssessmentPartQuery``.
+
+    This session defines views that offer differing behaviors for
+    searching.
+
+      * federated bank view: searches include assessment parts in bank
+        of which this bank is an ancestor in the bank hierarchy
+      * isolated bank view: searches are restricted to assessment parts
+        in this bank
+      * sequestered assessment part viiew: All assessment part methods
+        suppress sequestered assessment parts.
+      * unsequestered assessment part view: All assessment part methods
+        return all assessment parts.
+
+
+    Assessment parts may have a query record indicated by their
+    respective record types. The query record is accessed via the
+    ``AssessmentPartQuery``.
+
+    """
+    def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
+        self._catalog_class = objects.Bank
+        self._catalog_name = 'Bank'
+        OsidSession._init_object(
+            self,
+            catalog_id,
+            proxy,
+            runtime,
+            db_name='assessment_authoring',
+            cat_name='Bank',
+            cat_class=objects.Bank)
+        self._kwargs = kwargs
+        self._status_view = ACTIVE
+        self._sequestered_view = SEQUESTERED
+
+    def _view_filter(self):
+        """
+        Overrides OsidSession._view_filter to add sequestering filter.
+
+        """
+        view_filter = OsidSession._view_filter(self)
+        if self._sequestered_view == SEQUESTERED:
+            view_filter['sequestered'] = False
+        return view_filter
+
+    def get_bank_id(self):
+        """Gets the ``Bank``  ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the ``Bank Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        return self._catalog_id
+
+    bank_id = property(fget=get_bank_id)
+
+    def get_bank(self):
+        """Gets the ``Bank`` associated with this session.
+
+        return: (osid.assessment.Bank) - the bank
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        return self._catalog
+
+    bank = property(fget=get_bank)
+
+    def can_search_assessment_parts(self):
+        """Tests if this user can perform ``AssessmentPart`` lookups.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may not offer lookup operations
+        to unauthorized users.
+
+        return: (boolean) - ``false`` if search methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def use_federated_bank_view(self):
+        """Federates the view for methods in this session.
+
+        A federated view will include assessment part in banks which are
+        children of this step in the bank hierarchy.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        self._use_federated_catalog_view()
+
+    def use_isolated_bank_view(self):
+        """Isolates the view for methods in this session.
+
+        An isolated view restricts lookups to this bank only.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        self._use_isolated_catalog_view()
+
+    def use_sequestered_assessment_part_view(self):
+        """The methods in this session omit sequestered assessment parts.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_sequestered_composition_view_template
+        self._sequestered_view = SEQUESTERED
+
+    def use_unsequestered_assessment_part_view(self):
+        """The methods in this session return all assessment parts, including sequestered assessment parts.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_unsequestered_composition_view_template
+        self._sequestered_view = UNSEQUESTERED
+
+    def get_assessment_part_query(self):
+        """Gets an assessment part query.
+
+        return: (osid.assessment.authoring.AssessmentPartQuery) - the
+                assessment part query
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
+        return queries.AssessmentPartQuery(runtime=self._runtime)
+
+    assessment_part_query = property(fget=get_assessment_part_query)
+
+    @utilities.arguments_not_none
+    def get_assessment_parts_by_query(self, assessment_part_query):
+        """Gets a list of ``AssessmentParts`` matching the given assessment part query.
+
+        arg:    assessment_part_query
+                (osid.assessment.authoring.AssessmentPartQuery): the
+                assessment part query
+        return: (osid.assessment.authoring.AssessmentPartList) - the
+                returned ``AssessmentPartList``
+        raise:  NullArgument - ``assessment_part_query`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        raise:  Unsupported - ``assessment_part_query`` is not of this
+                service
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
+        and_list = list()
+        or_list = list()
+        for term in assessment_part_query._query_terms:
+            if '$in' in assessment_part_query._query_terms[term] and '$nin' in assessment_part_query._query_terms[term]:
+                and_list.append(
+                    {'$or': [{term: {'$in': assessment_part_query._query_terms[term]['$in']}},
+                             {term: {'$nin': assessment_part_query._query_terms[term]['$nin']}}]})
+            else:
+                and_list.append({term: assessment_part_query._query_terms[term]})
+        for term in assessment_part_query._keyword_terms:
+            or_list.append({term: assessment_part_query._keyword_terms[term]})
+        if or_list:
+            and_list.append({'$or': or_list})
+        view_filter = self._view_filter()
+        if view_filter:
+            and_list.append(view_filter)
+        if and_list:
+            query_terms = {'$and': and_list}
+        collection = JSONClientValidated('assessment_authoring',
+                                         collection='AssessmentPart',
+                                         runtime=self._runtime)
+        result = collection.find(query_terms).sort('_id', DESCENDING)
+        return objects.AssessmentPartList(result, runtime=self._runtime, proxy=self._proxy)
 
 
 class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPartAdminSession, osid_sessions.OsidSession):

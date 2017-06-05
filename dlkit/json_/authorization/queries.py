@@ -68,7 +68,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('relatedAuthorizationId', str(id_, match))
+        self._add_match('relatedAuthorizationId', str(id_), match)
 
     def clear_related_authorization_id_terms(self):
         """Clears the related authorization ``Id`` query terms.
@@ -129,7 +129,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('resourceId', str(resource_id, match))
+        self._add_match('resourceId', str(resource_id), match)
 
     def clear_resource_id_terms(self):
         """Clears the resource ``Id`` query terms.
@@ -201,7 +201,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('trustId', str(trust_id, match))
+        self._add_match('trustId', str(trust_id), match)
 
     @utilities.arguments_not_none
     def match_any_trust_id(self, match):

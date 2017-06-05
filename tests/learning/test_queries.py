@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -23,27 +24,41 @@ class TestObjectiveQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
 
-        cls.query = cls.catalog.get_objective_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_objective_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_assessment_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assessmentId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_id_terms(self):
         """Tests clear_assessment_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_assessment_id(test_id, match=True)
+        self.assertIn('assessmentId',
+                      self.query._query_terms)
+        self.query.clear_assessment_id_terms()
+        self.assertNotIn('assessmentId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_assessment_query(self):
@@ -60,20 +75,33 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['assessment'] = 'foo'
+        self.query.clear_assessment_terms()
+        self.assertNotIn('assessment',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_knowledge_category_id(self):
         """Tests match_knowledge_category_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_knowledge_category_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['knowledgeCategoryId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_knowledge_category_id_terms(self):
         """Tests clear_knowledge_category_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_knowledge_category_id(test_id, match=True)
+        self.assertIn('knowledgeCategoryId',
+                      self.query._query_terms)
+        self.query.clear_knowledge_category_id_terms()
+        self.assertNotIn('knowledgeCategoryId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_knowledge_category_query(self):
@@ -90,20 +118,33 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_knowledge_category"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_knowledge_category_terms(self):
         """Tests clear_knowledge_category_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['knowledgeCategory'] = 'foo'
+        self.query.clear_knowledge_category_terms()
+        self.assertNotIn('knowledgeCategory',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_cognitive_process_id(self):
         """Tests match_cognitive_process_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_cognitive_process_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['cognitiveProcessId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_cognitive_process_id_terms(self):
         """Tests clear_cognitive_process_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_cognitive_process_id(test_id, match=True)
+        self.assertIn('cognitiveProcessId',
+                      self.query._query_terms)
+        self.query.clear_cognitive_process_id_terms()
+        self.assertNotIn('cognitiveProcessId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_cognitive_process_query(self):
@@ -120,20 +161,33 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests match_any_cognitive_process"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_cognitive_process_terms(self):
         """Tests clear_cognitive_process_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['cognitiveProcess'] = 'foo'
+        self.query.clear_cognitive_process_terms()
+        self.assertNotIn('cognitiveProcess',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_activity_id(self):
         """Tests match_activity_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_activity_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['activityId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_activity_id_terms(self):
         """Tests clear_activity_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_activity_id(test_id, match=True)
+        self.assertIn('activityId',
+                      self.query._query_terms)
+        self.query.clear_activity_id_terms()
+        self.assertNotIn('activityId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_activity_query(self):
@@ -155,15 +209,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_activity_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_requisite_objective_id(self):
         """Tests match_requisite_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_requisite_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['requisiteObjectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_requisite_objective_id_terms(self):
         """Tests clear_requisite_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_requisite_objective_id(test_id, match=True)
+        self.assertIn('requisiteObjectiveId',
+                      self.query._query_terms)
+        self.query.clear_requisite_objective_id_terms()
+        self.assertNotIn('requisiteObjectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_requisite_objective_query(self):
@@ -185,15 +249,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_requisite_objective_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_dependent_objective_id(self):
         """Tests match_dependent_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_dependent_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['dependentObjectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_dependent_objective_id_terms(self):
         """Tests clear_dependent_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_dependent_objective_id(test_id, match=True)
+        self.assertIn('dependentObjectiveId',
+                      self.query._query_terms)
+        self.query.clear_dependent_objective_id_terms()
+        self.assertNotIn('dependentObjectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_depndent_objective_query(self):
@@ -215,15 +289,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_dependent_objective_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_equivalent_objective_id(self):
         """Tests match_equivalent_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_equivalent_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['equivalentObjectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_equivalent_objective_id_terms(self):
         """Tests clear_equivalent_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_equivalent_objective_id(test_id, match=True)
+        self.assertIn('equivalentObjectiveId',
+                      self.query._query_terms)
+        self.query.clear_equivalent_objective_id_terms()
+        self.assertNotIn('equivalentObjectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_equivalent_objective_query(self):
@@ -245,15 +329,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_equivalent_objective_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_ancestor_objective_id(self):
         """Tests match_ancestor_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_ancestor_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['ancestorObjectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_objective_id_terms(self):
         """Tests clear_ancestor_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_ancestor_objective_id(test_id, match=True)
+        self.assertIn('ancestorObjectiveId',
+                      self.query._query_terms)
+        self.query.clear_ancestor_objective_id_terms()
+        self.assertNotIn('ancestorObjectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_ancestor_objective_query(self):
@@ -275,15 +369,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_ancestor_objective_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_descendant_objective_id(self):
         """Tests match_descendant_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_descendant_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['descendantObjectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_objective_id_terms(self):
         """Tests clear_descendant_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_descendant_objective_id(test_id, match=True)
+        self.assertIn('descendantObjectiveId',
+                      self.query._query_terms)
+        self.query.clear_descendant_objective_id_terms()
+        self.assertNotIn('descendantObjectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_descendant_objective_query(self):
@@ -305,15 +409,25 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests clear_descendant_objective_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_objective_bank_id(self):
         """Tests match_objective_bank_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_bank_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedObjectiveBankIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_id_terms(self):
         """Tests clear_objective_bank_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_bank_id(test_id, match=True)
+        self.assertIn('assignedObjectiveBankIds',
+                      self.query._query_terms)
+        self.query.clear_objective_bank_id_terms()
+        self.assertNotIn('assignedObjectiveBankIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_objective_bank_query(self):
@@ -325,10 +439,13 @@ class TestObjectiveQuery(unittest.TestCase):
         """Tests get_objective_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_terms(self):
         """Tests clear_objective_bank_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['objectiveBank'] = 'foo'
+        self.query.clear_objective_bank_terms()
+        self.assertNotIn('objectiveBank',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_objective_query_record(self):
@@ -515,27 +632,41 @@ class TestProficiencyQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
 
-        cls.query = cls.catalog.get_proficiency_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_proficiency_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_resource_id(self):
         """Tests match_resource_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['resourceId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_id_terms(self):
         """Tests clear_resource_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_id(test_id, match=True)
+        self.assertIn('resourceId',
+                      self.query._query_terms)
+        self.query.clear_resource_id_terms()
+        self.assertNotIn('resourceId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_resource_query(self):
@@ -547,20 +678,33 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests get_resource_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_terms(self):
         """Tests clear_resource_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['resource'] = 'foo'
+        self.query.clear_resource_terms()
+        self.assertNotIn('resource',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_objective_id(self):
         """Tests match_objective_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['objectiveId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_id_terms(self):
         """Tests clear_objective_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_id(test_id, match=True)
+        self.assertIn('objectiveId',
+                      self.query._query_terms)
+        self.query.clear_objective_id_terms()
+        self.assertNotIn('objectiveId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_objective_query(self):
@@ -577,20 +721,26 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests match_any_objective"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_terms(self):
         """Tests clear_objective_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['objective'] = 'foo'
+        self.query.clear_objective_terms()
+        self.assertNotIn('objective',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_completion(self):
         """Tests match_completion"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_completion_terms(self):
         """Tests clear_completion_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['completion'] = 'foo'
+        self.query.clear_completion_terms()
+        self.assertNotIn('completion',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_minimum_completion(self):
@@ -602,15 +752,25 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests clear_minimum_completion_terms"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_match_level_id(self):
         """Tests match_level_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_level_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['levelId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_level_id_terms(self):
         """Tests clear_level_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_level_id(test_id, match=True)
+        self.assertIn('levelId',
+                      self.query._query_terms)
+        self.query.clear_level_id_terms()
+        self.assertNotIn('levelId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_level_query(self):
@@ -627,20 +787,33 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests match_any_level"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_level_terms(self):
         """Tests clear_level_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['level'] = 'foo'
+        self.query.clear_level_terms()
+        self.assertNotIn('level',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_objective_bank_id(self):
         """Tests match_objective_bank_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_bank_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedObjectiveBankIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_id_terms(self):
         """Tests clear_objective_bank_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_objective_bank_id(test_id, match=True)
+        self.assertIn('assignedObjectiveBankIds',
+                      self.query._query_terms)
+        self.query.clear_objective_bank_id_terms()
+        self.assertNotIn('assignedObjectiveBankIds',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_objective_bank_query(self):
@@ -652,10 +825,13 @@ class TestProficiencyQuery(unittest.TestCase):
         """Tests get_objective_bank_query"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_objective_bank_terms(self):
         """Tests clear_objective_bank_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['objectiveBank'] = 'foo'
+        self.query.clear_objective_bank_terms()
+        self.assertNotIn('objectiveBank',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_proficiency_query_record(self):

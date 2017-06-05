@@ -61,7 +61,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
 
         """
         # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
-        self._add_match('resourceId', str(agency_id, match))
+        self._add_match('resourceId', str(agency_id), match)
 
     def clear_resource_id_terms(self):
         """Clears the resource ``Id`` terms.

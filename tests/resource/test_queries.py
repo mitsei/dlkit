@@ -5,6 +5,7 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -23,182 +24,245 @@ class TestResourceQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test catalog'
         create_form.description = 'Test catalog description'
         cls.catalog = cls.svc_mgr.create_bin(create_form)
 
-        cls.query = cls.catalog.get_resource_query()
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuery::init_template
+        self.query = self.catalog.get_resource_query()
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_bin(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_group(self):
         """Tests match_group"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_group(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_group_terms(self):
         """Tests clear_group_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['group'] = 'foo'
+        self.query.clear_group_terms()
+        self.assertNotIn('group',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_demographic(self):
         """Tests match_demographic"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_demographic(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_demographic_terms(self):
         """Tests clear_demographic_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_demographic_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_containing_group_id(self):
         """Tests match_containing_group_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_containing_group_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['containingGroupId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_containing_group_id_terms(self):
         """Tests clear_containing_group_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_containing_group_id(test_id, match=True)
+        self.assertIn('containingGroupId',
+                      self.query._query_terms)
+        self.query.clear_containing_group_id_terms()
+        self.assertNotIn('containingGroupId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_containing_group_query(self):
         """Tests supports_containing_group_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_containing_group_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_containing_group_query(self):
         """Tests get_containing_group_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_containing_group_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_containing_group(self):
         """Tests match_any_containing_group"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_containing_group(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_containing_group_terms(self):
         """Tests clear_containing_group_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_containing_group_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_avatar_id(self):
         """Tests match_avatar_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_avatar_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['avatarId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_avatar_id_terms(self):
         """Tests clear_avatar_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_avatar_id(test_id, match=True)
+        self.assertIn('avatarId',
+                      self.query._query_terms)
+        self.query.clear_avatar_id_terms()
+        self.assertNotIn('avatarId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_avatar_query(self):
         """Tests supports_avatar_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_avatar_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_avatar_query(self):
         """Tests get_avatar_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_avatar_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_avatar(self):
         """Tests match_any_avatar"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_avatar(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_avatar_terms(self):
         """Tests clear_avatar_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['avatar'] = 'foo'
+        self.query.clear_avatar_terms()
+        self.assertNotIn('avatar',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_agent_id(self):
         """Tests match_agent_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_agent_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['agentId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_id_terms(self):
         """Tests clear_agent_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_agent_id(test_id, match=True)
+        self.assertIn('agentId',
+                      self.query._query_terms)
+        self.query.clear_agent_id_terms()
+        self.assertNotIn('agentId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_agent_query(self):
         """Tests supports_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_agent_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_query(self):
         """Tests get_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_agent_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_agent(self):
         """Tests match_any_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_agent(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_agent_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_resource_relationship_id(self):
         """Tests match_resource_relationship_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_relationship_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['resourceRelationshipId'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_relationship_id_terms(self):
         """Tests clear_resource_relationship_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_avatar_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_resource_relationship_id(test_id, match=True)
+        self.assertIn('resourceRelationshipId',
+                      self.query._query_terms)
+        self.query.clear_resource_relationship_id_terms()
+        self.assertNotIn('resourceRelationshipId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_resource_relationship_query(self):
         """Tests supports_resource_relationship_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_resource_relationship_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_relationship_query(self):
         """Tests get_resource_relationship_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_resource_relationship_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_resource_relationship(self):
         """Tests match_any_resource_relationship"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_resource_relationship(match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_relationship_terms(self):
         """Tests clear_resource_relationship_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_resource_relationship_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_bin_id(self):
         """Tests match_bin_id"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::match_bin_id_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_bin_id(test_id, match=True)
+        self.assertEqual(self.query._query_terms['assignedBinIds'], {
+            '$in': [str(test_id)]
+        })
 
-    @unittest.skip('unimplemented test')
     def test_clear_bin_id_terms(self):
         """Tests clear_bin_id_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_bin_id_terms_template
+        test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.query.match_bin_id(test_id, match=True)
+        self.assertIn('assignedBinIds',
+                      self.query._query_terms)
+        self.query.clear_bin_id_terms()
+        self.assertNotIn('assignedBinIds',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_bin_query(self):
         """Tests supports_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query(self):
         """Tests get_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_clear_bin_terms(self):
         """Tests clear_bin_terms"""
-        pass
+        # From test_templates/resource.py::ResourceQuery::clear_group_terms_template
+        self.query._query_terms['bin'] = 'foo'
+        self.query.clear_bin_terms()
+        self.assertNotIn('bin',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_resource_query_record(self):
