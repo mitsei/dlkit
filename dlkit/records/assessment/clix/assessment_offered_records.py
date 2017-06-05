@@ -52,7 +52,7 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
     def _init_map(self):
         """stub"""
         self.my_osid_object_form._my_map['nOfM'] = \
-            self._n_of_m_metadata['default_object_values'][0]
+            int(self._n_of_m_metadata['default_object_values'][0])
 
     def _init_metadata(self):
         """stub"""
@@ -82,6 +82,11 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
         """stub"""
         if value is None:
             raise NullArgument()
+        if isinstance(value, bool):
+            # because True / False are also int types...
+            raise InvalidArgument('value must be integer')
+        if value is not None and not isinstance(value, int):
+            raise InvalidArgument('value must be integer')
         if self.get_n_of_m_metadata().is_read_only():
             raise NoAccess()
         if not self.my_osid_object_form._is_valid_integer(value,
@@ -95,7 +100,7 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
                 self.get_n_of_m_metadata().is_required()):
             raise NoAccess()
         self.my_osid_object_form._my_map['nOfM'] = \
-            self._n_of_m_metadata['default_object_values'][0]
+            int(self._n_of_m_metadata['default_object_values'][0])
 
     n_of_m = property(fset=set_n_of_m, fdel=clear_n_of_m)
 
@@ -175,7 +180,7 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
     def set_unlock_previous(self, unlock_previous):
         """use a string -- for now, ``always`` and ``never`` are the options"""
         if unlock_previous is None:
-            raise InvalidArgument('unlock_previous cannot be None')
+            raise NullArgument('unlock_previous cannot be None')
         if unlock_previous is not None and not utilities.is_string(unlock_previous):
             raise InvalidArgument('unlock_previous must be a string')
         self.my_osid_object_form._my_map['unlockPrevious']['text'] = unlock_previous

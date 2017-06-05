@@ -11,6 +11,49 @@ from dlkit.records.assessment.clix.assessment_offered_records import *
 from ... import utilities
 
 
+class TestNofMAssessmentOfferedFormRecord(unittest.TestCase):
+    """Tests for NofMAssessmentOfferedFormRecord"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    def setUp(self):
+        self.form = NofMAssessmentOfferedFormRecord(self.osid_object_form)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
+
+    def test_can_get_n_of_m_metadata(self):
+        self.assertTrue(isinstance(self.form.get_n_of_m_metadata(), Metadata))
+
+    def test_can_set_n_of_m(self):
+        self.assertEqual(self.form.my_osid_object_form._my_map['nOfM'], -1)
+        self.form.set_n_of_m(2)
+        self.assertEqual(self.form.my_osid_object_form._my_map['nOfM'], 2)
+
+    def test_setting_n_of_m_with_none_throws_exception(self):
+        with self.assertRaises(errors.NullArgument):
+            self.form.set_n_of_m(None)
+
+    def test_setting_n_of_m_with_non_int_throws_exception(self):
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_n_of_m(float(1.2))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_n_of_m('0')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_n_of_m(True)
+
+    def test_can_clear_n_of_m(self):
+        self.form.set_n_of_m(5)
+        self.assertEqual(self.form.my_osid_object_form._my_map['nOfM'], 5)
+        self.form.clear_n_of_m()
+        self.assertEqual(self.form.my_osid_object_form._my_map['nOfM'], -1)
+
+
 class TestUnlockPreviousButtonAssessmentOfferedRecord(unittest.TestCase):
     """Tests for UnlockPreviousButtonAssessmentOfferedRecord"""
 
@@ -92,7 +135,7 @@ class TestUnlockPreviousButtonAssessmentOfferedFormRecord(unittest.TestCase):
                          'never')
 
     def test_setting_unlock_previous_with_none_throws_exception(self):
-        with self.assertRaises(errors.InvalidArgument):
+        with self.assertRaises(errors.NullArgument):
             self.form.set_unlock_previous(None)
 
     def test_setting_unlock_previous_with_non_string_throws_exception(self):
