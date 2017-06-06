@@ -7,3 +7,4 @@ dist/
 dlkit.egg-info/
 *.pem
 *.bak
+.DS_Store
