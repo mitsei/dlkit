@@ -60,12 +60,7 @@ class TestUnlockPreviousButtonAssessmentOfferedRecord(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['unlockPrevious'] = {
-            'text': 'always',
-            'languageTypeId': '639-2%3AENG%40ISO',
-            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
-            'scriptTypeId': '15924%3ALATN%40ISO'
-        }
+        obj_map['unlockPrevious'] = 'always'
         cls.osid_object = OsidObject(object_name='TEST_OBJECT',
                                      osid_object_map=obj_map)
 
@@ -128,10 +123,10 @@ class TestUnlockPreviousButtonAssessmentOfferedFormRecord(unittest.TestCase):
         self.assertTrue(isinstance(self.form.get_unlock_previous_metadata(), Metadata))
 
     def test_can_set_unlock_previous(self):
-        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious']['text'],
+        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious'],
                          'always')
         self.form.set_unlock_previous('never')
-        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious']['text'],
+        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious'],
                          'never')
 
     def test_setting_unlock_previous_with_none_throws_exception(self):
@@ -148,6 +143,6 @@ class TestUnlockPreviousButtonAssessmentOfferedFormRecord(unittest.TestCase):
 
     def test_can_clear_unlock_previous(self):
         self.form.set_unlock_previous('foo')
-        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious']['text'], 'foo')
+        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious'], 'foo')
         self.form.clear_unlock_previous()
-        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious']['text'], 'always')
+        self.assertEqual(self.form.my_osid_object_form._my_map['unlockPrevious'], 'always')
