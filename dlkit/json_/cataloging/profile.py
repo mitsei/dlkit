@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo cataloging'
 
 DESCRIPTION = 'MongoDB based cataloging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 15]
+VERSIONCOMPONENTS = [0, 1, 16]
 
 RELEASEDATE = "2017-06-08"
 

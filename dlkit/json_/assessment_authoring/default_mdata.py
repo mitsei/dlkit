@@ -61,7 +61,7 @@ def get_assessment_part_mdata():
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
             },
             'instructions': {
-                'text': 'enter an integer value',
+                'text': 'enter a cardinal value',
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
                 'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
@@ -70,11 +70,11 @@ def get_assessment_part_mdata():
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_integer_values': [None],
-            'syntax': 'INTEGER',
-            'minimum_integer': None,
-            'maximum_integer': None,
-            'integer_set': []
+            'default_cardinal_values': [None],
+            'syntax': 'CARDINAL',
+            'minimum_cardinal': None,
+            'maximum_cardinal': None,
+            'cardinal_set': []
         },
         'allocated_time': {
             'element_label': {
@@ -173,7 +173,7 @@ def get_sequence_rule_mdata():
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
             },
             'instructions': {
-                'text': 'enter an integer value',
+                'text': 'enter a cardinal value',
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
                 'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
@@ -182,11 +182,11 @@ def get_sequence_rule_mdata():
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_integer_values': [None],
-            'syntax': 'INTEGER',
-            'minimum_integer': None,
-            'maximum_integer': None,
-            'integer_set': []
+            'default_cardinal_values': [None],
+            'syntax': 'CARDINAL',
+            'minimum_cardinal': None,
+            'maximum_cardinal': None,
+            'cardinal_set': []
         },
         'maximum_score': {
             'element_label': {
@@ -196,7 +196,7 @@ def get_sequence_rule_mdata():
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
             },
             'instructions': {
-                'text': 'enter an integer value',
+                'text': 'enter a cardinal value',
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
                 'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE),
@@ -205,10 +205,10 @@ def get_sequence_rule_mdata():
             'read_only': False,
             'linked': False,
             'array': False,
-            'default_integer_values': [None],
-            'syntax': 'INTEGER',
-            'minimum_integer': None,
-            'maximum_integer': None,
-            'integer_set': []
+            'default_cardinal_values': [None],
+            'syntax': 'CARDINAL',
+            'minimum_cardinal': None,
+            'maximum_cardinal': None,
+            'cardinal_set': []
         },
     }
