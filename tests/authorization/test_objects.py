@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id

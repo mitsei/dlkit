@@ -782,11 +782,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.clear_title_template
+        # Implemented from template for osid.repository.AssetContentForm.clear_url_template
         if (self.get_copyright_registration_metadata().is_read_only() or
                 self.get_copyright_registration_metadata().is_required()):
             raise errors.NoAccess()
-        self._my_map['copyrightRegistration'] = dict(self._copyright_registration_default)
+        self._my_map['copyrightRegistration'] = self._copyright_registration_default
 
     copyright_registration = property(fset=set_copyright_registration, fdel=clear_copyright_registration)
 
@@ -1704,11 +1704,11 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.clear_title_template
+        # Implemented from template for osid.repository.AssetContentForm.clear_url_template
         if (self.get_url_metadata().is_read_only() or
                 self.get_url_metadata().is_required()):
             raise errors.NoAccess()
-        self._my_map['url'] = dict(self._url_default)
+        self._my_map['url'] = self._url_default
 
     url = property(fset=set_url, fdel=clear_url)
 

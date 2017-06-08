@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -126,7 +128,16 @@ class TestObjectiveForm(unittest.TestCase):
     def test_get_assessment_metadata(self):
         """Tests get_assessment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_assessment_metadata(), Metadata))
+        mdata = self.form.get_assessment_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_assessment(self):
         """Tests set_assessment"""
@@ -135,6 +146,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessment(True)
 
     def test_clear_assessment(self):
         """Tests clear_assessment"""
@@ -143,12 +156,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_assessment()
-        self.assertEqual(self.form._my_map['assessmentId'], '')
+        self.assertEqual(self.form._my_map['assessmentId'], self.form.get_assessment_metadata().get_default_id_values()[0])
 
     def test_get_knowledge_category_metadata(self):
         """Tests get_knowledge_category_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_knowledge_category_metadata(), Metadata))
+        mdata = self.form.get_knowledge_category_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_knowledge_category(self):
         """Tests set_knowledge_category"""
@@ -157,6 +179,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_knowledge_category(True)
 
     def test_clear_knowledge_category(self):
         """Tests clear_knowledge_category"""
@@ -165,12 +189,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_knowledge_category()
-        self.assertEqual(self.form._my_map['knowledgeCategoryId'], '')
+        self.assertEqual(self.form._my_map['knowledgeCategoryId'], self.form.get_knowledge_category_metadata().get_default_id_values()[0])
 
     def test_get_cognitive_process_metadata(self):
         """Tests get_cognitive_process_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_cognitive_process_metadata(), Metadata))
+        mdata = self.form.get_cognitive_process_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_cognitive_process(self):
         """Tests set_cognitive_process"""
@@ -179,6 +212,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_cognitive_process(True)
 
     def test_clear_cognitive_process(self):
         """Tests clear_cognitive_process"""
@@ -187,7 +222,7 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_cognitive_process()
-        self.assertEqual(self.form._my_map['cognitiveProcessId'], '')
+        self.assertEqual(self.form._my_map['cognitiveProcessId'], self.form.get_cognitive_process_metadata().get_default_id_values()[0])
 
     def test_get_objective_form_record(self):
         """Tests get_objective_form_record"""
@@ -445,6 +480,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assetIds']), 1)
         self.assertEqual(self.form._my_map['assetIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assets('this is not a list')
         # reset this for other tests
         self.form._my_map['assetIds'] = list()
 
@@ -472,6 +509,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['courseIds']), 1)
         self.assertEqual(self.form._my_map['courseIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_courses('this is not a list')
         # reset this for other tests
         self.form._my_map['courseIds'] = list()
 
@@ -499,6 +538,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assessmentIds']), 1)
         self.assertEqual(self.form._my_map['assessmentIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessments('this is not a list')
         # reset this for other tests
         self.form._my_map['assessmentIds'] = list()
 
@@ -679,7 +720,16 @@ class TestProficiencyForm(unittest.TestCase):
     def test_get_completion_metadata(self):
         """Tests get_completion_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_completion_metadata(), Metadata))
+        mdata = self.form.get_completion_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_completion(self):
@@ -694,7 +744,16 @@ class TestProficiencyForm(unittest.TestCase):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
+        mdata = self.form.get_level_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_level(self):

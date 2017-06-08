@@ -24,8 +24,18 @@ def get_log_entry_mdata():
     """Return default mdata map for LogEntry"""
     return {
         'priority': {
-            'element_label': 'priority',
-            'instructions': 'accepts an osid.type.Type object',
+            'element_label': {
+                'text': 'priority',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.type.Type object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -35,8 +45,18 @@ def get_log_entry_mdata():
             'type_set': [],
         },
         'timestamp': {
-            'element_label': 'timestamp',
-            'instructions': 'enter a valid datetime object.',
+            'element_label': {
+                'text': 'timestamp',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a valid datetime object.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -46,8 +66,18 @@ def get_log_entry_mdata():
             'date_time_set': []
         },
         'agent': {
-            'element_label': 'agent',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'agent',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,

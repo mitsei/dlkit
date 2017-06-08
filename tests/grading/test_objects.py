@@ -7,6 +7,8 @@ import unittest
 from decimal import Decimal
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment.objects import AssessmentOffered
 from dlkit.json_.grading.objects import GradebookColumn
@@ -238,13 +240,24 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_based_on_grades_metadata(self):
         """Tests get_based_on_grades_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_based_on_grades_metadata(), Metadata))
+        mdata = self.form.get_based_on_grades_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_based_on_grades(self):
         """Tests set_based_on_grades"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_based_on_grades(True)
         self.assertTrue(self.form._my_map['basedOnGrades'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_based_on_grades('false')
 
     def test_clear_based_on_grades(self):
         """Tests clear_based_on_grades"""
@@ -257,7 +270,16 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_lowest_numeric_score_metadata(self):
         """Tests get_lowest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_lowest_numeric_score_metadata(), Metadata))
+        mdata = self.form.get_lowest_numeric_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_lowest_numeric_score(self):
@@ -272,7 +294,16 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_numeric_score_increment_metadata(self):
         """Tests get_numeric_score_increment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_numeric_score_increment_metadata(), Metadata))
+        mdata = self.form.get_numeric_score_increment_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_numeric_score_increment(self):
@@ -287,7 +318,16 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_highest_numeric_score_metadata(self):
         """Tests get_highest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_highest_numeric_score_metadata(), Metadata))
+        mdata = self.form.get_highest_numeric_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_highest_numeric_score(self):
@@ -528,12 +568,23 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_ignored_for_calculations_metadata(self):
         """Tests get_ignored_for_calculations_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_ignored_for_calculations_metadata(), Metadata))
+        mdata = self.form.get_ignored_for_calculations_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_ignored_for_calculations(self):
         """Tests set_ignored_for_calculations"""
         self.form.set_ignored_for_calculations(True)
         self.assertTrue(self.form._my_map['ignoredForCalculations'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_ignored_for_calculations('false')
 
     def test_clear_ignored_for_calculations(self):
         """Tests clear_ignored_for_calculations"""
@@ -546,7 +597,16 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_grade_metadata(self):
         """Tests get_grade_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_grade_metadata(), Metadata))
+        mdata = self.form.get_grade_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_grade(self):
@@ -567,7 +627,16 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_score_metadata(self):
         """Tests get_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_score_metadata(), Metadata))
+        mdata = self.form.get_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_score(self):
@@ -710,7 +779,16 @@ class TestGradebookColumnForm(unittest.TestCase):
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
+        mdata = self.form.get_grade_system_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_grade_system(self):
         """Tests set_grade_system"""
@@ -719,6 +797,8 @@ class TestGradebookColumnForm(unittest.TestCase):
         self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_grade_system(True)
 
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
@@ -727,7 +807,7 @@ class TestGradebookColumnForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_grade_system()
-        self.assertEqual(self.form._my_map['gradeSystemId'], '')
+        self.assertEqual(self.form._my_map['gradeSystemId'], self.form.get_grade_system_metadata().get_default_id_values()[0])
 
     def test_get_gradebook_column_form_record(self):
         """Tests get_gradebook_column_form_record"""

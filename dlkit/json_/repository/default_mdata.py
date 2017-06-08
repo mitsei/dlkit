@@ -12,8 +12,18 @@ def get_asset_mdata():
     """Return default mdata map for Asset"""
     return {
         'copyright_registration': {
-            'element_label': 'copyright registration',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'copyright registration',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -25,8 +35,18 @@ def get_asset_mdata():
             'string_set': [],
         },
         'copyright': {
-            'element_label': 'copyright',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'copyright',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -43,8 +63,18 @@ def get_asset_mdata():
             'string_set': [],
         },
         'title': {
-            'element_label': 'title',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'title',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -61,8 +91,18 @@ def get_asset_mdata():
             'string_set': [],
         },
         'distribute_verbatim': {
-            'element_label': 'distribute verbatim',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'distribute verbatim',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -71,8 +111,18 @@ def get_asset_mdata():
             'syntax': 'BOOLEAN',
         },
         'created_date': {
-            'element_label': 'created date',
-            'instructions': 'enter a valid datetime object.',
+            'element_label': {
+                'text': 'created date',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a valid datetime object.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -82,8 +132,18 @@ def get_asset_mdata():
             'date_time_set': [],
         },
         'distribute_alterations': {
-            'element_label': 'distribute alterations',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'distribute alterations',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -92,8 +152,18 @@ def get_asset_mdata():
             'syntax': 'BOOLEAN',
         },
         'principal_credit_string': {
-            'element_label': 'principal credit string',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'principal credit string',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -110,8 +180,18 @@ def get_asset_mdata():
             'string_set': [],
         },
         'published_date': {
-            'element_label': 'published date',
-            'instructions': 'enter a valid datetime object.',
+            'element_label': {
+                'text': 'published date',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a valid datetime object.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -121,8 +201,18 @@ def get_asset_mdata():
             'date_time_set': [],
         },
         'source': {
-            'element_label': 'source',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'source',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -132,8 +222,18 @@ def get_asset_mdata():
             'id_set': [],
         },
         'provider_links': {
-            'element_label': 'provider links',
-            'instructions': 'accepts an osid.id.Id[] object',
+            'element_label': {
+                'text': 'provider links',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id[] object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -143,8 +243,18 @@ def get_asset_mdata():
             'id_set': [],
         },
         'public_domain': {
-            'element_label': 'public domain',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'public domain',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -153,8 +263,18 @@ def get_asset_mdata():
             'syntax': 'BOOLEAN',
         },
         'distribute_compositions': {
-            'element_label': 'distribute compositions',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'distribute compositions',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -163,8 +283,18 @@ def get_asset_mdata():
             'syntax': 'BOOLEAN',
         },
         'composition': {
-            'element_label': 'composition',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'composition',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -174,8 +304,18 @@ def get_asset_mdata():
             'id_set': [],
         },
         'published': {
-            'element_label': 'published',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'published',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -190,8 +330,18 @@ def get_asset_content_mdata():
     """Return default mdata map for AssetContent"""
     return {
         'url': {
-            'element_label': 'url',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'url',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -203,8 +353,18 @@ def get_asset_content_mdata():
             'string_set': [],
         },
         'data': {
-            'element_label': 'data',
-            'instructions': 'accepts a valid data input stream.',
+            'element_label': {
+                'text': 'data',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts a valid data input stream.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -215,8 +375,18 @@ def get_asset_content_mdata():
             'object_set': [],
         },
         'accessibility_type': {
-            'element_label': 'accessibility type',
-            'instructions': 'accepts an osid.type.Type object',
+            'element_label': {
+                'text': 'accessibility type',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.type.Type object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -226,8 +396,18 @@ def get_asset_content_mdata():
             'type_set': [],
         },
         'asset': {
-            'element_label': 'asset',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'asset',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -243,8 +423,18 @@ def get_composition_mdata():
     """Return default mdata map for Composition"""
     return {
         'children': {
-            'element_label': 'children',
-            'instructions': 'accepts an osid.id.Id[] object',
+            'element_label': {
+                'text': 'children',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id[] object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,

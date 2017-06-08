@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -115,22 +117,48 @@ class TestCommentForm(unittest.TestCase):
     def test_get_text_metadata(self):
         """Tests get_text_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_text_metadata(), Metadata))
+        mdata = self.form.get_text_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_text(self):
         """Tests set_text"""
-        pass
+        # From test_templates/repository.py::AssetForm::set_title_template
+        default_value = self.form.get_text_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['text'], default_value)
+        self.form.set_text('String')
+        self.assertEqual(self.form._my_map['text']['text'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_text(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_text(self):
         """Tests clear_text"""
-        pass
+        # From test_templates/repository.py::AssetForm::clear_title_template
+        self.form.set_text('A String to Clear')
+        self.assertEqual(self.form._my_map['text']['text'], 'A String to Clear')
+        self.form.clear_text()
+        self.assertEqual(self.form._my_map['text'], self.form.get_text_metadata().get_default_string_values()[0])
 
     def test_get_rating_metadata(self):
         """Tests get_rating_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_rating_metadata(), Metadata))
+        mdata = self.form.get_rating_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_rating(self):
         """Tests set_rating"""
@@ -139,6 +167,8 @@ class TestCommentForm(unittest.TestCase):
         self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['ratingId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_rating(True)
 
     def test_clear_rating(self):
         """Tests clear_rating"""
@@ -147,7 +177,7 @@ class TestCommentForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['ratingId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_rating()
-        self.assertEqual(self.form._my_map['ratingId'], '')
+        self.assertEqual(self.form._my_map['ratingId'], self.form.get_rating_metadata().get_default_id_values()[0])
 
     def test_get_comment_form_record(self):
         """Tests get_comment_form_record"""

@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
@@ -112,7 +114,16 @@ class TestAssessmentPartForm(unittest.TestCase):
     def test_get_weight_metadata(self):
         """Tests get_weight_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_weight_metadata(), Metadata))
+        mdata = self.form.get_weight_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_weight(self):
@@ -127,7 +138,16 @@ class TestAssessmentPartForm(unittest.TestCase):
     def test_get_allocated_time_metadata(self):
         """Tests get_allocated_time_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_allocated_time_metadata(), Metadata))
+        mdata = self.form.get_allocated_time_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DURATION')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_allocated_time(self):
         """Tests set_allocated_time"""
@@ -138,6 +158,8 @@ class TestAssessmentPartForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['allocatedTime']['seconds'], 3600)
         self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
         self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_allocated_time(1.05)
         # reset this for other tests
         self.form._my_map['allocatedTime'] = None
 
@@ -151,7 +173,7 @@ class TestAssessmentPartForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
         self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
         self.form.clear_allocated_time()
-        self.assertIsNone(self.form._my_map['allocatedTime'])
+        self.assertEqual(self.form._my_map['allocatedTime'], self.form.get_allocated_time_metadata().get_default_duration_values()[0])
 
     def test_get_assessment_part_form_record(self):
         """Tests get_assessment_part_form_record"""
@@ -313,7 +335,16 @@ class TestSequenceRuleForm(unittest.TestCase):
     def test_get_minimum_score_metadata(self):
         """Tests get_minimum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_minimum_score_metadata(), Metadata))
+        mdata = self.form.get_minimum_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_minimum_score(self):
@@ -323,7 +354,16 @@ class TestSequenceRuleForm(unittest.TestCase):
     def test_get_maximum_score_metadata(self):
         """Tests get_maximum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_maximum_score_metadata(), Metadata))
+        mdata = self.form.get_maximum_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     @unittest.skip('unimplemented test')
     def test_set_maximum_score(self):
@@ -333,7 +373,16 @@ class TestSequenceRuleForm(unittest.TestCase):
     def test_get_cumulative_metadata(self):
         """Tests get_cumulative_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_cumulative_metadata(), Metadata))
+        mdata = self.form.get_cumulative_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_cumulative(self):
         """Tests set_cumulative"""

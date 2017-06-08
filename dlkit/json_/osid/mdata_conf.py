@@ -29,8 +29,18 @@ MAX_DATETIME = {
 }
 
 JOURNAL_COMMENT = {
-    'element_label': 'Journal Comment',
-    'instructions': 'Optional form submission journal comment, 255 character maximum',
+    'element_label': {
+        'text': 'Journal Comment',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'Optional form submission journal comment, 255 character maximum',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -48,8 +58,18 @@ JOURNAL_COMMENT = {
 }
 
 DISPLAY_NAME = {
-    'element_label': 'Display Name',
-    'instructions': 'Required, 255 character maximum',
+    'element_label': {
+        'text': 'Display Name',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'Required, 255 character maximum',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -67,8 +87,18 @@ DISPLAY_NAME = {
 }
 
 DESCRIPTION = {
-    'element_label': 'Description',
-    'instructions': 'Optional',
+    'element_label': {
+        'text': 'Description',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'Optional',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -86,8 +116,18 @@ DESCRIPTION = {
 }
 
 GENUS_TYPE = {
-    'element_label': 'Genus Type',
-    'instructions': 'Required genus Type of type osid.type.Type',
+    'element_label': {
+        'text': 'Genus Type',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'Required genus Type of type osid.type.Type',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': True,
     'value': False,
     'read_only': False,
@@ -99,8 +139,18 @@ GENUS_TYPE = {
 }
 
 START_DATE = {
-    'element_label': 'Start Date',
-    'instructions': 'enter a valid datetime object.',
+    'element_label': {
+        'text': 'Start Date',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'enter a valid datetime object.',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': True,
     'read_only': False,
     'linked': False,
@@ -111,8 +161,18 @@ START_DATE = {
 }
 
 END_DATE = {
-    'element_label': 'End Date',
-    'instructions': 'enter a valid datetime object.',
+    'element_label': {
+        'text': 'End Date',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'enter a valid datetime object.',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': True,
     'read_only': False,
     'linked': False,
@@ -123,8 +183,18 @@ END_DATE = {
 }
 
 SEQUESTERED = {
-    'element_label': 'sequestered',
-    'instructions': 'enter either true or false.',
+    'element_label': {
+        'text': 'sequestered',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'enter either true or false.',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -133,8 +203,18 @@ SEQUESTERED = {
 }
 
 PROVIDER = {
-    'element_label': 'provider',
-    'instructions': 'accepts an osid.id.Id object',
+    'element_label': {
+        'text': 'provider',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'accepts an osid.id.Id object',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -145,8 +225,18 @@ PROVIDER = {
 }
 
 BRANDING = {
-    'element_label': 'branding',
-    'instructions': 'accepts an osid.id.Id object',
+    'element_label': {
+        'text': 'branding',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'accepts an osid.id.Id object',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,
@@ -159,8 +249,18 @@ BRANDING = {
 }
 
 LICENSE = {
-    'element_label': 'License',
-    'instructions': 'Optional',
+    'element_label': {
+        'text': 'License',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
+    'instructions': {
+        'text': 'Optional',
+        'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+        'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+        'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+    },
     'required': False,
     'read_only': False,
     'linked': False,

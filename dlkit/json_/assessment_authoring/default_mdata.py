@@ -12,8 +12,18 @@ def get_assessment_part_mdata():
     """Return default mdata map for AssessmentPart"""
     return {
         'assessment_part': {
-            'element_label': 'assessment part',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'assessment part',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -23,8 +33,18 @@ def get_assessment_part_mdata():
             'id_set': [],
         },
         'assessment': {
-            'element_label': 'assessment',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'assessment',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -34,8 +54,18 @@ def get_assessment_part_mdata():
             'id_set': [],
         },
         'weight': {
-            'element_label': 'weight',
-            'instructions': 'enter an integer value',
+            'element_label': {
+                'text': 'weight',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter an integer value',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -47,8 +77,18 @@ def get_assessment_part_mdata():
             'integer_set': []
         },
         'allocated_time': {
-            'element_label': 'allocated time',
-            'instructions': 'enter a valid duration object.',
+            'element_label': {
+                'text': 'allocated time',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a valid duration object.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -64,8 +104,18 @@ def get_sequence_rule_mdata():
     """Return default mdata map for SequenceRule"""
     return {
         'next_assessment_part': {
-            'element_label': 'next assessment part',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'next assessment part',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -75,8 +125,18 @@ def get_sequence_rule_mdata():
             'id_set': [],
         },
         'cumulative': {
-            'element_label': 'cumulative',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'cumulative',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -85,8 +145,18 @@ def get_sequence_rule_mdata():
             'syntax': 'BOOLEAN',
         },
         'assessment_part': {
-            'element_label': 'assessment part',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'assessment part',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -96,8 +166,18 @@ def get_sequence_rule_mdata():
             'id_set': [],
         },
         'minimum_score': {
-            'element_label': 'minimum score',
-            'instructions': 'enter an integer value',
+            'element_label': {
+                'text': 'minimum score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter an integer value',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -109,8 +189,18 @@ def get_sequence_rule_mdata():
             'integer_set': []
         },
         'maximum_score': {
-            'element_label': 'maximum score',
-            'instructions': 'enter an integer value',
+            'element_label': {
+                'text': 'maximum score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter an integer value',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
