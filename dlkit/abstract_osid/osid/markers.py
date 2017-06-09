@@ -34,7 +34,7 @@ class Identifiable:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id(self): # pragma: no cover
+    def get_id(self):  # pragma: no cover
         """Gets the Id associated with this instance of this OSID object.
 
         Persisting any reference to this object is done by persisting
@@ -75,7 +75,7 @@ class Identifiable:
     ident = property(fget=get_id)
 
     @abc.abstractmethod
-    def is_current(self): # pragma: no cover
+    def is_current(self):  # pragma: no cover
         """Tests to see if the last method invoked retrieved up-to-date data.
 
         Simple retrieval methods do not specify errors as, generally,
@@ -106,7 +106,7 @@ class Extensible:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_record_types(self): # pragma: no cover
+    def get_record_types(self):  # pragma: no cover
         """Gets the record types available in this object.
 
         A record ``Type`` explicitly indicates the specification of an
@@ -128,7 +128,7 @@ class Extensible:
     record_types = property(fget=get_record_types)
 
     @abc.abstractmethod
-    def has_record_type(self, record_type): # pragma: no cover
+    def has_record_type(self, record_type):  # pragma: no cover
         """Tests if this object supports the given record ``Type``.
 
         The given record type may be supported by the object through
@@ -152,7 +152,7 @@ class Browsable:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_properties(self): # pragma: no cover
+    def get_properties(self):  # pragma: no cover
         """Gets a list of properties.
 
         Properties provide a means for applications to display a
@@ -174,7 +174,7 @@ class Browsable:
     properties = property(fget=get_properties)
 
     @abc.abstractmethod
-    def get_properties_by_record_type(self, record_type): # pragma: no cover
+    def get_properties_by_record_type(self, record_type):  # pragma: no cover
         """Gets a list of properties corresponding to the specified record type.
 
         Properties provide a means for applications to display a
@@ -210,7 +210,7 @@ class Temporal:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_effective(self): # pragma: no cover
+    def is_effective(self):  # pragma: no cover
         """Tests if the current date is within the start end end dates inclusive.
 
         :return: ``true`` if this is effective, ``false`` otherwise
@@ -223,7 +223,7 @@ class Temporal:
         return  # boolean
 
     @abc.abstractmethod
-    def get_start_date(self): # pragma: no cover
+    def get_start_date(self):  # pragma: no cover
         """Gets the start date.
 
         :return: the start date
@@ -238,7 +238,7 @@ class Temporal:
     start_date = property(fget=get_start_date)
 
     @abc.abstractmethod
-    def get_end_date(self): # pragma: no cover
+    def get_end_date(self):  # pragma: no cover
         """Gets the end date.
 
         :return: the end date
@@ -294,7 +294,7 @@ class Containable:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_sequestered(self): # pragma: no cover
+    def is_sequestered(self):  # pragma: no cover
         """Tests if this ``Containable`` is sequestered in that it should not appear outside of its aggregated composition.
 
         :return: ``true`` if this containable is sequestered, ``false`` if this containable may appear outside its aggregate
@@ -317,7 +317,7 @@ class Sourceable:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_provider_id(self): # pragma: no cover
+    def get_provider_id(self):  # pragma: no cover
         """Gets the ``Id`` of the provider.
 
         :return: the provider ``Id``
@@ -332,7 +332,7 @@ class Sourceable:
     provider_id = property(fget=get_provider_id)
 
     @abc.abstractmethod
-    def get_provider(self): # pragma: no cover
+    def get_provider(self):  # pragma: no cover
         """Gets the ``Resource`` representing the provider.
 
         :return: the provider
@@ -347,7 +347,7 @@ class Sourceable:
     provider = property(fget=get_provider)
 
     @abc.abstractmethod
-    def get_branding_ids(self): # pragma: no cover
+    def get_branding_ids(self):  # pragma: no cover
         """Gets the branding asset ``Ids``.
 
         :return: a list of asset ``Ids``
@@ -362,7 +362,7 @@ class Sourceable:
     branding_ids = property(fget=get_branding_ids)
 
     @abc.abstractmethod
-    def get_branding(self): # pragma: no cover
+    def get_branding(self):  # pragma: no cover
         """Gets a branding, such as an image or logo, expressed using the ``Asset`` interface.
 
         :return: a list of assets
@@ -377,7 +377,7 @@ class Sourceable:
     branding = property(fget=get_branding)
 
     @abc.abstractmethod
-    def get_license(self): # pragma: no cover
+    def get_license(self):  # pragma: no cover
         """Gets the terms of usage.
 
         An empty license means the terms are unknown.
@@ -439,7 +439,7 @@ class Operable:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_active(self): # pragma: no cover
+    def is_active(self):  # pragma: no cover
         """Tests if this operable is active.
 
         ``is_active()`` is ``true`` if ``is_operational()`` is ``true``
@@ -456,7 +456,7 @@ class Operable:
         return  # boolean
 
     @abc.abstractmethod
-    def is_enabled(self): # pragma: no cover
+    def is_enabled(self):  # pragma: no cover
         """Tests if this operable is administravely enabled.
 
         Administratively enabling overrides any applied ``OsidEnabler``.
@@ -473,7 +473,7 @@ class Operable:
         return  # boolean
 
     @abc.abstractmethod
-    def is_disabled(self): # pragma: no cover
+    def is_disabled(self):  # pragma: no cover
         """Tests if this operable is administravely disabled.
 
         Administratively disabling overrides any applied
@@ -490,7 +490,7 @@ class Operable:
         return  # boolean
 
     @abc.abstractmethod
-    def is_operational(self): # pragma: no cover
+    def is_operational(self):  # pragma: no cover
         """Tests if this ``Operable`` is operational.
 
         This Operable is operational if any of the applied

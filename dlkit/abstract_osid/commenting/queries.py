@@ -26,7 +26,7 @@ class CommentQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_reference_id(self, source_id, match): # pragma: no cover
+    def match_reference_id(self, source_id, match):  # pragma: no cover
         """Sets reference ``Id``.
 
         :param source_id: a source ``Id``
@@ -41,7 +41,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_reference_id_terms(self): # pragma: no cover
+    def clear_reference_id_terms(self):  # pragma: no cover
         """Clears the reference ``Id`` terms.
 
 
@@ -54,7 +54,7 @@ class CommentQuery:
     reference_id_terms = property(fdel=clear_reference_id_terms)
 
     @abc.abstractmethod
-    def match_commentor_id(self, resource_id, match): # pragma: no cover
+    def match_commentor_id(self, resource_id, match):  # pragma: no cover
         """Sets a resource ``Id`` to match a commentor.
 
         :param resource_id: a resource ``Id``
@@ -69,7 +69,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_commentor_id_terms(self): # pragma: no cover
+    def clear_commentor_id_terms(self):  # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -82,7 +82,7 @@ class CommentQuery:
     commentor_id_terms = property(fdel=clear_commentor_id_terms)
 
     @abc.abstractmethod
-    def supports_commentor_query(self): # pragma: no cover
+    def supports_commentor_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -95,7 +95,7 @@ class CommentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_commentor_query(self): # pragma: no cover
+    def get_commentor_query(self):  # pragma: no cover
         """Gets the query for a resource query.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -113,7 +113,7 @@ class CommentQuery:
     commentor_query = property(fget=get_commentor_query)
 
     @abc.abstractmethod
-    def clear_commentor_terms(self): # pragma: no cover
+    def clear_commentor_terms(self):  # pragma: no cover
         """Clears the resource terms.
 
 
@@ -126,7 +126,7 @@ class CommentQuery:
     commentor_terms = property(fdel=clear_commentor_terms)
 
     @abc.abstractmethod
-    def match_commenting_agent_id(self, agent_id, match): # pragma: no cover
+    def match_commenting_agent_id(self, agent_id, match):  # pragma: no cover
         """Sets an agent ``Id``.
 
         :param agent_id: an agent ``Id``
@@ -141,7 +141,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_commenting_agent_id_terms(self): # pragma: no cover
+    def clear_commenting_agent_id_terms(self):  # pragma: no cover
         """Clears the agent ``Id`` terms.
 
 
@@ -154,7 +154,7 @@ class CommentQuery:
     commenting_agent_id_terms = property(fdel=clear_commenting_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_commenting_agent_query(self): # pragma: no cover
+    def supports_commenting_agent_query(self):  # pragma: no cover
         """Tests if an ``AgentQuery`` is available.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -167,7 +167,7 @@ class CommentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_commenting_agent_query(self): # pragma: no cover
+    def get_commenting_agent_query(self):  # pragma: no cover
         """Gets the query for an agent query.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -185,7 +185,7 @@ class CommentQuery:
     commenting_agent_query = property(fget=get_commenting_agent_query)
 
     @abc.abstractmethod
-    def clear_commenting_agent_terms(self): # pragma: no cover
+    def clear_commenting_agent_terms(self):  # pragma: no cover
         """Clears the agent terms.
 
 
@@ -198,7 +198,7 @@ class CommentQuery:
     commenting_agent_terms = property(fdel=clear_commenting_agent_terms)
 
     @abc.abstractmethod
-    def match_text(self, text, string_match_type, match): # pragma: no cover
+    def match_text(self, text, string_match_type, match):  # pragma: no cover
         """Matches text.
 
         :param text: the text
@@ -217,7 +217,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_text(self, match): # pragma: no cover
+    def match_any_text(self, match):  # pragma: no cover
         """Matches a comment that has any text assigned.
 
         :param match: ``true`` to match comments with any text, ``false`` to match comments with no text
@@ -230,7 +230,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_text_terms(self): # pragma: no cover
+    def clear_text_terms(self):  # pragma: no cover
         """Clears the text terms.
 
 
@@ -243,7 +243,7 @@ class CommentQuery:
     text_terms = property(fdel=clear_text_terms)
 
     @abc.abstractmethod
-    def match_rating_id(self, grade_id, match): # pragma: no cover
+    def match_rating_id(self, grade_id, match):  # pragma: no cover
         """Sets a grade ``Id``.
 
         :param grade_id: a grade ``Id``
@@ -258,7 +258,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rating_id_terms(self): # pragma: no cover
+    def clear_rating_id_terms(self):  # pragma: no cover
         """Clears the rating ``Id`` terms.
 
 
@@ -271,7 +271,7 @@ class CommentQuery:
     rating_id_terms = property(fdel=clear_rating_id_terms)
 
     @abc.abstractmethod
-    def supports_rating_query(self): # pragma: no cover
+    def supports_rating_query(self):  # pragma: no cover
         """Tests if a ``GradeQuery`` is available.
 
         :return: ``true`` if a rating query is available, ``false`` otherwise
@@ -284,7 +284,7 @@ class CommentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rating_query(self): # pragma: no cover
+    def get_rating_query(self):  # pragma: no cover
         """Gets the query for a rating query.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -302,7 +302,7 @@ class CommentQuery:
     rating_query = property(fget=get_rating_query)
 
     @abc.abstractmethod
-    def match_any_rating(self, match): # pragma: no cover
+    def match_any_rating(self, match):  # pragma: no cover
         """Matches books with any rating.
 
         :param match: ``true`` to match comments with any rating, ``false`` to match comments with no ratings
@@ -315,7 +315,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rating_terms(self): # pragma: no cover
+    def clear_rating_terms(self):  # pragma: no cover
         """Clears the rating terms.
 
 
@@ -328,7 +328,7 @@ class CommentQuery:
     rating_terms = property(fdel=clear_rating_terms)
 
     @abc.abstractmethod
-    def match_book_id(self, book_id, match): # pragma: no cover
+    def match_book_id(self, book_id, match):  # pragma: no cover
         """Sets the book ``Id`` for this query to match comments assigned to books.
 
         :param book_id: a book ``Id``
@@ -343,7 +343,7 @@ class CommentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_book_id_terms(self): # pragma: no cover
+    def clear_book_id_terms(self):  # pragma: no cover
         """Clears the book ``Id`` terms.
 
 
@@ -356,7 +356,7 @@ class CommentQuery:
     book_id_terms = property(fdel=clear_book_id_terms)
 
     @abc.abstractmethod
-    def supports_book_query(self): # pragma: no cover
+    def supports_book_query(self):  # pragma: no cover
         """Tests if a ``BookQuery`` is available.
 
         :return: ``true`` if a book query is available, ``false`` otherwise
@@ -369,7 +369,7 @@ class CommentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_query(self): # pragma: no cover
+    def get_book_query(self):  # pragma: no cover
         """Gets the query for a book query.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -387,7 +387,7 @@ class CommentQuery:
     book_query = property(fget=get_book_query)
 
     @abc.abstractmethod
-    def clear_book_terms(self): # pragma: no cover
+    def clear_book_terms(self):  # pragma: no cover
         """Clears the book terms.
 
 
@@ -400,7 +400,7 @@ class CommentQuery:
     book_terms = property(fdel=clear_book_terms)
 
     @abc.abstractmethod
-    def get_comment_query_record(self, comment_record_type): # pragma: no cover
+    def get_comment_query_record(self, comment_record_type):  # pragma: no cover
         """Gets the comment query record corresponding to the given ``Comment`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.
@@ -429,7 +429,7 @@ class BookQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_comment_id(self, comment_id, match): # pragma: no cover
+    def match_comment_id(self, comment_id, match):  # pragma: no cover
         """Sets the comment ``Id`` for this query to match comments assigned to books.
 
         :param comment_id: a comment ``Id``
@@ -444,7 +444,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_comment_id_terms(self): # pragma: no cover
+    def clear_comment_id_terms(self):  # pragma: no cover
         """Clears the comment ``Id`` terms.
 
 
@@ -457,7 +457,7 @@ class BookQuery:
     comment_id_terms = property(fdel=clear_comment_id_terms)
 
     @abc.abstractmethod
-    def supports_comment_query(self): # pragma: no cover
+    def supports_comment_query(self):  # pragma: no cover
         """Tests if a comment query is available.
 
         :return: ``true`` if a comment query is available, ``false`` otherwise
@@ -470,7 +470,7 @@ class BookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_query(self): # pragma: no cover
+    def get_comment_query(self):  # pragma: no cover
         """Gets the query for a comment.
 
         :return: the comment query
@@ -486,7 +486,7 @@ class BookQuery:
     comment_query = property(fget=get_comment_query)
 
     @abc.abstractmethod
-    def match_any_comment(self, match): # pragma: no cover
+    def match_any_comment(self, match):  # pragma: no cover
         """Matches books with any comment.
 
         :param match: ``true`` to match books with any comment, ``false`` to match books with no comments
@@ -499,7 +499,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_comment_terms(self): # pragma: no cover
+    def clear_comment_terms(self):  # pragma: no cover
         """Clears the comment terms.
 
 
@@ -512,7 +512,7 @@ class BookQuery:
     comment_terms = property(fdel=clear_comment_terms)
 
     @abc.abstractmethod
-    def match_ancestor_book_id(self, book_id, match): # pragma: no cover
+    def match_ancestor_book_id(self, book_id, match):  # pragma: no cover
         """Sets the book ``Id`` for this query to match books that have the specified book as an ancestor.
 
         :param book_id: a book ``Id``
@@ -527,7 +527,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_book_id_terms(self): # pragma: no cover
+    def clear_ancestor_book_id_terms(self):  # pragma: no cover
         """Clears the ancestor book ``Id`` terms.
 
 
@@ -540,7 +540,7 @@ class BookQuery:
     ancestor_book_id_terms = property(fdel=clear_ancestor_book_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_book_query(self): # pragma: no cover
+    def supports_ancestor_book_query(self):  # pragma: no cover
         """Tests if a ``BookQuery`` is available.
 
         :return: ``true`` if a book query is available, ``false`` otherwise
@@ -553,7 +553,7 @@ class BookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_book_query(self): # pragma: no cover
+    def get_ancestor_book_query(self):  # pragma: no cover
         """Gets the query for a book.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -571,7 +571,7 @@ class BookQuery:
     ancestor_book_query = property(fget=get_ancestor_book_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_book(self, match): # pragma: no cover
+    def match_any_ancestor_book(self, match):  # pragma: no cover
         """Matches books with any ancestor.
 
         :param match: ``true`` to match books with any ancestor, ``false`` to match root books
@@ -584,7 +584,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_book_terms(self): # pragma: no cover
+    def clear_ancestor_book_terms(self):  # pragma: no cover
         """Clears the ancestor book terms.
 
 
@@ -597,7 +597,7 @@ class BookQuery:
     ancestor_book_terms = property(fdel=clear_ancestor_book_terms)
 
     @abc.abstractmethod
-    def match_descendant_book_id(self, book_id, match): # pragma: no cover
+    def match_descendant_book_id(self, book_id, match):  # pragma: no cover
         """Sets the book ``Id`` for this query to match books that have the specified book as a descendant.
 
         :param book_id: a book ``Id``
@@ -612,7 +612,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_book_id_terms(self): # pragma: no cover
+    def clear_descendant_book_id_terms(self):  # pragma: no cover
         """Clears the descendant book ``Id`` terms.
 
 
@@ -625,7 +625,7 @@ class BookQuery:
     descendant_book_id_terms = property(fdel=clear_descendant_book_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_book_query(self): # pragma: no cover
+    def supports_descendant_book_query(self):  # pragma: no cover
         """Tests if a ``BookQuery`` is available.
 
         :return: ``true`` if a book query is available, ``false`` otherwise
@@ -638,7 +638,7 @@ class BookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_book_query(self): # pragma: no cover
+    def get_descendant_book_query(self):  # pragma: no cover
         """Gets the query for a book.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -656,7 +656,7 @@ class BookQuery:
     descendant_book_query = property(fget=get_descendant_book_query)
 
     @abc.abstractmethod
-    def match_any_descendant_book(self, match): # pragma: no cover
+    def match_any_descendant_book(self, match):  # pragma: no cover
         """Matches books with any descendant.
 
         :param match: ``true`` to match books with any descendant, ``false`` to match leaf books
@@ -669,7 +669,7 @@ class BookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_book_terms(self): # pragma: no cover
+    def clear_descendant_book_terms(self):  # pragma: no cover
         """Clears the descendant book terms.
 
 
@@ -682,7 +682,7 @@ class BookQuery:
     descendant_book_terms = property(fdel=clear_descendant_book_terms)
 
     @abc.abstractmethod
-    def get_book_query_record(self, book_record_type): # pragma: no cover
+    def get_book_query_record(self, book_record_type):  # pragma: no cover
         """Gets the book query record corresponding to the given ``Book`` record ``Type``.
 
         Multiple record retrievals produce a nested boolean ``OR`` term.

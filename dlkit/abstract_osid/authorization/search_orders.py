@@ -21,7 +21,7 @@ class AuthorizationSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_resource(self, style): # pragma: no cover
+    def order_by_resource(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the resource.
 
         :param style: the search order style
@@ -34,7 +34,7 @@ class AuthorizationSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_resource_search_order(self): # pragma: no cover
+    def supports_resource_search_order(self):  # pragma: no cover
         """Tests if a ``Resource`` is available.
 
         :return: ``true`` if a resource search order interface is available, ``false`` otherwise
@@ -47,7 +47,7 @@ class AuthorizationSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_search_order(self): # pragma: no cover
+    def get_resource_search_order(self):  # pragma: no cover
         """Gets the resource search order.
 
         :return: the resource search order
@@ -63,7 +63,7 @@ class AuthorizationSearchOrder:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def order_by_trust(self, style): # pragma: no cover
+    def order_by_trust(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the trust.
 
         :param style: the search order style
@@ -76,7 +76,7 @@ class AuthorizationSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_agent(self, style): # pragma: no cover
+    def order_by_agent(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the agent.
 
         :param style: the search order style
@@ -89,7 +89,7 @@ class AuthorizationSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_agent_search_order(self): # pragma: no cover
+    def supports_agent_search_order(self):  # pragma: no cover
         """Tests if an ``Agent`` is available.
 
         :return: ``true`` if an agent search order interface is available, ``false`` otherwise
@@ -102,7 +102,7 @@ class AuthorizationSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_search_order(self): # pragma: no cover
+    def get_agent_search_order(self):  # pragma: no cover
         """Gets the agent search order.
 
         :return: the agent search order
@@ -118,7 +118,7 @@ class AuthorizationSearchOrder:
     agent_search_order = property(fget=get_agent_search_order)
 
     @abc.abstractmethod
-    def order_by_function(self, style): # pragma: no cover
+    def order_by_function(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the active status.
 
         :param style: the search order style
@@ -131,7 +131,7 @@ class AuthorizationSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_function_search_order(self): # pragma: no cover
+    def supports_function_search_order(self):  # pragma: no cover
         """Tests if a ``Function`` is available.
 
         :return: ``true`` if a function search order interface is available, ``false`` otherwise
@@ -144,7 +144,7 @@ class AuthorizationSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_search_order(self): # pragma: no cover
+    def get_function_search_order(self):  # pragma: no cover
         """Gets the function search order.
 
         :return: the function search order
@@ -160,7 +160,7 @@ class AuthorizationSearchOrder:
     function_search_order = property(fget=get_function_search_order)
 
     @abc.abstractmethod
-    def order_by_qualifier(self, style): # pragma: no cover
+    def order_by_qualifier(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the qualifier,.
 
         :param style: the search order style
@@ -173,7 +173,7 @@ class AuthorizationSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_qualifier_search_order(self): # pragma: no cover
+    def supports_qualifier_search_order(self):  # pragma: no cover
         """Tests if a ``Qualifier`` is available.
 
         :return: ``true`` if a qualifier search order interface is available, ``false`` otherwise
@@ -186,7 +186,7 @@ class AuthorizationSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_search_order(self): # pragma: no cover
+    def get_qualifier_search_order(self):  # pragma: no cover
         """Gets the qualifier search order.
 
         :return: the qualifier search order
@@ -202,7 +202,7 @@ class AuthorizationSearchOrder:
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
     @abc.abstractmethod
-    def get_authorization_search_order_record(self, authorization_record_type): # pragma: no cover
+    def get_authorization_search_order_record(self, authorization_record_type):  # pragma: no cover
         """Gets the authorization search order record corresponding to the given function record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -226,7 +226,7 @@ class FunctionSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_qualifier_hierarchy(self, style): # pragma: no cover
+    def order_by_qualifier_hierarchy(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the qualifier hierarchy.
 
         :param style: the search order style
@@ -239,7 +239,7 @@ class FunctionSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_qualifier_hierarchy_search_order(self): # pragma: no cover
+    def supports_qualifier_hierarchy_search_order(self):  # pragma: no cover
         """Tests if a ``HierarchySearchOrder`` interface is available.
 
         :return: ``true`` if a qualifier hierarchy search order interface is available, ``false`` otherwise
@@ -252,7 +252,7 @@ class FunctionSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_search_order(self): # pragma: no cover
+    def get_qualifier_hierarchy_search_order(self):  # pragma: no cover
         """Gets the search order interface for a qualifier hierarchy.
 
         :return: the hierarchy search order
@@ -268,7 +268,7 @@ class FunctionSearchOrder:
     qualifier_hierarchy_search_order = property(fget=get_qualifier_hierarchy_search_order)
 
     @abc.abstractmethod
-    def get_function_search_order_record(self, function_record_type): # pragma: no cover
+    def get_function_search_order_record(self, function_record_type):  # pragma: no cover
         """Gets the function search order record corresponding to the given function record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -292,7 +292,7 @@ class QualifierSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_search_order_record(self, qualifier_record_type): # pragma: no cover
+    def get_qualifier_search_order_record(self, qualifier_record_type):  # pragma: no cover
         """Gets the qualifier search order record corresponding to the given qualifier record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -316,7 +316,7 @@ class VaultSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_search_order_record(self, vault_record_type): # pragma: no cover
+    def get_vault_search_order_record(self, vault_record_type):  # pragma: no cover
         """Gets the vault search order record corresponding to the given vault record ``Type``.
 
         Multiple retrievals return the same underlying object.

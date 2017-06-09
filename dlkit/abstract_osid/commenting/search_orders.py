@@ -21,7 +21,7 @@ class CommentSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_reference(self, style): # pragma: no cover
+    def order_by_reference(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the reference.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class CommentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_commentor(self, style): # pragma: no cover
+    def order_by_commentor(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the resource.
 
         :param style: search order style
@@ -47,7 +47,7 @@ class CommentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_commentor_search_order(self): # pragma: no cover
+    def supports_commentor_search_order(self):  # pragma: no cover
         """Tests if a resource order interface is available.
 
         :return: ``true`` if a resource order interface is available, ``false`` otherwise
@@ -60,7 +60,7 @@ class CommentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_commentor_search_order(self): # pragma: no cover
+    def get_commentor_search_order(self):  # pragma: no cover
         """Gets the resource order interface.
 
         :return: the resource search order interface
@@ -76,7 +76,7 @@ class CommentSearchOrder:
     commentor_search_order = property(fget=get_commentor_search_order)
 
     @abc.abstractmethod
-    def order_by_commenting_agent(self, style): # pragma: no cover
+    def order_by_commenting_agent(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the agent.
 
         :param style: search order style
@@ -89,7 +89,7 @@ class CommentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_commenting_agent_search_order(self): # pragma: no cover
+    def supports_commenting_agent_search_order(self):  # pragma: no cover
         """Tests if an agent order interface is available.
 
         :return: ``true`` if an agent order interface is available, ``false`` otherwise
@@ -102,7 +102,7 @@ class CommentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_commenting_agent_search_order(self): # pragma: no cover
+    def get_commenting_agent_search_order(self):  # pragma: no cover
         """Gets the agent order interface.
 
         :return: the agent search order interface
@@ -118,7 +118,7 @@ class CommentSearchOrder:
     commenting_agent_search_order = property(fget=get_commenting_agent_search_order)
 
     @abc.abstractmethod
-    def order_by_text(self, style): # pragma: no cover
+    def order_by_text(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the text.
 
         :param style: search order style
@@ -131,7 +131,7 @@ class CommentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_rating(self, style): # pragma: no cover
+    def order_by_rating(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the rating.
 
         :param style: search order style
@@ -144,7 +144,7 @@ class CommentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_rating_search_order(self): # pragma: no cover
+    def supports_rating_search_order(self):  # pragma: no cover
         """Tests if a rating order interface is available.
 
         :return: ``true`` if a rating order interface is available, ``false`` otherwise
@@ -157,7 +157,7 @@ class CommentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rating_search_order(self): # pragma: no cover
+    def get_rating_search_order(self):  # pragma: no cover
         """Gets the rating order interface.
 
         :return: the rating search order interface
@@ -173,7 +173,7 @@ class CommentSearchOrder:
     rating_search_order = property(fget=get_rating_search_order)
 
     @abc.abstractmethod
-    def get_comment_search_order_record(self, comment_record_type): # pragma: no cover
+    def get_comment_search_order_record(self, comment_record_type):  # pragma: no cover
         """Gets the comment search order record corresponding to the given comment record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -197,7 +197,7 @@ class BookSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_search_order_record(self, book_record_type): # pragma: no cover
+    def get_book_search_order_record(self, book_record_type):  # pragma: no cover
         """Gets the book search order record corresponding to the given book record Type.
 
         Multiple retrievals return the same underlying object.

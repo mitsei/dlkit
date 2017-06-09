@@ -21,7 +21,7 @@ class CommentReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_comments(self, notification_id, comment_ids): # pragma: no cover
+    def new_comments(self, notification_id, comment_ids):  # pragma: no cover
         """The callback for notifications of new comments.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class CommentReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_comments(self, notification_id, comment_ids): # pragma: no cover
+    def changed_comments(self, notification_id, comment_ids):  # pragma: no cover
         """The callback for notifications of updated comments.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class CommentReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_comments(self, notification_id, comment_ids): # pragma: no cover
+    def deleted_comments(self, notification_id, comment_ids):  # pragma: no cover
         """the callback for notification of deleted comments.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class BookReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_books(self, notification_id, book_ids): # pragma: no cover
+    def new_books(self, notification_id, book_ids):  # pragma: no cover
         """The callback for notifications of new books.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class BookReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_books(self, notification_id, book_ids): # pragma: no cover
+    def changed_books(self, notification_id, book_ids):  # pragma: no cover
         """The callback for notification of updated books.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class BookReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_books(self, notification_id, book_ids): # pragma: no cover
+    def deleted_books(self, notification_id, book_ids):  # pragma: no cover
         """the callback for notification of deleted books.
 
         :param notification_id: the notification ``Id``
@@ -116,7 +116,7 @@ class BookReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_books(self, notification_id, book_ids): # pragma: no cover
+    def changed_child_of_books(self, notification_id, book_ids):  # pragma: no cover
         """The callback for notifications of changes to children of book hierarchy nodes.
 
         :param notification_id: the notification ``Id``

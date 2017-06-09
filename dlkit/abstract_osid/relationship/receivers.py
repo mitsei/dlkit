@@ -21,7 +21,7 @@ class RelationshipReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_relationships(self, notification_id, relationship_ids): # pragma: no cover
+    def new_relationships(self, notification_id, relationship_ids):  # pragma: no cover
         """The callback for notifications of new relationships.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class RelationshipReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_relationships(self, notification_id, relationship_ids): # pragma: no cover
+    def changed_relationships(self, notification_id, relationship_ids):  # pragma: no cover
         """The callback for notification of updated relationships.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class RelationshipReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_relationships(self, notification_id, relationship_ids): # pragma: no cover
+    def deleted_relationships(self, notification_id, relationship_ids):  # pragma: no cover
         """the callback for notification of deleted relationships.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class FamilyReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_families(self, notification_id, family_ids): # pragma: no cover
+    def new_families(self, notification_id, family_ids):  # pragma: no cover
         """The callback for notifications of new families.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class FamilyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_families(self, notification_id, family_ids): # pragma: no cover
+    def changed_families(self, notification_id, family_ids):  # pragma: no cover
         """The callback for notification of updated families.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class FamilyReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_families(self, notification_id, family_ids): # pragma: no cover
+    def deleted_families(self, notification_id, family_ids):  # pragma: no cover
         """the callback for notification of deleted familys.
 
         :param notification_id: the notification ``Id``
@@ -116,7 +116,7 @@ class FamilyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_families(self, notification_id, family_ids): # pragma: no cover
+    def changed_child_of_families(self, notification_id, family_ids):  # pragma: no cover
         """The callback for notifications of changes to children of family hierarchy nodes.
 
         :param notification_id: the notification ``Id``

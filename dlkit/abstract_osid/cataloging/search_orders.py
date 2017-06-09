@@ -21,7 +21,7 @@ class CatalogSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog_search_order_record(self, catalog_record_type): # pragma: no cover
+    def get_catalog_search_order_record(self, catalog_record_type):  # pragma: no cover
         """Gets the catalog search order record corresponding to the given subject record ``Type``.
 
         Multiple retrievals return the same underlying object.

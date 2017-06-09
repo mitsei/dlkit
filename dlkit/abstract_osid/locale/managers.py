@@ -21,7 +21,7 @@ class LocaleProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if visible federation is supported.
 
         :return: ``true`` if visible federation is supported, ``false`` otherwise
@@ -34,7 +34,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_translation(self): # pragma: no cover
+    def supports_translation(self):  # pragma: no cover
         """Tests if translation is supported.
 
         :return: ``true`` if translation is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_translation_admin(self): # pragma: no cover
+    def supports_translation_admin(self):  # pragma: no cover
         """Tests if translation administration is supported.
 
         :return: ``true`` if translation administration is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_numeric_formatting(self): # pragma: no cover
+    def supports_numeric_formatting(self):  # pragma: no cover
         """Tests if numeric formatting is supported.
 
         :return: ``true`` if numeric formatting is supported, ``false`` otherwise
@@ -73,7 +73,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_calendar_formatting(self): # pragma: no cover
+    def supports_calendar_formatting(self):  # pragma: no cover
         """Tests if calendar formatting is supported.
 
         :return: ``true`` if calendar formatting is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_currency_formatting(self): # pragma: no cover
+    def supports_currency_formatting(self):  # pragma: no cover
         """Tests if currency formatting is supported.
 
         :return: ``true`` if currency formatting is supported, ``false`` otherwise
@@ -99,7 +99,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_coordinate_formatting(self): # pragma: no cover
+    def supports_coordinate_formatting(self):  # pragma: no cover
         """Tests if coordinate formatting is supported.
 
         :return: ``true`` if coordinate formatting is supported, ``false`` otherwise
@@ -112,7 +112,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_unit_conversion(self): # pragma: no cover
+    def supports_unit_conversion(self):  # pragma: no cover
         """Tests if unit conversion is supported.
 
         :return: ``true`` if unit conversion is supported, ``false`` otherwise
@@ -125,7 +125,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_currency_conversion(self): # pragma: no cover
+    def supports_currency_conversion(self):  # pragma: no cover
         """Tests if currency conversion is supported.
 
         :return: ``true`` if currency conversion is supported, ``false`` otherwise
@@ -138,7 +138,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_calendar_conversion(self): # pragma: no cover
+    def supports_calendar_conversion(self):  # pragma: no cover
         """Tests if calendar conversion is supported.
 
         :return: ``true`` if calendar conversion is supported, ``false`` otherwise
@@ -151,7 +151,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_coordinate_conversion(self): # pragma: no cover
+    def supports_coordinate_conversion(self):  # pragma: no cover
         """Tests if coordnate conversion is supported.
 
         :return: ``true`` if coordinate conversion is supported, ``false`` otherwise
@@ -164,7 +164,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_spatial_unit_conversion(self): # pragma: no cover
+    def supports_spatial_unit_conversion(self):  # pragma: no cover
         """Tests if spatial unit conversion is supported.
 
         :return: ``true`` if spatial unit conversion is supported, ``false`` otherwise
@@ -177,7 +177,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_format_conversion(self): # pragma: no cover
+    def supports_format_conversion(self):  # pragma: no cover
         """Tests if format conversion is supported.
 
         :return: ``true`` if format conversion is supported, ``false`` otherwise
@@ -190,7 +190,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_calendar_info(self): # pragma: no cover
+    def supports_calendar_info(self):  # pragma: no cover
         """Tests if a calendar informational service is supported.
 
         :return: ``true`` if calendar info is supported, ``false`` otherwise
@@ -203,7 +203,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_language_types_for_translation(self, source_language_type, source_script_type, target_language_type, target_script_type): # pragma: no cover
+    def supports_language_types_for_translation(self, source_language_type, source_script_type, target_language_type, target_script_type):  # pragma: no cover
         """Tests if a given language translation is supported.
 
         :param source_language_type: the type of the source language
@@ -224,7 +224,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_language_types_for_source(self, source_language_type, source_script_type): # pragma: no cover
+    def get_language_types_for_source(self, source_language_type, source_script_type):  # pragma: no cover
         """Gets the list of target language types for a given source language type.
 
         :param source_language_type: the type of the source language
@@ -241,7 +241,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_language_types(self): # pragma: no cover
+    def get_source_language_types(self):  # pragma: no cover
         """Gets all the source language types supported.
 
         :return: the list of supported language types
@@ -256,7 +256,7 @@ class LocaleProfile:
     source_language_types = property(fget=get_source_language_types)
 
     @abc.abstractmethod
-    def get_script_types_for_language_type(self, language_type): # pragma: no cover
+    def get_script_types_for_language_type(self, language_type):  # pragma: no cover
         """Gets the list of script types available for a given language type.
 
         :param language_type: the type of the language
@@ -271,7 +271,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def supports_numeric_format_types(self, numeric_format_type): # pragma: no cover
+    def supports_numeric_format_types(self, numeric_format_type):  # pragma: no cover
         """Tests if a given numeric format type is supported.
 
         :param numeric_format_type: the type of the numeric format
@@ -286,7 +286,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_numeric_format_types(self): # pragma: no cover
+    def get_numeric_format_types(self):  # pragma: no cover
         """Gets all the numeric format types supported.
 
         :return: the list of supported numeric format types
@@ -301,7 +301,7 @@ class LocaleProfile:
     numeric_format_types = property(fget=get_numeric_format_types)
 
     @abc.abstractmethod
-    def supports_calendar_types_for_formatting(self, calendar_type, time_type, date_format_type, time_format_type): # pragma: no cover
+    def supports_calendar_types_for_formatting(self, calendar_type, time_type, date_format_type, time_format_type):  # pragma: no cover
         """Tests if a given calendaring formatting is supported.
 
         :param calendar_type: the type of the calendar
@@ -322,7 +322,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_calendar_types_for_formatting(self): # pragma: no cover
+    def get_calendar_types_for_formatting(self):  # pragma: no cover
         """Gets all the calendar types for which formats are available.
 
         :return: the list of calendar types
@@ -337,7 +337,7 @@ class LocaleProfile:
     calendar_types_for_formatting = property(fget=get_calendar_types_for_formatting)
 
     @abc.abstractmethod
-    def get_date_format_types_for_calendar_type(self, calendar_type): # pragma: no cover
+    def get_date_format_types_for_calendar_type(self, calendar_type):  # pragma: no cover
         """Gets the list of date format types for a given calendar type.
 
         :param calendar_type: the type of the calendar
@@ -352,7 +352,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_time_types_for_formatting(self): # pragma: no cover
+    def get_time_types_for_formatting(self):  # pragma: no cover
         """Gets all the time types for which formatting is available.
 
         :return: the list of time types
@@ -367,7 +367,7 @@ class LocaleProfile:
     time_types_for_formatting = property(fget=get_time_types_for_formatting)
 
     @abc.abstractmethod
-    def get_time_format_types_for_time_type(self, time_type): # pragma: no cover
+    def get_time_format_types_for_time_type(self, time_type):  # pragma: no cover
         """Gets the list of time format types for a given time type.
 
         :param time_type: the type of the time
@@ -382,7 +382,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def supports_currency_types_for_formatting(self, currency_type, numeric_format_type): # pragma: no cover
+    def supports_currency_types_for_formatting(self, currency_type, numeric_format_type):  # pragma: no cover
         """Tests if a given currency formatting is supported.
 
         :param currency_type: the type of the currency
@@ -399,7 +399,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_currency_types_for_formatting(self): # pragma: no cover
+    def get_currency_types_for_formatting(self):  # pragma: no cover
         """Gets all the currency types for which formatting is available.
 
         :return: the list of currency types
@@ -414,7 +414,7 @@ class LocaleProfile:
     currency_types_for_formatting = property(fget=get_currency_types_for_formatting)
 
     @abc.abstractmethod
-    def get_currency_format_types_for_currency_type(self, currency_type): # pragma: no cover
+    def get_currency_format_types_for_currency_type(self, currency_type):  # pragma: no cover
         """Gets the list of currency format types for a given currency type.
 
         :param currency_type: the type of the currency
@@ -429,7 +429,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def supports_coordinate_types_for_formatting(self, coordinate_type, coordinate_format_type): # pragma: no cover
+    def supports_coordinate_types_for_formatting(self, coordinate_type, coordinate_format_type):  # pragma: no cover
         """Tests if a given coordinate formatting is supported.
 
         :param coordinate_type: the type of the coordinate
@@ -446,7 +446,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_coordinate_types_for_formatting(self): # pragma: no cover
+    def get_coordinate_types_for_formatting(self):  # pragma: no cover
         """Gets all the coordinate types for which formatting is available.
 
         :return: the list of coordinate types
@@ -461,7 +461,7 @@ class LocaleProfile:
     coordinate_types_for_formatting = property(fget=get_coordinate_types_for_formatting)
 
     @abc.abstractmethod
-    def get_coordinate_format_types_for_coordinate_type(self, coordinate_type): # pragma: no cover
+    def get_coordinate_format_types_for_coordinate_type(self, coordinate_type):  # pragma: no cover
         """Gets the list of coordinate format types for a given coordinate type.
 
         :param coordinate_type: the type of the coordinate
@@ -476,7 +476,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def supports_unit_types_for_conversion(self, source_unit_type, target_unit_type): # pragma: no cover
+    def supports_unit_types_for_conversion(self, source_unit_type, target_unit_type):  # pragma: no cover
         """Tests if a given measure conversion is supported.
 
         :param source_unit_type: the type of the source measure
@@ -493,7 +493,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_unit_types_for_source(self, source_unit_type): # pragma: no cover
+    def get_unit_types_for_source(self, source_unit_type):  # pragma: no cover
         """Gets the list of target measure types for a given source measure type.
 
         :param source_unit_type: the type of the source measure
@@ -508,7 +508,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_unit_types(self): # pragma: no cover
+    def get_source_unit_types(self):  # pragma: no cover
         """Gets all the source unit types supported.
 
         :return: the list of supported source unit types
@@ -523,7 +523,7 @@ class LocaleProfile:
     source_unit_types = property(fget=get_source_unit_types)
 
     @abc.abstractmethod
-    def supports_currency_types_for_conversion(self, source_currency_type, target_currency_type): # pragma: no cover
+    def supports_currency_types_for_conversion(self, source_currency_type, target_currency_type):  # pragma: no cover
         """Tests if a given currency conversion is supported.
 
         :param source_currency_type: the type of the source currency
@@ -540,7 +540,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_currency_types_for_source(self, source_currency_type): # pragma: no cover
+    def get_currency_types_for_source(self, source_currency_type):  # pragma: no cover
         """Gets the list of target currency types for a given source currency type.
 
         :param source_currency_type: the type of the source currency
@@ -555,7 +555,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_currency_types(self): # pragma: no cover
+    def get_source_currency_types(self):  # pragma: no cover
         """Gets the list of source currency types.
 
         :return: the list of supported source currency types
@@ -570,7 +570,7 @@ class LocaleProfile:
     source_currency_types = property(fget=get_source_currency_types)
 
     @abc.abstractmethod
-    def supports_calendar_types_for_conversion(self, source_calendar_type, target_calendar_type): # pragma: no cover
+    def supports_calendar_types_for_conversion(self, source_calendar_type, target_calendar_type):  # pragma: no cover
         """Tests if a given calendar conversion is supported.
 
         :param source_calendar_type: the type of the source calendar
@@ -587,7 +587,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_calendar_types_for_source(self, source_calendar_type): # pragma: no cover
+    def get_calendar_types_for_source(self, source_calendar_type):  # pragma: no cover
         """Gets the list of target calendar types for a given source calendar type.
 
         :param source_calendar_type: the type of the source calendar
@@ -602,7 +602,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_calendar_types(self): # pragma: no cover
+    def get_source_calendar_types(self):  # pragma: no cover
         """Gets the list of source calendar types.
 
         :return: the list of supported source calendar types
@@ -617,7 +617,7 @@ class LocaleProfile:
     source_calendar_types = property(fget=get_source_calendar_types)
 
     @abc.abstractmethod
-    def supports_time_types_for_conversion(self, source_time_type, target_time_type): # pragma: no cover
+    def supports_time_types_for_conversion(self, source_time_type, target_time_type):  # pragma: no cover
         """Tests if a given time conversion is supported.
 
         :param source_time_type: the type of the source time
@@ -634,7 +634,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_time_types_for_source(self, source_time_type): # pragma: no cover
+    def get_time_types_for_source(self, source_time_type):  # pragma: no cover
         """Gets the list of target time types for a given source time type.
 
         :param source_time_type: the type of the source time
@@ -649,7 +649,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_time_types(self): # pragma: no cover
+    def get_source_time_types(self):  # pragma: no cover
         """Gets the list of source time types.
 
         :return: the list of supported source time types
@@ -664,7 +664,7 @@ class LocaleProfile:
     source_time_types = property(fget=get_source_time_types)
 
     @abc.abstractmethod
-    def get_time_types_for_calendar_type(self, calendar_type): # pragma: no cover
+    def get_time_types_for_calendar_type(self, calendar_type):  # pragma: no cover
         """Gets the list of time types supported for a given calendar type where they are both used in a ``DateTime``.
 
         :param calendar_type: the type of the calendar
@@ -679,7 +679,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_calendar_types_for_time_type(self, time_type): # pragma: no cover
+    def get_calendar_types_for_time_type(self, time_type):  # pragma: no cover
         """Gets the list of calendar types supported for a given time type where they are both used in a ``DateTime``.
 
         :param time_type: the type of the time system
@@ -694,7 +694,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def supports_calendar_time_types(self, calendar_type, time_type): # pragma: no cover
+    def supports_calendar_time_types(self, calendar_type, time_type):  # pragma: no cover
         """Tests if a given calendar and time type are used together in a ``DateTime``.
 
         :param calendar_type: the type of the calendar
@@ -711,7 +711,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_coordinate_types_for_conversion(self, source_coordinate_type, target_coordinate_type): # pragma: no cover
+    def supports_coordinate_types_for_conversion(self, source_coordinate_type, target_coordinate_type):  # pragma: no cover
         """Tests if a given coordinate type for conversion is supported.
 
         :param source_coordinate_type: the type of the source coordinate
@@ -728,7 +728,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_coordinate_types_for_source(self, source_coordinate_type): # pragma: no cover
+    def get_coordinate_types_for_source(self, source_coordinate_type):  # pragma: no cover
         """Gets the list of target coordinate types for a given source coordinate type.
 
         :param source_coordinate_type: the type of the source coordinate
@@ -743,7 +743,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_coordinate_types(self): # pragma: no cover
+    def get_source_coordinate_types(self):  # pragma: no cover
         """Gets the list of source coordinate types.
 
         :return: the list of supported source coordinate types
@@ -758,7 +758,7 @@ class LocaleProfile:
     source_coordinate_types = property(fget=get_source_coordinate_types)
 
     @abc.abstractmethod
-    def supports_spatial_unit_record_types_for_conversion(self, source_spatial_unit_record_type, target_spatial_unit_record_type): # pragma: no cover
+    def supports_spatial_unit_record_types_for_conversion(self, source_spatial_unit_record_type, target_spatial_unit_record_type):  # pragma: no cover
         """Tests if a given spatial unit conversion is supported.
 
         :param source_spatial_unit_record_type: the type of the source spatial unit record
@@ -775,7 +775,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_spatial_unit_record_types_for_source(self, source_spatial_unit_record_type): # pragma: no cover
+    def get_spatial_unit_record_types_for_source(self, source_spatial_unit_record_type):  # pragma: no cover
         """Gets the list of target spatial unit types for a given source spatial unit type.
 
         :param source_spatial_unit_record_type: the type of the source spatial unit record
@@ -790,7 +790,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_spatial_unit_record_types(self): # pragma: no cover
+    def get_source_spatial_unit_record_types(self):  # pragma: no cover
         """Gets the list of source spatial unit record types.
 
         :return: the list of supported source spatial unit record types
@@ -805,7 +805,7 @@ class LocaleProfile:
     source_spatial_unit_record_types = property(fget=get_source_spatial_unit_record_types)
 
     @abc.abstractmethod
-    def supports_format_types_for_conversion(self, source_format_type, target_format_type): # pragma: no cover
+    def supports_format_types_for_conversion(self, source_format_type, target_format_type):  # pragma: no cover
         """Tests if a given format conversion is supported.
 
         :param source_format_type: the type of the source format
@@ -822,7 +822,7 @@ class LocaleProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_format_types_for_source(self, source_format_type): # pragma: no cover
+    def get_format_types_for_source(self, source_format_type):  # pragma: no cover
         """Gets the list of target format types for a given source spatial unit type.
 
         :param source_format_type: the type of the source format
@@ -837,7 +837,7 @@ class LocaleProfile:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_format_types(self): # pragma: no cover
+    def get_source_format_types(self):  # pragma: no cover
         """Gets the list of source format types.
 
         :return: the list of supported source format types
@@ -885,7 +885,7 @@ class LocaleManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_translation_session(self): # pragma: no cover
+    def get_translation_session(self):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the language translation service.
 
         :return: a ``TranslationSession``
@@ -902,7 +902,7 @@ class LocaleManager:
     translation_session = property(fget=get_translation_session)
 
     @abc.abstractmethod
-    def get_translation_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type): # pragma: no cover
+    def get_translation_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the language translation service and the given language and script types.
 
         :param source_language_type: the type of the source language
@@ -928,7 +928,7 @@ class LocaleManager:
         return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
-    def get_translation_admin_session(self): # pragma: no cover
+    def get_translation_admin_session(self):  # pragma: no cover
         """Gets a language translation administration service for updating a locale dictionary.
 
         :return: a ``TranslationAdminSession``
@@ -945,7 +945,7 @@ class LocaleManager:
     translation_admin_session = property(fget=get_translation_admin_session)
 
     @abc.abstractmethod
-    def get_translation_admin_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type): # pragma: no cover
+    def get_translation_admin_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type):  # pragma: no cover
         """Gets a language trabslation administration service for updating a locale dictionary using the given language and script types.
 
         :param source_language_type: the type of the source language
@@ -971,7 +971,7 @@ class LocaleManager:
         return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
-    def get_numeric_formatting_session(self): # pragma: no cover
+    def get_numeric_formatting_session(self):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the numeric formatting service.
 
         :return: a ``NumericFormattingSession``
@@ -988,7 +988,7 @@ class LocaleManager:
     numeric_formatting_session = property(fget=get_numeric_formatting_session)
 
     @abc.abstractmethod
-    def get_numeric_formatting_session_for_type(self, numeric_format_type): # pragma: no cover
+    def get_numeric_formatting_session_for_type(self, numeric_format_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the numeric formatting service and the given numeric format type.
 
         :param numeric_format_type: the type of the numeric format
@@ -1008,7 +1008,7 @@ class LocaleManager:
         return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
-    def get_calendar_formatting_session(self): # pragma: no cover
+    def get_calendar_formatting_session(self):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar formatting service.
 
         :return: a ``CalendarFormattingSession``
@@ -1025,7 +1025,7 @@ class LocaleManager:
     calendar_formatting_session = property(fget=get_calendar_formatting_session)
 
     @abc.abstractmethod
-    def get_calendar_formatting_session_for_type(self, calendar_type, calendar_format_type, time_type, time_format_type): # pragma: no cover
+    def get_calendar_formatting_session_for_type(self, calendar_type, calendar_format_type, time_type, time_format_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar formatting service and the given calendar and time types.
 
         :param calendar_type: the type of the calendar
@@ -1051,7 +1051,7 @@ class LocaleManager:
         return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
-    def get_currency_formatting_session(self): # pragma: no cover
+    def get_currency_formatting_session(self):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency formatting service.
 
         :return: a ``CurrencyFormattingSession``
@@ -1068,7 +1068,7 @@ class LocaleManager:
     currency_formatting_session = property(fget=get_currency_formatting_session)
 
     @abc.abstractmethod
-    def get_currency_formatting_session_for_type(self, currency_type, numeric_format_type): # pragma: no cover
+    def get_currency_formatting_session_for_type(self, currency_type, numeric_format_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency formatting service and the given currency and numeric format types.
 
         :param currency_type: the type of the currency
@@ -1090,7 +1090,7 @@ class LocaleManager:
         return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
-    def get_coordinate_formatting_session(self): # pragma: no cover
+    def get_coordinate_formatting_session(self):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate formatting service.
 
         :return: a ``CoordinateFormattingSession``
@@ -1107,7 +1107,7 @@ class LocaleManager:
     coordinate_formatting_session = property(fget=get_coordinate_formatting_session)
 
     @abc.abstractmethod
-    def get_coordinate_formatting_session_for_type(self, coordinate_type, coordinate_format_type): # pragma: no cover
+    def get_coordinate_formatting_session_for_type(self, coordinate_type, coordinate_format_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate formatting service and the given coordinate and format types.
 
         :param coordinate_type: the type of the coordinate
@@ -1129,7 +1129,7 @@ class LocaleManager:
         return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
-    def get_unit_conversion_session(self): # pragma: no cover
+    def get_unit_conversion_session(self):  # pragma: no cover
         """Gets a unit conversion session.
 
         :return: a ``UnitConversionSession``
@@ -1146,7 +1146,7 @@ class LocaleManager:
     unit_conversion_session = property(fget=get_unit_conversion_session)
 
     @abc.abstractmethod
-    def get_currency_conversion_session(self): # pragma: no cover
+    def get_currency_conversion_session(self):  # pragma: no cover
         """Gets a currency conversion session.
 
         :return: a ``CurrencyConversionSession``
@@ -1163,7 +1163,7 @@ class LocaleManager:
     currency_conversion_session = property(fget=get_currency_conversion_session)
 
     @abc.abstractmethod
-    def get_currency_conversion_session_for_type(self, source_currency_type, target_currency_type): # pragma: no cover
+    def get_currency_conversion_session_for_type(self, source_currency_type, target_currency_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency conversion service and the given currency types.
 
         :param source_currency_type: the type of the source currency
@@ -1185,7 +1185,7 @@ class LocaleManager:
         return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
-    def get_calendar_conversion_session(self): # pragma: no cover
+    def get_calendar_conversion_session(self):  # pragma: no cover
         """Gets a calendar conversion session.
 
         :return: a ``CalendarConversionSession``
@@ -1202,7 +1202,7 @@ class LocaleManager:
     calendar_conversion_session = property(fget=get_calendar_conversion_session)
 
     @abc.abstractmethod
-    def get_calendar_conversion_session_for_type(self, source_calendar_type, source_time_type, target_calendar_type, target_time_type): # pragma: no cover
+    def get_calendar_conversion_session_for_type(self, source_calendar_type, source_time_type, target_calendar_type, target_time_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar conversion service and the given calendar types.
 
         :param source_calendar_type: the type of the source calendar
@@ -1228,7 +1228,7 @@ class LocaleManager:
         return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
-    def get_coordinate_conversion_session(self): # pragma: no cover
+    def get_coordinate_conversion_session(self):  # pragma: no cover
         """Gets a coordinate conversion session.
 
         :return: a ``CoordinateConversionSession``
@@ -1245,7 +1245,7 @@ class LocaleManager:
     coordinate_conversion_session = property(fget=get_coordinate_conversion_session)
 
     @abc.abstractmethod
-    def get_coordinate_conversion_session_for_type(self, source_coordinate_type, target_coordinate_type): # pragma: no cover
+    def get_coordinate_conversion_session_for_type(self, source_coordinate_type, target_coordinate_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate conversion service and the given coordinate types.
 
         :param source_coordinate_type: the type of the source coordinate
@@ -1267,7 +1267,7 @@ class LocaleManager:
         return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
-    def get_spatial_unit_conversion_session(self): # pragma: no cover
+    def get_spatial_unit_conversion_session(self):  # pragma: no cover
         """Gets a spatial unit conversion session.
 
         :return: a ``SpatialUnitConversionSession``
@@ -1284,7 +1284,7 @@ class LocaleManager:
     spatial_unit_conversion_session = property(fget=get_spatial_unit_conversion_session)
 
     @abc.abstractmethod
-    def get_spatial_unit_conversion_session_for_type(self, source_spatial_unit_record_type, target_spatial_unit_record_type): # pragma: no cover
+    def get_spatial_unit_conversion_session_for_type(self, source_spatial_unit_record_type, target_spatial_unit_record_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the spatial unit conversion service and the given spatial unit record types.
 
         :param source_spatial_unit_record_type: the type of the source spatial unit record
@@ -1306,7 +1306,7 @@ class LocaleManager:
         return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
-    def get_format_conversion_session(self): # pragma: no cover
+    def get_format_conversion_session(self):  # pragma: no cover
         """Gets a text format conversion session.
 
         :return: a ``FormatConversionSession``
@@ -1323,7 +1323,7 @@ class LocaleManager:
     format_conversion_session = property(fget=get_format_conversion_session)
 
     @abc.abstractmethod
-    def get_format_conversion_session_for_type(self, source_format_type, target_format_type): # pragma: no cover
+    def get_format_conversion_session_for_type(self, source_format_type, target_format_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the text format conversion service and the given format types.
 
         :param source_format_type: the type of the text format
@@ -1345,7 +1345,7 @@ class LocaleManager:
         return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
-    def get_calendar_info_session(self): # pragma: no cover
+    def get_calendar_info_session(self):  # pragma: no cover
         """Gets a calendar informational session session.
 
         :return: a ``CalendarInfoSession``
@@ -1362,7 +1362,7 @@ class LocaleManager:
     calendar_info_session = property(fget=get_calendar_info_session)
 
     @abc.abstractmethod
-    def get_calendar_info_session_for_type(self, calendar_type, time_type): # pragma: no cover
+    def get_calendar_info_session_for_type(self, calendar_type, time_type):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar informational service and the given calendar and time types.
 
         :param calendar_type: the type of the calendar
@@ -1419,7 +1419,7 @@ class LocaleProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_translation_session(self, proxy): # pragma: no cover
+    def get_translation_session(self, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the language translation service.
 
         :param proxy: a proxy
@@ -1437,7 +1437,7 @@ class LocaleProxyManager:
         return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
-    def get_translation_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy): # pragma: no cover
+    def get_translation_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the language translation service and the given language and script types.
 
         :param source_language_type: the type of the source language
@@ -1465,7 +1465,7 @@ class LocaleProxyManager:
         return  # osid.locale.TranslationSession
 
     @abc.abstractmethod
-    def get_translation_admin_session(self, proxy): # pragma: no cover
+    def get_translation_admin_session(self, proxy):  # pragma: no cover
         """Gets a language translation administration service for updating a locale dictionary.
 
         :param proxy: a proxy
@@ -1483,7 +1483,7 @@ class LocaleProxyManager:
         return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
-    def get_translation_admin_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy): # pragma: no cover
+    def get_translation_admin_session_for_type(self, source_language_type, source_script_type, target_language_type, target_script_type, proxy):  # pragma: no cover
         """Gets a language trabslation administration service for updating a locale dictionary using the given language and script types.
 
         :param source_language_type: the type of the source language
@@ -1511,7 +1511,7 @@ class LocaleProxyManager:
         return  # osid.locale.TranslationAdminSession
 
     @abc.abstractmethod
-    def get_numeric_formatting_session(self, proxy): # pragma: no cover
+    def get_numeric_formatting_session(self, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the numeric formatting service.
 
         :param proxy: a proxy
@@ -1529,7 +1529,7 @@ class LocaleProxyManager:
         return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
-    def get_numeric_formatting_session_for_type(self, numeric_format_type, proxy): # pragma: no cover
+    def get_numeric_formatting_session_for_type(self, numeric_format_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the numeric formatting service and the given numeric format type.
 
         :param numeric_format_type: the type of the numeric format
@@ -1551,7 +1551,7 @@ class LocaleProxyManager:
         return  # osid.locale.NumericFormattingSession
 
     @abc.abstractmethod
-    def get_calendar_formatting_session(self, proxy): # pragma: no cover
+    def get_calendar_formatting_session(self, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar formatting service.
 
         :param proxy: a proxy
@@ -1569,7 +1569,7 @@ class LocaleProxyManager:
         return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
-    def get_calendar_formatting_session_for_type(self, calendar_type, calendar_format_type, time_type, time_format_type, proxy): # pragma: no cover
+    def get_calendar_formatting_session_for_type(self, calendar_type, calendar_format_type, time_type, time_format_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar formatting service and the given calendar and time types.
 
         :param calendar_type: the type of the calendar
@@ -1597,7 +1597,7 @@ class LocaleProxyManager:
         return  # osid.locale.CalendarFormattingSession
 
     @abc.abstractmethod
-    def get_currency_formatting_session(self, proxy): # pragma: no cover
+    def get_currency_formatting_session(self, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency formatting service.
 
         :param proxy: a proxy
@@ -1615,7 +1615,7 @@ class LocaleProxyManager:
         return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
-    def get_currency_formatting_session_for_type(self, currency_type, numeric_format_type, proxy): # pragma: no cover
+    def get_currency_formatting_session_for_type(self, currency_type, numeric_format_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency formatting service and the given currency and numeric format types.
 
         :param currency_type: the type of the currency
@@ -1639,7 +1639,7 @@ class LocaleProxyManager:
         return  # osid.locale.CurrencyFormattingSession
 
     @abc.abstractmethod
-    def get_coordinate_formatting_session(self, proxy): # pragma: no cover
+    def get_coordinate_formatting_session(self, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate formatting service.
 
         :param proxy: a proxy
@@ -1657,7 +1657,7 @@ class LocaleProxyManager:
         return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
-    def get_coordinate_formatting_session_for_type(self, coordinate_type, coordinate_format_type, proxy): # pragma: no cover
+    def get_coordinate_formatting_session_for_type(self, coordinate_type, coordinate_format_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate formatting service and the given coordinate and format types.
 
         :param coordinate_type: the type of the coordinate
@@ -1681,7 +1681,7 @@ class LocaleProxyManager:
         return  # osid.locale.CoordinateFormattingSession
 
     @abc.abstractmethod
-    def get_unit_conversion_session(self, proxy): # pragma: no cover
+    def get_unit_conversion_session(self, proxy):  # pragma: no cover
         """Gets a unit conversion session.
 
         :param proxy: a proxy
@@ -1699,7 +1699,7 @@ class LocaleProxyManager:
         return  # osid.locale.UnitConversionSession
 
     @abc.abstractmethod
-    def get_currency_conversion_session(self, proxy): # pragma: no cover
+    def get_currency_conversion_session(self, proxy):  # pragma: no cover
         """Gets a currency conversion session.
 
         :param proxy: a proxy
@@ -1717,7 +1717,7 @@ class LocaleProxyManager:
         return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
-    def get_currency_conversion_session_for_type(self, source_currency_type, target_currency_type, proxy): # pragma: no cover
+    def get_currency_conversion_session_for_type(self, source_currency_type, target_currency_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the currency conversion service and the given currency types.
 
         :param source_currency_type: the type of the source currency
@@ -1741,7 +1741,7 @@ class LocaleProxyManager:
         return  # osid.locale.CurrencyConversionSession
 
     @abc.abstractmethod
-    def get_calendar_conversion_session(self, proxy): # pragma: no cover
+    def get_calendar_conversion_session(self, proxy):  # pragma: no cover
         """Gets a calendar conversion session.
 
         :param proxy: a proxy
@@ -1759,7 +1759,7 @@ class LocaleProxyManager:
         return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
-    def get_calendar_conversion_session_for_type(self, source_calendar_type, source_time_type, target_calendar_type, target_time_type, proxy): # pragma: no cover
+    def get_calendar_conversion_session_for_type(self, source_calendar_type, source_time_type, target_calendar_type, target_time_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar conversion service and the given calendar types.
 
         :param source_calendar_type: the type of the source calendar
@@ -1787,7 +1787,7 @@ class LocaleProxyManager:
         return  # osid.locale.CalendarConversionSession
 
     @abc.abstractmethod
-    def get_coordinate_conversion_session(self, proxy): # pragma: no cover
+    def get_coordinate_conversion_session(self, proxy):  # pragma: no cover
         """Gets a coordinate conversion session.
 
         :param proxy: a proxy
@@ -1805,7 +1805,7 @@ class LocaleProxyManager:
         return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
-    def get_coordinate_conversion_session_for_type(self, source_coordinate_type, target_coordinate_type, proxy): # pragma: no cover
+    def get_coordinate_conversion_session_for_type(self, source_coordinate_type, target_coordinate_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the coordinate conversion service and the given coordinate types.
 
         :param source_coordinate_type: the type of the source coordinate
@@ -1829,7 +1829,7 @@ class LocaleProxyManager:
         return  # osid.locale.CoordinateConversionSession
 
     @abc.abstractmethod
-    def get_spatial_unit_conversion_session(self, proxy): # pragma: no cover
+    def get_spatial_unit_conversion_session(self, proxy):  # pragma: no cover
         """Gets a spatial unit conversion session.
 
         :param proxy: a proxy
@@ -1847,7 +1847,7 @@ class LocaleProxyManager:
         return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
-    def get_spatial_unit_conversion_session_for_type(self, source_spatial_unit_record_type, target_spatial_unit_record_type, proxy): # pragma: no cover
+    def get_spatial_unit_conversion_session_for_type(self, source_spatial_unit_record_type, target_spatial_unit_record_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the spatial unit conversion service and the given spatial unit record types.
 
         :param source_spatial_unit_record_type: the type of the source spatial unit record
@@ -1871,7 +1871,7 @@ class LocaleProxyManager:
         return  # osid.locale.SpatialUnitConversionSession
 
     @abc.abstractmethod
-    def get_format_conversion_session(self, proxy): # pragma: no cover
+    def get_format_conversion_session(self, proxy):  # pragma: no cover
         """Gets a text format conversion session.
 
         :param proxy: a proxy
@@ -1889,7 +1889,7 @@ class LocaleProxyManager:
         return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
-    def get_format_conversion_session_for_type(self, source_format_type, target_format_type, proxy): # pragma: no cover
+    def get_format_conversion_session_for_type(self, source_format_type, target_format_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the text format conversion service and the given format types.
 
         :param source_format_type: the type of the text format
@@ -1913,7 +1913,7 @@ class LocaleProxyManager:
         return  # osid.locale.FormatConversionSession
 
     @abc.abstractmethod
-    def get_calendar_info_session(self, proxy): # pragma: no cover
+    def get_calendar_info_session(self, proxy):  # pragma: no cover
         """Gets a calendar informational session session.
 
         :param proxy: a proxy
@@ -1931,7 +1931,7 @@ class LocaleProxyManager:
         return  # osid.locale.CalendarInfoSession
 
     @abc.abstractmethod
-    def get_calendar_info_session_for_type(self, calendar_type, time_type, proxy): # pragma: no cover
+    def get_calendar_info_session_for_type(self, calendar_type, time_type, proxy):  # pragma: no cover
         """Gets an ``OsidSession`` associated with the calendar informational service and the given calendar and time types.
 
         :param calendar_type: the type of the calendar

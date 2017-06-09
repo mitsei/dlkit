@@ -26,7 +26,7 @@ class QuestionQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_question_query_record(self, question_record_type): # pragma: no cover
+    def get_question_query_record(self, question_record_type):  # pragma: no cover
         """Gets the question record query corresponding to the given ``Item`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -55,7 +55,7 @@ class AnswerQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_answer_query_record(self, answer_record_type): # pragma: no cover
+    def get_answer_query_record(self, answer_record_type):  # pragma: no cover
         """Gets the answer record query corresponding to the given ``Answer`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -84,7 +84,7 @@ class ItemQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_learning_objective_id(self, objective_id, match): # pragma: no cover
+    def match_learning_objective_id(self, objective_id, match):  # pragma: no cover
         """Sets the learning objective ``Id`` for this query.
 
         :param objective_id: a learning objective ``Id``
@@ -99,7 +99,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_learning_objective_id_terms(self): # pragma: no cover
+    def clear_learning_objective_id_terms(self):  # pragma: no cover
         """Clears all learning objective ``Id`` terms.
 
 
@@ -112,7 +112,7 @@ class ItemQuery:
     learning_objective_id_terms = property(fdel=clear_learning_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_learning_objective_query(self): # pragma: no cover
+    def supports_learning_objective_query(self):  # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available.
 
         :return: ``true`` if a learning objective query is available, ``false`` otherwise
@@ -125,7 +125,7 @@ class ItemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_learning_objective_query(self): # pragma: no cover
+    def get_learning_objective_query(self):  # pragma: no cover
         """Gets the query for a learning objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -143,7 +143,7 @@ class ItemQuery:
     learning_objective_query = property(fget=get_learning_objective_query)
 
     @abc.abstractmethod
-    def match_any_learning_objective(self, match): # pragma: no cover
+    def match_any_learning_objective(self, match):  # pragma: no cover
         """Matches an item with any objective.
 
         :param match: ``true`` to match items with any learning objective, ``false`` to match items with no learning objectives
@@ -156,7 +156,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_learning_objective_terms(self): # pragma: no cover
+    def clear_learning_objective_terms(self):  # pragma: no cover
         """Clears all learning objective terms.
 
 
@@ -169,7 +169,7 @@ class ItemQuery:
     learning_objective_terms = property(fdel=clear_learning_objective_terms)
 
     @abc.abstractmethod
-    def match_question_id(self, question_id, match): # pragma: no cover
+    def match_question_id(self, question_id, match):  # pragma: no cover
         """Sets the question ``Id`` for this query.
 
         :param question_id: a question ``Id``
@@ -184,7 +184,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_question_id_terms(self): # pragma: no cover
+    def clear_question_id_terms(self):  # pragma: no cover
         """Clears all question ``Id`` terms.
 
 
@@ -197,7 +197,7 @@ class ItemQuery:
     question_id_terms = property(fdel=clear_question_id_terms)
 
     @abc.abstractmethod
-    def supports_question_query(self): # pragma: no cover
+    def supports_question_query(self):  # pragma: no cover
         """Tests if a ``QuestionQuery`` is available.
 
         :return: ``true`` if a question query is available, ``false`` otherwise
@@ -210,7 +210,7 @@ class ItemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_question_query(self): # pragma: no cover
+    def get_question_query(self):  # pragma: no cover
         """Gets the query for a question.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -228,7 +228,7 @@ class ItemQuery:
     question_query = property(fget=get_question_query)
 
     @abc.abstractmethod
-    def match_any_question(self, match): # pragma: no cover
+    def match_any_question(self, match):  # pragma: no cover
         """Matches an item with any question.
 
         :param match: ``true`` to match items with any question, ``false`` to match items with no questions
@@ -241,7 +241,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_question_terms(self): # pragma: no cover
+    def clear_question_terms(self):  # pragma: no cover
         """Clears all question terms.
 
 
@@ -254,7 +254,7 @@ class ItemQuery:
     question_terms = property(fdel=clear_question_terms)
 
     @abc.abstractmethod
-    def match_answer_id(self, answer_id, match): # pragma: no cover
+    def match_answer_id(self, answer_id, match):  # pragma: no cover
         """Sets the answer ``Id`` for this query.
 
         :param answer_id: an answer ``Id``
@@ -269,7 +269,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_answer_id_terms(self): # pragma: no cover
+    def clear_answer_id_terms(self):  # pragma: no cover
         """Clears all answer ``Id`` terms.
 
 
@@ -282,7 +282,7 @@ class ItemQuery:
     answer_id_terms = property(fdel=clear_answer_id_terms)
 
     @abc.abstractmethod
-    def supports_answer_query(self): # pragma: no cover
+    def supports_answer_query(self):  # pragma: no cover
         """Tests if an ``AnswerQuery`` is available.
 
         :return: ``true`` if an answer query is available, ``false`` otherwise
@@ -295,7 +295,7 @@ class ItemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_answer_query(self): # pragma: no cover
+    def get_answer_query(self):  # pragma: no cover
         """Gets the query for an answer.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -313,7 +313,7 @@ class ItemQuery:
     answer_query = property(fget=get_answer_query)
 
     @abc.abstractmethod
-    def match_any_answer(self, match): # pragma: no cover
+    def match_any_answer(self, match):  # pragma: no cover
         """Matches an item with any answer.
 
         :param match: ``true`` to match items with any answer, ``false`` to match items with no answers
@@ -326,7 +326,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_answer_terms(self): # pragma: no cover
+    def clear_answer_terms(self):  # pragma: no cover
         """Clears all answer terms.
 
 
@@ -339,7 +339,7 @@ class ItemQuery:
     answer_terms = property(fdel=clear_answer_terms)
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match): # pragma: no cover
+    def match_assessment_id(self, assessment_id, match):  # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -354,7 +354,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self): # pragma: no cover
+    def clear_assessment_id_terms(self):  # pragma: no cover
         """Clears all assessment ``Id`` terms.
 
 
@@ -367,7 +367,7 @@ class ItemQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self): # pragma: no cover
+    def supports_assessment_query(self):  # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -380,7 +380,7 @@ class ItemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self): # pragma: no cover
+    def get_assessment_query(self):  # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -398,7 +398,7 @@ class ItemQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def match_any_assessment(self, match): # pragma: no cover
+    def match_any_assessment(self, match):  # pragma: no cover
         """Matches an item with any assessment.
 
         :param match: ``true`` to match items with any assessment, ``false`` to match items with no assessments
@@ -411,7 +411,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_terms(self): # pragma: no cover
+    def clear_assessment_terms(self):  # pragma: no cover
         """Clears all assessment terms.
 
 
@@ -424,7 +424,7 @@ class ItemQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match): # pragma: no cover
+    def match_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for this query.
 
         :param bank_id: a bank ``Id``
@@ -439,7 +439,7 @@ class ItemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self): # pragma: no cover
+    def clear_bank_id_terms(self):  # pragma: no cover
         """Clears all bank ``Id`` terms.
 
 
@@ -452,7 +452,7 @@ class ItemQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self): # pragma: no cover
+    def supports_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -465,7 +465,7 @@ class ItemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self): # pragma: no cover
+    def get_bank_query(self):  # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -483,7 +483,7 @@ class ItemQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self): # pragma: no cover
+    def clear_bank_terms(self):  # pragma: no cover
         """Clears all bank terms.
 
 
@@ -496,7 +496,7 @@ class ItemQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_item_query_record(self, item_record_type): # pragma: no cover
+    def get_item_query_record(self, item_record_type):  # pragma: no cover
         """Gets the item record query corresponding to the given ``Item`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -525,7 +525,7 @@ class AssessmentQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_level_id(self, grade_id, match): # pragma: no cover
+    def match_level_id(self, grade_id, match):  # pragma: no cover
         """Sets the level grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -540,7 +540,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_id_terms(self): # pragma: no cover
+    def clear_level_id_terms(self):  # pragma: no cover
         """Clears all level ``Id`` terms.
 
 
@@ -553,7 +553,7 @@ class AssessmentQuery:
     level_id_terms = property(fdel=clear_level_id_terms)
 
     @abc.abstractmethod
-    def supports_level_query(self): # pragma: no cover
+    def supports_level_query(self):  # pragma: no cover
         """Tests if a ``GradeQuery`` is available.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -566,7 +566,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_query(self): # pragma: no cover
+    def get_level_query(self):  # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -584,7 +584,7 @@ class AssessmentQuery:
     level_query = property(fget=get_level_query)
 
     @abc.abstractmethod
-    def match_any_level(self, match): # pragma: no cover
+    def match_any_level(self, match):  # pragma: no cover
         """Matches an assessment that has any level assigned.
 
         :param match: ``true`` to match assessments with any level, ``false`` to match assessments with no level
@@ -597,7 +597,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_terms(self): # pragma: no cover
+    def clear_level_terms(self):  # pragma: no cover
         """Clears all level terms.
 
 
@@ -610,7 +610,7 @@ class AssessmentQuery:
     level_terms = property(fdel=clear_level_terms)
 
     @abc.abstractmethod
-    def match_rubric_id(self, assessment_id, match): # pragma: no cover
+    def match_rubric_id(self, assessment_id, match):  # pragma: no cover
         """Sets the rubric assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -625,7 +625,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_id_terms(self): # pragma: no cover
+    def clear_rubric_id_terms(self):  # pragma: no cover
         """Clears all rubric assessment ``Id`` terms.
 
 
@@ -638,7 +638,7 @@ class AssessmentQuery:
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
 
     @abc.abstractmethod
-    def supports_rubric_query(self): # pragma: no cover
+    def supports_rubric_query(self):  # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available.
 
         :return: ``true`` if a rubric assessment query is available, ``false`` otherwise
@@ -651,7 +651,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_query(self): # pragma: no cover
+    def get_rubric_query(self):  # pragma: no cover
         """Gets the query for a rubric assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -669,7 +669,7 @@ class AssessmentQuery:
     rubric_query = property(fget=get_rubric_query)
 
     @abc.abstractmethod
-    def match_any_rubric(self, match): # pragma: no cover
+    def match_any_rubric(self, match):  # pragma: no cover
         """Matches an assessment that has any rubric assessment assigned.
 
         :param match: ``true`` to match assessments with any rubric, ``false`` to match assessments with no rubric
@@ -682,7 +682,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_terms(self): # pragma: no cover
+    def clear_rubric_terms(self):  # pragma: no cover
         """Clears all rubric assessment terms.
 
 
@@ -695,7 +695,7 @@ class AssessmentQuery:
     rubric_terms = property(fdel=clear_rubric_terms)
 
     @abc.abstractmethod
-    def match_item_id(self, item_id, match): # pragma: no cover
+    def match_item_id(self, item_id, match):  # pragma: no cover
         """Sets the item ``Id`` for this query.
 
         :param item_id: an item ``Id``
@@ -710,7 +710,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_item_id_terms(self): # pragma: no cover
+    def clear_item_id_terms(self):  # pragma: no cover
         """Clears all item ``Id`` terms.
 
 
@@ -723,7 +723,7 @@ class AssessmentQuery:
     item_id_terms = property(fdel=clear_item_id_terms)
 
     @abc.abstractmethod
-    def supports_item_query(self): # pragma: no cover
+    def supports_item_query(self):  # pragma: no cover
         """Tests if an ``ItemQuery`` is available.
 
         :return: ``true`` if an item query is available, ``false`` otherwise
@@ -736,7 +736,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_query(self): # pragma: no cover
+    def get_item_query(self):  # pragma: no cover
         """Gets the query for an item.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -754,7 +754,7 @@ class AssessmentQuery:
     item_query = property(fget=get_item_query)
 
     @abc.abstractmethod
-    def match_any_item(self, match): # pragma: no cover
+    def match_any_item(self, match):  # pragma: no cover
         """Matches an assessment that has any item.
 
         :param match: ``true`` to match assessments with any item, ``false`` to match assessments with no items
@@ -767,7 +767,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_item_terms(self): # pragma: no cover
+    def clear_item_terms(self):  # pragma: no cover
         """Clears all item terms.
 
 
@@ -780,7 +780,7 @@ class AssessmentQuery:
     item_terms = property(fdel=clear_item_terms)
 
     @abc.abstractmethod
-    def match_assessment_offered_id(self, assessment_offered_id, match): # pragma: no cover
+    def match_assessment_offered_id(self, assessment_offered_id, match):  # pragma: no cover
         """Sets the assessment offered ``Id`` for this query.
 
         :param assessment_offered_id: an assessment offered ``Id``
@@ -795,7 +795,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_offered_id_terms(self): # pragma: no cover
+    def clear_assessment_offered_id_terms(self):  # pragma: no cover
         """Clears all assessment offered ``Id`` terms.
 
 
@@ -808,7 +808,7 @@ class AssessmentQuery:
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_offered_query(self): # pragma: no cover
+    def supports_assessment_offered_query(self):  # pragma: no cover
         """Tests if an ``AssessmentOfferedQuery`` is available.
 
         :return: ``true`` if an assessment offered query is available, ``false`` otherwise
@@ -821,7 +821,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_query(self): # pragma: no cover
+    def get_assessment_offered_query(self):  # pragma: no cover
         """Gets the query for an assessment offered.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -839,7 +839,7 @@ class AssessmentQuery:
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
     @abc.abstractmethod
-    def match_any_assessment_offered(self, match): # pragma: no cover
+    def match_any_assessment_offered(self, match):  # pragma: no cover
         """Matches an assessment that has any offering.
 
         :param match: ``true`` to match assessments with any offering, ``false`` to match assessments with no offerings
@@ -852,7 +852,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_offered_terms(self): # pragma: no cover
+    def clear_assessment_offered_terms(self):  # pragma: no cover
         """Clears all assessment offered terms.
 
 
@@ -865,7 +865,7 @@ class AssessmentQuery:
     assessment_offered_terms = property(fdel=clear_assessment_offered_terms)
 
     @abc.abstractmethod
-    def match_assessment_taken_id(self, assessment_taken_id, match): # pragma: no cover
+    def match_assessment_taken_id(self, assessment_taken_id, match):  # pragma: no cover
         """Sets the assessment taken ``Id`` for this query.
 
         :param assessment_taken_id: an assessment taken ``Id``
@@ -880,7 +880,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_taken_id_terms(self): # pragma: no cover
+    def clear_assessment_taken_id_terms(self):  # pragma: no cover
         """Clears all assessment taken ``Id`` terms.
 
 
@@ -893,7 +893,7 @@ class AssessmentQuery:
     assessment_taken_id_terms = property(fdel=clear_assessment_taken_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_taken_query(self): # pragma: no cover
+    def supports_assessment_taken_query(self):  # pragma: no cover
         """Tests if an ``AssessmentTakenQuery`` is available.
 
         :return: ``true`` if an assessment taken query is available, ``false`` otherwise
@@ -906,7 +906,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_query(self): # pragma: no cover
+    def get_assessment_taken_query(self):  # pragma: no cover
         """Gets the query for an assessment taken.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -924,7 +924,7 @@ class AssessmentQuery:
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
     @abc.abstractmethod
-    def match_any_assessment_taken(self, match): # pragma: no cover
+    def match_any_assessment_taken(self, match):  # pragma: no cover
         """Matches an assessment that has any taken version.
 
         :param match: ``true`` to match assessments with any taken assessments, ``false`` to match assessments with no taken assessments
@@ -937,7 +937,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_taken_terms(self): # pragma: no cover
+    def clear_assessment_taken_terms(self):  # pragma: no cover
         """Clears all assessment taken terms.
 
 
@@ -950,7 +950,7 @@ class AssessmentQuery:
     assessment_taken_terms = property(fdel=clear_assessment_taken_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match): # pragma: no cover
+    def match_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for this query.
 
         :param bank_id: a bank ``Id``
@@ -965,7 +965,7 @@ class AssessmentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self): # pragma: no cover
+    def clear_bank_id_terms(self):  # pragma: no cover
         """Clears all bank ``Id`` terms.
 
 
@@ -978,7 +978,7 @@ class AssessmentQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self): # pragma: no cover
+    def supports_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -991,7 +991,7 @@ class AssessmentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self): # pragma: no cover
+    def get_bank_query(self):  # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1009,7 +1009,7 @@ class AssessmentQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self): # pragma: no cover
+    def clear_bank_terms(self):  # pragma: no cover
         """Clears all bank terms.
 
 
@@ -1022,7 +1022,7 @@ class AssessmentQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_query_record(self, assessment_record_type): # pragma: no cover
+    def get_assessment_query_record(self, assessment_record_type):  # pragma: no cover
         """Gets the assessment query record corresponding to the given ``Assessment`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1051,7 +1051,7 @@ class AssessmentOfferedQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match): # pragma: no cover
+    def match_assessment_id(self, assessment_id, match):  # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -1066,7 +1066,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self): # pragma: no cover
+    def clear_assessment_id_terms(self):  # pragma: no cover
         """Clears all assessment ``Id`` terms.
 
 
@@ -1079,7 +1079,7 @@ class AssessmentOfferedQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self): # pragma: no cover
+    def supports_assessment_query(self):  # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -1092,7 +1092,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self): # pragma: no cover
+    def get_assessment_query(self):  # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1110,7 +1110,7 @@ class AssessmentOfferedQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def clear_assessment_terms(self): # pragma: no cover
+    def clear_assessment_terms(self):  # pragma: no cover
         """Clears all assessment terms.
 
 
@@ -1123,7 +1123,7 @@ class AssessmentOfferedQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_level_id(self, grade_id, match): # pragma: no cover
+    def match_level_id(self, grade_id, match):  # pragma: no cover
         """Sets the level grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -1138,7 +1138,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_id_terms(self): # pragma: no cover
+    def clear_level_id_terms(self):  # pragma: no cover
         """Clears all level ``Id`` terms.
 
 
@@ -1151,7 +1151,7 @@ class AssessmentOfferedQuery:
     level_id_terms = property(fdel=clear_level_id_terms)
 
     @abc.abstractmethod
-    def supports_level_query(self): # pragma: no cover
+    def supports_level_query(self):  # pragma: no cover
         """Tests if a ``GradeQuery`` is available.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -1164,7 +1164,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_query(self): # pragma: no cover
+    def get_level_query(self):  # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1182,7 +1182,7 @@ class AssessmentOfferedQuery:
     level_query = property(fget=get_level_query)
 
     @abc.abstractmethod
-    def match_any_level(self, match): # pragma: no cover
+    def match_any_level(self, match):  # pragma: no cover
         """Matches an assessment offered that has any level assigned.
 
         :param match: ``true`` to match offerings with any level, ``false`` to match offerings with no levsls
@@ -1195,7 +1195,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_terms(self): # pragma: no cover
+    def clear_level_terms(self):  # pragma: no cover
         """Clears all level terms.
 
 
@@ -1208,7 +1208,7 @@ class AssessmentOfferedQuery:
     level_terms = property(fdel=clear_level_terms)
 
     @abc.abstractmethod
-    def match_items_sequential(self, match): # pragma: no cover
+    def match_items_sequential(self, match):  # pragma: no cover
         """Match sequential assessments.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -1221,7 +1221,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_items_sequential_terms(self): # pragma: no cover
+    def clear_items_sequential_terms(self):  # pragma: no cover
         """Clears all sequential terms.
 
 
@@ -1234,7 +1234,7 @@ class AssessmentOfferedQuery:
     items_sequential_terms = property(fdel=clear_items_sequential_terms)
 
     @abc.abstractmethod
-    def match_items_shuffled(self, match): # pragma: no cover
+    def match_items_shuffled(self, match):  # pragma: no cover
         """Match shuffled item assessments.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -1247,7 +1247,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_items_shuffled_terms(self): # pragma: no cover
+    def clear_items_shuffled_terms(self):  # pragma: no cover
         """Clears all shuffled terms.
 
 
@@ -1260,7 +1260,7 @@ class AssessmentOfferedQuery:
     items_shuffled_terms = property(fdel=clear_items_shuffled_terms)
 
     @abc.abstractmethod
-    def match_start_time(self, start, end, match): # pragma: no cover
+    def match_start_time(self, start, end, match):  # pragma: no cover
         """Matches assessments whose start time falls between the specified range inclusive.
 
         :param start: start of range
@@ -1277,7 +1277,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_start_time(self, match): # pragma: no cover
+    def match_any_start_time(self, match):  # pragma: no cover
         """Matches offerings that has any start time assigned.
 
         :param match: ``true`` to match offerings with any start time, ``false`` to match offerings with no start time
@@ -1290,7 +1290,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_start_time_terms(self): # pragma: no cover
+    def clear_start_time_terms(self):  # pragma: no cover
         """Clears all scheduled terms.
 
 
@@ -1303,7 +1303,7 @@ class AssessmentOfferedQuery:
     start_time_terms = property(fdel=clear_start_time_terms)
 
     @abc.abstractmethod
-    def match_deadline(self, start, end, match): # pragma: no cover
+    def match_deadline(self, start, end, match):  # pragma: no cover
         """Matches assessments whose end time falls between the specified range inclusive.
 
         :param start: start of range
@@ -1321,7 +1321,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_deadline(self, match): # pragma: no cover
+    def match_any_deadline(self, match):  # pragma: no cover
         """Matches offerings that have any deadline assigned.
 
         :param match: ``true`` to match offerings with any deadline, ``false`` to match offerings with no deadline
@@ -1334,7 +1334,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_deadline_terms(self): # pragma: no cover
+    def clear_deadline_terms(self):  # pragma: no cover
         """Clears all deadline terms.
 
 
@@ -1347,7 +1347,7 @@ class AssessmentOfferedQuery:
     deadline_terms = property(fdel=clear_deadline_terms)
 
     @abc.abstractmethod
-    def match_duration(self, low, high, match): # pragma: no cover
+    def match_duration(self, low, high, match):  # pragma: no cover
         """Matches assessments whose duration falls between the specified range inclusive.
 
         :param low: start range of duration
@@ -1365,7 +1365,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_duration(self, match): # pragma: no cover
+    def match_any_duration(self, match):  # pragma: no cover
         """Matches offerings that have any duration assigned.
 
         :param match: ``true`` to match offerings with any duration, ``false`` to match offerings with no duration
@@ -1378,7 +1378,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_duration_terms(self): # pragma: no cover
+    def clear_duration_terms(self):  # pragma: no cover
         """Clears all duration terms.
 
 
@@ -1391,7 +1391,7 @@ class AssessmentOfferedQuery:
     duration_terms = property(fdel=clear_duration_terms)
 
     @abc.abstractmethod
-    def match_score_system_id(self, grade_system_id, match): # pragma: no cover
+    def match_score_system_id(self, grade_system_id, match):  # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -1406,7 +1406,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_system_id_terms(self): # pragma: no cover
+    def clear_score_system_id_terms(self):  # pragma: no cover
         """Clears all grade system ``Id`` terms.
 
 
@@ -1419,7 +1419,7 @@ class AssessmentOfferedQuery:
     score_system_id_terms = property(fdel=clear_score_system_id_terms)
 
     @abc.abstractmethod
-    def supports_score_system_query(self): # pragma: no cover
+    def supports_score_system_query(self):  # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -1432,7 +1432,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_query(self): # pragma: no cover
+    def get_score_system_query(self):  # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1450,7 +1450,7 @@ class AssessmentOfferedQuery:
     score_system_query = property(fget=get_score_system_query)
 
     @abc.abstractmethod
-    def match_any_score_system(self, match): # pragma: no cover
+    def match_any_score_system(self, match):  # pragma: no cover
         """Matches taken assessments that have any grade system assigned.
 
         :param match: ``true`` to match assessments with any grade system, ``false`` to match assessments with no grade system
@@ -1463,7 +1463,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_system_terms(self): # pragma: no cover
+    def clear_score_system_terms(self):  # pragma: no cover
         """Clears all grade system terms.
 
 
@@ -1476,7 +1476,7 @@ class AssessmentOfferedQuery:
     score_system_terms = property(fdel=clear_score_system_terms)
 
     @abc.abstractmethod
-    def match_grade_system_id(self, grade_system_id, match): # pragma: no cover
+    def match_grade_system_id(self, grade_system_id, match):  # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -1491,7 +1491,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_id_terms(self): # pragma: no cover
+    def clear_grade_system_id_terms(self):  # pragma: no cover
         """Clears all grade system ``Id`` terms.
 
 
@@ -1504,7 +1504,7 @@ class AssessmentOfferedQuery:
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_system_query(self): # pragma: no cover
+    def supports_grade_system_query(self):  # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -1517,7 +1517,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_query(self): # pragma: no cover
+    def get_grade_system_query(self):  # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1535,7 +1535,7 @@ class AssessmentOfferedQuery:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def match_any_grade_system(self, match): # pragma: no cover
+    def match_any_grade_system(self, match):  # pragma: no cover
         """Matches taken assessments that have any grade system assigned.
 
         :param match: ``true`` to match assessments with any grade system, ``false`` to match assessments with no grade system
@@ -1548,7 +1548,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_terms(self): # pragma: no cover
+    def clear_grade_system_terms(self):  # pragma: no cover
         """Clears all grade system terms.
 
 
@@ -1561,7 +1561,7 @@ class AssessmentOfferedQuery:
     grade_system_terms = property(fdel=clear_grade_system_terms)
 
     @abc.abstractmethod
-    def match_rubric_id(self, assessment_offered_id, match): # pragma: no cover
+    def match_rubric_id(self, assessment_offered_id, match):  # pragma: no cover
         """Sets the rubric assessment offered ``Id`` for this query.
 
         :param assessment_offered_id: an assessment offered ``Id``
@@ -1576,7 +1576,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_id_terms(self): # pragma: no cover
+    def clear_rubric_id_terms(self):  # pragma: no cover
         """Clears all rubric assessment offered ``Id`` terms.
 
 
@@ -1589,7 +1589,7 @@ class AssessmentOfferedQuery:
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
 
     @abc.abstractmethod
-    def supports_rubric_query(self): # pragma: no cover
+    def supports_rubric_query(self):  # pragma: no cover
         """Tests if an ``AssessmentOfferedQuery`` is available.
 
         :return: ``true`` if a rubric assessment offered query is available, ``false`` otherwise
@@ -1602,7 +1602,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_query(self): # pragma: no cover
+    def get_rubric_query(self):  # pragma: no cover
         """Gets the query for a rubric assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1620,7 +1620,7 @@ class AssessmentOfferedQuery:
     rubric_query = property(fget=get_rubric_query)
 
     @abc.abstractmethod
-    def match_any_rubric(self, match): # pragma: no cover
+    def match_any_rubric(self, match):  # pragma: no cover
         """Matches an assessment offered that has any rubric assessment assigned.
 
         :param match: ``true`` to match assessments offered with any rubric, ``false`` to match assessments offered with no rubric
@@ -1633,7 +1633,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_terms(self): # pragma: no cover
+    def clear_rubric_terms(self):  # pragma: no cover
         """Clears all rubric assessment terms.
 
 
@@ -1646,7 +1646,7 @@ class AssessmentOfferedQuery:
     rubric_terms = property(fdel=clear_rubric_terms)
 
     @abc.abstractmethod
-    def match_assessment_taken_id(self, assessment_taken_id, match): # pragma: no cover
+    def match_assessment_taken_id(self, assessment_taken_id, match):  # pragma: no cover
         """Sets the assessment taken ``Id`` for this query.
 
         :param assessment_taken_id: an assessment taken ``Id``
@@ -1661,7 +1661,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_taken_id_terms(self): # pragma: no cover
+    def clear_assessment_taken_id_terms(self):  # pragma: no cover
         """Clears all assessment taken ``Id`` terms.
 
 
@@ -1674,7 +1674,7 @@ class AssessmentOfferedQuery:
     assessment_taken_id_terms = property(fdel=clear_assessment_taken_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_taken_query(self): # pragma: no cover
+    def supports_assessment_taken_query(self):  # pragma: no cover
         """Tests if an ``AssessmentTakenQuery`` is available.
 
         :return: ``true`` if an assessment taken query is available, ``false`` otherwise
@@ -1687,7 +1687,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_query(self): # pragma: no cover
+    def get_assessment_taken_query(self):  # pragma: no cover
         """Gets the query for an assessment taken.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1705,7 +1705,7 @@ class AssessmentOfferedQuery:
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
     @abc.abstractmethod
-    def match_any_assessment_taken(self, match): # pragma: no cover
+    def match_any_assessment_taken(self, match):  # pragma: no cover
         """Matches offerings that have any taken assessment version.
 
         :param match: ``true`` to match offerings with any taken assessment, ``false`` to match offerings with no assessmen taken
@@ -1718,7 +1718,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_taken_terms(self): # pragma: no cover
+    def clear_assessment_taken_terms(self):  # pragma: no cover
         """Clears all assessment taken terms.
 
 
@@ -1731,7 +1731,7 @@ class AssessmentOfferedQuery:
     assessment_taken_terms = property(fdel=clear_assessment_taken_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match): # pragma: no cover
+    def match_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for this query.
 
         :param bank_id: a bank ``Id``
@@ -1746,7 +1746,7 @@ class AssessmentOfferedQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self): # pragma: no cover
+    def clear_bank_id_terms(self):  # pragma: no cover
         """Clears all bank ``Id`` terms.
 
 
@@ -1759,7 +1759,7 @@ class AssessmentOfferedQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self): # pragma: no cover
+    def supports_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -1772,7 +1772,7 @@ class AssessmentOfferedQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self): # pragma: no cover
+    def get_bank_query(self):  # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1790,7 +1790,7 @@ class AssessmentOfferedQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self): # pragma: no cover
+    def clear_bank_terms(self):  # pragma: no cover
         """Clears all bank terms.
 
 
@@ -1803,7 +1803,7 @@ class AssessmentOfferedQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_query_record(self, assessment_offered_record_type): # pragma: no cover
+    def get_assessment_offered_query_record(self, assessment_offered_record_type):  # pragma: no cover
         """Gets the assessment offered query record corresponding to the given ``AssessmentOffered`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1832,7 +1832,7 @@ class AssessmentTakenQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_assessment_offered_id(self, assessment_offered_id, match): # pragma: no cover
+    def match_assessment_offered_id(self, assessment_offered_id, match):  # pragma: no cover
         """Sets the assessment offered ``Id`` for this query.
 
         :param assessment_offered_id: an assessment ``Id``
@@ -1847,7 +1847,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_offered_id_terms(self): # pragma: no cover
+    def clear_assessment_offered_id_terms(self):  # pragma: no cover
         """Clears all assessment offered ``Id`` terms.
 
 
@@ -1860,7 +1860,7 @@ class AssessmentTakenQuery:
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_offered_query(self): # pragma: no cover
+    def supports_assessment_offered_query(self):  # pragma: no cover
         """Tests if an ``AssessmentOfferedQuery`` is available.
 
         :return: ``true`` if an assessment offered query is available, ``false`` otherwise
@@ -1873,7 +1873,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_query(self): # pragma: no cover
+    def get_assessment_offered_query(self):  # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1891,7 +1891,7 @@ class AssessmentTakenQuery:
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
     @abc.abstractmethod
-    def clear_assessment_offered_terms(self): # pragma: no cover
+    def clear_assessment_offered_terms(self):  # pragma: no cover
         """Clears all assessment offered terms.
 
 
@@ -1904,7 +1904,7 @@ class AssessmentTakenQuery:
     assessment_offered_terms = property(fdel=clear_assessment_offered_terms)
 
     @abc.abstractmethod
-    def match_taker_id(self, resource_id, match): # pragma: no cover
+    def match_taker_id(self, resource_id, match):  # pragma: no cover
         """Sets the resource ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -1919,7 +1919,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_taker_id_terms(self): # pragma: no cover
+    def clear_taker_id_terms(self):  # pragma: no cover
         """Clears all resource ``Id`` terms.
 
 
@@ -1932,7 +1932,7 @@ class AssessmentTakenQuery:
     taker_id_terms = property(fdel=clear_taker_id_terms)
 
     @abc.abstractmethod
-    def supports_taker_query(self): # pragma: no cover
+    def supports_taker_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -1945,7 +1945,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_taker_query(self): # pragma: no cover
+    def get_taker_query(self):  # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1963,7 +1963,7 @@ class AssessmentTakenQuery:
     taker_query = property(fget=get_taker_query)
 
     @abc.abstractmethod
-    def clear_taker_terms(self): # pragma: no cover
+    def clear_taker_terms(self):  # pragma: no cover
         """Clears all resource terms.
 
 
@@ -1976,7 +1976,7 @@ class AssessmentTakenQuery:
     taker_terms = property(fdel=clear_taker_terms)
 
     @abc.abstractmethod
-    def match_taking_agent_id(self, agent_id, match): # pragma: no cover
+    def match_taking_agent_id(self, agent_id, match):  # pragma: no cover
         """Sets the agent ``Id`` for this query.
 
         :param agent_id: an agent ``Id``
@@ -1991,7 +1991,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_taking_agent_id_terms(self): # pragma: no cover
+    def clear_taking_agent_id_terms(self):  # pragma: no cover
         """Clears all agent ``Id`` terms.
 
 
@@ -2004,7 +2004,7 @@ class AssessmentTakenQuery:
     taking_agent_id_terms = property(fdel=clear_taking_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_taking_agent_query(self): # pragma: no cover
+    def supports_taking_agent_query(self):  # pragma: no cover
         """Tests if an ``AgentQuery`` is available.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -2017,7 +2017,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_taking_agent_query(self): # pragma: no cover
+    def get_taking_agent_query(self):  # pragma: no cover
         """Gets the query for an agent.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2035,7 +2035,7 @@ class AssessmentTakenQuery:
     taking_agent_query = property(fget=get_taking_agent_query)
 
     @abc.abstractmethod
-    def clear_taking_agent_terms(self): # pragma: no cover
+    def clear_taking_agent_terms(self):  # pragma: no cover
         """Clears all taking agent terms.
 
 
@@ -2048,7 +2048,7 @@ class AssessmentTakenQuery:
     taking_agent_terms = property(fdel=clear_taking_agent_terms)
 
     @abc.abstractmethod
-    def match_actual_start_time(self, start, end, match): # pragma: no cover
+    def match_actual_start_time(self, start, end, match):  # pragma: no cover
         """Matches assessments whose start time falls between the specified range inclusive.
 
         :param start: start of range
@@ -2066,7 +2066,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_actual_start_time(self, match): # pragma: no cover
+    def match_any_actual_start_time(self, match):  # pragma: no cover
         """Matches taken assessments taken that have begun.
 
         :param match: ``true`` to match assessments taken started, ``false`` to match assessments taken that have not begun
@@ -2079,7 +2079,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_actual_start_time_terms(self): # pragma: no cover
+    def clear_actual_start_time_terms(self):  # pragma: no cover
         """Clears all start time terms.
 
 
@@ -2092,7 +2092,7 @@ class AssessmentTakenQuery:
     actual_start_time_terms = property(fdel=clear_actual_start_time_terms)
 
     @abc.abstractmethod
-    def match_completion_time(self, start, end, match): # pragma: no cover
+    def match_completion_time(self, start, end, match):  # pragma: no cover
         """Matches assessments whose completion time falls between the specified range inclusive.
 
         :param start: start of range
@@ -2110,7 +2110,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_completion_time(self, match): # pragma: no cover
+    def match_any_completion_time(self, match):  # pragma: no cover
         """Matches taken assessments taken that have completed.
 
         :param match: ``true`` to match assessments taken completed, ``false`` to match assessments taken that are incomplete
@@ -2123,7 +2123,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_completion_time_terms(self): # pragma: no cover
+    def clear_completion_time_terms(self):  # pragma: no cover
         """Clears all in completion time terms.
 
 
@@ -2136,7 +2136,7 @@ class AssessmentTakenQuery:
     completion_time_terms = property(fdel=clear_completion_time_terms)
 
     @abc.abstractmethod
-    def match_time_spent(self, low, high, match): # pragma: no cover
+    def match_time_spent(self, low, high, match):  # pragma: no cover
         """Matches assessments where the time spent falls between the specified range inclusive.
 
         :param low: start of duration range
@@ -2154,7 +2154,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_time_spent_terms(self): # pragma: no cover
+    def clear_time_spent_terms(self):  # pragma: no cover
         """Clears all in time spent terms.
 
 
@@ -2167,7 +2167,7 @@ class AssessmentTakenQuery:
     time_spent_terms = property(fdel=clear_time_spent_terms)
 
     @abc.abstractmethod
-    def match_score_system_id(self, grade_system_id, match): # pragma: no cover
+    def match_score_system_id(self, grade_system_id, match):  # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -2182,7 +2182,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_system_id_terms(self): # pragma: no cover
+    def clear_score_system_id_terms(self):  # pragma: no cover
         """Clears all grade system ``Id`` terms.
 
 
@@ -2195,7 +2195,7 @@ class AssessmentTakenQuery:
     score_system_id_terms = property(fdel=clear_score_system_id_terms)
 
     @abc.abstractmethod
-    def supports_score_system_query(self): # pragma: no cover
+    def supports_score_system_query(self):  # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -2208,7 +2208,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_query(self): # pragma: no cover
+    def get_score_system_query(self):  # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2226,7 +2226,7 @@ class AssessmentTakenQuery:
     score_system_query = property(fget=get_score_system_query)
 
     @abc.abstractmethod
-    def match_any_score_system(self, match): # pragma: no cover
+    def match_any_score_system(self, match):  # pragma: no cover
         """Matches taken assessments that have any grade system assigned.
 
         :param match: ``true`` to match assessments with any grade system, ``false`` to match assessments with no grade system
@@ -2239,7 +2239,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_system_terms(self): # pragma: no cover
+    def clear_score_system_terms(self):  # pragma: no cover
         """Clears all grade system terms.
 
 
@@ -2252,7 +2252,7 @@ class AssessmentTakenQuery:
     score_system_terms = property(fdel=clear_score_system_terms)
 
     @abc.abstractmethod
-    def match_score(self, low, high, match): # pragma: no cover
+    def match_score(self, low, high, match):  # pragma: no cover
         """Matches assessments whose score falls between the specified range inclusive.
 
         :param low: start of range
@@ -2269,7 +2269,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_score(self, match): # pragma: no cover
+    def match_any_score(self, match):  # pragma: no cover
         """Matches taken assessments that have any score assigned.
 
         :param match: ``true`` to match assessments with any score, ``false`` to match assessments with no score
@@ -2282,7 +2282,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_terms(self): # pragma: no cover
+    def clear_score_terms(self):  # pragma: no cover
         """Clears all score terms.
 
 
@@ -2295,7 +2295,7 @@ class AssessmentTakenQuery:
     score_terms = property(fdel=clear_score_terms)
 
     @abc.abstractmethod
-    def match_grade_id(self, grade_id, match): # pragma: no cover
+    def match_grade_id(self, grade_id, match):  # pragma: no cover
         """Sets the grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -2310,7 +2310,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_id_terms(self): # pragma: no cover
+    def clear_grade_id_terms(self):  # pragma: no cover
         """Clears all grade ``Id`` terms.
 
 
@@ -2323,7 +2323,7 @@ class AssessmentTakenQuery:
     grade_id_terms = property(fdel=clear_grade_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_query(self): # pragma: no cover
+    def supports_grade_query(self):  # pragma: no cover
         """Tests if a ``GradeQuery`` is available.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -2336,7 +2336,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_query(self): # pragma: no cover
+    def get_grade_query(self):  # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2354,7 +2354,7 @@ class AssessmentTakenQuery:
     grade_query = property(fget=get_grade_query)
 
     @abc.abstractmethod
-    def match_any_grade(self, match): # pragma: no cover
+    def match_any_grade(self, match):  # pragma: no cover
         """Matches taken assessments that have any grade assigned.
 
         :param match: ``true`` to match assessments with any grade, ``false`` to match assessments with no grade
@@ -2367,7 +2367,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_terms(self): # pragma: no cover
+    def clear_grade_terms(self):  # pragma: no cover
         """Clears all grade terms.
 
 
@@ -2380,7 +2380,7 @@ class AssessmentTakenQuery:
     grade_terms = property(fdel=clear_grade_terms)
 
     @abc.abstractmethod
-    def match_feedback(self, comments, string_match_type, match): # pragma: no cover
+    def match_feedback(self, comments, string_match_type, match):  # pragma: no cover
         """Sets the comment string for this query.
 
         :param comments: comment string
@@ -2399,7 +2399,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_feedback(self, match): # pragma: no cover
+    def match_any_feedback(self, match):  # pragma: no cover
         """Matches taken assessments that have any comments.
 
         :param match: ``true`` to match assessments with any comments, ``false`` to match assessments with no comments
@@ -2412,7 +2412,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_feedback_terms(self): # pragma: no cover
+    def clear_feedback_terms(self):  # pragma: no cover
         """Clears all comment terms.
 
 
@@ -2425,7 +2425,7 @@ class AssessmentTakenQuery:
     feedback_terms = property(fdel=clear_feedback_terms)
 
     @abc.abstractmethod
-    def match_rubric_id(self, assessment_taken_id, match): # pragma: no cover
+    def match_rubric_id(self, assessment_taken_id, match):  # pragma: no cover
         """Sets the rubric assessment taken ``Id`` for this query.
 
         :param assessment_taken_id: an assessment taken ``Id``
@@ -2440,7 +2440,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_id_terms(self): # pragma: no cover
+    def clear_rubric_id_terms(self):  # pragma: no cover
         """Clears all rubric assessment taken ``Id`` terms.
 
 
@@ -2453,7 +2453,7 @@ class AssessmentTakenQuery:
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
 
     @abc.abstractmethod
-    def supports_rubric_query(self): # pragma: no cover
+    def supports_rubric_query(self):  # pragma: no cover
         """Tests if an ``AssessmentTakenQuery`` is available.
 
         :return: ``true`` if a rubric assessment taken query is available, ``false`` otherwise
@@ -2466,7 +2466,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_query(self): # pragma: no cover
+    def get_rubric_query(self):  # pragma: no cover
         """Gets the query for a rubric assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2484,7 +2484,7 @@ class AssessmentTakenQuery:
     rubric_query = property(fget=get_rubric_query)
 
     @abc.abstractmethod
-    def match_any_rubric(self, match): # pragma: no cover
+    def match_any_rubric(self, match):  # pragma: no cover
         """Matches an assessment taken that has any rubric assessment assigned.
 
         :param match: ``true`` to match assessments taken with any rubric, ``false`` to match assessments taken with no rubric
@@ -2497,7 +2497,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rubric_terms(self): # pragma: no cover
+    def clear_rubric_terms(self):  # pragma: no cover
         """Clears all rubric assessment taken terms.
 
 
@@ -2510,7 +2510,7 @@ class AssessmentTakenQuery:
     rubric_terms = property(fdel=clear_rubric_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match): # pragma: no cover
+    def match_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for this query.
 
         :param bank_id: a bank ``Id``
@@ -2525,7 +2525,7 @@ class AssessmentTakenQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self): # pragma: no cover
+    def clear_bank_id_terms(self):  # pragma: no cover
         """Clears all bank ``Id`` terms.
 
 
@@ -2538,7 +2538,7 @@ class AssessmentTakenQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self): # pragma: no cover
+    def supports_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -2551,7 +2551,7 @@ class AssessmentTakenQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self): # pragma: no cover
+    def get_bank_query(self):  # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2569,7 +2569,7 @@ class AssessmentTakenQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self): # pragma: no cover
+    def clear_bank_terms(self):  # pragma: no cover
         """Clears all bank terms.
 
 
@@ -2582,7 +2582,7 @@ class AssessmentTakenQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_query_record(self, assessment_taken_record_type): # pragma: no cover
+    def get_assessment_taken_query_record(self, assessment_taken_record_type):  # pragma: no cover
         """Gets the assessment taken query record corresponding to the given ``AssessmentTaken`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2606,7 +2606,7 @@ class BankQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_item_id(self, item_id, match): # pragma: no cover
+    def match_item_id(self, item_id, match):  # pragma: no cover
         """Sets the item ``Id`` for this query.
 
         :param item_id: an item ``Id``
@@ -2621,7 +2621,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_item_id_terms(self): # pragma: no cover
+    def clear_item_id_terms(self):  # pragma: no cover
         """Clears all item ``Id`` terms.
 
 
@@ -2634,7 +2634,7 @@ class BankQuery:
     item_id_terms = property(fdel=clear_item_id_terms)
 
     @abc.abstractmethod
-    def supports_item_query(self): # pragma: no cover
+    def supports_item_query(self):  # pragma: no cover
         """Tests if a ``ItemQuery`` is available.
 
         :return: ``true`` if an item query is available, ``false`` otherwise
@@ -2647,7 +2647,7 @@ class BankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_query(self): # pragma: no cover
+    def get_item_query(self):  # pragma: no cover
         """Gets the query for an item.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2665,7 +2665,7 @@ class BankQuery:
     item_query = property(fget=get_item_query)
 
     @abc.abstractmethod
-    def match_any_item(self, match): # pragma: no cover
+    def match_any_item(self, match):  # pragma: no cover
         """Matches assessment banks that have any item assigned.
 
         :param match: ``true`` to match banks with any item, ``false`` to match assessments with no item
@@ -2678,7 +2678,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_item_terms(self): # pragma: no cover
+    def clear_item_terms(self):  # pragma: no cover
         """Clears all item terms.
 
 
@@ -2691,7 +2691,7 @@ class BankQuery:
     item_terms = property(fdel=clear_item_terms)
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match): # pragma: no cover
+    def match_assessment_id(self, assessment_id, match):  # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -2706,7 +2706,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self): # pragma: no cover
+    def clear_assessment_id_terms(self):  # pragma: no cover
         """Clears all assessment ``Id`` terms.
 
 
@@ -2719,7 +2719,7 @@ class BankQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self): # pragma: no cover
+    def supports_assessment_query(self):  # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -2732,7 +2732,7 @@ class BankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self): # pragma: no cover
+    def get_assessment_query(self):  # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2750,7 +2750,7 @@ class BankQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def match_any_assessment(self, match): # pragma: no cover
+    def match_any_assessment(self, match):  # pragma: no cover
         """Matches assessment banks that have any assessment assigned.
 
         :param match: ``true`` to match banks with any assessment, ``false`` to match banks with no assessment
@@ -2763,7 +2763,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_terms(self): # pragma: no cover
+    def clear_assessment_terms(self):  # pragma: no cover
         """Clears all assessment terms.
 
 
@@ -2776,7 +2776,7 @@ class BankQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_assessment_offered_id(self, assessment_offered_id, match): # pragma: no cover
+    def match_assessment_offered_id(self, assessment_offered_id, match):  # pragma: no cover
         """Sets the assessment offered ``Id`` for this query.
 
         :param assessment_offered_id: an assessment ``Id``
@@ -2791,7 +2791,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_offered_id_terms(self): # pragma: no cover
+    def clear_assessment_offered_id_terms(self):  # pragma: no cover
         """Clears all assessment offered ``Id`` terms.
 
 
@@ -2804,7 +2804,7 @@ class BankQuery:
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_offered_query(self): # pragma: no cover
+    def supports_assessment_offered_query(self):  # pragma: no cover
         """Tests if an ``AssessmentOfferedQuery`` is available.
 
         :return: ``true`` if an assessment offered query is available, ``false`` otherwise
@@ -2817,7 +2817,7 @@ class BankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_query(self): # pragma: no cover
+    def get_assessment_offered_query(self):  # pragma: no cover
         """Gets the query for an assessment offered.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2835,7 +2835,7 @@ class BankQuery:
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
     @abc.abstractmethod
-    def match_any_assessment_offered(self, match): # pragma: no cover
+    def match_any_assessment_offered(self, match):  # pragma: no cover
         """Matches assessment banks that have any assessment offering assigned.
 
         :param match: ``true`` to match banks with any assessment offering, ``false`` to match banks with no offering
@@ -2848,7 +2848,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_offered_terms(self): # pragma: no cover
+    def clear_assessment_offered_terms(self):  # pragma: no cover
         """Clears all assessment offered terms.
 
 
@@ -2861,7 +2861,7 @@ class BankQuery:
     assessment_offered_terms = property(fdel=clear_assessment_offered_terms)
 
     @abc.abstractmethod
-    def match_ancestor_bank_id(self, bank_id, match): # pragma: no cover
+    def match_ancestor_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for to match banks in which the specified bank is an acestor.
 
         :param bank_id: a bank ``Id``
@@ -2876,7 +2876,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_bank_id_terms(self): # pragma: no cover
+    def clear_ancestor_bank_id_terms(self):  # pragma: no cover
         """Clears all ancestor bank ``Id`` terms.
 
 
@@ -2889,7 +2889,7 @@ class BankQuery:
     ancestor_bank_id_terms = property(fdel=clear_ancestor_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_bank_query(self): # pragma: no cover
+    def supports_ancestor_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -2902,7 +2902,7 @@ class BankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_bank_query(self): # pragma: no cover
+    def get_ancestor_bank_query(self):  # pragma: no cover
         """Gets the query for an ancestor bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2920,7 +2920,7 @@ class BankQuery:
     ancestor_bank_query = property(fget=get_ancestor_bank_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_bank(self, match): # pragma: no cover
+    def match_any_ancestor_bank(self, match):  # pragma: no cover
         """Matches a bank that has any ancestor.
 
         :param match: ``true`` to match banks with any ancestor banks, ``false`` to match root banks
@@ -2933,7 +2933,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_bank_terms(self): # pragma: no cover
+    def clear_ancestor_bank_terms(self):  # pragma: no cover
         """Clears all ancestor bank terms.
 
 
@@ -2946,7 +2946,7 @@ class BankQuery:
     ancestor_bank_terms = property(fdel=clear_ancestor_bank_terms)
 
     @abc.abstractmethod
-    def match_descendant_bank_id(self, bank_id, match): # pragma: no cover
+    def match_descendant_bank_id(self, bank_id, match):  # pragma: no cover
         """Sets the bank ``Id`` for to match banks in which the specified bank is a descendant.
 
         :param bank_id: a bank ``Id``
@@ -2961,7 +2961,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_bank_id_terms(self): # pragma: no cover
+    def clear_descendant_bank_id_terms(self):  # pragma: no cover
         """Clears all descendant bank ``Id`` terms.
 
 
@@ -2974,7 +2974,7 @@ class BankQuery:
     descendant_bank_id_terms = property(fdel=clear_descendant_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_bank_query(self): # pragma: no cover
+    def supports_descendant_bank_query(self):  # pragma: no cover
         """Tests if a ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -2987,7 +2987,7 @@ class BankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_bank_query(self): # pragma: no cover
+    def get_descendant_bank_query(self):  # pragma: no cover
         """Gets the query for a descendant bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -3005,7 +3005,7 @@ class BankQuery:
     descendant_bank_query = property(fget=get_descendant_bank_query)
 
     @abc.abstractmethod
-    def match_any_descendant_bank(self, match): # pragma: no cover
+    def match_any_descendant_bank(self, match):  # pragma: no cover
         """Matches a bank that has any descendant.
 
         :param match: ``true`` to match banks with any descendant banks, ``false`` to match leaf banks
@@ -3018,7 +3018,7 @@ class BankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_bank_terms(self): # pragma: no cover
+    def clear_descendant_bank_terms(self):  # pragma: no cover
         """Clears all descendant bank terms.
 
 
@@ -3031,7 +3031,7 @@ class BankQuery:
     descendant_bank_terms = property(fdel=clear_descendant_bank_terms)
 
     @abc.abstractmethod
-    def get_bank_query_record(self, bank_record_type): # pragma: no cover
+    def get_bank_query_record(self, bank_record_type):  # pragma: no cover
         """Gets the bank query record corresponding to the given ``Bank`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

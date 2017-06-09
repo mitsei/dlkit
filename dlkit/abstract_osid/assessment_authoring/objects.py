@@ -27,7 +27,7 @@ class AssessmentPart:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_id(self): # pragma: no cover
+    def get_assessment_id(self):  # pragma: no cover
         """Gets the assessment ``Id`` to which this rule belongs.
 
         :return: ``Id`` of an assessment
@@ -42,7 +42,7 @@ class AssessmentPart:
     assessment_id = property(fget=get_assessment_id)
 
     @abc.abstractmethod
-    def get_assessment(self): # pragma: no cover
+    def get_assessment(self):  # pragma: no cover
         """Gets the assessment to which this rule belongs.
 
         :return: an assessment
@@ -57,7 +57,7 @@ class AssessmentPart:
     assessment = property(fget=get_assessment)
 
     @abc.abstractmethod
-    def has_parent_part(self): # pragma: no cover
+    def has_parent_part(self):  # pragma: no cover
         """Tests if this assessment part belongs to a parent assessment part.
 
         :return: ``true`` if this part has a parent, ``false`` if a root
@@ -70,7 +70,7 @@ class AssessmentPart:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_id(self): # pragma: no cover
+    def get_assessment_part_id(self):  # pragma: no cover
         """Gets the parent assessment ``Id``.
 
         :return: ``Id`` of an assessment
@@ -85,7 +85,7 @@ class AssessmentPart:
     assessment_part_id = property(fget=get_assessment_part_id)
 
     @abc.abstractmethod
-    def get_assessment_part(self): # pragma: no cover
+    def get_assessment_part(self):  # pragma: no cover
         """Gets the parent assessment.
 
         :return: the parent assessment part
@@ -101,7 +101,7 @@ class AssessmentPart:
     assessment_part = property(fget=get_assessment_part)
 
     @abc.abstractmethod
-    def is_section(self): # pragma: no cover
+    def is_section(self):  # pragma: no cover
         """Tests if this part should be visible as a section in an assessment.
 
         If visible, this part will appear to the user as a separate
@@ -118,7 +118,7 @@ class AssessmentPart:
         return  # boolean
 
     @abc.abstractmethod
-    def get_weight(self): # pragma: no cover
+    def get_weight(self):  # pragma: no cover
         """Gets an integral weight factor for this assessment part used for scoring.
 
         The percentage weight for this part is this weight divided by
@@ -136,7 +136,7 @@ class AssessmentPart:
     weight = property(fget=get_weight)
 
     @abc.abstractmethod
-    def get_allocated_time(self): # pragma: no cover
+    def get_allocated_time(self):  # pragma: no cover
         """Gets the allocated time for this part.
 
         The allocated time may be used to assign fixed time limits to
@@ -154,7 +154,7 @@ class AssessmentPart:
     allocated_time = property(fget=get_allocated_time)
 
     @abc.abstractmethod
-    def get_child_assessment_part_ids(self): # pragma: no cover
+    def get_child_assessment_part_ids(self):  # pragma: no cover
         """Gets any child assessment part ``Ids``.
 
         :return: ``Ids`` of the child assessment parts
@@ -169,7 +169,7 @@ class AssessmentPart:
     child_assessment_part_ids = property(fget=get_child_assessment_part_ids)
 
     @abc.abstractmethod
-    def get_child_assessment_parts(self): # pragma: no cover
+    def get_child_assessment_parts(self):  # pragma: no cover
         """Gets any child assessment parts.
 
         :return: the child assessment parts
@@ -184,7 +184,7 @@ class AssessmentPart:
     child_assessment_parts = property(fget=get_child_assessment_parts)
 
     @abc.abstractmethod
-    def get_assessment_part_record(self, assessment_part_record_type): # pragma: no cover
+    def get_assessment_part_record(self, assessment_part_record_type):  # pragma: no cover
         """Gets the assessment part record corresponding to the given ``AssessmentPart`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -220,7 +220,7 @@ class AssessmentPartForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_weight_metadata(self): # pragma: no cover
+    def get_weight_metadata(self):  # pragma: no cover
         """Gets the metadata for the weight.
 
         :return: metadata for the weight
@@ -235,7 +235,7 @@ class AssessmentPartForm:
     weight_metadata = property(fget=get_weight_metadata)
 
     @abc.abstractmethod
-    def set_weight(self, weight): # pragma: no cover
+    def set_weight(self, weight):  # pragma: no cover
         """Sets the weight on a scale from 0-100.
 
         :param weight: the new weight
@@ -249,7 +249,7 @@ class AssessmentPartForm:
         pass
 
     @abc.abstractmethod
-    def clear_weight(self): # pragma: no cover
+    def clear_weight(self):  # pragma: no cover
         """Clears the weight.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -262,7 +262,7 @@ class AssessmentPartForm:
     weight = property(fset=set_weight, fdel=clear_weight)
 
     @abc.abstractmethod
-    def get_allocated_time_metadata(self): # pragma: no cover
+    def get_allocated_time_metadata(self):  # pragma: no cover
         """Gets the metadata for the allocated time.
 
         :return: metadata for the allocated time
@@ -277,7 +277,7 @@ class AssessmentPartForm:
     allocated_time_metadata = property(fget=get_allocated_time_metadata)
 
     @abc.abstractmethod
-    def set_allocated_time(self, time): # pragma: no cover
+    def set_allocated_time(self, time):  # pragma: no cover
         """Sets the allocated time.
 
         :param time: the allocated time
@@ -291,7 +291,7 @@ class AssessmentPartForm:
         pass
 
     @abc.abstractmethod
-    def clear_allocated_time(self): # pragma: no cover
+    def clear_allocated_time(self):  # pragma: no cover
         """Clears the allocated time.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -304,7 +304,7 @@ class AssessmentPartForm:
     allocated_time = property(fset=set_allocated_time, fdel=clear_allocated_time)
 
     @abc.abstractmethod
-    def get_assessment_part_form_record(self, assessment_part_record_type): # pragma: no cover
+    def get_assessment_part_form_record(self, assessment_part_record_type):  # pragma: no cover
         """Gets the ``AssessmentPartFormRecord`` corresponding to the given assessment record ``Type``.
 
         :param assessment_part_record_type: the assessment part record type
@@ -336,7 +336,7 @@ class AssessmentPartList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_assessment_part(self): # pragma: no cover
+    def get_next_assessment_part(self):  # pragma: no cover
         """Gets the next ``AssessmentPart`` in this list.
 
         :return: the next ``AssessmentPart`` in this list. The ``has_next()`` method should be used to test that a next ``AssessmentPart`` is available before calling this method.
@@ -352,7 +352,7 @@ class AssessmentPartList:
     next_assessment_part = property(fget=get_next_assessment_part)
 
     @abc.abstractmethod
-    def get_next_assessment_parts(self, n): # pragma: no cover
+    def get_next_assessment_parts(self, n):  # pragma: no cover
         """Gets the next set of ``AssessmentPart`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``AssessmentPart`` elements requested which should be less than or equal to ``available()``
@@ -373,7 +373,7 @@ class SequenceRule:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_part_id(self): # pragma: no cover
+    def get_assessment_part_id(self):  # pragma: no cover
         """Gets the assessment part ``Id`` to which this rule belongs.
 
         :return: ``Id`` of an assessment part
@@ -388,7 +388,7 @@ class SequenceRule:
     assessment_part_id = property(fget=get_assessment_part_id)
 
     @abc.abstractmethod
-    def get_assessment_part(self): # pragma: no cover
+    def get_assessment_part(self):  # pragma: no cover
         """Gets the assessment part to which this rule belongs.
 
         :return: an assessment part
@@ -403,7 +403,7 @@ class SequenceRule:
     assessment_part = property(fget=get_assessment_part)
 
     @abc.abstractmethod
-    def get_next_assessment_part_id(self): # pragma: no cover
+    def get_next_assessment_part_id(self):  # pragma: no cover
         """Gets the next assessment part ``Id`` for success of this rule.
 
         :return: ``Id`` of an assessment part
@@ -418,7 +418,7 @@ class SequenceRule:
     next_assessment_part_id = property(fget=get_next_assessment_part_id)
 
     @abc.abstractmethod
-    def get_next_assessment_part(self): # pragma: no cover
+    def get_next_assessment_part(self):  # pragma: no cover
         """Gets the next assessment part for success of this rule.
 
         :return: an assessment part
@@ -433,7 +433,7 @@ class SequenceRule:
     next_assessment_part = property(fget=get_next_assessment_part)
 
     @abc.abstractmethod
-    def get_minimum_score(self): # pragma: no cover
+    def get_minimum_score(self):  # pragma: no cover
         """Gets the minimum score expressed as an integer (0-100) for this rule.
 
         :return: minimum score
@@ -448,7 +448,7 @@ class SequenceRule:
     minimum_score = property(fget=get_minimum_score)
 
     @abc.abstractmethod
-    def get_maximum_score(self): # pragma: no cover
+    def get_maximum_score(self):  # pragma: no cover
         """Gets the maximum score expressed as an integer (0-100) for this rule.
 
         :return: maximum score
@@ -463,7 +463,7 @@ class SequenceRule:
     maximum_score = property(fget=get_maximum_score)
 
     @abc.abstractmethod
-    def is_cumulative(self): # pragma: no cover
+    def is_cumulative(self):  # pragma: no cover
         """Tests if the score is applied to all previous assessment parts.
 
         :return: ``true`` if the score is applied to all previous assessment parts, ``false`` otherwise
@@ -476,7 +476,7 @@ class SequenceRule:
         return  # boolean
 
     @abc.abstractmethod
-    def get_applied_assessment_part_ids(self): # pragma: no cover
+    def get_applied_assessment_part_ids(self):  # pragma: no cover
         """Qualifies ``is_cumulative()`` to apply to a specific list of assessment parts.
 
         If ``is_cumulative()`` is ``true,`` this method may return an
@@ -494,7 +494,7 @@ class SequenceRule:
     applied_assessment_part_ids = property(fget=get_applied_assessment_part_ids)
 
     @abc.abstractmethod
-    def get_applied_assessment_parts(self): # pragma: no cover
+    def get_applied_assessment_parts(self):  # pragma: no cover
         """Qualifies ``is_cumulative()`` to apply to a specific list of assessment parts.
 
         If ``is_cumulative()`` is ``true,`` this method may return an
@@ -513,7 +513,7 @@ class SequenceRule:
     applied_assessment_parts = property(fget=get_applied_assessment_parts)
 
     @abc.abstractmethod
-    def get_sequence_rule_record(self, sequence_rule_record_type): # pragma: no cover
+    def get_sequence_rule_record(self, sequence_rule_record_type):  # pragma: no cover
         """Gets the assessment sequence rule record corresponding to the given ``SequenceRule`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -548,7 +548,7 @@ class SequenceRuleForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_minimum_score_metadata(self): # pragma: no cover
+    def get_minimum_score_metadata(self):  # pragma: no cover
         """Gets the metadata for the minimum score.
 
         :return: metadata for the minimum score
@@ -563,7 +563,7 @@ class SequenceRuleForm:
     minimum_score_metadata = property(fget=get_minimum_score_metadata)
 
     @abc.abstractmethod
-    def set_minimum_score(self, score): # pragma: no cover
+    def set_minimum_score(self, score):  # pragma: no cover
         """Sets the minimum score for this rule.
 
         :param score: minimum score
@@ -579,7 +579,7 @@ class SequenceRuleForm:
     minimum_score = property(fset=set_minimum_score)
 
     @abc.abstractmethod
-    def get_maximum_score_metadata(self): # pragma: no cover
+    def get_maximum_score_metadata(self):  # pragma: no cover
         """Gets the metadata for the maximum score.
 
         :return: metadata for the maximum score
@@ -594,7 +594,7 @@ class SequenceRuleForm:
     maximum_score_metadata = property(fget=get_maximum_score_metadata)
 
     @abc.abstractmethod
-    def set_maximum_score(self, score): # pragma: no cover
+    def set_maximum_score(self, score):  # pragma: no cover
         """Sets the maximum score for this rule.
 
         :param score: maximum score
@@ -610,7 +610,7 @@ class SequenceRuleForm:
     maximum_score = property(fset=set_maximum_score)
 
     @abc.abstractmethod
-    def get_cumulative_metadata(self): # pragma: no cover
+    def get_cumulative_metadata(self):  # pragma: no cover
         """Gets the metadata for the cumulative flag.
 
         :return: metadata for the cumulative flag
@@ -625,7 +625,7 @@ class SequenceRuleForm:
     cumulative_metadata = property(fget=get_cumulative_metadata)
 
     @abc.abstractmethod
-    def set_cumulative(self, cumulative): # pragma: no cover
+    def set_cumulative(self, cumulative):  # pragma: no cover
         """Applies this rule to all previous assessment parts.
 
         :param cumulative: ``true`` to apply to all previous assessment parts. ``false`` to apply to the immediate previous assessment part
@@ -641,7 +641,7 @@ class SequenceRuleForm:
     cumulative = property(fset=set_cumulative)
 
     @abc.abstractmethod
-    def get_applied_assessment_parts_metadata(self): # pragma: no cover
+    def get_applied_assessment_parts_metadata(self):  # pragma: no cover
         """Gets the metadata for the applied assessment parts.
 
         :return: metadata for the applied assessment parts
@@ -656,7 +656,7 @@ class SequenceRuleForm:
     applied_assessment_parts_metadata = property(fget=get_applied_assessment_parts_metadata)
 
     @abc.abstractmethod
-    def apply_assessment_parts(self, assessment_part_ids): # pragma: no cover
+    def apply_assessment_parts(self, assessment_part_ids):  # pragma: no cover
         """Designates assessment parts to which the rule applies.
 
         :param assessment_part_ids: the parts to which this rule should apply
@@ -671,7 +671,7 @@ class SequenceRuleForm:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_form_record(self, sequence_rule_record): # pragma: no cover
+    def get_sequence_rule_form_record(self, sequence_rule_record):  # pragma: no cover
         """Gets the ``SequenceRuleFormRecord`` corresponding to the given sequence rule record ``Type``.
 
         :param sequence_rule_record: a sequence rule record type
@@ -703,7 +703,7 @@ class SequenceRuleList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_sequence_rule(self): # pragma: no cover
+    def get_next_sequence_rule(self):  # pragma: no cover
         """Gets the next ``SequenceRule`` in this list.
 
         :return: the next ``SequenceRule`` in this list. The ``has_next()`` method should be used to test that a next ``SequenceRule`` is available before calling this method.
@@ -719,7 +719,7 @@ class SequenceRuleList:
     next_sequence_rule = property(fget=get_next_sequence_rule)
 
     @abc.abstractmethod
-    def get_next_sequence_rules(self, n): # pragma: no cover
+    def get_next_sequence_rules(self, n):  # pragma: no cover
         """Gets the next set of ``SequenceRule`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``SequenceRule`` elements requested which should be less than or equal to ``available()``
@@ -740,7 +740,7 @@ class SequenceRuleEnabler:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_record(self, sequence_rule_enabler_record_type): # pragma: no cover
+    def get_sequence_rule_enabler_record(self, sequence_rule_enabler_record_type):  # pragma: no cover
         """Gets the sequence rule enabler record corresponding to the given ``SequenceRuleEnabler`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -777,7 +777,7 @@ class SequenceRuleEnablerForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_form_record(self, sequence_rule_enabler_record_type): # pragma: no cover
+    def get_sequence_rule_enabler_form_record(self, sequence_rule_enabler_record_type):  # pragma: no cover
         """Gets the ``SequenceRuleEnablerFormRecord`` corresponding to the given sequence rule enabler record ``Type``.
 
         :param sequence_rule_enabler_record_type: a sequence rule enabler record type
@@ -819,7 +819,7 @@ class SequenceRuleEnablerList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_sequence_rule_enabler(self): # pragma: no cover
+    def get_next_sequence_rule_enabler(self):  # pragma: no cover
         """Gets the next ``SequenceRuleEnabler`` in this list.
 
         :return: the next ``SequenceRuleEnabler`` in this list. The ``has_next()`` method should be used to test that a next ``SequenceRuleEnabler`` is available before calling this method.
@@ -835,7 +835,7 @@ class SequenceRuleEnablerList:
     next_sequence_rule_enabler = property(fget=get_next_sequence_rule_enabler)
 
     @abc.abstractmethod
-    def get_next_sequence_rule_enablers(self, n): # pragma: no cover
+    def get_next_sequence_rule_enablers(self, n):  # pragma: no cover
         """Gets the next set of ``SequenceRuleEnabler`` elements in this list.
 
         The specified amount must be less than or equal to the return

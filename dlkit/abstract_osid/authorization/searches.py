@@ -21,7 +21,7 @@ class AuthorizationSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_authorizations(self, authorization_ids): # pragma: no cover
+    def search_among_authorizations(self, authorization_ids):  # pragma: no cover
         """Execute this search among the given list of authorizations.
 
         :param authorization_ids: list of authorizations
@@ -34,7 +34,7 @@ class AuthorizationSearch:
         pass
 
     @abc.abstractmethod
-    def order_authorization_results(self, authorization_search_order): # pragma: no cover
+    def order_authorization_results(self, authorization_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param authorization_search_order: authorization search order
@@ -48,7 +48,7 @@ class AuthorizationSearch:
         pass
 
     @abc.abstractmethod
-    def get_authorization_search_record(self, authorization_search_record_type): # pragma: no cover
+    def get_authorization_search_record(self, authorization_search_record_type):  # pragma: no cover
         """Gets the authorization search record corresponding to the given authorization search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class AuthorizationSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorizations(self): # pragma: no cover
+    def get_authorizations(self):  # pragma: no cover
         """Gets the authorization list resulting from the search.
 
         :return: the authorization list
@@ -88,7 +88,7 @@ class AuthorizationSearchResults:
     authorizations = property(fget=get_authorizations)
 
     @abc.abstractmethod
-    def get_authorization_query_inspector(self): # pragma: no cover
+    def get_authorization_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -103,7 +103,7 @@ class AuthorizationSearchResults:
     authorization_query_inspector = property(fget=get_authorization_query_inspector)
 
     @abc.abstractmethod
-    def get_authorization_search_results_record(self, authorization_search_record_type): # pragma: no cover
+    def get_authorization_search_results_record(self, authorization_search_record_type):  # pragma: no cover
         """Gets the authorization search results record corresponding to the given authorization search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class FunctionSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_functions(self, function_ids): # pragma: no cover
+    def search_among_functions(self, function_ids):  # pragma: no cover
         """Execute this search among the given list of functions.
 
         :param function_ids: list of functions
@@ -141,7 +141,7 @@ class FunctionSearch:
         pass
 
     @abc.abstractmethod
-    def order_function_results(self, function_search_order): # pragma: no cover
+    def order_function_results(self, function_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param function_search_order: function search order
@@ -155,7 +155,7 @@ class FunctionSearch:
         pass
 
     @abc.abstractmethod
-    def get_function_search_record(self, function_search_record_type): # pragma: no cover
+    def get_function_search_record(self, function_search_record_type):  # pragma: no cover
         """Gets the function search record corresponding to the given function search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class FunctionSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_functions(self): # pragma: no cover
+    def get_functions(self):  # pragma: no cover
         """Gets the function list resulting from the search.
 
         :return: the function list
@@ -195,7 +195,7 @@ class FunctionSearchResults:
     functions = property(fget=get_functions)
 
     @abc.abstractmethod
-    def get_function_query_inspector(self): # pragma: no cover
+    def get_function_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the function query inspector
@@ -210,7 +210,7 @@ class FunctionSearchResults:
     function_query_inspector = property(fget=get_function_query_inspector)
 
     @abc.abstractmethod
-    def get_function_search_results_record(self, function_search_record_type): # pragma: no cover
+    def get_function_search_results_record(self, function_search_record_type):  # pragma: no cover
         """Gets the function search results record corresponding to the given function search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class QualifierSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_qualifiers(self, qualifier_ids): # pragma: no cover
+    def search_among_qualifiers(self, qualifier_ids):  # pragma: no cover
         """Execute this search among the given list of qualifiers.
 
         :param qualifier_ids: list of qualifiers
@@ -248,7 +248,7 @@ class QualifierSearch:
         pass
 
     @abc.abstractmethod
-    def order_qualifier_results(self, qualifier_search_order): # pragma: no cover
+    def order_qualifier_results(self, qualifier_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param qualifier_search_order: qualifier search order
@@ -262,7 +262,7 @@ class QualifierSearch:
         pass
 
     @abc.abstractmethod
-    def get_qualifier_search_record(self, qualifier_search_record_type): # pragma: no cover
+    def get_qualifier_search_record(self, qualifier_search_record_type):  # pragma: no cover
         """Gets the qualifier search record corresponding to the given qualifier search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class QualifierSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifiers(self): # pragma: no cover
+    def get_qualifiers(self):  # pragma: no cover
         """Gets the qualifier list resulting from the search.
 
         :return: the qualifier list
@@ -302,7 +302,7 @@ class QualifierSearchResults:
     qualifiers = property(fget=get_qualifiers)
 
     @abc.abstractmethod
-    def get_qualifier_query_inspector(self): # pragma: no cover
+    def get_qualifier_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -317,7 +317,7 @@ class QualifierSearchResults:
     qualifier_query_inspector = property(fget=get_qualifier_query_inspector)
 
     @abc.abstractmethod
-    def get_qualifier_search_results_record(self, qualifier_search_record_type): # pragma: no cover
+    def get_qualifier_search_results_record(self, qualifier_search_record_type):  # pragma: no cover
         """Gets the qualifier search results record corresponding to the given qualifier search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -342,7 +342,7 @@ class VaultSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_vaults(self, vault_ids): # pragma: no cover
+    def search_among_vaults(self, vault_ids):  # pragma: no cover
         """Execute this search among the given list of vaults.
 
         :param vault_ids: list of vaults
@@ -355,7 +355,7 @@ class VaultSearch:
         pass
 
     @abc.abstractmethod
-    def order_vault_results(self, vault_search_order): # pragma: no cover
+    def order_vault_results(self, vault_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param vault_search_order: vault search order
@@ -369,7 +369,7 @@ class VaultSearch:
         pass
 
     @abc.abstractmethod
-    def get_vault_search_record(self, vault_search_record_type): # pragma: no cover
+    def get_vault_search_record(self, vault_search_record_type):  # pragma: no cover
         """Gets the vault search record corresponding to the given vault search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -394,7 +394,7 @@ class VaultSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vaults(self): # pragma: no cover
+    def get_vaults(self):  # pragma: no cover
         """Gets the vault list resulting from the search.
 
         :return: the vault list
@@ -409,7 +409,7 @@ class VaultSearchResults:
     vaults = property(fget=get_vaults)
 
     @abc.abstractmethod
-    def get_vault_query_inspector(self): # pragma: no cover
+    def get_vault_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the vault query inspector
@@ -424,7 +424,7 @@ class VaultSearchResults:
     vault_query_inspector = property(fget=get_vault_query_inspector)
 
     @abc.abstractmethod
-    def get_vault_search_results_record(self, vault_search_record_type): # pragma: no cover
+    def get_vault_search_results_record(self, vault_search_record_type):  # pragma: no cover
         """Gets the vault search results record corresponding to the given vault search record ``Type``.
 
         This method is used to retrieve an object implementing the

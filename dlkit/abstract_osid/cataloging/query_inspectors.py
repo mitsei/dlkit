@@ -21,7 +21,7 @@ class CatalogQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id_terms(self): # pragma: no cover
+    def get_id_terms(self):  # pragma: no cover
         """Gets the ``Id`` query terms.
 
         :return: the query terms
@@ -36,7 +36,7 @@ class CatalogQueryInspector:
     id_terms = property(fget=get_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_catalog_id_terms(self): # pragma: no cover
+    def get_ancestor_catalog_id_terms(self):  # pragma: no cover
         """Gets the ancestor catalog ``Id`` query terms.
 
         :return: the query terms
@@ -51,7 +51,7 @@ class CatalogQueryInspector:
     ancestor_catalog_id_terms = property(fget=get_ancestor_catalog_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_catalog_terms(self): # pragma: no cover
+    def get_ancestor_catalog_terms(self):  # pragma: no cover
         """Gets the ancestor catalog query terms.
 
         :return: the query terms
@@ -66,7 +66,7 @@ class CatalogQueryInspector:
     ancestor_catalog_terms = property(fget=get_ancestor_catalog_terms)
 
     @abc.abstractmethod
-    def get_descendant_catalog_id_terms(self): # pragma: no cover
+    def get_descendant_catalog_id_terms(self):  # pragma: no cover
         """Gets the descendant catalog ``Id`` query terms.
 
         :return: the query terms
@@ -81,7 +81,7 @@ class CatalogQueryInspector:
     descendant_catalog_id_terms = property(fget=get_descendant_catalog_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_catalog_terms(self): # pragma: no cover
+    def get_descendant_catalog_terms(self):  # pragma: no cover
         """Gets the descendant catalog query terms.
 
         :return: the query terms
@@ -96,7 +96,7 @@ class CatalogQueryInspector:
     descendant_catalog_terms = property(fget=get_descendant_catalog_terms)
 
     @abc.abstractmethod
-    def get_catalog_query_inspector_record(self, catalog_record_type): # pragma: no cover
+    def get_catalog_query_inspector_record(self, catalog_record_type):  # pragma: no cover
         """Gets the catalog query inspector record corresponding to the given ``Catalog`` record ``Type``.
 
         :param catalog_record_type: a catalog record type

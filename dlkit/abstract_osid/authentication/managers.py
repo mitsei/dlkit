@@ -21,7 +21,7 @@ class AuthenticationProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authentication_acquisition(self): # pragma: no cover
+    def supports_authentication_acquisition(self):  # pragma: no cover
         """Tests is authentication acquisition is supported.
 
         Authentication acquisition is responsible for acquiring client
@@ -50,7 +50,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authentication_validation(self): # pragma: no cover
+    def supports_authentication_validation(self):  # pragma: no cover
         """Tests if authentication validation is supported.
 
         Authentication validation verifies given authentication
@@ -66,7 +66,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_lookup(self): # pragma: no cover
+    def supports_agent_lookup(self):  # pragma: no cover
         """Tests if an agent lookup service is supported.
 
         An agent lookup service defines methods to access agents.
@@ -81,7 +81,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_query(self): # pragma: no cover
+    def supports_agent_query(self):  # pragma: no cover
         """Tests if an agent query service is supported.
 
         :return: ``true`` if agent query is supported, ``false`` otherwise
@@ -94,7 +94,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_search(self): # pragma: no cover
+    def supports_agent_search(self):  # pragma: no cover
         """Tests if an agent search service is supported.
 
         :return: ``true`` if agent search is supported, ``false`` otherwise
@@ -107,7 +107,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_admin(self): # pragma: no cover
+    def supports_agent_admin(self):  # pragma: no cover
         """Tests if an agent administrative service is supported.
 
         :return: ``true`` if agent admin is supported, ``false`` otherwise
@@ -120,7 +120,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_notification(self): # pragma: no cover
+    def supports_agent_notification(self):  # pragma: no cover
         """Tests if agent notification is supported.
 
         Messages may be sent when agents are created, modified, or
@@ -136,7 +136,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_agency(self): # pragma: no cover
+    def supports_agent_agency(self):  # pragma: no cover
         """Tests if retrieving mappings of agents and agencies is supported.
 
         :return: ``true`` if agent agency mapping retrieval is supported ``,``  ``false`` otherwise
@@ -149,7 +149,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_agency_assignment(self): # pragma: no cover
+    def supports_agent_agency_assignment(self):  # pragma: no cover
         """Tests if managing mappings of agents and agencies is supported.
 
         :return: ``true`` if agent agency assignment is supported ``,``  ``false`` otherwise
@@ -162,7 +162,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agent_smart_agency(self): # pragma: no cover
+    def supports_agent_smart_agency(self):  # pragma: no cover
         """Tests if agent smart agency is available.
 
         :return: ``true`` if agent smart agency is supported ``,``  ``false`` otherwise
@@ -175,7 +175,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_lookup(self): # pragma: no cover
+    def supports_agency_lookup(self):  # pragma: no cover
         """Tests if an agency lookup service is supported.
 
         An agency lookup service defines methods to access agencies.
@@ -190,7 +190,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_query(self): # pragma: no cover
+    def supports_agency_query(self):  # pragma: no cover
         """Tests if an agency query service is supported.
 
         :return: ``true`` if agency query is supported, ``false`` otherwise
@@ -203,7 +203,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_search(self): # pragma: no cover
+    def supports_agency_search(self):  # pragma: no cover
         """Tests if an agency search service is supported.
 
         :return: ``true`` if agency search is supported, ``false`` otherwise
@@ -216,7 +216,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_admin(self): # pragma: no cover
+    def supports_agency_admin(self):  # pragma: no cover
         """Tests if an agency administrative service is supported.
 
         :return: ``true`` if agency admin is supported, ``false`` otherwise
@@ -229,7 +229,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_notification(self): # pragma: no cover
+    def supports_agency_notification(self):  # pragma: no cover
         """Tests if agency notification is supported.
 
         Messages may be sent when agencies are created, modified, or
@@ -245,7 +245,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_hierarchy(self): # pragma: no cover
+    def supports_agency_hierarchy(self):  # pragma: no cover
         """Tests if an agency hierarchy traversal is supported.
 
         :return: ``true`` if an agency hierarchy traversal is supported, ``false`` otherwise
@@ -258,7 +258,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_agency_hierarchy_design(self): # pragma: no cover
+    def supports_agency_hierarchy_design(self):  # pragma: no cover
         """Tests if an agency hierarchy design is supported.
 
         :return: ``true`` if an agency hierarchy design is supported, ``false`` otherwise
@@ -271,7 +271,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authentication_keys(self): # pragma: no cover
+    def supports_authentication_keys(self):  # pragma: no cover
         """Tests if an authentication key service is available.
 
         :return: ``true`` if an authentication key service is supported, ``false`` otherwise
@@ -284,7 +284,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authentication_process(self): # pragma: no cover
+    def supports_authentication_process(self):  # pragma: no cover
         """Tests if an authentication process service is available.
 
         :return: ``true`` if an authentication process service is supported, ``false`` otherwise
@@ -297,7 +297,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_record_types(self): # pragma: no cover
+    def get_agent_record_types(self):  # pragma: no cover
         """Gets the supported ``Agent`` record types.
 
         :return: a list containing the supported ``Agent`` record types
@@ -312,7 +312,7 @@ class AuthenticationProfile:
     agent_record_types = property(fget=get_agent_record_types)
 
     @abc.abstractmethod
-    def supports_agent_record_type(self, agent_record_type): # pragma: no cover
+    def supports_agent_record_type(self, agent_record_type):  # pragma: no cover
         """Tests if the given ``Agent`` record type is supported.
 
         :param agent_record_type: a ``Type`` indicating an ``Agent`` record type
@@ -327,7 +327,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_search_record_types(self): # pragma: no cover
+    def get_agent_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Agent`` search record types.
 
         :return: a list containing the supported ``Agent`` search record types
@@ -342,7 +342,7 @@ class AuthenticationProfile:
     agent_search_record_types = property(fget=get_agent_search_record_types)
 
     @abc.abstractmethod
-    def supports_agent_search_record_type(self, agent_search_record_type): # pragma: no cover
+    def supports_agent_search_record_type(self, agent_search_record_type):  # pragma: no cover
         """Tests if the given ``Agent`` search record type is supported.
 
         :param agent_search_record_type: a ``Type`` indicating an ``Agent`` search record type
@@ -357,7 +357,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_record_types(self): # pragma: no cover
+    def get_agency_record_types(self):  # pragma: no cover
         """Gets the supported ``Agency`` record types.
 
         :return: a list containing the supported ``Agency`` record types
@@ -372,7 +372,7 @@ class AuthenticationProfile:
     agency_record_types = property(fget=get_agency_record_types)
 
     @abc.abstractmethod
-    def supports_agency_record_type(self, agency_record_type): # pragma: no cover
+    def supports_agency_record_type(self, agency_record_type):  # pragma: no cover
         """Tests if the given ``Agency`` record type is supported.
 
         :param agency_record_type: a ``Type`` indicating an ``Agency`` record type
@@ -387,7 +387,7 @@ class AuthenticationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_search_record_types(self): # pragma: no cover
+    def get_agency_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Agency`` search record types.
 
         :return: a list containing the supported ``Agency`` search record types
@@ -402,7 +402,7 @@ class AuthenticationProfile:
     agency_search_record_types = property(fget=get_agency_search_record_types)
 
     @abc.abstractmethod
-    def supports_agency_search_record_type(self, agency_search_record_type): # pragma: no cover
+    def supports_agency_search_record_type(self, agency_search_record_type):  # pragma: no cover
         """Tests if the given ``Agency`` search record type is supported.
 
         :param agency_search_record_type: a ``Type`` indicating an ``Agency`` search record type
@@ -452,7 +452,7 @@ class AuthenticationManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_lookup_session(self): # pragma: no cover
+    def get_agent_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent lookup service.
 
         :return: an ``AgentLookupSession``
@@ -469,7 +469,7 @@ class AuthenticationManager:
     agent_lookup_session = property(fget=get_agent_lookup_session)
 
     @abc.abstractmethod
-    def get_agent_lookup_session_for_agency(self, agency_id): # pragma: no cover
+    def get_agent_lookup_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent lookup service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -489,7 +489,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
-    def get_agent_query_session(self): # pragma: no cover
+    def get_agent_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent query service.
 
         :return: an ``AgentQuerySession``
@@ -506,7 +506,7 @@ class AuthenticationManager:
     agent_query_session = property(fget=get_agent_query_session)
 
     @abc.abstractmethod
-    def get_agent_query_session_for_agency(self, agency_id): # pragma: no cover
+    def get_agent_query_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent query service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -526,7 +526,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
-    def get_agent_search_session(self): # pragma: no cover
+    def get_agent_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent search service.
 
         :return: an ``AgentSearchSession``
@@ -543,7 +543,7 @@ class AuthenticationManager:
     agent_search_session = property(fget=get_agent_search_session)
 
     @abc.abstractmethod
-    def get_agent_search_session_for_agency(self, agency_id): # pragma: no cover
+    def get_agent_search_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent search service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -563,7 +563,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
-    def get_agent_admin_session(self): # pragma: no cover
+    def get_agent_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent administration service.
 
         :return: an ``AgentAdminSession``
@@ -580,7 +580,7 @@ class AuthenticationManager:
     agent_admin_session = property(fget=get_agent_admin_session)
 
     @abc.abstractmethod
-    def get_agent_admin_session_for_agency(self, agency_id): # pragma: no cover
+    def get_agent_admin_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent admin service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -600,7 +600,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
-    def get_agent_notification_session(self, agent_receiver): # pragma: no cover
+    def get_agent_notification_session(self, agent_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to service changes.
 
         :param agent_receiver: the agent receiver
@@ -618,7 +618,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
-    def get_agent_notification_session_for_agency(self, agent_receiver, agency_id): # pragma: no cover
+    def get_agent_notification_session_for_agency(self, agent_receiver, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent notification service for the given agency.
 
         :param agent_receiver: the agent receiver
@@ -640,7 +640,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
-    def get_agent_agency_session(self): # pragma: no cover
+    def get_agent_agency_session(self):  # pragma: no cover
         """Gets the session for retrieving agent to agency mappings.
 
         :return: an ``AgentAgencySession``
@@ -657,7 +657,7 @@ class AuthenticationManager:
     agent_agency_session = property(fget=get_agent_agency_session)
 
     @abc.abstractmethod
-    def get_agent_agency_assignment_session(self): # pragma: no cover
+    def get_agent_agency_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning agent to agency mappings.
 
         :return: a ``AgentAgencyAsignmentSession``
@@ -674,7 +674,7 @@ class AuthenticationManager:
     agent_agency_assignment_session = property(fget=get_agent_agency_assignment_session)
 
     @abc.abstractmethod
-    def get_agent_smart_agency_session(self, agency_id): # pragma: no cover
+    def get_agent_smart_agency_session(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent smart agency service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -694,7 +694,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgentSmartAgencySession
 
     @abc.abstractmethod
-    def get_agency_lookup_session(self): # pragma: no cover
+    def get_agency_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency lookup service.
 
         :return: an ``AgencyLookupSession``
@@ -711,7 +711,7 @@ class AuthenticationManager:
     agency_lookup_session = property(fget=get_agency_lookup_session)
 
     @abc.abstractmethod
-    def get_agency_search_session(self): # pragma: no cover
+    def get_agency_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency search service.
 
         :return: an ``AgencySearchSession``
@@ -728,7 +728,7 @@ class AuthenticationManager:
     agency_search_session = property(fget=get_agency_search_session)
 
     @abc.abstractmethod
-    def get_agency_admin_session(self): # pragma: no cover
+    def get_agency_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency administration service.
 
         :return: an ``AgencyAdminSession``
@@ -745,7 +745,7 @@ class AuthenticationManager:
     agency_admin_session = property(fget=get_agency_admin_session)
 
     @abc.abstractmethod
-    def get_agency_notification_session(self, agency_receiver): # pragma: no cover
+    def get_agency_notification_session(self, agency_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to agency service changes.
 
         :param agency_receiver: the agency receiver
@@ -763,7 +763,7 @@ class AuthenticationManager:
         return  # osid.authentication.AgencyNotificationSession
 
     @abc.abstractmethod
-    def get_agency_hierarchy_session(self): # pragma: no cover
+    def get_agency_hierarchy_session(self):  # pragma: no cover
         """Gets the session traversing agency hierarchies.
 
         :return: an ``AgencyHierarchySession``
@@ -780,7 +780,7 @@ class AuthenticationManager:
     agency_hierarchy_session = property(fget=get_agency_hierarchy_session)
 
     @abc.abstractmethod
-    def get_agency_hierarchy_design_session(self): # pragma: no cover
+    def get_agency_hierarchy_design_session(self):  # pragma: no cover
         """Gets the session designing agency hierarchies.
 
         :return: an ``AgencyHierarchyDesignSession``
@@ -797,7 +797,7 @@ class AuthenticationManager:
     agency_hierarchy_design_session = property(fget=get_agency_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_authentication_batch_manager(self): # pragma: no cover
+    def get_authentication_batch_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationBatchManager``.
 
         :return: an ``AuthenticationBatchManager``.
@@ -814,7 +814,7 @@ class AuthenticationManager:
     authentication_batch_manager = property(fget=get_authentication_batch_manager)
 
     @abc.abstractmethod
-    def get_authentication_keys_manager(self): # pragma: no cover
+    def get_authentication_keys_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationKeysManager``.
 
         :return: an ``AuthenticationKeysManager``.
@@ -831,7 +831,7 @@ class AuthenticationManager:
     authentication_keys_manager = property(fget=get_authentication_keys_manager)
 
     @abc.abstractmethod
-    def get_authentication_process_manager(self): # pragma: no cover
+    def get_authentication_process_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationProcessManager``.
 
         :return: an ``AuthenticationProcessManager``.
@@ -884,7 +884,7 @@ class AuthenticationProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_lookup_session(self, proxy): # pragma: no cover
+    def get_agent_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent lookup service.
 
         :param proxy: a proxy
@@ -902,7 +902,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
-    def get_agent_lookup_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_agent_lookup_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent lookup service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -924,7 +924,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentLookupSession
 
     @abc.abstractmethod
-    def get_agent_query_session(self, proxy): # pragma: no cover
+    def get_agent_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent query service.
 
         :param proxy: a proxy
@@ -942,7 +942,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
-    def get_agent_query_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_agent_query_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent query service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -964,7 +964,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentQuerySession
 
     @abc.abstractmethod
-    def get_agent_search_session(self, proxy): # pragma: no cover
+    def get_agent_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent search service.
 
         :param proxy: a proxy
@@ -982,7 +982,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
-    def get_agent_search_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_agent_search_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent search service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -1004,7 +1004,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentSearchSession
 
     @abc.abstractmethod
-    def get_agent_admin_session(self, proxy): # pragma: no cover
+    def get_agent_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent administration service.
 
         :param proxy: a proxy
@@ -1022,7 +1022,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
-    def get_agent_admin_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_agent_admin_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent admin service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -1044,7 +1044,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentAdminSession
 
     @abc.abstractmethod
-    def get_agent_notification_session(self, agent_receiver, proxy): # pragma: no cover
+    def get_agent_notification_session(self, agent_receiver, proxy):  # pragma: no cover
         """Gets the messaging receiver session for notifications pertaining to agent changes.
 
         :param agent_receiver: the agent receiver
@@ -1064,7 +1064,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
-    def get_agent_notification_session_for_agency(self, agent_receiver, agency_id, proxy): # pragma: no cover
+    def get_agent_notification_session_for_agency(self, agent_receiver, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent notification service for the given agency.
 
         :param agent_receiver: the agent receiver
@@ -1088,7 +1088,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentNotificationSession
 
     @abc.abstractmethod
-    def get_agent_agency_session(self, proxy): # pragma: no cover
+    def get_agent_agency_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving agent to agency mappings.
 
         :param proxy: a proxy
@@ -1106,7 +1106,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentAgencySession
 
     @abc.abstractmethod
-    def get_agent_agency_assignment_session(self, proxy): # pragma: no cover
+    def get_agent_agency_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning agent to agency mappings.
 
         :param proxy: a proxy
@@ -1124,7 +1124,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentAgencyAssignmentSession
 
     @abc.abstractmethod
-    def get_agent_smart_agency_session(self, agency_id, proxy): # pragma: no cover
+    def get_agent_smart_agency_session(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agent smart agency service for the given agency.
 
         :param agency_id: the ``Id`` of the bank
@@ -1146,7 +1146,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgentSmartAgencySession
 
     @abc.abstractmethod
-    def get_agency_lookup_session(self, proxy): # pragma: no cover
+    def get_agency_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency lookup service.
 
         :param proxy: a proxy
@@ -1164,7 +1164,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencyLookupSession
 
     @abc.abstractmethod
-    def get_agency_search_session(self, proxy): # pragma: no cover
+    def get_agency_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency search service.
 
         :param proxy: a proxy
@@ -1182,7 +1182,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencySearchSession
 
     @abc.abstractmethod
-    def get_agency_admin_session(self, proxy): # pragma: no cover
+    def get_agency_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the agency administration service.
 
         :param proxy: a proxy
@@ -1200,7 +1200,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencyAdminSession
 
     @abc.abstractmethod
-    def get_agency_notification_session(self, agency_receiver, proxy): # pragma: no cover
+    def get_agency_notification_session(self, agency_receiver, proxy):  # pragma: no cover
         """Gets the messaging receiver session for notifications pertaining to agency changes.
 
         :param agency_receiver: the agency receiver
@@ -1220,7 +1220,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencyNotificationSession
 
     @abc.abstractmethod
-    def get_agency_hierarchy_session(self, proxy): # pragma: no cover
+    def get_agency_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the session traversing agency hierarchies.
 
         :param proxy: a proxy
@@ -1238,7 +1238,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencyHierarchySession
 
     @abc.abstractmethod
-    def get_agency_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_agency_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the session designing agency hierarchies.
 
         :param proxy: a proxy
@@ -1256,7 +1256,7 @@ class AuthenticationProxyManager:
         return  # osid.authentication.AgencyHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_authentication_batch_proxy_manager(self): # pragma: no cover
+    def get_authentication_batch_proxy_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationBatchProxyManager``.
 
         :return: an ``AuthenticationBatchProxyManager``.
@@ -1273,7 +1273,7 @@ class AuthenticationProxyManager:
     authentication_batch_proxy_manager = property(fget=get_authentication_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_authentication_keys_proxy_manager(self): # pragma: no cover
+    def get_authentication_keys_proxy_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationKeysProxyManager``.
 
         :return: an ``AuthenticationKeysProxyManager``.
@@ -1290,7 +1290,7 @@ class AuthenticationProxyManager:
     authentication_keys_proxy_manager = property(fget=get_authentication_keys_proxy_manager)
 
     @abc.abstractmethod
-    def get_authentication_process_proxy_manager(self): # pragma: no cover
+    def get_authentication_process_proxy_manager(self):  # pragma: no cover
         """Gets an ``AuthenticationProcessProxyManager``.
 
         :return: an ``AuthenticationProcessproxyManager``.

@@ -21,7 +21,7 @@ class AgentSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_resource(self, style): # pragma: no cover
+    def order_by_resource(self, style):  # pragma: no cover
         """Orders the results by resource.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class AgentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_resource_search_order(self): # pragma: no cover
+    def supports_resource_search_order(self):  # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available.
 
         :return: ``true`` if a resource search order interface is available, ``false`` otherwise
@@ -47,7 +47,7 @@ class AgentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_search_order(self): # pragma: no cover
+    def get_resource_search_order(self):  # pragma: no cover
         """Gets the resource search order.
 
         :return: the resource search odrer
@@ -63,7 +63,7 @@ class AgentSearchOrder:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def get_agent_search_order_record(self, agent_record_type): # pragma: no cover
+    def get_agent_search_order_record(self, agent_record_type):  # pragma: no cover
         """Gets the agent search order record corresponding to the given agent record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -87,7 +87,7 @@ class AgencySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_search_order_record(self, agency_record_type): # pragma: no cover
+    def get_agency_search_order_record(self, agency_record_type):  # pragma: no cover
         """Gets the agency search order record corresponding to the given agency record ``Type``.
 
         Multiple retrievals return the same underlying object.

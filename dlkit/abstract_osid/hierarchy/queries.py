@@ -28,7 +28,7 @@ class HierarchyQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_node_id(self, id_, match): # pragma: no cover
+    def match_node_id(self, id_, match):  # pragma: no cover
         """Matches an ``Id`` of a node in this hierarchy.
 
         Multiple nodes can be added to this query which behave as a
@@ -46,7 +46,7 @@ class HierarchyQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_node_id(self, match): # pragma: no cover
+    def match_any_node_id(self, match):  # pragma: no cover
         """Matches hierarchies with any node.
 
         :param match: ``true`` to match hierarchies with any nodes, ``false`` to match hierarchies with no nodes
@@ -59,7 +59,7 @@ class HierarchyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_node_id_terms(self): # pragma: no cover
+    def clear_node_id_terms(self):  # pragma: no cover
         """Clears the node ``Id`` terms.
 
 
@@ -72,7 +72,7 @@ class HierarchyQuery:
     node_id_terms = property(fdel=clear_node_id_terms)
 
     @abc.abstractmethod
-    def get_hierarchy_query_record(self, hierarchy_record_type): # pragma: no cover
+    def get_hierarchy_query_record(self, hierarchy_record_type):  # pragma: no cover
         """Gets the hierarchy record query corresponding to the given ``Hierarchy`` record ``Type``.
 
         Multiple record retrievals of the same type may return the same

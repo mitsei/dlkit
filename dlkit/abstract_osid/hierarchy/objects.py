@@ -26,7 +26,7 @@ class Hierarchy:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchy_record(self, hierarchy_record_type): # pragma: no cover
+    def get_hierarchy_record(self, hierarchy_record_type):  # pragma: no cover
         """Gets the hierarchy record corresponding to the given ``Hierarchy`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -62,7 +62,7 @@ class HierarchyForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchy_form_record(self, hierarchy_record_type): # pragma: no cover
+    def get_hierarchy_form_record(self, hierarchy_record_type):  # pragma: no cover
         """Gets the ``HierarchyFormRecord`` corresponding to the given hierarchy record ``Type``.
 
         :param hierarchy_record_type: the hierarchy record type
@@ -94,7 +94,7 @@ class HierarchyList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_hierarchy(self): # pragma: no cover
+    def get_next_hierarchy(self):  # pragma: no cover
         """Gets the next ``Hierarchy`` in this list.
 
         :return: the next ``Hierarchy`` in this list. The ``has_next()`` method should be used to test that a next ``Hierarchy`` is available before calling this method.
@@ -110,7 +110,7 @@ class HierarchyList:
     next_hierarchy = property(fget=get_next_hierarchy)
 
     @abc.abstractmethod
-    def get_next_hierarchies(self, n): # pragma: no cover
+    def get_next_hierarchies(self, n):  # pragma: no cover
         """Gets the next set of ``Hierarchy`` objects in this list.
 
         The specified amount must be less than or equal to the return
@@ -140,7 +140,7 @@ class Node:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_parents(self): # pragma: no cover
+    def get_parents(self):  # pragma: no cover
         """Gets the parents of this node.
 
         :return: the parents of this node
@@ -155,7 +155,7 @@ class Node:
     parents = property(fget=get_parents)
 
     @abc.abstractmethod
-    def get_children(self): # pragma: no cover
+    def get_children(self):  # pragma: no cover
         """Gets the children of this node.
 
         :return: the children of this node
@@ -184,7 +184,7 @@ class NodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_node(self): # pragma: no cover
+    def get_next_node(self):  # pragma: no cover
         """Gets the next ``Node`` in this list.
 
         :return: the next ``Node`` in this list. The ``has_next()`` method should be used to test that a next ``Node`` is available before calling this method.
@@ -200,7 +200,7 @@ class NodeList:
     next_node = property(fget=get_next_node)
 
     @abc.abstractmethod
-    def get_next_nodes(self, n): # pragma: no cover
+    def get_next_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``Node`` objects in this list.
 
         The specified amount must be less than or equal to the return

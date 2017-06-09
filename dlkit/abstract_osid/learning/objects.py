@@ -21,7 +21,7 @@ class Objective:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def has_assessment(self): # pragma: no cover
+    def has_assessment(self):  # pragma: no cover
         """Tests if an assessment is associated with this objective.
 
         :return: ``true`` if an assessment exists, ``false`` otherwise
@@ -34,7 +34,7 @@ class Objective:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_id(self): # pragma: no cover
+    def get_assessment_id(self):  # pragma: no cover
         """Gets the assessment ``Id`` associated with this learning objective.
 
         :return: the assessment ``Id``
@@ -49,7 +49,7 @@ class Objective:
     assessment_id = property(fget=get_assessment_id)
 
     @abc.abstractmethod
-    def get_assessment(self): # pragma: no cover
+    def get_assessment(self):  # pragma: no cover
         """Gets the assessment associated with this learning objective.
 
         :return: the assessment
@@ -65,7 +65,7 @@ class Objective:
     assessment = property(fget=get_assessment)
 
     @abc.abstractmethod
-    def has_knowledge_category(self): # pragma: no cover
+    def has_knowledge_category(self):  # pragma: no cover
         """Tests if this objective has a knowledge dimension.
 
         :return: ``true`` if a knowledge category exists, ``false`` otherwise
@@ -78,7 +78,7 @@ class Objective:
         return  # boolean
 
     @abc.abstractmethod
-    def get_knowledge_category_id(self): # pragma: no cover
+    def get_knowledge_category_id(self):  # pragma: no cover
         """Gets the grade ``Id`` associated with the knowledge dimension.
 
         :return: the grade ``Id``
@@ -93,7 +93,7 @@ class Objective:
     knowledge_category_id = property(fget=get_knowledge_category_id)
 
     @abc.abstractmethod
-    def get_knowledge_category(self): # pragma: no cover
+    def get_knowledge_category(self):  # pragma: no cover
         """Gets the grade associated with the knowledge dimension.
 
         :return: the grade
@@ -109,7 +109,7 @@ class Objective:
     knowledge_category = property(fget=get_knowledge_category)
 
     @abc.abstractmethod
-    def has_cognitive_process(self): # pragma: no cover
+    def has_cognitive_process(self):  # pragma: no cover
         """Tests if this objective has a cognitive process type.
 
         :return: ``true`` if a cognitive process exists, ``false`` otherwise
@@ -122,7 +122,7 @@ class Objective:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cognitive_process_id(self): # pragma: no cover
+    def get_cognitive_process_id(self):  # pragma: no cover
         """Gets the grade ``Id`` associated with the cognitive process.
 
         :return: the grade ``Id``
@@ -137,7 +137,7 @@ class Objective:
     cognitive_process_id = property(fget=get_cognitive_process_id)
 
     @abc.abstractmethod
-    def get_cognitive_process(self): # pragma: no cover
+    def get_cognitive_process(self):  # pragma: no cover
         """Gets the grade associated with the cognitive process.
 
         :return: the grade
@@ -153,7 +153,7 @@ class Objective:
     cognitive_process = property(fget=get_cognitive_process)
 
     @abc.abstractmethod
-    def get_objective_record(self, objective_record_type): # pragma: no cover
+    def get_objective_record(self, objective_record_type):  # pragma: no cover
         """Gets the objective bank record corresponding to the given ``Objective`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -189,7 +189,7 @@ class ObjectiveForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_metadata(self): # pragma: no cover
+    def get_assessment_metadata(self):  # pragma: no cover
         """Gets the metadata for an assessment.
 
         :return: metadata for the assessment
@@ -204,7 +204,7 @@ class ObjectiveForm:
     assessment_metadata = property(fget=get_assessment_metadata)
 
     @abc.abstractmethod
-    def set_assessment(self, assessment_id): # pragma: no cover
+    def set_assessment(self, assessment_id):  # pragma: no cover
         """Sets the assessment.
 
         :param assessment_id: the new assessment
@@ -219,7 +219,7 @@ class ObjectiveForm:
         pass
 
     @abc.abstractmethod
-    def clear_assessment(self): # pragma: no cover
+    def clear_assessment(self):  # pragma: no cover
         """Clears the assessment.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -232,7 +232,7 @@ class ObjectiveForm:
     assessment = property(fset=set_assessment, fdel=clear_assessment)
 
     @abc.abstractmethod
-    def get_knowledge_category_metadata(self): # pragma: no cover
+    def get_knowledge_category_metadata(self):  # pragma: no cover
         """Gets the metadata for a knowledge category.
 
         :return: metadata for the knowledge category
@@ -247,7 +247,7 @@ class ObjectiveForm:
     knowledge_category_metadata = property(fget=get_knowledge_category_metadata)
 
     @abc.abstractmethod
-    def set_knowledge_category(self, grade_id): # pragma: no cover
+    def set_knowledge_category(self, grade_id):  # pragma: no cover
         """Sets the knowledge category.
 
         :param grade_id: the new knowledge category
@@ -262,7 +262,7 @@ class ObjectiveForm:
         pass
 
     @abc.abstractmethod
-    def clear_knowledge_category(self): # pragma: no cover
+    def clear_knowledge_category(self):  # pragma: no cover
         """Clears the knowledge category.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -275,7 +275,7 @@ class ObjectiveForm:
     knowledge_category = property(fset=set_knowledge_category, fdel=clear_knowledge_category)
 
     @abc.abstractmethod
-    def get_cognitive_process_metadata(self): # pragma: no cover
+    def get_cognitive_process_metadata(self):  # pragma: no cover
         """Gets the metadata for a cognitive process.
 
         :return: metadata for the cognitive process
@@ -290,7 +290,7 @@ class ObjectiveForm:
     cognitive_process_metadata = property(fget=get_cognitive_process_metadata)
 
     @abc.abstractmethod
-    def set_cognitive_process(self, grade_id): # pragma: no cover
+    def set_cognitive_process(self, grade_id):  # pragma: no cover
         """Sets the cognitive process.
 
         :param grade_id: the new cognitive process
@@ -305,7 +305,7 @@ class ObjectiveForm:
         pass
 
     @abc.abstractmethod
-    def clear_cognitive_process(self): # pragma: no cover
+    def clear_cognitive_process(self):  # pragma: no cover
         """Clears the cognitive process.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -318,7 +318,7 @@ class ObjectiveForm:
     cognitive_process = property(fset=set_cognitive_process, fdel=clear_cognitive_process)
 
     @abc.abstractmethod
-    def get_objective_form_record(self, objective_record_type): # pragma: no cover
+    def get_objective_form_record(self, objective_record_type):  # pragma: no cover
         """Gets the ``ObjectiveFormRecord`` corresponding to the given objective record ``Type``.
 
         :param objective_record_type: the objective record type
@@ -350,7 +350,7 @@ class ObjectiveList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_objective(self): # pragma: no cover
+    def get_next_objective(self):  # pragma: no cover
         """Gets the next ``Objective`` in this list.
 
         :return: the next ``Objective`` in this list. The ``has_next()`` method should be used to test that a next ``Objective`` is available before calling this method.
@@ -366,7 +366,7 @@ class ObjectiveList:
     next_objective = property(fget=get_next_objective)
 
     @abc.abstractmethod
-    def get_next_objectives(self, n): # pragma: no cover
+    def get_next_objectives(self, n):  # pragma: no cover
         """Gets the next set of ``Objective`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Objective`` elements requested which should be less than or equal to ``available()``
@@ -393,7 +393,7 @@ class ObjectiveNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective(self): # pragma: no cover
+    def get_objective(self):  # pragma: no cover
         """Gets the ``Objective`` at this node.
 
         :return: the objective represented by this node
@@ -408,7 +408,7 @@ class ObjectiveNode:
     objective = property(fget=get_objective)
 
     @abc.abstractmethod
-    def get_parent_objective_nodes(self): # pragma: no cover
+    def get_parent_objective_nodes(self):  # pragma: no cover
         """Gets the parents of this objective.
 
         :return: the parents of the ``id``
@@ -423,7 +423,7 @@ class ObjectiveNode:
     parent_objective_nodes = property(fget=get_parent_objective_nodes)
 
     @abc.abstractmethod
-    def get_child_objective_nodes(self): # pragma: no cover
+    def get_child_objective_nodes(self):  # pragma: no cover
         """Gets the children of this objective.
 
         :return: the children of this objective
@@ -453,7 +453,7 @@ class ObjectiveNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_objective_node(self): # pragma: no cover
+    def get_next_objective_node(self):  # pragma: no cover
         """Gets the next ``ObjectiveNode`` in this list.
 
         :return: the next ``ObjectiveNode`` in this list. The ``has_next()`` method should be used to test that a next ``ObjectiveNode`` is available before calling this method.
@@ -469,7 +469,7 @@ class ObjectiveNodeList:
     next_objective_node = property(fget=get_next_objective_node)
 
     @abc.abstractmethod
-    def get_next_objective_nodes(self, n): # pragma: no cover
+    def get_next_objective_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``ObjectiveNode`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``ObjectiveNode`` elements requested which should be less than or equal to ``available()``
@@ -502,7 +502,7 @@ class Activity:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_id(self): # pragma: no cover
+    def get_objective_id(self):  # pragma: no cover
         """Gets the ``Id`` of the related objective.
 
         :return: the objective ``Id``
@@ -517,7 +517,7 @@ class Activity:
     objective_id = property(fget=get_objective_id)
 
     @abc.abstractmethod
-    def get_objective(self): # pragma: no cover
+    def get_objective(self):  # pragma: no cover
         """Gets the related objective.
 
         :return: the related objective
@@ -532,7 +532,7 @@ class Activity:
     objective = property(fget=get_objective)
 
     @abc.abstractmethod
-    def is_asset_based_activity(self): # pragma: no cover
+    def is_asset_based_activity(self):  # pragma: no cover
         """Tests if this is an asset based activity.
 
         :return: ``true`` if this activity is based on assets, ``false`` otherwise
@@ -545,7 +545,7 @@ class Activity:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_ids(self): # pragma: no cover
+    def get_asset_ids(self):  # pragma: no cover
         """Gets the ``Ids`` of any assets associated with this activity.
 
         :return: list of asset ``Ids``
@@ -560,7 +560,7 @@ class Activity:
     asset_ids = property(fget=get_asset_ids)
 
     @abc.abstractmethod
-    def get_assets(self): # pragma: no cover
+    def get_assets(self):  # pragma: no cover
         """Gets any assets associated with this activity.
 
         :return: list of assets
@@ -576,7 +576,7 @@ class Activity:
     assets = property(fget=get_assets)
 
     @abc.abstractmethod
-    def is_course_based_activity(self): # pragma: no cover
+    def is_course_based_activity(self):  # pragma: no cover
         """Tests if this is a course based activity.
 
         :return: ``true`` if this activity is based on courses, ``false`` otherwise
@@ -589,7 +589,7 @@ class Activity:
         return  # boolean
 
     @abc.abstractmethod
-    def get_course_ids(self): # pragma: no cover
+    def get_course_ids(self):  # pragma: no cover
         """Gets the ``Ids`` of any courses associated with this activity.
 
         :return: list of course ``Ids``
@@ -604,7 +604,7 @@ class Activity:
     course_ids = property(fget=get_course_ids)
 
     @abc.abstractmethod
-    def get_courses(self): # pragma: no cover
+    def get_courses(self):  # pragma: no cover
         """Gets any courses associated with this activity.
 
         :return: list of courses
@@ -620,7 +620,7 @@ class Activity:
     courses = property(fget=get_courses)
 
     @abc.abstractmethod
-    def is_assessment_based_activity(self): # pragma: no cover
+    def is_assessment_based_activity(self):  # pragma: no cover
         """Tests if this is an assessment based activity.
 
         These assessments are for learning the objective and not for
@@ -636,7 +636,7 @@ class Activity:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_ids(self): # pragma: no cover
+    def get_assessment_ids(self):  # pragma: no cover
         """Gets the ``Ids`` of any assessments associated with this activity.
 
         :return: list of assessment ``Ids``
@@ -651,7 +651,7 @@ class Activity:
     assessment_ids = property(fget=get_assessment_ids)
 
     @abc.abstractmethod
-    def get_assessments(self): # pragma: no cover
+    def get_assessments(self):  # pragma: no cover
         """Gets any assessments associated with this activity.
 
         :return: list of assessments
@@ -667,7 +667,7 @@ class Activity:
     assessments = property(fget=get_assessments)
 
     @abc.abstractmethod
-    def get_activity_record(self, activity_record_type): # pragma: no cover
+    def get_activity_record(self, activity_record_type):  # pragma: no cover
         """Gets the activity record corresponding to the given ``Activity`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -703,7 +703,7 @@ class ActivityForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assets_metadata(self): # pragma: no cover
+    def get_assets_metadata(self):  # pragma: no cover
         """Gets the metadata for the assets.
 
         :return: metadata for the assets
@@ -718,7 +718,7 @@ class ActivityForm:
     assets_metadata = property(fget=get_assets_metadata)
 
     @abc.abstractmethod
-    def set_assets(self, asset_ids): # pragma: no cover
+    def set_assets(self, asset_ids):  # pragma: no cover
         """Sets the assets.
 
         :param asset_ids: the asset ``Ids``
@@ -733,7 +733,7 @@ class ActivityForm:
         pass
 
     @abc.abstractmethod
-    def clear_assets(self): # pragma: no cover
+    def clear_assets(self):  # pragma: no cover
         """Clears the assets.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -746,7 +746,7 @@ class ActivityForm:
     assets = property(fset=set_assets, fdel=clear_assets)
 
     @abc.abstractmethod
-    def get_courses_metadata(self): # pragma: no cover
+    def get_courses_metadata(self):  # pragma: no cover
         """Gets the metadata for the courses.
 
         :return: metadata for the courses
@@ -761,7 +761,7 @@ class ActivityForm:
     courses_metadata = property(fget=get_courses_metadata)
 
     @abc.abstractmethod
-    def set_courses(self, course_ids): # pragma: no cover
+    def set_courses(self, course_ids):  # pragma: no cover
         """Sets the courses.
 
         :param course_ids: the course ``Ids``
@@ -776,7 +776,7 @@ class ActivityForm:
         pass
 
     @abc.abstractmethod
-    def clear_courses(self): # pragma: no cover
+    def clear_courses(self):  # pragma: no cover
         """Clears the courses.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -789,7 +789,7 @@ class ActivityForm:
     courses = property(fset=set_courses, fdel=clear_courses)
 
     @abc.abstractmethod
-    def get_assessments_metadata(self): # pragma: no cover
+    def get_assessments_metadata(self):  # pragma: no cover
         """Gets the metadata for the assessments.
 
         :return: metadata for the assessments
@@ -804,7 +804,7 @@ class ActivityForm:
     assessments_metadata = property(fget=get_assessments_metadata)
 
     @abc.abstractmethod
-    def set_assessments(self, assessment_ids): # pragma: no cover
+    def set_assessments(self, assessment_ids):  # pragma: no cover
         """Sets the assessments.
 
         :param assessment_ids: the assessment ``Ids``
@@ -819,7 +819,7 @@ class ActivityForm:
         pass
 
     @abc.abstractmethod
-    def clear_assessments(self): # pragma: no cover
+    def clear_assessments(self):  # pragma: no cover
         """Clears the assessments.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -832,7 +832,7 @@ class ActivityForm:
     assessments = property(fset=set_assessments, fdel=clear_assessments)
 
     @abc.abstractmethod
-    def get_activity_form_record(self, activity_record_type): # pragma: no cover
+    def get_activity_form_record(self, activity_record_type):  # pragma: no cover
         """Gets the ``ActivityFormRecord`` corresponding to the given activity record ``Type``.
 
         :param activity_record_type: the activity record type
@@ -864,7 +864,7 @@ class ActivityList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_activity(self): # pragma: no cover
+    def get_next_activity(self):  # pragma: no cover
         """Gets the next ``Activity`` in this list.
 
         :return: the next ``Activity`` in this list. The ``has_next()`` method should be used to test that a next ``Activity`` is available before calling this method.
@@ -880,7 +880,7 @@ class ActivityList:
     next_activity = property(fget=get_next_activity)
 
     @abc.abstractmethod
-    def get_next_activities(self, n): # pragma: no cover
+    def get_next_activities(self, n):  # pragma: no cover
         """Gets the next set of ``Activity`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Activity`` elements requested which should be less than or equal to ``available()``
@@ -901,7 +901,7 @@ class Proficiency:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_id(self): # pragma: no cover
+    def get_resource_id(self):  # pragma: no cover
         """Gets the resource ``Id`` to whom this proficiency applies.
 
         :return: the resource ``Id``
@@ -916,7 +916,7 @@ class Proficiency:
     resource_id = property(fget=get_resource_id)
 
     @abc.abstractmethod
-    def get_resource(self): # pragma: no cover
+    def get_resource(self):  # pragma: no cover
         """Gets the resource to whom this proficiency applies.
 
         :return: the resource
@@ -931,7 +931,7 @@ class Proficiency:
     resource = property(fget=get_resource)
 
     @abc.abstractmethod
-    def get_objective_id(self): # pragma: no cover
+    def get_objective_id(self):  # pragma: no cover
         """Gets the objective ``Id`` to whom this proficiency applies.
 
         :return: the objective ``Id``
@@ -946,7 +946,7 @@ class Proficiency:
     objective_id = property(fget=get_objective_id)
 
     @abc.abstractmethod
-    def get_objective(self): # pragma: no cover
+    def get_objective(self):  # pragma: no cover
         """Gets the objective to whom this proficiency applies.
 
         :return: the objective
@@ -961,7 +961,7 @@ class Proficiency:
     objective = property(fget=get_objective)
 
     @abc.abstractmethod
-    def get_completion(self): # pragma: no cover
+    def get_completion(self):  # pragma: no cover
         """Gets the completion of this objective as a percentage 0-100.
 
         :return: the completion
@@ -976,7 +976,7 @@ class Proficiency:
     completion = property(fget=get_completion)
 
     @abc.abstractmethod
-    def has_level(self): # pragma: no cover
+    def has_level(self):  # pragma: no cover
         """Tests if a proficiency level is available.
 
         :return: ``true`` if a level is available, ``false`` otherwise
@@ -989,7 +989,7 @@ class Proficiency:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_id(self): # pragma: no cover
+    def get_level_id(self):  # pragma: no cover
         """Gets the proficiency level expressed as a grade.
 
         :return: the grade ``Id``
@@ -1004,7 +1004,7 @@ class Proficiency:
     level_id = property(fget=get_level_id)
 
     @abc.abstractmethod
-    def get_level(self): # pragma: no cover
+    def get_level(self):  # pragma: no cover
         """Gets the proficiency level expressed as a grade.
 
         :return: the grade
@@ -1020,7 +1020,7 @@ class Proficiency:
     level = property(fget=get_level)
 
     @abc.abstractmethod
-    def get_proficiency_record(self, proficiency_record_type): # pragma: no cover
+    def get_proficiency_record(self, proficiency_record_type):  # pragma: no cover
         """Gets the proficiency record corresponding to the given ``Proficiency`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1056,7 +1056,7 @@ class ProficiencyForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_completion_metadata(self): # pragma: no cover
+    def get_completion_metadata(self):  # pragma: no cover
         """Gets the metadata for completion percentage.
 
         :return: metadata for the completion percentage
@@ -1071,7 +1071,7 @@ class ProficiencyForm:
     completion_metadata = property(fget=get_completion_metadata)
 
     @abc.abstractmethod
-    def set_completion(self, completion): # pragma: no cover
+    def set_completion(self, completion):  # pragma: no cover
         """Sets the completion percentage.
 
         :param completion: the completion percentage
@@ -1085,7 +1085,7 @@ class ProficiencyForm:
         pass
 
     @abc.abstractmethod
-    def clear_completion(self): # pragma: no cover
+    def clear_completion(self):  # pragma: no cover
         """Clears the completion.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1098,7 +1098,7 @@ class ProficiencyForm:
     completion = property(fset=set_completion, fdel=clear_completion)
 
     @abc.abstractmethod
-    def get_level_metadata(self): # pragma: no cover
+    def get_level_metadata(self):  # pragma: no cover
         """Gets the metadata for a level.
 
         :return: metadata for the grade level
@@ -1113,7 +1113,7 @@ class ProficiencyForm:
     level_metadata = property(fget=get_level_metadata)
 
     @abc.abstractmethod
-    def set_level(self, grade): # pragma: no cover
+    def set_level(self, grade):  # pragma: no cover
         """Sets the level expressed as a ``Grade``.
 
         :param grade: the level
@@ -1128,7 +1128,7 @@ class ProficiencyForm:
         pass
 
     @abc.abstractmethod
-    def clear_level(self): # pragma: no cover
+    def clear_level(self):  # pragma: no cover
         """Clears the level.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1141,7 +1141,7 @@ class ProficiencyForm:
     level = property(fset=set_level, fdel=clear_level)
 
     @abc.abstractmethod
-    def get_proficiency_form_record(self, proficiency_record_type): # pragma: no cover
+    def get_proficiency_form_record(self, proficiency_record_type):  # pragma: no cover
         """Gets the ``ProficiencyFormRecord`` corresponding to the given proficiency record ``Type``.
 
         :param proficiency_record_type: a proficiency record type
@@ -1173,7 +1173,7 @@ class ProficiencyList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_proficiency(self): # pragma: no cover
+    def get_next_proficiency(self):  # pragma: no cover
         """Gets the next ``Proficiency`` in this list.
 
         :return: the next ``Proficiency`` in this list. The ``has_next()`` method should be used to test that a next ``Proficiency`` is available before calling this method.
@@ -1189,7 +1189,7 @@ class ProficiencyList:
     next_proficiency = property(fget=get_next_proficiency)
 
     @abc.abstractmethod
-    def get_next_proficiencies(self, n): # pragma: no cover
+    def get_next_proficiencies(self, n):  # pragma: no cover
         """Gets the next set of ``Proficiency`` elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -1213,7 +1213,7 @@ class ObjectiveBank:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_record(self, objective_bank_record_type): # pragma: no cover
+    def get_objective_bank_record(self, objective_bank_record_type):  # pragma: no cover
         """Gets the objective bank record corresponding to the given ``ObjectiveBank`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1249,7 +1249,7 @@ class ObjectiveBankForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_form_record(self, objective_bank_record_type): # pragma: no cover
+    def get_objective_bank_form_record(self, objective_bank_record_type):  # pragma: no cover
         """Gets the ``ObjectiveBankFormRecord`` corresponding to the given objective bank record ``Type``.
 
         :param objective_bank_record_type: an objective bank record type
@@ -1281,7 +1281,7 @@ class ObjectiveBankList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_objective_bank(self): # pragma: no cover
+    def get_next_objective_bank(self):  # pragma: no cover
         """Gets the next ``ObjectiveBank`` in this list.
 
         :return: the next ``ObjectiveBank`` in this list. The ``has_next()`` method should be used to test that a next ``ObjectiveBank`` is available before calling this method.
@@ -1297,7 +1297,7 @@ class ObjectiveBankList:
     next_objective_bank = property(fget=get_next_objective_bank)
 
     @abc.abstractmethod
-    def get_next_objective_banks(self, n): # pragma: no cover
+    def get_next_objective_banks(self, n):  # pragma: no cover
         """Gets the next set of ``ObjectiveBank`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``ObjectiveBank`` elements requested which must be less than or equal to ``available()``
@@ -1324,7 +1324,7 @@ class ObjectiveBankNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank(self): # pragma: no cover
+    def get_objective_bank(self):  # pragma: no cover
         """Gets the ``ObjectiveBank`` at this node.
 
         :return: the objective bank represented by this node
@@ -1339,7 +1339,7 @@ class ObjectiveBankNode:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def get_parent_objective_bank_nodes(self): # pragma: no cover
+    def get_parent_objective_bank_nodes(self):  # pragma: no cover
         """Gets the parents of this objective bank.
 
         :return: the parents of the ``id``
@@ -1354,7 +1354,7 @@ class ObjectiveBankNode:
     parent_objective_bank_nodes = property(fget=get_parent_objective_bank_nodes)
 
     @abc.abstractmethod
-    def get_child_objective_bank_nodes(self): # pragma: no cover
+    def get_child_objective_bank_nodes(self):  # pragma: no cover
         """Gets the children of this objective bank.
 
         :return: the children of this objective bank
@@ -1384,7 +1384,7 @@ class ObjectiveBankNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_objective_bank_node(self): # pragma: no cover
+    def get_next_objective_bank_node(self):  # pragma: no cover
         """Gets the next ``ObjectiveBankNode`` in this list.
 
         :return: the next ``ObjectiveBankNode`` in this list. The ``has_next()`` method should be used to test that a next ``ObjectiveBankNode`` is available before calling this method.
@@ -1400,7 +1400,7 @@ class ObjectiveBankNodeList:
     next_objective_bank_node = property(fget=get_next_objective_bank_node)
 
     @abc.abstractmethod
-    def get_next_objective_bank_nodes(self, n): # pragma: no cover
+    def get_next_objective_bank_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``ObjectiveBankNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``ObjectiveBankNode`` elements requested which must be less than or equal to ``available()``

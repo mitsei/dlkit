@@ -25,7 +25,7 @@ class ProxySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_proxy_condition(self): # pragma: no cover
+    def get_proxy_condition(self):  # pragma: no cover
         """Gets a proxy condition for acquiring a proxy.
 
         A new proxy condition should be acquired for each proxy request.
@@ -42,7 +42,7 @@ class ProxySession:
     proxy_condition = property(fget=get_proxy_condition)
 
     @abc.abstractmethod
-    def get_proxy(self, input_): # pragma: no cover
+    def get_proxy(self, input_):  # pragma: no cover
         """Gets a proxy.
 
         :param input: a proxy condition

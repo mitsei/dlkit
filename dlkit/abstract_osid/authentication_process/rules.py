@@ -21,7 +21,7 @@ class AuthenticationInput:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authentication_input_record(self, authentication_input_record_type): # pragma: no cover
+    def get_authentication_input_record(self, authentication_input_record_type):  # pragma: no cover
         """Gets the record corresponding to the given ``AuthenticationInput`` record ``Type``.
 
         This method must be used to retrieve an object implementing the

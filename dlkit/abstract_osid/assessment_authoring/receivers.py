@@ -21,7 +21,7 @@ class AssessmentPartReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_assessment_parts(self, notification_id, assessment_part_ids): # pragma: no cover
+    def new_assessment_parts(self, notification_id, assessment_part_ids):  # pragma: no cover
         """The callback for notifications of new assessment parts.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class AssessmentPartReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_assessment_parts(self, notification_id, assessment_part_ids): # pragma: no cover
+    def changed_assessment_parts(self, notification_id, assessment_part_ids):  # pragma: no cover
         """The callback for notification of updated assessment parts.
 
         :param notification_id: the notification Id
@@ -51,7 +51,7 @@ class AssessmentPartReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_assessment_parts(self, notification_id, assessment_part_ids): # pragma: no cover
+    def deleted_assessment_parts(self, notification_id, assessment_part_ids):  # pragma: no cover
         """The callback for notification of deleted assessment parts.
 
         :param notification_id: the notification Id
@@ -71,7 +71,7 @@ class SequenceRuleReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_sequence_rules(self, notification_id, sequence_rule_ids): # pragma: no cover
+    def new_sequence_rules(self, notification_id, sequence_rule_ids):  # pragma: no cover
         """The callback for notifications of new sequence rules.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class SequenceRuleReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_sequence_rules(self, notification_id, sequence_rule_ids): # pragma: no cover
+    def changed_sequence_rules(self, notification_id, sequence_rule_ids):  # pragma: no cover
         """The callback for notification of updated sequence rules.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class SequenceRuleReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_sequence_rules(self, notification_id, sequence_rule_ids): # pragma: no cover
+    def deleted_sequence_rules(self, notification_id, sequence_rule_ids):  # pragma: no cover
         """The callback for notification of deleted sequence rules.
 
         :param notification_id: the notification ``Id``
@@ -121,7 +121,7 @@ class SequenceRuleEnablerReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids): # pragma: no cover
+    def new_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids):  # pragma: no cover
         """The callback for notifications of new sequence rule enablers.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class SequenceRuleEnablerReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids): # pragma: no cover
+    def changed_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids):  # pragma: no cover
         """The callback for notification of updated sequence rule enablers.
 
         :param notification_id: the notification ``Id``
@@ -151,7 +151,7 @@ class SequenceRuleEnablerReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids): # pragma: no cover
+    def deleted_sequence_rule_enablers(self, notification_id, sequence_rule_enabler_ids):  # pragma: no cover
         """The callback for notification of deleted sequence rule enablers.
 
         :param notification_id: the notification ``Id``

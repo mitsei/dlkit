@@ -21,7 +21,7 @@ class AssetSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_title(self, style): # pragma: no cover
+    def order_by_title(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by asset title.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_public_domain(self, style): # pragma: no cover
+    def order_by_public_domain(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by published domain.
 
         :param style: search order style
@@ -47,7 +47,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_copyright(self, style): # pragma: no cover
+    def order_by_copyright(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by copyright.
 
         :param style: search order style
@@ -60,7 +60,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_copyright_registration(self, style): # pragma: no cover
+    def order_by_copyright_registration(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by copyright registration.
 
         :param style: search order style
@@ -73,7 +73,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_distribute_verbatim(self, style): # pragma: no cover
+    def order_by_distribute_verbatim(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by the ability to distribute copies.
 
         :param style: search order style
@@ -86,7 +86,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_distribute_alterations(self, style): # pragma: no cover
+    def order_by_distribute_alterations(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by the ability to distribute alterations.
 
         :param style: search order style
@@ -99,7 +99,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_distribute_compositions(self, style): # pragma: no cover
+    def order_by_distribute_compositions(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by the ability to distribute compositions.
 
         :param style: search order style
@@ -112,7 +112,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_source(self, style): # pragma: no cover
+    def order_by_source(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by asset source.
 
         :param style: search order style
@@ -125,7 +125,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_source_search_order(self): # pragma: no cover
+    def supports_source_search_order(self):  # pragma: no cover
         """Tests if a source order interface is available.
 
         :return: ``true`` if a source search order is available, ``false`` otherwise
@@ -138,7 +138,7 @@ class AssetSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_source_search_order(self): # pragma: no cover
+    def get_source_search_order(self):  # pragma: no cover
         """Gets the source order.
 
         :return: the resource search order for the source
@@ -154,7 +154,7 @@ class AssetSearchOrder:
     source_search_order = property(fget=get_source_search_order)
 
     @abc.abstractmethod
-    def order_by_created_date(self, style): # pragma: no cover
+    def order_by_created_date(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by created date.
 
         :param style: search order style
@@ -167,7 +167,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_published(self, style): # pragma: no cover
+    def order_by_published(self, style):  # pragma: no cover
         """Specifies a preference for grouping the result set by published status.
 
         :param style: search order style
@@ -180,7 +180,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_published_date(self, style): # pragma: no cover
+    def order_by_published_date(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by published date.
 
         :param style: search order style
@@ -193,7 +193,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_principal_credit_string(self, style): # pragma: no cover
+    def order_by_principal_credit_string(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the principal credit string.
 
         :param style: search order style
@@ -206,7 +206,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_temporal_coverage(self, style): # pragma: no cover
+    def order_by_temporal_coverage(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by temporal coverage.
 
         :param style: search order style
@@ -219,7 +219,7 @@ class AssetSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_asset_search_order_record(self, asset_record_type): # pragma: no cover
+    def get_asset_search_order_record(self, asset_record_type):  # pragma: no cover
         """Gets the asset search order record corresponding to the given asset record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -243,7 +243,7 @@ class CompositionSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_composition_search_order_record(self, composition_record_type): # pragma: no cover
+    def get_composition_search_order_record(self, composition_record_type):  # pragma: no cover
         """Gets the composition search order record corresponding to the given repository record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -268,7 +268,7 @@ class RepositorySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_repository_search_order_record(self, repository_record_type): # pragma: no cover
+    def get_repository_search_order_record(self, repository_record_type):  # pragma: no cover
         """Gets the repository search order record corresponding to the given repository record ``Type``.
 
         Multiple retrievals return the same underlying object.

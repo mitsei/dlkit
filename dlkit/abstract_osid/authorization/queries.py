@@ -21,7 +21,7 @@ class AuthorizationQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_explicit_authorizations(self, match): # pragma: no cover
+    def match_explicit_authorizations(self, match):  # pragma: no cover
         """Matches explciit authorizations.
 
         :param match: ``true`` to match explicit authorizations, ``false`` to match implciit authorizations
@@ -34,7 +34,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_explicit_authorizations_terms(self): # pragma: no cover
+    def clear_explicit_authorizations_terms(self):  # pragma: no cover
         """Clears the explicit authorization query terms.
 
 
@@ -47,7 +47,7 @@ class AuthorizationQuery:
     explicit_authorizations_terms = property(fdel=clear_explicit_authorizations_terms)
 
     @abc.abstractmethod
-    def match_related_authorization_id(self, id_, match): # pragma: no cover
+    def match_related_authorization_id(self, id_, match):  # pragma: no cover
         """Adds an ``Id`` to match explicit or implicitly related authorizations depending on ``matchExplicitAuthorizations()``.
 
         Multiple ``Ids`` can be added to perform a boolean ``OR`` among
@@ -65,7 +65,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_related_authorization_id_terms(self): # pragma: no cover
+    def clear_related_authorization_id_terms(self):  # pragma: no cover
         """Clears the related authorization ``Id`` query terms.
 
 
@@ -78,7 +78,7 @@ class AuthorizationQuery:
     related_authorization_id_terms = property(fdel=clear_related_authorization_id_terms)
 
     @abc.abstractmethod
-    def supports_related_authorization_query(self): # pragma: no cover
+    def supports_related_authorization_query(self):  # pragma: no cover
         """Tests if an ``AuthorizationQuery`` is available.
 
         :return: ``true`` if an authorization query is available, ``false`` otherwise
@@ -91,7 +91,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_related_authorization_query(self, match): # pragma: no cover
+    def get_related_authorization_query(self, match):  # pragma: no cover
         """Gets the authorization query.
 
         :param match: ``true`` if a positive match, ``false`` for a negative match
@@ -107,7 +107,7 @@ class AuthorizationQuery:
         return  # osid.authorization.AuthorizationQuery
 
     @abc.abstractmethod
-    def clear_related_authorization_terms(self): # pragma: no cover
+    def clear_related_authorization_terms(self):  # pragma: no cover
         """Clears the related authorization query terms.
 
 
@@ -120,7 +120,7 @@ class AuthorizationQuery:
     related_authorization_terms = property(fdel=clear_related_authorization_terms)
 
     @abc.abstractmethod
-    def match_resource_id(self, resource_id, match): # pragma: no cover
+    def match_resource_id(self, resource_id, match):  # pragma: no cover
         """Matches the resource identified by the given ``Id``.
 
         :param resource_id: the ``Id`` of the ``Resource``
@@ -135,7 +135,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_id_terms(self): # pragma: no cover
+    def clear_resource_id_terms(self):  # pragma: no cover
         """Clears the resource ``Id`` query terms.
 
 
@@ -148,7 +148,7 @@ class AuthorizationQuery:
     resource_id_terms = property(fdel=clear_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_query(self): # pragma: no cover
+    def supports_resource_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -161,7 +161,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self, match): # pragma: no cover
+    def get_resource_query(self, match):  # pragma: no cover
         """Gets the resource query.
 
         :param match: ``true`` if a positive match, ``false`` for a negative match
@@ -177,7 +177,7 @@ class AuthorizationQuery:
         return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
-    def match_any_resource(self, match): # pragma: no cover
+    def match_any_resource(self, match):  # pragma: no cover
         """Matches authorizations that have any resource.
 
         :param match: ``true`` to match authorizations with any resource, ``false`` to match authorizations with no resource
@@ -190,7 +190,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_terms(self): # pragma: no cover
+    def clear_resource_terms(self):  # pragma: no cover
         """Clears the resource query terms.
 
 
@@ -203,7 +203,7 @@ class AuthorizationQuery:
     resource_terms = property(fdel=clear_resource_terms)
 
     @abc.abstractmethod
-    def match_trust_id(self, trust_id, match): # pragma: no cover
+    def match_trust_id(self, trust_id, match):  # pragma: no cover
         """Matches the trust identified by the given ``Id``.
 
         :param trust_id: the ``Id`` of the ``Trust``
@@ -218,7 +218,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_trust_id(self, match): # pragma: no cover
+    def match_any_trust_id(self, match):  # pragma: no cover
         """Matches authorizations that have any trust defined.
 
         :param match: ``true`` to match authorizations with any trust, ``false`` to match authorizations with no trusts
@@ -231,7 +231,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_trust_id_terms(self): # pragma: no cover
+    def clear_trust_id_terms(self):  # pragma: no cover
         """Clears the trust ``Id`` query terms.
 
 
@@ -244,7 +244,7 @@ class AuthorizationQuery:
     trust_id_terms = property(fdel=clear_trust_id_terms)
 
     @abc.abstractmethod
-    def match_agent_id(self, agent_id, match): # pragma: no cover
+    def match_agent_id(self, agent_id, match):  # pragma: no cover
         """Matches the agent identified by the given ``Id``.
 
         :param agent_id: the Id of the ``Agent``
@@ -259,7 +259,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_id_terms(self): # pragma: no cover
+    def clear_agent_id_terms(self):  # pragma: no cover
         """Clears the agent ``Id`` query terms.
 
 
@@ -272,7 +272,7 @@ class AuthorizationQuery:
     agent_id_terms = property(fdel=clear_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_agent_query(self): # pragma: no cover
+    def supports_agent_query(self):  # pragma: no cover
         """Tests if an ``AgentQuery`` is available.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -285,7 +285,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_query(self, match): # pragma: no cover
+    def get_agent_query(self, match):  # pragma: no cover
         """Gets the agent query.
 
         :param match: ``true`` if a positive match, ``false`` for a negative match
@@ -301,7 +301,7 @@ class AuthorizationQuery:
         return  # osid.authentication.AgentQuery
 
     @abc.abstractmethod
-    def match_any_agent(self, match): # pragma: no cover
+    def match_any_agent(self, match):  # pragma: no cover
         """Matches authorizations that have any agent.
 
         :param match: ``true`` to match authorizations with any agent, ``false`` to match authorizations with no agent
@@ -314,7 +314,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_terms(self): # pragma: no cover
+    def clear_agent_terms(self):  # pragma: no cover
         """Clears the agent query terms.
 
 
@@ -327,7 +327,7 @@ class AuthorizationQuery:
     agent_terms = property(fdel=clear_agent_terms)
 
     @abc.abstractmethod
-    def match_function_id(self, function_id, match): # pragma: no cover
+    def match_function_id(self, function_id, match):  # pragma: no cover
         """Matches the function identified by the given ``Id``.
 
         :param function_id: the Id of the ``Function``
@@ -342,7 +342,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_function_id_terms(self): # pragma: no cover
+    def clear_function_id_terms(self):  # pragma: no cover
         """Clears the function ``Id`` query terms.
 
 
@@ -355,7 +355,7 @@ class AuthorizationQuery:
     function_id_terms = property(fdel=clear_function_id_terms)
 
     @abc.abstractmethod
-    def supports_function_query(self): # pragma: no cover
+    def supports_function_query(self):  # pragma: no cover
         """Tests if a ``FunctionQuery`` is available.
 
         :return: ``true`` if a function query is available, ``false`` otherwise
@@ -368,7 +368,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_query(self, match): # pragma: no cover
+    def get_function_query(self, match):  # pragma: no cover
         """Gets the function query.
 
         :param match: ``true`` if a positive match, ``false`` for a negative match
@@ -384,7 +384,7 @@ class AuthorizationQuery:
         return  # osid.authorization.FunctionQuery
 
     @abc.abstractmethod
-    def clear_function_terms(self): # pragma: no cover
+    def clear_function_terms(self):  # pragma: no cover
         """Clears the function query terms.
 
 
@@ -397,7 +397,7 @@ class AuthorizationQuery:
     function_terms = property(fdel=clear_function_terms)
 
     @abc.abstractmethod
-    def match_qualifier_id(self, qualifier_id, match): # pragma: no cover
+    def match_qualifier_id(self, qualifier_id, match):  # pragma: no cover
         """Matches the qualifier identified by the given ``Id``.
 
         :param qualifier_id: the Id of the ``Qualifier``
@@ -412,7 +412,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_id_terms(self): # pragma: no cover
+    def clear_qualifier_id_terms(self):  # pragma: no cover
         """Clears the qualifier ``Id`` query terms.
 
 
@@ -425,7 +425,7 @@ class AuthorizationQuery:
     qualifier_id_terms = property(fdel=clear_qualifier_id_terms)
 
     @abc.abstractmethod
-    def supports_qualifier_query(self): # pragma: no cover
+    def supports_qualifier_query(self):  # pragma: no cover
         """Tests if a ``QualifierQuery`` is available.
 
         :return: ``true`` if a qualifier query is available, ``false`` otherwise
@@ -438,7 +438,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_query(self, match): # pragma: no cover
+    def get_qualifier_query(self, match):  # pragma: no cover
         """Gets the qualiier query.
 
         :param match: ``true`` if a positive match, ``false`` for a negative match
@@ -454,7 +454,7 @@ class AuthorizationQuery:
         return  # osid.authorization.QualifierQuery
 
     @abc.abstractmethod
-    def clear_qualifier_terms(self): # pragma: no cover
+    def clear_qualifier_terms(self):  # pragma: no cover
         """Clears the qualifier query terms.
 
 
@@ -467,7 +467,7 @@ class AuthorizationQuery:
     qualifier_terms = property(fdel=clear_qualifier_terms)
 
     @abc.abstractmethod
-    def match_vault_id(self, vault_id, match): # pragma: no cover
+    def match_vault_id(self, vault_id, match):  # pragma: no cover
         """Sets the vault ``Id`` for this query.
 
         :param vault_id: a vault ``Id``
@@ -482,7 +482,7 @@ class AuthorizationQuery:
         pass
 
     @abc.abstractmethod
-    def clear_vault_id_terms(self): # pragma: no cover
+    def clear_vault_id_terms(self):  # pragma: no cover
         """Clears the vault ``Id`` query terms.
 
 
@@ -495,7 +495,7 @@ class AuthorizationQuery:
     vault_id_terms = property(fdel=clear_vault_id_terms)
 
     @abc.abstractmethod
-    def supports_vault_query(self): # pragma: no cover
+    def supports_vault_query(self):  # pragma: no cover
         """Tests if a ``VaultQuery`` is available.
 
         :return: ``true`` if a vault query is available, ``false`` otherwise
@@ -508,7 +508,7 @@ class AuthorizationQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_query(self): # pragma: no cover
+    def get_vault_query(self):  # pragma: no cover
         """Gets the query for a vault.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -526,7 +526,7 @@ class AuthorizationQuery:
     vault_query = property(fget=get_vault_query)
 
     @abc.abstractmethod
-    def clear_vault_terms(self): # pragma: no cover
+    def clear_vault_terms(self):  # pragma: no cover
         """Clears the vault query terms.
 
 
@@ -539,7 +539,7 @@ class AuthorizationQuery:
     vault_terms = property(fdel=clear_vault_terms)
 
     @abc.abstractmethod
-    def get_authorization_query_record(self, authorization_record_type): # pragma: no cover
+    def get_authorization_query_record(self, authorization_record_type):  # pragma: no cover
         """Gets the authorization query record corresponding to the given ``Authorization`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -568,7 +568,7 @@ class FunctionQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match): # pragma: no cover
+    def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match):  # pragma: no cover
         """Sets the qualifier hierarchy ``Id`` for this query.
 
         :param qualifier_hierarchy_id: a hierarchy ``Id``
@@ -583,7 +583,7 @@ class FunctionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_hierarchy_id_terms(self): # pragma: no cover
+    def clear_qualifier_hierarchy_id_terms(self):  # pragma: no cover
         """Clears the qualifier hierarchy ``Id`` query terms.
 
 
@@ -596,7 +596,7 @@ class FunctionQuery:
     qualifier_hierarchy_id_terms = property(fdel=clear_qualifier_hierarchy_id_terms)
 
     @abc.abstractmethod
-    def supports_qualifier_hierarchy_query(self): # pragma: no cover
+    def supports_qualifier_hierarchy_query(self):  # pragma: no cover
         """Tests if a ``HierarchyQuery`` is available.
 
         :return: ``true`` if a qualifier hierarchy query is available, ``false`` otherwise
@@ -609,7 +609,7 @@ class FunctionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_query(self): # pragma: no cover
+    def get_qualifier_hierarchy_query(self):  # pragma: no cover
         """Gets the query for a qualifier hierarchy.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -627,7 +627,7 @@ class FunctionQuery:
     qualifier_hierarchy_query = property(fget=get_qualifier_hierarchy_query)
 
     @abc.abstractmethod
-    def match_any_qualifier_hierarchy(self, match): # pragma: no cover
+    def match_any_qualifier_hierarchy(self, match):  # pragma: no cover
         """Matches functions that have any qualifier hierarchy.
 
         :param match: ``true`` to match functions with any qualifier hierarchy, ``false`` to match functions with no qualifier hierarchy
@@ -640,7 +640,7 @@ class FunctionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_hierarchy_terms(self): # pragma: no cover
+    def clear_qualifier_hierarchy_terms(self):  # pragma: no cover
         """Clears the qualifier hierarchy query terms.
 
 
@@ -653,7 +653,7 @@ class FunctionQuery:
     qualifier_hierarchy_terms = property(fdel=clear_qualifier_hierarchy_terms)
 
     @abc.abstractmethod
-    def match_authorization_id(self, authorization_id, match): # pragma: no cover
+    def match_authorization_id(self, authorization_id, match):  # pragma: no cover
         """Sets the authorization ``Id`` for this query.
 
         :param authorization_id: an authorization ``Id``
@@ -668,7 +668,7 @@ class FunctionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_id_terms(self): # pragma: no cover
+    def clear_authorization_id_terms(self):  # pragma: no cover
         """Clears the authorization ``Id`` query terms.
 
 
@@ -681,7 +681,7 @@ class FunctionQuery:
     authorization_id_terms = property(fdel=clear_authorization_id_terms)
 
     @abc.abstractmethod
-    def supports_authorization_query(self): # pragma: no cover
+    def supports_authorization_query(self):  # pragma: no cover
         """Tests if an ``AuthorizationQuery`` is available.
 
         :return: ``true`` if an authorization query is available, ``false`` otherwise
@@ -694,7 +694,7 @@ class FunctionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_query(self): # pragma: no cover
+    def get_authorization_query(self):  # pragma: no cover
         """Gets the query for an authorization.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -712,7 +712,7 @@ class FunctionQuery:
     authorization_query = property(fget=get_authorization_query)
 
     @abc.abstractmethod
-    def match_any_authorization(self, match): # pragma: no cover
+    def match_any_authorization(self, match):  # pragma: no cover
         """Matches functions that have any authorization mapping.
 
         :param match: ``true`` to match functions with any authorization mapping, ``false`` to match functions with no authorization mapping
@@ -725,7 +725,7 @@ class FunctionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_terms(self): # pragma: no cover
+    def clear_authorization_terms(self):  # pragma: no cover
         """Clears the authorization query terms.
 
 
@@ -738,7 +738,7 @@ class FunctionQuery:
     authorization_terms = property(fdel=clear_authorization_terms)
 
     @abc.abstractmethod
-    def match_vault_id(self, vault_id, match): # pragma: no cover
+    def match_vault_id(self, vault_id, match):  # pragma: no cover
         """Sets the vault ``Id`` for this query.
 
         :param vault_id: a vault ``Id``
@@ -753,7 +753,7 @@ class FunctionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_vault_id_terms(self): # pragma: no cover
+    def clear_vault_id_terms(self):  # pragma: no cover
         """Clears the vault ``Id`` query terms.
 
 
@@ -766,7 +766,7 @@ class FunctionQuery:
     vault_id_terms = property(fdel=clear_vault_id_terms)
 
     @abc.abstractmethod
-    def supports_vault_query(self): # pragma: no cover
+    def supports_vault_query(self):  # pragma: no cover
         """Tests if a ``VaultQuery`` is available.
 
         :return: ``true`` if a vault query is available, ``false`` otherwise
@@ -779,7 +779,7 @@ class FunctionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_query(self): # pragma: no cover
+    def get_vault_query(self):  # pragma: no cover
         """Gets the query for a vault.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -797,7 +797,7 @@ class FunctionQuery:
     vault_query = property(fget=get_vault_query)
 
     @abc.abstractmethod
-    def clear_vault_terms(self): # pragma: no cover
+    def clear_vault_terms(self):  # pragma: no cover
         """Clears the vault query terms.
 
 
@@ -810,7 +810,7 @@ class FunctionQuery:
     vault_terms = property(fdel=clear_vault_terms)
 
     @abc.abstractmethod
-    def get_function_query_record(self, function_record_type): # pragma: no cover
+    def get_function_query_record(self, function_record_type):  # pragma: no cover
         """Gets the function query record corresponding to the given ``Function`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -839,7 +839,7 @@ class QualifierQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match): # pragma: no cover
+    def match_qualifier_hierarchy_id(self, qualifier_hierarchy_id, match):  # pragma: no cover
         """Sets the qualifier hierarchy ``Id`` for this query.
 
         :param qualifier_hierarchy_id: a hierarchy ``Id``
@@ -854,7 +854,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_hierarchy_id_terms(self): # pragma: no cover
+    def clear_qualifier_hierarchy_id_terms(self):  # pragma: no cover
         """Clears the qualifier hierarchy ``Id`` query terms.
 
 
@@ -867,7 +867,7 @@ class QualifierQuery:
     qualifier_hierarchy_id_terms = property(fdel=clear_qualifier_hierarchy_id_terms)
 
     @abc.abstractmethod
-    def supports_qualifier_hierarchy_query(self): # pragma: no cover
+    def supports_qualifier_hierarchy_query(self):  # pragma: no cover
         """Tests if a ``HierarchyQuery`` is available.
 
         :return: ``true`` if a qualifier hierarchy query is available, ``false`` otherwise
@@ -880,7 +880,7 @@ class QualifierQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_query(self): # pragma: no cover
+    def get_qualifier_hierarchy_query(self):  # pragma: no cover
         """Gets the query for a qualifier hierarchy.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -898,7 +898,7 @@ class QualifierQuery:
     qualifier_hierarchy_query = property(fget=get_qualifier_hierarchy_query)
 
     @abc.abstractmethod
-    def clear_qualifier_hierarchy_terms(self): # pragma: no cover
+    def clear_qualifier_hierarchy_terms(self):  # pragma: no cover
         """Clears the qualifier hierarchy query terms.
 
 
@@ -911,7 +911,7 @@ class QualifierQuery:
     qualifier_hierarchy_terms = property(fdel=clear_qualifier_hierarchy_terms)
 
     @abc.abstractmethod
-    def match_authorization_id(self, authorization_id, match): # pragma: no cover
+    def match_authorization_id(self, authorization_id, match):  # pragma: no cover
         """Sets the authorization ``Id`` for this query.
 
         :param authorization_id: an authorization ``Id``
@@ -926,7 +926,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_id_terms(self): # pragma: no cover
+    def clear_authorization_id_terms(self):  # pragma: no cover
         """Clears the authorization ``Id`` query terms.
 
 
@@ -939,7 +939,7 @@ class QualifierQuery:
     authorization_id_terms = property(fdel=clear_authorization_id_terms)
 
     @abc.abstractmethod
-    def supports_authorization_query(self): # pragma: no cover
+    def supports_authorization_query(self):  # pragma: no cover
         """Tests if an ``AuthorizationQuery`` is available.
 
         :return: ``true`` if an authorization query is available, ``false`` otherwise
@@ -952,7 +952,7 @@ class QualifierQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_query(self): # pragma: no cover
+    def get_authorization_query(self):  # pragma: no cover
         """Gets the query for an authorization.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -970,7 +970,7 @@ class QualifierQuery:
     authorization_query = property(fget=get_authorization_query)
 
     @abc.abstractmethod
-    def match_any_authorization(self, match): # pragma: no cover
+    def match_any_authorization(self, match):  # pragma: no cover
         """Matches qualifiers that have any authorization mapping.
 
         :param match: ``true`` to match qualifiers with any authorization mapping, ``false`` to match qualifiers with no authorization mapping
@@ -983,7 +983,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_terms(self): # pragma: no cover
+    def clear_authorization_terms(self):  # pragma: no cover
         """Clears the authorization query terms.
 
 
@@ -996,7 +996,7 @@ class QualifierQuery:
     authorization_terms = property(fdel=clear_authorization_terms)
 
     @abc.abstractmethod
-    def match_ancestor_qualifier_id(self, qualifier_id, match): # pragma: no cover
+    def match_ancestor_qualifier_id(self, qualifier_id, match):  # pragma: no cover
         """Sets the qualifier ``Id`` for this query to match qualifiers that have the specified qualifier as an ancestor.
 
         :param qualifier_id: a qualifier ``Id``
@@ -1011,7 +1011,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_qualifier_id_terms(self): # pragma: no cover
+    def clear_ancestor_qualifier_id_terms(self):  # pragma: no cover
         """Clears the ancestor qualifier ``Id`` query terms.
 
 
@@ -1024,7 +1024,7 @@ class QualifierQuery:
     ancestor_qualifier_id_terms = property(fdel=clear_ancestor_qualifier_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_qualifier_query(self): # pragma: no cover
+    def supports_ancestor_qualifier_query(self):  # pragma: no cover
         """Tests if a ``QualifierQuery`` is available.
 
         :return: ``true`` if a qualifier query is available, ``false`` otherwise
@@ -1037,7 +1037,7 @@ class QualifierQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_qualifier_query(self): # pragma: no cover
+    def get_ancestor_qualifier_query(self):  # pragma: no cover
         """Gets the query for a qualifier.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1055,7 +1055,7 @@ class QualifierQuery:
     ancestor_qualifier_query = property(fget=get_ancestor_qualifier_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_qualifier(self, match): # pragma: no cover
+    def match_any_ancestor_qualifier(self, match):  # pragma: no cover
         """Matches qualifiers that have any ancestor.
 
         :param match: ``true`` to match qualifiers with any ancestor, ``false`` to match root qualifiers
@@ -1068,7 +1068,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_qualifier_terms(self): # pragma: no cover
+    def clear_ancestor_qualifier_terms(self):  # pragma: no cover
         """Clears the ancestor qualifier query terms.
 
 
@@ -1081,7 +1081,7 @@ class QualifierQuery:
     ancestor_qualifier_terms = property(fdel=clear_ancestor_qualifier_terms)
 
     @abc.abstractmethod
-    def match_descendant_qualifier_id(self, qualifier_id, match): # pragma: no cover
+    def match_descendant_qualifier_id(self, qualifier_id, match):  # pragma: no cover
         """Sets the qualifier ``Id`` for this query to match qualifiers that have the specified qualifier as a descendant.
 
         :param qualifier_id: a qualifier ``Id``
@@ -1096,7 +1096,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_qualifier_id_terms(self): # pragma: no cover
+    def clear_descendant_qualifier_id_terms(self):  # pragma: no cover
         """Clears the descendant qualifier ``Id`` query terms.
 
 
@@ -1109,7 +1109,7 @@ class QualifierQuery:
     descendant_qualifier_id_terms = property(fdel=clear_descendant_qualifier_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_qualifier_query(self): # pragma: no cover
+    def supports_descendant_qualifier_query(self):  # pragma: no cover
         """Tests if a ``QualifierQuery`` is available.
 
         :return: ``true`` if a qualifier query is available, ``false`` otherwise
@@ -1122,7 +1122,7 @@ class QualifierQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_qualifier_query(self): # pragma: no cover
+    def get_descendant_qualifier_query(self):  # pragma: no cover
         """Gets the query for a qualifier.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1140,7 +1140,7 @@ class QualifierQuery:
     descendant_qualifier_query = property(fget=get_descendant_qualifier_query)
 
     @abc.abstractmethod
-    def match_any_descendant_qualifier(self, match): # pragma: no cover
+    def match_any_descendant_qualifier(self, match):  # pragma: no cover
         """Matches qualifiers that have any ancestor.
 
         :param match: ``true`` to match qualifiers with any ancestor, ``false`` to match leaf qualifiers
@@ -1153,7 +1153,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_qualifier_terms(self): # pragma: no cover
+    def clear_descendant_qualifier_terms(self):  # pragma: no cover
         """Clears the descendant qualifier query terms.
 
 
@@ -1166,7 +1166,7 @@ class QualifierQuery:
     descendant_qualifier_terms = property(fdel=clear_descendant_qualifier_terms)
 
     @abc.abstractmethod
-    def match_vault_id(self, vault_id, match): # pragma: no cover
+    def match_vault_id(self, vault_id, match):  # pragma: no cover
         """Sets the vault ``Id`` for this query.
 
         :param vault_id: a vault ``Id``
@@ -1181,7 +1181,7 @@ class QualifierQuery:
         pass
 
     @abc.abstractmethod
-    def clear_vault_id_terms(self): # pragma: no cover
+    def clear_vault_id_terms(self):  # pragma: no cover
         """Clears the vault ``Id`` query terms.
 
 
@@ -1194,7 +1194,7 @@ class QualifierQuery:
     vault_id_terms = property(fdel=clear_vault_id_terms)
 
     @abc.abstractmethod
-    def supports_vault_query(self): # pragma: no cover
+    def supports_vault_query(self):  # pragma: no cover
         """Tests if a ``VaultQuery`` is available.
 
         :return: ``true`` if a vault query is available, ``false`` otherwise
@@ -1207,7 +1207,7 @@ class QualifierQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_query(self): # pragma: no cover
+    def get_vault_query(self):  # pragma: no cover
         """Gets the query for a vault.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1225,7 +1225,7 @@ class QualifierQuery:
     vault_query = property(fget=get_vault_query)
 
     @abc.abstractmethod
-    def clear_vault_terms(self): # pragma: no cover
+    def clear_vault_terms(self):  # pragma: no cover
         """Clears the vault query terms.
 
 
@@ -1238,7 +1238,7 @@ class QualifierQuery:
     vault_terms = property(fdel=clear_vault_terms)
 
     @abc.abstractmethod
-    def get_qualifier_query_record(self, qualifier_record_type): # pragma: no cover
+    def get_qualifier_query_record(self, qualifier_record_type):  # pragma: no cover
         """Gets the qualfiier query record corresponding to the given ``Qualifier`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1267,7 +1267,7 @@ class VaultQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_function_id(self, function_id, match): # pragma: no cover
+    def match_function_id(self, function_id, match):  # pragma: no cover
         """Sets the function ``Id`` for this query.
 
         :param function_id: a function ``Id``
@@ -1282,7 +1282,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_function_id_terms(self): # pragma: no cover
+    def clear_function_id_terms(self):  # pragma: no cover
         """Clears the function ``Id`` query terms.
 
 
@@ -1295,7 +1295,7 @@ class VaultQuery:
     function_id_terms = property(fdel=clear_function_id_terms)
 
     @abc.abstractmethod
-    def supports_function_query(self): # pragma: no cover
+    def supports_function_query(self):  # pragma: no cover
         """Tests if a ``FunctionQuery`` is available.
 
         :return: ``true`` if a function query is available, ``false`` otherwise
@@ -1308,7 +1308,7 @@ class VaultQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_query(self): # pragma: no cover
+    def get_function_query(self):  # pragma: no cover
         """Gets the query for a function.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1326,7 +1326,7 @@ class VaultQuery:
     function_query = property(fget=get_function_query)
 
     @abc.abstractmethod
-    def match_any_function(self, match): # pragma: no cover
+    def match_any_function(self, match):  # pragma: no cover
         """Matches vaults that have any function.
 
         :param match: ``true`` to match vaults with any function mapping, ``false`` to match vaults with no function mapping
@@ -1339,7 +1339,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_function_terms(self): # pragma: no cover
+    def clear_function_terms(self):  # pragma: no cover
         """Clears the function query terms.
 
 
@@ -1352,7 +1352,7 @@ class VaultQuery:
     function_terms = property(fdel=clear_function_terms)
 
     @abc.abstractmethod
-    def match_qualifier_id(self, qualifier_id, match): # pragma: no cover
+    def match_qualifier_id(self, qualifier_id, match):  # pragma: no cover
         """Sets the qualifier ``Id`` for this query.
 
         :param qualifier_id: a qualifier ``Id``
@@ -1367,7 +1367,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_id_terms(self): # pragma: no cover
+    def clear_qualifier_id_terms(self):  # pragma: no cover
         """Clears the qualifier ``Id`` query terms.
 
 
@@ -1380,7 +1380,7 @@ class VaultQuery:
     qualifier_id_terms = property(fdel=clear_qualifier_id_terms)
 
     @abc.abstractmethod
-    def supports_qualifier_query(self): # pragma: no cover
+    def supports_qualifier_query(self):  # pragma: no cover
         """Tests if a ``QualifierQuery`` is available.
 
         :return: ``true`` if a qualifier query is available, ``false`` otherwise
@@ -1393,7 +1393,7 @@ class VaultQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_query(self): # pragma: no cover
+    def get_qualifier_query(self):  # pragma: no cover
         """Gets the query for a qualifier.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1411,7 +1411,7 @@ class VaultQuery:
     qualifier_query = property(fget=get_qualifier_query)
 
     @abc.abstractmethod
-    def match_any_qualifier(self, match): # pragma: no cover
+    def match_any_qualifier(self, match):  # pragma: no cover
         """Matches vaults that have any qualifier.
 
         :param match: ``true`` to match vaults with any qualifier mapping, ``false`` to match vaults with no qualifier mapping
@@ -1424,7 +1424,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_terms(self): # pragma: no cover
+    def clear_qualifier_terms(self):  # pragma: no cover
         """Clears the qualifier query terms.
 
 
@@ -1437,7 +1437,7 @@ class VaultQuery:
     qualifier_terms = property(fdel=clear_qualifier_terms)
 
     @abc.abstractmethod
-    def match_authorization_id(self, authorization_id, match): # pragma: no cover
+    def match_authorization_id(self, authorization_id, match):  # pragma: no cover
         """Sets the authorization ``Id`` for this query.
 
         :param authorization_id: an authorization ``Id``
@@ -1452,7 +1452,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_id_terms(self): # pragma: no cover
+    def clear_authorization_id_terms(self):  # pragma: no cover
         """Clears the authorization ``Id`` query terms.
 
 
@@ -1465,7 +1465,7 @@ class VaultQuery:
     authorization_id_terms = property(fdel=clear_authorization_id_terms)
 
     @abc.abstractmethod
-    def supports_authorization_query(self): # pragma: no cover
+    def supports_authorization_query(self):  # pragma: no cover
         """Tests if an ``AuthorizationQuery`` is available.
 
         :return: ``true`` if an authorization query is available, ``false`` otherwise
@@ -1478,7 +1478,7 @@ class VaultQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_query(self): # pragma: no cover
+    def get_authorization_query(self):  # pragma: no cover
         """Gets the query for an authorization.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1496,7 +1496,7 @@ class VaultQuery:
     authorization_query = property(fget=get_authorization_query)
 
     @abc.abstractmethod
-    def match_any_authorization(self, match): # pragma: no cover
+    def match_any_authorization(self, match):  # pragma: no cover
         """Matches vaults that have any authorization.
 
         :param match: ``true`` to match vaults with any authorization mapping, ``false`` to match vaults with no authorization mapping
@@ -1509,7 +1509,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_authorization_terms(self): # pragma: no cover
+    def clear_authorization_terms(self):  # pragma: no cover
         """Clears the authorization query terms.
 
 
@@ -1522,7 +1522,7 @@ class VaultQuery:
     authorization_terms = property(fdel=clear_authorization_terms)
 
     @abc.abstractmethod
-    def match_ancestor_vault_id(self, vault_id, match): # pragma: no cover
+    def match_ancestor_vault_id(self, vault_id, match):  # pragma: no cover
         """Sets the vault ``Id`` for this query to match vaults that have the specified vault as an ancestor.
 
         :param vault_id: a vault ``Id``
@@ -1537,7 +1537,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_vault_id_terms(self): # pragma: no cover
+    def clear_ancestor_vault_id_terms(self):  # pragma: no cover
         """Clears the ancestor vault ``Id`` query terms.
 
 
@@ -1550,7 +1550,7 @@ class VaultQuery:
     ancestor_vault_id_terms = property(fdel=clear_ancestor_vault_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_vault_query(self): # pragma: no cover
+    def supports_ancestor_vault_query(self):  # pragma: no cover
         """Tests if a ``VaultQuery`` is available.
 
         :return: ``true`` if a vault query is available, ``false`` otherwise
@@ -1563,7 +1563,7 @@ class VaultQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_vault_query(self): # pragma: no cover
+    def get_ancestor_vault_query(self):  # pragma: no cover
         """Gets the query for a vault.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1581,7 +1581,7 @@ class VaultQuery:
     ancestor_vault_query = property(fget=get_ancestor_vault_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_vault(self, match): # pragma: no cover
+    def match_any_ancestor_vault(self, match):  # pragma: no cover
         """Matches vaults that have any ancestor.
 
         :param match: ``true`` to match vaults with any ancestor, ``false`` to match root vaults
@@ -1594,7 +1594,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_vault_terms(self): # pragma: no cover
+    def clear_ancestor_vault_terms(self):  # pragma: no cover
         """Clears the ancestor vault query terms.
 
 
@@ -1607,7 +1607,7 @@ class VaultQuery:
     ancestor_vault_terms = property(fdel=clear_ancestor_vault_terms)
 
     @abc.abstractmethod
-    def match_descendant_vault_id(self, vault_id, match): # pragma: no cover
+    def match_descendant_vault_id(self, vault_id, match):  # pragma: no cover
         """Sets the vault ``Id`` for this query to match vaults that have the specified vault as a descendant.
 
         :param vault_id: a vault ``Id``
@@ -1622,7 +1622,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_vault_id_terms(self): # pragma: no cover
+    def clear_descendant_vault_id_terms(self):  # pragma: no cover
         """Clears the descendant vault ``Id`` query terms.
 
 
@@ -1635,7 +1635,7 @@ class VaultQuery:
     descendant_vault_id_terms = property(fdel=clear_descendant_vault_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_vault_query(self): # pragma: no cover
+    def supports_descendant_vault_query(self):  # pragma: no cover
         """Tests if a ``VaultQuery`` is available.
 
         :return: ``true`` if a vault query is available, ``false`` otherwise
@@ -1648,7 +1648,7 @@ class VaultQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_vault_query(self): # pragma: no cover
+    def get_descendant_vault_query(self):  # pragma: no cover
         """Gets the query for a vault.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1666,7 +1666,7 @@ class VaultQuery:
     descendant_vault_query = property(fget=get_descendant_vault_query)
 
     @abc.abstractmethod
-    def match_any_descendant_vault(self, match): # pragma: no cover
+    def match_any_descendant_vault(self, match):  # pragma: no cover
         """Matches vaults that have any descendant.
 
         :param match: ``true`` to match vaults with any Ddscendant, ``false`` to match leaf vaults
@@ -1679,7 +1679,7 @@ class VaultQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_vault_terms(self): # pragma: no cover
+    def clear_descendant_vault_terms(self):  # pragma: no cover
         """Clears the descendant vault query terms.
 
 
@@ -1692,7 +1692,7 @@ class VaultQuery:
     descendant_vault_terms = property(fdel=clear_descendant_vault_terms)
 
     @abc.abstractmethod
-    def get_vault_query_record(self, vault_record_type): # pragma: no cover
+    def get_vault_query_record(self, vault_record_type):  # pragma: no cover
         """Gets the vault query record corresponding to the given ``Vault`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

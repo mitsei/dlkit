@@ -21,7 +21,7 @@ class RelationshipProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if any family federation is exposed.
 
         Federation is exposed when a specific family may be identified,
@@ -39,7 +39,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_lookup(self): # pragma: no cover
+    def supports_relationship_lookup(self):  # pragma: no cover
         """Tests if looking up relationships is supported.
 
         :return: ``true`` if relationship lookup is supported, ``false`` otherwise
@@ -52,7 +52,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_query(self): # pragma: no cover
+    def supports_relationship_query(self):  # pragma: no cover
         """Tests if querying relationships is supported.
 
         :return: ``true`` if relationship query is supported, ``false`` otherwise
@@ -65,7 +65,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_search(self): # pragma: no cover
+    def supports_relationship_search(self):  # pragma: no cover
         """Tests if searching relationships is supported.
 
         :return: ``true`` if relationship search is supported, ``false`` otherwise
@@ -78,7 +78,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_admin(self): # pragma: no cover
+    def supports_relationship_admin(self):  # pragma: no cover
         """Tests if relationship administrative service is supported.
 
         :return: ``true`` if relationship administration is supported, ``false`` otherwise
@@ -91,7 +91,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_notification(self): # pragma: no cover
+    def supports_relationship_notification(self):  # pragma: no cover
         """Tests if a relationship notification service is supported.
 
         :return: ``true`` if relationship notification is supported, ``false`` otherwise
@@ -104,7 +104,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_family(self): # pragma: no cover
+    def supports_relationship_family(self):  # pragma: no cover
         """Tests if a relationship family cataloging service is supported.
 
         :return: ``true`` if relationship families are supported, ``false`` otherwise
@@ -117,7 +117,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_family_assignment(self): # pragma: no cover
+    def supports_relationship_family_assignment(self):  # pragma: no cover
         """Tests if a relationship cataloging service is supported.
 
         A relationship cataloging service maps relationships to
@@ -133,7 +133,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_smart_family(self): # pragma: no cover
+    def supports_relationship_smart_family(self):  # pragma: no cover
         """Tests if a relationship smart family cataloging service is supported.
 
         :return: ``true`` if relationship smart families are supported, ``false`` otherwise
@@ -146,7 +146,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_lookup(self): # pragma: no cover
+    def supports_family_lookup(self):  # pragma: no cover
         """Tests if looking up families is supported.
 
         :return: ``true`` if family lookup is supported, ``false`` otherwise
@@ -159,7 +159,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_query(self): # pragma: no cover
+    def supports_family_query(self):  # pragma: no cover
         """Tests if querying families is supported.
 
         :return: ``true`` if family query is supported, ``false`` otherwise
@@ -172,7 +172,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_search(self): # pragma: no cover
+    def supports_family_search(self):  # pragma: no cover
         """Tests if searching families is supported.
 
         :return: ``true`` if family search is supported, ``false`` otherwise
@@ -185,7 +185,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_admin(self): # pragma: no cover
+    def supports_family_admin(self):  # pragma: no cover
         """Tests if familyadministrative service is supported.
 
         :return: ``true`` if family administration is supported, ``false`` otherwise
@@ -198,7 +198,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_notification(self): # pragma: no cover
+    def supports_family_notification(self):  # pragma: no cover
         """Tests if a family notification service is supported.
 
         :return: ``true`` if family notification is supported, ``false`` otherwise
@@ -211,7 +211,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_hierarchy(self): # pragma: no cover
+    def supports_family_hierarchy(self):  # pragma: no cover
         """Tests for the availability of a family hierarchy traversal service.
 
         :return: ``true`` if family hierarchy traversal is available, ``false`` otherwise
@@ -225,7 +225,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_family_hierarchy_design(self): # pragma: no cover
+    def supports_family_hierarchy_design(self):  # pragma: no cover
         """Tests for the availability of a family hierarchy design service.
 
         :return: ``true`` if family hierarchy design is available, ``false`` otherwise
@@ -238,7 +238,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_batch(self): # pragma: no cover
+    def supports_relationship_batch(self):  # pragma: no cover
         """Tests for the availability of a relationship batch service.
 
         :return: ``true`` if a relationship batch service is available, ``false`` otherwise
@@ -251,7 +251,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_relationship_rules(self): # pragma: no cover
+    def supports_relationship_rules(self):  # pragma: no cover
         """Tests if a relationship rules service is supported.
 
         :return: ``true`` if relationship rules service is supported, ``false`` otherwise
@@ -264,7 +264,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_record_types(self): # pragma: no cover
+    def get_relationship_record_types(self):  # pragma: no cover
         """Gets the supported ``Relationship`` record types.
 
         :return: a list containing the supported ``Relationship`` record types
@@ -279,7 +279,7 @@ class RelationshipProfile:
     relationship_record_types = property(fget=get_relationship_record_types)
 
     @abc.abstractmethod
-    def supports_relationship_record_type(self, relationship_record_type): # pragma: no cover
+    def supports_relationship_record_type(self, relationship_record_type):  # pragma: no cover
         """Tests if the given ``Relationship`` record type is supported.
 
         :param relationship_record_type: a ``Type`` indicating a ``Relationship`` record type
@@ -294,7 +294,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_search_record_types(self): # pragma: no cover
+    def get_relationship_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Relationship`` search record types.
 
         :return: a list containing the supported ``Relationship`` search record types
@@ -309,7 +309,7 @@ class RelationshipProfile:
     relationship_search_record_types = property(fget=get_relationship_search_record_types)
 
     @abc.abstractmethod
-    def supports_relationship_search_record_type(self, relationship_search_record_type): # pragma: no cover
+    def supports_relationship_search_record_type(self, relationship_search_record_type):  # pragma: no cover
         """Tests if the given ``Relationship`` search record type is supported.
 
         :param relationship_search_record_type: a ``Type`` indicating a ``Relationship`` search record type
@@ -324,7 +324,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_record_types(self): # pragma: no cover
+    def get_family_record_types(self):  # pragma: no cover
         """Gets the supported ``Family`` record types.
 
         :return: a list containing the supported ``Family`` types
@@ -339,7 +339,7 @@ class RelationshipProfile:
     family_record_types = property(fget=get_family_record_types)
 
     @abc.abstractmethod
-    def supports_family_record_type(self, family_record_type): # pragma: no cover
+    def supports_family_record_type(self, family_record_type):  # pragma: no cover
         """Tests if the given ``Family`` record type is supported.
 
         :param family_record_type: a ``Type`` indicating a ``Family`` record type
@@ -354,7 +354,7 @@ class RelationshipProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_search_record_types(self): # pragma: no cover
+    def get_family_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Family`` search record types.
 
         :return: a list containing the supported ``Family`` search record types
@@ -369,7 +369,7 @@ class RelationshipProfile:
     family_search_record_types = property(fget=get_family_search_record_types)
 
     @abc.abstractmethod
-    def supports_family_search_record_type(self, family_search_record_type): # pragma: no cover
+    def supports_family_search_record_type(self, family_search_record_type):  # pragma: no cover
         """Tests if the given ``Family`` search record type is supported.
 
         :param family_search_record_type: a ``Type`` indicating a ``Family`` search record type
@@ -419,7 +419,7 @@ class RelationshipManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationship_lookup_session(self): # pragma: no cover
+    def get_relationship_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship lookup service.
 
         :return: a ``RelationshipLookupSession``
@@ -436,7 +436,7 @@ class RelationshipManager:
     relationship_lookup_session = property(fget=get_relationship_lookup_session)
 
     @abc.abstractmethod
-    def get_relationship_lookup_session_for_family(self, family_id): # pragma: no cover
+    def get_relationship_lookup_session_for_family(self, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship lookup service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -456,7 +456,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
-    def get_relationship_query_session(self): # pragma: no cover
+    def get_relationship_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship query service.
 
         :return: a ``RelationshipQuerySession``
@@ -473,7 +473,7 @@ class RelationshipManager:
     relationship_query_session = property(fget=get_relationship_query_session)
 
     @abc.abstractmethod
-    def get_relationship_query_session_for_family(self, family_id): # pragma: no cover
+    def get_relationship_query_session_for_family(self, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship query service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -493,7 +493,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
-    def get_relationship_search_session(self): # pragma: no cover
+    def get_relationship_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship search service.
 
         :return: a ``RelationshipSearchSession``
@@ -510,7 +510,7 @@ class RelationshipManager:
     relationship_search_session = property(fget=get_relationship_search_session)
 
     @abc.abstractmethod
-    def get_relationship_search_session_for_family(self, family_id): # pragma: no cover
+    def get_relationship_search_session_for_family(self, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship search service for the given family.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -530,7 +530,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
-    def get_relationship_admin_session(self): # pragma: no cover
+    def get_relationship_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship administration service.
 
         :return: a ``RelationshipAdminSession``
@@ -547,7 +547,7 @@ class RelationshipManager:
     relationship_admin_session = property(fget=get_relationship_admin_session)
 
     @abc.abstractmethod
-    def get_relationship_admin_session_for_family(self, family_id): # pragma: no cover
+    def get_relationship_admin_session_for_family(self, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship administration service for the given family.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -567,7 +567,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
-    def get_relationship_notification_session(self, relationship_receiver): # pragma: no cover
+    def get_relationship_notification_session(self, relationship_receiver):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship notification service.
 
         :param relationship_receiver: the receiver
@@ -585,7 +585,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_relationship_notification_session_for_family(self, relationship_receiver, family_id): # pragma: no cover
+    def get_relationship_notification_session_for_family(self, relationship_receiver, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship notification service for the given family.
 
         :param relationship_receiver: the receiver
@@ -607,7 +607,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_relationship_family_session(self): # pragma: no cover
+    def get_relationship_family_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` to lookup relationship/family mappings.
 
         :return: a ``RelationshipFamilySession``
@@ -624,7 +624,7 @@ class RelationshipManager:
     relationship_family_session = property(fget=get_relationship_family_session)
 
     @abc.abstractmethod
-    def get_relationship_family_assignment_session(self): # pragma: no cover
+    def get_relationship_family_assignment_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning relationships to families.
 
         :return: a ``RelationshipFamilyAssignmentSession``
@@ -641,7 +641,7 @@ class RelationshipManager:
     relationship_family_assignment_session = property(fget=get_relationship_family_assignment_session)
 
     @abc.abstractmethod
-    def get_relationship_smart_family_session(self, family_id): # pragma: no cover
+    def get_relationship_smart_family_session(self, family_id):  # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic families of retlationships.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -660,7 +660,7 @@ class RelationshipManager:
         return  # osid.relationship.RelationshipSmartFamilySession
 
     @abc.abstractmethod
-    def get_family_lookup_session(self): # pragma: no cover
+    def get_family_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family lookup service.
 
         :return: a ``FamilyLookupSession``
@@ -677,7 +677,7 @@ class RelationshipManager:
     family_lookup_session = property(fget=get_family_lookup_session)
 
     @abc.abstractmethod
-    def get_family_query_session(self): # pragma: no cover
+    def get_family_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family query service.
 
         :return: a ``FamilyQuerySession``
@@ -694,7 +694,7 @@ class RelationshipManager:
     family_query_session = property(fget=get_family_query_session)
 
     @abc.abstractmethod
-    def get_family_search_session(self): # pragma: no cover
+    def get_family_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family search service.
 
         :return: a ``FamilySearchSession``
@@ -711,7 +711,7 @@ class RelationshipManager:
     family_search_session = property(fget=get_family_search_session)
 
     @abc.abstractmethod
-    def get_family_admin_session(self): # pragma: no cover
+    def get_family_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family administrative service.
 
         :return: a ``FamilyAdminSession``
@@ -728,7 +728,7 @@ class RelationshipManager:
     family_admin_session = property(fget=get_family_admin_session)
 
     @abc.abstractmethod
-    def get_family_notification_session(self, family_receiver): # pragma: no cover
+    def get_family_notification_session(self, family_receiver):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family notification service.
 
         :param family_receiver: the receiver
@@ -746,7 +746,7 @@ class RelationshipManager:
         return  # osid.relationship.FamilyNotificationSession
 
     @abc.abstractmethod
-    def get_family_hierarchy_session(self): # pragma: no cover
+    def get_family_hierarchy_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family hierarchy service.
 
         :return: a ``FamilyHierarchySession`` for families
@@ -763,7 +763,7 @@ class RelationshipManager:
     family_hierarchy_session = property(fget=get_family_hierarchy_session)
 
     @abc.abstractmethod
-    def get_family_hierarchy_design_session(self): # pragma: no cover
+    def get_family_hierarchy_design_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family hierarchy design service.
 
         :return: a ``HierarchyDesignSession`` for families
@@ -780,7 +780,7 @@ class RelationshipManager:
     family_hierarchy_design_session = property(fget=get_family_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_relationship_batch_manager(self): # pragma: no cover
+    def get_relationship_batch_manager(self):  # pragma: no cover
         """Gets the relationship batch manager.
 
         :return: a ``RelationshipBatchManager``
@@ -797,7 +797,7 @@ class RelationshipManager:
     relationship_batch_manager = property(fget=get_relationship_batch_manager)
 
     @abc.abstractmethod
-    def get_relationship_rules_manager(self): # pragma: no cover
+    def get_relationship_rules_manager(self):  # pragma: no cover
         """Gets the relationship rules manager.
 
         :return: a ``RelationshipRulesManager``
@@ -850,7 +850,7 @@ class RelationshipProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationship_lookup_session(self, proxy): # pragma: no cover
+    def get_relationship_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship lookup service.
 
         :param proxy: a proxy
@@ -868,7 +868,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
-    def get_relationship_lookup_session_for_family(self, family_id, proxy): # pragma: no cover
+    def get_relationship_lookup_session_for_family(self, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship lookup service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -890,7 +890,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipLookupSession
 
     @abc.abstractmethod
-    def get_relationship_query_session(self, proxy): # pragma: no cover
+    def get_relationship_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship query service.
 
         :param proxy: a proxy
@@ -908,7 +908,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
-    def get_relationship_query_session_for_family(self, family_id, proxy): # pragma: no cover
+    def get_relationship_query_session_for_family(self, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship query service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -930,7 +930,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipQuerySession
 
     @abc.abstractmethod
-    def get_relationship_search_session(self, proxy): # pragma: no cover
+    def get_relationship_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship search service.
 
         :param proxy: a proxy
@@ -948,7 +948,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
-    def get_relationship_search_session_for_family(self, family_id, proxy): # pragma: no cover
+    def get_relationship_search_session_for_family(self, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship search service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -970,7 +970,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipSearchSession
 
     @abc.abstractmethod
-    def get_relationship_admin_session(self, proxy): # pragma: no cover
+    def get_relationship_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship administration service.
 
         :param proxy: a proxy
@@ -988,7 +988,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
-    def get_relationship_admin_session_for_family(self, family_id, proxy): # pragma: no cover
+    def get_relationship_admin_session_for_family(self, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship administration service for the given family.
 
         :param family_id: the ``Id`` of the family
@@ -1010,7 +1010,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipAdminSession
 
     @abc.abstractmethod
-    def get_relationship_notification_session(self, relationship_receiver, proxy): # pragma: no cover
+    def get_relationship_notification_session(self, relationship_receiver, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship notification service.
 
         :param relationship_receiver: the receiver
@@ -1030,7 +1030,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_relationship_notification_session_for_family(self, relationship_receiver, family_id, proxy): # pragma: no cover
+    def get_relationship_notification_session_for_family(self, relationship_receiver, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the relationship notification service for the given family.
 
         :param relationship_receiver: the receiver
@@ -1054,7 +1054,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_relationship_family_session(self, proxy): # pragma: no cover
+    def get_relationship_family_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` to lookup relationship/family mappings.
 
         :param proxy: a proxy
@@ -1072,7 +1072,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipFamilySession
 
     @abc.abstractmethod
-    def get_relationship_family_assignment_session(self, proxy): # pragma: no cover
+    def get_relationship_family_assignment_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning relationships to families.
 
         :param proxy: a proxy
@@ -1090,7 +1090,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipFamilyAssignmentSession
 
     @abc.abstractmethod
-    def get_relationship_smart_family_session(self, family_id, proxy): # pragma: no cover
+    def get_relationship_smart_family_session(self, family_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic families of retlationships.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -1111,7 +1111,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.RelationshipSmartFamilySession
 
     @abc.abstractmethod
-    def get_family_lookup_session(self, proxy): # pragma: no cover
+    def get_family_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family lookup service.
 
         :param proxy: a proxy
@@ -1129,7 +1129,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyLookupSession
 
     @abc.abstractmethod
-    def get_family_query_session(self, proxy): # pragma: no cover
+    def get_family_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family query service.
 
         :param proxy: a proxy
@@ -1147,7 +1147,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyQuerySession
 
     @abc.abstractmethod
-    def get_family_search_session(self, proxy): # pragma: no cover
+    def get_family_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family search service.
 
         :param proxy: a proxy
@@ -1165,7 +1165,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilySearchSession
 
     @abc.abstractmethod
-    def get_family_admin_session(self, proxy): # pragma: no cover
+    def get_family_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family administrative service.
 
         :param proxy: a proxy
@@ -1183,7 +1183,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyAdminSession
 
     @abc.abstractmethod
-    def get_family_notification_session(self, family_receiver, proxy): # pragma: no cover
+    def get_family_notification_session(self, family_receiver, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family notification service.
 
         :param family_receiver: the receiver
@@ -1203,7 +1203,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyNotificationSession
 
     @abc.abstractmethod
-    def get_family_hierarchy_session(self, proxy): # pragma: no cover
+    def get_family_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family hierarchy service.
 
         :param proxy: a proxy
@@ -1221,7 +1221,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyHierarchySession
 
     @abc.abstractmethod
-    def get_family_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_family_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the family hierarchy design service.
 
         :param proxy: a proxy
@@ -1239,7 +1239,7 @@ class RelationshipProxyManager:
         return  # osid.relationship.FamilyHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_relationship_batch_proxy_manager(self): # pragma: no cover
+    def get_relationship_batch_proxy_manager(self):  # pragma: no cover
         """Gets the relationship batch proxy manager.
 
         :return: a ``RelationshipBatchProxyManager``
@@ -1256,7 +1256,7 @@ class RelationshipProxyManager:
     relationship_batch_proxy_manager = property(fget=get_relationship_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_relationship_rules_proxy_manager(self): # pragma: no cover
+    def get_relationship_rules_proxy_manager(self):  # pragma: no cover
         """Gets the relationship rules proxy manager.
 
         :return: a ``RelationshipRulesProxyManager``

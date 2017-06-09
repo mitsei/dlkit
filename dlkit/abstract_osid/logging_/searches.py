@@ -21,7 +21,7 @@ class LogEntrySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_log_entries(self, log_entry_ids): # pragma: no cover
+    def search_among_log_entries(self, log_entry_ids):  # pragma: no cover
         """Execute this search among the given list of log entries.
 
         :param log_entry_ids: list of log entries
@@ -34,7 +34,7 @@ class LogEntrySearch:
         pass
 
     @abc.abstractmethod
-    def order_log_entry_results(self, log_entry_search_order): # pragma: no cover
+    def order_log_entry_results(self, log_entry_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param log_entry_search_order: log entry search order
@@ -48,7 +48,7 @@ class LogEntrySearch:
         pass
 
     @abc.abstractmethod
-    def get_log_entry_search_record(self, log_entry_search_record_type): # pragma: no cover
+    def get_log_entry_search_record(self, log_entry_search_record_type):  # pragma: no cover
         """Gets the log search record corresponding to the given log entry search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class LogEntrySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_entries(self): # pragma: no cover
+    def get_log_entries(self):  # pragma: no cover
         """Gets the log entry list resulting from a search.
 
         :return: the log entry list
@@ -88,7 +88,7 @@ class LogEntrySearchResults:
     log_entries = property(fget=get_log_entries)
 
     @abc.abstractmethod
-    def get_log_entry_query_inspector(self): # pragma: no cover
+    def get_log_entry_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the log entry query inspector
@@ -103,7 +103,7 @@ class LogEntrySearchResults:
     log_entry_query_inspector = property(fget=get_log_entry_query_inspector)
 
     @abc.abstractmethod
-    def get_log_entry_search_results_record(self, log_entry_search_record_type): # pragma: no cover
+    def get_log_entry_search_results_record(self, log_entry_search_record_type):  # pragma: no cover
         """Gets the log entry search results record corresponding to the given log entry search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class LogSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_logs(self, log_ids): # pragma: no cover
+    def search_among_logs(self, log_ids):  # pragma: no cover
         """Execute this search among the given list of logs.
 
         :param log_ids: list of logs
@@ -141,7 +141,7 @@ class LogSearch:
         pass
 
     @abc.abstractmethod
-    def order_log_results(self, log_search_order): # pragma: no cover
+    def order_log_results(self, log_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param log_search_order: log search order
@@ -155,7 +155,7 @@ class LogSearch:
         pass
 
     @abc.abstractmethod
-    def get_log_search_record(self, log_search_record_type): # pragma: no cover
+    def get_log_search_record(self, log_search_record_type):  # pragma: no cover
         """Gets the log search record corresponding to the given log search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class LogSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_logs(self): # pragma: no cover
+    def get_logs(self):  # pragma: no cover
         """Gets the log list resulting from a search.
 
         :return: the log list
@@ -195,7 +195,7 @@ class LogSearchResults:
     logs = property(fget=get_logs)
 
     @abc.abstractmethod
-    def get_log_query_inspector(self): # pragma: no cover
+    def get_log_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the log query inspector
@@ -210,7 +210,7 @@ class LogSearchResults:
     log_query_inspector = property(fget=get_log_query_inspector)
 
     @abc.abstractmethod
-    def get_log_search_results_record(self, log_search_record_type): # pragma: no cover
+    def get_log_search_results_record(self, log_search_record_type):  # pragma: no cover
         """Gets the log search results record corresponding to the given log search record Type.
 
         This method is used to retrieve an object implementing the

@@ -21,7 +21,7 @@ class QuestionSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_question_search_order_record(self, question_record_type): # pragma: no cover
+    def get_question_search_order_record(self, question_record_type):  # pragma: no cover
         """Gets the question search order record corresponding to the given question record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -45,7 +45,7 @@ class AnswerSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_answer_search_order_record(self, answer_record_type): # pragma: no cover
+    def get_answer_search_order_record(self, answer_record_type):  # pragma: no cover
         """Gets the answer search order record corresponding to the given answer record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -69,7 +69,7 @@ class ItemSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_question(self, style): # pragma: no cover
+    def order_by_question(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the question.
 
         :param style: search order style
@@ -82,7 +82,7 @@ class ItemSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_question_search_order(self): # pragma: no cover
+    def supports_question_search_order(self):  # pragma: no cover
         """Tests if a question search order is available.
 
         :return: ``true`` if a question search order is available, ``false`` otherwise
@@ -95,7 +95,7 @@ class ItemSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_question_search_order(self): # pragma: no cover
+    def get_question_search_order(self):  # pragma: no cover
         """Gets a question search order.
 
         :return: a question search order
@@ -111,7 +111,7 @@ class ItemSearchOrder:
     question_search_order = property(fget=get_question_search_order)
 
     @abc.abstractmethod
-    def get_item_search_order_record(self, item_record_type): # pragma: no cover
+    def get_item_search_order_record(self, item_record_type):  # pragma: no cover
         """Gets the item search order record corresponding to the given item record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -135,7 +135,7 @@ class AssessmentSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_level(self, style): # pragma: no cover
+    def order_by_level(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the level of difficulty.
 
         :param style: search order style
@@ -148,7 +148,7 @@ class AssessmentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_level_search_order(self): # pragma: no cover
+    def supports_level_search_order(self):  # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -161,7 +161,7 @@ class AssessmentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_search_order(self): # pragma: no cover
+    def get_level_search_order(self):  # pragma: no cover
         """Gets a grade search order.
 
         :return: a grade search order
@@ -177,7 +177,7 @@ class AssessmentSearchOrder:
     level_search_order = property(fget=get_level_search_order)
 
     @abc.abstractmethod
-    def order_by_rubric(self, style): # pragma: no cover
+    def order_by_rubric(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the rubric assessment.
 
         :param style: search order style
@@ -190,7 +190,7 @@ class AssessmentSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_rubric_search_order(self): # pragma: no cover
+    def supports_rubric_search_order(self):  # pragma: no cover
         """Tests if an assessment search order is available.
 
         :return: ``true`` if an assessment search order is available, ``false`` otherwise
@@ -203,7 +203,7 @@ class AssessmentSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_search_order(self): # pragma: no cover
+    def get_rubric_search_order(self):  # pragma: no cover
         """Gets an assessment search order.
 
         :return: a rubric assessment search order
@@ -219,7 +219,7 @@ class AssessmentSearchOrder:
     rubric_search_order = property(fget=get_rubric_search_order)
 
     @abc.abstractmethod
-    def get_assessment_search_order_record(self, assessment_record_type): # pragma: no cover
+    def get_assessment_search_order_record(self, assessment_record_type):  # pragma: no cover
         """Gets the assessment search order record corresponding to the given assessment record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -243,7 +243,7 @@ class AssessmentOfferedSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_assessment(self, style): # pragma: no cover
+    def order_by_assessment(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment.
 
         :param style: search order style
@@ -256,7 +256,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_assessment_search_order(self): # pragma: no cover
+    def supports_assessment_search_order(self):  # pragma: no cover
         """Tests if an assessment search order is available.
 
         :return: ``true`` if an assessment search order is available, ``false`` otherwise
@@ -269,7 +269,7 @@ class AssessmentOfferedSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_search_order(self): # pragma: no cover
+    def get_assessment_search_order(self):  # pragma: no cover
         """Gets an assessment search order.
 
         :return: an assessment search order
@@ -285,7 +285,7 @@ class AssessmentOfferedSearchOrder:
     assessment_search_order = property(fget=get_assessment_search_order)
 
     @abc.abstractmethod
-    def order_by_level(self, style): # pragma: no cover
+    def order_by_level(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the level of difficulty.
 
         :param style: search order style
@@ -298,7 +298,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_level_search_order(self): # pragma: no cover
+    def supports_level_search_order(self):  # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -311,7 +311,7 @@ class AssessmentOfferedSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_search_order(self): # pragma: no cover
+    def get_level_search_order(self):  # pragma: no cover
         """Gets a grade search order.
 
         :return: a grade search order
@@ -327,7 +327,7 @@ class AssessmentOfferedSearchOrder:
     level_search_order = property(fget=get_level_search_order)
 
     @abc.abstractmethod
-    def order_by_items_sequential(self, style): # pragma: no cover
+    def order_by_items_sequential(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the sequential flag.
 
         :param style: search order style
@@ -340,7 +340,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_items_shuffled(self, style): # pragma: no cover
+    def order_by_items_shuffled(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the shuffle flag.
 
         :param style: search order style
@@ -353,7 +353,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_start_time(self, style): # pragma: no cover
+    def order_by_start_time(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment start time.
 
         :param style: search order style
@@ -366,7 +366,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_deadline(self, style): # pragma: no cover
+    def order_by_deadline(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment deadline.
 
         :param style: search order style
@@ -379,7 +379,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_duration(self, style): # pragma: no cover
+    def order_by_duration(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the duration.
 
         :param style: search order style
@@ -392,7 +392,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_score_system(self, style): # pragma: no cover
+    def order_by_score_system(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the grade system for scores.
 
         :param style: search order style
@@ -405,7 +405,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_score_system_search_order(self): # pragma: no cover
+    def supports_score_system_search_order(self):  # pragma: no cover
         """Tests if a grade system search order is available.
 
         :return: ``true`` if a grade system search order is available, ``false`` otherwise
@@ -418,7 +418,7 @@ class AssessmentOfferedSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_search_order(self): # pragma: no cover
+    def get_score_system_search_order(self):  # pragma: no cover
         """Gets a grade system search order.
 
         :return: a grade system search order
@@ -434,7 +434,7 @@ class AssessmentOfferedSearchOrder:
     score_system_search_order = property(fget=get_score_system_search_order)
 
     @abc.abstractmethod
-    def order_by_grade_system(self, style): # pragma: no cover
+    def order_by_grade_system(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the grade system for grades.
 
         :param style: search order style
@@ -447,7 +447,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grade_system_search_order(self): # pragma: no cover
+    def supports_grade_system_search_order(self):  # pragma: no cover
         """Tests if a grade system search order is available.
 
         :return: ``true`` if a grade system search order is available, ``false`` otherwise
@@ -460,7 +460,7 @@ class AssessmentOfferedSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_search_order(self): # pragma: no cover
+    def get_grade_system_search_order(self):  # pragma: no cover
         """Gets a grade system search order.
 
         :return: a grade system search order
@@ -476,7 +476,7 @@ class AssessmentOfferedSearchOrder:
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
     @abc.abstractmethod
-    def order_by_rubric(self, style): # pragma: no cover
+    def order_by_rubric(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the rubric assessment offered.
 
         :param style: search order style
@@ -489,7 +489,7 @@ class AssessmentOfferedSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_rubric_search_order(self): # pragma: no cover
+    def supports_rubric_search_order(self):  # pragma: no cover
         """Tests if an assessment offered search order is available.
 
         :return: ``true`` if an assessment offered search order is available, ``false`` otherwise
@@ -502,7 +502,7 @@ class AssessmentOfferedSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_search_order(self): # pragma: no cover
+    def get_rubric_search_order(self):  # pragma: no cover
         """Gets an assessment offered search order.
 
         :return: a rubric assessment offered search order
@@ -518,7 +518,7 @@ class AssessmentOfferedSearchOrder:
     rubric_search_order = property(fget=get_rubric_search_order)
 
     @abc.abstractmethod
-    def get_assessment_offered_search_order_record(self, assessment_offered_record_type): # pragma: no cover
+    def get_assessment_offered_search_order_record(self, assessment_offered_record_type):  # pragma: no cover
         """Gets the assessment offered search order record corresponding to the given assessment record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -542,7 +542,7 @@ class AssessmentTakenSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_assessment_offered(self, style): # pragma: no cover
+    def order_by_assessment_offered(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment offered.
 
         :param style: search order style
@@ -555,7 +555,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_assessment_offered_search_order(self): # pragma: no cover
+    def supports_assessment_offered_search_order(self):  # pragma: no cover
         """Tests if an assessment search order is available.
 
         :return: ``true`` if an assessment offered search order is available, ``false`` otherwise
@@ -568,7 +568,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_search_order(self): # pragma: no cover
+    def get_assessment_offered_search_order(self):  # pragma: no cover
         """Gets an assessment offered search order.
 
         :return: an assessment offered search order
@@ -584,7 +584,7 @@ class AssessmentTakenSearchOrder:
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
     @abc.abstractmethod
-    def order_by_taker(self, style): # pragma: no cover
+    def order_by_taker(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the resource.
 
         :param style: search order style
@@ -597,7 +597,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_taker_search_order(self): # pragma: no cover
+    def supports_taker_search_order(self):  # pragma: no cover
         """Tests if a resource search order is available.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -610,7 +610,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_taker_search_order(self): # pragma: no cover
+    def get_taker_search_order(self):  # pragma: no cover
         """Gets a resource search order.
 
         :return: a resource search order
@@ -626,7 +626,7 @@ class AssessmentTakenSearchOrder:
     taker_search_order = property(fget=get_taker_search_order)
 
     @abc.abstractmethod
-    def order_by_taking_agent(self, style): # pragma: no cover
+    def order_by_taking_agent(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the agent.
 
         :param style: search order style
@@ -639,7 +639,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_taking_agent_search_order(self): # pragma: no cover
+    def supports_taking_agent_search_order(self):  # pragma: no cover
         """Tests if an agent search order is available.
 
         :return: ``true`` if an agent search order is available, ``false`` otherwise
@@ -652,7 +652,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_taking_agent_search_order(self): # pragma: no cover
+    def get_taking_agent_search_order(self):  # pragma: no cover
         """Gets an agent search order.
 
         :return: an agent search order
@@ -668,7 +668,7 @@ class AssessmentTakenSearchOrder:
     taking_agent_search_order = property(fget=get_taking_agent_search_order)
 
     @abc.abstractmethod
-    def order_by_actual_start_time(self, style): # pragma: no cover
+    def order_by_actual_start_time(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment start time.
 
         :param style: search order style
@@ -681,7 +681,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_completion_time(self, style): # pragma: no cover
+    def order_by_completion_time(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment deadline.
 
         :param style: search order style
@@ -694,7 +694,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_time_spent(self, style): # pragma: no cover
+    def order_by_time_spent(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the time spent.
 
         :param style: search order style
@@ -707,7 +707,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_score_system(self, style): # pragma: no cover
+    def order_by_score_system(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the grade system.
 
         :param style: search order style
@@ -720,7 +720,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_score_system_search_order(self): # pragma: no cover
+    def supports_score_system_search_order(self):  # pragma: no cover
         """Tests if a grade system search order is available.
 
         :return: ``true`` if a grade system search order is available, ``false`` otherwise
@@ -733,7 +733,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_search_order(self): # pragma: no cover
+    def get_score_system_search_order(self):  # pragma: no cover
         """Gets a grade system search order.
 
         :return: a grade system search order
@@ -749,7 +749,7 @@ class AssessmentTakenSearchOrder:
     score_system_search_order = property(fget=get_score_system_search_order)
 
     @abc.abstractmethod
-    def order_by_score(self, style): # pragma: no cover
+    def order_by_score(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the score.
 
         :param style: search order style
@@ -762,7 +762,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_grade(self, style): # pragma: no cover
+    def order_by_grade(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the grade.
 
         :param style: search order style
@@ -775,7 +775,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grade_search_order(self): # pragma: no cover
+    def supports_grade_search_order(self):  # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -788,7 +788,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_search_order(self): # pragma: no cover
+    def get_grade_search_order(self):  # pragma: no cover
         """Gets a grade search order.
 
         :return: a grade search order
@@ -804,7 +804,7 @@ class AssessmentTakenSearchOrder:
     grade_search_order = property(fget=get_grade_search_order)
 
     @abc.abstractmethod
-    def order_by_feedback(self, style): # pragma: no cover
+    def order_by_feedback(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the comments.
 
         :param style: search order style
@@ -817,7 +817,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_rubric(self, style): # pragma: no cover
+    def order_by_rubric(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the rubric assessment.
 
         :param style: search order style
@@ -830,7 +830,7 @@ class AssessmentTakenSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_rubric_search_order(self): # pragma: no cover
+    def supports_rubric_search_order(self):  # pragma: no cover
         """Tests if an assessment taken search order is available.
 
         :return: ``true`` if an assessment taken search order is available, ``false`` otherwise
@@ -843,7 +843,7 @@ class AssessmentTakenSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_search_order(self): # pragma: no cover
+    def get_rubric_search_order(self):  # pragma: no cover
         """Gets an assessment taken search order.
 
         :return: a rubric assessment taken search order
@@ -859,7 +859,7 @@ class AssessmentTakenSearchOrder:
     rubric_search_order = property(fget=get_rubric_search_order)
 
     @abc.abstractmethod
-    def get_assessment_taken_search_order_record(self, assessment_taken_record_type): # pragma: no cover
+    def get_assessment_taken_search_order_record(self, assessment_taken_record_type):  # pragma: no cover
         """Gets the assessment taken search order record corresponding to the given assessment record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -883,7 +883,7 @@ class BankSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_search_order_record(self, bank_record_type): # pragma: no cover
+    def get_bank_search_order_record(self, bank_record_type):  # pragma: no cover
         """Gets the bank search order record corresponding to the given bank record ``Type``.
 
         Multiple retrievals return the same underlying object.

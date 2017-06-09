@@ -26,7 +26,7 @@ class LogEntryQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_priority(self, priority_type, match): # pragma: no cover
+    def match_priority(self, priority_type, match):  # pragma: no cover
         """Matches a priority ``Type`` for the log entry.
 
         :param priority_type: ``Type`` to match
@@ -41,7 +41,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_priority(self, match): # pragma: no cover
+    def match_any_priority(self, match):  # pragma: no cover
         """Matches log entries with any priority.
 
         :param match: ``true`` to match log entries with any priority, ``false`` to match log entries with no priority
@@ -54,7 +54,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_priority_terms(self): # pragma: no cover
+    def clear_priority_terms(self):  # pragma: no cover
         """Clears the priority terms.
 
 
@@ -67,7 +67,7 @@ class LogEntryQuery:
     priority_terms = property(fdel=clear_priority_terms)
 
     @abc.abstractmethod
-    def match_minimum_priority(self, priority_type, match): # pragma: no cover
+    def match_minimum_priority(self, priority_type, match):  # pragma: no cover
         """Matches a log entries including and above the given priority type.
 
         :param priority_type: ``Type`` to match
@@ -82,7 +82,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_priority_terms(self): # pragma: no cover
+    def clear_minimum_priority_terms(self):  # pragma: no cover
         """Clears the minimum priority terms.
 
 
@@ -95,7 +95,7 @@ class LogEntryQuery:
     minimum_priority_terms = property(fdel=clear_minimum_priority_terms)
 
     @abc.abstractmethod
-    def match_timestamp(self, start_time, end_time, match): # pragma: no cover
+    def match_timestamp(self, start_time, end_time, match):  # pragma: no cover
         """Matches the time of this log entry.
 
         :param start_time: start time
@@ -113,7 +113,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_timestamp_terms(self): # pragma: no cover
+    def clear_timestamp_terms(self):  # pragma: no cover
         """Clears the timestamp terms.
 
 
@@ -126,7 +126,7 @@ class LogEntryQuery:
     timestamp_terms = property(fdel=clear_timestamp_terms)
 
     @abc.abstractmethod
-    def match_resource_id(self, resource_id, match): # pragma: no cover
+    def match_resource_id(self, resource_id, match):  # pragma: no cover
         """Matches a resource in this log entry.
 
         :param resource_id: ``Id`` to match
@@ -141,7 +141,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_id_terms(self): # pragma: no cover
+    def clear_resource_id_terms(self):  # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -154,7 +154,7 @@ class LogEntryQuery:
     resource_id_terms = property(fdel=clear_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_query(self): # pragma: no cover
+    def supports_resource_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for querying agents.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -167,7 +167,7 @@ class LogEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self): # pragma: no cover
+    def get_resource_query(self):  # pragma: no cover
         """Gets the query for a resource.
 
         :return: the resource query
@@ -183,7 +183,7 @@ class LogEntryQuery:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def clear_resource_terms(self): # pragma: no cover
+    def clear_resource_terms(self):  # pragma: no cover
         """Clears the resource terms.
 
 
@@ -196,7 +196,7 @@ class LogEntryQuery:
     resource_terms = property(fdel=clear_resource_terms)
 
     @abc.abstractmethod
-    def match_agent_id(self, agent_id, match): # pragma: no cover
+    def match_agent_id(self, agent_id, match):  # pragma: no cover
         """Matches an agent in this log entry.
 
         :param agent_id: ``Id`` to match
@@ -211,7 +211,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_id_terms(self): # pragma: no cover
+    def clear_agent_id_terms(self):  # pragma: no cover
         """Clears the agent ``Id`` terms.
 
 
@@ -224,7 +224,7 @@ class LogEntryQuery:
     agent_id_terms = property(fdel=clear_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_agent_query(self): # pragma: no cover
+    def supports_agent_query(self):  # pragma: no cover
         """Tests if an ``AgentQuery`` is available for querying agents.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -237,7 +237,7 @@ class LogEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_query(self): # pragma: no cover
+    def get_agent_query(self):  # pragma: no cover
         """Gets the query for an agent.
 
         :return: the agent query
@@ -253,7 +253,7 @@ class LogEntryQuery:
     agent_query = property(fget=get_agent_query)
 
     @abc.abstractmethod
-    def clear_agent_terms(self): # pragma: no cover
+    def clear_agent_terms(self):  # pragma: no cover
         """Clears the agent terms.
 
 
@@ -266,7 +266,7 @@ class LogEntryQuery:
     agent_terms = property(fdel=clear_agent_terms)
 
     @abc.abstractmethod
-    def match_log_id(self, log_id, match): # pragma: no cover
+    def match_log_id(self, log_id, match):  # pragma: no cover
         """Matches a log.
 
         :param log_id: ``Id`` to match
@@ -281,7 +281,7 @@ class LogEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_log_id_terms(self): # pragma: no cover
+    def clear_log_id_terms(self):  # pragma: no cover
         """Clears the log ``Id`` terms.
 
 
@@ -294,7 +294,7 @@ class LogEntryQuery:
     log_id_terms = property(fdel=clear_log_id_terms)
 
     @abc.abstractmethod
-    def supports_log_query(self): # pragma: no cover
+    def supports_log_query(self):  # pragma: no cover
         """Tests if a ``LogQuery`` is available for querying logs.
 
         :return: ``true`` if a log query is available, ``false`` otherwise
@@ -307,7 +307,7 @@ class LogEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_query(self): # pragma: no cover
+    def get_log_query(self):  # pragma: no cover
         """Gets the query for a log.
 
         :return: the log query
@@ -323,7 +323,7 @@ class LogEntryQuery:
     log_query = property(fget=get_log_query)
 
     @abc.abstractmethod
-    def clear_log_terms(self): # pragma: no cover
+    def clear_log_terms(self):  # pragma: no cover
         """Clears the log terms.
 
 
@@ -336,7 +336,7 @@ class LogEntryQuery:
     log_terms = property(fdel=clear_log_terms)
 
     @abc.abstractmethod
-    def get_log_entry_query_record(self, log_entry_record_type): # pragma: no cover
+    def get_log_entry_query_record(self, log_entry_record_type):  # pragma: no cover
         """Gets the log entry query corresponding to the given ``LogEntry`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.
@@ -365,7 +365,7 @@ class LogQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_log_entry_id(self, log_entry_id, match): # pragma: no cover
+    def match_log_entry_id(self, log_entry_id, match):  # pragma: no cover
         """Sets a log entry ``Id``.
 
         :param log_entry_id: a log entry ``Id``
@@ -380,7 +380,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_log_entry_id_terms(self): # pragma: no cover
+    def clear_log_entry_id_terms(self):  # pragma: no cover
         """Clesrs the log entry ``Id`` terms.
 
 
@@ -393,7 +393,7 @@ class LogQuery:
     log_entry_id_terms = property(fdel=clear_log_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_log_entry_query(self): # pragma: no cover
+    def supports_log_entry_query(self):  # pragma: no cover
         """Tests if a log entry query is available.
 
         :return: ``true`` if a log entry query is available, ``false`` otherwise
@@ -406,7 +406,7 @@ class LogQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_query(self): # pragma: no cover
+    def get_log_entry_query(self):  # pragma: no cover
         """Gets the query for a log entry.
 
         :return: the log entry query
@@ -422,7 +422,7 @@ class LogQuery:
     log_entry_query = property(fget=get_log_entry_query)
 
     @abc.abstractmethod
-    def match_any_log_entry(self, match): # pragma: no cover
+    def match_any_log_entry(self, match):  # pragma: no cover
         """Matches logs with any log entry.
 
         :param match: ``true`` to match logs with any entry, ``false`` to match logs with no log entries
@@ -435,7 +435,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_log_entry_terms(self): # pragma: no cover
+    def clear_log_entry_terms(self):  # pragma: no cover
         """Clesrs the log entry terms.
 
 
@@ -448,7 +448,7 @@ class LogQuery:
     log_entry_terms = property(fdel=clear_log_entry_terms)
 
     @abc.abstractmethod
-    def match_ancestor_log_id(self, log_id, match): # pragma: no cover
+    def match_ancestor_log_id(self, log_id, match):  # pragma: no cover
         """Sets the log ``Id`` for this query to match logs that have the specified log as an ancestor.
 
         :param log_id: a log ``Id``
@@ -463,7 +463,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_log_id_terms(self): # pragma: no cover
+    def clear_ancestor_log_id_terms(self):  # pragma: no cover
         """Clesrs the ancestor log ``Id`` terms.
 
 
@@ -476,7 +476,7 @@ class LogQuery:
     ancestor_log_id_terms = property(fdel=clear_ancestor_log_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_log_query(self): # pragma: no cover
+    def supports_ancestor_log_query(self):  # pragma: no cover
         """Tests if a ``LogQuery`` is available.
 
         :return: ``true`` if a log query is available, ``false`` otherwise
@@ -489,7 +489,7 @@ class LogQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_log_query(self): # pragma: no cover
+    def get_ancestor_log_query(self):  # pragma: no cover
         """Gets the query for a log.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -507,7 +507,7 @@ class LogQuery:
     ancestor_log_query = property(fget=get_ancestor_log_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_log(self, match): # pragma: no cover
+    def match_any_ancestor_log(self, match):  # pragma: no cover
         """Matches logs with any ancestor.
 
         :param match: ``true`` to match logs with any ancestor, ``false`` to match root logs
@@ -520,7 +520,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_log_terms(self): # pragma: no cover
+    def clear_ancestor_log_terms(self):  # pragma: no cover
         """Clesrs the ancestor log terms.
 
 
@@ -533,7 +533,7 @@ class LogQuery:
     ancestor_log_terms = property(fdel=clear_ancestor_log_terms)
 
     @abc.abstractmethod
-    def match_descendant_log_id(self, log_id, match): # pragma: no cover
+    def match_descendant_log_id(self, log_id, match):  # pragma: no cover
         """Sets the log ``Id`` for this query to match logs that have the specified log as a descendant.
 
         :param log_id: a log ``Id``
@@ -548,7 +548,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_log_id_terms(self): # pragma: no cover
+    def clear_descendant_log_id_terms(self):  # pragma: no cover
         """Clesrs the descendant log ``Id`` terms.
 
 
@@ -561,7 +561,7 @@ class LogQuery:
     descendant_log_id_terms = property(fdel=clear_descendant_log_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_log_query(self): # pragma: no cover
+    def supports_descendant_log_query(self):  # pragma: no cover
         """Tests if a ``LogQuery`` is available.
 
         :return: ``true`` if a log query is available, ``false`` otherwise
@@ -574,7 +574,7 @@ class LogQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_log_query(self): # pragma: no cover
+    def get_descendant_log_query(self):  # pragma: no cover
         """Gets the query for a log.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -592,7 +592,7 @@ class LogQuery:
     descendant_log_query = property(fget=get_descendant_log_query)
 
     @abc.abstractmethod
-    def match_any_descendant_log(self, match): # pragma: no cover
+    def match_any_descendant_log(self, match):  # pragma: no cover
         """Matches logs with any descendant.
 
         :param match: ``true`` to match logs with any descendant, ``false`` to match leaf logs
@@ -605,7 +605,7 @@ class LogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_log_terms(self): # pragma: no cover
+    def clear_descendant_log_terms(self):  # pragma: no cover
         """Clesrs the descendant log terms.
 
 
@@ -618,7 +618,7 @@ class LogQuery:
     descendant_log_terms = property(fdel=clear_descendant_log_terms)
 
     @abc.abstractmethod
-    def get_log_query_record(self, log_record_type): # pragma: no cover
+    def get_log_query_record(self, log_record_type):  # pragma: no cover
         """Gets the log query record corresponding to the given ``Log`` record ``Type``.
 
         Multiple record retrievals produce a nested boolean ``OR`` term.

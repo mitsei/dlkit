@@ -21,7 +21,7 @@ class RelationshipSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_relationships(self, relationship_ids): # pragma: no cover
+    def search_among_relationships(self, relationship_ids):  # pragma: no cover
         """Execute this search among the given list of relationships.
 
         :param relationship_ids: list of relationships
@@ -34,7 +34,7 @@ class RelationshipSearch:
         pass
 
     @abc.abstractmethod
-    def order_relationship_results(self, relationship_search_order): # pragma: no cover
+    def order_relationship_results(self, relationship_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param relationship_search_order: relationship search order
@@ -48,7 +48,7 @@ class RelationshipSearch:
         pass
 
     @abc.abstractmethod
-    def get_relationship_search_record(self, relationship_search_record_type): # pragma: no cover
+    def get_relationship_search_record(self, relationship_search_record_type):  # pragma: no cover
         """Gets the relationship search record corresponding to the given relationship search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -74,7 +74,7 @@ class RelationshipSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationships(self): # pragma: no cover
+    def get_relationships(self):  # pragma: no cover
         """Gets the relationship list resulting from a search.
 
         :return: the relationship list
@@ -89,7 +89,7 @@ class RelationshipSearchResults:
     relationships = property(fget=get_relationships)
 
     @abc.abstractmethod
-    def get_relationship_query_inspector(self): # pragma: no cover
+    def get_relationship_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the relationship query inspector
@@ -104,7 +104,7 @@ class RelationshipSearchResults:
     relationship_query_inspector = property(fget=get_relationship_query_inspector)
 
     @abc.abstractmethod
-    def get_relationship_search_results_record(self, relationship_search_record_type): # pragma: no cover
+    def get_relationship_search_results_record(self, relationship_search_record_type):  # pragma: no cover
         """Gets the relationship search results record corresponding to the given relationship search record ``Type``.
 
         This method must be used to retrieve an object implementing the
@@ -131,7 +131,7 @@ class FamilySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_families(self, family_ids): # pragma: no cover
+    def search_among_families(self, family_ids):  # pragma: no cover
         """Execute this search among the given list of families.
 
         :param family_ids: list of families
@@ -144,7 +144,7 @@ class FamilySearch:
         pass
 
     @abc.abstractmethod
-    def order_family_results(self, family_search_order): # pragma: no cover
+    def order_family_results(self, family_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param family_search_order: family search order
@@ -158,7 +158,7 @@ class FamilySearch:
         pass
 
     @abc.abstractmethod
-    def get_family_search_record(self, family_search_record_type): # pragma: no cover
+    def get_family_search_record(self, family_search_record_type):  # pragma: no cover
         """Gets the family search record corresponding to the given family search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -184,7 +184,7 @@ class FamilySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_families(self): # pragma: no cover
+    def get_families(self):  # pragma: no cover
         """Gets the family list resulting from a search.
 
         :return: the family list
@@ -199,7 +199,7 @@ class FamilySearchResults:
     families = property(fget=get_families)
 
     @abc.abstractmethod
-    def get_family_query_inspector(self): # pragma: no cover
+    def get_family_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the family query inspector
@@ -214,7 +214,7 @@ class FamilySearchResults:
     family_query_inspector = property(fget=get_family_query_inspector)
 
     @abc.abstractmethod
-    def get_family_search_results_record(self, family_search_record_type): # pragma: no cover
+    def get_family_search_results_record(self, family_search_record_type):  # pragma: no cover
         """Gets the family search results record corresponding to the given family search record Type.
 
         This method is used to retrieve an object implementing the

@@ -30,7 +30,7 @@ class AgentSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_agents(self, agent_ids): # pragma: no cover
+    def search_among_agents(self, agent_ids):  # pragma: no cover
         """Execute this search among the given list of agents.
 
         :param agent_ids: list of agents
@@ -43,7 +43,7 @@ class AgentSearch:
         pass
 
     @abc.abstractmethod
-    def order_agent_results(self, agent_search_order): # pragma: no cover
+    def order_agent_results(self, agent_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param agent_search_order: agent search order
@@ -57,7 +57,7 @@ class AgentSearch:
         pass
 
     @abc.abstractmethod
-    def get_agent_search_record(self, agent_search_record_type): # pragma: no cover
+    def get_agent_search_record(self, agent_search_record_type):  # pragma: no cover
         """Gets the record corresponding to the given agent search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -91,7 +91,7 @@ class AgentSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agents(self): # pragma: no cover
+    def get_agents(self):  # pragma: no cover
         """Gets the agent list resulting from the search.
 
         :return: the agent list
@@ -106,7 +106,7 @@ class AgentSearchResults:
     agents = property(fget=get_agents)
 
     @abc.abstractmethod
-    def get_agent_query_inspector(self): # pragma: no cover
+    def get_agent_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -121,7 +121,7 @@ class AgentSearchResults:
     agent_query_inspector = property(fget=get_agent_query_inspector)
 
     @abc.abstractmethod
-    def get_agent_search_results_record(self, agent_search_record_type): # pragma: no cover
+    def get_agent_search_results_record(self, agent_search_record_type):  # pragma: no cover
         """Gets the record corresponding to the given agent search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -146,7 +146,7 @@ class AgencySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_agencies(self, agency_ids): # pragma: no cover
+    def search_among_agencies(self, agency_ids):  # pragma: no cover
         """Execute this search among the given list of agencies.
 
         :param agency_ids: list of agencies
@@ -159,7 +159,7 @@ class AgencySearch:
         pass
 
     @abc.abstractmethod
-    def order_agency_results(self, agency_search_order): # pragma: no cover
+    def order_agency_results(self, agency_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param agency_search_order: agency search order
@@ -173,7 +173,7 @@ class AgencySearch:
         pass
 
     @abc.abstractmethod
-    def get_agency_search_record(self, agency_search_record_type): # pragma: no cover
+    def get_agency_search_record(self, agency_search_record_type):  # pragma: no cover
         """Gets the record corresponding to the given agency search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -198,7 +198,7 @@ class AgencySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agencies(self): # pragma: no cover
+    def get_agencies(self):  # pragma: no cover
         """Gets the agency list resultrng from a search.
 
         :return: the agency list
@@ -213,7 +213,7 @@ class AgencySearchResults:
     agencies = property(fget=get_agencies)
 
     @abc.abstractmethod
-    def get_agency_query_inspector(self): # pragma: no cover
+    def get_agency_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -228,7 +228,7 @@ class AgencySearchResults:
     agency_query_inspector = property(fget=get_agency_query_inspector)
 
     @abc.abstractmethod
-    def get_agency_search_results_record(self, agency_search_record_type): # pragma: no cover
+    def get_agency_search_results_record(self, agency_search_record_type):  # pragma: no cover
         """Gets the record corresponding to the given agency search record ``Type``.
 
         This method is used to retrieve an object implementing the

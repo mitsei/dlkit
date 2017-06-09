@@ -26,7 +26,7 @@ class CatalogQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_id(self, id_, match): # pragma: no cover
+    def match_id(self, id_, match):  # pragma: no cover
         """Matches an ``Id`` in this catalog.
 
         Multiple Ids are treated as a boolean ``OR``.
@@ -43,7 +43,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_id(self, match): # pragma: no cover
+    def match_any_id(self, match):  # pragma: no cover
         """Matches catalogs that have any ``Id`` mapping.
 
         :param match: ``true`` to match catalogs with any ``Id`` mapping, ``false`` to match catalogs with no ``Id`` mapping
@@ -56,7 +56,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_id_terms(self): # pragma: no cover
+    def clear_id_terms(self):  # pragma: no cover
         """Clears the ``Id`` query terms.
 
 
@@ -69,7 +69,7 @@ class CatalogQuery:
     id_terms = property(fdel=clear_id_terms)
 
     @abc.abstractmethod
-    def match_ancestor_catalog_id(self, catalog_id, match): # pragma: no cover
+    def match_ancestor_catalog_id(self, catalog_id, match):  # pragma: no cover
         """Sets the catalog ``Id`` for this query to match catalogs that have the specified catalog as an ancestor.
 
         :param catalog_id: a catalog ``Id``
@@ -84,7 +84,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_catalog_id_terms(self): # pragma: no cover
+    def clear_ancestor_catalog_id_terms(self):  # pragma: no cover
         """Clears the ancestor ``Id`` query terms.
 
 
@@ -97,7 +97,7 @@ class CatalogQuery:
     ancestor_catalog_id_terms = property(fdel=clear_ancestor_catalog_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_catalog_query(self): # pragma: no cover
+    def supports_ancestor_catalog_query(self):  # pragma: no cover
         """Tests if a ``CatalogQuery`` is available.
 
         :return: ``true`` if a catalog query is available, ``false`` otherwise
@@ -110,7 +110,7 @@ class CatalogQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_catalog_query(self): # pragma: no cover
+    def get_ancestor_catalog_query(self):  # pragma: no cover
         """Gets the query for a catalog.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -128,7 +128,7 @@ class CatalogQuery:
     ancestor_catalog_query = property(fget=get_ancestor_catalog_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_catalog(self, match): # pragma: no cover
+    def match_any_ancestor_catalog(self, match):  # pragma: no cover
         """Matches catalogs with any ancestor.
 
         :param match: ``true`` to match catalogs with any ancestor, ``false`` to match root catalogs
@@ -141,7 +141,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_catalog_terms(self): # pragma: no cover
+    def clear_ancestor_catalog_terms(self):  # pragma: no cover
         """Clears the ancestor query terms.
 
 
@@ -154,7 +154,7 @@ class CatalogQuery:
     ancestor_catalog_terms = property(fdel=clear_ancestor_catalog_terms)
 
     @abc.abstractmethod
-    def match_descendant_catalog_id(self, catalog_id, match): # pragma: no cover
+    def match_descendant_catalog_id(self, catalog_id, match):  # pragma: no cover
         """Sets the catalog ``Id`` for this query to match catalogs that have the specified catalog as an descendant.
 
         :param catalog_id: a catalog ``Id``
@@ -169,7 +169,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_catalog_id_terms(self): # pragma: no cover
+    def clear_descendant_catalog_id_terms(self):  # pragma: no cover
         """Clears the descendant ``Id`` query terms.
 
 
@@ -182,7 +182,7 @@ class CatalogQuery:
     descendant_catalog_id_terms = property(fdel=clear_descendant_catalog_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_catalog_query(self): # pragma: no cover
+    def supports_descendant_catalog_query(self):  # pragma: no cover
         """Tests if a ``CatalogQuery`` is available.
 
         :return: ``true`` if a catalog query is available, ``false`` otherwise
@@ -195,7 +195,7 @@ class CatalogQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_catalog_query(self): # pragma: no cover
+    def get_descendant_catalog_query(self):  # pragma: no cover
         """Gets the query for a catalog.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -213,7 +213,7 @@ class CatalogQuery:
     descendant_catalog_query = property(fget=get_descendant_catalog_query)
 
     @abc.abstractmethod
-    def match_any_descendant_catalog(self, match): # pragma: no cover
+    def match_any_descendant_catalog(self, match):  # pragma: no cover
         """Matches catalogs with any descendant.
 
         :param match: ``true`` to match catalogs with any descendant, ``false`` to match leaf catalogs
@@ -226,7 +226,7 @@ class CatalogQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_catalog_terms(self): # pragma: no cover
+    def clear_descendant_catalog_terms(self):  # pragma: no cover
         """Clears the descendant query terms.
 
 
@@ -239,7 +239,7 @@ class CatalogQuery:
     descendant_catalog_terms = property(fdel=clear_descendant_catalog_terms)
 
     @abc.abstractmethod
-    def get_catalog_query_record(self, catalog_record_type): # pragma: no cover
+    def get_catalog_query_record(self, catalog_record_type):  # pragma: no cover
         """Gets the catalog query record corresponding to the given ``Catalog`` record ``Type``.
 
         Multiple record retrievals produce a boolean ``OR`` term.

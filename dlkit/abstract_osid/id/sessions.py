@@ -27,7 +27,7 @@ class IdLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_ids(self): # pragma: no cover
+    def can_lookup_ids(self):  # pragma: no cover
         """Tests if this user can perform ``Id`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -46,7 +46,7 @@ class IdLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_id(self, id_): # pragma: no cover
+    def get_id(self, id_):  # pragma: no cover
         """Gets an ``Id``.
 
         This method serves to get the principal ``Id`` if the given
@@ -69,7 +69,7 @@ class IdLookupSession:
     ident = property(fget=get_id)
 
     @abc.abstractmethod
-    def get_ids_by_ids(self, ids): # pragma: no cover
+    def get_ids_by_ids(self, ids):  # pragma: no cover
         """Gets a list of ``Ids``.
 
         This method serves to get the principal ``Ids`` if different
@@ -90,7 +90,7 @@ class IdLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_ids_by_authority(self, authority): # pragma: no cover
+    def get_ids_by_authority(self, authority):  # pragma: no cover
         """Gets ``Ids`` by the given authority.
 
         :param authority: an authority
@@ -107,7 +107,7 @@ class IdLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_ids_by_authority_and_namespace(self, authority, namespace): # pragma: no cover
+    def get_ids_by_authority_and_namespace(self, authority, namespace):  # pragma: no cover
         """Gets ``Ids`` by the given authority and namespace.
 
         :param authority: an authority
@@ -126,7 +126,7 @@ class IdLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_ids(self): # pragma: no cover
+    def get_ids(self):  # pragma: no cover
         """Gets all ``Ids``.
 
         :return: the list of all ``Ids``
@@ -142,7 +142,7 @@ class IdLookupSession:
     ids = property(fget=get_ids)
 
     @abc.abstractmethod
-    def is_equivalent(self, id_, equivalent_id): # pragma: no cover
+    def is_equivalent(self, id_, equivalent_id):  # pragma: no cover
         """Tests if the two ``Ids`` are equivalent.
 
         Two ``Ids`` are equivalent if they identify the same object. If
@@ -164,7 +164,7 @@ class IdLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_id_aliases(self, id_): # pragma: no cover
+    def get_id_aliases(self, id_):  # pragma: no cover
         """Gets a list of ``Id`` aliases of an ``Id``.
 
         :param id: an ``Id``
@@ -181,7 +181,7 @@ class IdLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_id_aliases_by_authority(self, id_, authority): # pragma: no cover
+    def get_id_aliases_by_authority(self, id_, authority):  # pragma: no cover
         """Gets a list of ``Id`` aliases in a authority for an ``Id``.
 
         :param id: an ``Id``
@@ -200,7 +200,7 @@ class IdLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_id_aliases_by_authority_and_namespace(self, id_, authority, namespace): # pragma: no cover
+    def get_id_aliases_by_authority_and_namespace(self, id_, authority, namespace):  # pragma: no cover
         """Gets a list of ``Id`` aliases in a namespace for an ``Id``.
 
         :param id: an ``Id``
@@ -226,7 +226,7 @@ class IdIssueSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_issue_ids(self): # pragma: no cover
+    def can_issue_ids(self):  # pragma: no cover
         """Tests if this user can issue ``Ids``.
 
         A return of true does not guarantee successful authorization. A
@@ -245,7 +245,7 @@ class IdIssueSession:
         return  # boolean
 
     @abc.abstractmethod
-    def issue_id(self): # pragma: no cover
+    def issue_id(self):  # pragma: no cover
         """Issues a new ``Id``.
 
         This method creates a new Id for a predetermined authority and
@@ -267,7 +267,7 @@ class IdAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_ids(self): # pragma: no cover
+    def can_create_ids(self):  # pragma: no cover
         """Tests if this user can create ``Ids``.
 
         A return of true does not guarantee successful authorization. A
@@ -286,7 +286,7 @@ class IdAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_id_form_for_create(self): # pragma: no cover
+    def get_id_form_for_create(self):  # pragma: no cover
         """Gets the ``Id`` form for creating new Ids.
 
         A new form should be requested for each create transaction.
@@ -304,7 +304,7 @@ class IdAdminSession:
     id_form_for_create = property(fget=get_id_form_for_create)
 
     @abc.abstractmethod
-    def create_id(self, id_form): # pragma: no cover
+    def create_id(self, id_form):  # pragma: no cover
         """Creates a new ``Id``.
 
         A new ``IdForm`` should be requested for each create
@@ -328,7 +328,7 @@ class IdAdminSession:
         return  # osid.id.Id
 
     @abc.abstractmethod
-    def can_alias_ids(self): # pragma: no cover
+    def can_alias_ids(self):  # pragma: no cover
         """Tests if this user can alias ``Ids``.
 
         A return of true does not guarantee successful authorization. A
@@ -347,7 +347,7 @@ class IdAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_id(self, primary_id, equivalent_id): # pragma: no cover
+    def alias_id(self, primary_id, equivalent_id):  # pragma: no cover
         """Makes two ``Ids`` equivalent.
 
         The primary and equivalent ``Ids`` are already known to this
@@ -371,7 +371,7 @@ class IdAdminSession:
         pass
 
     @abc.abstractmethod
-    def remove_alias(self, primary_id, equivalent_id): # pragma: no cover
+    def remove_alias(self, primary_id, equivalent_id):  # pragma: no cover
         """Removes equivalence from two ``Ids``.
 
         :param primary_id: the primary ``Id``

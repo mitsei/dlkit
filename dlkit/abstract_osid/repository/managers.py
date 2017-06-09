@@ -21,7 +21,7 @@ class RepositoryProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_lookup(self): # pragma: no cover
+    def supports_asset_lookup(self):  # pragma: no cover
         """Tests if asset lookup is supported.
 
         :return: ``true`` if asset lookup is supported ``,``  ``false`` otherwise
@@ -47,7 +47,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_query(self): # pragma: no cover
+    def supports_asset_query(self):  # pragma: no cover
         """Tests if asset query is supported.
 
         :return: ``true`` if asset query is supported ``,``  ``false`` otherwise
@@ -60,7 +60,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_search(self): # pragma: no cover
+    def supports_asset_search(self):  # pragma: no cover
         """Tests if asset search is supported.
 
         :return: ``true`` if asset search is supported ``,``  ``false`` otherwise
@@ -73,7 +73,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_admin(self): # pragma: no cover
+    def supports_asset_admin(self):  # pragma: no cover
         """Tests if asset administration is supported.
 
         :return: ``true`` if asset administration is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_notification(self): # pragma: no cover
+    def supports_asset_notification(self):  # pragma: no cover
         """Tests if asset notification is supported.
 
         A repository may send messages when assets are created,
@@ -102,7 +102,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_repository(self): # pragma: no cover
+    def supports_asset_repository(self):  # pragma: no cover
         """Tests if retrieving mappings of assets and repositories is supported.
 
         :return: ``true`` if asset repository mapping retrieval is supported ``,``  ``false`` otherwise
@@ -115,7 +115,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_repository_assignment(self): # pragma: no cover
+    def supports_asset_repository_assignment(self):  # pragma: no cover
         """Tests if managing mappings of assets and repositories is supported.
 
         :return: ``true`` if asset repository assignment is supported ``,``  ``false`` otherwise
@@ -128,7 +128,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_smart_repository(self): # pragma: no cover
+    def supports_asset_smart_repository(self):  # pragma: no cover
         """Tests if asset smart repository is supported.
 
         :return: ``true`` if asset smart repository is supported ``,``  ``false`` otherwise
@@ -141,7 +141,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_temporal(self): # pragma: no cover
+    def supports_asset_temporal(self):  # pragma: no cover
         """Tests if retrieving mappings of assets and time coverage is supported.
 
         :return: ``true`` if asset temporal mapping retrieval is supported ``,``  ``false`` otherwise
@@ -154,7 +154,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_temporal_assignment(self): # pragma: no cover
+    def supports_asset_temporal_assignment(self):  # pragma: no cover
         """Tests if managing mappings of assets and time ocverage is supported.
 
         :return: ``true`` if asset temporal assignment is supported ``,``  ``false`` otherwise
@@ -167,7 +167,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_spatial(self): # pragma: no cover
+    def supports_asset_spatial(self):  # pragma: no cover
         """Tests if retrieving mappings of assets and spatial coverage is supported.
 
         :return: ``true`` if asset spatial mapping retrieval is supported ``,``  ``false`` otherwise
@@ -180,7 +180,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_spatial_assignment(self): # pragma: no cover
+    def supports_asset_spatial_assignment(self):  # pragma: no cover
         """Tests if managing mappings of assets and spatial ocverage is supported.
 
         :return: ``true`` if asset spatial assignment is supported ``,``  ``false`` otherwise
@@ -193,7 +193,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_composition(self): # pragma: no cover
+    def supports_asset_composition(self):  # pragma: no cover
         """Tests if assets are included in compositions.
 
         :return: ``true`` if asset composition supported ``,``  ``false`` otherwise
@@ -206,7 +206,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_asset_composition_design(self): # pragma: no cover
+    def supports_asset_composition_design(self):  # pragma: no cover
         """Tests if mapping assets to compositions is supported.
 
         :return: ``true`` if designing asset compositions is supported ``,``  ``false`` otherwise
@@ -219,7 +219,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_lookup(self): # pragma: no cover
+    def supports_composition_lookup(self):  # pragma: no cover
         """Tests if composition lookup is supported.
 
         :return: ``true`` if composition lookup is supported ``,``  ``false`` otherwise
@@ -232,7 +232,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_query(self): # pragma: no cover
+    def supports_composition_query(self):  # pragma: no cover
         """Tests if composition query is supported.
 
         :return: ``true`` if composition query is supported ``,``  ``false`` otherwise
@@ -245,7 +245,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_search(self): # pragma: no cover
+    def supports_composition_search(self):  # pragma: no cover
         """Tests if composition search is supported.
 
         :return: ``true`` if composition search is supported ``,``  ``false`` otherwise
@@ -258,7 +258,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_admin(self): # pragma: no cover
+    def supports_composition_admin(self):  # pragma: no cover
         """Tests if composition administration is supported.
 
         :return: ``true`` if composition administration is supported, ``false`` otherwise
@@ -271,7 +271,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_notification(self): # pragma: no cover
+    def supports_composition_notification(self):  # pragma: no cover
         """Tests if composition notification is supported.
 
         :return: ``true`` if composition notification is supported ``,``  ``false`` otherwise
@@ -284,7 +284,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_repository(self): # pragma: no cover
+    def supports_composition_repository(self):  # pragma: no cover
         """Tests if retrieval of composition to repository mappings is supported.
 
         :return: ``true`` if composition to repository mapping is supported ``,``  ``false`` otherwise
@@ -297,7 +297,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_repository_assignment(self): # pragma: no cover
+    def supports_composition_repository_assignment(self):  # pragma: no cover
         """Tests if assigning composition to repository mappings is supported.
 
         :return: ``true`` if composition to repository assignment is supported ``,``  ``false`` otherwise
@@ -310,7 +310,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_composition_smart_repository(self): # pragma: no cover
+    def supports_composition_smart_repository(self):  # pragma: no cover
         """Tests if composition smart repository is supported.
 
         :return: ``true`` if composition smart repository is supported ``,``  ``false`` otherwise
@@ -323,7 +323,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_lookup(self): # pragma: no cover
+    def supports_repository_lookup(self):  # pragma: no cover
         """Tests if repository lookup is supported.
 
         :return: ``true`` if repository lookup is supported ``,``  ``false`` otherwise
@@ -336,7 +336,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_query(self): # pragma: no cover
+    def supports_repository_query(self):  # pragma: no cover
         """Tests if repository query is supported.
 
         :return: ``true`` if repository query is supported ``,``  ``false`` otherwise
@@ -349,7 +349,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_search(self): # pragma: no cover
+    def supports_repository_search(self):  # pragma: no cover
         """Tests if repository search is supported.
 
         :return: ``true`` if repository search is supported ``,``  ``false`` otherwise
@@ -362,7 +362,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_admin(self): # pragma: no cover
+    def supports_repository_admin(self):  # pragma: no cover
         """Tests if repository administration is supported.
 
         :return: ``true`` if repository administration is supported, ``false`` otherwise
@@ -375,7 +375,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_notification(self): # pragma: no cover
+    def supports_repository_notification(self):  # pragma: no cover
         """Tests if repository notification is supported.
 
         Messages may be sent when ``Repository`` objects are created,
@@ -392,7 +392,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_hierarchy(self): # pragma: no cover
+    def supports_repository_hierarchy(self):  # pragma: no cover
         """Tests if a repository hierarchy traversal is supported.
 
         :return: ``true`` if a repository hierarchy traversal is supported, ``false`` otherwise
@@ -405,7 +405,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_hierarchy_design(self): # pragma: no cover
+    def supports_repository_hierarchy_design(self):  # pragma: no cover
         """Tests if a repository hierarchy design is supported.
 
         :return: ``true`` if a repository hierarchy design is supported, ``false`` otherwise
@@ -418,7 +418,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_batch(self): # pragma: no cover
+    def supports_repository_batch(self):  # pragma: no cover
         """Tests if a repository batch service is supported.
 
         :return: ``true`` if a repository batch service is supported, ``false`` otherwise
@@ -431,7 +431,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_repository_rules(self): # pragma: no cover
+    def supports_repository_rules(self):  # pragma: no cover
         """Tests if a repository rules service is supported.
 
         :return: ``true`` if a repository rules service is supported, ``false`` otherwise
@@ -444,7 +444,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_record_types(self): # pragma: no cover
+    def get_asset_record_types(self):  # pragma: no cover
         """Gets all the asset record types supported.
 
         :return: the list of supported asset record types
@@ -459,7 +459,7 @@ class RepositoryProfile:
     asset_record_types = property(fget=get_asset_record_types)
 
     @abc.abstractmethod
-    def supports_asset_record_type(self, asset_record_type): # pragma: no cover
+    def supports_asset_record_type(self, asset_record_type):  # pragma: no cover
         """Tests if a given asset type is supported.
 
         :param asset_record_type: the asset record type
@@ -474,7 +474,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_search_record_types(self): # pragma: no cover
+    def get_asset_search_record_types(self):  # pragma: no cover
         """Gets all the asset search record types supported.
 
         :return: the list of supported asset search record types
@@ -489,7 +489,7 @@ class RepositoryProfile:
     asset_search_record_types = property(fget=get_asset_search_record_types)
 
     @abc.abstractmethod
-    def supports_asset_search_record_type(self, asset_search_record_type): # pragma: no cover
+    def supports_asset_search_record_type(self, asset_search_record_type):  # pragma: no cover
         """Tests if a given asset search record type is supported.
 
         :param asset_search_record_type: the asset search record type
@@ -504,7 +504,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_content_record_types(self): # pragma: no cover
+    def get_asset_content_record_types(self):  # pragma: no cover
         """Gets all the asset content record types supported.
 
         :return: the list of supported asset content record types
@@ -519,7 +519,7 @@ class RepositoryProfile:
     asset_content_record_types = property(fget=get_asset_content_record_types)
 
     @abc.abstractmethod
-    def supports_asset_content_record_type(self, asset_content_record_type): # pragma: no cover
+    def supports_asset_content_record_type(self, asset_content_record_type):  # pragma: no cover
         """Tests if a given asset content record type is supported.
 
         :param asset_content_record_type: the asset content record type
@@ -534,7 +534,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_composition_record_types(self): # pragma: no cover
+    def get_composition_record_types(self):  # pragma: no cover
         """Gets all the composition record types supported.
 
         :return: the list of supported composition record types
@@ -549,7 +549,7 @@ class RepositoryProfile:
     composition_record_types = property(fget=get_composition_record_types)
 
     @abc.abstractmethod
-    def supports_composition_record_type(self, composition_record_type): # pragma: no cover
+    def supports_composition_record_type(self, composition_record_type):  # pragma: no cover
         """Tests if a given composition record type is supported.
 
         :param composition_record_type: the composition record type
@@ -564,7 +564,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_composition_search_record_types(self): # pragma: no cover
+    def get_composition_search_record_types(self):  # pragma: no cover
         """Gets all the composition search record types supported.
 
         :return: the list of supported composition search record types
@@ -579,7 +579,7 @@ class RepositoryProfile:
     composition_search_record_types = property(fget=get_composition_search_record_types)
 
     @abc.abstractmethod
-    def supports_composition_search_record_type(self, composition_search_record_type): # pragma: no cover
+    def supports_composition_search_record_type(self, composition_search_record_type):  # pragma: no cover
         """Tests if a given composition search record type is supported.
 
         :param composition_search_record_type: the composition serach type
@@ -594,7 +594,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_repository_record_types(self): # pragma: no cover
+    def get_repository_record_types(self):  # pragma: no cover
         """Gets all the repository record types supported.
 
         :return: the list of supported repository record types
@@ -609,7 +609,7 @@ class RepositoryProfile:
     repository_record_types = property(fget=get_repository_record_types)
 
     @abc.abstractmethod
-    def supports_repository_record_type(self, repository_record_type): # pragma: no cover
+    def supports_repository_record_type(self, repository_record_type):  # pragma: no cover
         """Tests if a given repository record type is supported.
 
         :param repository_record_type: the repository record type
@@ -624,7 +624,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_repository_search_record_types(self): # pragma: no cover
+    def get_repository_search_record_types(self):  # pragma: no cover
         """Gets all the repository search record types supported.
 
         :return: the list of supported repository search record types
@@ -639,7 +639,7 @@ class RepositoryProfile:
     repository_search_record_types = property(fget=get_repository_search_record_types)
 
     @abc.abstractmethod
-    def supports_repository_search_record_type(self, repository_search_record_type): # pragma: no cover
+    def supports_repository_search_record_type(self, repository_search_record_type):  # pragma: no cover
         """Tests if a given repository search record type is supported.
 
         :param repository_search_record_type: the repository search type
@@ -654,7 +654,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_spatial_unit_record_types(self): # pragma: no cover
+    def get_spatial_unit_record_types(self):  # pragma: no cover
         """Gets all the spatial unit record types supported.
 
         :return: the list of supported spatial unit record types
@@ -669,7 +669,7 @@ class RepositoryProfile:
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
     @abc.abstractmethod
-    def supports_spatial_unit_record_type(self, spatial_unit_record_type): # pragma: no cover
+    def supports_spatial_unit_record_type(self, spatial_unit_record_type):  # pragma: no cover
         """Tests if a given spatial unit record type is supported.
 
         :param spatial_unit_record_type: the spatial unit record type
@@ -684,7 +684,7 @@ class RepositoryProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_coordinate_types(self): # pragma: no cover
+    def get_coordinate_types(self):  # pragma: no cover
         """Gets all the coordinate types supported.
 
         :return: the list of supported coordinate types
@@ -699,7 +699,7 @@ class RepositoryProfile:
     coordinate_types = property(fget=get_coordinate_types)
 
     @abc.abstractmethod
-    def supports_coordinate_type(self, coordinate_type): # pragma: no cover
+    def supports_coordinate_type(self, coordinate_type):  # pragma: no cover
         """Tests if a given coordinate type is supported.
 
         :param coordinate_type: the coordinate type
@@ -776,7 +776,7 @@ class RepositoryManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_asset_lookup_session(self): # pragma: no cover
+    def get_asset_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset lookup service.
 
         :return: the new ``AssetLookupSession``
@@ -793,7 +793,7 @@ class RepositoryManager:
     asset_lookup_session = property(fget=get_asset_lookup_session)
 
     @abc.abstractmethod
-    def get_asset_lookup_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_lookup_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset lookup service for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -813,7 +813,7 @@ class RepositoryManager:
         return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
-    def get_asset_query_session(self): # pragma: no cover
+    def get_asset_query_session(self):  # pragma: no cover
         """Gets an asset query session.
 
         :return: an ``AssetQuerySession``
@@ -830,7 +830,7 @@ class RepositoryManager:
     asset_query_session = property(fget=get_asset_query_session)
 
     @abc.abstractmethod
-    def get_asset_query_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_query_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets an asset query session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -850,7 +850,7 @@ class RepositoryManager:
         return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
-    def get_asset_search_session(self): # pragma: no cover
+    def get_asset_search_session(self):  # pragma: no cover
         """Gets an asset search session.
 
         :return: an ``AssetSearchSession``
@@ -867,7 +867,7 @@ class RepositoryManager:
     asset_search_session = property(fget=get_asset_search_session)
 
     @abc.abstractmethod
-    def get_asset_search_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_search_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets an asset search session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -887,7 +887,7 @@ class RepositoryManager:
         return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
-    def get_asset_admin_session(self): # pragma: no cover
+    def get_asset_admin_session(self):  # pragma: no cover
         """Gets an asset administration session for creating, updating and deleting assets.
 
         :return: an ``AssetAdminSession``
@@ -904,7 +904,7 @@ class RepositoryManager:
     asset_admin_session = property(fget=get_asset_admin_session)
 
     @abc.abstractmethod
-    def get_asset_admin_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_admin_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets an asset administration session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -924,7 +924,7 @@ class RepositoryManager:
         return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
-    def get_asset_notification_session(self, asset_receiver): # pragma: no cover
+    def get_asset_notification_session(self, asset_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to asset changes.
 
         :param asset_receiver: the notification callback
@@ -942,7 +942,7 @@ class RepositoryManager:
         return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
-    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id): # pragma: no cover
+    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id):  # pragma: no cover
         """Gets the asset notification session for the given repository.
 
         :param asset_receiver: the notification callback
@@ -964,7 +964,7 @@ class RepositoryManager:
         return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
-    def get_asset_repository_session(self): # pragma: no cover
+    def get_asset_repository_session(self):  # pragma: no cover
         """Gets the session for retrieving asset to repository mappings.
 
         :return: an ``AssetRepositorySession``
@@ -981,7 +981,7 @@ class RepositoryManager:
     asset_repository_session = property(fget=get_asset_repository_session)
 
     @abc.abstractmethod
-    def get_asset_repository_assignment_session(self): # pragma: no cover
+    def get_asset_repository_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning asset to repository mappings.
 
         :return: an ``AssetRepositoryAsignmentSession``
@@ -998,7 +998,7 @@ class RepositoryManager:
     asset_repository_assignment_session = property(fget=get_asset_repository_assignment_session)
 
     @abc.abstractmethod
-    def get_asset_smart_repository_session(self, repository_id): # pragma: no cover
+    def get_asset_smart_repository_session(self, repository_id):  # pragma: no cover
         """Gets an asset smart repository session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1017,7 +1017,7 @@ class RepositoryManager:
         return  # osid.repository.AssetSmartRepositorySession
 
     @abc.abstractmethod
-    def get_asset_temporal_session(self): # pragma: no cover
+    def get_asset_temporal_session(self):  # pragma: no cover
         """Gets the session for retrieving temporal coverage of an asset.
 
         :return: an ``AssetTemporalSession``
@@ -1034,7 +1034,7 @@ class RepositoryManager:
     asset_temporal_session = property(fget=get_asset_temporal_session)
 
     @abc.abstractmethod
-    def get_asset_temporal_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_temporal_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the session for retrieving temporal coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1054,7 +1054,7 @@ class RepositoryManager:
         return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
-    def get_asset_temporal_assignment_session(self): # pragma: no cover
+    def get_asset_temporal_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning temporal coverage to an asset.
 
         :return: an ``AssetTemporalAssignmentSession``
@@ -1071,7 +1071,7 @@ class RepositoryManager:
     asset_temporal_assignment_session = property(fget=get_asset_temporal_assignment_session)
 
     @abc.abstractmethod
-    def get_asset_temporal_assignment_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_temporal_assignment_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the session for assigning temporal coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1091,7 +1091,7 @@ class RepositoryManager:
         return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_spatial_session(self): # pragma: no cover
+    def get_asset_spatial_session(self):  # pragma: no cover
         """Gets the session for retrieving spatial coverage of an asset.
 
         :return: an ``AssetSpatialSession``
@@ -1108,7 +1108,7 @@ class RepositoryManager:
     asset_spatial_session = property(fget=get_asset_spatial_session)
 
     @abc.abstractmethod
-    def get_asset_spatial_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_spatial_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the session for retrieving spatial coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1128,7 +1128,7 @@ class RepositoryManager:
         return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
-    def get_asset_spatial_assignment_session(self): # pragma: no cover
+    def get_asset_spatial_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning spatial coverage to an asset.
 
         :return: an ``AssetSpatialAssignmentSession``
@@ -1145,7 +1145,7 @@ class RepositoryManager:
     asset_spatial_assignment_session = property(fget=get_asset_spatial_assignment_session)
 
     @abc.abstractmethod
-    def get_asset_spatial_assignment_session_for_repository(self, repository_id): # pragma: no cover
+    def get_asset_spatial_assignment_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the session for assigning spatial coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1165,7 +1165,7 @@ class RepositoryManager:
         return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_composition_session(self): # pragma: no cover
+    def get_asset_composition_session(self):  # pragma: no cover
         """Gets the session for retrieving asset compositions.
 
         :return: an ``AssetCompositionSession``
@@ -1182,7 +1182,7 @@ class RepositoryManager:
     asset_composition_session = property(fget=get_asset_composition_session)
 
     @abc.abstractmethod
-    def get_asset_composition_design_session(self): # pragma: no cover
+    def get_asset_composition_design_session(self):  # pragma: no cover
         """Gets the session for creating asset compositions.
 
         :return: an ``AssetCompositionDesignSession``
@@ -1199,7 +1199,7 @@ class RepositoryManager:
     asset_composition_design_session = property(fget=get_asset_composition_design_session)
 
     @abc.abstractmethod
-    def get_composition_lookup_session(self): # pragma: no cover
+    def get_composition_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the composition lookup service.
 
         :return: the new ``CompositionLookupSession``
@@ -1216,7 +1216,7 @@ class RepositoryManager:
     composition_lookup_session = property(fget=get_composition_lookup_session)
 
     @abc.abstractmethod
-    def get_composition_lookup_session_for_repository(self, repository_id): # pragma: no cover
+    def get_composition_lookup_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the composition lookup service for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1236,7 +1236,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
-    def get_composition_query_session(self): # pragma: no cover
+    def get_composition_query_session(self):  # pragma: no cover
         """Gets a composition query session.
 
         :return: a ``CompositionQuerySession``
@@ -1253,7 +1253,7 @@ class RepositoryManager:
     composition_query_session = property(fget=get_composition_query_session)
 
     @abc.abstractmethod
-    def get_composition_query_session_for_repository(self, repository_id): # pragma: no cover
+    def get_composition_query_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets a composition query session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1273,7 +1273,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
-    def get_composition_search_session(self): # pragma: no cover
+    def get_composition_search_session(self):  # pragma: no cover
         """Gets a composition search session.
 
         :return: a ``CompositionSearchSession``
@@ -1290,7 +1290,7 @@ class RepositoryManager:
     composition_search_session = property(fget=get_composition_search_session)
 
     @abc.abstractmethod
-    def get_composition_search_session_for_repository(self, repository_id): # pragma: no cover
+    def get_composition_search_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets a composition search session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1310,7 +1310,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
-    def get_composition_admin_session(self): # pragma: no cover
+    def get_composition_admin_session(self):  # pragma: no cover
         """Gets a composition administration session for creating, updating and deleting compositions.
 
         :return: a ``CompositionAdminSession``
@@ -1327,7 +1327,7 @@ class RepositoryManager:
     composition_admin_session = property(fget=get_composition_admin_session)
 
     @abc.abstractmethod
-    def get_composition_admin_session_for_repository(self, repository_id): # pragma: no cover
+    def get_composition_admin_session_for_repository(self, repository_id):  # pragma: no cover
         """Gets a composiiton administrative session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1347,7 +1347,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
-    def get_composition_notification_session(self, composition_receiver): # pragma: no cover
+    def get_composition_notification_session(self, composition_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to composition changes.
 
         :param composition_receiver: the notification callback
@@ -1365,7 +1365,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
-    def get_composition_notification_session_for_repository(self, composition_receiver, repository_id): # pragma: no cover
+    def get_composition_notification_session_for_repository(self, composition_receiver, repository_id):  # pragma: no cover
         """Gets the composition notification session for the given repository.
 
         :param composition_receiver: the notification callback
@@ -1387,7 +1387,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
-    def get_composition_repository_session(self): # pragma: no cover
+    def get_composition_repository_session(self):  # pragma: no cover
         """Gets the session for retrieving composition to repository mappings.
 
         :return: a ``CompositionRepositorySession``
@@ -1404,7 +1404,7 @@ class RepositoryManager:
     composition_repository_session = property(fget=get_composition_repository_session)
 
     @abc.abstractmethod
-    def get_composition_repository_assignment_session(self): # pragma: no cover
+    def get_composition_repository_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning composition to repository mappings.
 
         :return: a ``CompositionRepositoryAssignmentSession``
@@ -1421,7 +1421,7 @@ class RepositoryManager:
     composition_repository_assignment_session = property(fget=get_composition_repository_assignment_session)
 
     @abc.abstractmethod
-    def get_composition_smart_repository_session(self, repository_id): # pragma: no cover
+    def get_composition_smart_repository_session(self, repository_id):  # pragma: no cover
         """Gets a composition smart repository session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1440,7 +1440,7 @@ class RepositoryManager:
         return  # osid.repository.CompositionSmartRepositorySession
 
     @abc.abstractmethod
-    def get_repository_lookup_session(self): # pragma: no cover
+    def get_repository_lookup_session(self):  # pragma: no cover
         """Gets the repository lookup session.
 
         :return: a ``RepositoryLookupSession``
@@ -1457,7 +1457,7 @@ class RepositoryManager:
     repository_lookup_session = property(fget=get_repository_lookup_session)
 
     @abc.abstractmethod
-    def get_repository_query_session(self): # pragma: no cover
+    def get_repository_query_session(self):  # pragma: no cover
         """Gets the repository query session.
 
         :return: a ``RepositoryQuerySession``
@@ -1474,7 +1474,7 @@ class RepositoryManager:
     repository_query_session = property(fget=get_repository_query_session)
 
     @abc.abstractmethod
-    def get_repository_search_session(self): # pragma: no cover
+    def get_repository_search_session(self):  # pragma: no cover
         """Gets the repository search session.
 
         :return: a ``RepositorySearchSession``
@@ -1491,7 +1491,7 @@ class RepositoryManager:
     repository_search_session = property(fget=get_repository_search_session)
 
     @abc.abstractmethod
-    def get_repository_admin_session(self): # pragma: no cover
+    def get_repository_admin_session(self):  # pragma: no cover
         """Gets the repository administrative session for creating, updating and deleteing repositories.
 
         :return: a ``RepositoryAdminSession``
@@ -1508,7 +1508,7 @@ class RepositoryManager:
     repository_admin_session = property(fget=get_repository_admin_session)
 
     @abc.abstractmethod
-    def get_repository_notification_session(self, repository_receiver): # pragma: no cover
+    def get_repository_notification_session(self, repository_receiver):  # pragma: no cover
         """Gets the notification session for subscribing to changes to a repository.
 
         :param repository_receiver: the notification callback
@@ -1526,7 +1526,7 @@ class RepositoryManager:
         return  # osid.repository.RepositoryNotificationSession
 
     @abc.abstractmethod
-    def get_repository_hierarchy_session(self): # pragma: no cover
+    def get_repository_hierarchy_session(self):  # pragma: no cover
         """Gets the repository hierarchy traversal session.
 
         :return: ``a RepositoryHierarchySession``
@@ -1543,7 +1543,7 @@ class RepositoryManager:
     repository_hierarchy_session = property(fget=get_repository_hierarchy_session)
 
     @abc.abstractmethod
-    def get_repository_hierarchy_design_session(self): # pragma: no cover
+    def get_repository_hierarchy_design_session(self):  # pragma: no cover
         """Gets the repository hierarchy design session.
 
         :return: a ``RepostoryHierarchyDesignSession``
@@ -1560,7 +1560,7 @@ class RepositoryManager:
     repository_hierarchy_design_session = property(fget=get_repository_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_repository_batch_manager(self): # pragma: no cover
+    def get_repository_batch_manager(self):  # pragma: no cover
         """Gets a ``RepositoryBatchManager``.
 
         :return: a ``RepostoryBatchManager``
@@ -1577,7 +1577,7 @@ class RepositoryManager:
     repository_batch_manager = property(fget=get_repository_batch_manager)
 
     @abc.abstractmethod
-    def get_repository_rules_manager(self): # pragma: no cover
+    def get_repository_rules_manager(self):  # pragma: no cover
         """Gets a ``RepositoryRulesManager``.
 
         :return: a ``RepostoryRulesManager``
@@ -1658,7 +1658,7 @@ class RepositoryProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_asset_lookup_session(self, proxy): # pragma: no cover
+    def get_asset_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset lookup service.
 
         :param proxy: a proxy
@@ -1676,7 +1676,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
-    def get_asset_lookup_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_lookup_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset lookup service for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1698,7 +1698,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetLookupSession
 
     @abc.abstractmethod
-    def get_asset_query_session(self, proxy): # pragma: no cover
+    def get_asset_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset query service.
 
         :param proxy: a proxy
@@ -1716,7 +1716,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
-    def get_asset_query_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_query_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the asset query service for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1738,7 +1738,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetQuerySession
 
     @abc.abstractmethod
-    def get_asset_search_session(self, proxy): # pragma: no cover
+    def get_asset_search_session(self, proxy):  # pragma: no cover
         """Gets an asset search session.
 
         :param proxy: a proxy
@@ -1756,7 +1756,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
-    def get_asset_search_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_search_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets an asset search session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1778,7 +1778,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSearchSession
 
     @abc.abstractmethod
-    def get_asset_admin_session(self, proxy): # pragma: no cover
+    def get_asset_admin_session(self, proxy):  # pragma: no cover
         """Gets an asset administration session for creating, updating and deleting assets.
 
         :param proxy: a proxy
@@ -1796,7 +1796,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
-    def get_asset_admin_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_admin_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets an asset administration session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1818,7 +1818,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetAdminSession
 
     @abc.abstractmethod
-    def get_asset_notification_session(self, asset_receiver, proxy): # pragma: no cover
+    def get_asset_notification_session(self, asset_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to asset changes.
 
         :param asset_receiver: the notification callback
@@ -1838,7 +1838,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
-    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, proxy): # pragma: no cover
+    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, proxy):  # pragma: no cover
         """Gets the asset notification session for the given repository.
 
         :param asset_receiver: the notification callback
@@ -1862,7 +1862,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetNotificationSession
 
     @abc.abstractmethod
-    def get_asset_repository_session(self, proxy): # pragma: no cover
+    def get_asset_repository_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving asset to repository mappings.
 
         :param proxy: a proxy
@@ -1880,7 +1880,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetRepositorySession
 
     @abc.abstractmethod
-    def get_asset_repository_assignment_session(self, proxy): # pragma: no cover
+    def get_asset_repository_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning asset to repository mappings.
 
         :param proxy: a proxy
@@ -1898,7 +1898,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetRepositoryAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_smart_repository_session(self, repository_id, proxy): # pragma: no cover
+    def get_asset_smart_repository_session(self, repository_id, proxy):  # pragma: no cover
         """Gets an asset smart repository session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1919,7 +1919,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSmartRepositorySession
 
     @abc.abstractmethod
-    def get_asset_temporal_session(self, proxy): # pragma: no cover
+    def get_asset_temporal_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving temporal coverage of an asset.
 
         :param proxy: a proxy
@@ -1937,7 +1937,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
-    def get_asset_temporal_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_temporal_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the session for retrieving temporal coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1959,7 +1959,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetTemporalSession
 
     @abc.abstractmethod
-    def get_asset_temporal_assignment_session(self, proxy): # pragma: no cover
+    def get_asset_temporal_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning temporal coverage to an asset.
 
         :param proxy: a proxy
@@ -1977,7 +1977,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_temporal_assignment_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_temporal_assignment_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the session for assigning temporal coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -1999,7 +1999,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetTemporalAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_spatial_session(self, proxy): # pragma: no cover
+    def get_asset_spatial_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving spatial coverage of an asset.
 
         :param proxy: a proxy
@@ -2017,7 +2017,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
-    def get_asset_spatial_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_spatial_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the session for retrieving spatial coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2039,7 +2039,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSpatialSession
 
     @abc.abstractmethod
-    def get_asset_spatial_assignment_session(self, proxy): # pragma: no cover
+    def get_asset_spatial_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning spatial coverage to an asset.
 
         :param proxy: a proxy
@@ -2057,7 +2057,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_spatial_assignment_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_asset_spatial_assignment_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the session for assigning spatial coverage of an asset for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2079,7 +2079,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetSpatialAssignmentSession
 
     @abc.abstractmethod
-    def get_asset_composition_session(self, proxy): # pragma: no cover
+    def get_asset_composition_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving asset compositions.
 
         :param proxy: a proxy
@@ -2097,7 +2097,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetCompositionSession
 
     @abc.abstractmethod
-    def get_asset_composition_design_session(self, proxy): # pragma: no cover
+    def get_asset_composition_design_session(self, proxy):  # pragma: no cover
         """Gets the session for creating asset compositions.
 
         :param proxy: a proxy
@@ -2115,7 +2115,7 @@ class RepositoryProxyManager:
         return  # osid.repository.AssetCompositionDesignSession
 
     @abc.abstractmethod
-    def get_composition_lookup_session(self, proxy): # pragma: no cover
+    def get_composition_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the composition lookup service.
 
         :param proxy: a proxy
@@ -2133,7 +2133,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
-    def get_composition_lookup_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_composition_lookup_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the composition lookup service for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2155,7 +2155,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionLookupSession
 
     @abc.abstractmethod
-    def get_composition_query_session(self, proxy): # pragma: no cover
+    def get_composition_query_session(self, proxy):  # pragma: no cover
         """Gets a composition query session.
 
         :param proxy: a proxy
@@ -2173,7 +2173,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
-    def get_composition_query_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_composition_query_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets a composition query session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2195,7 +2195,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionQuerySession
 
     @abc.abstractmethod
-    def get_composition_search_session(self, proxy): # pragma: no cover
+    def get_composition_search_session(self, proxy):  # pragma: no cover
         """Gets a composition search session.
 
         :param proxy: a proxy
@@ -2213,7 +2213,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
-    def get_composition_search_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_composition_search_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets a composition search session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2235,7 +2235,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionSearchSession
 
     @abc.abstractmethod
-    def get_composition_admin_session(self, proxy): # pragma: no cover
+    def get_composition_admin_session(self, proxy):  # pragma: no cover
         """Gets a composition administration session for creating, updating and deleting compositions.
 
         :param proxy: a proxy
@@ -2253,7 +2253,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
-    def get_composition_admin_session_for_repository(self, repository_id, proxy): # pragma: no cover
+    def get_composition_admin_session_for_repository(self, repository_id, proxy):  # pragma: no cover
         """Gets a composiiton administrative session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2275,7 +2275,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionAdminSession
 
     @abc.abstractmethod
-    def get_composition_notification_session(self, composition_receiver, proxy): # pragma: no cover
+    def get_composition_notification_session(self, composition_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to composition changes.
 
         :param composition_receiver: the notification callback
@@ -2295,7 +2295,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
-    def get_composition_notification_session_for_repository(self, composition_receiver, repository_id, proxy): # pragma: no cover
+    def get_composition_notification_session_for_repository(self, composition_receiver, repository_id, proxy):  # pragma: no cover
         """Gets the composition notification session for the given repository.
 
         :param composition_receiver: the notification callback
@@ -2319,7 +2319,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionNotificationSession
 
     @abc.abstractmethod
-    def get_composition_repository_session(self, proxy): # pragma: no cover
+    def get_composition_repository_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving composition to repository mappings.
 
         :param proxy: a proxy
@@ -2337,7 +2337,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionRepositorySession
 
     @abc.abstractmethod
-    def get_composition_repository_assignment_session(self, proxy): # pragma: no cover
+    def get_composition_repository_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning composition to repository mappings.
 
         :param proxy: a proxy
@@ -2355,7 +2355,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionRepositoryAssignmentSession
 
     @abc.abstractmethod
-    def get_composition_smart_repository_session(self, repository_id, proxy): # pragma: no cover
+    def get_composition_smart_repository_session(self, repository_id, proxy):  # pragma: no cover
         """Gets a composition smart repository session for the given repository.
 
         :param repository_id: the ``Id`` of the repository
@@ -2376,7 +2376,7 @@ class RepositoryProxyManager:
         return  # osid.repository.CompositionSmartRepositorySession
 
     @abc.abstractmethod
-    def get_repository_lookup_session(self, proxy): # pragma: no cover
+    def get_repository_lookup_session(self, proxy):  # pragma: no cover
         """Gets the repository lookup session.
 
         :param proxy: a proxy
@@ -2394,7 +2394,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryLookupSession
 
     @abc.abstractmethod
-    def get_repository_query_session(self, proxy): # pragma: no cover
+    def get_repository_query_session(self, proxy):  # pragma: no cover
         """Gets the repository query session.
 
         :param proxy: a proxy
@@ -2412,7 +2412,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryQuerySession
 
     @abc.abstractmethod
-    def get_repository_search_session(self, proxy): # pragma: no cover
+    def get_repository_search_session(self, proxy):  # pragma: no cover
         """Gets the repository search session.
 
         :param proxy: a proxy
@@ -2430,7 +2430,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositorySearchSession
 
     @abc.abstractmethod
-    def get_repository_admin_session(self, proxy): # pragma: no cover
+    def get_repository_admin_session(self, proxy):  # pragma: no cover
         """Gets the repository administrative session for creating, updating and deleteing repositories.
 
         :param proxy: a proxy
@@ -2448,7 +2448,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryAdminSession
 
     @abc.abstractmethod
-    def get_repository_notification_session(self, repository_receiver, proxy): # pragma: no cover
+    def get_repository_notification_session(self, repository_receiver, proxy):  # pragma: no cover
         """Gets the notification session for subscribing to changes to a repository.
 
         :param repository_receiver: the notification callback
@@ -2468,7 +2468,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryNotificationSession
 
     @abc.abstractmethod
-    def get_repository_hierarchy_session(self, proxy): # pragma: no cover
+    def get_repository_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the repository hierarchy traversal session.
 
         :param proxy: a proxy
@@ -2486,7 +2486,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryHierarchySession
 
     @abc.abstractmethod
-    def get_repository_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_repository_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the repository hierarchy design session.
 
         :param proxy: a proxy
@@ -2504,7 +2504,7 @@ class RepositoryProxyManager:
         return  # osid.repository.RepositoryHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_repository_batch_proxy_manager(self): # pragma: no cover
+    def get_repository_batch_proxy_manager(self):  # pragma: no cover
         """Gets a ``RepositoryBatchProxyManager``.
 
         :return: a ``RepostoryBatchProxyManager``
@@ -2521,7 +2521,7 @@ class RepositoryProxyManager:
     repository_batch_proxy_manager = property(fget=get_repository_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_repository_rules_proxy_manager(self): # pragma: no cover
+    def get_repository_rules_proxy_manager(self):  # pragma: no cover
         """Gets a ``RepositoryRulesProxyManager``.
 
         :return: a ``RepostoryRulesProxyManager``

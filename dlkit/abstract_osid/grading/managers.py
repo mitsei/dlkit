@@ -21,7 +21,7 @@ class GradingProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_lookup(self): # pragma: no cover
+    def supports_grade_system_lookup(self):  # pragma: no cover
         """Tests if a grade system lookup service is supported.
 
         :return: true if grade system lookup is supported, false otherwise
@@ -47,7 +47,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_query(self): # pragma: no cover
+    def supports_grade_system_query(self):  # pragma: no cover
         """Tests if a grade system query service is supported.
 
         :return: ``true`` if grade system query is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_search(self): # pragma: no cover
+    def supports_grade_system_search(self):  # pragma: no cover
         """Tests if a grade system search service is supported.
 
         :return: ``true`` if grade system search is supported, ``false`` otherwise
@@ -73,7 +73,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_admin(self): # pragma: no cover
+    def supports_grade_system_admin(self):  # pragma: no cover
         """Tests if a grade system administrative service is supported.
 
         :return: ``true`` if grade system admin is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_notification(self): # pragma: no cover
+    def supports_grade_system_notification(self):  # pragma: no cover
         """Tests if grade system notification is supported.
 
         Messages may be sent when grade entries are created, modified,
@@ -102,7 +102,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_gradebook(self): # pragma: no cover
+    def supports_grade_system_gradebook(self):  # pragma: no cover
         """Tests if a grade system to gradebook lookup session is available.
 
         :return: ``true`` if grade system gradebook lookup session is supported, ``false`` otherwise
@@ -115,7 +115,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_gradebook_assignment(self): # pragma: no cover
+    def supports_grade_system_gradebook_assignment(self):  # pragma: no cover
         """Tests if a grade system to gradebook assignment session is available.
 
         :return: ``true`` if grade system gradebook assignment is supported, ``false`` otherwise
@@ -128,7 +128,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_system_smart_gradebook(self): # pragma: no cover
+    def supports_grade_system_smart_gradebook(self):  # pragma: no cover
         """Tests if a grade system smart gradebook session is available.
 
         :return: ``true`` if grade system smart gradebook is supported, ``false`` otherwise
@@ -141,7 +141,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_entry_lookup(self): # pragma: no cover
+    def supports_grade_entry_lookup(self):  # pragma: no cover
         """Tests if a grade entry lookup service is supported.
 
         :return: true if grade entry lookup is supported, false otherwise
@@ -154,7 +154,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_entry_query(self): # pragma: no cover
+    def supports_grade_entry_query(self):  # pragma: no cover
         """Tests if a grade entry query service is supported.
 
         :return: true if grade entry query is supported, false otherwise
@@ -167,7 +167,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_entry_search(self): # pragma: no cover
+    def supports_grade_entry_search(self):  # pragma: no cover
         """Tests if a grade entry search service is supported.
 
         :return: ``true`` if grade entry search is supported, ``false`` otherwise
@@ -180,7 +180,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_entry_admin(self): # pragma: no cover
+    def supports_grade_entry_admin(self):  # pragma: no cover
         """Tests if a grade entry administrative service is supported.
 
         :return: ``true`` if grade entry admin is supported, ``false`` otherwise
@@ -193,7 +193,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grade_entry_notification(self): # pragma: no cover
+    def supports_grade_entry_notification(self):  # pragma: no cover
         """Tests if grade entry notification is supported.
 
         :return: ``true`` if grade entry notification is supported, ``false`` otherwise
@@ -206,7 +206,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_lookup(self): # pragma: no cover
+    def supports_gradebook_column_lookup(self):  # pragma: no cover
         """Tests if a gradebook column lookup service is supported.
 
         :return: true if gradebook column lookup is supported, false otherwise
@@ -219,7 +219,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_query(self): # pragma: no cover
+    def supports_gradebook_column_query(self):  # pragma: no cover
         """Tests if a gradebook column query service is supported.
 
         :return: ``true`` if grade system query is supported, ``false`` otherwise
@@ -232,7 +232,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_search(self): # pragma: no cover
+    def supports_gradebook_column_search(self):  # pragma: no cover
         """Tests if a gradebook column search service is supported.
 
         :return: ``true`` if grade system search is supported, ``false`` otherwise
@@ -245,7 +245,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_admin(self): # pragma: no cover
+    def supports_gradebook_column_admin(self):  # pragma: no cover
         """Tests if a gradebook column administrative service is supported.
 
         :return: ``true`` if gradebook column admin is supported, ``false`` otherwise
@@ -258,7 +258,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_notification(self): # pragma: no cover
+    def supports_gradebook_column_notification(self):  # pragma: no cover
         """Tests if gradebook column notification is supported.
 
         Messages may be sent when grade entries are created, modified,
@@ -274,7 +274,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_gradebook(self): # pragma: no cover
+    def supports_gradebook_column_gradebook(self):  # pragma: no cover
         """Tests if a gradebook column to gradebook lookup session is available.
 
         :return: ``true`` if gradebook column gradebook lookup session is supported, ``false`` otherwise
@@ -287,7 +287,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_gradebook_assignment(self): # pragma: no cover
+    def supports_gradebook_column_gradebook_assignment(self):  # pragma: no cover
         """Tests if a gradebook column to gradebook assignment session is available.
 
         :return: ``true`` if gradebook column gradebook assignment is supported, ``false`` otherwise
@@ -300,7 +300,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_column_smart_gradebook(self): # pragma: no cover
+    def supports_gradebook_column_smart_gradebook(self):  # pragma: no cover
         """Tests if a gradebook column smart gradebookt session is available.
 
         :return: ``true`` if gradebook column amsrt gradebook is supported, ``false`` otherwise
@@ -313,7 +313,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_lookup(self): # pragma: no cover
+    def supports_gradebook_lookup(self):  # pragma: no cover
         """Tests if a gradebook lookup service is supported.
 
         :return: ``true`` if gradebook lookup is supported, ``false`` otherwise
@@ -326,7 +326,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_query(self): # pragma: no cover
+    def supports_gradebook_query(self):  # pragma: no cover
         """Tests if a gradebook query service is supported.
 
         :return: ``true`` if gradebook query is supported, ``false`` otherwise
@@ -339,7 +339,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_search(self): # pragma: no cover
+    def supports_gradebook_search(self):  # pragma: no cover
         """Tests if a gradebook search service is supported.
 
         :return: ``true`` if gradebook search is supported, ``false`` otherwise
@@ -352,7 +352,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_admin(self): # pragma: no cover
+    def supports_gradebook_admin(self):  # pragma: no cover
         """Tests if a gradebook administrative service is supported.
 
         :return: ``true`` if gradebook admin is supported, ``false`` otherwise
@@ -365,7 +365,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_notification(self): # pragma: no cover
+    def supports_gradebook_notification(self):  # pragma: no cover
         """Tests if gradebook notification is supported.
 
         Messages may be sent when gradebooks are created, modified, or
@@ -381,7 +381,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_hierarchy(self): # pragma: no cover
+    def supports_gradebook_hierarchy(self):  # pragma: no cover
         """Tests if a gradebook hierarchy traversal is supported.
 
         :return: ``true`` if a gradebook hierarchy traversal is supported, ``false`` otherwise
@@ -394,7 +394,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_gradebook_hierarchy_design(self): # pragma: no cover
+    def supports_gradebook_hierarchy_design(self):  # pragma: no cover
         """Tests if gradebook hierarchy design is supported.
 
         :return: ``true`` if a gradebook hierarchy design is supported, ``false`` otherwise
@@ -407,7 +407,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grading_batch(self): # pragma: no cover
+    def supports_grading_batch(self):  # pragma: no cover
         """Tests if a grading batch service is supported.
 
         :return: ``true`` if a grading batch service is supported, ``false`` otherwise
@@ -420,7 +420,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grading_calculation(self): # pragma: no cover
+    def supports_grading_calculation(self):  # pragma: no cover
         """Tests if a grading calculation service is supported.
 
         :return: ``true`` if a grading calculation service is supported, ``false`` otherwise
@@ -433,7 +433,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_grading_transform(self): # pragma: no cover
+    def supports_grading_transform(self):  # pragma: no cover
         """Tests if a grade system transform service is supported.
 
         :return: ``true`` if a grading transform service is supported, ``false`` otherwise
@@ -446,7 +446,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_record_types(self): # pragma: no cover
+    def get_grade_record_types(self):  # pragma: no cover
         """Gets the supported ``Grade`` record types.
 
         :return: a list containing the supported ``Grade`` record types
@@ -461,7 +461,7 @@ class GradingProfile:
     grade_record_types = property(fget=get_grade_record_types)
 
     @abc.abstractmethod
-    def supports_grade_record_type(self, grade_record_type): # pragma: no cover
+    def supports_grade_record_type(self, grade_record_type):  # pragma: no cover
         """Tests if the given ``Grade`` record type is supported.
 
         :param grade_record_type: a ``Type`` indicating a ``Grade`` record type
@@ -476,7 +476,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_record_types(self): # pragma: no cover
+    def get_grade_system_record_types(self):  # pragma: no cover
         """Gets the supported ``GradeSystem`` record types.
 
         :return: a list containing the supported ``GradeSystem`` record types
@@ -491,7 +491,7 @@ class GradingProfile:
     grade_system_record_types = property(fget=get_grade_system_record_types)
 
     @abc.abstractmethod
-    def supports_grade_system_record_type(self, grade_system_record_type): # pragma: no cover
+    def supports_grade_system_record_type(self, grade_system_record_type):  # pragma: no cover
         """Tests if the given ``GradeSystem`` record type is supported.
 
         :param grade_system_record_type: a ``Type`` indicating a ``GradeSystem`` record type
@@ -506,7 +506,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_search_record_types(self): # pragma: no cover
+    def get_grade_system_search_record_types(self):  # pragma: no cover
         """Gets the supported ``GradeSystem`` search record types.
 
         :return: a list containing the supported ``GradeSystem`` search record types
@@ -521,7 +521,7 @@ class GradingProfile:
     grade_system_search_record_types = property(fget=get_grade_system_search_record_types)
 
     @abc.abstractmethod
-    def supports_grade_system_search_record_type(self, grade_system_search_record_type): # pragma: no cover
+    def supports_grade_system_search_record_type(self, grade_system_search_record_type):  # pragma: no cover
         """Tests if the given ``GradeSystem`` search record type is supported.
 
         :param grade_system_search_record_type: a ``Type`` indicating a ``GradeSystem`` search record type
@@ -536,7 +536,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_record_types(self): # pragma: no cover
+    def get_grade_entry_record_types(self):  # pragma: no cover
         """Gets the supported ``GradeEntry`` record types.
 
         :return: a list containing the supported ``GradeEntry`` record types
@@ -551,7 +551,7 @@ class GradingProfile:
     grade_entry_record_types = property(fget=get_grade_entry_record_types)
 
     @abc.abstractmethod
-    def supports_grade_entry_record_type(self, grade_entry_record_type): # pragma: no cover
+    def supports_grade_entry_record_type(self, grade_entry_record_type):  # pragma: no cover
         """Tests if the given ``GradeEntry`` record type is supported.
 
         :param grade_entry_record_type: a ``Type`` indicating a ``GradeEntry`` record type
@@ -566,7 +566,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_search_record_types(self): # pragma: no cover
+    def get_grade_entry_search_record_types(self):  # pragma: no cover
         """Gets the supported ``GradeEntry`` search record types.
 
         :return: a list containing the supported ``GradeEntry`` search record types
@@ -581,7 +581,7 @@ class GradingProfile:
     grade_entry_search_record_types = property(fget=get_grade_entry_search_record_types)
 
     @abc.abstractmethod
-    def supports_grade_entry_search_record_type(self, grade_entry_search_record_type): # pragma: no cover
+    def supports_grade_entry_search_record_type(self, grade_entry_search_record_type):  # pragma: no cover
         """Tests if the given ``GradeEntry`` search record type is supported.
 
         :param grade_entry_search_record_type: a ``Type`` indicating a ``GradeEntry`` search record type
@@ -596,7 +596,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_record_types(self): # pragma: no cover
+    def get_gradebook_column_record_types(self):  # pragma: no cover
         """Gets the supported ``GradebookColumn`` record types.
 
         :return: a list containing the supported ``GradebookColumn`` record types
@@ -611,7 +611,7 @@ class GradingProfile:
     gradebook_column_record_types = property(fget=get_gradebook_column_record_types)
 
     @abc.abstractmethod
-    def supports_gradebook_column_record_type(self, gradebook_column_record_type): # pragma: no cover
+    def supports_gradebook_column_record_type(self, gradebook_column_record_type):  # pragma: no cover
         """Tests if the given ``GradebookColumn`` record type is supported.
 
         :param gradebook_column_record_type: a ``Type`` indicating a ``GradebookColumn`` type
@@ -626,7 +626,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_search_record_types(self): # pragma: no cover
+    def get_gradebook_column_search_record_types(self):  # pragma: no cover
         """Gets the supported gradebook column search record types.
 
         :return: a list containing the supported ``GradebookColumn`` search record types
@@ -641,7 +641,7 @@ class GradingProfile:
     gradebook_column_search_record_types = property(fget=get_gradebook_column_search_record_types)
 
     @abc.abstractmethod
-    def supports_gradebook_column_search_record_type(self, gradebook_column_search_record_type): # pragma: no cover
+    def supports_gradebook_column_search_record_type(self, gradebook_column_search_record_type):  # pragma: no cover
         """Tests if the given gradebook column search record type is supported.
 
         :param gradebook_column_search_record_type: a ``Type`` indicating a ``GradebookColumn`` search record type
@@ -656,7 +656,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_record_types(self): # pragma: no cover
+    def get_gradebook_column_summary_record_types(self):  # pragma: no cover
         """Gets the supported ``GradebookColumnSummary`` record types.
 
         :return: a list containing the supported ``GradebookColumnSummary`` record types
@@ -671,7 +671,7 @@ class GradingProfile:
     gradebook_column_summary_record_types = property(fget=get_gradebook_column_summary_record_types)
 
     @abc.abstractmethod
-    def supports_gradebook_column_summary_record_type(self, gradebook_column_summary_record_type): # pragma: no cover
+    def supports_gradebook_column_summary_record_type(self, gradebook_column_summary_record_type):  # pragma: no cover
         """Tests if the given ``GradebookColumnSummary`` record type is supported.
 
         :param gradebook_column_summary_record_type: a ``Type`` indicating a ``GradebookColumnSummary`` type
@@ -686,7 +686,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_record_types(self): # pragma: no cover
+    def get_gradebook_record_types(self):  # pragma: no cover
         """Gets the supported ``Gradebook`` record types.
 
         :return: a list containing the supported ``Gradebook`` record types
@@ -701,7 +701,7 @@ class GradingProfile:
     gradebook_record_types = property(fget=get_gradebook_record_types)
 
     @abc.abstractmethod
-    def supports_gradebook_record_type(self, gradebook_record_type): # pragma: no cover
+    def supports_gradebook_record_type(self, gradebook_record_type):  # pragma: no cover
         """Tests if the given ``Gradebook`` record type is supported.
 
         :param gradebook_record_type: a ``Type`` indicating a ``Gradebook`` type
@@ -716,7 +716,7 @@ class GradingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_search_record_types(self): # pragma: no cover
+    def get_gradebook_search_record_types(self):  # pragma: no cover
         """Gets the supported gradebook search record types.
 
         :return: a list containing the supported ``Gradebook`` search record types
@@ -731,7 +731,7 @@ class GradingProfile:
     gradebook_search_record_types = property(fget=get_gradebook_search_record_types)
 
     @abc.abstractmethod
-    def supports_gradebook_search_record_type(self, gradebook_search_record_type): # pragma: no cover
+    def supports_gradebook_search_record_type(self, gradebook_search_record_type):  # pragma: no cover
         """Tests if the given gradebook search record type is supported.
 
         :param gradebook_search_record_type: a ``Type`` indicating a ``Gradebook`` search record type
@@ -808,7 +808,7 @@ class GradingManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_lookup_session(self): # pragma: no cover
+    def get_grade_system_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system lookup service.
 
         :return: a ``GradeSystemLookupSession``
@@ -825,7 +825,7 @@ class GradingManager:
     grade_system_lookup_session = property(fget=get_grade_system_lookup_session)
 
     @abc.abstractmethod
-    def get_grade_system_lookup_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_system_lookup_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -845,7 +845,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
-    def get_grade_system_query_session(self): # pragma: no cover
+    def get_grade_system_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system query service.
 
         :return: a ``GradeSystemQuerySession``
@@ -862,7 +862,7 @@ class GradingManager:
     grade_system_query_session = property(fget=get_grade_system_query_session)
 
     @abc.abstractmethod
-    def get_grade_system_query_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_system_query_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -882,7 +882,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
-    def get_grade_system_search_session(self): # pragma: no cover
+    def get_grade_system_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system search service.
 
         :return: a ``GradeSystemSearchSession``
@@ -899,7 +899,7 @@ class GradingManager:
     grade_system_search_session = property(fget=get_grade_system_search_session)
 
     @abc.abstractmethod
-    def get_grade_system_search_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_system_search_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -919,7 +919,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
-    def get_grade_system_admin_session(self): # pragma: no cover
+    def get_grade_system_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system administration service.
 
         :return: a ``GradeSystemAdminSession``
@@ -936,7 +936,7 @@ class GradingManager:
     grade_system_admin_session = property(fget=get_grade_system_admin_session)
 
     @abc.abstractmethod
-    def get_grade_system_admin_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_system_admin_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -956,7 +956,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
-    def get_grade_system_notification_session(self, grade_system_receiver): # pragma: no cover
+    def get_grade_system_notification_session(self, grade_system_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to grade system changes.
 
         :param grade_system_receiver: the grade system receiver
@@ -974,7 +974,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
-    def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id): # pragma: no cover
+    def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system notification service for the given gradebook.
 
         :param grade_system_receiver: the grade system receiver
@@ -996,7 +996,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
-    def get_grade_system_gradebook_session(self): # pragma: no cover
+    def get_grade_system_gradebook_session(self):  # pragma: no cover
         """Gets the session for retrieving grade system to gradebook mappings.
 
         :return: a ``GradeSystemGradebookSession``
@@ -1013,7 +1013,7 @@ class GradingManager:
     grade_system_gradebook_session = property(fget=get_grade_system_gradebook_session)
 
     @abc.abstractmethod
-    def get_grade_system_gradebook_assignment_session(self): # pragma: no cover
+    def get_grade_system_gradebook_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning grade system to gradebook mappings.
 
         :return: a ``GradeSystemGradebookAssignmentSession``
@@ -1030,7 +1030,7 @@ class GradingManager:
     grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
 
     @abc.abstractmethod
-    def get_grade_system_smart_gradebook_session(self, gradebook_id): # pragma: no cover
+    def get_grade_system_smart_gradebook_session(self, gradebook_id):  # pragma: no cover
         """Gets the session for managing smart gradebooks of grade systems.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1049,7 +1049,7 @@ class GradingManager:
         return  # osid.grading.GradeSystemSmartGradebookSession
 
     @abc.abstractmethod
-    def get_grade_entry_lookup_session(self): # pragma: no cover
+    def get_grade_entry_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry lookup service.
 
         :return: a ``GradeEntryLookupSession``
@@ -1066,7 +1066,7 @@ class GradingManager:
     grade_entry_lookup_session = property(fget=get_grade_entry_lookup_session)
 
     @abc.abstractmethod
-    def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1086,7 +1086,7 @@ class GradingManager:
         return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
-    def get_grade_entry_query_session(self): # pragma: no cover
+    def get_grade_entry_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry query service.
 
         :return: a ``GradeEntryQuerySession``
@@ -1103,7 +1103,7 @@ class GradingManager:
     grade_entry_query_session = property(fget=get_grade_entry_query_session)
 
     @abc.abstractmethod
-    def get_grade_entry_query_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_entry_query_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1123,7 +1123,7 @@ class GradingManager:
         return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
-    def get_grade_entry_search_session(self): # pragma: no cover
+    def get_grade_entry_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry search service.
 
         :return: a ``GradeEntrySearchSession``
@@ -1140,7 +1140,7 @@ class GradingManager:
     grade_entry_search_session = property(fget=get_grade_entry_search_session)
 
     @abc.abstractmethod
-    def get_grade_entry_search_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_entry_search_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1160,7 +1160,7 @@ class GradingManager:
         return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
-    def get_grade_entry_admin_session(self): # pragma: no cover
+    def get_grade_entry_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry administration service.
 
         :return: a ``GradeEntryAdminSession``
@@ -1177,7 +1177,7 @@ class GradingManager:
     grade_entry_admin_session = property(fget=get_grade_entry_admin_session)
 
     @abc.abstractmethod
-    def get_grade_entry_admin_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_grade_entry_admin_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1197,7 +1197,7 @@ class GradingManager:
         return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
-    def get_grade_entry_notification_session(self, receiver): # pragma: no cover
+    def get_grade_entry_notification_session(self, receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to grade entry changes.
 
         :param receiver: the grade entry receiver
@@ -1215,7 +1215,7 @@ class GradingManager:
         return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
-    def get_grade_entry_notification_session_for_gradebook(self, receiver, gradebook_id): # pragma: no cover
+    def get_grade_entry_notification_session_for_gradebook(self, receiver, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry notification service for the given gradebook.
 
         :param receiver: the grade entry receiver
@@ -1237,7 +1237,7 @@ class GradingManager:
         return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_lookup_session(self): # pragma: no cover
+    def get_gradebook_column_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column lookup service.
 
         :return: a ``GradebookColumnLookupSession``
@@ -1254,7 +1254,7 @@ class GradingManager:
     gradebook_column_lookup_session = property(fget=get_gradebook_column_lookup_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1274,7 +1274,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
-    def get_gradebook_column_query_session(self): # pragma: no cover
+    def get_gradebook_column_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column query service.
 
         :return: a ``GradebookColumnQuerySession``
@@ -1291,7 +1291,7 @@ class GradingManager:
     gradebook_column_query_session = property(fget=get_gradebook_column_query_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_query_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_gradebook_column_query_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1311,7 +1311,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
-    def get_gradebook_column_search_session(self): # pragma: no cover
+    def get_gradebook_column_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column search service.
 
         :return: a ``GradebookColumnSearchSession``
@@ -1328,7 +1328,7 @@ class GradingManager:
     gradebook_column_search_session = property(fget=get_gradebook_column_search_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_search_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_gradebook_column_search_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1348,7 +1348,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
-    def get_gradebook_column_admin_session(self): # pragma: no cover
+    def get_gradebook_column_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column administration service.
 
         :return: a ``GradebookColumnAdminSession``
@@ -1365,7 +1365,7 @@ class GradingManager:
     gradebook_column_admin_session = property(fget=get_gradebook_column_admin_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id): # pragma: no cover
+    def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1385,7 +1385,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
-    def get_gradebook_column_notification_session(self, gradebook_column_receiver): # pragma: no cover
+    def get_gradebook_column_notification_session(self, gradebook_column_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to gradebook column changes.
 
         :param gradebook_column_receiver: the grade system receiver
@@ -1403,7 +1403,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id): # pragma: no cover
+    def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column notification service for the given gradebook.
 
         :param gradebook_column_receiver: the gradebook column receiver
@@ -1425,7 +1425,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_gradebook_session(self): # pragma: no cover
+    def get_gradebook_column_gradebook_session(self):  # pragma: no cover
         """Gets the session for retrieving gradebook column to gradebook mappings.
 
         :return: a ``GradebookColumnGradebookSession``
@@ -1442,7 +1442,7 @@ class GradingManager:
     gradebook_column_gradebook_session = property(fget=get_gradebook_column_gradebook_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_gradebook_assignment_session(self): # pragma: no cover
+    def get_gradebook_column_gradebook_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning gradebook column to gradebook mappings.
 
         :return: a ``GradebookColumnGradebookAssignmentSession``
@@ -1460,7 +1460,7 @@ class GradingManager:
     gradebook_column_gradebook_assignment_session = property(fget=get_gradebook_column_gradebook_assignment_session)
 
     @abc.abstractmethod
-    def get_gradebook_column_smart_gradebook_session(self, gradebook_id): # pragma: no cover
+    def get_gradebook_column_smart_gradebook_session(self, gradebook_id):  # pragma: no cover
         """Gets the session for managing smart gradebooks of gradebook columns.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1479,7 +1479,7 @@ class GradingManager:
         return  # osid.grading.GradebookColumnSmartGradebookSession
 
     @abc.abstractmethod
-    def get_gradebook_lookup_session(self): # pragma: no cover
+    def get_gradebook_lookup_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook lookup service.
 
         :return: a ``GradebookLookupSession``
@@ -1496,7 +1496,7 @@ class GradingManager:
     gradebook_lookup_session = property(fget=get_gradebook_lookup_session)
 
     @abc.abstractmethod
-    def get_gradebook_query_session(self): # pragma: no cover
+    def get_gradebook_query_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook query service.
 
         :return: a ``GradebookQuerySession``
@@ -1513,7 +1513,7 @@ class GradingManager:
     gradebook_query_session = property(fget=get_gradebook_query_session)
 
     @abc.abstractmethod
-    def get_gradebook_search_session(self): # pragma: no cover
+    def get_gradebook_search_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook search service.
 
         :return: a ``GradebookSearchSession``
@@ -1530,7 +1530,7 @@ class GradingManager:
     gradebook_search_session = property(fget=get_gradebook_search_session)
 
     @abc.abstractmethod
-    def get_gradebook_admin_session(self): # pragma: no cover
+    def get_gradebook_admin_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook administration service.
 
         :return: a ``GradebookAdminSession``
@@ -1547,7 +1547,7 @@ class GradingManager:
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
     @abc.abstractmethod
-    def get_gradebook_notification_session(self, gradebook_receiver): # pragma: no cover
+    def get_gradebook_notification_session(self, gradebook_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to gradebook service changes.
 
         :param gradebook_receiver: the gradebook receiver
@@ -1565,7 +1565,7 @@ class GradingManager:
         return  # osid.grading.GradebookNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_session(self): # pragma: no cover
+    def get_gradebook_hierarchy_session(self):  # pragma: no cover
         """Gets the session traversing gradebook hierarchies.
 
         :return: a ``GradebookHierarchySession``
@@ -1582,7 +1582,7 @@ class GradingManager:
     gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_design_session(self): # pragma: no cover
+    def get_gradebook_hierarchy_design_session(self):  # pragma: no cover
         """Gets the session designing gradebook hierarchies.
 
         :return: a ``GradebookHierarchyDesignSession``
@@ -1599,7 +1599,7 @@ class GradingManager:
     gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_grading_batch_manager(self): # pragma: no cover
+    def get_grading_batch_manager(self):  # pragma: no cover
         """Gets the ``GradingBatchManager``.
 
         :return: a ``GradingBatchManager``
@@ -1616,7 +1616,7 @@ class GradingManager:
     grading_batch_manager = property(fget=get_grading_batch_manager)
 
     @abc.abstractmethod
-    def get_grading_calculation_manager(self): # pragma: no cover
+    def get_grading_calculation_manager(self):  # pragma: no cover
         """Gets the ``GradingCalculationManager``.
 
         :return: a ``GradingCalculationManager``
@@ -1633,7 +1633,7 @@ class GradingManager:
     grading_calculation_manager = property(fget=get_grading_calculation_manager)
 
     @abc.abstractmethod
-    def get_grading_transform_manager(self): # pragma: no cover
+    def get_grading_transform_manager(self):  # pragma: no cover
         """Gets the ``GradingTransformManager``.
 
         :return: a ``GradingTransformManager``
@@ -1715,7 +1715,7 @@ class GradingProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_lookup_session(self, proxy): # pragma: no cover
+    def get_grade_system_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system lookup service.
 
         :param proxy: a proxy
@@ -1733,7 +1733,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
-    def get_grade_system_lookup_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_lookup_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1755,7 +1755,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemLookupSession
 
     @abc.abstractmethod
-    def get_grade_system_query_session(self, proxy): # pragma: no cover
+    def get_grade_system_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system query service.
 
         :param proxy: a proxy
@@ -1773,7 +1773,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
-    def get_grade_system_query_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_query_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1795,7 +1795,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemQuerySession
 
     @abc.abstractmethod
-    def get_grade_system_search_session(self, proxy): # pragma: no cover
+    def get_grade_system_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system search service.
 
         :param proxy: a proxy
@@ -1813,7 +1813,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
-    def get_grade_system_search_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_search_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1835,7 +1835,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemSearchSession
 
     @abc.abstractmethod
-    def get_grade_system_admin_session(self, proxy): # pragma: no cover
+    def get_grade_system_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system administration service.
 
         :param proxy: a proxy
@@ -1853,7 +1853,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
-    def get_grade_system_admin_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_admin_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1875,7 +1875,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemAdminSession
 
     @abc.abstractmethod
-    def get_grade_system_notification_session(self, grade_system_receiver, proxy): # pragma: no cover
+    def get_grade_system_notification_session(self, grade_system_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to grade system changes.
 
         :param grade_system_receiver: the grade system receiver
@@ -1895,7 +1895,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
-    def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_notification_session_for_gradebook(self, grade_system_receiver, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade system notification service for the given gradebook.
 
         :param grade_system_receiver: the grade system receiver
@@ -1919,7 +1919,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemNotificationSession
 
     @abc.abstractmethod
-    def get_grade_system_gradebook_session(self, proxy): # pragma: no cover
+    def get_grade_system_gradebook_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving grade system to gradebook mappings.
 
         :param proxy: a proxy
@@ -1937,7 +1937,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemGradebookSession
 
     @abc.abstractmethod
-    def get_grade_system_gradebook_assignment_session(self, proxy): # pragma: no cover
+    def get_grade_system_gradebook_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning grade system to gradebook mappings.
 
         :param proxy: a proxy
@@ -1955,7 +1955,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemGradebookSession
 
     @abc.abstractmethod
-    def get_grade_system_smart_gradebook_session(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_system_smart_gradebook_session(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the session for managing smart gradebooks of grade systems.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -1976,7 +1976,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeSystemSmartGradebookSession
 
     @abc.abstractmethod
-    def get_grade_entry_lookup_session(self, proxy): # pragma: no cover
+    def get_grade_entry_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry lookup service.
 
         :param proxy: a proxy
@@ -1994,7 +1994,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
-    def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2016,7 +2016,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryLookupSession
 
     @abc.abstractmethod
-    def get_grade_entry_query_session(self, proxy): # pragma: no cover
+    def get_grade_entry_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry query service.
 
         :param proxy: a proxy
@@ -2034,7 +2034,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
-    def get_grade_entry_query_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_entry_query_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2056,7 +2056,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryQuerySession
 
     @abc.abstractmethod
-    def get_grade_entry_search_session(self, proxy): # pragma: no cover
+    def get_grade_entry_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry search service.
 
         :param proxy: a proxy
@@ -2074,7 +2074,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
-    def get_grade_entry_search_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_entry_search_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2096,7 +2096,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntrySearchSession
 
     @abc.abstractmethod
-    def get_grade_entry_admin_session(self, proxy): # pragma: no cover
+    def get_grade_entry_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry administration service.
 
         :param proxy: a proxy
@@ -2114,7 +2114,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
-    def get_grade_entry_admin_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_grade_entry_admin_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2136,7 +2136,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryAdminSession
 
     @abc.abstractmethod
-    def get_grade_entry_notification_session(self, grade_entry_receiver, proxy): # pragma: no cover
+    def get_grade_entry_notification_session(self, grade_entry_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to grade entry changes.
 
         :param grade_entry_receiver: the grade entry receiver
@@ -2156,7 +2156,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
-    def get_grade_entry_notification_session_for_gradebook(self, grade_entry_receiver, gradebook_id, proxy): # pragma: no cover
+    def get_grade_entry_notification_session_for_gradebook(self, grade_entry_receiver, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the grade entry notification service for the given gradebook.
 
         :param grade_entry_receiver: the grade entry receiver
@@ -2180,7 +2180,7 @@ class GradingProxyManager:
         return  # osid.grading.GradeEntryNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_lookup_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column lookup service.
 
         :param proxy: a proxy
@@ -2198,7 +2198,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
-    def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column lookup service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2220,7 +2220,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnLookupSession
 
     @abc.abstractmethod
-    def get_gradebook_column_query_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column query service.
 
         :param proxy: a proxy
@@ -2238,7 +2238,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
-    def get_gradebook_column_query_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_query_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column query service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2260,7 +2260,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnQuerySession
 
     @abc.abstractmethod
-    def get_gradebook_column_search_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column search service.
 
         :param proxy: a proxy
@@ -2278,7 +2278,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
-    def get_gradebook_column_search_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_search_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column search service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2300,7 +2300,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnSearchSession
 
     @abc.abstractmethod
-    def get_gradebook_column_admin_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column administration service.
 
         :param proxy: a proxy
@@ -2318,7 +2318,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
-    def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column admin service for the given gradebook.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2340,7 +2340,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnAdminSession
 
     @abc.abstractmethod
-    def get_gradebook_column_notification_session(self, gradebook_column_receiver, proxy): # pragma: no cover
+    def get_gradebook_column_notification_session(self, gradebook_column_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to gradebook column changes.
 
         :param gradebook_column_receiver: the grade system receiver
@@ -2360,7 +2360,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_notification_session_for_gradebook(self, gradebook_column_receiver, gradebook_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the gradebook column notification service for the given gradebook.
 
         :param gradebook_column_receiver: the gradebook column receiver
@@ -2384,7 +2384,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_column_gradebook_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_gradebook_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving gradebook column to gradebook mappings.
 
         :param proxy: a proxy
@@ -2402,7 +2402,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnGradebookSession
 
     @abc.abstractmethod
-    def get_gradebook_column_gradebook_assignment_session(self, proxy): # pragma: no cover
+    def get_gradebook_column_gradebook_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning gradebook column to gradebook mappings.
 
         :param proxy: a proxy
@@ -2421,7 +2421,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnGradebookAssignmentSession
 
     @abc.abstractmethod
-    def get_gradebook_column_smart_gradebook_session(self, gradebook_id, proxy): # pragma: no cover
+    def get_gradebook_column_smart_gradebook_session(self, gradebook_id, proxy):  # pragma: no cover
         """Gets the session for managing smart gradebooks of gradebook columns.
 
         :param gradebook_id: the ``Id`` of the gradebook
@@ -2442,7 +2442,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookColumnSmartGradebookSession
 
     @abc.abstractmethod
-    def get_gradebook_lookup_session(self, proxy): # pragma: no cover
+    def get_gradebook_lookup_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook lookup service.
 
         :param proxy: a proxy
@@ -2460,7 +2460,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookLookupSession
 
     @abc.abstractmethod
-    def get_gradebook_query_session(self, proxy): # pragma: no cover
+    def get_gradebook_query_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook query service.
 
         :param proxy: a proxy
@@ -2478,7 +2478,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookQuerySession
 
     @abc.abstractmethod
-    def get_gradebook_search_session(self, proxy): # pragma: no cover
+    def get_gradebook_search_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook search service.
 
         :param proxy: a proxy
@@ -2496,7 +2496,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookSearchSession
 
     @abc.abstractmethod
-    def get_gradebook_admin_session(self, proxy): # pragma: no cover
+    def get_gradebook_admin_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the gradebook administration service.
 
         :param proxy: a proxy
@@ -2514,7 +2514,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookAdminSession
 
     @abc.abstractmethod
-    def get_gradebook_notification_session(self, gradebook_receiver, proxy): # pragma: no cover
+    def get_gradebook_notification_session(self, gradebook_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to gradebook service changes.
 
         :param gradebook_receiver: the gradebook receiver
@@ -2534,7 +2534,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookNotificationSession
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_session(self, proxy): # pragma: no cover
+    def get_gradebook_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the session traversing gradebook hierarchies.
 
         :param proxy: a proxy
@@ -2552,7 +2552,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookHierarchySession
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_gradebook_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the session designing gradebook hierarchies.
 
         :param proxy: a proxy
@@ -2570,7 +2570,7 @@ class GradingProxyManager:
         return  # osid.grading.GradebookHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_grading_batch_proxy_manager(self): # pragma: no cover
+    def get_grading_batch_proxy_manager(self):  # pragma: no cover
         """Gets the ``GradingBatchProxyManager``.
 
         :return: a ``GradingBatchProxyManager``
@@ -2587,7 +2587,7 @@ class GradingProxyManager:
     grading_batch_proxy_manager = property(fget=get_grading_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_grading_calculation_proxy_manager(self): # pragma: no cover
+    def get_grading_calculation_proxy_manager(self):  # pragma: no cover
         """Gets the ``GradingCalculationProxyManager``.
 
         :return: a ``GradingCalculationProxyManager``
@@ -2604,7 +2604,7 @@ class GradingProxyManager:
     grading_calculation_proxy_manager = property(fget=get_grading_calculation_proxy_manager)
 
     @abc.abstractmethod
-    def get_grading_transform_proxy_manager(self): # pragma: no cover
+    def get_grading_transform_proxy_manager(self):  # pragma: no cover
         """Gets the ``GradingTransformProxyManager``.
 
         :return: a ``GradingTransformManager``

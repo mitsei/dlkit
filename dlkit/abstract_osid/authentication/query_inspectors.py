@@ -21,7 +21,7 @@ class AgentQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_id_terms(self): # pragma: no cover
+    def get_resource_id_terms(self):  # pragma: no cover
         """Gets the resource ``Id`` terms.
 
         :return: the resource ``Id`` terms
@@ -36,7 +36,7 @@ class AgentQueryInspector:
     resource_id_terms = property(fget=get_resource_id_terms)
 
     @abc.abstractmethod
-    def get_resource_terms(self): # pragma: no cover
+    def get_resource_terms(self):  # pragma: no cover
         """Gets the resource terms.
 
         :return: the resource terms
@@ -51,7 +51,7 @@ class AgentQueryInspector:
     resource_terms = property(fget=get_resource_terms)
 
     @abc.abstractmethod
-    def get_agency_id_terms(self): # pragma: no cover
+    def get_agency_id_terms(self):  # pragma: no cover
         """Gets the agency ``Id`` terms.
 
         :return: the agency ``Id`` terms
@@ -66,7 +66,7 @@ class AgentQueryInspector:
     agency_id_terms = property(fget=get_agency_id_terms)
 
     @abc.abstractmethod
-    def get_agency_terms(self): # pragma: no cover
+    def get_agency_terms(self):  # pragma: no cover
         """Gets the agency terms.
 
         :return: the agency terms
@@ -81,7 +81,7 @@ class AgentQueryInspector:
     agency_terms = property(fget=get_agency_terms)
 
     @abc.abstractmethod
-    def get_agent_query_inspector_record(self, agent_record_type): # pragma: no cover
+    def get_agent_query_inspector_record(self, agent_record_type):  # pragma: no cover
         """Gets the query inspector record corresponding to the given ``Agent`` record ``Type``.
 
         :param agent_record_type: an agent record type
@@ -103,7 +103,7 @@ class AgencyQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_id_terms(self): # pragma: no cover
+    def get_agent_id_terms(self):  # pragma: no cover
         """Gets the agent ``Id`` terms.
 
         :return: the agent ``Id`` terms
@@ -118,7 +118,7 @@ class AgencyQueryInspector:
     agent_id_terms = property(fget=get_agent_id_terms)
 
     @abc.abstractmethod
-    def get_agent_terms(self): # pragma: no cover
+    def get_agent_terms(self):  # pragma: no cover
         """Gets the agent terms.
 
         :return: the query terms
@@ -133,7 +133,7 @@ class AgencyQueryInspector:
     agent_terms = property(fget=get_agent_terms)
 
     @abc.abstractmethod
-    def get_ancestor_agency_id_terms(self): # pragma: no cover
+    def get_ancestor_agency_id_terms(self):  # pragma: no cover
         """Gets the ancestor agency ``Id`` terms.
 
         :return: the ancestor agency ``Id`` terms
@@ -148,7 +148,7 @@ class AgencyQueryInspector:
     ancestor_agency_id_terms = property(fget=get_ancestor_agency_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_agency_terms(self): # pragma: no cover
+    def get_ancestor_agency_terms(self):  # pragma: no cover
         """Gets the ancestor agency terms.
 
         :return: the ancestor agency terms
@@ -163,7 +163,7 @@ class AgencyQueryInspector:
     ancestor_agency_terms = property(fget=get_ancestor_agency_terms)
 
     @abc.abstractmethod
-    def get_descendant_agency_id_terms(self): # pragma: no cover
+    def get_descendant_agency_id_terms(self):  # pragma: no cover
         """Gets the descendant agency ``Id`` terms.
 
         :return: the descendant agency ``Id`` terms
@@ -178,7 +178,7 @@ class AgencyQueryInspector:
     descendant_agency_id_terms = property(fget=get_descendant_agency_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_agency_terms(self): # pragma: no cover
+    def get_descendant_agency_terms(self):  # pragma: no cover
         """Gets the descendant agency terms.
 
         :return: the descendant agency terms
@@ -193,7 +193,7 @@ class AgencyQueryInspector:
     descendant_agency_terms = property(fget=get_descendant_agency_terms)
 
     @abc.abstractmethod
-    def get_agency_query_inspector_record(self, agency_record_type): # pragma: no cover
+    def get_agency_query_inspector_record(self, agency_record_type):  # pragma: no cover
         """Gets the agency query inspector record corresponding to the given ``Agency`` record ``Type``.
 
         :param agency_record_type: an agency record type

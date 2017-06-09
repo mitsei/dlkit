@@ -21,7 +21,7 @@ class LoggingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -36,7 +36,7 @@ class LoggingSession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the log
@@ -52,7 +52,7 @@ class LoggingSession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_log(self): # pragma: no cover
+    def can_log(self):  # pragma: no cover
         """Tests if this user can log.
 
         A return of true does not guarantee successful authorization. A
@@ -71,7 +71,7 @@ class LoggingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def log(self, content, content_type): # pragma: no cover
+    def log(self, content, content_type):  # pragma: no cover
         """Logs an item.
 
         This method is a shortcut to ``createLogEntry()``.
@@ -92,7 +92,7 @@ class LoggingSession:
         pass
 
     @abc.abstractmethod
-    def log_at_priority(self, priority_type, content, content_type): # pragma: no cover
+    def log_at_priority(self, priority_type, content, content_type):  # pragma: no cover
         """Logs an item.
 
         :param priority_type: the entry priority
@@ -113,7 +113,7 @@ class LoggingSession:
         pass
 
     @abc.abstractmethod
-    def get_log_entry_form(self): # pragma: no cover
+    def get_log_entry_form(self):  # pragma: no cover
         """Gets a log entry form for creating a log entry.
 
         :return: the log entry form
@@ -128,7 +128,7 @@ class LoggingSession:
     log_entry_form = property(fget=get_log_entry_form)
 
     @abc.abstractmethod
-    def create_log_entry(self, log_entry_form): # pragma: no cover
+    def create_log_entry(self, log_entry_form):  # pragma: no cover
         """Logs an entry through the log entry form.
 
         :param log_entry_form: the log entry form
@@ -150,7 +150,7 @@ class LogEntryLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -165,7 +165,7 @@ class LogEntryLookupSession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the log
@@ -181,7 +181,7 @@ class LogEntryLookupSession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_read_log(self): # pragma: no cover
+    def can_read_log(self):  # pragma: no cover
         """Tests if this user can read the log.
 
         A return of true does not guarantee successful authorization. A
@@ -200,7 +200,7 @@ class LogEntryLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_log_entry_view(self): # pragma: no cover
+    def use_comparative_log_entry_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -214,7 +214,7 @@ class LogEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_log_entry_view(self): # pragma: no cover
+    def use_plenary_log_entry_view(self):  # pragma: no cover
         """A complete view of the ``LogEntry`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -229,7 +229,7 @@ class LogEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_log_view(self): # pragma: no cover
+    def use_federated_log_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include entries in logs which are children
@@ -243,7 +243,7 @@ class LogEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_log_view(self): # pragma: no cover
+    def use_isolated_log_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this log only.
@@ -256,7 +256,7 @@ class LogEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_log_entry(self, log_entry_id): # pragma: no cover
+    def get_log_entry(self, log_entry_id):  # pragma: no cover
         """Gets the ``LogEntry`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -280,7 +280,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntry
 
     @abc.abstractmethod
-    def get_log_entries_by_ids(self, log_entry_ids): # pragma: no cover
+    def get_log_entries_by_ids(self, log_entry_ids):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the entries
@@ -306,7 +306,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_genus_type(self, log_entry_genus_type): # pragma: no cover
+    def get_log_entries_by_genus_type(self, log_entry_genus_type):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given log entry genus ``Type`` which doe snot include entries of genus types derived form the specified ``Type``.
 
         In plenary mode, the returned list contains all known entries or
@@ -327,7 +327,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_parent_genus_type(self, log_entry_genus_type): # pragma: no cover
+    def get_log_entries_by_parent_genus_type(self, log_entry_genus_type):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given log entry genus ``Type`` and include any additional entries with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known entries or
@@ -348,7 +348,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_record_type(self, log_entry_genus_type): # pragma: no cover
+    def get_log_entries_by_record_type(self, log_entry_genus_type):  # pragma: no cover
         """Gets a ``LogEntryList`` containing the given log entry record ``Type``.
 
         In plenary mode, the returned list contains all known log
@@ -370,7 +370,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_priority_type(self, priority_type): # pragma: no cover
+    def get_log_entries_by_priority_type(self, priority_type):  # pragma: no cover
         """Gets a ``LogEntryList`` filtering the list to log entries including and above the given priority ``Type``.
 
         In plenary mode, the returned list contains all known entries or
@@ -391,7 +391,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_date(self, start, end): # pragma: no cover
+    def get_log_entries_by_date(self, start, end):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given time interval inclusive.
 
         In plenary mode, the returned list contains all known entries or
@@ -415,7 +415,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_priority_type_and_date(self, priority_type, start, end): # pragma: no cover
+    def get_log_entries_by_priority_type_and_date(self, priority_type, start, end):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given time interval inclusive filtering the list to log entries including and above the given priority ``Type``.
 
         In plenary mode, the returned list contains all known entries or
@@ -441,7 +441,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_for_resource(self, resource_id): # pragma: no cover
+    def get_log_entries_for_resource(self, resource_id):  # pragma: no cover
         """Gets a ``LogEntryList`` for an agent associated with the given resource.
 
         In plenary mode, the returned list contains all known entries or
@@ -462,7 +462,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_date_for_resource(self, resource_id, start, end): # pragma: no cover
+    def get_log_entries_by_date_for_resource(self, resource_id, start, end):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given time interval inclusive for an agent associated with the given resource.
 
         In plenary mode, the returned list contains all known entries or
@@ -488,7 +488,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries_by_priority_type_and_date_for_resource(self, resource_id, priority_type, start, end): # pragma: no cover
+    def get_log_entries_by_priority_type_and_date_for_resource(self, resource_id, priority_type, start, end):  # pragma: no cover
         """Gets a ``LogEntryList`` corresponding to the given time interval inclusive for an agent associated with the given resource filtering the list to log entries including and above the given priority ``Type``.
 
         In plenary mode, the returned list contains all known entries or
@@ -516,7 +516,7 @@ class LogEntryLookupSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entries(self): # pragma: no cover
+    def get_log_entries(self):  # pragma: no cover
         """Gets all log entries.
 
         In plenary mode, the returned list contains all known entries or
@@ -553,7 +553,7 @@ class LogEntryQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -568,7 +568,7 @@ class LogEntryQuerySession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the ``Log`` associated with this session
@@ -584,7 +584,7 @@ class LogEntryQuerySession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_search_log_entries(self): # pragma: no cover
+    def can_search_log_entries(self):  # pragma: no cover
         """Tests if this user can perform ``LogEntry`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -603,7 +603,7 @@ class LogEntryQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_log_view(self): # pragma: no cover
+    def use_federated_log_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include entries in logs which are children
@@ -617,7 +617,7 @@ class LogEntryQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_log_view(self): # pragma: no cover
+    def use_isolated_log_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this log only.
@@ -630,7 +630,7 @@ class LogEntryQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_log_entry_query(self): # pragma: no cover
+    def get_log_entry_query(self):  # pragma: no cover
         """Gets a log entry query.
 
         :return: the log entry query
@@ -645,7 +645,7 @@ class LogEntryQuerySession:
     log_entry_query = property(fget=get_log_entry_query)
 
     @abc.abstractmethod
-    def get_log_entries_by_query(self, log_entry_query): # pragma: no cover
+    def get_log_entries_by_query(self, log_entry_query):  # pragma: no cover
         """Gets a list of log entries matching the given log entry query.
 
         :param log_entry_query: the log entry query
@@ -690,7 +690,7 @@ class LogEntrySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_entry_search(self): # pragma: no cover
+    def get_log_entry_search(self):  # pragma: no cover
         """Gets a log entry search.
 
         :return: the log entry search
@@ -705,7 +705,7 @@ class LogEntrySearchSession:
     log_entry_search = property(fget=get_log_entry_search)
 
     @abc.abstractmethod
-    def get_log_entry_search_order(self): # pragma: no cover
+    def get_log_entry_search_order(self):  # pragma: no cover
         """Gets a log entry search order.
 
         The ``LogEntrySearchOrder`` is supplied to a ``LogEntrySearch``
@@ -723,7 +723,7 @@ class LogEntrySearchSession:
     log_entry_search_order = property(fget=get_log_entry_search_order)
 
     @abc.abstractmethod
-    def get_log_entries_by_search(self, log_entry_query, log_entry_search): # pragma: no cover
+    def get_log_entries_by_search(self, log_entry_query, log_entry_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param log_entry_query: the log entry query
@@ -743,7 +743,7 @@ class LogEntrySearchSession:
         return  # osid.logging.LogEntrySearchResults
 
     @abc.abstractmethod
-    def get_log_entry_query_from_inspector(self, log_entry_query_inspector): # pragma: no cover
+    def get_log_entry_query_from_inspector(self, log_entry_query_inspector):  # pragma: no cover
         """Gets a log entry query from an inspector.
 
         The inspector is available from a ``LogEntrySearchResults``.
@@ -799,7 +799,7 @@ class LogEntryAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -814,7 +814,7 @@ class LogEntryAdminSession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the ``Log`` associated with this session
@@ -830,7 +830,7 @@ class LogEntryAdminSession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_create_log_entries(self): # pragma: no cover
+    def can_create_log_entries(self):  # pragma: no cover
         """Tests if this user can create log entries.
 
         A return of true does not guarantee successful authorization. A
@@ -849,7 +849,7 @@ class LogEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_log_entry_with_record_types(self, log_entry_record_types): # pragma: no cover
+    def can_create_log_entry_with_record_types(self, log_entry_record_types):  # pragma: no cover
         """Tests if this user can create a single ``LogEntry`` using the desired record types.
 
         While ``LoggingManager.getLogEntryRecordTypes()`` can be used to
@@ -870,7 +870,7 @@ class LogEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_form_for_create(self, log_entry_record_types): # pragma: no cover
+    def get_log_entry_form_for_create(self, log_entry_record_types):  # pragma: no cover
         """Gets the log entry form for creating new log entries.
 
         A new form should be requested for each create transaction.
@@ -890,7 +890,7 @@ class LogEntryAdminSession:
         return  # osid.logging.LogEntryForm
 
     @abc.abstractmethod
-    def create_log_entry(self, log_entry_form): # pragma: no cover
+    def create_log_entry(self, log_entry_form):  # pragma: no cover
         """Creates a new ``LogEntry``.
 
         :param log_entry_form: the form for this ``LogEntry``
@@ -910,7 +910,7 @@ class LogEntryAdminSession:
         return  # osid.logging.LogEntry
 
     @abc.abstractmethod
-    def can_update_log_entries(self): # pragma: no cover
+    def can_update_log_entries(self):  # pragma: no cover
         """Tests if this user can update log entries.
 
         A return of true does not guarantee successful authorization. A
@@ -929,7 +929,7 @@ class LogEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_form_for_update(self, log_entry_id): # pragma: no cover
+    def get_log_entry_form_for_update(self, log_entry_id):  # pragma: no cover
         """Gets the log entry form for updating an existing log.
 
         A new log entry form should be requested for each update
@@ -950,7 +950,7 @@ class LogEntryAdminSession:
         return  # osid.logging.LogEntryForm
 
     @abc.abstractmethod
-    def update_log_entry(self, log_entry_form): # pragma: no cover
+    def update_log_entry(self, log_entry_form):  # pragma: no cover
         """Updates an existing log entry.
 
         :param log_entry_form: the form containing the elements to be updated
@@ -968,7 +968,7 @@ class LogEntryAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_log_entries(self): # pragma: no cover
+    def can_delete_log_entries(self):  # pragma: no cover
         """Tests if this user can delete log entries.
 
         A return of true does not guarantee successful authorization. A
@@ -987,7 +987,7 @@ class LogEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_log_entry(self, log_entry_id): # pragma: no cover
+    def delete_log_entry(self, log_entry_id):  # pragma: no cover
         """Deletes a ``LogEntry``.
 
         :param log_entry_id: the ``Id`` of the ``log_entry_id`` to remove
@@ -1003,7 +1003,7 @@ class LogEntryAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_log_entry_aliases(self): # pragma: no cover
+    def can_manage_log_entry_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for log entries.
 
         A return of true does not guarantee successful authorization. A
@@ -1022,7 +1022,7 @@ class LogEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_log_entry(self, log_entry_id, alias_id): # pragma: no cover
+    def alias_log_entry(self, log_entry_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to a ``LogEntry`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``LogEntry`` is determined by the
@@ -1061,7 +1061,7 @@ class LogEntryNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -1076,7 +1076,7 @@ class LogEntryNotificationSession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the ``Log`` associated with this session
@@ -1092,7 +1092,7 @@ class LogEntryNotificationSession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_register_for_log_entry_notifications(self): # pragma: no cover
+    def can_register_for_log_entry_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Log`` entry notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -1111,7 +1111,7 @@ class LogEntryNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_log_view(self): # pragma: no cover
+    def use_federated_log_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include entries from parent logs in the
@@ -1125,7 +1125,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_log_view(self): # pragma: no cover
+    def use_isolated_log_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for entries to this log
@@ -1139,7 +1139,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_log_entry_notifications(self): # pragma: no cover
+    def reliable_log_entry_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1153,7 +1153,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_log_entry_notifications(self): # pragma: no cover
+    def unreliable_log_entry_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1167,7 +1167,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_log_entry_notification(self, notification_id): # pragma: no cover
+    def acknowledge_log_entry_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a log entry notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1181,7 +1181,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_log_entries(self): # pragma: no cover
+    def register_for_new_log_entries(self):  # pragma: no cover
         """Register for notifications of new log entries.
 
         ``LogEntryReceiver.newLogEntries()`` is invoked when a new
@@ -1196,7 +1196,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_log_entries_at_priority(self, priority_type): # pragma: no cover
+    def register_for_new_log_entries_at_priority(self, priority_type):  # pragma: no cover
         """Register for notifications of new log entries at or above the given priority type.
 
         ``LogEntryReceiver.newLogEntries()`` is invoked when a new
@@ -1214,7 +1214,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_log_entries_for_resource(self, resource_id): # pragma: no cover
+    def register_for_new_log_entries_for_resource(self, resource_id):  # pragma: no cover
         """Register for notifications of new log entries logged by an agent associated with the given resource.
 
         ``LogEntryReceiver.newLogEntries()`` is invoked when a new
@@ -1232,7 +1232,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log_entries(self): # pragma: no cover
+    def register_for_changed_log_entries(self):  # pragma: no cover
         """Register for notifications of updated log entries.
 
         ``LogEntryReceiver.changedLogEntries()`` is invoked when a
@@ -1247,7 +1247,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_entries_at_priority(self, priority_type): # pragma: no cover
+    def register_for_changed_entries_at_priority(self, priority_type):  # pragma: no cover
         """Register for notifications of updated log entries at or above the given priority type.
 
         ``LogEntryReceiver.changedLogEntries()`` is invoked when a
@@ -1265,7 +1265,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_entries_for_resource(self, resource_id): # pragma: no cover
+    def register_for_changed_entries_for_resource(self, resource_id):  # pragma: no cover
         """Register for notifications of updated log entries logged by an agent associated with the given resource.
 
         ``LogEntryReceiver.changedLogEntry()`` is invoked when a
@@ -1283,7 +1283,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log_entry(self, log_entry_id): # pragma: no cover
+    def register_for_changed_log_entry(self, log_entry_id):  # pragma: no cover
         """Registers for notification of an updated log entry.
 
         ``LogEntryReceiver.changedLogEntries()`` is invoked when the
@@ -1301,7 +1301,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_log_entries(self): # pragma: no cover
+    def register_for_deleted_log_entries(self):  # pragma: no cover
         """Registers for notification of deleted log entries.
 
         ``LogEntryReceiver.deletedLogEntries()`` is invoked when a log
@@ -1316,7 +1316,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_log_entries_at_priority(self, priority_type): # pragma: no cover
+    def register_for_deleted_log_entries_at_priority(self, priority_type):  # pragma: no cover
         """Register for notifications of deleted log entries at or above the given priority type.
 
         ``LogEntryReceiver.deletedLogEntries()`` is invoked when a
@@ -1334,7 +1334,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_log_entries_for_resource(self, resource_id): # pragma: no cover
+    def register_for_deleted_log_entries_for_resource(self, resource_id):  # pragma: no cover
         """Register for notifications of deleted log entries logged by an agent associated with the given resource.
 
         ``LogEntryReceiver.deletedLogEntries()`` is invoked when a
@@ -1352,7 +1352,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_log_entry(self, log_entry_id): # pragma: no cover
+    def register_for_deleted_log_entry(self, log_entry_id):  # pragma: no cover
         """Registers for notification of a deleted log entry.
 
         ``LogEntryReceiver.deleteddLogEntries()`` is invoked when the
@@ -1370,7 +1370,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_log_entry_notifications(self): # pragma: no cover
+    def reliable_log_entry_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1384,7 +1384,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_log_entry_notifications(self): # pragma: no cover
+    def unreliable_log_entry_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1398,7 +1398,7 @@ class LogEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_log_entry_notification(self, notification_id): # pragma: no cover
+    def acknowledge_log_entry_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an log_entry notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1428,7 +1428,7 @@ class LogEntryLogSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_log_view(self): # pragma: no cover
+    def use_comparative_log_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1442,7 +1442,7 @@ class LogEntryLogSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_log_view(self): # pragma: no cover
+    def use_plenary_log_view(self):  # pragma: no cover
         """A complete view of the ``LogEntry`` and ``Log`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1457,7 +1457,7 @@ class LogEntryLogSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_log_entry_log_mappings(self): # pragma: no cover
+    def can_lookup_log_entry_log_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of logEntry/log mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1476,7 +1476,7 @@ class LogEntryLogSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_ids_by_log(self, log_id): # pragma: no cover
+    def get_log_entry_ids_by_log(self, log_id):  # pragma: no cover
         """Gets the list of ``LogEntry``  ``Ids`` associated with a ``Log``.
 
         :param log_id: ``Id`` of a ``Log``
@@ -1494,7 +1494,7 @@ class LogEntryLogSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_log_entries_by_log(self, log_id): # pragma: no cover
+    def get_log_entries_by_log(self, log_id):  # pragma: no cover
         """Gets the list of log entries associated with a ``Log``.
 
         :param log_id: ``Id`` of a ``Log``
@@ -1512,7 +1512,7 @@ class LogEntryLogSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_entry_ids_by_log(self, log_ids): # pragma: no cover
+    def get_log_entry_ids_by_log(self, log_ids):  # pragma: no cover
         """Gets the list of ``LogEntry Ids`` corresponding to a list of ``Log`` objects.
 
         :param log_ids: list of log ``Ids``
@@ -1529,7 +1529,7 @@ class LogEntryLogSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_log_entrie_by_log(self, log_ids): # pragma: no cover
+    def get_log_entrie_by_log(self, log_ids):  # pragma: no cover
         """Gets the list of log entries corresponding to a list of ``Log``.
 
         :param log_ids: list of log ``Ids``
@@ -1546,7 +1546,7 @@ class LogEntryLogSession:
         return  # osid.logging.LogEntryList
 
     @abc.abstractmethod
-    def get_log_ids_by_log_entry(self, log_entry_id): # pragma: no cover
+    def get_log_ids_by_log_entry(self, log_entry_id):  # pragma: no cover
         """Gets the list of ``Log``  ``Ids`` mapped to a ``LogEntry``.
 
         :param log_entry_id: ``Id`` of a ``LogEntry``
@@ -1564,7 +1564,7 @@ class LogEntryLogSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_log_by_log_entry(self, log_entry_id): # pragma: no cover
+    def get_log_by_log_entry(self, log_entry_id):  # pragma: no cover
         """Gets the list of ``Log`` objects mapped to a ``LogEntry``.
 
         :param log_entry_id: ``Id`` of a ``LogEntry``
@@ -1597,7 +1597,7 @@ class LogEntryLogAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_log_entries(self): # pragma: no cover
+    def can_assign_log_entries(self):  # pragma: no cover
         """Tests if this user can alter log entry/log mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1616,7 +1616,7 @@ class LogEntryLogAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_log_entries_to_log(self, log_id): # pragma: no cover
+    def can_assign_log_entries_to_log(self, log_id):  # pragma: no cover
         """Tests if this user can alter log entry/log mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1637,7 +1637,7 @@ class LogEntryLogAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_log_ids(self, log_id): # pragma: no cover
+    def get_assignable_log_ids(self, log_id):  # pragma: no cover
         """Gets a list of log including and under the given log node in which any log entry can be assigned.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1653,7 +1653,7 @@ class LogEntryLogAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_log_ids_for_log_entry(self, log_id, log_entry_id): # pragma: no cover
+    def get_assignable_log_ids_for_log_entry(self, log_id, log_entry_id):  # pragma: no cover
         """Gets a list of log including and under the given log node in which a specific log entry can be assigned.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1671,7 +1671,7 @@ class LogEntryLogAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_log_entry_to_log(self, log_entry_id, log_id): # pragma: no cover
+    def assign_log_entry_to_log(self, log_entry_id, log_id):  # pragma: no cover
         """Adds an existing ``LogEntry`` to a ``Log``.
 
         :param log_entry_id: the ``Id`` of the ``LogEntry``
@@ -1690,7 +1690,7 @@ class LogEntryLogAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_log_entry_from_log(self, log_entry_id, log_id): # pragma: no cover
+    def unassign_log_entry_from_log(self, log_entry_id, log_id):  # pragma: no cover
         """Removes a ``LogEntry`` from a ``Log``.
 
         :param log_entry_id: the ``Id`` of the ``LogEntry``
@@ -1708,7 +1708,7 @@ class LogEntryLogAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_log_entry_to_log(self, log_entry_id, from_log_id, to_log_id): # pragma: no cover
+    def reassign_log_entry_to_log(self, log_entry_id, from_log_id, to_log_id):  # pragma: no cover
         """Moves a ``LogEntry`` from one ``Log`` to another.
 
         Mappings to other ``Logs`` are unaffected.
@@ -1747,7 +1747,7 @@ class LogEntrySmartLogSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_id(self): # pragma: no cover
+    def get_log_id(self):  # pragma: no cover
         """Gets the ``Log``  ``Id`` associated with this session.
 
         :return: the ``Log Id`` associated with this session
@@ -1762,7 +1762,7 @@ class LogEntrySmartLogSession:
     log_id = property(fget=get_log_id)
 
     @abc.abstractmethod
-    def get_log(self): # pragma: no cover
+    def get_log(self):  # pragma: no cover
         """Gets the ``Log`` associated with this session.
 
         :return: the ``Log`` associated with this session
@@ -1778,7 +1778,7 @@ class LogEntrySmartLogSession:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def can_manage_smart_log(self): # pragma: no cover
+    def can_manage_smart_log(self):  # pragma: no cover
         """Tests if this user can manage smart log.
 
         A return of true does not guarantee successful authorization. A
@@ -1797,7 +1797,7 @@ class LogEntrySmartLogSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_query(self): # pragma: no cover
+    def get_log_entry_query(self):  # pragma: no cover
         """Gets a logEntry query.
 
         :return: the log entry query
@@ -1812,7 +1812,7 @@ class LogEntrySmartLogSession:
     log_entry_query = property(fget=get_log_entry_query)
 
     @abc.abstractmethod
-    def get_log_entry_search_order(self): # pragma: no cover
+    def get_log_entry_search_order(self):  # pragma: no cover
         """Gets a logEntry search order.
 
         :return: the logEntry search order
@@ -1827,7 +1827,7 @@ class LogEntrySmartLogSession:
     log_entry_search_order = property(fget=get_log_entry_search_order)
 
     @abc.abstractmethod
-    def apply_log_entry_query(self, log_entry_query): # pragma: no cover
+    def apply_log_entry_query(self, log_entry_query):  # pragma: no cover
         """Applies a logEntry query to this log.
 
         :param log_entry_query: the logEntry query
@@ -1843,7 +1843,7 @@ class LogEntrySmartLogSession:
         pass
 
     @abc.abstractmethod
-    def inspect_log_entry_query(self): # pragma: no cover
+    def inspect_log_entry_query(self):  # pragma: no cover
         """Gets a logEntry query inspector for this log.
 
         :return: the logEntry query inspector
@@ -1857,7 +1857,7 @@ class LogEntrySmartLogSession:
         return  # osid.logging.LogEntryQueryInspector
 
     @abc.abstractmethod
-    def apply_log_entry_sequencing(self, log_entry_search_order): # pragma: no cover
+    def apply_log_entry_sequencing(self, log_entry_search_order):  # pragma: no cover
         """Applies a logEntry search order to this log.
 
         :param log_entry_search_order: the logEntry search order
@@ -1873,7 +1873,7 @@ class LogEntrySmartLogSession:
         pass
 
     @abc.abstractmethod
-    def get_log_entry_query_from_inspector(self, log_entry_query_inspector): # pragma: no cover
+    def get_log_entry_query_from_inspector(self, log_entry_query_inspector):  # pragma: no cover
         """Gets a logEntry query from an inspector.
 
         :param log_entry_query_inspector: a resorce relationship query inspector
@@ -1913,7 +1913,7 @@ class LogLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_logs(self): # pragma: no cover
+    def can_lookup_logs(self):  # pragma: no cover
         """Tests if this user can perform ``Log`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1932,7 +1932,7 @@ class LogLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_log_view(self): # pragma: no cover
+    def use_comparative_log_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1946,7 +1946,7 @@ class LogLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_log_view(self): # pragma: no cover
+    def use_plenary_log_view(self):  # pragma: no cover
         """A complete view of the ``Log`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1961,7 +1961,7 @@ class LogLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_log(self, log_id): # pragma: no cover
+    def get_log(self, log_id):  # pragma: no cover
         """Gets the ``Log`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -1984,7 +1984,7 @@ class LogLookupSession:
         return  # osid.logging.Log
 
     @abc.abstractmethod
-    def get_logs_by_ids(self, log_ids): # pragma: no cover
+    def get_logs_by_ids(self, log_ids):  # pragma: no cover
         """Gets a ``LogList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the logs
@@ -2010,7 +2010,7 @@ class LogLookupSession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def get_logs_by_genus_type(self, log_genus_type): # pragma: no cover
+    def get_logs_by_genus_type(self, log_genus_type):  # pragma: no cover
         """Gets a ``LogList`` corresponding to the given log genus ``Type`` which does not include logs of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known logs or an
@@ -2031,7 +2031,7 @@ class LogLookupSession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def get_logs_by_parent_genus_type(self, log_genus_type): # pragma: no cover
+    def get_logs_by_parent_genus_type(self, log_genus_type):  # pragma: no cover
         """Gets a ``LogList`` corresponding to the given log genus ``Type`` and include any additional logs with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known logs or an
@@ -2052,7 +2052,7 @@ class LogLookupSession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def get_logs_by_record_type(self, log_record_type): # pragma: no cover
+    def get_logs_by_record_type(self, log_record_type):  # pragma: no cover
         """Gets a ``LogList`` containing the given log record ``Type``.
 
         In plenary mode, the returned list contains all known logs or an
@@ -2073,7 +2073,7 @@ class LogLookupSession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def get_logs_by_provider(self, resource_id): # pragma: no cover
+    def get_logs_by_provider(self, resource_id):  # pragma: no cover
         """Gets a ``LogList`` for a given provider.
 
         In plenary mode, the returned list contains all known logs or an
@@ -2094,7 +2094,7 @@ class LogLookupSession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def get_logs(self): # pragma: no cover
+    def get_logs(self):  # pragma: no cover
         """Gets all ``Logs``.
 
         In plenary mode, the returned list contains all known logs or an
@@ -2129,7 +2129,7 @@ class LogQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_logs(self): # pragma: no cover
+    def can_search_logs(self):  # pragma: no cover
         """Tests if this user can perform ``Log`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -2148,7 +2148,7 @@ class LogQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_query(self): # pragma: no cover
+    def get_log_query(self):  # pragma: no cover
         """Gets a log query.
 
         :return: the log query
@@ -2163,7 +2163,7 @@ class LogQuerySession:
     log_query = property(fget=get_log_query)
 
     @abc.abstractmethod
-    def get_logs_by_query(self, log_query): # pragma: no cover
+    def get_logs_by_query(self, log_query):  # pragma: no cover
         """Gets a list of ``Logs`` matching the given log query.
 
         :param log_query: the log query
@@ -2205,7 +2205,7 @@ class LogSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_search(self): # pragma: no cover
+    def get_log_search(self):  # pragma: no cover
         """Gets a log search.
 
         :return: the log search
@@ -2220,7 +2220,7 @@ class LogSearchSession:
     log_search = property(fget=get_log_search)
 
     @abc.abstractmethod
-    def get_log_search_order(self): # pragma: no cover
+    def get_log_search_order(self):  # pragma: no cover
         """Gets a log search order.
 
         The ``LogSearchOrder`` is supplied to a ``LogSearch`` to specify
@@ -2238,7 +2238,7 @@ class LogSearchSession:
     log_search_order = property(fget=get_log_search_order)
 
     @abc.abstractmethod
-    def get_logs_by_search(self, log_query, log_search): # pragma: no cover
+    def get_logs_by_search(self, log_query, log_search):  # pragma: no cover
         """Gets the search results matching the given search.
 
         :param log_query: the log query
@@ -2258,7 +2258,7 @@ class LogSearchSession:
         return  # osid.logging.LogSearchResults
 
     @abc.abstractmethod
-    def get_log_query_from_inspector(self, log_query_inspector): # pragma: no cover
+    def get_log_query_from_inspector(self, log_query_inspector):  # pragma: no cover
         """Gets a log query from an inspector.
 
         The inspector is available from a ``LogSearchResults``.
@@ -2309,7 +2309,7 @@ class LogAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_logs(self): # pragma: no cover
+    def can_create_logs(self):  # pragma: no cover
         """Tests if this user can create ``Logs``.
 
         A return of true does not guarantee successful authorization. A
@@ -2328,7 +2328,7 @@ class LogAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_log_with_record_types(self, log_record_types): # pragma: no cover
+    def can_create_log_with_record_types(self, log_record_types):  # pragma: no cover
         """Tests if this user can create a single ``Log`` using the desired record types.
 
         While ``LoggingManager.getLogRecordTypes()`` can be used to
@@ -2349,7 +2349,7 @@ class LogAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_form_for_create(self, log_record_types): # pragma: no cover
+    def get_log_form_for_create(self, log_record_types):  # pragma: no cover
         """Gets the log form for creating new logs.
 
         A new form should be requested for each create transaction.
@@ -2369,7 +2369,7 @@ class LogAdminSession:
         return  # osid.logging.LogForm
 
     @abc.abstractmethod
-    def create_log(self, log_form): # pragma: no cover
+    def create_log(self, log_form):  # pragma: no cover
         """Creates a new ``Log``.
 
         :param log_form: the form for this ``Log``
@@ -2389,7 +2389,7 @@ class LogAdminSession:
         return  # osid.logging.Log
 
     @abc.abstractmethod
-    def can_update_logs(self): # pragma: no cover
+    def can_update_logs(self):  # pragma: no cover
         """Tests if this user can update ``Logs``.
 
         A return of true does not guarantee successful authorization. A
@@ -2408,7 +2408,7 @@ class LogAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_form_for_update(self, log_id): # pragma: no cover
+    def get_log_form_for_update(self, log_id):  # pragma: no cover
         """Gets the log form for updating an existing log.
 
         A new log form should be requested for each update transaction.
@@ -2428,7 +2428,7 @@ class LogAdminSession:
         return  # osid.logging.LogForm
 
     @abc.abstractmethod
-    def update_log(self, log_form): # pragma: no cover
+    def update_log(self, log_form):  # pragma: no cover
         """Updates an existing log.
 
         :param log_form: the form containing the elements to be updated
@@ -2446,7 +2446,7 @@ class LogAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_logs(self): # pragma: no cover
+    def can_delete_logs(self):  # pragma: no cover
         """Tests if this user can delete ``Logs``.
 
         A return of true does not guarantee successful authorization. A
@@ -2465,7 +2465,7 @@ class LogAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_log(self, log_id): # pragma: no cover
+    def delete_log(self, log_id):  # pragma: no cover
         """Deletes a ``Log``.
 
         :param log_id: the ``Id`` of the ``Log`` to remove
@@ -2481,7 +2481,7 @@ class LogAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_log_aliases(self): # pragma: no cover
+    def can_manage_log_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Logs``.
 
         A return of true does not guarantee successful authorization. A
@@ -2500,7 +2500,7 @@ class LogAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_log(self, log_id, alias_id): # pragma: no cover
+    def alias_log(self, log_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to a ``Log`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Log`` is determined by the provider.
@@ -2539,7 +2539,7 @@ class LogNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_log_notifications(self): # pragma: no cover
+    def can_register_for_log_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Log`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2558,7 +2558,7 @@ class LogNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_log_notifications(self): # pragma: no cover
+    def reliable_log_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2572,7 +2572,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_log_notifications(self): # pragma: no cover
+    def unreliable_log_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2586,7 +2586,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_log_notification(self, notification_id): # pragma: no cover
+    def acknowledge_log_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a log notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2600,7 +2600,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_logs(self): # pragma: no cover
+    def register_for_new_logs(self):  # pragma: no cover
         """Register for notifications of new logs.
 
         ``LogReceiver.newLogs()`` is invoked when a new ``Log`` is
@@ -2615,7 +2615,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_logs(self): # pragma: no cover
+    def register_for_changed_logs(self):  # pragma: no cover
         """Registers for notification of updated logs.
 
         ``LogReceiver.changedLogs()`` is invoked when a log is changed.
@@ -2629,7 +2629,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log(self, log_id): # pragma: no cover
+    def register_for_changed_log(self, log_id):  # pragma: no cover
         """Registers for notification of an updated log.
 
         ``LogReceiver.changedLogs()`` is invoked when the specified log
@@ -2647,7 +2647,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_logs(self): # pragma: no cover
+    def register_for_deleted_logs(self):  # pragma: no cover
         """Registers for notification of deleted logs.
 
         ``LogReceiver.deletedLogs()`` is invoked when a log is deleted.
@@ -2661,7 +2661,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_log(self, log_id): # pragma: no cover
+    def register_for_deleted_log(self, log_id):  # pragma: no cover
         """Registers for notification of a deleted log.
 
         ``LogReceiver.deletedLogs()`` is invoked when the specified log
@@ -2679,7 +2679,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log_hierarchy(self): # pragma: no cover
+    def register_for_changed_log_hierarchy(self):  # pragma: no cover
         """Registers for notification of an updated log hierarchy structure.
 
         ``LogReceiver.changedChildOfLogs()`` is invoked when a node
@@ -2694,7 +2694,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log_hierarchy_for_ancestors(self, log_id): # pragma: no cover
+    def register_for_changed_log_hierarchy_for_ancestors(self, log_id):  # pragma: no cover
         """Log ``Receiver.
 
         changedChildOfLogs()`` is invoked when the specified node or any
@@ -2712,7 +2712,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_log_hierarchy_for_descendants(self, log_id): # pragma: no cover
+    def register_for_changed_log_hierarchy_for_descendants(self, log_id):  # pragma: no cover
         """Registers for notification of an updated log hierarchy structure.
 
         ``LogReceiver.changedChildOfLogs()`` is invoked when the
@@ -2731,7 +2731,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_log_notifications(self): # pragma: no cover
+    def reliable_log_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2745,7 +2745,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_log_notifications(self): # pragma: no cover
+    def unreliable_log_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2759,7 +2759,7 @@ class LogNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_log_notification(self, notification_id): # pragma: no cover
+    def acknowledge_log_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an log notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2802,7 +2802,7 @@ class LogHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_hierarchy_id(self): # pragma: no cover
+    def get_log_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -2817,7 +2817,7 @@ class LogHierarchySession:
     log_hierarchy_id = property(fget=get_log_hierarchy_id)
 
     @abc.abstractmethod
-    def get_log_hierarchy(self): # pragma: no cover
+    def get_log_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -2833,7 +2833,7 @@ class LogHierarchySession:
     log_hierarchy = property(fget=get_log_hierarchy)
 
     @abc.abstractmethod
-    def can_access_log_hierarchy(self): # pragma: no cover
+    def can_access_log_hierarchy(self):  # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -2852,7 +2852,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_log_view(self): # pragma: no cover
+    def use_comparative_log_view(self):  # pragma: no cover
         """The returns from the log methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2866,7 +2866,7 @@ class LogHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_log_view(self): # pragma: no cover
+    def use_plenary_log_view(self):  # pragma: no cover
         """A complete view of the ``Log`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2881,7 +2881,7 @@ class LogHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_log_ids(self): # pragma: no cover
+    def get_root_log_ids(self):  # pragma: no cover
         """Gets the root log ``Ids`` in this hierarchy.
 
         :return: the root log ``Ids``
@@ -2897,7 +2897,7 @@ class LogHierarchySession:
     root_log_ids = property(fget=get_root_log_ids)
 
     @abc.abstractmethod
-    def get_root_logs(self): # pragma: no cover
+    def get_root_logs(self):  # pragma: no cover
         """Gets the root logs in the log hierarchy.
 
         A node with no parents is an orphan. While all log ``Ids`` are
@@ -2918,7 +2918,7 @@ class LogHierarchySession:
     root_logs = property(fget=get_root_logs)
 
     @abc.abstractmethod
-    def has_parent_logs(self, log_id): # pragma: no cover
+    def has_parent_logs(self, log_id):  # pragma: no cover
         """Tests if the ``Log`` has any parents.
 
         :param log_id: the ``Id`` of a log
@@ -2936,7 +2936,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_log(self, id_, log_id): # pragma: no cover
+    def is_parent_of_log(self, id_, log_id):  # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a log.
 
         :param id: an ``Id``
@@ -2957,7 +2957,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_log_ids(self, log_id): # pragma: no cover
+    def get_parent_log_ids(self, log_id):  # pragma: no cover
         """Gets the parent ``Ids`` of the given log.
 
         :param log_id: the ``Id`` of a log
@@ -2975,7 +2975,7 @@ class LogHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_logs(self, log_id): # pragma: no cover
+    def get_parent_logs(self, log_id):  # pragma: no cover
         """Gets the parent logs of the given ``id``.
 
         :param log_id: the ``Id`` of the ``Log`` to query
@@ -2993,7 +2993,7 @@ class LogHierarchySession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def is_ancestor_of_log(self, id_, log_id): # pragma: no cover
+    def is_ancestor_of_log(self, id_, log_id):  # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a log.
 
         :param id: an ``Id``
@@ -3014,7 +3014,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_logs(self, log_id): # pragma: no cover
+    def has_child_logs(self, log_id):  # pragma: no cover
         """Tests if a log has any children.
 
         :param log_id: the ``Id`` of a log
@@ -3032,7 +3032,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_log(self, id_, log_id): # pragma: no cover
+    def is_child_of_log(self, id_, log_id):  # pragma: no cover
         """Tests if an ``Id`` is a direct child of a log.
 
         :param id: an ``Id``
@@ -3053,7 +3053,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_log_ids(self, log_id): # pragma: no cover
+    def get_child_log_ids(self, log_id):  # pragma: no cover
         """Gets the child ``Ids`` of the given log.
 
         :param log_id: the ``Id`` to query
@@ -3071,7 +3071,7 @@ class LogHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_logs(self, log_id): # pragma: no cover
+    def get_child_logs(self, log_id):  # pragma: no cover
         """Gets the child logs of the given ``id``.
 
         :param log_id: the ``Id`` of the ``Log`` to query
@@ -3089,7 +3089,7 @@ class LogHierarchySession:
         return  # osid.logging.LogList
 
     @abc.abstractmethod
-    def is_descendant_of_log(self, id_, log_id): # pragma: no cover
+    def is_descendant_of_log(self, id_, log_id):  # pragma: no cover
         """Tests if an ``Id`` is a descendant of a log.
 
         :param id: an ``Id``
@@ -3110,7 +3110,7 @@ class LogHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_node_ids(self, log_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_log_node_ids(self, log_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given log.
 
         :param log_id: the ``Id`` to query
@@ -3134,7 +3134,7 @@ class LogHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_log_nodes(self, log_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_log_nodes(self, log_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given log.
 
         :param log_id: the ``Id`` to query
@@ -3169,7 +3169,7 @@ class LogHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_hierarchy_id(self): # pragma: no cover
+    def get_log_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -3184,7 +3184,7 @@ class LogHierarchyDesignSession:
     log_hierarchy_id = property(fget=get_log_hierarchy_id)
 
     @abc.abstractmethod
-    def get_log_hierarchy(self): # pragma: no cover
+    def get_log_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -3200,7 +3200,7 @@ class LogHierarchyDesignSession:
     log_hierarchy = property(fget=get_log_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_log_hierarchy(self): # pragma: no cover
+    def can_modify_log_hierarchy(self):  # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -3219,7 +3219,7 @@ class LogHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_log(self, log_id): # pragma: no cover
+    def add_root_log(self, log_id):  # pragma: no cover
         """Adds a root log.
 
         :param log_id: the ``Id`` of a log
@@ -3236,7 +3236,7 @@ class LogHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_log(self, log_id): # pragma: no cover
+    def remove_root_log(self, log_id):  # pragma: no cover
         """Removes a root log.
 
         :param log_id: the ``Id`` of a log
@@ -3252,7 +3252,7 @@ class LogHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_log(self, log_id, child_id): # pragma: no cover
+    def add_child_log(self, log_id, child_id):  # pragma: no cover
         """Adds a child to a log.
 
         :param log_id: the ``Id`` of a log
@@ -3271,7 +3271,7 @@ class LogHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_log(self, log_id, child_id): # pragma: no cover
+    def remove_child_log(self, log_id, child_id):  # pragma: no cover
         """Removes a child from a log.
 
         :param log_id: the ``Id`` of a log
@@ -3289,7 +3289,7 @@ class LogHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_logs(self, log_id): # pragma: no cover
+    def remove_child_logs(self, log_id):  # pragma: no cover
         """Removes all children from a log.
 
         :param log_id: the ``Id`` of a log

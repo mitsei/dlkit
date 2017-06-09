@@ -21,7 +21,7 @@ class AuthenticationProcessProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_authentication_acquisition(self): # pragma: no cover
+    def supports_authentication_acquisition(self):  # pragma: no cover
         """Tests if authentication acquisition is supported.
 
         Authentication acquisition is responsible for acquiring client
@@ -37,7 +37,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authentication_validation(self): # pragma: no cover
+    def supports_authentication_validation(self):  # pragma: no cover
         """Tests if authentication validation is supported.
 
         Authentication validation verifies given authentication
@@ -53,7 +53,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_trust_lookup(self): # pragma: no cover
+    def supports_trust_lookup(self):  # pragma: no cover
         """Tests if a trust look up session is supported.
 
         :return: ``true`` if trust lookup is supported ``,``  ``false`` otherwise
@@ -66,7 +66,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_circle_of_trust(self): # pragma: no cover
+    def supports_circle_of_trust(self):  # pragma: no cover
         """Tests if a session to examine agent and trust relationships is supported.
 
         :return: ``true`` if a circle of trust is supported, ``false`` otherwise
@@ -79,7 +79,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_challenge(self): # pragma: no cover
+    def supports_challenge(self):  # pragma: no cover
         """Tests if this authentication service supports a challenge- response mechanism where credential validation service must implement a means to generate challenge data.
 
         :return: ``true`` if this is a challenge-response system, ``false`` otherwise
@@ -92,7 +92,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authentication_record_types(self): # pragma: no cover
+    def get_authentication_record_types(self):  # pragma: no cover
         """Gets the supported authentication record types.
 
         :return: a list containing the supported authentication record types
@@ -107,7 +107,7 @@ class AuthenticationProcessProfile:
     authentication_record_types = property(fget=get_authentication_record_types)
 
     @abc.abstractmethod
-    def supports_authentication_record_type(self, authentication_record_type): # pragma: no cover
+    def supports_authentication_record_type(self, authentication_record_type):  # pragma: no cover
         """Tests if the given authentication record type is supported.
 
         :param authentication_record_type: a ``Type`` indicating an authentication record type
@@ -122,7 +122,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authentication_input_record_types(self): # pragma: no cover
+    def get_authentication_input_record_types(self):  # pragma: no cover
         """Gets the supported authentication input record types.
 
         :return: a list containing the supported authentication input record types
@@ -137,7 +137,7 @@ class AuthenticationProcessProfile:
     authentication_input_record_types = property(fget=get_authentication_input_record_types)
 
     @abc.abstractmethod
-    def supports_authentication_input_record_type(self, authentication_input_record_type): # pragma: no cover
+    def supports_authentication_input_record_type(self, authentication_input_record_type):  # pragma: no cover
         """Tests if the given authentication input record type is supported.
 
         :param authentication_input_record_type: a ``Type`` indicating an authentication input record type
@@ -152,7 +152,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_challenge_record_types(self): # pragma: no cover
+    def get_challenge_record_types(self):  # pragma: no cover
         """Gets the supported challenge types.
 
         :return: a list containing the supported challenge types
@@ -167,7 +167,7 @@ class AuthenticationProcessProfile:
     challenge_record_types = property(fget=get_challenge_record_types)
 
     @abc.abstractmethod
-    def supports_challenge_record_type(self, challenge_record_type): # pragma: no cover
+    def supports_challenge_record_type(self, challenge_record_type):  # pragma: no cover
         """Tests if the given challenge data type is supported.
 
         :param challenge_record_type: a ``Type`` indicating a challenge record type
@@ -182,7 +182,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_credential_export(self): # pragma: no cover
+    def supports_credential_export(self):  # pragma: no cover
         """Tests if ``Authentication`` objects can export serialzied credentials for transport.
 
         :return: ``true`` if the given credentials export is supported, ``false`` otherwise
@@ -195,7 +195,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_credential_types(self): # pragma: no cover
+    def get_credential_types(self):  # pragma: no cover
         """Gets the supported credential types.
 
         :return: a list containing the supported credential types
@@ -210,7 +210,7 @@ class AuthenticationProcessProfile:
     credential_types = property(fget=get_credential_types)
 
     @abc.abstractmethod
-    def supports_credential_type(self, credential_type): # pragma: no cover
+    def supports_credential_type(self, credential_type):  # pragma: no cover
         """Tests if the given credential type is supported.
 
         :param credential_type: a ``Type`` indicating a credential type
@@ -225,7 +225,7 @@ class AuthenticationProcessProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_trust_types(self): # pragma: no cover
+    def get_trust_types(self):  # pragma: no cover
         """Gets the supported trust types.
 
         :return: a list containing the supported trust types
@@ -240,7 +240,7 @@ class AuthenticationProcessProfile:
     trust_types = property(fget=get_trust_types)
 
     @abc.abstractmethod
-    def supports_trust_type(self, trust_type): # pragma: no cover
+    def supports_trust_type(self, trust_type):  # pragma: no cover
         """Tests if the given trust type is supported.
 
         :param trust_type: a ``Type`` indicating a trust type
@@ -275,7 +275,7 @@ class AuthenticationProcessManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authentication_acquisition_session(self): # pragma: no cover
+    def get_authentication_acquisition_session(self):  # pragma: no cover
         """Gets an ``AuthenticationAcquisitionSession`` which is responsible for acquiring authentication credentials on behalf of a service client.
 
         :return: an acquisition session for this service
@@ -292,7 +292,7 @@ class AuthenticationProcessManager:
     authentication_acquisition_session = property(fget=get_authentication_acquisition_session)
 
     @abc.abstractmethod
-    def get_authentication_validation_session(self): # pragma: no cover
+    def get_authentication_validation_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the ``AuthenticationValidation`` service.
 
         :return: an ``AuthenticationValidationSession``
@@ -309,7 +309,7 @@ class AuthenticationProcessManager:
     authentication_validation_session = property(fget=get_authentication_validation_session)
 
     @abc.abstractmethod
-    def get_trust_lookup_session(self): # pragma: no cover
+    def get_trust_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust lookup service.
 
         :return: a ``TrustLookupSession``
@@ -326,7 +326,7 @@ class AuthenticationProcessManager:
     trust_lookup_session = property(fget=get_trust_lookup_session)
 
     @abc.abstractmethod
-    def get_trust_lookup_session_for_agency(self, agency_id): # pragma: no cover
+    def get_trust_lookup_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust lookup service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -346,7 +346,7 @@ class AuthenticationProcessManager:
         return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
-    def get_circle_of_trust_session(self): # pragma: no cover
+    def get_circle_of_trust_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust circle service.
 
         :return: a ``CircleOfTrustSession``
@@ -363,7 +363,7 @@ class AuthenticationProcessManager:
     circle_of_trust_session = property(fget=get_circle_of_trust_session)
 
     @abc.abstractmethod
-    def get_circle_of_trust_session_for_agency(self, agency_id): # pragma: no cover
+    def get_circle_of_trust_session_for_agency(self, agency_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust circle service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -404,7 +404,7 @@ class AuthenticationProcessProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authentication_acquisition_session(self, proxy): # pragma: no cover
+    def get_authentication_acquisition_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the ``AuthenticationAcquisitionSession`` using the supplied ``Authentication``.
 
         :param proxy: a proxy
@@ -422,7 +422,7 @@ class AuthenticationProcessProxyManager:
         return  # osid.authentication.process.AuthenticationAcquisitionSession
 
     @abc.abstractmethod
-    def get_authentication_validation_session(self, proxy): # pragma: no cover
+    def get_authentication_validation_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the ``AuthenticationValidation`` service using the supplied ``Authentication``.
 
         :param proxy: a proxy
@@ -440,7 +440,7 @@ class AuthenticationProcessProxyManager:
         return  # osid.authentication.process.AuthenticationValidationSession
 
     @abc.abstractmethod
-    def get_trust_lookup_session(self, proxy): # pragma: no cover
+    def get_trust_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust lookup service.
 
         :param proxy: a proxy
@@ -458,7 +458,7 @@ class AuthenticationProcessProxyManager:
         return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
-    def get_trust_lookup_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_trust_lookup_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust lookup service for the given agency.
 
         :param agency_id: the ``Id`` of the agency
@@ -480,7 +480,7 @@ class AuthenticationProcessProxyManager:
         return  # osid.authentication.process.TrustLookupSession
 
     @abc.abstractmethod
-    def get_circle_of_trust_session(self, proxy): # pragma: no cover
+    def get_circle_of_trust_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust circle service.
 
         :param proxy: a proxy
@@ -498,7 +498,7 @@ class AuthenticationProcessProxyManager:
         return  # osid.authentication.process.CircleOfTrustSession
 
     @abc.abstractmethod
-    def get_circle_of_trust_session_for_agency(self, agency_id, proxy): # pragma: no cover
+    def get_circle_of_trust_session_for_agency(self, agency_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the trust circle service for the given agency.
 
         :param agency_id: the ``Id`` of the agency

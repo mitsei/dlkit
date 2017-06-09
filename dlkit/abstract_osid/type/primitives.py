@@ -74,7 +74,7 @@ class Type:
         return string.replace("%40", "@").replace("%3A", ":").replace("%25", "%")
 
     @abc.abstractmethod
-    def get_display_name(self): # pragma: no cover
+    def get_display_name(self):  # pragma: no cover
         """Gets the full display name of this ``Type``.
 
         :return: the display name of this ``Type``
@@ -89,7 +89,7 @@ class Type:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_display_label(self): # pragma: no cover
+    def get_display_label(self):  # pragma: no cover
         """Gets the shorter display label for this ``Type``.
 
         Where a display name of a ``Type`` might be ``"`` Critical
@@ -107,7 +107,7 @@ class Type:
     display_label = property(fget=get_display_label)
 
     @abc.abstractmethod
-    def get_description(self): # pragma: no cover
+    def get_description(self):  # pragma: no cover
         """Gets a description of this ``Type``.
 
         :return: the description of this ``Type``
@@ -122,7 +122,7 @@ class Type:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_domain(self): # pragma: no cover
+    def get_domain(self):  # pragma: no cover
         """Gets the domain.
 
         The domain can provide an information label about ths
@@ -140,7 +140,7 @@ class Type:
     domain = property(fget=get_domain)
 
     @abc.abstractmethod
-    def get_authority(self): # pragma: no cover
+    def get_authority(self):  # pragma: no cover
         """Gets the authority of this ``Type``.
 
         The authority is a string used to ensure the uniqueness of this
@@ -161,7 +161,7 @@ class Type:
     authority = property(fget=get_authority)
 
     @abc.abstractmethod
-    def get_identifier_namespace(self): # pragma: no cover
+    def get_identifier_namespace(self):  # pragma: no cover
         """Gets the namespace of the identifier.
 
         This method is used to compare one ``Type`` to another.
@@ -180,7 +180,7 @@ class Type:
     namespace = property(fget=get_identifier_namespace)
 
     @abc.abstractmethod
-    def get_identifier(self): # pragma: no cover
+    def get_identifier(self):  # pragma: no cover
         """Gets the identifier of this ``Type``.
 
         This method is used to compare one ``Type`` to another.

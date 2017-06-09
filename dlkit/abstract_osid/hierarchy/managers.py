@@ -21,7 +21,7 @@ class HierarchyProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if federation is visible.
 
         Visible federation allows for selecting among multiple
@@ -37,7 +37,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_traversal(self): # pragma: no cover
+    def supports_hierarchy_traversal(self):  # pragma: no cover
         """Tests if hierarchy traversal is supported.
 
         :return: ``true`` if hierarchy traversal is supported, ``false`` otherwise
@@ -50,7 +50,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_design(self): # pragma: no cover
+    def supports_hierarchy_design(self):  # pragma: no cover
         """Tests if hierarchy design is supported.
 
         :return: ``true`` if hierarchy design is supported, ``false`` otherwise
@@ -63,7 +63,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_sequencing(self): # pragma: no cover
+    def supports_hierarchy_sequencing(self):  # pragma: no cover
         """Tests if hierarchy sequencing is supported.
 
         :return: ``true`` if hierarchy sequencing is supported, ``false`` otherwise
@@ -76,7 +76,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_structure_notification(self): # pragma: no cover
+    def supports_hierarchy_structure_notification(self):  # pragma: no cover
         """Tests if hierarchy structure notification is supported.
 
         :return: ``true`` if hierarchy structure notification is supported, ``false`` otherwise
@@ -89,7 +89,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_lookup(self): # pragma: no cover
+    def supports_hierarchy_lookup(self):  # pragma: no cover
         """Tests if a hierarchy lookup is supported.
 
         :return: ``true`` if hierarchy lookup is supported, ``false`` otherwise
@@ -102,7 +102,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_query(self): # pragma: no cover
+    def supports_hierarchy_query(self):  # pragma: no cover
         """Tests if a hierarchy query is supported.
 
         :return: ``true`` if hierarchy query is supported, ``false`` otherwise
@@ -115,7 +115,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_search(self): # pragma: no cover
+    def supports_hierarchy_search(self):  # pragma: no cover
         """Tests if a hierarchy search is supported.
 
         :return: ``true`` if hierarchy search is supported, ``false`` otherwise
@@ -128,7 +128,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_admin(self): # pragma: no cover
+    def supports_hierarchy_admin(self):  # pragma: no cover
         """Tests if a hierarchy administration is supported.
 
         :return: ``true`` if hierarchy administration is supported, ``false`` otherwise
@@ -141,7 +141,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_hierarchy_notification(self): # pragma: no cover
+    def supports_hierarchy_notification(self):  # pragma: no cover
         """Tests if hierarchy notification is supported.
 
         Messages may be sent when hierarchies are created, modified, or
@@ -157,7 +157,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_hierarchy_record_types(self): # pragma: no cover
+    def get_hierarchy_record_types(self):  # pragma: no cover
         """Gets the supported ``Hierarchy`` types.
 
         :return: a list containing the supported ``Hierarchy`` record types
@@ -172,7 +172,7 @@ class HierarchyProfile:
     hierarchy_record_types = property(fget=get_hierarchy_record_types)
 
     @abc.abstractmethod
-    def supports_hierarchy_record_type(self, hierarchy_record_type): # pragma: no cover
+    def supports_hierarchy_record_type(self, hierarchy_record_type):  # pragma: no cover
         """Tests if the given ``Hierarchy`` record type is supported.
 
         :param hierarchy_record_type: a ``Type`` indicating a ``Hierarchy`` record type
@@ -187,7 +187,7 @@ class HierarchyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_hierarchy_search_record_types(self): # pragma: no cover
+    def get_hierarchy_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Hierarchy`` search record types.
 
         :return: a list containing the supported ``Hierarchy`` search record types
@@ -202,7 +202,7 @@ class HierarchyProfile:
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
 
     @abc.abstractmethod
-    def supports_hierarchy_search_record_type(self, hierarchy_search_record_type): # pragma: no cover
+    def supports_hierarchy_search_record_type(self, hierarchy_search_record_type):  # pragma: no cover
         """Tests if the given ``Hierarchy`` search record type is supported.
 
         :param hierarchy_search_record_type: a ``Type`` indicating a ``Hierarchy`` search record type
@@ -242,7 +242,7 @@ class HierarchyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchy_traversal_session(self): # pragma: no cover
+    def get_hierarchy_traversal_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
 
         :return: a ``HierarchyTraversalSession``
@@ -259,7 +259,7 @@ class HierarchyManager:
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
     @abc.abstractmethod
-    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id): # pragma: no cover
+    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy traversal service for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the hierarchy
@@ -279,7 +279,7 @@ class HierarchyManager:
         return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
-    def get_hierarchy_design_session(self): # pragma: no cover
+    def get_hierarchy_design_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy design service.
 
         :return: a ``HierarchyDesignSession``
@@ -296,7 +296,7 @@ class HierarchyManager:
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id): # pragma: no cover
+    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the topology design service using for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the graph
@@ -316,7 +316,7 @@ class HierarchyManager:
         return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
-    def get_hierarchy_sequencing_session(self): # pragma: no cover
+    def get_hierarchy_sequencing_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy sequencing service.
 
         :return: a ``HierarchySequencingSession``
@@ -333,7 +333,7 @@ class HierarchyManager:
     hierarchy_sequencing_session = property(fget=get_hierarchy_sequencing_session)
 
     @abc.abstractmethod
-    def get_hierarchy_sequencing_session_for_hierarchy(self, hierarchy_id): # pragma: no cover
+    def get_hierarchy_sequencing_session_for_hierarchy(self, hierarchy_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequencing design service using for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the graph
@@ -353,7 +353,7 @@ class HierarchyManager:
         return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
-    def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver): # pragma: no cover
+    def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver):  # pragma: no cover
         """Gets the session for subscribing to notifications of changes within a hierarchy structure.
 
         :param hierarchy_structure_receiver: a receiver
@@ -371,7 +371,7 @@ class HierarchyManager:
         return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
-    def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id): # pragma: no cover
+    def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id):  # pragma: no cover
         """Gets the session for subscribing to notifications of changes within a hierarchy structure for the given hierarchy.
 
         :param hierarchy_structure_receiver: a receiver
@@ -393,7 +393,7 @@ class HierarchyManager:
         return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
-    def get_hierarchy_lookup_session(self): # pragma: no cover
+    def get_hierarchy_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy lookup service.
 
         :return: a ``HierarchyLookupSession``
@@ -410,7 +410,7 @@ class HierarchyManager:
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
     @abc.abstractmethod
-    def get_hierarchy_query_session(self): # pragma: no cover
+    def get_hierarchy_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy query service.
 
         :return: a ``HierarchyQuerySession``
@@ -427,7 +427,7 @@ class HierarchyManager:
     hierarchy_query_session = property(fget=get_hierarchy_query_session)
 
     @abc.abstractmethod
-    def get_hierarchy_search_session(self): # pragma: no cover
+    def get_hierarchy_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy search service.
 
         :return: a ``HierarchySearchSession``
@@ -444,7 +444,7 @@ class HierarchyManager:
     hierarchy_search_session = property(fget=get_hierarchy_search_session)
 
     @abc.abstractmethod
-    def get_hierarchy_admin_session(self): # pragma: no cover
+    def get_hierarchy_admin_session(self):  # pragma: no cover
         """Gets the hierarchy administrative session.
 
         :return: a ``HierarchyAdminSession``
@@ -461,7 +461,7 @@ class HierarchyManager:
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
     @abc.abstractmethod
-    def get_hierarchy_notification_session(self, hierarchy_receiver): # pragma: no cover
+    def get_hierarchy_notification_session(self, hierarchy_receiver):  # pragma: no cover
         """Gets a hierarchy notification session.
 
         :param hierarchy_receiver: notification callback
@@ -505,7 +505,7 @@ class HierarchyProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchy_traversal_session(self, proxy): # pragma: no cover
+    def get_hierarchy_traversal_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
 
         :param proxy: a proxy
@@ -523,7 +523,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
-    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, proxy): # pragma: no cover
+    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy traversal service for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the hierarchy
@@ -545,7 +545,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyTraversalSession
 
     @abc.abstractmethod
-    def get_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy design service.
 
         :param proxy: a proxy
@@ -563,7 +563,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
-    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, proxy): # pragma: no cover
+    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the topology design service using for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the hierarchy
@@ -585,7 +585,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyDesignSession
 
     @abc.abstractmethod
-    def get_hierarchy_sequencing_session(self, proxy): # pragma: no cover
+    def get_hierarchy_sequencing_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy sequencing service.
 
         :param proxy: a proxy
@@ -603,7 +603,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
-    def get_hierarchy_sequencing_session_for_hierarchy(self, hierarchy_id, proxy): # pragma: no cover
+    def get_hierarchy_sequencing_session_for_hierarchy(self, hierarchy_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequencing design service using for the given hierarchy.
 
         :param hierarchy_id: the ``Id`` of the graph
@@ -625,7 +625,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchySequencingSession
 
     @abc.abstractmethod
-    def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver, proxy): # pragma: no cover
+    def get_hierarchy_structure_notification_session(self, hierarchy_structure_receiver, proxy):  # pragma: no cover
         """Gets the session for subscribing to notifications of changes within a hierarchy structure.
 
         :param hierarchy_structure_receiver: a receiver
@@ -645,7 +645,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
-    def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id, proxy): # pragma: no cover
+    def get_hierarchy_structure_notification_session_for_hierarchy(self, hierarchy_structure_receiver, hierarchy_id, proxy):  # pragma: no cover
         """Gets the session for subscribing to notifications of changes within a hierarchy structure for the given hierarchy.
 
         :param hierarchy_structure_receiver: a receiver
@@ -669,7 +669,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyStructureNotificationSession
 
     @abc.abstractmethod
-    def get_hierarchy_lookup_session(self, proxy): # pragma: no cover
+    def get_hierarchy_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy lookup service.
 
         :param proxy: a proxy
@@ -687,7 +687,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyLookupSession
 
     @abc.abstractmethod
-    def get_hierarchy_query_session(self, proxy): # pragma: no cover
+    def get_hierarchy_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy query service.
 
         :param proxy: a proxy
@@ -705,7 +705,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyQuerySession
 
     @abc.abstractmethod
-    def get_hierarchy_search_session(self, proxy): # pragma: no cover
+    def get_hierarchy_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the hierarchy search service.
 
         :param proxy: a proxy
@@ -723,7 +723,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchySearchSession
 
     @abc.abstractmethod
-    def get_hierarchy_admin_session(self, proxy): # pragma: no cover
+    def get_hierarchy_admin_session(self, proxy):  # pragma: no cover
         """Gets the hierarchy administrative session.
 
         :param proxy: a proxy
@@ -741,7 +741,7 @@ class HierarchyProxyManager:
         return  # osid.hierarchy.HierarchyAdminSession
 
     @abc.abstractmethod
-    def get_hierarchy_notification_session(self, hierarchy_receiver, proxy): # pragma: no cover
+    def get_hierarchy_notification_session(self, hierarchy_receiver, proxy):  # pragma: no cover
         """Gets the hierarchy notification session.
 
         :param hierarchy_receiver: notification callback

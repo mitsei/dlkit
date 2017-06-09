@@ -21,7 +21,7 @@ class ObjectiveReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_objectives(self, notification_id, objective_ids): # pragma: no cover
+    def new_objectives(self, notification_id, objective_ids):  # pragma: no cover
         """The callback for notifications of new objectives.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class ObjectiveReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_objectives(self, notification_id, objective_ids): # pragma: no cover
+    def changed_objectives(self, notification_id, objective_ids):  # pragma: no cover
         """The callback for notification of updated objectives.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class ObjectiveReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_objectives(self, notification_id, objective_ids): # pragma: no cover
+    def deleted_objectives(self, notification_id, objective_ids):  # pragma: no cover
         """The callback for notification of deleted objectives.
 
         :param notification_id: the notification ``Id``
@@ -66,7 +66,7 @@ class ObjectiveReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_objectives(self, notification_id, objective_ids): # pragma: no cover
+    def changed_child_of_objectives(self, notification_id, objective_ids):  # pragma: no cover
         """The callback for notifications of changes to children of objective hierarchy nodes.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class ActivityReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_activities(self, notification_id, activity_ids): # pragma: no cover
+    def new_activities(self, notification_id, activity_ids):  # pragma: no cover
         """The callback for notifications of new activities.
 
         :param notification_id: the notification Id
@@ -101,7 +101,7 @@ class ActivityReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_activities(self, notification_id, activity_ids): # pragma: no cover
+    def changed_activities(self, notification_id, activity_ids):  # pragma: no cover
         """The callback for notification of updated activities.
 
         :param notification_id: the notification ``Id``
@@ -116,7 +116,7 @@ class ActivityReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_activities(self, notification_id, activity_ids): # pragma: no cover
+    def deleted_activities(self, notification_id, activity_ids):  # pragma: no cover
         """The callback for notification of deleted activities.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class ProficiencyReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_proficiencies(self, notification_id, proficiency_ids): # pragma: no cover
+    def new_proficiencies(self, notification_id, proficiency_ids):  # pragma: no cover
         """The callback for notifications of new proficiencies.
 
         :param notification_id: the notification ``Id``
@@ -151,7 +151,7 @@ class ProficiencyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_proficiencies(self, notification_id, proficiency_ids): # pragma: no cover
+    def changed_proficiencies(self, notification_id, proficiency_ids):  # pragma: no cover
         """The callback for notification of updated proficiencies.
 
         :param notification_id: the notification ``Id``
@@ -166,7 +166,7 @@ class ProficiencyReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_proficiencies(self, notification_id, proficiency_ids): # pragma: no cover
+    def deleted_proficiencies(self, notification_id, proficiency_ids):  # pragma: no cover
         """The callback for notification of deleted proficiencies.
 
         :param notification_id: the notification ``Id``
@@ -186,7 +186,7 @@ class ObjectiveBankReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_objective_banks(self, notification_id, objective_bank_ids): # pragma: no cover
+    def new_objective_banks(self, notification_id, objective_bank_ids):  # pragma: no cover
         """The callback for notifications of new objective banks.
 
         :param notification_id: the notification ``Id``
@@ -201,7 +201,7 @@ class ObjectiveBankReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_objective_banks(self, notification_id, objective_bank_ids): # pragma: no cover
+    def changed_objective_banks(self, notification_id, objective_bank_ids):  # pragma: no cover
         """The callback for notification of updated objective banks.
 
         :param notification_id: the notification ``Id``
@@ -216,7 +216,7 @@ class ObjectiveBankReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_objective_banks(self, notification_id, objective_bank_ids): # pragma: no cover
+    def deleted_objective_banks(self, notification_id, objective_bank_ids):  # pragma: no cover
         """The callback for notification of deleted objective banks.
 
         :param notification_id: the notification ``Id``
@@ -231,7 +231,7 @@ class ObjectiveBankReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_objective_banks(self, notification_id, objective_bank_ids): # pragma: no cover
+    def changed_child_of_objective_banks(self, notification_id, objective_bank_ids):  # pragma: no cover
         """The callback for notifications of changes to children of objective bank hierarchy nodes.
 
         :param notification_id: the notification ``Id``

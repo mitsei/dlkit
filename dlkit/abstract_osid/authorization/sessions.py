@@ -21,7 +21,7 @@ class AuthorizationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -36,7 +36,7 @@ class AuthorizationSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -52,7 +52,7 @@ class AuthorizationSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_access_authorizations(self): # pragma: no cover
+    def can_access_authorizations(self):  # pragma: no cover
         """Tests if this user can perform authorization checks.
 
         A return of true does not guarantee successful authorization. A
@@ -71,7 +71,7 @@ class AuthorizationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_authorized(self, agent_id, function_id, qualifier_id): # pragma: no cover
+    def is_authorized(self, agent_id, function_id, qualifier_id):  # pragma: no cover
         """Determines if the given agent is authorized.
 
         An agent is authorized if an active authorization exists whose
@@ -115,7 +115,7 @@ class AuthorizationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_condition(self, function_id): # pragma: no cover
+    def get_authorization_condition(self, function_id):  # pragma: no cover
         """Gets the ``AuthorizationCondition`` for making conditional authorization checks.
 
         :param function_id: the ``Id`` of a ``Function``
@@ -133,7 +133,7 @@ class AuthorizationSession:
         return  # osid.authorization.AuthorizationCondition
 
     @abc.abstractmethod
-    def is_authorized_on_condition(self, agent_id, function_id, qualifier_id, condition): # pragma: no cover
+    def is_authorized_on_condition(self, agent_id, function_id, qualifier_id, condition):  # pragma: no cover
         """Determines if the given agent is authorized.
 
         An agent is authorized if an active authorization exists whose
@@ -185,7 +185,7 @@ class AuthorizationLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -200,7 +200,7 @@ class AuthorizationLookupSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -216,7 +216,7 @@ class AuthorizationLookupSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_lookup_authorizations(self): # pragma: no cover
+    def can_lookup_authorizations(self):  # pragma: no cover
         """Tests if this user can perform authorization lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -235,7 +235,7 @@ class AuthorizationLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_authorization_view(self): # pragma: no cover
+    def use_comparative_authorization_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -249,7 +249,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_authorization_view(self): # pragma: no cover
+    def use_plenary_authorization_view(self):  # pragma: no cover
         """A complete view of the ``Authorization`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -264,7 +264,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include authorizations in vaults which are
@@ -278,7 +278,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this vault only.
@@ -291,7 +291,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_authorization_view(self): # pragma: no cover
+    def use_effective_authorization_view(self):  # pragma: no cover
         """Only authorizations whose effective dates are current are returned by methods in this session.
 
 
@@ -302,7 +302,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_authorization_view(self): # pragma: no cover
+    def use_any_effective_authorization_view(self):  # pragma: no cover
         """All authorizations of any effective dates are returned by all methods in this session.
 
 
@@ -313,7 +313,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_implicit_authorization_view(self): # pragma: no cover
+    def use_implicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to implicit authorizations.
 
         An implicit view will include authorizations derived from other
@@ -329,7 +329,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_explicit_authorization_view(self): # pragma: no cover
+    def use_explicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to explicit authorizations.
 
         An explicit view includes only those authorizations that were
@@ -344,7 +344,7 @@ class AuthorizationLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_authorization(self, authorization_id): # pragma: no cover
+    def get_authorization(self, authorization_id):  # pragma: no cover
         """Gets the ``Authorization`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -368,7 +368,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.Authorization
 
     @abc.abstractmethod
-    def get_authorizations_by_ids(self, authorization_ids): # pragma: no cover
+    def get_authorizations_by_ids(self, authorization_ids):  # pragma: no cover
         """Gets an ``AuthorizationList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -394,7 +394,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_by_genus_type(self, authorization_genus_type): # pragma: no cover
+    def get_authorizations_by_genus_type(self, authorization_genus_type):  # pragma: no cover
         """Gets an ``AuthorizationList`` corresponding to the given authorization genus ``Type`` which does not include authorizations of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -416,7 +416,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_by_parent_genus_type(self, authorization_genus_type): # pragma: no cover
+    def get_authorizations_by_parent_genus_type(self, authorization_genus_type):  # pragma: no cover
         """Gets an ``AuthorizationList`` corresponding to the given authorization genus ``Type`` and include authorizations of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -438,7 +438,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_by_record_type(self, authorization_record_type): # pragma: no cover
+    def get_authorizations_by_record_type(self, authorization_record_type):  # pragma: no cover
         """Gets an ``AuthorizationList`` containing the given authorization record ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -460,7 +460,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_on_date(self, from_, to): # pragma: no cover
+    def get_authorizations_on_date(self, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` effective during the entire given date range inclusive but not confined to the date range.
 
         :param from: starting date
@@ -480,7 +480,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_resource(self, resource_id): # pragma: no cover
+    def get_authorizations_for_resource(self, resource_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given resource.
 
         Authorizations related to the given resource, including those
@@ -503,7 +503,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_resource_on_date(self, resource_id, from_, to): # pragma: no cover
+    def get_authorizations_for_resource_on_date(self, resource_id, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` effective during the entire given date range inclusive but not confined to the date range.
 
         Authorizations related to the given resource, including those
@@ -537,7 +537,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_agent(self, agent_id): # pragma: no cover
+    def get_authorizations_for_agent(self, agent_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given agent.
 
         In plenary mode, the returned list contains all known
@@ -559,7 +559,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_agent_on_date(self, agent_id, from_, to): # pragma: no cover
+    def get_authorizations_for_agent_on_date(self, agent_id, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` for the given agent and effective during the entire given date range inclusive but not confined to the date range.
 
         :param agent_id: an agent ``Id``
@@ -581,7 +581,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_function(self, function_id): # pragma: no cover
+    def get_authorizations_for_function(self, function_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given function.
 
         In plenary mode, the returned list contains all known
@@ -603,7 +603,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_function_on_date(self, function_id, from_, to): # pragma: no cover
+    def get_authorizations_for_function_on_date(self, function_id, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` for the given function and effective during the entire given date range inclusive but not confined to the date range.
 
         :param function_id: a function ``Id``
@@ -625,7 +625,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_resource_and_function(self, resource_id, function_id): # pragma: no cover
+    def get_authorizations_for_resource_and_function(self, resource_id, function_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given resource.
 
         Authorizations related to the given resource, including those
@@ -650,7 +650,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_resource_and_function_on_date(self, resource_id, function_id, from_, to): # pragma: no cover
+    def get_authorizations_for_resource_and_function_on_date(self, resource_id, function_id, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` effective during the entire given date range inclusive but not confined to the date range.
 
         Authorizations related to the given resource, including those
@@ -686,7 +686,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_agent_and_function(self, agent_id, function_id): # pragma: no cover
+    def get_authorizations_for_agent_and_function(self, agent_id, function_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given agent.
 
         Authorizations related to the given resource, including those
@@ -711,7 +711,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_for_agent_and_function_on_date(self, agent_id, function_id, from_, to): # pragma: no cover
+    def get_authorizations_for_agent_and_function_on_date(self, agent_id, function_id, from_, to):  # pragma: no cover
         """Gets an ``AuthorizationList`` for the given agent and effective during the entire given date range inclusive but not confined to the date range.
 
         :param agent_id: an agent ``Id``
@@ -735,7 +735,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_by_qualifier(self, qualifier_id): # pragma: no cover
+    def get_authorizations_by_qualifier(self, qualifier_id):  # pragma: no cover
         """Gets a list of ``Authorizations`` associated with a given qualifier.
 
         In plenary mode, the returned list contains all known
@@ -757,7 +757,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_explicit_authorization(self, authorization_id): # pragma: no cover
+    def get_explicit_authorization(self, authorization_id):  # pragma: no cover
         """Gets the explicit ``Authorization`` that generated the given implicit authorization.
 
         If the given ``Authorization`` is explicit, then the same
@@ -778,7 +778,7 @@ class AuthorizationLookupSession:
         return  # osid.authorization.Authorization
 
     @abc.abstractmethod
-    def get_authorizations(self): # pragma: no cover
+    def get_authorizations(self):  # pragma: no cover
         """Geta all ``Authorizations``.
 
         In plenary mode, the returned list contains all known
@@ -820,7 +820,7 @@ class AuthorizationQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -835,7 +835,7 @@ class AuthorizationQuerySession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -851,7 +851,7 @@ class AuthorizationQuerySession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_search_authorizations(self): # pragma: no cover
+    def can_search_authorizations(self):  # pragma: no cover
         """Tests if this user can perform authorization searches.
 
         A return of true does not guarantee successful authorization. A
@@ -870,7 +870,7 @@ class AuthorizationQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include authorizations in vaults which are
@@ -884,7 +884,7 @@ class AuthorizationQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this vault only.
@@ -897,7 +897,7 @@ class AuthorizationQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_implicit_authorization_view(self): # pragma: no cover
+    def use_implicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to implicit authorizations.
 
         An implicit view will include authorizations derived from other
@@ -913,7 +913,7 @@ class AuthorizationQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_explicit_authorization_view(self): # pragma: no cover
+    def use_explicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to explicit authorizations.
 
         An explicit view includes only those authorizations that were
@@ -928,7 +928,7 @@ class AuthorizationQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_authorization_query(self): # pragma: no cover
+    def get_authorization_query(self):  # pragma: no cover
         """Gets an authorization query.
 
         :return: the authorization query
@@ -943,7 +943,7 @@ class AuthorizationQuerySession:
     authorization_query = property(fget=get_authorization_query)
 
     @abc.abstractmethod
-    def get_authorizations_by_query(self, authorization_query): # pragma: no cover
+    def get_authorizations_by_query(self, authorization_query):  # pragma: no cover
         """Gets a list of ``Authorizations`` matching the given query.
 
         :param authorization_query: the authorization query
@@ -992,7 +992,7 @@ class AuthorizationSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorization_search(self): # pragma: no cover
+    def get_authorization_search(self):  # pragma: no cover
         """Gets an authorization search.
 
         :return: the authorization search
@@ -1007,7 +1007,7 @@ class AuthorizationSearchSession:
     authorization_search = property(fget=get_authorization_search)
 
     @abc.abstractmethod
-    def get_authorization_search_order(self): # pragma: no cover
+    def get_authorization_search_order(self):  # pragma: no cover
         """Gets an authorization search order.
 
         The ``AuthorizationSearchOrder`` is supplied to an
@@ -1025,7 +1025,7 @@ class AuthorizationSearchSession:
     authorization_search_order = property(fget=get_authorization_search_order)
 
     @abc.abstractmethod
-    def get_authorizations_by_search(self, authorization_query, authorization_search): # pragma: no cover
+    def get_authorizations_by_search(self, authorization_query, authorization_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param authorization_query: the authorization query
@@ -1045,7 +1045,7 @@ class AuthorizationSearchSession:
         return  # osid.authorization.AuthorizationSearchResults
 
     @abc.abstractmethod
-    def get_authorization_query_from_inspector(self, authorization_query_inspector): # pragma: no cover
+    def get_authorization_query_from_inspector(self, authorization_query_inspector):  # pragma: no cover
         """Gets an authorization query from an inspector.
 
         The inspector is available from an
@@ -1104,7 +1104,7 @@ class AuthorizationAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -1119,7 +1119,7 @@ class AuthorizationAdminSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -1135,7 +1135,7 @@ class AuthorizationAdminSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_create_authorizations(self): # pragma: no cover
+    def can_create_authorizations(self):  # pragma: no cover
         """Tests if this user can create ``Authorizations``.
 
         A return of true does not guarantee successful authorization. A
@@ -1154,7 +1154,7 @@ class AuthorizationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_authorization_with_record_types(self, authorization_record_types): # pragma: no cover
+    def can_create_authorization_with_record_types(self, authorization_record_types):  # pragma: no cover
         """Tests if this user can create a single ``Authorization`` using the desired record types.
 
         While ``AuthorizationManager.getAuthorizationRecordTypes()`` can
@@ -1175,7 +1175,7 @@ class AuthorizationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_form_for_create_for_agent(self, agent_id, function_id, qualifier_id, authorization_record_types): # pragma: no cover
+    def get_authorization_form_for_create_for_agent(self, agent_id, function_id, qualifier_id, authorization_record_types):  # pragma: no cover
         """Gets the authorization form for creating new authorizations.
 
         A new form should be requested for each create transaction.
@@ -1202,7 +1202,7 @@ class AuthorizationAdminSession:
         return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
-    def get_authorization_form_for_create_for_resource(self, resource_id, function_id, qualifier_id, authorization_record_types): # pragma: no cover
+    def get_authorization_form_for_create_for_resource(self, resource_id, function_id, qualifier_id, authorization_record_types):  # pragma: no cover
         """Gets the authorization form for creating new authorizations.
 
         A new form should be requested for each create transaction.
@@ -1229,7 +1229,7 @@ class AuthorizationAdminSession:
         return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
-    def get_authorization_form_for_create_for_resource_and_trust(self, resource_id, trust_id, function_id, qualifier_id, authorization_record_types): # pragma: no cover
+    def get_authorization_form_for_create_for_resource_and_trust(self, resource_id, trust_id, function_id, qualifier_id, authorization_record_types):  # pragma: no cover
         """Gets the authorization form for creating new authorizations.
 
         A new form should be requested for each create transaction.
@@ -1258,7 +1258,7 @@ class AuthorizationAdminSession:
         return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
-    def create_authorization(self, authorization_form): # pragma: no cover
+    def create_authorization(self, authorization_form):  # pragma: no cover
         """Creates a new explicit ``Authorization``.
 
         :param authorization_form: the authorization form
@@ -1278,7 +1278,7 @@ class AuthorizationAdminSession:
         return  # osid.authorization.Authorization
 
     @abc.abstractmethod
-    def can_update_authorizations(self): # pragma: no cover
+    def can_update_authorizations(self):  # pragma: no cover
         """Tests if this user can update ``Authorizations``.
 
         A return of true does not guarantee successful authorization. A
@@ -1297,7 +1297,7 @@ class AuthorizationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_form_for_update(self, authorization_id): # pragma: no cover
+    def get_authorization_form_for_update(self, authorization_id):  # pragma: no cover
         """Gets the authorization form for updating an existing authorization.
 
         A new authorization form should be requested for each update
@@ -1318,7 +1318,7 @@ class AuthorizationAdminSession:
         return  # osid.authorization.AuthorizationForm
 
     @abc.abstractmethod
-    def update_authorization(self, authorization_form): # pragma: no cover
+    def update_authorization(self, authorization_form):  # pragma: no cover
         """Updates an existing authorization.
 
         :param authorization_form: the authorization ``Id``
@@ -1336,7 +1336,7 @@ class AuthorizationAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_authorizations(self): # pragma: no cover
+    def can_delete_authorizations(self):  # pragma: no cover
         """Tests if this user can delete ``Authorizations``.
 
         A return of true does not guarantee successful authorization. A
@@ -1355,7 +1355,7 @@ class AuthorizationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_authorization(self, authorization_id): # pragma: no cover
+    def delete_authorization(self, authorization_id):  # pragma: no cover
         """Deletes the ``Authorization`` identified by the given ``Id``.
 
         :param authorization_id: the ``Id`` of the ``Authorization`` to delete
@@ -1371,7 +1371,7 @@ class AuthorizationAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_authorization_aliases(self): # pragma: no cover
+    def can_manage_authorization_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Authorizations``.
 
         A return of true does not guarantee successful authorization. A
@@ -1390,7 +1390,7 @@ class AuthorizationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_authorization(self, authorization_id, alias_id): # pragma: no cover
+    def alias_authorization(self, authorization_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to an ``Authorization`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Authorization`` is determined by the
@@ -1428,7 +1428,7 @@ class AuthorizationNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -1443,7 +1443,7 @@ class AuthorizationNotificationSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -1459,7 +1459,7 @@ class AuthorizationNotificationSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_register_for_authorization_notifications(self): # pragma: no cover
+    def can_register_for_authorization_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Authorization`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -1478,7 +1478,7 @@ class AuthorizationNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include authorizations in vaults which are
@@ -1492,7 +1492,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for authorizations in
@@ -1506,7 +1506,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_authorization_notifications(self): # pragma: no cover
+    def reliable_authorization_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1520,7 +1520,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_authorization_notifications(self): # pragma: no cover
+    def unreliable_authorization_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1534,7 +1534,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_authorization_notification(self, notification_id): # pragma: no cover
+    def acknowledge_authorization_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an authorization notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1548,7 +1548,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_implicit_authorization_view(self): # pragma: no cover
+    def use_implicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to implicit authorizations.
 
         An implicit view will include authorizations derived from other
@@ -1564,7 +1564,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_explicit_authorization_view(self): # pragma: no cover
+    def use_explicit_authorization_view(self):  # pragma: no cover
         """Sets the view for methods in this session to explicit authorizations.
 
         An explicit view includes only those authorizations that were
@@ -1579,7 +1579,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_authorizations(self): # pragma: no cover
+    def register_for_new_authorizations(self):  # pragma: no cover
         """Register for notifications of new authorizations.
 
         ``AuthorizationReceiver.newAuthorizations()`` is invoked when a
@@ -1594,7 +1594,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_authorizations_for_resource(self, resource_id): # pragma: no cover
+    def register_for_new_authorizations_for_resource(self, resource_id):  # pragma: no cover
         """Registers for notification of new authorizations for the given resource including any authorizations related to the resource through an agent.
 
         ``AuthorizationReceiver.newAuthorizations()`` is invoked when an
@@ -1612,7 +1612,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_authorizations_for_function(self, function_id): # pragma: no cover
+    def register_for_new_authorizations_for_function(self, function_id):  # pragma: no cover
         """Register for notifications of new authorizations for the given function.
 
         ``AuthorizationReceiver.newAuthorizations()`` is invoked when a
@@ -1630,7 +1630,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_authorizations(self): # pragma: no cover
+    def register_for_changed_authorizations(self):  # pragma: no cover
         """Registers for notification of updated authorizations.
 
         ``AuthorizationReceiver.changedAuthorizations()`` is invoked
@@ -1645,7 +1645,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_authorizations_for_resource(self, resource_id): # pragma: no cover
+    def register_for_changed_authorizations_for_resource(self, resource_id):  # pragma: no cover
         """Registers for notification of updated authorizations for the given resource including any authorizations related to the resource through an agent.
 
         ``AuthorizationReceiver.changedAuthorizations()`` is invoked
@@ -1663,7 +1663,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_authorizations_for_function(self, function_id): # pragma: no cover
+    def register_for_changed_authorizations_for_function(self, function_id):  # pragma: no cover
         """Registers for notification of updated authorizations for the given function.
 
         ``AuthorizationReceiver.changedAuthorizations()`` is invoked
@@ -1681,7 +1681,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_authorization(self, authorization_id): # pragma: no cover
+    def register_for_changed_authorization(self, authorization_id):  # pragma: no cover
         """Registers for notification of an updated authorization.
 
         ``AuthorizationReceiver.changedAuthorizations()`` is invoked
@@ -1699,7 +1699,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_authorizations(self): # pragma: no cover
+    def register_for_deleted_authorizations(self):  # pragma: no cover
         """Registers for notification of deleted authorizations.
 
         ``AuthorizationReceiver.deletedAuthorizations()`` is invoked
@@ -1714,7 +1714,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_authorizations_for_resource(self, resource_id): # pragma: no cover
+    def register_for_deleted_authorizations_for_resource(self, resource_id):  # pragma: no cover
         """Registers for notification of deleted authorizations for the given resource including any authorizations related to the resource through an agent.
 
         ``AuthorizationReceiver.deletedAuthorizations()`` is invoked
@@ -1732,7 +1732,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_authorizations_for_function(self, function_id): # pragma: no cover
+    def register_for_deleted_authorizations_for_function(self, function_id):  # pragma: no cover
         """Registers for notification of deleted authorizations for the given function.
 
         ``AuthorizationReceiver.deletedAuthorizations()`` is invoked
@@ -1750,7 +1750,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_authorization(self, authorization_id): # pragma: no cover
+    def register_for_deleted_authorization(self, authorization_id):  # pragma: no cover
         """Registers for notification of a deleted authorization.
 
         ``AuthorizationReceiver.deletedAuthorizations()`` is invoked
@@ -1768,7 +1768,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_authorization_notifications(self): # pragma: no cover
+    def reliable_authorization_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1782,7 +1782,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_authorization_notifications(self): # pragma: no cover
+    def unreliable_authorization_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1796,7 +1796,7 @@ class AuthorizationNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_authorization_notification(self, notification_id): # pragma: no cover
+    def acknowledge_authorization_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an authorization notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1827,7 +1827,7 @@ class AuthorizationVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_vault_view(self): # pragma: no cover
+    def use_comparative_vault_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1841,7 +1841,7 @@ class AuthorizationVaultSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_vault_view(self): # pragma: no cover
+    def use_plenary_vault_view(self):  # pragma: no cover
         """A complete view of the ``Authorization`` and ``Vault`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1856,7 +1856,7 @@ class AuthorizationVaultSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_authorization_vault_mappings(self): # pragma: no cover
+    def can_lookup_authorization_vault_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of authorization/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1875,7 +1875,7 @@ class AuthorizationVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_ids_by_vault(self, vault_id): # pragma: no cover
+    def get_authorization_ids_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Authorization``  ``Ids`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of a ``Vault``
@@ -1893,7 +1893,7 @@ class AuthorizationVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_authorizations_by_vault(self, vault_id): # pragma: no cover
+    def get_authorizations_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Authorizations`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of a ``Vault``
@@ -1911,7 +1911,7 @@ class AuthorizationVaultSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_authorizations_ids_by_vault(self, vault_ids): # pragma: no cover
+    def get_authorizations_ids_by_vault(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Authorization Ids`` corresponding to a list of ``Vault`` objects.
 
         :param vault_ids: list of vault ``Ids``
@@ -1928,7 +1928,7 @@ class AuthorizationVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_authorizations_by_vault(self, vault_ids): # pragma: no cover
+    def get_authorizations_by_vault(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Authorizations`` corresponding to a list of ``Vault``.
 
         :param vault_ids: list of vault ``Ids``
@@ -1945,7 +1945,7 @@ class AuthorizationVaultSession:
         return  # osid.authorization.AuthorizationList
 
     @abc.abstractmethod
-    def get_vault_ids_by_authorization(self, authorization_id): # pragma: no cover
+    def get_vault_ids_by_authorization(self, authorization_id):  # pragma: no cover
         """Gets the list of ``Vault``  ``Ids`` mapped to an ``Authorization``.
 
         :param authorization_id: ``Id`` of an ``Authorization``
@@ -1963,7 +1963,7 @@ class AuthorizationVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_vault_by_authorization(self, authorization_id): # pragma: no cover
+    def get_vault_by_authorization(self, authorization_id):  # pragma: no cover
         """Gets the list of ``Vault`` objects mapped to an ``Authorization``.
 
         :param authorization_id: ``Id`` of an ``Authorization``
@@ -1996,7 +1996,7 @@ class AuthorizationVaultAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_authorizations(self): # pragma: no cover
+    def can_assign_authorizations(self):  # pragma: no cover
         """Tests if this user can alter authorization/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2015,7 +2015,7 @@ class AuthorizationVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_authorizations_to_vault(self, vault_id): # pragma: no cover
+    def can_assign_authorizations_to_vault(self, vault_id):  # pragma: no cover
         """Tests if this user can alter authorization/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2036,7 +2036,7 @@ class AuthorizationVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_vault_ids(self, vault_id): # pragma: no cover
+    def get_assignable_vault_ids(self, vault_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which any authorization can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -2052,7 +2052,7 @@ class AuthorizationVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id): # pragma: no cover
+    def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which a specific authorization can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -2070,7 +2070,7 @@ class AuthorizationVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_authorization_to_vault(self, authorization_id, vault_id): # pragma: no cover
+    def assign_authorization_to_vault(self, authorization_id, vault_id):  # pragma: no cover
         """Adds an existing ``Authorization`` to a ``Vault``.
 
         :param authorization_id: the ``Id`` of the ``Authorization``
@@ -2089,7 +2089,7 @@ class AuthorizationVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_authorization_from_vault(self, authorization_id, vault_id): # pragma: no cover
+    def unassign_authorization_from_vault(self, authorization_id, vault_id):  # pragma: no cover
         """Removes an ``Authorization`` from a ``Vault``.
 
         :param authorization_id: the ``Id`` of the ``Authorization``
@@ -2107,7 +2107,7 @@ class AuthorizationVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_authorization_to_vault(self, authorization_id, from_vault_id, to_vault_id): # pragma: no cover
+    def reassign_authorization_to_vault(self, authorization_id, from_vault_id, to_vault_id):  # pragma: no cover
         """Moves an ``Authorization`` from one ``Vault`` to another.
 
         Mappings to other ``Vaults`` are unaffected.
@@ -2147,7 +2147,7 @@ class AuthorizationSmartVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -2162,7 +2162,7 @@ class AuthorizationSmartVaultSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -2178,7 +2178,7 @@ class AuthorizationSmartVaultSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_manage_smart_vault(self): # pragma: no cover
+    def can_manage_smart_vault(self):  # pragma: no cover
         """Tests if this user can manage smart vault.
 
         A return of true does not guarantee successful authorization. A
@@ -2197,7 +2197,7 @@ class AuthorizationSmartVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_query(self): # pragma: no cover
+    def get_authorization_query(self):  # pragma: no cover
         """Gets a authorization query.
 
         :return: the authorization query
@@ -2212,7 +2212,7 @@ class AuthorizationSmartVaultSession:
     authorization_query = property(fget=get_authorization_query)
 
     @abc.abstractmethod
-    def get_authorization_search_order(self): # pragma: no cover
+    def get_authorization_search_order(self):  # pragma: no cover
         """Gets a authorization search order.
 
         :return: the authorization search order.
@@ -2227,7 +2227,7 @@ class AuthorizationSmartVaultSession:
     authorization_search_order = property(fget=get_authorization_search_order)
 
     @abc.abstractmethod
-    def apply_authorization_query(self, authorization_query): # pragma: no cover
+    def apply_authorization_query(self, authorization_query):  # pragma: no cover
         """Applies a authorization query to this vault.
 
         :param authorization_query: the authorization query
@@ -2243,7 +2243,7 @@ class AuthorizationSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def inspect_authorization_query(self): # pragma: no cover
+    def inspect_authorization_query(self):  # pragma: no cover
         """Gets a authorization query inspector for this vault.
 
         :return: the authorization query inspector
@@ -2257,7 +2257,7 @@ class AuthorizationSmartVaultSession:
         return  # osid.authorization.AuthorizationQueryInspector
 
     @abc.abstractmethod
-    def apply_authorization_sequencing(self, authorization_search_order): # pragma: no cover
+    def apply_authorization_sequencing(self, authorization_search_order):  # pragma: no cover
         """Applies a authorization search order to this vault.
 
         :param authorization_search_order: the authorization search order
@@ -2273,7 +2273,7 @@ class AuthorizationSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def get_authorization_query_from_inspector(self, authorization_query_inspector): # pragma: no cover
+    def get_authorization_query_from_inspector(self, authorization_query_inspector):  # pragma: no cover
         """Gets a authorization query from an inspector.
 
         :param authorization_query_inspector: a resorce relationship query inspector
@@ -2294,7 +2294,7 @@ class FunctionLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -2309,7 +2309,7 @@ class FunctionLookupSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -2325,7 +2325,7 @@ class FunctionLookupSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_lookup_functions(self): # pragma: no cover
+    def can_lookup_functions(self):  # pragma: no cover
         """Tests if this user can perform ``Function`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2344,7 +2344,7 @@ class FunctionLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_function_view(self): # pragma: no cover
+    def use_comparative_function_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2358,7 +2358,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_function_view(self): # pragma: no cover
+    def use_plenary_function_view(self):  # pragma: no cover
         """A complete view of the ``Function`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2373,7 +2373,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include functions in vaults which are
@@ -2387,7 +2387,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this vault only.
@@ -2400,7 +2400,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_active_function_view(self): # pragma: no cover
+    def use_active_function_view(self):  # pragma: no cover
         """Only active functions are returned by methods in this session.
 
 
@@ -2411,7 +2411,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_status_function_view(self): # pragma: no cover
+    def use_any_status_function_view(self):  # pragma: no cover
         """Active and inactive functions are returned by methods in this session.
 
 
@@ -2422,7 +2422,7 @@ class FunctionLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_function(self, function_id): # pragma: no cover
+    def get_function(self, function_id):  # pragma: no cover
         """Gets the ``Function`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -2446,7 +2446,7 @@ class FunctionLookupSession:
         return  # osid.authorization.Function
 
     @abc.abstractmethod
-    def get_functions_by_ids(self, function_ids): # pragma: no cover
+    def get_functions_by_ids(self, function_ids):  # pragma: no cover
         """Gets a ``FunctionList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the functions
@@ -2472,7 +2472,7 @@ class FunctionLookupSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_functions_by_genus_type(self, function_genus_type): # pragma: no cover
+    def get_functions_by_genus_type(self, function_genus_type):  # pragma: no cover
         """Gets a ``FunctionList`` corresponding to the given function genus ``Type`` which does not include functions of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known functions
@@ -2493,7 +2493,7 @@ class FunctionLookupSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_functions_by_parent_genus_type(self, function_genus_type): # pragma: no cover
+    def get_functions_by_parent_genus_type(self, function_genus_type):  # pragma: no cover
         """Gets a ``FunctionList`` corresponding to the given function genus ``Type`` and include any additional functions with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known functions
@@ -2514,7 +2514,7 @@ class FunctionLookupSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_functions_by_record_type(self, function_record_type): # pragma: no cover
+    def get_functions_by_record_type(self, function_record_type):  # pragma: no cover
         """Gets a ``FunctionList`` containing the given function record ``Type``.
 
         In plenary mode, the returned list contains all known functions
@@ -2535,7 +2535,7 @@ class FunctionLookupSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_functions(self): # pragma: no cover
+    def get_functions(self):  # pragma: no cover
         """Gets all ``Functions``.
 
         In plenary mode, the returned list contains all known functions
@@ -2579,7 +2579,7 @@ class FunctionQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -2594,7 +2594,7 @@ class FunctionQuerySession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -2610,7 +2610,7 @@ class FunctionQuerySession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_search_functions(self): # pragma: no cover
+    def can_search_functions(self):  # pragma: no cover
         """Tests if this user can perform ``Function`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -2629,7 +2629,7 @@ class FunctionQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include functions in vaults which are
@@ -2643,7 +2643,7 @@ class FunctionQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this vault only.
@@ -2656,7 +2656,7 @@ class FunctionQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_function_query(self): # pragma: no cover
+    def get_function_query(self):  # pragma: no cover
         """Gets a function query.
 
         :return: the function query
@@ -2671,7 +2671,7 @@ class FunctionQuerySession:
     function_query = property(fget=get_function_query)
 
     @abc.abstractmethod
-    def get_functions_by_query(self, function_query): # pragma: no cover
+    def get_functions_by_query(self, function_query):  # pragma: no cover
         """Gets a list of ``Functions`` matching the given query.
 
         :param function_query: the function query
@@ -2723,7 +2723,7 @@ class FunctionSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_function_search(self): # pragma: no cover
+    def get_function_search(self):  # pragma: no cover
         """Gets a function search.
 
         :return: the function search
@@ -2738,7 +2738,7 @@ class FunctionSearchSession:
     function_search = property(fget=get_function_search)
 
     @abc.abstractmethod
-    def get_function_search_order(self): # pragma: no cover
+    def get_function_search_order(self):  # pragma: no cover
         """Gets a function search order.
 
         The ``FunctionSearchOrder`` is supplied to a ``FunctionSearch``
@@ -2756,7 +2756,7 @@ class FunctionSearchSession:
     function_search_order = property(fget=get_function_search_order)
 
     @abc.abstractmethod
-    def get_functions_by_search(self, function_query, function_search): # pragma: no cover
+    def get_functions_by_search(self, function_query, function_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param function_query: the function query
@@ -2776,7 +2776,7 @@ class FunctionSearchSession:
         return  # osid.authorization.FunctionSearchResults
 
     @abc.abstractmethod
-    def get_function_query_from_inspector(self, function_query_inspector): # pragma: no cover
+    def get_function_query_from_inspector(self, function_query_inspector):  # pragma: no cover
         """Gets a function query from an inspector.
 
         The inspector is available from a ``FunctionSearchResults``.
@@ -2833,7 +2833,7 @@ class FunctionAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -2848,7 +2848,7 @@ class FunctionAdminSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the vault
@@ -2864,7 +2864,7 @@ class FunctionAdminSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_create_functions(self): # pragma: no cover
+    def can_create_functions(self):  # pragma: no cover
         """Tests if this user can create ``Functions``.
 
         A return of true does not guarantee successful authorization. A
@@ -2883,7 +2883,7 @@ class FunctionAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_function_with_record_types(self, function_record_types): # pragma: no cover
+    def can_create_function_with_record_types(self, function_record_types):  # pragma: no cover
         """Tests if this user can create a single ``Function`` using the desired record types.
 
         While ``AuthorizationManager.getFunctionRecordTypes()`` can be
@@ -2904,7 +2904,7 @@ class FunctionAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_form_for_create(self, function_record_types): # pragma: no cover
+    def get_function_form_for_create(self, function_record_types):  # pragma: no cover
         """Gets the function form for creating new functions.
 
         A new form should be requested for each create transaction.
@@ -2924,7 +2924,7 @@ class FunctionAdminSession:
         return  # osid.authorization.FunctionForm
 
     @abc.abstractmethod
-    def create_function(self, function_form): # pragma: no cover
+    def create_function(self, function_form):  # pragma: no cover
         """Creates a new ``Function``.
 
         :param function_form: the form for this ``Function``
@@ -2944,7 +2944,7 @@ class FunctionAdminSession:
         return  # osid.authorization.Function
 
     @abc.abstractmethod
-    def can_update_functions(self): # pragma: no cover
+    def can_update_functions(self):  # pragma: no cover
         """Tests if this user can update ``Functions``.
 
         A return of true does not guarantee successful authorization. A
@@ -2963,7 +2963,7 @@ class FunctionAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_form_for_update(self, function_id): # pragma: no cover
+    def get_function_form_for_update(self, function_id):  # pragma: no cover
         """Gets the function form for updating an existing function.
 
         A new function form should be requested for each update
@@ -2984,7 +2984,7 @@ class FunctionAdminSession:
         return  # osid.authorization.FunctionForm
 
     @abc.abstractmethod
-    def update_function(self, function_form): # pragma: no cover
+    def update_function(self, function_form):  # pragma: no cover
         """Updates an existing function.
 
         :param function_form: the form containing the elements to be updated
@@ -3002,7 +3002,7 @@ class FunctionAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_functions(self): # pragma: no cover
+    def can_delete_functions(self):  # pragma: no cover
         """Tests if this user can delete ``Functions``.
 
         A return of true does not guarantee successful authorization. A
@@ -3021,7 +3021,7 @@ class FunctionAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_function(self, function_id): # pragma: no cover
+    def delete_function(self, function_id):  # pragma: no cover
         """Deletes the ``Function`` identified by the given ``Id``.
 
         :param function_id: the ``Id`` of the ``Function`` to delete
@@ -3037,7 +3037,7 @@ class FunctionAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_function_aliases(self): # pragma: no cover
+    def can_manage_function_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Functions``.
 
         A return of true does not guarantee successful authorization. A
@@ -3056,7 +3056,7 @@ class FunctionAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_function(self, function_id, alias_id): # pragma: no cover
+    def alias_function(self, function_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to a ``Function`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Function`` is determined by the
@@ -3094,7 +3094,7 @@ class FunctionNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -3109,7 +3109,7 @@ class FunctionNotificationSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -3125,7 +3125,7 @@ class FunctionNotificationSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_register_for_function_notifications(self): # pragma: no cover
+    def can_register_for_function_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Function`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -3144,7 +3144,7 @@ class FunctionNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include functions in vaults which are
@@ -3158,7 +3158,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this vault only.
@@ -3171,7 +3171,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_function_notifications(self): # pragma: no cover
+    def reliable_function_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3185,7 +3185,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_function_notifications(self): # pragma: no cover
+    def unreliable_function_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3199,7 +3199,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_function_notification(self, notification_id): # pragma: no cover
+    def acknowledge_function_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a function notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3213,7 +3213,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_functions(self): # pragma: no cover
+    def register_for_new_functions(self):  # pragma: no cover
         """Register for notifications of new functions.
 
         ``FunctionReceiver.newFunctions()`` is invoked when a new
@@ -3228,7 +3228,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_functions(self): # pragma: no cover
+    def register_for_changed_functions(self):  # pragma: no cover
         """Registers for notification of updated functions.
 
         ``FunctionReceiver.changedFunctions()`` is invoked when a
@@ -3243,7 +3243,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_function(self, function_id): # pragma: no cover
+    def register_for_changed_function(self, function_id):  # pragma: no cover
         """Registers for notification of an updated function.
 
         ``FunctionReceiver.changedFunctions()`` is invoked when the
@@ -3261,7 +3261,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_functions(self): # pragma: no cover
+    def register_for_deleted_functions(self):  # pragma: no cover
         """Registers for notification of deleted functions.
 
         ``FunctionReceiver.deletedFunctions()`` is invoked when a
@@ -3276,7 +3276,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_function(self, function_id): # pragma: no cover
+    def register_for_deleted_function(self, function_id):  # pragma: no cover
         """Registers for notification of a deleted function.
 
         ``FunctionReceiver.changedFunctions()`` is invoked when the
@@ -3294,7 +3294,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_function_notifications(self): # pragma: no cover
+    def reliable_function_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3308,7 +3308,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_function_notifications(self): # pragma: no cover
+    def unreliable_function_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3322,7 +3322,7 @@ class FunctionNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_function_notification(self, notification_id): # pragma: no cover
+    def acknowledge_function_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an function notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3352,7 +3352,7 @@ class FunctionVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_function_vault_mappings(self): # pragma: no cover
+    def can_lookup_function_vault_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of function/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3371,7 +3371,7 @@ class FunctionVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_vault_view(self): # pragma: no cover
+    def use_comparative_vault_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3385,7 +3385,7 @@ class FunctionVaultSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_vault_view(self): # pragma: no cover
+    def use_plenary_vault_view(self):  # pragma: no cover
         """A complete view of the ``Function`` and ``Vault`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3400,7 +3400,7 @@ class FunctionVaultSession:
         pass
 
     @abc.abstractmethod
-    def get_function_ids_by_vault(self, vault_id): # pragma: no cover
+    def get_function_ids_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Function``  ``Ids`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of the ``Vault``
@@ -3418,7 +3418,7 @@ class FunctionVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_functions_by_vault(self, vault_id): # pragma: no cover
+    def get_functions_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Functions`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of the ``Vault``
@@ -3436,7 +3436,7 @@ class FunctionVaultSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_function_ids_by_vaults(self, vault_ids): # pragma: no cover
+    def get_function_ids_by_vaults(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Function Ids`` corresponding to a list of ``Vaults``.
 
         :param vault_ids: list of vault ``Ids``
@@ -3453,7 +3453,7 @@ class FunctionVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_functions_by_vaults(self, vault_ids): # pragma: no cover
+    def get_functions_by_vaults(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Functions`` corresponding to a list of ``Vaults``.
 
         :param vault_ids: list of vault ``Ids``
@@ -3470,7 +3470,7 @@ class FunctionVaultSession:
         return  # osid.authorization.FunctionList
 
     @abc.abstractmethod
-    def get_vault_ids_by_function(self, function_id): # pragma: no cover
+    def get_vault_ids_by_function(self, function_id):  # pragma: no cover
         """Gets the list of ``Vault``  ``Ids`` mapped to a ``Function``.
 
         :param function_id: ``Id`` of a ``Function``
@@ -3488,7 +3488,7 @@ class FunctionVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_vaults_by_function(self, function_id): # pragma: no cover
+    def get_vaults_by_function(self, function_id):  # pragma: no cover
         """Gets the list of ``Vaults`` mapped to a ``Function``.
 
         :param function_id: ``Id`` of a ``Function``
@@ -3521,7 +3521,7 @@ class FunctionVaultAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_functions(self): # pragma: no cover
+    def can_assign_functions(self):  # pragma: no cover
         """Tests if this user can alter function/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3540,7 +3540,7 @@ class FunctionVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_functions_to_vault(self, vault_id): # pragma: no cover
+    def can_assign_functions_to_vault(self, vault_id):  # pragma: no cover
         """Tests if this user can alter function/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3561,7 +3561,7 @@ class FunctionVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_vault_ids(self, vault_id): # pragma: no cover
+    def get_assignable_vault_ids(self, vault_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which any function can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -3577,7 +3577,7 @@ class FunctionVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_vault_ids_for_function(self, vault_id, function_id): # pragma: no cover
+    def get_assignable_vault_ids_for_function(self, vault_id, function_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which a specific function can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -3595,7 +3595,7 @@ class FunctionVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_function_to_vault(self, function_id, vault_id): # pragma: no cover
+    def assign_function_to_vault(self, function_id, vault_id):  # pragma: no cover
         """Adds an existing ``Function`` to a ``Vault``.
 
         :param function_id: the ``Id`` of the ``Function``
@@ -3614,7 +3614,7 @@ class FunctionVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_function_from_vault(self, function_id, vault_id): # pragma: no cover
+    def unassign_function_from_vault(self, function_id, vault_id):  # pragma: no cover
         """Removes a ``Function`` from a ``Vault``.
 
         :param function_id: the ``Id`` of the ``Function``
@@ -3632,7 +3632,7 @@ class FunctionVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_function_to_vault(self, function_id, from_vault_id, to_vault_id): # pragma: no cover
+    def reassign_function_to_vault(self, function_id, from_vault_id, to_vault_id):  # pragma: no cover
         """Moves a ``Function`` from one ``Vault`` to another.
 
         Mappings to other ``Vaults`` are unaffected.
@@ -3671,7 +3671,7 @@ class FunctionSmartVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -3686,7 +3686,7 @@ class FunctionSmartVaultSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -3702,7 +3702,7 @@ class FunctionSmartVaultSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_manage_smart_vaults(self): # pragma: no cover
+    def can_manage_smart_vaults(self):  # pragma: no cover
         """Tests if this user can manage smart vaults.
 
         A return of true does not guarantee successful authorization. A
@@ -3721,7 +3721,7 @@ class FunctionSmartVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_query(self): # pragma: no cover
+    def get_function_query(self):  # pragma: no cover
         """Gets a function query.
 
         :return: the function query
@@ -3736,7 +3736,7 @@ class FunctionSmartVaultSession:
     function_query = property(fget=get_function_query)
 
     @abc.abstractmethod
-    def get_function_search_order(self): # pragma: no cover
+    def get_function_search_order(self):  # pragma: no cover
         """Gets a function search order.
 
         :return: the function search order
@@ -3751,7 +3751,7 @@ class FunctionSmartVaultSession:
     function_search_order = property(fget=get_function_search_order)
 
     @abc.abstractmethod
-    def apply_function_query(self, function_query): # pragma: no cover
+    def apply_function_query(self, function_query):  # pragma: no cover
         """Applies a function query to this vault.
 
         :param function_query: the function query
@@ -3767,7 +3767,7 @@ class FunctionSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def inspect_function_query(self): # pragma: no cover
+    def inspect_function_query(self):  # pragma: no cover
         """Gets a function query inspector for this vault.
 
         :return: the function query inspector
@@ -3781,7 +3781,7 @@ class FunctionSmartVaultSession:
         return  # osid.authorization.FunctionQueryInspector
 
     @abc.abstractmethod
-    def apply_function_sequencing(self, function_search_order): # pragma: no cover
+    def apply_function_sequencing(self, function_search_order):  # pragma: no cover
         """Applies a function search order to this vault.
 
         :param function_search_order: the function search order
@@ -3797,7 +3797,7 @@ class FunctionSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def get_function_query_from_inspector(self, function_query_inspector): # pragma: no cover
+    def get_function_query_from_inspector(self, function_query_inspector):  # pragma: no cover
         """Gets a function query from an inspector.
 
         :param function_query_inspector: a function query inspector
@@ -3818,7 +3818,7 @@ class QualifierLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -3833,7 +3833,7 @@ class QualifierLookupSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -3849,7 +3849,7 @@ class QualifierLookupSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_lookup_qualifiers(self): # pragma: no cover
+    def can_lookup_qualifiers(self):  # pragma: no cover
         """Tests if this user can perform ``Qualifier`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -3868,7 +3868,7 @@ class QualifierLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_qualifier_view(self): # pragma: no cover
+    def use_comparative_qualifier_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3882,7 +3882,7 @@ class QualifierLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_qualifier_view(self): # pragma: no cover
+    def use_plenary_qualifier_view(self):  # pragma: no cover
         """A complete view of the ``Qualifier`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3897,7 +3897,7 @@ class QualifierLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include qualifiers in vaults which are
@@ -3911,7 +3911,7 @@ class QualifierLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this vault only.
@@ -3924,7 +3924,7 @@ class QualifierLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_qualifier(self, qualifier_id): # pragma: no cover
+    def get_qualifier(self, qualifier_id):  # pragma: no cover
         """Gets the ``Qualifier`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -3948,7 +3948,7 @@ class QualifierLookupSession:
         return  # osid.authorization.Qualifier
 
     @abc.abstractmethod
-    def get_qualifiers_by_ids(self, qualifier_ids): # pragma: no cover
+    def get_qualifiers_by_ids(self, qualifier_ids):  # pragma: no cover
         """Gets a ``QualifierList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -3974,7 +3974,7 @@ class QualifierLookupSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_qualifiers_by_genus_type(self, qualifier_genus_type): # pragma: no cover
+    def get_qualifiers_by_genus_type(self, qualifier_genus_type):  # pragma: no cover
         """Gets a ``QualifierList`` corresponding to the given qualifier genus ``Type`` which does not include qualifiers of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known qualifiers
@@ -3996,7 +3996,7 @@ class QualifierLookupSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_qualifiers_by_parent_genus_type(self, qualifier_genus_type): # pragma: no cover
+    def get_qualifiers_by_parent_genus_type(self, qualifier_genus_type):  # pragma: no cover
         """Gets a ``QualifierList`` corresponding to the given qualifier genus ``Type`` and include any additional qualifiers with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known qualifiers
@@ -4017,7 +4017,7 @@ class QualifierLookupSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_qualifiers_by_record_type(self, qualifier_record_type): # pragma: no cover
+    def get_qualifiers_by_record_type(self, qualifier_record_type):  # pragma: no cover
         """Gets a ``QualifierList`` corresponding to the given qualifier record ``Type``.
 
         The set of qualifiers implementing the given record type is
@@ -4040,7 +4040,7 @@ class QualifierLookupSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_qualifiers(self): # pragma: no cover
+    def get_qualifiers(self):  # pragma: no cover
         """Gets all ``Qualifiers``.
 
         In plenary mode, the returned list contains all known qualifiers
@@ -4084,7 +4084,7 @@ class QualifierQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -4099,7 +4099,7 @@ class QualifierQuerySession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -4115,7 +4115,7 @@ class QualifierQuerySession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_search_qualifiers(self): # pragma: no cover
+    def can_search_qualifiers(self):  # pragma: no cover
         """Tests if this user can perform ``Qualifier`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -4134,7 +4134,7 @@ class QualifierQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include qualifiers in vaults which are
@@ -4148,7 +4148,7 @@ class QualifierQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this vault only.
@@ -4161,7 +4161,7 @@ class QualifierQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_qualifier_query(self): # pragma: no cover
+    def get_qualifier_query(self):  # pragma: no cover
         """Gets a qualifier query.
 
         :return: the qualifier query
@@ -4176,7 +4176,7 @@ class QualifierQuerySession:
     qualifier_query = property(fget=get_qualifier_query)
 
     @abc.abstractmethod
-    def get_qualifiers_by_query(self, qualifier_query): # pragma: no cover
+    def get_qualifiers_by_query(self, qualifier_query):  # pragma: no cover
         """Gets a list of ``Qualifiers`` matching the given search.
 
         :param qualifier_query: the search query array
@@ -4228,7 +4228,7 @@ class QualifierSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_search(self): # pragma: no cover
+    def get_qualifier_search(self):  # pragma: no cover
         """Gets a qualifier search.
 
         :return: the qualifier search
@@ -4243,7 +4243,7 @@ class QualifierSearchSession:
     qualifier_search = property(fget=get_qualifier_search)
 
     @abc.abstractmethod
-    def get_qualifier_search_order(self): # pragma: no cover
+    def get_qualifier_search_order(self):  # pragma: no cover
         """Gets a qualifier search order.
 
         The ``QualifierSearchOrder`` is supplied to a
@@ -4261,7 +4261,7 @@ class QualifierSearchSession:
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
     @abc.abstractmethod
-    def get_qualifiers_by_search(self, qualifier_query, qualifier_search): # pragma: no cover
+    def get_qualifiers_by_search(self, qualifier_query, qualifier_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param qualifier_query: the qualifier query
@@ -4281,7 +4281,7 @@ class QualifierSearchSession:
         return  # osid.authorization.QualifierSearchResults
 
     @abc.abstractmethod
-    def get_qualifier_query_from_inspector(self, qualifier_query_inspector): # pragma: no cover
+    def get_qualifier_query_from_inspector(self, qualifier_query_inspector):  # pragma: no cover
         """Gets a qualifier query from an inspector.
 
         The inspector is available from a ``QualifierSearchResults``.
@@ -4338,7 +4338,7 @@ class QualifierAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -4353,7 +4353,7 @@ class QualifierAdminSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -4369,7 +4369,7 @@ class QualifierAdminSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_create_qualifiers(self): # pragma: no cover
+    def can_create_qualifiers(self):  # pragma: no cover
         """Tests if this user can create ``Qualifiers``.
 
         A return of true does not guarantee successful authorization. A
@@ -4388,7 +4388,7 @@ class QualifierAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_qualifier_with_record_types(self, qualifier_record_types): # pragma: no cover
+    def can_create_qualifier_with_record_types(self, qualifier_record_types):  # pragma: no cover
         """Tests if this user can create a single ``Qualifier`` using the desired record types.
 
         While ``AuthorizationManager.getQualifierRecordTypes()`` can be
@@ -4409,7 +4409,7 @@ class QualifierAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_form_for_create(self, qualifier_record_types): # pragma: no cover
+    def get_qualifier_form_for_create(self, qualifier_record_types):  # pragma: no cover
         """Gets the qualifier form for creating new qualifiers.
 
         A new form should be requested for each create transaction.
@@ -4429,7 +4429,7 @@ class QualifierAdminSession:
         return  # osid.authorization.QualifierForm
 
     @abc.abstractmethod
-    def create_qualifier(self, qualifier_form): # pragma: no cover
+    def create_qualifier(self, qualifier_form):  # pragma: no cover
         """Creates a new ``Qualifier``.
 
         :param qualifier_form: the form for this ``Qualifier``
@@ -4449,7 +4449,7 @@ class QualifierAdminSession:
         return  # osid.authorization.Qualifier
 
     @abc.abstractmethod
-    def can_update_qualifiers(self): # pragma: no cover
+    def can_update_qualifiers(self):  # pragma: no cover
         """Tests if this user can update ``Qualifiers``.
 
         A return of true does not guarantee successful authorization. A
@@ -4468,7 +4468,7 @@ class QualifierAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_form_for_update(self, qualifier_id): # pragma: no cover
+    def get_qualifier_form_for_update(self, qualifier_id):  # pragma: no cover
         """Gets the qualifier form for updating an existing qualifier.
 
         A new qualifier form should be requested for each update
@@ -4489,7 +4489,7 @@ class QualifierAdminSession:
         return  # osid.authorization.QualifierForm
 
     @abc.abstractmethod
-    def update_qualifier(self, qualifier_form): # pragma: no cover
+    def update_qualifier(self, qualifier_form):  # pragma: no cover
         """Updates an existing qualifier.
 
         :param qualifier_form: the form containing the elements to be updated
@@ -4507,7 +4507,7 @@ class QualifierAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_qualifiers(self): # pragma: no cover
+    def can_delete_qualifiers(self):  # pragma: no cover
         """Tests if this user can delete ``Qualifiers``.
 
         A return of true does not guarantee successful authorization. A
@@ -4526,7 +4526,7 @@ class QualifierAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_qualifier(self, qualifier_id): # pragma: no cover
+    def delete_qualifier(self, qualifier_id):  # pragma: no cover
         """Deletes a ``Qualifier``.
 
         :param qualifier_id: the ``Id`` of the ``Qualifier`` to remove
@@ -4542,7 +4542,7 @@ class QualifierAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_qualifier_aliases(self): # pragma: no cover
+    def can_manage_qualifier_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Qualifiers``.
 
         A return of true does not guarantee successful authorization. A
@@ -4561,7 +4561,7 @@ class QualifierAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_qualifier(self, qualifier_id, alias_id): # pragma: no cover
+    def alias_qualifier(self, qualifier_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to a ``Qualifier`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Qualifier`` is determined by the
@@ -4599,7 +4599,7 @@ class QualifierNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -4614,7 +4614,7 @@ class QualifierNotificationSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -4630,7 +4630,7 @@ class QualifierNotificationSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_register_for_qualifier_notifications(self): # pragma: no cover
+    def can_register_for_qualifier_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Qualifier`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -4649,7 +4649,7 @@ class QualifierNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_vault_view(self): # pragma: no cover
+    def use_federated_vault_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for qualifiers in
@@ -4663,7 +4663,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_vault_view(self): # pragma: no cover
+    def use_isolated_vault_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for qualifiers to this
@@ -4677,7 +4677,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_qualifier_notifications(self): # pragma: no cover
+    def reliable_qualifier_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4691,7 +4691,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_qualifier_notifications(self): # pragma: no cover
+    def unreliable_qualifier_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4705,7 +4705,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_qualifier_notification(self, notification_id): # pragma: no cover
+    def acknowledge_qualifier_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a qualifier notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4719,7 +4719,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_qualifiers(self): # pragma: no cover
+    def register_for_new_qualifiers(self):  # pragma: no cover
         """Register for notifications of new qualifiers.
 
         ``QualifierReceiver.newQualifiers()`` is invoked when a new
@@ -4734,7 +4734,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_qualifiers(self): # pragma: no cover
+    def register_for_changed_qualifiers(self):  # pragma: no cover
         """Registers for notification of updated qualifiers.
 
         ``QualifierReceiver.changedQualifiers()`` is invoked when a
@@ -4749,7 +4749,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_qualifier(self, qualifier_id): # pragma: no cover
+    def register_for_changed_qualifier(self, qualifier_id):  # pragma: no cover
         """Registers for notification of an updated qualifier.
 
         ``QualifierReceiver.changedQualifiers()`` is invoked when the
@@ -4767,7 +4767,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_qualifiers(self): # pragma: no cover
+    def register_for_deleted_qualifiers(self):  # pragma: no cover
         """Registers for notification of deleted qualifiers.
 
         ``QualifierReceiver.deletedQualifiers()`` is invoked when a
@@ -4782,7 +4782,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_qualifier(self, qualifier_id): # pragma: no cover
+    def register_for_deleted_qualifier(self, qualifier_id):  # pragma: no cover
         """Registers for notification of a deleted qualifier.
 
         ``QualifierReceiver.deletedQualifiers()`` is invoked when the
@@ -4800,7 +4800,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_qualifier_hierarchy(self): # pragma: no cover
+    def register_for_changed_qualifier_hierarchy(self):  # pragma: no cover
         """Registers for notification of an updated qualifier hierarchy structure.
 
         ``QualifierReceiver.changedChildOfQualfiers()`` is invoked when
@@ -4815,7 +4815,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_qualifier_hierarchy_for_ancestors(self, qualifier_id): # pragma: no cover
+    def register_for_changed_qualifier_hierarchy_for_ancestors(self, qualifier_id):  # pragma: no cover
         """Registers for notification of an updated qualifier hierarchy structure.
 
         ``QualifierReceiver.changedChildOfQualifiers()`` is invoked when
@@ -4834,7 +4834,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_qualifier_hierarchy_for_descendants(self, qualifier_id): # pragma: no cover
+    def register_for_changed_qualifier_hierarchy_for_descendants(self, qualifier_id):  # pragma: no cover
         """Registers for notification of an updated qualifier hierarchy structure.
 
         ``QualifierReceiver.changedChildOfQualifiers()`` is invoked when
@@ -4853,7 +4853,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_qualifier_notifications(self): # pragma: no cover
+    def reliable_qualifier_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4867,7 +4867,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_qualifier_notifications(self): # pragma: no cover
+    def unreliable_qualifier_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4881,7 +4881,7 @@ class QualifierNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_qualifier_notification(self, notification_id): # pragma: no cover
+    def acknowledge_qualifier_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an qualifier notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4924,7 +4924,7 @@ class QualifierHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_id(self): # pragma: no cover
+    def get_qualifier_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -4939,7 +4939,7 @@ class QualifierHierarchySession:
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy(self): # pragma: no cover
+    def get_qualifier_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -4955,7 +4955,7 @@ class QualifierHierarchySession:
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
     @abc.abstractmethod
-    def can_access_qualifier_hierarchy(self): # pragma: no cover
+    def can_access_qualifier_hierarchy(self):  # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -4974,7 +4974,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_qualifier_view(self): # pragma: no cover
+    def use_comparative_qualifier_view(self):  # pragma: no cover
         """The returns from the qualifier methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4988,7 +4988,7 @@ class QualifierHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_qualifier_view(self): # pragma: no cover
+    def use_plenary_qualifier_view(self):  # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5003,7 +5003,7 @@ class QualifierHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_qualifier_ids(self): # pragma: no cover
+    def get_root_qualifier_ids(self):  # pragma: no cover
         """Gets the root qualifier ``Ids`` in this hierarchy.
 
         :return: the root qualifier ``Ids``
@@ -5019,7 +5019,7 @@ class QualifierHierarchySession:
     root_qualifier_ids = property(fget=get_root_qualifier_ids)
 
     @abc.abstractmethod
-    def get_root_qualifiers(self): # pragma: no cover
+    def get_root_qualifiers(self):  # pragma: no cover
         """Gets the root qualifiers in this qualifier hierarchy.
 
         :return: the root qualifiers
@@ -5035,7 +5035,7 @@ class QualifierHierarchySession:
     root_qualifiers = property(fget=get_root_qualifiers)
 
     @abc.abstractmethod
-    def has_parent_qualifiers(self, qualifier_id): # pragma: no cover
+    def has_parent_qualifiers(self, qualifier_id):  # pragma: no cover
         """Tests if the ``Qualifier`` has any parents.
 
         :param qualifier_id: a qualifier ``Id``
@@ -5053,7 +5053,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_qualifier(self, id_, qualifier_id): # pragma: no cover
+    def is_parent_of_qualifier(self, id_, qualifier_id):  # pragma: no cover
         """Tests if an ``Id`` is a direct parent of qualifier.
 
         :param id: an ``Id``
@@ -5074,7 +5074,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_qualifier_ids(self, qualifier_id): # pragma: no cover
+    def get_parent_qualifier_ids(self, qualifier_id):  # pragma: no cover
         """Gets the parent ``Ids`` of the given qualifier.
 
         :param qualifier_id: a qualifier ``Id``
@@ -5092,7 +5092,7 @@ class QualifierHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_qualifiers(self, qualifier_id): # pragma: no cover
+    def get_parent_qualifiers(self, qualifier_id):  # pragma: no cover
         """Gets the parents of the given qualifier.
 
         :param qualifier_id: a qualifier ``Id``
@@ -5110,7 +5110,7 @@ class QualifierHierarchySession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def is_ancestor_of_qualifier(self, id_, qualifier_id): # pragma: no cover
+    def is_ancestor_of_qualifier(self, id_, qualifier_id):  # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a qualifier.
 
         :param id: an ``Id``
@@ -5131,7 +5131,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_qualifiers(self, qualifier_id): # pragma: no cover
+    def has_child_qualifiers(self, qualifier_id):  # pragma: no cover
         """Tests if a qualifier has any children.
 
         :param qualifier_id: a qualifier ``Id``
@@ -5149,7 +5149,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_qualifier(self, id_, qualifier_id): # pragma: no cover
+    def is_child_of_qualifier(self, id_, qualifier_id):  # pragma: no cover
         """Tests if a node is a direct child of another.
 
         :param id: an ``Id``
@@ -5170,7 +5170,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_qualifier_ids(self, qualifier_id): # pragma: no cover
+    def get_child_qualifier_ids(self, qualifier_id):  # pragma: no cover
         """Gets the child ``Ids`` of the given qualifier.
 
         :param qualifier_id: the ``Id`` to query
@@ -5188,7 +5188,7 @@ class QualifierHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_qualifiers(self, qualifier_id): # pragma: no cover
+    def get_child_qualifiers(self, qualifier_id):  # pragma: no cover
         """Gets the children of the given qualifier.
 
         :param qualifier_id: the ``Id`` to query
@@ -5206,7 +5206,7 @@ class QualifierHierarchySession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def is_descendant_of_qualifier(self, id_, qualifier_id): # pragma: no cover
+    def is_descendant_of_qualifier(self, id_, qualifier_id):  # pragma: no cover
         """Tests if an ``Id`` is a descendant of a qualifier.
 
         :param id: an ``Id``
@@ -5227,7 +5227,7 @@ class QualifierHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_node_ids(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_qualifier_node_ids(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given qualifier.
 
         :param qualifier_id: the ``Id`` to query
@@ -5251,7 +5251,7 @@ class QualifierHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_qualifier_nodes(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_qualifier_nodes(self, qualifier_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given qualifier.
 
         :param qualifier_id: the ``Id`` to query
@@ -5284,7 +5284,7 @@ class QualifierHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_id(self): # pragma: no cover
+    def get_qualifier_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -5299,7 +5299,7 @@ class QualifierHierarchyDesignSession:
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy(self): # pragma: no cover
+    def get_qualifier_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -5315,7 +5315,7 @@ class QualifierHierarchyDesignSession:
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_qualifier_hierarchy(self): # pragma: no cover
+    def can_modify_qualifier_hierarchy(self):  # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -5334,7 +5334,7 @@ class QualifierHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_qualifier(self, qualifier_id): # pragma: no cover
+    def add_root_qualifier(self, qualifier_id):  # pragma: no cover
         """Adds a root qualifier.
 
         :param qualifier_id: the ``Id`` of a qualifier
@@ -5351,7 +5351,7 @@ class QualifierHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_qualifier(self, qualifier_id): # pragma: no cover
+    def remove_root_qualifier(self, qualifier_id):  # pragma: no cover
         """Removes a root qualifier from this hierarchy.
 
         :param qualifier_id: the ``Id`` of a qualifier
@@ -5367,7 +5367,7 @@ class QualifierHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_qualifier(self, qualifier_id, child_id): # pragma: no cover
+    def add_child_qualifier(self, qualifier_id, child_id):  # pragma: no cover
         """Adds a child to a qualifier.
 
         :param qualifier_id: the ``Id`` of a qualifier
@@ -5386,7 +5386,7 @@ class QualifierHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_qualifier(self, qualifier_id, child_id): # pragma: no cover
+    def remove_child_qualifier(self, qualifier_id, child_id):  # pragma: no cover
         """Removes a child from a qualifier.
 
         :param qualifier_id: the ``Id`` of a qualifier
@@ -5404,7 +5404,7 @@ class QualifierHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_qualifiers(self, qualifier_id): # pragma: no cover
+    def remove_child_qualifiers(self, qualifier_id):  # pragma: no cover
         """Removes all children from a qualifier.
 
         :param qualifier_id: the ``Id`` of a qualifier
@@ -5437,7 +5437,7 @@ class QualifierVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_qualifier_vault_mappings(self): # pragma: no cover
+    def can_lookup_qualifier_vault_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of qualifier/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5456,7 +5456,7 @@ class QualifierVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_vault_view(self): # pragma: no cover
+    def use_comparative_vault_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5470,7 +5470,7 @@ class QualifierVaultSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_vault_view(self): # pragma: no cover
+    def use_plenary_vault_view(self):  # pragma: no cover
         """A complete view of the ``Qualifier`` and ``Vault`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5485,7 +5485,7 @@ class QualifierVaultSession:
         pass
 
     @abc.abstractmethod
-    def get_qualifier_ids_by_vault(self, vault_id): # pragma: no cover
+    def get_qualifier_ids_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Qualifier``  ``Ids`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of the ``Vault``
@@ -5503,7 +5503,7 @@ class QualifierVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_qualifiers_by_vault(self, vault_id): # pragma: no cover
+    def get_qualifiers_by_vault(self, vault_id):  # pragma: no cover
         """Gets the list of ``Qualifier`` associated with a ``Vault``.
 
         :param vault_id: ``Id`` of the ``Vault``
@@ -5521,7 +5521,7 @@ class QualifierVaultSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_qualifier_ids_by_vaults(self, vault_ids): # pragma: no cover
+    def get_qualifier_ids_by_vaults(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Qualifier Ids`` corresponding to a list of ``Vaults``.
 
         :param vault_ids: list of vault ``Ids``
@@ -5538,7 +5538,7 @@ class QualifierVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_qualifiers_by_vaults(self, vault_ids): # pragma: no cover
+    def get_qualifiers_by_vaults(self, vault_ids):  # pragma: no cover
         """Gets the list of ``Qualifiers`` corresponding to a list of ``Vaults``.
 
         :param vault_ids: list of vault ``Ids``
@@ -5555,7 +5555,7 @@ class QualifierVaultSession:
         return  # osid.authorization.QualifierList
 
     @abc.abstractmethod
-    def get_vault_ids_by_qualifier(self, qualifier_id): # pragma: no cover
+    def get_vault_ids_by_qualifier(self, qualifier_id):  # pragma: no cover
         """Gets the list of ``Vault``  ``Ids`` mapped to a ``Qualifier``.
 
         :param qualifier_id: ``Id`` of a ``Qualifier``
@@ -5573,7 +5573,7 @@ class QualifierVaultSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_vaults_by_qualifier(self, qualifier_id): # pragma: no cover
+    def get_vaults_by_qualifier(self, qualifier_id):  # pragma: no cover
         """Gets the list of ``Vaults`` mapped to a ``Qualifier``.
 
         :param qualifier_id: ``Id`` of a ``Qualifier``
@@ -5606,7 +5606,7 @@ class QualifierVaultAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_qualifiers(self): # pragma: no cover
+    def can_assign_qualifiers(self):  # pragma: no cover
         """Tests if this user can alter qualifier/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5625,7 +5625,7 @@ class QualifierVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_qualifiers_to_vault(self, vault_id): # pragma: no cover
+    def can_assign_qualifiers_to_vault(self, vault_id):  # pragma: no cover
         """Tests if this user can alter qualifier/vault mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5646,7 +5646,7 @@ class QualifierVaultAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_vault_ids(self, vault_id): # pragma: no cover
+    def get_assignable_vault_ids(self, vault_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which any qualifier can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -5662,7 +5662,7 @@ class QualifierVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_vault_ids_for_qualifier(self, vault_id, qualifier_id): # pragma: no cover
+    def get_assignable_vault_ids_for_qualifier(self, vault_id, qualifier_id):  # pragma: no cover
         """Gets a list of vault including and under the given vault node in which a specific qualifier can be assigned.
 
         :param vault_id: the ``Id`` of the ``Vault``
@@ -5680,7 +5680,7 @@ class QualifierVaultAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_qualifier_to_vault(self, qualifier_id, vault_id): # pragma: no cover
+    def assign_qualifier_to_vault(self, qualifier_id, vault_id):  # pragma: no cover
         """Adds an existing ``Qualifier`` to a ``Vault``.
 
         :param qualifier_id: the ``Id`` of the ``Qualifier``
@@ -5699,7 +5699,7 @@ class QualifierVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_qualifier_from_vault(self, qualifier_id, vault_id): # pragma: no cover
+    def unassign_qualifier_from_vault(self, qualifier_id, vault_id):  # pragma: no cover
         """Removes a ``Qualifier`` from a ``Vault``.
 
         :param qualifier_id: the ``Id`` of the ``Qualifier``
@@ -5717,7 +5717,7 @@ class QualifierVaultAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_qualifier_to_vault(self, qualifier_id, from_vault_id, to_vault_id): # pragma: no cover
+    def reassign_qualifier_to_vault(self, qualifier_id, from_vault_id, to_vault_id):  # pragma: no cover
         """Moves a ``Qualifier`` from one ``Vault`` to another.
 
         Mappings to other ``Vaults`` are unaffected.
@@ -5756,7 +5756,7 @@ class QualifierSmartVaultSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_id(self): # pragma: no cover
+    def get_vault_id(self):  # pragma: no cover
         """Gets the ``Vault``  ``Id`` associated with this session.
 
         :return: the ``Vault Id`` associated with this session
@@ -5771,7 +5771,7 @@ class QualifierSmartVaultSession:
     vault_id = property(fget=get_vault_id)
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` associated with this session.
 
         :return: the ``Vault`` associated with this session
@@ -5787,7 +5787,7 @@ class QualifierSmartVaultSession:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def can_manage_smart_vaults(self): # pragma: no cover
+    def can_manage_smart_vaults(self):  # pragma: no cover
         """Tests if this user can manage smart vaults.
 
         A return of true does not guarantee successful authorization. A
@@ -5806,7 +5806,7 @@ class QualifierSmartVaultSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_query(self): # pragma: no cover
+    def get_qualifier_query(self):  # pragma: no cover
         """Gets a qualifier query.
 
         :return: the qualifier query
@@ -5821,7 +5821,7 @@ class QualifierSmartVaultSession:
     qualifier_query = property(fget=get_qualifier_query)
 
     @abc.abstractmethod
-    def get_qualifier_search_order(self): # pragma: no cover
+    def get_qualifier_search_order(self):  # pragma: no cover
         """Gets a qualifier search order.
 
         :return: the qualifier search order
@@ -5836,7 +5836,7 @@ class QualifierSmartVaultSession:
     qualifier_search_order = property(fget=get_qualifier_search_order)
 
     @abc.abstractmethod
-    def apply_qualifier_query(self, qualifier_query): # pragma: no cover
+    def apply_qualifier_query(self, qualifier_query):  # pragma: no cover
         """Applies a qualifier query to this vault.
 
         :param qualifier_query: the qualifier query
@@ -5852,7 +5852,7 @@ class QualifierSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def inspect_qualifier_query(self): # pragma: no cover
+    def inspect_qualifier_query(self):  # pragma: no cover
         """Gets a qualifier query inspector for this vault.
 
         :return: the qualifier query inspector
@@ -5866,7 +5866,7 @@ class QualifierSmartVaultSession:
         return  # osid.authorization.QualifierQueryInspector
 
     @abc.abstractmethod
-    def apply_qualifier_sequencing(self, qualifier_search_order): # pragma: no cover
+    def apply_qualifier_sequencing(self, qualifier_search_order):  # pragma: no cover
         """Applies a qualifier search order to this vault.
 
         :param qualifier_search_order: the qualifier search order
@@ -5882,7 +5882,7 @@ class QualifierSmartVaultSession:
         pass
 
     @abc.abstractmethod
-    def get_qualifier_query_from_inspector(self, qualifier_query_inspector): # pragma: no cover
+    def get_qualifier_query_from_inspector(self, qualifier_query_inspector):  # pragma: no cover
         """Gets a qualifier query from an inspector.
 
         :param qualifier_query_inspector: a query inspector
@@ -5926,7 +5926,7 @@ class VaultLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_vaults(self): # pragma: no cover
+    def can_lookup_vaults(self):  # pragma: no cover
         """Tests if this user can perform ``Vault`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -5945,7 +5945,7 @@ class VaultLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_vault_view(self): # pragma: no cover
+    def use_comparative_vault_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5959,7 +5959,7 @@ class VaultLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_vault_view(self): # pragma: no cover
+    def use_plenary_vault_view(self):  # pragma: no cover
         """A complete view of the ``Vault`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5974,7 +5974,7 @@ class VaultLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_vault(self, vault_id): # pragma: no cover
+    def get_vault(self, vault_id):  # pragma: no cover
         """Gets the ``Vault`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -5997,7 +5997,7 @@ class VaultLookupSession:
         return  # osid.authorization.Vault
 
     @abc.abstractmethod
-    def get_vaults_by_ids(self, vault_ids): # pragma: no cover
+    def get_vaults_by_ids(self, vault_ids):  # pragma: no cover
         """Gets a ``VaultList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the vaults
@@ -6023,7 +6023,7 @@ class VaultLookupSession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def get_vaults_by_genus_type(self, vault_genus_type): # pragma: no cover
+    def get_vaults_by_genus_type(self, vault_genus_type):  # pragma: no cover
         """Gets a ``VaultList`` corresponding to the given vault genus ``Type`` which does not include vaults of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known vaults or
@@ -6044,7 +6044,7 @@ class VaultLookupSession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def get_vaults_by_parent_genus_type(self, vault_genus_type): # pragma: no cover
+    def get_vaults_by_parent_genus_type(self, vault_genus_type):  # pragma: no cover
         """Gets a ``VaultList`` corresponding to the given vault genus ``Type`` and include any additional vaults with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known vaults or
@@ -6065,7 +6065,7 @@ class VaultLookupSession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def get_vaults_by_record_type(self, vault_record_type): # pragma: no cover
+    def get_vaults_by_record_type(self, vault_record_type):  # pragma: no cover
         """Gets a ``VaultList`` containing the given vault record ``Type``.
 
         In plenary mode, the returned list contains all known vaults or
@@ -6086,7 +6086,7 @@ class VaultLookupSession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def get_vaults_by_provider(self, resource_id): # pragma: no cover
+    def get_vaults_by_provider(self, resource_id):  # pragma: no cover
         """Gets a ``VaultList`` from the given provider ````.
 
         In plenary mode, the returned list contains all known vaults or
@@ -6107,7 +6107,7 @@ class VaultLookupSession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def get_vaults(self): # pragma: no cover
+    def get_vaults(self):  # pragma: no cover
         """Gets all ``Vaults``.
 
         In plenary mode, the returned list contains all known vaults or
@@ -6139,7 +6139,7 @@ class VaultQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_vaults(self): # pragma: no cover
+    def can_search_vaults(self):  # pragma: no cover
         """Tests if this user can perform ``Vault`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -6158,7 +6158,7 @@ class VaultQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_query(self): # pragma: no cover
+    def get_vault_query(self):  # pragma: no cover
         """Gets a vault query.
 
         :return: a vault query
@@ -6173,7 +6173,7 @@ class VaultQuerySession:
     vault_query = property(fget=get_vault_query)
 
     @abc.abstractmethod
-    def get_vaults_by_query(self, vault_query): # pragma: no cover
+    def get_vaults_by_query(self, vault_query):  # pragma: no cover
         """Gets a list of ``Vault`` objects matching the given search.
 
         :param vault_query: the vault query
@@ -6212,7 +6212,7 @@ class VaultSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_search(self): # pragma: no cover
+    def get_vault_search(self):  # pragma: no cover
         """Gets a vault search.
 
         :return: a vault search
@@ -6227,7 +6227,7 @@ class VaultSearchSession:
     vault_search = property(fget=get_vault_search)
 
     @abc.abstractmethod
-    def get_vault_search_order(self): # pragma: no cover
+    def get_vault_search_order(self):  # pragma: no cover
         """Gets a vault search order.
 
         The ``VaultSearchOrder`` is supplied to a ``VaultSearch`` to
@@ -6245,7 +6245,7 @@ class VaultSearchSession:
     vault_search_order = property(fget=get_vault_search_order)
 
     @abc.abstractmethod
-    def get_vaults_by_search(self, vault_query, vault_search): # pragma: no cover
+    def get_vaults_by_search(self, vault_query, vault_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param vault_query: the vault query
@@ -6265,7 +6265,7 @@ class VaultSearchSession:
         return  # osid.authorization.VaultSearchResults
 
     @abc.abstractmethod
-    def get_vault_query_from_inspector(self, vault_query_inspector): # pragma: no cover
+    def get_vault_query_from_inspector(self, vault_query_inspector):  # pragma: no cover
         """Gets a vault query from an inspector.
 
         The inspector is available from a ``VaultSearchResults``.
@@ -6318,7 +6318,7 @@ class VaultAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_vaults(self): # pragma: no cover
+    def can_create_vaults(self):  # pragma: no cover
         """Tests if this user can create ``Vaults``.
 
         A return of true does not guarantee successful authorization. A
@@ -6337,7 +6337,7 @@ class VaultAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_vault_with_record_types(self, vault_record_types): # pragma: no cover
+    def can_create_vault_with_record_types(self, vault_record_types):  # pragma: no cover
         """Tests if this user can create a single ``Vault`` using the desired record types.
 
         While ``AuthorizationManager.getVaultRecordTypes()`` can be used
@@ -6358,7 +6358,7 @@ class VaultAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_form_for_create(self, vault_record_types): # pragma: no cover
+    def get_vault_form_for_create(self, vault_record_types):  # pragma: no cover
         """Gets the vault form for creating new vaults.
 
         A new form should be requested for each create transaction.
@@ -6378,7 +6378,7 @@ class VaultAdminSession:
         return  # osid.authorization.VaultForm
 
     @abc.abstractmethod
-    def create_vault(self, vault_form): # pragma: no cover
+    def create_vault(self, vault_form):  # pragma: no cover
         """Creates a new ``Vault``.
 
         :param vault_form: the form for this ``Vault``
@@ -6398,7 +6398,7 @@ class VaultAdminSession:
         return  # osid.authorization.Vault
 
     @abc.abstractmethod
-    def can_update_vaults(self): # pragma: no cover
+    def can_update_vaults(self):  # pragma: no cover
         """Tests if this user can update ``Vaults``.
 
         A return of true does not guarantee successful authorization. A
@@ -6417,7 +6417,7 @@ class VaultAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_form_for_update(self, vault_id): # pragma: no cover
+    def get_vault_form_for_update(self, vault_id):  # pragma: no cover
         """Gets the vault form for updating an existing vault.
 
         A new vault form should be requested for each update
@@ -6438,7 +6438,7 @@ class VaultAdminSession:
         return  # osid.authorization.VaultForm
 
     @abc.abstractmethod
-    def update_vault(self, vault_form): # pragma: no cover
+    def update_vault(self, vault_form):  # pragma: no cover
         """Updates an existing vault.
 
         :param vault_form: the form containing the elements to be updated
@@ -6456,7 +6456,7 @@ class VaultAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_vaults(self): # pragma: no cover
+    def can_delete_vaults(self):  # pragma: no cover
         """Tests if this user can delete vaults.
 
         A return of true does not guarantee successful authorization. A
@@ -6475,7 +6475,7 @@ class VaultAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_vault(self, vault_id): # pragma: no cover
+    def delete_vault(self, vault_id):  # pragma: no cover
         """Deletes a ``Vault``.
 
         :param vault_id: the ``Id`` of the ``Vault`` to remove
@@ -6491,7 +6491,7 @@ class VaultAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_vault_aliases(self): # pragma: no cover
+    def can_manage_vault_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Vaults``.
 
         A return of true does not guarantee successful authorization. A
@@ -6510,7 +6510,7 @@ class VaultAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_vault(self, vault_id, alias_id): # pragma: no cover
+    def alias_vault(self, vault_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to a ``Vault`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Vault`` is determined by the
@@ -6545,7 +6545,7 @@ class VaultNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_vault_notifications(self): # pragma: no cover
+    def can_register_for_vault_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``Vault`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -6564,7 +6564,7 @@ class VaultNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_vault_notifications(self): # pragma: no cover
+    def reliable_vault_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -6578,7 +6578,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_vault_notifications(self): # pragma: no cover
+    def unreliable_vault_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -6592,7 +6592,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_vault_notification(self, notification_id): # pragma: no cover
+    def acknowledge_vault_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a vault notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -6606,7 +6606,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_vaults(self): # pragma: no cover
+    def register_for_new_vaults(self):  # pragma: no cover
         """Register for notifications of new vaults.
 
         ``VaultReceiver.newVaults()`` is invoked when a new ``Vault`` is
@@ -6621,7 +6621,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_vaults(self): # pragma: no cover
+    def register_for_changed_vaults(self):  # pragma: no cover
         """Registers for notification of updated vaults.
 
         ``VaultReceiver.changedVaults()`` is invoked when a vault is
@@ -6636,7 +6636,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_vault(self, vault_id): # pragma: no cover
+    def register_for_changed_vault(self, vault_id):  # pragma: no cover
         """Registers for notification of an updated vault.
 
         ``VaultReceiver.changedVaults()`` is invoked when the specified
@@ -6654,7 +6654,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_vaults(self): # pragma: no cover
+    def register_for_deleted_vaults(self):  # pragma: no cover
         """Registers for notification of deleted vaults.
 
         ``VaultReceiver.deletedVaults()`` is invoked when a vault is
@@ -6669,7 +6669,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_vault(self, vault_id): # pragma: no cover
+    def register_for_deleted_vault(self, vault_id):  # pragma: no cover
         """Registers for notification of a deleted vault.
 
         ``VaultReceiver.deletedVaults()`` is invoked when the specified
@@ -6687,7 +6687,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_vault_hierarchy(self): # pragma: no cover
+    def register_for_changed_vault_hierarchy(self):  # pragma: no cover
         """Registers for notification of an updated vault hierarchy structure.
 
         ``VaultReceiver.changedChildOfVaults()`` is invoked when a node
@@ -6702,7 +6702,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_vault_hierarchy_for_ancestors(self, vault_id): # pragma: no cover
+    def register_for_changed_vault_hierarchy_for_ancestors(self, vault_id):  # pragma: no cover
         """Registers for notification of an updated vault hierarchy structure.
 
         ``VaultReceiver.changedChildOfVaults()`` is invoked when the
@@ -6721,7 +6721,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_vault_hierarchy_for_descendants(self, vault_id): # pragma: no cover
+    def register_for_changed_vault_hierarchy_for_descendants(self, vault_id):  # pragma: no cover
         """Registers for notification of an updated vault hierarchy structure.
 
         ``VaultReceiver.changedChildOfVaults()`` is invoked when the
@@ -6740,7 +6740,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_vault_notifications(self): # pragma: no cover
+    def reliable_vault_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -6754,7 +6754,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_vault_notifications(self): # pragma: no cover
+    def unreliable_vault_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -6768,7 +6768,7 @@ class VaultNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_vault_notification(self, notification_id): # pragma: no cover
+    def acknowledge_vault_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an vault notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -6811,7 +6811,7 @@ class VaultHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_hierarchy_id(self): # pragma: no cover
+    def get_vault_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -6826,7 +6826,7 @@ class VaultHierarchySession:
     vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
 
     @abc.abstractmethod
-    def get_vault_hierarchy(self): # pragma: no cover
+    def get_vault_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -6842,7 +6842,7 @@ class VaultHierarchySession:
     vault_hierarchy = property(fget=get_vault_hierarchy)
 
     @abc.abstractmethod
-    def can_access_vault_hierarchy(self): # pragma: no cover
+    def can_access_vault_hierarchy(self):  # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -6861,7 +6861,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_vault_view(self): # pragma: no cover
+    def use_comparative_vault_view(self):  # pragma: no cover
         """The returns from the vault methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6875,7 +6875,7 @@ class VaultHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_vault_view(self): # pragma: no cover
+    def use_plenary_vault_view(self):  # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6890,7 +6890,7 @@ class VaultHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_vault_ids(self): # pragma: no cover
+    def get_root_vault_ids(self):  # pragma: no cover
         """Gets the root vault ``Ids`` in this hierarchy.
 
         :return: the root vault ``Ids``
@@ -6906,7 +6906,7 @@ class VaultHierarchySession:
     root_vault_ids = property(fget=get_root_vault_ids)
 
     @abc.abstractmethod
-    def get_root_vaults(self): # pragma: no cover
+    def get_root_vaults(self):  # pragma: no cover
         """Gets the root vaults in this vault hierarchy.
 
         :return: the root vaults
@@ -6922,7 +6922,7 @@ class VaultHierarchySession:
     root_vaults = property(fget=get_root_vaults)
 
     @abc.abstractmethod
-    def has_parent_vaults(self, vault_id): # pragma: no cover
+    def has_parent_vaults(self, vault_id):  # pragma: no cover
         """Tests if the ``Vault`` has any parents.
 
         :param vault_id: a vault ``Id``
@@ -6940,7 +6940,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_vault(self, id_, vault_id): # pragma: no cover
+    def is_parent_of_vault(self, id_, vault_id):  # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a vault.
 
         :param id: an ``Id``
@@ -6961,7 +6961,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_vault_ids(self, vault_id): # pragma: no cover
+    def get_parent_vault_ids(self, vault_id):  # pragma: no cover
         """Gets the parent ``Ids`` of the given vault.
 
         :param vault_id: a vault ``Id``
@@ -6979,7 +6979,7 @@ class VaultHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_vaults(self, vault_id): # pragma: no cover
+    def get_parent_vaults(self, vault_id):  # pragma: no cover
         """Gets the parents of the given vault.
 
         :param vault_id: a vault ``Id``
@@ -6997,7 +6997,7 @@ class VaultHierarchySession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def is_ancestor_of_vault(self, id_, vault_id): # pragma: no cover
+    def is_ancestor_of_vault(self, id_, vault_id):  # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a vault.
 
         :param id: an ``Id``
@@ -7018,7 +7018,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_vaults(self, vault_id): # pragma: no cover
+    def has_child_vaults(self, vault_id):  # pragma: no cover
         """Tests if a vault has any children.
 
         :param vault_id: a ``vault_id``
@@ -7036,7 +7036,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_vault(self, id_, vault_id): # pragma: no cover
+    def is_child_of_vault(self, id_, vault_id):  # pragma: no cover
         """Tests if a vault is a direct child of another.
 
         :param id: an ``Id``
@@ -7057,7 +7057,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_vault_ids(self, vault_id): # pragma: no cover
+    def get_child_vault_ids(self, vault_id):  # pragma: no cover
         """Gets the child ``Ids`` of the given vault.
 
         :param vault_id: the ``Id`` to query
@@ -7075,7 +7075,7 @@ class VaultHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_vaults(self, vault_id): # pragma: no cover
+    def get_child_vaults(self, vault_id):  # pragma: no cover
         """Gets the children of the given vault.
 
         :param vault_id: the ``Id`` to query
@@ -7093,7 +7093,7 @@ class VaultHierarchySession:
         return  # osid.authorization.VaultList
 
     @abc.abstractmethod
-    def is_descendant_of_vault(self, id_, vault_id): # pragma: no cover
+    def is_descendant_of_vault(self, id_, vault_id):  # pragma: no cover
         """Tests if an ``Id`` is a descendant of a vault.
 
         :param id: an ``Id``
@@ -7114,7 +7114,7 @@ class VaultHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_node_ids(self, vault_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_vault_node_ids(self, vault_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given vault.
 
         :param vault_id: the ``Id`` to query
@@ -7138,7 +7138,7 @@ class VaultHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_vault_nodes(self, vault_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
+    def get_vault_nodes(self, vault_id, ancestor_levels, descendant_levels, include_siblings):  # pragma: no cover
         """Gets a portion of the hierarchy for the given vault.
 
         :param vault_id: the ``Id`` to query
@@ -7171,7 +7171,7 @@ class VaultHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_hierarchy_id(self): # pragma: no cover
+    def get_vault_hierarchy_id(self):  # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -7186,7 +7186,7 @@ class VaultHierarchyDesignSession:
     vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
 
     @abc.abstractmethod
-    def get_vault_hierarchy(self): # pragma: no cover
+    def get_vault_hierarchy(self):  # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -7202,7 +7202,7 @@ class VaultHierarchyDesignSession:
     vault_hierarchy = property(fget=get_vault_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_vault_hierarchy(self): # pragma: no cover
+    def can_modify_vault_hierarchy(self):  # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -7221,7 +7221,7 @@ class VaultHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_vault(self, vault_id): # pragma: no cover
+    def add_root_vault(self, vault_id):  # pragma: no cover
         """Adds a root vault.
 
         :param vault_id: the ``Id`` of a vault
@@ -7238,7 +7238,7 @@ class VaultHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_vault(self, vault_id): # pragma: no cover
+    def remove_root_vault(self, vault_id):  # pragma: no cover
         """Removes a root vault from this hierarchy.
 
         :param vault_id: the ``Id`` of a vault
@@ -7254,7 +7254,7 @@ class VaultHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_vault(self, vault_id, child_id): # pragma: no cover
+    def add_child_vault(self, vault_id, child_id):  # pragma: no cover
         """Adds a child to a vault.
 
         :param vault_id: the ``Id`` of a vault
@@ -7273,7 +7273,7 @@ class VaultHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_vault(self, vault_id, child_id): # pragma: no cover
+    def remove_child_vault(self, vault_id, child_id):  # pragma: no cover
         """Removes a child from a vault.
 
         :param vault_id: the ``Id`` of a vault
@@ -7291,7 +7291,7 @@ class VaultHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_vaults(self, vault_id): # pragma: no cover
+    def remove_child_vaults(self, vault_id):  # pragma: no cover
         """Removes all children from a vault.
 
         :param vault_id: the ``Id`` of a vault

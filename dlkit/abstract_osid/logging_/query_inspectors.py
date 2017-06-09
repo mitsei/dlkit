@@ -21,7 +21,7 @@ class LogEntryQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_priority_terms(self): # pragma: no cover
+    def get_priority_terms(self):  # pragma: no cover
         """Gets the prirority query terms.
 
         :return: the priority terms
@@ -36,7 +36,7 @@ class LogEntryQueryInspector:
     priority_terms = property(fget=get_priority_terms)
 
     @abc.abstractmethod
-    def get_minimum_priority_terms(self): # pragma: no cover
+    def get_minimum_priority_terms(self):  # pragma: no cover
         """Gets the minimum prirority query terms.
 
         :return: the minimum priority terms
@@ -51,7 +51,7 @@ class LogEntryQueryInspector:
     minimum_priority_terms = property(fget=get_minimum_priority_terms)
 
     @abc.abstractmethod
-    def get_timestamp_terms(self): # pragma: no cover
+    def get_timestamp_terms(self):  # pragma: no cover
         """Gets the timestamp query terms.
 
         :return: the timestamp terms
@@ -66,7 +66,7 @@ class LogEntryQueryInspector:
     timestamp_terms = property(fget=get_timestamp_terms)
 
     @abc.abstractmethod
-    def get_resource_id_terms(self): # pragma: no cover
+    def get_resource_id_terms(self):  # pragma: no cover
         """Gets the resource ``Id`` query terms.
 
         :return: the resource ``Id`` terms
@@ -81,7 +81,7 @@ class LogEntryQueryInspector:
     resource_id_terms = property(fget=get_resource_id_terms)
 
     @abc.abstractmethod
-    def get_resource_terms(self): # pragma: no cover
+    def get_resource_terms(self):  # pragma: no cover
         """Gets the resource query terms.
 
         :return: the resource terms
@@ -96,7 +96,7 @@ class LogEntryQueryInspector:
     resource_terms = property(fget=get_resource_terms)
 
     @abc.abstractmethod
-    def get_agent_id_terms(self): # pragma: no cover
+    def get_agent_id_terms(self):  # pragma: no cover
         """Gets the agent ``Id`` query terms.
 
         :return: the agent ``Id`` terms
@@ -111,7 +111,7 @@ class LogEntryQueryInspector:
     agent_id_terms = property(fget=get_agent_id_terms)
 
     @abc.abstractmethod
-    def get_agent_terms(self): # pragma: no cover
+    def get_agent_terms(self):  # pragma: no cover
         """Gets the agent query terms.
 
         :return: the agent terms
@@ -126,7 +126,7 @@ class LogEntryQueryInspector:
     agent_terms = property(fget=get_agent_terms)
 
     @abc.abstractmethod
-    def get_log_id_terms(self): # pragma: no cover
+    def get_log_id_terms(self):  # pragma: no cover
         """Gets the log ``Id`` query terms.
 
         :return: the log ``Id`` terms
@@ -141,7 +141,7 @@ class LogEntryQueryInspector:
     log_id_terms = property(fget=get_log_id_terms)
 
     @abc.abstractmethod
-    def get_log_terms(self): # pragma: no cover
+    def get_log_terms(self):  # pragma: no cover
         """Gets the log query terms.
 
         :return: the log terms
@@ -156,7 +156,7 @@ class LogEntryQueryInspector:
     log_terms = property(fget=get_log_terms)
 
     @abc.abstractmethod
-    def get_log_entry_query_inspector_record(self, log_entry_record_type): # pragma: no cover
+    def get_log_entry_query_inspector_record(self, log_entry_record_type):  # pragma: no cover
         """Gets the log entry query inspector corresponding to the given ``LogEntry`` record ``Type``.
 
         :param log_entry_record_type: a log entry record type
@@ -178,7 +178,7 @@ class LogQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_entry_id_terms(self): # pragma: no cover
+    def get_log_entry_id_terms(self):  # pragma: no cover
         """Gets the log entry ``Id`` query terms.
 
         :return: the log entry ``Id`` terms
@@ -193,7 +193,7 @@ class LogQueryInspector:
     log_entry_id_terms = property(fget=get_log_entry_id_terms)
 
     @abc.abstractmethod
-    def get_log_entry_terms(self): # pragma: no cover
+    def get_log_entry_terms(self):  # pragma: no cover
         """Gets the log entry query terms.
 
         :return: the log entry terms
@@ -208,7 +208,7 @@ class LogQueryInspector:
     log_entry_terms = property(fget=get_log_entry_terms)
 
     @abc.abstractmethod
-    def get_ancestor_log_id_terms(self): # pragma: no cover
+    def get_ancestor_log_id_terms(self):  # pragma: no cover
         """Gets the ancestor ``Id`` query terms.
 
         :return: the ancestor ``Id`` terms
@@ -223,7 +223,7 @@ class LogQueryInspector:
     ancestor_log_id_terms = property(fget=get_ancestor_log_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_log_terms(self): # pragma: no cover
+    def get_ancestor_log_terms(self):  # pragma: no cover
         """Gets the ancestor query terms.
 
         :return: the ancestor terms
@@ -238,7 +238,7 @@ class LogQueryInspector:
     ancestor_log_terms = property(fget=get_ancestor_log_terms)
 
     @abc.abstractmethod
-    def get_descendant_log_id_terms(self): # pragma: no cover
+    def get_descendant_log_id_terms(self):  # pragma: no cover
         """Gets the descendant log ``Id`` query terms.
 
         :return: the descendant log ``Id`` terms
@@ -253,7 +253,7 @@ class LogQueryInspector:
     descendant_log_id_terms = property(fget=get_descendant_log_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_log_terms(self): # pragma: no cover
+    def get_descendant_log_terms(self):  # pragma: no cover
         """Gets the descendant log query terms.
 
         :return: the descendant log terms
@@ -268,7 +268,7 @@ class LogQueryInspector:
     descendant_log_terms = property(fget=get_descendant_log_terms)
 
     @abc.abstractmethod
-    def get_log_query_inspector_record(self, log_record_type): # pragma: no cover
+    def get_log_query_inspector_record(self, log_record_type):  # pragma: no cover
         """Gets the log query inspector record corresponding to the given ``Log`` record ``Type``.
 
         :param log_record_type: a log record type

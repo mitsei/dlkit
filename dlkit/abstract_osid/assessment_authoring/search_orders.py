@@ -21,7 +21,7 @@ class AssessmentPartSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_assessment(self, style): # pragma: no cover
+    def order_by_assessment(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class AssessmentPartSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_assessment_search_order(self): # pragma: no cover
+    def supports_assessment_search_order(self):  # pragma: no cover
         """Tests if an assessment search order is available.
 
         :return: ``true`` if an assessment search order is available, ``false`` otherwise
@@ -47,7 +47,7 @@ class AssessmentPartSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_search_order(self): # pragma: no cover
+    def get_assessment_search_order(self):  # pragma: no cover
         """Gets the assessment order.
 
         :return: the assessment search order
@@ -63,7 +63,7 @@ class AssessmentPartSearchOrder:
     assessment_search_order = property(fget=get_assessment_search_order)
 
     @abc.abstractmethod
-    def order_by_section(self, style): # pragma: no cover
+    def order_by_section(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the section.
 
         :param style: search order style
@@ -76,7 +76,7 @@ class AssessmentPartSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_weight(self, style): # pragma: no cover
+    def order_by_weight(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the weight.
 
         :param style: search order style
@@ -89,7 +89,7 @@ class AssessmentPartSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_allocated_time(self, style): # pragma: no cover
+    def order_by_allocated_time(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the allocated time.
 
         :param style: search order style
@@ -102,7 +102,7 @@ class AssessmentPartSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_search_order_record(self, assessment_part_record_type): # pragma: no cover
+    def get_assessment_part_search_order_record(self, assessment_part_record_type):  # pragma: no cover
         """Gets the assessment part search order record corresponding to the given assessment part record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -126,7 +126,7 @@ class SequenceRuleSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_assessment_part(self, style): # pragma: no cover
+    def order_by_assessment_part(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment part.
 
         :param style: search order style
@@ -139,7 +139,7 @@ class SequenceRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_assessment_part_search_order(self): # pragma: no cover
+    def supports_assessment_part_search_order(self):  # pragma: no cover
         """Tests if an assessment part search order is available.
 
         :return: ``true`` if an assessment part search order is available, ``false`` otherwise
@@ -152,7 +152,7 @@ class SequenceRuleSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_search_order(self): # pragma: no cover
+    def get_assessment_part_search_order(self):  # pragma: no cover
         """Gets the assessment order.
 
         :return: the assessment part search order
@@ -168,7 +168,7 @@ class SequenceRuleSearchOrder:
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
     @abc.abstractmethod
-    def order_by_next_assessment_part(self, style): # pragma: no cover
+    def order_by_next_assessment_part(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the assessment part.
 
         :param style: search order style
@@ -181,7 +181,7 @@ class SequenceRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_next_assessment_part_search_order(self): # pragma: no cover
+    def supports_next_assessment_part_search_order(self):  # pragma: no cover
         """Tests if an assessment part search order is available.
 
         :return: ``true`` if an assessment part search order is available, ``false`` otherwise
@@ -194,7 +194,7 @@ class SequenceRuleSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_next_assessment_part_search_order(self): # pragma: no cover
+    def get_next_assessment_part_search_order(self):  # pragma: no cover
         """Gets the assessment order.
 
         :return: the assessment part search order
@@ -210,7 +210,7 @@ class SequenceRuleSearchOrder:
     next_assessment_part_search_order = property(fget=get_next_assessment_part_search_order)
 
     @abc.abstractmethod
-    def order_by_minimum_score(self, style): # pragma: no cover
+    def order_by_minimum_score(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the minimum score.
 
         :param style: search order style
@@ -223,7 +223,7 @@ class SequenceRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_maximum_score(self, style): # pragma: no cover
+    def order_by_maximum_score(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the maximum score.
 
         :param style: search order style
@@ -236,7 +236,7 @@ class SequenceRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_cumulative(self, style): # pragma: no cover
+    def order_by_cumulative(self, style):  # pragma: no cover
         """Specifies a preference for ordering the result set by the cumulative.
 
         :param style: search order style
@@ -249,7 +249,7 @@ class SequenceRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_search_order_record(self, sequence_rule_record_type): # pragma: no cover
+    def get_sequence_rule_search_order_record(self, sequence_rule_record_type):  # pragma: no cover
         """Gets the sequence rule search order record corresponding to the given sequence rule record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -273,7 +273,7 @@ class SequenceRuleEnablerSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_order_record(self, sequence_rule_enabler_record_type): # pragma: no cover
+    def get_sequence_rule_enabler_search_order_record(self, sequence_rule_enabler_record_type):  # pragma: no cover
         """Gets the sequence rule enabler search order record corresponding to the given sequence rule enabler record ``Type``.
 
         Multiple retrievals return the same underlying object.

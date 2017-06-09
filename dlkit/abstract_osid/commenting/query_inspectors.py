@@ -21,7 +21,7 @@ class CommentQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_reference_id_terms(self): # pragma: no cover
+    def get_reference_id_terms(self):  # pragma: no cover
         """Gets the reference ``Id`` terms.
 
         :return: the reference ``Id`` terms
@@ -36,7 +36,7 @@ class CommentQueryInspector:
     reference_id_terms = property(fget=get_reference_id_terms)
 
     @abc.abstractmethod
-    def get_commentor_id_terms(self): # pragma: no cover
+    def get_commentor_id_terms(self):  # pragma: no cover
         """Gets the resource ``Id`` terms.
 
         :return: the resource ``Id`` terms
@@ -51,7 +51,7 @@ class CommentQueryInspector:
     commentor_id_terms = property(fget=get_commentor_id_terms)
 
     @abc.abstractmethod
-    def get_commentor_terms(self): # pragma: no cover
+    def get_commentor_terms(self):  # pragma: no cover
         """Gets the resource terms.
 
         :return: the resource terms
@@ -66,7 +66,7 @@ class CommentQueryInspector:
     commentor_terms = property(fget=get_commentor_terms)
 
     @abc.abstractmethod
-    def get_commenting_agent_id_terms(self): # pragma: no cover
+    def get_commenting_agent_id_terms(self):  # pragma: no cover
         """Gets the agent ``Id`` terms.
 
         :return: the agent ``Id`` terms
@@ -81,7 +81,7 @@ class CommentQueryInspector:
     commenting_agent_id_terms = property(fget=get_commenting_agent_id_terms)
 
     @abc.abstractmethod
-    def get_commenting_agent_terms(self): # pragma: no cover
+    def get_commenting_agent_terms(self):  # pragma: no cover
         """Gets the agent terms.
 
         :return: the agent terms
@@ -96,7 +96,7 @@ class CommentQueryInspector:
     commenting_agent_terms = property(fget=get_commenting_agent_terms)
 
     @abc.abstractmethod
-    def get_text_terms(self): # pragma: no cover
+    def get_text_terms(self):  # pragma: no cover
         """Gets the text query terms.
 
         :return: the text query terms
@@ -111,7 +111,7 @@ class CommentQueryInspector:
     text_terms = property(fget=get_text_terms)
 
     @abc.abstractmethod
-    def get_rating_id_terms(self): # pragma: no cover
+    def get_rating_id_terms(self):  # pragma: no cover
         """Gets the rating ``Id`` terms.
 
         :return: the rating ``Id`` terms
@@ -126,7 +126,7 @@ class CommentQueryInspector:
     rating_id_terms = property(fget=get_rating_id_terms)
 
     @abc.abstractmethod
-    def get_rating_terms(self): # pragma: no cover
+    def get_rating_terms(self):  # pragma: no cover
         """Gets the rating terms.
 
         :return: the rating terms
@@ -141,7 +141,7 @@ class CommentQueryInspector:
     rating_terms = property(fget=get_rating_terms)
 
     @abc.abstractmethod
-    def get_book_id_terms(self): # pragma: no cover
+    def get_book_id_terms(self):  # pragma: no cover
         """Gets the book ``Id`` terms.
 
         :return: the book ``Id`` terms
@@ -156,7 +156,7 @@ class CommentQueryInspector:
     book_id_terms = property(fget=get_book_id_terms)
 
     @abc.abstractmethod
-    def get_book_terms(self): # pragma: no cover
+    def get_book_terms(self):  # pragma: no cover
         """Gets the book terms.
 
         :return: the book terms
@@ -171,7 +171,7 @@ class CommentQueryInspector:
     book_terms = property(fget=get_book_terms)
 
     @abc.abstractmethod
-    def get_comment_query_inspector_record(self, comment_record_type): # pragma: no cover
+    def get_comment_query_inspector_record(self, comment_record_type):  # pragma: no cover
         """Gets the comment query inspector record corresponding to the given ``Comment`` record ``Type``.
 
         :param comment_record_type: a comment record type
@@ -193,7 +193,7 @@ class BookQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_comment_id_terms(self): # pragma: no cover
+    def get_comment_id_terms(self):  # pragma: no cover
         """Gets the comment ``Id`` terms.
 
         :return: the comment ``Id`` terms
@@ -208,7 +208,7 @@ class BookQueryInspector:
     comment_id_terms = property(fget=get_comment_id_terms)
 
     @abc.abstractmethod
-    def get_comment_terms(self): # pragma: no cover
+    def get_comment_terms(self):  # pragma: no cover
         """Gets the comment terms.
 
         :return: the comment terms
@@ -223,7 +223,7 @@ class BookQueryInspector:
     comment_terms = property(fget=get_comment_terms)
 
     @abc.abstractmethod
-    def get_ancestor_book_id_terms(self): # pragma: no cover
+    def get_ancestor_book_id_terms(self):  # pragma: no cover
         """Gets the ancestor book ``Id`` terms.
 
         :return: the ancestor book ``Id`` terms
@@ -238,7 +238,7 @@ class BookQueryInspector:
     ancestor_book_id_terms = property(fget=get_ancestor_book_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_book_terms(self): # pragma: no cover
+    def get_ancestor_book_terms(self):  # pragma: no cover
         """Gets the ancestor book terms.
 
         :return: the ancestor book terms
@@ -253,7 +253,7 @@ class BookQueryInspector:
     ancestor_book_terms = property(fget=get_ancestor_book_terms)
 
     @abc.abstractmethod
-    def get_descendant_book_id_terms(self): # pragma: no cover
+    def get_descendant_book_id_terms(self):  # pragma: no cover
         """Gets the descendant book ``Id`` terms.
 
         :return: the descendant book ``Id`` terms
@@ -268,7 +268,7 @@ class BookQueryInspector:
     descendant_book_id_terms = property(fget=get_descendant_book_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_book_terms(self): # pragma: no cover
+    def get_descendant_book_terms(self):  # pragma: no cover
         """Gets the descendant book terms.
 
         :return: the descendant book terms
@@ -283,7 +283,7 @@ class BookQueryInspector:
     descendant_book_terms = property(fget=get_descendant_book_terms)
 
     @abc.abstractmethod
-    def get_book_query_inspector_record(self, book_record_type): # pragma: no cover
+    def get_book_query_inspector_record(self, book_record_type):  # pragma: no cover
         """Gets the book query inspector record corresponding to the given ``Book`` record ``Type``.
 
         :param book_record_type: a book record type

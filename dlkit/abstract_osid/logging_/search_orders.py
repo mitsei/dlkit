@@ -21,7 +21,7 @@ class LogEntrySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_priority(self, style): # pragma: no cover
+    def order_by_priority(self, style):  # pragma: no cover
         """Specifies a preference for ordering log entris by priority type.
 
         :param style: search otrder style
@@ -34,7 +34,7 @@ class LogEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_timestamp(self, style): # pragma: no cover
+    def order_by_timestamp(self, style):  # pragma: no cover
         """Specifies a preference for ordering log entries by time.
 
         :param style: search otrder style
@@ -47,7 +47,7 @@ class LogEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_resource(self, style): # pragma: no cover
+    def order_by_resource(self, style):  # pragma: no cover
         """Specifies a preference for ordering log entries by resource.
 
         :param style: search otrder style
@@ -60,7 +60,7 @@ class LogEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_resource_search_order(self): # pragma: no cover
+    def supports_resource_search_order(self):  # pragma: no cover
         """Tests if a resource order is available.
 
         :return: ``true`` if a resource order is available, ``false`` otherwise
@@ -73,7 +73,7 @@ class LogEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_search_order(self): # pragma: no cover
+    def get_resource_search_order(self):  # pragma: no cover
         """Gets the resource order.
 
         :return: the resource search order
@@ -89,7 +89,7 @@ class LogEntrySearchOrder:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def order_by_agent(self, style): # pragma: no cover
+    def order_by_agent(self, style):  # pragma: no cover
         """Specifies a preference for ordering log entries by agent.
 
         :param style: search otrder style
@@ -102,7 +102,7 @@ class LogEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_agent_search_order(self): # pragma: no cover
+    def supports_agent_search_order(self):  # pragma: no cover
         """Tests if an agent order is available.
 
         :return: ``true`` if an agent order is available, ``false`` otherwise
@@ -115,7 +115,7 @@ class LogEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_search_order(self): # pragma: no cover
+    def get_agent_search_order(self):  # pragma: no cover
         """Gets the agent order.
 
         :return: the agent search order
@@ -131,7 +131,7 @@ class LogEntrySearchOrder:
     agent_search_order = property(fget=get_agent_search_order)
 
     @abc.abstractmethod
-    def get_log_entry_search_order_record(self, log_entry_record_type): # pragma: no cover
+    def get_log_entry_search_order_record(self, log_entry_record_type):  # pragma: no cover
         """Gets the log entry search order record corresponding to the given log entry record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -155,7 +155,7 @@ class LogSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_search_order_record(self, log_record_type): # pragma: no cover
+    def get_log_search_order_record(self, log_record_type):  # pragma: no cover
         """Gets the log search order record corresponding to the given log record Type.
 
         Multiple retrievals return the same underlying object.

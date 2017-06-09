@@ -21,7 +21,7 @@ class AssessmentProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_my_assessment_taken(self): # pragma: no cover
+    def supports_my_assessment_taken(self):  # pragma: no cover
         """Tests if a session is available to lookup taken assessments for the authenticated agent.
 
         :return: ``true`` if my assessment taken session is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment(self): # pragma: no cover
+    def supports_assessment(self):  # pragma: no cover
         """Tests for the availability of a assessment service which is the service for taking and examining assessments taken.
 
         :return: ``true`` if assessment is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_results(self): # pragma: no cover
+    def supports_assessment_results(self):  # pragma: no cover
         """Tests for the availability of an assessment rsults service.
 
         :return: ``true`` if assessment results is supported, ``false`` otherwise
@@ -73,7 +73,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_lookup(self): # pragma: no cover
+    def supports_item_lookup(self):  # pragma: no cover
         """Tests if an item lookup service is supported.
 
         :return: true if item lookup is supported, false otherwise
@@ -86,7 +86,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_query(self): # pragma: no cover
+    def supports_item_query(self):  # pragma: no cover
         """Tests if an item query service is supported.
 
         :return: ``true`` if item query is supported, ``false`` otherwise
@@ -99,7 +99,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_search(self): # pragma: no cover
+    def supports_item_search(self):  # pragma: no cover
         """Tests if an item search service is supported.
 
         :return: ``true`` if item search is supported, ``false`` otherwise
@@ -112,7 +112,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_admin(self): # pragma: no cover
+    def supports_item_admin(self):  # pragma: no cover
         """Tests if an item administrative service is supported.
 
         :return: ``true`` if item admin is supported, ``false`` otherwise
@@ -125,7 +125,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_notification(self): # pragma: no cover
+    def supports_item_notification(self):  # pragma: no cover
         """Tests if item notification is supported.
 
         Messages may be sent when items are created, modified, or
@@ -141,7 +141,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_bank(self): # pragma: no cover
+    def supports_item_bank(self):  # pragma: no cover
         """Tests if an item to bank lookup session is available.
 
         :return: ``true`` if item bank lookup session is supported, ``false`` otherwise
@@ -154,7 +154,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_bank_assignment(self): # pragma: no cover
+    def supports_item_bank_assignment(self):  # pragma: no cover
         """Tests if an item to bank assignment session is available.
 
         :return: ``true`` if item bank assignment is supported, ``false`` otherwise
@@ -167,7 +167,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_item_smart_bank(self): # pragma: no cover
+    def supports_item_smart_bank(self):  # pragma: no cover
         """Tests if an item smart bank session is available.
 
         :return: ``true`` if item smart bank session is supported, ``false`` otherwise
@@ -180,7 +180,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_lookup(self): # pragma: no cover
+    def supports_assessment_lookup(self):  # pragma: no cover
         """Tests if an assessment lookup service is supported.
 
         An assessment lookup service defines methods to access
@@ -196,7 +196,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_query(self): # pragma: no cover
+    def supports_assessment_query(self):  # pragma: no cover
         """Tests if an assessment query service is supported.
 
         :return: ``true`` if assessment query is supported, ``false`` otherwise
@@ -209,7 +209,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_search(self): # pragma: no cover
+    def supports_assessment_search(self):  # pragma: no cover
         """Tests if an assessment search service is supported.
 
         :return: ``true`` if assessment search is supported, ``false`` otherwise
@@ -222,7 +222,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_admin(self): # pragma: no cover
+    def supports_assessment_admin(self):  # pragma: no cover
         """Tests if an assessment administrative service is supported.
 
         :return: ``true`` if assessment admin is supported, ``false`` otherwise
@@ -235,7 +235,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_notification(self): # pragma: no cover
+    def supports_assessment_notification(self):  # pragma: no cover
         """Tests if assessment notification is supported.
 
         Messages may be sent when assessments are created, modified, or
@@ -251,7 +251,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_bank(self): # pragma: no cover
+    def supports_assessment_bank(self):  # pragma: no cover
         """Tests if an assessment to bank lookup session is available.
 
         :return: ``true`` if assessment bank lookup session is supported, ``false`` otherwise
@@ -264,7 +264,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_bank_assignment(self): # pragma: no cover
+    def supports_assessment_bank_assignment(self):  # pragma: no cover
         """Tests if an assessment to bank assignment session is available.
 
         :return: ``true`` if assessment bank assignment is supported, ``false`` otherwise
@@ -277,7 +277,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_smart_bank(self): # pragma: no cover
+    def supports_assessment_smart_bank(self):  # pragma: no cover
         """Tests if an assessment smart bank session is available.
 
         :return: ``true`` if assessment smart bank session is supported, ``false`` otherwise
@@ -290,7 +290,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_basic_authoring(self): # pragma: no cover
+    def supports_assessment_basic_authoring(self):  # pragma: no cover
         """Tests if an assessment basic authoring session is available.
 
         :return: ``true`` if assessment basic authoring is supported, ``false`` otherwise
@@ -303,7 +303,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_lookup(self): # pragma: no cover
+    def supports_assessment_offered_lookup(self):  # pragma: no cover
         """Tests if an assessment offered lookup service is supported.
 
         :return: true if assessment offered lookup is supported, false otherwise
@@ -316,7 +316,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_query(self): # pragma: no cover
+    def supports_assessment_offered_query(self):  # pragma: no cover
         """Tests if an assessment offered query service is supported.
 
         :return: ``true`` if assessment offered query is supported, ``false`` otherwise
@@ -329,7 +329,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_search(self): # pragma: no cover
+    def supports_assessment_offered_search(self):  # pragma: no cover
         """Tests if an assessment offered search service is supported.
 
         :return: ``true`` if assessment offered search is supported, ``false`` otherwise
@@ -342,7 +342,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_admin(self): # pragma: no cover
+    def supports_assessment_offered_admin(self):  # pragma: no cover
         """Tests if an assessment offered administrative service is supported.
 
         :return: ``true`` if assessment offered admin is supported, ``false`` otherwise
@@ -355,7 +355,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_notification(self): # pragma: no cover
+    def supports_assessment_offered_notification(self):  # pragma: no cover
         """Tests if assessment offered notification is supported.
 
         Messages may be sent when offered assessments are created,
@@ -371,7 +371,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_bank(self): # pragma: no cover
+    def supports_assessment_offered_bank(self):  # pragma: no cover
         """Tests if an assessment offered to bank lookup session is available.
 
         :return: ``true`` if assessment offered bank lookup session is supported, ``false`` otherwise
@@ -384,7 +384,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_bank_assignment(self): # pragma: no cover
+    def supports_assessment_offered_bank_assignment(self):  # pragma: no cover
         """Tests if an assessment offered to bank assignment session is available.
 
         :return: ``true`` if assessment offered bank assignment is supported, ``false`` otherwise
@@ -397,7 +397,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_offered_smart_bank(self): # pragma: no cover
+    def supports_assessment_offered_smart_bank(self):  # pragma: no cover
         """Tests if an assessment offered smart bank session is available.
 
         :return: ``true`` if assessment offered smart bank session is supported, ``false`` otherwise
@@ -410,7 +410,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_lookup(self): # pragma: no cover
+    def supports_assessment_taken_lookup(self):  # pragma: no cover
         """Tests if an assessment taken lookup service is supported.
 
         :return: ``true`` if assessment taken lookup is supported, ``false`` otherwise
@@ -423,7 +423,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_query(self): # pragma: no cover
+    def supports_assessment_taken_query(self):  # pragma: no cover
         """Tests if an assessment taken query service is supported.
 
         :return: ``true`` if assessment taken query is supported, ``false`` otherwise
@@ -436,7 +436,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_search(self): # pragma: no cover
+    def supports_assessment_taken_search(self):  # pragma: no cover
         """Tests if an assessment taken search service is supported.
 
         :return: ``true`` if assessment taken search is supported, ``false`` otherwise
@@ -449,7 +449,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_admin(self): # pragma: no cover
+    def supports_assessment_taken_admin(self):  # pragma: no cover
         """Tests if an assessment taken administrative service is supported which is used to instantiate an assessment offered.
 
         :return: ``true`` if assessment taken admin is supported, ``false`` otherwise
@@ -462,7 +462,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_notification(self): # pragma: no cover
+    def supports_assessment_taken_notification(self):  # pragma: no cover
         """Tests if assessment taken notification is supported.
 
         Messages may be sent when items are created, modified, or
@@ -478,7 +478,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_bank(self): # pragma: no cover
+    def supports_assessment_taken_bank(self):  # pragma: no cover
         """Tests if an assessment taken to bank lookup session is available.
 
         :return: ``true`` if assessment taken bank lookup session is supported, ``false`` otherwise
@@ -491,7 +491,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_bank_assignment(self): # pragma: no cover
+    def supports_assessment_taken_bank_assignment(self):  # pragma: no cover
         """Tests if an assessment taken to bank assignment session is available.
 
         :return: ``true`` if assessment taken bank assignment is supported, ``false`` otherwise
@@ -504,7 +504,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_taken_smart_bank(self): # pragma: no cover
+    def supports_assessment_taken_smart_bank(self):  # pragma: no cover
         """Tests if an assessment taken smart bank session is available.
 
         :return: ``true`` if assessment taken smart bank session is supported, ``false`` otherwise
@@ -517,7 +517,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_lookup(self): # pragma: no cover
+    def supports_bank_lookup(self):  # pragma: no cover
         """Tests if a bank lookup service is supported.
 
         A bank lookup service defines methods to access assessment
@@ -533,7 +533,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_query(self): # pragma: no cover
+    def supports_bank_query(self):  # pragma: no cover
         """Tests if a bank query service is supported.
 
         :return: ``true`` if bank query is supported, ``false`` otherwise
@@ -546,7 +546,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_search(self): # pragma: no cover
+    def supports_bank_search(self):  # pragma: no cover
         """Tests if a bank search service is supported.
 
         :return: ``true`` if bank search is supported, ``false`` otherwise
@@ -559,7 +559,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_admin(self): # pragma: no cover
+    def supports_bank_admin(self):  # pragma: no cover
         """Tests if a banlk administrative service is supported.
 
         :return: ``true`` if bank admin is supported, ``false`` otherwise
@@ -572,7 +572,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_notification(self): # pragma: no cover
+    def supports_bank_notification(self):  # pragma: no cover
         """Tests if bank notification is supported.
 
         Messages may be sent when items are created, modified, or
@@ -588,7 +588,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_hierarchy(self): # pragma: no cover
+    def supports_bank_hierarchy(self):  # pragma: no cover
         """Tests if a bank hierarchy traversal is supported.
 
         :return: ``true`` if a bank hierarchy traversal is supported, ``false`` otherwise
@@ -601,7 +601,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bank_hierarchy_design(self): # pragma: no cover
+    def supports_bank_hierarchy_design(self):  # pragma: no cover
         """Tests if bank hierarchy design is supported.
 
         :return: ``true`` if a bank hierarchy design is supported, ``false`` otherwise
@@ -614,7 +614,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_authoring(self): # pragma: no cover
+    def supports_assessment_authoring(self):  # pragma: no cover
         """Tests if an assessment authoring service is supported.
 
         :return: ``true`` if an assessment authoring is supported, ``false`` otherwise
@@ -627,7 +627,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_batch(self): # pragma: no cover
+    def supports_assessment_batch(self):  # pragma: no cover
         """Tests if an assessment batch service is supported.
 
         :return: ``true`` if an assessment batch service is supported, ``false`` otherwise
@@ -640,7 +640,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_record_types(self): # pragma: no cover
+    def get_item_record_types(self):  # pragma: no cover
         """Gets the supported ``Item`` record types.
 
         :return: a list containing the supported ``Item`` record types
@@ -655,7 +655,7 @@ class AssessmentProfile:
     item_record_types = property(fget=get_item_record_types)
 
     @abc.abstractmethod
-    def supports_item_record_type(self, item_record_type): # pragma: no cover
+    def supports_item_record_type(self, item_record_type):  # pragma: no cover
         """Tests if the given ``Item`` record type is supported.
 
         :param item_record_type: a ``Type`` indicating a ``Item`` record type
@@ -670,7 +670,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_search_record_types(self): # pragma: no cover
+    def get_item_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Item`` search record types.
 
         :return: a list containing the supported ``Item`` search record types
@@ -685,7 +685,7 @@ class AssessmentProfile:
     item_search_record_types = property(fget=get_item_search_record_types)
 
     @abc.abstractmethod
-    def supports_item_search_record_type(self, item_search_record_type): # pragma: no cover
+    def supports_item_search_record_type(self, item_search_record_type):  # pragma: no cover
         """Tests if the given ``Item`` search record type is supported.
 
         :param item_search_record_type: a ``Type`` indicating an ``Item`` search record type
@@ -700,7 +700,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_record_types(self): # pragma: no cover
+    def get_assessment_record_types(self):  # pragma: no cover
         """Gets the supported ``Assessment`` record types.
 
         :return: a list containing the supported ``Assessment`` record types
@@ -715,7 +715,7 @@ class AssessmentProfile:
     assessment_record_types = property(fget=get_assessment_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_record_type(self, assessment_record_type): # pragma: no cover
+    def supports_assessment_record_type(self, assessment_record_type):  # pragma: no cover
         """Tests if the given ``Assessment`` record type is supported.
 
         :param assessment_record_type: a ``Type`` indicating an ``Assessment`` record type
@@ -730,7 +730,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_search_record_types(self): # pragma: no cover
+    def get_assessment_search_record_types(self):  # pragma: no cover
         """Gets the supported ``Assessment`` search record types.
 
         :return: a list containing the supported assessment search record types
@@ -745,7 +745,7 @@ class AssessmentProfile:
     assessment_search_record_types = property(fget=get_assessment_search_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_search_record_type(self, assessment_search_record_type): # pragma: no cover
+    def supports_assessment_search_record_type(self, assessment_search_record_type):  # pragma: no cover
         """Tests if the given assessment search record type is supported.
 
         :param assessment_search_record_type: a ``Type`` indicating an assessment search record type
@@ -760,7 +760,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_record_types(self): # pragma: no cover
+    def get_assessment_offered_record_types(self):  # pragma: no cover
         """Gets the supported ``AssessmentOffered`` record types.
 
         :return: a list containing the supported ``AssessmentOffered`` record types
@@ -775,7 +775,7 @@ class AssessmentProfile:
     assessment_offered_record_types = property(fget=get_assessment_offered_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_offered_record_type(self, assessment_offered_record_type): # pragma: no cover
+    def supports_assessment_offered_record_type(self, assessment_offered_record_type):  # pragma: no cover
         """Tests if the given ``AssessmentOffered`` record type is supported.
 
         :param assessment_offered_record_type: a ``Type`` indicating an ``AssessmentOffered`` record type
@@ -790,7 +790,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_search_record_types(self): # pragma: no cover
+    def get_assessment_offered_search_record_types(self):  # pragma: no cover
         """Gets the supported ``AssessmentOffered`` search record types.
 
         :return: a list containing the supported ``AssessmentOffered`` search record types
@@ -805,7 +805,7 @@ class AssessmentProfile:
     assessment_offered_search_record_types = property(fget=get_assessment_offered_search_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_offered_search_record_type(self, assessment_offered_search_record_type): # pragma: no cover
+    def supports_assessment_offered_search_record_type(self, assessment_offered_search_record_type):  # pragma: no cover
         """Tests if the given ``AssessmentOffered`` search record type is supported.
 
         :param assessment_offered_search_record_type: a ``Type`` indicating an ``AssessmentOffered`` search record type
@@ -820,7 +820,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_record_types(self): # pragma: no cover
+    def get_assessment_taken_record_types(self):  # pragma: no cover
         """Gets the supported ``AssessmentTaken`` record types.
 
         :return: a list containing the supported ``AssessmentTaken`` record types
@@ -835,7 +835,7 @@ class AssessmentProfile:
     assessment_taken_record_types = property(fget=get_assessment_taken_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_taken_record_type(self, assessment_taken_record_type): # pragma: no cover
+    def supports_assessment_taken_record_type(self, assessment_taken_record_type):  # pragma: no cover
         """Tests if the given ``AssessmentTaken`` record type is supported.
 
         :param assessment_taken_record_type: a ``Type`` indicating an ``AssessmentTaken`` record type
@@ -850,7 +850,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_search_record_types(self): # pragma: no cover
+    def get_assessment_taken_search_record_types(self):  # pragma: no cover
         """Gets the supported ``AssessmentTaken`` search record types.
 
         :return: a list containing the supported ``AssessmentTaken`` search record types
@@ -865,7 +865,7 @@ class AssessmentProfile:
     assessment_taken_search_record_types = property(fget=get_assessment_taken_search_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_taken_search_record_type(self, assessment_taken_search_record_type): # pragma: no cover
+    def supports_assessment_taken_search_record_type(self, assessment_taken_search_record_type):  # pragma: no cover
         """Tests if the given ``AssessmentTaken`` search record type is supported.
 
         :param assessment_taken_search_record_type: a ``Type`` indicating an ``AssessmentTaken`` search record type
@@ -880,7 +880,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_section_record_types(self): # pragma: no cover
+    def get_assessment_section_record_types(self):  # pragma: no cover
         """Gets the supported ``AssessmentSection`` record types.
 
         :return: a list containing the supported ``AssessmentSection`` record types
@@ -895,7 +895,7 @@ class AssessmentProfile:
     assessment_section_record_types = property(fget=get_assessment_section_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_section_record_type(self, assessment_section_record_type): # pragma: no cover
+    def supports_assessment_section_record_type(self, assessment_section_record_type):  # pragma: no cover
         """Tests if the given ``AssessmentSection`` record type is supported.
 
         :param assessment_section_record_type: a ``Type`` indicating an ``AssessmentSection`` record type
@@ -910,7 +910,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_record_types(self): # pragma: no cover
+    def get_bank_record_types(self):  # pragma: no cover
         """Gets the supported ``Bank`` record types.
 
         :return: a list containing the supported ``Bank`` record types
@@ -925,7 +925,7 @@ class AssessmentProfile:
     bank_record_types = property(fget=get_bank_record_types)
 
     @abc.abstractmethod
-    def supports_bank_record_type(self, bank_record_type): # pragma: no cover
+    def supports_bank_record_type(self, bank_record_type):  # pragma: no cover
         """Tests if the given ``Bank`` record type is supported.
 
         :param bank_record_type: a ``Type`` indicating a ``Bank`` type
@@ -940,7 +940,7 @@ class AssessmentProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_search_record_types(self): # pragma: no cover
+    def get_bank_search_record_types(self):  # pragma: no cover
         """Gets the supported bank search record types.
 
         :return: a list containing the supported ``Bank`` search record types
@@ -955,7 +955,7 @@ class AssessmentProfile:
     bank_search_record_types = property(fget=get_bank_search_record_types)
 
     @abc.abstractmethod
-    def supports_bank_search_record_type(self, bank_search_record_type): # pragma: no cover
+    def supports_bank_search_record_type(self, bank_search_record_type):  # pragma: no cover
         """Tests if the given bank search record type is supported.
 
         :param bank_search_record_type: a ``Type`` indicating a ``Bank`` search record type
@@ -1063,7 +1063,7 @@ class AssessmentManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_my_assessment_taken_session(self): # pragma: no cover
+    def get_my_assessment_taken_session(self):  # pragma: no cover
         """Gets a ``MyAssessmentTakenSession`` to retrieve assessments taken for the current agent.
 
         :return: a ``MyAssessmentTakenSession``
@@ -1080,7 +1080,7 @@ class AssessmentManager:
     my_assessment_taken_session = property(fget=get_my_assessment_taken_session)
 
     @abc.abstractmethod
-    def get_my_assessment_taken_session_for_bank(self, bank_id): # pragma: no cover
+    def get_my_assessment_taken_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets a ``MyAssessmentTakenSession`` to retrieve assessments taken for the current agent for the given bank ``Id``.
 
         :param bank_id: the ``Id`` of a bank
@@ -1099,7 +1099,7 @@ class AssessmentManager:
         return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
-    def get_assessment_session(self): # pragma: no cover
+    def get_assessment_session(self):  # pragma: no cover
         """Gets an ``AssessmentSession`` which is responsible for taking assessments and examining responses from assessments taken.
 
         :return: an assessment session for this service
@@ -1116,7 +1116,7 @@ class AssessmentManager:
     assessment_session = property(fget=get_assessment_session)
 
     @abc.abstractmethod
-    def get_assessment_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets an ``AssessmentSession`` which is responsible for performing assessments for the given bank ``Id``.
 
         :param bank_id: the ``Id`` of a bank
@@ -1135,7 +1135,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
-    def get_assessment_results_session(self): # pragma: no cover
+    def get_assessment_results_session(self):  # pragma: no cover
         """Gets an ``AssessmentResultsSession`` to retrieve assessment results.
 
         :return: an assessment results session for this service
@@ -1152,7 +1152,7 @@ class AssessmentManager:
     assessment_results_session = property(fget=get_assessment_results_session)
 
     @abc.abstractmethod
-    def get_assessment_results_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_results_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets an ``AssessmentResultsSession`` to retrieve assessment results for the given bank.
 
         :param bank_id: the ``Id`` of the assessment taken
@@ -1171,7 +1171,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
-    def get_item_lookup_session(self): # pragma: no cover
+    def get_item_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item lookup service.
 
         :return: an ``ItemLookupSession``
@@ -1188,7 +1188,7 @@ class AssessmentManager:
     item_lookup_session = property(fget=get_item_lookup_session)
 
     @abc.abstractmethod
-    def get_item_lookup_session_for_bank(self, bank_id): # pragma: no cover
+    def get_item_lookup_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1208,7 +1208,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
-    def get_item_query_session(self): # pragma: no cover
+    def get_item_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item query service.
 
         :return: an ``ItemQuerySession``
@@ -1225,7 +1225,7 @@ class AssessmentManager:
     item_query_session = property(fget=get_item_query_session)
 
     @abc.abstractmethod
-    def get_item_query_session_for_bank(self, bank_id): # pragma: no cover
+    def get_item_query_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1245,7 +1245,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
-    def get_item_search_session(self): # pragma: no cover
+    def get_item_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item search service.
 
         :return: an ``ItemSearchSession``
@@ -1262,7 +1262,7 @@ class AssessmentManager:
     item_search_session = property(fget=get_item_search_session)
 
     @abc.abstractmethod
-    def get_item_search_session_for_bank(self, bank_id): # pragma: no cover
+    def get_item_search_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1282,7 +1282,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
-    def get_item_admin_session(self): # pragma: no cover
+    def get_item_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item administration service.
 
         :return: an ``ItemAdminSession``
@@ -1299,7 +1299,7 @@ class AssessmentManager:
     item_admin_session = property(fget=get_item_admin_session)
 
     @abc.abstractmethod
-    def get_item_admin_session_for_bank(self, bank_id): # pragma: no cover
+    def get_item_admin_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1319,7 +1319,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
-    def get_item_notification_session(self, item_receiver): # pragma: no cover
+    def get_item_notification_session(self, item_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to item changes.
 
         :param item_receiver: the item receiver interface
@@ -1337,7 +1337,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
-    def get_item_notification_session_for_bank(self, item_receiver, bank_id): # pragma: no cover
+    def get_item_notification_session_for_bank(self, item_receiver, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item notification service for the given bank.
 
         :param item_receiver: the item receiver interface
@@ -1359,7 +1359,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_item_bank_session(self): # pragma: no cover
+    def get_item_bank_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item banking service.
 
         :return: an ``ItemBankSession``
@@ -1376,7 +1376,7 @@ class AssessmentManager:
     item_bank_session = property(fget=get_item_bank_session)
 
     @abc.abstractmethod
-    def get_item_bank_assignment_session(self): # pragma: no cover
+    def get_item_bank_assignment_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item bank assignment service.
 
         :return: an ``ItemBankAssignmentSession``
@@ -1393,7 +1393,7 @@ class AssessmentManager:
     item_bank_assignment_session = property(fget=get_item_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_item_smart_bank_session(self, bank_id): # pragma: no cover
+    def get_item_smart_bank_session(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1413,7 +1413,7 @@ class AssessmentManager:
         return  # osid.assessment.ItemSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_lookup_session(self): # pragma: no cover
+    def get_assessment_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment lookup service.
 
         :return: an ``AssessmentLookupSession``
@@ -1430,7 +1430,7 @@ class AssessmentManager:
     assessment_lookup_session = property(fget=get_assessment_lookup_session)
 
     @abc.abstractmethod
-    def get_assessment_lookup_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_lookup_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1450,7 +1450,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
-    def get_assessment_query_session(self): # pragma: no cover
+    def get_assessment_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment query service.
 
         :return: an ``AssessmentQuerySession``
@@ -1467,7 +1467,7 @@ class AssessmentManager:
     assessment_query_session = property(fget=get_assessment_query_session)
 
     @abc.abstractmethod
-    def get_assessment_query_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_query_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1487,7 +1487,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
-    def get_assessment_search_session(self): # pragma: no cover
+    def get_assessment_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment search service.
 
         :return: an ``AssessmentSearchSession``
@@ -1504,7 +1504,7 @@ class AssessmentManager:
     assessment_search_session = property(fget=get_assessment_search_session)
 
     @abc.abstractmethod
-    def get_assessment_search_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_search_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1524,7 +1524,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
-    def get_assessment_admin_session(self): # pragma: no cover
+    def get_assessment_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment administration service.
 
         :return: an ``AssessmentAdminSession``
@@ -1541,7 +1541,7 @@ class AssessmentManager:
     assessment_admin_session = property(fget=get_assessment_admin_session)
 
     @abc.abstractmethod
-    def get_assessment_admin_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_admin_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1561,7 +1561,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
-    def get_assessment_notification_session(self, assessment_receiver): # pragma: no cover
+    def get_assessment_notification_session(self, assessment_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to assessment changes.
 
         :param assessment_receiver: the assessment receiver interface
@@ -1579,7 +1579,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id): # pragma: no cover
+    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment notification service for the given bank.
 
         :param assessment_receiver: the assessment receiver interface
@@ -1601,7 +1601,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_bank_session(self): # pragma: no cover
+    def get_assessment_bank_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment banking service.
 
         :return: an ``AssessmentBankSession``
@@ -1618,7 +1618,7 @@ class AssessmentManager:
     assessment_bank_session = property(fget=get_assessment_bank_session)
 
     @abc.abstractmethod
-    def get_assessment_bank_assignment_session(self): # pragma: no cover
+    def get_assessment_bank_assignment_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment bank assignment service.
 
         :return: an ``AssessmentBankAssignmentSession``
@@ -1635,7 +1635,7 @@ class AssessmentManager:
     assessment_bank_assignment_session = property(fget=get_assessment_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_assessment_smart_bank_session(self, bank_id): # pragma: no cover
+    def get_assessment_smart_bank_session(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1655,7 +1655,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_basic_authoring_session(self): # pragma: no cover
+    def get_assessment_basic_authoring_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment authoring service.
 
         :return: an ``AssessmentBasicAuthoringSession``
@@ -1672,7 +1672,7 @@ class AssessmentManager:
     assessment_basic_authoring_session = property(fget=get_assessment_basic_authoring_session)
 
     @abc.abstractmethod
-    def get_assessment_basic_authoring_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_basic_authoring_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment authoring service for the given bank.
 
         :param bank_id: the ``Id`` of a bank
@@ -1692,7 +1692,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
-    def get_assessment_offered_lookup_session(self): # pragma: no cover
+    def get_assessment_offered_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered lookup service.
 
         :return: an ``AssessmentOfferedLookupSession``
@@ -1709,7 +1709,7 @@ class AssessmentManager:
     assessment_offered_lookup_session = property(fget=get_assessment_offered_lookup_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_lookup_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_offered_lookup_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1729,7 +1729,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
-    def get_assessment_offered_query_session(self): # pragma: no cover
+    def get_assessment_offered_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered query service.
 
         :return: an ``AssessmentOfferedQuerySession``
@@ -1746,7 +1746,7 @@ class AssessmentManager:
     assessment_offered_query_session = property(fget=get_assessment_offered_query_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_query_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_offered_query_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1766,7 +1766,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
-    def get_assessment_offered_search_session(self): # pragma: no cover
+    def get_assessment_offered_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered search service.
 
         :return: an ``AssessmentOfferedSearchSession``
@@ -1783,7 +1783,7 @@ class AssessmentManager:
     assessment_offered_search_session = property(fget=get_assessment_offered_search_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_search_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_offered_search_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1803,7 +1803,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
-    def get_assessment_offered_admin_session(self): # pragma: no cover
+    def get_assessment_offered_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered administration service.
 
         :return: an ``AssessmentOfferedAdminSession``
@@ -1820,7 +1820,7 @@ class AssessmentManager:
     assessment_offered_admin_session = property(fget=get_assessment_offered_admin_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_admin_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_offered_admin_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1840,7 +1840,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
-    def get_assessment_offered_notification_session(self, assessment_offered_receiver): # pragma: no cover
+    def get_assessment_offered_notification_session(self, assessment_offered_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to offered assessment changes.
 
         :param assessment_offered_receiver: the assessment offered receiver interface
@@ -1858,7 +1858,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id): # pragma: no cover
+    def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the offered assessment notification service for the given bank.
 
         :param assessment_offered_receiver: the assessment offered receiver interface
@@ -1880,7 +1880,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_offered_bank_session(self): # pragma: no cover
+    def get_assessment_offered_bank_session(self):  # pragma: no cover
         """Gets the session for retrieving offered assessments to bank mappings.
 
         :return: an ``AssessmentOfferedBankSession``
@@ -1897,7 +1897,7 @@ class AssessmentManager:
     assessment_offered_bank_session = property(fget=get_assessment_offered_bank_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_bank_assignment_session(self): # pragma: no cover
+    def get_assessment_offered_bank_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning offered assessments to bank mappings.
 
         :return: an ``AssessmentOfferedBankAssignmentSession``
@@ -1914,7 +1914,7 @@ class AssessmentManager:
     assessment_offered_bank_assignment_session = property(fget=get_assessment_offered_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_assessment_offered_smart_bank_session(self, bank_id): # pragma: no cover
+    def get_assessment_offered_smart_bank_session(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1934,7 +1934,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentOfferedSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_taken_lookup_session(self): # pragma: no cover
+    def get_assessment_taken_lookup_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken lookup service.
 
         :return: an ``AssessmentTakenLookupSession``
@@ -1951,7 +1951,7 @@ class AssessmentManager:
     assessment_taken_lookup_session = property(fget=get_assessment_taken_lookup_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_lookup_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_taken_lookup_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -1971,7 +1971,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
-    def get_assessment_taken_query_session(self): # pragma: no cover
+    def get_assessment_taken_query_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken query service.
 
         :return: an ``AssessmentTakenQuerySession``
@@ -1988,7 +1988,7 @@ class AssessmentManager:
     assessment_taken_query_session = property(fget=get_assessment_taken_query_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_query_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_taken_query_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2008,7 +2008,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
-    def get_assessment_taken_search_session(self): # pragma: no cover
+    def get_assessment_taken_search_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken search service.
 
         :return: an ``AssessmentTakenSearchSession``
@@ -2025,7 +2025,7 @@ class AssessmentManager:
     assessment_taken_search_session = property(fget=get_assessment_taken_search_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_search_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_taken_search_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2045,7 +2045,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
-    def get_assessment_taken_admin_session(self): # pragma: no cover
+    def get_assessment_taken_admin_session(self):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken administration service.
 
         :return: an ``AssessmentTakenAdminSession``
@@ -2062,7 +2062,7 @@ class AssessmentManager:
     assessment_taken_admin_session = property(fget=get_assessment_taken_admin_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_admin_session_for_bank(self, bank_id): # pragma: no cover
+    def get_assessment_taken_admin_session_for_bank(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2082,7 +2082,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
-    def get_assessment_taken_notification_session(self, assessment_taken_receiver): # pragma: no cover
+    def get_assessment_taken_notification_session(self, assessment_taken_receiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to taken assessment changes.
 
         :param assessment_taken_receiver: the assessment taken receiver interface
@@ -2100,7 +2100,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id): # pragma: no cover
+    def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the taken assessment notification service for the given bank.
 
         :param assessment_taken_receiver: the assessment taken receiver interface
@@ -2122,7 +2122,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_taken_bank_session(self): # pragma: no cover
+    def get_assessment_taken_bank_session(self):  # pragma: no cover
         """Gets the session for retrieving taken assessments to bank mappings.
 
         :return: an ``AssessmentTakenBankSession``
@@ -2139,7 +2139,7 @@ class AssessmentManager:
     assessment_taken_bank_session = property(fget=get_assessment_taken_bank_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_bank_assignment_session(self): # pragma: no cover
+    def get_assessment_taken_bank_assignment_session(self):  # pragma: no cover
         """Gets the session for assigning taken assessments to bank mappings.
 
         :return: an ``AssessmentTakenBankAssignmentSession``
@@ -2156,7 +2156,7 @@ class AssessmentManager:
     assessment_taken_bank_assignment_session = property(fget=get_assessment_taken_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_assessment_taken_smart_bank_session(self, bank_id): # pragma: no cover
+    def get_assessment_taken_smart_bank_session(self, bank_id):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2176,7 +2176,7 @@ class AssessmentManager:
         return  # osid.assessment.AssessmentTakenSmartBankSession
 
     @abc.abstractmethod
-    def get_bank_lookup_session(self): # pragma: no cover
+    def get_bank_lookup_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the bank lookup service.
 
         :return: a ``BankLookupSession``
@@ -2193,7 +2193,7 @@ class AssessmentManager:
     bank_lookup_session = property(fget=get_bank_lookup_session)
 
     @abc.abstractmethod
-    def get_bank_query_session(self): # pragma: no cover
+    def get_bank_query_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the bank query service.
 
         :return: a ``BankQuerySession``
@@ -2210,7 +2210,7 @@ class AssessmentManager:
     bank_query_session = property(fget=get_bank_query_session)
 
     @abc.abstractmethod
-    def get_bank_search_session(self): # pragma: no cover
+    def get_bank_search_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the bank search service.
 
         :return: a ``BankSearchSession``
@@ -2227,7 +2227,7 @@ class AssessmentManager:
     bank_search_session = property(fget=get_bank_search_session)
 
     @abc.abstractmethod
-    def get_bank_admin_session(self): # pragma: no cover
+    def get_bank_admin_session(self):  # pragma: no cover
         """Gets the OsidSession associated with the bank administration service.
 
         :return: a ``BankAdminSession``
@@ -2244,7 +2244,7 @@ class AssessmentManager:
     bank_admin_session = property(fget=get_bank_admin_session)
 
     @abc.abstractmethod
-    def get_bank_notification_session(self, bankreceiver): # pragma: no cover
+    def get_bank_notification_session(self, bankreceiver):  # pragma: no cover
         """Gets the notification session for notifications pertaining to bank service changes.
 
         :param bankreceiver: the bank receiver interface
@@ -2262,7 +2262,7 @@ class AssessmentManager:
         return  # osid.assessment.BankNotificationSession
 
     @abc.abstractmethod
-    def get_bank_hierarchy_session(self): # pragma: no cover
+    def get_bank_hierarchy_session(self):  # pragma: no cover
         """Gets the session traversing bank hierarchies.
 
         :return: a ``BankHierarchySession``
@@ -2279,7 +2279,7 @@ class AssessmentManager:
     bank_hierarchy_session = property(fget=get_bank_hierarchy_session)
 
     @abc.abstractmethod
-    def get_bank_hierarchy_design_session(self): # pragma: no cover
+    def get_bank_hierarchy_design_session(self):  # pragma: no cover
         """Gets the session designing bank hierarchies.
 
         :return: a ``BankHierarchySession``
@@ -2296,7 +2296,7 @@ class AssessmentManager:
     bank_hierarchy_design_session = property(fget=get_bank_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_assessment_authoring_manager(self): # pragma: no cover
+    def get_assessment_authoring_manager(self):  # pragma: no cover
         """Gets an ``AssessmentAuthoringManager``.
 
         :return: an ``AssessmentAuthoringManager``
@@ -2313,7 +2313,7 @@ class AssessmentManager:
     assessment_authoring_manager = property(fget=get_assessment_authoring_manager)
 
     @abc.abstractmethod
-    def get_assessment_batch_manager(self): # pragma: no cover
+    def get_assessment_batch_manager(self):  # pragma: no cover
         """Gets an ``AssessmentBatchManager``.
 
         :return: an ``AssessmentBatchManager``
@@ -2424,7 +2424,7 @@ class AssessmentProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_my_assessment_taken_session(self, proxy): # pragma: no cover
+    def get_my_assessment_taken_session(self, proxy):  # pragma: no cover
         """Gets a ``MyAssessmentTakenSession`` to retrieve assessments taken for the current agent.
 
         :param proxy: a proxy
@@ -2442,7 +2442,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
-    def get_my_assessment_taken_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_my_assessment_taken_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets a ``MyAssessmentTakenSession`` to retrieve assessments taken for the current agent for the given bank ``Id``.
 
         :param bank_id: the ``Id`` of a bank
@@ -2463,7 +2463,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.MyAssessmentTakenSession
 
     @abc.abstractmethod
-    def get_assessment_session(self, proxy): # pragma: no cover
+    def get_assessment_session(self, proxy):  # pragma: no cover
         """Gets an ``AssessmentSession`` which is responsible for taking assessments and examining responses from assessments taken.
 
         :param proxy: a proxy
@@ -2481,7 +2481,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
-    def get_assessment_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets an ``AssessmentSession`` which is responsible for performing assessments for the given bank ``Id``.
 
         :param bank_id: the ``Id`` of a bank
@@ -2502,7 +2502,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentSession
 
     @abc.abstractmethod
-    def get_assessment_results_session(self, proxy): # pragma: no cover
+    def get_assessment_results_session(self, proxy):  # pragma: no cover
         """Gets an ``AssessmentResultsSession`` to retrieve assessment results.
 
         :param proxy: a proxy
@@ -2520,7 +2520,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
-    def get_assessment_results_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_results_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets an ``AssessmentResultsSession`` to retrieve assessment results for the given bank.
 
         :param bank_id: the ``Id`` of the assessment taken
@@ -2541,7 +2541,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentResultsSession
 
     @abc.abstractmethod
-    def get_item_lookup_session(self, proxy): # pragma: no cover
+    def get_item_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item lookup service.
 
         :param proxy: a proxy
@@ -2559,7 +2559,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
-    def get_item_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_item_lookup_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2581,7 +2581,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemLookupSession
 
     @abc.abstractmethod
-    def get_item_query_session(self, proxy): # pragma: no cover
+    def get_item_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item query service.
 
         :param proxy: a proxy
@@ -2599,7 +2599,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
-    def get_item_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_item_query_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2621,7 +2621,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemQuerySession
 
     @abc.abstractmethod
-    def get_item_search_session(self, proxy): # pragma: no cover
+    def get_item_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item search service.
 
         :param proxy: a proxy
@@ -2639,7 +2639,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
-    def get_item_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_item_search_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2661,7 +2661,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemSearchSession
 
     @abc.abstractmethod
-    def get_item_admin_session(self, proxy): # pragma: no cover
+    def get_item_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item administration service.
 
         :param proxy: a proxy
@@ -2679,7 +2679,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
-    def get_item_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_item_admin_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2701,7 +2701,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemAdminSession
 
     @abc.abstractmethod
-    def get_item_notification_session(self, item_receiver, proxy): # pragma: no cover
+    def get_item_notification_session(self, item_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to item changes.
 
         :param item_receiver: the item receiver interface
@@ -2721,7 +2721,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
-    def get_item_notification_session_for_bank(self, item_receiver, bank_id, proxy): # pragma: no cover
+    def get_item_notification_session_for_bank(self, item_receiver, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item notification service for the given bank.
 
         :param item_receiver: the item receiver interface
@@ -2745,7 +2745,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_item_bank_session(self, proxy): # pragma: no cover
+    def get_item_bank_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item banking service.
 
         :param proxy: a proxy
@@ -2763,7 +2763,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemBankSession
 
     @abc.abstractmethod
-    def get_item_bank_assignment_session(self, proxy): # pragma: no cover
+    def get_item_bank_assignment_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item bank assignment service.
 
         :param proxy: a proxy
@@ -2781,7 +2781,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemBankAssignmentSession
 
     @abc.abstractmethod
-    def get_item_smart_bank_session(self, bank_id, proxy): # pragma: no cover
+    def get_item_smart_bank_session(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the item smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2803,7 +2803,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.ItemSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_lookup_session(self, proxy): # pragma: no cover
+    def get_assessment_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment lookup service.
 
         :param proxy: a proxy
@@ -2821,7 +2821,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
-    def get_assessment_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_lookup_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2843,7 +2843,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentLookupSession
 
     @abc.abstractmethod
-    def get_assessment_query_session(self, proxy): # pragma: no cover
+    def get_assessment_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment query service.
 
         :param proxy: a proxy
@@ -2861,7 +2861,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
-    def get_assessment_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_query_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2883,7 +2883,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentQuerySession
 
     @abc.abstractmethod
-    def get_assessment_search_session(self, proxy): # pragma: no cover
+    def get_assessment_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment search service.
 
         :param proxy: a proxy
@@ -2901,7 +2901,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
-    def get_assessment_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_search_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2923,7 +2923,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentSearchSession
 
     @abc.abstractmethod
-    def get_assessment_admin_session(self, proxy): # pragma: no cover
+    def get_assessment_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment administration service.
 
         :param proxy: a proxy
@@ -2941,7 +2941,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
-    def get_assessment_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_admin_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -2963,7 +2963,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentAdminSession
 
     @abc.abstractmethod
-    def get_assessment_notification_session(self, assessment_receiver, proxy): # pragma: no cover
+    def get_assessment_notification_session(self, assessment_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to assessment changes.
 
         :param assessment_receiver: the assessment receiver interface
@@ -2983,7 +2983,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy): # pragma: no cover
+    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment notification service for the given bank.
 
         :param assessment_receiver: the assessment receiver interface
@@ -3007,7 +3007,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_bank_session(self, proxy): # pragma: no cover
+    def get_assessment_bank_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment banking service.
 
         :param proxy: a proxy
@@ -3025,7 +3025,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentBankSession
 
     @abc.abstractmethod
-    def get_assessment_bank_assignment_session(self, proxy): # pragma: no cover
+    def get_assessment_bank_assignment_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment bank assignment service.
 
         :param proxy: a proxy
@@ -3043,7 +3043,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentBankAssignmentSession
 
     @abc.abstractmethod
-    def get_assessment_smart_bank_session(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_smart_bank_session(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3065,7 +3065,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_basic_authoring_session(self, proxy): # pragma: no cover
+    def get_assessment_basic_authoring_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment authoring service.
 
         :param proxy: a proxy
@@ -3083,7 +3083,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
-    def get_assessment_basic_authoring_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_basic_authoring_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment authoring service for the given bank.
 
         :param bank_id: the ``Id`` of a bank
@@ -3105,7 +3105,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentBasicAuthoringSession
 
     @abc.abstractmethod
-    def get_assessment_offered_lookup_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered lookup service.
 
         :param proxy: a proxy
@@ -3123,7 +3123,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
-    def get_assessment_offered_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_lookup_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3145,7 +3145,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedLookupSession
 
     @abc.abstractmethod
-    def get_assessment_offered_query_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered query service.
 
         :param proxy: a proxy
@@ -3163,7 +3163,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
-    def get_assessment_offered_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_query_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3185,7 +3185,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedQuerySession
 
     @abc.abstractmethod
-    def get_assessment_offered_search_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered search service.
 
         :param proxy: a proxy
@@ -3203,7 +3203,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
-    def get_assessment_offered_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_search_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3225,7 +3225,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedSearchSession
 
     @abc.abstractmethod
-    def get_assessment_offered_admin_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered administration service.
 
         :param proxy: a proxy
@@ -3243,7 +3243,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
-    def get_assessment_offered_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_admin_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3265,7 +3265,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedAdminSession
 
     @abc.abstractmethod
-    def get_assessment_offered_notification_session(self, assessment_offered_receiver, proxy): # pragma: no cover
+    def get_assessment_offered_notification_session(self, assessment_offered_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to offered assessment changes.
 
         :param assessment_offered_receiver: the assessment offered receiver interface
@@ -3285,7 +3285,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_notification_session_for_bank(self, assessment_offered_receiver, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the offered assessment notification service for the given bank.
 
         :param assessment_offered_receiver: the assessment offered receiver interface
@@ -3309,7 +3309,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_offered_bank_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_bank_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving offered assessments to bank mappings.
 
         :param proxy: a proxy
@@ -3327,7 +3327,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedBankSession
 
     @abc.abstractmethod
-    def get_assessment_offered_bank_assignment_session(self, proxy): # pragma: no cover
+    def get_assessment_offered_bank_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning offered assessments to bank mappings.
 
         :param proxy: a proxy
@@ -3345,7 +3345,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedBankAssignmentSession
 
     @abc.abstractmethod
-    def get_assessment_offered_smart_bank_session(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_offered_smart_bank_session(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment offered smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3367,7 +3367,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentOfferedSmartBankSession
 
     @abc.abstractmethod
-    def get_assessment_taken_lookup_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_lookup_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken lookup service.
 
         :param proxy: a proxy
@@ -3385,7 +3385,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
-    def get_assessment_taken_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_lookup_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3407,7 +3407,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenLookupSession
 
     @abc.abstractmethod
-    def get_assessment_taken_query_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_query_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken query service.
 
         :param proxy: a proxy
@@ -3425,7 +3425,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
-    def get_assessment_taken_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_query_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken query service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3447,7 +3447,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenQuerySession
 
     @abc.abstractmethod
-    def get_assessment_taken_search_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_search_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken search service.
 
         :param proxy: a proxy
@@ -3465,7 +3465,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
-    def get_assessment_taken_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_search_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken search service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3487,7 +3487,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenSearchSession
 
     @abc.abstractmethod
-    def get_assessment_taken_admin_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_admin_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken administration service.
 
         :param proxy: a proxy
@@ -3505,7 +3505,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
-    def get_assessment_taken_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_admin_session_for_bank(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken admin service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3527,7 +3527,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenAdminSession
 
     @abc.abstractmethod
-    def get_assessment_taken_notification_session(self, assessment_taken_receiver, proxy): # pragma: no cover
+    def get_assessment_taken_notification_session(self, assessment_taken_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to taken assessment changes.
 
         :param assessment_taken_receiver: the assessment taken receiver interface
@@ -3547,7 +3547,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_notification_session_for_bank(self, assessment_taken_receiver, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the taken assessment notification service for the given bank.
 
         :param assessment_taken_receiver: the assessment taken receiver interface
@@ -3571,7 +3571,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_taken_bank_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_bank_session(self, proxy):  # pragma: no cover
         """Gets the session for retrieving taken assessments to bank mappings.
 
         :param proxy: a proxy
@@ -3589,7 +3589,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenBankSession
 
     @abc.abstractmethod
-    def get_assessment_taken_bank_assignment_session(self, proxy): # pragma: no cover
+    def get_assessment_taken_bank_assignment_session(self, proxy):  # pragma: no cover
         """Gets the session for assigning taken assessments to bank mappings.
 
         :param proxy: a proxy
@@ -3607,7 +3607,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenBankAssignmentSession
 
     @abc.abstractmethod
-    def get_assessment_taken_smart_bank_session(self, bank_id, proxy): # pragma: no cover
+    def get_assessment_taken_smart_bank_session(self, bank_id, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment taken smart banking service for the given bank.
 
         :param bank_id: the ``Id`` of the bank
@@ -3629,7 +3629,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.AssessmentTakenSmartBankSession
 
     @abc.abstractmethod
-    def get_bank_lookup_session(self, proxy): # pragma: no cover
+    def get_bank_lookup_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the bank lookup service.
 
         :param proxy: a proxy
@@ -3647,7 +3647,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankLookupSession
 
     @abc.abstractmethod
-    def get_bank_query_session(self, proxy): # pragma: no cover
+    def get_bank_query_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the bank query service.
 
         :param proxy: a proxy
@@ -3665,7 +3665,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankQuerySession
 
     @abc.abstractmethod
-    def get_bank_search_session(self, proxy): # pragma: no cover
+    def get_bank_search_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the bank search service.
 
         :param proxy: a proxy
@@ -3683,7 +3683,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankSearchSession
 
     @abc.abstractmethod
-    def get_bank_admin_session(self, proxy): # pragma: no cover
+    def get_bank_admin_session(self, proxy):  # pragma: no cover
         """Gets the OsidSession associated with the bank administration service.
 
         :param proxy: a proxy
@@ -3701,7 +3701,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankAdminSession
 
     @abc.abstractmethod
-    def get_bank_notification_session(self, bank_receiver, proxy): # pragma: no cover
+    def get_bank_notification_session(self, bank_receiver, proxy):  # pragma: no cover
         """Gets the notification session for notifications pertaining to bank service changes.
 
         :param bank_receiver: the bank receiver interface
@@ -3721,7 +3721,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankNotificationSession
 
     @abc.abstractmethod
-    def get_bank_hierarchy_session(self, proxy): # pragma: no cover
+    def get_bank_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the session traversing bank hierarchies.
 
         :param proxy: a proxy
@@ -3739,7 +3739,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankHierarchySession
 
     @abc.abstractmethod
-    def get_bank_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_bank_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the session designing bank hierarchies.
 
         :param proxy: a proxy
@@ -3757,7 +3757,7 @@ class AssessmentProxyManager:
         return  # osid.assessment.BankHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_assessment_authoring_proxy_manager(self): # pragma: no cover
+    def get_assessment_authoring_proxy_manager(self):  # pragma: no cover
         """Gets an ``AssessmentAuthoringProxyManager``.
 
         :return: an ``AssessmentAuthoringProxyManager``
@@ -3774,7 +3774,7 @@ class AssessmentProxyManager:
     assessment_authoring_proxy_manager = property(fget=get_assessment_authoring_proxy_manager)
 
     @abc.abstractmethod
-    def get_assessment_batch_proxy_manager(self): # pragma: no cover
+    def get_assessment_batch_proxy_manager(self):  # pragma: no cover
         """Gets an ``AssessmentBatchProxyManager``.
 
         :return: an ``AssessmentBatchProxyManager``

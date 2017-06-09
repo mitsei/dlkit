@@ -56,7 +56,7 @@ class OsidQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_string_match_types(self): # pragma: no cover
+    def get_string_match_types(self):  # pragma: no cover
         """Gets the string matching types supported.
 
         A string match type specifies the syntax of the string query,
@@ -75,7 +75,7 @@ class OsidQuery:
     string_match_types = property(fget=get_string_match_types)
 
     @abc.abstractmethod
-    def supports_string_match_type(self, string_match_type): # pragma: no cover
+    def supports_string_match_type(self, string_match_type):  # pragma: no cover
         """Tests if the given string matching type is supported.
 
         :param string_match_type: a ``Type`` indicating a string match type
@@ -90,7 +90,7 @@ class OsidQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def match_keyword(self, keyword, string_match_type, match): # pragma: no cover
+    def match_keyword(self, keyword, string_match_type, match):  # pragma: no cover
         """Adds a keyword to match.
 
         Multiple keywords can be added to perform a boolean ``OR`` among
@@ -114,7 +114,7 @@ class OsidQuery:
         pass
 
     @abc.abstractmethod
-    def clear_keyword_terms(self): # pragma: no cover
+    def clear_keyword_terms(self):  # pragma: no cover
         """Clears all keyword terms.
 
 
@@ -127,7 +127,7 @@ class OsidQuery:
     keyword_terms = property(fdel=clear_keyword_terms)
 
     @abc.abstractmethod
-    def match_any(self, match): # pragma: no cover
+    def match_any(self, match):  # pragma: no cover
         """Matches any object.
 
         :param match: ``true`` to match any object ``,``  ``false`` to match no objects
@@ -140,7 +140,7 @@ class OsidQuery:
         pass
 
     @abc.abstractmethod
-    def clear_any_terms(self): # pragma: no cover
+    def clear_any_terms(self):  # pragma: no cover
         """Clears the match any terms.
 
 
@@ -170,7 +170,7 @@ class OsidIdentifiableQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_id(self, id_, match): # pragma: no cover
+    def match_id(self, id_, match):  # pragma: no cover
         """Adds an ``Id`` to match.
 
         Multiple ``Ids`` can be added to perform a boolean ``OR`` among
@@ -188,7 +188,7 @@ class OsidIdentifiableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_id_terms(self): # pragma: no cover
+    def clear_id_terms(self):  # pragma: no cover
         """Clears all ``Id`` terms.
 
 
@@ -218,7 +218,7 @@ class OsidExtensibleQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_record_type(self, record_type, match): # pragma: no cover
+    def match_record_type(self, record_type, match):  # pragma: no cover
         """Sets a ``Type`` for querying objects having records implementing a given record type.
 
         :param record_type: a record type
@@ -233,7 +233,7 @@ class OsidExtensibleQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_record(self, match): # pragma: no cover
+    def match_any_record(self, match):  # pragma: no cover
         """Matches an object that has any record.
 
         :param match: ``true`` to match any record, ``false`` to match objects with no records
@@ -246,7 +246,7 @@ class OsidExtensibleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_record_terms(self): # pragma: no cover
+    def clear_record_terms(self):  # pragma: no cover
         """Clears all record ``Type`` terms.
 
 
@@ -286,7 +286,7 @@ class OsidTemporalQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_effective(self, match): # pragma: no cover
+    def match_effective(self, match):  # pragma: no cover
         """Match effective objects where the current date falls within the start and end dates inclusive.
 
         :param match: ``true`` to match any effective, ``false`` to match ineffective
@@ -299,7 +299,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def clear_effective_terms(self): # pragma: no cover
+    def clear_effective_terms(self):  # pragma: no cover
         """Clears the effective query terms.
 
 
@@ -312,7 +312,7 @@ class OsidTemporalQuery:
     effective_terms = property(fdel=clear_effective_terms)
 
     @abc.abstractmethod
-    def match_start_date(self, start, end, match): # pragma: no cover
+    def match_start_date(self, start, end, match):  # pragma: no cover
         """Matches temporals whose start date falls in between the given dates inclusive.
 
         :param start: start of date range
@@ -330,7 +330,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_start_date(self, match): # pragma: no cover
+    def match_any_start_date(self, match):  # pragma: no cover
         """Matches temporals with any start date set.
 
         :param match: ``true`` to match any start date, ``false`` to match no start date
@@ -343,7 +343,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def clear_start_date_terms(self): # pragma: no cover
+    def clear_start_date_terms(self):  # pragma: no cover
         """Clears the start date query terms.
 
 
@@ -356,7 +356,7 @@ class OsidTemporalQuery:
     start_date_terms = property(fdel=clear_start_date_terms)
 
     @abc.abstractmethod
-    def match_end_date(self, start, end, match): # pragma: no cover
+    def match_end_date(self, start, end, match):  # pragma: no cover
         """Matches temporals whose effective end date falls in between the given dates inclusive.
 
         :param start: start of date range
@@ -374,7 +374,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_end_date(self, match): # pragma: no cover
+    def match_any_end_date(self, match):  # pragma: no cover
         """Matches temporals with any end date set.
 
         :param match: ``true`` to match any end date, ``false`` to match no start date
@@ -387,7 +387,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def clear_end_date_terms(self): # pragma: no cover
+    def clear_end_date_terms(self):  # pragma: no cover
         """Clears the end date query terms.
 
 
@@ -400,7 +400,7 @@ class OsidTemporalQuery:
     end_date_terms = property(fdel=clear_end_date_terms)
 
     @abc.abstractmethod
-    def match_date(self, from_, to, match): # pragma: no cover
+    def match_date(self, from_, to, match):  # pragma: no cover
         """Matches temporals where the given date range falls entirely between the start and end dates inclusive.
 
         :param from: start date
@@ -418,7 +418,7 @@ class OsidTemporalQuery:
         pass
 
     @abc.abstractmethod
-    def clear_date_terms(self): # pragma: no cover
+    def clear_date_terms(self):  # pragma: no cover
         """Clears the date query terms.
 
 
@@ -451,7 +451,7 @@ class OsidContainableQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_sequestered(self, match): # pragma: no cover
+    def match_sequestered(self, match):  # pragma: no cover
         """Match containables that are sequestered.
 
         :param match: ``true`` to match any sequestered containables, ``false`` to match non-sequestered containables
@@ -464,7 +464,7 @@ class OsidContainableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_sequestered_terms(self): # pragma: no cover
+    def clear_sequestered_terms(self):  # pragma: no cover
         """Clears the sequestered query terms.
 
 
@@ -482,7 +482,7 @@ class OsidSourceableQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_provider_id(self, resource_id, match): # pragma: no cover
+    def match_provider_id(self, resource_id, match):  # pragma: no cover
         """Match the ``Id`` of the provider resource.
 
         :param resource_id: ``Id`` to match
@@ -497,7 +497,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_provider_id_terms(self): # pragma: no cover
+    def clear_provider_id_terms(self):  # pragma: no cover
         """Clears all provider ``Id`` terms.
 
 
@@ -510,7 +510,7 @@ class OsidSourceableQuery:
     provider_id_terms = property(fdel=clear_provider_id_terms)
 
     @abc.abstractmethod
-    def supports_provider_query(self): # pragma: no cover
+    def supports_provider_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` for the provider is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -523,7 +523,7 @@ class OsidSourceableQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_provider_query(self, match): # pragma: no cover
+    def get_provider_query(self, match):  # pragma: no cover
         """Gets the query for the provider.
 
         Each retrieval performs a boolean ``OR``.
@@ -541,7 +541,7 @@ class OsidSourceableQuery:
         return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
-    def match_any_provider(self, match): # pragma: no cover
+    def match_any_provider(self, match):  # pragma: no cover
         """Match sourceables with a provider value.
 
         :param match: ``true`` to match sourceables with any provider, ``false`` to match sourceables with no providers
@@ -554,7 +554,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_provider_terms(self): # pragma: no cover
+    def clear_provider_terms(self):  # pragma: no cover
         """Clears all provider terms.
 
 
@@ -567,7 +567,7 @@ class OsidSourceableQuery:
     provider_terms = property(fdel=clear_provider_terms)
 
     @abc.abstractmethod
-    def match_branding_id(self, asset_id, match): # pragma: no cover
+    def match_branding_id(self, asset_id, match):  # pragma: no cover
         """Match the ``Id`` of an asset used for branding.
 
         :param asset_id: ``Id`` to match
@@ -582,7 +582,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_branding_id_terms(self): # pragma: no cover
+    def clear_branding_id_terms(self):  # pragma: no cover
         """Clears all asset ``Id`` terms.
 
 
@@ -595,7 +595,7 @@ class OsidSourceableQuery:
     branding_id_terms = property(fdel=clear_branding_id_terms)
 
     @abc.abstractmethod
-    def supports_branding_query(self): # pragma: no cover
+    def supports_branding_query(self):  # pragma: no cover
         """Tests if an ``AssetQuery`` for the branding is available.
 
         :return: ``true`` if a asset query is available, ``false`` otherwise
@@ -608,7 +608,7 @@ class OsidSourceableQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_branding_query(self, match): # pragma: no cover
+    def get_branding_query(self, match):  # pragma: no cover
         """Gets the query for an asset.
 
         Each retrieval performs a boolean ``OR``.
@@ -626,7 +626,7 @@ class OsidSourceableQuery:
         return  # osid.repository.AssetQuery
 
     @abc.abstractmethod
-    def match_any_branding(self, match): # pragma: no cover
+    def match_any_branding(self, match):  # pragma: no cover
         """Match sourceables with any branding.
 
         :param match: ``true`` to match any asset, ``false`` to match no assets
@@ -639,7 +639,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_branding_terms(self): # pragma: no cover
+    def clear_branding_terms(self):  # pragma: no cover
         """Clears all branding terms.
 
 
@@ -652,7 +652,7 @@ class OsidSourceableQuery:
     branding_terms = property(fdel=clear_branding_terms)
 
     @abc.abstractmethod
-    def match_license(self, license_, string_match_type, match): # pragma: no cover
+    def match_license(self, license_, string_match_type, match):  # pragma: no cover
         """Adds a license to match.
 
         Multiple license matches can be added to perform a boolean
@@ -674,7 +674,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_license(self, match): # pragma: no cover
+    def match_any_license(self, match):  # pragma: no cover
         """Matches any object with a license.
 
         :param match: ``true`` to match any license, ``false`` to match objects with no license
@@ -687,7 +687,7 @@ class OsidSourceableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_license_terms(self): # pragma: no cover
+    def clear_license_terms(self):  # pragma: no cover
         """Clears all license terms.
 
 
@@ -715,7 +715,7 @@ class OsidOperableQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_active(self, match): # pragma: no cover
+    def match_active(self, match):  # pragma: no cover
         """Matches active.
 
         :param match: ``true`` to match active, ``false`` to match inactive
@@ -728,7 +728,7 @@ class OsidOperableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_active_terms(self): # pragma: no cover
+    def clear_active_terms(self):  # pragma: no cover
         """Clears the active query terms.
 
 
@@ -741,7 +741,7 @@ class OsidOperableQuery:
     active_terms = property(fdel=clear_active_terms)
 
     @abc.abstractmethod
-    def match_enabled(self, match): # pragma: no cover
+    def match_enabled(self, match):  # pragma: no cover
         """Matches administratively enabled.
 
         :param match: ``true`` to match administratively enabled, ``false`` otherwise
@@ -754,7 +754,7 @@ class OsidOperableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_enabled_terms(self): # pragma: no cover
+    def clear_enabled_terms(self):  # pragma: no cover
         """Clears the administratively enabled query terms.
 
 
@@ -767,7 +767,7 @@ class OsidOperableQuery:
     enabled_terms = property(fdel=clear_enabled_terms)
 
     @abc.abstractmethod
-    def match_disabled(self, match): # pragma: no cover
+    def match_disabled(self, match):  # pragma: no cover
         """Matches administratively disabled.
 
         :param match: ``true`` to match administratively disabled, ``false`` otherwise
@@ -780,7 +780,7 @@ class OsidOperableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_disabled_terms(self): # pragma: no cover
+    def clear_disabled_terms(self):  # pragma: no cover
         """Clears the administratively disabled query terms.
 
 
@@ -793,7 +793,7 @@ class OsidOperableQuery:
     disabled_terms = property(fdel=clear_disabled_terms)
 
     @abc.abstractmethod
-    def match_operational(self, match): # pragma: no cover
+    def match_operational(self, match):  # pragma: no cover
         """Matches operational operables.
 
         :param match: ``true`` to match operational, ``false`` to match not operational
@@ -806,7 +806,7 @@ class OsidOperableQuery:
         pass
 
     @abc.abstractmethod
-    def clear_operational_terms(self): # pragma: no cover
+    def clear_operational_terms(self):  # pragma: no cover
         """Clears the operational query terms.
 
 
@@ -876,7 +876,7 @@ class OsidObjectQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_display_name(self, display_name, string_match_type, match): # pragma: no cover
+    def match_display_name(self, display_name, string_match_type, match):  # pragma: no cover
         """Adds a display name to match.
 
         Multiple display name matches can be added to perform a boolean
@@ -898,7 +898,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_display_name(self, match): # pragma: no cover
+    def match_any_display_name(self, match):  # pragma: no cover
         """Matches any object with a display name.
 
         :param match: ``true`` to match any display name, ``false`` to match objects with no display name
@@ -911,7 +911,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_display_name_terms(self): # pragma: no cover
+    def clear_display_name_terms(self):  # pragma: no cover
         """Clears all display name terms.
 
 
@@ -924,7 +924,7 @@ class OsidObjectQuery:
     display_name_terms = property(fdel=clear_display_name_terms)
 
     @abc.abstractmethod
-    def match_description(self, description, string_match_type, match): # pragma: no cover
+    def match_description(self, description, string_match_type, match):  # pragma: no cover
         """Adds a description name to match.
 
         Multiple description matches can be added to perform a boolean
@@ -946,7 +946,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_description(self, match): # pragma: no cover
+    def match_any_description(self, match):  # pragma: no cover
         """Matches a description that has any value.
 
         :param match: ``true`` to match any description, ``false`` to match descriptions with no values
@@ -959,7 +959,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_description_terms(self): # pragma: no cover
+    def clear_description_terms(self):  # pragma: no cover
         """Clears all description terms.
 
 
@@ -972,7 +972,7 @@ class OsidObjectQuery:
     description_terms = property(fdel=clear_description_terms)
 
     @abc.abstractmethod
-    def match_genus_type(self, genus_type, match): # pragma: no cover
+    def match_genus_type(self, genus_type, match):  # pragma: no cover
         """Sets a ``Type`` for querying objects of a given genus.
 
         A genus type matches if the specified type is the same genus as
@@ -990,7 +990,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_genus_type(self, match): # pragma: no cover
+    def match_any_genus_type(self, match):  # pragma: no cover
         """Matches an object that has any genus type.
 
         :param match: ``true`` to match any genus type, ``false`` to match objects with no genus type
@@ -1003,7 +1003,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_genus_type_terms(self): # pragma: no cover
+    def clear_genus_type_terms(self):  # pragma: no cover
         """Clears all genus type terms.
 
 
@@ -1016,7 +1016,7 @@ class OsidObjectQuery:
     genus_type_terms = property(fdel=clear_genus_type_terms)
 
     @abc.abstractmethod
-    def match_parent_genus_type(self, genus_type, match): # pragma: no cover
+    def match_parent_genus_type(self, genus_type, match):  # pragma: no cover
         """Sets a ``Type`` for querying objects of a given genus.
 
         A genus type matches if the specified type is the same genus as
@@ -1035,7 +1035,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_parent_genus_type_terms(self): # pragma: no cover
+    def clear_parent_genus_type_terms(self):  # pragma: no cover
         """Clears all genus type terms.
 
 
@@ -1048,7 +1048,7 @@ class OsidObjectQuery:
     parent_genus_type_terms = property(fdel=clear_parent_genus_type_terms)
 
     @abc.abstractmethod
-    def match_subject_id(self, subject_id, match): # pragma: no cover
+    def match_subject_id(self, subject_id, match):  # pragma: no cover
         """Matches an object with a relationship to the given subject.
 
         :param subject_id: a subject ``Id``
@@ -1063,7 +1063,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_subject_id_terms(self): # pragma: no cover
+    def clear_subject_id_terms(self):  # pragma: no cover
         """Clears all subject ``Id`` terms.
 
 
@@ -1076,7 +1076,7 @@ class OsidObjectQuery:
     subject_id_terms = property(fdel=clear_subject_id_terms)
 
     @abc.abstractmethod
-    def supports_subject_query(self): # pragma: no cover
+    def supports_subject_query(self):  # pragma: no cover
         """Tests if a ``SubjectQuery`` is available.
 
         :return: ``true`` if a subject query is available, ``false`` otherwise
@@ -1089,7 +1089,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_subject_query(self): # pragma: no cover
+    def get_subject_query(self):  # pragma: no cover
         """Gets the query for a subject.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1107,7 +1107,7 @@ class OsidObjectQuery:
     subject_query = property(fget=get_subject_query)
 
     @abc.abstractmethod
-    def match_any_subject(self, match): # pragma: no cover
+    def match_any_subject(self, match):  # pragma: no cover
         """Matches an object that has any relationship to a ``Subject``.
 
         :param match: ``true`` to match any subject, ``false`` to match objects with no subjects
@@ -1120,7 +1120,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_subject_terms(self): # pragma: no cover
+    def clear_subject_terms(self):  # pragma: no cover
         """Clears all subject terms.
 
 
@@ -1133,7 +1133,7 @@ class OsidObjectQuery:
     subject_terms = property(fdel=clear_subject_terms)
 
     @abc.abstractmethod
-    def supports_subject_relevancy_query(self): # pragma: no cover
+    def supports_subject_relevancy_query(self):  # pragma: no cover
         """Tests if a ``RelevancyQuery`` is available to provide queries about the relationships to ``Subjects``.
 
         :return: ``true`` if a relevancy entry query is available, ``false`` otherwise
@@ -1146,7 +1146,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_subject_relevancy_query(self): # pragma: no cover
+    def get_subject_relevancy_query(self):  # pragma: no cover
         """Gets the query for a subject relevancy.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1164,7 +1164,7 @@ class OsidObjectQuery:
     subject_relevancy_query = property(fget=get_subject_relevancy_query)
 
     @abc.abstractmethod
-    def clear_subject_relevancy_terms(self): # pragma: no cover
+    def clear_subject_relevancy_terms(self):  # pragma: no cover
         """Clears all subject relevancy terms.
 
 
@@ -1177,7 +1177,7 @@ class OsidObjectQuery:
     subject_relevancy_terms = property(fdel=clear_subject_relevancy_terms)
 
     @abc.abstractmethod
-    def match_state_id(self, state_id, match): # pragma: no cover
+    def match_state_id(self, state_id, match):  # pragma: no cover
         """Matches an object mapped to the given state.
 
         :param state_id: a state ``Id``
@@ -1192,7 +1192,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_state_id_terms(self): # pragma: no cover
+    def clear_state_id_terms(self):  # pragma: no cover
         """Clears all state ``Id`` terms.
 
 
@@ -1205,7 +1205,7 @@ class OsidObjectQuery:
     state_id_terms = property(fdel=clear_state_id_terms)
 
     @abc.abstractmethod
-    def supports_state_query(self): # pragma: no cover
+    def supports_state_query(self):  # pragma: no cover
         """Tests if a ``StateQuery`` is available to provide queries of processed objects.
 
         :return: ``true`` if a state query is available, ``false`` otherwise
@@ -1218,7 +1218,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_state_query(self): # pragma: no cover
+    def get_state_query(self):  # pragma: no cover
         """Gets the query for a state.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1236,7 +1236,7 @@ class OsidObjectQuery:
     state_query = property(fget=get_state_query)
 
     @abc.abstractmethod
-    def match_any_state(self, match): # pragma: no cover
+    def match_any_state(self, match):  # pragma: no cover
         """Matches an object that has any mapping to a ``State`` in the given ``Process``.
 
         :param match: ``true`` to match any state, ``false`` to match objects with no states
@@ -1249,7 +1249,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_state_terms(self): # pragma: no cover
+    def clear_state_terms(self):  # pragma: no cover
         """Clears all state terms.
 
 
@@ -1262,7 +1262,7 @@ class OsidObjectQuery:
     state_terms = property(fdel=clear_state_terms)
 
     @abc.abstractmethod
-    def match_comment_id(self, comment_id, match): # pragma: no cover
+    def match_comment_id(self, comment_id, match):  # pragma: no cover
         """Matches an object that has the given comment.
 
         :param comment_id: a comment ``Id``
@@ -1277,7 +1277,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_comment_id_terms(self): # pragma: no cover
+    def clear_comment_id_terms(self):  # pragma: no cover
         """Clears all comment ``Id`` terms.
 
 
@@ -1290,7 +1290,7 @@ class OsidObjectQuery:
     comment_id_terms = property(fdel=clear_comment_id_terms)
 
     @abc.abstractmethod
-    def supports_comment_query(self): # pragma: no cover
+    def supports_comment_query(self):  # pragma: no cover
         """Tests if a ``CommentQuery`` is available.
 
         :return: ``true`` if a comment query is available, ``false`` otherwise
@@ -1303,7 +1303,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_query(self): # pragma: no cover
+    def get_comment_query(self):  # pragma: no cover
         """Gets the query for a comment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1321,7 +1321,7 @@ class OsidObjectQuery:
     comment_query = property(fget=get_comment_query)
 
     @abc.abstractmethod
-    def match_any_comment(self, match): # pragma: no cover
+    def match_any_comment(self, match):  # pragma: no cover
         """Matches an object that has any ``Comment`` in the given ``Book``.
 
         :param match: ``true`` to match any comment, ``false`` to match objects with no comments
@@ -1334,7 +1334,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_comment_terms(self): # pragma: no cover
+    def clear_comment_terms(self):  # pragma: no cover
         """Clears all comment terms.
 
 
@@ -1347,7 +1347,7 @@ class OsidObjectQuery:
     comment_terms = property(fdel=clear_comment_terms)
 
     @abc.abstractmethod
-    def match_journal_entry_id(self, journal_entry_id, match): # pragma: no cover
+    def match_journal_entry_id(self, journal_entry_id, match):  # pragma: no cover
         """Matches an object that has the given journal entry.
 
         :param journal_entry_id: a journal entry ``Id``
@@ -1362,7 +1362,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_journal_entry_id_terms(self): # pragma: no cover
+    def clear_journal_entry_id_terms(self):  # pragma: no cover
         """Clears all journal entry ``Id`` terms.
 
 
@@ -1375,7 +1375,7 @@ class OsidObjectQuery:
     journal_entry_id_terms = property(fdel=clear_journal_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_journal_entry_query(self): # pragma: no cover
+    def supports_journal_entry_query(self):  # pragma: no cover
         """Tests if a ``JournalEntry`` is available to provide queries of journaled ``OsidObjects``.
 
         :return: ``true`` if a journal entry query is available, ``false`` otherwise
@@ -1388,7 +1388,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_journal_entry_query(self): # pragma: no cover
+    def get_journal_entry_query(self):  # pragma: no cover
         """Gets the query for a journal entry.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1406,7 +1406,7 @@ class OsidObjectQuery:
     journal_entry_query = property(fget=get_journal_entry_query)
 
     @abc.abstractmethod
-    def match_any_journal_entry(self, match): # pragma: no cover
+    def match_any_journal_entry(self, match):  # pragma: no cover
         """Matches an object that has any ``JournalEntry`` in the given ``Journal``.
 
         :param match: ``true`` to match any journal entry, ``false`` to match objects with no journal entries
@@ -1419,7 +1419,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_journal_entry_terms(self): # pragma: no cover
+    def clear_journal_entry_terms(self):  # pragma: no cover
         """Clears all journal entry terms.
 
 
@@ -1432,7 +1432,7 @@ class OsidObjectQuery:
     journal_entry_terms = property(fdel=clear_journal_entry_terms)
 
     @abc.abstractmethod
-    def supports_statistic_query(self): # pragma: no cover
+    def supports_statistic_query(self):  # pragma: no cover
         """Tests if a ``StatisticQuery`` is available to provide statistical queries.
 
         :return: ``true`` if a statistic query is available, ``false`` otherwise
@@ -1445,7 +1445,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_statistic_query(self): # pragma: no cover
+    def get_statistic_query(self):  # pragma: no cover
         """Gets the query for a statistic.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1463,7 +1463,7 @@ class OsidObjectQuery:
     statistic_query = property(fget=get_statistic_query)
 
     @abc.abstractmethod
-    def match_any_statistic(self, match): # pragma: no cover
+    def match_any_statistic(self, match):  # pragma: no cover
         """Matches an object that has any ``Statistic``.
 
         :param match: ``true`` to match any statistic, ``false`` to match objects with no statistics
@@ -1476,7 +1476,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_statistic_terms(self): # pragma: no cover
+    def clear_statistic_terms(self):  # pragma: no cover
         """Clears all statistic terms.
 
 
@@ -1489,7 +1489,7 @@ class OsidObjectQuery:
     statistic_terms = property(fdel=clear_statistic_terms)
 
     @abc.abstractmethod
-    def match_credit_id(self, credit_id, match): # pragma: no cover
+    def match_credit_id(self, credit_id, match):  # pragma: no cover
         """Matches an object that has the given credit.
 
         :param credit_id: a credit ``Id``
@@ -1504,7 +1504,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_credit_id_terms(self): # pragma: no cover
+    def clear_credit_id_terms(self):  # pragma: no cover
         """Clears all credit ``Id`` terms.
 
 
@@ -1517,7 +1517,7 @@ class OsidObjectQuery:
     credit_id_terms = property(fdel=clear_credit_id_terms)
 
     @abc.abstractmethod
-    def supports_credit_query(self): # pragma: no cover
+    def supports_credit_query(self):  # pragma: no cover
         """Tests if a ``CreditQuery`` is available to provide queries of related acknowledgements.
 
         :return: ``true`` if a credit query is available, ``false`` otherwise
@@ -1530,7 +1530,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_credit_query(self): # pragma: no cover
+    def get_credit_query(self):  # pragma: no cover
         """Gets the query for an ackowledgement credit.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1548,7 +1548,7 @@ class OsidObjectQuery:
     credit_query = property(fget=get_credit_query)
 
     @abc.abstractmethod
-    def match_any_credit(self, match): # pragma: no cover
+    def match_any_credit(self, match):  # pragma: no cover
         """Matches an object that has any ``Credit``.
 
         :param match: ``true`` to match any credit, ``false`` to match objects with no credits
@@ -1561,7 +1561,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_credit_terms(self): # pragma: no cover
+    def clear_credit_terms(self):  # pragma: no cover
         """Clears all credit terms.
 
 
@@ -1574,7 +1574,7 @@ class OsidObjectQuery:
     credit_terms = property(fdel=clear_credit_terms)
 
     @abc.abstractmethod
-    def match_relationship_id(self, relationship_id, match): # pragma: no cover
+    def match_relationship_id(self, relationship_id, match):  # pragma: no cover
         """Matches an object that has the given relationship.
 
         :param relationship_id: a relationship ``Id``
@@ -1589,7 +1589,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_relationship_id_terms(self): # pragma: no cover
+    def clear_relationship_id_terms(self):  # pragma: no cover
         """Clears all relationship ``Id`` terms.
 
 
@@ -1602,7 +1602,7 @@ class OsidObjectQuery:
     relationship_id_terms = property(fdel=clear_relationship_id_terms)
 
     @abc.abstractmethod
-    def supports_relationship_query(self): # pragma: no cover
+    def supports_relationship_query(self):  # pragma: no cover
         """Tests if a ``RelationshipQuery`` is available.
 
         :return: ``true`` if a relationship query is available, ``false`` otherwise
@@ -1615,7 +1615,7 @@ class OsidObjectQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_query(self): # pragma: no cover
+    def get_relationship_query(self):  # pragma: no cover
         """Gets the query for relationship.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1633,7 +1633,7 @@ class OsidObjectQuery:
     relationship_query = property(fget=get_relationship_query)
 
     @abc.abstractmethod
-    def match_any_relationship(self, match): # pragma: no cover
+    def match_any_relationship(self, match):  # pragma: no cover
         """Matches an object that has any ``Relationship``.
 
         :param match: ``true`` to match any relationship, ``false`` to match objects with no relationships
@@ -1646,7 +1646,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_relationship_terms(self): # pragma: no cover
+    def clear_relationship_terms(self):  # pragma: no cover
         """Clears all relationship terms.
 
 
@@ -1659,7 +1659,7 @@ class OsidObjectQuery:
     relationship_terms = property(fdel=clear_relationship_terms)
 
     @abc.abstractmethod
-    def match_relationship_peer_id(self, peer_id, match): # pragma: no cover
+    def match_relationship_peer_id(self, peer_id, match):  # pragma: no cover
         """Matches an object that has a relationship to the given peer ``Id``.
 
         :param peer_id: a relationship peer ``Id``
@@ -1674,7 +1674,7 @@ class OsidObjectQuery:
         pass
 
     @abc.abstractmethod
-    def clear_relationship_peer_id_terms(self): # pragma: no cover
+    def clear_relationship_peer_id_terms(self):  # pragma: no cover
         """Clears all relationship ``Id`` terms.
 
 
@@ -1697,7 +1697,7 @@ class OsidRelationshipQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_end_reason_id(self, state_id, match): # pragma: no cover
+    def match_end_reason_id(self, state_id, match):  # pragma: no cover
         """Match the ``Id`` of the end reason state.
 
         :param state_id: ``Id`` to match
@@ -1712,7 +1712,7 @@ class OsidRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_end_reason_id_terms(self): # pragma: no cover
+    def clear_end_reason_id_terms(self):  # pragma: no cover
         """Clears all state ``Id`` terms.
 
 
@@ -1725,7 +1725,7 @@ class OsidRelationshipQuery:
     end_reason_id_terms = property(fdel=clear_end_reason_id_terms)
 
     @abc.abstractmethod
-    def supports_end_reason_query(self): # pragma: no cover
+    def supports_end_reason_query(self):  # pragma: no cover
         """Tests if a ``StateQuery`` for the end reason is available.
 
         :return: ``true`` if a end reason query is available, ``false`` otherwise
@@ -1738,7 +1738,7 @@ class OsidRelationshipQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_end_reason_query(self, match): # pragma: no cover
+    def get_end_reason_query(self, match):  # pragma: no cover
         """Gets the query for the end reason state.
 
         Each retrieval performs a boolean ``OR``.
@@ -1756,7 +1756,7 @@ class OsidRelationshipQuery:
         return  # osid.process.StateQuery
 
     @abc.abstractmethod
-    def match_any_end_reason(self, match): # pragma: no cover
+    def match_any_end_reason(self, match):  # pragma: no cover
         """Match any end reason state.
 
         :param match: ``true`` to match any state, ``false`` to match no state
@@ -1769,7 +1769,7 @@ class OsidRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_end_reason_terms(self): # pragma: no cover
+    def clear_end_reason_terms(self):  # pragma: no cover
         """Clears all end reason state terms.
 
 
@@ -1797,7 +1797,7 @@ class OsidRuleQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_rule_id(self, rule_id, match): # pragma: no cover
+    def match_rule_id(self, rule_id, match):  # pragma: no cover
         """Match the ``Id`` of the rule.
 
         :param rule_id: ``Id`` to match
@@ -1812,7 +1812,7 @@ class OsidRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rule_id_terms(self): # pragma: no cover
+    def clear_rule_id_terms(self):  # pragma: no cover
         """Clears all rule ``Id`` terms.
 
 
@@ -1825,7 +1825,7 @@ class OsidRuleQuery:
     rule_id_terms = property(fdel=clear_rule_id_terms)
 
     @abc.abstractmethod
-    def supports_rule_query(self): # pragma: no cover
+    def supports_rule_query(self):  # pragma: no cover
         """Tests if a ``RuleQuery`` for the rule is available.
 
         :return: ``true`` if a rule query is available, ``false`` otherwise
@@ -1838,7 +1838,7 @@ class OsidRuleQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rule_query(self, match): # pragma: no cover
+    def get_rule_query(self, match):  # pragma: no cover
         """Gets the query for the rule.
 
         Each retrieval performs a boolean ``OR``.
@@ -1856,7 +1856,7 @@ class OsidRuleQuery:
         return  # osid.rules.RuleQuery
 
     @abc.abstractmethod
-    def match_any_rule(self, match): # pragma: no cover
+    def match_any_rule(self, match):  # pragma: no cover
         """Match any associated rule.
 
         :param match: ``true`` to match any rule, ``false`` to match no rules
@@ -1869,7 +1869,7 @@ class OsidRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rule_terms(self): # pragma: no cover
+    def clear_rule_terms(self):  # pragma: no cover
         """Clears all rule terms.
 
 
@@ -1892,7 +1892,7 @@ class OsidEnablerQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_schedule_id(self, schedule_id, match): # pragma: no cover
+    def match_schedule_id(self, schedule_id, match):  # pragma: no cover
         """Match the ``Id`` of an associated schedule.
 
         :param schedule_id: ``Id`` to match
@@ -1907,7 +1907,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_schedule_id_terms(self): # pragma: no cover
+    def clear_schedule_id_terms(self):  # pragma: no cover
         """Clears all schedule ``Id`` terms.
 
 
@@ -1920,7 +1920,7 @@ class OsidEnablerQuery:
     schedule_id_terms = property(fdel=clear_schedule_id_terms)
 
     @abc.abstractmethod
-    def supports_schedule_query(self): # pragma: no cover
+    def supports_schedule_query(self):  # pragma: no cover
         """Tests if a ``ScheduleQuery`` for the rule is available.
 
         :return: ``true`` if a schedule query is available, ``false`` otherwise
@@ -1933,7 +1933,7 @@ class OsidEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_schedule_query(self, match): # pragma: no cover
+    def get_schedule_query(self, match):  # pragma: no cover
         """Gets the query for the schedule.
 
         Each retrieval performs a boolean ``OR``.
@@ -1951,7 +1951,7 @@ class OsidEnablerQuery:
         return  # osid.calendaring.ScheduleQuery
 
     @abc.abstractmethod
-    def match_any_schedule(self, match): # pragma: no cover
+    def match_any_schedule(self, match):  # pragma: no cover
         """Match any associated schedule.
 
         :param match: ``true`` to match any schedule, ``false`` to match no schedules
@@ -1964,7 +1964,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_schedule_terms(self): # pragma: no cover
+    def clear_schedule_terms(self):  # pragma: no cover
         """Clears all schedule terms.
 
 
@@ -1977,7 +1977,7 @@ class OsidEnablerQuery:
     schedule_terms = property(fdel=clear_schedule_terms)
 
     @abc.abstractmethod
-    def match_event_id(self, event_id, match): # pragma: no cover
+    def match_event_id(self, event_id, match):  # pragma: no cover
         """Match the ``Id`` of an associated event.
 
         :param event_id: ``Id`` to match
@@ -1992,7 +1992,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_event_id_terms(self): # pragma: no cover
+    def clear_event_id_terms(self):  # pragma: no cover
         """Clears all event ``Id`` terms.
 
 
@@ -2005,7 +2005,7 @@ class OsidEnablerQuery:
     event_id_terms = property(fdel=clear_event_id_terms)
 
     @abc.abstractmethod
-    def supports_event_query(self): # pragma: no cover
+    def supports_event_query(self):  # pragma: no cover
         """Tests if a ``EventQuery`` for the rule is available.
 
         :return: ``true`` if an event query is available, ``false`` otherwise
@@ -2018,7 +2018,7 @@ class OsidEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_event_query(self, match): # pragma: no cover
+    def get_event_query(self, match):  # pragma: no cover
         """Gets the query for the event.
 
         Each retrieval performs a boolean ``OR``.
@@ -2036,7 +2036,7 @@ class OsidEnablerQuery:
         return  # osid.calendaring.EventQuery
 
     @abc.abstractmethod
-    def match_any_event(self, match): # pragma: no cover
+    def match_any_event(self, match):  # pragma: no cover
         """Match any associated event.
 
         :param match: ``true`` to match any event, ``false`` to match no events
@@ -2049,7 +2049,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_event_terms(self): # pragma: no cover
+    def clear_event_terms(self):  # pragma: no cover
         """Clears all recurirng event terms.
 
 
@@ -2062,7 +2062,7 @@ class OsidEnablerQuery:
     event_terms = property(fdel=clear_event_terms)
 
     @abc.abstractmethod
-    def match_cyclic_event_id(self, cyclic_event_id, match): # pragma: no cover
+    def match_cyclic_event_id(self, cyclic_event_id, match):  # pragma: no cover
         """Sets the cyclic event ``Id`` for this query.
 
         :param cyclic_event_id: the cyclic event ``Id``
@@ -2077,7 +2077,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_cyclic_event_id_terms(self): # pragma: no cover
+    def clear_cyclic_event_id_terms(self):  # pragma: no cover
         """Clears the cyclic event ``Id`` query terms.
 
 
@@ -2090,7 +2090,7 @@ class OsidEnablerQuery:
     cyclic_event_id_terms = property(fdel=clear_cyclic_event_id_terms)
 
     @abc.abstractmethod
-    def supports_cyclic_event_query(self): # pragma: no cover
+    def supports_cyclic_event_query(self):  # pragma: no cover
         """Tests if a ``CyclicEventQuery`` is available.
 
         :return: ``true`` if a cyclic event query is available, ``false`` otherwise
@@ -2103,7 +2103,7 @@ class OsidEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cyclic_event_query(self): # pragma: no cover
+    def get_cyclic_event_query(self):  # pragma: no cover
         """Gets the query for a cyclic event.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2121,7 +2121,7 @@ class OsidEnablerQuery:
     cyclic_event_query = property(fget=get_cyclic_event_query)
 
     @abc.abstractmethod
-    def match_any_cyclic_event(self, match): # pragma: no cover
+    def match_any_cyclic_event(self, match):  # pragma: no cover
         """Matches any enabler with a cyclic event.
 
         :param match: ``true`` to match any enablers with a cyclic event, ``false`` to match enablers with no cyclic events
@@ -2134,7 +2134,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_cyclic_event_terms(self): # pragma: no cover
+    def clear_cyclic_event_terms(self):  # pragma: no cover
         """Clears the cyclic event query terms.
 
 
@@ -2147,7 +2147,7 @@ class OsidEnablerQuery:
     cyclic_event_terms = property(fdel=clear_cyclic_event_terms)
 
     @abc.abstractmethod
-    def match_demographic_id(self, resource_id, match): # pragma: no cover
+    def match_demographic_id(self, resource_id, match):  # pragma: no cover
         """Match the ``Id`` of the demographic resource.
 
         :param resource_id: ``Id`` to match
@@ -2162,7 +2162,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_demographic_id_terms(self): # pragma: no cover
+    def clear_demographic_id_terms(self):  # pragma: no cover
         """Clears all resource ``Id`` terms.
 
 
@@ -2175,7 +2175,7 @@ class OsidEnablerQuery:
     demographic_id_terms = property(fdel=clear_demographic_id_terms)
 
     @abc.abstractmethod
-    def supports_demographic_query(self): # pragma: no cover
+    def supports_demographic_query(self):  # pragma: no cover
         """Tests if a ``ResourceQuery`` for the demographic is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -2188,7 +2188,7 @@ class OsidEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_demographic_query(self, match): # pragma: no cover
+    def get_demographic_query(self, match):  # pragma: no cover
         """Gets the query for the resource.
 
         Each retrieval performs a boolean ``OR``.
@@ -2206,7 +2206,7 @@ class OsidEnablerQuery:
         return  # osid.resource.ResourceQuery
 
     @abc.abstractmethod
-    def match_any_demographic(self, match): # pragma: no cover
+    def match_any_demographic(self, match):  # pragma: no cover
         """Match any associated resource.
 
         :param match: ``true`` to match any demographic, ``false`` to match no rules
@@ -2219,7 +2219,7 @@ class OsidEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_demographic_terms(self): # pragma: no cover
+    def clear_demographic_terms(self):  # pragma: no cover
         """Clears all demographic terms.
 
 
@@ -2272,7 +2272,7 @@ class OsidCompendiumQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_start_date(self, start, end, match): # pragma: no cover
+    def match_start_date(self, start, end, match):  # pragma: no cover
         """Matches reports whose start date falls in between the given dates inclusive.
 
         :param start: start of date range
@@ -2290,7 +2290,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_start_date(self, match): # pragma: no cover
+    def match_any_start_date(self, match):  # pragma: no cover
         """Matches reports with any start date set.
 
         :param match: ``true`` to match any start date, ``false`` to match no start date
@@ -2303,7 +2303,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def clear_start_date_terms(self): # pragma: no cover
+    def clear_start_date_terms(self):  # pragma: no cover
         """Clears the start date query terms.
 
 
@@ -2316,7 +2316,7 @@ class OsidCompendiumQuery:
     start_date_terms = property(fdel=clear_start_date_terms)
 
     @abc.abstractmethod
-    def match_end_date(self, start, end, match): # pragma: no cover
+    def match_end_date(self, start, end, match):  # pragma: no cover
         """Matches reports whose effective end date falls in between the given dates inclusive.
 
         :param start: start of date range
@@ -2334,7 +2334,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_end_date(self, match): # pragma: no cover
+    def match_any_end_date(self, match):  # pragma: no cover
         """Matches reports with any end date set.
 
         :param match: ``true`` to match any end date, ``false`` to match no start date
@@ -2347,7 +2347,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def clear_end_date_terms(self): # pragma: no cover
+    def clear_end_date_terms(self):  # pragma: no cover
         """Clears the end date query terms.
 
 
@@ -2360,7 +2360,7 @@ class OsidCompendiumQuery:
     end_date_terms = property(fdel=clear_end_date_terms)
 
     @abc.abstractmethod
-    def match_interpolated(self, match): # pragma: no cover
+    def match_interpolated(self, match):  # pragma: no cover
         """Match reports that are interpolated.
 
         :param match: ``true`` to match any interpolated reports, ``false`` to match non-interpolated reports
@@ -2373,7 +2373,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def clear_interpolated_terms(self): # pragma: no cover
+    def clear_interpolated_terms(self):  # pragma: no cover
         """Clears the interpolated query terms.
 
 
@@ -2386,7 +2386,7 @@ class OsidCompendiumQuery:
     interpolated_terms = property(fdel=clear_interpolated_terms)
 
     @abc.abstractmethod
-    def match_extrapolated(self, match): # pragma: no cover
+    def match_extrapolated(self, match):  # pragma: no cover
         """Match reports that are extrapolated.
 
         :param match: ``true`` to match any extrapolated reports, ``false`` to match non-extrapolated reports
@@ -2399,7 +2399,7 @@ class OsidCompendiumQuery:
         pass
 
     @abc.abstractmethod
-    def clear_extrapolated_terms(self): # pragma: no cover
+    def clear_extrapolated_terms(self):  # pragma: no cover
         """Clears the extrapolated query terms.
 
 

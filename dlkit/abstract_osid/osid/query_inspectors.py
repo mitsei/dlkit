@@ -28,7 +28,7 @@ class OsidQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_keyword_terms(self): # pragma: no cover
+    def get_keyword_terms(self):  # pragma: no cover
         """Gets the keyword query terms.
 
         :return: the keyword string terms
@@ -43,7 +43,7 @@ class OsidQueryInspector:
     keyword_terms = property(fget=get_keyword_terms)
 
     @abc.abstractmethod
-    def get_any_terms(self): # pragma: no cover
+    def get_any_terms(self):  # pragma: no cover
         """Gets the any query terms.
 
         :return: the any terms
@@ -70,7 +70,7 @@ class OsidIdentifiableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id_terms(self): # pragma: no cover
+    def get_id_terms(self):  # pragma: no cover
         """Gets the ``Id`` query terms.
 
         :return: the ``Id`` terms
@@ -97,7 +97,7 @@ class OsidExtensibleQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_record_type_terms(self): # pragma: no cover
+    def get_record_type_terms(self):  # pragma: no cover
         """Gets the record type query terms.
 
         :return: the record type terms
@@ -136,7 +136,7 @@ class OsidTemporalQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_effective_terms(self): # pragma: no cover
+    def get_effective_terms(self):  # pragma: no cover
         """Gets the effective query terms.
 
         :return: the query terms
@@ -151,7 +151,7 @@ class OsidTemporalQueryInspector:
     effective_terms = property(fget=get_effective_terms)
 
     @abc.abstractmethod
-    def get_start_date_terms(self): # pragma: no cover
+    def get_start_date_terms(self):  # pragma: no cover
         """Gets the start date query terms.
 
         :return: the query terms
@@ -166,7 +166,7 @@ class OsidTemporalQueryInspector:
     start_date_terms = property(fget=get_start_date_terms)
 
     @abc.abstractmethod
-    def get_end_date_terms(self): # pragma: no cover
+    def get_end_date_terms(self):  # pragma: no cover
         """Gets the end date query terms.
 
         :return: the query terms
@@ -181,7 +181,7 @@ class OsidTemporalQueryInspector:
     end_date_terms = property(fget=get_end_date_terms)
 
     @abc.abstractmethod
-    def get_date_terms(self): # pragma: no cover
+    def get_date_terms(self):  # pragma: no cover
         """Gets the date query terms.
 
         :return: the query terms
@@ -232,7 +232,7 @@ class OsidContainableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequestered_terms(self): # pragma: no cover
+    def get_sequestered_terms(self):  # pragma: no cover
         """Gets the sequestered query terms.
 
         :return: the query terms
@@ -259,7 +259,7 @@ class OsidSourceableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_provider_id_terms(self): # pragma: no cover
+    def get_provider_id_terms(self):  # pragma: no cover
         """Gets the provider ``Id`` query terms.
 
         :return: the provider ``Id`` terms
@@ -274,7 +274,7 @@ class OsidSourceableQueryInspector:
     provider_id_terms = property(fget=get_provider_id_terms)
 
     @abc.abstractmethod
-    def get_provider_terms(self): # pragma: no cover
+    def get_provider_terms(self):  # pragma: no cover
         """Gets the provider query terms.
 
         :return: the provider terms
@@ -289,7 +289,7 @@ class OsidSourceableQueryInspector:
     provider_terms = property(fget=get_provider_terms)
 
     @abc.abstractmethod
-    def get_branding_id_terms(self): # pragma: no cover
+    def get_branding_id_terms(self):  # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the asset ``Id`` terms
@@ -304,7 +304,7 @@ class OsidSourceableQueryInspector:
     branding_id_terms = property(fget=get_branding_id_terms)
 
     @abc.abstractmethod
-    def get_branding_terms(self): # pragma: no cover
+    def get_branding_terms(self):  # pragma: no cover
         """Gets the asset query terms.
 
         :return: the branding terms
@@ -319,7 +319,7 @@ class OsidSourceableQueryInspector:
     branding_terms = property(fget=get_branding_terms)
 
     @abc.abstractmethod
-    def get_license_terms(self): # pragma: no cover
+    def get_license_terms(self):  # pragma: no cover
         """Gets the license query terms.
 
         :return: the license terms
@@ -358,7 +358,7 @@ class OsidOperableQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_active_terms(self): # pragma: no cover
+    def get_active_terms(self):  # pragma: no cover
         """Gets the active query terms.
 
         :return: the query terms
@@ -373,7 +373,7 @@ class OsidOperableQueryInspector:
     active_terms = property(fget=get_active_terms)
 
     @abc.abstractmethod
-    def get_enabled_terms(self): # pragma: no cover
+    def get_enabled_terms(self):  # pragma: no cover
         """Gets the administratively enabled query terms.
 
         :return: the query terms
@@ -388,7 +388,7 @@ class OsidOperableQueryInspector:
     enabled_terms = property(fget=get_enabled_terms)
 
     @abc.abstractmethod
-    def get_disabled_terms(self): # pragma: no cover
+    def get_disabled_terms(self):  # pragma: no cover
         """Gets the administratively disabled query terms.
 
         :return: the query terms
@@ -403,7 +403,7 @@ class OsidOperableQueryInspector:
     disabled_terms = property(fget=get_disabled_terms)
 
     @abc.abstractmethod
-    def get_operational_terms(self): # pragma: no cover
+    def get_operational_terms(self):  # pragma: no cover
         """Gets the operational query terms.
 
         :return: the query terms
@@ -430,7 +430,7 @@ class OsidObjectQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_display_name_terms(self): # pragma: no cover
+    def get_display_name_terms(self):  # pragma: no cover
         """Gets the display name query terms.
 
         :return: the display name terms
@@ -445,7 +445,7 @@ class OsidObjectQueryInspector:
     display_name_terms = property(fget=get_display_name_terms)
 
     @abc.abstractmethod
-    def get_description_terms(self): # pragma: no cover
+    def get_description_terms(self):  # pragma: no cover
         """Gets the description query terms.
 
         :return: the description terms
@@ -460,7 +460,7 @@ class OsidObjectQueryInspector:
     description_terms = property(fget=get_description_terms)
 
     @abc.abstractmethod
-    def get_genus_type_terms(self): # pragma: no cover
+    def get_genus_type_terms(self):  # pragma: no cover
         """Gets the genus type query terms.
 
         :return: the genus type terms
@@ -475,7 +475,7 @@ class OsidObjectQueryInspector:
     genus_type_terms = property(fget=get_genus_type_terms)
 
     @abc.abstractmethod
-    def get_parent_genus_type_terms(self): # pragma: no cover
+    def get_parent_genus_type_terms(self):  # pragma: no cover
         """Gets the parent genus type query terms.
 
         :return: the parent genus type terms
@@ -490,7 +490,7 @@ class OsidObjectQueryInspector:
     parent_genus_type_terms = property(fget=get_parent_genus_type_terms)
 
     @abc.abstractmethod
-    def get_subject_id_terms(self): # pragma: no cover
+    def get_subject_id_terms(self):  # pragma: no cover
         """Gets the subject ``Id`` query terms.
 
         :return: the subject ``Id`` terms
@@ -505,7 +505,7 @@ class OsidObjectQueryInspector:
     subject_id_terms = property(fget=get_subject_id_terms)
 
     @abc.abstractmethod
-    def get_subject_terms(self): # pragma: no cover
+    def get_subject_terms(self):  # pragma: no cover
         """Gets the subject query terms.
 
         :return: the subject query terms
@@ -520,7 +520,7 @@ class OsidObjectQueryInspector:
     subject_terms = property(fget=get_subject_terms)
 
     @abc.abstractmethod
-    def get_subject_relevancy_terms(self): # pragma: no cover
+    def get_subject_relevancy_terms(self):  # pragma: no cover
         """Gets the subject relevancy query terms.
 
         :return: the subject relevancy query terms
@@ -535,7 +535,7 @@ class OsidObjectQueryInspector:
     subject_relevancy_terms = property(fget=get_subject_relevancy_terms)
 
     @abc.abstractmethod
-    def get_state_id_terms(self): # pragma: no cover
+    def get_state_id_terms(self):  # pragma: no cover
         """Gets the state ``Id`` query terms.
 
         :return: the state ``Id`` terms
@@ -550,7 +550,7 @@ class OsidObjectQueryInspector:
     state_id_terms = property(fget=get_state_id_terms)
 
     @abc.abstractmethod
-    def get_state_terms(self): # pragma: no cover
+    def get_state_terms(self):  # pragma: no cover
         """Gets the state query terms.
 
         :return: the state query terms
@@ -565,7 +565,7 @@ class OsidObjectQueryInspector:
     state_terms = property(fget=get_state_terms)
 
     @abc.abstractmethod
-    def get_comment_id_terms(self): # pragma: no cover
+    def get_comment_id_terms(self):  # pragma: no cover
         """Gets the comment ``Id`` query terms.
 
         :return: the comment ``Id`` terms
@@ -580,7 +580,7 @@ class OsidObjectQueryInspector:
     comment_id_terms = property(fget=get_comment_id_terms)
 
     @abc.abstractmethod
-    def get_comment_terms(self): # pragma: no cover
+    def get_comment_terms(self):  # pragma: no cover
         """Gets the comment query terms.
 
         :return: the comment query terms
@@ -595,7 +595,7 @@ class OsidObjectQueryInspector:
     comment_terms = property(fget=get_comment_terms)
 
     @abc.abstractmethod
-    def get_journal_entry_id_terms(self): # pragma: no cover
+    def get_journal_entry_id_terms(self):  # pragma: no cover
         """Gets the journal entry ``Id`` query terms.
 
         :return: the journal entry ``Id`` terms
@@ -610,7 +610,7 @@ class OsidObjectQueryInspector:
     journal_entry_id_terms = property(fget=get_journal_entry_id_terms)
 
     @abc.abstractmethod
-    def get_journal_entry_terms(self): # pragma: no cover
+    def get_journal_entry_terms(self):  # pragma: no cover
         """Gets the journal entry query terms.
 
         :return: the journal entry query terms
@@ -625,7 +625,7 @@ class OsidObjectQueryInspector:
     journal_entry_terms = property(fget=get_journal_entry_terms)
 
     @abc.abstractmethod
-    def get_statistic_terms(self): # pragma: no cover
+    def get_statistic_terms(self):  # pragma: no cover
         """Gets the statistic query terms.
 
         :return: the statistic query terms
@@ -640,7 +640,7 @@ class OsidObjectQueryInspector:
     statistic_terms = property(fget=get_statistic_terms)
 
     @abc.abstractmethod
-    def get_credit_id_terms(self): # pragma: no cover
+    def get_credit_id_terms(self):  # pragma: no cover
         """Gets the credit ``Id`` query terms.
 
         :return: the credit ``Id`` terms
@@ -655,7 +655,7 @@ class OsidObjectQueryInspector:
     credit_id_terms = property(fget=get_credit_id_terms)
 
     @abc.abstractmethod
-    def get_credit_terms(self): # pragma: no cover
+    def get_credit_terms(self):  # pragma: no cover
         """Gets the credit query terms.
 
         :return: the credit query terms
@@ -670,7 +670,7 @@ class OsidObjectQueryInspector:
     credit_terms = property(fget=get_credit_terms)
 
     @abc.abstractmethod
-    def get_relationship_id_terms(self): # pragma: no cover
+    def get_relationship_id_terms(self):  # pragma: no cover
         """Gets the relationship ``Id`` query terms.
 
         :return: the relationship ``Id`` terms
@@ -685,7 +685,7 @@ class OsidObjectQueryInspector:
     relationship_id_terms = property(fget=get_relationship_id_terms)
 
     @abc.abstractmethod
-    def get_relationship_terms(self): # pragma: no cover
+    def get_relationship_terms(self):  # pragma: no cover
         """Gets the relationship query terms.
 
         :return: the relationship query terms
@@ -700,7 +700,7 @@ class OsidObjectQueryInspector:
     relationship_terms = property(fget=get_relationship_terms)
 
     @abc.abstractmethod
-    def get_relationship_peer_id_terms(self): # pragma: no cover
+    def get_relationship_peer_id_terms(self):  # pragma: no cover
         """Gets the relationship peer ``Id`` query terms.
 
         :return: the relationship peer ``Id`` terms
@@ -727,7 +727,7 @@ class OsidRelationshipQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_end_reason_id_terms(self): # pragma: no cover
+    def get_end_reason_id_terms(self):  # pragma: no cover
         """Gets the end reaosn state ``Id`` query terms.
 
         :return: the state ``Id`` terms
@@ -742,7 +742,7 @@ class OsidRelationshipQueryInspector:
     end_reason_id_terms = property(fget=get_end_reason_id_terms)
 
     @abc.abstractmethod
-    def get_end_reason_terms(self): # pragma: no cover
+    def get_end_reason_terms(self):  # pragma: no cover
         """Gets the end reaosn state query terms.
 
         :return: the state query terms
@@ -781,7 +781,7 @@ class OsidRuleQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_rule_id_terms(self): # pragma: no cover
+    def get_rule_id_terms(self):  # pragma: no cover
         """Gets the rule ``Id`` query terms.
 
         :return: the rule ``Id`` terms
@@ -796,7 +796,7 @@ class OsidRuleQueryInspector:
     rule_id_terms = property(fget=get_rule_id_terms)
 
     @abc.abstractmethod
-    def get_rule_terms(self): # pragma: no cover
+    def get_rule_terms(self):  # pragma: no cover
         """Gets the rule query terms.
 
         :return: the rule query terms
@@ -823,7 +823,7 @@ class OsidEnablerQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_schedule_id_terms(self): # pragma: no cover
+    def get_schedule_id_terms(self):  # pragma: no cover
         """Gets the effective schedule ``Id`` query terms.
 
         :return: the effecive schedule ``Id`` terms
@@ -838,7 +838,7 @@ class OsidEnablerQueryInspector:
     schedule_id_terms = property(fget=get_schedule_id_terms)
 
     @abc.abstractmethod
-    def get_schedule_terms(self): # pragma: no cover
+    def get_schedule_terms(self):  # pragma: no cover
         """Gets the effective schedule query terms.
 
         :return: the query terms
@@ -853,7 +853,7 @@ class OsidEnablerQueryInspector:
     schedule_terms = property(fget=get_schedule_terms)
 
     @abc.abstractmethod
-    def get_event_id_terms(self): # pragma: no cover
+    def get_event_id_terms(self):  # pragma: no cover
         """Gets the effective event ``Id`` query terms.
 
         :return: the effecive recurring event ``Id`` terms
@@ -868,7 +868,7 @@ class OsidEnablerQueryInspector:
     event_id_terms = property(fget=get_event_id_terms)
 
     @abc.abstractmethod
-    def get_event_terms(self): # pragma: no cover
+    def get_event_terms(self):  # pragma: no cover
         """Gets the effective event query terms.
 
         :return: the query terms
@@ -883,7 +883,7 @@ class OsidEnablerQueryInspector:
     event_terms = property(fget=get_event_terms)
 
     @abc.abstractmethod
-    def get_cyclic_event_id_terms(self): # pragma: no cover
+    def get_cyclic_event_id_terms(self):  # pragma: no cover
         """Gets the cyclic event ``Id`` query terms.
 
         :return: the query terms
@@ -898,7 +898,7 @@ class OsidEnablerQueryInspector:
     cyclic_event_id_terms = property(fget=get_cyclic_event_id_terms)
 
     @abc.abstractmethod
-    def get_cyclic_event_terms(self): # pragma: no cover
+    def get_cyclic_event_terms(self):  # pragma: no cover
         """Gets the cyclic event query terms.
 
         :return: the query terms
@@ -913,7 +913,7 @@ class OsidEnablerQueryInspector:
     cyclic_event_terms = property(fget=get_cyclic_event_terms)
 
     @abc.abstractmethod
-    def get_demographic_id_terms(self): # pragma: no cover
+    def get_demographic_id_terms(self):  # pragma: no cover
         """Gets the demographic resource ``Id`` query terms.
 
         :return: the resource ``Id`` terms
@@ -928,7 +928,7 @@ class OsidEnablerQueryInspector:
     demographic_id_terms = property(fget=get_demographic_id_terms)
 
     @abc.abstractmethod
-    def get_demographic_terms(self): # pragma: no cover
+    def get_demographic_terms(self):  # pragma: no cover
         """Gets the demographic resource query terms.
 
         :return: the resource query terms
@@ -991,7 +991,7 @@ class OsidCompendiumQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_start_date_terms(self): # pragma: no cover
+    def get_start_date_terms(self):  # pragma: no cover
         """Gets the start date query terms.
 
         :return: the query terms
@@ -1006,7 +1006,7 @@ class OsidCompendiumQueryInspector:
     start_date_terms = property(fget=get_start_date_terms)
 
     @abc.abstractmethod
-    def get_end_date_terms(self): # pragma: no cover
+    def get_end_date_terms(self):  # pragma: no cover
         """Gets the end date query terms.
 
         :return: the query terms
@@ -1021,7 +1021,7 @@ class OsidCompendiumQueryInspector:
     end_date_terms = property(fget=get_end_date_terms)
 
     @abc.abstractmethod
-    def get_interpolated_terms(self): # pragma: no cover
+    def get_interpolated_terms(self):  # pragma: no cover
         """Gets the interpolated query terms.
 
         :return: the query terms
@@ -1036,7 +1036,7 @@ class OsidCompendiumQueryInspector:
     interpolated_terms = property(fget=get_interpolated_terms)
 
     @abc.abstractmethod
-    def get_extrapolated_terms(self): # pragma: no cover
+    def get_extrapolated_terms(self):  # pragma: no cover
         """Gets the extrapolated query terms.
 
         :return: the query terms

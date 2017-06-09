@@ -49,7 +49,7 @@ class Authorization:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_implicit(self): # pragma: no cover
+    def is_implicit(self):  # pragma: no cover
         """Tests if this authorization is implicit.
 
         :return: ``true`` if this authorization is implicit, ``false`` otherwise
@@ -62,7 +62,7 @@ class Authorization:
         return  # boolean
 
     @abc.abstractmethod
-    def has_resource(self): # pragma: no cover
+    def has_resource(self):  # pragma: no cover
         """Tests if this authorization has a ``Resource``.
 
         :return: ``true`` if this authorization has a ``Resource,``  ``false`` otherwise
@@ -75,7 +75,7 @@ class Authorization:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_id(self): # pragma: no cover
+    def get_resource_id(self):  # pragma: no cover
         """Gets the ``resource _id`` for this authorization.
 
         :return: the ``Resource Id``
@@ -90,7 +90,7 @@ class Authorization:
     resource_id = property(fget=get_resource_id)
 
     @abc.abstractmethod
-    def get_resource(self): # pragma: no cover
+    def get_resource(self):  # pragma: no cover
         """Gets the ``Resource`` for this authorization.
 
         :return: the ``Resource``
@@ -106,7 +106,7 @@ class Authorization:
     resource = property(fget=get_resource)
 
     @abc.abstractmethod
-    def has_trust(self): # pragma: no cover
+    def has_trust(self):  # pragma: no cover
         """Tests if this authorization has a ``Trust``.
 
         :return: ``true`` if this authorization has a ``Trust,``  ``false`` otherwise
@@ -119,7 +119,7 @@ class Authorization:
         return  # boolean
 
     @abc.abstractmethod
-    def get_trust_id(self): # pragma: no cover
+    def get_trust_id(self):  # pragma: no cover
         """Gets the ``Trust``  ``Id`` for this authorization.
 
         :return: the trust ``Id``
@@ -134,7 +134,7 @@ class Authorization:
     trust_id = property(fget=get_trust_id)
 
     @abc.abstractmethod
-    def get_trust(self): # pragma: no cover
+    def get_trust(self):  # pragma: no cover
         """Gets the ``Trust`` for this authorization.
 
         :return: the ``Trust``
@@ -150,7 +150,7 @@ class Authorization:
     trust = property(fget=get_trust)
 
     @abc.abstractmethod
-    def has_agent(self): # pragma: no cover
+    def has_agent(self):  # pragma: no cover
         """Tests if this authorization has an ``Agent``.
 
         An implied authorization may have an ``Agent`` in addition to a
@@ -166,7 +166,7 @@ class Authorization:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_id(self): # pragma: no cover
+    def get_agent_id(self):  # pragma: no cover
         """Gets the ``Agent Id`` for this authorization.
 
         :return: the ``Agent Id``
@@ -181,7 +181,7 @@ class Authorization:
     agent_id = property(fget=get_agent_id)
 
     @abc.abstractmethod
-    def get_agent(self): # pragma: no cover
+    def get_agent(self):  # pragma: no cover
         """Gets the ``Agent`` for this authorization.
 
         :return: the ``Agent``
@@ -197,7 +197,7 @@ class Authorization:
     agent = property(fget=get_agent)
 
     @abc.abstractmethod
-    def get_function_id(self): # pragma: no cover
+    def get_function_id(self):  # pragma: no cover
         """Gets the ``Function Id`` for this authorization.
 
         :return: the function ``Id``
@@ -212,7 +212,7 @@ class Authorization:
     function_id = property(fget=get_function_id)
 
     @abc.abstractmethod
-    def get_function(self): # pragma: no cover
+    def get_function(self):  # pragma: no cover
         """Gets the ``Function`` for this authorization.
 
         :return: the function
@@ -227,7 +227,7 @@ class Authorization:
     function = property(fget=get_function)
 
     @abc.abstractmethod
-    def get_qualifier_id(self): # pragma: no cover
+    def get_qualifier_id(self):  # pragma: no cover
         """Gets the ``Qualifier Id`` for this authorization.
 
         :return: the qualifier ``Id``
@@ -242,7 +242,7 @@ class Authorization:
     qualifier_id = property(fget=get_qualifier_id)
 
     @abc.abstractmethod
-    def get_qualifier(self): # pragma: no cover
+    def get_qualifier(self):  # pragma: no cover
         """Gets the qualifier for this authorization.
 
         :return: the qualifier
@@ -257,7 +257,7 @@ class Authorization:
     qualifier = property(fget=get_qualifier)
 
     @abc.abstractmethod
-    def get_authorization_record(self, authorization_record_type): # pragma: no cover
+    def get_authorization_record(self, authorization_record_type):  # pragma: no cover
         """Gets the authorization record corresponding to the given ``Authorization`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -293,7 +293,7 @@ class AuthorizationForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorization_form_record(self, authorization_record_type): # pragma: no cover
+    def get_authorization_form_record(self, authorization_record_type):  # pragma: no cover
         """Gets the ``AuthorizationFormRecord`` corresponding to the given authorization record ``Type``.
 
         :param authorization_record_type: the authorization record type
@@ -325,7 +325,7 @@ class AuthorizationList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_authorization(self): # pragma: no cover
+    def get_next_authorization(self):  # pragma: no cover
         """Gets the next ``Authorization`` in this list.
 
         :return: the next ``Authorization`` in this list. The ``has_next()`` method should be used to test that a next ``Authorization`` is available before calling this method.
@@ -341,7 +341,7 @@ class AuthorizationList:
     next_authorization = property(fget=get_next_authorization)
 
     @abc.abstractmethod
-    def get_next_authorizations(self, n): # pragma: no cover
+    def get_next_authorizations(self, n):  # pragma: no cover
         """Gets the next set of ``Authorization`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Authorization`` elements requested which should be less than or equal to ``available()``
@@ -369,7 +369,7 @@ class Function:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_id(self): # pragma: no cover
+    def get_qualifier_hierarchy_id(self):  # pragma: no cover
         """Gets the qualifier hierarchy ``Id`` for this function.
 
         :return: the qualifier hierarchy ``Id``
@@ -384,7 +384,7 @@ class Function:
     qualifier_hierarchy_id = property(fget=get_qualifier_hierarchy_id)
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy(self): # pragma: no cover
+    def get_qualifier_hierarchy(self):  # pragma: no cover
         """Gets the qualifier hierarchy for this function.
 
         :return: the qualifier hierarchy
@@ -399,7 +399,7 @@ class Function:
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
     @abc.abstractmethod
-    def get_function_record(self, function_record_type): # pragma: no cover
+    def get_function_record(self, function_record_type):  # pragma: no cover
         """Gets the function record corresponding to the given ``Function`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -435,7 +435,7 @@ class FunctionForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_metadata(self): # pragma: no cover
+    def get_qualifier_hierarchy_metadata(self):  # pragma: no cover
         """Gets the metadata for a qualifier hierarchy.
 
         :return: metadata for the qualifier hierarchy
@@ -450,7 +450,7 @@ class FunctionForm:
     qualifier_hierarchy_metadata = property(fget=get_qualifier_hierarchy_metadata)
 
     @abc.abstractmethod
-    def set_qualifier_hierarchy(self, qualifier_hierarchy_id): # pragma: no cover
+    def set_qualifier_hierarchy(self, qualifier_hierarchy_id):  # pragma: no cover
         """Sets the qualifier hierarchy.
 
         :param qualifier_hierarchy_id: the new qualifier hierarchy
@@ -465,7 +465,7 @@ class FunctionForm:
         pass
 
     @abc.abstractmethod
-    def clear_qualifier_hierarchy(self): # pragma: no cover
+    def clear_qualifier_hierarchy(self):  # pragma: no cover
         """Clears the qualifier hierarchy.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -478,7 +478,7 @@ class FunctionForm:
     qualifier_hierarchy = property(fset=set_qualifier_hierarchy, fdel=clear_qualifier_hierarchy)
 
     @abc.abstractmethod
-    def get_function_form_record(self, function_record_type): # pragma: no cover
+    def get_function_form_record(self, function_record_type):  # pragma: no cover
         """Gets the ``FunctionFormRecord`` corresponding to the given function record ``Type``.
 
         :param function_record_type: the function record type
@@ -510,7 +510,7 @@ class FunctionList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_function(self): # pragma: no cover
+    def get_next_function(self):  # pragma: no cover
         """Gets the next ``Function`` in this list.
 
         :return: the next ``Function`` in this list. The ``has_next()`` method should be used to test that a next ``Function`` is available before calling this method.
@@ -526,7 +526,7 @@ class FunctionList:
     next_function = property(fget=get_next_function)
 
     @abc.abstractmethod
-    def get_next_functions(self, n): # pragma: no cover
+    def get_next_functions(self, n):  # pragma: no cover
         """Gets the next set of ``Function`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Function`` elements requested which should be less than or equal to ``available()``
@@ -552,7 +552,7 @@ class Qualifier:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_record(self, qualifier_record_type): # pragma: no cover
+    def get_qualifier_record(self, qualifier_record_type):  # pragma: no cover
         """Gets the qualifier record corresponding to the given ``Qualifier`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -588,7 +588,7 @@ class QualifierForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_form_record(self, qualifier_record_type): # pragma: no cover
+    def get_qualifier_form_record(self, qualifier_record_type):  # pragma: no cover
         """Gets the ``QualifierFormRecord`` corresponding to the given qualifier record ``Type``.
 
         :param qualifier_record_type: the qualifier record type
@@ -620,7 +620,7 @@ class QualifierList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_qualifier(self): # pragma: no cover
+    def get_next_qualifier(self):  # pragma: no cover
         """Gets the next ``Qualifier`` in this list.
 
         :return: the next ``Qualifier`` in this list. The ``has_next()`` method should be used to test that a next ``Qualifier`` is available before calling this method.
@@ -636,7 +636,7 @@ class QualifierList:
     next_qualifier = property(fget=get_next_qualifier)
 
     @abc.abstractmethod
-    def get_next_qualifiers(self, n): # pragma: no cover
+    def get_next_qualifiers(self, n):  # pragma: no cover
         """Gets the next set of ``Qualifier`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Qualifier`` elements requested which should be less than or equal to ``available()``
@@ -663,7 +663,7 @@ class QualifierNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier(self): # pragma: no cover
+    def get_qualifier(self):  # pragma: no cover
         """Gets the ``Qualifier`` at this node.
 
         :return: the qualifier represented by this node
@@ -678,7 +678,7 @@ class QualifierNode:
     qualifier = property(fget=get_qualifier)
 
     @abc.abstractmethod
-    def get_parent_qualifier_nodes(self): # pragma: no cover
+    def get_parent_qualifier_nodes(self):  # pragma: no cover
         """Gets the parents of this qualifier.
 
         :return: the parents of this qualifier
@@ -693,7 +693,7 @@ class QualifierNode:
     parent_qualifier_nodes = property(fget=get_parent_qualifier_nodes)
 
     @abc.abstractmethod
-    def get_child_qualifier_nodes(self): # pragma: no cover
+    def get_child_qualifier_nodes(self):  # pragma: no cover
         """Gets the children of this qualifier.
 
         :return: the children of this qualifier
@@ -723,7 +723,7 @@ class QualifierNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_qualifier_node(self): # pragma: no cover
+    def get_next_qualifier_node(self):  # pragma: no cover
         """Gets the next ``QualifierNode`` in this list.
 
         :return: the next ``QualifierNode`` in this list. The ``has_next()`` method should be used to test that a next ``QualifierNode`` is available before calling this method.
@@ -739,7 +739,7 @@ class QualifierNodeList:
     next_qualifier_node = property(fget=get_next_qualifier_node)
 
     @abc.abstractmethod
-    def get_next_qualifier_nodes(self, n): # pragma: no cover
+    def get_next_qualifier_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``QualifierNode`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``QualifierNode`` elements requested which should be less than or equal to ``available()``
@@ -760,7 +760,7 @@ class Vault:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_record(self, vault_record_type): # pragma: no cover
+    def get_vault_record(self, vault_record_type):  # pragma: no cover
         """Gets the vault record corresponding to the given ``Vault`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -796,7 +796,7 @@ class VaultForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault_form_record(self, vault_record_type): # pragma: no cover
+    def get_vault_form_record(self, vault_record_type):  # pragma: no cover
         """Gets the ``VaultFormRecord`` corresponding to the given vault record ``Type``.
 
         :param vault_record_type: a vault record type
@@ -827,7 +827,7 @@ class VaultList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_vault(self): # pragma: no cover
+    def get_next_vault(self):  # pragma: no cover
         """Gets the next ``Vault`` in this list.
 
         :return: the next ``Vault`` in this list. The ``has_next()`` method should be used to test that a next ``Vault`` is available before calling this method.
@@ -843,7 +843,7 @@ class VaultList:
     next_vault = property(fget=get_next_vault)
 
     @abc.abstractmethod
-    def get_next_vaults(self, n): # pragma: no cover
+    def get_next_vaults(self, n):  # pragma: no cover
         """Gets the next set of ``Vault`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Vault`` elements requested which must be less than or equal to ``available()``
@@ -870,7 +870,7 @@ class VaultNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_vault(self): # pragma: no cover
+    def get_vault(self):  # pragma: no cover
         """Gets the ``Vault`` at this node.
 
         :return: the vault represented by this node
@@ -885,7 +885,7 @@ class VaultNode:
     vault = property(fget=get_vault)
 
     @abc.abstractmethod
-    def get_parent_vault_nodes(self): # pragma: no cover
+    def get_parent_vault_nodes(self):  # pragma: no cover
         """Gets the parents of this vault.
 
         :return: the parents of this vault
@@ -900,7 +900,7 @@ class VaultNode:
     parent_vault_nodes = property(fget=get_parent_vault_nodes)
 
     @abc.abstractmethod
-    def get_child_vault_nodes(self): # pragma: no cover
+    def get_child_vault_nodes(self):  # pragma: no cover
         """Gets the children of this vault.
 
         :return: the children of this vault
@@ -930,7 +930,7 @@ class VaultNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_vault_node(self): # pragma: no cover
+    def get_next_vault_node(self):  # pragma: no cover
         """Gets the next ``VaultNode`` in this list.
 
         :return: the next ``VaultNode`` in this list. The ``has_next()`` method should be used to test that a next ``VaultNode`` is available before calling this method.
@@ -946,7 +946,7 @@ class VaultNodeList:
     next_vault_node = property(fget=get_next_vault_node)
 
     @abc.abstractmethod
-    def get_next_vault_nodes(self, n): # pragma: no cover
+    def get_next_vault_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``VaultNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``VaultNode`` elements requested which must be less than or equal to ``available()``

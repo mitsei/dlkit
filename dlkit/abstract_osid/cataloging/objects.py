@@ -31,7 +31,7 @@ class Catalog:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog_record(self, catalog_record_type): # pragma: no cover
+    def get_catalog_record(self, catalog_record_type):  # pragma: no cover
         """Gets the catalog record corresponding to the given ``Catalog`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -67,7 +67,7 @@ class CatalogForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog_form_record(self, catalog_record_type): # pragma: no cover
+    def get_catalog_form_record(self, catalog_record_type):  # pragma: no cover
         """Gets the ``CatalogFormRecord`` corresponding to the given catalog record ``Type``.
 
         :param catalog_record_type: a catalog record type
@@ -99,7 +99,7 @@ class CatalogList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_catalog(self): # pragma: no cover
+    def get_next_catalog(self):  # pragma: no cover
         """Gets the next ``Catalog`` in this list.
 
         :return: the next ``Catalog`` in this list. The ``has_next()`` method should be used to test that a next ``Catalog`` is available before calling this method.
@@ -115,7 +115,7 @@ class CatalogList:
     next_catalog = property(fget=get_next_catalog)
 
     @abc.abstractmethod
-    def get_next_catalogs(self, n): # pragma: no cover
+    def get_next_catalogs(self, n):  # pragma: no cover
         """Gets the next set of ``Catalog`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Catalog`` elements requested which should be less than or equal to ``available()``
@@ -142,7 +142,7 @@ class CatalogNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog(self): # pragma: no cover
+    def get_catalog(self):  # pragma: no cover
         """Gets the ``Catalog`` at this node.
 
         :return: the catalog represented by this node
@@ -157,7 +157,7 @@ class CatalogNode:
     catalog = property(fget=get_catalog)
 
     @abc.abstractmethod
-    def get_parent_catalog_nodes(self): # pragma: no cover
+    def get_parent_catalog_nodes(self):  # pragma: no cover
         """Gets the parents of this catalog.
 
         :return: the parents of the ``id``
@@ -172,7 +172,7 @@ class CatalogNode:
     parent_catalog_nodes = property(fget=get_parent_catalog_nodes)
 
     @abc.abstractmethod
-    def get_child_catalog_nodes(self): # pragma: no cover
+    def get_child_catalog_nodes(self):  # pragma: no cover
         """Gets the children of this catalog.
 
         :return: the children of this catalog
@@ -202,7 +202,7 @@ class CatalogNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_catalog_node(self): # pragma: no cover
+    def get_next_catalog_node(self):  # pragma: no cover
         """Gets the next ``CatalogNode`` in this list.
 
         :return: the next ``CatalogNode`` in this list. The ``has_next()`` method should be used to test that a next ``CatalogNode`` is available before calling this method.
@@ -218,7 +218,7 @@ class CatalogNodeList:
     next_catalog_node = property(fget=get_next_catalog_node)
 
     @abc.abstractmethod
-    def get_next_catalog_nodes(self, n): # pragma: no cover
+    def get_next_catalog_nodes(self, n):  # pragma: no cover
         """Gets the next set of ``CatalogNode`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``CatalogNode`` elements requested which should be less than or equal to ``available()``

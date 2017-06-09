@@ -21,7 +21,7 @@ class CatalogSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_catalogs(self, catalog_ids): # pragma: no cover
+    def search_among_catalogs(self, catalog_ids):  # pragma: no cover
         """Execute this search among the given list of catalogs.
 
         :param catalog_ids: list of catalogs
@@ -34,7 +34,7 @@ class CatalogSearch:
         pass
 
     @abc.abstractmethod
-    def order_catalog_results(self, catalog_search_order): # pragma: no cover
+    def order_catalog_results(self, catalog_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param catalog_search_order: catalog search order
@@ -48,7 +48,7 @@ class CatalogSearch:
         pass
 
     @abc.abstractmethod
-    def get_catalog_search_record(self, catalog_search_record_type): # pragma: no cover
+    def get_catalog_search_record(self, catalog_search_record_type):  # pragma: no cover
         """Gets the catalog search record corresponding to the given catalog search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class CatalogSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalogs(self): # pragma: no cover
+    def get_catalogs(self):  # pragma: no cover
         """Gets the catalog list resulting from the search.
 
         :return: the catalogs list
@@ -88,7 +88,7 @@ class CatalogSearchResults:
     catalogs = property(fget=get_catalogs)
 
     @abc.abstractmethod
-    def get_catalog_query_inspector(self): # pragma: no cover
+    def get_catalog_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the catalog query inspector
@@ -103,7 +103,7 @@ class CatalogSearchResults:
     catalog_query_inspector = property(fget=get_catalog_query_inspector)
 
     @abc.abstractmethod
-    def get_catalog_search_results_record(self, catalog_search_record_type): # pragma: no cover
+    def get_catalog_search_results_record(self, catalog_search_record_type):  # pragma: no cover
         """Gets the catalog search results record corresponding to the given catalog search record ``Type``.
 
         This method is used to retrieve an object implementing the

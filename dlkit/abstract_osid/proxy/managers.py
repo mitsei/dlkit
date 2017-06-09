@@ -21,7 +21,7 @@ class ProxyProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_proxy(self): # pragma: no cover
+    def supports_proxy(self):  # pragma: no cover
         """Tests if a proxy session is supported.
 
         :return: ``true`` if proxy is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class ProxyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proxy_record_types(self): # pragma: no cover
+    def get_proxy_record_types(self):  # pragma: no cover
         """Gets the supported ``Proxy`` record interface types.
 
         :return: a list containing the supported ``Proxy`` record types
@@ -49,7 +49,7 @@ class ProxyProfile:
     proxy_record_types = property(fget=get_proxy_record_types)
 
     @abc.abstractmethod
-    def supports_proxy_record_type(self, proxy_record_type): # pragma: no cover
+    def supports_proxy_record_type(self, proxy_record_type):  # pragma: no cover
         """Tests if the given ``Proxy`` record interface type is supported.
 
         :param proxy_record_type: a ``Type`` indicating a ``Proxy`` record type
@@ -64,7 +64,7 @@ class ProxyProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proxy_condition_record_types(self): # pragma: no cover
+    def get_proxy_condition_record_types(self):  # pragma: no cover
         """Gets the supported ``ProxyCondition`` record interface types.
 
         :return: a list containing the supported ``ProxyCondition`` record types
@@ -79,7 +79,7 @@ class ProxyProfile:
     proxy_condition_record_types = property(fget=get_proxy_condition_record_types)
 
     @abc.abstractmethod
-    def supports_proxy_condition_record_type(self, proxy_condition_record_type): # pragma: no cover
+    def supports_proxy_condition_record_type(self, proxy_condition_record_type):  # pragma: no cover
         """Tests if the given ``ProxyCondition`` record interface type is supported.
 
         :param proxy_condition_record_type: a ``Type`` indicating a ``ProxyCondition`` record type
@@ -105,7 +105,7 @@ class ProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_proxy_session(self): # pragma: no cover
+    def get_proxy_session(self):  # pragma: no cover
         """Gets a ``ProxySession`` which is responsible for acquiring authentication credentials on behalf of a service client.
 
         :return: a proxy session for this service
@@ -134,7 +134,7 @@ class ProxyProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_proxy_session(self, proxy): # pragma: no cover
+    def get_proxy_session(self, proxy):  # pragma: no cover
         """Gets the ``OsidSession`` associated with the ``ProxySession`` using the supplied ``Proxy``.
 
         :param proxy: proxy

@@ -21,7 +21,7 @@ class AuthorizationQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_explicit_authorizations_terms(self): # pragma: no cover
+    def get_explicit_authorizations_terms(self):  # pragma: no cover
         """Gets the explicit authorization query terms.
 
         :return: the query terms
@@ -36,7 +36,7 @@ class AuthorizationQueryInspector:
     explicit_authorizations_terms = property(fget=get_explicit_authorizations_terms)
 
     @abc.abstractmethod
-    def get_related_authorization_id_terms(self): # pragma: no cover
+    def get_related_authorization_id_terms(self):  # pragma: no cover
         """Gets the related authorization ``Id`` query terms.
 
         :return: the query terms
@@ -51,7 +51,7 @@ class AuthorizationQueryInspector:
     related_authorization_id_terms = property(fget=get_related_authorization_id_terms)
 
     @abc.abstractmethod
-    def get_related_authorization_terms(self): # pragma: no cover
+    def get_related_authorization_terms(self):  # pragma: no cover
         """Gets the related authorization query terms.
 
         :return: the query terms
@@ -66,7 +66,7 @@ class AuthorizationQueryInspector:
     related_authorization_terms = property(fget=get_related_authorization_terms)
 
     @abc.abstractmethod
-    def get_resource_id_terms(self): # pragma: no cover
+    def get_resource_id_terms(self):  # pragma: no cover
         """Gets the resource ``Id`` query terms.
 
         :return: the query terms
@@ -81,7 +81,7 @@ class AuthorizationQueryInspector:
     resource_id_terms = property(fget=get_resource_id_terms)
 
     @abc.abstractmethod
-    def get_resource_terms(self): # pragma: no cover
+    def get_resource_terms(self):  # pragma: no cover
         """Gets the resource query terms.
 
         :return: the query terms
@@ -96,7 +96,7 @@ class AuthorizationQueryInspector:
     resource_terms = property(fget=get_resource_terms)
 
     @abc.abstractmethod
-    def get_trust_id_terms(self): # pragma: no cover
+    def get_trust_id_terms(self):  # pragma: no cover
         """Gets the trust ``Id`` query terms.
 
         :return: the query terms
@@ -111,7 +111,7 @@ class AuthorizationQueryInspector:
     trust_id_terms = property(fget=get_trust_id_terms)
 
     @abc.abstractmethod
-    def get_agent_id_terms(self): # pragma: no cover
+    def get_agent_id_terms(self):  # pragma: no cover
         """Gets the agent ``Id`` query terms.
 
         :return: the query terms
@@ -126,7 +126,7 @@ class AuthorizationQueryInspector:
     agent_id_terms = property(fget=get_agent_id_terms)
 
     @abc.abstractmethod
-    def get_agent_terms(self): # pragma: no cover
+    def get_agent_terms(self):  # pragma: no cover
         """Gets the agent query terms.
 
         :return: the query terms
@@ -141,7 +141,7 @@ class AuthorizationQueryInspector:
     agent_terms = property(fget=get_agent_terms)
 
     @abc.abstractmethod
-    def get_function_id_terms(self): # pragma: no cover
+    def get_function_id_terms(self):  # pragma: no cover
         """Gets the function ``Id`` query terms.
 
         :return: the query terms
@@ -156,7 +156,7 @@ class AuthorizationQueryInspector:
     function_id_terms = property(fget=get_function_id_terms)
 
     @abc.abstractmethod
-    def get_function_terms(self): # pragma: no cover
+    def get_function_terms(self):  # pragma: no cover
         """Gets the function query terms.
 
         :return: the query terms
@@ -171,7 +171,7 @@ class AuthorizationQueryInspector:
     function_terms = property(fget=get_function_terms)
 
     @abc.abstractmethod
-    def get_qualifier_id_terms(self): # pragma: no cover
+    def get_qualifier_id_terms(self):  # pragma: no cover
         """Gets the qualifier ``Id`` query terms.
 
         :return: the query terms
@@ -186,7 +186,7 @@ class AuthorizationQueryInspector:
     qualifier_id_terms = property(fget=get_qualifier_id_terms)
 
     @abc.abstractmethod
-    def get_qualifier_terms(self): # pragma: no cover
+    def get_qualifier_terms(self):  # pragma: no cover
         """Gets the qualifier query terms.
 
         :return: the query terms
@@ -201,7 +201,7 @@ class AuthorizationQueryInspector:
     qualifier_terms = property(fget=get_qualifier_terms)
 
     @abc.abstractmethod
-    def get_vault_id_terms(self): # pragma: no cover
+    def get_vault_id_terms(self):  # pragma: no cover
         """Gets the vault ``Id`` query terms.
 
         :return: the query terms
@@ -216,7 +216,7 @@ class AuthorizationQueryInspector:
     vault_id_terms = property(fget=get_vault_id_terms)
 
     @abc.abstractmethod
-    def get_vault_terms(self): # pragma: no cover
+    def get_vault_terms(self):  # pragma: no cover
         """Gets the vault query terms.
 
         :return: the query terms
@@ -231,7 +231,7 @@ class AuthorizationQueryInspector:
     vault_terms = property(fget=get_vault_terms)
 
     @abc.abstractmethod
-    def get_authorization_query_inspector_record(self, authorization_record_type): # pragma: no cover
+    def get_authorization_query_inspector_record(self, authorization_record_type):  # pragma: no cover
         """Gets the authorization query inspector record corresponding to the given ``Authorization`` record ``Type``.
 
         :param authorization_record_type: an authorization record type
@@ -253,7 +253,7 @@ class FunctionQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_id_terms(self): # pragma: no cover
+    def get_qualifier_hierarchy_id_terms(self):  # pragma: no cover
         """Gets the qualifier hierarchy ``Id`` query terms.
 
         :return: the query terms
@@ -268,7 +268,7 @@ class FunctionQueryInspector:
     qualifier_hierarchy_id_terms = property(fget=get_qualifier_hierarchy_id_terms)
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_terms(self): # pragma: no cover
+    def get_qualifier_hierarchy_terms(self):  # pragma: no cover
         """Gets the qualifier hierarchy query terms.
 
         :return: the query terms
@@ -283,7 +283,7 @@ class FunctionQueryInspector:
     qualifier_hierarchy_terms = property(fget=get_qualifier_hierarchy_terms)
 
     @abc.abstractmethod
-    def get_authorization_id_terms(self): # pragma: no cover
+    def get_authorization_id_terms(self):  # pragma: no cover
         """Gets the authorization ``Id`` query terms.
 
         :return: the query terms
@@ -298,7 +298,7 @@ class FunctionQueryInspector:
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
     @abc.abstractmethod
-    def get_authorization_terms(self): # pragma: no cover
+    def get_authorization_terms(self):  # pragma: no cover
         """Gets the authorization query terms.
 
         :return: the query terms
@@ -313,7 +313,7 @@ class FunctionQueryInspector:
     authorization_terms = property(fget=get_authorization_terms)
 
     @abc.abstractmethod
-    def get_vault_id_terms(self): # pragma: no cover
+    def get_vault_id_terms(self):  # pragma: no cover
         """Gets the vault ``Id`` query terms.
 
         :return: the query terms
@@ -328,7 +328,7 @@ class FunctionQueryInspector:
     vault_id_terms = property(fget=get_vault_id_terms)
 
     @abc.abstractmethod
-    def get_vault_terms(self): # pragma: no cover
+    def get_vault_terms(self):  # pragma: no cover
         """Gets the vault query terms.
 
         :return: the query terms
@@ -343,7 +343,7 @@ class FunctionQueryInspector:
     vault_terms = property(fget=get_vault_terms)
 
     @abc.abstractmethod
-    def get_function_query_inspector_record(self, function_record_type): # pragma: no cover
+    def get_function_query_inspector_record(self, function_record_type):  # pragma: no cover
         """Gets the function query inspector record corresponding to the given ``Function`` record ``Type``.
 
         :param function_record_type: a function record type
@@ -365,7 +365,7 @@ class QualifierQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_id_terms(self): # pragma: no cover
+    def get_qualifier_hierarchy_id_terms(self):  # pragma: no cover
         """Gets the qualifier hierarchy ``Id`` query terms.
 
         :return: the query terms
@@ -380,7 +380,7 @@ class QualifierQueryInspector:
     qualifier_hierarchy_id_terms = property(fget=get_qualifier_hierarchy_id_terms)
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_terms(self): # pragma: no cover
+    def get_qualifier_hierarchy_terms(self):  # pragma: no cover
         """Gets the qualifier hierarchy query terms.
 
         :return: the query terms
@@ -395,7 +395,7 @@ class QualifierQueryInspector:
     qualifier_hierarchy_terms = property(fget=get_qualifier_hierarchy_terms)
 
     @abc.abstractmethod
-    def get_authorization_id_terms(self): # pragma: no cover
+    def get_authorization_id_terms(self):  # pragma: no cover
         """Gets the authorization ``Id`` query terms.
 
         :return: the query terms
@@ -410,7 +410,7 @@ class QualifierQueryInspector:
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
     @abc.abstractmethod
-    def get_authorization_terms(self): # pragma: no cover
+    def get_authorization_terms(self):  # pragma: no cover
         """Gets the authorization query terms.
 
         :return: the query terms
@@ -425,7 +425,7 @@ class QualifierQueryInspector:
     authorization_terms = property(fget=get_authorization_terms)
 
     @abc.abstractmethod
-    def get_ancestor_qualifier_id_terms(self): # pragma: no cover
+    def get_ancestor_qualifier_id_terms(self):  # pragma: no cover
         """Gets the ancestor qualifier ``Id`` query terms.
 
         :return: the query terms
@@ -440,7 +440,7 @@ class QualifierQueryInspector:
     ancestor_qualifier_id_terms = property(fget=get_ancestor_qualifier_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_qualifier_terms(self): # pragma: no cover
+    def get_ancestor_qualifier_terms(self):  # pragma: no cover
         """Gets the ancestor qualifier query terms.
 
         :return: the query terms
@@ -455,7 +455,7 @@ class QualifierQueryInspector:
     ancestor_qualifier_terms = property(fget=get_ancestor_qualifier_terms)
 
     @abc.abstractmethod
-    def get_descendant_qualifier_id_terms(self): # pragma: no cover
+    def get_descendant_qualifier_id_terms(self):  # pragma: no cover
         """Gets the descendant qualifier ``Id`` query terms.
 
         :return: the query terms
@@ -470,7 +470,7 @@ class QualifierQueryInspector:
     descendant_qualifier_id_terms = property(fget=get_descendant_qualifier_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_qualifier_terms(self): # pragma: no cover
+    def get_descendant_qualifier_terms(self):  # pragma: no cover
         """Gets the descendant qualifier query terms.
 
         :return: the query terms
@@ -485,7 +485,7 @@ class QualifierQueryInspector:
     descendant_qualifier_terms = property(fget=get_descendant_qualifier_terms)
 
     @abc.abstractmethod
-    def get_vault_id_terms(self): # pragma: no cover
+    def get_vault_id_terms(self):  # pragma: no cover
         """Gets the vault ``Id`` query terms.
 
         :return: the query terms
@@ -500,7 +500,7 @@ class QualifierQueryInspector:
     vault_id_terms = property(fget=get_vault_id_terms)
 
     @abc.abstractmethod
-    def get_vault_terms(self): # pragma: no cover
+    def get_vault_terms(self):  # pragma: no cover
         """Gets the vault query terms.
 
         :return: the query terms
@@ -515,7 +515,7 @@ class QualifierQueryInspector:
     vault_terms = property(fget=get_vault_terms)
 
     @abc.abstractmethod
-    def get_qualifier_query_inspector_record(self, qualifier_record_type): # pragma: no cover
+    def get_qualifier_query_inspector_record(self, qualifier_record_type):  # pragma: no cover
         """Gets the qualifier query inspector record corresponding to the given ``Qualifier`` record ``Type``.
 
         :param qualifier_record_type: a qualifier query inspector record type
@@ -537,7 +537,7 @@ class VaultQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_function_id_terms(self): # pragma: no cover
+    def get_function_id_terms(self):  # pragma: no cover
         """Gets the function ``Id`` query terms.
 
         :return: the query terms
@@ -552,7 +552,7 @@ class VaultQueryInspector:
     function_id_terms = property(fget=get_function_id_terms)
 
     @abc.abstractmethod
-    def get_function_terms(self): # pragma: no cover
+    def get_function_terms(self):  # pragma: no cover
         """Gets the function query terms.
 
         :return: the query terms
@@ -567,7 +567,7 @@ class VaultQueryInspector:
     function_terms = property(fget=get_function_terms)
 
     @abc.abstractmethod
-    def get_qualifier_id_terms(self): # pragma: no cover
+    def get_qualifier_id_terms(self):  # pragma: no cover
         """Gets the qualifier ``Id`` query terms.
 
         :return: the query terms
@@ -582,7 +582,7 @@ class VaultQueryInspector:
     qualifier_id_terms = property(fget=get_qualifier_id_terms)
 
     @abc.abstractmethod
-    def get_qualifier_terms(self): # pragma: no cover
+    def get_qualifier_terms(self):  # pragma: no cover
         """Gets the qualifier query terms.
 
         :return: the query terms
@@ -597,7 +597,7 @@ class VaultQueryInspector:
     qualifier_terms = property(fget=get_qualifier_terms)
 
     @abc.abstractmethod
-    def get_authorization_id_terms(self): # pragma: no cover
+    def get_authorization_id_terms(self):  # pragma: no cover
         """Gets the authorization ``Id`` query terms.
 
         :return: the query terms
@@ -612,7 +612,7 @@ class VaultQueryInspector:
     authorization_id_terms = property(fget=get_authorization_id_terms)
 
     @abc.abstractmethod
-    def get_authorization_terms(self): # pragma: no cover
+    def get_authorization_terms(self):  # pragma: no cover
         """Gets the authorization query terms.
 
         :return: the query terms
@@ -627,7 +627,7 @@ class VaultQueryInspector:
     authorization_terms = property(fget=get_authorization_terms)
 
     @abc.abstractmethod
-    def get_ancestor_vault_id_terms(self): # pragma: no cover
+    def get_ancestor_vault_id_terms(self):  # pragma: no cover
         """Gets the ancestor vault ``Id`` query terms.
 
         :return: the query terms
@@ -642,7 +642,7 @@ class VaultQueryInspector:
     ancestor_vault_id_terms = property(fget=get_ancestor_vault_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_vault_terms(self): # pragma: no cover
+    def get_ancestor_vault_terms(self):  # pragma: no cover
         """Gets the ancestor vault query terms.
 
         :return: the query terms
@@ -657,7 +657,7 @@ class VaultQueryInspector:
     ancestor_vault_terms = property(fget=get_ancestor_vault_terms)
 
     @abc.abstractmethod
-    def get_descendant_vault_id_terms(self): # pragma: no cover
+    def get_descendant_vault_id_terms(self):  # pragma: no cover
         """Gets the descendant vault ``Id`` query terms.
 
         :return: the query terms
@@ -672,7 +672,7 @@ class VaultQueryInspector:
     descendant_vault_id_terms = property(fget=get_descendant_vault_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_vault_terms(self): # pragma: no cover
+    def get_descendant_vault_terms(self):  # pragma: no cover
         """Gets the descendant vault query terms.
 
         :return: the query terms
@@ -687,7 +687,7 @@ class VaultQueryInspector:
     descendant_vault_terms = property(fget=get_descendant_vault_terms)
 
     @abc.abstractmethod
-    def get_vault_query_inspector_record(self, vault_record_type): # pragma: no cover
+    def get_vault_query_inspector_record(self, vault_record_type):  # pragma: no cover
         """Gets the vault query inspector record corresponding to the given ``Vault`` record ``Type``.
 
         :param vault_record_type: a vault query inspector record type

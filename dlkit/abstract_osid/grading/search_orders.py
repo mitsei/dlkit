@@ -21,7 +21,7 @@ class GradeSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_grade_system(self, style): # pragma: no cover
+    def order_by_grade_system(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the grade system.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class GradeSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grade_system_search_order(self): # pragma: no cover
+    def supports_grade_system_search_order(self):  # pragma: no cover
         """Tests if a ``GradeSystemSearchOrder`` interface is available for grade systems.
 
         :return: ``true`` if a grade system search order is available, ``false`` otherwise
@@ -47,7 +47,7 @@ class GradeSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_search_order(self): # pragma: no cover
+    def get_grade_system_search_order(self):  # pragma: no cover
         """Gets the search order for a grade system.
 
         :return: the grade system search order
@@ -63,7 +63,7 @@ class GradeSearchOrder:
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
     @abc.abstractmethod
-    def order_by_input_score_start_range(self, style): # pragma: no cover
+    def order_by_input_score_start_range(self, style):  # pragma: no cover
         """Specified a preference for ordering results by start of the input score range.
 
         :param style: search order style
@@ -76,7 +76,7 @@ class GradeSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_input_score_end_range(self, style): # pragma: no cover
+    def order_by_input_score_end_range(self, style):  # pragma: no cover
         """Specified a preference for ordering results by end of the input score range.
 
         :param style: search order style
@@ -89,7 +89,7 @@ class GradeSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_output_score(self, style): # pragma: no cover
+    def order_by_output_score(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the output score.
 
         :param style: search order style
@@ -102,7 +102,7 @@ class GradeSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_grade_search_order_record(self, grade_record_type): # pragma: no cover
+    def get_grade_search_order_record(self, grade_record_type):  # pragma: no cover
         """Gets the grade search order record corresponding to the given grade record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -126,7 +126,7 @@ class GradeSystemSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_based_on_grades(self, style): # pragma: no cover
+    def order_by_based_on_grades(self, style):  # pragma: no cover
         """Orders the results by systems based on grades.
 
         :param style: search order style
@@ -139,7 +139,7 @@ class GradeSystemSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_lowest_numeric_score(self, style): # pragma: no cover
+    def order_by_lowest_numeric_score(self, style):  # pragma: no cover
         """Orders the results by lowest score.
 
         :param style: search order style
@@ -152,7 +152,7 @@ class GradeSystemSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_numeric_score_increment(self, style): # pragma: no cover
+    def order_by_numeric_score_increment(self, style):  # pragma: no cover
         """Orders the results by score increment.
 
         :param style: search order style
@@ -165,7 +165,7 @@ class GradeSystemSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_highest_numeric_score(self, style): # pragma: no cover
+    def order_by_highest_numeric_score(self, style):  # pragma: no cover
         """Orders the results by highest score.
 
         :param style: search order style
@@ -178,7 +178,7 @@ class GradeSystemSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_grade_system_search_order_record(self, grade_system_record_type): # pragma: no cover
+    def get_grade_system_search_order_record(self, grade_system_record_type):  # pragma: no cover
         """Gets the grade system search order record corresponding to the given grade entry record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -202,7 +202,7 @@ class GradeEntrySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_gradebook_column(self, style): # pragma: no cover
+    def order_by_gradebook_column(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the gradebook column.
 
         :param style: search order style
@@ -215,7 +215,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_gradebook_column_search_order(self): # pragma: no cover
+    def supports_gradebook_column_search_order(self):  # pragma: no cover
         """Tests if a ``GradebookColumnSearchOrder`` is available.
 
         :return: ``true`` if a gradebook column search order is available, ``false`` otherwise
@@ -228,7 +228,7 @@ class GradeEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_search_order(self): # pragma: no cover
+    def get_gradebook_column_search_order(self):  # pragma: no cover
         """Gets the search order for a gradebook column.
 
         :return: the gradebook column search order
@@ -244,7 +244,7 @@ class GradeEntrySearchOrder:
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
     @abc.abstractmethod
-    def order_by_key_resource(self, style): # pragma: no cover
+    def order_by_key_resource(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the key resource.
 
         :param style: search order style
@@ -257,7 +257,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_key_resource_search_order(self): # pragma: no cover
+    def supports_key_resource_search_order(self):  # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available.
 
         :return: ``true`` if a key resource search order is available, ``false`` otherwise
@@ -270,7 +270,7 @@ class GradeEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_key_resource_search_order(self): # pragma: no cover
+    def get_key_resource_search_order(self):  # pragma: no cover
         """Gets the search order for a resource.
 
         :return: the key resource search order
@@ -286,7 +286,7 @@ class GradeEntrySearchOrder:
     key_resource_search_order = property(fget=get_key_resource_search_order)
 
     @abc.abstractmethod
-    def order_by_derived(self, style): # pragma: no cover
+    def order_by_derived(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the derived entries.
 
         :param style: search order style
@@ -299,7 +299,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_ignored_for_calculations(self, style): # pragma: no cover
+    def order_by_ignored_for_calculations(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the ignore for calculations flag.
 
         :param style: search order style
@@ -312,7 +312,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_grade(self, style): # pragma: no cover
+    def order_by_grade(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the grade or score.
 
         :param style: search order style
@@ -325,7 +325,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grade_search_order(self): # pragma: no cover
+    def supports_grade_search_order(self):  # pragma: no cover
         """Tests if a ``GradeSearchOrder`` is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -338,7 +338,7 @@ class GradeEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_search_order(self): # pragma: no cover
+    def get_grade_search_order(self):  # pragma: no cover
         """Gets the search order for a grade.
 
         :return: the grade search order
@@ -354,7 +354,7 @@ class GradeEntrySearchOrder:
     grade_search_order = property(fget=get_grade_search_order)
 
     @abc.abstractmethod
-    def order_by_time_graded(self, style): # pragma: no cover
+    def order_by_time_graded(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the time graded.
 
         :param style: search order style
@@ -367,7 +367,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_grader(self, style): # pragma: no cover
+    def order_by_grader(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the grader.
 
         :param style: search order style
@@ -380,7 +380,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grader_search_order(self): # pragma: no cover
+    def supports_grader_search_order(self):  # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available for grader resources.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -393,7 +393,7 @@ class GradeEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grader_search_order(self): # pragma: no cover
+    def get_grader_search_order(self):  # pragma: no cover
         """Gets the search order for a grader.
 
         :return: the resource search order
@@ -409,7 +409,7 @@ class GradeEntrySearchOrder:
     grader_search_order = property(fget=get_grader_search_order)
 
     @abc.abstractmethod
-    def order_by_grading_agent(self, style): # pragma: no cover
+    def order_by_grading_agent(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the grading agent.
 
         :param style: search order style
@@ -422,7 +422,7 @@ class GradeEntrySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grading_agent_search_order(self): # pragma: no cover
+    def supports_grading_agent_search_order(self):  # pragma: no cover
         """Tests if an ``AgentSearchOrder`` is available fo grading agents.
 
         :return: ``true`` if an agent search order is available, ``false`` otherwise
@@ -435,7 +435,7 @@ class GradeEntrySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grading_agent_search_order(self): # pragma: no cover
+    def get_grading_agent_search_order(self):  # pragma: no cover
         """Gets the search order for a grading agent.
 
         :return: the agent search order
@@ -451,7 +451,7 @@ class GradeEntrySearchOrder:
     grading_agent_search_order = property(fget=get_grading_agent_search_order)
 
     @abc.abstractmethod
-    def get_grade_entry_search_order_record(self, grade_entry_record_type): # pragma: no cover
+    def get_grade_entry_search_order_record(self, grade_entry_record_type):  # pragma: no cover
         """Gets the grade entry search order record corresponding to the given grade entry record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -475,7 +475,7 @@ class GradebookColumnSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_grade_system(self, style): # pragma: no cover
+    def order_by_grade_system(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the grade system.
 
         :param style: search order style
@@ -488,7 +488,7 @@ class GradebookColumnSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_grade_system_search_order(self): # pragma: no cover
+    def supports_grade_system_search_order(self):  # pragma: no cover
         """Tests if a ``GradeSystemSearchOrder`` is available for grade systems.
 
         :return: ``true`` if a grade system search order is available, ``false`` otherwise
@@ -501,7 +501,7 @@ class GradebookColumnSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_search_order(self): # pragma: no cover
+    def get_gradebook_column_summary_search_order(self):  # pragma: no cover
         """Gets the search order for a grade system.
 
         :return: the grade system search order
@@ -517,7 +517,7 @@ class GradebookColumnSearchOrder:
     gradebook_column_summary_search_order = property(fget=get_gradebook_column_summary_search_order)
 
     @abc.abstractmethod
-    def supports_gradebook_column_summary_search_order(self): # pragma: no cover
+    def supports_gradebook_column_summary_search_order(self):  # pragma: no cover
         """Tests if a ``GradebookColumnSummarySearchOrder`` is available for gradebook column summaries.
 
         :return: ``true`` if a gradebook column summary search order is available, ``false`` otherwise
@@ -530,7 +530,7 @@ class GradebookColumnSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_search_order(self): # pragma: no cover
+    def get_grade_system_search_order(self):  # pragma: no cover
         """Gets the search order for a gradebook column summary search order.
 
         :return: the gradebook column summary search order
@@ -547,7 +547,7 @@ class GradebookColumnSearchOrder:
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
     @abc.abstractmethod
-    def get_gradebook_column_search_order_record(self, gradebook_column_record_type): # pragma: no cover
+    def get_gradebook_column_search_order_record(self, gradebook_column_record_type):  # pragma: no cover
         """Gets the gradebook column search order record corresponding to the given gradebook column record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -571,7 +571,7 @@ class GradebookColumnSummarySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_mean(self, style): # pragma: no cover
+    def order_by_mean(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the mean.
 
         :param style: search order style
@@ -584,7 +584,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_median(self, style): # pragma: no cover
+    def order_by_median(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the median.
 
         :param style: search order style
@@ -597,7 +597,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_mode(self, style): # pragma: no cover
+    def order_by_mode(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the mode.
 
         :param style: search order style
@@ -610,7 +610,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_rms(self, style): # pragma: no cover
+    def order_by_rms(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the root mean square.
 
         :param style: search order style
@@ -623,7 +623,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_standard_deviation(self, style): # pragma: no cover
+    def order_by_standard_deviation(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the standard deviation.
 
         :param style: search order style
@@ -636,7 +636,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_sum(self, style): # pragma: no cover
+    def order_by_sum(self, style):  # pragma: no cover
         """Specified a preference for ordering results by the sum.
 
         :param style: search order style
@@ -649,7 +649,7 @@ class GradebookColumnSummarySearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_search_order_record(self, gradebook_column_summary_record_type): # pragma: no cover
+    def get_gradebook_column_summary_search_order_record(self, gradebook_column_summary_record_type):  # pragma: no cover
         """Gets the gradebook column summary search order record corresponding to the given gradebook column summary record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -673,7 +673,7 @@ class GradebookSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_search_order_record(self, gradebook_record_type): # pragma: no cover
+    def get_gradebook_search_order_record(self, gradebook_record_type):  # pragma: no cover
         """Gets the gradebook search order record corresponding to the given gradebook record ``Type``.
 
         Multiple retrievals return the same underlying object.

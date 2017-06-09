@@ -21,7 +21,7 @@ class ResourceSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_resources(self, resource_ids): # pragma: no cover
+    def search_among_resources(self, resource_ids):  # pragma: no cover
         """Execute this search among the given list of resources.
 
         :param resource_ids: list of resource ``Ids``
@@ -34,7 +34,7 @@ class ResourceSearch:
         pass
 
     @abc.abstractmethod
-    def order_resource_results(self, resource_search_order): # pragma: no cover
+    def order_resource_results(self, resource_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param resource_search_order: resource search order
@@ -48,7 +48,7 @@ class ResourceSearch:
         pass
 
     @abc.abstractmethod
-    def get_resource_search_record(self, resource_search_record_type): # pragma: no cover
+    def get_resource_search_record(self, resource_search_record_type):  # pragma: no cover
         """Gets the resource search record corresponding to the given resource search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class ResourceSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resources(self): # pragma: no cover
+    def get_resources(self):  # pragma: no cover
         """Gets the resource list resulting from a search.
 
         :return: the resource list
@@ -88,7 +88,7 @@ class ResourceSearchResults:
     resources = property(fget=get_resources)
 
     @abc.abstractmethod
-    def get_resource_query_inspector(self): # pragma: no cover
+    def get_resource_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the resource query inspector
@@ -103,7 +103,7 @@ class ResourceSearchResults:
     resource_query_inspector = property(fget=get_resource_query_inspector)
 
     @abc.abstractmethod
-    def get_resource_search_results_record(self, resource_search_record_type): # pragma: no cover
+    def get_resource_search_results_record(self, resource_search_record_type):  # pragma: no cover
         """Gets the resource search results record corresponding to the given resource search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class ResourceRelationshipSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_resource_relationships(self, resource_relationship_ids): # pragma: no cover
+    def search_among_resource_relationships(self, resource_relationship_ids):  # pragma: no cover
         """Execute this search among the given list of resource relationships.
 
         :param resource_relationship_ids: list of resource relationships
@@ -141,7 +141,7 @@ class ResourceRelationshipSearch:
         pass
 
     @abc.abstractmethod
-    def order_resource_relationship_results(self, resource_relationship_search_order): # pragma: no cover
+    def order_resource_relationship_results(self, resource_relationship_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param resource_relationship_search_order: relationship search order
@@ -155,7 +155,7 @@ class ResourceRelationshipSearch:
         pass
 
     @abc.abstractmethod
-    def get_resource_relationship_search_record(self, resource_relationship_search_record_type): # pragma: no cover
+    def get_resource_relationship_search_record(self, resource_relationship_search_record_type):  # pragma: no cover
         """Gets the resource relationship search record corresponding to the given relationship search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class ResourceRelationshipSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_relationships(self): # pragma: no cover
+    def get_resource_relationships(self):  # pragma: no cover
         """Gets the resource relationship list resulting from the search.
 
         :return: the resource relationship list
@@ -195,7 +195,7 @@ class ResourceRelationshipSearchResults:
     resource_relationships = property(fget=get_resource_relationships)
 
     @abc.abstractmethod
-    def get_resource_relationship_query_inspector(self): # pragma: no cover
+    def get_resource_relationship_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the resource relationship query inspector
@@ -210,7 +210,7 @@ class ResourceRelationshipSearchResults:
     resource_relationship_query_inspector = property(fget=get_resource_relationship_query_inspector)
 
     @abc.abstractmethod
-    def get_resource_relationship_search_results_record(self, resource_relationship_search_record_type): # pragma: no cover
+    def get_resource_relationship_search_results_record(self, resource_relationship_search_record_type):  # pragma: no cover
         """Gets the resource relationship search results record corresponding to the given resource relationship search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class BinSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_bins(self, bin_ids): # pragma: no cover
+    def search_among_bins(self, bin_ids):  # pragma: no cover
         """Execute this search among the given list of bins.
 
         :param bin_ids: list of bins
@@ -248,7 +248,7 @@ class BinSearch:
         pass
 
     @abc.abstractmethod
-    def order_bin_results(self, bin_search_order): # pragma: no cover
+    def order_bin_results(self, bin_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param bin_search_order: bin search order
@@ -262,7 +262,7 @@ class BinSearch:
         pass
 
     @abc.abstractmethod
-    def get_bin_search_record(self, bin_search_record_type): # pragma: no cover
+    def get_bin_search_record(self, bin_search_record_type):  # pragma: no cover
         """Gets the bin search record corresponding to the given bin search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class BinSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bins(self): # pragma: no cover
+    def get_bins(self):  # pragma: no cover
         """Gets the bin list resulting from the search.
 
         :return: the bin list
@@ -302,7 +302,7 @@ class BinSearchResults:
     bins = property(fget=get_bins)
 
     @abc.abstractmethod
-    def get_bin_query_inspector(self): # pragma: no cover
+    def get_bin_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the bin query inspector
@@ -317,7 +317,7 @@ class BinSearchResults:
     bin_query_inspector = property(fget=get_bin_query_inspector)
 
     @abc.abstractmethod
-    def get_bin_search_results_record(self, bin_search_record_type): # pragma: no cover
+    def get_bin_search_results_record(self, bin_search_record_type):  # pragma: no cover
         """Gets the bin search results record corresponding to the given bin search record ``Type``.
 
         This method is used to retrieve an object implementing the

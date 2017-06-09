@@ -28,7 +28,7 @@ class OsidProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id(self): # pragma: no cover
+    def get_id(self):  # pragma: no cover
         """Gets an identifier for this service implementation.
 
         The identifier is unique among services but multiple
@@ -50,7 +50,7 @@ class OsidProfile:
     ident = property(fget=get_id)
 
     @abc.abstractmethod
-    def get_display_name(self): # pragma: no cover
+    def get_display_name(self):  # pragma: no cover
         """Gets a display name for this service implementation.
 
         :return: a display name
@@ -65,7 +65,7 @@ class OsidProfile:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_description(self): # pragma: no cover
+    def get_description(self):  # pragma: no cover
         """Gets a description of this service implementation.
 
         :return: a description
@@ -80,7 +80,7 @@ class OsidProfile:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_version(self): # pragma: no cover
+    def get_version(self):  # pragma: no cover
         """Gets the version of this service implementation.
 
         :return: the service implementation version
@@ -95,7 +95,7 @@ class OsidProfile:
     version = property(fget=get_version)
 
     @abc.abstractmethod
-    def get_release_date(self): # pragma: no cover
+    def get_release_date(self):  # pragma: no cover
         """Gets the date this service implementation was released.
 
         :return: the release date
@@ -110,7 +110,7 @@ class OsidProfile:
     release_date = property(fget=get_release_date)
 
     @abc.abstractmethod
-    def supports_osid_version(self, version): # pragma: no cover
+    def supports_osid_version(self, version):  # pragma: no cover
         """Test for support of an OSID specification version.
 
         :param version: the specification version to test
@@ -127,7 +127,7 @@ class OsidProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_locales(self): # pragma: no cover
+    def get_locales(self):  # pragma: no cover
         """Gets the locales supported in this service.
 
         :return: list of locales supported
@@ -142,7 +142,7 @@ class OsidProfile:
     locales = property(fget=get_locales)
 
     @abc.abstractmethod
-    def supports_journal_rollback(self): # pragma: no cover
+    def supports_journal_rollback(self):  # pragma: no cover
         """Test for support of a journaling rollback service.
 
         :return: ``true`` if this manager supports the journal rollback, ``false`` otherwise
@@ -155,7 +155,7 @@ class OsidProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_journal_branching(self): # pragma: no cover
+    def supports_journal_branching(self):  # pragma: no cover
         """Test for support of a journal branching service.
 
         :return: ``true`` if this manager supports the journal branching, ``false`` otherwise
@@ -168,7 +168,7 @@ class OsidProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_branch_id(self): # pragma: no cover
+    def get_branch_id(self):  # pragma: no cover
         """Gets the ``Branch Id`` representing this service branch.
 
         :return: the branch ``Id``
@@ -183,7 +183,7 @@ class OsidProfile:
     branch_id = property(fget=get_branch_id)
 
     @abc.abstractmethod
-    def get_branch(self): # pragma: no cover
+    def get_branch(self):  # pragma: no cover
         """Gets this service branch.
 
         :return: the service branch
@@ -199,7 +199,7 @@ class OsidProfile:
     branch = property(fget=get_branch)
 
     @abc.abstractmethod
-    def get_proxy_record_types(self): # pragma: no cover
+    def get_proxy_record_types(self):  # pragma: no cover
         """Gets the proxy record ``Types`` supported in this service.
 
         If no proxy manager is available, an empty list is returned.
@@ -216,7 +216,7 @@ class OsidProfile:
     proxy_record_types = property(fget=get_proxy_record_types)
 
     @abc.abstractmethod
-    def supports_proxy_record_type(self, proxy_record_type): # pragma: no cover
+    def supports_proxy_record_type(self, proxy_record_type):  # pragma: no cover
         """Test for support of a proxy type.
 
         :param proxy_record_type: a proxy record type
@@ -248,7 +248,7 @@ class OsidManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def initialize(self, runtime): # pragma: no cover
+    def initialize(self, runtime):  # pragma: no cover
         """Initializes this manager.
 
         A manager is initialized once at the time of creation.
@@ -273,7 +273,7 @@ class OsidManager:
         pass
 
     @abc.abstractmethod
-    def rollback_service(self, rollback_time): # pragma: no cover
+    def rollback_service(self, rollback_time):  # pragma: no cover
         """Rolls back this service to a point in time.
 
         :param rollback_time: the requested time
@@ -290,7 +290,7 @@ class OsidManager:
         return  # osid.journaling.JournalEntry
 
     @abc.abstractmethod
-    def change_branch(self, branch_id): # pragma: no cover
+    def change_branch(self, branch_id):  # pragma: no cover
         """Changes the service branch.
 
         :param branch_id: the new service branch
@@ -332,7 +332,7 @@ class OsidProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def initialize(self, runtime): # pragma: no cover
+    def initialize(self, runtime):  # pragma: no cover
         """Initializes this manager.
 
         A manager is initialized once at the time of creation.
@@ -357,7 +357,7 @@ class OsidProxyManager:
         pass
 
     @abc.abstractmethod
-    def rollback_service(self, rollback_time, proxy): # pragma: no cover
+    def rollback_service(self, rollback_time, proxy):  # pragma: no cover
         """Rolls back this service to a point in time.
 
         :param rollback_time: the requested time
@@ -377,7 +377,7 @@ class OsidProxyManager:
         return  # osid.journaling.JournalEntry
 
     @abc.abstractmethod
-    def change_branch(self, branch_id, proxy): # pragma: no cover
+    def change_branch(self, branch_id, proxy):  # pragma: no cover
         """Changes the service branch.
 
         :param branch_id: the new service branch
@@ -401,7 +401,7 @@ class OsidRuntimeProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_configuration(self): # pragma: no cover
+    def supports_configuration(self):  # pragma: no cover
         """Tests if a configuration service is provided within this runtime environment.
 
         :return: ``true`` if a configuration service is available, ``false`` otherwise
@@ -419,7 +419,7 @@ class OsidRuntimeManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_manager(self, osid, impl_class_name, version): # pragma: no cover
+    def get_manager(self, osid, impl_class_name, version):  # pragma: no cover
         """Finds, loads and instantiates providers of OSID managers.
 
         Providers must conform to an OsidManager interface. The
@@ -456,7 +456,7 @@ class OsidRuntimeManager:
         return  # osid.OsidManager
 
     @abc.abstractmethod
-    def get_proxy_manager(self, osid, implementation, version): # pragma: no cover
+    def get_proxy_manager(self, osid, implementation, version):  # pragma: no cover
         """Finds, loads and instantiates providers of OSID managers.
 
         Providers must conform to an ``OsidManager`` interface. The
@@ -493,7 +493,7 @@ class OsidRuntimeManager:
         return  # osid.OsidProxyManager
 
     @abc.abstractmethod
-    def get_configuration(self): # pragma: no cover
+    def get_configuration(self):  # pragma: no cover
         """Gets the current configuration in the runtime environment.
 
         :return: a configuration

@@ -21,7 +21,7 @@ class AssessmentPartLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -36,7 +36,7 @@ class AssessmentPartLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -52,7 +52,7 @@ class AssessmentPartLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_assessment_parts(self): # pragma: no cover
+    def can_lookup_assessment_parts(self):  # pragma: no cover
         """Tests if this user can perform ``AssessmentPart`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -71,7 +71,7 @@ class AssessmentPartLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_assessment_part_view(self): # pragma: no cover
+    def use_comparative_assessment_part_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -85,7 +85,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_part_view(self): # pragma: no cover
+    def use_plenary_assessment_part_view(self):  # pragma: no cover
         """A complete view of the ``AssessmentPart`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -100,7 +100,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessment parts in catalogs which
@@ -114,7 +114,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this bank only.
@@ -127,7 +127,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_active_assessment_part_view(self): # pragma: no cover
+    def use_active_assessment_part_view(self):  # pragma: no cover
         """Only active assessment parts are returned by methods in this session.
 
 
@@ -138,7 +138,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_status_assessment_part_view(self): # pragma: no cover
+    def use_any_status_assessment_part_view(self):  # pragma: no cover
         """All active and inactive assessment parts are returned by methods in this session.
 
 
@@ -149,7 +149,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_sequestered_assessment_part_view(self): # pragma: no cover
+    def use_sequestered_assessment_part_view(self):  # pragma: no cover
         """The methods in this session omit sequestered assessment parts.
 
 
@@ -160,7 +160,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_unsequestered_assessment_part_view(self): # pragma: no cover
+    def use_unsequestered_assessment_part_view(self):  # pragma: no cover
         """The methods in this session return all assessment parts, including sequestered assessment parts.
 
 
@@ -171,7 +171,7 @@ class AssessmentPartLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part(self, assessment_part_id): # pragma: no cover
+    def get_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Gets the ``AssessmentPart`` specified by its ``Id``.
 
         :param assessment_part_id: the ``Id`` of the ``AssessmentPart`` to retrieve
@@ -189,7 +189,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
-    def get_assessment_parts_by_ids(self, assessment_part_ids): # pragma: no cover
+    def get_assessment_parts_by_ids(self, assessment_part_ids):  # pragma: no cover
         """Gets an ``AssessmentPartList`` corresponding to the given ``IdList``.
 
         :param assessment_part_ids: the list of ``Ids`` to retrieve
@@ -207,7 +207,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_genus_type(self, assessment_part_genus_type): # pragma: no cover
+    def get_assessment_parts_by_genus_type(self, assessment_part_genus_type):  # pragma: no cover
         """Gets an ``AssessmentPartList`` corresponding to the given assessment part genus ``Type`` which does not include assessment parts of types derived from the specified ``Type``.
 
         :param assessment_part_genus_type: an assessment part genus type
@@ -224,7 +224,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_parent_genus_type(self, assessment_genus_type): # pragma: no cover
+    def get_assessment_parts_by_parent_genus_type(self, assessment_genus_type):  # pragma: no cover
         """Gets an ``AssessmentPartList`` corresponding to the given assessment part genus ``Type`` and include any additional assessment parts with genus types derived from the specified ``Type``.
 
         :param assessment_genus_type: an assessment part genus type
@@ -241,7 +241,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_record_type(self, assessment_part_record_type): # pragma: no cover
+    def get_assessment_parts_by_record_type(self, assessment_part_record_type):  # pragma: no cover
         """Gets an ``AssessmentPart`` containing the given assessment part record ``Type``.
 
         :param assessment_part_record_type: an assessment part record type
@@ -258,7 +258,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_parts_for_assessment(self, assessment_id): # pragma: no cover
+    def get_assessment_parts_for_assessment(self, assessment_id):  # pragma: no cover
         """Gets an ``AssessmentPart`` for the given assessment.
 
         :param assessment_id: an assessment ``Id``
@@ -275,7 +275,7 @@ class AssessmentPartLookupSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_parts(self): # pragma: no cover
+    def get_assessment_parts(self):  # pragma: no cover
         """Gets all ``AssessmentParts``.
 
         :return: a list of ``AssessmentParts``
@@ -317,7 +317,7 @@ class AssessmentPartQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -332,7 +332,7 @@ class AssessmentPartQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -348,7 +348,7 @@ class AssessmentPartQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_assessment_parts(self): # pragma: no cover
+    def can_search_assessment_parts(self):  # pragma: no cover
         """Tests if this user can perform ``AssessmentPart`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -367,7 +367,7 @@ class AssessmentPartQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessment part in banks which are
@@ -381,7 +381,7 @@ class AssessmentPartQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -394,7 +394,7 @@ class AssessmentPartQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_sequestered_assessment_part_view(self): # pragma: no cover
+    def use_sequestered_assessment_part_view(self):  # pragma: no cover
         """The methods in this session omit sequestered assessment parts.
 
 
@@ -405,7 +405,7 @@ class AssessmentPartQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_unsequestered_assessment_part_view(self): # pragma: no cover
+    def use_unsequestered_assessment_part_view(self):  # pragma: no cover
         """The methods in this session return all assessment parts, including sequestered assessment parts.
 
 
@@ -416,7 +416,7 @@ class AssessmentPartQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_query(self): # pragma: no cover
+    def get_assessment_part_query(self):  # pragma: no cover
         """Gets an assessment part query.
 
         :return: the assessment part query
@@ -431,7 +431,7 @@ class AssessmentPartQuerySession:
     assessment_part_query = property(fget=get_assessment_part_query)
 
     @abc.abstractmethod
-    def get_assessment_parts_by_query(self, assessment_part_query): # pragma: no cover
+    def get_assessment_parts_by_query(self, assessment_part_query):  # pragma: no cover
         """Gets a list of ``AssessmentParts`` matching the given assessment part query.
 
         :param assessment_part_query: the assessment part query
@@ -481,7 +481,7 @@ class AssessmentPartSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_part_search(self): # pragma: no cover
+    def get_assessment_part_search(self):  # pragma: no cover
         """Gets an assessment part search.
 
         :return: the assessment part search
@@ -496,7 +496,7 @@ class AssessmentPartSearchSession:
     assessment_part_search = property(fget=get_assessment_part_search)
 
     @abc.abstractmethod
-    def get_assessment_part_search_order(self): # pragma: no cover
+    def get_assessment_part_search_order(self):  # pragma: no cover
         """Gets an assessment part search order.
 
         The ``AssessmentPartSearchOrder`` is supplied to an
@@ -514,7 +514,7 @@ class AssessmentPartSearchSession:
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
     @abc.abstractmethod
-    def get_assessment_parts_by_search(self, assessment_part_query, assessment_part_search): # pragma: no cover
+    def get_assessment_parts_by_search(self, assessment_part_query, assessment_part_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param assessment_part_query: the assessment part query
@@ -534,7 +534,7 @@ class AssessmentPartSearchSession:
         return  # osid.assessment.authoring.AssessmentPartSearchResults
 
     @abc.abstractmethod
-    def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector): # pragma: no cover
+    def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector):  # pragma: no cover
         """Gets an assessment part query from an inspector.
 
         The inspector is available from an
@@ -588,7 +588,7 @@ class AssessmentPartAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -603,7 +603,7 @@ class AssessmentPartAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -619,7 +619,7 @@ class AssessmentPartAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_assessment_parts(self): # pragma: no cover
+    def can_create_assessment_parts(self):  # pragma: no cover
         """Tests if this user can create assessment parts.
 
         A return of true does not guarantee successful authorization. A
@@ -638,7 +638,7 @@ class AssessmentPartAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_assessment_part_with_record_types(self, assessment_part_record_types): # pragma: no cover
+    def can_create_assessment_part_with_record_types(self, assessment_part_record_types):  # pragma: no cover
         """Tests if this user can create a single ``AssessmentPart`` using the desired record types.
 
         While
@@ -660,7 +660,7 @@ class AssessmentPartAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_form_for_create_for_assessment(self, assessment_id, assessment_part_record_types): # pragma: no cover
+    def get_assessment_part_form_for_create_for_assessment(self, assessment_id, assessment_part_record_types):  # pragma: no cover
         """Gets the assessment part form for creating new assessment parts for an assessment.
 
         A new form should be requested for each create transaction.
@@ -683,7 +683,7 @@ class AssessmentPartAdminSession:
         return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
-    def create_assessment_part_for_assessment(self, assessment_part_form): # pragma: no cover
+    def create_assessment_part_for_assessment(self, assessment_part_form):  # pragma: no cover
         """Creates a new assessment part.
 
         :param assessment_part_form: assessment part form
@@ -703,7 +703,7 @@ class AssessmentPartAdminSession:
         return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
-    def get_assessment_part_form_for_create_for_assessment_part(self, assessment_part_id, assessment_part_record_types): # pragma: no cover
+    def get_assessment_part_form_for_create_for_assessment_part(self, assessment_part_id, assessment_part_record_types):  # pragma: no cover
         """Gets the assessment part form for creating new assessment parts under another assessment part.
 
         A new form should be requested for each create transaction.
@@ -726,7 +726,7 @@ class AssessmentPartAdminSession:
         return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
-    def create_assessment_part_for_assessment_part(self, assessment_part_form): # pragma: no cover
+    def create_assessment_part_for_assessment_part(self, assessment_part_form):  # pragma: no cover
         """Creates a new assessment part.
 
         :param assessment_part_form: assessment part form
@@ -746,7 +746,7 @@ class AssessmentPartAdminSession:
         return  # osid.assessment.authoring.AssessmentPart
 
     @abc.abstractmethod
-    def can_update_assessment_parts(self): # pragma: no cover
+    def can_update_assessment_parts(self):  # pragma: no cover
         """Tests if this user can update ``AssessmentParts``.
 
         A return of true does not guarantee successful authorization. A
@@ -765,7 +765,7 @@ class AssessmentPartAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_form_for_update(self, assessment_part_id): # pragma: no cover
+    def get_assessment_part_form_for_update(self, assessment_part_id):  # pragma: no cover
         """Gets the assessment part form for updating an existing assessment part.
 
         A new assessment part form should be requested for each update
@@ -786,7 +786,7 @@ class AssessmentPartAdminSession:
         return  # osid.assessment.authoring.AssessmentPartForm
 
     @abc.abstractmethod
-    def update_assessment_part(self, assessment_part_id, assessment_part_form): # pragma: no cover
+    def update_assessment_part(self, assessment_part_id, assessment_part_form):  # pragma: no cover
         """Updates an existing assessment part.
 
         :param assessment_part_id: the ``Id`` of the ``AssessmentPart``
@@ -805,7 +805,7 @@ class AssessmentPartAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_assessment_parts(self): # pragma: no cover
+    def can_delete_assessment_parts(self):  # pragma: no cover
         """Tests if this user can delete ``AssessmentParts``.
 
         A return of true does not guarantee successful authorization. A
@@ -824,7 +824,7 @@ class AssessmentPartAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_assessment_part(self, assessment_part_id): # pragma: no cover
+    def delete_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Removes an asessment part and all mapped items.
 
         :param assessment_part_id: the ``Id`` of the ``AssessmentPart``
@@ -840,7 +840,7 @@ class AssessmentPartAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_assessment_part_aliases(self): # pragma: no cover
+    def can_manage_assessment_part_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``AssessmentParts``.
 
         A return of true does not guarantee successful authorization. A
@@ -859,7 +859,7 @@ class AssessmentPartAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_assessment_part(self, assessment_part_id, alias_id): # pragma: no cover
+    def alias_assessment_part(self, assessment_part_id, alias_id):  # pragma: no cover
         """Adds an ``Id`` to an ``AssessmentPart`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``AssessmentPart`` is determined by
@@ -899,7 +899,7 @@ class AssessmentPartNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -914,7 +914,7 @@ class AssessmentPartNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -930,7 +930,7 @@ class AssessmentPartNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_assessment_part_notifications(self): # pragma: no cover
+    def can_register_for_assessment_part_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``AssessmentPart`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -949,7 +949,7 @@ class AssessmentPartNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include in bank which are children of this
@@ -963,7 +963,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this bank only.
@@ -976,7 +976,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_part_notifications(self): # pragma: no cover
+    def reliable_assessment_part_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -990,7 +990,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_part_notifications(self): # pragma: no cover
+    def unreliable_assessment_part_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1004,7 +1004,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_part_notification(self, notification_id): # pragma: no cover
+    def acknowledge_assessment_part_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an assessment part notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1018,7 +1018,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessment_parts(self): # pragma: no cover
+    def register_for_new_assessment_parts(self):  # pragma: no cover
         """Register for notifications of new assessment parts.
 
         ``AssessmentPartReceiver.newAssessmentParst()`` is invoked when
@@ -1033,7 +1033,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessment_parts(self): # pragma: no cover
+    def register_for_changed_assessment_parts(self):  # pragma: no cover
         """Registers for notification of updated bank.
 
         ``AssessmentPartReceiver.changedAssessmentParts()`` is invoked
@@ -1048,7 +1048,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_changed_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Registers for notification of an updated assessment part.
 
         ``ProvisionableReceiver.changedAssessmentParts()`` is invoked
@@ -1067,7 +1067,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessment_parts(self): # pragma: no cover
+    def register_for_deleted_assessment_parts(self):  # pragma: no cover
         """Registers for notification of deleted assessment parts.
 
         ``AssessmentPartReceiver.deletedAssessmentParts()`` is invoked
@@ -1082,7 +1082,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_deleted_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Registers for notification of a deleted assessment part.
 
         ``AssessmentPartReceiver.deletedAssessmentParts()`` is invoked
@@ -1102,7 +1102,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_part_notifications(self): # pragma: no cover
+    def reliable_assessment_part_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1116,7 +1116,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_part_notifications(self): # pragma: no cover
+    def unreliable_assessment_part_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1130,7 +1130,7 @@ class AssessmentPartNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_part_notification(self, notification_id): # pragma: no cover
+    def acknowledge_assessment_part_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an assessment_part notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1161,7 +1161,7 @@ class AssessmentPartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_assessment_part_bank_mappings(self): # pragma: no cover
+    def can_lookup_assessment_part_bank_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of assessment part/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1180,7 +1180,7 @@ class AssessmentPartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_assessment_part_bank_view(self): # pragma: no cover
+    def use_comparative_assessment_part_bank_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1194,7 +1194,7 @@ class AssessmentPartBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_part_bank_view(self): # pragma: no cover
+    def use_plenary_assessment_part_bank_view(self):  # pragma: no cover
         """A complete view of the ``AssessmentPart`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1209,7 +1209,7 @@ class AssessmentPartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_ids_by_bank(self, bank_id): # pragma: no cover
+    def get_assessment_part_ids_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of ``AssessmentPartIds`` associated with an ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -1227,7 +1227,7 @@ class AssessmentPartBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_bank(self, bank_id): # pragma: no cover
+    def get_assessment_parts_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of assessment parts associated with an ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -1245,7 +1245,7 @@ class AssessmentPartBankSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_assessment_part_ids_by_banks(self, bank_ids): # pragma: no cover
+    def get_assessment_part_ids_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of ``AssessmentPart Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -1262,7 +1262,7 @@ class AssessmentPartBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_banks(self, bank_ids): # pragma: no cover
+    def get_assessment_parts_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of assessment part corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -1279,7 +1279,7 @@ class AssessmentPartBankSession:
         return  # osid.assessment.authoring.AssessmentPartList
 
     @abc.abstractmethod
-    def get_bank_ids_by_assessment_part(self, assessment_part_id): # pragma: no cover
+    def get_bank_ids_by_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Gets the ``Bank``  ``Ids`` mapped to an ``AssessmentPart``.
 
         :param assessment_part_id: ``Id`` of an ``AssessmentPart``
@@ -1297,7 +1297,7 @@ class AssessmentPartBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_assessment_part(self, assessment_part_id): # pragma: no cover
+    def get_banks_by_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Gets the ``Banks`` mapped to an ``AssessmentPart``.
 
         :param assessment_part_id: ``Id`` of an ``AssessmentPart``
@@ -1330,7 +1330,7 @@ class AssessmentPartBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_assessment_parts(self): # pragma: no cover
+    def can_assign_assessment_parts(self):  # pragma: no cover
         """Tests if this user can alter assessment part/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1349,7 +1349,7 @@ class AssessmentPartBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_assessment_parts_to_bank(self, bank_id): # pragma: no cover
+    def can_assign_assessment_parts_to_bank(self, bank_id):  # pragma: no cover
         """Tests if this user can alter assessment part/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1370,7 +1370,7 @@ class AssessmentPartBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
+    def get_assignable_bank_ids(self, bank_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which any assessment part can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1386,7 +1386,7 @@ class AssessmentPartBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_assessment_part(self, bank_id, assessment_part_id): # pragma: no cover
+    def get_assignable_bank_ids_for_assessment_part(self, bank_id, assessment_part_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific assessment part can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1404,7 +1404,7 @@ class AssessmentPartBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_assessment_part_to_bank(self, assessment_part_id, bank_id): # pragma: no cover
+    def assign_assessment_part_to_bank(self, assessment_part_id, bank_id):  # pragma: no cover
         """Adds an existing ``AssessmentPart`` to an ``Bank``.
 
         :param assessment_part_id: the ``Id`` of the ``AssessmentPart``
@@ -1423,7 +1423,7 @@ class AssessmentPartBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_assessment_part_from_bank(self, assessment_part_id, bank_id): # pragma: no cover
+    def unassign_assessment_part_from_bank(self, assessment_part_id, bank_id):  # pragma: no cover
         """Removes an ``AssessmentPart`` from an ``Bank``.
 
         :param assessment_part_id: the ``Id`` of the ``AssessmentPart``
@@ -1441,7 +1441,7 @@ class AssessmentPartBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_assessment_part_to_bank(self, assessment_part_id, from_biank_id, to_bank_id): # pragma: no cover
+    def reassign_assessment_part_to_bank(self, assessment_part_id, from_biank_id, to_bank_id):  # pragma: no cover
         """Moves an ``AssessmentPart`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -1481,7 +1481,7 @@ class AssessmentPartSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1496,7 +1496,7 @@ class AssessmentPartSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -1512,7 +1512,7 @@ class AssessmentPartSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self): # pragma: no cover
+    def can_manage_smart_banks(self):  # pragma: no cover
         """Tests if this user can manage smart bank.
 
         A return of true does not guarantee successful authorization. A
@@ -1531,7 +1531,7 @@ class AssessmentPartSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_query(self): # pragma: no cover
+    def get_assessment_part_query(self):  # pragma: no cover
         """Gets an assessment part query.
 
         :return: the assessment part query
@@ -1546,7 +1546,7 @@ class AssessmentPartSmartBankSession:
     assessment_part_query = property(fget=get_assessment_part_query)
 
     @abc.abstractmethod
-    def get_assessment_part_search_order(self): # pragma: no cover
+    def get_assessment_part_search_order(self):  # pragma: no cover
         """Gets an assessment part search order.
 
         :return: the assessment part search order
@@ -1561,7 +1561,7 @@ class AssessmentPartSmartBankSession:
     assessment_part_search_order = property(fget=get_assessment_part_search_order)
 
     @abc.abstractmethod
-    def apply_assessment_part_query(self, assessment_part_query): # pragma: no cover
+    def apply_assessment_part_query(self, assessment_part_query):  # pragma: no cover
         """Applies an assessment part query to this bank.
 
         :param assessment_part_query: the assessment part query
@@ -1577,7 +1577,7 @@ class AssessmentPartSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_assessment_part_query(self): # pragma: no cover
+    def inspect_assessment_part_query(self):  # pragma: no cover
         """Gets an assessment part query inspector for this bank.
 
         :return: the assessment part query inspector
@@ -1591,7 +1591,7 @@ class AssessmentPartSmartBankSession:
         return  # osid.assessment.authoring.AssessmentPartQueryInspector
 
     @abc.abstractmethod
-    def apply_assessment_part_sequencing(self, assessment_part_search_order): # pragma: no cover
+    def apply_assessment_part_sequencing(self, assessment_part_search_order):  # pragma: no cover
         """Applies an assessment part search order to this bank.
 
         :param assessment_part_search_order: the assessment part search order
@@ -1607,7 +1607,7 @@ class AssessmentPartSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector): # pragma: no cover
+    def get_assessment_part_query_from_inspector(self, assessment_part_query_inspector):  # pragma: no cover
         """Gets an assessment part query from an inspector.
 
         :param assessment_part_query_inspector: an assessment part query inspector
@@ -1628,7 +1628,7 @@ class AssessmentPartItemSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1643,7 +1643,7 @@ class AssessmentPartItemSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1659,7 +1659,7 @@ class AssessmentPartItemSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_access_assessment_part_items(self): # pragma: no cover
+    def can_access_assessment_part_items(self):  # pragma: no cover
         """Tests if this user can perform assessment part lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1678,7 +1678,7 @@ class AssessmentPartItemSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_asseessment_part_item_view(self): # pragma: no cover
+    def use_comparative_asseessment_part_item_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1692,7 +1692,7 @@ class AssessmentPartItemSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_part_item_view(self): # pragma: no cover
+    def use_plenary_assessment_part_item_view(self):  # pragma: no cover
         """A complete view of the returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1707,7 +1707,7 @@ class AssessmentPartItemSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessment parts in catalogs which
@@ -1721,7 +1721,7 @@ class AssessmentPartItemSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this bank only.
@@ -1734,7 +1734,7 @@ class AssessmentPartItemSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_items(self, assessment_part_id): # pragma: no cover
+    def get_assessment_part_items(self, assessment_part_id):  # pragma: no cover
         """Gets the list of items mapped to the given ``AssessmentPart``.
 
         In plenary mode, the returned list contains all known items or
@@ -1756,7 +1756,7 @@ class AssessmentPartItemSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_assessment_parts_by_item(self, item_id): # pragma: no cover
+    def get_assessment_parts_by_item(self, item_id):  # pragma: no cover
         """Gets the assessment parts containing the given item.
 
         In plenary mode, the returned list contains all known assessment
@@ -1791,7 +1791,7 @@ class AssessmentPartItemDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1806,7 +1806,7 @@ class AssessmentPartItemDesignSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1822,7 +1822,7 @@ class AssessmentPartItemDesignSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_design_assessment_parts(self): # pragma: no cover
+    def can_design_assessment_parts(self):  # pragma: no cover
         """Tests if this user can manage mapping of ``Items`` to ``AssessmentParts``.
 
         A return of true does not guarantee successful authorization. A
@@ -1841,7 +1841,7 @@ class AssessmentPartItemDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_item(self, item_id, assessment_part_id): # pragma: no cover
+    def add_item(self, item_id, assessment_part_id):  # pragma: no cover
         """Appends an item to an assessment part.
 
         :param item_id: ``Id`` of the ``Item``
@@ -1860,7 +1860,7 @@ class AssessmentPartItemDesignSession:
         pass
 
     @abc.abstractmethod
-    def move_item_ahead(self, item_id, assessment_part_id, reference_id): # pragma: no cover
+    def move_item_ahead(self, item_id, assessment_part_id, reference_id):  # pragma: no cover
         """Reorders items in an assessment part by moving the specified item in front of a reference item.
 
         :param item_id: ``Id`` of the ``Item``
@@ -1880,7 +1880,7 @@ class AssessmentPartItemDesignSession:
         pass
 
     @abc.abstractmethod
-    def move_item_behind(self, item_id, assessment_part_id, reference_id): # pragma: no cover
+    def move_item_behind(self, item_id, assessment_part_id, reference_id):  # pragma: no cover
         """Reorders items in an assessment part by moving the specified item behind of a reference item.
 
         :param item_id: ``Id`` of the ``Item``
@@ -1900,7 +1900,7 @@ class AssessmentPartItemDesignSession:
         pass
 
     @abc.abstractmethod
-    def order_items(self, item_ids, assessment_part_id): # pragma: no cover
+    def order_items(self, item_ids, assessment_part_id):  # pragma: no cover
         """Reorders a set of items in an assessment part.
 
         :param item_ids: ``Ids`` for a set of ``Items``
@@ -1918,7 +1918,7 @@ class AssessmentPartItemDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_item(self, item_id, assessment_part_id): # pragma: no cover
+    def remove_item(self, item_id, assessment_part_id):  # pragma: no cover
         """Removes an ``Item`` from an ``AssessmentPartId``.
 
         :param item_id: ``Id`` of the ``Item``
@@ -1941,7 +1941,7 @@ class SequenceRuleLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1956,7 +1956,7 @@ class SequenceRuleLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -1972,7 +1972,7 @@ class SequenceRuleLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_sequence_rules(self): # pragma: no cover
+    def can_lookup_sequence_rules(self):  # pragma: no cover
         """Tests if this user can perform ``SequenceRules`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1991,7 +1991,7 @@ class SequenceRuleLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_sequence_rule_view(self): # pragma: no cover
+    def use_comparative_sequence_rule_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2005,7 +2005,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_sequence_rule_view(self): # pragma: no cover
+    def use_plenary_sequence_rule_view(self):  # pragma: no cover
         """A complete view of the ``SequenceRule`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2020,7 +2020,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include sequence rule in banks which are
@@ -2034,7 +2034,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -2047,7 +2047,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_active_sequence_rule_view(self): # pragma: no cover
+    def use_active_sequence_rule_view(self):  # pragma: no cover
         """Only active sequence rules are returned by methods in this session.
 
 
@@ -2058,7 +2058,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_status_sequence_rule_view(self): # pragma: no cover
+    def use_any_status_sequence_rule_view(self):  # pragma: no cover
         """All active and inactive sequence rules are returned by methods in this session.
 
 
@@ -2069,7 +2069,7 @@ class SequenceRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def get_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Gets the ``SequenceRule`` specified by its ``Id``.
 
         :param sequence_rule_id: ``Id`` of the ``SequenceRule``
@@ -2087,7 +2087,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRule
 
     @abc.abstractmethod
-    def get_sequence_rules_by_ids(self, sequence_rule_ids): # pragma: no cover
+    def get_sequence_rules_by_ids(self, sequence_rule_ids):  # pragma: no cover
         """Gets a ``SequenceRuleList`` corresponding to the given ``IdList``.
 
         :param sequence_rule_ids: the list of ``Ids`` to retrieve
@@ -2105,7 +2105,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_by_genus_type(self, sequence_rule_genus_type): # pragma: no cover
+    def get_sequence_rules_by_genus_type(self, sequence_rule_genus_type):  # pragma: no cover
         """Gets a ``SequenceRuleList`` corresponding to the given sequence rule genus ``Type`` which does not include sequence rule of genus types derived from the specified ``Type``.
 
         :param sequence_rule_genus_type: a sequence rule genus type
@@ -2122,7 +2122,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_by_parent_genus_type(self, sequence_rule_genus_type): # pragma: no cover
+    def get_sequence_rules_by_parent_genus_type(self, sequence_rule_genus_type):  # pragma: no cover
         """Gets a ``SequenceRuleList`` corresponding to the given sequence rule genus ``Type`` and include any additional sequence rule with genus types derived from the specified ``Type``.
 
         :param sequence_rule_genus_type: a sequence rule genus type
@@ -2139,7 +2139,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_by_record_type(self, sequence_rule_record_type): # pragma: no cover
+    def get_sequence_rules_by_record_type(self, sequence_rule_record_type):  # pragma: no cover
         """Gets a ``SequenceRuleList`` containing the given sequence rule record ``Type``.
 
         :param sequence_rule_record_type: a sequence rule record type
@@ -2156,7 +2156,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_for_assessment_part(self, assessment_part_id): # pragma: no cover
+    def get_sequence_rules_for_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Gets a ``SequenceRuleList`` for the given source assessment part.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -2173,7 +2173,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_for_next_assessment_part(self, next_assessment_part_id): # pragma: no cover
+    def get_sequence_rules_for_next_assessment_part(self, next_assessment_part_id):  # pragma: no cover
         """Gets a ``SequenceRuleList`` for the given target assessment part.
 
         :param next_assessment_part_id: an assessment part ``Id``
@@ -2190,7 +2190,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_for_assessment_parts(self, assessment_part_id, next_assessment_part_id): # pragma: no cover
+    def get_sequence_rules_for_assessment_parts(self, assessment_part_id, next_assessment_part_id):  # pragma: no cover
         """Gets a ``SequenceRuleList`` for the given source and target assessment parts.
 
         :param assessment_part_id: source assessment part ``Id``
@@ -2209,7 +2209,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules_for_assessment(self, assessment_id): # pragma: no cover
+    def get_sequence_rules_for_assessment(self, assessment_id):  # pragma: no cover
         """Gets a ``SequenceRuleList`` for an entire assessment.
 
         :param assessment_id: an assessment ``Id``
@@ -2226,7 +2226,7 @@ class SequenceRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rules(self): # pragma: no cover
+    def get_sequence_rules(self):  # pragma: no cover
         """Gets all ``SequenceRules``.
 
         :return: the returned ``SequenceRule`` list
@@ -2264,7 +2264,7 @@ class SequenceRuleQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -2279,7 +2279,7 @@ class SequenceRuleQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -2295,7 +2295,7 @@ class SequenceRuleQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_sequence_rules(self): # pragma: no cover
+    def can_search_sequence_rules(self):  # pragma: no cover
         """Tests if this user can perform ``SequenceRule`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2314,7 +2314,7 @@ class SequenceRuleQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include sequence rule in banks which are
@@ -2328,7 +2328,7 @@ class SequenceRuleQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -2341,7 +2341,7 @@ class SequenceRuleQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_query(self): # pragma: no cover
+    def get_sequence_rule_query(self):  # pragma: no cover
         """Gets a sequence rule query.
 
         :return: the sequence rule query
@@ -2356,7 +2356,7 @@ class SequenceRuleQuerySession:
     sequence_rule_query = property(fget=get_sequence_rule_query)
 
     @abc.abstractmethod
-    def get_sequence_rules_by_query(self, sequence_rule_query): # pragma: no cover
+    def get_sequence_rules_by_query(self, sequence_rule_query):  # pragma: no cover
         """Gets a list of ``SequenceRules`` matching the given sequence rule query.
 
         :param sequence_rule_query: the sequence rule query
@@ -2406,7 +2406,7 @@ class SequenceRuleSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_search(self): # pragma: no cover
+    def get_sequence_rule_search(self):  # pragma: no cover
         """Gets a sequence rule search.
 
         :return: the sequence rule search
@@ -2421,7 +2421,7 @@ class SequenceRuleSearchSession:
     sequence_rule_search = property(fget=get_sequence_rule_search)
 
     @abc.abstractmethod
-    def get_sequence_rule_search_order(self): # pragma: no cover
+    def get_sequence_rule_search_order(self):  # pragma: no cover
         """Gets a sequence rule search order.
 
         The ``SequenceRuleSearchOrder`` is supplied to a
@@ -2439,7 +2439,7 @@ class SequenceRuleSearchSession:
     sequence_rule_search_order = property(fget=get_sequence_rule_search_order)
 
     @abc.abstractmethod
-    def get_sequence_rules_by_search(self, sequence_rule_query, sequence_rule_search): # pragma: no cover
+    def get_sequence_rules_by_search(self, sequence_rule_query, sequence_rule_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param sequence_rule_query: the sequence rule query
@@ -2459,7 +2459,7 @@ class SequenceRuleSearchSession:
         return  # osid.assessment.authoring.SequenceRuleSearchResults
 
     @abc.abstractmethod
-    def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector): # pragma: no cover
+    def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector):  # pragma: no cover
         """Gets a sequence rule query from an inspector.
 
         The inspector is available from a ``SequenceRuleSearchResults``.
@@ -2487,7 +2487,7 @@ class SequenceRuleAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -2502,7 +2502,7 @@ class SequenceRuleAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -2518,7 +2518,7 @@ class SequenceRuleAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_sequence_rule(self): # pragma: no cover
+    def can_create_sequence_rule(self):  # pragma: no cover
         """Tests if this user can create sequence rules.
 
         A return of true does not guarantee successful authorization. A
@@ -2537,7 +2537,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_sequence_rule_with_record_types(self, sequence_rule_record_types): # pragma: no cover
+    def can_create_sequence_rule_with_record_types(self, sequence_rule_record_types):  # pragma: no cover
         """Tests if this user can create a single ``SequenceRule`` using the desired record types.
 
         While
@@ -2559,7 +2559,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_form_for_create(self, assessment_part_id, next_assessment_part_id, sequence_rule_record_types): # pragma: no cover
+    def get_sequence_rule_form_for_create(self, assessment_part_id, next_assessment_part_id, sequence_rule_record_types):  # pragma: no cover
         """Gets the sequence rule form for creating new sequence rules between two assessment parts.
 
         A new form should be requested for each create transaction.
@@ -2585,7 +2585,7 @@ class SequenceRuleAdminSession:
         return  # osid.assessment.authoring.SequenceRuleForm
 
     @abc.abstractmethod
-    def create_sequence_rule(self, sequence_rule_form): # pragma: no cover
+    def create_sequence_rule(self, sequence_rule_form):  # pragma: no cover
         """Creates a new ``SequenceRule``.
 
         :param sequence_rule_form: the form for this ``SequenceRule``
@@ -2605,7 +2605,7 @@ class SequenceRuleAdminSession:
         return  # osid.assessment.authoring.SequenceRule
 
     @abc.abstractmethod
-    def can_update_sequence_rules(self): # pragma: no cover
+    def can_update_sequence_rules(self):  # pragma: no cover
         """Tests if this user can update sequence rules.
 
         A return of true does not guarantee successful authorization. A
@@ -2624,7 +2624,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_form_for_update(self, sequence_rule_id): # pragma: no cover
+    def get_sequence_rule_form_for_update(self, sequence_rule_id):  # pragma: no cover
         """Gets the sequence rule form for updating an existing sequence rule.
 
         A new sequence rule form should be requested for each update
@@ -2645,7 +2645,7 @@ class SequenceRuleAdminSession:
         return  # osid.assessment.authoring.SequenceRuleForm
 
     @abc.abstractmethod
-    def update_sequence_rule(self, sequence_rule_form): # pragma: no cover
+    def update_sequence_rule(self, sequence_rule_form):  # pragma: no cover
         """Updates an existing sequence rule.
 
         :param sequence_rule_form: the form containing the elements to be updated
@@ -2663,7 +2663,7 @@ class SequenceRuleAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_sequence_rules(self): # pragma: no cover
+    def can_delete_sequence_rules(self):  # pragma: no cover
         """Tests if this user can delete sequence rules.
 
         A return of true does not guarantee successful authorization. A
@@ -2682,7 +2682,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def delete_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Deletes a ``SequenceRule``.
 
         :param sequence_rule_id: the ``Id`` of the ``SequenceRule`` to remove
@@ -2698,7 +2698,7 @@ class SequenceRuleAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_sequence_rule_aliases(self): # pragma: no cover
+    def can_manage_sequence_rule_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for sequence rules.
 
         A return of true does not guarantee successful authorization. A
@@ -2717,7 +2717,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_sequence_rule(self, sequence_rule_id, alias_id): # pragma: no cover
+    def alias_sequence_rule(self, sequence_rule_id, alias_id):  # pragma: no cover
         """Adds a ``Id`` to a ``SequenceRule`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``SequenceRule`` is determined by the
@@ -2741,7 +2741,7 @@ class SequenceRuleAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_sequence_sequence_rules(self): # pragma: no cover
+    def can_sequence_sequence_rules(self):  # pragma: no cover
         """Tests if this user can order ``SequenceRules``.
 
         A return of true does not guarantee successful authorization. A
@@ -2760,7 +2760,7 @@ class SequenceRuleAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def move_sequence_rule_ahead(self, sequence_rule_id, assessment_part_id, reference_id): # pragma: no cover
+    def move_sequence_rule_ahead(self, sequence_rule_id, assessment_part_id, reference_id):  # pragma: no cover
         """Reorders sequence rule for a source assessment part by moving the specified sequence rule in front of a reference sequence rule.
 
         :param sequence_rule_id: the ``Id`` of a ``SequenceRule``
@@ -2780,7 +2780,7 @@ class SequenceRuleAdminSession:
         pass
 
     @abc.abstractmethod
-    def move_sequence_rule_behind(self, sequence_rule_id, assessment_part_id, reference_id): # pragma: no cover
+    def move_sequence_rule_behind(self, sequence_rule_id, assessment_part_id, reference_id):  # pragma: no cover
         """Reorders sequence rule for a source assessment part by moving the specified sequence rule behind a reference sequence rule.
 
         :param sequence_rule_id: the ``Id`` of a ``SequenceRule``
@@ -2800,7 +2800,7 @@ class SequenceRuleAdminSession:
         pass
 
     @abc.abstractmethod
-    def order_sequence_rules(self, sequence_rule_ids, assessment_part_id): # pragma: no cover
+    def order_sequence_rules(self, sequence_rule_ids, assessment_part_id):  # pragma: no cover
         """Reorders a set of sequence rules for an assessment part.
 
         :param sequence_rule_ids: the ``Ids`` for a set of ``SequenceRules``
@@ -2834,7 +2834,7 @@ class SequenceRuleNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -2849,7 +2849,7 @@ class SequenceRuleNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -2865,7 +2865,7 @@ class SequenceRuleNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_sequence_rule_notifications(self): # pragma: no cover
+    def can_register_for_sequence_rule_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``SequenceRule`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2884,7 +2884,7 @@ class SequenceRuleNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include in banks which are children of
@@ -2898,7 +2898,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this bank only.
@@ -2911,7 +2911,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_sequence_rule_notifications(self): # pragma: no cover
+    def reliable_sequence_rule_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2925,7 +2925,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_sequence_rule_notifications(self): # pragma: no cover
+    def unreliable_sequence_rule_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2939,7 +2939,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_sequence_rule_notification(self, notification_id): # pragma: no cover
+    def acknowledge_sequence_rule_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a sequence rule notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2953,7 +2953,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_sequence_rules(self): # pragma: no cover
+    def register_for_new_sequence_rules(self):  # pragma: no cover
         """Register for notifications of new sequence rules.
 
         ``SequenceRuleReceiver.newSequenceRules()`` is invoked when a
@@ -2968,7 +2968,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_sequence_rules_for_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_new_sequence_rules_for_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Register for notifications of new sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.newSequenceRules()`` is invoked when a
@@ -2986,7 +2986,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_sequence_rules_for_next_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_new_sequence_rules_for_next_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Register for notifications of new sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.newSequenceRules()`` is invoked when a
@@ -3004,7 +3004,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rules(self): # pragma: no cover
+    def register_for_changed_sequence_rules(self):  # pragma: no cover
         """Registers for notification of updated sequence rules.
 
         ``SequenceRuleReceiver.changedSequenceRules()`` is invoked when
@@ -3019,7 +3019,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rules_for_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_changed_sequence_rules_for_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Register for notifications of updated sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.changedSequenceRules()`` is invoked when
@@ -3037,7 +3037,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rules_for_next_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_changed_sequence_rules_for_next_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Register for notifications of updated sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.changedSequenceRules()`` is invoked when
@@ -3055,7 +3055,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def register_for_changed_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Registers for notification of an updated sequence rule.
 
         ``ProvisionableReceiver.changedSequenceRules()`` is invoked when
@@ -3073,7 +3073,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rules(self): # pragma: no cover
+    def register_for_deleted_sequence_rules(self):  # pragma: no cover
         """Registers for notification of deleted sequence rules.
 
         ``SequenceRuleReceiver.deletedSequenceRules()`` is invoked when
@@ -3088,7 +3088,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rules_for_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_deleted_sequence_rules_for_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Registers for notification of deleted sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.deletedSequenceRule()`` is invoked when a
@@ -3106,7 +3106,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rules_for_next_assessment_part(self, assessment_part_id): # pragma: no cover
+    def register_for_deleted_sequence_rules_for_next_assessment_part(self, assessment_part_id):  # pragma: no cover
         """Registers for notification of deleted sequence rules for the given assessment part.
 
         ``SequenceRuleReceiver.deletedSequenceRule()`` is invoked when a
@@ -3124,7 +3124,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def register_for_deleted_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Registers for notification of a deleted sequence rule.
 
         ``SequenceRuleReceiver.deletedSequenceRule()`` is invoked when
@@ -3143,7 +3143,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_sequence_rule_notifications(self): # pragma: no cover
+    def reliable_sequence_rule_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3157,7 +3157,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_sequence_rule_notifications(self): # pragma: no cover
+    def unreliable_sequence_rule_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3171,7 +3171,7 @@ class SequenceRuleNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_sequence_rule_notification(self, notification_id): # pragma: no cover
+    def acknowledge_sequence_rule_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an sequence_rule notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3202,7 +3202,7 @@ class SequenceRuleBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_sequence_rule_bank_mappings(self): # pragma: no cover
+    def can_lookup_sequence_rule_bank_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of sequence rule/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3221,7 +3221,7 @@ class SequenceRuleBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_sequence_rule_bank_view(self): # pragma: no cover
+    def use_comparative_sequence_rule_bank_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3235,7 +3235,7 @@ class SequenceRuleBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_sequence_rule_bank_view(self): # pragma: no cover
+    def use_plenary_sequence_rule_bank_view(self):  # pragma: no cover
         """A complete view of the ``SequenceRule`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3250,7 +3250,7 @@ class SequenceRuleBankSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_ids_by_bank(self, bank_id): # pragma: no cover
+    def get_sequence_rule_ids_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of ``SequenceRuleIds`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -3268,7 +3268,7 @@ class SequenceRuleBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rules_by_bank(self, bank_id): # pragma: no cover
+    def get_sequence_rules_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of sequence rule associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -3286,7 +3286,7 @@ class SequenceRuleBankSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_sequence_rule_ids_by_banks(self, bank_ids): # pragma: no cover
+    def get_sequence_rule_ids_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of ``SequenceRule Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -3303,7 +3303,7 @@ class SequenceRuleBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rules_by_banks(self, bank_ids): # pragma: no cover
+    def get_sequence_rules_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of sequence rule corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -3320,7 +3320,7 @@ class SequenceRuleBankSession:
         return  # osid.assessment.authoring.SequenceRuleList
 
     @abc.abstractmethod
-    def get_bank_ids_by_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def get_bank_ids_by_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Gets the ``Bank``  ``Ids`` mapped to a ``SequenceRule``.
 
         :param sequence_rule_id: ``Id`` of a ``SequenceRule``
@@ -3338,7 +3338,7 @@ class SequenceRuleBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def get_banks_by_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Gets the ``Banks`` mapped to a ``SequenceRule``.
 
         :param sequence_rule_id: ``Id`` of a ``SequenceRule``
@@ -3371,7 +3371,7 @@ class SequenceRuleBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_sequence_rules(self): # pragma: no cover
+    def can_assign_sequence_rules(self):  # pragma: no cover
         """Tests if this user can alter sequence rule/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3390,7 +3390,7 @@ class SequenceRuleBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_sequence_rules_to_bank(self, bank_id): # pragma: no cover
+    def can_assign_sequence_rules_to_bank(self, bank_id):  # pragma: no cover
         """Tests if this user can alter sequence rule/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3411,7 +3411,7 @@ class SequenceRuleBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
+    def get_assignable_bank_ids(self, bank_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which any sequence rule can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -3427,7 +3427,7 @@ class SequenceRuleBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_sequence_rule(self, bank_id, sequence_rule_id): # pragma: no cover
+    def get_assignable_bank_ids_for_sequence_rule(self, bank_id, sequence_rule_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific sequence rule can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -3445,7 +3445,7 @@ class SequenceRuleBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_sequence_rule_to_bank(self, sequence_rule_id, bank_id): # pragma: no cover
+    def assign_sequence_rule_to_bank(self, sequence_rule_id, bank_id):  # pragma: no cover
         """Adds an existing ``SequenceRule`` to a ``Bank``.
 
         :param sequence_rule_id: the ``Id`` of the ``SequenceRule``
@@ -3464,7 +3464,7 @@ class SequenceRuleBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_sequence_rule_from_bank(self, sequence_rule_id, bank_id): # pragma: no cover
+    def unassign_sequence_rule_from_bank(self, sequence_rule_id, bank_id):  # pragma: no cover
         """Removes a ``SequenceRule`` from a ``Bank``.
 
         :param sequence_rule_id: the ``Id`` of the ``SequenceRule``
@@ -3482,7 +3482,7 @@ class SequenceRuleBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_sequence_rule_to_bank(self, sequence_rule_id, from_bank_id, to_bank_id): # pragma: no cover
+    def reassign_sequence_rule_to_bank(self, sequence_rule_id, from_bank_id, to_bank_id):  # pragma: no cover
         """Moves a ``SequenceRule`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -3522,7 +3522,7 @@ class SequenceRuleSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3537,7 +3537,7 @@ class SequenceRuleSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -3553,7 +3553,7 @@ class SequenceRuleSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self): # pragma: no cover
+    def can_manage_smart_banks(self):  # pragma: no cover
         """Tests if this user can manage smart bank.
 
         A return of true does not guarantee successful authorization. A
@@ -3572,7 +3572,7 @@ class SequenceRuleSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_query(self): # pragma: no cover
+    def get_sequence_rule_query(self):  # pragma: no cover
         """Gets a sequence rule query.
 
         :return: the sequence rule query
@@ -3587,7 +3587,7 @@ class SequenceRuleSmartBankSession:
     sequence_rule_query = property(fget=get_sequence_rule_query)
 
     @abc.abstractmethod
-    def get_sequence_rule_search_order(self): # pragma: no cover
+    def get_sequence_rule_search_order(self):  # pragma: no cover
         """Gets a sequence rule search order.
 
         :return: the sequence rule search order
@@ -3602,7 +3602,7 @@ class SequenceRuleSmartBankSession:
     sequence_rule_search_order = property(fget=get_sequence_rule_search_order)
 
     @abc.abstractmethod
-    def apply_sequence_rule_query(self, sequence_rule_query): # pragma: no cover
+    def apply_sequence_rule_query(self, sequence_rule_query):  # pragma: no cover
         """Applies a sequence rule query to this bank.
 
         :param sequence_rule_query: the sequence rule query
@@ -3618,7 +3618,7 @@ class SequenceRuleSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_sequence_rule_query(self): # pragma: no cover
+    def inspect_sequence_rule_query(self):  # pragma: no cover
         """Gets a sequence rule query inspector for this bank.
 
         :return: the sequence rule query inspector
@@ -3632,7 +3632,7 @@ class SequenceRuleSmartBankSession:
         return  # osid.assessment.authoring.SequenceRuleQueryInspector
 
     @abc.abstractmethod
-    def apply_sequence_rule_sequencing(self, sequence_rule_search_order): # pragma: no cover
+    def apply_sequence_rule_sequencing(self, sequence_rule_search_order):  # pragma: no cover
         """Applies a sequence rule search order to this bank.
 
         :param sequence_rule_search_order: the sequence rule search order
@@ -3648,7 +3648,7 @@ class SequenceRuleSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector): # pragma: no cover
+    def get_sequence_rule_query_from_inspector(self, sequence_rule_query_inspector):  # pragma: no cover
         """Gets a sequence rule query from an inspector.
 
         :param sequence_rule_query_inspector: a sequence rule query inspector
@@ -3669,7 +3669,7 @@ class SequenceRuleEnablerLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3684,7 +3684,7 @@ class SequenceRuleEnablerLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -3700,7 +3700,7 @@ class SequenceRuleEnablerLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_sequence_rule_enablers(self): # pragma: no cover
+    def can_lookup_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can perform ``SequenceRuleEnablers`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -3719,7 +3719,7 @@ class SequenceRuleEnablerLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_sequence_rule_enabler_view(self): # pragma: no cover
+    def use_comparative_sequence_rule_enabler_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3733,7 +3733,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_sequence_rule_enabler_view(self): # pragma: no cover
+    def use_plenary_sequence_rule_enabler_view(self):  # pragma: no cover
         """A complete view of the ``SequenceRuleEnabler`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3748,7 +3748,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include sequence rule enablers in banks
@@ -3762,7 +3762,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -3775,7 +3775,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_active_sequence_rule_enabler_view(self): # pragma: no cover
+    def use_active_sequence_rule_enabler_view(self):  # pragma: no cover
         """Only active sequence rule enablers are returned by methods in this session.
 
 
@@ -3786,7 +3786,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_status_sequence_rule_enabler_view(self): # pragma: no cover
+    def use_any_status_sequence_rule_enabler_view(self):  # pragma: no cover
         """All active and inactive sequence rule enablers are returned by methods in this session.
 
 
@@ -3797,7 +3797,7 @@ class SequenceRuleEnablerLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the ``SequenceRuleEnabler`` specified by its ``Id``.
 
         :param sequence_rule_enabler_id: ``Id`` of the ``SequenceRuleEnabler``
@@ -3815,7 +3815,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnabler
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_ids(self, sequence_rule_enabler_ids): # pragma: no cover
+    def get_sequence_rule_enablers_by_ids(self, sequence_rule_enabler_ids):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` corresponding to the given ``IdList``.
 
         :param sequence_rule_enabler_ids: the list of ``Ids`` to retrieve
@@ -3833,7 +3833,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_genus_type(self, sequence_rule_enabler_genus_type): # pragma: no cover
+    def get_sequence_rule_enablers_by_genus_type(self, sequence_rule_enabler_genus_type):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` corresponding to the given sequence rule enabler genus ``Type`` which does not include sequence rule enablers of genus types derived from the specified ``Type``.
 
         :param sequence_rule_enabler_genus_type: a sequence rule enabler genus type
@@ -3850,7 +3850,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_parent_genus_type(self, sequence_rule_enabler_genus_type): # pragma: no cover
+    def get_sequence_rule_enablers_by_parent_genus_type(self, sequence_rule_enabler_genus_type):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` corresponding to the given sequence rule enabler genus ``Type`` and include any additional sequence rule enablers with genus types derived from the specified ``Type``.
 
         :param sequence_rule_enabler_genus_type: a sequence rule enabler genus type
@@ -3867,7 +3867,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_record_type(self, sequence_rule_enabler_record_type): # pragma: no cover
+    def get_sequence_rule_enablers_by_record_type(self, sequence_rule_enabler_record_type):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` containing the given sequence rule enabler record ``Type``.
 
         :param sequence_rule_enabler_record_type: a sequence rule enabler record type
@@ -3884,7 +3884,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_on_date(self, from_, to): # pragma: no cover
+    def get_sequence_rule_enablers_on_date(self, from_, to):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` that are effective for the entire given date range inclusive but not confined to the date range for any agent.
 
         :param from: a start date
@@ -3904,7 +3904,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_on_date_with_agent(self, agent_id, from_, to): # pragma: no cover
+    def get_sequence_rule_enablers_on_date_with_agent(self, agent_id, from_, to):  # pragma: no cover
         """Gets a ``SequenceRuleEnablerList`` that are effective for the entire given date range inclusive but not confined to the date range and evaluated against the given agent.
 
         :param agent_id: an agent ``Id``
@@ -3926,7 +3926,7 @@ class SequenceRuleEnablerLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers(self): # pragma: no cover
+    def get_sequence_rule_enablers(self):  # pragma: no cover
         """Gets all ``SequenceRuleEnablers``.
 
         :return: the returned ``SequenceRuleEnabler`` list
@@ -3965,7 +3965,7 @@ class SequenceRuleEnablerQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3980,7 +3980,7 @@ class SequenceRuleEnablerQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -3996,7 +3996,7 @@ class SequenceRuleEnablerQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_sequence_rule_enablers(self): # pragma: no cover
+    def can_search_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can perform ``SequenceRuleEnabler`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4015,7 +4015,7 @@ class SequenceRuleEnablerQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include sequence rule enablers in banks
@@ -4029,7 +4029,7 @@ class SequenceRuleEnablerQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -4042,7 +4042,7 @@ class SequenceRuleEnablerQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query(self): # pragma: no cover
+    def get_sequence_rule_enabler_query(self):  # pragma: no cover
         """Gets a sequence rule enabler query.
 
         :return: the sequence rule enabler query
@@ -4057,7 +4057,7 @@ class SequenceRuleEnablerQuerySession:
     sequence_rule_enabler_query = property(fget=get_sequence_rule_enabler_query)
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_query(self, sequence_rule_enabler_query): # pragma: no cover
+    def get_sequence_rule_enablers_by_query(self, sequence_rule_enabler_query):  # pragma: no cover
         """Gets a list of ``SequenceRuleEnablers`` matching the given sequence rule enabler query.
 
         :param sequence_rule_enabler_query: the sesequence rule enabler query
@@ -4109,7 +4109,7 @@ class SequenceRuleEnablerSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search(self): # pragma: no cover
+    def get_sequence_rule_enabler_search(self):  # pragma: no cover
         """Gets a sequence rule enabler search.
 
         :return: the sequence rule enabler search
@@ -4124,7 +4124,7 @@ class SequenceRuleEnablerSearchSession:
     sequence_rule_enabler_search = property(fget=get_sequence_rule_enabler_search)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_order(self): # pragma: no cover
+    def get_sequence_rule_enabler_search_order(self):  # pragma: no cover
         """Gets a sequence rule enabler search order.
 
         The ``SequenceRuleEnablerSearchOrder`` is supplied to a
@@ -4143,7 +4143,7 @@ class SequenceRuleEnablerSearchSession:
     sequence_rule_enabler_search_order = property(fget=get_sequence_rule_enabler_search_order)
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_search(self, sequence_rule_enabler_query, sequence_rule_enabler_search): # pragma: no cover
+    def get_sequence_rule_enablers_by_search(self, sequence_rule_enabler_query, sequence_rule_enabler_search):  # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param sequence_rule_enabler_query: the sequence rule enabler query
@@ -4163,7 +4163,7 @@ class SequenceRuleEnablerSearchSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerSearchResults
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector): # pragma: no cover
+    def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector):  # pragma: no cover
         """Gets a sequence rule enabler query from an inspector.
 
         The inspector is available from a
@@ -4192,7 +4192,7 @@ class SequenceRuleEnablerAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -4207,7 +4207,7 @@ class SequenceRuleEnablerAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -4223,7 +4223,7 @@ class SequenceRuleEnablerAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_sequence_rule_enabler(self): # pragma: no cover
+    def can_create_sequence_rule_enabler(self):  # pragma: no cover
         """Tests if this user can create sequence rule enablers.
 
         A return of true does not guarantee successful authorization. A
@@ -4242,7 +4242,7 @@ class SequenceRuleEnablerAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_sequence_rule_enabler_with_record_types(self, sequence_rule_enabler_record_types): # pragma: no cover
+    def can_create_sequence_rule_enabler_with_record_types(self, sequence_rule_enabler_record_types):  # pragma: no cover
         """Tests if this user can create a single ``SequenceRuleEnabler`` using the desired record types.
 
         While ``AssessmentAuthoringManag
@@ -4264,7 +4264,7 @@ class SequenceRuleEnablerAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_form_for_create(self, sequence_rule_enabler_record_types): # pragma: no cover
+    def get_sequence_rule_enabler_form_for_create(self, sequence_rule_enabler_record_types):  # pragma: no cover
         """Gets the sequence rule enabler form for creating new sequence rule enablers.
 
         A new form should be requested for each create transaction.
@@ -4284,7 +4284,7 @@ class SequenceRuleEnablerAdminSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerForm
 
     @abc.abstractmethod
-    def create_sequence_rule_enabler(self, sequence_rule_enabler_form): # pragma: no cover
+    def create_sequence_rule_enabler(self, sequence_rule_enabler_form):  # pragma: no cover
         """Creates a new ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_form: the form for this ``SequenceRuleEnabler``
@@ -4304,7 +4304,7 @@ class SequenceRuleEnablerAdminSession:
         return  # osid.assessment.authoring.SequenceRuleEnabler
 
     @abc.abstractmethod
-    def can_update_sequence_rule_enablers(self): # pragma: no cover
+    def can_update_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can update sequence rule enablers.
 
         A return of true does not guarantee successful authorization. A
@@ -4323,7 +4323,7 @@ class SequenceRuleEnablerAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_form_for_update(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_sequence_rule_enabler_form_for_update(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the sequence rule enabler form for updating an existing sequence rule enabler.
 
         A new sequence rule enabler form should be requested for each
@@ -4344,7 +4344,7 @@ class SequenceRuleEnablerAdminSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerForm
 
     @abc.abstractmethod
-    def update_sequence_rule_enabler(self, sequence_rule_enabler_form): # pragma: no cover
+    def update_sequence_rule_enabler(self, sequence_rule_enabler_form):  # pragma: no cover
         """Updates an existing sequence rule enabler.
 
         :param sequence_rule_enabler_form: the form containing the elements to be updated
@@ -4362,7 +4362,7 @@ class SequenceRuleEnablerAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_sequence_rule_enablers(self): # pragma: no cover
+    def can_delete_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can delete sequence rule enablers.
 
         A return of true does not guarantee successful authorization. A
@@ -4381,7 +4381,7 @@ class SequenceRuleEnablerAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def delete_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Deletes a ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_id: the ``Id`` of the ``SequenceRuleEnabler`` to remove
@@ -4397,7 +4397,7 @@ class SequenceRuleEnablerAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_sequence_rule_enabler_aliases(self): # pragma: no cover
+    def can_manage_sequence_rule_enabler_aliases(self):  # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for sequence rule enablers.
 
         A return of true does not guarantee successful authorization. A
@@ -4416,7 +4416,7 @@ class SequenceRuleEnablerAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_sequence_rule_enabler(self, sequence_rule_enabler_id, alias_id): # pragma: no cover
+    def alias_sequence_rule_enabler(self, sequence_rule_enabler_id, alias_id):  # pragma: no cover
         """Adds a ``Id`` to a ``SequenceRuleEnabler`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``SequenceRuleEnabler`` is determined
@@ -4457,7 +4457,7 @@ class SequenceRuleEnablerNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -4472,7 +4472,7 @@ class SequenceRuleEnablerNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -4488,7 +4488,7 @@ class SequenceRuleEnablerNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_sequence_rule_enabler_notifications(self): # pragma: no cover
+    def can_register_for_sequence_rule_enabler_notifications(self):  # pragma: no cover
         """Tests if this user can register for ``SequenceRuleEnabler`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -4507,7 +4507,7 @@ class SequenceRuleEnablerNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include enablers in banks which are
@@ -4521,7 +4521,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this bank only.
@@ -4534,7 +4534,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_sequence_rule_enabler_notifications(self): # pragma: no cover
+    def reliable_sequence_rule_enabler_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4548,7 +4548,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_sequence_rule_enabler_notifications(self): # pragma: no cover
+    def unreliable_sequence_rule_enabler_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4562,7 +4562,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_sequence_rule_enabler_notification(self, notification_id): # pragma: no cover
+    def acknowledge_sequence_rule_enabler_notification(self, notification_id):  # pragma: no cover
         """Acknowledge a sequence rule enabler notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4576,7 +4576,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_sequence_rule_enablers(self): # pragma: no cover
+    def register_for_new_sequence_rule_enablers(self):  # pragma: no cover
         """Register for notifications of new sequence rule enablers.
 
         ``SequenceRuleEnablerReceiver.newSequenceRuleEnablers()`` is
@@ -4591,7 +4591,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rule_enablers(self): # pragma: no cover
+    def register_for_changed_sequence_rule_enablers(self):  # pragma: no cover
         """Registers for notification of updated bank enabelrs.
 
         ``SequenceRuleEnablerReceiver.changedSequenceRuleEnablers()`` is
@@ -4606,7 +4606,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def register_for_changed_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Registers for notification of an updated sequence rule enabler.
 
         ``ProvisionableReceiver.changedSequenceRuleEnablers()`` is
@@ -4625,7 +4625,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rule_enablers(self): # pragma: no cover
+    def register_for_deleted_sequence_rule_enablers(self):  # pragma: no cover
         """Registers for notification of deleted sequence rule enablers.
 
         ``SequenceRuleEnablerReceiver.deletedSequenceRuleEnablers()`` is
@@ -4641,7 +4641,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def register_for_deleted_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Registers for notification of a deleted sequence rule enabler.
 
         ``SequenceRuleEnablerReceiver.deletedSequenceRuleEnablers()`` is
@@ -4660,7 +4660,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_sequence_rule_enabler_notifications(self): # pragma: no cover
+    def reliable_sequence_rule_enabler_notifications(self):  # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4674,7 +4674,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_sequence_rule_enabler_notifications(self): # pragma: no cover
+    def unreliable_sequence_rule_enabler_notifications(self):  # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4688,7 +4688,7 @@ class SequenceRuleEnablerNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_sequence_rule_enabler_notification(self, notification_id): # pragma: no cover
+    def acknowledge_sequence_rule_enabler_notification(self, notification_id):  # pragma: no cover
         """Acknowledge an sequence_rule_enabler notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4719,7 +4719,7 @@ class SequenceRuleEnablerBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_sequence_rule_enabler_bank_mappings(self): # pragma: no cover
+    def can_lookup_sequence_rule_enabler_bank_mappings(self):  # pragma: no cover
         """Tests if this user can perform lookups of sequence rule enabler/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4738,7 +4738,7 @@ class SequenceRuleEnablerBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_sequence_rule_enabler_bank_view(self): # pragma: no cover
+    def use_comparative_sequence_rule_enabler_bank_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4752,7 +4752,7 @@ class SequenceRuleEnablerBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_sequence_rule_enabler_bank_view(self): # pragma: no cover
+    def use_plenary_sequence_rule_enabler_bank_view(self):  # pragma: no cover
         """A complete view of the ``SequenceRuleEnabler`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4767,7 +4767,7 @@ class SequenceRuleEnablerBankSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_ids_by_bank(self, bank_id): # pragma: no cover
+    def get_sequence_rule_enabler_ids_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of ``SequenceRuleEnablerIds`` associated with an ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -4785,7 +4785,7 @@ class SequenceRuleEnablerBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_bank(self, bank_id): # pragma: no cover
+    def get_sequence_rule_enablers_by_bank(self, bank_id):  # pragma: no cover
         """Gets the list of sequence rule enablers associated with an ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -4803,7 +4803,7 @@ class SequenceRuleEnablerBankSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_ids_by_banks(self, bank_ids): # pragma: no cover
+    def get_sequence_rule_enabler_ids_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of ``SequenceRuleEnabler Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -4820,7 +4820,7 @@ class SequenceRuleEnablerBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_by_banks(self, bank_ids): # pragma: no cover
+    def get_sequence_rule_enablers_by_banks(self, bank_ids):  # pragma: no cover
         """Gets the list of sequence rule enablers corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -4837,7 +4837,7 @@ class SequenceRuleEnablerBankSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_bank_ids_by_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_bank_ids_by_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the ``Bank``  ``Ids`` mapped to a ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_id: ``Id`` of a ``SequenceRuleEnabler``
@@ -4855,7 +4855,7 @@ class SequenceRuleEnablerBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_banks_by_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the ``Banks`` mapped to a ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_id: ``Id`` of a ``SequenceRuleEnabler``
@@ -4888,7 +4888,7 @@ class SequenceRuleEnablerBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_sequence_rule_enablers(self): # pragma: no cover
+    def can_assign_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can alter sequence rule enabler/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4907,7 +4907,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_sequence_rule_enablers_to_bank(self, bank_id): # pragma: no cover
+    def can_assign_sequence_rule_enablers_to_bank(self, bank_id):  # pragma: no cover
         """Tests if this user can alter sequence rule enabler/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4928,7 +4928,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
+    def get_assignable_bank_ids(self, bank_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which any sequence rule enabler can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -4944,7 +4944,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_sequence_rule_enabler(self, bank_id, sequence_rule_enabler_id): # pragma: no cover
+    def get_assignable_bank_ids_for_sequence_rule_enabler(self, bank_id, sequence_rule_enabler_id):  # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific sequence rule enabler can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -4962,7 +4962,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_sequence_rule_enabler_to_bank(self, sequence_rule_enabler_id, bank_id): # pragma: no cover
+    def assign_sequence_rule_enabler_to_bank(self, sequence_rule_enabler_id, bank_id):  # pragma: no cover
         """Adds an existing ``SequenceRuleEnabler`` to a ``Bank``.
 
         :param sequence_rule_enabler_id: the ``Id`` of the ``SequenceRuleEnabler``
@@ -4981,7 +4981,7 @@ class SequenceRuleEnablerBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_sequence_rule_enabler_from_bank(self, sequence_rule_enabler_id, bank_id): # pragma: no cover
+    def unassign_sequence_rule_enabler_from_bank(self, sequence_rule_enabler_id, bank_id):  # pragma: no cover
         """Removes a ``SequenceRuleEnabler`` from a ``Bank``.
 
         :param sequence_rule_enabler_id: the ``Id`` of the ``SequenceRuleEnabler``
@@ -5017,7 +5017,7 @@ class SequenceRuleEnablerSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5032,7 +5032,7 @@ class SequenceRuleEnablerSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -5048,7 +5048,7 @@ class SequenceRuleEnablerSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self): # pragma: no cover
+    def can_manage_smart_banks(self):  # pragma: no cover
         """Tests if this user can manage smart bank.
 
         A return of true does not guarantee successful authorization. A
@@ -5067,7 +5067,7 @@ class SequenceRuleEnablerSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query(self): # pragma: no cover
+    def get_sequence_rule_enabler_query(self):  # pragma: no cover
         """Gets a sequence rule enabler query.
 
         :return: the sequence rule enabler query
@@ -5082,7 +5082,7 @@ class SequenceRuleEnablerSmartBankSession:
     sequence_rule_enabler_query = property(fget=get_sequence_rule_enabler_query)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_order(self): # pragma: no cover
+    def get_sequence_rule_enabler_search_order(self):  # pragma: no cover
         """Gets a sequence rule enabler search order.
 
         :return: the sequence rule enabler search order
@@ -5097,7 +5097,7 @@ class SequenceRuleEnablerSmartBankSession:
     sequence_rule_enabler_search_order = property(fget=get_sequence_rule_enabler_search_order)
 
     @abc.abstractmethod
-    def apply_sequence_rule_enabler_query(self, sequence_rule_enabler_query): # pragma: no cover
+    def apply_sequence_rule_enabler_query(self, sequence_rule_enabler_query):  # pragma: no cover
         """Applies a sequence rule enabler query to this bank.
 
         :param sequence_rule_enabler_query: the sequence rule enabler query
@@ -5113,7 +5113,7 @@ class SequenceRuleEnablerSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_sequence_rule_enabler_query(self): # pragma: no cover
+    def inspect_sequence_rule_enabler_query(self):  # pragma: no cover
         """Gets a sequence rule enabler query inspector for this bank.
 
         :return: the sequence rule enabler query inspector
@@ -5127,7 +5127,7 @@ class SequenceRuleEnablerSmartBankSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerQueryInspector
 
     @abc.abstractmethod
-    def apply_sequence_rule_enabler_sequencing(self, sequence_rule_enabler_search_order): # pragma: no cover
+    def apply_sequence_rule_enabler_sequencing(self, sequence_rule_enabler_search_order):  # pragma: no cover
         """Applies a sequence rule enabler search order to this bank.
 
         :param sequence_rule_enabler_search_order: the sequence rule enabler search order
@@ -5143,7 +5143,7 @@ class SequenceRuleEnablerSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector): # pragma: no cover
+    def get_sequence_rule_enabler_query_from_inspector(self, sequence_rule_enabler_query_inspector):  # pragma: no cover
         """Gets a sequence rule enabler query from an inspector.
 
         :param sequence_rule_enabler_query_inspector: a sequence rule enabler query inspector
@@ -5183,7 +5183,7 @@ class SequenceRuleEnablerRuleLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5198,7 +5198,7 @@ class SequenceRuleEnablerRuleLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -5214,7 +5214,7 @@ class SequenceRuleEnablerRuleLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_sequence_rule_enabler_rules(self): # pragma: no cover
+    def can_lookup_sequence_rule_enabler_rules(self):  # pragma: no cover
         """Tests if this user can perform lookups of sequence rule enabler/sequence rule mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5233,7 +5233,7 @@ class SequenceRuleEnablerRuleLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_sequence_rule_enabler_rule_view(self): # pragma: no cover
+    def use_comparative_sequence_rule_enabler_rule_view(self):  # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5247,7 +5247,7 @@ class SequenceRuleEnablerRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_sequence_rule_enabler_rule_view(self): # pragma: no cover
+    def use_plenary_sequence_rule_enabler_rule_view(self):  # pragma: no cover
         """A complete view of the ``SequenceRuleEnabler`` and ``SequenceRule`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5262,7 +5262,7 @@ class SequenceRuleEnablerRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self): # pragma: no cover
+    def use_federated_bank_view(self):  # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include sequence rule enablers in banks
@@ -5276,7 +5276,7 @@ class SequenceRuleEnablerRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self): # pragma: no cover
+    def use_isolated_bank_view(self):  # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -5289,7 +5289,7 @@ class SequenceRuleEnablerRuleLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_ids_for_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def get_sequence_rule_enabler_ids_for_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Gets the ``SequenceRuleEnabler Id`` associated with a ``SequenceRule``.
 
         :param  sequence_rule_id: ``Id`` of the ``SequenceRule``
@@ -5307,7 +5307,7 @@ class SequenceRuleEnablerRuleLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers_for_sequence_rule(self, sequence_rule_id): # pragma: no cover
+    def get_sequence_rule_enablers_for_sequence_rule(self, sequence_rule_id):  # pragma: no cover
         """Gets the ``SequenceRuleEnablers`` associated with a ``SequenceRule``.
 
         :param sequence_rule_id: ``Id`` of the ``SequenceRule``
@@ -5325,7 +5325,7 @@ class SequenceRuleEnablerRuleLookupSession:
         return  # osid.assessment.authoring.SequenceRuleEnablerList
 
     @abc.abstractmethod
-    def get_sequence_rule_ids_for_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_sequence_rule_ids_for_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the ``SequenceRule``  ``Ids`` mapped to a ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_id: ``Id`` of a ``SequenceRuleEnabler``
@@ -5343,7 +5343,7 @@ class SequenceRuleEnablerRuleLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_sequence_rules_for_sequence_rule_enabler(self, sequence_rule_enabler_id): # pragma: no cover
+    def get_sequence_rules_for_sequence_rule_enabler(self, sequence_rule_enabler_id):  # pragma: no cover
         """Gets the ``SequenceRules`` mapped to a ``SequenceRuleEnabler``.
 
         :param sequence_rule_enabler_id: ``Id`` of a ``SequenceRuleEnabler``
@@ -5372,7 +5372,7 @@ class SequenceRuleEnablerRuleApplicationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self): # pragma: no cover
+    def get_bank_id(self):  # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5387,7 +5387,7 @@ class SequenceRuleEnablerRuleApplicationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self): # pragma: no cover
+    def get_bank(self):  # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the bank
@@ -5403,7 +5403,7 @@ class SequenceRuleEnablerRuleApplicationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_assign_sequence_rule_enablers(self): # pragma: no cover
+    def can_assign_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can alter sequence rule enabler/sequence rule mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5422,7 +5422,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def assign_sequence_rule_enabler_to_sequence_rule(self, sequence_rule_enabler_id, sequence_rule_id): # pragma: no cover
+    def assign_sequence_rule_enabler_to_sequence_rule(self, sequence_rule_enabler_id, sequence_rule_id):  # pragma: no cover
         """Adds an existing ``SequenceRuleEnabler`` to a ``SequenceRule``.
 
         :param sequence_rule_enabler_id: the ``Id`` of the ``SequenceRuleEnabler``
@@ -5441,7 +5441,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         pass
 
     @abc.abstractmethod
-    def unassign_sequence_rule_enabler_from_sequence_rule(self, sequence_rule_enabler_id, sequence_rule_id): # pragma: no cover
+    def unassign_sequence_rule_enabler_from_sequence_rule(self, sequence_rule_enabler_id, sequence_rule_id):  # pragma: no cover
         """Removes a ``SequenceRuleEnabler`` from a ``SequenceRule``.
 
         :param sequence_rule_enabler_id: the ``Id`` of the ``SequenceRuleEnabler``
@@ -5459,7 +5459,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         pass
 
     @abc.abstractmethod
-    def can_sequence_sequence_rule_enablers(self): # pragma: no cover
+    def can_sequence_sequence_rule_enablers(self):  # pragma: no cover
         """Tests if this user can order ``SequenceRuleEnablers``.
 
         A return of true does not guarantee successful authorization. A
@@ -5478,7 +5478,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def move_sequence_rule_enabler_ahead(self, sequence_rule_enabler_id, sequence_rule_id, reference_id): # pragma: no cover
+    def move_sequence_rule_enabler_ahead(self, sequence_rule_enabler_id, sequence_rule_id, reference_id):  # pragma: no cover
         """Reorders sequence rule enablers for a sequence rule by moving the specified sequence rule enabler in front of a reference sequence rule enabler.
 
         :param sequence_rule_enabler_id: the ``Id`` of a ``SequenceRuleEnabler``
@@ -5498,7 +5498,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         pass
 
     @abc.abstractmethod
-    def move_sequence_rule_enabler_behind(self, sequence_rule_enabler_id, sequence_rule_id, reference_id): # pragma: no cover
+    def move_sequence_rule_enabler_behind(self, sequence_rule_enabler_id, sequence_rule_id, reference_id):  # pragma: no cover
         """Reorders sequence rule enablers for a sequence rule by moving the specified sequence rule enabler behind a reference sequence rule enabler.
 
         :param sequence_rule_enabler_id: the ``Id`` of a ``SequenceRuleEnabler``
@@ -5518,7 +5518,7 @@ class SequenceRuleEnablerRuleApplicationSession:
         pass
 
     @abc.abstractmethod
-    def order_sequence_rule_enablers(self, sequence_rule_enabler_ids, sequence_rule_id): # pragma: no cover
+    def order_sequence_rule_enablers(self, sequence_rule_enabler_ids, sequence_rule_id):  # pragma: no cover
         """Reorders a set of sequence rule enablers for a sequence rule.
 
         :param sequence_rule_enabler_ids: the ``Ids`` for a set of ``SequenceRuleEnablers``

@@ -21,7 +21,7 @@ class CatalogingProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self): # pragma: no cover
+    def supports_visible_federation(self):  # pragma: no cover
         """Tests if any billing federation is exposed.
 
         Federation is exposed when a specific catalog may be identified,
@@ -39,7 +39,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog(self): # pragma: no cover
+    def supports_catalog(self):  # pragma: no cover
         """Tests for the availability of a cataloging service retrieving ``Id`` to ``Catalog`` mappings.
 
         :return: ``true`` if cataloging is available, ``false`` otherwise
@@ -52,7 +52,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_assignment(self): # pragma: no cover
+    def supports_catalog_assignment(self):  # pragma: no cover
         """Tests for the availability of a cataloging service for mapping ``Ids`` to ``Catalogs``.
 
         :return: ``true`` if catalog assignment is available, ``false`` otherwise
@@ -65,7 +65,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_entry_notification(self): # pragma: no cover
+    def supports_catalog_entry_notification(self):  # pragma: no cover
         """Tests for the availability of a cataloging notification service for mapping ``Ids`` to ``Catalogs``.
 
         :return: ``true`` if catalog entry notification is available, ``false`` otherwise
@@ -78,7 +78,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_lookup(self): # pragma: no cover
+    def supports_catalog_lookup(self):  # pragma: no cover
         """Tests for the availability of a catalog lookup service.
 
         :return: ``true`` if catalog lookup is available, ``false`` otherwise
@@ -91,7 +91,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_query(self): # pragma: no cover
+    def supports_catalog_query(self):  # pragma: no cover
         """Tests for the availability of a catalog query service that defines more comprehensive queries.
 
         :return: ``true`` if catalog query is available, ``false`` otherwise
@@ -104,7 +104,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_search(self): # pragma: no cover
+    def supports_catalog_search(self):  # pragma: no cover
         """Tests for the availability of a catalog search service that defines more comprehensive queries.
 
         :return: ``true`` if catalog search is available, ``false`` otherwise
@@ -117,7 +117,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_admin(self): # pragma: no cover
+    def supports_catalog_admin(self):  # pragma: no cover
         """Tests for the availability of a catalog administration service for the addition and deletion of catalogs.
 
         :return: ``true`` if catalog administration is available, ``false`` otherwise
@@ -130,7 +130,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_notification(self): # pragma: no cover
+    def supports_catalog_notification(self):  # pragma: no cover
         """Tests for the availability of a catalog notification service.
 
         :return: ``true`` if catalog notification is available, ``false`` otherwise
@@ -143,7 +143,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_hierarchy(self): # pragma: no cover
+    def supports_catalog_hierarchy(self):  # pragma: no cover
         """Tests for the availability of a catalog hierarchy traversal service.
 
         :return: ``true`` if catalog hierarchy traversal is available, ``false`` otherwise
@@ -156,7 +156,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_catalog_hierarchy_design(self): # pragma: no cover
+    def supports_catalog_hierarchy_design(self):  # pragma: no cover
         """Tests for the availability of a catalog hierarchy design service.
 
         :return: ``true`` if catalog hierarchy design is available, ``false`` otherwise
@@ -170,7 +170,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_cataloging_rules(self): # pragma: no cover
+    def supports_cataloging_rules(self):  # pragma: no cover
         """Tests if the cataloging rules sub services is supported.
 
         :return: ``true`` if cataloging rules is supported, ``false`` otherwise
@@ -183,7 +183,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_catalog_record_types(self): # pragma: no cover
+    def get_catalog_record_types(self):  # pragma: no cover
         """Gets the supported ``Catalog`` record types.
 
         :return: a list containing the supported ``Catalog`` record types
@@ -198,7 +198,7 @@ class CatalogingProfile:
     catalog_record_types = property(fget=get_catalog_record_types)
 
     @abc.abstractmethod
-    def supports_catalog_record_type(self, catalog_record_type): # pragma: no cover
+    def supports_catalog_record_type(self, catalog_record_type):  # pragma: no cover
         """Tests if the given ``Catalog`` record type is supported.
 
         :param catalog_record_type: a ``Type`` indicating a ``Catalog`` record type
@@ -213,7 +213,7 @@ class CatalogingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_catalog_search_record_types(self): # pragma: no cover
+    def get_catalog_search_record_types(self):  # pragma: no cover
         """Gets the supported catalog search reciord types.
 
         :return: a list containing the supported search record types
@@ -228,7 +228,7 @@ class CatalogingProfile:
     catalog_search_record_types = property(fget=get_catalog_search_record_types)
 
     @abc.abstractmethod
-    def supports_catalog_search_record_type(self, catalog_search_record_type): # pragma: no cover
+    def supports_catalog_search_record_type(self, catalog_search_record_type):  # pragma: no cover
         """Tests if the given catalog search record type is supported.
 
         :param catalog_search_record_type: a ``Type`` indicating a catalog search record type
@@ -273,7 +273,7 @@ class CatalogingManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog_session(self): # pragma: no cover
+    def get_catalog_session(self):  # pragma: no cover
         """Gets the cataloging session for retrieving mappings to catalogs.
 
         :return: a ``CatalogSession``
@@ -290,7 +290,7 @@ class CatalogingManager:
     catalog_session = property(fget=get_catalog_session)
 
     @abc.abstractmethod
-    def get_catalog_assignment_session(self): # pragma: no cover
+    def get_catalog_assignment_session(self):  # pragma: no cover
         """Gets the cataloging session for adding and removing mappings to catalogs.
 
         :return: a ``CatalogAssignmentSession``
@@ -307,7 +307,7 @@ class CatalogingManager:
     catalog_assignment_session = property(fget=get_catalog_assignment_session)
 
     @abc.abstractmethod
-    def get_catalog_entry_notification_session(self, catalog_entry_receiver): # pragma: no cover
+    def get_catalog_entry_notification_session(self, catalog_entry_receiver):  # pragma: no cover
         """Gets the notification session for subscribing to changes to catalogs.
 
         :param catalog_entry_receiver: the notification callback
@@ -325,7 +325,7 @@ class CatalogingManager:
         return  # osid.cataloging.CatalogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_entry_notification_session_for_catalog(self, catalog_entry_receiver, catalog_id): # pragma: no cover
+    def get_catalog_entry_notification_session_for_catalog(self, catalog_entry_receiver, catalog_id):  # pragma: no cover
         """Gets the notification session for subscribing to changes to catalogs for the given catalog.
 
         :param catalog_entry_receiver: the notification callback
@@ -346,7 +346,7 @@ class CatalogingManager:
         return  # osid.cataloging.CatalogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_lookup_session(self): # pragma: no cover
+    def get_catalog_lookup_session(self):  # pragma: no cover
         """Gets the catalog lookup session.
 
         :return: a ``CatalogLookupSession``
@@ -363,7 +363,7 @@ class CatalogingManager:
     catalog_lookup_session = property(fget=get_catalog_lookup_session)
 
     @abc.abstractmethod
-    def get_catalog_query_session(self): # pragma: no cover
+    def get_catalog_query_session(self):  # pragma: no cover
         """Gets the catalog query session.
 
         :return: a ``CatalogQuerySession``
@@ -380,7 +380,7 @@ class CatalogingManager:
     catalog_query_session = property(fget=get_catalog_query_session)
 
     @abc.abstractmethod
-    def get_catalog_search_session(self): # pragma: no cover
+    def get_catalog_search_session(self):  # pragma: no cover
         """Gets the catalog search session.
 
         :return: a ``CatalogSearchSession``
@@ -397,7 +397,7 @@ class CatalogingManager:
     catalog_search_session = property(fget=get_catalog_search_session)
 
     @abc.abstractmethod
-    def get_catalog_admin_session(self): # pragma: no cover
+    def get_catalog_admin_session(self):  # pragma: no cover
         """Gets the catalog administrative session for creating, updating and deleting catalogs.
 
         :return: a ``CatalogAdminSession``
@@ -414,7 +414,7 @@ class CatalogingManager:
     catalog_admin_session = property(fget=get_catalog_admin_session)
 
     @abc.abstractmethod
-    def get_catalog_notification_session(self, catalog_receiver): # pragma: no cover
+    def get_catalog_notification_session(self, catalog_receiver):  # pragma: no cover
         """Gets the notification session for subscribing to changes to catalogs.
 
         :param catalog_receiver: the notification callback
@@ -432,7 +432,7 @@ class CatalogingManager:
         return  # osid.cataloging.CatalogNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_hierarchy_session(self): # pragma: no cover
+    def get_catalog_hierarchy_session(self):  # pragma: no cover
         """Gets the catalog hierarchy traversal session.
 
         :return: a ``CatalogHierarchySession``
@@ -449,7 +449,7 @@ class CatalogingManager:
     catalog_hierarchy_session = property(fget=get_catalog_hierarchy_session)
 
     @abc.abstractmethod
-    def get_catalog_hierarchy_design_session(self): # pragma: no cover
+    def get_catalog_hierarchy_design_session(self):  # pragma: no cover
         """Gets the catalog hierarchy design session.
 
         :return: a ``CatalogHierarchyDesignSession``
@@ -466,7 +466,7 @@ class CatalogingManager:
     catalog_hierarchy_design_session = property(fget=get_catalog_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_cataloging_rules_manager(self): # pragma: no cover
+    def get_cataloging_rules_manager(self):  # pragma: no cover
         """Gets the cataloging rules manager.
 
         :return: a ``CatalogingRulesManager``
@@ -514,7 +514,7 @@ class CatalogingProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_catalog_session(self, proxy): # pragma: no cover
+    def get_catalog_session(self, proxy):  # pragma: no cover
         """Gets the catalog session for retrieving ``Id`` to ``Catalog`` mappings.
 
         :param proxy: a proxy
@@ -532,7 +532,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogSession
 
     @abc.abstractmethod
-    def get_catalog_assignment_session(self, proxy): # pragma: no cover
+    def get_catalog_assignment_session(self, proxy):  # pragma: no cover
         """Gets the catalog session for mapping ``Ids`` to ``Catalogs``.
 
         :param proxy: a proxy
@@ -550,7 +550,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogAssignmentSession
 
     @abc.abstractmethod
-    def get_catalog_entry_notification_session(self, catalog_entry_receiver, proxy): # pragma: no cover
+    def get_catalog_entry_notification_session(self, catalog_entry_receiver, proxy):  # pragma: no cover
         """Gets the catalog session for mapping ``Ids`` to ``Catalogs``.
 
         :param catalog_entry_receiver: the notification callback
@@ -570,7 +570,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_entry_notification_session_for_catalog(self, catalog_entry_receiver, catalog_id, proxy): # pragma: no cover
+    def get_catalog_entry_notification_session_for_catalog(self, catalog_entry_receiver, catalog_id, proxy):  # pragma: no cover
         """Gets the notification session for subscribing to changes to catalogs for the given catalog.
 
         :param catalog_entry_receiver: the notification callback
@@ -593,7 +593,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_lookup_session(self, proxy): # pragma: no cover
+    def get_catalog_lookup_session(self, proxy):  # pragma: no cover
         """Gets the catalog lookup session.
 
         :param proxy: a proxy
@@ -611,7 +611,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogLookupSession
 
     @abc.abstractmethod
-    def get_catalog_query_session(self, proxy): # pragma: no cover
+    def get_catalog_query_session(self, proxy):  # pragma: no cover
         """Gets the catalog query session.
 
         :param proxy: a proxy
@@ -629,7 +629,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogQuerySession
 
     @abc.abstractmethod
-    def get_catalog_search_session(self, proxy): # pragma: no cover
+    def get_catalog_search_session(self, proxy):  # pragma: no cover
         """Gets the catalog search session.
 
         :param proxy: a proxy
@@ -647,7 +647,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogSearchSession
 
     @abc.abstractmethod
-    def get_catalog_admin_session(self, proxy): # pragma: no cover
+    def get_catalog_admin_session(self, proxy):  # pragma: no cover
         """Gets the catalog administrative session for creating, updating and deleting catalogs.
 
         :param proxy: a proxy
@@ -665,7 +665,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogAdminSession
 
     @abc.abstractmethod
-    def get_catalog_notification_session(self, catalog_receiver, proxy): # pragma: no cover
+    def get_catalog_notification_session(self, catalog_receiver, proxy):  # pragma: no cover
         """Gets the notification session for subscribing to changes to catalogs.
 
         :param catalog_receiver: the notification callback
@@ -685,7 +685,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogNotificationSession
 
     @abc.abstractmethod
-    def get_catalog_hierarchy_session(self, proxy): # pragma: no cover
+    def get_catalog_hierarchy_session(self, proxy):  # pragma: no cover
         """Gets the catalog hierarchy traversal session.
 
         :param proxy: proxy
@@ -703,7 +703,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogHierarchySession
 
     @abc.abstractmethod
-    def get_catalog_hierarchy_design_session(self, proxy): # pragma: no cover
+    def get_catalog_hierarchy_design_session(self, proxy):  # pragma: no cover
         """Gets the catalog hierarchy design session.
 
         :param proxy: proxy
@@ -721,7 +721,7 @@ class CatalogingProxyManager:
         return  # osid.cataloging.CatalogHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_cataloging_rules_proxy_manager(self): # pragma: no cover
+    def get_cataloging_rules_proxy_manager(self):  # pragma: no cover
         """Gets the cataloging rules proxy manager.
 
         :return: a ``CatalogingRulesManager``

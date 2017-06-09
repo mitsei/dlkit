@@ -21,7 +21,7 @@ class AssetSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_assets(self, asset_ids): # pragma: no cover
+    def search_among_assets(self, asset_ids):  # pragma: no cover
         """Execute this search among the given list of assets.
 
         :param asset_ids: list of asset ``Ids``
@@ -34,7 +34,7 @@ class AssetSearch:
         pass
 
     @abc.abstractmethod
-    def order_asset_results(self, asset_search_order): # pragma: no cover
+    def order_asset_results(self, asset_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param asset_search_order: asset search order
@@ -48,7 +48,7 @@ class AssetSearch:
         pass
 
     @abc.abstractmethod
-    def get_asset_search_record(self, asset_search_record_type): # pragma: no cover
+    def get_asset_search_record(self, asset_search_record_type):  # pragma: no cover
         """Gets the asset search record corresponding to the given asset search record ``Type``.
 
         This method used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class AssetSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assets(self): # pragma: no cover
+    def get_assets(self):  # pragma: no cover
         """Gets the asset list resulting from a search.
 
         :return: the asset list
@@ -88,7 +88,7 @@ class AssetSearchResults:
     assets = property(fget=get_assets)
 
     @abc.abstractmethod
-    def get_asset_query_inspector(self): # pragma: no cover
+    def get_asset_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -103,7 +103,7 @@ class AssetSearchResults:
     asset_query_inspector = property(fget=get_asset_query_inspector)
 
     @abc.abstractmethod
-    def get_asset_search_results_record(self, asset_search_record_type): # pragma: no cover
+    def get_asset_search_results_record(self, asset_search_record_type):  # pragma: no cover
         """Gets the asset search results record corresponding to the given asset search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class CompositionSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_compositions(self, composition_ids): # pragma: no cover
+    def search_among_compositions(self, composition_ids):  # pragma: no cover
         """Execute this search among the given list of compositions.
 
         :param composition_ids: list of compositions
@@ -141,7 +141,7 @@ class CompositionSearch:
         pass
 
     @abc.abstractmethod
-    def order_composition_results(self, composition_search_order): # pragma: no cover
+    def order_composition_results(self, composition_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param composition_search_order: composition search order
@@ -155,7 +155,7 @@ class CompositionSearch:
         pass
 
     @abc.abstractmethod
-    def get_composition_search_record(self, composition_search_record_type): # pragma: no cover
+    def get_composition_search_record(self, composition_search_record_type):  # pragma: no cover
         """Gets the composition search record corresponding to the given composition search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class CompositionSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_compositions(self): # pragma: no cover
+    def get_compositions(self):  # pragma: no cover
         """Gets the composition list resulting from a search.
 
         :return: the composition list
@@ -195,7 +195,7 @@ class CompositionSearchResults:
     compositions = property(fget=get_compositions)
 
     @abc.abstractmethod
-    def get_composition_query_inspector(self): # pragma: no cover
+    def get_composition_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -210,7 +210,7 @@ class CompositionSearchResults:
     composition_query_inspector = property(fget=get_composition_query_inspector)
 
     @abc.abstractmethod
-    def get_composition_search_results_record(self, composition_search_record_type): # pragma: no cover
+    def get_composition_search_results_record(self, composition_search_record_type):  # pragma: no cover
         """Gets the composition search results record corresponding to the given composition search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class RepositorySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_repositories(self, repository_ids): # pragma: no cover
+    def search_among_repositories(self, repository_ids):  # pragma: no cover
         """Execute this search among the given list of repositories.
 
         :param repository_ids: list of repositories
@@ -248,7 +248,7 @@ class RepositorySearch:
         pass
 
     @abc.abstractmethod
-    def order_repository_results(self, repository_search_order): # pragma: no cover
+    def order_repository_results(self, repository_search_order):  # pragma: no cover
         """Specify an ordering to the search results.
 
         :param repository_search_order: repository search order
@@ -262,7 +262,7 @@ class RepositorySearch:
         pass
 
     @abc.abstractmethod
-    def get_repository_search_record(self, repository_search_record_type): # pragma: no cover
+    def get_repository_search_record(self, repository_search_record_type):  # pragma: no cover
         """Gets the repository search record corresponding to the given repository search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class RepositorySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_repositories(self): # pragma: no cover
+    def get_repositories(self):  # pragma: no cover
         """Gets the repository list resulting from the search.
 
         :return: the repository list
@@ -302,7 +302,7 @@ class RepositorySearchResults:
     repositories = property(fget=get_repositories)
 
     @abc.abstractmethod
-    def get_repository_query_inspector(self): # pragma: no cover
+    def get_repository_query_inspector(self):  # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -317,7 +317,7 @@ class RepositorySearchResults:
     repository_query_inspector = property(fget=get_repository_query_inspector)
 
     @abc.abstractmethod
-    def get_repository_search_results_record(self, repository_search_record_type): # pragma: no cover
+    def get_repository_search_results_record(self, repository_search_record_type):  # pragma: no cover
         """Gets the repository search results record corresponding to the given repository search record ``Type``.
 
         This method is used to retrieve an object implementing the

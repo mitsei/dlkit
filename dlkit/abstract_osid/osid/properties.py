@@ -31,7 +31,7 @@ class Property:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_display_name(self): # pragma: no cover
+    def get_display_name(self):  # pragma: no cover
         """The display name for this property.
 
         :return: the display name
@@ -46,7 +46,7 @@ class Property:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_display_label(self): # pragma: no cover
+    def get_display_label(self):  # pragma: no cover
         """A short display label.
 
         :return: the display label
@@ -61,7 +61,7 @@ class Property:
     display_label = property(fget=get_display_label)
 
     @abc.abstractmethod
-    def get_description(self): # pragma: no cover
+    def get_description(self):  # pragma: no cover
         """A description of this property.
 
         :return: the description
@@ -76,7 +76,7 @@ class Property:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_value(self): # pragma: no cover
+    def get_value(self):  # pragma: no cover
         """The value of this property.
 
         :return: the value
@@ -106,7 +106,7 @@ class PropertyList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_property(self): # pragma: no cover
+    def get_next_property(self):  # pragma: no cover
         """Gets the next ``Property`` in this list.
 
         :return: the next ``Property`` in this list. The ``has_next()`` method should be used to test that a next ``Property`` is available before calling this method.
@@ -122,7 +122,7 @@ class PropertyList:
     next_property = property(fget=get_next_property)
 
     @abc.abstractmethod
-    def get_next_properties(self, n): # pragma: no cover
+    def get_next_properties(self, n):  # pragma: no cover
         """Gets the next set of ``Property`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Property`` elements requested which should be less than or equal to ``available()``
