@@ -21,7 +21,7 @@ class ObjectiveSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_assessment(self, style):
+    def order_by_assessment(self, style): # pragma: no cover
         """Specified a preference for ordering results by the assessment.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class ObjectiveSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_assessment_search_order(self):
+    def supports_assessment_search_order(self): # pragma: no cover
         """Tests if an ``AssessmentSearchOrder`` is available.
 
         :return: ``true`` if an assessment search order is available, ``false`` otherwise
@@ -47,7 +47,7 @@ class ObjectiveSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_search_order(self):
+    def get_assessment_search_order(self): # pragma: no cover
         """Gets the search order for an assessment.
 
         :return: the assessment search order
@@ -63,7 +63,7 @@ class ObjectiveSearchOrder:
     assessment_search_order = property(fget=get_assessment_search_order)
 
     @abc.abstractmethod
-    def order_by_knowledge_category(self, style):
+    def order_by_knowledge_category(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the knowledge category.
 
         :param style: search order style
@@ -76,7 +76,7 @@ class ObjectiveSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_knowledge_category_search_order(self):
+    def supports_knowledge_category_search_order(self): # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -89,7 +89,7 @@ class ObjectiveSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_knowledge_category_search_order(self):
+    def get_knowledge_category_search_order(self): # pragma: no cover
         """Gets a grade search order to order on knolwgedge category.
 
         :return: a grade search order
@@ -105,7 +105,7 @@ class ObjectiveSearchOrder:
     knowledge_category_search_order = property(fget=get_knowledge_category_search_order)
 
     @abc.abstractmethod
-    def order_by_cognitive_process(self, style):
+    def order_by_cognitive_process(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the cognitive process.
 
         :param style: search order style
@@ -118,7 +118,7 @@ class ObjectiveSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_cognitive_process_search_order(self):
+    def supports_cognitive_process_search_order(self): # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -131,7 +131,7 @@ class ObjectiveSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cognitive_process_search_order(self):
+    def get_cognitive_process_search_order(self): # pragma: no cover
         """Gets a grade search order to order on cognitive process.
 
         :return: a grade search order
@@ -147,7 +147,7 @@ class ObjectiveSearchOrder:
     cognitive_process_search_order = property(fget=get_cognitive_process_search_order)
 
     @abc.abstractmethod
-    def get_objective_search_order_record(self, objective_record_type):
+    def get_objective_search_order_record(self, objective_record_type): # pragma: no cover
         """Gets the objective search order record corresponding to the given objective record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -171,7 +171,7 @@ class ActivitySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_objective(self, style):
+    def order_by_objective(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the objective.
 
         :param style: search order style
@@ -184,7 +184,7 @@ class ActivitySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_objective_search_order(self):
+    def supports_objective_search_order(self): # pragma: no cover
         """Tests if an objective search order is available.
 
         :return: ``true`` if an objective search order is available, ``false`` otherwise
@@ -197,7 +197,7 @@ class ActivitySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_search_order(self):
+    def get_objective_search_order(self): # pragma: no cover
         """Gets an objective search order.
 
         :return: an objective search order
@@ -213,7 +213,7 @@ class ActivitySearchOrder:
     objective_search_order = property(fget=get_objective_search_order)
 
     @abc.abstractmethod
-    def get_activity_search_order_record(self, activity_record_type):
+    def get_activity_search_order_record(self, activity_record_type): # pragma: no cover
         """Gets the activity search order record corresponding to the given activity record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -237,7 +237,7 @@ class ProficiencySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_resource(self, style):
+    def order_by_resource(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the resource.
 
         :param style: search order style
@@ -250,7 +250,7 @@ class ProficiencySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_resource_search_order(self):
+    def supports_resource_search_order(self): # pragma: no cover
         """Tests if a resource search order is available.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -263,7 +263,7 @@ class ProficiencySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_search_order(self):
+    def get_resource_search_order(self): # pragma: no cover
         """Gets a resource search order.
 
         :return: a resource search order
@@ -279,7 +279,7 @@ class ProficiencySearchOrder:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def order_by_objective(self, style):
+    def order_by_objective(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the objective.
 
         :param style: search order style
@@ -292,7 +292,7 @@ class ProficiencySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_objective_search_order(self):
+    def supports_objective_search_order(self): # pragma: no cover
         """Tests if an objective search order is available.
 
         :return: ``true`` if an objective search order is available, ``false`` otherwise
@@ -305,7 +305,7 @@ class ProficiencySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_search_order(self):
+    def get_objective_search_order(self): # pragma: no cover
         """Gets an objective search order.
 
         :return: an objective search order
@@ -321,7 +321,7 @@ class ProficiencySearchOrder:
     objective_search_order = property(fget=get_objective_search_order)
 
     @abc.abstractmethod
-    def order_by_completion(self, style):
+    def order_by_completion(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the completion.
 
         :param style: search order style
@@ -334,7 +334,7 @@ class ProficiencySearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_level(self, style):
+    def order_by_level(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the level.
 
         :param style: search order style
@@ -347,7 +347,7 @@ class ProficiencySearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_level_search_order(self):
+    def supports_level_search_order(self): # pragma: no cover
         """Tests if a grade search order is available.
 
         :return: ``true`` if a grade search order is available, ``false`` otherwise
@@ -360,7 +360,7 @@ class ProficiencySearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_search_order(self):
+    def get_level_search_order(self): # pragma: no cover
         """Gets a grade search order.
 
         :return: a grade search order
@@ -376,7 +376,7 @@ class ProficiencySearchOrder:
     level_search_order = property(fget=get_level_search_order)
 
     @abc.abstractmethod
-    def get_proficiency_search_order_record(self, proficiency_record_type):
+    def get_proficiency_search_order_record(self, proficiency_record_type): # pragma: no cover
         """Gets the proficiency search order record corresponding to the given proficiency record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -400,7 +400,7 @@ class ObjectiveBankSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_search_order_record(self, objective_bank_record_type):
+    def get_objective_bank_search_order_record(self, objective_bank_record_type): # pragma: no cover
         """Gets the objective bank search order record corresponding to the given objective bank record ``Type``.
 
         Multiple retrievals return the same underlying object.

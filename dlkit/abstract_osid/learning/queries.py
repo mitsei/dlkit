@@ -26,7 +26,7 @@ class ObjectiveQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match):
+    def match_assessment_id(self, assessment_id, match): # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -41,7 +41,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self):
+    def clear_assessment_id_terms(self): # pragma: no cover
         """Clears the assessment ``Id`` terms.
 
 
@@ -54,7 +54,7 @@ class ObjectiveQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self):
+    def supports_assessment_query(self): # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available for querying activities.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -67,7 +67,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self):
+    def get_assessment_query(self): # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -85,7 +85,7 @@ class ObjectiveQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def match_any_assessment(self, match):
+    def match_any_assessment(self, match): # pragma: no cover
         """Matches an objective that has any assessment assigned.
 
         :param match: ``true`` to match objectives with any assessment, ``false`` to match objectives with no assessment
@@ -98,7 +98,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_terms(self):
+    def clear_assessment_terms(self): # pragma: no cover
         """Clears the assessment terms.
 
 
@@ -111,7 +111,7 @@ class ObjectiveQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_knowledge_category_id(self, grade_id, match):
+    def match_knowledge_category_id(self, grade_id, match): # pragma: no cover
         """Sets the knowledge category ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -126,7 +126,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_knowledge_category_id_terms(self):
+    def clear_knowledge_category_id_terms(self): # pragma: no cover
         """Clears the knowledge category ``Id`` terms.
 
 
@@ -139,7 +139,7 @@ class ObjectiveQuery:
     knowledge_category_id_terms = property(fdel=clear_knowledge_category_id_terms)
 
     @abc.abstractmethod
-    def supports_knowledge_category_query(self):
+    def supports_knowledge_category_query(self): # pragma: no cover
         """Tests if a ``GradeQuery`` is available for querying knowledge categories.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -152,7 +152,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_knowledge_category_query(self):
+    def get_knowledge_category_query(self): # pragma: no cover
         """Gets the query for a knowledge category.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -170,7 +170,7 @@ class ObjectiveQuery:
     knowledge_category_query = property(fget=get_knowledge_category_query)
 
     @abc.abstractmethod
-    def match_any_knowledge_category(self, match):
+    def match_any_knowledge_category(self, match): # pragma: no cover
         """Matches an objective that has any knowledge category.
 
         :param match: ``true`` to match objectives with any knowledge category, ``false`` to match objectives with no knowledge category
@@ -183,7 +183,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_knowledge_category_terms(self):
+    def clear_knowledge_category_terms(self): # pragma: no cover
         """Clears the knowledge category terms.
 
 
@@ -196,7 +196,7 @@ class ObjectiveQuery:
     knowledge_category_terms = property(fdel=clear_knowledge_category_terms)
 
     @abc.abstractmethod
-    def match_cognitive_process_id(self, grade_id, match):
+    def match_cognitive_process_id(self, grade_id, match): # pragma: no cover
         """Sets the cognitive process ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -211,7 +211,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_cognitive_process_id_terms(self):
+    def clear_cognitive_process_id_terms(self): # pragma: no cover
         """Clears the cognitive process ``Id`` terms.
 
 
@@ -224,7 +224,7 @@ class ObjectiveQuery:
     cognitive_process_id_terms = property(fdel=clear_cognitive_process_id_terms)
 
     @abc.abstractmethod
-    def supports_cognitive_process_query(self):
+    def supports_cognitive_process_query(self): # pragma: no cover
         """Tests if a ``GradeQuery`` is available for querying cognitive processes.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -237,7 +237,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cognitive_process_query(self):
+    def get_cognitive_process_query(self): # pragma: no cover
         """Gets the query for a cognitive process.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -255,7 +255,7 @@ class ObjectiveQuery:
     cognitive_process_query = property(fget=get_cognitive_process_query)
 
     @abc.abstractmethod
-    def match_any_cognitive_process(self, match):
+    def match_any_cognitive_process(self, match): # pragma: no cover
         """Matches an objective that has any cognitive process.
 
         :param match: ``true`` to match objectives with any cognitive process, ``false`` to match objectives with no cognitive process
@@ -268,7 +268,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_cognitive_process_terms(self):
+    def clear_cognitive_process_terms(self): # pragma: no cover
         """Clears the cognitive process terms.
 
 
@@ -281,7 +281,7 @@ class ObjectiveQuery:
     cognitive_process_terms = property(fdel=clear_cognitive_process_terms)
 
     @abc.abstractmethod
-    def match_activity_id(self, activity_id, match):
+    def match_activity_id(self, activity_id, match): # pragma: no cover
         """Sets the activity ``Id`` for this query.
 
         :param activity_id: an activity ``Id``
@@ -296,7 +296,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_activity_id_terms(self):
+    def clear_activity_id_terms(self): # pragma: no cover
         """Clears the activity ``Id`` terms.
 
 
@@ -309,7 +309,7 @@ class ObjectiveQuery:
     activity_id_terms = property(fdel=clear_activity_id_terms)
 
     @abc.abstractmethod
-    def supports_activity_query(self):
+    def supports_activity_query(self): # pragma: no cover
         """Tests if an ``ActivityQuery`` is available for querying activities.
 
         :return: ``true`` if an activity query is available, ``false`` otherwise
@@ -322,7 +322,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_query(self):
+    def get_activity_query(self): # pragma: no cover
         """Gets the query for an activity.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -340,7 +340,7 @@ class ObjectiveQuery:
     activity_query = property(fget=get_activity_query)
 
     @abc.abstractmethod
-    def match_any_activity(self, match):
+    def match_any_activity(self, match): # pragma: no cover
         """Matches an objective that has any related activity.
 
         :param match: ``true`` to match objectives with any activity, ``false`` to match objectives with no activity
@@ -353,7 +353,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_activity_terms(self):
+    def clear_activity_terms(self): # pragma: no cover
         """Clears the activity terms.
 
 
@@ -366,7 +366,7 @@ class ObjectiveQuery:
     activity_terms = property(fdel=clear_activity_terms)
 
     @abc.abstractmethod
-    def match_requisite_objective_id(self, requisite_objective_id, match):
+    def match_requisite_objective_id(self, requisite_objective_id, match): # pragma: no cover
         """Sets the requisite objective ``Id`` for this query.
 
         :param requisite_objective_id: a requisite objective ``Id``
@@ -381,7 +381,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_requisite_objective_id_terms(self):
+    def clear_requisite_objective_id_terms(self): # pragma: no cover
         """Clears the requisite objective ``Id`` terms.
 
 
@@ -394,7 +394,7 @@ class ObjectiveQuery:
     requisite_objective_id_terms = property(fdel=clear_requisite_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_requisite_objective_query(self):
+    def supports_requisite_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available for querying requisite objectives.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -407,7 +407,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_requisite_objective_query(self):
+    def get_requisite_objective_query(self): # pragma: no cover
         """Gets the query for a requisite objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -425,7 +425,7 @@ class ObjectiveQuery:
     requisite_objective_query = property(fget=get_requisite_objective_query)
 
     @abc.abstractmethod
-    def match_any_requisite_objective(self, match):
+    def match_any_requisite_objective(self, match): # pragma: no cover
         """Matches an objective that has any related requisite.
 
         :param match: ``true`` to match objectives with any requisite, ``false`` to match objectives with no requisite
@@ -438,7 +438,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_requisite_objective_terms(self):
+    def clear_requisite_objective_terms(self): # pragma: no cover
         """Clears the requisite objective terms.
 
 
@@ -451,7 +451,7 @@ class ObjectiveQuery:
     requisite_objective_terms = property(fdel=clear_requisite_objective_terms)
 
     @abc.abstractmethod
-    def match_dependent_objective_id(self, dependent_objective_id, match):
+    def match_dependent_objective_id(self, dependent_objective_id, match): # pragma: no cover
         """Sets the dependent objective ``Id`` to query objectives dependent on the given objective.
 
         :param dependent_objective_id: a dependent objective ``Id``
@@ -466,7 +466,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_dependent_objective_id_terms(self):
+    def clear_dependent_objective_id_terms(self): # pragma: no cover
         """Clears the dependent objective ``Id`` terms.
 
 
@@ -479,7 +479,7 @@ class ObjectiveQuery:
     dependent_objective_id_terms = property(fdel=clear_dependent_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_depndent_objective_query(self):
+    def supports_depndent_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available for querying dependent objectives.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -492,7 +492,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_dependent_objective_query(self):
+    def get_dependent_objective_query(self): # pragma: no cover
         """Gets the query for a dependent objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -510,7 +510,7 @@ class ObjectiveQuery:
     dependent_objective_query = property(fget=get_dependent_objective_query)
 
     @abc.abstractmethod
-    def match_any_dependent_objective(self, match):
+    def match_any_dependent_objective(self, match): # pragma: no cover
         """Matches an objective that has any related dependents.
 
         :param match: ``true`` to match objectives with any dependent, ``false`` to match objectives with no dependents
@@ -523,7 +523,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_dependent_objective_terms(self):
+    def clear_dependent_objective_terms(self): # pragma: no cover
         """Clears the dependent objective terms.
 
 
@@ -536,7 +536,7 @@ class ObjectiveQuery:
     dependent_objective_terms = property(fdel=clear_dependent_objective_terms)
 
     @abc.abstractmethod
-    def match_equivalent_objective_id(self, equivalent_objective_id, match):
+    def match_equivalent_objective_id(self, equivalent_objective_id, match): # pragma: no cover
         """Sets the equivalent objective ``Id`` to query equivalents.
 
         :param equivalent_objective_id: an equivalent objective ``Id``
@@ -551,7 +551,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_equivalent_objective_id_terms(self):
+    def clear_equivalent_objective_id_terms(self): # pragma: no cover
         """Clears the equivalent objective ``Id`` terms.
 
 
@@ -564,7 +564,7 @@ class ObjectiveQuery:
     equivalent_objective_id_terms = property(fdel=clear_equivalent_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_equivalent_objective_query(self):
+    def supports_equivalent_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available for querying equivalent objectives.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -577,7 +577,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_equivalent_objective_query(self):
+    def get_equivalent_objective_query(self): # pragma: no cover
         """Gets the query for an equivalent objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -595,7 +595,7 @@ class ObjectiveQuery:
     equivalent_objective_query = property(fget=get_equivalent_objective_query)
 
     @abc.abstractmethod
-    def match_any_equivalent_objective(self, match):
+    def match_any_equivalent_objective(self, match): # pragma: no cover
         """Matches an objective that has any related equivalents.
 
         :param match: ``true`` to match objectives with any equivalent, ``false`` to match objectives with no equivalents
@@ -608,7 +608,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_equivalent_objective_terms(self):
+    def clear_equivalent_objective_terms(self): # pragma: no cover
         """Clears the equivalent objective terms.
 
 
@@ -621,7 +621,7 @@ class ObjectiveQuery:
     equivalent_objective_terms = property(fdel=clear_equivalent_objective_terms)
 
     @abc.abstractmethod
-    def match_ancestor_objective_id(self, objective_id, match):
+    def match_ancestor_objective_id(self, objective_id, match): # pragma: no cover
         """Sets the objective ``Id`` for this query to match objectives that have the specified objective as an ancestor.
 
         :param objective_id: an objective ``Id``
@@ -636,7 +636,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_objective_id_terms(self):
+    def clear_ancestor_objective_id_terms(self): # pragma: no cover
         """Clears the ancestor objective ``Id`` query terms.
 
 
@@ -649,7 +649,7 @@ class ObjectiveQuery:
     ancestor_objective_id_terms = property(fdel=clear_ancestor_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_objective_query(self):
+    def supports_ancestor_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -662,7 +662,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_objective_query(self):
+    def get_ancestor_objective_query(self): # pragma: no cover
         """Gets the query for an objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -680,7 +680,7 @@ class ObjectiveQuery:
     ancestor_objective_query = property(fget=get_ancestor_objective_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_objective(self, match):
+    def match_any_ancestor_objective(self, match): # pragma: no cover
         """Matches objectives that have any ancestor.
 
         :param match: ``true`` to match objective with any ancestor, ``false`` to match root objectives
@@ -693,7 +693,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_objective_terms(self):
+    def clear_ancestor_objective_terms(self): # pragma: no cover
         """Clears the ancestor objective query terms.
 
 
@@ -706,7 +706,7 @@ class ObjectiveQuery:
     ancestor_objective_terms = property(fdel=clear_ancestor_objective_terms)
 
     @abc.abstractmethod
-    def match_descendant_objective_id(self, objective_id, match):
+    def match_descendant_objective_id(self, objective_id, match): # pragma: no cover
         """Sets the objective ``Id`` for this query to match objectives that have the specified objective as a descendant.
 
         :param objective_id: an objective ``Id``
@@ -721,7 +721,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_objective_id_terms(self):
+    def clear_descendant_objective_id_terms(self): # pragma: no cover
         """Clears the descendant objective ``Id`` query terms.
 
 
@@ -734,7 +734,7 @@ class ObjectiveQuery:
     descendant_objective_id_terms = property(fdel=clear_descendant_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_objective_query(self):
+    def supports_descendant_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -747,7 +747,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_objective_query(self):
+    def get_descendant_objective_query(self): # pragma: no cover
         """Gets the query for an objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -765,7 +765,7 @@ class ObjectiveQuery:
     descendant_objective_query = property(fget=get_descendant_objective_query)
 
     @abc.abstractmethod
-    def match_any_descendant_objective(self, match):
+    def match_any_descendant_objective(self, match): # pragma: no cover
         """Matches objectives that have any ancestor.
 
         :param match: ``true`` to match objectives with any ancestor, ``false`` to match leaf objectives
@@ -778,7 +778,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_objective_terms(self):
+    def clear_descendant_objective_terms(self): # pragma: no cover
         """Clears the descendant objective query terms.
 
 
@@ -791,7 +791,7 @@ class ObjectiveQuery:
     descendant_objective_terms = property(fdel=clear_descendant_objective_terms)
 
     @abc.abstractmethod
-    def match_objective_bank_id(self, objective_bank_id, match):
+    def match_objective_bank_id(self, objective_bank_id, match): # pragma: no cover
         """Sets the objective bank ``Id`` for this query.
 
         :param objective_bank_id: an objective bank ``Id``
@@ -806,7 +806,7 @@ class ObjectiveQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_bank_id_terms(self):
+    def clear_objective_bank_id_terms(self): # pragma: no cover
         """Clears the objective bank ``Id`` terms.
 
 
@@ -819,7 +819,7 @@ class ObjectiveQuery:
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_bank_query(self):
+    def supports_objective_bank_query(self): # pragma: no cover
         """Tests if a ``ObjectiveBankQuery`` is available for querying objective banks.
 
         :return: ``true`` if an objective bank query is available, ``false`` otherwise
@@ -832,7 +832,7 @@ class ObjectiveQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_query(self):
+    def get_objective_bank_query(self): # pragma: no cover
         """Gets the query for an objective bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -850,7 +850,7 @@ class ObjectiveQuery:
     objective_bank_query = property(fget=get_objective_bank_query)
 
     @abc.abstractmethod
-    def clear_objective_bank_terms(self):
+    def clear_objective_bank_terms(self): # pragma: no cover
         """Clears the objective bank terms.
 
 
@@ -863,7 +863,7 @@ class ObjectiveQuery:
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_objective_query_record(self, objective_record_type):
+    def get_objective_query_record(self, objective_record_type): # pragma: no cover
         """Gets the objective query record corresponding to the given ``Objective`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -892,7 +892,7 @@ class ActivityQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_objective_id(self, objective_id, match):
+    def match_objective_id(self, objective_id, match): # pragma: no cover
         """Sets the objective ``Id`` for this query.
 
         :param objective_id: an objective ``Id``
@@ -907,7 +907,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_id_terms(self):
+    def clear_objective_id_terms(self): # pragma: no cover
         """Clears the objective ``Id`` terms.
 
 
@@ -920,7 +920,7 @@ class ActivityQuery:
     objective_id_terms = property(fdel=clear_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_query(self):
+    def supports_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available for querying objectives.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -933,7 +933,7 @@ class ActivityQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_query(self):
+    def get_objective_query(self): # pragma: no cover
         """Gets the query for an objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -951,7 +951,7 @@ class ActivityQuery:
     objective_query = property(fget=get_objective_query)
 
     @abc.abstractmethod
-    def clear_objective_terms(self):
+    def clear_objective_terms(self): # pragma: no cover
         """Clears the objective terms.
 
 
@@ -964,7 +964,7 @@ class ActivityQuery:
     objective_terms = property(fdel=clear_objective_terms)
 
     @abc.abstractmethod
-    def match_asset_id(self, asset_id, match):
+    def match_asset_id(self, asset_id, match): # pragma: no cover
         """Sets the asset ``Id`` for this query.
 
         :param asset_id: an asset ``Id``
@@ -979,7 +979,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_id_terms(self):
+    def clear_asset_id_terms(self): # pragma: no cover
         """Clears the asset ``Id`` terms.
 
 
@@ -992,7 +992,7 @@ class ActivityQuery:
     asset_id_terms = property(fdel=clear_asset_id_terms)
 
     @abc.abstractmethod
-    def supports_asset_query(self):
+    def supports_asset_query(self): # pragma: no cover
         """Tests if an ``AssetQuery`` is available for querying objectives.
 
         :return: ``true`` if an robjective query is available, ``false`` otherwise
@@ -1005,7 +1005,7 @@ class ActivityQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_query(self):
+    def get_asset_query(self): # pragma: no cover
         """Gets the query for an asset.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1023,7 +1023,7 @@ class ActivityQuery:
     asset_query = property(fget=get_asset_query)
 
     @abc.abstractmethod
-    def match_any_asset(self, match):
+    def match_any_asset(self, match): # pragma: no cover
         """Matches an activity that has any objective assigned.
 
         :param match: ``true`` to match activities with any asset, ``false`` to match activities with no asset
@@ -1036,7 +1036,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_terms(self):
+    def clear_asset_terms(self): # pragma: no cover
         """Clears the asset terms.
 
 
@@ -1049,7 +1049,7 @@ class ActivityQuery:
     asset_terms = property(fdel=clear_asset_terms)
 
     @abc.abstractmethod
-    def match_course_id(self, course_id, match):
+    def match_course_id(self, course_id, match): # pragma: no cover
         """Sets the course ``Id`` for this query.
 
         :param course_id: a course ``Id``
@@ -1064,7 +1064,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_course_id_terms(self):
+    def clear_course_id_terms(self): # pragma: no cover
         """Clears the course ``Id`` terms.
 
 
@@ -1077,7 +1077,7 @@ class ActivityQuery:
     course_id_terms = property(fdel=clear_course_id_terms)
 
     @abc.abstractmethod
-    def supports_course_query(self):
+    def supports_course_query(self): # pragma: no cover
         """Tests if a ``CourseQuery`` is available for querying courses.
 
         :return: ``true`` if a course query is available, ``false`` otherwise
@@ -1090,7 +1090,7 @@ class ActivityQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_course_query(self):
+    def get_course_query(self): # pragma: no cover
         """Gets the query for a course.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1108,7 +1108,7 @@ class ActivityQuery:
     course_query = property(fget=get_course_query)
 
     @abc.abstractmethod
-    def match_any_course(self, match):
+    def match_any_course(self, match): # pragma: no cover
         """Matches an activity that has any course assigned.
 
         :param match: ``true`` to match activities with any courses, ``false`` to match activities with no courses
@@ -1121,7 +1121,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_course_terms(self):
+    def clear_course_terms(self): # pragma: no cover
         """Clears the course terms.
 
 
@@ -1134,7 +1134,7 @@ class ActivityQuery:
     course_terms = property(fdel=clear_course_terms)
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match):
+    def match_assessment_id(self, assessment_id, match): # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -1149,7 +1149,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self):
+    def clear_assessment_id_terms(self): # pragma: no cover
         """Clears the assessment ``Id`` terms.
 
 
@@ -1162,7 +1162,7 @@ class ActivityQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self):
+    def supports_assessment_query(self): # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available for querying assessments.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -1175,7 +1175,7 @@ class ActivityQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self):
+    def get_assessment_query(self): # pragma: no cover
         """Gets the query for a assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1193,7 +1193,7 @@ class ActivityQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def match_any_assessment(self, match):
+    def match_any_assessment(self, match): # pragma: no cover
         """Matches an activity that has any assessment assigned.
 
         :param match: ``true`` to match activities with any assessments, ``false`` to match activities with no assessments
@@ -1206,7 +1206,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_terms(self):
+    def clear_assessment_terms(self): # pragma: no cover
         """Clears the assessment terms.
 
 
@@ -1219,7 +1219,7 @@ class ActivityQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_objective_bank_id(self, objective_bank_id, match):
+    def match_objective_bank_id(self, objective_bank_id, match): # pragma: no cover
         """Sets the objective bank ``Id`` for this query.
 
         :param objective_bank_id: an objective bank ``Id``
@@ -1234,7 +1234,7 @@ class ActivityQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_bank_id_terms(self):
+    def clear_objective_bank_id_terms(self): # pragma: no cover
         """Clears the objective bank ``Id`` terms.
 
 
@@ -1247,7 +1247,7 @@ class ActivityQuery:
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_bank_query(self):
+    def supports_objective_bank_query(self): # pragma: no cover
         """Tests if a ``ObjectiveBankQuery`` is available for querying resources.
 
         :return: ``true`` if an objective bank query is available, ``false`` otherwise
@@ -1260,7 +1260,7 @@ class ActivityQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_query(self):
+    def get_objective_bank_query(self): # pragma: no cover
         """Gets the query for an objective bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1278,7 +1278,7 @@ class ActivityQuery:
     objective_bank_query = property(fget=get_objective_bank_query)
 
     @abc.abstractmethod
-    def clear_objective_bank_terms(self):
+    def clear_objective_bank_terms(self): # pragma: no cover
         """Clears the objective bank terms.
 
 
@@ -1291,7 +1291,7 @@ class ActivityQuery:
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_activity_query_record(self, activity_record_type):
+    def get_activity_query_record(self, activity_record_type): # pragma: no cover
         """Gets the activity query record corresponding to the given ``Activity`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1320,7 +1320,7 @@ class ProficiencyQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_resource_id(self, resource_id, match):
+    def match_resource_id(self, resource_id, match): # pragma: no cover
         """Sets the resource ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -1335,7 +1335,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_id_terms(self):
+    def clear_resource_id_terms(self): # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -1348,7 +1348,7 @@ class ProficiencyQuery:
     resource_id_terms = property(fdel=clear_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_query(self):
+    def supports_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -1361,7 +1361,7 @@ class ProficiencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self):
+    def get_resource_query(self): # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1379,7 +1379,7 @@ class ProficiencyQuery:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def clear_resource_terms(self):
+    def clear_resource_terms(self): # pragma: no cover
         """Clears the resource terms.
 
 
@@ -1392,7 +1392,7 @@ class ProficiencyQuery:
     resource_terms = property(fdel=clear_resource_terms)
 
     @abc.abstractmethod
-    def match_objective_id(self, objective_id, match):
+    def match_objective_id(self, objective_id, match): # pragma: no cover
         """Sets the objective ``Id`` for this query.
 
         :param objective_id: an objective ``Id``
@@ -1407,7 +1407,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_id_terms(self):
+    def clear_objective_id_terms(self): # pragma: no cover
         """Clears the objective ``Id`` terms.
 
 
@@ -1420,7 +1420,7 @@ class ProficiencyQuery:
     objective_id_terms = property(fdel=clear_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_query(self):
+    def supports_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available for querying objectives.
 
         :return: ``true`` if an robjective query is available, ``false`` otherwise
@@ -1433,7 +1433,7 @@ class ProficiencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_query(self):
+    def get_objective_query(self): # pragma: no cover
         """Gets the query for an objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1451,7 +1451,7 @@ class ProficiencyQuery:
     objective_query = property(fget=get_objective_query)
 
     @abc.abstractmethod
-    def match_any_objective(self, match):
+    def match_any_objective(self, match): # pragma: no cover
         """Matches an activity that has any objective assigned.
 
         :param match: ``true`` to match activities with any objective, ``false`` to match activities with no objective
@@ -1464,7 +1464,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_terms(self):
+    def clear_objective_terms(self): # pragma: no cover
         """Clears the objective terms.
 
 
@@ -1477,7 +1477,7 @@ class ProficiencyQuery:
     objective_terms = property(fdel=clear_objective_terms)
 
     @abc.abstractmethod
-    def match_completion(self, start, end, match):
+    def match_completion(self, start, end, match): # pragma: no cover
         """Sets the completion for this query to match completion percentages between the given range inclusive.
 
         :param start: start of range
@@ -1494,7 +1494,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_completion_terms(self):
+    def clear_completion_terms(self): # pragma: no cover
         """Clears the completion terms.
 
 
@@ -1507,7 +1507,7 @@ class ProficiencyQuery:
     completion_terms = property(fdel=clear_completion_terms)
 
     @abc.abstractmethod
-    def match_minimum_completion(self, completion, match):
+    def match_minimum_completion(self, completion, match): # pragma: no cover
         """Sets the minimum completion for this query.
 
         :param completion: completion percentage
@@ -1522,7 +1522,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_completion_terms(self):
+    def clear_minimum_completion_terms(self): # pragma: no cover
         """Clears the minimum completion terms.
 
 
@@ -1535,7 +1535,7 @@ class ProficiencyQuery:
     minimum_completion_terms = property(fdel=clear_minimum_completion_terms)
 
     @abc.abstractmethod
-    def match_level_id(self, grade_id, match):
+    def match_level_id(self, grade_id, match): # pragma: no cover
         """Sets the level grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -1550,7 +1550,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_id_terms(self):
+    def clear_level_id_terms(self): # pragma: no cover
         """Clears all level ``Id`` terms.
 
 
@@ -1563,7 +1563,7 @@ class ProficiencyQuery:
     level_id_terms = property(fdel=clear_level_id_terms)
 
     @abc.abstractmethod
-    def supports_level_query(self):
+    def supports_level_query(self): # pragma: no cover
         """Tests if a ``GradeQuery`` is available.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -1576,7 +1576,7 @@ class ProficiencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_level_query(self):
+    def get_level_query(self): # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1594,7 +1594,7 @@ class ProficiencyQuery:
     level_query = property(fget=get_level_query)
 
     @abc.abstractmethod
-    def match_any_level(self, match):
+    def match_any_level(self, match): # pragma: no cover
         """Matches an assessment offered that has any level assigned.
 
         :param match: ``true`` to match offerings with any level, ``false`` to match offerings with no levsls
@@ -1607,7 +1607,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_level_terms(self):
+    def clear_level_terms(self): # pragma: no cover
         """Clears all level terms.
 
 
@@ -1620,7 +1620,7 @@ class ProficiencyQuery:
     level_terms = property(fdel=clear_level_terms)
 
     @abc.abstractmethod
-    def match_objective_bank_id(self, objective_bank_id, match):
+    def match_objective_bank_id(self, objective_bank_id, match): # pragma: no cover
         """Sets the objective bank ``Id`` for this query.
 
         :param objective_bank_id: an objective bank ``Id``
@@ -1635,7 +1635,7 @@ class ProficiencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_bank_id_terms(self):
+    def clear_objective_bank_id_terms(self): # pragma: no cover
         """Clears the objective bank ``Id`` terms.
 
 
@@ -1648,7 +1648,7 @@ class ProficiencyQuery:
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_bank_query(self):
+    def supports_objective_bank_query(self): # pragma: no cover
         """Tests if a ``ObjectiveBankQuery`` is available for querying resources.
 
         :return: ``true`` if an objective bank query is available, ``false`` otherwise
@@ -1661,7 +1661,7 @@ class ProficiencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_query(self):
+    def get_objective_bank_query(self): # pragma: no cover
         """Gets the query for an objective bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1679,7 +1679,7 @@ class ProficiencyQuery:
     objective_bank_query = property(fget=get_objective_bank_query)
 
     @abc.abstractmethod
-    def clear_objective_bank_terms(self):
+    def clear_objective_bank_terms(self): # pragma: no cover
         """Clears the objective bank terms.
 
 
@@ -1692,7 +1692,7 @@ class ProficiencyQuery:
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_proficiency_query_record(self, proficiency_record_type):
+    def get_proficiency_query_record(self, proficiency_record_type): # pragma: no cover
         """Gets the proficiency query record corresponding to the given ``Proficiency`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1721,7 +1721,7 @@ class ObjectiveBankQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_objective_id(self, objective_id, match):
+    def match_objective_id(self, objective_id, match): # pragma: no cover
         """Sets the objective ``Id`` for this query.
 
         :param objective_id: an objective ``Id``
@@ -1736,7 +1736,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_id_terms(self):
+    def clear_objective_id_terms(self): # pragma: no cover
         """Clears the objective ``Id`` terms.
 
 
@@ -1749,7 +1749,7 @@ class ObjectiveBankQuery:
     objective_id_terms = property(fdel=clear_objective_id_terms)
 
     @abc.abstractmethod
-    def supports_objective_query(self):
+    def supports_objective_query(self): # pragma: no cover
         """Tests if an ``ObjectiveQuery`` is available.
 
         :return: ``true`` if an objective query is available, ``false`` otherwise
@@ -1762,7 +1762,7 @@ class ObjectiveBankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_query(self):
+    def get_objective_query(self): # pragma: no cover
         """Gets the query for an objective.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1780,7 +1780,7 @@ class ObjectiveBankQuery:
     objective_query = property(fget=get_objective_query)
 
     @abc.abstractmethod
-    def match_any_objective(self, match):
+    def match_any_objective(self, match): # pragma: no cover
         """Matches an objective bank that has any objective assigned.
 
         :param match: ``true`` to match objective banks with any objective, ``false`` to match objective banks with no objectives
@@ -1793,7 +1793,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_objective_terms(self):
+    def clear_objective_terms(self): # pragma: no cover
         """Clears the objective terms.
 
 
@@ -1806,7 +1806,7 @@ class ObjectiveBankQuery:
     objective_terms = property(fdel=clear_objective_terms)
 
     @abc.abstractmethod
-    def match_activity_id(self, activity_id, match):
+    def match_activity_id(self, activity_id, match): # pragma: no cover
         """Sets the activity ``Id`` for this query.
 
         :param activity_id: an activity ``Id``
@@ -1821,7 +1821,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_activity_id_terms(self):
+    def clear_activity_id_terms(self): # pragma: no cover
         """Clears the activity ``Id`` terms.
 
 
@@ -1834,7 +1834,7 @@ class ObjectiveBankQuery:
     activity_id_terms = property(fdel=clear_activity_id_terms)
 
     @abc.abstractmethod
-    def supports_activity_query(self):
+    def supports_activity_query(self): # pragma: no cover
         """Tests if a ``ActivityQuery`` is available for querying activities.
 
         :return: ``true`` if an activity query is available, ``false`` otherwise
@@ -1847,7 +1847,7 @@ class ObjectiveBankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_query(self):
+    def get_activity_query(self): # pragma: no cover
         """Gets the query for an activity.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1865,7 +1865,7 @@ class ObjectiveBankQuery:
     activity_query = property(fget=get_activity_query)
 
     @abc.abstractmethod
-    def match_any_activity(self, match):
+    def match_any_activity(self, match): # pragma: no cover
         """Matches an objective bank that has any activity assigned.
 
         :param match: ``true`` to match objective banks with any activity, ``false`` to match objective banks with no activities
@@ -1878,7 +1878,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_activity_terms(self):
+    def clear_activity_terms(self): # pragma: no cover
         """Clears the activity terms.
 
 
@@ -1891,7 +1891,7 @@ class ObjectiveBankQuery:
     activity_terms = property(fdel=clear_activity_terms)
 
     @abc.abstractmethod
-    def match_ancestor_objective_bank_id(self, objective_bank_id, match):
+    def match_ancestor_objective_bank_id(self, objective_bank_id, match): # pragma: no cover
         """Sets the objective bank ``Id`` for this query to match objective banks that have the specified objective bank as an ancestor.
 
         :param objective_bank_id: an objective bank ``Id``
@@ -1906,7 +1906,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_objective_bank_id_terms(self):
+    def clear_ancestor_objective_bank_id_terms(self): # pragma: no cover
         """Clears the ancestor objective bank ``Id`` terms.
 
 
@@ -1919,7 +1919,7 @@ class ObjectiveBankQuery:
     ancestor_objective_bank_id_terms = property(fdel=clear_ancestor_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_objective_bank_query(self):
+    def supports_ancestor_objective_bank_query(self): # pragma: no cover
         """Tests if a ``ObjectiveBankQuery`` is available for querying ancestor objective banks.
 
         :return: ``true`` if an objective bank query is available, ``false`` otherwise
@@ -1932,7 +1932,7 @@ class ObjectiveBankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_objective_bank_query(self):
+    def get_ancestor_objective_bank_query(self): # pragma: no cover
         """Gets the query for an objective bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1950,7 +1950,7 @@ class ObjectiveBankQuery:
     ancestor_objective_bank_query = property(fget=get_ancestor_objective_bank_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_objective_bank(self, match):
+    def match_any_ancestor_objective_bank(self, match): # pragma: no cover
         """Matches an objective bank that has any ancestor.
 
         :param match: ``true`` to match objective banks with any ancestor, ``false`` to match root objective banks
@@ -1963,7 +1963,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_objective_bank_terms(self):
+    def clear_ancestor_objective_bank_terms(self): # pragma: no cover
         """Clears the ancestor objective bank terms.
 
 
@@ -1976,7 +1976,7 @@ class ObjectiveBankQuery:
     ancestor_objective_bank_terms = property(fdel=clear_ancestor_objective_bank_terms)
 
     @abc.abstractmethod
-    def match_descendant_objective_bank_id(self, objective_bank_id, match):
+    def match_descendant_objective_bank_id(self, objective_bank_id, match): # pragma: no cover
         """Sets the objective bank ``Id`` for this query to match objective banks that have the specified objective bank as a descendant.
 
         :param objective_bank_id: an objective bank ``Id``
@@ -1991,7 +1991,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_objective_bank_id_terms(self):
+    def clear_descendant_objective_bank_id_terms(self): # pragma: no cover
         """Clears the descendant objective bank ``Id`` terms.
 
 
@@ -2004,7 +2004,7 @@ class ObjectiveBankQuery:
     descendant_objective_bank_id_terms = property(fdel=clear_descendant_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_objective_bank_query(self):
+    def supports_descendant_objective_bank_query(self): # pragma: no cover
         """Tests if a ``ObjectiveBankQuery`` is available for querying descendant objective banks.
 
         :return: ``true`` if an objective bank query is available, ``false`` otherwise
@@ -2017,7 +2017,7 @@ class ObjectiveBankQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_objective_bank_query(self):
+    def get_descendant_objective_bank_query(self): # pragma: no cover
         """Gets the query for an objective bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2035,7 +2035,7 @@ class ObjectiveBankQuery:
     descendant_objective_bank_query = property(fget=get_descendant_objective_bank_query)
 
     @abc.abstractmethod
-    def match_any_descendant_objective_bank(self, match):
+    def match_any_descendant_objective_bank(self, match): # pragma: no cover
         """Matches an objective bank that has any descendant.
 
         :param match: ``true`` to match objective banks with any descendant, ``false`` to match leaf objective banks
@@ -2048,7 +2048,7 @@ class ObjectiveBankQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_objective_bank_terms(self):
+    def clear_descendant_objective_bank_terms(self): # pragma: no cover
         """Clears the descendant objective bank terms.
 
 
@@ -2061,7 +2061,7 @@ class ObjectiveBankQuery:
     descendant_objective_bank_terms = property(fdel=clear_descendant_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_query_record(self, objective_bank_record_type):
+    def get_objective_bank_query_record(self, objective_bank_record_type): # pragma: no cover
         """Gets the objective bank query record corresponding to the given ``ObjectiveBank`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

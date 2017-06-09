@@ -27,7 +27,7 @@ class Metadata:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_element_id(self):
+    def get_element_id(self): # pragma: no cover
         """Gets a unique ``Id`` for the data element.
 
         :return: an ``Id``
@@ -42,7 +42,7 @@ class Metadata:
     element_id = property(fget=get_element_id)
 
     @abc.abstractmethod
-    def get_element_label(self):
+    def get_element_label(self): # pragma: no cover
         """Gets a display label for the data element.
 
         :return: a display label
@@ -57,7 +57,7 @@ class Metadata:
     element_label = property(fget=get_element_label)
 
     @abc.abstractmethod
-    def get_instructions(self):
+    def get_instructions(self): # pragma: no cover
         """Gets instructions for updating this element value.
 
         This is a human readable description of the data element or
@@ -76,7 +76,7 @@ class Metadata:
     instructions = property(fget=get_instructions)
 
     @abc.abstractmethod
-    def get_syntax(self):
+    def get_syntax(self): # pragma: no cover
         """Gets the syntax of this data.
 
         :return: an enumeration indicating thetype of value
@@ -91,7 +91,7 @@ class Metadata:
     syntax = property(fget=get_syntax)
 
     @abc.abstractmethod
-    def is_array(self):
+    def is_array(self): # pragma: no cover
         """Tests if this data element is an array.
 
         :return: ``true`` if this data is an array, ``false`` if a single element
@@ -104,7 +104,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def is_required(self):
+    def is_required(self): # pragma: no cover
         """Tests if this data element is required for creating new objects.
 
         :return: ``true`` if this element value is required, ``false`` otherwise
@@ -117,7 +117,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def is_read_only(self):
+    def is_read_only(self): # pragma: no cover
         """Tests if this data can be updated.
 
         This may indicate the result of a pre-authorization but is not a
@@ -134,7 +134,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def is_linked(self):
+    def is_linked(self): # pragma: no cover
         """Tests if this data element is linked to other data in the object.
 
         Updating linked data elements should refresh all metadata and
@@ -150,7 +150,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def is_value_known(self):
+    def is_value_known(self): # pragma: no cover
         """Tests if an existing value is known for this data element.
 
         If it is known that a value does not exist, then this method
@@ -166,7 +166,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def has_value(self):
+    def has_value(self): # pragma: no cover
         """Tests if this data element has a set non-default value.
 
         :return: ``true`` if this element value has been set, ``false`` otherwise
@@ -179,7 +179,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_units(self):
+    def get_units(self): # pragma: no cover
         """Gets the units of this data for display purposes ('lbs', 'gills', 'furlongs').
 
         :return: the display units of this data or an empty string if not applicable
@@ -194,7 +194,7 @@ class Metadata:
     units = property(fget=get_units)
 
     @abc.abstractmethod
-    def get_minimum_elements(self):
+    def get_minimum_elements(self): # pragma: no cover
         """In the case where an array or list of elements is specified in an ``OsidForm,`` this specifies the minimum number of elements that must be included.
 
         :return: the minimum elements or ``1`` if ``is_array()`` is ``false``
@@ -209,7 +209,7 @@ class Metadata:
     minimum_elements = property(fget=get_minimum_elements)
 
     @abc.abstractmethod
-    def get_maximum_elements(self):
+    def get_maximum_elements(self): # pragma: no cover
         """In the case where an array or list of elements is specified in an ``OsidForm,`` this specifies the maximum number of elements that can be specified.
 
         :return: the maximum elements or ``1`` if ``is_array()`` is ``false``
@@ -224,7 +224,7 @@ class Metadata:
     maximum_elements = property(fget=get_maximum_elements)
 
     @abc.abstractmethod
-    def get_minimum_cardinal(self):
+    def get_minimum_cardinal(self): # pragma: no cover
         """Gets the minimum cardinal value.
 
         :return: the minimum cardinal
@@ -239,7 +239,7 @@ class Metadata:
     minimum_cardinal = property(fget=get_minimum_cardinal)
 
     @abc.abstractmethod
-    def get_maximum_cardinal(self):
+    def get_maximum_cardinal(self): # pragma: no cover
         """Gets the maximum cardinal value.
 
         :return: the maximum cardinal
@@ -254,7 +254,7 @@ class Metadata:
     maximum_cardinal = property(fget=get_maximum_cardinal)
 
     @abc.abstractmethod
-    def get_cardinal_set(self):
+    def get_cardinal_set(self): # pragma: no cover
         """Gets the set of acceptable cardinal values.
 
         :return: a set of cardinals or an empty array if not restricted
@@ -269,7 +269,7 @@ class Metadata:
     cardinal_set = property(fget=get_cardinal_set)
 
     @abc.abstractmethod
-    def get_default_cardinal_values(self):
+    def get_default_cardinal_values(self): # pragma: no cover
         """Gets the default cardinal values.
 
         These are the values used if the element value is not provided
@@ -288,7 +288,7 @@ class Metadata:
     default_cardinal_values = property(fget=get_default_cardinal_values)
 
     @abc.abstractmethod
-    def get_existing_cardinal_values(self):
+    def get_existing_cardinal_values(self): # pragma: no cover
         """Gets the existing cardinal values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -307,7 +307,7 @@ class Metadata:
     existing_cardinal_values = property(fget=get_existing_cardinal_values)
 
     @abc.abstractmethod
-    def get_coordinate_types(self):
+    def get_coordinate_types(self): # pragma: no cover
         """Gets the set of acceptable coordinate types.
 
         :return: the set of coordinate types
@@ -322,7 +322,7 @@ class Metadata:
     coordinate_types = property(fget=get_coordinate_types)
 
     @abc.abstractmethod
-    def supports_coordinate_type(self, coordinate_type):
+    def supports_coordinate_type(self, coordinate_type): # pragma: no cover
         """Tests if the given coordinate type is supported.
 
         :param coordinate_type: a coordinate Type
@@ -338,7 +338,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_axes_for_coordinate_type(self, coordinate_type):
+    def get_axes_for_coordinate_type(self, coordinate_type): # pragma: no cover
         """Gets the number of axes for a given supported coordinate type.
 
         :param coordinate_type: a coordinate Type
@@ -355,7 +355,7 @@ class Metadata:
         return  # cardinal
 
     @abc.abstractmethod
-    def get_minimum_coordinate_values(self, coordinate_type):
+    def get_minimum_coordinate_values(self, coordinate_type): # pragma: no cover
         """Gets the minimum coordinate values given supported coordinate type.
 
         :param coordinate_type: a coordinate Type
@@ -372,7 +372,7 @@ class Metadata:
         return  # decimal
 
     @abc.abstractmethod
-    def get_maximum_coordinate_values(self, coordinate_type):
+    def get_maximum_coordinate_values(self, coordinate_type): # pragma: no cover
         """Gets the maximum coordinate values given supported coordinate type.
 
         :param coordinate_type: a coordinate Type
@@ -389,7 +389,7 @@ class Metadata:
         return  # decimal
 
     @abc.abstractmethod
-    def get_coordinate_set(self):
+    def get_coordinate_set(self): # pragma: no cover
         """Gets the set of acceptable coordinate values.
 
         :return: a set of coordinates or an empty array if not restricted
@@ -404,7 +404,7 @@ class Metadata:
     coordinate_set = property(fget=get_coordinate_set)
 
     @abc.abstractmethod
-    def get_default_coordinate_values(self):
+    def get_default_coordinate_values(self): # pragma: no cover
         """Gets the default coordinate values.
 
         These are the values used if the element value is not provided
@@ -423,7 +423,7 @@ class Metadata:
     default_coordinate_values = property(fget=get_default_coordinate_values)
 
     @abc.abstractmethod
-    def get_existing_coordinate_values(self):
+    def get_existing_coordinate_values(self): # pragma: no cover
         """Gets the existing coordinate values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -442,7 +442,7 @@ class Metadata:
     existing_coordinate_values = property(fget=get_existing_coordinate_values)
 
     @abc.abstractmethod
-    def get_currency_types(self):
+    def get_currency_types(self): # pragma: no cover
         """Gets the set of acceptable currency types.
 
         :return: the set of currency types
@@ -457,7 +457,7 @@ class Metadata:
     currency_types = property(fget=get_currency_types)
 
     @abc.abstractmethod
-    def supports_currency_type(self, currency_type):
+    def supports_currency_type(self, currency_type): # pragma: no cover
         """Tests if the given currency type is supported.
 
         :param currency_type: a currency Type
@@ -473,7 +473,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_minimum_currency(self):
+    def get_minimum_currency(self): # pragma: no cover
         """Gets the minimum currency value.
 
         :return: the minimum currency
@@ -488,7 +488,7 @@ class Metadata:
     minimum_currency = property(fget=get_minimum_currency)
 
     @abc.abstractmethod
-    def get_maximum_currency(self):
+    def get_maximum_currency(self): # pragma: no cover
         """Gets the maximum currency value.
 
         :return: the maximum currency
@@ -503,7 +503,7 @@ class Metadata:
     maximum_currency = property(fget=get_maximum_currency)
 
     @abc.abstractmethod
-    def get_currency_set(self):
+    def get_currency_set(self): # pragma: no cover
         """Gets the set of acceptable currency values.
 
         :return: a set of currencies or an empty array if not restricted
@@ -518,7 +518,7 @@ class Metadata:
     currency_set = property(fget=get_currency_set)
 
     @abc.abstractmethod
-    def get_default_currency_values(self):
+    def get_default_currency_values(self): # pragma: no cover
         """Gets the default currency values.
 
         These are the values used if the element value is not provided
@@ -537,7 +537,7 @@ class Metadata:
     default_currency_values = property(fget=get_default_currency_values)
 
     @abc.abstractmethod
-    def get_existing_currency_values(self):
+    def get_existing_currency_values(self): # pragma: no cover
         """Gets the existing currency values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -556,7 +556,7 @@ class Metadata:
     existing_currency_values = property(fget=get_existing_currency_values)
 
     @abc.abstractmethod
-    def get_date_time_resolution(self):
+    def get_date_time_resolution(self): # pragma: no cover
         """Gets the smallest resolution of the date time value.
 
         :return: the resolution
@@ -571,7 +571,7 @@ class Metadata:
     date_time_resolution = property(fget=get_date_time_resolution)
 
     @abc.abstractmethod
-    def get_calendar_types(self):
+    def get_calendar_types(self): # pragma: no cover
         """Gets the set of acceptable calendar types.
 
         :return: the set of calendar types
@@ -586,7 +586,7 @@ class Metadata:
     calendar_types = property(fget=get_calendar_types)
 
     @abc.abstractmethod
-    def supports_calendar_type(self, calendar_type):
+    def supports_calendar_type(self, calendar_type): # pragma: no cover
         """Tests if the given calendar type is supported.
 
         :param calendar_type: a calendar Type
@@ -602,7 +602,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_time_types(self):
+    def get_time_types(self): # pragma: no cover
         """Gets the set of acceptable time types.
 
         :return: a set of time types or an empty array if not restricted
@@ -617,7 +617,7 @@ class Metadata:
     time_types = property(fget=get_time_types)
 
     @abc.abstractmethod
-    def supports_time_type(self, time_type):
+    def supports_time_type(self, time_type): # pragma: no cover
         """Tests if the given time type is supported.
 
         :param time_type: a time Type
@@ -633,7 +633,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_minimum_date_time(self):
+    def get_minimum_date_time(self): # pragma: no cover
         """Gets the minimum date time value.
 
         :return: the minimum value
@@ -648,7 +648,7 @@ class Metadata:
     minimum_date_time = property(fget=get_minimum_date_time)
 
     @abc.abstractmethod
-    def get_maximum_date_time(self):
+    def get_maximum_date_time(self): # pragma: no cover
         """Gets the maximum date time value.
 
         :return: the maximum value
@@ -663,7 +663,7 @@ class Metadata:
     maximum_date_time = property(fget=get_maximum_date_time)
 
     @abc.abstractmethod
-    def get_date_time_set(self):
+    def get_date_time_set(self): # pragma: no cover
         """Gets the set of acceptable date time values.
 
         :return: a set of values or an empty array if not restricted
@@ -678,7 +678,7 @@ class Metadata:
     date_time_set = property(fget=get_date_time_set)
 
     @abc.abstractmethod
-    def get_default_date_time_values(self):
+    def get_default_date_time_values(self): # pragma: no cover
         """Gets the default date time values.
 
         These are the values used if the element value is not provided
@@ -697,7 +697,7 @@ class Metadata:
     default_date_time_values = property(fget=get_default_date_time_values)
 
     @abc.abstractmethod
-    def get_existing_date_time_values(self):
+    def get_existing_date_time_values(self): # pragma: no cover
         """Gets the existing date time values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -716,7 +716,7 @@ class Metadata:
     existing_date_time_values = property(fget=get_existing_date_time_values)
 
     @abc.abstractmethod
-    def get_decimal_scale(self):
+    def get_decimal_scale(self): # pragma: no cover
         """Gets the number of digits to the right of the decimal point.
 
         :return: the scale
@@ -731,7 +731,7 @@ class Metadata:
     decimal_scale = property(fget=get_decimal_scale)
 
     @abc.abstractmethod
-    def get_minimum_decimal(self):
+    def get_minimum_decimal(self): # pragma: no cover
         """Gets the minimum decimal value.
 
         :return: the minimum decimal
@@ -746,7 +746,7 @@ class Metadata:
     minimum_decimal = property(fget=get_minimum_decimal)
 
     @abc.abstractmethod
-    def get_maximum_decimal(self):
+    def get_maximum_decimal(self): # pragma: no cover
         """Gets the maximum decimal value.
 
         :return: the maximum decimal
@@ -761,7 +761,7 @@ class Metadata:
     maximum_decimal = property(fget=get_maximum_decimal)
 
     @abc.abstractmethod
-    def get_decimal_set(self):
+    def get_decimal_set(self): # pragma: no cover
         """Gets the set of acceptable decimal values.
 
         :return: a set of decimals or an empty array if not restricted
@@ -776,7 +776,7 @@ class Metadata:
     decimal_set = property(fget=get_decimal_set)
 
     @abc.abstractmethod
-    def get_default_decimal_values(self):
+    def get_default_decimal_values(self): # pragma: no cover
         """Gets the default decimal values.
 
         These are the values used if the element value is not provided
@@ -795,7 +795,7 @@ class Metadata:
     default_decimal_values = property(fget=get_default_decimal_values)
 
     @abc.abstractmethod
-    def get_existing_decimal_values(self):
+    def get_existing_decimal_values(self): # pragma: no cover
         """Gets the existing decimal values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -814,7 +814,7 @@ class Metadata:
     existing_decimal_values = property(fget=get_existing_decimal_values)
 
     @abc.abstractmethod
-    def get_distance_resolution(self):
+    def get_distance_resolution(self): # pragma: no cover
         """Gets the smallest resolution of the distance value.
 
         :return: the resolution
@@ -829,7 +829,7 @@ class Metadata:
     distance_resolution = property(fget=get_distance_resolution)
 
     @abc.abstractmethod
-    def get_minimum_distance(self):
+    def get_minimum_distance(self): # pragma: no cover
         """Gets the minimum distance value.
 
         :return: the minimum value
@@ -844,7 +844,7 @@ class Metadata:
     minimum_distance = property(fget=get_minimum_distance)
 
     @abc.abstractmethod
-    def get_maximum_distance(self):
+    def get_maximum_distance(self): # pragma: no cover
         """Gets the maximum distance value.
 
         :return: the maximum value
@@ -859,7 +859,7 @@ class Metadata:
     maximum_distance = property(fget=get_maximum_distance)
 
     @abc.abstractmethod
-    def get_distance_set(self):
+    def get_distance_set(self): # pragma: no cover
         """Gets the set of acceptable distance values.
 
         :return: a set of values or an empty array if not restricted
@@ -874,7 +874,7 @@ class Metadata:
     distance_set = property(fget=get_distance_set)
 
     @abc.abstractmethod
-    def get_default_distance_values(self):
+    def get_default_distance_values(self): # pragma: no cover
         """Gets the default distance values.
 
         These are the values used if the element value is not provided
@@ -893,7 +893,7 @@ class Metadata:
     default_distance_values = property(fget=get_default_distance_values)
 
     @abc.abstractmethod
-    def get_existing_distance_values(self):
+    def get_existing_distance_values(self): # pragma: no cover
         """Gets the existing distance values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -912,7 +912,7 @@ class Metadata:
     existing_distance_values = property(fget=get_existing_distance_values)
 
     @abc.abstractmethod
-    def get_minimum_duration(self):
+    def get_minimum_duration(self): # pragma: no cover
         """Gets the minimum duration.
 
         :return: the minimum duration
@@ -927,7 +927,7 @@ class Metadata:
     minimum_duration = property(fget=get_minimum_duration)
 
     @abc.abstractmethod
-    def get_maximum_duration(self):
+    def get_maximum_duration(self): # pragma: no cover
         """Gets the maximum duration.
 
         :return: the maximum duration
@@ -942,7 +942,7 @@ class Metadata:
     maximum_duration = property(fget=get_maximum_duration)
 
     @abc.abstractmethod
-    def get_duration_set(self):
+    def get_duration_set(self): # pragma: no cover
         """Gets the set of acceptable duration values.
 
         :return: a set of durations or an empty array if not restricted
@@ -957,7 +957,7 @@ class Metadata:
     duration_set = property(fget=get_duration_set)
 
     @abc.abstractmethod
-    def get_default_duration_values(self):
+    def get_default_duration_values(self): # pragma: no cover
         """Gets the default duration values.
 
         These are the values used if the element value is not provided
@@ -976,7 +976,7 @@ class Metadata:
     default_duration_values = property(fget=get_default_duration_values)
 
     @abc.abstractmethod
-    def get_existing_duration_values(self):
+    def get_existing_duration_values(self): # pragma: no cover
         """Gets the existing duration values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -995,7 +995,7 @@ class Metadata:
     existing_duration_values = property(fget=get_existing_duration_values)
 
     @abc.abstractmethod
-    def get_heading_types(self):
+    def get_heading_types(self): # pragma: no cover
         """Gets the set of acceptable heading types.
 
         :return: a set of heading types or an empty array if not restricted
@@ -1010,7 +1010,7 @@ class Metadata:
     heading_types = property(fget=get_heading_types)
 
     @abc.abstractmethod
-    def supports_heading_type(self, heading_type):
+    def supports_heading_type(self, heading_type): # pragma: no cover
         """Tests if the given heading type is supported.
 
         :param heading_type: a heading Type
@@ -1026,7 +1026,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_axes_for_heading_type(self, heading_type):
+    def get_axes_for_heading_type(self, heading_type): # pragma: no cover
         """Gets the number of axes for a given supported heading type.
 
         :param heading_type: a heading Type
@@ -1043,7 +1043,7 @@ class Metadata:
         return  # cardinal
 
     @abc.abstractmethod
-    def get_minimum_heading_values(self, heading_type):
+    def get_minimum_heading_values(self, heading_type): # pragma: no cover
         """Gets the minimum heading values given supported heading type.
 
         :param heading_type: a heading Type
@@ -1060,7 +1060,7 @@ class Metadata:
         return  # decimal
 
     @abc.abstractmethod
-    def get_maximum_heading_values(self, heading_type):
+    def get_maximum_heading_values(self, heading_type): # pragma: no cover
         """Gets the maximum heading values given supported heading type.
 
         :param heading_type: a heading Type
@@ -1077,7 +1077,7 @@ class Metadata:
         return  # decimal
 
     @abc.abstractmethod
-    def get_heading_set(self):
+    def get_heading_set(self): # pragma: no cover
         """Gets the set of acceptable heading values.
 
         :return: the set of heading
@@ -1092,7 +1092,7 @@ class Metadata:
     heading_set = property(fget=get_heading_set)
 
     @abc.abstractmethod
-    def get_default_heading_values(self):
+    def get_default_heading_values(self): # pragma: no cover
         """Gets the default heading values.
 
         These are the values used if the element value is not provided
@@ -1111,7 +1111,7 @@ class Metadata:
     default_heading_values = property(fget=get_default_heading_values)
 
     @abc.abstractmethod
-    def get_existing_heading_values(self):
+    def get_existing_heading_values(self): # pragma: no cover
         """Gets the existing heading values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1130,7 +1130,7 @@ class Metadata:
     existing_heading_values = property(fget=get_existing_heading_values)
 
     @abc.abstractmethod
-    def get_id_set(self):
+    def get_id_set(self): # pragma: no cover
         """Gets the set of acceptable ``Ids``.
 
         :return: a set of ``Ids`` or an empty array if not restricted
@@ -1145,7 +1145,7 @@ class Metadata:
     id_set = property(fget=get_id_set)
 
     @abc.abstractmethod
-    def get_default_id_values(self):
+    def get_default_id_values(self): # pragma: no cover
         """Gets the default ``Id`` values.
 
         These are the values used if the element value is not provided
@@ -1164,7 +1164,7 @@ class Metadata:
     default_id_values = property(fget=get_default_id_values)
 
     @abc.abstractmethod
-    def get_existing_id_values(self):
+    def get_existing_id_values(self): # pragma: no cover
         """Gets the existing ``Id`` values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1183,7 +1183,7 @@ class Metadata:
     existing_id_values = property(fget=get_existing_id_values)
 
     @abc.abstractmethod
-    def get_minimum_integer(self):
+    def get_minimum_integer(self): # pragma: no cover
         """Gets the minimum integer value.
 
         :return: the minimum value
@@ -1198,7 +1198,7 @@ class Metadata:
     minimum_integer = property(fget=get_minimum_integer)
 
     @abc.abstractmethod
-    def get_maximum_integer(self):
+    def get_maximum_integer(self): # pragma: no cover
         """Gets the maximum integer value.
 
         :return: the maximum value
@@ -1213,7 +1213,7 @@ class Metadata:
     maximum_integer = property(fget=get_maximum_integer)
 
     @abc.abstractmethod
-    def get_integer_set(self):
+    def get_integer_set(self): # pragma: no cover
         """Gets the set of acceptable integer values.
 
         :return: a set of values or an empty array if not restricted
@@ -1228,7 +1228,7 @@ class Metadata:
     integer_set = property(fget=get_integer_set)
 
     @abc.abstractmethod
-    def get_default_integer_values(self):
+    def get_default_integer_values(self): # pragma: no cover
         """Gets the default integer values.
 
         These are the values used if the element value is not provided
@@ -1247,7 +1247,7 @@ class Metadata:
     default_integer_values = property(fget=get_default_integer_values)
 
     @abc.abstractmethod
-    def get_existing_integer_values(self):
+    def get_existing_integer_values(self): # pragma: no cover
         """Gets the existing integer values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1266,7 +1266,7 @@ class Metadata:
     existing_integer_values = property(fget=get_existing_integer_values)
 
     @abc.abstractmethod
-    def get_object_types(self):
+    def get_object_types(self): # pragma: no cover
         """Gets the set of acceptable ``Types`` for an arbitrary object.
 
         :return: a set of ``Types`` or an empty array if not restricted
@@ -1281,7 +1281,7 @@ class Metadata:
     object_types = property(fget=get_object_types)
 
     @abc.abstractmethod
-    def supports_object_type(self, object_type):
+    def supports_object_type(self, object_type): # pragma: no cover
         """Tests if the given object type is supported.
 
         :param object_type: an object Type
@@ -1297,7 +1297,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_object_set(self):
+    def get_object_set(self): # pragma: no cover
         """Gets the set of acceptable object values.
 
         :return: a set of values or an empty array if not restricted
@@ -1312,7 +1312,7 @@ class Metadata:
     object_set = property(fget=get_object_set)
 
     @abc.abstractmethod
-    def get_default_object_values(self):
+    def get_default_object_values(self): # pragma: no cover
         """Gets the default object values.
 
         These are the values used if the element value is not provided
@@ -1331,7 +1331,7 @@ class Metadata:
     default_object_values = property(fget=get_default_object_values)
 
     @abc.abstractmethod
-    def get_existing_object_values(self):
+    def get_existing_object_values(self): # pragma: no cover
         """Gets the existing object values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1350,7 +1350,7 @@ class Metadata:
     existing_object_values = property(fget=get_existing_object_values)
 
     @abc.abstractmethod
-    def get_spatial_unit_record_types(self):
+    def get_spatial_unit_record_types(self): # pragma: no cover
         """Gets the set of acceptable spatial unit record types.
 
         :return: the set of spatial unit types
@@ -1365,7 +1365,7 @@ class Metadata:
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
     @abc.abstractmethod
-    def supports_spatial_unit_record_type(self, spatial_unit_record_type):
+    def supports_spatial_unit_record_type(self, spatial_unit_record_type): # pragma: no cover
         """Tests if the given spatial unit record type is supported.
 
         :param spatial_unit_record_type: a spatial unit record Type
@@ -1381,7 +1381,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_spatial_unit_set(self):
+    def get_spatial_unit_set(self): # pragma: no cover
         """Gets the set of acceptable spatial unit values.
 
         :return: a set of spatial units or an empty array if not restricted
@@ -1396,7 +1396,7 @@ class Metadata:
     spatial_unit_set = property(fget=get_spatial_unit_set)
 
     @abc.abstractmethod
-    def get_default_spatial_unit_values(self):
+    def get_default_spatial_unit_values(self): # pragma: no cover
         """Gets the default spatial unit values.
 
         These are the values used if the element value is not provided
@@ -1415,7 +1415,7 @@ class Metadata:
     default_spatial_unit_values = property(fget=get_default_spatial_unit_values)
 
     @abc.abstractmethod
-    def get_existing_spatial_unit_values(self):
+    def get_existing_spatial_unit_values(self): # pragma: no cover
         """Gets the existing spatial unit values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1434,7 +1434,7 @@ class Metadata:
     existing_spatial_unit_values = property(fget=get_existing_spatial_unit_values)
 
     @abc.abstractmethod
-    def get_minimum_speed(self):
+    def get_minimum_speed(self): # pragma: no cover
         """Gets the minimum speed value.
 
         :return: the minimum speed
@@ -1449,7 +1449,7 @@ class Metadata:
     minimum_speed = property(fget=get_minimum_speed)
 
     @abc.abstractmethod
-    def get_maximum_speed(self):
+    def get_maximum_speed(self): # pragma: no cover
         """Gets the maximum speed value.
 
         :return: the maximum speed
@@ -1464,7 +1464,7 @@ class Metadata:
     maximum_speed = property(fget=get_maximum_speed)
 
     @abc.abstractmethod
-    def get_speed_set(self):
+    def get_speed_set(self): # pragma: no cover
         """Gets the set of acceptable speed values.
 
         :return: a set of speeds or an empty array if not restricted
@@ -1479,7 +1479,7 @@ class Metadata:
     speed_set = property(fget=get_speed_set)
 
     @abc.abstractmethod
-    def get_default_speed_values(self):
+    def get_default_speed_values(self): # pragma: no cover
         """Gets the default speed values.
 
         These are the values used if the element value is not provided
@@ -1498,7 +1498,7 @@ class Metadata:
     default_speed_values = property(fget=get_default_speed_values)
 
     @abc.abstractmethod
-    def get_existing_speed_values(self):
+    def get_existing_speed_values(self): # pragma: no cover
         """Gets the existing speed values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1517,7 +1517,7 @@ class Metadata:
     existing_speed_values = property(fget=get_existing_speed_values)
 
     @abc.abstractmethod
-    def get_minimum_string_length(self):
+    def get_minimum_string_length(self): # pragma: no cover
         """Gets the minimum string length.
 
         :return: the minimum string length
@@ -1532,7 +1532,7 @@ class Metadata:
     minimum_string_length = property(fget=get_minimum_string_length)
 
     @abc.abstractmethod
-    def get_maximum_string_length(self):
+    def get_maximum_string_length(self): # pragma: no cover
         """Gets the maximum string length.
 
         :return: the maximum string length
@@ -1547,7 +1547,7 @@ class Metadata:
     maximum_string_length = property(fget=get_maximum_string_length)
 
     @abc.abstractmethod
-    def get_string_match_types(self):
+    def get_string_match_types(self): # pragma: no cover
         """Gets the set of valid string match types for use in validating a string.
 
         If the string match type indicates a regular expression then
@@ -1565,7 +1565,7 @@ class Metadata:
     string_match_types = property(fget=get_string_match_types)
 
     @abc.abstractmethod
-    def supports_string_match_type(self, string_match_type):
+    def supports_string_match_type(self, string_match_type): # pragma: no cover
         """Tests if the given string match type is supported.
 
         :param string_match_type: a string match type
@@ -1581,7 +1581,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_string_expression(self, string_match_type):
+    def get_string_expression(self, string_match_type): # pragma: no cover
         """Gets the regular expression of an acceptable string for the given string match type.
 
         :param string_match_type: a string match type
@@ -1598,7 +1598,7 @@ class Metadata:
         return  # string
 
     @abc.abstractmethod
-    def get_string_format_types(self):
+    def get_string_format_types(self): # pragma: no cover
         """Gets the set of valid string formats.
 
         :return: the set of valid text format types
@@ -1613,7 +1613,7 @@ class Metadata:
     string_format_types = property(fget=get_string_format_types)
 
     @abc.abstractmethod
-    def get_string_set(self):
+    def get_string_set(self): # pragma: no cover
         """Gets the set of acceptable string values.
 
         :return: a set of strings or an empty array if not restricted
@@ -1628,7 +1628,7 @@ class Metadata:
     string_set = property(fget=get_string_set)
 
     @abc.abstractmethod
-    def get_default_string_values(self):
+    def get_default_string_values(self): # pragma: no cover
         """Gets the default string values.
 
         These are the values used if the element value is not provided
@@ -1647,7 +1647,7 @@ class Metadata:
     default_string_values = property(fget=get_default_string_values)
 
     @abc.abstractmethod
-    def get_existing_string_values(self):
+    def get_existing_string_values(self): # pragma: no cover
         """Gets the existing string values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1666,7 +1666,7 @@ class Metadata:
     existing_string_values = property(fget=get_existing_string_values)
 
     @abc.abstractmethod
-    def get_minimum_time(self):
+    def get_minimum_time(self): # pragma: no cover
         """Gets the minimum time value.
 
         :return: the minimum time
@@ -1681,7 +1681,7 @@ class Metadata:
     minimum_time = property(fget=get_minimum_time)
 
     @abc.abstractmethod
-    def get_maximum_time(self):
+    def get_maximum_time(self): # pragma: no cover
         """Gets the maximum time value.
 
         :return: the maximum time
@@ -1696,7 +1696,7 @@ class Metadata:
     maximum_time = property(fget=get_maximum_time)
 
     @abc.abstractmethod
-    def get_time_set(self):
+    def get_time_set(self): # pragma: no cover
         """Gets the set of acceptable time values.
 
         :return: a set of times or an empty array if not restricted
@@ -1711,7 +1711,7 @@ class Metadata:
     time_set = property(fget=get_time_set)
 
     @abc.abstractmethod
-    def get_default_time_values(self):
+    def get_default_time_values(self): # pragma: no cover
         """Gets the default time values.
 
         These are the values used if the element value is not provided
@@ -1730,7 +1730,7 @@ class Metadata:
     default_time_values = property(fget=get_default_time_values)
 
     @abc.abstractmethod
-    def get_existing_time_values(self):
+    def get_existing_time_values(self): # pragma: no cover
         """Gets the existing time values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1749,7 +1749,7 @@ class Metadata:
     existing_time_values = property(fget=get_existing_time_values)
 
     @abc.abstractmethod
-    def get_type_set(self):
+    def get_type_set(self): # pragma: no cover
         """Gets the set of acceptable ``Types``.
 
         :return: a set of ``Types`` or an empty array if not restricted
@@ -1764,7 +1764,7 @@ class Metadata:
     type_set = property(fget=get_type_set)
 
     @abc.abstractmethod
-    def get_default_type_values(self):
+    def get_default_type_values(self): # pragma: no cover
         """Gets the default type values.
 
         These are the values used if the element value is not provided
@@ -1783,7 +1783,7 @@ class Metadata:
     default_type_values = property(fget=get_default_type_values)
 
     @abc.abstractmethod
-    def get_existing_type_values(self):
+    def get_existing_type_values(self): # pragma: no cover
         """Gets the existing type values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then
@@ -1802,7 +1802,7 @@ class Metadata:
     existing_type_values = property(fget=get_existing_type_values)
 
     @abc.abstractmethod
-    def get_version_types(self):
+    def get_version_types(self): # pragma: no cover
         """Gets the set of acceptable version types.
 
         :return: the set of version types
@@ -1817,7 +1817,7 @@ class Metadata:
     version_types = property(fget=get_version_types)
 
     @abc.abstractmethod
-    def supports_version_type(self, version_type):
+    def supports_version_type(self, version_type): # pragma: no cover
         """Tests if the given version type is supported.
 
         :param version_type: a version Type
@@ -1833,7 +1833,7 @@ class Metadata:
         return  # boolean
 
     @abc.abstractmethod
-    def get_minimum_version(self):
+    def get_minimum_version(self): # pragma: no cover
         """Gets the minumim acceptable ``Version``.
 
         :return: the minumim ``Version``
@@ -1848,7 +1848,7 @@ class Metadata:
     minimum_version = property(fget=get_minimum_version)
 
     @abc.abstractmethod
-    def get_maximum_version(self):
+    def get_maximum_version(self): # pragma: no cover
         """Gets the maximum acceptable ``Version``.
 
         :return: the maximum ``Version``
@@ -1863,7 +1863,7 @@ class Metadata:
     maximum_version = property(fget=get_maximum_version)
 
     @abc.abstractmethod
-    def get_version_set(self):
+    def get_version_set(self): # pragma: no cover
         """Gets the set of acceptable ``Versions``.
 
         :return: a set of ``Versions`` or an empty array if not restricted
@@ -1878,7 +1878,7 @@ class Metadata:
     version_set = property(fget=get_version_set)
 
     @abc.abstractmethod
-    def get_default_version_values(self):
+    def get_default_version_values(self): # pragma: no cover
         """Gets the default version values.
 
         These are the values used if the element value is not provided
@@ -1897,7 +1897,7 @@ class Metadata:
     default_version_values = property(fget=get_default_version_values)
 
     @abc.abstractmethod
-    def get_existing_version_values(self):
+    def get_existing_version_values(self): # pragma: no cover
         """Gets the existing version values.
 
         If ``has_value()`` and ``is_required()`` are ``false,`` then

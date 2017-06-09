@@ -28,7 +28,7 @@ class QuestionQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_question_query_inspector_record(self, question_record_type):
+    def get_question_query_inspector_record(self, question_record_type): # pragma: no cover
         """Gets the record query inspector corresponding to the given ``Question`` record ``Type``.
 
         :param question_record_type: a question record type
@@ -57,7 +57,7 @@ class AnswerQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_answer_query_inspector_record(self, question_record_type):
+    def get_answer_query_inspector_record(self, question_record_type): # pragma: no cover
         """Gets the record query inspector corresponding to the given ``Question`` record ``Type``.
 
         :param question_record_type: a question record type
@@ -86,7 +86,7 @@ class ItemQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_learning_objective_id_terms(self):
+    def get_learning_objective_id_terms(self): # pragma: no cover
         """Gets the learning objective ``Id`` query terms.
 
         :return: the learning objective ``Id`` terms
@@ -101,7 +101,7 @@ class ItemQueryInspector:
     learning_objective_id_terms = property(fget=get_learning_objective_id_terms)
 
     @abc.abstractmethod
-    def get_learning_objective_terms(self):
+    def get_learning_objective_terms(self): # pragma: no cover
         """Gets the learning objective query terms.
 
         :return: the learning objective terms
@@ -116,7 +116,7 @@ class ItemQueryInspector:
     learning_objective_terms = property(fget=get_learning_objective_terms)
 
     @abc.abstractmethod
-    def get_question_id_terms(self):
+    def get_question_id_terms(self): # pragma: no cover
         """Gets the question ``Id`` query terms.
 
         :return: the question ``Id`` terms
@@ -131,7 +131,7 @@ class ItemQueryInspector:
     question_id_terms = property(fget=get_question_id_terms)
 
     @abc.abstractmethod
-    def get_question_terms(self):
+    def get_question_terms(self): # pragma: no cover
         """Gets the question query terms.
 
         :return: the question terms
@@ -146,7 +146,7 @@ class ItemQueryInspector:
     question_terms = property(fget=get_question_terms)
 
     @abc.abstractmethod
-    def get_answer_id_terms(self):
+    def get_answer_id_terms(self): # pragma: no cover
         """Gets the answer ``Id`` query terms.
 
         :return: the answer ``Id`` terms
@@ -161,7 +161,7 @@ class ItemQueryInspector:
     answer_id_terms = property(fget=get_answer_id_terms)
 
     @abc.abstractmethod
-    def get_answer_terms(self):
+    def get_answer_terms(self): # pragma: no cover
         """Gets the answer query terms.
 
         :return: the answer terms
@@ -176,7 +176,7 @@ class ItemQueryInspector:
     answer_terms = property(fget=get_answer_terms)
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -191,7 +191,7 @@ class ItemQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -206,7 +206,7 @@ class ItemQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the bank ``Id`` terms
@@ -221,7 +221,7 @@ class ItemQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the bank terms
@@ -236,7 +236,7 @@ class ItemQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_item_query_inspector_record(self, item_record_type):
+    def get_item_query_inspector_record(self, item_record_type): # pragma: no cover
         """Gets the record query inspector corresponding to the given ``Item`` record ``Type``.
 
         :param item_record_type: an item record type
@@ -265,7 +265,7 @@ class AssessmentQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_level_id_terms(self):
+    def get_level_id_terms(self): # pragma: no cover
         """Gets the level ``Id`` query terms.
 
         :return: the level ``Id`` terms
@@ -280,7 +280,7 @@ class AssessmentQueryInspector:
     level_id_terms = property(fget=get_level_id_terms)
 
     @abc.abstractmethod
-    def get_level_terms(self):
+    def get_level_terms(self): # pragma: no cover
         """Gets the level query terms.
 
         :return: the level terms
@@ -295,7 +295,7 @@ class AssessmentQueryInspector:
     level_terms = property(fget=get_level_terms)
 
     @abc.abstractmethod
-    def get_rubric_id_terms(self):
+    def get_rubric_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -310,7 +310,7 @@ class AssessmentQueryInspector:
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
     @abc.abstractmethod
-    def get_rubric_terms(self):
+    def get_rubric_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -325,7 +325,7 @@ class AssessmentQueryInspector:
     rubric_terms = property(fget=get_rubric_terms)
 
     @abc.abstractmethod
-    def get_item_id_terms(self):
+    def get_item_id_terms(self): # pragma: no cover
         """Gets the item ``Id`` query terms.
 
         :return: the item ``Id`` terms
@@ -340,7 +340,7 @@ class AssessmentQueryInspector:
     item_id_terms = property(fget=get_item_id_terms)
 
     @abc.abstractmethod
-    def get_item_terms(self):
+    def get_item_terms(self): # pragma: no cover
         """Gets the item query terms.
 
         :return: the item terms
@@ -355,7 +355,7 @@ class AssessmentQueryInspector:
     item_terms = property(fget=get_item_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_id_terms(self):
+    def get_assessment_offered_id_terms(self): # pragma: no cover
         """Gets the assessment offered ``Id`` query terms.
 
         :return: the assessment offered ``Id`` terms
@@ -370,7 +370,7 @@ class AssessmentQueryInspector:
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_terms(self):
+    def get_assessment_offered_terms(self): # pragma: no cover
         """Gets the assessment offered query terms.
 
         :return: the assessment offered terms
@@ -385,7 +385,7 @@ class AssessmentQueryInspector:
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_id_terms(self):
+    def get_assessment_taken_id_terms(self): # pragma: no cover
         """Gets the assessment taken ``Id`` query terms.
 
         :return: the assessment taken ``Id`` terms
@@ -400,7 +400,7 @@ class AssessmentQueryInspector:
     assessment_taken_id_terms = property(fget=get_assessment_taken_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_terms(self):
+    def get_assessment_taken_terms(self): # pragma: no cover
         """Gets the assessment taken query terms.
 
         :return: the assessment taken terms
@@ -415,7 +415,7 @@ class AssessmentQueryInspector:
     assessment_taken_terms = property(fget=get_assessment_taken_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the bank ``Id`` terms
@@ -430,7 +430,7 @@ class AssessmentQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the bank terms
@@ -445,7 +445,7 @@ class AssessmentQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_query_inspector_record(self, assessment_record_type):
+    def get_assessment_query_inspector_record(self, assessment_record_type): # pragma: no cover
         """Gets the assessment query inspector record corresponding to the given ``Assessment`` record ``Type``.
 
         :param assessment_record_type: an assessment record type
@@ -474,7 +474,7 @@ class AssessmentOfferedQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -489,7 +489,7 @@ class AssessmentOfferedQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -504,7 +504,7 @@ class AssessmentOfferedQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_level_id_terms(self):
+    def get_level_id_terms(self): # pragma: no cover
         """Gets the level ``Id`` query terms.
 
         :return: the level ``Id`` terms
@@ -519,7 +519,7 @@ class AssessmentOfferedQueryInspector:
     level_id_terms = property(fget=get_level_id_terms)
 
     @abc.abstractmethod
-    def get_level_terms(self):
+    def get_level_terms(self): # pragma: no cover
         """Gets the level query terms.
 
         :return: the level terms
@@ -534,7 +534,7 @@ class AssessmentOfferedQueryInspector:
     level_terms = property(fget=get_level_terms)
 
     @abc.abstractmethod
-    def get_items_sequential_terms(self):
+    def get_items_sequential_terms(self): # pragma: no cover
         """Gets the items sequential query terms.
 
         :return: the boolean terms
@@ -549,7 +549,7 @@ class AssessmentOfferedQueryInspector:
     items_sequential_terms = property(fget=get_items_sequential_terms)
 
     @abc.abstractmethod
-    def get_items_shuffled_terms(self):
+    def get_items_shuffled_terms(self): # pragma: no cover
         """Gets the items shuffled query terms.
 
         :return: the boolean terms
@@ -564,7 +564,7 @@ class AssessmentOfferedQueryInspector:
     items_shuffled_terms = property(fget=get_items_shuffled_terms)
 
     @abc.abstractmethod
-    def get_start_time_terms(self):
+    def get_start_time_terms(self): # pragma: no cover
         """Gets the start time query terms.
 
         :return: the start time terms
@@ -579,7 +579,7 @@ class AssessmentOfferedQueryInspector:
     start_time_terms = property(fget=get_start_time_terms)
 
     @abc.abstractmethod
-    def get_deadline_terms(self):
+    def get_deadline_terms(self): # pragma: no cover
         """Gets the deadline query terms.
 
         :return: the deadline terms
@@ -594,7 +594,7 @@ class AssessmentOfferedQueryInspector:
     deadline_terms = property(fget=get_deadline_terms)
 
     @abc.abstractmethod
-    def get_duration_terms(self):
+    def get_duration_terms(self): # pragma: no cover
         """Gets the deadline query terms.
 
         :return: the duration terms
@@ -609,7 +609,7 @@ class AssessmentOfferedQueryInspector:
     duration_terms = property(fget=get_duration_terms)
 
     @abc.abstractmethod
-    def get_score_system_id_terms(self):
+    def get_score_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` query terms.
 
         :return: the grade system ``Id`` terms
@@ -624,7 +624,7 @@ class AssessmentOfferedQueryInspector:
     score_system_id_terms = property(fget=get_score_system_id_terms)
 
     @abc.abstractmethod
-    def get_score_system_terms(self):
+    def get_score_system_terms(self): # pragma: no cover
         """Gets the grade system query terms.
 
         :return: the grade system terms
@@ -639,7 +639,7 @@ class AssessmentOfferedQueryInspector:
     score_system_terms = property(fget=get_score_system_terms)
 
     @abc.abstractmethod
-    def get_grade_system_id_terms(self):
+    def get_grade_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` query terms.
 
         :return: the grade system ``Id`` terms
@@ -654,7 +654,7 @@ class AssessmentOfferedQueryInspector:
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
     @abc.abstractmethod
-    def get_grade_system_terms(self):
+    def get_grade_system_terms(self): # pragma: no cover
         """Gets the grade system query terms.
 
         :return: the grade system terms
@@ -669,7 +669,7 @@ class AssessmentOfferedQueryInspector:
     grade_system_terms = property(fget=get_grade_system_terms)
 
     @abc.abstractmethod
-    def get_rubric_id_terms(self):
+    def get_rubric_id_terms(self): # pragma: no cover
         """Gets the assessment offered ``Id`` query terms.
 
         :return: the assessment offered ``Id`` terms
@@ -684,7 +684,7 @@ class AssessmentOfferedQueryInspector:
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
     @abc.abstractmethod
-    def get_rubric_terms(self):
+    def get_rubric_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment offered terms
@@ -699,7 +699,7 @@ class AssessmentOfferedQueryInspector:
     rubric_terms = property(fget=get_rubric_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_id_terms(self):
+    def get_assessment_taken_id_terms(self): # pragma: no cover
         """Gets the assessment taken ``Id`` query terms.
 
         :return: the assessment taken ``Id`` terms
@@ -714,7 +714,7 @@ class AssessmentOfferedQueryInspector:
     assessment_taken_id_terms = property(fget=get_assessment_taken_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_terms(self):
+    def get_assessment_taken_terms(self): # pragma: no cover
         """Gets the assessment taken query terms.
 
         :return: the assessment taken terms
@@ -729,7 +729,7 @@ class AssessmentOfferedQueryInspector:
     assessment_taken_terms = property(fget=get_assessment_taken_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the bank ``Id`` terms
@@ -744,7 +744,7 @@ class AssessmentOfferedQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the bank terms
@@ -759,7 +759,7 @@ class AssessmentOfferedQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_query_inspector_record(self, assessment_offered_record_type):
+    def get_assessment_offered_query_inspector_record(self, assessment_offered_record_type): # pragma: no cover
         """Gets the assessment offered query inspector record corresponding to the given ``AssessmentOffered`` record ``Type``.
 
         :param assessment_offered_record_type: an assessment offered record type
@@ -788,7 +788,7 @@ class AssessmentTakenQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_offered_id_terms(self):
+    def get_assessment_offered_id_terms(self): # pragma: no cover
         """Gets the assessment offered ``Id`` query terms.
 
         :return: the assessment offered ``Id`` terms
@@ -803,7 +803,7 @@ class AssessmentTakenQueryInspector:
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_terms(self):
+    def get_assessment_offered_terms(self): # pragma: no cover
         """Gets the assessment offered query terms.
 
         :return: the assessment offered terms
@@ -818,7 +818,7 @@ class AssessmentTakenQueryInspector:
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
     @abc.abstractmethod
-    def get_taker_id_terms(self):
+    def get_taker_id_terms(self): # pragma: no cover
         """Gets the resource ``Id`` query terms.
 
         :return: the resource ``Id`` terms
@@ -833,7 +833,7 @@ class AssessmentTakenQueryInspector:
     taker_id_terms = property(fget=get_taker_id_terms)
 
     @abc.abstractmethod
-    def get_taker_terms(self):
+    def get_taker_terms(self): # pragma: no cover
         """Gets the resource query terms.
 
         :return: the resource terms
@@ -848,7 +848,7 @@ class AssessmentTakenQueryInspector:
     taker_terms = property(fget=get_taker_terms)
 
     @abc.abstractmethod
-    def get_taking_agent_id_terms(self):
+    def get_taking_agent_id_terms(self): # pragma: no cover
         """Gets the agent ``Id`` query terms.
 
         :return: the agent ``Id`` terms
@@ -863,7 +863,7 @@ class AssessmentTakenQueryInspector:
     taking_agent_id_terms = property(fget=get_taking_agent_id_terms)
 
     @abc.abstractmethod
-    def get_taking_agent_terms(self):
+    def get_taking_agent_terms(self): # pragma: no cover
         """Gets the agent query terms.
 
         :return: the agent terms
@@ -878,7 +878,7 @@ class AssessmentTakenQueryInspector:
     taking_agent_terms = property(fget=get_taking_agent_terms)
 
     @abc.abstractmethod
-    def get_actual_start_time_terms(self):
+    def get_actual_start_time_terms(self): # pragma: no cover
         """Gets the start time query terms.
 
         :return: the start time terms
@@ -893,7 +893,7 @@ class AssessmentTakenQueryInspector:
     actual_start_time_terms = property(fget=get_actual_start_time_terms)
 
     @abc.abstractmethod
-    def get_completion_time_terms(self):
+    def get_completion_time_terms(self): # pragma: no cover
         """Gets the completion time query terms.
 
         :return: the completion time terms
@@ -908,7 +908,7 @@ class AssessmentTakenQueryInspector:
     completion_time_terms = property(fget=get_completion_time_terms)
 
     @abc.abstractmethod
-    def get_time_spent_terms(self):
+    def get_time_spent_terms(self): # pragma: no cover
         """Gets the time spent query terms.
 
         :return: the time spent terms
@@ -923,7 +923,7 @@ class AssessmentTakenQueryInspector:
     time_spent_terms = property(fget=get_time_spent_terms)
 
     @abc.abstractmethod
-    def get_score_system_id_terms(self):
+    def get_score_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` query terms.
 
         :return: the grade system ``Id`` terms
@@ -938,7 +938,7 @@ class AssessmentTakenQueryInspector:
     score_system_id_terms = property(fget=get_score_system_id_terms)
 
     @abc.abstractmethod
-    def get_score_system_terms(self):
+    def get_score_system_terms(self): # pragma: no cover
         """Gets the grade system query terms.
 
         :return: the grade system terms
@@ -953,7 +953,7 @@ class AssessmentTakenQueryInspector:
     score_system_terms = property(fget=get_score_system_terms)
 
     @abc.abstractmethod
-    def get_score_terms(self):
+    def get_score_terms(self): # pragma: no cover
         """Gets the score query terms.
 
         :return: the score terms
@@ -968,7 +968,7 @@ class AssessmentTakenQueryInspector:
     score_terms = property(fget=get_score_terms)
 
     @abc.abstractmethod
-    def get_grade_id_terms(self):
+    def get_grade_id_terms(self): # pragma: no cover
         """Gets the grade ``Id`` query terms.
 
         :return: the grade ``Id`` terms
@@ -983,7 +983,7 @@ class AssessmentTakenQueryInspector:
     grade_id_terms = property(fget=get_grade_id_terms)
 
     @abc.abstractmethod
-    def get_grade_terms(self):
+    def get_grade_terms(self): # pragma: no cover
         """Gets the grade query terms.
 
         :return: the grade terms
@@ -998,7 +998,7 @@ class AssessmentTakenQueryInspector:
     grade_terms = property(fget=get_grade_terms)
 
     @abc.abstractmethod
-    def get_feedback_terms(self):
+    def get_feedback_terms(self): # pragma: no cover
         """Gets the comment query terms.
 
         :return: the comment terms
@@ -1013,7 +1013,7 @@ class AssessmentTakenQueryInspector:
     feedback_terms = property(fget=get_feedback_terms)
 
     @abc.abstractmethod
-    def get_rubric_id_terms(self):
+    def get_rubric_id_terms(self): # pragma: no cover
         """Gets the assessment taken ``Id`` query terms.
 
         :return: the assessment taken ``Id`` terms
@@ -1028,7 +1028,7 @@ class AssessmentTakenQueryInspector:
     rubric_id_terms = property(fget=get_rubric_id_terms)
 
     @abc.abstractmethod
-    def get_rubric_terms(self):
+    def get_rubric_terms(self): # pragma: no cover
         """Gets the assessment taken query terms.
 
         :return: the assessment taken terms
@@ -1043,7 +1043,7 @@ class AssessmentTakenQueryInspector:
     rubric_terms = property(fget=get_rubric_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the bank ``Id`` terms
@@ -1058,7 +1058,7 @@ class AssessmentTakenQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the bank terms
@@ -1073,7 +1073,7 @@ class AssessmentTakenQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_taken_query_inspector_record(self, assessment_taken_record_type):
+    def get_assessment_taken_query_inspector_record(self, assessment_taken_record_type): # pragma: no cover
         """Gets the assessment taken query inspector record corresponding to the given ``AssessmentTaken`` record ``Type``.
 
         :param assessment_taken_record_type: an assessment taken record type
@@ -1102,7 +1102,7 @@ class BankQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_item_id_terms(self):
+    def get_item_id_terms(self): # pragma: no cover
         """Gets the item ``Id`` query terms.
 
         :return: the item ``Id`` terms
@@ -1117,7 +1117,7 @@ class BankQueryInspector:
     item_id_terms = property(fget=get_item_id_terms)
 
     @abc.abstractmethod
-    def get_item_terms(self):
+    def get_item_terms(self): # pragma: no cover
         """Gets the item query terms.
 
         :return: the item query terms
@@ -1132,7 +1132,7 @@ class BankQueryInspector:
     item_terms = property(fget=get_item_terms)
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -1147,7 +1147,7 @@ class BankQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -1162,7 +1162,7 @@ class BankQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_id_terms(self):
+    def get_assessment_offered_id_terms(self): # pragma: no cover
         """Gets the assessment offered ``Id`` query terms.
 
         :return: the assessment offered ``Id`` terms
@@ -1177,7 +1177,7 @@ class BankQueryInspector:
     assessment_offered_id_terms = property(fget=get_assessment_offered_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_offered_terms(self):
+    def get_assessment_offered_terms(self): # pragma: no cover
         """Gets the assessment offered query terms.
 
         :return: the assessment offered terms
@@ -1192,7 +1192,7 @@ class BankQueryInspector:
     assessment_offered_terms = property(fget=get_assessment_offered_terms)
 
     @abc.abstractmethod
-    def get_ancestor_bank_id_terms(self):
+    def get_ancestor_bank_id_terms(self): # pragma: no cover
         """Gets the ancestor bank ``Id`` query terms.
 
         :return: the ancestor bank ``Id`` terms
@@ -1207,7 +1207,7 @@ class BankQueryInspector:
     ancestor_bank_id_terms = property(fget=get_ancestor_bank_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_bank_terms(self):
+    def get_ancestor_bank_terms(self): # pragma: no cover
         """Gets the ancestor bank query terms.
 
         :return: the ancestor bank terms
@@ -1222,7 +1222,7 @@ class BankQueryInspector:
     ancestor_bank_terms = property(fget=get_ancestor_bank_terms)
 
     @abc.abstractmethod
-    def get_descendant_bank_id_terms(self):
+    def get_descendant_bank_id_terms(self): # pragma: no cover
         """Gets the descendant bank ``Id`` query terms.
 
         :return: the descendant bank ``Id`` terms
@@ -1237,7 +1237,7 @@ class BankQueryInspector:
     descendant_bank_id_terms = property(fget=get_descendant_bank_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_bank_terms(self):
+    def get_descendant_bank_terms(self): # pragma: no cover
         """Gets the descendant bank query terms.
 
         :return: the descendant bank terms
@@ -1252,7 +1252,7 @@ class BankQueryInspector:
     descendant_bank_terms = property(fget=get_descendant_bank_terms)
 
     @abc.abstractmethod
-    def get_bank_query_inspector_record(self, bank_record_type):
+    def get_bank_query_inspector_record(self, bank_record_type): # pragma: no cover
         """Gets the bank query inspector record corresponding to the given ``Bank`` record ``Type``.
 
         :param bank_record_type: a bank record type

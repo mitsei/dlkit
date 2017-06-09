@@ -21,7 +21,7 @@ class LogEntry:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_priority(self):
+    def get_priority(self): # pragma: no cover
         """Gets the priority level of this entry.
 
         :return: the priority level
@@ -36,7 +36,7 @@ class LogEntry:
     priority = property(fget=get_priority)
 
     @abc.abstractmethod
-    def get_timestamp(self):
+    def get_timestamp(self): # pragma: no cover
         """Gets the time this entry was logged.
 
         :return: the time stamp of this entry
@@ -51,7 +51,7 @@ class LogEntry:
     timestamp = property(fget=get_timestamp)
 
     @abc.abstractmethod
-    def get_resource_id(self):
+    def get_resource_id(self): # pragma: no cover
         """Gets the resource ``Id`` who created this entry.
 
         :return: the resource ``Id``
@@ -66,7 +66,7 @@ class LogEntry:
     resource_id = property(fget=get_resource_id)
 
     @abc.abstractmethod
-    def get_resource(self):
+    def get_resource(self): # pragma: no cover
         """Gets the ``Resource`` who created this entry.
 
         :return: the ``Resource``
@@ -81,7 +81,7 @@ class LogEntry:
     resource = property(fget=get_resource)
 
     @abc.abstractmethod
-    def get_agent_id(self):
+    def get_agent_id(self): # pragma: no cover
         """Gets the agent ``Id`` who created this entry.
 
         :return: the agent ``Id``
@@ -96,7 +96,7 @@ class LogEntry:
     agent_id = property(fget=get_agent_id)
 
     @abc.abstractmethod
-    def get_agent(self):
+    def get_agent(self): # pragma: no cover
         """Gets the ``Agent`` who created this entry.
 
         :return: the ``Agent``
@@ -111,7 +111,7 @@ class LogEntry:
     agent = property(fget=get_agent)
 
     @abc.abstractmethod
-    def get_log_entry_record(self, log_entry_record_type):
+    def get_log_entry_record(self, log_entry_record_type): # pragma: no cover
         """Gets the log entry record corresponding to the given ``LogEntry`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -147,7 +147,7 @@ class LogEntryForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_priority_metadata(self):
+    def get_priority_metadata(self): # pragma: no cover
         """Gets the metadata for a priority type.
 
         :return: metadata for the priority
@@ -162,7 +162,7 @@ class LogEntryForm:
     priority_metadata = property(fget=get_priority_metadata)
 
     @abc.abstractmethod
-    def set_priority(self, priority):
+    def set_priority(self, priority): # pragma: no cover
         """Sets the priority.
 
         :param priority: the new priority
@@ -177,7 +177,7 @@ class LogEntryForm:
         pass
 
     @abc.abstractmethod
-    def clear_priority(self):
+    def clear_priority(self): # pragma: no cover
         """Removes the priority.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -190,7 +190,7 @@ class LogEntryForm:
     priority = property(fset=set_priority, fdel=clear_priority)
 
     @abc.abstractmethod
-    def get_timestamp_metadata(self):
+    def get_timestamp_metadata(self): # pragma: no cover
         """Gets the metadata for a timestamp.
 
         :return: metadata for the timestamp
@@ -205,7 +205,7 @@ class LogEntryForm:
     timestamp_metadata = property(fget=get_timestamp_metadata)
 
     @abc.abstractmethod
-    def set_timestamp(self, timestamp):
+    def set_timestamp(self, timestamp): # pragma: no cover
         """Sets the timestamp.
 
         :param timestamp: the new timestamp
@@ -222,7 +222,7 @@ class LogEntryForm:
     timestamp = property(fset=set_timestamp)
 
     @abc.abstractmethod
-    def get_agent_metadata(self):
+    def get_agent_metadata(self): # pragma: no cover
         """Gets the metadata for the agent.
 
         :return: metadata for the agent
@@ -237,7 +237,7 @@ class LogEntryForm:
     agent_metadata = property(fget=get_agent_metadata)
 
     @abc.abstractmethod
-    def set_agent(self, agent_id):
+    def set_agent(self, agent_id): # pragma: no cover
         """Sets the agent.
 
         :param agent_id: the new agent
@@ -254,7 +254,7 @@ class LogEntryForm:
     agent = property(fset=set_agent)
 
     @abc.abstractmethod
-    def get_log_entry_form_record(self, log_entry_record_type):
+    def get_log_entry_form_record(self, log_entry_record_type): # pragma: no cover
         """Gets the ``LogEntryFormRecord`` corresponding to the given log entry record ``Type``.
 
         :param log_entry_record_type: the log entry record type
@@ -286,7 +286,7 @@ class LogEntryList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_log_entry(self):
+    def get_next_log_entry(self): # pragma: no cover
         """Gets the next ``LogEntry`` in this list.
 
         :return: the next ``LogEntry`` in this list. The ``has_next()`` method should be used to test that a next ``LogEntry`` is available before calling this method.
@@ -302,7 +302,7 @@ class LogEntryList:
     next_log_entry = property(fget=get_next_log_entry)
 
     @abc.abstractmethod
-    def get_next_log_entries(self, n):
+    def get_next_log_entries(self, n): # pragma: no cover
         """Gets the next set of ``LogEntry elements`` in this list.
 
         The specified amount must be less than or equal to the return
@@ -331,7 +331,7 @@ class Log:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_record(self, log_record_type):
+    def get_log_record(self, log_record_type): # pragma: no cover
         """Gets the record corresponding to the given ``Log`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -366,7 +366,7 @@ class LogForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log_form_record(self, log_record_type):
+    def get_log_form_record(self, log_record_type): # pragma: no cover
         """Gets the ``LogFormRecord`` corresponding to the given log record ``Type``.
 
         :param log_record_type: the log record type
@@ -397,7 +397,7 @@ class LogList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_log(self):
+    def get_next_log(self): # pragma: no cover
         """Gets the next ``Log`` in this list.
 
         :return: the next ``Log`` in this list. The ``has_next()`` method should be used to test that a next ``Log`` is available before calling this method.
@@ -413,7 +413,7 @@ class LogList:
     next_log = property(fget=get_next_log)
 
     @abc.abstractmethod
-    def get_next_logs(self, n):
+    def get_next_logs(self, n): # pragma: no cover
         """Gets the next set of ``Log`` elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -443,7 +443,7 @@ class LogNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_log(self):
+    def get_log(self): # pragma: no cover
         """Gets the ``Log`` at this node.
 
         :return: the log represented by this node
@@ -458,7 +458,7 @@ class LogNode:
     log = property(fget=get_log)
 
     @abc.abstractmethod
-    def get_parent_log_nodes(self):
+    def get_parent_log_nodes(self): # pragma: no cover
         """Gets the parents of this log.
 
         :return: the parents of this log
@@ -473,7 +473,7 @@ class LogNode:
     parent_log_nodes = property(fget=get_parent_log_nodes)
 
     @abc.abstractmethod
-    def get_child_log_nodes(self):
+    def get_child_log_nodes(self): # pragma: no cover
         """Gets the children of this log.
 
         :return: the children of this log
@@ -503,7 +503,7 @@ class LogNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_log_node(self):
+    def get_next_log_node(self): # pragma: no cover
         """Gets the next ``LogNode`` in this list.
 
         :return: the next ``LogNode`` in this list. The ``has_next()`` method should be used to test that a next ``LogNode`` is available before calling this method.
@@ -519,7 +519,7 @@ class LogNodeList:
     next_log_node = property(fget=get_next_log_node)
 
     @abc.abstractmethod
-    def get_next_log_nodes(self, n):
+    def get_next_log_nodes(self, n): # pragma: no cover
         """Gets the next set of ``LogNode`` elements in this list.
 
         The specified amount must be less than or equal to the return

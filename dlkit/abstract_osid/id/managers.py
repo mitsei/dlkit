@@ -21,7 +21,7 @@ class IdProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_id_lookup(self):
+    def supports_id_lookup(self): # pragma: no cover
         """Tests if ``Id`` lookup is supported.
 
         :return: ``true`` if ``Id`` lookup is supported, ``false`` otherwise
@@ -34,7 +34,7 @@ class IdProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_id_issue(self):
+    def supports_id_issue(self): # pragma: no cover
         """Tests if an ``Id`` issue service is supported.
 
         :return: ``true`` if ``Id`` issuing is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class IdProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_id_admin(self):
+    def supports_id_admin(self): # pragma: no cover
         """Tests if an ``Id`` administrative service is supported.
 
         :return: ``true`` if ``Id`` administration is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class IdProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_id_batch(self):
+    def supports_id_batch(self): # pragma: no cover
         """Tests for the availability of an Id batch service.
 
         :return: ``true`` if an Id batch service is available, ``false`` otherwise
@@ -86,7 +86,7 @@ class IdManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id_lookup_session(self):
+    def get_id_lookup_session(self): # pragma: no cover
         """Gets the session associated with the id lookup service.
 
         :return: an ``IdLookupSession``
@@ -103,7 +103,7 @@ class IdManager:
     id_lookup_session = property(fget=get_id_lookup_session)
 
     @abc.abstractmethod
-    def get_id_issue_session(self):
+    def get_id_issue_session(self): # pragma: no cover
         """Gets the session associated with the id issue service.
 
         :return: an ``IdIssueSession``
@@ -120,7 +120,7 @@ class IdManager:
     id_issue_session = property(fget=get_id_issue_session)
 
     @abc.abstractmethod
-    def get_id_admin_session(self):
+    def get_id_admin_session(self): # pragma: no cover
         """Gets the session associated with the id admin service.
 
         :return: an ``IdAdminSession``
@@ -137,7 +137,7 @@ class IdManager:
     id_admin_session = property(fget=get_id_admin_session)
 
     @abc.abstractmethod
-    def get_id_batch_manager(self):
+    def get_id_batch_manager(self): # pragma: no cover
         """Gets an ``IdBatchManager``.
 
         :return: an ``IdBatchManager``
@@ -169,7 +169,7 @@ class IdProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_id_lookup_session(self, proxy):
+    def get_id_lookup_session(self, proxy): # pragma: no cover
         """Gets the session associated with the id lookup service.
 
         :param proxy: a proxy
@@ -187,7 +187,7 @@ class IdProxyManager:
         return  # osid.id.IdLookupSession
 
     @abc.abstractmethod
-    def get_id_issue_session(self, proxy):
+    def get_id_issue_session(self, proxy): # pragma: no cover
         """Gets the session associated with the id issue service.
 
         :param proxy: a proxy
@@ -205,7 +205,7 @@ class IdProxyManager:
         return  # osid.id.IdIssueSession
 
     @abc.abstractmethod
-    def get_id_admin_session(self, proxy):
+    def get_id_admin_session(self, proxy): # pragma: no cover
         """Gets the session associated with the id administrative service.
 
         :param proxy: a proxy
@@ -223,7 +223,7 @@ class IdProxyManager:
         return  # osid.id.IdAdminSession
 
     @abc.abstractmethod
-    def get_id_batch_proxy_manager(self):
+    def get_id_batch_proxy_manager(self): # pragma: no cover
         """Gets an ``IdnProxyManager``.
 
         :return: an ``IdBatchProxyManager``

@@ -21,7 +21,7 @@ class ObjectiveLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -36,7 +36,7 @@ class ObjectiveLookupSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -52,7 +52,7 @@ class ObjectiveLookupSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_objectives(self):
+    def can_lookup_objectives(self): # pragma: no cover
         """Tests if this user can perform ``Objective`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -71,7 +71,7 @@ class ObjectiveLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_view(self):
+    def use_comparative_objective_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -85,7 +85,7 @@ class ObjectiveLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_view(self):
+    def use_plenary_objective_view(self): # pragma: no cover
         """A complete view of the ``Objective`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -100,7 +100,7 @@ class ObjectiveLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include objectives in objective banks
@@ -115,7 +115,7 @@ class ObjectiveLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this objective bank only.
@@ -128,7 +128,7 @@ class ObjectiveLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_objective(self, objective_id):
+    def get_objective(self, objective_id): # pragma: no cover
         """Gets the ``Objective`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -152,7 +152,7 @@ class ObjectiveLookupSession:
         return  # osid.learning.Objective
 
     @abc.abstractmethod
-    def get_objectives_by_ids(self, objective_ids):
+    def get_objectives_by_ids(self, objective_ids): # pragma: no cover
         """Gets an ``ObjectiveList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -178,7 +178,7 @@ class ObjectiveLookupSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives_by_genus_type(self, objective_genus_type):
+    def get_objectives_by_genus_type(self, objective_genus_type): # pragma: no cover
         """Gets an ``ObjectiveList`` corresponding to the given objective genus ``Type`` which does not include objectives of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known objectives
@@ -199,7 +199,7 @@ class ObjectiveLookupSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives_by_parent_genus_type(self, objective_genus_type):
+    def get_objectives_by_parent_genus_type(self, objective_genus_type): # pragma: no cover
         """Gets an ``ObjectiveList`` corresponding to the given objective genus ``Type`` and include any additional objective with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known objectives
@@ -220,7 +220,7 @@ class ObjectiveLookupSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives_by_record_type(self, objective_record_type):
+    def get_objectives_by_record_type(self, objective_record_type): # pragma: no cover
         """Gets an ``ObjectiveList`` containing the given objective record ``Type``.
 
         In plenary mode, the returned list contains all known objectives
@@ -241,7 +241,7 @@ class ObjectiveLookupSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives(self):
+    def get_objectives(self): # pragma: no cover
         """Gets all ``Objectives``.
 
         In plenary mode, the returned list contains all known objectives
@@ -286,7 +286,7 @@ class ObjectiveQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -301,7 +301,7 @@ class ObjectiveQuerySession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -317,7 +317,7 @@ class ObjectiveQuerySession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_search_objectives(self):
+    def can_search_objectives(self): # pragma: no cover
         """Tests if this user can perform ``Objectives`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -336,7 +336,7 @@ class ObjectiveQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include objectives in objective banks
@@ -351,7 +351,7 @@ class ObjectiveQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this objective bank only.
@@ -364,7 +364,7 @@ class ObjectiveQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_objective_query(self):
+    def get_objective_query(self): # pragma: no cover
         """Gets an objective query.
 
         :return: the objective query
@@ -379,7 +379,7 @@ class ObjectiveQuerySession:
     objective_query = property(fget=get_objective_query)
 
     @abc.abstractmethod
-    def get_objectives_by_query(self, objective_query):
+    def get_objectives_by_query(self, objective_query): # pragma: no cover
         """Gets a list of ``Objectives`` matching the given objective query.
 
         :param objective_query: the objective query
@@ -432,7 +432,7 @@ class ObjectiveSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_search(self):
+    def get_objective_search(self): # pragma: no cover
         """Gets an objective search.
 
         :return: the objective search
@@ -447,7 +447,7 @@ class ObjectiveSearchSession:
     objective_search = property(fget=get_objective_search)
 
     @abc.abstractmethod
-    def get_objective_search_order(self):
+    def get_objective_search_order(self): # pragma: no cover
         """Gets a n objective search order.
 
         The ``ObjectiveSearchOrder`` is supplied to an
@@ -465,7 +465,7 @@ class ObjectiveSearchSession:
     objective_search_order = property(fget=get_objective_search_order)
 
     @abc.abstractmethod
-    def get_objectives_by_search(self, objective_query, objective_search):
+    def get_objectives_by_search(self, objective_query, objective_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param objective_query: the objective search query
@@ -485,7 +485,7 @@ class ObjectiveSearchSession:
         return  # osid.learning.ObjectiveSearchResults
 
     @abc.abstractmethod
-    def get_objective_query_from_inspector(self, objective_query_inspector):
+    def get_objective_query_from_inspector(self, objective_query_inspector): # pragma: no cover
         """Gets an objective query from an inspector.
 
         The inspector is available from an ``ObjectiveSearchResults``.
@@ -541,7 +541,7 @@ class ObjectiveAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -556,7 +556,7 @@ class ObjectiveAdminSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -572,7 +572,7 @@ class ObjectiveAdminSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_create_objectives(self):
+    def can_create_objectives(self): # pragma: no cover
         """Tests if this user can create ``Objectives``.
 
         A return of true does not guarantee successful authorization. A
@@ -591,7 +591,7 @@ class ObjectiveAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_objective_with_record_types(self, objective_record_types):
+    def can_create_objective_with_record_types(self, objective_record_types): # pragma: no cover
         """Tests if this user can create a single ``Objective`` using the desired record types.
 
         While ``LearningManager.getObjectiveRecordTypes()`` can be used
@@ -612,7 +612,7 @@ class ObjectiveAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_form_for_create(self, objective_record_types):
+    def get_objective_form_for_create(self, objective_record_types): # pragma: no cover
         """Gets the objective form for creating new objectives.
 
         A new form should be requested for each create transaction.
@@ -632,7 +632,7 @@ class ObjectiveAdminSession:
         return  # osid.learning.ObjectiveForm
 
     @abc.abstractmethod
-    def create_objective(self, objective_form):
+    def create_objective(self, objective_form): # pragma: no cover
         """Creates a new ``Objective``.
 
         :param objective_form: the form for this ``Objective``
@@ -652,7 +652,7 @@ class ObjectiveAdminSession:
         return  # osid.learning.Objective
 
     @abc.abstractmethod
-    def can_update_objectives(self):
+    def can_update_objectives(self): # pragma: no cover
         """Tests if this user can update ``Objectives``.
 
         A return of true does not guarantee successful authorization. A
@@ -671,7 +671,7 @@ class ObjectiveAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_form_for_update(self, objective_id):
+    def get_objective_form_for_update(self, objective_id): # pragma: no cover
         """Gets the objective form for updating an existing objective.
 
         A new objective form should be requested for each update
@@ -692,7 +692,7 @@ class ObjectiveAdminSession:
         return  # osid.learning.ObjectiveForm
 
     @abc.abstractmethod
-    def update_objective(self, objective_form):
+    def update_objective(self, objective_form): # pragma: no cover
         """Updates an existing objective.
 
         :param objective_form: the form containing the elements to be updated
@@ -710,7 +710,7 @@ class ObjectiveAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_objectives(self):
+    def can_delete_objectives(self): # pragma: no cover
         """Tests if this user can delete ``Objectives``.
 
         A return of true does not guarantee successful authorization. A
@@ -729,7 +729,7 @@ class ObjectiveAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_objective(self, objective_id):
+    def delete_objective(self, objective_id): # pragma: no cover
         """Deletes the ``Objective`` identified by the given ``Id``.
 
         :param objective_id: the ``Id`` of the ``Objective`` to delete
@@ -745,7 +745,7 @@ class ObjectiveAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_objective_aliases(self):
+    def can_manage_objective_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Objectives``.
 
         A return of true does not guarantee successful authorization. A
@@ -764,7 +764,7 @@ class ObjectiveAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_objective(self, objective_id, alias_id):
+    def alias_objective(self, objective_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Objective`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Objective`` is determined by the
@@ -802,7 +802,7 @@ class ObjectiveNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -817,7 +817,7 @@ class ObjectiveNotificationSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -833,7 +833,7 @@ class ObjectiveNotificationSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_register_for_objective_notifications(self):
+    def can_register_for_objective_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Objective`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -852,7 +852,7 @@ class ObjectiveNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for objectives in
@@ -867,7 +867,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this objective bank
@@ -881,7 +881,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_objective_notifications(self):
+    def reliable_objective_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -895,7 +895,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_objective_notifications(self):
+    def unreliable_objective_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -909,7 +909,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_objective_notification(self, notification_id):
+    def acknowledge_objective_notification(self, notification_id): # pragma: no cover
         """Acknowledge an objective notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -923,7 +923,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_objectives(self):
+    def register_for_new_objectives(self): # pragma: no cover
         """Register for notifications of new objectives.
 
         ``ObjectiveReceiver.newObjectives()`` is invoked when a new
@@ -938,7 +938,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objectives(self):
+    def register_for_changed_objectives(self): # pragma: no cover
         """Registers for notification of updated objectives.
 
         ``ObjectiveReceiver.changedObjectives()`` is invoked when an
@@ -953,7 +953,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective(self, objective_id):
+    def register_for_changed_objective(self, objective_id): # pragma: no cover
         """Registers for notification of an updated objective.
 
         ``ObjectiveReceiver.changedObjectives()`` is invoked when the
@@ -971,7 +971,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_objectives(self):
+    def register_for_deleted_objectives(self): # pragma: no cover
         """Registers for notification of deleted objectives.
 
         ``ObjectiveReceiver.deletedObjectives()`` is invoked when an
@@ -986,7 +986,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_objective(self, objective_id):
+    def register_for_deleted_objective(self, objective_id): # pragma: no cover
         """Registers for notification of a deleted objective.
 
         ``ObjectiveReceiver.changedObjectives()`` is invoked when the
@@ -1004,7 +1004,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_hierarchy(self):
+    def register_for_changed_objective_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated objective hierarchy structure.
 
         ``ObjectiveReceiver.changedChildOfObjectives()`` is invoked when
@@ -1019,7 +1019,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_hierarchy_for_ancestors(self, objective_id):
+    def register_for_changed_objective_hierarchy_for_ancestors(self, objective_id): # pragma: no cover
         """Registers for notification of an updated objective hierarchy structure.
 
         ``ObjectiveReceiver.changedChildOfObjectives()`` is invoked when
@@ -1038,7 +1038,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_hierarchy_for_descendants(self, objective_id):
+    def register_for_changed_objective_hierarchy_for_descendants(self, objective_id): # pragma: no cover
         """Registers for notification of an updated objective hierarchy structure.
 
         ``ObjectiveReceiver.changedChildOfObjectives()`` is invoked when
@@ -1057,7 +1057,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_objective_notifications(self):
+    def reliable_objective_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1071,7 +1071,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_objective_notifications(self):
+    def unreliable_objective_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1085,7 +1085,7 @@ class ObjectiveNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_objective_notification(self, notification_id):
+    def acknowledge_objective_notification(self, notification_id): # pragma: no cover
         """Acknowledge an objective notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1129,7 +1129,7 @@ class ObjectiveHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_hierarchy_id(self):
+    def get_objective_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -1144,7 +1144,7 @@ class ObjectiveHierarchySession:
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
     @abc.abstractmethod
-    def get_objective_hierarchy(self):
+    def get_objective_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -1160,7 +1160,7 @@ class ObjectiveHierarchySession:
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
     @abc.abstractmethod
-    def can_access_objective_hierarchy(self):
+    def can_access_objective_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -1179,7 +1179,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_view(self):
+    def use_comparative_objective_view(self): # pragma: no cover
         """The returns from the objective methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1193,7 +1193,7 @@ class ObjectiveHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_view(self):
+    def use_plenary_objective_view(self): # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1208,7 +1208,7 @@ class ObjectiveHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_objective_ids(self):
+    def get_root_objective_ids(self): # pragma: no cover
         """Gets the root objective ``Ids`` in this hierarchy.
 
         :return: the root objective ``Ids``
@@ -1224,7 +1224,7 @@ class ObjectiveHierarchySession:
     root_objective_ids = property(fget=get_root_objective_ids)
 
     @abc.abstractmethod
-    def get_root_objectives(self):
+    def get_root_objectives(self): # pragma: no cover
         """Gets the root objective in this objective hierarchy.
 
         :return: the root objective
@@ -1240,7 +1240,7 @@ class ObjectiveHierarchySession:
     root_objectives = property(fget=get_root_objectives)
 
     @abc.abstractmethod
-    def has_parent_objectives(self, objective_id):
+    def has_parent_objectives(self, objective_id): # pragma: no cover
         """Tests if the ``Objective`` has any parents.
 
         :param objective_id: the ``Id`` of an objective
@@ -1258,7 +1258,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_objective(self, id_, objective_id):
+    def is_parent_of_objective(self, id_, objective_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of an objective.
 
         :param id: an ``Id``
@@ -1279,7 +1279,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_objective_ids(self, objective_id):
+    def get_parent_objective_ids(self, objective_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1297,7 +1297,7 @@ class ObjectiveHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_objectives(self, objective_id):
+    def get_parent_objectives(self, objective_id): # pragma: no cover
         """Gets the parents of the given objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1315,7 +1315,7 @@ class ObjectiveHierarchySession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def is_ancestor_of_objective(self, id_, objective_id):
+    def is_ancestor_of_objective(self, id_, objective_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of an objective.
 
         :param id: an ``Id``
@@ -1336,7 +1336,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_objectives(self, objective_id):
+    def has_child_objectives(self, objective_id): # pragma: no cover
         """Tests if an objective has any children.
 
         :param objective_id: the ``Id`` of an objective
@@ -1354,7 +1354,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_objective(self, id_, objective_id):
+    def is_child_of_objective(self, id_, objective_id): # pragma: no cover
         """Tests if an objective is a direct child of another.
 
         :param id: an ``Id``
@@ -1375,7 +1375,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_objective_ids(self, objective_id):
+    def get_child_objective_ids(self, objective_id): # pragma: no cover
         """Gets the child ``Ids`` of the given objective.
 
         :param objective_id: the ``Id`` to query
@@ -1393,7 +1393,7 @@ class ObjectiveHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_objectives(self, objective_id):
+    def get_child_objectives(self, objective_id): # pragma: no cover
         """Gets the children of the given objective.
 
         :param objective_id: the ``Id`` to query
@@ -1411,7 +1411,7 @@ class ObjectiveHierarchySession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def is_descendant_of_objective(self, id_, objective_id):
+    def is_descendant_of_objective(self, id_, objective_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of an objective.
 
         :param id: an ``Id``
@@ -1432,7 +1432,7 @@ class ObjectiveHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_node_ids(self, objective_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_objective_node_ids(self, objective_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given objective.
 
         :param objective_id: the ``Id`` to query
@@ -1456,7 +1456,7 @@ class ObjectiveHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_objective_nodes(self, objective_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_objective_nodes(self, objective_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given objective.
 
         :param objective_id: the ``Id`` to query
@@ -1489,7 +1489,7 @@ class ObjectiveHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_hierarchy_id(self):
+    def get_objective_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -1504,7 +1504,7 @@ class ObjectiveHierarchyDesignSession:
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
     @abc.abstractmethod
-    def get_objective_hierarchy(self):
+    def get_objective_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -1520,7 +1520,7 @@ class ObjectiveHierarchyDesignSession:
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_objective_hierarchy(self):
+    def can_modify_objective_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -1539,7 +1539,7 @@ class ObjectiveHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_objective(self, objective_id):
+    def add_root_objective(self, objective_id): # pragma: no cover
         """Adds a root objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1556,7 +1556,7 @@ class ObjectiveHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_objective(self, objective_id):
+    def remove_root_objective(self, objective_id): # pragma: no cover
         """Removes a root objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1572,7 +1572,7 @@ class ObjectiveHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_objective(self, objective_id, child_id):
+    def add_child_objective(self, objective_id, child_id): # pragma: no cover
         """Adds a child to an objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1591,7 +1591,7 @@ class ObjectiveHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_objective(self, objective_id, child_id):
+    def remove_child_objective(self, objective_id, child_id): # pragma: no cover
         """Removes a child from an objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1609,7 +1609,7 @@ class ObjectiveHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_objectives(self, objective_id):
+    def remove_child_objectives(self, objective_id): # pragma: no cover
         """Removes all children from an objective.
 
         :param objective_id: the ``Id`` of an objective
@@ -1630,7 +1630,7 @@ class ObjectiveSequencingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_hierarchy_id(self):
+    def get_objective_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -1645,7 +1645,7 @@ class ObjectiveSequencingSession:
     objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
 
     @abc.abstractmethod
-    def get_objective_hierarchy(self):
+    def get_objective_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -1661,7 +1661,7 @@ class ObjectiveSequencingSession:
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
     @abc.abstractmethod
-    def can_sequence_objectives(self):
+    def can_sequence_objectives(self): # pragma: no cover
         """Tests if this user can sequence objectives.
 
         A return of true does not guarantee successful authorization. A
@@ -1680,7 +1680,7 @@ class ObjectiveSequencingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def move_objective_ahead(self, parent_objective_id, reference_objective_id, objective_id):
+    def move_objective_ahead(self, parent_objective_id, reference_objective_id, objective_id): # pragma: no cover
         """Moves an objective ahead of a refrence objective under the given parent.
 
         :param parent_objective_id: the ``Id`` of the parent objective
@@ -1700,7 +1700,7 @@ class ObjectiveSequencingSession:
         pass
 
     @abc.abstractmethod
-    def move_objective_behind(self, parent_objective_id, reference_objective_id, objective_id):
+    def move_objective_behind(self, parent_objective_id, reference_objective_id, objective_id): # pragma: no cover
         """Moves an objective behind a refrence objective under the given parent.
 
         :param parent_objective_id: the ``Id`` of the parent objective
@@ -1720,7 +1720,7 @@ class ObjectiveSequencingSession:
         pass
 
     @abc.abstractmethod
-    def sequence_objectives(self, parent_objective_id, objective_ids):
+    def sequence_objectives(self, parent_objective_id, objective_ids): # pragma: no cover
         """Sequences a set of objectives under a parent.
 
         :param parent_objective_id: the ``Id`` of the parent objective
@@ -1755,7 +1755,7 @@ class ObjectiveObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_objective_objective_bank_mappings(self):
+    def can_lookup_objective_objective_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of objective/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1774,7 +1774,7 @@ class ObjectiveObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_bank_view(self):
+    def use_comparative_objective_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1788,7 +1788,7 @@ class ObjectiveObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_bank_view(self):
+    def use_plenary_objective_bank_view(self): # pragma: no cover
         """A complete view of the ``Objective`` and ``ObjectiveBank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1803,7 +1803,7 @@ class ObjectiveObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_objective_ids_by_objective_bank(self, objective_bank_id):
+    def get_objective_ids_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Objective``  ``Ids`` associated with an ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -1821,7 +1821,7 @@ class ObjectiveObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_objectives_by_objective_bank(self, objective_bank_id):
+    def get_objectives_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Objectives`` associated with an ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -1839,7 +1839,7 @@ class ObjectiveObjectiveBankSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objective_ids_by_objective_banks(self, objective_bank_ids):
+    def get_objective_ids_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Objective Ids`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objective bank ``Ids``
@@ -1856,7 +1856,7 @@ class ObjectiveObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_objectives_by_objective_banks(self, objective_bank_ids):
+    def get_objectives_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Objectives`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objective bank ``Ids``
@@ -1873,7 +1873,7 @@ class ObjectiveObjectiveBankSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objective_bank_ids_by_objective(self, objective_id):
+    def get_objective_bank_ids_by_objective(self, objective_id): # pragma: no cover
         """Gets the list of ``ObjectiveBank``  ``Ids`` mapped to an ``Objective``.
 
         :param objective_id: ``Id`` of an ``Objective``
@@ -1891,7 +1891,7 @@ class ObjectiveObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_objective_banks_by_objective(self, objective_id):
+    def get_objective_banks_by_objective(self, objective_id): # pragma: no cover
         """Gets the list of ``ObjectiveBanks`` mapped to an ``Objective``.
 
         :param objective_id: ``Id`` of an ``Objective``
@@ -1925,7 +1925,7 @@ class ObjectiveObjectiveBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_objectives(self):
+    def can_assign_objectives(self): # pragma: no cover
         """Tests if this user can alter objective/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1944,7 +1944,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_objectives_to_objective_bank(self, objective_bank_id):
+    def can_assign_objectives_to_objective_bank(self, objective_bank_id): # pragma: no cover
         """Tests if this user can alter objective/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1965,7 +1965,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids(self, objective_bank_id):
+    def get_assignable_objective_bank_ids(self, objective_bank_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank node in which any objective can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1981,7 +1981,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids_for_objective(self, objective_bank_id, objective_id):
+    def get_assignable_objective_bank_ids_for_objective(self, objective_bank_id, objective_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank node in which a specific objective can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1999,7 +1999,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_objective_to_objective_bank(self, objective_id, objective_bank_id):
+    def assign_objective_to_objective_bank(self, objective_id, objective_bank_id): # pragma: no cover
         """Adds an existing ``Objective`` to an ``ObjectiveBank``.
 
         :param objective_id: the ``Id`` of the ``Objective``
@@ -2018,7 +2018,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_objective_from_objective_bank(self, objective_id, objective_bank_id):
+    def unassign_objective_from_objective_bank(self, objective_id, objective_bank_id): # pragma: no cover
         """Removes an ``Objective`` from an ``ObjectiveBank``.
 
         :param objective_id: the ``Id`` of the ``Objective``
@@ -2036,7 +2036,7 @@ class ObjectiveObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_proficiency_to_objective_bank(self, objective_id, from_objective_bank_id, to_objective_bank_id):
+    def reassign_proficiency_to_objective_bank(self, objective_id, from_objective_bank_id, to_objective_bank_id): # pragma: no cover
         """Moves an ``Objective`` from one ``ObjectiveBank`` to another.
 
         Mappings to other ``ObjectiveBanks`` are unaffected.
@@ -2076,7 +2076,7 @@ class ObjectiveSmartObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -2091,7 +2091,7 @@ class ObjectiveSmartObjectiveBankSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -2107,7 +2107,7 @@ class ObjectiveSmartObjectiveBankSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_objective_banks(self):
+    def can_manage_smart_objective_banks(self): # pragma: no cover
         """Tests if this user can manage smart objective banks.
 
         A return of true does not guarantee successful assessment. A
@@ -2126,7 +2126,7 @@ class ObjectiveSmartObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_query(self):
+    def get_objective_query(self): # pragma: no cover
         """Gets an objective query.
 
         :return: the objective query
@@ -2141,7 +2141,7 @@ class ObjectiveSmartObjectiveBankSession:
     objective_query = property(fget=get_objective_query)
 
     @abc.abstractmethod
-    def get_objective_search_order(self):
+    def get_objective_search_order(self): # pragma: no cover
         """Gets an objective search order.
 
         :return: the objective search order
@@ -2156,7 +2156,7 @@ class ObjectiveSmartObjectiveBankSession:
     objective_search_order = property(fget=get_objective_search_order)
 
     @abc.abstractmethod
-    def apply_objective_query(self, objective_query):
+    def apply_objective_query(self, objective_query): # pragma: no cover
         """Applies an objective query to this bank.
 
         :param objective_query: the objective query
@@ -2172,7 +2172,7 @@ class ObjectiveSmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_objective_query(self):
+    def inspect_objective_query(self): # pragma: no cover
         """Gets an objective query inspector for this objective bank.
 
         :return: the objective query inspector
@@ -2186,7 +2186,7 @@ class ObjectiveSmartObjectiveBankSession:
         return  # osid.learning.ObjectiveQueryInspector
 
     @abc.abstractmethod
-    def apply_objective_sequencing(self, objective_search_order):
+    def apply_objective_sequencing(self, objective_search_order): # pragma: no cover
         """Applies an objective search order to this objective bank.
 
         :param objective_search_order: the objective search order
@@ -2202,7 +2202,7 @@ class ObjectiveSmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_objective_query_from_inspector(self, objective_query_inspector):
+    def get_objective_query_from_inspector(self, objective_query_inspector): # pragma: no cover
         """Gets an objective query from an inspector.
 
         :param objective_query_inspector: a query inspector
@@ -2249,7 +2249,7 @@ class ObjectiveRequisiteSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -2264,7 +2264,7 @@ class ObjectiveRequisiteSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -2280,7 +2280,7 @@ class ObjectiveRequisiteSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_objective_prerequisites(self):
+    def can_lookup_objective_prerequisites(self): # pragma: no cover
         """Tests if this user can perform ``Objective`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2299,7 +2299,7 @@ class ObjectiveRequisiteSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_view(self):
+    def use_comparative_objective_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2313,7 +2313,7 @@ class ObjectiveRequisiteSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_view(self):
+    def use_plenary_objective_view(self): # pragma: no cover
         """A complete view of the ``Objective`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2328,7 +2328,7 @@ class ObjectiveRequisiteSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include objectives in objective banks
@@ -2343,7 +2343,7 @@ class ObjectiveRequisiteSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this objective bank only.
@@ -2356,7 +2356,7 @@ class ObjectiveRequisiteSession:
         pass
 
     @abc.abstractmethod
-    def get_requisite_objectives(self, objective_id):
+    def get_requisite_objectives(self, objective_id): # pragma: no cover
         """Gets a list of ``Objectives`` that are the immediate requisites for the given ``Objective``.
 
         In plenary mode, the returned list contains all of the immediate
@@ -2380,7 +2380,7 @@ class ObjectiveRequisiteSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_all_requisite_objectives(self, objective_id):
+    def get_all_requisite_objectives(self, objective_id): # pragma: no cover
         """Gets a list of ``Objectives`` that are the requisites for the given ``Objective`` including the requistes of the requisites, and so on.
 
         In plenary mode, the returned list contains all of the immediate
@@ -2404,7 +2404,7 @@ class ObjectiveRequisiteSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_dependent_objectives(self, objective_id):
+    def get_dependent_objectives(self, objective_id): # pragma: no cover
         """Gets a list of ``Objectives`` that require the given ``Objective``.
 
         In plenary mode, the returned list contains all of the immediate
@@ -2428,7 +2428,7 @@ class ObjectiveRequisiteSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def is_objective_required(self, objective_id, required_objective_id):
+    def is_objective_required(self, objective_id, required_objective_id): # pragma: no cover
         """Tests if an objective is required before proceeding with an objective.
 
         One objective may indirectly depend on another objective by way
@@ -2451,7 +2451,7 @@ class ObjectiveRequisiteSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_equivalent_objectives(self, objective_id):
+    def get_equivalent_objectives(self, objective_id): # pragma: no cover
         """Gets a list of ``Objectives`` that are equivalent to the given ``Objective`` for the purpose of requisites.
 
         An equivalent objective can satisfy the given objective. In
@@ -2490,7 +2490,7 @@ class ObjectiveRequisiteAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -2505,7 +2505,7 @@ class ObjectiveRequisiteAssignmentSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -2521,7 +2521,7 @@ class ObjectiveRequisiteAssignmentSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_assign_requisites(self):
+    def can_assign_requisites(self): # pragma: no cover
         """Tests if this user can manage objective requisites.
 
         A return of true does not guarantee successful authorization. A
@@ -2540,7 +2540,7 @@ class ObjectiveRequisiteAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def assign_objective_requisite(self, objective_id, requisite_objective_id):
+    def assign_objective_requisite(self, objective_id, requisite_objective_id): # pragma: no cover
         """Creates a requirement dependency between two ``Objectives``.
 
         :param objective_id: the ``Id`` of the dependent ``Objective``
@@ -2559,7 +2559,7 @@ class ObjectiveRequisiteAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_objective_requisite(self, objective_id, requisite_objective_id):
+    def unassign_objective_requisite(self, objective_id, requisite_objective_id): # pragma: no cover
         """Removes an ``Objective`` requisite from an ``Objective``.
 
         :param objective_id: the ``Id`` of the ``Objective``
@@ -2577,7 +2577,7 @@ class ObjectiveRequisiteAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def assign_equivalent_objective(self, objective_id, equivalent_objective_id):
+    def assign_equivalent_objective(self, objective_id, equivalent_objective_id): # pragma: no cover
         """Makes an objective equivalent to another objective for the purposes of satisfying a requisite.
 
         :param objective_id: the ``Id`` of the principal ``Objective``
@@ -2596,7 +2596,7 @@ class ObjectiveRequisiteAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_equivalent_objective(self, objective_id, equivalent_objective_id):
+    def unassign_equivalent_objective(self, objective_id, equivalent_objective_id): # pragma: no cover
         """Removes an ``Objective`` requisite from an ``Objective``.
 
         :param objective_id: the ``Id`` of the principal ``Objective``
@@ -2645,7 +2645,7 @@ class ActivityLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -2660,7 +2660,7 @@ class ActivityLookupSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -2676,7 +2676,7 @@ class ActivityLookupSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_activities(self):
+    def can_lookup_activities(self): # pragma: no cover
         """Tests if this user can perform ``Activity`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2695,7 +2695,7 @@ class ActivityLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_activity_view(self):
+    def use_comparative_activity_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2709,7 +2709,7 @@ class ActivityLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_activity_view(self):
+    def use_plenary_activity_view(self): # pragma: no cover
         """A complete view of the ``Activity`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2724,7 +2724,7 @@ class ActivityLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include activities in objective banks
@@ -2739,7 +2739,7 @@ class ActivityLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this objective bank only.
@@ -2752,7 +2752,7 @@ class ActivityLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_activity(self, activity_id):
+    def get_activity(self, activity_id): # pragma: no cover
         """Gets the ``Activity`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -2776,7 +2776,7 @@ class ActivityLookupSession:
         return  # osid.learning.Activity
 
     @abc.abstractmethod
-    def get_activities_by_ids(self, activity_ids):
+    def get_activities_by_ids(self, activity_ids): # pragma: no cover
         """Gets an ``ActivityList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -2802,7 +2802,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_by_genus_type(self, activity_genus_type):
+    def get_activities_by_genus_type(self, activity_genus_type): # pragma: no cover
         """Gets an ``ActivityList`` corresponding to the given activity genus ``Type`` which does not include activities of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known activities
@@ -2823,7 +2823,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_by_parent_genus_type(self, activity_genus_type):
+    def get_activities_by_parent_genus_type(self, activity_genus_type): # pragma: no cover
         """Gets an ``ActivityList`` corresponding to the given activity genus ``Type`` and include any additional activity with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known activities
@@ -2844,7 +2844,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_by_record_type(self, activity_record_type):
+    def get_activities_by_record_type(self, activity_record_type): # pragma: no cover
         """Gets a ``ActivityList`` containing the given activity record ``Type``.
 
         In plenary mode, the returned list contains all known activities
@@ -2865,7 +2865,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_for_objective(self, objective_id):
+    def get_activities_for_objective(self, objective_id): # pragma: no cover
         """Gets the activities for the given objective.
 
         In plenary mode, the returned list contains all of the
@@ -2890,7 +2890,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_for_objectives(self, objective_ids):
+    def get_activities_for_objectives(self, objective_ids): # pragma: no cover
         """Gets the activities for the given objectives.
 
         In plenary mode, the returned list contains all of the
@@ -2916,7 +2916,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_by_asset(self, asset_id):
+    def get_activities_by_asset(self, asset_id): # pragma: no cover
         """Gets the activities for the given asset.
 
         In plenary mode, the returned list contains all of the
@@ -2941,7 +2941,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities_by_assets(self, asset_ids):
+    def get_activities_by_assets(self, asset_ids): # pragma: no cover
         """Gets the activities for the given asset.
 
         In plenary mode, the returned list contains all of the
@@ -2966,7 +2966,7 @@ class ActivityLookupSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activities(self):
+    def get_activities(self): # pragma: no cover
         """Gets all ``Activities``.
 
         In plenary mode, the returned list contains all known activites
@@ -3011,7 +3011,7 @@ class ActivityQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -3026,7 +3026,7 @@ class ActivityQuerySession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -3042,7 +3042,7 @@ class ActivityQuerySession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_search_activities(self):
+    def can_search_activities(self): # pragma: no cover
         """Tests if this user can perform ``Activity`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -3061,7 +3061,7 @@ class ActivityQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include activities in objective banks
@@ -3076,7 +3076,7 @@ class ActivityQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this objective bank only.
@@ -3089,7 +3089,7 @@ class ActivityQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_activity_query(self):
+    def get_activity_query(self): # pragma: no cover
         """Gets an activity query.
 
         :return: the activity query
@@ -3104,7 +3104,7 @@ class ActivityQuerySession:
     activity_query = property(fget=get_activity_query)
 
     @abc.abstractmethod
-    def get_activities_by_query(self, activity_query):
+    def get_activities_by_query(self, activity_query): # pragma: no cover
         """Gets a list of ``Activities`` matching the given activity query.
 
         :param activity_query: the activity query
@@ -3157,7 +3157,7 @@ class ActivitySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_activity_search(self):
+    def get_activity_search(self): # pragma: no cover
         """Gets an activity search.
 
         :return: the activity search
@@ -3172,7 +3172,7 @@ class ActivitySearchSession:
     activity_search = property(fget=get_activity_search)
 
     @abc.abstractmethod
-    def get_activity_search_order(self):
+    def get_activity_search_order(self): # pragma: no cover
         """Gets an activity search order.
 
         The ``ActivitySearchOrder`` is supplied to a ``ActivitySearch``
@@ -3190,7 +3190,7 @@ class ActivitySearchSession:
     activity_search_order = property(fget=get_activity_search_order)
 
     @abc.abstractmethod
-    def get_activities_by_search(self, activity_query, activitiesearch):
+    def get_activities_by_search(self, activity_query, activitiesearch): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param activity_query: the activity query
@@ -3210,7 +3210,7 @@ class ActivitySearchSession:
         return  # osid.learning.ActivitySearchResults
 
     @abc.abstractmethod
-    def get_activity_query_from_inspector(self, activity_query_inspector):
+    def get_activity_query_from_inspector(self, activity_query_inspector): # pragma: no cover
         """Gets an activity query from an inspector.
 
         The inspector is available from an ``ActivitySearchResults``.
@@ -3266,7 +3266,7 @@ class ActivityAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -3281,7 +3281,7 @@ class ActivityAdminSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -3297,7 +3297,7 @@ class ActivityAdminSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_create_activities(self):
+    def can_create_activities(self): # pragma: no cover
         """Tests if this user can create ``Activities``.
 
         A return of true does not guarantee successful authorization. A
@@ -3316,7 +3316,7 @@ class ActivityAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_activity_with_record_types(self, activity_record_types):
+    def can_create_activity_with_record_types(self, activity_record_types): # pragma: no cover
         """Tests if this user can create a single ``Activity`` using the desired record types.
 
         While ``LearningManager.getActivityRecordTypes()`` can be used
@@ -3337,7 +3337,7 @@ class ActivityAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_form_for_create(self, objective_id, activity_record_types):
+    def get_activity_form_for_create(self, objective_id, activity_record_types): # pragma: no cover
         """Gets the activity form for creating new activities.
 
         A new form should be requested for each create transaction.
@@ -3360,7 +3360,7 @@ class ActivityAdminSession:
         return  # osid.learning.ActivityForm
 
     @abc.abstractmethod
-    def create_activity(self, activity_form):
+    def create_activity(self, activity_form): # pragma: no cover
         """Creates a new ``Activity``.
 
         :param activity_form: the form for this ``Activity``
@@ -3380,7 +3380,7 @@ class ActivityAdminSession:
         return  # osid.learning.Activity
 
     @abc.abstractmethod
-    def can_update_activities(self):
+    def can_update_activities(self): # pragma: no cover
         """Tests if this user can update ``Activities``.
 
         A return of true does not guarantee successful authorization. A
@@ -3399,7 +3399,7 @@ class ActivityAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_form_for_update(self, activity_id):
+    def get_activity_form_for_update(self, activity_id): # pragma: no cover
         """Gets the activity form for updating an existing activity.
 
         A new activity form should be requested for each update
@@ -3420,7 +3420,7 @@ class ActivityAdminSession:
         return  # osid.learning.ActivityForm
 
     @abc.abstractmethod
-    def update_activity(self, activity_form):
+    def update_activity(self, activity_form): # pragma: no cover
         """Updates an existing activity,.
 
         :param activity_form: the form containing the elements to be updated
@@ -3438,7 +3438,7 @@ class ActivityAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_activities(self):
+    def can_delete_activities(self): # pragma: no cover
         """Tests if this user can delete ``Activities``.
 
         A return of true does not guarantee successful authorization. A
@@ -3457,7 +3457,7 @@ class ActivityAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_activity(self, activity_id):
+    def delete_activity(self, activity_id): # pragma: no cover
         """Deletes the ``Activity`` identified by the given ``Id``.
 
         :param activity_id: the ``Id`` of the ``Activity`` to delete
@@ -3473,7 +3473,7 @@ class ActivityAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_activity_aliases(self):
+    def can_manage_activity_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for activities.
 
         A return of true does not guarantee successful authorization. A
@@ -3492,7 +3492,7 @@ class ActivityAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_activity(self, activity_id, alias_id):
+    def alias_activity(self, activity_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Activity`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Activity`` is determined by the
@@ -3530,7 +3530,7 @@ class ActivityNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -3545,7 +3545,7 @@ class ActivityNotificationSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -3561,7 +3561,7 @@ class ActivityNotificationSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_register_for_activity_notifications(self):
+    def can_register_for_activity_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Activity`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -3580,7 +3580,7 @@ class ActivityNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for activities in
@@ -3595,7 +3595,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this objective bank
@@ -3609,7 +3609,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_activity_notifications(self):
+    def reliable_activity_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3623,7 +3623,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_activity_notifications(self):
+    def unreliable_activity_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3637,7 +3637,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_activity_notification(self, notification_id):
+    def acknowledge_activity_notification(self, notification_id): # pragma: no cover
         """Acknowledge an activity notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3651,7 +3651,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_activities(self):
+    def register_for_new_activities(self): # pragma: no cover
         """Register for notifications of new activities.
 
         ``ActivityReceiver.newActivities()`` is invoked when a new
@@ -3666,7 +3666,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_activities_for_objective(self, objective_id):
+    def register_for_new_activities_for_objective(self, objective_id): # pragma: no cover
         """Register for notifications of new activities for the given objective.
 
         ``ActivityReceiver.newActivities()`` is invoked when a new
@@ -3684,7 +3684,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_activities(self):
+    def register_for_changed_activities(self): # pragma: no cover
         """Registers for notification of updated activities.
 
         ``ActivityReceiver.changedActivities()`` is invoked when an
@@ -3699,7 +3699,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_activities_for_objective(self, objective_id):
+    def register_for_changed_activities_for_objective(self, objective_id): # pragma: no cover
         """Registers for notification of updated activities.
 
         ``ActivityReceiver.changedActivities()`` is invoked when an
@@ -3717,7 +3717,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_activity(self, activity_id):
+    def register_for_changed_activity(self, activity_id): # pragma: no cover
         """Registers for notification of an updated activity.
 
         ``ActivityReceiver.changedActivities()`` is invoked when the
@@ -3735,7 +3735,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_activities(self):
+    def register_for_deleted_activities(self): # pragma: no cover
         """Registers for notification of deleted activities.
 
         ``ActivityReceiver.deletedActivities()`` is invoked when an
@@ -3750,7 +3750,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_activities_for_objective(self, objective_id):
+    def register_for_deleted_activities_for_objective(self, objective_id): # pragma: no cover
         """Registers for notification of deleted activities.
 
         ``ActivityReceiver.deletedActivities()`` is invoked when an
@@ -3768,7 +3768,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_activity(self, activity_id):
+    def register_for_deleted_activity(self, activity_id): # pragma: no cover
         """Registers for notification of a deleted activity.
 
         ``ActivityReceiver.changedActivities()`` is invoked when the
@@ -3786,7 +3786,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_activity_notifications(self):
+    def reliable_activity_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3800,7 +3800,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_activity_notifications(self):
+    def unreliable_activity_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3814,7 +3814,7 @@ class ActivityNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_activity_notification(self, notification_id):
+    def acknowledge_activity_notification(self, notification_id): # pragma: no cover
         """Acknowledge an activity notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3845,7 +3845,7 @@ class ActivityObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_activity_objective_bank_mappings(self):
+    def can_lookup_activity_objective_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of activity/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -3864,7 +3864,7 @@ class ActivityObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_bank_view(self):
+    def use_comparative_objective_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3878,7 +3878,7 @@ class ActivityObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_bank_view(self):
+    def use_plenary_objective_bank_view(self): # pragma: no cover
         """A complete view of the ``Activity`` and ``ObjectiveBank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3893,7 +3893,7 @@ class ActivityObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_activity_ids_by_objective_bank(self, objective_bank_id):
+    def get_activity_ids_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Activity``  ``Ids`` associated with an ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -3911,7 +3911,7 @@ class ActivityObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_activities_by_objective_bank(self, objective_bank_id):
+    def get_activities_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Activities`` associated with an ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -3929,7 +3929,7 @@ class ActivityObjectiveBankSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_activity_ids_by_objective_banks(self, objective_bank_ids):
+    def get_activity_ids_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Activity Ids`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objective bank ``Ids``
@@ -3946,7 +3946,7 @@ class ActivityObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_activities_by_objective_banks(self, objective_bank_ids):
+    def get_activities_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Activities`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objective bank ``Ids``
@@ -3963,7 +3963,7 @@ class ActivityObjectiveBankSession:
         return  # osid.learning.ActivityList
 
     @abc.abstractmethod
-    def get_objective_bank_ids_by_activity(self, activity_id):
+    def get_objective_bank_ids_by_activity(self, activity_id): # pragma: no cover
         """Gets the list of ``ObjectiveBank Ids`` mapped to a ``Activity``.
 
         :param activity_id: ``Id`` of a ``Activity``
@@ -3981,7 +3981,7 @@ class ActivityObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_objective_banks_by_activity(self, activity_id):
+    def get_objective_banks_by_activity(self, activity_id): # pragma: no cover
         """Gets the list of ``ObjectiveBanks`` mapped to a ``Activity``.
 
         :param activity_id: ``Id`` of a ``Activity``
@@ -4015,7 +4015,7 @@ class ActivityObjectiveBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_activities(self):
+    def can_assign_activities(self): # pragma: no cover
         """Tests if this user can alter activity/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4034,7 +4034,7 @@ class ActivityObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_activities_to_objective_bank(self, objective_bank_id):
+    def can_assign_activities_to_objective_bank(self, objective_bank_id): # pragma: no cover
         """Tests if this user can alter activity/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4055,7 +4055,7 @@ class ActivityObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids(self, objective_bank_id):
+    def get_assignable_objective_bank_ids(self, objective_bank_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank node in which any activity can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -4071,7 +4071,7 @@ class ActivityObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids_for_activity(self, objective_bank_id, activity_id):
+    def get_assignable_objective_bank_ids_for_activity(self, objective_bank_id, activity_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank node in which a specific activity can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -4089,7 +4089,7 @@ class ActivityObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_activity_to_objective_bank(self, activity_id, objective_bank_id):
+    def assign_activity_to_objective_bank(self, activity_id, objective_bank_id): # pragma: no cover
         """Adds an existing ``Activity`` to a ``ObjectiveBank``.
 
         :param activity_id: the ``Id`` of the ``Activity``
@@ -4108,7 +4108,7 @@ class ActivityObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_activity_from_objective_bank(self, activity_id, objective_bank_id):
+    def unassign_activity_from_objective_bank(self, activity_id, objective_bank_id): # pragma: no cover
         """Removes a ``Activity`` from a ``ObjectiveBank``.
 
         :param activity_id: the ``Id`` of the ``Activity``
@@ -4126,7 +4126,7 @@ class ActivityObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_activity_to_objective_bank(self, activity_id, from_objective_bank_id, to_objective_bank_id):
+    def reassign_activity_to_objective_bank(self, activity_id, from_objective_bank_id, to_objective_bank_id): # pragma: no cover
         """Moves an ``Activity`` from one ``ObjectiveBank`` to another.
 
         Mappings to other ``ObjectiveBanks`` are unaffected.
@@ -4166,7 +4166,7 @@ class ActivitySmartObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -4181,7 +4181,7 @@ class ActivitySmartObjectiveBankSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the ``ObjectiveBank`` associated with this session
@@ -4197,7 +4197,7 @@ class ActivitySmartObjectiveBankSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_objective_banks(self):
+    def can_manage_smart_objective_banks(self): # pragma: no cover
         """Tests if this user can manage smart objective banks.
 
         A return of true does not guarantee successful assessment. A
@@ -4216,7 +4216,7 @@ class ActivitySmartObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_query(self):
+    def get_activity_query(self): # pragma: no cover
         """Gets an activity query.
 
         :return: the activity query
@@ -4231,7 +4231,7 @@ class ActivitySmartObjectiveBankSession:
     activity_query = property(fget=get_activity_query)
 
     @abc.abstractmethod
-    def get_activity_search_order(self):
+    def get_activity_search_order(self): # pragma: no cover
         """Gets an activity search order.
 
         :return: the activity search order
@@ -4246,7 +4246,7 @@ class ActivitySmartObjectiveBankSession:
     activity_search_order = property(fget=get_activity_search_order)
 
     @abc.abstractmethod
-    def apply_activity_query(self, activity_query):
+    def apply_activity_query(self, activity_query): # pragma: no cover
         """Applies an activity query to this bank.
 
         :param activity_query: the activity query
@@ -4262,7 +4262,7 @@ class ActivitySmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_activity_query(self):
+    def inspect_activity_query(self): # pragma: no cover
         """Gets an activity query inspector for this objective bank.
 
         :return: the activity query inspector
@@ -4276,7 +4276,7 @@ class ActivitySmartObjectiveBankSession:
         return  # osid.learning.ActivityQueryInspector
 
     @abc.abstractmethod
-    def apply_activity_sequencing(self, activity_search_order):
+    def apply_activity_sequencing(self, activity_search_order): # pragma: no cover
         """Applies an activity search order to this objective bank.
 
         :param activity_search_order: the activity search order
@@ -4292,7 +4292,7 @@ class ActivitySmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_activity_query_from_inspector(self, activity_query_inspector):
+    def get_activity_query_from_inspector(self, activity_query_inspector): # pragma: no cover
         """Gets an activity query from an inspector.
 
         :param activity_query_inspector: an activity query inspector
@@ -4313,7 +4313,7 @@ class ProficiencyLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -4328,7 +4328,7 @@ class ProficiencyLookupSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -4344,7 +4344,7 @@ class ProficiencyLookupSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_proficiencies(self):
+    def can_lookup_proficiencies(self): # pragma: no cover
         """Tests if this user can perform ``Proficiency`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4363,7 +4363,7 @@ class ProficiencyLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_proficiency_view(self):
+    def use_comparative_proficiency_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4377,7 +4377,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_proficiency_view(self):
+    def use_plenary_proficiency_view(self): # pragma: no cover
         """A complete view of the ``Proficiency`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4392,7 +4392,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include proficiencies in objective banks
@@ -4407,7 +4407,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this objective bank
@@ -4421,7 +4421,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_proficiency_view(self):
+    def use_effective_proficiency_view(self): # pragma: no cover
         """Only proficiencies whose effective dates are current are returned by methods in this session.
 
 
@@ -4432,7 +4432,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_proficiency_view(self):
+    def use_any_effective_proficiency_view(self): # pragma: no cover
         """All proficienies of any effective dates are returned by methods in this session.
 
 
@@ -4443,7 +4443,7 @@ class ProficiencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_proficiency(self, proficiency_id):
+    def get_proficiency(self, proficiency_id): # pragma: no cover
         """Gets the ``Proficiency`` specified by its ``Id``.
 
         :param proficiency_id: the ``Id`` of the ``Proficiency`` to retrieve
@@ -4461,7 +4461,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.Proficiency
 
     @abc.abstractmethod
-    def get_proficiencies_by_ids(self, proficiency_ids):
+    def get_proficiencies_by_ids(self, proficiency_ids): # pragma: no cover
         """Gets a ``ProficiencyList`` corresponding to the given ``IdList``.
 
         :param proficiency_ids: the list of ``Ids`` to retrieve
@@ -4479,7 +4479,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type(self, proficiency_genus_type):
+    def get_proficiencies_by_genus_type(self, proficiency_genus_type): # pragma: no cover
         """Gets a ``ProficiencyList`` corresponding to the given proficiency genus ``Type`` which does not include proficiencies of types derived from the specified ``Type``.
 
         :param proficiency_genus_type: a proficiency genus type
@@ -4496,7 +4496,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_parent_genus_type(self, proficiency_genus_type):
+    def get_proficiencies_by_parent_genus_type(self, proficiency_genus_type): # pragma: no cover
         """Gets a ``ProficiencyList`` corresponding to the given proficiency genus ``Type`` and include any additional proficiencies with genus types derived from the specified ``Type``.
 
         :param proficiency_genus_type: a proficiency genus type
@@ -4513,7 +4513,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_record_type(self, proficiency_record_type):
+    def get_proficiencies_by_record_type(self, proficiency_record_type): # pragma: no cover
         """Gets a ``ProficiencyList`` containing the given proficiency record ``Type``.
 
         :param proficiency_record_type: a proficiency record type
@@ -4530,7 +4530,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_on_date(self, from_, to):
+    def get_proficiencies_on_date(self, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` effecyive during the entire given date range inclusive but not confined to the date range.
 
         :param from: starting date
@@ -4550,7 +4550,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_on_date(self, proficiency_genus_type, from_, to):
+    def get_proficiencies_by_genus_type_on_date(self, proficiency_genus_type, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` of the given proficiency genus type effective during the entire given date range inclusive but not confined to the date range.
 
         :param proficiency_genus_type: a proficiency genus type
@@ -4572,7 +4572,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_objective(self, objective_id):
+    def get_proficiencies_for_objective(self, objective_id): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given objective.
 
         :param objective_id: an objective ``Id``
@@ -4589,7 +4589,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_objective_on_date(self, objective_id, from_, to):
+    def get_proficiencies_for_objective_on_date(self, objective_id, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given objective effective during the entire given date range inclusive but not confined to the date range.
 
         :param objective_id: an objective ``Id``
@@ -4611,7 +4611,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_objective(self, objective_id, proficiency_genus_type):
+    def get_proficiencies_by_genus_type_for_objective(self, objective_id, proficiency_genus_type): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given objective and proficiency genus ``Type``.
 
         :param objective_id: an objective ``Id``
@@ -4630,7 +4630,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_objective_on_date(self, objective_id, proficiency_genus_type, from_, to):
+    def get_proficiencies_by_genus_type_for_objective_on_date(self, objective_id, proficiency_genus_type, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` of the given proficiency genus type relating to the given objective effective during the entire given date range inclusive but not confined to the date range.
 
         :param objective_id: an objective ``Id``
@@ -4654,7 +4654,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_objectives(self, objective_ids):
+    def get_proficiencies_for_objectives(self, objective_ids): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given objectives.
 
         :param objective_ids: the objective ``Ids``
@@ -4671,7 +4671,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_resource(self, resource_id):
+    def get_proficiencies_for_resource(self, resource_id): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given resource.
 
         :param resource_id: a resource ``Id``
@@ -4688,7 +4688,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_resource_on_date(self, resource_id, from_, to):
+    def get_proficiencies_for_resource_on_date(self, resource_id, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given resource effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: a resource ``Id``
@@ -4710,7 +4710,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_resource(self, resource_id, proficiency_genus_type):
+    def get_proficiencies_by_genus_type_for_resource(self, resource_id, proficiency_genus_type): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given resource and proficiency genus ``Type``.
 
         :param resource_id: a resource ``Id``
@@ -4729,7 +4729,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_resource_on_date(self, resource_id, proficiency_genus_type, from_, to):
+    def get_proficiencies_by_genus_type_for_resource_on_date(self, resource_id, proficiency_genus_type, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` of the given proficiency genus type relating to the given resource effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: a resource ``Id``
@@ -4753,7 +4753,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_resources(self, resource_ids):
+    def get_proficiencies_for_resources(self, resource_ids): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given resources.
 
         :param resource_ids: the resource ``Ids``
@@ -4770,7 +4770,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_objective_and_resource(self, objective_id, resource_id):
+    def get_proficiencies_for_objective_and_resource(self, objective_id, resource_id): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given objective and resource ````.
 
         :param objective_id: an objective ``Id``
@@ -4789,7 +4789,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_for_objective_and_resource_on_date(self, objective_id, resource_id, from_, to):
+    def get_proficiencies_for_objective_and_resource_on_date(self, objective_id, resource_id, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` relating to the given resource and objective effective during the entire given date range inclusive but not confined to the date range.
 
         :param objective_id: an objective ``Id``
@@ -4813,7 +4813,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_objective_and_resource(self, objective_id, resource_id, proficiency_genus_type):
+    def get_proficiencies_by_genus_type_for_objective_and_resource(self, objective_id, resource_id, proficiency_genus_type): # pragma: no cover
         """Gets a ``ProficiencyList`` of the given genus type relating to the given objective and resource ````.
 
         :param objective_id: an objective ``Id``
@@ -4834,7 +4834,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies_by_genus_type_for_objective_and_resource_on_date(self, objective_id, resource_id, proficiency_genus_type, from_, to):
+    def get_proficiencies_by_genus_type_for_objective_and_resource_on_date(self, objective_id, resource_id, proficiency_genus_type, from_, to): # pragma: no cover
         """Gets a ``ProficiencyList`` of the given genus type relating to the given resource and objective effective during the entire given date range inclusive but not confined to the date range.
 
         :param objective_id: an objective ``Id``
@@ -4860,7 +4860,7 @@ class ProficiencyLookupSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiencies(self):
+    def get_proficiencies(self): # pragma: no cover
         """Gets all ``Proficiencies``.
 
         :return: a list of ``Proficiencies``
@@ -4899,7 +4899,7 @@ class ProficiencyQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -4914,7 +4914,7 @@ class ProficiencyQuerySession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -4930,7 +4930,7 @@ class ProficiencyQuerySession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_search_proficiencies(self):
+    def can_search_proficiencies(self): # pragma: no cover
         """Tests if this user can perform ``Proficiency`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4949,7 +4949,7 @@ class ProficiencyQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include proficiencies in objective banks
@@ -4964,7 +4964,7 @@ class ProficiencyQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this objective bank only.
@@ -4977,7 +4977,7 @@ class ProficiencyQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_proficiency_query(self):
+    def get_proficiency_query(self): # pragma: no cover
         """Gets a proficiency query.
 
         :return: the proficiency query
@@ -4992,7 +4992,7 @@ class ProficiencyQuerySession:
     proficiency_query = property(fget=get_proficiency_query)
 
     @abc.abstractmethod
-    def get_proficiencies_by_query(self, proficiency_query):
+    def get_proficiencies_by_query(self, proficiency_query): # pragma: no cover
         """Gets a list of ``Proficiencies`` matching the given proficiency query.
 
         :param proficiency_query: the proficiency query
@@ -5043,7 +5043,7 @@ class ProficiencySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_proficiency_search(self):
+    def get_proficiency_search(self): # pragma: no cover
         """Gets a proficiency search.
 
         :return: the proficiency search
@@ -5058,7 +5058,7 @@ class ProficiencySearchSession:
     proficiency_search = property(fget=get_proficiency_search)
 
     @abc.abstractmethod
-    def get_proficiency_search_order(self):
+    def get_proficiency_search_order(self): # pragma: no cover
         """Gets a proficiency search order.
 
         The ``ProficiencySearchOrder`` is supplied to a
@@ -5076,7 +5076,7 @@ class ProficiencySearchSession:
     proficiency_search_order = property(fget=get_proficiency_search_order)
 
     @abc.abstractmethod
-    def get_proficiencies_by_search(self, proficiency_query, proficiency_search):
+    def get_proficiencies_by_search(self, proficiency_query, proficiency_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param proficiency_query: the proficiency query
@@ -5096,7 +5096,7 @@ class ProficiencySearchSession:
         return  # osid.learning.ProficiencySearchResults
 
     @abc.abstractmethod
-    def get_proficiency_query_from_inspector(self, proficiency_query_inspector):
+    def get_proficiency_query_from_inspector(self, proficiency_query_inspector): # pragma: no cover
         """Gets a proficiency query from an inspector.
 
         The inspector is available from a ``ProficiencySearchResults``.
@@ -5154,7 +5154,7 @@ class ProficiencyAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -5169,7 +5169,7 @@ class ProficiencyAdminSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -5185,7 +5185,7 @@ class ProficiencyAdminSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_create_proficiencies(self):
+    def can_create_proficiencies(self): # pragma: no cover
         """Tests if this user can create ``Proficiencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -5204,7 +5204,7 @@ class ProficiencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_proficiency_with_record_types(self, proficiency_record_types):
+    def can_create_proficiency_with_record_types(self, proficiency_record_types): # pragma: no cover
         """Tests if this user can create a single ``Proficiency`` using the desired record types.
 
         While ``LearningManager.getProficiencyRecordTypes()`` can be
@@ -5225,7 +5225,7 @@ class ProficiencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proficiency_form_for_create(self, objective_id, resource_id, proficiency_record_types):
+    def get_proficiency_form_for_create(self, objective_id, resource_id, proficiency_record_types): # pragma: no cover
         """Gets the proficiency form for creating new proficiencies.
 
         A new form should be requested for each create transaction.
@@ -5250,7 +5250,7 @@ class ProficiencyAdminSession:
         return  # osid.learning.ProficiencyForm
 
     @abc.abstractmethod
-    def create_proficiency(self, proficiency_form):
+    def create_proficiency(self, proficiency_form): # pragma: no cover
         """Creates a new ``Proficiency``.
 
         A new form should be requested for each create transaction.
@@ -5272,7 +5272,7 @@ class ProficiencyAdminSession:
         return  # osid.learning.Proficiency
 
     @abc.abstractmethod
-    def can_update_proficiencies(self):
+    def can_update_proficiencies(self): # pragma: no cover
         """Tests if this user can update ``Proficiencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -5291,7 +5291,7 @@ class ProficiencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proficiency_form_for_update(self, proficiency_id):
+    def get_proficiency_form_for_update(self, proficiency_id): # pragma: no cover
         """Gets the proficiency form for updating an existing proficiency.
 
         :param proficiency_id: the ``Id`` of the ``Proficiency``
@@ -5309,7 +5309,7 @@ class ProficiencyAdminSession:
         return  # osid.learning.ProficiencyForm
 
     @abc.abstractmethod
-    def update_proficiency(self, proficiency_form):
+    def update_proficiency(self, proficiency_form): # pragma: no cover
         """Updates an existing proficiency.
 
         :param proficiency_form: the form containing the elements to be updated
@@ -5327,7 +5327,7 @@ class ProficiencyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_proficiencies(self):
+    def can_delete_proficiencies(self): # pragma: no cover
         """Tests if this user can delete ``Proficiencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -5346,7 +5346,7 @@ class ProficiencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_proficiency(self, proficiency_id):
+    def delete_proficiency(self, proficiency_id): # pragma: no cover
         """Deletes a ``Proficiency``.
 
         :param proficiency_id: the ``Id`` of the ``Proficiency`` to remove
@@ -5362,7 +5362,7 @@ class ProficiencyAdminSession:
         pass
 
     @abc.abstractmethod
-    def delete_proficiencies(self):
+    def delete_proficiencies(self): # pragma: no cover
         """Deletes all proficiencies in this ``ObjectiveBank``.
 
         :raise: ``OperationFailed`` -- unable to complete request
@@ -5374,7 +5374,7 @@ class ProficiencyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_proficiency_aliases(self):
+    def can_manage_proficiency_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for proficiency entries.
 
         A return of true does not guarantee successful authorization. A
@@ -5393,7 +5393,7 @@ class ProficiencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_proficiency(self, proficiency_id, alias_id):
+    def alias_proficiency(self, proficiency_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Proficiency`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Proficiency`` is determined by the
@@ -5433,7 +5433,7 @@ class ProficiencyNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -5448,7 +5448,7 @@ class ProficiencyNotificationSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -5464,7 +5464,7 @@ class ProficiencyNotificationSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_register_for_proficiency_notifications(self):
+    def can_register_for_proficiency_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Proficiency`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -5483,7 +5483,7 @@ class ProficiencyNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include proficiencies in objective banks
@@ -5498,7 +5498,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this objective bank
@@ -5512,7 +5512,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_proficiency_notifications(self):
+    def reliable_proficiency_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5526,7 +5526,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_proficiency_notifications(self):
+    def unreliable_proficiency_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5540,7 +5540,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_proficiency_notification(self, notification_id):
+    def acknowledge_proficiency_notification(self, notification_id): # pragma: no cover
         """Acknowledge a proficiency notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5554,7 +5554,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_proficiencies(self):
+    def register_for_new_proficiencies(self): # pragma: no cover
         """Register for notifications of new proficiencies.
 
         ``ProficiencyReceiver.newProficiencies()`` is invoked when a new
@@ -5569,7 +5569,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_proficiencies_by_genus_type(self, proficiency_genus_type):
+    def register_for_new_proficiencies_by_genus_type(self, proficiency_genus_type): # pragma: no cover
         """Register for notifications of new proficiencies with the given genus type.
 
         ``ProficiencyReceiver.newProficiencies()`` is invoked when a new
@@ -5588,7 +5588,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_proficiencies_for_objective(self, objective_id):
+    def register_for_new_proficiencies_for_objective(self, objective_id): # pragma: no cover
         """Register for notifications of new proficiencies.
 
         ``ProficiencyReceiver.newProficiencies()`` is invoked when a new
@@ -5607,7 +5607,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_proficiencies_for_resource(self, resource_id):
+    def register_for_new_proficiencies_for_resource(self, resource_id): # pragma: no cover
         """Register for notifications of new proficiencies.
 
         ``ProficiencyReceiver.newProficiencies()`` is invoked when a new
@@ -5626,7 +5626,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_proficiencies(self):
+    def register_for_changed_proficiencies(self): # pragma: no cover
         """Registers for notification of updated proficiencies.
 
         ``ProficiencyReceiver.changedProficiencies()`` is invoked when a
@@ -5641,7 +5641,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_proficiencies_by_genus_type(self, proficiency_genus_type):
+    def register_for_changed_proficiencies_by_genus_type(self, proficiency_genus_type): # pragma: no cover
         """Registers for notification of updated proficiencies of the given genus type.
 
         ``ProficiencyReceiver.changedProficiencies()`` is invoked when a
@@ -5659,7 +5659,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_proficiencies_for_objective(self, objective_id):
+    def register_for_changed_proficiencies_for_objective(self, objective_id): # pragma: no cover
         """Registers for notification of an updated proficiency.
 
         ``ProficiencyReceiver.changedProficiencies()`` is invoked when
@@ -5678,7 +5678,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_proficiencies_for_resource(self, resource_id):
+    def register_for_changed_proficiencies_for_resource(self, resource_id): # pragma: no cover
         """Registers for notification of an updated proficiency.
 
         ``ProficiencyReceiver.changedProficiencies()`` is invoked when
@@ -5697,7 +5697,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_proficiency(self, proficiency_id):
+    def register_for_changed_proficiency(self, proficiency_id): # pragma: no cover
         """Registers for notification of an updated proficiency.
 
         ``ProficiencyReceiver.changedProficiencies()`` is invoked when
@@ -5715,7 +5715,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_proficiencies(self):
+    def register_for_deleted_proficiencies(self): # pragma: no cover
         """Registers for notification of deleted proficiencies.
 
         ``ProficiencyReceiver.deletedProficiencies()`` is invoked when a
@@ -5730,7 +5730,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_proficiencies_by_genus_type(self, proficiency_genus_type):
+    def register_for_deleted_proficiencies_by_genus_type(self, proficiency_genus_type): # pragma: no cover
         """Registers for notification of deleted proficiencies of the given genus type.
 
         ``ProficiencyReceiver.deletedProficiencies()`` is invoked when a
@@ -5748,7 +5748,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_proficiencies_for_objective(self, objective_id):
+    def register_for_deleted_proficiencies_for_objective(self, objective_id): # pragma: no cover
         """Registers for notification of a deleted proficiency.
 
         ``ProficiencyReceiver.deletedProficiencies()`` is invoked when
@@ -5767,7 +5767,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_proficiencies_for_resource(self, resource_id):
+    def register_for_deleted_proficiencies_for_resource(self, resource_id): # pragma: no cover
         """Registers for notification of a deleted proficiency.
 
         ``ProficiencyReceiver.deletedProficiencies()`` is invoked when
@@ -5786,7 +5786,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_proficiency(self, proficiency_id):
+    def register_for_deleted_proficiency(self, proficiency_id): # pragma: no cover
         """Registers for notification of a deleted proficiency.
 
         ``ProficiencyReceiver.deletedProficiencies()`` is invoked when
@@ -5805,7 +5805,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_proficiency_notifications(self):
+    def reliable_proficiency_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5819,7 +5819,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_proficiency_notifications(self):
+    def unreliable_proficiency_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5833,7 +5833,7 @@ class ProficiencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_proficiency_notification(self, notification_id):
+    def acknowledge_proficiency_notification(self, notification_id): # pragma: no cover
         """Acknowledge an proficiency notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5864,7 +5864,7 @@ class ProficiencyObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_proficiency_objective_bank_mappings(self):
+    def can_lookup_proficiency_objective_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of proficiency/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -5883,7 +5883,7 @@ class ProficiencyObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_proficiency_objective_bank_view(self):
+    def use_comparative_proficiency_objective_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5897,7 +5897,7 @@ class ProficiencyObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_proficiency_objective_bank_view(self):
+    def use_plenary_proficiency_objective_bank_view(self): # pragma: no cover
         """A complete view of the ``Proficiency`` and ``ObjectiveBank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5912,7 +5912,7 @@ class ProficiencyObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_proficiency_ids_by_objective_bank(self, objective_bank_id):
+    def get_proficiency_ids_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Proficiency Ids`` associated with a ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -5930,7 +5930,7 @@ class ProficiencyObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_proficiencies_by_objective_bank(self, objective_bank_id):
+    def get_proficiencies_by_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the list of ``Proficiencies`` associated with a ``ObjectiveBank``.
 
         :param objective_bank_id: ``Id`` of the ``ObjectiveBank``
@@ -5948,7 +5948,7 @@ class ProficiencyObjectiveBankSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_proficiency_ids_by_objective_banks(self, objective_bank_ids):
+    def get_proficiency_ids_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Proficiency Ids`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objectiveBank ``Ids``
@@ -5965,7 +5965,7 @@ class ProficiencyObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_proficiencies_by_objective_banks(self, objective_bank_ids):
+    def get_proficiencies_by_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Gets the list of ``Proficiencies`` corresponding to a list of ``ObjectiveBanks``.
 
         :param objective_bank_ids: list of objectiveBank ``Ids``
@@ -5982,7 +5982,7 @@ class ProficiencyObjectiveBankSession:
         return  # osid.learning.ProficiencyList
 
     @abc.abstractmethod
-    def get_objective_bank_ids_by_proficiency(self, proficiency_id):
+    def get_objective_bank_ids_by_proficiency(self, proficiency_id): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Ids`` mapped to a ``Proficiency``.
 
         :param proficiency_id: ``Id`` of a ``Proficiency``
@@ -6000,7 +6000,7 @@ class ProficiencyObjectiveBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_objective_banks_by_proficiency(self, proficiency_id):
+    def get_objective_banks_by_proficiency(self, proficiency_id): # pragma: no cover
         """Gets the ``ObjectiveBanks`` mapped to a ``Proficiency``.
 
         :param proficiency_id: ``Id`` of a ``Proficiency``
@@ -6033,7 +6033,7 @@ class ProficiencyObjectiveBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_proficiencies(self):
+    def can_assign_proficiencies(self): # pragma: no cover
         """Tests if this user can alter proficiency/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -6052,7 +6052,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_proficiencies_to_objective_bank(self, objective_bank_id):
+    def can_assign_proficiencies_to_objective_bank(self, objective_bank_id): # pragma: no cover
         """Tests if this user can alter proficiency/objective bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -6073,7 +6073,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids(self, objective_bank_id):
+    def get_assignable_objective_bank_ids(self, objective_bank_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank proficiency in which any proficiency can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -6089,7 +6089,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id):
+    def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id): # pragma: no cover
         """Gets a list of objective banks including and under the given objective bank proficiency in which a specific proficiency can be assigned.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -6107,7 +6107,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id):
+    def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id): # pragma: no cover
         """Adds an existing ``Proficiency`` to a ``ObjectiveBank``.
 
         :param proficiency_id: the ``Id`` of the ``Proficiency``
@@ -6126,7 +6126,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_proficiency_from_objective_bank(self, proficiency_id, objective_bank_id):
+    def unassign_proficiency_from_objective_bank(self, proficiency_id, objective_bank_id): # pragma: no cover
         """Removes a ``Proficiency`` from a ``ObjectiveBank``.
 
         :param proficiency_id: the ``Id`` of the ``Proficiency``
@@ -6144,7 +6144,7 @@ class ProficiencyObjectiveBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_proficiency_to_objective_bank(self, proficiency_id, from_objective_bank_id, to_objective_bank_id):
+    def reassign_proficiency_to_objective_bank(self, proficiency_id, from_objective_bank_id, to_objective_bank_id): # pragma: no cover
         """Moves a ``Proficiency`` from one ``ObjectiveBank`` to another.
 
         Mappings to other ``ObjectiveBanks`` are unaffected.
@@ -6184,7 +6184,7 @@ class ProficiencySmartObjectiveBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``Familt``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -6199,7 +6199,7 @@ class ProficiencySmartObjectiveBankSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -6215,7 +6215,7 @@ class ProficiencySmartObjectiveBankSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_objective_banks(self):
+    def can_manage_smart_objective_banks(self): # pragma: no cover
         """Tests if this user can manage smart objective banks.
 
         A return of true does not guarantee successful authorization. A
@@ -6234,7 +6234,7 @@ class ProficiencySmartObjectiveBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proficiency_query(self):
+    def get_proficiency_query(self): # pragma: no cover
         """Gets a proficiency query.
 
         :return: the proficiency query
@@ -6249,7 +6249,7 @@ class ProficiencySmartObjectiveBankSession:
     proficiency_query = property(fget=get_proficiency_query)
 
     @abc.abstractmethod
-    def get_proficiency_search_order(self):
+    def get_proficiency_search_order(self): # pragma: no cover
         """Gets a proficiency search order.
 
         :return: the proficiency search order
@@ -6264,7 +6264,7 @@ class ProficiencySmartObjectiveBankSession:
     proficiency_search_order = property(fget=get_proficiency_search_order)
 
     @abc.abstractmethod
-    def apply_proficiency_query(self, proficiency_query):
+    def apply_proficiency_query(self, proficiency_query): # pragma: no cover
         """Applies a proficiency query to this objective bank.
 
         :param proficiency_query: the proficiency query
@@ -6280,7 +6280,7 @@ class ProficiencySmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_proficiency_query(self):
+    def inspect_proficiency_query(self): # pragma: no cover
         """Gets a proficiency query inspector for this objective bank.
 
         :return: the proficiency query inspector
@@ -6294,7 +6294,7 @@ class ProficiencySmartObjectiveBankSession:
         return  # osid.learning.ProficiencyQueryInspector
 
     @abc.abstractmethod
-    def apply_proficiency_sequencing(self, proficiency_search_order):
+    def apply_proficiency_sequencing(self, proficiency_search_order): # pragma: no cover
         """Applies a proficiency search order to this objective bank.
 
         :param proficiency_search_order: the proficiency search order
@@ -6310,7 +6310,7 @@ class ProficiencySmartObjectiveBankSession:
         pass
 
     @abc.abstractmethod
-    def get_proficiency_query_from_inspector(self, proficiency_query_inspector):
+    def get_proficiency_query_from_inspector(self, proficiency_query_inspector): # pragma: no cover
         """Gets a proficiency query from an inspector.
 
         :param proficiency_query_inspector: a proficiency query inspector
@@ -6331,7 +6331,7 @@ class MyLearningPathSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -6346,7 +6346,7 @@ class MyLearningPathSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -6362,7 +6362,7 @@ class MyLearningPathSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_learning_paths(self):
+    def can_lookup_learning_paths(self): # pragma: no cover
         """Tests if this user can perform learning path lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -6381,7 +6381,7 @@ class MyLearningPathSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_proficiency_view(self):
+    def use_comparative_proficiency_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6395,7 +6395,7 @@ class MyLearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_proficiency_view(self):
+    def use_plenary_proficiency_view(self): # pragma: no cover
         """A complete view of the ``Proficiency`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6410,7 +6410,7 @@ class MyLearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include proficiencies in objective banks
@@ -6425,7 +6425,7 @@ class MyLearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this objective bank
@@ -6439,7 +6439,7 @@ class MyLearningPathSession:
         pass
 
     @abc.abstractmethod
-    def find_path(self, objective_id):
+    def find_path(self, objective_id): # pragma: no cover
         """Gets the shortest path to an objective.
 
         The path is a list of objectives for which there is a deficient
@@ -6460,7 +6460,7 @@ class MyLearningPathSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def find_path_at_proficiency(self, objective_id, grade_id):
+    def find_path_at_proficiency(self, objective_id, grade_id): # pragma: no cover
         """Gets the shortest path to an objective.
 
         The path is a list of objectives for which there is a
@@ -6483,7 +6483,7 @@ class MyLearningPathSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives_by_completion(self, objective_id, completion):
+    def get_objectives_by_completion(self, objective_id, completion): # pragma: no cover
         """Gets the list of objectives for there is a minimum completion.
 
         :param objective_id: the ``Id`` of the ``Objective`` to reach
@@ -6508,7 +6508,7 @@ class LearningPathSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_id(self):
+    def get_objective_bank_id(self): # pragma: no cover
         """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
 
         :return: the ``ObjectiveBank Id`` associated with this session
@@ -6523,7 +6523,7 @@ class LearningPathSession:
     objective_bank_id = property(fget=get_objective_bank_id)
 
     @abc.abstractmethod
-    def get_objective_bank(self):
+    def get_objective_bank(self): # pragma: no cover
         """Gets the ``ObjectiveBank`` associated with this session.
 
         :return: the obective bank
@@ -6539,7 +6539,7 @@ class LearningPathSession:
     objective_bank = property(fget=get_objective_bank)
 
     @abc.abstractmethod
-    def can_lookup_learning_paths(self):
+    def can_lookup_learning_paths(self): # pragma: no cover
         """Tests if this user can perform learning path lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -6558,7 +6558,7 @@ class LearningPathSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_proficiency_view(self):
+    def use_comparative_proficiency_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6572,7 +6572,7 @@ class LearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_proficiency_view(self):
+    def use_plenary_proficiency_view(self): # pragma: no cover
         """A complete view of the ``Proficiency`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6587,7 +6587,7 @@ class LearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_objective_bank_view(self):
+    def use_federated_objective_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include proficiencies in objective banks
@@ -6602,7 +6602,7 @@ class LearningPathSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_objective_bank_view(self):
+    def use_isolated_objective_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this objective bank
@@ -6616,7 +6616,7 @@ class LearningPathSession:
         pass
 
     @abc.abstractmethod
-    def find_path_for_resource(self, objective_id, resource_id):
+    def find_path_for_resource(self, objective_id, resource_id): # pragma: no cover
         """Gets the shortest path to an objective.
 
         The path is a list of objectives for which the resource has a
@@ -6639,7 +6639,7 @@ class LearningPathSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def find_path_for_resource_at_proficiency(self, objective_id, resource_id, grade_id):
+    def find_path_for_resource_at_proficiency(self, objective_id, resource_id, grade_id): # pragma: no cover
         """Gets the shortest path to an objective.
 
         The path is a list of objectives for which the resource has a
@@ -6664,7 +6664,7 @@ class LearningPathSession:
         return  # osid.learning.ObjectiveList
 
     @abc.abstractmethod
-    def get_objectives_for_resource_by_completion(self, objective_id, resource_id, completion):
+    def get_objectives_for_resource_by_completion(self, objective_id, resource_id, completion): # pragma: no cover
         """Gets the list of objectives for a resource that have a minimum completion.
 
         :param objective_id: the ``Id`` of the ``Objective`` to reach
@@ -6714,7 +6714,7 @@ class ObjectiveBankLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_objective_banks(self):
+    def can_lookup_objective_banks(self): # pragma: no cover
         """Tests if this user can perform ``ObjectiveBank`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -6733,7 +6733,7 @@ class ObjectiveBankLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_bank_view(self):
+    def use_comparative_objective_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6747,7 +6747,7 @@ class ObjectiveBankLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_bank_view(self):
+    def use_plenary_objective_bank_view(self): # pragma: no cover
         """A complete view of the ``ObjectiveBank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6762,7 +6762,7 @@ class ObjectiveBankLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_objective_bank(self, objective_bank_id):
+    def get_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``ObjectiveBank`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -6786,7 +6786,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBank
 
     @abc.abstractmethod
-    def get_objective_banks_by_ids(self, objective_bank_ids):
+    def get_objective_banks_by_ids(self, objective_bank_ids): # pragma: no cover
         """Gets a ``ObjectiveBankList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the objective
@@ -6812,7 +6812,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def get_objective_banks_by_genus_type(self, objective_bank_genus_type):
+    def get_objective_banks_by_genus_type(self, objective_bank_genus_type): # pragma: no cover
         """Gets a ``ObjectiveBankList`` corresponding to the given objective bank genus ``Type`` which does not include objective banks of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known objective
@@ -6834,7 +6834,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def get_objective_banks_by_parent_genus_type(self, objective_bank_genus_type):
+    def get_objective_banks_by_parent_genus_type(self, objective_bank_genus_type): # pragma: no cover
         """Gets a ``ObjectiveBankList`` corresponding to the given objective bank genus ``Type`` and include any additional objective banks with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known objective
@@ -6856,7 +6856,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def get_objective_banks_by_record_type(self, objective_bank_record_type):
+    def get_objective_banks_by_record_type(self, objective_bank_record_type): # pragma: no cover
         """Gets a ``ObjectiveBankList`` containing the given objective bank record ``Type``.
 
         In plenary mode, the returned list contains all known objective
@@ -6878,7 +6878,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def get_objective_banks_by_provider(self, resource_id):
+    def get_objective_banks_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``ObjectiveBankList`` for the given provider.
 
         In plenary mode, the returned list contains all known objective
@@ -6900,7 +6900,7 @@ class ObjectiveBankLookupSession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def get_objective_banks(self):
+    def get_objective_banks(self): # pragma: no cover
         """Gets all ``ObjectiveBanks``.
 
         In plenary mode, the returned list contains all known objective
@@ -6934,7 +6934,7 @@ class ObjectiveBankQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_objective_banks(self):
+    def can_search_objective_banks(self): # pragma: no cover
         """Tests if this user can perform ``ObjectiveBank`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -6953,7 +6953,7 @@ class ObjectiveBankQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_query(self):
+    def get_objective_bank_query(self): # pragma: no cover
         """Gets an objective bank query.
 
         :return: an objective bank query
@@ -6968,7 +6968,7 @@ class ObjectiveBankQuerySession:
     objective_bank_query = property(fget=get_objective_bank_query)
 
     @abc.abstractmethod
-    def get_objective_banks_by_query(self, objective_bank_query):
+    def get_objective_banks_by_query(self, objective_bank_query): # pragma: no cover
         """Gets a list of ``ObjectiveBank`` objects matching the given objectiove bank query.
 
         :param objective_bank_query: the objective bank query
@@ -7009,7 +7009,7 @@ class ObjectiveBankSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_search(self):
+    def get_objective_bank_search(self): # pragma: no cover
         """Gets an objective bank search.
 
         :return: an objective bank search
@@ -7024,7 +7024,7 @@ class ObjectiveBankSearchSession:
     objective_bank_search = property(fget=get_objective_bank_search)
 
     @abc.abstractmethod
-    def get_objective_bank_search_order(self):
+    def get_objective_bank_search_order(self): # pragma: no cover
         """Gets an objective bank search order.
 
         The ``ObjectiveBankSearchOrder`` is supplied to a
@@ -7042,7 +7042,7 @@ class ObjectiveBankSearchSession:
     objective_bank_search_order = property(fget=get_objective_bank_search_order)
 
     @abc.abstractmethod
-    def get_objective_banks_by_search(self, objective_bank_query, objective_bank_search):
+    def get_objective_banks_by_search(self, objective_bank_query, objective_bank_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param objective_bank_query: the objective bank query
@@ -7062,7 +7062,7 @@ class ObjectiveBankSearchSession:
         return  # osid.learning.ObjectiveBankSearchResults
 
     @abc.abstractmethod
-    def get_objective_bank_query_from_inspector(self, objective_bank_query_inspector):
+    def get_objective_bank_query_from_inspector(self, objective_bank_query_inspector): # pragma: no cover
         """Gets an objective bank query from an inspector.
 
         The inspector is available from an
@@ -7118,7 +7118,7 @@ class ObjectiveBankAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_objective_banks(self):
+    def can_create_objective_banks(self): # pragma: no cover
         """Tests if this user can create ``ObjectiveBanks``.
 
         A return of true does not guarantee successful authorization. A
@@ -7137,7 +7137,7 @@ class ObjectiveBankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_objective_bank_with_record_types(self, objective_bank_record_types):
+    def can_create_objective_bank_with_record_types(self, objective_bank_record_types): # pragma: no cover
         """Tests if this user can create a single ``ObjectiveBank`` using the desired record types.
 
         While ``LearningManager.getObjectiveBankRecordTypes()`` can be
@@ -7158,7 +7158,7 @@ class ObjectiveBankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_form_for_create(self, objective_bank_record_types):
+    def get_objective_bank_form_for_create(self, objective_bank_record_types): # pragma: no cover
         """Gets the objective bank form for creating new objective banks.
 
         A new form should be requested for each create transaction.
@@ -7178,7 +7178,7 @@ class ObjectiveBankAdminSession:
         return  # osid.learning.ObjectiveBankForm
 
     @abc.abstractmethod
-    def create_objective_bank(self, objective_bank_form):
+    def create_objective_bank(self, objective_bank_form): # pragma: no cover
         """Creates a new ``ObjectiveBank``.
 
         :param objective_bank_form: the form for this ``ObjectiveBank``
@@ -7198,7 +7198,7 @@ class ObjectiveBankAdminSession:
         return  # osid.learning.ObjectiveBank
 
     @abc.abstractmethod
-    def can_update_objective_banks(self):
+    def can_update_objective_banks(self): # pragma: no cover
         """Tests if this user can update ``ObjectiveBanks``.
 
         A return of true does not guarantee successful authorization. A
@@ -7217,7 +7217,7 @@ class ObjectiveBankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_form_for_update(self, objective_bank_id):
+    def get_objective_bank_form_for_update(self, objective_bank_id): # pragma: no cover
         """Gets the objective bank form for updating an existing objective bank.
 
         A new objective bank form should be requested for each update
@@ -7238,7 +7238,7 @@ class ObjectiveBankAdminSession:
         return  # osid.learning.ObjectiveBankForm
 
     @abc.abstractmethod
-    def update_objective_bank(self, objective_bank_form):
+    def update_objective_bank(self, objective_bank_form): # pragma: no cover
         """Updates an existing objective bank.
 
         :param objective_bank_form: the form containing the elements to be updated
@@ -7256,7 +7256,7 @@ class ObjectiveBankAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_objective_banks(self):
+    def can_delete_objective_banks(self): # pragma: no cover
         """Tests if this user can delete objective banks.
 
         A return of true does not guarantee successful authorization. A
@@ -7275,7 +7275,7 @@ class ObjectiveBankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_objective_bank(self, objective_bank_id):
+    def delete_objective_bank(self, objective_bank_id): # pragma: no cover
         """Deletes an ``ObjectiveBank``.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank`` to remove
@@ -7291,7 +7291,7 @@ class ObjectiveBankAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_objective_bank_aliases(self):
+    def can_manage_objective_bank_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``ObjectiveBanks``.
 
         A return of true does not guarantee successful authorization. A
@@ -7310,7 +7310,7 @@ class ObjectiveBankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_objective_bank(self, objective_bank_id, alias_id):
+    def alias_objective_bank(self, objective_bank_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``ObjectiveBank`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``ObjectiveBank`` is determined by the
@@ -7345,7 +7345,7 @@ class ObjectiveBankNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_objective_bank_notifications(self):
+    def can_register_for_objective_bank_notifications(self): # pragma: no cover
         """Tests if this user can register for ``ObjectiveBank`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -7364,7 +7364,7 @@ class ObjectiveBankNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_objective_bank_notifications(self):
+    def reliable_objective_bank_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -7378,7 +7378,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_objective_bank_notifications(self):
+    def unreliable_objective_bank_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -7392,7 +7392,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_objective_bank_notification(self, notification_id):
+    def acknowledge_objective_bank_notification(self, notification_id): # pragma: no cover
         """Acknowledge an objective bank notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -7406,7 +7406,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_objective_banks(self):
+    def register_for_new_objective_banks(self): # pragma: no cover
         """Register for notifications of new objective banks.
 
         ``ObjectiveBankReceiver.newObjectiveBanks()`` is invoked when a
@@ -7421,7 +7421,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_banks(self):
+    def register_for_changed_objective_banks(self): # pragma: no cover
         """Registers for notification of updated objective banks.
 
         ``ObjectiveBankReceiver.changedObjectiveBanks()`` is invoked
@@ -7436,7 +7436,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_bank(self, objective_bank_id):
+    def register_for_changed_objective_bank(self, objective_bank_id): # pragma: no cover
         """Registers for notification of an updated objective bank.
 
         ``ObjectiveBankReceiver.changedObjectiveBanks()`` is invoked
@@ -7454,7 +7454,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_objective_banks(self):
+    def register_for_deleted_objective_banks(self): # pragma: no cover
         """Registers for notification of deleted objective banks.
 
         ``ObjectiveBankReceiver.deletedObjectiveBanks()`` is invoked
@@ -7469,7 +7469,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_objective_bank(self, objective_bank_id):
+    def register_for_deleted_objective_bank(self, objective_bank_id): # pragma: no cover
         """Registers for notification of a deleted objective bank.
 
         ``ObjectiveBankReceiver.deletedObjectiveBanks()`` is invoked
@@ -7487,7 +7487,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_bank_hierarchy(self):
+    def register_for_changed_objective_bank_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated objective bank hierarchy structure.
 
         ``ObjectiveBankReceiver.changedChildOfObjectiveBanks()`` is
@@ -7502,7 +7502,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_bank_hierarchy_for_ancestors(self, objective_bank_id):
+    def register_for_changed_objective_bank_hierarchy_for_ancestors(self, objective_bank_id): # pragma: no cover
         """Registers for notification of an updated objective bank hierarchy structure.
 
         ``ObjectiveBankReceiver.changedChildOfObjectiveBanks()`` is
@@ -7521,7 +7521,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_objective_bank_hierarchy_for_descendants(self, objective_bank_id):
+    def register_for_changed_objective_bank_hierarchy_for_descendants(self, objective_bank_id): # pragma: no cover
         """Registers for notification of an updated objective bank hierarchy structure.
 
         ``ObjectiveBankReceiver.changedChildOfObjectiveBanks()`` is
@@ -7540,7 +7540,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_objective_bank_notifications(self):
+    def reliable_objective_bank_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -7554,7 +7554,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_objective_bank_notifications(self):
+    def unreliable_objective_bank_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -7568,7 +7568,7 @@ class ObjectiveBankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_objective_bank_notification(self, notification_id):
+    def acknowledge_objective_bank_notification(self, notification_id): # pragma: no cover
         """Acknowledge an objective_bank notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -7612,7 +7612,7 @@ class ObjectiveBankHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_id(self):
+    def get_objective_bank_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -7627,7 +7627,7 @@ class ObjectiveBankHierarchySession:
     objective_bank_hierarchy_id = property(fget=get_objective_bank_hierarchy_id)
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy(self):
+    def get_objective_bank_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -7643,7 +7643,7 @@ class ObjectiveBankHierarchySession:
     objective_bank_hierarchy = property(fget=get_objective_bank_hierarchy)
 
     @abc.abstractmethod
-    def can_access_objective_bank_hierarchy(self):
+    def can_access_objective_bank_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -7662,7 +7662,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_objective_bank_view(self):
+    def use_comparative_objective_bank_view(self): # pragma: no cover
         """The returns from the objective bank methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -7676,7 +7676,7 @@ class ObjectiveBankHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_objective_bank_view(self):
+    def use_plenary_objective_bank_view(self): # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -7691,7 +7691,7 @@ class ObjectiveBankHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_objective_bank_ids(self):
+    def get_root_objective_bank_ids(self): # pragma: no cover
         """Gets the root objective bank ``Ids`` in this hierarchy.
 
         :return: the root objective bank ``Ids``
@@ -7707,7 +7707,7 @@ class ObjectiveBankHierarchySession:
     root_objective_bank_ids = property(fget=get_root_objective_bank_ids)
 
     @abc.abstractmethod
-    def get_root_objective_banks(self):
+    def get_root_objective_banks(self): # pragma: no cover
         """Gets the root objective banks in this objective bank hierarchy.
 
         :return: the root objective banks
@@ -7723,7 +7723,7 @@ class ObjectiveBankHierarchySession:
     root_objective_banks = property(fget=get_root_objective_banks)
 
     @abc.abstractmethod
-    def has_parent_objective_banks(self, objective_bank_id):
+    def has_parent_objective_banks(self, objective_bank_id): # pragma: no cover
         """Tests if the ``ObjectiveBank`` has any parents.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -7741,7 +7741,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_objective_bank(self, id_, objective_bank_id):
+    def is_parent_of_objective_bank(self, id_, objective_bank_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of an objective bank.
 
         :param id: an ``Id``
@@ -7762,7 +7762,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_objective_bank_ids(self, objective_bank_id):
+    def get_parent_objective_bank_ids(self, objective_bank_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -7780,7 +7780,7 @@ class ObjectiveBankHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_objective_banks(self, objective_bank_id):
+    def get_parent_objective_banks(self, objective_bank_id): # pragma: no cover
         """Gets the parents of the given objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -7798,7 +7798,7 @@ class ObjectiveBankHierarchySession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def is_ancestor_of_objective_bank(self, id_, objective_bank_id):
+    def is_ancestor_of_objective_bank(self, id_, objective_bank_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of an objective bank.
 
         :param id: an ``Id``
@@ -7819,7 +7819,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_objective_banks(self, objective_bank_id):
+    def has_child_objective_banks(self, objective_bank_id): # pragma: no cover
         """Tests if an objective bank has any children.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -7837,7 +7837,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_objective_bank(self, id_, objective_bank_id):
+    def is_child_of_objective_bank(self, id_, objective_bank_id): # pragma: no cover
         """Tests if an objective bank is a direct child of another.
 
         :param id: an ``Id``
@@ -7858,7 +7858,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_objective_bank_ids(self, objective_bank_id):
+    def get_child_objective_bank_ids(self, objective_bank_id): # pragma: no cover
         """Gets the child ``Ids`` of the given objective bank.
 
         :param objective_bank_id: the ``Id`` to query
@@ -7876,7 +7876,7 @@ class ObjectiveBankHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_objective_banks(self, objective_bank_id):
+    def get_child_objective_banks(self, objective_bank_id): # pragma: no cover
         """Gets the children of the given objective bank.
 
         :param objective_bank_id: the ``Id`` to query
@@ -7894,7 +7894,7 @@ class ObjectiveBankHierarchySession:
         return  # osid.learning.ObjectiveBankList
 
     @abc.abstractmethod
-    def is_descendant_of_objective_bank(self, id_, objective_bank_id):
+    def is_descendant_of_objective_bank(self, id_, objective_bank_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of an objective bank.
 
         :param id: an ``Id``
@@ -7915,7 +7915,7 @@ class ObjectiveBankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_node_ids(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_objective_bank_node_ids(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given objective bank.
 
         :param objective_bank_id: the ``Id`` to query
@@ -7939,7 +7939,7 @@ class ObjectiveBankHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_objective_bank_nodes(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_objective_bank_nodes(self, objective_bank_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given objective bank.
 
         :param objective_bank_id: the ``Id`` to query
@@ -7972,7 +7972,7 @@ class ObjectiveBankHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_id(self):
+    def get_objective_bank_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -7987,7 +7987,7 @@ class ObjectiveBankHierarchyDesignSession:
     objective_bank_hierarchy_id = property(fget=get_objective_bank_hierarchy_id)
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy(self):
+    def get_objective_bank_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -8003,7 +8003,7 @@ class ObjectiveBankHierarchyDesignSession:
     objective_bank_hierarchy = property(fget=get_objective_bank_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_objective_bank_hierarchy(self):
+    def can_modify_objective_bank_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -8022,7 +8022,7 @@ class ObjectiveBankHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_objective_bank(self, objective_bank_id):
+    def add_root_objective_bank(self, objective_bank_id): # pragma: no cover
         """Adds a root objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -8039,7 +8039,7 @@ class ObjectiveBankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_objective_bank(self, objective_bank_id):
+    def remove_root_objective_bank(self, objective_bank_id): # pragma: no cover
         """Removes a root objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -8055,7 +8055,7 @@ class ObjectiveBankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_objective_bank(self, objective_bank_id, child_id):
+    def add_child_objective_bank(self, objective_bank_id, child_id): # pragma: no cover
         """Adds a child to an objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -8074,7 +8074,7 @@ class ObjectiveBankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_objective_bank(self, objective_bank_id, child_id):
+    def remove_child_objective_bank(self, objective_bank_id, child_id): # pragma: no cover
         """Removes a child from an objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank
@@ -8092,7 +8092,7 @@ class ObjectiveBankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_objective_banks(self, objective_bank_id):
+    def remove_child_objective_banks(self, objective_bank_id): # pragma: no cover
         """Removes all children from an objective bank.
 
         :param objective_bank_id: the ``Id`` of an objective bank

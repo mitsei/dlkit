@@ -26,7 +26,7 @@ class Grade:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_id(self):
+    def get_grade_system_id(self): # pragma: no cover
         """Gets the ``GradeSystem Id`` in which this grade belongs.
 
         :return: the grade system ``Id``
@@ -41,7 +41,7 @@ class Grade:
     grade_system_id = property(fget=get_grade_system_id)
 
     @abc.abstractmethod
-    def get_grade_system(self):
+    def get_grade_system(self): # pragma: no cover
         """Gets the ``GradeSystem`` in which this grade belongs.
 
         :return: the grade system
@@ -56,7 +56,7 @@ class Grade:
     grade_system = property(fget=get_grade_system)
 
     @abc.abstractmethod
-    def get_input_score_start_range(self):
+    def get_input_score_start_range(self): # pragma: no cover
         """Gets the low end of the input score range equivalent to this grade.
 
         :return: the start range
@@ -71,7 +71,7 @@ class Grade:
     input_score_start_range = property(fget=get_input_score_start_range)
 
     @abc.abstractmethod
-    def get_input_score_end_range(self):
+    def get_input_score_end_range(self): # pragma: no cover
         """Gets the high end of the input score range equivalent to this grade.
 
         :return: the end range
@@ -86,7 +86,7 @@ class Grade:
     input_score_end_range = property(fget=get_input_score_end_range)
 
     @abc.abstractmethod
-    def get_output_score(self):
+    def get_output_score(self): # pragma: no cover
         """Gets the output score for this grade used for calculating cumultives or performing articulation.
 
         :return: the output score
@@ -101,7 +101,7 @@ class Grade:
     output_score = property(fget=get_output_score)
 
     @abc.abstractmethod
-    def get_grade_record(self, grade_record_type):
+    def get_grade_record(self, grade_record_type): # pragma: no cover
         """Gets the grade record corresponding to the given ``Grade`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -137,7 +137,7 @@ class GradeForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_input_score_start_range_metadata(self):
+    def get_input_score_start_range_metadata(self): # pragma: no cover
         """Gets the metadata for the input score start range.
 
         :return: metadata for the input score start range
@@ -152,7 +152,7 @@ class GradeForm:
     input_score_start_range_metadata = property(fget=get_input_score_start_range_metadata)
 
     @abc.abstractmethod
-    def set_input_score_start_range(self, score):
+    def set_input_score_start_range(self, score): # pragma: no cover
         """Sets the input score start range.
 
         :param score: the new start range
@@ -166,7 +166,7 @@ class GradeForm:
         pass
 
     @abc.abstractmethod
-    def clear_input_score_start_range(self):
+    def clear_input_score_start_range(self): # pragma: no cover
         """Clears the input score start.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -179,7 +179,7 @@ class GradeForm:
     input_score_start_range = property(fset=set_input_score_start_range, fdel=clear_input_score_start_range)
 
     @abc.abstractmethod
-    def get_input_score_end_range_metadata(self):
+    def get_input_score_end_range_metadata(self): # pragma: no cover
         """Gets the metadata for the input score start range.
 
         :return: metadata for the input score start range
@@ -194,7 +194,7 @@ class GradeForm:
     input_score_end_range_metadata = property(fget=get_input_score_end_range_metadata)
 
     @abc.abstractmethod
-    def set_input_score_end_range(self, score):
+    def set_input_score_end_range(self, score): # pragma: no cover
         """Sets the input score start range.
 
         :param score: the new start range
@@ -208,7 +208,7 @@ class GradeForm:
         pass
 
     @abc.abstractmethod
-    def clear_input_score_end_range(self):
+    def clear_input_score_end_range(self): # pragma: no cover
         """Clears the input score start.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -221,7 +221,7 @@ class GradeForm:
     input_score_end_range = property(fset=set_input_score_end_range, fdel=clear_input_score_end_range)
 
     @abc.abstractmethod
-    def get_output_score_metadata(self):
+    def get_output_score_metadata(self): # pragma: no cover
         """Gets the metadata for the output score start range.
 
         :return: metadata for the output score start range
@@ -236,7 +236,7 @@ class GradeForm:
     output_score_metadata = property(fget=get_output_score_metadata)
 
     @abc.abstractmethod
-    def set_output_score(self, score):
+    def set_output_score(self, score): # pragma: no cover
         """Sets the output score.
 
         :param score: the new output score
@@ -250,7 +250,7 @@ class GradeForm:
         pass
 
     @abc.abstractmethod
-    def clear_output_score(self):
+    def clear_output_score(self): # pragma: no cover
         """Clears the output score.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -263,7 +263,7 @@ class GradeForm:
     output_score = property(fset=set_output_score, fdel=clear_output_score)
 
     @abc.abstractmethod
-    def get_grade_form_record(self, grade_record_type):
+    def get_grade_form_record(self, grade_record_type): # pragma: no cover
         """Gets the ``GradeFormRecord`` corresponding to the given grade record ``Type``.
 
         :param grade_record_type: the grade record type
@@ -294,7 +294,7 @@ class GradeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_grade(self):
+    def get_next_grade(self): # pragma: no cover
         """Gets the next ``Grade`` in this list.
 
         :return: the next ``Grade`` in this list. The ``has_next()`` method should be used to test that a next ``Grade`` is available before calling this method.
@@ -310,7 +310,7 @@ class GradeList:
     next_grade = property(fget=get_next_grade)
 
     @abc.abstractmethod
-    def get_next_grades(self, n):
+    def get_next_grades(self, n): # pragma: no cover
         """Gets the next set of ``Grade`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Grade`` elements requested which must be less than or equal to ``available()``
@@ -336,7 +336,7 @@ class GradeSystem:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_based_on_grades(self):
+    def is_based_on_grades(self): # pragma: no cover
         """Tests if the grading system is based on grades.
 
         :return: true if the grading system is based on grades, ``false`` if the system is a numeric score
@@ -349,7 +349,7 @@ class GradeSystem:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_ids(self):
+    def get_grade_ids(self): # pragma: no cover
         """Gets the grade ``Ids`` in this system ranked from highest to lowest.
 
         :return: the list of grades ``Ids``
@@ -364,7 +364,7 @@ class GradeSystem:
     grade_ids = property(fget=get_grade_ids)
 
     @abc.abstractmethod
-    def get_grades(self):
+    def get_grades(self): # pragma: no cover
         """Gets the grades in this system ranked from highest to lowest.
 
         :return: the list of grades
@@ -380,7 +380,7 @@ class GradeSystem:
     grades = property(fget=get_grades)
 
     @abc.abstractmethod
-    def get_lowest_numeric_score(self):
+    def get_lowest_numeric_score(self): # pragma: no cover
         """Gets the lowest number in a numeric grading system.
 
         :return: the lowest number
@@ -395,7 +395,7 @@ class GradeSystem:
     lowest_numeric_score = property(fget=get_lowest_numeric_score)
 
     @abc.abstractmethod
-    def get_numeric_score_increment(self):
+    def get_numeric_score_increment(self): # pragma: no cover
         """Gets the incremental step.
 
         :return: the increment
@@ -410,7 +410,7 @@ class GradeSystem:
     numeric_score_increment = property(fget=get_numeric_score_increment)
 
     @abc.abstractmethod
-    def get_highest_numeric_score(self):
+    def get_highest_numeric_score(self): # pragma: no cover
         """Gets the highest number in a numeric grading system.
 
         :return: the highest number
@@ -425,7 +425,7 @@ class GradeSystem:
     highest_numeric_score = property(fget=get_highest_numeric_score)
 
     @abc.abstractmethod
-    def get_grade_system_record(self, grade_system_record_type):
+    def get_grade_system_record(self, grade_system_record_type): # pragma: no cover
         """Gets the grade system record corresponding to the given ``GradeSystem`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -461,7 +461,7 @@ class GradeSystemForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_based_on_grades_metadata(self):
+    def get_based_on_grades_metadata(self): # pragma: no cover
         """Gets the metadata for a grade-based designation.
 
         :return: metadata for the grade-based designation
@@ -476,7 +476,7 @@ class GradeSystemForm:
     based_on_grades_metadata = property(fget=get_based_on_grades_metadata)
 
     @abc.abstractmethod
-    def set_based_on_grades(self, grades):
+    def set_based_on_grades(self, grades): # pragma: no cover
         """Sets the grade-based designation.
 
         :param grades: the grade-based designation
@@ -490,7 +490,7 @@ class GradeSystemForm:
         pass
 
     @abc.abstractmethod
-    def clear_based_on_grades(self):
+    def clear_based_on_grades(self): # pragma: no cover
         """Clears the based on grades designation.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -503,7 +503,7 @@ class GradeSystemForm:
     based_on_grades = property(fset=set_based_on_grades, fdel=clear_based_on_grades)
 
     @abc.abstractmethod
-    def get_lowest_numeric_score_metadata(self):
+    def get_lowest_numeric_score_metadata(self): # pragma: no cover
         """Gets the metadata for the lowest numeric score.
 
         :return: metadata for the lowest numeric score
@@ -518,7 +518,7 @@ class GradeSystemForm:
     lowest_numeric_score_metadata = property(fget=get_lowest_numeric_score_metadata)
 
     @abc.abstractmethod
-    def set_lowest_numeric_score(self, score):
+    def set_lowest_numeric_score(self, score): # pragma: no cover
         """Sets the lowest numeric score.
 
         :param score: the lowest numeric score
@@ -532,7 +532,7 @@ class GradeSystemForm:
         pass
 
     @abc.abstractmethod
-    def clear_lowest_numeric_score(self):
+    def clear_lowest_numeric_score(self): # pragma: no cover
         """Clears the lowest score.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -545,7 +545,7 @@ class GradeSystemForm:
     lowest_numeric_score = property(fset=set_lowest_numeric_score, fdel=clear_lowest_numeric_score)
 
     @abc.abstractmethod
-    def get_numeric_score_increment_metadata(self):
+    def get_numeric_score_increment_metadata(self): # pragma: no cover
         """Gets the metadata for the lowest numeric score.
 
         :return: metadata for the lowest numeric score
@@ -560,7 +560,7 @@ class GradeSystemForm:
     numeric_score_increment_metadata = property(fget=get_numeric_score_increment_metadata)
 
     @abc.abstractmethod
-    def set_numeric_score_increment(self, increment):
+    def set_numeric_score_increment(self, increment): # pragma: no cover
         """Sets the numeric score increment.
 
         :param increment: the numeric score increment
@@ -574,7 +574,7 @@ class GradeSystemForm:
         pass
 
     @abc.abstractmethod
-    def clear_numeric_score_increment(self):
+    def clear_numeric_score_increment(self): # pragma: no cover
         """Clears the numeric score increment.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -587,7 +587,7 @@ class GradeSystemForm:
     numeric_score_increment = property(fset=set_numeric_score_increment, fdel=clear_numeric_score_increment)
 
     @abc.abstractmethod
-    def get_highest_numeric_score_metadata(self):
+    def get_highest_numeric_score_metadata(self): # pragma: no cover
         """Gets the metadata for the highest numeric score.
 
         :return: metadata for the highest numeric score
@@ -602,7 +602,7 @@ class GradeSystemForm:
     highest_numeric_score_metadata = property(fget=get_highest_numeric_score_metadata)
 
     @abc.abstractmethod
-    def set_highest_numeric_score(self, score):
+    def set_highest_numeric_score(self, score): # pragma: no cover
         """Sets the highest numeric score.
 
         :param score: the highest numeric score
@@ -616,7 +616,7 @@ class GradeSystemForm:
         pass
 
     @abc.abstractmethod
-    def clear_highest_numeric_score(self):
+    def clear_highest_numeric_score(self): # pragma: no cover
         """Clears the highest numeric score.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -629,7 +629,7 @@ class GradeSystemForm:
     highest_numeric_score = property(fset=set_highest_numeric_score, fdel=clear_highest_numeric_score)
 
     @abc.abstractmethod
-    def get_grade_system_form_record(self, grade_system_record_type):
+    def get_grade_system_form_record(self, grade_system_record_type): # pragma: no cover
         """Gets the ``GradeSystemFormRecord`` corresponding to the given grade system record ``Type``.
 
         :param grade_system_record_type: the grade system record type
@@ -661,7 +661,7 @@ class GradeSystemList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_grade_system(self):
+    def get_next_grade_system(self): # pragma: no cover
         """Gets the next ``GradeSystem`` in this list.
 
         :return: the next ``GradeSystem`` in this list. The ``has_next()`` method should be used to test that a next ``GradeSystem`` is available before calling this method.
@@ -677,7 +677,7 @@ class GradeSystemList:
     next_grade_system = property(fget=get_next_grade_system)
 
     @abc.abstractmethod
-    def get_next_grade_systems(self, n):
+    def get_next_grade_systems(self, n): # pragma: no cover
         """Gets the next set of ``GradeSystem`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``GradeSystem`` elements requested which must be less than or equal to ``available()``
@@ -698,7 +698,7 @@ class GradeEntry:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_column_id(self):
+    def get_gradebook_column_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``GradebookColumn``.
 
         :return: the ``Id`` of the ``GradebookColumn``
@@ -713,7 +713,7 @@ class GradeEntry:
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
     @abc.abstractmethod
-    def get_gradebook_column(self):
+    def get_gradebook_column(self): # pragma: no cover
         """Gets the ``GradebookColumn``.
 
         :return: the ``GradebookColumn``
@@ -728,7 +728,7 @@ class GradeEntry:
     gradebook_column = property(fget=get_gradebook_column)
 
     @abc.abstractmethod
-    def get_key_resource_id(self):
+    def get_key_resource_id(self): # pragma: no cover
         """Gets the ``Id`` of the key resource of this entry.
 
         The key resource may be a student or other applicable key to
@@ -746,7 +746,7 @@ class GradeEntry:
     key_resource_id = property(fget=get_key_resource_id)
 
     @abc.abstractmethod
-    def get_key_resource(self):
+    def get_key_resource(self): # pragma: no cover
         """Gets the key resource of this entry.
 
         The key resource may be a student or other applicable key to
@@ -764,7 +764,7 @@ class GradeEntry:
     key_resource = property(fget=get_key_resource)
 
     @abc.abstractmethod
-    def is_derived(self):
+    def is_derived(self): # pragma: no cover
         """Tests if this is a calculated entry.
 
         :return: ``true`` if this entry is a calculated entry, ``false`` otherwise. If ``true,`` then ``overrides_calculated_entry()`` must be ``false``.
@@ -777,7 +777,7 @@ class GradeEntry:
         return  # boolean
 
     @abc.abstractmethod
-    def overrides_calculated_entry(self):
+    def overrides_calculated_entry(self): # pragma: no cover
         """Tests if this is a manual entry that overrides a calculated entry.
 
         :return: ``true`` if this entry overrides a calculated entry, ``false`` otherwise. If ``true,`` then ``is_derived()`` must be ``false``.
@@ -790,7 +790,7 @@ class GradeEntry:
         return  # boolean
 
     @abc.abstractmethod
-    def get_overridden_calculated_entry_id(self):
+    def get_overridden_calculated_entry_id(self): # pragma: no cover
         """Gets the calculated entry ``Id`` this entry overrides.
 
         :return: the calculated entry ``Id``
@@ -805,7 +805,7 @@ class GradeEntry:
     overridden_calculated_entry_id = property(fget=get_overridden_calculated_entry_id)
 
     @abc.abstractmethod
-    def get_overridden_calculated_entry(self):
+    def get_overridden_calculated_entry(self): # pragma: no cover
         """Gets the calculated entry this entry overrides.
 
         :return: the calculated entry
@@ -821,7 +821,7 @@ class GradeEntry:
     overridden_calculated_entry = property(fget=get_overridden_calculated_entry)
 
     @abc.abstractmethod
-    def is_ignored_for_calculations(self):
+    def is_ignored_for_calculations(self): # pragma: no cover
         """Tests if this is entry should be ignored in any averaging, scaling or curve calculation.
 
         :return: ``true`` if this entry is ignored, ``false`` otherwise
@@ -834,7 +834,7 @@ class GradeEntry:
         return  # boolean
 
     @abc.abstractmethod
-    def is_graded(self):
+    def is_graded(self): # pragma: no cover
         """Tests if a grade or score has been assigned to this entry.
 
         Generally, an entry is created with a grade or score.
@@ -849,7 +849,7 @@ class GradeEntry:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_id(self):
+    def get_grade_id(self): # pragma: no cover
         """Gets the grade ``Id`` in this entry if the grading system is based on grades.
 
         :return: the grade ``Id``
@@ -864,7 +864,7 @@ class GradeEntry:
     grade_id = property(fget=get_grade_id)
 
     @abc.abstractmethod
-    def get_grade(self):
+    def get_grade(self): # pragma: no cover
         """Gets the grade in this entry if the grading system is based on grades.
 
         :return: the grade
@@ -880,7 +880,7 @@ class GradeEntry:
     grade = property(fget=get_grade)
 
     @abc.abstractmethod
-    def get_score(self):
+    def get_score(self): # pragma: no cover
         """Gets the score in this entry if the grading system is not based on grades.
 
         :return: the score
@@ -895,7 +895,7 @@ class GradeEntry:
     score = property(fget=get_score)
 
     @abc.abstractmethod
-    def get_time_graded(self):
+    def get_time_graded(self): # pragma: no cover
         """Gets the time the gradeable object was graded.
 
         :return: the timestamp of the grading entry
@@ -910,7 +910,7 @@ class GradeEntry:
     time_graded = property(fget=get_time_graded)
 
     @abc.abstractmethod
-    def get_grader_id(self):
+    def get_grader_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Resource`` that created this entry.
 
         :return: the ``Id`` of the ``Resource``
@@ -925,7 +925,7 @@ class GradeEntry:
     grader_id = property(fget=get_grader_id)
 
     @abc.abstractmethod
-    def get_grader(self):
+    def get_grader(self): # pragma: no cover
         """Gets the ``Resource`` that created this entry.
 
         :return: the ``Resource``
@@ -941,7 +941,7 @@ class GradeEntry:
     grader = property(fget=get_grader)
 
     @abc.abstractmethod
-    def get_grading_agent_id(self):
+    def get_grading_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Agent`` that created this entry.
 
         :return: the ``Id`` of the ``Agent``
@@ -956,7 +956,7 @@ class GradeEntry:
     grading_agent_id = property(fget=get_grading_agent_id)
 
     @abc.abstractmethod
-    def get_grading_agent(self):
+    def get_grading_agent(self): # pragma: no cover
         """Gets the ``Agent`` that created this entry.
 
         :return: the ``Agent``
@@ -972,7 +972,7 @@ class GradeEntry:
     grading_agent = property(fget=get_grading_agent)
 
     @abc.abstractmethod
-    def get_grade_entry_record(self, grade_entry_record_type):
+    def get_grade_entry_record(self, grade_entry_record_type): # pragma: no cover
         """Gets the grade entry record corresponding to the given ``GradeEntry`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1008,7 +1008,7 @@ class GradeEntryForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_ignored_for_calculations_metadata(self):
+    def get_ignored_for_calculations_metadata(self): # pragma: no cover
         """Gets the metadata for the ignore flag.
 
         :return: metadata for the ignore flag
@@ -1023,7 +1023,7 @@ class GradeEntryForm:
     ignored_for_calculations_metadata = property(fget=get_ignored_for_calculations_metadata)
 
     @abc.abstractmethod
-    def set_ignored_for_calculations(self, ignore):
+    def set_ignored_for_calculations(self, ignore): # pragma: no cover
         """Sets the ignore for calculations flag.
 
         :param ignore: the new ignore flag
@@ -1037,7 +1037,7 @@ class GradeEntryForm:
         pass
 
     @abc.abstractmethod
-    def clear_ignored_for_calculations(self):
+    def clear_ignored_for_calculations(self): # pragma: no cover
         """Clears the ignore for calculations flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1050,7 +1050,7 @@ class GradeEntryForm:
     ignored_for_calculations = property(fset=set_ignored_for_calculations, fdel=clear_ignored_for_calculations)
 
     @abc.abstractmethod
-    def get_grade_metadata(self):
+    def get_grade_metadata(self): # pragma: no cover
         """Gets the metadata for a grade.
 
         :return: metadata for the grade
@@ -1065,7 +1065,7 @@ class GradeEntryForm:
     grade_metadata = property(fget=get_grade_metadata)
 
     @abc.abstractmethod
-    def set_grade(self, grade_id):
+    def set_grade(self, grade_id): # pragma: no cover
         """Sets the grade.
 
         :param grade_id: the new grade
@@ -1080,7 +1080,7 @@ class GradeEntryForm:
         pass
 
     @abc.abstractmethod
-    def clear_grade(self):
+    def clear_grade(self): # pragma: no cover
         """Clears the grade.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1093,7 +1093,7 @@ class GradeEntryForm:
     grade = property(fset=set_grade, fdel=clear_grade)
 
     @abc.abstractmethod
-    def get_score_metadata(self):
+    def get_score_metadata(self): # pragma: no cover
         """Gets the metadata for a score.
 
         :return: metadata for the score
@@ -1108,7 +1108,7 @@ class GradeEntryForm:
     score_metadata = property(fget=get_score_metadata)
 
     @abc.abstractmethod
-    def set_score(self, score):
+    def set_score(self, score): # pragma: no cover
         """Sets the score.
 
         :param score: the new score
@@ -1122,7 +1122,7 @@ class GradeEntryForm:
         pass
 
     @abc.abstractmethod
-    def clear_score(self):
+    def clear_score(self): # pragma: no cover
         """Clears the score.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1135,7 +1135,7 @@ class GradeEntryForm:
     score = property(fset=set_score, fdel=clear_score)
 
     @abc.abstractmethod
-    def get_grade_entry_form_record(self, grade_entry_record_type):
+    def get_grade_entry_form_record(self, grade_entry_record_type): # pragma: no cover
         """Gets the ``GradeEntryFormRecord`` corresponding to the given grade entry record ``Type``.
 
         :param grade_entry_record_type: the grade entry record type
@@ -1167,7 +1167,7 @@ class GradeEntryList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_grade_entry(self):
+    def get_next_grade_entry(self): # pragma: no cover
         """Gets the next ``GradeEntry`` in this list.
 
         :return: the next ``GradeEntry`` in this list. The ``has_next()`` method should be used to test that a next ``GradeEntry`` is available before calling this method.
@@ -1183,7 +1183,7 @@ class GradeEntryList:
     next_grade_entry = property(fget=get_next_grade_entry)
 
     @abc.abstractmethod
-    def get_next_grade_entries(self, n):
+    def get_next_grade_entries(self, n): # pragma: no cover
         """Gets the next set of ``GradeEntry`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``GradeEntry`` elements requested which should be less than or equal to ``available()``
@@ -1208,7 +1208,7 @@ class GradebookColumn:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_id(self):
+    def get_grade_system_id(self): # pragma: no cover
         """Gets the ``GradeSystem Id`` in which this grade belongs.
 
         :return: the grade system ``Id``
@@ -1223,7 +1223,7 @@ class GradebookColumn:
     grade_system_id = property(fget=get_grade_system_id)
 
     @abc.abstractmethod
-    def get_grade_system(self):
+    def get_grade_system(self): # pragma: no cover
         """Gets the ``GradeSystem`` in which this grade belongs.
 
         :return: the package grade system
@@ -1238,7 +1238,7 @@ class GradebookColumn:
     grade_system = property(fget=get_grade_system)
 
     @abc.abstractmethod
-    def get_gradebook_column_record(self, gradebook_column_record_type):
+    def get_gradebook_column_record(self, gradebook_column_record_type): # pragma: no cover
         """Gets the gradebook column record corresponding to the given ``GradeBookColumn`` record ``Type``.
 
         This method ie used to retrieve an object implementing the
@@ -1274,7 +1274,7 @@ class GradebookColumnForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_metadata(self):
+    def get_grade_system_metadata(self): # pragma: no cover
         """Gets the metadata for a grade system.
 
         :return: metadata for the grade system
@@ -1289,7 +1289,7 @@ class GradebookColumnForm:
     grade_system_metadata = property(fget=get_grade_system_metadata)
 
     @abc.abstractmethod
-    def set_grade_system(self, grade_system_id):
+    def set_grade_system(self, grade_system_id): # pragma: no cover
         """Sets the grade system.
 
         :param grade_system_id: the new grade system
@@ -1304,7 +1304,7 @@ class GradebookColumnForm:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system(self):
+    def clear_grade_system(self): # pragma: no cover
         """Clears the grade system.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1317,7 +1317,7 @@ class GradebookColumnForm:
     grade_system = property(fset=set_grade_system, fdel=clear_grade_system)
 
     @abc.abstractmethod
-    def get_gradebook_column_form_record(self, gradebook_column_record_type):
+    def get_gradebook_column_form_record(self, gradebook_column_record_type): # pragma: no cover
         """Gets the ``GradebookColumnFormRecord`` corresponding to the given gradebook column record ``Type``.
 
         :param gradebook_column_record_type: a gradebook column record type
@@ -1349,7 +1349,7 @@ class GradebookColumnList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_gradebook_column(self):
+    def get_next_gradebook_column(self): # pragma: no cover
         """Gets the next ``GradebookColumn`` in this list.
 
         :return: the next ``GradebookColumn`` in this list. The ``has_next()`` method should be used to test that a next ``GradebookColumn`` is available before calling this method.
@@ -1365,7 +1365,7 @@ class GradebookColumnList:
     next_gradebook_column = property(fget=get_next_gradebook_column)
 
     @abc.abstractmethod
-    def get_next_gradebook_columns(self, n):
+    def get_next_gradebook_columns(self, n): # pragma: no cover
         """Gets the next set of ``GradebookColumn`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``GradebookColumn`` elements requested which must be less than or equal to ``available()``
@@ -1386,7 +1386,7 @@ class GradebookColumnSummary:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_column_id(self):
+    def get_gradebook_column_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``GradebookColumn``.
 
         :return: the ``Id`` of the ``GradebookColumn``
@@ -1401,7 +1401,7 @@ class GradebookColumnSummary:
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
     @abc.abstractmethod
-    def get_gradebook_column(self):
+    def get_gradebook_column(self): # pragma: no cover
         """Gets the ``GradebookColumn``.
 
         :return: the ``GradebookColumn``
@@ -1416,7 +1416,7 @@ class GradebookColumnSummary:
     gradebook_column = property(fget=get_gradebook_column)
 
     @abc.abstractmethod
-    def get_mean(self):
+    def get_mean(self): # pragma: no cover
         """Gets the mean score.
 
         If this system is based on grades, the mean output score is
@@ -1434,7 +1434,7 @@ class GradebookColumnSummary:
     mean = property(fget=get_mean)
 
     @abc.abstractmethod
-    def get_median(self):
+    def get_median(self): # pragma: no cover
         """Gets the median score.
 
         If this system is based on grades, the mean output score is
@@ -1452,7 +1452,7 @@ class GradebookColumnSummary:
     median = property(fget=get_median)
 
     @abc.abstractmethod
-    def get_mode(self):
+    def get_mode(self): # pragma: no cover
         """Gets the mode of the score.
 
         If this system is based on grades, the mode of the output score
@@ -1470,7 +1470,7 @@ class GradebookColumnSummary:
     mode = property(fget=get_mode)
 
     @abc.abstractmethod
-    def get_rms(self):
+    def get_rms(self): # pragma: no cover
         """Gets the root mean square of the score.
 
         If this system is based on grades, the RMS of the output score
@@ -1488,7 +1488,7 @@ class GradebookColumnSummary:
     rms = property(fget=get_rms)
 
     @abc.abstractmethod
-    def get_standard_deviation(self):
+    def get_standard_deviation(self): # pragma: no cover
         """Gets the standard deviation.
 
         If this system is based on grades, the spread of the output
@@ -1506,7 +1506,7 @@ class GradebookColumnSummary:
     standard_deviation = property(fget=get_standard_deviation)
 
     @abc.abstractmethod
-    def get_sum(self):
+    def get_sum(self): # pragma: no cover
         """Gets the sum of the scores.
 
         If this system is based on grades, the sum of the output scores
@@ -1524,7 +1524,7 @@ class GradebookColumnSummary:
     sum = property(fget=get_sum)
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_record(self, gradebook_column_summary_record_type):
+    def get_gradebook_column_summary_record(self, gradebook_column_summary_record_type): # pragma: no cover
         """Gets the gradebook column summary record corresponding to the given ``GradebookColumnSummary`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1553,7 +1553,7 @@ class Gradebook:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_record(self, gradebook_record_type):
+    def get_gradebook_record(self, gradebook_record_type): # pragma: no cover
         """Gets the gradebook record corresponding to the given ``Gradebook`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1589,7 +1589,7 @@ class GradebookForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_form_record(self, gradebook_record_type):
+    def get_gradebook_form_record(self, gradebook_record_type): # pragma: no cover
         """Gets the ``GradebookFormRecord`` corresponding to the given gradebook record ``Type``.
 
         :param gradebook_record_type: a gradebook record type
@@ -1621,7 +1621,7 @@ class GradebookList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_gradebook(self):
+    def get_next_gradebook(self): # pragma: no cover
         """Gets the next ``Gradebook`` in this list.
 
         :return: the next ``Gradebook`` in this list. The ``has_next()`` method should be used to test that a next ``Gradebook`` is available before calling this method.
@@ -1637,7 +1637,7 @@ class GradebookList:
     next_gradebook = property(fget=get_next_gradebook)
 
     @abc.abstractmethod
-    def get_next_gradebooks(self, n):
+    def get_next_gradebooks(self, n): # pragma: no cover
         """Gets the next set of ``Gradebook`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Gradebook`` elements requested which must be less than or equal to ``available()``
@@ -1664,7 +1664,7 @@ class GradebookNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` at this node.
 
         :return: the gradebook represented by this node
@@ -1679,7 +1679,7 @@ class GradebookNode:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def get_parent_gradebook_nodes(self):
+    def get_parent_gradebook_nodes(self): # pragma: no cover
         """Gets the parents of this gradebook.
 
         :return: the parents of the ``id``
@@ -1694,7 +1694,7 @@ class GradebookNode:
     parent_gradebook_nodes = property(fget=get_parent_gradebook_nodes)
 
     @abc.abstractmethod
-    def get_child_gradebook_nodes(self):
+    def get_child_gradebook_nodes(self): # pragma: no cover
         """Gets the children of this gradebook.
 
         :return: the children of this gradebook
@@ -1724,7 +1724,7 @@ class GradebookNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_gradebook_node(self):
+    def get_next_gradebook_node(self): # pragma: no cover
         """Gets the next ``GradebookNode`` in this list.
 
         :return: the next ``GradebookNode`` in this list. The ``has_next()`` method should be used to test that a next ``GradebookNode`` is available before calling this method.
@@ -1740,7 +1740,7 @@ class GradebookNodeList:
     next_gradebook_node = property(fget=get_next_gradebook_node)
 
     @abc.abstractmethod
-    def get_next_gradebook_nodes(self, n):
+    def get_next_gradebook_nodes(self, n): # pragma: no cover
         """Gets the next set of ``GradebookNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``GradebookNode`` elements requested which must be less than or equal to ``available()``

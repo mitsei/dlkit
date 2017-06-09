@@ -21,7 +21,7 @@ class GradeSystemReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_grade_systems(self, notification_id, grade_system_ids):
+    def new_grade_systems(self, notification_id, grade_system_ids): # pragma: no cover
         """The callback for notifications of new grade systems.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class GradeSystemReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_grade_systems(self, notification_id, grade_system_ids):
+    def changed_grade_systems(self, notification_id, grade_system_ids): # pragma: no cover
         """The callback for notification of updated grade systems.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class GradeSystemReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_grade_systems(self, notification_id, grade_system_ids):
+    def deleted_grade_systems(self, notification_id, grade_system_ids): # pragma: no cover
         """The callback for notification of deleted grade systems.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class GradeEntryReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_grade_entries(self, notification_id, grade_entry_ids):
+    def new_grade_entries(self, notification_id, grade_entry_ids): # pragma: no cover
         """The callback for notifications of new grade entries.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class GradeEntryReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_grade_entries(self, notification_id, grade_entry_ids):
+    def changed_grade_entries(self, notification_id, grade_entry_ids): # pragma: no cover
         """The callback for notification of updated grade entries.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class GradeEntryReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_grade_entries(self, notification_id, grade_entry_ids):
+    def deleted_grade_entries(self, notification_id, grade_entry_ids): # pragma: no cover
         """The callback for notification of deleted grade entries.
 
         :param notification_id: the notification ``Id``
@@ -121,7 +121,7 @@ class GradebookColumnReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_gradebook_columns(self, notification_id, gradebook_column_ids):
+    def new_gradebook_columns(self, notification_id, gradebook_column_ids): # pragma: no cover
         """The callback for notifications of new gradebook columns.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class GradebookColumnReceiver:
         pass
 
     @abc.abstractmethod
-    def chaneged_gradebook_columns(self, gradebook_column_ids):
+    def chaneged_gradebook_columns(self, gradebook_column_ids): # pragma: no cover
         """The callback for notifications of new gradebook columns.
 
         :param gradebook_column_ids: the ``Ids`` of the new ``GradebookColumns``
@@ -149,7 +149,7 @@ class GradebookColumnReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_gradebook_columns(self, notification_id, gradebook_column_ids):
+    def deleted_gradebook_columns(self, notification_id, gradebook_column_ids): # pragma: no cover
         """The callback for notification of deleted gradebook columns.
 
         :param notification_id: the notification ``Id``
@@ -169,7 +169,7 @@ class GradebookReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_gradebooks(self, notification_id, gradebook_ids):
+    def new_gradebooks(self, notification_id, gradebook_ids): # pragma: no cover
         """The callback for notifications of new gradebooks.
 
         :param notification_id: the notification ``Id``
@@ -184,7 +184,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def new_ancestor_gradebook(self, gradebook_id, ancestor_id):
+    def new_ancestor_gradebook(self, gradebook_id, ancestor_id): # pragma: no cover
         """The callback for notifications of new gradebook ancestors.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -199,7 +199,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def new_descendant_gradebook(self, gradebook_id, descendant_id):
+    def new_descendant_gradebook(self, gradebook_id, descendant_id): # pragma: no cover
         """The callback for notifications of new gradebook descendants.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -214,7 +214,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_gradebooks(self, notification_id, gradebook_ids):
+    def changed_gradebooks(self, notification_id, gradebook_ids): # pragma: no cover
         """The callback for notification of updated gradebooks.
 
         :param notification_id: the notification ``Id``
@@ -229,7 +229,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_gradebooks(self, notification_id, gradebook_ids):
+    def deleted_gradebooks(self, notification_id, gradebook_ids): # pragma: no cover
         """The callback for notification of deleted gradebooks.
 
         :param notification_id: the notification ``Id``
@@ -244,7 +244,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_ancestor_gradebook(self, gradebook_id, ancestor_id):
+    def deleted_ancestor_gradebook(self, gradebook_id, ancestor_id): # pragma: no cover
         """The callback for notifications of deleted gradebook ancestors.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -259,7 +259,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_descendant_gradebook(self, gradebook_id, descendant_id):
+    def deleted_descendant_gradebook(self, gradebook_id, descendant_id): # pragma: no cover
         """The callback for notifications of deleted gradebook descendants.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -274,7 +274,7 @@ class GradebookReceiver:
         pass
 
     @abc.abstractmethod
-    def restructured_gradebook_hierarchy(self):
+    def restructured_gradebook_hierarchy(self): # pragma: no cover
         """The callback for notifications of changes to a gradebook hierarchy where the hierarchy needs to refreshed.
 
 

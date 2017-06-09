@@ -21,7 +21,7 @@ class HierarchySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_hierarchies(self, hierarchy_ids):
+    def search_among_hierarchies(self, hierarchy_ids): # pragma: no cover
         """Execute this search using a given list of hierarchies.
 
         :param hierarchy_ids: list of hierarchies
@@ -34,7 +34,7 @@ class HierarchySearch:
         pass
 
     @abc.abstractmethod
-    def order_hierarchy_results(self, hierarchy_search_order):
+    def order_hierarchy_results(self, hierarchy_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param hierarchy_search_order: hierarchy search order
@@ -48,7 +48,7 @@ class HierarchySearch:
         pass
 
     @abc.abstractmethod
-    def get_hierarchy_search_record(self, hierarchy_search_record_type):
+    def get_hierarchy_search_record(self, hierarchy_search_record_type): # pragma: no cover
         """Gets the hierarchy search record corresponding to the given hierarchy search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class HierarchySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchies(self):
+    def get_hierarchies(self): # pragma: no cover
         """Gets the hierarchy list resulting from the search.
 
         :return: the hierarchy list
@@ -88,7 +88,7 @@ class HierarchySearchResults:
     hierarchies = property(fget=get_hierarchies)
 
     @abc.abstractmethod
-    def get_hierarchy_query_inspector(self):
+    def get_hierarchy_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the hierarchy query inspector
@@ -103,7 +103,7 @@ class HierarchySearchResults:
     hierarchy_query_inspector = property(fget=get_hierarchy_query_inspector)
 
     @abc.abstractmethod
-    def get_hierarchy_search_results_record(self, hierarchy_search_record_type):
+    def get_hierarchy_search_results_record(self, hierarchy_search_record_type): # pragma: no cover
         """Gets the hierarchy search results record corresponding to the given hierarchy search record ``Type``.
 
         This method is used to retrieve an object implementing the

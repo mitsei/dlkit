@@ -21,7 +21,7 @@ class DisplayText:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_language_type(self):
+    def get_language_type(self): # pragma: no cover
         """Gets the language ``Type``.
 
         :return: the language type
@@ -36,7 +36,7 @@ class DisplayText:
     language_type = property(fget=get_language_type)
 
     @abc.abstractmethod
-    def get_script_type(self):
+    def get_script_type(self): # pragma: no cover
         """Gets the script ``Type``.
 
         :return: the script type
@@ -51,7 +51,7 @@ class DisplayText:
     script_type = property(fget=get_script_type)
 
     @abc.abstractmethod
-    def get_format_type(self):
+    def get_format_type(self): # pragma: no cover
         """Gets the format ``Type`` of the text string.
 
         :return: the format type
@@ -66,7 +66,7 @@ class DisplayText:
     format_type = property(fget=get_format_type)
 
     @abc.abstractmethod
-    def get_text(self):
+    def get_text(self): # pragma: no cover
         """Gets the text string.
 
         :return: the string

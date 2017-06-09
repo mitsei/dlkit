@@ -40,7 +40,7 @@ class GradeSystemLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``GradeSystem``  ``Id`` associated with this session.
 
         :return: the ``GradeSystem Id`` associated with this session
@@ -55,7 +55,7 @@ class GradeSystemLookupSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -71,7 +71,7 @@ class GradeSystemLookupSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_lookup_grade_systems(self):
+    def can_lookup_grade_systems(self): # pragma: no cover
         """Tests if this user can perform ``GradeSystem`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -90,7 +90,7 @@ class GradeSystemLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_grade_system_view(self):
+    def use_comparative_grade_system_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -104,7 +104,7 @@ class GradeSystemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_grade_system_view(self):
+    def use_plenary_grade_system_view(self): # pragma: no cover
         """A complete view of the ``GradeSystem`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -119,7 +119,7 @@ class GradeSystemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include grade entries in gradebooks which
@@ -133,7 +133,7 @@ class GradeSystemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this gradebook only.
@@ -146,7 +146,7 @@ class GradeSystemLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_grade_system(self, grade_system_id):
+    def get_grade_system(self, grade_system_id): # pragma: no cover
         """Gets the ``GradeSystem`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -170,7 +170,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
-    def get_grade_system_by_grade(self, grade_id):
+    def get_grade_system_by_grade(self, grade_id): # pragma: no cover
         """Gets the ``GradeSystem`` by a ``Grade``  ``Id``.
 
         :param grade_id: ``Id`` of a ``Grade``
@@ -188,7 +188,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
-    def get_grade_systems_by_ids(self, grade_system_ids):
+    def get_grade_systems_by_ids(self, grade_system_ids): # pragma: no cover
         """Gets a ``GradeSystemList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the systems
@@ -214,7 +214,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_grade_systems_by_genus_type(self, grade_system_genus_type):
+    def get_grade_systems_by_genus_type(self, grade_system_genus_type): # pragma: no cover
         """Gets a ``GradeSystemList`` corresponding to the given grade system genus ``Type`` which does not include systems of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known systems or
@@ -235,7 +235,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_grade_systems_by_parent_genus_type(self, grade_system_genus_type):
+    def get_grade_systems_by_parent_genus_type(self, grade_system_genus_type): # pragma: no cover
         """Gets a ``GradeSystemList`` corresponding to the given grade system genus ``Type`` and include any additional systems with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known systems or
@@ -256,7 +256,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_grade_systems_by_record_type(self, grade_system_record_type):
+    def get_grade_systems_by_record_type(self, grade_system_record_type): # pragma: no cover
         """Gets a ``GradeSystemList`` containing the given grade record ``Type``.
 
         In plenary mode, the returned list contains all known systems or
@@ -277,7 +277,7 @@ class GradeSystemLookupSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_grade_systems(self):
+    def get_grade_systems(self): # pragma: no cover
         """Gets all ``GradeSystems``.
 
         In plenary mode, the returned list contains all known grade
@@ -321,7 +321,7 @@ class GradeSystemQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -336,7 +336,7 @@ class GradeSystemQuerySession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -352,7 +352,7 @@ class GradeSystemQuerySession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_search_grade_systems(self):
+    def can_search_grade_systems(self): # pragma: no cover
         """Tests if this user can perform ``GradeSystem`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -371,7 +371,7 @@ class GradeSystemQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include grades in gradebooks which are
@@ -385,7 +385,7 @@ class GradeSystemQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this gradebook only.
@@ -398,7 +398,7 @@ class GradeSystemQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_grade_system_query(self):
+    def get_grade_system_query(self): # pragma: no cover
         """Gets a grade system query.
 
         :return: a grade system query
@@ -413,7 +413,7 @@ class GradeSystemQuerySession:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def get_grade_systems_by_query(self, grade_system_query):
+    def get_grade_systems_by_query(self, grade_system_query): # pragma: no cover
         """Gets a list of ``GradeSystem`` objects matching the given grade system query.
 
         :param grade_system_query: the grade system query
@@ -464,7 +464,7 @@ class GradeSystemSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_search(self):
+    def get_grade_system_search(self): # pragma: no cover
         """Gets a grade system search.
 
         :return: a grade system search
@@ -479,7 +479,7 @@ class GradeSystemSearchSession:
     grade_system_search = property(fget=get_grade_system_search)
 
     @abc.abstractmethod
-    def get_grade_system_search_order(self):
+    def get_grade_system_search_order(self): # pragma: no cover
         """Gets a grade system search order.
 
         The ``GradeSystemSearchOrder`` is supplied to a
@@ -497,7 +497,7 @@ class GradeSystemSearchSession:
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
     @abc.abstractmethod
-    def get_grade_systems_by_search(self, grade_system_query, grade_system_search):
+    def get_grade_systems_by_search(self, grade_system_query, grade_system_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param grade_system_query: the grade system query
@@ -517,7 +517,7 @@ class GradeSystemSearchSession:
         return  # osid.grading.GradeSystemSearchResults
 
     @abc.abstractmethod
-    def get_grade_system_query_from_inspector(self, grade_system_query_inspector):
+    def get_grade_system_query_from_inspector(self, grade_system_query_inspector): # pragma: no cover
         """Gets a grade system query from an inspector.
 
         The inspector is available from an ``GradeSystemSearchResults``.
@@ -574,7 +574,7 @@ class GradeSystemAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -589,7 +589,7 @@ class GradeSystemAdminSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -605,7 +605,7 @@ class GradeSystemAdminSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_create_grade_systems(self):
+    def can_create_grade_systems(self): # pragma: no cover
         """Tests if this user can create ``GradeSystems``.
 
         A return of true does not guarantee successful authorization. A
@@ -624,7 +624,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_grade_system_with_record_types(self, grade_system_record_types):
+    def can_create_grade_system_with_record_types(self, grade_system_record_types): # pragma: no cover
         """Tests if this user can create a single ``GradeSystem`` using the desired record types.
 
         While ``GradingManager.getGradeSystemRecordTypes()`` can be used
@@ -645,7 +645,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_form_for_create(self, grade_system_record_types):
+    def get_grade_system_form_for_create(self, grade_system_record_types): # pragma: no cover
         """Gets the grade system form for creating new grade systems.
 
         A new form should be requested for each create transaction.
@@ -665,7 +665,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.GradeSystemForm
 
     @abc.abstractmethod
-    def create_grade_system(self, grade_system_form):
+    def create_grade_system(self, grade_system_form): # pragma: no cover
         """Creates a new ``GradeSystem``.
 
         :param grade_system_form: the form for this ``GradeSystem``
@@ -685,7 +685,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.GradeSystem
 
     @abc.abstractmethod
-    def can_update_grade_systems(self):
+    def can_update_grade_systems(self): # pragma: no cover
         """Tests if this user can update ``GradeSystems``.
 
         A return of true does not guarantee successful authorization. A
@@ -704,7 +704,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_form_for_update(self, grade_system_id):
+    def get_grade_system_form_for_update(self, grade_system_id): # pragma: no cover
         """Gets the grade system form for updating an existing grade system.
 
         A new grade system form should be requested for each update
@@ -725,7 +725,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.GradeSystemForm
 
     @abc.abstractmethod
-    def update_grade_system(self, grade_system_form):
+    def update_grade_system(self, grade_system_form): # pragma: no cover
         """Updates an existing grade system.
 
         :param grade_system_form: the form containing the elements to be updated
@@ -743,7 +743,7 @@ class GradeSystemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_grade_systems(self):
+    def can_delete_grade_systems(self): # pragma: no cover
         """Tests if this user can delete grade systems.
 
         A return of true does not guarantee successful authorization. A
@@ -762,7 +762,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_grade_system(self, grade_system_id):
+    def delete_grade_system(self, grade_system_id): # pragma: no cover
         """Deletes a ``GradeSystem``.
 
         :param grade_system_id: the ``Id`` of the ``GradeSystem`` to remove
@@ -778,7 +778,7 @@ class GradeSystemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_grade_system_aliases(self):
+    def can_manage_grade_system_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``GradeSystems``.
 
         A return of true does not guarantee successful authorization. A
@@ -797,7 +797,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_grade_system(self, grade_system_id, alias_id):
+    def alias_grade_system(self, grade_system_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``GradeSystem`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``GradeSystem`` is determined by the
@@ -821,7 +821,7 @@ class GradeSystemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_create_grades(self, grade_system_id):
+    def can_create_grades(self, grade_system_id): # pragma: no cover
         """Tests if this user can create ``Grade`` s for a ``GradeSystem``.
 
         A return of true does not guarantee successful authorization. A
@@ -842,7 +842,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_grade_with_record_types(self, grade_system_id, grade_record_types):
+    def can_create_grade_with_record_types(self, grade_system_id, grade_record_types): # pragma: no cover
         """Tests if this user can create a single ``Grade`` using the desired record types.
 
         While ``GradingManager.getGradeRecordTypes()`` can be used to
@@ -865,7 +865,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_form_for_create(self, grade_system_id, grade_record_types):
+    def get_grade_form_for_create(self, grade_system_id, grade_record_types): # pragma: no cover
         """Gets the grade form for creating new grades.
 
         A new form should be requested for each create transaction.
@@ -888,7 +888,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.GradeForm
 
     @abc.abstractmethod
-    def create_grade(self, grade_form):
+    def create_grade(self, grade_form): # pragma: no cover
         """Creates a new ``Grade``.
 
         :param grade_form: the form for this ``Grade``
@@ -908,7 +908,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.Grade
 
     @abc.abstractmethod
-    def can_update_grades(self, grade_system_id):
+    def can_update_grades(self, grade_system_id): # pragma: no cover
         """Tests if this user can update ``Grades``.
 
         A return of true does not guarantee successful authorization. A
@@ -929,7 +929,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_form_for_update(self, grade_id):
+    def get_grade_form_for_update(self, grade_id): # pragma: no cover
         """Gets the grade form for updating an existing grade.
 
         A new grade form should be requested for each update
@@ -950,7 +950,7 @@ class GradeSystemAdminSession:
         return  # osid.grading.GradeForm
 
     @abc.abstractmethod
-    def update_grade(self, grade_form):
+    def update_grade(self, grade_form): # pragma: no cover
         """Updates an existing grade.
 
         :param grade_form: the form containing the elements to be updated
@@ -968,7 +968,7 @@ class GradeSystemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_grades(self, grade_system_id):
+    def can_delete_grades(self, grade_system_id): # pragma: no cover
         """Tests if this user can delete grades.
 
         A return of true does not guarantee successful authorization. A
@@ -989,7 +989,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_grade(self, grade_id):
+    def delete_grade(self, grade_id): # pragma: no cover
         """Deletes a ``Grade``.
 
         :param grade_id: the ``Id`` of the ``Grade`` to remove
@@ -1005,7 +1005,7 @@ class GradeSystemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_grade_aliases(self):
+    def can_manage_grade_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Grades``.
 
         A return of true does not guarantee successful authorization. A
@@ -1024,7 +1024,7 @@ class GradeSystemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_grade(self, grade_id, alias_id):
+    def alias_grade(self, grade_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Grade`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Grade`` is determined by the
@@ -1059,7 +1059,7 @@ class GradeSystemNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -1074,7 +1074,7 @@ class GradeSystemNotificationSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -1090,7 +1090,7 @@ class GradeSystemNotificationSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_register_for_grade_system_notifications(self):
+    def can_register_for_grade_system_notifications(self): # pragma: no cover
         """Tests if this user can register for ``GradeSystem`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -1109,7 +1109,7 @@ class GradeSystemNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for grade systems in
@@ -1124,7 +1124,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this gradebook only.
@@ -1137,7 +1137,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_grade_systems(self):
+    def register_for_new_grade_systems(self): # pragma: no cover
         """Register for notifications of new grade systems.
 
         ``GradeSystemReceiver.newGradeSystems()`` is invoked when a new
@@ -1152,7 +1152,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_systems(self):
+    def register_for_changed_grade_systems(self): # pragma: no cover
         """Registers for notification of updated grade systems.
 
         ``GradeSystemReceiver.changedGradeSystems()`` is invoked when a
@@ -1167,7 +1167,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_system(self, grade_system_id):
+    def register_for_changed_grade_system(self, grade_system_id): # pragma: no cover
         """Registers for notification of an updated grade system.
 
         ``GradeSystemReceiver.changedGradeSystems()`` is invoked when
@@ -1186,7 +1186,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_systems(self):
+    def register_for_deleted_grade_systems(self): # pragma: no cover
         """Registers for notification of deleted grade systems.
 
         ``GradeSystemReceiver.deletedGradeSystems()`` is invoked when a
@@ -1201,7 +1201,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_system(self, grade_system_id):
+    def register_for_deleted_grade_system(self, grade_system_id): # pragma: no cover
         """Registers for notification of a deleted grade system.
 
         ``GradeSystemReceiver.deletedGradeSystems()`` is invoked when
@@ -1219,7 +1219,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_grade_system_notifications(self):
+    def reliable_grade_system_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1233,7 +1233,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_grade_system_notifications(self):
+    def unreliable_grade_system_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1247,7 +1247,7 @@ class GradeSystemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_grade_system_notification(self, notification_id):
+    def acknowledge_grade_system_notification(self, notification_id): # pragma: no cover
         """Acknowledge an grade_system notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1278,7 +1278,7 @@ class GradeSystemGradebookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_gradebook_view(self):
+    def use_comparative_gradebook_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1292,7 +1292,7 @@ class GradeSystemGradebookSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_gradebook_view(self):
+    def use_plenary_gradebook_view(self): # pragma: no cover
         """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1307,7 +1307,7 @@ class GradeSystemGradebookSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_grade_system_gradebook_mappings(self):
+    def can_lookup_grade_system_gradebook_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of gradebook/grade system mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1326,7 +1326,7 @@ class GradeSystemGradebookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_ids_by_gradebook(self, gradebook_id):
+    def get_grade_system_ids_by_gradebook(self, gradebook_id): # pragma: no cover
         """Gets the list of ``GradeSystem``  ``Ids`` associated with a ``Gradebook``.
 
         :param gradebook_id: ``Id`` of the ``Gradebook``
@@ -1344,7 +1344,7 @@ class GradeSystemGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_grade_systems_by_gradebook(self, gradebook_id):
+    def get_grade_systems_by_gradebook(self, gradebook_id): # pragma: no cover
         """Gets the list of grade systems associated with a ``Gradebook``.
 
         :param gradebook_id: ``Id`` of the ``Gradebook``
@@ -1362,7 +1362,7 @@ class GradeSystemGradebookSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_grade_system_ids_by_gradebooks(self, gradebook_ids):
+    def get_grade_system_ids_by_gradebooks(self, gradebook_ids): # pragma: no cover
         """Gets the list of ``GradeSystem Ids`` corresponding to a list of ``Gradebooks``.
 
         :param gradebook_ids: list of gradebook ``Ids``
@@ -1379,7 +1379,7 @@ class GradeSystemGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_grade_systems_by_gradebooks(self, gradebook_ids):
+    def get_grade_systems_by_gradebooks(self, gradebook_ids): # pragma: no cover
         """Gets the list of grade systems corresponding to a list of ``Gradebooks``.
 
         :param gradebook_ids: list of gradebook ``Ids``
@@ -1396,7 +1396,7 @@ class GradeSystemGradebookSession:
         return  # osid.grading.GradeSystemList
 
     @abc.abstractmethod
-    def get_gradebook_ids_by_grade_system(self, grade_system_id):
+    def get_gradebook_ids_by_grade_system(self, grade_system_id): # pragma: no cover
         """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradeSystem``.
 
         :param grade_system_id: ``Id`` of a ``GradeSystem``
@@ -1414,7 +1414,7 @@ class GradeSystemGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_gradebooks_by_grade_system(self, grade_system_id):
+    def get_gradebooks_by_grade_system(self, grade_system_id): # pragma: no cover
         """Gets the list of ``Gradebooks`` mapped to a ``GradeSystem``.
 
         :param grade_system_id: ``Id`` of a ``GradeSystem``
@@ -1448,7 +1448,7 @@ class GradeSystemGradebookAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_grade_system(self):
+    def can_assign_grade_system(self): # pragma: no cover
         """Tests if this user can alter grade system/gradebook mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1467,7 +1467,7 @@ class GradeSystemGradebookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_grade_systems_to_gradebook(self, gradebook_id):
+    def can_assign_grade_systems_to_gradebook(self, gradebook_id): # pragma: no cover
         """Tests if this user can alter grade system/gradebook mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1488,7 +1488,7 @@ class GradeSystemGradebookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_gradebook_ids(self, gradebook_id):
+    def get_assignable_gradebook_ids(self, gradebook_id): # pragma: no cover
         """Gets a list of gradebooks including and under the given gradebook node in which any grade system can be assigned.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -1504,7 +1504,7 @@ class GradeSystemGradebookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id):
+    def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id): # pragma: no cover
         """Gets a list of gradebooks including and under the given gradebook node in which a specific grade system can be assigned.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -1522,7 +1522,7 @@ class GradeSystemGradebookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id):
+    def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id): # pragma: no cover
         """Adds an existing ``GradeSystem`` to a ``Gradebook``.
 
         :param grade_system_id: the ``Id`` of the ``GradeSystem``
@@ -1541,7 +1541,7 @@ class GradeSystemGradebookAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_grade_system_from_gradebook(self, grade_system_id, gradebook_id):
+    def unassign_grade_system_from_gradebook(self, grade_system_id, gradebook_id): # pragma: no cover
         """Removes a ``GradeSystem`` from a ``Gradebook``.
 
         :param grade_system_id: the ``Id`` of the ``GradeSystem``
@@ -1577,7 +1577,7 @@ class GradeSystemSmartGradebookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -1592,7 +1592,7 @@ class GradeSystemSmartGradebookSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -1608,7 +1608,7 @@ class GradeSystemSmartGradebookSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_manage_smart_gradebooks(self):
+    def can_manage_smart_gradebooks(self): # pragma: no cover
         """Tests if this user can manage smart gradebooks.
 
         A return of true does not guarantee successful authorization. A
@@ -1627,7 +1627,7 @@ class GradeSystemSmartGradebookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_query(self):
+    def get_grade_system_query(self): # pragma: no cover
         """Gets a grade system query.
 
         :return: the grade system query
@@ -1642,7 +1642,7 @@ class GradeSystemSmartGradebookSession:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def get_grade_system_search_order(self):
+    def get_grade_system_search_order(self): # pragma: no cover
         """Gets a grade system search order.
 
         :return: the grade system search order
@@ -1657,7 +1657,7 @@ class GradeSystemSmartGradebookSession:
     grade_system_search_order = property(fget=get_grade_system_search_order)
 
     @abc.abstractmethod
-    def apply_grade_system_query(self, grade_system_query):
+    def apply_grade_system_query(self, grade_system_query): # pragma: no cover
         """Applies a grade system query to this gradebook.
 
         :param grade_system_query: the grade system query
@@ -1673,7 +1673,7 @@ class GradeSystemSmartGradebookSession:
         pass
 
     @abc.abstractmethod
-    def inspect_grade_system_query(self):
+    def inspect_grade_system_query(self): # pragma: no cover
         """Gets a grade system query inspector for this gradebook.
 
         :return: the grade system query inspector
@@ -1687,7 +1687,7 @@ class GradeSystemSmartGradebookSession:
         return  # osid.grading.GradeSystemQueryInspector
 
     @abc.abstractmethod
-    def apply_grade_system_sequencing(self, grade_system_search_order):
+    def apply_grade_system_sequencing(self, grade_system_search_order): # pragma: no cover
         """Applies a grade system search order to this gradebook.
 
         :param grade_system_search_order: the grade system search order
@@ -1703,7 +1703,7 @@ class GradeSystemSmartGradebookSession:
         pass
 
     @abc.abstractmethod
-    def get_grade_system_query_from_inspector(self, grade_system_query_inspector):
+    def get_grade_system_query_from_inspector(self, grade_system_query_inspector): # pragma: no cover
         """Gets a grade system query from an inspector.
 
         :param grade_system_query_inspector: a grade system query inspector
@@ -1724,7 +1724,7 @@ class GradeEntryLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -1739,7 +1739,7 @@ class GradeEntryLookupSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -1755,7 +1755,7 @@ class GradeEntryLookupSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_lookup_grade_entries(self):
+    def can_lookup_grade_entries(self): # pragma: no cover
         """Tests if this user can perform ``GradeEntry`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1774,7 +1774,7 @@ class GradeEntryLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_grade_entry_view(self):
+    def use_comparative_grade_entry_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1788,7 +1788,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_grade_entry_view(self):
+    def use_plenary_grade_entry_view(self): # pragma: no cover
         """A complete view of the ``GradeEntry`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1803,7 +1803,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include grade entries in gradebooks which
@@ -1817,7 +1817,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this gradebook only.
@@ -1830,7 +1830,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_grade_entry_view(self):
+    def use_effective_grade_entry_view(self): # pragma: no cover
         """Only grade entries whose effective dates are current are returned by methods in this session.
 
 
@@ -1841,7 +1841,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_grade_entry_view(self):
+    def use_any_effective_grade_entry_view(self): # pragma: no cover
         """All grade entries of any effective dates are returned by methods in this session.
 
 
@@ -1852,7 +1852,7 @@ class GradeEntryLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_grade_entry(self, grade_entry_id):
+    def get_grade_entry(self, grade_entry_id): # pragma: no cover
         """Gets the ``GradeEntry`` specified by its ``Id``.
 
         :param grade_entry_id: ``Id`` of the ``GradeEntry``
@@ -1870,7 +1870,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
-    def get_grade_entries_by_ids(self, grade_entry_ids):
+    def get_grade_entries_by_ids(self, grade_entry_ids): # pragma: no cover
         """Gets a ``GradeEntryList`` corresponding to the given ``IdList``.
 
         :param grade_entry_ids: the list of ``Ids`` to retrieve
@@ -1888,7 +1888,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_by_genus_type(self, grade_entry_genus_type):
+    def get_grade_entries_by_genus_type(self, grade_entry_genus_type): # pragma: no cover
         """Gets a ``GradeEntryList`` corresponding to the given grade entry genus ``Type`` which does not include grade entries of genus types derived from the specified ``Type``.
 
         :param grade_entry_genus_type: a grade entry genus type
@@ -1905,7 +1905,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_by_parent_genus_type(self, grade_entry_genus_type):
+    def get_grade_entries_by_parent_genus_type(self, grade_entry_genus_type): # pragma: no cover
         """Gets a ``GradeEntryList`` corresponding to the given grade entry genus ``Type`` and include any additional grade entry with genus types derived from the specified ``Type``.
 
         :param grade_entry_genus_type: a grade entry genus type
@@ -1922,7 +1922,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_by_record_type(self, grade_entry_record_type):
+    def get_grade_entries_by_record_type(self, grade_entry_record_type): # pragma: no cover
         """Gets a ``GradeEntryList`` containing the given grade entry record ``Type``.
 
         :param grade_entry_record_type: a grade entry record type
@@ -1939,7 +1939,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_on_date(self, from_, to):
+    def get_grade_entries_on_date(self, from_, to): # pragma: no cover
         """Gets a ``GradeEntryList`` effective during the entire given date range inclusive but not confined to the date range.
 
         :param from: start of date range
@@ -1959,7 +1959,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_gradebook_column(self, gradebook_column_id):
+    def get_grade_entries_for_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Gets a ``GradeEntryList`` for the gradebook column.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -1976,7 +1976,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_gradebook_column_on_date(self, gradebook_column_id, from_, to):
+    def get_grade_entries_for_gradebook_column_on_date(self, gradebook_column_id, from_, to): # pragma: no cover
         """Gets a ``GradeEntryList`` for the given gradebook column and effective during the entire given date range inclusive but not confined to the date range.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -1998,7 +1998,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_resource(self, resource_id):
+    def get_grade_entries_for_resource(self, resource_id): # pragma: no cover
         """Gets a ``GradeEntryList`` for the given key key resource.
 
         :param resource_id: a key resource ``Id``
@@ -2015,7 +2015,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_resource_on_date(self, resource_id, from_, to):
+    def get_grade_entries_for_resource_on_date(self, resource_id, from_, to): # pragma: no cover
         """Gets a ``GradeEntryList`` for the given key resource and effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: a resource ``Id``
@@ -2037,7 +2037,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_gradebook_column_and_resource(self, gradebook_column_id, resource_id):
+    def get_grade_entries_for_gradebook_column_and_resource(self, gradebook_column_id, resource_id): # pragma: no cover
         """Gets a ``GradeEntryList`` for the gradebook column and key resource.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -2056,7 +2056,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_for_gradebook_column_and_resource_on_date(self, gradebook_column_id, resource_id, from_, to):
+    def get_grade_entries_for_gradebook_column_and_resource_on_date(self, gradebook_column_id, resource_id, from_, to): # pragma: no cover
         """Gets a ``GradeEntryList`` for the given gradebook column, resource, and effective during the entire given date range inclusive but not confined to the date range.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -2080,7 +2080,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries_by_grader(self, resource_id):
+    def get_grade_entries_by_grader(self, resource_id): # pragma: no cover
         """Gets a ``GradeEntryList`` for the given grader.
 
         :param resource_id: a resource ``Id``
@@ -2097,7 +2097,7 @@ class GradeEntryLookupSession:
         return  # osid.grading.GradeEntryList
 
     @abc.abstractmethod
-    def get_grade_entries(self):
+    def get_grade_entries(self): # pragma: no cover
         """Gets all grade entries.
 
         :return: a ``GradeEntryList``
@@ -2138,7 +2138,7 @@ class GradeEntryQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -2153,7 +2153,7 @@ class GradeEntryQuerySession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -2169,7 +2169,7 @@ class GradeEntryQuerySession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_search_grade_entries(self):
+    def can_search_grade_entries(self): # pragma: no cover
         """Tests if this user can perform ``GradeEntry`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -2188,7 +2188,7 @@ class GradeEntryQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include grade entries in gradebooks which
@@ -2202,7 +2202,7 @@ class GradeEntryQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this gradebook only.
@@ -2215,7 +2215,7 @@ class GradeEntryQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_grade_entry_query(self):
+    def get_grade_entry_query(self): # pragma: no cover
         """Gets a grade entry query.
 
         :return: the grade entry query
@@ -2230,7 +2230,7 @@ class GradeEntryQuerySession:
     grade_entry_query = property(fget=get_grade_entry_query)
 
     @abc.abstractmethod
-    def get_grade_entries_by_query(self, grade_entry_query):
+    def get_grade_entries_by_query(self, grade_entry_query): # pragma: no cover
         """Gets a list of entries matching the given grade entry query.
 
         :param grade_entry_query: the grade entry query
@@ -2281,7 +2281,7 @@ class GradeEntrySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_entry_search(self):
+    def get_grade_entry_search(self): # pragma: no cover
         """Gets a grade entry search.
 
         :return: the grade entry search
@@ -2296,7 +2296,7 @@ class GradeEntrySearchSession:
     grade_entry_search = property(fget=get_grade_entry_search)
 
     @abc.abstractmethod
-    def get_grade_entry_search_order(self):
+    def get_grade_entry_search_order(self): # pragma: no cover
         """Gets a grade entry search order.
 
         The ``GradeEntrySearchOrder`` is supplied to a
@@ -2314,7 +2314,7 @@ class GradeEntrySearchSession:
     grade_entry_search_order = property(fget=get_grade_entry_search_order)
 
     @abc.abstractmethod
-    def get_grade_entries_by_search(self, grade_entry_query, grade_entry_search):
+    def get_grade_entries_by_search(self, grade_entry_query, grade_entry_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param grade_entry_query: the grade entry query
@@ -2334,7 +2334,7 @@ class GradeEntrySearchSession:
         return  # osid.grading.GradeEntrySearchResults
 
     @abc.abstractmethod
-    def get_grade_entry_query_from_inspector(self, grade_entry_query_inspector):
+    def get_grade_entry_query_from_inspector(self, grade_entry_query_inspector): # pragma: no cover
         """Gets a grade entry query from an inspector.
 
         The inspector is available from an ``GradeEntrySearchResults``.
@@ -2390,7 +2390,7 @@ class GradeEntryAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -2405,7 +2405,7 @@ class GradeEntryAdminSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -2421,7 +2421,7 @@ class GradeEntryAdminSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_create_grade_entries(self):
+    def can_create_grade_entries(self): # pragma: no cover
         """Tests if this user can create grade entries.
 
         A return of true does not guarantee successful authorization. A
@@ -2440,7 +2440,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_grade_entry_with_record_types(self, grade_entry_record_types):
+    def can_create_grade_entry_with_record_types(self, grade_entry_record_types): # pragma: no cover
         """Tests if this user can create a single ``GradeEntry`` using the desired record types.
 
         While ``GradingManager.getGradeEntryRecordTypes()`` can be used
@@ -2461,7 +2461,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_form_for_create(self, gradebook_column_id, resource_id, grade_entry_record_types):
+    def get_grade_entry_form_for_create(self, gradebook_column_id, resource_id, grade_entry_record_types): # pragma: no cover
         """Gets the grade entry form for creating new grade entries.
 
         A new form should be requested for each create transaction.
@@ -2486,7 +2486,7 @@ class GradeEntryAdminSession:
         return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
-    def create_grade_entry(self, grade_entry_form):
+    def create_grade_entry(self, grade_entry_form): # pragma: no cover
         """Creates a new ``GradeEntry``.
 
         :param grade_entry_form: the form for this ``GradeEntry``
@@ -2506,7 +2506,7 @@ class GradeEntryAdminSession:
         return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
-    def can_overridecalculated_grade_entries(self):
+    def can_overridecalculated_grade_entries(self): # pragma: no cover
         """Tests if this user can override grade entries calculated from another.
 
         A return of true does not guarantee successful authorization. A
@@ -2525,7 +2525,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_form_for_override(self, grade_entry_id, grade_entry_record_types):
+    def get_grade_entry_form_for_override(self, grade_entry_id, grade_entry_record_types): # pragma: no cover
         """Gets the grade entry form for overriding calculated grade entries.
 
         A new form should be requested for each create transaction.
@@ -2549,7 +2549,7 @@ class GradeEntryAdminSession:
         return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
-    def override_calculated_grade_entry(self, grade_entry_form):
+    def override_calculated_grade_entry(self, grade_entry_form): # pragma: no cover
         """Creates a new overriding ``GradeEntry``.
 
         :param grade_entry_form: the form for this ``GradeEntry``
@@ -2569,7 +2569,7 @@ class GradeEntryAdminSession:
         return  # osid.grading.GradeEntry
 
     @abc.abstractmethod
-    def can_update_grade_entries(self):
+    def can_update_grade_entries(self): # pragma: no cover
         """Tests if this user can update grade entries.
 
         A return of true does not guarantee successful authorization. A
@@ -2588,7 +2588,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_form_for_update(self, grade_entry_id):
+    def get_grade_entry_form_for_update(self, grade_entry_id): # pragma: no cover
         """Gets the grade entry form for updating an existing entry.
 
         A new grade entry form should be requested for each update
@@ -2609,7 +2609,7 @@ class GradeEntryAdminSession:
         return  # osid.grading.GradeEntryForm
 
     @abc.abstractmethod
-    def update_grade_entry(self, grade_entry_form):
+    def update_grade_entry(self, grade_entry_form): # pragma: no cover
         """Updates an existing grade entry.
 
         :param grade_entry_form: the form containing the elements to be updated
@@ -2627,7 +2627,7 @@ class GradeEntryAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_grade_entries(self):
+    def can_delete_grade_entries(self): # pragma: no cover
         """Tests if this user can delete grade entries.
 
         A return of true does not guarantee successful authorization. A
@@ -2646,7 +2646,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_grade_entry(self, grade_entry_id):
+    def delete_grade_entry(self, grade_entry_id): # pragma: no cover
         """Deletes the ``GradeEntry`` identified by the given ``Id``.
 
         :param grade_entry_id: the ``Id`` of the ``GradeEntry`` to delete
@@ -2662,7 +2662,7 @@ class GradeEntryAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_grade_entry_aliases(self):
+    def can_manage_grade_entry_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``GradeEntries``.
 
         A return of true does not guarantee successful authorization. A
@@ -2681,7 +2681,7 @@ class GradeEntryAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_grade_entry(self, grade_entry_id, alias_id):
+    def alias_grade_entry(self, grade_entry_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``GradeEntry`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``GradeEntry`` is determined by the
@@ -2719,7 +2719,7 @@ class GradeEntryNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -2734,7 +2734,7 @@ class GradeEntryNotificationSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -2750,7 +2750,7 @@ class GradeEntryNotificationSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_register_for_grade_entry_notifications(self):
+    def can_register_for_grade_entry_notifications(self): # pragma: no cover
         """Tests if this user can register for ``GradeEntry`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2769,7 +2769,7 @@ class GradeEntryNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for grade entries in
@@ -2784,7 +2784,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this gradebook only.
@@ -2797,7 +2797,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_grade_entries(self):
+    def register_for_new_grade_entries(self): # pragma: no cover
         """Register for notifications of new grade entries.
 
         ``GradeEntryReceiver.newGradeEntries()`` is invoked when a new
@@ -2812,7 +2812,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_grade_entries_for_gradebook_column(self, gradebook_column_id):
+    def register_for_new_grade_entries_for_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Registers for notification of a new grade entry for the specified gradebook column.
 
         ``GradeEntryReceiver.newGradeEntries()`` is invoked when a new
@@ -2830,7 +2830,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_grade_entries_for_resource(self, resource_id):
+    def register_for_new_grade_entries_for_resource(self, resource_id): # pragma: no cover
         """Registers for notification of a new grade entry for the specified resource.
 
         ``GradeEntryReceiver.newGradeEntries()`` is invoked when a new
@@ -2848,7 +2848,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_grade_entries_by_grader(self, resource_id):
+    def register_for_new_grade_entries_by_grader(self, resource_id): # pragma: no cover
         """Registers for notification of a new grade entry for the specified grader agent.
 
         ``GradeEntryReceiver.newGradeEntries()`` is invoked when a new
@@ -2866,7 +2866,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_entries(self):
+    def register_for_changed_grade_entries(self): # pragma: no cover
         """Registers for notification of updated grade entries.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when a
@@ -2881,7 +2881,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_entries_for_gradebook_column(self, gradebook_column_id):
+    def register_for_changed_grade_entries_for_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Registers for notification of an updated grade entry for the specified gradebook column.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -2899,7 +2899,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_entries_for_resource(self, resource_id):
+    def register_for_changed_grade_entries_for_resource(self, resource_id): # pragma: no cover
         """Registers for notification of an updated grade entry for the specified key resource.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -2917,7 +2917,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_entries_by_grader(self, resource_id):
+    def register_for_changed_grade_entries_by_grader(self, resource_id): # pragma: no cover
         """Registers for notification of an updated grade entry for the specified grader.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -2935,7 +2935,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_grade_entry(self, grade_entry_id):
+    def register_for_changed_grade_entry(self, grade_entry_id): # pragma: no cover
         """Registers for notification of an updated grade entry.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when the
@@ -2953,7 +2953,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_entries(self):
+    def register_for_deleted_grade_entries(self): # pragma: no cover
         """Registers for notification of deleted grade entries.
 
         ``GradeEntryReceiver.deletedGradeEntries()`` is invoked when a
@@ -2968,7 +2968,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_entries_for_gradebook_column(self, gradebook_column_id):
+    def register_for_deleted_grade_entries_for_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Registers for notification of a deleted grade entry for the specified gradebook column.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -2986,7 +2986,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_entries_for_resource(self, resource_id):
+    def register_for_deleted_grade_entries_for_resource(self, resource_id): # pragma: no cover
         """Registers for notification of a deleted grade entry for the specified key resource.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -3004,7 +3004,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_entries_by_grader(self, resource_id):
+    def register_for_deleted_grade_entries_by_grader(self, resource_id): # pragma: no cover
         """Registers for notification of a deleted grade entry for the specified grader.
 
         ``GradeEntryReceiver.changedGradeEntries()`` is invoked when an
@@ -3022,7 +3022,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_grade_entry(self, grade_entry_id):
+    def register_for_deleted_grade_entry(self, grade_entry_id): # pragma: no cover
         """Registers for notification of a deleted grade entry.
 
         ``GradeEntryReceiver.deletedGradeEntries()`` is invoked when the
@@ -3040,7 +3040,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_grade_entry_notifications(self):
+    def reliable_grade_entry_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -3054,7 +3054,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_grade_entry_notifications(self):
+    def unreliable_grade_entry_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -3068,7 +3068,7 @@ class GradeEntryNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_grade_entry_notification(self, notification_id):
+    def acknowledge_grade_entry_notification(self, notification_id): # pragma: no cover
         """Acknowledge an grade_entry notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3087,7 +3087,7 @@ class GradebookColumnLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -3102,7 +3102,7 @@ class GradebookColumnLookupSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -3118,7 +3118,7 @@ class GradebookColumnLookupSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_lookup_gradebook_columns(self):
+    def can_lookup_gradebook_columns(self): # pragma: no cover
         """Tests if this user can perform ``GradebookColumn`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -3137,7 +3137,7 @@ class GradebookColumnLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_gradebook_column_view(self):
+    def use_comparative_gradebook_column_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3151,7 +3151,7 @@ class GradebookColumnLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_gradebook_column_view(self):
+    def use_plenary_gradebook_column_view(self): # pragma: no cover
         """A complete view of the ``GradebookColumn`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3166,7 +3166,7 @@ class GradebookColumnLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include gradebook columns in gradebooks
@@ -3180,7 +3180,7 @@ class GradebookColumnLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this gradebook only.
@@ -3193,7 +3193,7 @@ class GradebookColumnLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_column(self, gradebook_column_id):
+    def get_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Gets the ``GradebookColumn`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -3217,7 +3217,7 @@ class GradebookColumnLookupSession:
         return  # osid.grading.GradebookColumn
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_ids(self, gradebook_column_ids):
+    def get_gradebook_columns_by_ids(self, gradebook_column_ids): # pragma: no cover
         """Gets a ``GradebookColumnList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the gradebook
@@ -3241,7 +3241,7 @@ class GradebookColumnLookupSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_genus_type(self, gradebook_column_genus_type):
+    def get_gradebook_columns_by_genus_type(self, gradebook_column_genus_type): # pragma: no cover
         """Gets a ``GradebookColumnList`` corresponding to the given gradebook column genus ``Type`` which does not include gradebook columns of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known gradebook
@@ -3263,7 +3263,7 @@ class GradebookColumnLookupSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_parent_genus_type(self, gradebook_column_genus_type):
+    def get_gradebook_columns_by_parent_genus_type(self, gradebook_column_genus_type): # pragma: no cover
         """Gets a ``GradebookColumnList`` corresponding to the given gradebook column genus ``Type`` and include any additional columns with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known gradebook
@@ -3285,7 +3285,7 @@ class GradebookColumnLookupSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_record_type(self, gradebook_column_record_type):
+    def get_gradebook_columns_by_record_type(self, gradebook_column_record_type): # pragma: no cover
         """Gets a ``GradebookColumnList`` containing the given gradebook column record ``Type``.
 
         In plenary mode, the returned list contains all known gradebook
@@ -3307,7 +3307,7 @@ class GradebookColumnLookupSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_columns(self):
+    def get_gradebook_columns(self): # pragma: no cover
         """Gets all gradebook columns.
 
         In plenary mode, the returned list contains all known gradebook
@@ -3328,7 +3328,7 @@ class GradebookColumnLookupSession:
     gradebook_columns = property(fget=get_gradebook_columns)
 
     @abc.abstractmethod
-    def supports_summary(self):
+    def supports_summary(self): # pragma: no cover
         """Tests if a summary entry is available.
 
         :return: ``true`` if a summary entry is available, ``false`` otherwise
@@ -3341,7 +3341,7 @@ class GradebookColumnLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_summary(self, gradebook_column_id):
+    def get_gradebook_column_summary(self, gradebook_column_id): # pragma: no cover
         """Gets the ``GradebookColumnSummary`` for summary results.
 
         :param gradebook_column_id: ``Id`` of the ``GradebookColumn``
@@ -3382,7 +3382,7 @@ class GradebookColumnQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -3397,7 +3397,7 @@ class GradebookColumnQuerySession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -3413,7 +3413,7 @@ class GradebookColumnQuerySession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_search_gradebook_columns(self):
+    def can_search_gradebook_columns(self): # pragma: no cover
         """Tests if this user can perform ``GradebookColumn`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -3432,7 +3432,7 @@ class GradebookColumnQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include gradebook columns in gradebooks
@@ -3446,7 +3446,7 @@ class GradebookColumnQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this gradebook only.
@@ -3459,7 +3459,7 @@ class GradebookColumnQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets a gradebook column query.
 
         :return: the gradebook column
@@ -3474,7 +3474,7 @@ class GradebookColumnQuerySession:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_query(self, gradebook_column_query):
+    def get_gradebook_columns_by_query(self, gradebook_column_query): # pragma: no cover
         """Gets a list of gradebook columns matching the given query.
 
         :param gradebook_column_query: the gradebook column query
@@ -3524,7 +3524,7 @@ class GradebookColumnSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_column_search(self):
+    def get_gradebook_column_search(self): # pragma: no cover
         """Gets a gradebook column search.
 
         :return: the gradebook column search
@@ -3539,7 +3539,7 @@ class GradebookColumnSearchSession:
     gradebook_column_search = property(fget=get_gradebook_column_search)
 
     @abc.abstractmethod
-    def get_gradebook_column_search_order(self):
+    def get_gradebook_column_search_order(self): # pragma: no cover
         """Gets a gradebook column search order.
 
         The ``GradebookColumnSearchOrder`` is supplied to a
@@ -3557,7 +3557,7 @@ class GradebookColumnSearchSession:
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_search(self, gradebook_column_query, gradebook_column_search):
+    def get_gradebook_columns_by_search(self, gradebook_column_query, gradebook_column_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param gradebook_column_query: the gradebook column query
@@ -3577,7 +3577,7 @@ class GradebookColumnSearchSession:
         return  # osid.grading.GradebookColumnSearchResults
 
     @abc.abstractmethod
-    def get_gradebook_column_query_from_inspector(self, gradebook_column_query_inspector):
+    def get_gradebook_column_query_from_inspector(self, gradebook_column_query_inspector): # pragma: no cover
         """Gets a gradebook column query from an inspector.
 
         The inspector is available from an
@@ -3635,7 +3635,7 @@ class GradebookColumnAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -3650,7 +3650,7 @@ class GradebookColumnAdminSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -3666,7 +3666,7 @@ class GradebookColumnAdminSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_create_gradebook_columns(self):
+    def can_create_gradebook_columns(self): # pragma: no cover
         """Tests if this user can create gradebook columns.
 
         A return of true does not guarantee successful authorization. A
@@ -3685,7 +3685,7 @@ class GradebookColumnAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_gradebook_column_with_record_types(self, gradebook_column_record_types):
+    def can_create_gradebook_column_with_record_types(self, gradebook_column_record_types): # pragma: no cover
         """Tests if this user can create a single ``GradebookColumn`` using the desired record types.
 
         While ``GradingManager.getGradebookColumnRecordTypes()`` can be
@@ -3706,7 +3706,7 @@ class GradebookColumnAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_form_for_create(self, gradebook_column_record_types):
+    def get_gradebook_column_form_for_create(self, gradebook_column_record_types): # pragma: no cover
         """Gets the gradebook column form for creating new gradebook columns.
 
         A new form should be requested for each create transaction.
@@ -3726,7 +3726,7 @@ class GradebookColumnAdminSession:
         return  # osid.grading.GradebookColumnForm
 
     @abc.abstractmethod
-    def create_gradebook_column(self, gradebook_column_form):
+    def create_gradebook_column(self, gradebook_column_form): # pragma: no cover
         """Creates a new ``GradebookColumn``.
 
         :param gradebook_column_form: the form for this ``GradebookColumn``
@@ -3746,7 +3746,7 @@ class GradebookColumnAdminSession:
         return  # osid.grading.GradebookColumn
 
     @abc.abstractmethod
-    def can_update_gradebook_columns(self):
+    def can_update_gradebook_columns(self): # pragma: no cover
         """Tests if this user can update gradebook columns.
 
         A return of true does not guarantee successful authorization. A
@@ -3765,7 +3765,7 @@ class GradebookColumnAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_form_for_update(self, gradebook_column_id):
+    def get_gradebook_column_form_for_update(self, gradebook_column_id): # pragma: no cover
         """Gets the gradebook column form for updating an existing gradebook column.
 
         A new gradebook column form should be requested for each update
@@ -3786,7 +3786,7 @@ class GradebookColumnAdminSession:
         return  # osid.grading.GradebookColumnForm
 
     @abc.abstractmethod
-    def update_gradebook_column(self, gradebook_column_form):
+    def update_gradebook_column(self, gradebook_column_form): # pragma: no cover
         """Updates an existing gradebook column.
 
         :param gradebook_column_form: the form containing the elements to be updated
@@ -3804,7 +3804,7 @@ class GradebookColumnAdminSession:
         pass
 
     @abc.abstractmethod
-    def sequence_gradebook_columns(self, gradebook_column_ids):
+    def sequence_gradebook_columns(self, gradebook_column_ids): # pragma: no cover
         """Resequences the gradebook columns.
 
         :param gradebook_column_ids: the ``Ids`` of the ``GradebookColumns``
@@ -3819,7 +3819,7 @@ class GradebookColumnAdminSession:
         pass
 
     @abc.abstractmethod
-    def move_gradebook_column(self, front_gradebook_column_id, back_gradebook_column_id):
+    def move_gradebook_column(self, front_gradebook_column_id, back_gradebook_column_id): # pragma: no cover
         """Moves a gradebook column in front of another.
 
         :param front_gradebook_column_id: the ``Id`` of a ``GradebookColumn``
@@ -3837,7 +3837,7 @@ class GradebookColumnAdminSession:
         pass
 
     @abc.abstractmethod
-    def copy_gradebook_column_entries(self, source_gradebook_column_id, target_gradebook_column_id):
+    def copy_gradebook_column_entries(self, source_gradebook_column_id, target_gradebook_column_id): # pragma: no cover
         """Copies gradebook column entries from one column to another.
 
         If the target grade column grade system differs from the source,
@@ -3859,7 +3859,7 @@ class GradebookColumnAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_gradebook_columns(self):
+    def can_delete_gradebook_columns(self): # pragma: no cover
         """Tests if this user can delete gradebook columns.
 
         A return of true does not guarantee successful authorization. A
@@ -3878,7 +3878,7 @@ class GradebookColumnAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_gradebook_column(self, gradebook_column_id):
+    def delete_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Deletes the ``GradebookColumn`` identified by the given ``Id``.
 
         :param gradebook_column_id: the ``Id`` of the ``GradebookColumn`` to delete
@@ -3894,7 +3894,7 @@ class GradebookColumnAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_gradebook_column_aliases(self):
+    def can_manage_gradebook_column_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``GradebookColumns``.
 
         A return of true does not guarantee successful authorization. A
@@ -3913,7 +3913,7 @@ class GradebookColumnAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_gradebook_column(self, gradebook_column_id, alias_id):
+    def alias_gradebook_column(self, gradebook_column_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``GradebookColumn`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``GradebookColumn`` is determined by
@@ -3951,7 +3951,7 @@ class GradebookColumnNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -3966,7 +3966,7 @@ class GradebookColumnNotificationSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -3982,7 +3982,7 @@ class GradebookColumnNotificationSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_register_for_gradebook_column_notifications(self):
+    def can_register_for_gradebook_column_notifications(self): # pragma: no cover
         """Tests if this user can register for ``GradebookColumn`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -4001,7 +4001,7 @@ class GradebookColumnNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_gradebook_view(self):
+    def use_federated_gradebook_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for gradebook
@@ -4016,7 +4016,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_gradebook_view(self):
+    def use_isolated_gradebook_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this gradebook only.
@@ -4029,7 +4029,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_gradebook_columns(self):
+    def register_for_new_gradebook_columns(self): # pragma: no cover
         """Register for notifications of new gradebook columns.
 
         ``GradebookColumnReceiver.newGradebookColumns()`` is invoked
@@ -4044,7 +4044,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_gradebook_columns(self):
+    def register_for_changed_gradebook_columns(self): # pragma: no cover
         """Registers for notification of updated gradebook columns.
 
         ``GradebookColumnReceiver.changedGradebookColumns()`` is invoked
@@ -4059,7 +4059,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_gradebook_column(self, gradebook_column_id):
+    def register_for_changed_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Registers for notification of an updated gradebook column.
 
         ``GradebookColumnReceiver.changedGradebookColumns()`` is invoked
@@ -4077,7 +4077,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebook_columns(self):
+    def register_for_deleted_gradebook_columns(self): # pragma: no cover
         """Registers for notification of deleted gradebook columns.
 
         ``GradebookColumnReceiver.deletedGradebookColumns()`` is invoked
@@ -4092,7 +4092,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebook_column(self, gradebook_column_id):
+    def register_for_deleted_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Registers for notification of a deleted gradebook column.
 
         ``GradebookColumnReceiver.deletedGradebookColumns()`` is invoked
@@ -4110,7 +4110,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_gradebook_column_notifications(self):
+    def reliable_gradebook_column_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4124,7 +4124,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_gradebook_column_notifications(self):
+    def unreliable_gradebook_column_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4138,7 +4138,7 @@ class GradebookColumnNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_gradebook_column_notification(self, notification_id):
+    def acknowledge_gradebook_column_notification(self, notification_id): # pragma: no cover
         """Acknowledge an gradebook_column notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4169,7 +4169,7 @@ class GradebookColumnGradebookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_gradebook_view(self):
+    def use_comparative_gradebook_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4183,7 +4183,7 @@ class GradebookColumnGradebookSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_gradebook_view(self):
+    def use_plenary_gradebook_view(self): # pragma: no cover
         """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4198,7 +4198,7 @@ class GradebookColumnGradebookSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_gradebook_column_gradebook_mappings(self):
+    def can_lookup_gradebook_column_gradebook_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of gradebook/column mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4217,7 +4217,7 @@ class GradebookColumnGradebookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_ids_by_gradebook(self, gradebook_id):
+    def get_gradebook_column_ids_by_gradebook(self, gradebook_id): # pragma: no cover
         """Gets the list of ``GradebookColumn``  ``Ids`` associated with a ``Gradebook``.
 
         :param gradebook_id: ``Id`` of the ``Gradebook``
@@ -4235,7 +4235,7 @@ class GradebookColumnGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_gradebook(self, gradebook_id):
+    def get_gradebook_columns_by_gradebook(self, gradebook_id): # pragma: no cover
         """Gets the list of gradebook columns associated with a ``Gradebook``.
 
         :param gradebook_id: ``Id`` of the ``Gradebook``
@@ -4253,7 +4253,7 @@ class GradebookColumnGradebookSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids):
+    def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids): # pragma: no cover
         """Gets the list of ``GradebookColumn Ids`` corresponding to a list of ``Gradebooks``.
 
         :param gradebook_ids: list of gradebook ``Ids``
@@ -4270,7 +4270,7 @@ class GradebookColumnGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_gradebook_columns_by_gradebooks(self, gradebook_ids):
+    def get_gradebook_columns_by_gradebooks(self, gradebook_ids): # pragma: no cover
         """Gets the list of gradebook columns corresponding to a list of ``Gradebooks``.
 
         :param gradebook_ids: list of gradebook ``Ids``
@@ -4287,7 +4287,7 @@ class GradebookColumnGradebookSession:
         return  # osid.grading.GradebookColumnList
 
     @abc.abstractmethod
-    def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id):
+    def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradebookColumn``.
 
         :param gradebook_column_id: ``Id`` of a ``GradebookColumn``
@@ -4305,7 +4305,7 @@ class GradebookColumnGradebookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_gradebooks_by_gradebook_column(self, gradebook_column_id):
+    def get_gradebooks_by_gradebook_column(self, gradebook_column_id): # pragma: no cover
         """Gets the list of ``Gradebooks`` mapped to a ``GradebookColumn``.
 
         :param gradebook_column_id: ``Id`` of a ``GradebookColumn``
@@ -4339,7 +4339,7 @@ class GradebookColumnGradebookAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_gradebook_columns(self):
+    def can_assign_gradebook_columns(self): # pragma: no cover
         """Tests if this user can alter gradebook column/gradebook mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4358,7 +4358,7 @@ class GradebookColumnGradebookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_gradebook_columns_to_gradebook(self, gradebook_id):
+    def can_assign_gradebook_columns_to_gradebook(self, gradebook_id): # pragma: no cover
         """Tests if this user can alter gradebook column/gradebook mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4379,7 +4379,7 @@ class GradebookColumnGradebookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_gradebook_ids(self, gradebook_id):
+    def get_assignable_gradebook_ids(self, gradebook_id): # pragma: no cover
         """Gets a list of gradebook ``Ids`` including and under the given gradebook node in which any gradebook column can be assigned.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -4395,7 +4395,7 @@ class GradebookColumnGradebookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id):
+    def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id): # pragma: no cover
         """Gets a list of gradebooks including and under the given gradebook node in which a specific gradebook column can be assigned.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook``
@@ -4413,7 +4413,7 @@ class GradebookColumnGradebookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id):
+    def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id): # pragma: no cover
         """Adds an existing ``GradebookColumn`` to a ``Gradebook``.
 
         :param gradebook_column_id: the ``Id`` of the ``GradebookColumn``
@@ -4432,7 +4432,7 @@ class GradebookColumnGradebookAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_gradebook_column_from_gradebook(self, gradebook_column_id, gradebook_id):
+    def unassign_gradebook_column_from_gradebook(self, gradebook_column_id, gradebook_id): # pragma: no cover
         """Removes a ``GradebookColumn`` from a ``Gradebook``.
 
         :param gradebook_column_id: the ``Id`` of the ``GradebookColumn``
@@ -4468,7 +4468,7 @@ class GradebookColumnSmartGradebookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_id(self):
+    def get_gradebook_id(self): # pragma: no cover
         """Gets the ``Gradebook``  ``Id`` associated with this session.
 
         :return: the ``Gradebook Id`` associated with this session
@@ -4483,7 +4483,7 @@ class GradebookColumnSmartGradebookSession:
     gradebook_id = property(fget=get_gradebook_id)
 
     @abc.abstractmethod
-    def get_gradebook(self):
+    def get_gradebook(self): # pragma: no cover
         """Gets the ``Gradebook`` associated with this session.
 
         :return: the ``Gradebook`` associated with this session
@@ -4499,7 +4499,7 @@ class GradebookColumnSmartGradebookSession:
     gradebook = property(fget=get_gradebook)
 
     @abc.abstractmethod
-    def can_manage_smart_gradebooks(self):
+    def can_manage_smart_gradebooks(self): # pragma: no cover
         """Tests if this user can manage smart gradebooks.
 
         A return of true does not guarantee successful authorization. A
@@ -4518,7 +4518,7 @@ class GradebookColumnSmartGradebookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets a gradebook column query.
 
         :return: the gradebook column query
@@ -4533,7 +4533,7 @@ class GradebookColumnSmartGradebookSession:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def get_gradebook_column_search_order(self):
+    def get_gradebook_column_search_order(self): # pragma: no cover
         """Gets a gradebook column search order.
 
         :return: the gradebook column search order
@@ -4548,7 +4548,7 @@ class GradebookColumnSmartGradebookSession:
     gradebook_column_search_order = property(fget=get_gradebook_column_search_order)
 
     @abc.abstractmethod
-    def apply_gradebook_column_query(self, gradebook_column_query):
+    def apply_gradebook_column_query(self, gradebook_column_query): # pragma: no cover
         """Applies a gradebook column query to this gradebook.
 
         :param gradebook_column_query: the gradebook column query
@@ -4564,7 +4564,7 @@ class GradebookColumnSmartGradebookSession:
         pass
 
     @abc.abstractmethod
-    def inspect_gradebook_column_query(self):
+    def inspect_gradebook_column_query(self): # pragma: no cover
         """Gets a gradebook column query inspector for this gradebook.
 
         :return: the gradebook column query inspector
@@ -4578,7 +4578,7 @@ class GradebookColumnSmartGradebookSession:
         return  # osid.grading.GradebookColumnQueryInspector
 
     @abc.abstractmethod
-    def apply_gradebook_column_sequencing(self, gradebook_column_search_order):
+    def apply_gradebook_column_sequencing(self, gradebook_column_search_order): # pragma: no cover
         """Applies a gradebook column search order to this gradebook.
 
         :param gradebook_column_search_order: the gradebook column search order
@@ -4594,7 +4594,7 @@ class GradebookColumnSmartGradebookSession:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_column_query_from_inspector(self, gradebook_column_query_inspector):
+    def get_gradebook_column_query_from_inspector(self, gradebook_column_query_inspector): # pragma: no cover
         """Gets a gradebook column query from an inspector.
 
         :param gradebook_column_query_inspector: a gradebook column query inspector
@@ -4638,7 +4638,7 @@ class GradebookLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_gradebooks(self):
+    def can_lookup_gradebooks(self): # pragma: no cover
         """Tests if this user can perform ``Gradebook`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4657,7 +4657,7 @@ class GradebookLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_gradebook_view(self):
+    def use_comparative_gradebook_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4671,7 +4671,7 @@ class GradebookLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_gradebook_view(self):
+    def use_plenary_gradebook_view(self): # pragma: no cover
         """A complete view of the ``Gradebook`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4686,7 +4686,7 @@ class GradebookLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_gradebook(self, gradebook_id):
+    def get_gradebook(self, gradebook_id): # pragma: no cover
         """Gets the ``Gradebook`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -4710,7 +4710,7 @@ class GradebookLookupSession:
         return  # osid.grading.Gradebook
 
     @abc.abstractmethod
-    def get_gradebooks_by_ids(self, gradebook_ids):
+    def get_gradebooks_by_ids(self, gradebook_ids): # pragma: no cover
         """Gets a ``GradebookList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -4736,7 +4736,7 @@ class GradebookLookupSession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def get_gradebooks_by_genus_type(self, gradebook_genus_type):
+    def get_gradebooks_by_genus_type(self, gradebook_genus_type): # pragma: no cover
         """Gets a ``GradebookList`` corresponding to the given gradebook genus ``Type`` which does not include gradebooks of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known gradebooks
@@ -4757,7 +4757,7 @@ class GradebookLookupSession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def get_gradebooks_by_parent_genus_type(self, gradebook_genus_type):
+    def get_gradebooks_by_parent_genus_type(self, gradebook_genus_type): # pragma: no cover
         """Gets a ``GradebookList`` corresponding to the given gradebook genus ``Type`` and include any additional gradebooks with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known gradebooks
@@ -4778,7 +4778,7 @@ class GradebookLookupSession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def get_gradebooks_by_record_type(self, gradebook_record_type):
+    def get_gradebooks_by_record_type(self, gradebook_record_type): # pragma: no cover
         """Gets a ``GradebookList`` containing the given gradebook record ``Type``.
 
         In plenary mode, the returned list contains all known gradebooks
@@ -4799,7 +4799,7 @@ class GradebookLookupSession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def get_gradebooks_by_provider(self, resource_id):
+    def get_gradebooks_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``GradebookList`` for the given provider ````.
 
         In plenary mode, the returned list contains all known gradebooks
@@ -4820,7 +4820,7 @@ class GradebookLookupSession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def get_gradebooks(self):
+    def get_gradebooks(self): # pragma: no cover
         """Gets all ``Gradebooks``.
 
         In plenary mode, the returned list contains all known gradebooks
@@ -4853,7 +4853,7 @@ class GradebookQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_gradebooks(self):
+    def can_search_gradebooks(self): # pragma: no cover
         """Tests if this user can perform ``Gradebook`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -4872,7 +4872,7 @@ class GradebookQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets a gradebook query.
 
         :return: a gradebook query
@@ -4887,7 +4887,7 @@ class GradebookQuerySession:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def get_gradebooks_by_query(self, gradebook_query):
+    def get_gradebooks_by_query(self, gradebook_query): # pragma: no cover
         """Gets a list of ``Gradebook`` objects matching the given gradebook query.
 
         :param gradebook_query: the gradebook query
@@ -4928,7 +4928,7 @@ class GradebookSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_search(self):
+    def get_gradebook_search(self): # pragma: no cover
         """Gets a gradebook search.
 
         :return: a gradebook search
@@ -4943,7 +4943,7 @@ class GradebookSearchSession:
     gradebook_search = property(fget=get_gradebook_search)
 
     @abc.abstractmethod
-    def get_gradebook_search_order(self):
+    def get_gradebook_search_order(self): # pragma: no cover
         """Gets a gradebook search order.
 
         The ``GradebookSearchOrder`` is supplied to a
@@ -4961,7 +4961,7 @@ class GradebookSearchSession:
     gradebook_search_order = property(fget=get_gradebook_search_order)
 
     @abc.abstractmethod
-    def get_gradebooks_by_search(self, gradebook_query, gradebook_search):
+    def get_gradebooks_by_search(self, gradebook_query, gradebook_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param gradebook_query: the gradebook query
@@ -4981,7 +4981,7 @@ class GradebookSearchSession:
         return  # osid.grading.GradebookSearchResults
 
     @abc.abstractmethod
-    def get_gradebook_query_from_inspector(self, gradebook_query_inspector):
+    def get_gradebook_query_from_inspector(self, gradebook_query_inspector): # pragma: no cover
         """Gets a gradebook query from an inspector.
 
         The inspector is available from an ``GradenookSearchResults``.
@@ -5033,7 +5033,7 @@ class GradebookAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_gradebooks(self):
+    def can_create_gradebooks(self): # pragma: no cover
         """Tests if this user can create ``Gradebooks``.
 
         A return of true does not guarantee successful authorization. A
@@ -5052,7 +5052,7 @@ class GradebookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_gradebook_with_record_types(self, gradebook_record_types):
+    def can_create_gradebook_with_record_types(self, gradebook_record_types): # pragma: no cover
         """Tests if this user can create a single ``Gradebook`` using the desired record types.
 
         While ``GradingManager.getGradebookRecordTypes()`` can be used
@@ -5073,7 +5073,7 @@ class GradebookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_form_for_create(self, gradebook_record_types):
+    def get_gradebook_form_for_create(self, gradebook_record_types): # pragma: no cover
         """Gets the gradebook form for creating new gradebooks.
 
         A new form should be requested for each create transaction.
@@ -5093,7 +5093,7 @@ class GradebookAdminSession:
         return  # osid.grading.GradebookForm
 
     @abc.abstractmethod
-    def create_gradebook(self, gradebook_form):
+    def create_gradebook(self, gradebook_form): # pragma: no cover
         """Creates a new ``Gradebook``.
 
         :param gradebook_form: the form for this ``Gradebook``
@@ -5113,7 +5113,7 @@ class GradebookAdminSession:
         return  # osid.grading.Gradebook
 
     @abc.abstractmethod
-    def can_update_gradebooks(self):
+    def can_update_gradebooks(self): # pragma: no cover
         """Tests if this user can update ``Gradebooks``.
 
         A return of true does not guarantee successful authorization. A
@@ -5132,7 +5132,7 @@ class GradebookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_form_for_update(self, gradebook_id):
+    def get_gradebook_form_for_update(self, gradebook_id): # pragma: no cover
         """Gets the gradebook form for updating an existing gradebook.
 
         A new gradebook form should be requested for each update
@@ -5153,7 +5153,7 @@ class GradebookAdminSession:
         return  # osid.grading.GradebookForm
 
     @abc.abstractmethod
-    def update_gradebook(self, gradebook_form):
+    def update_gradebook(self, gradebook_form): # pragma: no cover
         """Updates an existing gradebook.
 
         :param gradebook_form: the form containing the elements to be updated
@@ -5171,7 +5171,7 @@ class GradebookAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_gradebooks(self):
+    def can_delete_gradebooks(self): # pragma: no cover
         """Tests if this user can delete gradebooks.
 
         A return of true does not guarantee successful authorization. A
@@ -5190,7 +5190,7 @@ class GradebookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_gradebook(self, gradebook_id):
+    def delete_gradebook(self, gradebook_id): # pragma: no cover
         """Deletes a ``Gradebook``.
 
         :param gradebook_id: the ``Id`` of the ``Gradebook`` to remove
@@ -5206,7 +5206,7 @@ class GradebookAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_gradebook_aliases(self):
+    def can_manage_gradebook_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Gradebooks``.
 
         A return of true does not guarantee successful authorization. A
@@ -5225,7 +5225,7 @@ class GradebookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_gradebook(self, gradebook_id, alias_id):
+    def alias_gradebook(self, gradebook_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Gradebook`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Gradebook`` is determined by the
@@ -5260,7 +5260,7 @@ class GradebookNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_gradebook_notifications(self):
+    def can_register_for_gradebook_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Gradebook`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -5279,7 +5279,7 @@ class GradebookNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def register_for_new_gradebooks(self):
+    def register_for_new_gradebooks(self): # pragma: no cover
         """Register for notifications of new gradebooks.
 
         ``GradebookReceiver.newGradebooks()`` is invoked when a new
@@ -5294,7 +5294,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_gradebook_ancestors(self, gradebook_id):
+    def register_for_new_gradebook_ancestors(self, gradebook_id): # pragma: no cover
         """Registers for notification if an ancestor is added to the specified gradebook in the gradebook hierarchy.
 
         ``GradebookReceiver.newGradebookAncestor()`` is invoked when the
@@ -5312,7 +5312,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_gradebook_descendants(self, gradebook_id):
+    def register_for_new_gradebook_descendants(self, gradebook_id): # pragma: no cover
         """Registers for notification if a descendant is added to the specified gradebook in the gradebook hierarchy.
 
         ``GradebookReceiver.newGradebookDescendant()`` is invoked when
@@ -5330,7 +5330,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_gradebooks(self):
+    def register_for_changed_gradebooks(self): # pragma: no cover
         """Registers for notification of updated gradebooks.
 
         ``GradebookReceiver.changedGradebooks()`` is invoked when a
@@ -5345,7 +5345,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_gradebook(self, gradebook_id):
+    def register_for_changed_gradebook(self, gradebook_id): # pragma: no cover
         """Registers for notification of an updated gradebook.
 
         ``GradebookReceiver.changedGradebooks()`` is invoked when the
@@ -5363,7 +5363,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebooks(self):
+    def register_for_deleted_gradebooks(self): # pragma: no cover
         """Registers for notification of deleted gradebooks.
 
         ``GradebookReceiver.deletedGradebooks()`` is invoked when a
@@ -5378,7 +5378,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebook(self, gradebook_id):
+    def register_for_deleted_gradebook(self, gradebook_id): # pragma: no cover
         """Registers for notification of a deleted gradebook.
 
         ``GradebookReceiver.deletedGradebooks()`` is invoked when the
@@ -5396,7 +5396,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebook_ancestors(self, gradebook_id):
+    def register_for_deleted_gradebook_ancestors(self, gradebook_id): # pragma: no cover
         """Registers for notification if an ancestor is removed from the specified gradebook in the gradebook hierarchy.
 
         ``GradebookReceiver.deletedGradebookAncestor()`` is invoked when
@@ -5414,7 +5414,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_gradebook_descendants(self, gradebook_id):
+    def register_for_deleted_gradebook_descendants(self, gradebook_id): # pragma: no cover
         """Registers for notification if a descendant is removed from fthe specified gradebook in the calndar hierarchy.
 
         ``GradebookReceiver.deletedGradebookDescednant()`` is invoked
@@ -5433,7 +5433,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_gradebook_notifications(self):
+    def reliable_gradebook_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5447,7 +5447,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_gradebook_notifications(self):
+    def unreliable_gradebook_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5461,7 +5461,7 @@ class GradebookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_gradebook_notification(self, notification_id):
+    def acknowledge_gradebook_notification(self, notification_id): # pragma: no cover
         """Acknowledge an gradebook notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5504,7 +5504,7 @@ class GradebookHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_id(self):
+    def get_gradebook_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -5519,7 +5519,7 @@ class GradebookHierarchySession:
     gradebook_hierarchy_id = property(fget=get_gradebook_hierarchy_id)
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy(self):
+    def get_gradebook_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -5535,7 +5535,7 @@ class GradebookHierarchySession:
     gradebook_hierarchy = property(fget=get_gradebook_hierarchy)
 
     @abc.abstractmethod
-    def can_access_gradebook_hierarchy(self):
+    def can_access_gradebook_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -5554,7 +5554,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_gradebook_view(self):
+    def use_comparative_gradebook_view(self): # pragma: no cover
         """The returns from the gradebook methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5568,7 +5568,7 @@ class GradebookHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_gradebook_view(self):
+    def use_plenary_gradebook_view(self): # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5583,7 +5583,7 @@ class GradebookHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_gradebook_ids(self):
+    def get_root_gradebook_ids(self): # pragma: no cover
         """Gets the root gradebook ``Ids`` in this hierarchy.
 
         :return: the root gradebook ``Ids``
@@ -5599,7 +5599,7 @@ class GradebookHierarchySession:
     root_gradebook_ids = property(fget=get_root_gradebook_ids)
 
     @abc.abstractmethod
-    def get_root_gradebooks(self):
+    def get_root_gradebooks(self): # pragma: no cover
         """Gets the root gradebooks in this gradebook hierarchy.
 
         :return: the root gradebooks
@@ -5615,7 +5615,7 @@ class GradebookHierarchySession:
     root_gradebooks = property(fget=get_root_gradebooks)
 
     @abc.abstractmethod
-    def has_parent_gradebooks(self, gradebook_id):
+    def has_parent_gradebooks(self, gradebook_id): # pragma: no cover
         """Tests if the ``Gradebook`` has any parents.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5633,7 +5633,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_gradebook(self, id_, gradebook_id):
+    def is_parent_of_gradebook(self, id_, gradebook_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a gradebook.
 
         :param id: an ``Id``
@@ -5654,7 +5654,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_gradebook_ids(self, gradebook_id):
+    def get_parent_gradebook_ids(self, gradebook_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5672,7 +5672,7 @@ class GradebookHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_gradebooks(self, gradebook_id):
+    def get_parent_gradebooks(self, gradebook_id): # pragma: no cover
         """Gets the parents of the given gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5690,7 +5690,7 @@ class GradebookHierarchySession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def is_ancestor_of_gradebook(self, id_, gradebook_id):
+    def is_ancestor_of_gradebook(self, id_, gradebook_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a gradebook.
 
         :param id: an ``Id``
@@ -5711,7 +5711,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_gradebooks(self, gradebook_id):
+    def has_child_gradebooks(self, gradebook_id): # pragma: no cover
         """Tests if a gradebook has any children.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5729,7 +5729,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_gradebook(self, id_, gradebook_id):
+    def is_child_of_gradebook(self, id_, gradebook_id): # pragma: no cover
         """Tests if a gradebook is a direct child of another.
 
         :param id: an ``Id``
@@ -5750,7 +5750,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_gradebook_ids(self, gradebook_id):
+    def get_child_gradebook_ids(self, gradebook_id): # pragma: no cover
         """Gets the child ``Ids`` of the given gradebook.
 
         :param gradebook_id: the ``Id`` to query
@@ -5768,7 +5768,7 @@ class GradebookHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_gradebooks(self, gradebook_id):
+    def get_child_gradebooks(self, gradebook_id): # pragma: no cover
         """Gets the children of the given gradebook.
 
         :param gradebook_id: the ``Id`` to query
@@ -5786,7 +5786,7 @@ class GradebookHierarchySession:
         return  # osid.grading.GradebookList
 
     @abc.abstractmethod
-    def is_descendant_of_gradebook(self, id_, gradebook_id):
+    def is_descendant_of_gradebook(self, id_, gradebook_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of a gradebook.
 
         :param id: an ``Id``
@@ -5807,7 +5807,7 @@ class GradebookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_node_ids(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_gradebook_node_ids(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given gradebook.
 
         :param gradebook_id: the ``Id`` to query
@@ -5831,7 +5831,7 @@ class GradebookHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_gradebook_nodes(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_gradebook_nodes(self, gradebook_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given gradebook.
 
         :param gradebook_id: the ``Id`` to query
@@ -5864,7 +5864,7 @@ class GradebookHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy_id(self):
+    def get_gradebook_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -5879,7 +5879,7 @@ class GradebookHierarchyDesignSession:
     gradebook_hierarchy_id = property(fget=get_gradebook_hierarchy_id)
 
     @abc.abstractmethod
-    def get_gradebook_hierarchy(self):
+    def get_gradebook_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -5895,7 +5895,7 @@ class GradebookHierarchyDesignSession:
     gradebook_hierarchy = property(fget=get_gradebook_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_gradebook_hierarchy(self):
+    def can_modify_gradebook_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -5914,7 +5914,7 @@ class GradebookHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_gradebook(self, gradebook_id):
+    def add_root_gradebook(self, gradebook_id): # pragma: no cover
         """Adds a root gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5931,7 +5931,7 @@ class GradebookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_gradebook(self, gradebook_id):
+    def remove_root_gradebook(self, gradebook_id): # pragma: no cover
         """Removes a root gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5947,7 +5947,7 @@ class GradebookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_gradebook(self, gradebook_id, child_id):
+    def add_child_gradebook(self, gradebook_id, child_id): # pragma: no cover
         """Adds a child to a gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook
@@ -5966,7 +5966,7 @@ class GradebookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_gradebook(self, gradebook_id, child_id):
+    def remove_child_gradebook(self, gradebook_id, child_id): # pragma: no cover
         """Removes a child from a gradebook.
 
         :param gradebook_id: the ``Id`` of a gradebook

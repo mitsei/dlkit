@@ -26,7 +26,7 @@ class OsidReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def up(self):
+    def up(self): # pragma: no cover
         """The callback for notifications that the notification bus is operational.
 
 
@@ -37,7 +37,7 @@ class OsidReceiver:
         pass
 
     @abc.abstractmethod
-    def down(self):
+    def down(self): # pragma: no cover
         """The callback for notifications that the notification bus is not operating.
 
 

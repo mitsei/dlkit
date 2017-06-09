@@ -21,7 +21,7 @@ class AuthorizationProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization(self):
+    def supports_authorization(self): # pragma: no cover
         """Tests for the availability of an authorization service which is the basic service for checking authorizations.
 
         :return: ``true`` if authorization is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_lookup(self):
+    def supports_authorization_lookup(self): # pragma: no cover
         """Tests if an authorization lookup service is supported.
 
         An authorization lookup service defines methods to access
@@ -63,7 +63,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_query(self):
+    def supports_authorization_query(self): # pragma: no cover
         """Tests if an authorization query service is supported.
 
         :return: ``true`` if authorization query is supported, ``false`` otherwise
@@ -76,7 +76,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_search(self):
+    def supports_authorization_search(self): # pragma: no cover
         """Tests if an authorization search service is supported.
 
         :return: ``true`` if authorization search is supported, ``false`` otherwise
@@ -89,7 +89,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_admin(self):
+    def supports_authorization_admin(self): # pragma: no cover
         """Tests if an authorization administrative service is supported.
 
         :return: ``true`` if authorization admin is supported, ``false`` otherwise
@@ -102,7 +102,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_notification(self):
+    def supports_authorization_notification(self): # pragma: no cover
         """Tests if authorization notification is supported.
 
         Messages may be sent when authorizations are created, modified,
@@ -118,7 +118,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_vault(self):
+    def supports_authorization_vault(self): # pragma: no cover
         """Tests if an authorization to vault lookup session is available.
 
         :return: ``true`` if authorization vault lookup session is supported, ``false`` otherwise
@@ -131,7 +131,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_vault_assignment(self):
+    def supports_authorization_vault_assignment(self): # pragma: no cover
         """Tests if an authorization to vault assignment session is available.
 
         :return: ``true`` if authorization vault assignment is supported, ``false`` otherwise
@@ -144,7 +144,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_smart_vault(self):
+    def supports_authorization_smart_vault(self): # pragma: no cover
         """Tests if an authorization smart vaulting session is available.
 
         :return: ``true`` if authorization smart vaulting is supported, ``false`` otherwise
@@ -157,7 +157,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_lookup(self):
+    def supports_function_lookup(self): # pragma: no cover
         """Tests if a function lookup service is supported.
 
         A function lookup service defines methods to access
@@ -173,7 +173,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_query(self):
+    def supports_function_query(self): # pragma: no cover
         """Tests if a function query service is supported.
 
         :return: ``true`` if function query is supported, ``false`` otherwise
@@ -186,7 +186,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_search(self):
+    def supports_function_search(self): # pragma: no cover
         """Tests if a function search service is supported.
 
         :return: ``true`` if function search is supported, ``false`` otherwise
@@ -199,7 +199,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_admin(self):
+    def supports_function_admin(self): # pragma: no cover
         """Tests if a function administrative service is supported.
 
         :return: ``true`` if function admin is supported, ``false`` otherwise
@@ -212,7 +212,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_notification(self):
+    def supports_function_notification(self): # pragma: no cover
         """Tests if function notification is supported.
 
         Messages may be sent when functions are created, modified, or
@@ -228,7 +228,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_vault(self):
+    def supports_function_vault(self): # pragma: no cover
         """Tests if a function to vault lookup session is available.
 
         :return: ``true`` if function vault lookup session is supported, ``false`` otherwise
@@ -241,7 +241,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_vault_assignment(self):
+    def supports_function_vault_assignment(self): # pragma: no cover
         """Tests if a function to vault assignment session is available.
 
         :return: ``true`` if function vault assignment is supported, ``false`` otherwise
@@ -254,7 +254,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_function_smart_vault(self):
+    def supports_function_smart_vault(self): # pragma: no cover
         """Tests if a function smart vaulting session is available.
 
         :return: ``true`` if function smart vaulting is supported, ``false`` otherwise
@@ -267,7 +267,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_lookup(self):
+    def supports_qualifier_lookup(self): # pragma: no cover
         """Tests if a qualifier lookup service is supported.
 
         A function lookup service defines methods to access
@@ -283,7 +283,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_query(self):
+    def supports_qualifier_query(self): # pragma: no cover
         """Tests if a qualifier query service is supported.
 
         :return: ``true`` if qualifier query is supported, ``false`` otherwise
@@ -296,7 +296,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_search(self):
+    def supports_qualifier_search(self): # pragma: no cover
         """Tests if a qualifier search service is supported.
 
         :return: ``true`` if qualifier search is supported, ``false`` otherwise
@@ -309,7 +309,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_admin(self):
+    def supports_qualifier_admin(self): # pragma: no cover
         """Tests if a qualifier administrative service is supported.
 
         :return: ``true`` if qualifier admin is supported, ``false`` otherwise
@@ -322,7 +322,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_notification(self):
+    def supports_qualifier_notification(self): # pragma: no cover
         """Tests if qualifier notification is supported.
 
         Messages may be sent when qualifiers are created, modified, or
@@ -338,7 +338,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_hierarchy(self):
+    def supports_qualifier_hierarchy(self): # pragma: no cover
         """Tests if a qualifier hierarchy traversal is supported.
 
         :return: ``true`` if a qualifier hierarchy traversal is supported, ``false`` otherwise
@@ -351,7 +351,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_hierarchy_design(self):
+    def supports_qualifier_hierarchy_design(self): # pragma: no cover
         """Tests if qualifier hierarchy design is supported.
 
         :return: ``true`` if a qualifier hierarchy design is supported, ``false`` otherwise
@@ -364,7 +364,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_vault(self):
+    def supports_qualifier_vault(self): # pragma: no cover
         """Tests if a qualifier to vault lookup session is available.
 
         :return: ``true`` if qualifier vault lookup session is supported, ``false`` otherwise
@@ -377,7 +377,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_vault_assignment(self):
+    def supports_qualifier_vault_assignment(self): # pragma: no cover
         """Tests if a qualifier to vault assignment session is available.
 
         :return: ``true`` if qualifier vault assignment is supported, ``false`` otherwise
@@ -390,7 +390,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_qualifier_smart_vault(self):
+    def supports_qualifier_smart_vault(self): # pragma: no cover
         """Tests if a qualifier smart vaulting session is available.
 
         :return: ``true`` if qualifier smart vault session is supported, ``false`` otherwise
@@ -403,7 +403,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_lookup(self):
+    def supports_vault_lookup(self): # pragma: no cover
         """Tests if a vault lookup service is supported.
 
         A vault lookup service defines methods to access authorization
@@ -419,7 +419,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_query(self):
+    def supports_vault_query(self): # pragma: no cover
         """Tests if a vault query service is supported.
 
         :return: ``true`` if vault query is supported, ``false`` otherwise
@@ -432,7 +432,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_search(self):
+    def supports_vault_search(self): # pragma: no cover
         """Tests if a vault search service is supported.
 
         :return: ``true`` if vault search is supported, ``false`` otherwise
@@ -445,7 +445,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_admin(self):
+    def supports_vault_admin(self): # pragma: no cover
         """Tests if a vault administrative service is supported.
 
         :return: ``true`` if vault admin is supported, ``false`` otherwise
@@ -458,7 +458,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_notification(self):
+    def supports_vault_notification(self): # pragma: no cover
         """Tests if vault notification is supported.
 
         Messages may be sent when vaults are created, modified, or
@@ -474,7 +474,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_hierarchy(self):
+    def supports_vault_hierarchy(self): # pragma: no cover
         """Tests if a vault hierarchy traversal is supported.
 
         :return: ``true`` if a vault hierarchy traversal is supported, ``false`` otherwise
@@ -487,7 +487,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_vault_hierarchy_design(self):
+    def supports_vault_hierarchy_design(self): # pragma: no cover
         """Tests if vault hierarchy design is supported.
 
         :return: ``true`` if a function hierarchy design is supported, ``false`` otherwise
@@ -500,7 +500,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_batch(self):
+    def supports_authorization_batch(self): # pragma: no cover
         """Tests if an authorization batch service is supported.
 
         :return: ``true`` if an authorization batch service design is supported, ``false`` otherwise
@@ -513,7 +513,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_authorization_rules(self):
+    def supports_authorization_rules(self): # pragma: no cover
         """Tests if an authorization rules service is supported.
 
         :return: ``true`` if an authorization rules service design is supported, ``false`` otherwise
@@ -526,7 +526,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_record_types(self):
+    def get_authorization_record_types(self): # pragma: no cover
         """Gets the supported ``Authorization`` record types.
 
         :return: a list containing the supported authorization record types
@@ -541,7 +541,7 @@ class AuthorizationProfile:
     authorization_record_types = property(fget=get_authorization_record_types)
 
     @abc.abstractmethod
-    def supports_authorization_record_type(self, authorization_record_type):
+    def supports_authorization_record_type(self, authorization_record_type): # pragma: no cover
         """Tests if the given authorization record type is supported.
 
         :param authorization_record_type: a ``Type`` indicating an authorization record type
@@ -556,7 +556,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_search_record_types(self):
+    def get_authorization_search_record_types(self): # pragma: no cover
         """Gets the supported ``Authorization`` search record types.
 
         :return: a list containing the supported authorization search record types
@@ -571,7 +571,7 @@ class AuthorizationProfile:
     authorization_search_record_types = property(fget=get_authorization_search_record_types)
 
     @abc.abstractmethod
-    def supports_authorization_search_record_type(self, authorization_search_record_type):
+    def supports_authorization_search_record_type(self, authorization_search_record_type): # pragma: no cover
         """Tests if the given authorization search record type is supported.
 
         :param authorization_search_record_type: a ``Type`` indicating an authorization search record type
@@ -586,7 +586,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_record_types(self):
+    def get_function_record_types(self): # pragma: no cover
         """Gets the supported ``Function`` record types.
 
         :return: a list containing the supported ``Function`` record types
@@ -601,7 +601,7 @@ class AuthorizationProfile:
     function_record_types = property(fget=get_function_record_types)
 
     @abc.abstractmethod
-    def supports_function_record_type(self, function_record_type):
+    def supports_function_record_type(self, function_record_type): # pragma: no cover
         """Tests if the given ``Function`` record type is supported.
 
         :param function_record_type: a ``Type`` indicating a ``Function`` record type
@@ -616,7 +616,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_function_search_record_types(self):
+    def get_function_search_record_types(self): # pragma: no cover
         """Gets the supported ``Function`` search record types.
 
         :return: a list containing the supported ``Function`` search record types
@@ -631,7 +631,7 @@ class AuthorizationProfile:
     function_search_record_types = property(fget=get_function_search_record_types)
 
     @abc.abstractmethod
-    def supports_function_search_record_type(self, function_search_record_type):
+    def supports_function_search_record_type(self, function_search_record_type): # pragma: no cover
         """Tests if the given ``Function`` search record type is supported.
 
         :param function_search_record_type: a ``Type`` indicating a ``Function`` search record type
@@ -646,7 +646,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_record_types(self):
+    def get_qualifier_record_types(self): # pragma: no cover
         """Gets the supported ``Qualifier`` record types.
 
         :return: a list containing the supported ``Qualifier`` record types
@@ -661,7 +661,7 @@ class AuthorizationProfile:
     qualifier_record_types = property(fget=get_qualifier_record_types)
 
     @abc.abstractmethod
-    def supports_qualifier_record_type(self, qualifier_record_type):
+    def supports_qualifier_record_type(self, qualifier_record_type): # pragma: no cover
         """Tests if the given ``Qualifier`` record type is supported.
 
         :param qualifier_record_type: a ``Type`` indicating a ``Qualifier`` record type
@@ -676,7 +676,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_qualifier_search_record_types(self):
+    def get_qualifier_search_record_types(self): # pragma: no cover
         """Gets the supported ``Qualifier`` search record types.
 
         :return: a list containing the supported ``Qualifier`` search record types
@@ -691,7 +691,7 @@ class AuthorizationProfile:
     qualifier_search_record_types = property(fget=get_qualifier_search_record_types)
 
     @abc.abstractmethod
-    def supports_qualifier_search_record_type(self, qualifier_search_record_type):
+    def supports_qualifier_search_record_type(self, qualifier_search_record_type): # pragma: no cover
         """Tests if the given ``Qualifier`` search record type is supported.
 
         :param qualifier_search_record_type: a ``Type`` indicating a ``Qualifier`` search record type
@@ -706,7 +706,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_record_types(self):
+    def get_vault_record_types(self): # pragma: no cover
         """Gets the supported ``Vault`` record types.
 
         :return: a list containing the supported ``Vault`` record types
@@ -721,7 +721,7 @@ class AuthorizationProfile:
     vault_record_types = property(fget=get_vault_record_types)
 
     @abc.abstractmethod
-    def supports_vault_record_type(self, vault_record_type):
+    def supports_vault_record_type(self, vault_record_type): # pragma: no cover
         """Tests if the given ``Vault`` record type is supported.
 
         :param vault_record_type: a ``Type`` indicating a ``Vault`` type
@@ -736,7 +736,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_vault_search_record_types(self):
+    def get_vault_search_record_types(self): # pragma: no cover
         """Gets the supported vault search record types.
 
         :return: a list containing the supported ``Vault`` search record types
@@ -751,7 +751,7 @@ class AuthorizationProfile:
     vault_search_record_types = property(fget=get_vault_search_record_types)
 
     @abc.abstractmethod
-    def supports_vault_search_record_type(self, vault_search_record_type):
+    def supports_vault_search_record_type(self, vault_search_record_type): # pragma: no cover
         """Tests if the given vault search record type is supported.
 
         :param vault_search_record_type: a ``Type`` indicating a ``Vault`` search record type
@@ -766,7 +766,7 @@ class AuthorizationProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authorization_condition_record_types(self):
+    def get_authorization_condition_record_types(self): # pragma: no cover
         """Gets the supported ``AuthorizationCondition`` record types.
 
         :return: a list containing the supported ``AuthorizationCondition`` record types
@@ -781,7 +781,7 @@ class AuthorizationProfile:
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
 
     @abc.abstractmethod
-    def supports_authorization_condition_record_type(self, authorization_condition_record_type):
+    def supports_authorization_condition_record_type(self, authorization_condition_record_type): # pragma: no cover
         """Tests if the given ``AuthorizationCondition`` record type is supported.
 
         :param authorization_condition_record_type: a ``Type`` indicating an ``AuthorizationCondition`` record type
@@ -868,7 +868,7 @@ class AuthorizationManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorization_session(self):
+    def get_authorization_session(self): # pragma: no cover
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
 
         :return: an authorization session for this service
@@ -885,7 +885,7 @@ class AuthorizationManager:
     authorization_session = property(fget=get_authorization_session)
 
     @abc.abstractmethod
-    def get_authorization_session_for_vault(self, vault_id):
+    def get_authorization_session_for_vault(self, vault_id): # pragma: no cover
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -905,7 +905,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
-    def get_authorization_lookup_session(self):
+    def get_authorization_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization lookup service.
 
         :return: an ``AuthorizationLookupSession``
@@ -922,7 +922,7 @@ class AuthorizationManager:
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
     @abc.abstractmethod
-    def get_authorization_lookup_session_for_vault(self, vault_id):
+    def get_authorization_lookup_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -942,7 +942,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
-    def get_authorization_query_session(self):
+    def get_authorization_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization query service.
 
         :return: an ``AuthorizationQuerySession``
@@ -959,7 +959,7 @@ class AuthorizationManager:
     authorization_query_session = property(fget=get_authorization_query_session)
 
     @abc.abstractmethod
-    def get_authorization_query_session_for_vault(self, vault_id):
+    def get_authorization_query_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -979,7 +979,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
-    def get_authorization_search_session(self):
+    def get_authorization_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization search service.
 
         :return: an ``AuthorizationSearchSession``
@@ -996,7 +996,7 @@ class AuthorizationManager:
     authorization_search_session = property(fget=get_authorization_search_session)
 
     @abc.abstractmethod
-    def get_authorization_search_session_for_vault(self, vault_id):
+    def get_authorization_search_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1016,7 +1016,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
-    def get_authorization_admin_session(self):
+    def get_authorization_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization administration service.
 
         :return: an ``AuthorizationAdminSession``
@@ -1033,7 +1033,7 @@ class AuthorizationManager:
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
     @abc.abstractmethod
-    def get_authorization_admin_session_for_vault(self, vault_id):
+    def get_authorization_admin_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1053,7 +1053,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
-    def get_authorization_notification_session(self, authorization_receiver):
+    def get_authorization_notification_session(self, authorization_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to authorization changes.
 
         :param authorization_receiver: the authorization receiver
@@ -1071,7 +1071,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
-    def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id):
+    def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization notification service for the given vault.
 
         :param authorization_receiver: the authorization receiver
@@ -1093,7 +1093,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
-    def get_authorization_vault_session(self):
+    def get_authorization_vault_session(self): # pragma: no cover
         """Gets the session for retrieving authorization to vault mappings.
 
         :return: an ``AuthorizationVaultSession``
@@ -1110,7 +1110,7 @@ class AuthorizationManager:
     authorization_vault_session = property(fget=get_authorization_vault_session)
 
     @abc.abstractmethod
-    def get_authorization_vault_assignment_session(self):
+    def get_authorization_vault_assignment_session(self): # pragma: no cover
         """Gets the session for assigning authorizations to vault mappings.
 
         :return: a ``AuthorizationVaultAssignmentSession``
@@ -1127,7 +1127,7 @@ class AuthorizationManager:
     authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
 
     @abc.abstractmethod
-    def get_authorization_smart_vault_session(self, vault_id):
+    def get_authorization_smart_vault_session(self, vault_id): # pragma: no cover
         """Gets the session for managing dynamic authorization vaults.
 
         :param vault_id: the ``Id`` of the vault
@@ -1146,7 +1146,7 @@ class AuthorizationManager:
         return  # osid.authorization.AuthorizationSmartVaultSession
 
     @abc.abstractmethod
-    def get_function_lookup_session(self):
+    def get_function_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function lookup service.
 
         :return: a ``FunctionLookupSession``
@@ -1163,7 +1163,7 @@ class AuthorizationManager:
     function_lookup_session = property(fget=get_function_lookup_session)
 
     @abc.abstractmethod
-    def get_function_lookup_session_for_vault(self, vault_id):
+    def get_function_lookup_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1183,7 +1183,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
-    def get_function_query_session(self):
+    def get_function_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function query service.
 
         :return: a ``FunctionQuerySession``
@@ -1200,7 +1200,7 @@ class AuthorizationManager:
     function_query_session = property(fget=get_function_query_session)
 
     @abc.abstractmethod
-    def get_function_query_session_for_vault(self, vault_id):
+    def get_function_query_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1220,7 +1220,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
-    def get_function_search_session(self):
+    def get_function_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function search service.
 
         :return: a ``FunctionSearchSession``
@@ -1237,7 +1237,7 @@ class AuthorizationManager:
     function_search_session = property(fget=get_function_search_session)
 
     @abc.abstractmethod
-    def get_function_search_session_for_vault(self, vault_id):
+    def get_function_search_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1257,7 +1257,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
-    def get_function_admin_session(self):
+    def get_function_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function administration service.
 
         :return: a ``FunctionAdminSession``
@@ -1274,7 +1274,7 @@ class AuthorizationManager:
     function_admin_session = property(fget=get_function_admin_session)
 
     @abc.abstractmethod
-    def get_function_admin_session_for_vault(self, vault_id):
+    def get_function_admin_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1294,7 +1294,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
-    def get_function_notification_session(self, function_receiver):
+    def get_function_notification_session(self, function_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to function changes.
 
         :param function_receiver: the function receiver
@@ -1312,7 +1312,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
-    def get_function_notification_session_for_vault(self, function_receiver, vault_id):
+    def get_function_notification_session_for_vault(self, function_receiver, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function notification service for the given vault.
 
         :param function_receiver: the function receiver
@@ -1334,7 +1334,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
-    def get_function_vault_session(self):
+    def get_function_vault_session(self): # pragma: no cover
         """Gets the session for retrieving function to vault mappings.
 
         :return: a ``FunctionVaultSession``
@@ -1351,7 +1351,7 @@ class AuthorizationManager:
     function_vault_session = property(fget=get_function_vault_session)
 
     @abc.abstractmethod
-    def get_function_vault_assignment_session(self):
+    def get_function_vault_assignment_session(self): # pragma: no cover
         """Gets the session for assigning function to vault mappings.
 
         :return: a ``FunctionVaultAssignmentSession``
@@ -1368,7 +1368,7 @@ class AuthorizationManager:
     function_vault_assignment_session = property(fget=get_function_vault_assignment_session)
 
     @abc.abstractmethod
-    def get_function_smart_vault_session(self, vault_id):
+    def get_function_smart_vault_session(self, vault_id): # pragma: no cover
         """Gets the session associated with the function smart vault for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1387,7 +1387,7 @@ class AuthorizationManager:
         return  # osid.authorization.FunctionSmartVaultSession
 
     @abc.abstractmethod
-    def get_qualifier_lookup_session(self):
+    def get_qualifier_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier lookup service.
 
         :return: a ``QualifierLookupSession``
@@ -1404,7 +1404,7 @@ class AuthorizationManager:
     qualifier_lookup_session = property(fget=get_qualifier_lookup_session)
 
     @abc.abstractmethod
-    def get_qualifier_lookup_session_for_vault(self, vault_id):
+    def get_qualifier_lookup_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1424,7 +1424,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
-    def get_qualifier_query_session(self):
+    def get_qualifier_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier query service.
 
         :return: a ``QualifierQuerySession``
@@ -1441,7 +1441,7 @@ class AuthorizationManager:
     qualifier_query_session = property(fget=get_qualifier_query_session)
 
     @abc.abstractmethod
-    def get_qualifier_query_session_for_vault(self, vault_id):
+    def get_qualifier_query_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1461,7 +1461,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
-    def get_qualifier_search_session(self):
+    def get_qualifier_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier search service.
 
         :return: a ``QualifierSearchSession``
@@ -1478,7 +1478,7 @@ class AuthorizationManager:
     qualifier_search_session = property(fget=get_qualifier_search_session)
 
     @abc.abstractmethod
-    def get_qualifier_search_session_for_vault(self, vault_id):
+    def get_qualifier_search_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1498,7 +1498,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
-    def get_qualifier_admin_session(self):
+    def get_qualifier_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier administration service.
 
         :return: a ``QualifierAdminSession``
@@ -1515,7 +1515,7 @@ class AuthorizationManager:
     qualifier_admin_session = property(fget=get_qualifier_admin_session)
 
     @abc.abstractmethod
-    def get_qualifier_admin_session_for_vault(self, vault_id):
+    def get_qualifier_admin_session_for_vault(self, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1535,7 +1535,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
-    def get_qualifier_notification_session(self, qualifier_receiver):
+    def get_qualifier_notification_session(self, qualifier_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to qualifier changes.
 
         :param qualifier_receiver: the qualifier receiver
@@ -1553,7 +1553,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
-    def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id):
+    def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier notification service for the given vault.
 
         :param qualifier_receiver: the qualifier receiver
@@ -1575,7 +1575,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id):
+    def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier hierarchy traversal service.
 
         The authorization service uses distinct hierarchies that can be
@@ -1597,7 +1597,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierHierarchySession
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id):
+    def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier hierarchy design service.
 
         :param qualifier_hierarchy_id: the ``Id`` of a qualifier hierarchy
@@ -1616,7 +1616,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_qualifier_vault_session(self):
+    def get_qualifier_vault_session(self): # pragma: no cover
         """Gets the session for retrieving qualifier to vault mappings.
 
         :return: a ``QualifierVaultSession``
@@ -1633,7 +1633,7 @@ class AuthorizationManager:
     qualifier_vault_session = property(fget=get_qualifier_vault_session)
 
     @abc.abstractmethod
-    def get_qualifier_vault_assignment_session(self):
+    def get_qualifier_vault_assignment_session(self): # pragma: no cover
         """Gets the session for assigning qualifier to vault mappings.
 
         :return: a ``QualifierVaultAssignmentSession``
@@ -1650,7 +1650,7 @@ class AuthorizationManager:
     qualifier_vault_assignment_session = property(fget=get_qualifier_vault_assignment_session)
 
     @abc.abstractmethod
-    def get_qualifier_smart_vault_session(self, vault_id):
+    def get_qualifier_smart_vault_session(self, vault_id): # pragma: no cover
         """Gets the session associated with the qualifier smart vault for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1669,7 +1669,7 @@ class AuthorizationManager:
         return  # osid.authorization.QualifierSmartVaultSession
 
     @abc.abstractmethod
-    def get_vault_lookup_session(self):
+    def get_vault_lookup_session(self): # pragma: no cover
         """Gets the OsidSession associated with the vault lookup service.
 
         :return: a ``VaultLookupSession``
@@ -1686,7 +1686,7 @@ class AuthorizationManager:
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
     @abc.abstractmethod
-    def get_vault_query_session(self):
+    def get_vault_query_session(self): # pragma: no cover
         """Gets the OsidSession associated with the vault query service.
 
         :return: a ``VaultQuerySession``
@@ -1703,7 +1703,7 @@ class AuthorizationManager:
     vault_query_session = property(fget=get_vault_query_session)
 
     @abc.abstractmethod
-    def get_vault_search_session(self):
+    def get_vault_search_session(self): # pragma: no cover
         """Gets the OsidSession associated with the vault search service.
 
         :return: a ``VaultSearchSession``
@@ -1720,7 +1720,7 @@ class AuthorizationManager:
     vault_search_session = property(fget=get_vault_search_session)
 
     @abc.abstractmethod
-    def get_vault_admin_session(self):
+    def get_vault_admin_session(self): # pragma: no cover
         """Gets the OsidSession associated with the vault administration service.
 
         :return: a ``VaultAdminSession``
@@ -1737,7 +1737,7 @@ class AuthorizationManager:
     vault_admin_session = property(fget=get_vault_admin_session)
 
     @abc.abstractmethod
-    def get_vault_notification_session(self, vaultreceiver):
+    def get_vault_notification_session(self, vaultreceiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to vault service changes.
 
         :param vaultreceiver: the vault receiver
@@ -1755,7 +1755,7 @@ class AuthorizationManager:
         return  # osid.authorization.VaultNotificationSession
 
     @abc.abstractmethod
-    def get_vault_hierarchy_session(self):
+    def get_vault_hierarchy_session(self): # pragma: no cover
         """Gets the session traversing vault hierarchies.
 
         :return: a ``VaultHierarchySession``
@@ -1772,7 +1772,7 @@ class AuthorizationManager:
     vault_hierarchy_session = property(fget=get_vault_hierarchy_session)
 
     @abc.abstractmethod
-    def get_vault_hierarchy_design_session(self):
+    def get_vault_hierarchy_design_session(self): # pragma: no cover
         """Gets the session designing vault hierarchies.
 
         :return: a ``VaultHierarchyDesignSession``
@@ -1789,7 +1789,7 @@ class AuthorizationManager:
     vault_hierarchy_design_session = property(fget=get_vault_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_authorization_batch_manager(self):
+    def get_authorization_batch_manager(self): # pragma: no cover
         """Gets an ``AuthorizationBatchManager``.
 
         :return: an ``AuthorizationBatchManager``
@@ -1806,7 +1806,7 @@ class AuthorizationManager:
     authorization_batch_manager = property(fget=get_authorization_batch_manager)
 
     @abc.abstractmethod
-    def get_authorization_rules_manager(self):
+    def get_authorization_rules_manager(self): # pragma: no cover
         """Gets an ``AuthorizationRulesManager``.
 
         :return: an ``AuthorizationRulesManager``
@@ -1894,7 +1894,7 @@ class AuthorizationProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorization_session(self, proxy):
+    def get_authorization_session(self, proxy): # pragma: no cover
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
 
         :param proxy: a proxy
@@ -1912,7 +1912,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
-    def get_authorization_session_for_vault(self, vault_id, proxy):
+    def get_authorization_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1934,7 +1934,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationSession
 
     @abc.abstractmethod
-    def get_authorization_lookup_session(self, proxy):
+    def get_authorization_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization lookup service.
 
         :param proxy: a proxy
@@ -1952,7 +1952,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
-    def get_authorization_lookup_session_for_vault(self, vault_id, proxy):
+    def get_authorization_lookup_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -1974,7 +1974,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationLookupSession
 
     @abc.abstractmethod
-    def get_authorization_query_session(self, proxy):
+    def get_authorization_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization query service.
 
         :param proxy: a proxy
@@ -1992,7 +1992,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
-    def get_authorization_query_session_for_vault(self, vault_id, proxy):
+    def get_authorization_query_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2014,7 +2014,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationQuerySession
 
     @abc.abstractmethod
-    def get_authorization_search_session(self, proxy):
+    def get_authorization_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization search service.
 
         :param proxy: a proxy
@@ -2032,7 +2032,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
-    def get_authorization_search_session_for_vault(self, vault_id, proxy):
+    def get_authorization_search_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2054,7 +2054,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationSearchSession
 
     @abc.abstractmethod
-    def get_authorization_admin_session(self, proxy):
+    def get_authorization_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization administration service.
 
         :param proxy: a proxy
@@ -2072,7 +2072,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
-    def get_authorization_admin_session_for_vault(self, vault_id, proxy):
+    def get_authorization_admin_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2094,7 +2094,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationAdminSession
 
     @abc.abstractmethod
-    def get_authorization_notification_session(self, authorization_receiver, proxy):
+    def get_authorization_notification_session(self, authorization_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to authorization changes.
 
         :param authorization_receiver: the authorization receiver
@@ -2114,7 +2114,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
-    def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id, proxy):
+    def get_authorization_notification_session_for_vault(self, authorization_receiver, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the authorization notification service for the given vault.
 
         :param authorization_receiver: the authorization receiver
@@ -2138,7 +2138,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationNotificationSession
 
     @abc.abstractmethod
-    def get_authorization_vault_session(self, proxy):
+    def get_authorization_vault_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving authorization to vault mappings.
 
         :param proxy: a proxy
@@ -2156,7 +2156,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationVaultSession
 
     @abc.abstractmethod
-    def get_authorization_vault_assignment_session(self, proxy):
+    def get_authorization_vault_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning authorization to vault mappings.
 
         :param proxy: a proxy
@@ -2174,7 +2174,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationVaultAssignmentSession
 
     @abc.abstractmethod
-    def get_authorization_smart_vault_session(self, vault_id, proxy):
+    def get_authorization_smart_vault_session(self, vault_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic authorization vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2195,7 +2195,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.AuthorizationSmartVaultSession
 
     @abc.abstractmethod
-    def get_function_lookup_session(self, proxy):
+    def get_function_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function lookup service.
 
         :param proxy: a proxy
@@ -2213,7 +2213,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
-    def get_function_lookup_session_for_vault(self, vault_id, proxy):
+    def get_function_lookup_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2235,7 +2235,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionLookupSession
 
     @abc.abstractmethod
-    def get_function_query_session(self, proxy):
+    def get_function_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function query service.
 
         :param proxy: a proxy
@@ -2253,7 +2253,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
-    def get_function_query_session_for_vault(self, vault_id, proxy):
+    def get_function_query_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2275,7 +2275,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionQuerySession
 
     @abc.abstractmethod
-    def get_function_search_session(self, proxy):
+    def get_function_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function search service.
 
         :param proxy: a proxy
@@ -2293,7 +2293,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
-    def get_function_search_session_for_vault(self, vault_id, proxy):
+    def get_function_search_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2315,7 +2315,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionSearchSession
 
     @abc.abstractmethod
-    def get_function_admin_session(self, proxy):
+    def get_function_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function administration service.
 
         :param proxy: a proxy
@@ -2333,7 +2333,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
-    def get_function_admin_session_for_vault(self, vault_id, proxy):
+    def get_function_admin_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2355,7 +2355,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionAdminSession
 
     @abc.abstractmethod
-    def get_function_notification_session(self, function_receiver, proxy):
+    def get_function_notification_session(self, function_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to function changes.
 
         :param function_receiver: the function receiver
@@ -2375,7 +2375,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
-    def get_function_notification_session_for_vault(self, function_receiver, vault_id, proxy):
+    def get_function_notification_session_for_vault(self, function_receiver, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the function notification service for the given vault.
 
         :param function_receiver: the function receiver
@@ -2399,7 +2399,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionNotificationSession
 
     @abc.abstractmethod
-    def get_function_vault_session(self, proxy):
+    def get_function_vault_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving function to vault mappings.
 
         :param proxy: a proxy
@@ -2417,7 +2417,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionVaultSession
 
     @abc.abstractmethod
-    def get_function_vault_assignment_session(self, proxy):
+    def get_function_vault_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning function to vault mappings.
 
         :param proxy: a proxy
@@ -2435,7 +2435,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionVaultAssignmentSession
 
     @abc.abstractmethod
-    def get_function_smart_vault_session(self, vault_id, proxy):
+    def get_function_smart_vault_session(self, vault_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic function vaults for the given vault.
 
         :param vault_id: the ``Id`` of a vault
@@ -2456,7 +2456,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.FunctionSmartVaultSession
 
     @abc.abstractmethod
-    def get_qualifier_lookup_session(self, proxy):
+    def get_qualifier_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier lookup service.
 
         :param proxy: a proxy
@@ -2474,7 +2474,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
-    def get_qualifier_lookup_session_for_vault(self, vault_id, proxy):
+    def get_qualifier_lookup_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier lookup service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2496,7 +2496,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierLookupSession
 
     @abc.abstractmethod
-    def get_qualifier_query_session(self, proxy):
+    def get_qualifier_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier query service.
 
         :param proxy: a proxy
@@ -2514,7 +2514,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
-    def get_qualifier_query_session_for_vault(self, vault_id, proxy):
+    def get_qualifier_query_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier query service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2536,7 +2536,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierQuerySession
 
     @abc.abstractmethod
-    def get_qualifier_search_session(self, proxy):
+    def get_qualifier_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier search service.
 
         :param proxy: a proxy
@@ -2554,7 +2554,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
-    def get_qualifier_search_session_for_vault(self, vault_id, proxy):
+    def get_qualifier_search_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier search service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2576,7 +2576,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierSearchSession
 
     @abc.abstractmethod
-    def get_qualifier_admin_session(self, proxy):
+    def get_qualifier_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier administration service.
 
         :param proxy: a proxy
@@ -2594,7 +2594,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
-    def get_qualifier_admin_session_for_vault(self, vault_id, proxy):
+    def get_qualifier_admin_session_for_vault(self, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier admin service for the given vault.
 
         :param vault_id: the ``Id`` of the vault
@@ -2616,7 +2616,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierAdminSession
 
     @abc.abstractmethod
-    def get_qualifier_notification_session(self, qualifier_receiver, proxy):
+    def get_qualifier_notification_session(self, qualifier_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to qualifier changes.
 
         :param qualifier_receiver: the qualifier receiver
@@ -2636,7 +2636,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
-    def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id, proxy):
+    def get_qualifier_notification_session_for_vault(self, qualifier_receiver, vault_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier notification service for the given vault.
 
         :param qualifier_receiver: the qualifier receiver
@@ -2660,7 +2660,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierNotificationSession
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id, proxy):
+    def get_qualifier_hierarchy_session(self, qualifier_hierarchy_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier hierarchy traversal service.
 
         The authorization service uses distinct hierarchies that can be
@@ -2684,7 +2684,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierHierarchySession
 
     @abc.abstractmethod
-    def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id, proxy):
+    def get_qualifier_hierarchy_design_session(self, qualifier_hierarchy_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the qualifier hierarchy design service.
 
         :param qualifier_hierarchy_id: the ``Id`` of a qualifier hierarchy
@@ -2705,7 +2705,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_qualifier_vault_session(self, proxy):
+    def get_qualifier_vault_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving qualifier to vault mappings.
 
         :param proxy: a proxy
@@ -2723,7 +2723,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierVaultSession
 
     @abc.abstractmethod
-    def get_qualifier_vault_assignment_session(self, proxy):
+    def get_qualifier_vault_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning qualifier to vault mappings.
 
         :param proxy: a proxy
@@ -2741,7 +2741,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierVaultSession
 
     @abc.abstractmethod
-    def get_qualifier_smart_vault_session(self, vault_id, proxy):
+    def get_qualifier_smart_vault_session(self, vault_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic qualifier vaults for the given vault.
 
         :param vault_id: the ``Id`` of a vault
@@ -2762,7 +2762,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.QualifierSmartVaultSession
 
     @abc.abstractmethod
-    def get_vault_lookup_session(self, proxy):
+    def get_vault_lookup_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the vault lookup service.
 
         :param proxy: a proxy
@@ -2780,7 +2780,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultLookupSession
 
     @abc.abstractmethod
-    def get_vault_query_session(self, proxy):
+    def get_vault_query_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the vault query service.
 
         :param proxy: a proxy
@@ -2798,7 +2798,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultQuerySession
 
     @abc.abstractmethod
-    def get_vault_search_session(self, proxy):
+    def get_vault_search_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the vault search service.
 
         :param proxy: a proxy
@@ -2816,7 +2816,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultSearchSession
 
     @abc.abstractmethod
-    def get_vault_admin_session(self, proxy):
+    def get_vault_admin_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the vault administration service.
 
         :param proxy: a proxy
@@ -2834,7 +2834,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultAdminSession
 
     @abc.abstractmethod
-    def get_vault_notification_session(self, vault_receiver, proxy):
+    def get_vault_notification_session(self, vault_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to vault service changes.
 
         :param vault_receiver: the vault receiver
@@ -2854,7 +2854,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultNotificationSession
 
     @abc.abstractmethod
-    def get_vault_hierarchy_session(self, proxy):
+    def get_vault_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the session traversing vault hierarchies.
 
         :param proxy: a proxy
@@ -2872,7 +2872,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultHierarchySession
 
     @abc.abstractmethod
-    def get_vault_hierarchy_design_session(self, proxy):
+    def get_vault_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the session designing vault hierarchies.
 
         :param proxy: a proxy
@@ -2890,7 +2890,7 @@ class AuthorizationProxyManager:
         return  # osid.authorization.VaultHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_authorization_batch_proxy_manager(self):
+    def get_authorization_batch_proxy_manager(self): # pragma: no cover
         """Gets an ``AuthorizationBatchProxyManager``.
 
         :return: an ``AuthorizationBatchProxyManager``
@@ -2907,7 +2907,7 @@ class AuthorizationProxyManager:
     authorization_batch_proxy_manager = property(fget=get_authorization_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_authorization_rules_proxy_manager(self):
+    def get_authorization_rules_proxy_manager(self): # pragma: no cover
         """Gets an ``AuthorizationRulesProxyManager``.
 
         :return: an ``AuthorizationRulesProxyManager``

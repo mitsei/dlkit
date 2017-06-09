@@ -26,7 +26,7 @@ class RelationshipQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_source_id(self, peer, match):
+    def match_source_id(self, peer, match): # pragma: no cover
         """Matches a relationship peer.
 
         :param peer: peer ``Id`` to match
@@ -41,7 +41,7 @@ class RelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_source_id_terms(self):
+    def clear_source_id_terms(self): # pragma: no cover
         """Clears the peer ``Id`` terms.
 
 
@@ -54,7 +54,7 @@ class RelationshipQuery:
     source_id_terms = property(fdel=clear_source_id_terms)
 
     @abc.abstractmethod
-    def match_destination_id(self, peer, match):
+    def match_destination_id(self, peer, match): # pragma: no cover
         """Matches the other relationship peer.
 
         :param peer: peer ``Id`` to match
@@ -69,7 +69,7 @@ class RelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_destination_id_terms(self):
+    def clear_destination_id_terms(self): # pragma: no cover
         """Clears the other peer ``Id`` terms.
 
 
@@ -82,7 +82,7 @@ class RelationshipQuery:
     destination_id_terms = property(fdel=clear_destination_id_terms)
 
     @abc.abstractmethod
-    def match_same_peer_id(self, match):
+    def match_same_peer_id(self, match): # pragma: no cover
         """Matches circular relationships to the same peer.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -95,7 +95,7 @@ class RelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_same_peer_id_terms(self):
+    def clear_same_peer_id_terms(self): # pragma: no cover
         """Clears the same peer ``Id`` terms.
 
 
@@ -108,7 +108,7 @@ class RelationshipQuery:
     same_peer_id_terms = property(fdel=clear_same_peer_id_terms)
 
     @abc.abstractmethod
-    def match_family_id(self, family_id, match):
+    def match_family_id(self, family_id, match): # pragma: no cover
         """Sets the family ``Id`` for this query.
 
         :param family_id: a family ``Id``
@@ -123,7 +123,7 @@ class RelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_family_id_terms(self):
+    def clear_family_id_terms(self): # pragma: no cover
         """Clears the family ``Id`` terms.
 
 
@@ -136,7 +136,7 @@ class RelationshipQuery:
     family_id_terms = property(fdel=clear_family_id_terms)
 
     @abc.abstractmethod
-    def supports_family_query(self):
+    def supports_family_query(self): # pragma: no cover
         """Tests if a ``FamilyQuery`` is available.
 
         :return: ``true`` if a family query is available, ``false`` otherwise
@@ -149,7 +149,7 @@ class RelationshipQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_query(self):
+    def get_family_query(self): # pragma: no cover
         """Gets the query for a family.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -167,7 +167,7 @@ class RelationshipQuery:
     family_query = property(fget=get_family_query)
 
     @abc.abstractmethod
-    def clear_family_terms(self):
+    def clear_family_terms(self): # pragma: no cover
         """Clears the family terms.
 
 
@@ -180,7 +180,7 @@ class RelationshipQuery:
     family_terms = property(fdel=clear_family_terms)
 
     @abc.abstractmethod
-    def get_relationship_query_record(self, relationship_record_type):
+    def get_relationship_query_record(self, relationship_record_type): # pragma: no cover
         """Gets the relationship query record corresponding to the given ``Relationship`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.
@@ -210,7 +210,7 @@ class FamilyQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_relationship_id(self, relationship_id, match):
+    def match_relationship_id(self, relationship_id, match): # pragma: no cover
         """Matches a relationship ``Id``.
 
         :param relationship_id: a relationship ``Id``
@@ -225,7 +225,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_relationship_id_terms(self):
+    def clear_relationship_id_terms(self): # pragma: no cover
         """Clears the relationship ``Id`` terms.
 
 
@@ -238,7 +238,7 @@ class FamilyQuery:
     relationship_id_terms = property(fdel=clear_relationship_id_terms)
 
     @abc.abstractmethod
-    def supports_relationship_query(self):
+    def supports_relationship_query(self): # pragma: no cover
         """Tests if a relationship query is available.
 
         :return: ``true`` if a relationship query is available, ``false`` otherwise
@@ -251,7 +251,7 @@ class FamilyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_query(self):
+    def get_relationship_query(self): # pragma: no cover
         """Gets the query interface for a relationship.
 
         :return: the relationship query
@@ -267,7 +267,7 @@ class FamilyQuery:
     relationship_query = property(fget=get_relationship_query)
 
     @abc.abstractmethod
-    def match_any_relationship(self, match):
+    def match_any_relationship(self, match): # pragma: no cover
         """Matches families with any relationship.
 
         :param match: ``true`` to match families with any relationship, ``false`` to match families with no relationship
@@ -280,7 +280,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_relationship_terms(self):
+    def clear_relationship_terms(self): # pragma: no cover
         """Clears the relationship terms.
 
 
@@ -293,7 +293,7 @@ class FamilyQuery:
     relationship_terms = property(fdel=clear_relationship_terms)
 
     @abc.abstractmethod
-    def match_ancestor_family_id(self, family_id, match):
+    def match_ancestor_family_id(self, family_id, match): # pragma: no cover
         """Sets the family ``Id`` for this query to match families that have the specified family as an ancestor.
 
         :param family_id: a family ``Id``
@@ -308,7 +308,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_family_id_terms(self):
+    def clear_ancestor_family_id_terms(self): # pragma: no cover
         """Clears the ancestor family ``Id`` terms.
 
 
@@ -321,7 +321,7 @@ class FamilyQuery:
     ancestor_family_id_terms = property(fdel=clear_ancestor_family_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_family_query(self):
+    def supports_ancestor_family_query(self): # pragma: no cover
         """Tests if a ``FamilyQuery`` is available.
 
         :return: ``true`` if a family query interface is available, ``false`` otherwise
@@ -334,7 +334,7 @@ class FamilyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_family_query(self):
+    def get_ancestor_family_query(self): # pragma: no cover
         """Gets the query interface for a family.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -352,7 +352,7 @@ class FamilyQuery:
     ancestor_family_query = property(fget=get_ancestor_family_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_family(self, match):
+    def match_any_ancestor_family(self, match): # pragma: no cover
         """Matches families with any ancestor.
 
         :param match: ``true`` to match families with any ancestor, ``false`` to match root families
@@ -365,7 +365,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_family_terms(self):
+    def clear_ancestor_family_terms(self): # pragma: no cover
         """Clears the ancestor family terms.
 
 
@@ -378,7 +378,7 @@ class FamilyQuery:
     ancestor_family_terms = property(fdel=clear_ancestor_family_terms)
 
     @abc.abstractmethod
-    def match_descendant_family_id(self, family_id, match):
+    def match_descendant_family_id(self, family_id, match): # pragma: no cover
         """Sets the family ``Id`` for this query to match families that have the specified family as a descednant.
 
         :param family_id: a family ``Id``
@@ -393,7 +393,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_family_id_terms(self):
+    def clear_descendant_family_id_terms(self): # pragma: no cover
         """Clears the descendant family ``Id`` terms.
 
 
@@ -406,7 +406,7 @@ class FamilyQuery:
     descendant_family_id_terms = property(fdel=clear_descendant_family_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_family_query(self):
+    def supports_descendant_family_query(self): # pragma: no cover
         """Tests if a ``FamilyQuery`` is available.
 
         :return: ``true`` if a family query interface is available, ``false`` otherwise
@@ -419,7 +419,7 @@ class FamilyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_family_query(self):
+    def get_descendant_family_query(self): # pragma: no cover
         """Gets the query interface for a family.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -437,7 +437,7 @@ class FamilyQuery:
     descendant_family_query = property(fget=get_descendant_family_query)
 
     @abc.abstractmethod
-    def match_any_descendant_family(self, match):
+    def match_any_descendant_family(self, match): # pragma: no cover
         """Matches families with any decendant.
 
         :param match: ``true`` to match families with any decendants, ``false`` to match leaf families
@@ -450,7 +450,7 @@ class FamilyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_family_terms(self):
+    def clear_descendant_family_terms(self): # pragma: no cover
         """Clears the descendant family terms.
 
 
@@ -463,7 +463,7 @@ class FamilyQuery:
     descendant_family_terms = property(fdel=clear_descendant_family_terms)
 
     @abc.abstractmethod
-    def get_family_query_record(self, family_record_type):
+    def get_family_query_record(self, family_record_type): # pragma: no cover
         """Gets the family query record corresponding to the given ``Family`` record ``Type``.
 
         Multiple record retrievals produce a nested boolean ``OR`` term.

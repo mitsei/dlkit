@@ -26,7 +26,7 @@ class Agent:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_record(self, agent_record_type):
+    def get_agent_record(self, agent_record_type): # pragma: no cover
         """Gets the agent record corresponding to the given ``Agent`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -62,7 +62,7 @@ class AgentForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_form_record(self, agent_record_type):
+    def get_agent_form_record(self, agent_record_type): # pragma: no cover
         """Gets the ``AgentFormRecord`` corresponding to the given agent record ``Type``.
 
         :param agent_record_type: the agent record type
@@ -93,7 +93,7 @@ class AgentList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_agent(self):
+    def get_next_agent(self): # pragma: no cover
         """Gets the next ``Agent`` in this list.
 
         :return: the next ``Agent`` in this list. The ``has_next()`` method should be used to test that a next ``Agent`` is available before calling this method.
@@ -109,7 +109,7 @@ class AgentList:
     next_agent = property(fget=get_next_agent)
 
     @abc.abstractmethod
-    def get_next_agents(self, n):
+    def get_next_agents(self, n): # pragma: no cover
         """Gets the next set of ``Agent`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Agent`` elements requested which should be less than or equal to ``available()``
@@ -130,7 +130,7 @@ class Agency:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_record(self, agency_record_type):
+    def get_agency_record(self, agency_record_type): # pragma: no cover
         """Gets the agency record corresponding to the given ``Agency`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -166,7 +166,7 @@ class AgencyForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_form_record(self, agency_record_type):
+    def get_agency_form_record(self, agency_record_type): # pragma: no cover
         """Gets the ``AgencyFormRecord`` corresponding to the given agency record ``Type``.
 
         :param agency_record_type: an agency record type
@@ -198,7 +198,7 @@ class AgencyList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_agency(self):
+    def get_next_agency(self): # pragma: no cover
         """Gets the next ``Agency`` in this list.
 
         :return: the next ``Agency`` in this list. The ``has_next()`` method should be used to test that a next ``Agency`` is available before calling this method.
@@ -214,7 +214,7 @@ class AgencyList:
     next_agency = property(fget=get_next_agency)
 
     @abc.abstractmethod
-    def get_next_agencies(self, n):
+    def get_next_agencies(self, n): # pragma: no cover
         """Gets the next set of ``Agency`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Agency`` elements requested which must be less than or equal to ``available()``
@@ -241,7 +241,7 @@ class AgencyNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` at this node.
 
         :return: the agency represented by this node
@@ -256,7 +256,7 @@ class AgencyNode:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def get_parent_agency_nodes(self):
+    def get_parent_agency_nodes(self): # pragma: no cover
         """Gets the parents of this agency.
 
         :return: the parents of the ``id``
@@ -271,7 +271,7 @@ class AgencyNode:
     parent_agency_nodes = property(fget=get_parent_agency_nodes)
 
     @abc.abstractmethod
-    def get_child_agency_nodes(self):
+    def get_child_agency_nodes(self): # pragma: no cover
         """Gets the children of this agency.
 
         :return: the children of this agency
@@ -301,7 +301,7 @@ class AgencyNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_agency_node(self):
+    def get_next_agency_node(self): # pragma: no cover
         """Gets the next ``AgencyNode`` in this list.
 
         :return: the next ``AgencyNode`` in this list. The ``has_next()`` method should be used to test that a next ``AgencyNode`` is available before calling this method.
@@ -317,7 +317,7 @@ class AgencyNodeList:
     next_agency_node = property(fget=get_next_agency_node)
 
     @abc.abstractmethod
-    def get_next_agency_nodes(self, n):
+    def get_next_agency_nodes(self, n): # pragma: no cover
         """Gets the next set of ``AgencyNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``AgencyNode`` elements requested which must be less than or equal to ``available()``

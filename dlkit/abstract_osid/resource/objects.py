@@ -34,7 +34,7 @@ class Resource:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_group(self):
+    def is_group(self): # pragma: no cover
         """Tests if this resource is a group.
 
         A resource that is a group can be used in the group sessions.
@@ -49,7 +49,7 @@ class Resource:
         return  # boolean
 
     @abc.abstractmethod
-    def is_demographic(self):
+    def is_demographic(self): # pragma: no cover
         """Tests if this resource is a demographic.
 
         A resource that is a demographic can be used in the demographic
@@ -65,7 +65,7 @@ class Resource:
         return  # boolean
 
     @abc.abstractmethod
-    def has_avatar(self):
+    def has_avatar(self): # pragma: no cover
         """Tests if this resource has an avatar.
 
         :return: ``true`` if this resource has an avatar, ``false`` otherwise
@@ -78,7 +78,7 @@ class Resource:
         return  # boolean
 
     @abc.abstractmethod
-    def get_avatar_id(self):
+    def get_avatar_id(self): # pragma: no cover
         """Gets the asset ``Id``.
 
         :return: the asset ``Id``
@@ -93,7 +93,7 @@ class Resource:
     avatar_id = property(fget=get_avatar_id)
 
     @abc.abstractmethod
-    def get_avatar(self):
+    def get_avatar(self): # pragma: no cover
         """Gets the asset.
 
         :return: the asset
@@ -109,7 +109,7 @@ class Resource:
     avatar = property(fget=get_avatar)
 
     @abc.abstractmethod
-    def get_resource_record(self, resource_record_type):
+    def get_resource_record(self, resource_record_type): # pragma: no cover
         """Gets the resource record corresponding to the given ``Resource`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -148,7 +148,7 @@ class ResourceForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_group_metadata(self):
+    def get_group_metadata(self): # pragma: no cover
         """Gets the metadata for a group.
 
         :return: metadata for the group
@@ -163,7 +163,7 @@ class ResourceForm:
     group_metadata = property(fget=get_group_metadata)
 
     @abc.abstractmethod
-    def set_group(self, group):
+    def set_group(self, group): # pragma: no cover
         """Sets the resource as a group.
 
         :param group: ``true`` if this resource is a group, ``false`` otherwise
@@ -177,7 +177,7 @@ class ResourceForm:
         pass
 
     @abc.abstractmethod
-    def clear_group(self):
+    def clear_group(self): # pragma: no cover
         """Clears the group designation.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -190,7 +190,7 @@ class ResourceForm:
     group = property(fset=set_group, fdel=clear_group)
 
     @abc.abstractmethod
-    def get_avatar_metadata(self):
+    def get_avatar_metadata(self): # pragma: no cover
         """Gets the metadata for an asset.
 
         :return: metadata for the asset
@@ -205,7 +205,7 @@ class ResourceForm:
     avatar_metadata = property(fget=get_avatar_metadata)
 
     @abc.abstractmethod
-    def set_avatar(self, asset_id):
+    def set_avatar(self, asset_id): # pragma: no cover
         """Sets the avatar asset.
 
         :param asset_id: an asset ``Id``
@@ -219,7 +219,7 @@ class ResourceForm:
         pass
 
     @abc.abstractmethod
-    def clear_avatar(self):
+    def clear_avatar(self): # pragma: no cover
         """Clears the asset.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -232,7 +232,7 @@ class ResourceForm:
     avatar = property(fset=set_avatar, fdel=clear_avatar)
 
     @abc.abstractmethod
-    def get_resource_form_record(self, resource_record_type):
+    def get_resource_form_record(self, resource_record_type): # pragma: no cover
         """Gets the ``ResourceFormRecord`` corresponding to the given ``Resource`` record ``Type``.
 
         :param resource_record_type: the resource record type
@@ -264,7 +264,7 @@ class ResourceList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_resource(self):
+    def get_next_resource(self): # pragma: no cover
         """Gets the next ``Resource`` in this list.
 
         :return: the next ``Resource`` in this list. The ``has_next()`` method should be used to test that a next ``Resource`` is available before calling this method.
@@ -280,7 +280,7 @@ class ResourceList:
     next_resource = property(fget=get_next_resource)
 
     @abc.abstractmethod
-    def get_next_resources(self, n):
+    def get_next_resources(self, n): # pragma: no cover
         """Gets the next set of ``Resources`` in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Resource`` elements requested which must be less than or equal to ``available()``
@@ -307,7 +307,7 @@ class ResourceNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource(self):
+    def get_resource(self): # pragma: no cover
         """Gets the ``Resource`` at this node.
 
         :return: the resource represented by this node
@@ -322,7 +322,7 @@ class ResourceNode:
     resource = property(fget=get_resource)
 
     @abc.abstractmethod
-    def get_parent_resource_nodes(self):
+    def get_parent_resource_nodes(self): # pragma: no cover
         """Gets the parents of this resource.
 
         :return: the parents of the resource
@@ -337,7 +337,7 @@ class ResourceNode:
     parent_resource_nodes = property(fget=get_parent_resource_nodes)
 
     @abc.abstractmethod
-    def get_child_resource_nodes(self):
+    def get_child_resource_nodes(self): # pragma: no cover
         """Gets the children of this resource.
 
         :return: the children of this resource
@@ -367,7 +367,7 @@ class ResourceNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_resource_node(self):
+    def get_next_resource_node(self): # pragma: no cover
         """Gets the next ``ResourceNode`` in this list.
 
         :return: the next ``ResourceNode`` in this list. The ``has_next()`` method should be used to test that a next ``ResourceNode`` is available before calling this method.
@@ -383,7 +383,7 @@ class ResourceNodeList:
     next_resource_node = property(fget=get_next_resource_node)
 
     @abc.abstractmethod
-    def get_next_resource_nodes(self, n):
+    def get_next_resource_nodes(self, n): # pragma: no cover
         """Gets the next set of ``ResourceNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``ResourceNode`` elements requested which must be less than or equal to ``available()``
@@ -404,7 +404,7 @@ class ResourceRelationship:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_resource_id(self):
+    def get_source_resource_id(self): # pragma: no cover
         """Gets the source resource ``Id``.
 
         :return: a resource ``Id``
@@ -419,7 +419,7 @@ class ResourceRelationship:
     source_resource_id = property(fget=get_source_resource_id)
 
     @abc.abstractmethod
-    def get_source_resource(self):
+    def get_source_resource(self): # pragma: no cover
         """Gets the ``Resource``.
 
         :return: the source resource
@@ -434,7 +434,7 @@ class ResourceRelationship:
     source_resource = property(fget=get_source_resource)
 
     @abc.abstractmethod
-    def get_destination_resource_id(self):
+    def get_destination_resource_id(self): # pragma: no cover
         """Gets the destination resource ``Id``.
 
         :return: a resource ``Id``
@@ -449,7 +449,7 @@ class ResourceRelationship:
     destination_resource_id = property(fget=get_destination_resource_id)
 
     @abc.abstractmethod
-    def get_destination_resource(self):
+    def get_destination_resource(self): # pragma: no cover
         """Gets the ``Resource``.
 
         :return: the destination resource
@@ -464,7 +464,7 @@ class ResourceRelationship:
     destination_resource = property(fget=get_destination_resource)
 
     @abc.abstractmethod
-    def get_resource_relationship_record(self, resource_relationship_record_type):
+    def get_resource_relationship_record(self, resource_relationship_record_type): # pragma: no cover
         """Gets the resource relationship record corresponding to the given ``ResourceRelationship`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -493,7 +493,7 @@ class ResourceRelationshipForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_relationship_form_record(self, resource_relationship_record_type):
+    def get_resource_relationship_form_record(self, resource_relationship_record_type): # pragma: no cover
         """Gets the ``ResourceRelationshipFormRecord`` record corresponding to the given relationship ``Type``.
 
         :param resource_relationship_record_type: the resource relationship record type
@@ -525,7 +525,7 @@ class ResourceRelationshipList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_resource_relationship(self):
+    def get_next_resource_relationship(self): # pragma: no cover
         """Gets the next ``ResourceRelationship`` in this list.
 
         :return: the next ``ResourceRelationship`` in this list. The ``has_next()`` method should be used to test that a next ``ResourceRelationship`` is available before calling this method.
@@ -541,7 +541,7 @@ class ResourceRelationshipList:
     next_resource_relationship = property(fget=get_next_resource_relationship)
 
     @abc.abstractmethod
-    def get_next_resource_relationships(self, n):
+    def get_next_resource_relationships(self, n): # pragma: no cover
         """Gets the next set of ``ResourceRelationship`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``ResourceRelationship`` elements requested which should be less than or equal to ``available()``
@@ -562,7 +562,7 @@ class Bin:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_record(self, bin_record_type):
+    def get_bin_record(self, bin_record_type): # pragma: no cover
         """Gets the bin record corresponding to the given ``Bin`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -597,7 +597,7 @@ class BinForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_form_record(self, bin_record_type):
+    def get_bin_form_record(self, bin_record_type): # pragma: no cover
         """Gets the ``BinFormRecord`` corresponding to the given bin record ``Type``.
 
         :param bin_record_type: the bin record type
@@ -628,7 +628,7 @@ class BinList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_bin(self):
+    def get_next_bin(self): # pragma: no cover
         """Gets the next ``Bin`` in this list.
 
         :return: the next ``Bin`` in this list. The ``has_next()`` method should be used to test that a next ``Bin`` is available before calling this method.
@@ -644,7 +644,7 @@ class BinList:
     next_bin = property(fget=get_next_bin)
 
     @abc.abstractmethod
-    def get_next_bins(self, n):
+    def get_next_bins(self, n): # pragma: no cover
         """Gets the next set of ``Bin`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Bin`` elements requested which must be less than or equal to ``available()``
@@ -671,7 +671,7 @@ class BinNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` at this node.
 
         :return: the bin represented by this node
@@ -686,7 +686,7 @@ class BinNode:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def get_parent_bin_nodes(self):
+    def get_parent_bin_nodes(self): # pragma: no cover
         """Gets the parents of this bin.
 
         :return: the parents of the ``id``
@@ -701,7 +701,7 @@ class BinNode:
     parent_bin_nodes = property(fget=get_parent_bin_nodes)
 
     @abc.abstractmethod
-    def get_child_bin_nodes(self):
+    def get_child_bin_nodes(self): # pragma: no cover
         """Gets the children of this bin.
 
         :return: the children of this bin
@@ -731,7 +731,7 @@ class BinNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_bin_node(self):
+    def get_next_bin_node(self): # pragma: no cover
         """Gets the next ``BinNode`` in this list.
 
         :return: the next ``BinNode`` in this list. The ``has_next()`` method should be used to test that a next ``BinNode`` is available before calling this method.
@@ -747,7 +747,7 @@ class BinNodeList:
     next_bin_node = property(fget=get_next_bin_node)
 
     @abc.abstractmethod
-    def get_next_bin_nodes(self, n):
+    def get_next_bin_nodes(self, n): # pragma: no cover
         """Gets the next set of ``BinNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``BinNode`` elements requested which must be less than or equal to ``available()``

@@ -21,7 +21,7 @@ class GradeSystemSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_grade_systems(self, grade_system_ids):
+    def search_among_grade_systems(self, grade_system_ids): # pragma: no cover
         """Execute this search among the given list of grade systems.
 
         :param grade_system_ids: list of grade systems
@@ -34,7 +34,7 @@ class GradeSystemSearch:
         pass
 
     @abc.abstractmethod
-    def order_grade_system_results(self, grade_system_search_order):
+    def order_grade_system_results(self, grade_system_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param grade_system_search_order: grade system search order
@@ -48,7 +48,7 @@ class GradeSystemSearch:
         pass
 
     @abc.abstractmethod
-    def get_grade_system_search_record(self, grade_system_search_record_type):
+    def get_grade_system_search_record(self, grade_system_search_record_type): # pragma: no cover
         """Gets the grade system search record corresponding to the given grade system search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class GradeSystemSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_systems(self):
+    def get_grade_systems(self): # pragma: no cover
         """Gets the grade system list resulting from the search.
 
         :return: the grade system list
@@ -88,7 +88,7 @@ class GradeSystemSearchResults:
     grade_systems = property(fget=get_grade_systems)
 
     @abc.abstractmethod
-    def get_grade_system_query_inspector(self):
+    def get_grade_system_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the grade system query inspector
@@ -103,7 +103,7 @@ class GradeSystemSearchResults:
     grade_system_query_inspector = property(fget=get_grade_system_query_inspector)
 
     @abc.abstractmethod
-    def get_grade_system_search_results_record(self, grade_system_search_record_type):
+    def get_grade_system_search_results_record(self, grade_system_search_record_type): # pragma: no cover
         """Gets the grade system search results record corresponding to the given grade system search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class GradeEntrySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_grade_entries(self, grade_entry_ids):
+    def search_among_grade_entries(self, grade_entry_ids): # pragma: no cover
         """Execute this search among the given list of grade entries.
 
         :param grade_entry_ids: list of grade entries
@@ -141,7 +141,7 @@ class GradeEntrySearch:
         pass
 
     @abc.abstractmethod
-    def order_grade_entry_results(self, grade_entry_search_order):
+    def order_grade_entry_results(self, grade_entry_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param grade_entry_search_order: package search order
@@ -155,7 +155,7 @@ class GradeEntrySearch:
         pass
 
     @abc.abstractmethod
-    def get_grade_entry_search_record(self, grade_entry_search_record_type):
+    def get_grade_entry_search_record(self, grade_entry_search_record_type): # pragma: no cover
         """Gets the grade entry search record corresponding to the given package search record ``Type``.
 
         This method ie used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class GradeEntrySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_entries(self):
+    def get_grade_entries(self): # pragma: no cover
         """Gets the package list resulting from the search.
 
         :return: the grade entry list
@@ -195,7 +195,7 @@ class GradeEntrySearchResults:
     grade_entries = property(fget=get_grade_entries)
 
     @abc.abstractmethod
-    def get_grade_entry_query_inspector(self):
+    def get_grade_entry_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the grade entry query inspector
@@ -210,7 +210,7 @@ class GradeEntrySearchResults:
     grade_entry_query_inspector = property(fget=get_grade_entry_query_inspector)
 
     @abc.abstractmethod
-    def get_grade_entry_search_results_record(self, grade_entry_search_record_type):
+    def get_grade_entry_search_results_record(self, grade_entry_search_record_type): # pragma: no cover
         """Gets the grade entry search results record corresponding to the given grade entry search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class GradebookColumnSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_gradebook_columns(self, gradebook_column_ids):
+    def search_among_gradebook_columns(self, gradebook_column_ids): # pragma: no cover
         """Execute this search among the given list of gradebook columns.
 
         :param gradebook_column_ids: list of gradebook columns
@@ -248,7 +248,7 @@ class GradebookColumnSearch:
         pass
 
     @abc.abstractmethod
-    def order_gradebook_column_results(self, gradebook_column_search_order):
+    def order_gradebook_column_results(self, gradebook_column_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param gradebook_column_search_order: gradebook column search order
@@ -262,7 +262,7 @@ class GradebookColumnSearch:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_column_search_record(self, gradebook_column_search_record_type):
+    def get_gradebook_column_search_record(self, gradebook_column_search_record_type): # pragma: no cover
         """Gets the gradebook column search record corresponding to the given gradebook column search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class GradebookColumnSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_columns(self):
+    def get_gradebook_columns(self): # pragma: no cover
         """Gets the gradebook column list resulting from the search.
 
         :return: the gradebook column list
@@ -302,7 +302,7 @@ class GradebookColumnSearchResults:
     gradebook_columns = property(fget=get_gradebook_columns)
 
     @abc.abstractmethod
-    def get_gradebook_column_query_inspector(self):
+    def get_gradebook_column_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the gradebook column query inspector
@@ -317,7 +317,7 @@ class GradebookColumnSearchResults:
     gradebook_column_query_inspector = property(fget=get_gradebook_column_query_inspector)
 
     @abc.abstractmethod
-    def get_gradebook_column_search_results_record(self, gradebook_column_search_record_type):
+    def get_gradebook_column_search_results_record(self, gradebook_column_search_record_type): # pragma: no cover
         """Gets the gradebook column search results record corresponding to the given gradebook column search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -342,7 +342,7 @@ class GradebookSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_gradebooks(self, gradebook_ids):
+    def search_among_gradebooks(self, gradebook_ids): # pragma: no cover
         """Execute this search among the given list of gradebooks.
 
         :param gradebook_ids: list of gradebooks
@@ -355,7 +355,7 @@ class GradebookSearch:
         pass
 
     @abc.abstractmethod
-    def order_gradebook_results(self, gradebook_search_order):
+    def order_gradebook_results(self, gradebook_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param gradebook_search_order: gradebook search order
@@ -369,7 +369,7 @@ class GradebookSearch:
         pass
 
     @abc.abstractmethod
-    def get_gradebook_search_record(self, gradebook_search_record_type):
+    def get_gradebook_search_record(self, gradebook_search_record_type): # pragma: no cover
         """Gets the gradebook search record corresponding to the given gradebook search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -394,7 +394,7 @@ class GradebookSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebooks(self):
+    def get_gradebooks(self): # pragma: no cover
         """Gets the gradebook list resulting from the search.
 
         :return: the gradebook list
@@ -409,7 +409,7 @@ class GradebookSearchResults:
     gradebooks = property(fget=get_gradebooks)
 
     @abc.abstractmethod
-    def get_gradebook_query_inspector(self):
+    def get_gradebook_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the gradebook query inspector
@@ -424,7 +424,7 @@ class GradebookSearchResults:
     gradebook_query_inspector = property(fget=get_gradebook_query_inspector)
 
     @abc.abstractmethod
-    def get_gradebook_search_results_record(self, gradebook_search_record_type):
+    def get_gradebook_search_results_record(self, gradebook_search_record_type): # pragma: no cover
         """Gets the gradebook search results record corresponding to the given gradebook search record ``Type``.
 
         This method is used to retrieve an object implementing the

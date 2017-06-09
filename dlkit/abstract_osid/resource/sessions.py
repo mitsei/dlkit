@@ -49,7 +49,7 @@ class ResourceLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -64,7 +64,7 @@ class ResourceLookupSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -80,7 +80,7 @@ class ResourceLookupSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_lookup_resources(self):
+    def can_lookup_resources(self): # pragma: no cover
         """Tests if this user can perform ``Resource`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -99,7 +99,7 @@ class ResourceLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_resource_view(self):
+    def use_comparative_resource_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -113,7 +113,7 @@ class ResourceLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_resource_view(self):
+    def use_plenary_resource_view(self): # pragma: no cover
         """A complete view of the ``Resource`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -128,7 +128,7 @@ class ResourceLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -142,7 +142,7 @@ class ResourceLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bin only.
@@ -155,7 +155,7 @@ class ResourceLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_resource(self, resource_id):
+    def get_resource(self, resource_id): # pragma: no cover
         """Gets the ``Resource`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -179,7 +179,7 @@ class ResourceLookupSession:
         return  # osid.resource.Resource
 
     @abc.abstractmethod
-    def get_resources_by_ids(self, resource_ids):
+    def get_resources_by_ids(self, resource_ids): # pragma: no cover
         """Gets a ``ResourceList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the resources
@@ -205,7 +205,7 @@ class ResourceLookupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resources_by_genus_type(self, resource_genus_type):
+    def get_resources_by_genus_type(self, resource_genus_type): # pragma: no cover
         """Gets a ``ResourceList`` corresponding to the given resource genus ``Type`` which does not include resources of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known resources
@@ -226,7 +226,7 @@ class ResourceLookupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resources_by_parent_genus_type(self, resource_genus_type):
+    def get_resources_by_parent_genus_type(self, resource_genus_type): # pragma: no cover
         """Gets a ``ResourceList`` corresponding to the given resource genus ``Type`` and include any additional resources with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known resources
@@ -247,7 +247,7 @@ class ResourceLookupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resources_by_record_type(self, resource_record_type):
+    def get_resources_by_record_type(self, resource_record_type): # pragma: no cover
         """Gets a ``ResourceList`` containing the given resource record ``Type``.
 
         In plenary mode, the returned list contains all known resources
@@ -268,7 +268,7 @@ class ResourceLookupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resources(self):
+    def get_resources(self): # pragma: no cover
         """Gets all ``Resources``.
 
         In plenary mode, the returned list contains all known resources
@@ -310,7 +310,7 @@ class ResourceQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -325,7 +325,7 @@ class ResourceQuerySession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -341,7 +341,7 @@ class ResourceQuerySession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_search_resources(self):
+    def can_search_resources(self): # pragma: no cover
         """Tests if this user can perform ``Resource`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -360,7 +360,7 @@ class ResourceQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -374,7 +374,7 @@ class ResourceQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bin only.
@@ -387,7 +387,7 @@ class ResourceQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_resource_query(self):
+    def get_resource_query(self): # pragma: no cover
         """Gets a resource query.
 
         The returned query will not have an extension query.
@@ -404,7 +404,7 @@ class ResourceQuerySession:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def get_resources_by_query(self, resource_query):
+    def get_resources_by_query(self, resource_query): # pragma: no cover
         """Gets a list of ``Resources`` matching the given resource query.
 
         :param resource_query: the resource query
@@ -453,7 +453,7 @@ class ResourceSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_search(self):
+    def get_resource_search(self): # pragma: no cover
         """Gets a resource search.
 
         :return: the resource search
@@ -468,7 +468,7 @@ class ResourceSearchSession:
     resource_search = property(fget=get_resource_search)
 
     @abc.abstractmethod
-    def get_resource_search_order(self):
+    def get_resource_search_order(self): # pragma: no cover
         """Gets a resource search order.
 
         The ``ResourceSearchOrder`` is supplied to a ``ResourceSearch``
@@ -486,7 +486,7 @@ class ResourceSearchSession:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def get_resources_by_search(self, resource_query, resource_search):
+    def get_resources_by_search(self, resource_query, resource_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param resource_query: the resource query
@@ -506,7 +506,7 @@ class ResourceSearchSession:
         return  # osid.resource.ResourceSearchResults
 
     @abc.abstractmethod
-    def get_resource_query_from_inspector(self, resource_query_inspector):
+    def get_resource_query_from_inspector(self, resource_query_inspector): # pragma: no cover
         """Gets a resource query from an inspector.
 
         The inspector is available from a ``ResourceSearchResults``.
@@ -562,7 +562,7 @@ class ResourceAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -577,7 +577,7 @@ class ResourceAdminSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -593,7 +593,7 @@ class ResourceAdminSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_create_resources(self):
+    def can_create_resources(self): # pragma: no cover
         """Tests if this user can create ``Resources``.
 
         A return of true does not guarantee successful authorization. A
@@ -612,7 +612,7 @@ class ResourceAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_resource_with_record_types(self, resource_record_types):
+    def can_create_resource_with_record_types(self, resource_record_types): # pragma: no cover
         """Tests if this user can create a single ``Resource`` using the desired record types.
 
         While ``ResourceManager.getResourceRecordTypes()`` can be used
@@ -633,7 +633,7 @@ class ResourceAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_form_for_create(self, resource_record_types):
+    def get_resource_form_for_create(self, resource_record_types): # pragma: no cover
         """Gets the resource form for creating new resources.
 
         A new form should be requested for each create transaction.
@@ -653,7 +653,7 @@ class ResourceAdminSession:
         return  # osid.resource.ResourceForm
 
     @abc.abstractmethod
-    def create_resource(self, resource_form):
+    def create_resource(self, resource_form): # pragma: no cover
         """Creates a new ``Resource``.
 
         :param resource_form: the form for this ``Resource``
@@ -673,7 +673,7 @@ class ResourceAdminSession:
         return  # osid.resource.Resource
 
     @abc.abstractmethod
-    def can_update_resources(self):
+    def can_update_resources(self): # pragma: no cover
         """Tests if this user can update ``Resources``.
 
         A return of true does not guarantee successful authorization. A
@@ -692,7 +692,7 @@ class ResourceAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_form_for_update(self, resource_id):
+    def get_resource_form_for_update(self, resource_id): # pragma: no cover
         """Gets the resource form for updating an existing resource.
 
         A new resource form should be requested for each update
@@ -713,7 +713,7 @@ class ResourceAdminSession:
         return  # osid.resource.ResourceForm
 
     @abc.abstractmethod
-    def update_resource(self, resource_form):
+    def update_resource(self, resource_form): # pragma: no cover
         """Updates an existing resource.
 
         :param resource_form: the form containing the elements to be updated
@@ -731,7 +731,7 @@ class ResourceAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_resources(self):
+    def can_delete_resources(self): # pragma: no cover
         """Tests if this user can delete ``Resources``.
 
         A return of true does not guarantee successful authorization. A
@@ -750,7 +750,7 @@ class ResourceAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_resource(self, resource_id):
+    def delete_resource(self, resource_id): # pragma: no cover
         """Deletes a ``Resource``.
 
         :param resource_id: the ``Id`` of the ``Resource`` to remove
@@ -766,7 +766,7 @@ class ResourceAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_resource_aliases(self):
+    def can_manage_resource_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Resources``.
 
         A return of true does not guarantee successful authorization. A
@@ -785,7 +785,7 @@ class ResourceAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_resource(self, resource_id, alias_id):
+    def alias_resource(self, resource_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Resource`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Resource`` is determined by the
@@ -825,7 +825,7 @@ class ResourceNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -840,7 +840,7 @@ class ResourceNotificationSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -856,7 +856,7 @@ class ResourceNotificationSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_register_for_resource_notifications(self):
+    def can_register_for_resource_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Resource`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -875,7 +875,7 @@ class ResourceNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -889,7 +889,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this bin only.
@@ -902,7 +902,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_resources(self):
+    def register_for_new_resources(self): # pragma: no cover
         """Register for notifications of new resources.
 
         ``ResourceReceiver.newResources()`` is invoked when a new
@@ -917,7 +917,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resources(self):
+    def register_for_changed_resources(self): # pragma: no cover
         """Registers for notification of updated resources.
 
         ``ResourceReceiver.changedResources()`` is invoked when a
@@ -932,7 +932,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource(self, resource_id):
+    def register_for_changed_resource(self, resource_id): # pragma: no cover
         """Registers for notification of an updated resource.
 
         ``ResourceReceiver.changedResources()`` is invoked when the
@@ -950,7 +950,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resources(self):
+    def register_for_deleted_resources(self): # pragma: no cover
         """Registers for notification of deleted resources.
 
         ``ResourceReceiver.deletedResources()`` is invoked when a
@@ -965,7 +965,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource(self, resource_id):
+    def register_for_deleted_resource(self, resource_id): # pragma: no cover
         """Registers for notification of a deleted resource.
 
         ``ResourceReceiver.deletedResources()`` is invoked when the
@@ -983,7 +983,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_resource_notifications(self):
+    def reliable_resource_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -997,7 +997,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_resource_notifications(self):
+    def unreliable_resource_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1011,7 +1011,7 @@ class ResourceNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_resource_notification(self, notification_id):
+    def acknowledge_resource_notification(self, notification_id): # pragma: no cover
         """Acknowledge an resource notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1041,7 +1041,7 @@ class ResourceBinSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_bin_view(self):
+    def use_comparative_bin_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1055,7 +1055,7 @@ class ResourceBinSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bin_view(self):
+    def use_plenary_bin_view(self): # pragma: no cover
         """A complete view of the ``Resource`` and ``Bin`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1070,7 +1070,7 @@ class ResourceBinSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_resource_bin_mappings(self):
+    def can_lookup_resource_bin_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of resource/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1089,7 +1089,7 @@ class ResourceBinSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_ids_by_bin(self, bin_id):
+    def get_resource_ids_by_bin(self, bin_id): # pragma: no cover
         """Gets the list of ``Resource``  ``Ids`` associated with a ``Bin``.
 
         :param bin_id: ``Id`` of a ``Bin``
@@ -1107,7 +1107,7 @@ class ResourceBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resources_by_bin(self, bin_id):
+    def get_resources_by_bin(self, bin_id): # pragma: no cover
         """Gets the list of ``Resources`` associated with a ``Bin``.
 
         :param bin_id: ``Id`` of a ``Bin``
@@ -1125,7 +1125,7 @@ class ResourceBinSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resource_ids_by_bins(self, bin_ids):
+    def get_resource_ids_by_bins(self, bin_ids): # pragma: no cover
         """Gets the list of ``Resource Ids`` corresponding to a list of ``Bin`` objects.
 
         :param bin_ids: list of bin ``Ids``
@@ -1142,7 +1142,7 @@ class ResourceBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resources_by_bins(self, bin_ids):
+    def get_resources_by_bins(self, bin_ids): # pragma: no cover
         """Gets the list of ``Resources`` corresponding to a list of ``Bins``.
 
         :param bin_ids: list of bin ``Ids``
@@ -1159,7 +1159,7 @@ class ResourceBinSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_bin_ids_by_resource(self, resource_id):
+    def get_bin_ids_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Bin``  ``Ids`` mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -1177,7 +1177,7 @@ class ResourceBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_bins_by_resource(self, resource_id):
+    def get_bins_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Bin`` objects mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -1210,7 +1210,7 @@ class ResourceBinAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_resources(self):
+    def can_assign_resources(self): # pragma: no cover
         """Tests if this user can alter resource/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1229,7 +1229,7 @@ class ResourceBinAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_resources_to_bin(self, bin_id):
+    def can_assign_resources_to_bin(self, bin_id): # pragma: no cover
         """Tests if this user can alter resource/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1250,7 +1250,7 @@ class ResourceBinAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bin_ids(self, bin_id):
+    def get_assignable_bin_ids(self, bin_id): # pragma: no cover
         """Gets a list of bins including and under the given bin node in which any resource can be assigned.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1266,7 +1266,7 @@ class ResourceBinAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bin_ids_for_resource(self, bin_id, resource_id):
+    def get_assignable_bin_ids_for_resource(self, bin_id, resource_id): # pragma: no cover
         """Gets a list of bins including and under the given bin node in which a specific resource can be assigned.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1284,7 +1284,7 @@ class ResourceBinAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_resource_to_bin(self, resource_id, bin_id):
+    def assign_resource_to_bin(self, resource_id, bin_id): # pragma: no cover
         """Adds an existing ``Resource`` to a ``Bin``.
 
         :param resource_id: the ``Id`` of the ``Resource``
@@ -1303,7 +1303,7 @@ class ResourceBinAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_resource_from_bin(self, resource_id, bin_id):
+    def unassign_resource_from_bin(self, resource_id, bin_id): # pragma: no cover
         """Removes a ``Resource`` from a ``Bin``.
 
         :param resource_id: the ``Id`` of the ``Resource``
@@ -1338,7 +1338,7 @@ class ResourceSmartBinSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -1353,7 +1353,7 @@ class ResourceSmartBinSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -1369,7 +1369,7 @@ class ResourceSmartBinSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_manage_smart_bins(self):
+    def can_manage_smart_bins(self): # pragma: no cover
         """Tests if this user can manage smart bins.
 
         A return of true does not guarantee successful authorization. A
@@ -1388,7 +1388,7 @@ class ResourceSmartBinSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self):
+    def get_resource_query(self): # pragma: no cover
         """Gets a resource query.
 
         :return: the resource query
@@ -1403,7 +1403,7 @@ class ResourceSmartBinSession:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def get_resource_search_order(self):
+    def get_resource_search_order(self): # pragma: no cover
         """Gets a resource search order.
 
         :return: the resource search order
@@ -1418,7 +1418,7 @@ class ResourceSmartBinSession:
     resource_search_order = property(fget=get_resource_search_order)
 
     @abc.abstractmethod
-    def apply_resource_query(self, resource_query):
+    def apply_resource_query(self, resource_query): # pragma: no cover
         """Applies a resource query to this bin.
 
         :param resource_query: the resource query
@@ -1434,7 +1434,7 @@ class ResourceSmartBinSession:
         pass
 
     @abc.abstractmethod
-    def inspect_resource_query(self):
+    def inspect_resource_query(self): # pragma: no cover
         """Gets a resource query inspector for this bin.
 
         :return: the resource query inspector
@@ -1448,7 +1448,7 @@ class ResourceSmartBinSession:
         return  # osid.resource.ResourceQueryInspector
 
     @abc.abstractmethod
-    def apply_resource_sequencing(self, resource_search_order):
+    def apply_resource_sequencing(self, resource_search_order): # pragma: no cover
         """Applies a resource search order to this bin.
 
         :param resource_search_order: the resource search order
@@ -1464,7 +1464,7 @@ class ResourceSmartBinSession:
         pass
 
     @abc.abstractmethod
-    def get_resource_query_from_inspector(self, resource_query_inspector):
+    def get_resource_query_from_inspector(self, resource_query_inspector): # pragma: no cover
         """Gets a resource query from an inspector.
 
         :param resource_query_inspector: a resource query inspector
@@ -1490,7 +1490,7 @@ class MembershipSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -1505,7 +1505,7 @@ class MembershipSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -1521,7 +1521,7 @@ class MembershipSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_query_membership(self):
+    def can_query_membership(self): # pragma: no cover
         """Tests if this user can perform membership queries.
 
         A return of true does not guarantee successful authorization. A
@@ -1540,7 +1540,7 @@ class MembershipSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -1554,7 +1554,7 @@ class MembershipSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts resources to this bin only.
@@ -1567,7 +1567,7 @@ class MembershipSession:
         pass
 
     @abc.abstractmethod
-    def is_member(self, member_resource_id, resource_id):
+    def is_member(self, member_resource_id, resource_id): # pragma: no cover
         """Tests if a ``Resource`` is a member of another ``Resource``.
 
         :param member_resource_id: ``Id`` of the ``Resource`` member
@@ -1596,7 +1596,7 @@ class GroupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -1611,7 +1611,7 @@ class GroupSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -1627,7 +1627,7 @@ class GroupSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_lookup_resource_members(self):
+    def can_lookup_resource_members(self): # pragma: no cover
         """Tests if this user can perform lookups of resource members.
 
         A return of true does not guarantee successful authorization. A
@@ -1646,7 +1646,7 @@ class GroupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_resource_view(self):
+    def use_comparative_resource_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1660,7 +1660,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_resource_view(self):
+    def use_plenary_resource_view(self): # pragma: no cover
         """A complete view of the ``Resource`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1675,7 +1675,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -1689,7 +1689,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts resources to this bin only.
@@ -1702,7 +1702,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_group_view(self):
+    def use_federated_group_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in groups which are
@@ -1716,7 +1716,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_group_view(self):
+    def use_isolated_group_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to the specified group only.
@@ -1729,7 +1729,7 @@ class GroupSession:
         pass
 
     @abc.abstractmethod
-    def get_resource_ids_by_group(self, group_resource_id):
+    def get_resource_ids_by_group(self, group_resource_id): # pragma: no cover
         """Gets the list of ``Resource``  ``Ids`` associated with a ``Resource``.
 
         In a federated view, resources for child groups are included.
@@ -1749,7 +1749,7 @@ class GroupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resources_by_group(self, group_resource_id):
+    def get_resources_by_group(self, group_resource_id): # pragma: no cover
         """Gets the list of ``Resources`` associated with a ``Resource``.
 
         In a federated view, resources for child groups are included.
@@ -1769,7 +1769,7 @@ class GroupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_resource_ids_by_groups(self, group_resource_ids):
+    def get_resource_ids_by_groups(self, group_resource_ids): # pragma: no cover
         """Gets the list of ``Resource Ids`` corresponding to a list of ``Resource`` objects.
 
         :param group_resource_ids: list of resource ``Ids``
@@ -1786,7 +1786,7 @@ class GroupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resources_by_groups(self, group_resource_ids):
+    def get_resources_by_groups(self, group_resource_ids): # pragma: no cover
         """Gets the list of ``Resources`` corresponding to a list of ``Resource`` objects.
 
         :param group_resource_ids: list of resource ``Ids``
@@ -1803,7 +1803,7 @@ class GroupSession:
         return  # osid.resource.ResourceList
 
     @abc.abstractmethod
-    def get_group_ids_by_resource(self, resource_id):
+    def get_group_ids_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Resource``  ``Ids`` mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -1821,7 +1821,7 @@ class GroupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_groups_by_resource(self, resource_id):
+    def get_groups_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Resource`` objects mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -1844,7 +1844,7 @@ class GroupAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -1859,7 +1859,7 @@ class GroupAssignmentSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -1875,7 +1875,7 @@ class GroupAssignmentSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_assign_resources(self):
+    def can_assign_resources(self): # pragma: no cover
         """Tests if this user can change resource group mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1894,7 +1894,7 @@ class GroupAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_resources_to_group(self, resource_id):
+    def can_assign_resources_to_group(self, resource_id): # pragma: no cover
         """Tests if this user can assign members to the given group.
 
         A return of true does not guarantee successful authorization. A
@@ -1915,7 +1915,7 @@ class GroupAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def assign_resource_to_group(self, resource_id, resource_group_id):
+    def assign_resource_to_group(self, resource_id, resource_group_id): # pragma: no cover
         """Adds an existing ``Resource`` to a ``Resource`` group.
 
         :param resource_id: the ``Id`` of the ``Resource``
@@ -1934,7 +1934,7 @@ class GroupAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_resource_from_group(self, resource_id, resource_group_id):
+    def unassign_resource_from_group(self, resource_id, resource_group_id): # pragma: no cover
         """Removes a ``Resource`` from a ``Resource`` group.
 
         :param resource_id: the ``Id`` of the ``Resource``
@@ -1963,7 +1963,7 @@ class GroupNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -1978,7 +1978,7 @@ class GroupNotificationSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -1994,7 +1994,7 @@ class GroupNotificationSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_register_for_group_notifications(self):
+    def can_register_for_group_notifications(self): # pragma: no cover
         """Tests if this user can register for group notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2013,7 +2013,7 @@ class GroupNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -2027,7 +2027,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this bin only.
@@ -2040,7 +2040,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_members(self, resource_id):
+    def register_for_new_members(self, resource_id): # pragma: no cover
         """Register for notifications of new resource memberss.
 
         ``GroupReceiver.newMember()`` is invoked when a new member is
@@ -2058,7 +2058,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_members(self, resource_id):
+    def register_for_deleted_members(self, resource_id): # pragma: no cover
         """Register for notifications of deleted resource memberss.
 
         ``GroupReceiver.deletedMember()`` is invoked when a new member
@@ -2076,7 +2076,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_group_notifications(self):
+    def reliable_group_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2090,7 +2090,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_group_notifications(self):
+    def unreliable_group_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2104,7 +2104,7 @@ class GroupNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_group_notification(self, notification_id):
+    def acknowledge_group_notification(self, notification_id): # pragma: no cover
         """Acknowledge an group notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2144,7 +2144,7 @@ class GroupHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -2159,7 +2159,7 @@ class GroupHierarchySession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -2175,7 +2175,7 @@ class GroupHierarchySession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_access_group_hierarchy(self):
+    def can_access_group_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -2194,7 +2194,7 @@ class GroupHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_resource_view(self):
+    def use_comparative_resource_view(self): # pragma: no cover
         """The returns from the group methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2208,7 +2208,7 @@ class GroupHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_resource_view(self):
+    def use_plenary_resource_view(self): # pragma: no cover
         """A complete view of the ``Resource`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2223,7 +2223,7 @@ class GroupHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -2237,7 +2237,7 @@ class GroupHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bin only.
@@ -2250,7 +2250,7 @@ class GroupHierarchySession:
         pass
 
     @abc.abstractmethod
-    def is_member_of_group(self, group_id, resource_id):
+    def is_member_of_group(self, group_id, resource_id): # pragma: no cover
         """Tests if a resource ``Id`` is a member of a group either directly or indirectly through nested groups.
 
         :param group_id: a resource group ``Id``
@@ -2272,7 +2272,7 @@ class GroupHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_node_ids(self, resource_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_resource_node_ids(self, resource_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given resource group.
 
         :param resource_id: the ``Id`` to query
@@ -2296,7 +2296,7 @@ class GroupHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_resource_nodes(self, resource_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_resource_nodes(self, resource_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given resource group.
 
         :param resource_id: the ``Id`` to query
@@ -2336,7 +2336,7 @@ class ResourceAgentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -2351,7 +2351,7 @@ class ResourceAgentSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -2367,7 +2367,7 @@ class ResourceAgentSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_lookup_resource_agent_mappings(self):
+    def can_lookup_resource_agent_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of resource/agent mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2386,7 +2386,7 @@ class ResourceAgentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_agent_view(self):
+    def use_comparative_agent_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2400,7 +2400,7 @@ class ResourceAgentSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_agent_view(self):
+    def use_plenary_agent_view(self): # pragma: no cover
         """A complete view of the ``Agent`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2415,7 +2415,7 @@ class ResourceAgentSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include resources in bins which are
@@ -2429,7 +2429,7 @@ class ResourceAgentSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bin only.
@@ -2442,7 +2442,7 @@ class ResourceAgentSession:
         pass
 
     @abc.abstractmethod
-    def get_resource_id_by_agent(self, agent_id):
+    def get_resource_id_by_agent(self, agent_id): # pragma: no cover
         """Gets the ``Resource``  ``Id`` associated with the given agent.
 
         :param agent_id: ``Id`` of the ``Agent``
@@ -2460,7 +2460,7 @@ class ResourceAgentSession:
         return  # osid.id.Id
 
     @abc.abstractmethod
-    def get_resource_by_agent(self, agent_id):
+    def get_resource_by_agent(self, agent_id): # pragma: no cover
         """Gets the ``Resource`` associated with the given agent.
 
         :param agent_id: ``Id`` of the ``Agent``
@@ -2478,7 +2478,7 @@ class ResourceAgentSession:
         return  # osid.resource.Resource
 
     @abc.abstractmethod
-    def get_agent_ids_by_resource(self, resource_id):
+    def get_agent_ids_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Agent``  ``Ids`` mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -2496,7 +2496,7 @@ class ResourceAgentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_agents_by_resource(self, resource_id):
+    def get_agents_by_resource(self, resource_id): # pragma: no cover
         """Gets the list of ``Agents`` mapped to a ``Resource``.
 
         :param resource_id: ``Id`` of a ``Resource``
@@ -2524,7 +2524,7 @@ class ResourceAgentAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -2539,7 +2539,7 @@ class ResourceAgentAssignmentSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -2555,7 +2555,7 @@ class ResourceAgentAssignmentSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_assign_agents(self):
+    def can_assign_agents(self): # pragma: no cover
         """Tests if this user can alter resource/agent mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2574,7 +2574,7 @@ class ResourceAgentAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_agents_to_resource(self, resource_id):
+    def can_assign_agents_to_resource(self, resource_id): # pragma: no cover
         """Tests if this user can alter resource/agent mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2595,7 +2595,7 @@ class ResourceAgentAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def assign_agent_to_resource(self, agent_id, resource_id):
+    def assign_agent_to_resource(self, agent_id, resource_id): # pragma: no cover
         """Adds an existing ``Agent`` to a ``Resource``.
 
         :param agent_id: the ``Id`` of the ``Agent``
@@ -2614,7 +2614,7 @@ class ResourceAgentAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_agent_from_resource(self, agent_id, resource_id):
+    def unassign_agent_from_resource(self, agent_id, resource_id): # pragma: no cover
         """Removes an ``Agent`` from a ``Resource``.
 
         :param agent_id: the ``Id`` of the ``Agent``
@@ -2637,7 +2637,7 @@ class ResourceRelationshipLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -2652,7 +2652,7 @@ class ResourceRelationshipLookupSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -2668,7 +2668,7 @@ class ResourceRelationshipLookupSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_lookup_resource_relationships(self):
+    def can_lookup_resource_relationships(self): # pragma: no cover
         """Tests if this user can access resource relationships.
 
         A return of true does not guarantee successful authorization. A
@@ -2687,7 +2687,7 @@ class ResourceRelationshipLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_resource_relationship_view(self):
+    def use_comparative_resource_relationship_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2701,7 +2701,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_resource_relationship_view(self):
+    def use_plenary_resource_relationship_view(self): # pragma: no cover
         """A complete view of the resource relationship returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2716,7 +2716,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include relationships in bins which are
@@ -2730,7 +2730,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts relationships to this bin only.
@@ -2743,7 +2743,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_resource_relationship_view(self):
+    def use_effective_resource_relationship_view(self): # pragma: no cover
         """Only resource relationships whose effective dates are current are returned by methods in this session.
 
 
@@ -2754,7 +2754,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_resource_relationship_view(self):
+    def use_any_effective_resource_relationship_view(self): # pragma: no cover
         """All resource relationships of any effective dates are returned by methods in this session.
 
 
@@ -2765,7 +2765,7 @@ class ResourceRelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_resource_relationship(self, resource_relationship_id):
+    def get_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Gets the ``ResourceRelationship`` specified by its ``Id``.
 
         :param resource_relationship_id: ``Id`` of the ``Relationship``
@@ -2783,7 +2783,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationship
 
     @abc.abstractmethod
-    def get_resource_relationships_by_ids(self, resource_relationship_ids):
+    def get_resource_relationships_by_ids(self, resource_relationship_ids): # pragma: no cover
         """Gets a ``ResourceRelationshipList`` corresponding to the given ``IdList``.
 
         :param resource_relationship_ids: the list of ``Ids`` to retrieve
@@ -2801,7 +2801,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type(self, relationship_genus_type):
+    def get_resource_relationships_by_genus_type(self, relationship_genus_type): # pragma: no cover
         """Gets the resource relationships for the given resource relationship genus type.
 
         :param relationship_genus_type: a relationship genus type
@@ -2818,7 +2818,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_parent_genus_type(self, relationship_genus_type):
+    def get_resource_relationships_by_parent_genus_type(self, relationship_genus_type): # pragma: no cover
         """Gets the reource relationships for the given resource relationship genus type and include any relationships with a genus type derived from the specified genus type.
 
         :param relationship_genus_type: a relationship genus type
@@ -2835,7 +2835,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_record_type(self, relationship_record_type):
+    def get_resource_relationships_by_record_type(self, relationship_record_type): # pragma: no cover
         """Gets the resource relationships for the given resource relationship record type.
 
         :param relationship_record_type: a relationship record type
@@ -2852,7 +2852,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_on_date(self, from_, to):
+    def get_resource_relationships_on_date(self, from_, to): # pragma: no cover
         """Gets the resource relationships effective during the entire given date range inclusive but not confined to the date range.
 
         :param from: starting date
@@ -2872,7 +2872,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_source_resource(self, source_resource_id):
+    def get_resource_relationships_for_source_resource(self, source_resource_id): # pragma: no cover
         """Gets the ``ResourceRelationships`` of a resource.
 
         :param source_resource_id: ``Id`` of a ``Resource``
@@ -2889,7 +2889,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_source_resource_on_date(self, source_resource_id, from_, to):
+    def get_resource_relationships_for_source_resource_on_date(self, source_resource_id, from_, to): # pragma: no cover
         """Gets a list of resource relationships for a resource and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_resource_id: a resource ``Id``
@@ -2911,7 +2911,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_source_resource(self, source_resource_id, relationship_genus_type):
+    def get_resource_relationships_by_genus_type_for_source_resource(self, source_resource_id, relationship_genus_type): # pragma: no cover
         """Gets the ``ResourceRelationships`` of a resource of relationship genus type that includes any genus type derived from the given one.
 
         :param source_resource_id: ``Id`` of a ``Resource``
@@ -2930,7 +2930,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_source_resource_on_date(self, source_resource_id, relationship_genus_type, from_, to):
+    def get_resource_relationships_by_genus_type_for_source_resource_on_date(self, source_resource_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a list of resource relationships of a given genus type for a resource and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_resource_id: a resource ``Id``
@@ -2954,7 +2954,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_destination_resource(self, destination_resource_id):
+    def get_resource_relationships_for_destination_resource(self, destination_resource_id): # pragma: no cover
         """Gets the ``ResourceRelationships`` of a resource.
 
         :param destination_resource_id: ``Id`` of a ``Resource``
@@ -2971,7 +2971,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_destination_resource_on_date(self, source_resource_id, from_, to):
+    def get_resource_relationships_for_destination_resource_on_date(self, source_resource_id, from_, to): # pragma: no cover
         """Gets a list of resource relationships for a resource and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_resource_id: a resource ``Id``
@@ -2993,7 +2993,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_destination_resource(self, destination_resource_id, relationship_genus_type):
+    def get_resource_relationships_by_genus_type_for_destination_resource(self, destination_resource_id, relationship_genus_type): # pragma: no cover
         """Gets the ``ResourceRelationships`` of a resource of relationship genus type that includes any genus type derived from the given one.
 
         :param destination_resource_id: ``Id`` of a ``Resource``
@@ -3012,7 +3012,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_destination_resource_on_date(self, destination_resource_id, relationship_genus_type, from_, to):
+    def get_resource_relationships_by_genus_type_for_destination_resource_on_date(self, destination_resource_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a list of resource relationships of a given genus type for a resource and effective during the entire given date range inclusive but not confined to the date range.
 
         :param destination_resource_id: a resource ``Id``
@@ -3036,7 +3036,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_resources(self, source_resource_id, destination_resource_id):
+    def get_resource_relationships_for_resources(self, source_resource_id, destination_resource_id): # pragma: no cover
         """Gets the ``ResourceRelationships`` given two resources.
 
         :param source_resource_id: ``Id`` of a ``Resource``
@@ -3055,7 +3055,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_for_resources_on_date(self, source_resource_id, destination_resource_id, from_, to):
+    def get_resource_relationships_for_resources_on_date(self, source_resource_id, destination_resource_id, from_, to): # pragma: no cover
         """Gets a list of resource relationships for a two peer resources and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_resource_id: a resource ``Id``
@@ -3079,7 +3079,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_resources(self, source_resource_id, destination_resource_id, relationship_genus_type):
+    def get_resource_relationships_by_genus_type_for_resources(self, source_resource_id, destination_resource_id, relationship_genus_type): # pragma: no cover
         """Gets the ``ResourceRelationships`` given two resources and a relationship genus type which includes any genus types derived from the given genus type.
 
         :param source_resource_id: ``Id`` of a ``Resource``
@@ -3100,7 +3100,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_genus_type_for_resources_on_date(self, source_resource_id, destination_resource_id, relationship_genus_type, from_, to):
+    def get_resource_relationships_by_genus_type_for_resources_on_date(self, source_resource_id, destination_resource_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a list of resource relationships of a given genus type for a two peer resources and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_resource_id: a resource ``Id``
@@ -3126,7 +3126,7 @@ class ResourceRelationshipLookupSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships(self):
+    def get_resource_relationships(self): # pragma: no cover
         """Gets all ``ResourceRelationships``.
 
         :return: the relationships
@@ -3166,7 +3166,7 @@ class ResourceRelationshipQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -3181,7 +3181,7 @@ class ResourceRelationshipQuerySession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the bin
@@ -3197,7 +3197,7 @@ class ResourceRelationshipQuerySession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_search_resource_relationships(self):
+    def can_search_resource_relationships(self): # pragma: no cover
         """Tests if this user can perform ``ResourceRelationship`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -3216,7 +3216,7 @@ class ResourceRelationshipQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include relationships in bin which are
@@ -3230,7 +3230,7 @@ class ResourceRelationshipQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this bin only.
@@ -3243,7 +3243,7 @@ class ResourceRelationshipQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_resource_relationship_query(self):
+    def get_resource_relationship_query(self): # pragma: no cover
         """Gets a relationship query.
 
         :return: the relationship query
@@ -3258,7 +3258,7 @@ class ResourceRelationshipQuerySession:
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
     @abc.abstractmethod
-    def get_resource_relationships_by_query(self, resource_relationship_query):
+    def get_resource_relationships_by_query(self, resource_relationship_query): # pragma: no cover
         """Gets a list of ``ResourceRelationship`` matching the given resource relationship query.
 
         :param resource_relationship_query: the resource relationship query
@@ -3312,7 +3312,7 @@ class ResourceRelationshipSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_relationship_search(self):
+    def get_resource_relationship_search(self): # pragma: no cover
         """Gets a relationship search.
 
         :return: the relationship search
@@ -3327,7 +3327,7 @@ class ResourceRelationshipSearchSession:
     resource_relationship_search = property(fget=get_resource_relationship_search)
 
     @abc.abstractmethod
-    def get_resource_relationship_search_order(self):
+    def get_resource_relationship_search_order(self): # pragma: no cover
         """Gets a relationship search order.
 
         The ``ResourceRelationshipSearchOrder`` is supplied to a
@@ -3346,7 +3346,7 @@ class ResourceRelationshipSearchSession:
     resource_relationship_search_order = property(fget=get_resource_relationship_search_order)
 
     @abc.abstractmethod
-    def get_resource_relationships_by_search(self, resource_relationship_query, resource_relationship_search):
+    def get_resource_relationships_by_search(self, resource_relationship_query, resource_relationship_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param resource_relationship_query: the resource relationship query
@@ -3366,7 +3366,7 @@ class ResourceRelationshipSearchSession:
         return  # osid.resource.ResourceRelationshipSearchResults
 
     @abc.abstractmethod
-    def get_resource_relationship_query_from_inspector(self, resource_relationship_query_inspector):
+    def get_resource_relationship_query_from_inspector(self, resource_relationship_query_inspector): # pragma: no cover
         """Gets a resource relationship query from an inspector.
 
         The inspector is available from a
@@ -3426,7 +3426,7 @@ class ResourceRelationshipAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -3441,7 +3441,7 @@ class ResourceRelationshipAdminSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the bin
@@ -3457,7 +3457,7 @@ class ResourceRelationshipAdminSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_create_resource_relationships(self):
+    def can_create_resource_relationships(self): # pragma: no cover
         """Tests if this user can create ``ResourceRelationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -3476,7 +3476,7 @@ class ResourceRelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_resource_relationship_with_record_types(self, resource_relationship_record_types):
+    def can_create_resource_relationship_with_record_types(self, resource_relationship_record_types): # pragma: no cover
         """Tests if this user can create a single ``ResourceRelationship`` using the desired record types.
 
         While ``ResourceManager.getResourceRelationshipRecordTypes()``
@@ -3497,7 +3497,7 @@ class ResourceRelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_form_for_create(self, source_resource_id, destination_resource_id, resource_relationship_record_types):
+    def get_resource_relationship_form_for_create(self, source_resource_id, destination_resource_id, resource_relationship_record_types): # pragma: no cover
         """Gets the relationship form for creating new relationships.
 
         A new form should be requested for each create transaction.
@@ -3522,7 +3522,7 @@ class ResourceRelationshipAdminSession:
         return  # osid.resource.ResourceRelationshipForm
 
     @abc.abstractmethod
-    def create_resource_relationship(self, resource_relationship_form):
+    def create_resource_relationship(self, resource_relationship_form): # pragma: no cover
         """Creates a new ``ResourceRelationship``.
 
         :param resource_relationship_form: the form for this ``ResourceRelationship``
@@ -3542,7 +3542,7 @@ class ResourceRelationshipAdminSession:
         return  # osid.resource.ResourceRelationship
 
     @abc.abstractmethod
-    def can_update_resource_relationships(self):
+    def can_update_resource_relationships(self): # pragma: no cover
         """Tests if this user can update ``ResourceRelationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -3561,7 +3561,7 @@ class ResourceRelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_form_for_update(self, resource_relationship_id):
+    def get_resource_relationship_form_for_update(self, resource_relationship_id): # pragma: no cover
         """Gets the relationship form for updating an existing relationship.
 
         A new relationship form should be requested for each update
@@ -3581,7 +3581,7 @@ class ResourceRelationshipAdminSession:
         return  # osid.resource.ResourceRelationshipForm
 
     @abc.abstractmethod
-    def update_resource_relationship(self, resource_relationship_form):
+    def update_resource_relationship(self, resource_relationship_form): # pragma: no cover
         """Updates an existing relationship.
 
         :param resource_relationship_form: the form containing the elements to be updated
@@ -3599,7 +3599,7 @@ class ResourceRelationshipAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_resource_relationships(self):
+    def can_delete_resource_relationships(self): # pragma: no cover
         """Tests if this user can delete ``ResourceRelationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -3618,7 +3618,7 @@ class ResourceRelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_resource_relationship(self, resource_relationship_id):
+    def delete_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Deletes the ``ResourceRelationship`` identified by the given ``Id``.
 
         :param resource_relationship_id: the ``Id`` of the ``ResourceRelationship`` to delete
@@ -3634,7 +3634,7 @@ class ResourceRelationshipAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_resource_relationship_aliases(self):
+    def can_manage_resource_relationship_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``ResourceRelationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -3653,7 +3653,7 @@ class ResourceRelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_resource_relationship(self, resource_relationship_id, alias_id):
+    def alias_resource_relationship(self, resource_relationship_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``ResourceRelationship`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``ResourceRelationship`` is determined
@@ -3692,7 +3692,7 @@ class ResourceRelationshipNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -3707,7 +3707,7 @@ class ResourceRelationshipNotificationSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the bin
@@ -3723,7 +3723,7 @@ class ResourceRelationshipNotificationSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_register_for_resource_relationship_notifications(self):
+    def can_register_for_resource_relationship_notifications(self): # pragma: no cover
         """Tests if this user can register for ``ResourceRelationship`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -3742,7 +3742,7 @@ class ResourceRelationshipNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bin_view(self):
+    def use_federated_bin_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for relationships in
@@ -3756,7 +3756,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bin_view(self):
+    def use_isolated_bin_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for relationships in
@@ -3770,7 +3770,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_resource_relationships(self):
+    def register_for_new_resource_relationships(self): # pragma: no cover
         """Register for notifications of new relationship.
 
         ``ResourceRelationshipReceiver.newResourceRelationships()`` is
@@ -3785,7 +3785,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_resource_relationships_by_genus_type(self, resource_relationship_genus_type):
+    def register_for_new_resource_relationships_by_genus_type(self, resource_relationship_genus_type): # pragma: no cover
         """Register for notifications of new relationships of the given genus type.
 
         ``ResourceRelationshipReceiver.newResourceRelationships()`` is
@@ -3803,7 +3803,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_resource_relationships_for_source_resource(self, resource_id):
+    def register_for_new_resource_relationships_for_source_resource(self, resource_id): # pragma: no cover
         """Register for notifications of new relationships from the given resource.
 
         ``ResourceRelationshipReceiver.newResourceRelationships()`` is
@@ -3821,7 +3821,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_resource_relationships_for_destination_resource(self, resource_id):
+    def register_for_new_resource_relationships_for_destination_resource(self, resource_id): # pragma: no cover
         """Register for notifications of new relationships to the given resource.
 
         ``ResourceRelationshipReceiver.newResourceRelationships()`` is
@@ -3839,7 +3839,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource_relationships(self):
+    def register_for_changed_resource_relationships(self): # pragma: no cover
         """Registers for notification of updated relationships.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -3854,7 +3854,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource_relationships_by_genus_type(self, resource_relationship_genus_type):
+    def register_for_changed_resource_relationships_by_genus_type(self, resource_relationship_genus_type): # pragma: no cover
         """Register for notifications of changed relationshipsof the given genus type.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -3872,7 +3872,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource_relationships_for_source_resource(self, resource_id):
+    def register_for_changed_resource_relationships_for_source_resource(self, resource_id): # pragma: no cover
         """Register for notifications of changed relationships from the given resource.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -3890,7 +3890,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource_relationships_for_destination_resource(self, resource_id):
+    def register_for_changed_resource_relationships_for_destination_resource(self, resource_id): # pragma: no cover
         """Register for notifications of changed relationships to the given resource.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -3908,7 +3908,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_resource_relationship(self, resource_relationship_id):
+    def register_for_changed_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Registers for notification of an updated relationship.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -3926,7 +3926,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource_relationships(self):
+    def register_for_deleted_resource_relationships(self): # pragma: no cover
         """Registers for notification of deleted relationships.
 
         ``ResourceRelationshipReceiver.deletedResourceRelationships()``
@@ -3941,7 +3941,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource_relationships_by_genus_type(self, resource_relationship_genus_type):
+    def register_for_deleted_resource_relationships_by_genus_type(self, resource_relationship_genus_type): # pragma: no cover
         """Register for notifications of deleted relationships of the given genus type.
 
         ``ResourceRelationshipReceiver.deletedResourceRelationships()``
@@ -3959,7 +3959,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource_relationships_for_source_resource(self, resource_id):
+    def register_for_deleted_resource_relationships_for_source_resource(self, resource_id): # pragma: no cover
         """Register for notifications of deleted relationships from the given resource.
 
         ``ResourceRelationshipReceiver.deletedResourceRelationships()``
@@ -3977,7 +3977,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource_relationships_for_destination_resource(self, resource_id):
+    def register_for_deleted_resource_relationships_for_destination_resource(self, resource_id): # pragma: no cover
         """Register for notifications of deleted relationships to the given resource.
 
         ``ResourceRelationshipReceiver.deletedResourceRelationships()``
@@ -3995,7 +3995,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_resource_relationship(self, resource_relationship_id):
+    def register_for_deleted_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Registers for notification of a deleted relationship.
 
         ``ResourceRelationshipReceiver.changedResourceRelationships()``
@@ -4013,7 +4013,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_resource_relationship_notifications(self):
+    def reliable_resource_relationship_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4027,7 +4027,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_resource_relationship_notifications(self):
+    def unreliable_resource_relationship_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4041,7 +4041,7 @@ class ResourceRelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_resource_relationship_notification(self, notification_id):
+    def acknowledge_resource_relationship_notification(self, notification_id): # pragma: no cover
         """Acknowledge an resource_relationship notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4071,7 +4071,7 @@ class ResourceRelationshipBinSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def use_comparative_bin_view(self):
+    def use_comparative_bin_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4085,7 +4085,7 @@ class ResourceRelationshipBinSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bin_view(self):
+    def use_plenary_bin_view(self): # pragma: no cover
         """A complete view of the ``Resource`` and ``Bin`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4100,7 +4100,7 @@ class ResourceRelationshipBinSession:
         pass
 
     @abc.abstractmethod
-    def can_lookup_resource_relationship_bin_mappings(self):
+    def can_lookup_resource_relationship_bin_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of resource relationship/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4119,7 +4119,7 @@ class ResourceRelationshipBinSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_ids_by_bin(self, bin_id):
+    def get_resource_relationship_ids_by_bin(self, bin_id): # pragma: no cover
         """Gets the list of ``ResourceRelationship``  ``Ids`` associated with a ``Bin``.
 
         :param bin_id: ``Id`` of a ``Bin``
@@ -4137,7 +4137,7 @@ class ResourceRelationshipBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_bin(self, bin_id):
+    def get_resource_relationships_by_bin(self, bin_id): # pragma: no cover
         """Gets the list of ``ResourceRelationships`` associated with a ``Bin``.
 
         :param bin_id: ``Id`` of a ``Bin``
@@ -4155,7 +4155,7 @@ class ResourceRelationshipBinSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_resource_relationships_ids_by_bins(self, bin_ids):
+    def get_resource_relationships_ids_by_bins(self, bin_ids): # pragma: no cover
         """Gets the list of ``ResourceRelationship Ids`` corresponding to a list of ``Bin`` objects.
 
         :param bin_ids: list of bin ``Ids``
@@ -4172,7 +4172,7 @@ class ResourceRelationshipBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_resource_relationships_by_bins(self, bin_ids):
+    def get_resource_relationships_by_bins(self, bin_ids): # pragma: no cover
         """Gets the list of ``ResourceRelationships`` corresponding to a list of ``Bins``.
 
         :param bin_ids: list of bin ``Ids``
@@ -4189,7 +4189,7 @@ class ResourceRelationshipBinSession:
         return  # osid.resource.ResourceRelationshipList
 
     @abc.abstractmethod
-    def get_bin_ids_by_resource_relationship(self, resource_relationship_id):
+    def get_bin_ids_by_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Gets the list of ``Bin``  ``Ids`` mapped to a ``ResourceRelationship``.
 
         :param resource_relationship_id: ``Id`` of a ``ResourceRelationship``
@@ -4207,7 +4207,7 @@ class ResourceRelationshipBinSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_bins_by_resource_relationship(self, resource_relationship_id):
+    def get_bins_by_resource_relationship(self, resource_relationship_id): # pragma: no cover
         """Gets the list of ``Bin`` objects mapped to a ``ResourceRelationship``.
 
         :param resource_relationship_id: ``Id`` of a ``ResourceRelationship``
@@ -4241,7 +4241,7 @@ class ResourceRelationshipBinAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_resource_relationships(self):
+    def can_assign_resource_relationships(self): # pragma: no cover
         """Tests if this user can alter resource relationship/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4260,7 +4260,7 @@ class ResourceRelationshipBinAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_resource_relationships_to_bin(self, bin_id):
+    def can_assign_resource_relationships_to_bin(self, bin_id): # pragma: no cover
         """Tests if this user can alter resource relationship/bin mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4281,7 +4281,7 @@ class ResourceRelationshipBinAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bin_ids(self, bin_id):
+    def get_assignable_bin_ids(self, bin_id): # pragma: no cover
         """Gets a list of bins including and under the given bin node in which any resource relationship can be assigned.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -4297,7 +4297,7 @@ class ResourceRelationshipBinAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bin_ids_for_resource_relationship(self, bin_id, resource_relationship_id):
+    def get_assignable_bin_ids_for_resource_relationship(self, bin_id, resource_relationship_id): # pragma: no cover
         """Gets a list of bins including and under the given bin node in which a specific resource relationship can be assigned.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -4315,7 +4315,7 @@ class ResourceRelationshipBinAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_resource_relationship_to_bin(self, resource_relationship_id, bin_id):
+    def assign_resource_relationship_to_bin(self, resource_relationship_id, bin_id): # pragma: no cover
         """Adds an existing ``ResourceRelationship`` to a ``Bin``.
 
         :param resource_relationship_id: the ``Id`` of the ``ResourceRelationship``
@@ -4334,7 +4334,7 @@ class ResourceRelationshipBinAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_resource_relationship_from_bin(self, resource_relationship_id, bin_id):
+    def unassign_resource_relationship_from_bin(self, resource_relationship_id, bin_id): # pragma: no cover
         """Removes a ``ResourceRelationship`` from a ``Bin``.
 
         :param resource_relationship_id: the ``Id`` of the ``ResourceRelationship``
@@ -4371,7 +4371,7 @@ class ResourceRelationshipSmartBinSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_id(self):
+    def get_bin_id(self): # pragma: no cover
         """Gets the ``Bin``  ``Id`` associated with this session.
 
         :return: the ``Bin Id`` associated with this session
@@ -4386,7 +4386,7 @@ class ResourceRelationshipSmartBinSession:
     bin_id = property(fget=get_bin_id)
 
     @abc.abstractmethod
-    def get_bin(self):
+    def get_bin(self): # pragma: no cover
         """Gets the ``Bin`` associated with this session.
 
         :return: the ``Bin`` associated with this session
@@ -4402,7 +4402,7 @@ class ResourceRelationshipSmartBinSession:
     bin = property(fget=get_bin)
 
     @abc.abstractmethod
-    def can_manage_smart_bins(self):
+    def can_manage_smart_bins(self): # pragma: no cover
         """Tests if this user can manage smart bins.
 
         A return of true does not guarantee successful authorization. A
@@ -4421,7 +4421,7 @@ class ResourceRelationshipSmartBinSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_query(self):
+    def get_resource_relationship_query(self): # pragma: no cover
         """Gets a resource relationship query.
 
         :return: the resource relationship query
@@ -4436,7 +4436,7 @@ class ResourceRelationshipSmartBinSession:
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
     @abc.abstractmethod
-    def get_resource_relationship_search_order(self):
+    def get_resource_relationship_search_order(self): # pragma: no cover
         """Gets a resource relationship search order.
 
         :return: the resource relationship search order
@@ -4451,7 +4451,7 @@ class ResourceRelationshipSmartBinSession:
     resource_relationship_search_order = property(fget=get_resource_relationship_search_order)
 
     @abc.abstractmethod
-    def apply_resource_relationship_query(self, resource_query):
+    def apply_resource_relationship_query(self, resource_query): # pragma: no cover
         """Applies a resource relationship query to this bin.
 
         :param resource_query: the resource relationship query
@@ -4467,7 +4467,7 @@ class ResourceRelationshipSmartBinSession:
         pass
 
     @abc.abstractmethod
-    def inspect_resource_relationship_query(self):
+    def inspect_resource_relationship_query(self): # pragma: no cover
         """Gets a resource relationship query inspector for this bin.
 
         :return: the resource relationship query inspector
@@ -4481,7 +4481,7 @@ class ResourceRelationshipSmartBinSession:
         return  # osid.resource.ResourceRelationshipQueryInspector
 
     @abc.abstractmethod
-    def apply_resource_relationship_sequencing(self, resource_relationship_search_order):
+    def apply_resource_relationship_sequencing(self, resource_relationship_search_order): # pragma: no cover
         """Applies a resource relationship search order to this bin.
 
         :param resource_relationship_search_order: the resource relationship search order
@@ -4497,7 +4497,7 @@ class ResourceRelationshipSmartBinSession:
         pass
 
     @abc.abstractmethod
-    def get_resource_relationship_query_from_inspector(self, resource_relationship_query_inspector):
+    def get_resource_relationship_query_from_inspector(self, resource_relationship_query_inspector): # pragma: no cover
         """Gets a resource relationship query from an inspector.
 
         :param resource_relationship_query_inspector: a resource relationship query inspector
@@ -4540,7 +4540,7 @@ class BinLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_bins(self):
+    def can_lookup_bins(self): # pragma: no cover
         """Tests if this user can perform ``Bin`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4559,7 +4559,7 @@ class BinLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bin_view(self):
+    def use_comparative_bin_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4573,7 +4573,7 @@ class BinLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bin_view(self):
+    def use_plenary_bin_view(self): # pragma: no cover
         """A complete view of the ``Bin`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4588,7 +4588,7 @@ class BinLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_bin(self, bin_id):
+    def get_bin(self, bin_id): # pragma: no cover
         """Gets the ``Bin`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -4611,7 +4611,7 @@ class BinLookupSession:
         return  # osid.resource.Bin
 
     @abc.abstractmethod
-    def get_bins_by_ids(self, bin_ids):
+    def get_bins_by_ids(self, bin_ids): # pragma: no cover
         """Gets a ``BinList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the bins
@@ -4637,7 +4637,7 @@ class BinLookupSession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def get_bins_by_genus_type(self, bin_genus_type):
+    def get_bins_by_genus_type(self, bin_genus_type): # pragma: no cover
         """Gets a ``BinList`` corresponding to the given bin genus ``Type`` which does not include bins of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known bins or an
@@ -4658,7 +4658,7 @@ class BinLookupSession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def get_bins_by_parent_genus_type(self, bin_genus_type):
+    def get_bins_by_parent_genus_type(self, bin_genus_type): # pragma: no cover
         """Gets a ``BinList`` corresponding to the given bin genus ``Type`` and include any additional bins with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known bins or an
@@ -4679,7 +4679,7 @@ class BinLookupSession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def get_bins_by_record_type(self, bin_record_type):
+    def get_bins_by_record_type(self, bin_record_type): # pragma: no cover
         """Gets a ``BinList`` containing the given bin record ``Type``.
 
         In plenary mode, the returned list contains all known bins or an
@@ -4700,7 +4700,7 @@ class BinLookupSession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def get_bins_by_provider(self, resource_id):
+    def get_bins_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``BinList`` from the given provider.
 
         In plenary mode, the returned list contains all known bins or an
@@ -4721,7 +4721,7 @@ class BinLookupSession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def get_bins(self):
+    def get_bins(self): # pragma: no cover
         """Gets all ``Bins``.
 
         In plenary mode, the returned list contains all known bins or an
@@ -4753,7 +4753,7 @@ class BinQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_bins(self):
+    def can_search_bins(self): # pragma: no cover
         """Tests if this user can perform ``Bin`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -4772,7 +4772,7 @@ class BinQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_query(self):
+    def get_bin_query(self): # pragma: no cover
         """Gets a bin query.
 
         The returned query will not have an extension query.
@@ -4789,7 +4789,7 @@ class BinQuerySession:
     bin_query = property(fget=get_bin_query)
 
     @abc.abstractmethod
-    def get_bins_by_query(self, bin_query):
+    def get_bins_by_query(self, bin_query): # pragma: no cover
         """Gets a list of ``Bins`` matching the given bin query.
 
         :param bin_query: the bin query
@@ -4828,7 +4828,7 @@ class BinSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_search(self):
+    def get_bin_search(self): # pragma: no cover
         """Gets a bin search.
 
         :return: the bin search
@@ -4843,7 +4843,7 @@ class BinSearchSession:
     bin_search = property(fget=get_bin_search)
 
     @abc.abstractmethod
-    def get_bin_search_order(self):
+    def get_bin_search_order(self): # pragma: no cover
         """Gets a bin search order.
 
         The ``BinSearchOrder`` is supplied to a ``BinSearch`` to specify
@@ -4861,7 +4861,7 @@ class BinSearchSession:
     bin_search_order = property(fget=get_bin_search_order)
 
     @abc.abstractmethod
-    def get_bins_by_search(self, bin_query, bin_search):
+    def get_bins_by_search(self, bin_query, bin_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param bin_query: the bin query
@@ -4881,7 +4881,7 @@ class BinSearchSession:
         return  # osid.resource.BinSearchResults
 
     @abc.abstractmethod
-    def get_bin_query_from_inspector(self, bin_query_inspector):
+    def get_bin_query_from_inspector(self, bin_query_inspector): # pragma: no cover
         """Gets a bin query from an inspector.
 
         The inspector is available from a ``BinSearchResults``.
@@ -4932,7 +4932,7 @@ class BinAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_bins(self):
+    def can_create_bins(self): # pragma: no cover
         """Tests if this user can create ``Bins``.
 
         A return of true does not guarantee successful authorization. A
@@ -4951,7 +4951,7 @@ class BinAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_bin_with_record_types(self, bin_record_types):
+    def can_create_bin_with_record_types(self, bin_record_types): # pragma: no cover
         """Tests if this user can create a single ``Bin`` using the desired record types.
 
         While ``ResourceManager.getBinRecordTypes()`` can be used to
@@ -4972,7 +4972,7 @@ class BinAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_form_for_create(self, bin_record_types):
+    def get_bin_form_for_create(self, bin_record_types): # pragma: no cover
         """Gets the bin form for creating new bins.
 
         :param bin_record_types: array of bin record types
@@ -4990,7 +4990,7 @@ class BinAdminSession:
         return  # osid.resource.BinForm
 
     @abc.abstractmethod
-    def create_bin(self, bin_form):
+    def create_bin(self, bin_form): # pragma: no cover
         """Creates a new ``Bin``.
 
         :param bin_form: the form for this ``Bin``
@@ -5010,7 +5010,7 @@ class BinAdminSession:
         return  # osid.resource.Bin
 
     @abc.abstractmethod
-    def can_update_bins(self):
+    def can_update_bins(self): # pragma: no cover
         """Tests if this user can update ``Bins``.
 
         A return of true does not guarantee successful authorization. A
@@ -5029,7 +5029,7 @@ class BinAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_form_for_update(self, bin_id):
+    def get_bin_form_for_update(self, bin_id): # pragma: no cover
         """Gets the bin form for updating an existing bin.
 
         A new bin form should be requested for each update transaction.
@@ -5049,7 +5049,7 @@ class BinAdminSession:
         return  # osid.resource.BinForm
 
     @abc.abstractmethod
-    def update_bin(self, bin_form):
+    def update_bin(self, bin_form): # pragma: no cover
         """Updates an existing bin.
 
         :param bin_form: the form containing the elements to be updated
@@ -5067,7 +5067,7 @@ class BinAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_bins(self):
+    def can_delete_bins(self): # pragma: no cover
         """Tests if this user can delete ``Bins``.
 
         A return of true does not guarantee successful authorization. A
@@ -5086,7 +5086,7 @@ class BinAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_bin(self, bin_id):
+    def delete_bin(self, bin_id): # pragma: no cover
         """Deletes a ``Bin``.
 
         :param bin_id: the ``Id`` of the ``Bin`` to remove
@@ -5102,7 +5102,7 @@ class BinAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_bin_aliases(self):
+    def can_manage_bin_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Bins``.
 
         A return of true does not guarantee successful authorization. A
@@ -5121,7 +5121,7 @@ class BinAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_bin(self, bin_id, alias_id):
+    def alias_bin(self, bin_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Bin`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Bin`` is determined by the provider.
@@ -5156,7 +5156,7 @@ class BinNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_bin_notifications(self):
+    def can_register_for_bin_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Bin`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -5175,7 +5175,7 @@ class BinNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def register_for_new_bins(self):
+    def register_for_new_bins(self): # pragma: no cover
         """Register for notifications of new bins.
 
         ``BinReceiver.newBins()`` is invoked when a new ``Bin`` is
@@ -5190,7 +5190,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_bin_ancestors(self, bin_id):
+    def register_for_new_bin_ancestors(self, bin_id): # pragma: no cover
         """Registers for notification if an ancestor is added to the specified bin in the bin hierarchy.
 
         ``BinReceiver.newBinAncestor()`` is invoked when the specified
@@ -5208,7 +5208,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_bin_descendants(self, bin_id):
+    def register_for_new_bin_descendants(self, bin_id): # pragma: no cover
         """Registers for notification if a descendant is added to the specified bin in the bin hierarchy.
 
         ``BinReceiver.newBinDescendant()`` is invoked when the specified
@@ -5226,7 +5226,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bins(self):
+    def register_for_changed_bins(self): # pragma: no cover
         """Registers for notification of updated bins.
 
         ``BinReceiver.changedBins()`` is invoked when a bin is changed.
@@ -5240,7 +5240,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bin(self, bin_id):
+    def register_for_changed_bin(self, bin_id): # pragma: no cover
         """Registers for notification of an updated bin.
 
         ``BinReceiver.changedBins()`` is invoked when the specified bin
@@ -5258,7 +5258,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_bins(self):
+    def register_for_deleted_bins(self): # pragma: no cover
         """Registers for notification of deleted bins.
 
         ``BinReceiver.deletedBins()`` is invoked when a bin is deleted.
@@ -5272,7 +5272,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_bin(self, bin_id):
+    def register_for_deleted_bin(self, bin_id): # pragma: no cover
         """Registers for notification of a deleted bin.
 
         ``BinReceiver.deletedBins()`` is invoked when the specified bin
@@ -5290,7 +5290,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_bin_ancestors(self, bin_id):
+    def register_for_deleted_bin_ancestors(self, bin_id): # pragma: no cover
         """Registers for notification if an ancestor is removed from the specified bin in the bin hierarchy.
 
         ``BinReceiver.deletedBinAncestor()`` is invoked when the
@@ -5308,7 +5308,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_bin_descendants(self, bin_id):
+    def register_for_deleted_bin_descendants(self, bin_id): # pragma: no cover
         """Registers for notification if a descendant is removed from fthe specified bin in the bin hierarchy.
 
         ``BinReceiver.deletedBinDescendnant()`` is invoked when the
@@ -5326,7 +5326,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_bin_notifications(self):
+    def reliable_bin_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5340,7 +5340,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_bin_notifications(self):
+    def unreliable_bin_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5354,7 +5354,7 @@ class BinNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_bin_notification(self, notification_id):
+    def acknowledge_bin_notification(self, notification_id): # pragma: no cover
         """Acknowledge an bin notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5397,7 +5397,7 @@ class BinHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_hierarchy_id(self):
+    def get_bin_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -5412,7 +5412,7 @@ class BinHierarchySession:
     bin_hierarchy_id = property(fget=get_bin_hierarchy_id)
 
     @abc.abstractmethod
-    def get_bin_hierarchy(self):
+    def get_bin_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -5428,7 +5428,7 @@ class BinHierarchySession:
     bin_hierarchy = property(fget=get_bin_hierarchy)
 
     @abc.abstractmethod
-    def can_access_bin_hierarchy(self):
+    def can_access_bin_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -5447,7 +5447,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bin_view(self):
+    def use_comparative_bin_view(self): # pragma: no cover
         """The returns from the bin methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -5461,7 +5461,7 @@ class BinHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bin_view(self):
+    def use_plenary_bin_view(self): # pragma: no cover
         """A complete view of the ``Bin`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -5476,7 +5476,7 @@ class BinHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_bin_ids(self):
+    def get_root_bin_ids(self): # pragma: no cover
         """Gets the root bin ``Ids`` in this hierarchy.
 
         :return: the root bin ``Ids``
@@ -5492,7 +5492,7 @@ class BinHierarchySession:
     root_bin_ids = property(fget=get_root_bin_ids)
 
     @abc.abstractmethod
-    def get_root_bins(self):
+    def get_root_bins(self): # pragma: no cover
         """Gets the root bins in the bin hierarchy.
 
         A node with no parents is an orphan. While all bin ``Ids`` are
@@ -5513,7 +5513,7 @@ class BinHierarchySession:
     root_bins = property(fget=get_root_bins)
 
     @abc.abstractmethod
-    def has_parent_bins(self, bin_id):
+    def has_parent_bins(self, bin_id): # pragma: no cover
         """Tests if the ``Bin`` has any parents.
 
         :param bin_id: the ``Id`` of a bin
@@ -5531,7 +5531,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_bin(self, id_, bin_id):
+    def is_parent_of_bin(self, id_, bin_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a bin.
 
         :param id: an ``Id``
@@ -5552,7 +5552,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_bin_ids(self, bin_id):
+    def get_parent_bin_ids(self, bin_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given bin.
 
         :param bin_id: the ``Id`` of a bin
@@ -5570,7 +5570,7 @@ class BinHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_bins(self, bin_id):
+    def get_parent_bins(self, bin_id): # pragma: no cover
         """Gets the parents of the given bin.
 
         :param bin_id: the ``Id`` to query
@@ -5588,7 +5588,7 @@ class BinHierarchySession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def is_ancestor_of_bin(self, id_, bin_id):
+    def is_ancestor_of_bin(self, id_, bin_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a bin.
 
         :param id: an ``Id``
@@ -5609,7 +5609,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_bins(self, bin_id):
+    def has_child_bins(self, bin_id): # pragma: no cover
         """Tests if a bin has any children.
 
         :param bin_id: the ``Id`` of a bin
@@ -5627,7 +5627,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_bin(self, id_, bin_id):
+    def is_child_of_bin(self, id_, bin_id): # pragma: no cover
         """Tests if a bin is a direct child of another.
 
         :param id: an ``Id``
@@ -5648,7 +5648,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_bin_ids(self, bin_id):
+    def get_child_bin_ids(self, bin_id): # pragma: no cover
         """Gets the child ``Ids`` of the given bin.
 
         :param bin_id: the ``Id`` to query
@@ -5666,7 +5666,7 @@ class BinHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_bins(self, bin_id):
+    def get_child_bins(self, bin_id): # pragma: no cover
         """Gets the children of the given bin.
 
         :param bin_id: the ``Id`` to query
@@ -5684,7 +5684,7 @@ class BinHierarchySession:
         return  # osid.resource.BinList
 
     @abc.abstractmethod
-    def is_descendant_of_bin(self, id_, bin_id):
+    def is_descendant_of_bin(self, id_, bin_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of a bin.
 
         :param id: an ``Id``
@@ -5705,7 +5705,7 @@ class BinHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_node_ids(self, bin_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_bin_node_ids(self, bin_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given bin.
 
         :param bin_id: the ``Id`` to query
@@ -5729,7 +5729,7 @@ class BinHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_bin_nodes(self, bin_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_bin_nodes(self, bin_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given bin.
 
         :param bin_id: the ``Id`` to query
@@ -5762,7 +5762,7 @@ class BinHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_hierarchy_id(self):
+    def get_bin_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -5777,7 +5777,7 @@ class BinHierarchyDesignSession:
     bin_hierarchy_id = property(fget=get_bin_hierarchy_id)
 
     @abc.abstractmethod
-    def get_bin_hierarchy(self):
+    def get_bin_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -5793,7 +5793,7 @@ class BinHierarchyDesignSession:
     bin_hierarchy = property(fget=get_bin_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_bin_hierarchy(self):
+    def can_modify_bin_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -5812,7 +5812,7 @@ class BinHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_bin(self, bin_id):
+    def add_root_bin(self, bin_id): # pragma: no cover
         """Adds a root bin.
 
         :param bin_id: the ``Id`` of a bin
@@ -5829,7 +5829,7 @@ class BinHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_bin(self, bin_id):
+    def remove_root_bin(self, bin_id): # pragma: no cover
         """Removes a root bin.
 
         :param bin_id: the ``Id`` of a bin
@@ -5845,7 +5845,7 @@ class BinHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_bin(self, bin_id, child_id):
+    def add_child_bin(self, bin_id, child_id): # pragma: no cover
         """Adds a child to a bin.
 
         :param bin_id: the ``Id`` of a bin
@@ -5864,7 +5864,7 @@ class BinHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_bin(self, bin_id, child_id):
+    def remove_child_bin(self, bin_id, child_id): # pragma: no cover
         """Removes a child from a bin.
 
         :param bin_id: the ``Id`` of a bin
@@ -5882,7 +5882,7 @@ class BinHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_bins(self, bin_id):
+    def remove_child_bins(self, bin_id): # pragma: no cover
         """Removes all children from a bin.
 
         :param bin_id: the ``Id`` of a bin

@@ -26,7 +26,7 @@ class Question:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_question_record(self, question_record_type):
+    def get_question_record(self, question_record_type): # pragma: no cover
         """Gets the item record corresponding to the given ``Question`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -54,7 +54,7 @@ class QuestionForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_question_form_record(self, question_record_type):
+    def get_question_form_record(self, question_record_type): # pragma: no cover
         """Gets the ``QuestionFormRecord`` corresponding to the given question record ``Type``.
 
         :param question_record_type: the question record type
@@ -86,7 +86,7 @@ class QuestionList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_question(self):
+    def get_next_question(self): # pragma: no cover
         """Gets the next ``Question`` in this list.
 
         :return: the next ``Question`` in this list. The ``has_next()`` method should be used to test that a next ``Question`` is available before calling this method.
@@ -102,7 +102,7 @@ class QuestionList:
     next_question = property(fget=get_next_question)
 
     @abc.abstractmethod
-    def get_next_questions(self, n):
+    def get_next_questions(self, n): # pragma: no cover
         """Gets the next set of ``Question`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Question`` elements requested which should be less than or equal to ``available()``
@@ -128,7 +128,7 @@ class Answer:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_answer_record(self, answer_record_type):
+    def get_answer_record(self, answer_record_type): # pragma: no cover
         """Gets the answer record corresponding to the given ``Answer`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -156,7 +156,7 @@ class AnswerForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_answer_form_record(self, answer_record_type):
+    def get_answer_form_record(self, answer_record_type): # pragma: no cover
         """Gets the ``AnswerFormRecord`` corresponding to the given answer record ``Type``.
 
         :param answer_record_type: the answer record type
@@ -188,7 +188,7 @@ class AnswerList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_answer(self):
+    def get_next_answer(self): # pragma: no cover
         """Gets the next ``Answer`` in this list.
 
         :return: the next ``Answer`` in this list. The ``has_next()`` method should be used to test that a next ``Answer`` is available before calling this method.
@@ -204,7 +204,7 @@ class AnswerList:
     next_answer = property(fget=get_next_answer)
 
     @abc.abstractmethod
-    def get_next_answers(self, n):
+    def get_next_answers(self, n): # pragma: no cover
         """Gets the next set of ``Answer`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Answer`` elements requested which should be less than or equal to ``available()``
@@ -232,7 +232,7 @@ class Item:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_learning_objective_ids(self):
+    def get_learning_objective_ids(self): # pragma: no cover
         """Gets the ``Ids`` of any ``Objectives`` corresponding to this item.
 
         :return: the learning objective ``Ids``
@@ -247,7 +247,7 @@ class Item:
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
     @abc.abstractmethod
-    def get_learning_objectives(self):
+    def get_learning_objectives(self): # pragma: no cover
         """Gets the any ``Objectives`` corresponding to this item.
 
         :return: the learning objectives
@@ -262,7 +262,7 @@ class Item:
     learning_objectives = property(fget=get_learning_objectives)
 
     @abc.abstractmethod
-    def get_question_id(self):
+    def get_question_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Question``.
 
         :return: the question ``Id``
@@ -277,7 +277,7 @@ class Item:
     question_id = property(fget=get_question_id)
 
     @abc.abstractmethod
-    def get_question(self):
+    def get_question(self): # pragma: no cover
         """Gets the question.
 
         :return: the question
@@ -292,7 +292,7 @@ class Item:
     question = property(fget=get_question)
 
     @abc.abstractmethod
-    def get_answer_ids(self):
+    def get_answer_ids(self): # pragma: no cover
         """Gets the ``Ids`` of the answers.
 
         Questions may have more than one acceptable answer.
@@ -309,7 +309,7 @@ class Item:
     answer_ids = property(fget=get_answer_ids)
 
     @abc.abstractmethod
-    def get_answers(self):
+    def get_answers(self): # pragma: no cover
         """Gets the answers.
 
         :return: the answers
@@ -324,7 +324,7 @@ class Item:
     answers = property(fget=get_answers)
 
     @abc.abstractmethod
-    def get_item_record(self, item_record_type):
+    def get_item_record(self, item_record_type): # pragma: no cover
         """Gets the item record corresponding to the given ``Item`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -360,7 +360,7 @@ class ItemForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_learning_objectives_metadata(self):
+    def get_learning_objectives_metadata(self): # pragma: no cover
         """Gets the metadata for learning objectives.
 
         :return: metadata for the learning objectives
@@ -375,7 +375,7 @@ class ItemForm:
     learning_objectives_metadata = property(fget=get_learning_objectives_metadata)
 
     @abc.abstractmethod
-    def set_learning_objectives(self, objective_ids):
+    def set_learning_objectives(self, objective_ids): # pragma: no cover
         """Sets the learning objectives.
 
         :param objective_ids: the learning objective ``Ids``
@@ -389,7 +389,7 @@ class ItemForm:
         pass
 
     @abc.abstractmethod
-    def clear_learning_objectives(self):
+    def clear_learning_objectives(self): # pragma: no cover
         """Clears the learning objectives.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -402,7 +402,7 @@ class ItemForm:
     learning_objectives = property(fset=set_learning_objectives, fdel=clear_learning_objectives)
 
     @abc.abstractmethod
-    def get_item_form_record(self, item_record_type):
+    def get_item_form_record(self, item_record_type): # pragma: no cover
         """Gets the ``ItemnFormRecord`` corresponding to the given item record ``Type``.
 
         :param item_record_type: the item record type
@@ -433,7 +433,7 @@ class ItemList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_item(self):
+    def get_next_item(self): # pragma: no cover
         """Gets the next ``Item`` in this list.
 
         :return: the next ``Item`` in this list. The ``has_next()`` method should be used to test that a next ``Item`` is available before calling this method.
@@ -449,7 +449,7 @@ class ItemList:
     next_item = property(fget=get_next_item)
 
     @abc.abstractmethod
-    def get_next_items(self, n):
+    def get_next_items(self, n): # pragma: no cover
         """Gets the next set of ``Item`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Item`` elements requested which should be less than or equal to ``available()``
@@ -479,7 +479,7 @@ class Assessment:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_level_id(self):
+    def get_level_id(self): # pragma: no cover
         """Gets the ``Id`` of a ``Grade`` corresponding to the assessment difficulty.
 
         :return: a grade ``Id``
@@ -494,7 +494,7 @@ class Assessment:
     level_id = property(fget=get_level_id)
 
     @abc.abstractmethod
-    def get_level(self):
+    def get_level(self): # pragma: no cover
         """Gets the ``Grade`` corresponding to the assessment difficulty.
 
         :return: the level
@@ -509,7 +509,7 @@ class Assessment:
     level = property(fget=get_level)
 
     @abc.abstractmethod
-    def has_rubric(self):
+    def has_rubric(self): # pragma: no cover
         """Tests if a rubric assessment is associated with this assessment.
 
         :return: ``true`` if a rubric is available, ``false`` otherwise
@@ -522,7 +522,7 @@ class Assessment:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_id(self):
+    def get_rubric_id(self): # pragma: no cover
         """Gets the ``Id`` of the rubric.
 
         :return: an assessment ``Id``
@@ -537,7 +537,7 @@ class Assessment:
     rubric_id = property(fget=get_rubric_id)
 
     @abc.abstractmethod
-    def get_rubric(self):
+    def get_rubric(self): # pragma: no cover
         """Gets the rubric.
 
         :return: the assessment
@@ -553,7 +553,7 @@ class Assessment:
     rubric = property(fget=get_rubric)
 
     @abc.abstractmethod
-    def get_assessment_record(self, assessment_record_type):
+    def get_assessment_record(self, assessment_record_type): # pragma: no cover
         """Gets the assessment record corresponding to the given ``Assessment`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -589,7 +589,7 @@ class AssessmentForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_level_metadata(self):
+    def get_level_metadata(self): # pragma: no cover
         """Gets the metadata for a grade level.
 
         :return: metadata for the grade level
@@ -604,7 +604,7 @@ class AssessmentForm:
     level_metadata = property(fget=get_level_metadata)
 
     @abc.abstractmethod
-    def set_level(self, grade_id):
+    def set_level(self, grade_id): # pragma: no cover
         """Sets the level of difficulty expressed as a ``Grade``.
 
         :param grade_id: the grade level
@@ -619,7 +619,7 @@ class AssessmentForm:
         pass
 
     @abc.abstractmethod
-    def clear_level(self):
+    def clear_level(self): # pragma: no cover
         """Clears the grade level.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -632,7 +632,7 @@ class AssessmentForm:
     level = property(fset=set_level, fdel=clear_level)
 
     @abc.abstractmethod
-    def get_rubric_metadata(self):
+    def get_rubric_metadata(self): # pragma: no cover
         """Gets the metadata for a rubric assessment.
 
         :return: metadata for the assesment
@@ -647,7 +647,7 @@ class AssessmentForm:
     rubric_metadata = property(fget=get_rubric_metadata)
 
     @abc.abstractmethod
-    def set_rubric(self, assessment_id):
+    def set_rubric(self, assessment_id): # pragma: no cover
         """Sets the rubric expressed as another assessment.
 
         :param assessment_id: the assessment ``Id``
@@ -662,7 +662,7 @@ class AssessmentForm:
         pass
 
     @abc.abstractmethod
-    def clear_rubric(self):
+    def clear_rubric(self): # pragma: no cover
         """Clears the rubric.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -675,7 +675,7 @@ class AssessmentForm:
     rubric = property(fset=set_rubric, fdel=clear_rubric)
 
     @abc.abstractmethod
-    def get_assessment_form_record(self, assessment_record_type):
+    def get_assessment_form_record(self, assessment_record_type): # pragma: no cover
         """Gets the ``AssessmentFormRecord`` corresponding to the given assessment record ``Type``.
 
         :param assessment_record_type: the assessment record type
@@ -707,7 +707,7 @@ class AssessmentList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_assessment(self):
+    def get_next_assessment(self): # pragma: no cover
         """Gets the next ``Assessment`` in this list.
 
         :return: the next ``Assessment`` in this list. The ``has_next()`` method should be used to test that a next ``Assessment`` is available before calling this method.
@@ -723,7 +723,7 @@ class AssessmentList:
     next_assessment = property(fget=get_next_assessment)
 
     @abc.abstractmethod
-    def get_next_assessments(self, n):
+    def get_next_assessments(self, n): # pragma: no cover
         """Gets the next set of ``Assessment`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``Assessment`` elements requested which should be less than or equal to ``available()``
@@ -749,7 +749,7 @@ class AssessmentOffered:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_id(self):
+    def get_assessment_id(self): # pragma: no cover
         """Gets the assessment ``Id`` corresponding to this assessment offering.
 
         :return: the assessment id
@@ -764,7 +764,7 @@ class AssessmentOffered:
     assessment_id = property(fget=get_assessment_id)
 
     @abc.abstractmethod
-    def get_assessment(self):
+    def get_assessment(self): # pragma: no cover
         """Gets the assessment corresponding to this assessment offereng.
 
         :return: the assessment
@@ -779,7 +779,7 @@ class AssessmentOffered:
     assessment = property(fget=get_assessment)
 
     @abc.abstractmethod
-    def get_level_id(self):
+    def get_level_id(self): # pragma: no cover
         """Gets the ``Id`` of a ``Grade`` corresponding to the assessment difficulty.
 
         :return: a grade id
@@ -794,7 +794,7 @@ class AssessmentOffered:
     level_id = property(fget=get_level_id)
 
     @abc.abstractmethod
-    def get_level(self):
+    def get_level(self): # pragma: no cover
         """Gets the ``Grade`` corresponding to the assessment difficulty.
 
         :return: the level
@@ -809,7 +809,7 @@ class AssessmentOffered:
     level = property(fget=get_level)
 
     @abc.abstractmethod
-    def are_items_sequential(self):
+    def are_items_sequential(self): # pragma: no cover
         """Tests if the items or parts in this assessment are taken sequentially.
 
         :return: ``true`` if the items are taken sequentially, ``false`` if the items can be skipped and revisited
@@ -822,7 +822,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def are_items_shuffled(self):
+    def are_items_shuffled(self): # pragma: no cover
         """Tests if the items or parts appear in a random order.
 
         :return: ``true`` if the items appear in a random order, ``false`` otherwise
@@ -835,7 +835,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def has_start_time(self):
+    def has_start_time(self): # pragma: no cover
         """Tests if there is a fixed start time for this assessment.
 
         :return: ``true`` if there is a fixed start time, ``false`` otherwise
@@ -848,7 +848,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_start_time(self):
+    def get_start_time(self): # pragma: no cover
         """Gets the start time for this assessment.
 
         :return: the designated start time
@@ -863,7 +863,7 @@ class AssessmentOffered:
     start_time = property(fget=get_start_time)
 
     @abc.abstractmethod
-    def has_deadline(self):
+    def has_deadline(self): # pragma: no cover
         """Tests if there is a fixed end time for this assessment.
 
         :return: ``true`` if there is a fixed end time, ``false`` otherwise
@@ -876,7 +876,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_deadline(self):
+    def get_deadline(self): # pragma: no cover
         """Gets the end time for this assessment.
 
         :return: the designated end time
@@ -891,7 +891,7 @@ class AssessmentOffered:
     deadline = property(fget=get_deadline)
 
     @abc.abstractmethod
-    def has_duration(self):
+    def has_duration(self): # pragma: no cover
         """Tests if there is a fixed duration for this assessment.
 
         :return: ``true`` if there is a fixed duration, ``false`` otherwise
@@ -904,7 +904,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_duration(self):
+    def get_duration(self): # pragma: no cover
         """Gets the duration for this assessment.
 
         :return: the duration
@@ -919,7 +919,7 @@ class AssessmentOffered:
     duration = property(fget=get_duration)
 
     @abc.abstractmethod
-    def is_scored(self):
+    def is_scored(self): # pragma: no cover
         """Tests if this assessment will be scored.
 
         :return: ``true`` if this assessment will be scored ``false`` otherwise
@@ -932,7 +932,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_id(self):
+    def get_score_system_id(self): # pragma: no cover
         """Gets the grade system ``Id`` for the score.
 
         :return: the grade system ``Id``
@@ -947,7 +947,7 @@ class AssessmentOffered:
     score_system_id = property(fget=get_score_system_id)
 
     @abc.abstractmethod
-    def get_score_system(self):
+    def get_score_system(self): # pragma: no cover
         """Gets the grade system for the score.
 
         :return: the grade system
@@ -963,7 +963,7 @@ class AssessmentOffered:
     score_system = property(fget=get_score_system)
 
     @abc.abstractmethod
-    def is_graded(self):
+    def is_graded(self): # pragma: no cover
         """Tests if this assessment will be graded.
 
         :return: ``true`` if this assessment will be graded, ``false`` otherwise
@@ -976,7 +976,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_id(self):
+    def get_grade_system_id(self): # pragma: no cover
         """Gets the grade system ``Id`` for the grade.
 
         :return: the grade system ``Id``
@@ -991,7 +991,7 @@ class AssessmentOffered:
     grade_system_id = property(fget=get_grade_system_id)
 
     @abc.abstractmethod
-    def get_grade_system(self):
+    def get_grade_system(self): # pragma: no cover
         """Gets the grade system for the grade.
 
         :return: the grade system
@@ -1007,7 +1007,7 @@ class AssessmentOffered:
     grade_system = property(fget=get_grade_system)
 
     @abc.abstractmethod
-    def has_rubric(self):
+    def has_rubric(self): # pragma: no cover
         """Tests if a rubric assessment is associated with this assessment.
 
         :return: ``true`` if a rubric is available, ``false`` otherwise
@@ -1020,7 +1020,7 @@ class AssessmentOffered:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_id(self):
+    def get_rubric_id(self): # pragma: no cover
         """Gets the ``Id`` of the rubric.
 
         :return: an assessment offered ``Id``
@@ -1035,7 +1035,7 @@ class AssessmentOffered:
     rubric_id = property(fget=get_rubric_id)
 
     @abc.abstractmethod
-    def get_rubric(self):
+    def get_rubric(self): # pragma: no cover
         """Gets the rubric.
 
         :return: the assessment offered
@@ -1051,7 +1051,7 @@ class AssessmentOffered:
     rubric = property(fget=get_rubric)
 
     @abc.abstractmethod
-    def get_assessment_offered_record(self, assessment_taken_record_type):
+    def get_assessment_offered_record(self, assessment_taken_record_type): # pragma: no cover
         """Gets the assessment offered record corresponding to the given ``AssessmentOffered`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1088,7 +1088,7 @@ class AssessmentOfferedForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_level_metadata(self):
+    def get_level_metadata(self): # pragma: no cover
         """Gets the metadata for a grade level.
 
         :return: metadata for the grade level
@@ -1103,7 +1103,7 @@ class AssessmentOfferedForm:
     level_metadata = property(fget=get_level_metadata)
 
     @abc.abstractmethod
-    def set_level(self, grade_id):
+    def set_level(self, grade_id): # pragma: no cover
         """Sets the level of difficulty expressed as a ``Grade``.
 
         :param grade_id: the grade level
@@ -1117,7 +1117,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_level(self):
+    def clear_level(self): # pragma: no cover
         """Clears the level.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1130,7 +1130,7 @@ class AssessmentOfferedForm:
     level = property(fset=set_level, fdel=clear_level)
 
     @abc.abstractmethod
-    def get_items_sequential_metadata(self):
+    def get_items_sequential_metadata(self): # pragma: no cover
         """Gets the metadata for sequential operation.
 
         :return: metadata for the sequential flag
@@ -1145,7 +1145,7 @@ class AssessmentOfferedForm:
     items_sequential_metadata = property(fget=get_items_sequential_metadata)
 
     @abc.abstractmethod
-    def set_items_sequential(self, sequential):
+    def set_items_sequential(self, sequential): # pragma: no cover
         """Sets the items sequential flag.
 
         :param sequential: ``true`` if the items are taken sequentially, ``false`` if the items can be skipped and revisited
@@ -1159,7 +1159,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_items_sequential(self):
+    def clear_items_sequential(self): # pragma: no cover
         """Clears the items sequential flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1172,7 +1172,7 @@ class AssessmentOfferedForm:
     items_sequential = property(fset=set_items_sequential, fdel=clear_items_sequential)
 
     @abc.abstractmethod
-    def get_items_shuffled_metadata(self):
+    def get_items_shuffled_metadata(self): # pragma: no cover
         """Gets the metadata for shuffling items.
 
         :return: metadata for the shuffled flag
@@ -1187,7 +1187,7 @@ class AssessmentOfferedForm:
     items_shuffled_metadata = property(fget=get_items_shuffled_metadata)
 
     @abc.abstractmethod
-    def set_items_shuffled(self, shuffle):
+    def set_items_shuffled(self, shuffle): # pragma: no cover
         """Sets the shuffle flag.
 
         The shuffle flag may be overidden by other assessment sequencing
@@ -1204,7 +1204,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_items_shuffled(self):
+    def clear_items_shuffled(self): # pragma: no cover
         """Clears the shuffle flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1217,7 +1217,7 @@ class AssessmentOfferedForm:
     items_shuffled = property(fset=set_items_shuffled, fdel=clear_items_shuffled)
 
     @abc.abstractmethod
-    def get_start_time_metadata(self):
+    def get_start_time_metadata(self): # pragma: no cover
         """Gets the metadata for the assessment start time.
 
         :return: metadata for the start time
@@ -1232,7 +1232,7 @@ class AssessmentOfferedForm:
     start_time_metadata = property(fget=get_start_time_metadata)
 
     @abc.abstractmethod
-    def set_start_time(self, start):
+    def set_start_time(self, start): # pragma: no cover
         """Sets the assessment start time.
 
         :param start: assessment start time
@@ -1246,7 +1246,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_start_time(self):
+    def clear_start_time(self): # pragma: no cover
         """Clears the start time.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1259,7 +1259,7 @@ class AssessmentOfferedForm:
     start_time = property(fset=set_start_time, fdel=clear_start_time)
 
     @abc.abstractmethod
-    def get_deadline_metadata(self):
+    def get_deadline_metadata(self): # pragma: no cover
         """Gets the metadata for the assessment deadline.
 
         :return: metadata for the end time
@@ -1274,7 +1274,7 @@ class AssessmentOfferedForm:
     deadline_metadata = property(fget=get_deadline_metadata)
 
     @abc.abstractmethod
-    def set_deadline(self, end):
+    def set_deadline(self, end): # pragma: no cover
         """Sets the assessment end time.
 
         :param end: assessment end time
@@ -1288,7 +1288,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_deadline(self):
+    def clear_deadline(self): # pragma: no cover
         """Clears the deadline.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1301,7 +1301,7 @@ class AssessmentOfferedForm:
     deadline = property(fset=set_deadline, fdel=clear_deadline)
 
     @abc.abstractmethod
-    def get_duration_metadata(self):
+    def get_duration_metadata(self): # pragma: no cover
         """Gets the metadata for the assessment duration.
 
         :return: metadata for the duration
@@ -1316,7 +1316,7 @@ class AssessmentOfferedForm:
     duration_metadata = property(fget=get_duration_metadata)
 
     @abc.abstractmethod
-    def set_duration(self, duration):
+    def set_duration(self, duration): # pragma: no cover
         """Sets the assessment duration.
 
         :param duration: assessment duration
@@ -1330,7 +1330,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_duration(self):
+    def clear_duration(self): # pragma: no cover
         """Clears the duration.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1343,7 +1343,7 @@ class AssessmentOfferedForm:
     duration = property(fset=set_duration, fdel=clear_duration)
 
     @abc.abstractmethod
-    def get_score_system_metadata(self):
+    def get_score_system_metadata(self): # pragma: no cover
         """Gets the metadata for a score system.
 
         :return: metadata for the grade system
@@ -1358,7 +1358,7 @@ class AssessmentOfferedForm:
     score_system_metadata = property(fget=get_score_system_metadata)
 
     @abc.abstractmethod
-    def set_score_system(self, grade_system_id):
+    def set_score_system(self, grade_system_id): # pragma: no cover
         """Sets the scoring system.
 
         :param grade_system_id: the grade system
@@ -1372,7 +1372,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_score_system(self):
+    def clear_score_system(self): # pragma: no cover
         """Clears the score system.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1385,7 +1385,7 @@ class AssessmentOfferedForm:
     score_system = property(fset=set_score_system, fdel=clear_score_system)
 
     @abc.abstractmethod
-    def get_grade_system_metadata(self):
+    def get_grade_system_metadata(self): # pragma: no cover
         """Gets the metadata for a grading system.
 
         :return: metadata for the grade system
@@ -1400,7 +1400,7 @@ class AssessmentOfferedForm:
     grade_system_metadata = property(fget=get_grade_system_metadata)
 
     @abc.abstractmethod
-    def set_grade_system(self, grade_system_id):
+    def set_grade_system(self, grade_system_id): # pragma: no cover
         """Sets the grading system.
 
         :param grade_system_id: the grade system
@@ -1414,7 +1414,7 @@ class AssessmentOfferedForm:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system(self):
+    def clear_grade_system(self): # pragma: no cover
         """Clears the grading system.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1427,7 +1427,7 @@ class AssessmentOfferedForm:
     grade_system = property(fset=set_grade_system, fdel=clear_grade_system)
 
     @abc.abstractmethod
-    def get_assessment_offered_form_record(self, assessment_offered_record_type):
+    def get_assessment_offered_form_record(self, assessment_offered_record_type): # pragma: no cover
         """Gets the ``AssessmentOfferedFormRecord`` corresponding to the given assessment record ``Type``.
 
         :param assessment_offered_record_type: the assessment offered record type
@@ -1459,7 +1459,7 @@ class AssessmentOfferedList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_assessment_offered(self):
+    def get_next_assessment_offered(self): # pragma: no cover
         """Gets the next ``AssessmentOffered`` in this list.
 
         :return: the next ``AssessmentOffered`` in this list. The ``has_next()`` method should be used to test that a next ``AssessmentOffered`` is available before calling this method.
@@ -1475,7 +1475,7 @@ class AssessmentOfferedList:
     next_assessment_offered = property(fget=get_next_assessment_offered)
 
     @abc.abstractmethod
-    def get_next_assessments_offered(self, n):
+    def get_next_assessments_offered(self, n): # pragma: no cover
         """Gets the next set of ``AssessmentOffered`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``AssessmentOffered`` elements requested which should be less than or equal to ``available()``
@@ -1496,7 +1496,7 @@ class AssessmentTaken:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_offered_id(self):
+    def get_assessment_offered_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``AssessmentOffered``.
 
         :return: the assessment offered ``Id``
@@ -1511,7 +1511,7 @@ class AssessmentTaken:
     assessment_offered_id = property(fget=get_assessment_offered_id)
 
     @abc.abstractmethod
-    def get_assessment_offered(self):
+    def get_assessment_offered(self): # pragma: no cover
         """Gets the ``AssessmentOffered``.
 
         :return: the assessment offered
@@ -1526,7 +1526,7 @@ class AssessmentTaken:
     assessment_offered = property(fget=get_assessment_offered)
 
     @abc.abstractmethod
-    def get_taker_id(self):
+    def get_taker_id(self): # pragma: no cover
         """Gets the ``Id`` of the resource who took or is taking this assessment.
 
         :return: the resource ``Id``
@@ -1541,7 +1541,7 @@ class AssessmentTaken:
     taker_id = property(fget=get_taker_id)
 
     @abc.abstractmethod
-    def get_taker(self):
+    def get_taker(self): # pragma: no cover
         """Gets the ``Resource`` taking this assessment.
 
         :return: the resource
@@ -1556,7 +1556,7 @@ class AssessmentTaken:
     taker = property(fget=get_taker)
 
     @abc.abstractmethod
-    def get_taking_agent_id(self):
+    def get_taking_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Agent`` who took or is taking the assessment.
 
         :return: the agent ``Id``
@@ -1571,7 +1571,7 @@ class AssessmentTaken:
     taking_agent_id = property(fget=get_taking_agent_id)
 
     @abc.abstractmethod
-    def get_taking_agent(self):
+    def get_taking_agent(self): # pragma: no cover
         """Gets the ``Agent``.
 
         :return: the agent
@@ -1586,7 +1586,7 @@ class AssessmentTaken:
     taking_agent = property(fget=get_taking_agent)
 
     @abc.abstractmethod
-    def has_started(self):
+    def has_started(self): # pragma: no cover
         """Tests if this assessment has begun.
 
         :return: ``true`` if the assessment has begun, ``false`` otherwise
@@ -1599,7 +1599,7 @@ class AssessmentTaken:
         return  # boolean
 
     @abc.abstractmethod
-    def get_actual_start_time(self):
+    def get_actual_start_time(self): # pragma: no cover
         """Gets the time this assessment was started.
 
         :return: the start time
@@ -1614,7 +1614,7 @@ class AssessmentTaken:
     actual_start_time = property(fget=get_actual_start_time)
 
     @abc.abstractmethod
-    def has_ended(self):
+    def has_ended(self): # pragma: no cover
         """Tests if this assessment has ended.
 
         :return: ``true`` if the assessment has ended, ``false`` otherwise
@@ -1627,7 +1627,7 @@ class AssessmentTaken:
         return  # boolean
 
     @abc.abstractmethod
-    def get_completion_time(self):
+    def get_completion_time(self): # pragma: no cover
         """Gets the time of this assessment was completed.
 
         :return: the end time
@@ -1642,7 +1642,7 @@ class AssessmentTaken:
     completion_time = property(fget=get_completion_time)
 
     @abc.abstractmethod
-    def get_time_spent(self):
+    def get_time_spent(self): # pragma: no cover
         """Gets the total time spent taking this assessment.
 
         :return: the total time spent
@@ -1657,7 +1657,7 @@ class AssessmentTaken:
     time_spent = property(fget=get_time_spent)
 
     @abc.abstractmethod
-    def get_completion(self):
+    def get_completion(self): # pragma: no cover
         """Gets a completion percentage of the assessment.
 
         :return: the percent complete (0-100)
@@ -1672,7 +1672,7 @@ class AssessmentTaken:
     completion = property(fget=get_completion)
 
     @abc.abstractmethod
-    def is_scored(self):
+    def is_scored(self): # pragma: no cover
         """Tests if a score is available for this assessment.
 
         :return: ``true`` if a score is available, ``false`` otherwise
@@ -1685,7 +1685,7 @@ class AssessmentTaken:
         return  # boolean
 
     @abc.abstractmethod
-    def get_score_system_id(self):
+    def get_score_system_id(self): # pragma: no cover
         """Gets a score system ``Id`` for the assessment.
 
         :return: the grade system
@@ -1700,7 +1700,7 @@ class AssessmentTaken:
     score_system_id = property(fget=get_score_system_id)
 
     @abc.abstractmethod
-    def get_score_system(self):
+    def get_score_system(self): # pragma: no cover
         """Gets a grade system for the score.
 
         :return: the grade system
@@ -1716,7 +1716,7 @@ class AssessmentTaken:
     score_system = property(fget=get_score_system)
 
     @abc.abstractmethod
-    def get_score(self):
+    def get_score(self): # pragma: no cover
         """Gets a score for the assessment.
 
         :return: the score
@@ -1731,7 +1731,7 @@ class AssessmentTaken:
     score = property(fget=get_score)
 
     @abc.abstractmethod
-    def is_graded(self):
+    def is_graded(self): # pragma: no cover
         """Tests if a grade is available for this assessment.
 
         :return: ``true`` if a grade is available, ``false`` otherwise
@@ -1744,7 +1744,7 @@ class AssessmentTaken:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_id(self):
+    def get_grade_id(self): # pragma: no cover
         """Gets a grade ``Id`` for the assessment.
 
         :return: the grade
@@ -1759,7 +1759,7 @@ class AssessmentTaken:
     grade_id = property(fget=get_grade_id)
 
     @abc.abstractmethod
-    def get_grade(self):
+    def get_grade(self): # pragma: no cover
         """Gets a grade for the assessment.
 
         :return: the grade
@@ -1775,7 +1775,7 @@ class AssessmentTaken:
     grade = property(fget=get_grade)
 
     @abc.abstractmethod
-    def get_feedback(self):
+    def get_feedback(self): # pragma: no cover
         """Gets any overall comments available for this assessment by the grader.
 
         :return: comments
@@ -1790,7 +1790,7 @@ class AssessmentTaken:
     feedback = property(fget=get_feedback)
 
     @abc.abstractmethod
-    def has_rubric(self):
+    def has_rubric(self): # pragma: no cover
         """Tests if a rubric assessment is associated with this assessment.
 
         :return: ``true`` if a rubric is available, ``false`` otherwise
@@ -1803,7 +1803,7 @@ class AssessmentTaken:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rubric_id(self):
+    def get_rubric_id(self): # pragma: no cover
         """Gets the ``Id`` of the rubric.
 
         :return: an assessment taken ``Id``
@@ -1818,7 +1818,7 @@ class AssessmentTaken:
     rubric_id = property(fget=get_rubric_id)
 
     @abc.abstractmethod
-    def get_rubric(self):
+    def get_rubric(self): # pragma: no cover
         """Gets the rubric.
 
         :return: the assessment taken
@@ -1834,7 +1834,7 @@ class AssessmentTaken:
     rubric = property(fget=get_rubric)
 
     @abc.abstractmethod
-    def get_assessment_taken_record(self, assessment_taken_record_type):
+    def get_assessment_taken_record(self, assessment_taken_record_type): # pragma: no cover
         """Gets the assessment taken record corresponding to the given ``AssessmentTaken`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1870,7 +1870,7 @@ class AssessmentTakenForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_taker_metadata(self):
+    def get_taker_metadata(self): # pragma: no cover
         """Gets the metadata for a resource to manually set which resource will be taking the assessment.
 
         :return: metadata for the resource
@@ -1885,7 +1885,7 @@ class AssessmentTakenForm:
     taker_metadata = property(fget=get_taker_metadata)
 
     @abc.abstractmethod
-    def set_taker(self, resource_id):
+    def set_taker(self, resource_id): # pragma: no cover
         """Sets the resource who will be taking this assessment.
 
         :param resource_id: the resource Id
@@ -1899,7 +1899,7 @@ class AssessmentTakenForm:
         pass
 
     @abc.abstractmethod
-    def clear_taker(self):
+    def clear_taker(self): # pragma: no cover
         """Clears the resource.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1912,7 +1912,7 @@ class AssessmentTakenForm:
     taker = property(fset=set_taker, fdel=clear_taker)
 
     @abc.abstractmethod
-    def get_assessment_taken_form_record(self, assessment_taken_record_type):
+    def get_assessment_taken_form_record(self, assessment_taken_record_type): # pragma: no cover
         """Gets the ``AssessmentTakenFormRecord`` corresponding to the given assessment taken record ``Type``.
 
         :param assessment_taken_record_type: the assessment taken record type
@@ -1944,7 +1944,7 @@ class AssessmentTakenList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_assessment_taken(self):
+    def get_next_assessment_taken(self): # pragma: no cover
         """Gets the next ``AssessmentTaken`` in this list.
 
         :return: the next ``AssessmentTaken`` in this list. The ``has_next()`` method should be used to test that a next ``AssessmentTaken`` is available before calling this method.
@@ -1960,7 +1960,7 @@ class AssessmentTakenList:
     next_assessment_taken = property(fget=get_next_assessment_taken)
 
     @abc.abstractmethod
-    def get_next_assessments_taken(self, n):
+    def get_next_assessments_taken(self, n): # pragma: no cover
         """Gets the next set of ``AssessmentTaken`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``AssessmentTaken`` elements requested which should be less than or equal to ``available()``
@@ -1987,7 +1987,7 @@ class AssessmentSection:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_taken_id(self):
+    def get_assessment_taken_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``AssessmentTaken``.
 
         :return: the assessment taken ``Id``
@@ -2002,7 +2002,7 @@ class AssessmentSection:
     assessment_taken_id = property(fget=get_assessment_taken_id)
 
     @abc.abstractmethod
-    def get_assessment_taken(self):
+    def get_assessment_taken(self): # pragma: no cover
         """Gets the ``AssessmentTakeb``.
 
         :return: the assessment taken
@@ -2017,7 +2017,7 @@ class AssessmentSection:
     assessment_taken = property(fget=get_assessment_taken)
 
     @abc.abstractmethod
-    def has_allocated_time(self):
+    def has_allocated_time(self): # pragma: no cover
         """Tests if this section must be completed within an allocated time.
 
         :return: ``true`` if this section has an allocated time, ``false`` otherwise
@@ -2030,7 +2030,7 @@ class AssessmentSection:
         return  # boolean
 
     @abc.abstractmethod
-    def get_allocated_time(self):
+    def get_allocated_time(self): # pragma: no cover
         """Gets the allocated time for this section.
 
         :return: allocated time
@@ -2045,7 +2045,7 @@ class AssessmentSection:
     allocated_time = property(fget=get_allocated_time)
 
     @abc.abstractmethod
-    def are_items_sequential(self):
+    def are_items_sequential(self): # pragma: no cover
         """Tests if the items or parts in this section are taken sequentially.
 
         :return: ``true`` if the items are taken sequentially, ``false`` if the items can be skipped and revisited
@@ -2058,7 +2058,7 @@ class AssessmentSection:
         return  # boolean
 
     @abc.abstractmethod
-    def are_items_shuffled(self):
+    def are_items_shuffled(self): # pragma: no cover
         """Tests if the items or parts appear in a random order.
 
         :return: ``true`` if the items appear in a random order, ``false`` otherwise
@@ -2071,7 +2071,7 @@ class AssessmentSection:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_section_record(self, assessment_section_record_type):
+    def get_assessment_section_record(self, assessment_section_record_type): # pragma: no cover
         """Gets the assessment section record corresponding to the given ``AssessmentSection`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -2110,7 +2110,7 @@ class AssessmentSectionList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_assessment_section(self):
+    def get_next_assessment_section(self): # pragma: no cover
         """Gets the next ``AssessmentSection`` in this list.
 
         :return: the next ``AssessmentSection`` in this list. The ``has_next()`` method should be used to test that a next ``AssessmentSection`` is available before calling this method.
@@ -2126,7 +2126,7 @@ class AssessmentSectionList:
     next_assessment_section = property(fget=get_next_assessment_section)
 
     @abc.abstractmethod
-    def get_next_assessment_sections(self, n):
+    def get_next_assessment_sections(self, n): # pragma: no cover
         """Gets the next set of ``AssessmentSection`` elements in this list which must be less than or equal to the number returned from ``available()``.
 
         :param n: the number of ``AssessmentSection`` elements requested which should be less than or equal to ``available()``
@@ -2147,7 +2147,7 @@ class Bank:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_record(self, bank_record_type):
+    def get_bank_record(self, bank_record_type): # pragma: no cover
         """Gets the bank record corresponding to the given ``Bank`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -2183,7 +2183,7 @@ class BankForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_form_record(self, bank_record_type):
+    def get_bank_form_record(self, bank_record_type): # pragma: no cover
         """Gets the ``BankFormRecord`` corresponding to the given bank record ``Type``.
 
         :param bank_record_type: a bank record type
@@ -2214,7 +2214,7 @@ class BankList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_bank(self):
+    def get_next_bank(self): # pragma: no cover
         """Gets the next ``Bank`` in this list.
 
         :return: the next ``Bank`` in this list. The ``has_next()`` method should be used to test that a next ``Bank`` is available before calling this method.
@@ -2230,7 +2230,7 @@ class BankList:
     next_bank = property(fget=get_next_bank)
 
     @abc.abstractmethod
-    def get_next_banks(self, n):
+    def get_next_banks(self, n): # pragma: no cover
         """Gets the next set of ``Bank`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Bank`` elements requested which must be less than or equal to ``available()``
@@ -2257,7 +2257,7 @@ class BankNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` at this node.
 
         :return: the bank represented by this node
@@ -2272,7 +2272,7 @@ class BankNode:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def get_parent_bank_nodes(self):
+    def get_parent_bank_nodes(self): # pragma: no cover
         """Gets the parents of this bank.
 
         :return: the parents of this node
@@ -2287,7 +2287,7 @@ class BankNode:
     parent_bank_nodes = property(fget=get_parent_bank_nodes)
 
     @abc.abstractmethod
-    def get_child_bank_nodes(self):
+    def get_child_bank_nodes(self): # pragma: no cover
         """Gets the children of this bank.
 
         :return: the children of this node
@@ -2317,7 +2317,7 @@ class BankNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_bank_node(self):
+    def get_next_bank_node(self): # pragma: no cover
         """Gets the next ``BankNode`` in this list.
 
         :return: the next ``BankNode`` in this list. The ``has_next()`` method should be used to test that a next ``BankNode`` is available before calling this method.
@@ -2333,7 +2333,7 @@ class BankNodeList:
     next_bank_node = property(fget=get_next_bank_node)
 
     @abc.abstractmethod
-    def get_next_bank_nodes(self, n):
+    def get_next_bank_nodes(self, n): # pragma: no cover
         """Gets the next set of ``BankNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``BankNode`` elements requested which must be less than or equal to ``available()``
@@ -2364,7 +2364,7 @@ class ResponseList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_response(self):
+    def get_next_response(self): # pragma: no cover
         """Gets the next ``Response`` in this list.
 
         :return: the next ``Response`` in this list. The ``has_next()`` method should be used to test that a next ``Response`` is available before calling this method.
@@ -2380,7 +2380,7 @@ class ResponseList:
     next_response = property(fget=get_next_response)
 
     @abc.abstractmethod
-    def get_next_responses(self, n):
+    def get_next_responses(self, n): # pragma: no cover
         """Gets the next set of ``Response`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Response`` elements requested which must be less than or equal to ``available()``

@@ -26,7 +26,7 @@ class ResourceQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_group(self, match):
+    def match_group(self, match): # pragma: no cover
         """Matches resources that are also groups.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -39,7 +39,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_group_terms(self):
+    def clear_group_terms(self): # pragma: no cover
         """Clears the group terms.
 
 
@@ -52,7 +52,7 @@ class ResourceQuery:
     group_terms = property(fdel=clear_group_terms)
 
     @abc.abstractmethod
-    def match_demographic(self, match):
+    def match_demographic(self, match): # pragma: no cover
         """Matches resources that are also demographics.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -65,7 +65,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_demographic_terms(self):
+    def clear_demographic_terms(self): # pragma: no cover
         """Clears the demographic terms.
 
 
@@ -78,7 +78,7 @@ class ResourceQuery:
     demographic_terms = property(fdel=clear_demographic_terms)
 
     @abc.abstractmethod
-    def match_containing_group_id(self, resource_id, match):
+    def match_containing_group_id(self, resource_id, match): # pragma: no cover
         """Sets the group ``Id`` for this query to match resources within the given group.
 
         :param resource_id: a resource ``Id``
@@ -93,7 +93,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_containing_group_id_terms(self):
+    def clear_containing_group_id_terms(self): # pragma: no cover
         """Clears the group ``Id`` terms.
 
 
@@ -106,7 +106,7 @@ class ResourceQuery:
     containing_group_id_terms = property(fdel=clear_containing_group_id_terms)
 
     @abc.abstractmethod
-    def supports_containing_group_query(self):
+    def supports_containing_group_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for querying containing groups.
 
         :return: ``true`` if a group resource query is available, ``false`` otherwise
@@ -119,7 +119,7 @@ class ResourceQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_containing_group_query(self):
+    def get_containing_group_query(self): # pragma: no cover
         """Gets the query for a a containing group.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -137,7 +137,7 @@ class ResourceQuery:
     containing_group_query = property(fget=get_containing_group_query)
 
     @abc.abstractmethod
-    def match_any_containing_group(self, match):
+    def match_any_containing_group(self, match): # pragma: no cover
         """Matches resources inside any group.
 
         :param match: ``true`` to match any containing group, ``false`` to match resources part of no groups
@@ -150,7 +150,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_containing_group_terms(self):
+    def clear_containing_group_terms(self): # pragma: no cover
         """Clears the containing group terms.
 
 
@@ -163,7 +163,7 @@ class ResourceQuery:
     containing_group_terms = property(fdel=clear_containing_group_terms)
 
     @abc.abstractmethod
-    def match_avatar_id(self, asset_id, match):
+    def match_avatar_id(self, asset_id, match): # pragma: no cover
         """Sets the asset ``Id`` for this query.
 
         :param asset_id: the asset ``Id``
@@ -178,7 +178,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_avatar_id_terms(self):
+    def clear_avatar_id_terms(self): # pragma: no cover
         """Clears the asset ``Id`` terms.
 
 
@@ -191,7 +191,7 @@ class ResourceQuery:
     avatar_id_terms = property(fdel=clear_avatar_id_terms)
 
     @abc.abstractmethod
-    def supports_avatar_query(self):
+    def supports_avatar_query(self): # pragma: no cover
         """Tests if an ``AssetQuery`` is available.
 
         :return: ``true`` if an asset query is available, ``false`` otherwise
@@ -204,7 +204,7 @@ class ResourceQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_avatar_query(self):
+    def get_avatar_query(self): # pragma: no cover
         """Gets the query for an asset.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -222,7 +222,7 @@ class ResourceQuery:
     avatar_query = property(fget=get_avatar_query)
 
     @abc.abstractmethod
-    def match_any_avatar(self, match):
+    def match_any_avatar(self, match): # pragma: no cover
         """Matches resources with any asset.
 
         :param match: ``true`` to match any asset, ``false`` to match resources with no asset
@@ -235,7 +235,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_avatar_terms(self):
+    def clear_avatar_terms(self): # pragma: no cover
         """Clears the asset terms.
 
 
@@ -248,7 +248,7 @@ class ResourceQuery:
     avatar_terms = property(fdel=clear_avatar_terms)
 
     @abc.abstractmethod
-    def match_agent_id(self, agent_id, match):
+    def match_agent_id(self, agent_id, match): # pragma: no cover
         """Sets the agent ``Id`` for this query.
 
         :param agent_id: the agent ``Id``
@@ -263,7 +263,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_id_terms(self):
+    def clear_agent_id_terms(self): # pragma: no cover
         """Clears the agent ``Id`` terms.
 
 
@@ -276,7 +276,7 @@ class ResourceQuery:
     agent_id_terms = property(fdel=clear_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_agent_query(self):
+    def supports_agent_query(self): # pragma: no cover
         """Tests if an ``AgentQuery`` is available.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -289,7 +289,7 @@ class ResourceQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_query(self):
+    def get_agent_query(self): # pragma: no cover
         """Gets the query for an agent.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -307,7 +307,7 @@ class ResourceQuery:
     agent_query = property(fget=get_agent_query)
 
     @abc.abstractmethod
-    def match_any_agent(self, match):
+    def match_any_agent(self, match): # pragma: no cover
         """Matches resources with any agent.
 
         :param match: ``true`` to match any agent, ``false`` to match resources with no agent
@@ -320,7 +320,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_terms(self):
+    def clear_agent_terms(self): # pragma: no cover
         """Clears the agent terms.
 
 
@@ -333,7 +333,7 @@ class ResourceQuery:
     agent_terms = property(fdel=clear_agent_terms)
 
     @abc.abstractmethod
-    def match_resource_relationship_id(self, resource_relationship_id, match):
+    def match_resource_relationship_id(self, resource_relationship_id, match): # pragma: no cover
         """Sets the resource relationship ``Id`` for this query.
 
         :param resource_relationship_id: the resource relationship ``Id``
@@ -348,7 +348,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_relationship_id_terms(self):
+    def clear_resource_relationship_id_terms(self): # pragma: no cover
         """Clears the resource relationship ``Id`` terms.
 
 
@@ -361,7 +361,7 @@ class ResourceQuery:
     resource_relationship_id_terms = property(fdel=clear_resource_relationship_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_relationship_query(self):
+    def supports_resource_relationship_query(self): # pragma: no cover
         """Tests if a ``ResourceRelationshipQuery`` is available.
 
         :return: ``true`` if a resource relationship query is available, ``false`` otherwise
@@ -374,7 +374,7 @@ class ResourceQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_query(self):
+    def get_resource_relationship_query(self): # pragma: no cover
         """Gets the query for aa resource relationship.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -392,7 +392,7 @@ class ResourceQuery:
     resource_relationship_query = property(fget=get_resource_relationship_query)
 
     @abc.abstractmethod
-    def match_any_resource_relationship(self, match):
+    def match_any_resource_relationship(self, match): # pragma: no cover
         """Matches resources with any resource relationship.
 
         :param match: ``true`` to match any resource relationship, ``false`` to match resources with no relationship
@@ -405,7 +405,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_relationship_terms(self):
+    def clear_resource_relationship_terms(self): # pragma: no cover
         """Clears the resource relationship terms.
 
 
@@ -418,7 +418,7 @@ class ResourceQuery:
     resource_relationship_terms = property(fdel=clear_resource_relationship_terms)
 
     @abc.abstractmethod
-    def match_bin_id(self, bin_id, match):
+    def match_bin_id(self, bin_id, match): # pragma: no cover
         """Sets the bin ``Id`` for this query.
 
         :param bin_id: the bin ``Id``
@@ -433,7 +433,7 @@ class ResourceQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bin_id_terms(self):
+    def clear_bin_id_terms(self): # pragma: no cover
         """Clears the bin ``Id`` terms.
 
 
@@ -446,7 +446,7 @@ class ResourceQuery:
     bin_id_terms = property(fdel=clear_bin_id_terms)
 
     @abc.abstractmethod
-    def supports_bin_query(self):
+    def supports_bin_query(self): # pragma: no cover
         """Tests if a ``BinQuery`` is available.
 
         :return: ``true`` if a bin query is available, ``false`` otherwise
@@ -459,7 +459,7 @@ class ResourceQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_query(self):
+    def get_bin_query(self): # pragma: no cover
         """Gets the query for a bin.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -477,7 +477,7 @@ class ResourceQuery:
     bin_query = property(fget=get_bin_query)
 
     @abc.abstractmethod
-    def clear_bin_terms(self):
+    def clear_bin_terms(self): # pragma: no cover
         """Clears the bin terms.
 
 
@@ -490,7 +490,7 @@ class ResourceQuery:
     bin_terms = property(fdel=clear_bin_terms)
 
     @abc.abstractmethod
-    def get_resource_query_record(self, resource_record_type):
+    def get_resource_query_record(self, resource_record_type): # pragma: no cover
         """Gets the resource query record corresponding to the given ``Resource`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -519,7 +519,7 @@ class ResourceRelationshipQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_source_resource_id(self, resource_id, match):
+    def match_source_resource_id(self, resource_id, match): # pragma: no cover
         """Sets the resource ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -534,7 +534,7 @@ class ResourceRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_source_resource_id_terms(self):
+    def clear_source_resource_id_terms(self): # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -547,7 +547,7 @@ class ResourceRelationshipQuery:
     source_resource_id_terms = property(fdel=clear_source_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_source_resource_query(self):
+    def supports_source_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for querying resources.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -560,7 +560,7 @@ class ResourceRelationshipQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_source_resource_query(self):
+    def get_source_resource_query(self): # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -578,7 +578,7 @@ class ResourceRelationshipQuery:
     source_resource_query = property(fget=get_source_resource_query)
 
     @abc.abstractmethod
-    def clear_source_resource_terms(self):
+    def clear_source_resource_terms(self): # pragma: no cover
         """Clears the resource terms.
 
 
@@ -591,7 +591,7 @@ class ResourceRelationshipQuery:
     source_resource_terms = property(fdel=clear_source_resource_terms)
 
     @abc.abstractmethod
-    def match_destination_resource_id(self, peer_resource_id, match):
+    def match_destination_resource_id(self, peer_resource_id, match): # pragma: no cover
         """Sets the peer resource ``Id`` for this query.
 
         :param peer_resource_id: a peer resource ``Id``
@@ -606,7 +606,7 @@ class ResourceRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_destination_resource_id_terms(self):
+    def clear_destination_resource_id_terms(self): # pragma: no cover
         """Clears the peer resource ``Id`` terms.
 
 
@@ -619,7 +619,7 @@ class ResourceRelationshipQuery:
     destination_resource_id_terms = property(fdel=clear_destination_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_destination_resource_query(self):
+    def supports_destination_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for querying resources.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -632,7 +632,7 @@ class ResourceRelationshipQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_destination_resource_query(self):
+    def get_destination_resource_query(self): # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -650,7 +650,7 @@ class ResourceRelationshipQuery:
     destination_resource_query = property(fget=get_destination_resource_query)
 
     @abc.abstractmethod
-    def clear_destination_resource_terms(self):
+    def clear_destination_resource_terms(self): # pragma: no cover
         """Clears the peer resource terms.
 
 
@@ -663,7 +663,7 @@ class ResourceRelationshipQuery:
     destination_resource_terms = property(fdel=clear_destination_resource_terms)
 
     @abc.abstractmethod
-    def match_same_resource(self, match):
+    def match_same_resource(self, match): # pragma: no cover
         """Matches relationships where the peer resources are the same.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -676,7 +676,7 @@ class ResourceRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_same_resource_terms(self):
+    def clear_same_resource_terms(self): # pragma: no cover
         """Clears the same resource terms.
 
 
@@ -689,7 +689,7 @@ class ResourceRelationshipQuery:
     same_resource_terms = property(fdel=clear_same_resource_terms)
 
     @abc.abstractmethod
-    def match_bin_id(self, bin_id, match):
+    def match_bin_id(self, bin_id, match): # pragma: no cover
         """Sets the bin ``Id`` for this query to match terms assigned to bins.
 
         :param bin_id: the bin ``Id``
@@ -704,7 +704,7 @@ class ResourceRelationshipQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bin_id_terms(self):
+    def clear_bin_id_terms(self): # pragma: no cover
         """Clears the bin ``Id`` terms.
 
 
@@ -717,7 +717,7 @@ class ResourceRelationshipQuery:
     bin_id_terms = property(fdel=clear_bin_id_terms)
 
     @abc.abstractmethod
-    def supports_bin_query(self):
+    def supports_bin_query(self): # pragma: no cover
         """Tests if a ``BinQuery`` is available.
 
         :return: ``true`` if a bin query is available, ``false`` otherwise
@@ -730,7 +730,7 @@ class ResourceRelationshipQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_query(self):
+    def get_bin_query(self): # pragma: no cover
         """Gets the query for a bin.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -748,7 +748,7 @@ class ResourceRelationshipQuery:
     bin_query = property(fget=get_bin_query)
 
     @abc.abstractmethod
-    def clear_bin_terms(self):
+    def clear_bin_terms(self): # pragma: no cover
         """Clears the bin terms.
 
 
@@ -761,7 +761,7 @@ class ResourceRelationshipQuery:
     bin_terms = property(fdel=clear_bin_terms)
 
     @abc.abstractmethod
-    def get_resource_relationship_query_record(self, resource_relationship_record_type):
+    def get_resource_relationship_query_record(self, resource_relationship_record_type): # pragma: no cover
         """Gets the resource relationship query record corresponding to the given ``ResourceRelationship`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -790,7 +790,7 @@ class BinQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_resource_id(self, resource_id, match):
+    def match_resource_id(self, resource_id, match): # pragma: no cover
         """Sets the resource ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -805,7 +805,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_id_terms(self):
+    def clear_resource_id_terms(self): # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -818,7 +818,7 @@ class BinQuery:
     resource_id_terms = property(fdel=clear_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_query(self):
+    def supports_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -831,7 +831,7 @@ class BinQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self):
+    def get_resource_query(self): # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -849,7 +849,7 @@ class BinQuery:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def match_any_resource(self, match):
+    def match_any_resource(self, match): # pragma: no cover
         """Matches bins with any resource.
 
         :param match: ``true`` to match bins with any resource, ``false`` to match bins with no resources
@@ -862,7 +862,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_terms(self):
+    def clear_resource_terms(self): # pragma: no cover
         """Clears the resource terms.
 
 
@@ -875,7 +875,7 @@ class BinQuery:
     resource_terms = property(fdel=clear_resource_terms)
 
     @abc.abstractmethod
-    def match_ancestor_bin_id(self, binid, match):
+    def match_ancestor_bin_id(self, binid, match): # pragma: no cover
         """Sets the bin ``Id`` for this query to match bins that have the specified bin as an ancestor.
 
         :param binid: a bin ``Id``
@@ -890,7 +890,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_bin_id_terms(self):
+    def clear_ancestor_bin_id_terms(self): # pragma: no cover
         """Clears the ancestor bin ``Id`` terms.
 
 
@@ -903,7 +903,7 @@ class BinQuery:
     ancestor_bin_id_terms = property(fdel=clear_ancestor_bin_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_bin_query(self):
+    def supports_ancestor_bin_query(self): # pragma: no cover
         """Tests if a ``BinQuery`` is available.
 
         :return: ``true`` if a bin query is available, ``false`` otherwise
@@ -916,7 +916,7 @@ class BinQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_bin_query(self):
+    def get_ancestor_bin_query(self): # pragma: no cover
         """Gets the query for a bin.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -934,7 +934,7 @@ class BinQuery:
     ancestor_bin_query = property(fget=get_ancestor_bin_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_bin(self, match):
+    def match_any_ancestor_bin(self, match): # pragma: no cover
         """Matches bins with any ancestor.
 
         :param match: ``true`` to match bins with any ancestor, ``false`` to match root bins
@@ -947,7 +947,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_bin_terms(self):
+    def clear_ancestor_bin_terms(self): # pragma: no cover
         """Clears the ancestor bin terms.
 
 
@@ -960,7 +960,7 @@ class BinQuery:
     ancestor_bin_terms = property(fdel=clear_ancestor_bin_terms)
 
     @abc.abstractmethod
-    def match_descendant_bin_id(self, binid, match):
+    def match_descendant_bin_id(self, binid, match): # pragma: no cover
         """Sets the bin ``Id`` for this query to match bins that have the specified bin as a descendant.
 
         :param binid: a bin ``Id``
@@ -975,7 +975,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_bin_id_terms(self):
+    def clear_descendant_bin_id_terms(self): # pragma: no cover
         """Clears the descendant bin ``Id`` terms.
 
 
@@ -988,7 +988,7 @@ class BinQuery:
     descendant_bin_id_terms = property(fdel=clear_descendant_bin_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_bin_query(self):
+    def supports_descendant_bin_query(self): # pragma: no cover
         """Tests if a ``BinQuery`` is available.
 
         :return: ``true`` if a bin query is available, ``false`` otherwise
@@ -1001,7 +1001,7 @@ class BinQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_bin_query(self):
+    def get_descendant_bin_query(self): # pragma: no cover
         """Gets the query for a bin.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1019,7 +1019,7 @@ class BinQuery:
     descendant_bin_query = property(fget=get_descendant_bin_query)
 
     @abc.abstractmethod
-    def match_any_descendant_bin(self, match):
+    def match_any_descendant_bin(self, match): # pragma: no cover
         """Matches bins with any descendant.
 
         :param match: ``true`` to match bins with any descendant, ``false`` to match leaf bins
@@ -1032,7 +1032,7 @@ class BinQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_bin_terms(self):
+    def clear_descendant_bin_terms(self): # pragma: no cover
         """Clears the descendant bin terms.
 
 
@@ -1045,7 +1045,7 @@ class BinQuery:
     descendant_bin_terms = property(fdel=clear_descendant_bin_terms)
 
     @abc.abstractmethod
-    def get_bin_query_record(self, bin_record_type):
+    def get_bin_query_record(self, bin_record_type): # pragma: no cover
         """Gets the bin query record corresponding to the given ``Bin`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.

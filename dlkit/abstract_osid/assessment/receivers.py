@@ -21,7 +21,7 @@ class ItemReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_items(self, notification_id, item_ids):
+    def new_items(self, notification_id, item_ids): # pragma: no cover
         """The callback for notifications of new items.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class ItemReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_items(self, notification_id, item_ids):
+    def changed_items(self, notification_id, item_ids): # pragma: no cover
         """The callback for notification of updated items.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class ItemReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_items(self, notification_id, item_ids):
+    def deleted_items(self, notification_id, item_ids): # pragma: no cover
         """The callback for notification of deleted items.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class AssessmentReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_assessments(self, notification_id, assessment_ids):
+    def new_assessments(self, notification_id, assessment_ids): # pragma: no cover
         """The callback for notifications of new assessments.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class AssessmentReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_assessments(self, notification_id, assessment_ids):
+    def changed_assessments(self, notification_id, assessment_ids): # pragma: no cover
         """The callback for notification of updated assessments.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class AssessmentReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_assessments(self, notification_id, assessment_ids):
+    def deleted_assessments(self, notification_id, assessment_ids): # pragma: no cover
         """the callback for notification of deleted assessments.
 
         :param notification_id: the notification ``Id``
@@ -121,7 +121,7 @@ class AssessmentOfferedReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_assessments_offered(self, notification_id, assessment_offered_ids):
+    def new_assessments_offered(self, notification_id, assessment_offered_ids): # pragma: no cover
         """The callback for notifications of new offered assessments.
 
         :param notification_id: the notification Id
@@ -136,7 +136,7 @@ class AssessmentOfferedReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_assessments_offered(self, notification_id, assessment_offered_ids):
+    def changed_assessments_offered(self, notification_id, assessment_offered_ids): # pragma: no cover
         """The callback for notification of updated offered assessments.
 
         :param notification_id: the notification ``Id``
@@ -151,7 +151,7 @@ class AssessmentOfferedReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_assessments_offered(self, notification_id, assessment_offered_ids):
+    def deleted_assessments_offered(self, notification_id, assessment_offered_ids): # pragma: no cover
         """the callback for notification of deleted offered assessments.
 
         :param notification_id: the notification Id
@@ -171,7 +171,7 @@ class AssessmentTakenReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_assessments_taken(self, notification_id, assessment_taken_ids):
+    def new_assessments_taken(self, notification_id, assessment_taken_ids): # pragma: no cover
         """The callback for notifications of new taken assessments.
 
         :param notification_id: the notification ``Id``
@@ -186,7 +186,7 @@ class AssessmentTakenReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_assessmenst_taken(self, notification_id, assessment_taken_ids):
+    def changed_assessmenst_taken(self, notification_id, assessment_taken_ids): # pragma: no cover
         """The callback for notification of updated taken assessments.
 
         :param notification_id: the notification ``Id``
@@ -201,7 +201,7 @@ class AssessmentTakenReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_assessmenst_taken(self, notification_id, assessment_taken_ids):
+    def deleted_assessmenst_taken(self, notification_id, assessment_taken_ids): # pragma: no cover
         """the callback for notification of deleted taken assessments.
 
         :param notification_id: the notification ``Id``
@@ -221,7 +221,7 @@ class BankReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_banks(self, notification_id, bank_ids):
+    def new_banks(self, notification_id, bank_ids): # pragma: no cover
         """The callback for notifications of new banks.
 
         :param notification_id: the notification Id
@@ -236,7 +236,7 @@ class BankReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_banks(self, notification_id, bank_ids):
+    def changed_banks(self, notification_id, bank_ids): # pragma: no cover
         """The callback for notification of updated banks.
 
         :param notification_id: the notification Id
@@ -251,7 +251,7 @@ class BankReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_banks(self, notification_id, bank_ids):
+    def deleted_banks(self, notification_id, bank_ids): # pragma: no cover
         """The callback for notification of deleted banks.
 
         :param notification_id: the notification Id
@@ -266,7 +266,7 @@ class BankReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_banks(self, notification_id, bank_ids):
+    def changed_child_of_banks(self, notification_id, bank_ids): # pragma: no cover
         """The callback for notifications of changes to children of bank hierarchy nodes.
 
         :param notification_id: the notification Id

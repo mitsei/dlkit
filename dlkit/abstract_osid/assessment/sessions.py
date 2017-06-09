@@ -31,7 +31,7 @@ class MyAssessmentTakenSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -46,7 +46,7 @@ class MyAssessmentTakenSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -62,7 +62,7 @@ class MyAssessmentTakenSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_get_my_taken_assessments(self):
+    def can_get_my_taken_assessments(self): # pragma: no cover
         """Tests if this user can perform ``AssessmentOffered`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -81,7 +81,7 @@ class MyAssessmentTakenSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessments_started_during(self, start, end):
+    def get_assessments_started_during(self, start, end): # pragma: no cover
         """Gets all the assessments started by this agent during the given period of time inclusive.
 
         :param start: start time
@@ -101,7 +101,7 @@ class MyAssessmentTakenSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_started(self):
+    def get_assessments_started(self): # pragma: no cover
         """Gets all the assessments started by this agent.
 
         :return: the started assessments
@@ -117,7 +117,7 @@ class MyAssessmentTakenSession:
     assessments_started = property(fget=get_assessments_started)
 
     @abc.abstractmethod
-    def get_assessments_in_progress_during(self, start, end):
+    def get_assessments_in_progress_during(self, start, end): # pragma: no cover
         """Gets all the assessments in progress by this agent overlapping with the given period of time inclusive.
 
         :param start: start time
@@ -137,7 +137,7 @@ class MyAssessmentTakenSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_in_progress(self):
+    def get_assessments_in_progress(self): # pragma: no cover
         """Gets all the assessments started but not completed by this agent.
 
         :return: the assessments in progress
@@ -153,7 +153,7 @@ class MyAssessmentTakenSession:
     assessments_in_progress = property(fget=get_assessments_in_progress)
 
     @abc.abstractmethod
-    def get_assessments_completed(self):
+    def get_assessments_completed(self): # pragma: no cover
         """Gets all the assessments completed by this agent.
 
         :return: the completed assessments
@@ -204,7 +204,7 @@ class AssessmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -219,7 +219,7 @@ class AssessmentSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -235,7 +235,7 @@ class AssessmentSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_take_assessments(self):
+    def can_take_assessments(self): # pragma: no cover
         """Tests if this user can take this assessment section.
 
         A return of true does not guarantee successful authorization. A
@@ -254,7 +254,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_assessment_begun(self, assessment_taken_id):
+    def has_assessment_begun(self, assessment_taken_id): # pragma: no cover
         """Tests if this assessment has started.
 
         An assessment begins from the designated start time if a start
@@ -277,7 +277,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_assessment_over(self, assessment_taken_id):
+    def is_assessment_over(self, assessment_taken_id): # pragma: no cover
         """Tests if this assessment is over.
 
         An assessment is over if ``finished_assessment()`` is invoked or
@@ -298,7 +298,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def requires_synchronous_sections(self, assessment_taken_id):
+    def requires_synchronous_sections(self, assessment_taken_id): # pragma: no cover
         """Tests if synchronous sections are required.
 
         This method should be checked to determine if all sections are
@@ -334,7 +334,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_first_assessment_section(self, assessment_taken_id):
+    def get_first_assessment_section(self, assessment_taken_id): # pragma: no cover
         """Gets the first assessment section in this assesment.
 
         All assessments have at least one ``AssessmentSection``.
@@ -355,7 +355,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
-    def has_next_assessment_section(self, assessment_section_id):
+    def has_next_assessment_section(self, assessment_section_id): # pragma: no cover
         """Tests if there is a next assessment section in the assessment following the given assessment section ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -374,7 +374,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_next_assessment_section(self, assessment_section_id):
+    def get_next_assessment_section(self, assessment_section_id): # pragma: no cover
         """Gets the next assessemnt section following the given assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -393,7 +393,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
-    def has_previous_assessment_section(self, assessment_section_id):
+    def has_previous_assessment_section(self, assessment_section_id): # pragma: no cover
         """Tests if there is a previous assessment section in the assessment following the given assessment section ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -412,7 +412,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_previous_assessment_section(self, assessment_section_id):
+    def get_previous_assessment_section(self, assessment_section_id): # pragma: no cover
         """Gets the next assessemnt section following the given assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -431,7 +431,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
-    def get_assessment_section(self, assessment_section_id):
+    def get_assessment_section(self, assessment_section_id): # pragma: no cover
         """Gets an assessemnts section by ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -450,7 +450,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSection
 
     @abc.abstractmethod
-    def get_assessment_sections(self, assessment_taken_id):
+    def get_assessment_sections(self, assessment_taken_id): # pragma: no cover
         """Gets the assessment sections of this assessment.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -469,7 +469,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSectionList
 
     @abc.abstractmethod
-    def is_assessment_section_complete(self, assessment_section_id):
+    def is_assessment_section_complete(self, assessment_section_id): # pragma: no cover
         """Tests if the all responses have been submitted to this assessment section.
 
         If ``is_assessment_section_complete()`` is false, then
@@ -492,7 +492,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_incomplete_assessment_sections(self, assessment_taken_id):
+    def get_incomplete_assessment_sections(self, assessment_taken_id): # pragma: no cover
         """Gets the incomplete assessment sections of this assessment.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -511,7 +511,7 @@ class AssessmentSession:
         return  # osid.assessment.AssessmentSectionList
 
     @abc.abstractmethod
-    def has_assessment_section_begun(self, assessment_section_id):
+    def has_assessment_section_begun(self, assessment_section_id): # pragma: no cover
         """Tests if this assessment section has started.
 
         A section begins from the designated start time if a start time
@@ -535,7 +535,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_assessment_section_over(self, assessment_section_id):
+    def is_assessment_section_over(self, assessment_section_id): # pragma: no cover
         """Tests if this assessment section is over.
 
         An assessment section is over if new or updated responses can
@@ -557,7 +557,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def requires_synchronous_responses(self, assessment_section_id):
+    def requires_synchronous_responses(self, assessment_section_id): # pragma: no cover
         """Tests if synchronous responses are required in this assessment section.
 
         This method should be checked to determine if all items are
@@ -593,7 +593,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_first_question(self, assessment_section_id):
+    def get_first_question(self, assessment_section_id): # pragma: no cover
         """Gets the first question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -612,7 +612,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def has_next_question(self, assessment_section_id, item_id):
+    def has_next_question(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if there is a next question following the given question ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -633,7 +633,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_next_question(self, assessment_section_id, item_id):
+    def get_next_question(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the next question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -654,7 +654,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def has_previous_question(self, assessment_section_id, item_id):
+    def has_previous_question(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if there is a previous question preceeding the given question ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -675,7 +675,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_previous_question(self, assessment_section_id, item_id):
+    def get_previous_question(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the previous question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -696,7 +696,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def get_question(self, assessment_section_id, item_id):
+    def get_question(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the ``Question`` specified by its ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -717,7 +717,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def get_questions(self, assessment_section_id):
+    def get_questions(self, assessment_section_id): # pragma: no cover
         """Gets the questions of this assessment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -736,7 +736,7 @@ class AssessmentSession:
         return  # osid.assessment.QuestionList
 
     @abc.abstractmethod
-    def get_response_form(self, assessment_section_id, item_id):
+    def get_response_form(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the response form for submitting an answer.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -757,7 +757,7 @@ class AssessmentSession:
         return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
-    def submit_response(self, assessment_section_id, item_id, answer_form):
+    def submit_response(self, assessment_section_id, item_id, answer_form): # pragma: no cover
         """Submits an answer to an item.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -780,7 +780,7 @@ class AssessmentSession:
         pass
 
     @abc.abstractmethod
-    def skip_item(self, assessment_section_id, item_id):
+    def skip_item(self, assessment_section_id, item_id): # pragma: no cover
         """Skips an item.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -799,7 +799,7 @@ class AssessmentSession:
         pass
 
     @abc.abstractmethod
-    def is_question_answered(self, assessment_section_id, item_id):
+    def is_question_answered(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if the given item has a response.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -820,7 +820,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_unanswered_questions(self, assessment_section_id):
+    def get_unanswered_questions(self, assessment_section_id): # pragma: no cover
         """Gets the unanswered questions of this assessment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -839,7 +839,7 @@ class AssessmentSession:
         return  # osid.assessment.QuestionList
 
     @abc.abstractmethod
-    def has_unanswered_questions(self, assessment_section_id):
+    def has_unanswered_questions(self, assessment_section_id): # pragma: no cover
         """Tests if there are unanswered questions in this assessment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -858,7 +858,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_first_unanswered_question(self, assessment_section_id):
+    def get_first_unanswered_question(self, assessment_section_id): # pragma: no cover
         """Gets the first unanswered question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -877,7 +877,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def has_next_unanswered_question(self, assessment_section_id, item_id):
+    def has_next_unanswered_question(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if there is a next unanswered question following the given question ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -898,7 +898,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_next_unanswered_question(self, assessment_section_id, item_id):
+    def get_next_unanswered_question(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the next unanswered question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -919,7 +919,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def has_previous_unanswered_question(self, assessment_section_id, item_id):
+    def has_previous_unanswered_question(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if there is a previous unanswered question preceeding the given question ``Id``.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -940,7 +940,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_previous_unanswered_question(self, assessment_section_id, item_id):
+    def get_previous_unanswered_question(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the previous unanswered question in this assesment section.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -961,7 +961,7 @@ class AssessmentSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def get_response(self, assessment_section_id, item_id):
+    def get_response(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the submitted response to the associated item.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -982,7 +982,7 @@ class AssessmentSession:
         return  # osid.assessment.Response
 
     @abc.abstractmethod
-    def get_responses(self, assessment_section_id):
+    def get_responses(self, assessment_section_id): # pragma: no cover
         """Gets all submitted responses.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -1001,7 +1001,7 @@ class AssessmentSession:
         return  # osid.assessment.ResponseList
 
     @abc.abstractmethod
-    def clear_response(self, assessment_section_id, item_id):
+    def clear_response(self, assessment_section_id, item_id): # pragma: no cover
         """Clears the response to an item The item appears as unanswered.
 
         If no response exists, the method simply returns.
@@ -1022,7 +1022,7 @@ class AssessmentSession:
         pass
 
     @abc.abstractmethod
-    def finish_assessment_section(self, assessment_section_id):
+    def finish_assessment_section(self, assessment_section_id): # pragma: no cover
         """Indicates an assessment section is complete.
 
         Finished sections may or may not allow new or updated responses.
@@ -1041,7 +1041,7 @@ class AssessmentSession:
         pass
 
     @abc.abstractmethod
-    def is_answer_available(self, assessment_section_id, item_id):
+    def is_answer_available(self, assessment_section_id, item_id): # pragma: no cover
         """Tests if an answer is available for the given item.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -1061,7 +1061,7 @@ class AssessmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_answers(self, assessment_section_id, item_id):
+    def get_answers(self, assessment_section_id, item_id): # pragma: no cover
         """Gets the acceptable answers to the associated item.
 
         :param assessment_section_id: ``Id`` of the ``AssessmentSection``
@@ -1082,7 +1082,7 @@ class AssessmentSession:
         return  # osid.assessment.AnswerList
 
     @abc.abstractmethod
-    def finish_assessment(self, assessment_taken_id):
+    def finish_assessment(self, assessment_taken_id): # pragma: no cover
         """Indicates the entire assessment is complete.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -1109,7 +1109,7 @@ class AssessmentResultsSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1124,7 +1124,7 @@ class AssessmentResultsSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1140,7 +1140,7 @@ class AssessmentResultsSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_access_assessment_results(self):
+    def can_access_assessment_results(self): # pragma: no cover
         """Tests if this user can take this assessment.
 
         A return of true does not guarantee successful authorization. A
@@ -1159,7 +1159,7 @@ class AssessmentResultsSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_items(self, assessment_taken_id):
+    def get_items(self, assessment_taken_id): # pragma: no cover
         """Gets the items questioned in a assessment.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -1177,7 +1177,7 @@ class AssessmentResultsSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_responses(self, assessment_taken_id):
+    def get_responses(self, assessment_taken_id): # pragma: no cover
         """Gets the submitted responses.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -1195,7 +1195,7 @@ class AssessmentResultsSession:
         return  # osid.assessment.ResponseList
 
     @abc.abstractmethod
-    def are_results_available(self, assessment_taken_id):
+    def are_results_available(self, assessment_taken_id): # pragma: no cover
         """Tests if the results are available for this assessment.
 
         :param assessment_taken_id: ``Id`` of the ``AssessmentTaken``
@@ -1213,7 +1213,7 @@ class AssessmentResultsSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entries(self, assessment_taken_id):
+    def get_grade_entries(self, assessment_taken_id): # pragma: no cover
         """Gets a list of grade entries for this assessment.
 
         Each grade entry may indicate a grade or score input by multiple
@@ -1240,7 +1240,7 @@ class ItemLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1255,7 +1255,7 @@ class ItemLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1271,7 +1271,7 @@ class ItemLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_items(self):
+    def can_lookup_items(self): # pragma: no cover
         """Tests if this user can perform ``Item`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1290,7 +1290,7 @@ class ItemLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_item_view(self):
+    def use_comparative_item_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1304,7 +1304,7 @@ class ItemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_item_view(self):
+    def use_plenary_item_view(self): # pragma: no cover
         """A complete view of the ``Item`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1319,7 +1319,7 @@ class ItemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessment items in assessment
@@ -1334,7 +1334,7 @@ class ItemLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this assessment bank only.
@@ -1347,7 +1347,7 @@ class ItemLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_item(self, item_id):
+    def get_item(self, item_id): # pragma: no cover
         """Gets the ``Item`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -1370,7 +1370,7 @@ class ItemLookupSession:
         return  # osid.assessment.Item
 
     @abc.abstractmethod
-    def get_items_by_ids(self, item_ids):
+    def get_items_by_ids(self, item_ids): # pragma: no cover
         """Gets an ``ItemList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the items
@@ -1396,7 +1396,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_genus_type(self, item_genus_type):
+    def get_items_by_genus_type(self, item_genus_type): # pragma: no cover
         """Gets an ``ItemList`` corresponding to the given assessment item genus ``Type`` which does not include assessment items of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known assessment
@@ -1418,7 +1418,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_parent_genus_type(self, item_genus_type):
+    def get_items_by_parent_genus_type(self, item_genus_type): # pragma: no cover
         """Gets an ``ItemList`` corresponding to the given assessment item genus ``Type`` and include any additional assessment items with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known assessment
@@ -1440,7 +1440,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_record_type(self, item_record_type):
+    def get_items_by_record_type(self, item_record_type): # pragma: no cover
         """Gets an ``ItemList`` containing the given assessment item record ``Type``.
 
         In plenary mode, the returned list contains all known items or
@@ -1461,7 +1461,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_question(self, question_id):
+    def get_items_by_question(self, question_id): # pragma: no cover
         """Gets an ``ItemList`` containing the given question.
 
         In plenary mode, the returned list contains all known items or
@@ -1482,7 +1482,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_answer(self, answer_id):
+    def get_items_by_answer(self, answer_id): # pragma: no cover
         """Gets an ``ItemList`` containing the given answer.
 
         In plenary mode, the returned list contains all known items or
@@ -1503,7 +1503,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_learning_objective(self, objective_id):
+    def get_items_by_learning_objective(self, objective_id): # pragma: no cover
         """Gets an ``ItemList`` containing the given learning objective.
 
         In plenary mode, the returned list contains all known items or
@@ -1524,7 +1524,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items_by_learning_objectives(self, objective_ids):
+    def get_items_by_learning_objectives(self, objective_ids): # pragma: no cover
         """Gets an ``ItemList`` containing the given learning objectives.
 
         In plenary mode, the returned list contains all known items or
@@ -1545,7 +1545,7 @@ class ItemLookupSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_items(self):
+    def get_items(self): # pragma: no cover
         """Gets all ``Items``.
 
         In plenary mode, the returned list contains all known items or
@@ -1589,7 +1589,7 @@ class ItemQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1604,7 +1604,7 @@ class ItemQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1620,7 +1620,7 @@ class ItemQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_items(self):
+    def can_search_items(self): # pragma: no cover
         """Tests if this user can perform ``Item`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -1639,7 +1639,7 @@ class ItemQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessment items in assessment
@@ -1654,7 +1654,7 @@ class ItemQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this assessment bank
@@ -1668,7 +1668,7 @@ class ItemQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_item_query(self):
+    def get_item_query(self): # pragma: no cover
         """Gets an assessment item query.
 
         :return: the assessment item query
@@ -1683,7 +1683,7 @@ class ItemQuerySession:
     item_query = property(fget=get_item_query)
 
     @abc.abstractmethod
-    def get_items_by_query(self, item_query):
+    def get_items_by_query(self, item_query): # pragma: no cover
         """Gets a list of ``Items`` matching the given item query.
 
         :param item_query: the item query
@@ -1735,7 +1735,7 @@ class ItemSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_item_search(self):
+    def get_item_search(self): # pragma: no cover
         """Gets an assessment item search.
 
         :return: the assessment item search
@@ -1750,7 +1750,7 @@ class ItemSearchSession:
     item_search = property(fget=get_item_search)
 
     @abc.abstractmethod
-    def get_item_search_order(self):
+    def get_item_search_order(self): # pragma: no cover
         """Gets an assessment item search order.
 
         The ``ItemSearchOrder`` is supplied to an ``ItemSearch`` to
@@ -1768,7 +1768,7 @@ class ItemSearchSession:
     item_search_order = property(fget=get_item_search_order)
 
     @abc.abstractmethod
-    def get_items_by_search(self, item_query, item_search):
+    def get_items_by_search(self, item_query, item_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param item_query: the item query
@@ -1788,7 +1788,7 @@ class ItemSearchSession:
         return  # osid.assessment.ItemSearchResults
 
     @abc.abstractmethod
-    def get_item_query_from_inspector(self, item_query_inspector):
+    def get_item_query_from_inspector(self, item_query_inspector): # pragma: no cover
         """Gets an item query from an inspector.
 
         The inspector is available from an ``ItemSearchResults``.
@@ -1843,7 +1843,7 @@ class ItemAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -1858,7 +1858,7 @@ class ItemAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -1874,7 +1874,7 @@ class ItemAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_items(self):
+    def can_create_items(self): # pragma: no cover
         """Tests if this user can create ``Items``.
 
         A return of true does not guarantee successful authorization. A
@@ -1893,7 +1893,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_item_with_record_types(self, item_record_types):
+    def can_create_item_with_record_types(self, item_record_types): # pragma: no cover
         """Tests if this user can create a single ``Item`` using the desired record types.
 
         While ``AssessmentManager.getItemRecordTypes()`` can be used to
@@ -1914,7 +1914,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_form_for_create(self, item_record_types):
+    def get_item_form_for_create(self, item_record_types): # pragma: no cover
         """Gets the assessment item form for creating new assessment items.
 
         A new form should be requested for each create transaction.
@@ -1934,7 +1934,7 @@ class ItemAdminSession:
         return  # osid.assessment.ItemForm
 
     @abc.abstractmethod
-    def create_item(self, item_form):
+    def create_item(self, item_form): # pragma: no cover
         """Creates a new ``Item``.
 
         :param item_form: the form for this ``Item``
@@ -1954,7 +1954,7 @@ class ItemAdminSession:
         return  # osid.assessment.Item
 
     @abc.abstractmethod
-    def can_update_items(self):
+    def can_update_items(self): # pragma: no cover
         """Tests if this user can update ``Items``.
 
         A return of true does not guarantee successful authorization. A
@@ -1973,7 +1973,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_form_for_update(self, item_id):
+    def get_item_form_for_update(self, item_id): # pragma: no cover
         """Gets the assessment item form for updating an existing item.
 
         A new item form should be requested for each update transaction.
@@ -1993,7 +1993,7 @@ class ItemAdminSession:
         return  # osid.assessment.ItemForm
 
     @abc.abstractmethod
-    def update_item(self, item_form):
+    def update_item(self, item_form): # pragma: no cover
         """Updates an existing item.
 
         :param item_form: the form containing the elements to be updated
@@ -2011,7 +2011,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_items(self):
+    def can_delete_items(self): # pragma: no cover
         """Tests if this user can delete ``Items``.
 
         A return of true does not guarantee successful authorization. A
@@ -2030,7 +2030,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_item(self, item_id):
+    def delete_item(self, item_id): # pragma: no cover
         """Deletes the ``Item`` identified by the given ``Id``.
 
         :param item_id: the ``Id`` of the ``Item`` to delete
@@ -2046,7 +2046,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_item_aliases(self):
+    def can_manage_item_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Items``.
 
         A return of true does not guarantee successful authorization. A
@@ -2065,7 +2065,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_item(self, item_id, alias_id):
+    def alias_item(self, item_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Item`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Item`` is determined by the
@@ -2089,7 +2089,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_create_questions(self):
+    def can_create_questions(self): # pragma: no cover
         """Tests if this user can create ``Questions``.
 
         A return of true does not guarantee successful authorization. A
@@ -2108,7 +2108,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_question_with_record_types(self, question_record_types):
+    def can_create_question_with_record_types(self, question_record_types): # pragma: no cover
         """Tests if this user can create a single ``Question`` using the desired record types.
 
         While ``AssessmentManager.getQuestionRecordTypes()`` can be used
@@ -2129,7 +2129,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_question_form_for_create(self, item_id, question_record_types):
+    def get_question_form_for_create(self, item_id, question_record_types): # pragma: no cover
         """Gets the question form for creating new questions.
 
         A new form should be requested for each create transaction.
@@ -2151,7 +2151,7 @@ class ItemAdminSession:
         return  # osid.assessment.QuestionForm
 
     @abc.abstractmethod
-    def create_question(self, question_form):
+    def create_question(self, question_form): # pragma: no cover
         """Creates a new ``Question``.
 
         :param question_form: the form for this ``Question``
@@ -2172,7 +2172,7 @@ class ItemAdminSession:
         return  # osid.assessment.Question
 
     @abc.abstractmethod
-    def can_update_questions(self):
+    def can_update_questions(self): # pragma: no cover
         """Tests if this user can update ``Questions``.
 
         A return of true does not guarantee successful authorization. A
@@ -2191,7 +2191,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_question_form_for_update(self, question_id):
+    def get_question_form_for_update(self, question_id): # pragma: no cover
         """Gets the question form for updating an existing question.
 
         A new question form should be requested for each update
@@ -2212,7 +2212,7 @@ class ItemAdminSession:
         return  # osid.assessment.QuestionForm
 
     @abc.abstractmethod
-    def update_question(self, question_form):
+    def update_question(self, question_form): # pragma: no cover
         """Updates an existing question.
 
         :param question_form: the form containing the elements to be updated
@@ -2230,7 +2230,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_questions(self):
+    def can_delete_questions(self): # pragma: no cover
         """Tests if this user can delete ``Questions``.
 
         A return of true does not guarantee successful authorization. A
@@ -2249,7 +2249,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_question(self, question_id):
+    def delete_question(self, question_id): # pragma: no cover
         """Deletes the ``Question`` identified by the given ``Id``.
 
         :param question_id: the ``Id`` of the ``Question`` to delete
@@ -2265,7 +2265,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_create_answers(self):
+    def can_create_answers(self): # pragma: no cover
         """Tests if this user can create ``Answers``.
 
         A return of true does not guarantee successful authorization. A
@@ -2284,7 +2284,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_answers_with_record_types(self, answer_record_types):
+    def can_create_answers_with_record_types(self, answer_record_types): # pragma: no cover
         """Tests if this user can create a single ``Answer`` using the desired record types.
 
         While ``AssessmentManager.getAnswerRecordTypes()`` can be used
@@ -2305,7 +2305,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_answer_form_for_create(self, item_id, answer_record_types):
+    def get_answer_form_for_create(self, item_id, answer_record_types): # pragma: no cover
         """Gets the answer form for creating new answers.
 
         A new form should be requested for each create transaction.
@@ -2327,7 +2327,7 @@ class ItemAdminSession:
         return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
-    def create_answer(self, answer_form):
+    def create_answer(self, answer_form): # pragma: no cover
         """Creates a new ``Answer``.
 
         :param answer_form: the form for this ``Answer``
@@ -2347,7 +2347,7 @@ class ItemAdminSession:
         return  # osid.assessment.Answer
 
     @abc.abstractmethod
-    def can_update_answers(self):
+    def can_update_answers(self): # pragma: no cover
         """Tests if this user can update ``Answers``.
 
         A return of true does not guarantee successful authorization. A
@@ -2366,7 +2366,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_answer_form_for_update(self, answer_id):
+    def get_answer_form_for_update(self, answer_id): # pragma: no cover
         """Gets the answer form for updating an existing answer.
 
         A new answer form should be requested for each update
@@ -2387,7 +2387,7 @@ class ItemAdminSession:
         return  # osid.assessment.AnswerForm
 
     @abc.abstractmethod
-    def update_answer(self, answer_form):
+    def update_answer(self, answer_form): # pragma: no cover
         """Updates an existing answer.
 
         :param answer_form: the form containing the elements to be updated
@@ -2405,7 +2405,7 @@ class ItemAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_answers(self):
+    def can_delete_answers(self): # pragma: no cover
         """Tests if this user can delete ``Answers``.
 
         A return of true does not guarantee successful authorization. A
@@ -2424,7 +2424,7 @@ class ItemAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_answer(self, answer_id):
+    def delete_answer(self, answer_id): # pragma: no cover
         """Deletes the ``Answer`` identified by the given ``Id``.
 
         :param answer_id: the ``Id`` of the ``Answer`` to delete
@@ -2454,7 +2454,7 @@ class ItemNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -2469,7 +2469,7 @@ class ItemNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -2485,7 +2485,7 @@ class ItemNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_item_notifications(self):
+    def can_register_for_item_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Item`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2504,7 +2504,7 @@ class ItemNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for assessment items
@@ -2519,7 +2519,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this assessment bank
@@ -2533,7 +2533,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_item_notifications(self):
+    def reliable_item_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2547,7 +2547,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_item_notifications(self):
+    def unreliable_item_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2561,7 +2561,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_item_notification(self, notification_id):
+    def acknowledge_item_notification(self, notification_id): # pragma: no cover
         """Acknowledge an item notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2575,7 +2575,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_items(self):
+    def register_for_new_items(self): # pragma: no cover
         """Register for notifications of new assessment items.
 
         ``ItemReceiver.newItems()`` is invoked when a new ``Item`` is
@@ -2590,7 +2590,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_items(self):
+    def register_for_changed_items(self): # pragma: no cover
         """Registers for notification of updated assessment items.
 
         ``ItemReceiver.changedItems()`` is invoked when an assessment
@@ -2605,7 +2605,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_item(self, item_id):
+    def register_for_changed_item(self, item_id): # pragma: no cover
         """Registers for notification of an updated assessment item.
 
         ``ItemReceiver.changedItems()`` is invoked when the specified
@@ -2624,7 +2624,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_items(self):
+    def register_for_deleted_items(self): # pragma: no cover
         """Registers for notification of deleted assessment items.
 
         ``ItemReceiver.deletedItems()`` is invoked when an assessment
@@ -2639,7 +2639,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_item(self, item_id):
+    def register_for_deleted_item(self, item_id): # pragma: no cover
         """Registers for notification of a deleted assessment item.
 
         ``ItemReceiver.deletedItems()`` is invoked when the specified
@@ -2658,7 +2658,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_item_notifications(self):
+    def reliable_item_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2672,7 +2672,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_item_notifications(self):
+    def unreliable_item_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2686,7 +2686,7 @@ class ItemNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_item_notification(self, notification_id):
+    def acknowledge_item_notification(self, notification_id): # pragma: no cover
         """Acknowledge an item notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2716,7 +2716,7 @@ class ItemBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_item_bank_mappings(self):
+    def can_lookup_item_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of item/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2735,7 +2735,7 @@ class ItemBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2749,7 +2749,7 @@ class ItemBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``Item`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2764,7 +2764,7 @@ class ItemBankSession:
         pass
 
     @abc.abstractmethod
-    def get_item_ids_by_bank(self, bank_id):
+    def get_item_ids_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``Item``  ``Ids`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -2782,7 +2782,7 @@ class ItemBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_items_by_bank(self, bank_id):
+    def get_items_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``Items`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -2800,7 +2800,7 @@ class ItemBankSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_item_ids_by_banks(self, bank_ids):
+    def get_item_ids_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``Item Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -2817,7 +2817,7 @@ class ItemBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_items_by_banks(self, bank_ids):
+    def get_items_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``Items`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -2834,7 +2834,7 @@ class ItemBankSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def get_bank_ids_by_item(self, item_id):
+    def get_bank_ids_by_item(self, item_id): # pragma: no cover
         """Gets the list of ``Bank``  ``Ids`` mapped to an ``Item``.
 
         :param item_id: ``Id`` of an ``Item``
@@ -2852,7 +2852,7 @@ class ItemBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_item(self, item_id):
+    def get_banks_by_item(self, item_id): # pragma: no cover
         """Gets the list of ``Banks`` mapped to an ``Item``.
 
         :param item_id: ``Id`` of an ``Item``
@@ -2885,7 +2885,7 @@ class ItemBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_items(self):
+    def can_assign_items(self): # pragma: no cover
         """Tests if this user can alter item/bank mappings.
 
         A return of true does not guarantee successful assessment. A
@@ -2904,7 +2904,7 @@ class ItemBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_items_to_bank(self, bank_id):
+    def can_assign_items_to_bank(self, bank_id): # pragma: no cover
         """Tests if this user can alter item/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -2925,7 +2925,7 @@ class ItemBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id):
+    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
         """Gets a list of banks including and under the given bank node in which any item can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2941,7 +2941,7 @@ class ItemBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_item(self, bank_id, item_id):
+    def get_assignable_bank_ids_for_item(self, bank_id, item_id): # pragma: no cover
         """Gets a list of banks including and under the given bank node in which a specific item can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2959,7 +2959,7 @@ class ItemBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_item_to_bank(self, item_id, bank_id):
+    def assign_item_to_bank(self, item_id, bank_id): # pragma: no cover
         """Adds an existing ``Item`` to a ``Bank``.
 
         :param item_id: the ``Id`` of the ``Item``
@@ -2978,7 +2978,7 @@ class ItemBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_item_from_bank(self, item_id, bank_id):
+    def unassign_item_from_bank(self, item_id, bank_id): # pragma: no cover
         """Removes an ``Item`` from a ``Bank``.
 
         :param item_id: the ``Id`` of the ``Item``
@@ -2996,7 +2996,7 @@ class ItemBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_item_to_billing(self, item_id, from_bank_id, to_bank_id):
+    def reassign_item_to_billing(self, item_id, from_bank_id, to_bank_id): # pragma: no cover
         """Moves an ``Item`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -3034,7 +3034,7 @@ class ItemSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3049,7 +3049,7 @@ class ItemSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -3065,7 +3065,7 @@ class ItemSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self):
+    def can_manage_smart_banks(self): # pragma: no cover
         """Tests if this user can manage smart banks.
 
         A return of true does not guarantee successful assessment. A
@@ -3084,7 +3084,7 @@ class ItemSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_item_query(self):
+    def get_item_query(self): # pragma: no cover
         """Gets an assessment item query.
 
         :return: the assessment item query
@@ -3099,7 +3099,7 @@ class ItemSmartBankSession:
     item_query = property(fget=get_item_query)
 
     @abc.abstractmethod
-    def get_item_search_order(self):
+    def get_item_search_order(self): # pragma: no cover
         """Gets an assessment item search order.
 
         :return: the assessment item search order
@@ -3114,7 +3114,7 @@ class ItemSmartBankSession:
     item_search_order = property(fget=get_item_search_order)
 
     @abc.abstractmethod
-    def apply_item_query(self, item_query):
+    def apply_item_query(self, item_query): # pragma: no cover
         """Applies an item query to this bank.
 
         :param item_query: the item query
@@ -3130,7 +3130,7 @@ class ItemSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_item_query(self):
+    def inspect_item_query(self): # pragma: no cover
         """Gets an item query inspector for this bank.
 
         :return: the item query inspector
@@ -3144,7 +3144,7 @@ class ItemSmartBankSession:
         return  # osid.assessment.ItemQueryInspector
 
     @abc.abstractmethod
-    def apply_item_sequencing(self, item_search_order):
+    def apply_item_sequencing(self, item_search_order): # pragma: no cover
         """Applies an item search order to this bank.
 
         :param item_search_order: the item search order
@@ -3160,7 +3160,7 @@ class ItemSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_item_query_from_inspector(self, item_query_inspector):
+    def get_item_query_from_inspector(self, item_query_inspector): # pragma: no cover
         """Gets an item query from an inspector.
 
         :param item_query_inspector: an item query inspector
@@ -3181,7 +3181,7 @@ class AssessmentLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3196,7 +3196,7 @@ class AssessmentLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -3212,7 +3212,7 @@ class AssessmentLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_assessments(self):
+    def can_lookup_assessments(self): # pragma: no cover
         """Tests if this user can perform ``Assessment`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -3231,7 +3231,7 @@ class AssessmentLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_assessment_view(self):
+    def use_comparative_assessment_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3245,7 +3245,7 @@ class AssessmentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_view(self):
+    def use_plenary_assessment_view(self): # pragma: no cover
         """A complete view of the ``Assessment`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3260,7 +3260,7 @@ class AssessmentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments in banks which are
@@ -3274,7 +3274,7 @@ class AssessmentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -3287,7 +3287,7 @@ class AssessmentLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment(self, assessment_id):
+    def get_assessment(self, assessment_id): # pragma: no cover
         """Gets the ``Assessment`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -3311,7 +3311,7 @@ class AssessmentLookupSession:
         return  # osid.assessment.Assessment
 
     @abc.abstractmethod
-    def get_assessments_by_ids(self, assessment_ids):
+    def get_assessments_by_ids(self, assessment_ids): # pragma: no cover
         """Gets an ``AssessmentList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -3337,7 +3337,7 @@ class AssessmentLookupSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_assessments_by_genus_type(self, assessment_genus_type):
+    def get_assessments_by_genus_type(self, assessment_genus_type): # pragma: no cover
         """Gets an ``AssessmentList`` corresponding to the given assessment genus ``Type`` which does not include assessments of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -3359,7 +3359,7 @@ class AssessmentLookupSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_assessments_by_parent_genus_type(self, assessment_genus_type):
+    def get_assessments_by_parent_genus_type(self, assessment_genus_type): # pragma: no cover
         """Gets an ``AssessmentList`` corresponding to the given assessment genus ``Type`` and include any additional assessments with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -3381,7 +3381,7 @@ class AssessmentLookupSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_assessments_by_record_type(self, assessment_record_type):
+    def get_assessments_by_record_type(self, assessment_record_type): # pragma: no cover
         """Gets an ``AssessmentList`` corresponding to the given assessment record ``Type``.
 
         The set of assessments implementing the given record type is
@@ -3404,7 +3404,7 @@ class AssessmentLookupSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_assessments(self):
+    def get_assessments(self): # pragma: no cover
         """Gets all ``Assessments``.
 
         In plenary mode, the returned list contains all known
@@ -3448,7 +3448,7 @@ class AssessmentQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3463,7 +3463,7 @@ class AssessmentQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -3479,7 +3479,7 @@ class AssessmentQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_assessments(self):
+    def can_search_assessments(self): # pragma: no cover
         """Tests if this user can perform ``Assessment`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -3498,7 +3498,7 @@ class AssessmentQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments in banks which are
@@ -3512,7 +3512,7 @@ class AssessmentQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this bank only.
@@ -3525,7 +3525,7 @@ class AssessmentQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_query(self):
+    def get_assessment_query(self): # pragma: no cover
         """Gets an assessment query.
 
         :return: the assessment query
@@ -3540,7 +3540,7 @@ class AssessmentQuerySession:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def get_assessments_by_query(self, assessment_query):
+    def get_assessments_by_query(self, assessment_query): # pragma: no cover
         """Gets a list of ``Assessments`` matching the given assessment query.
 
         :param assessment_query: the assessment query
@@ -3590,7 +3590,7 @@ class AssessmentSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_search(self):
+    def get_assessment_search(self): # pragma: no cover
         """Gets an assessment search.
 
         :return: the assessment search
@@ -3605,7 +3605,7 @@ class AssessmentSearchSession:
     assessment_search = property(fget=get_assessment_search)
 
     @abc.abstractmethod
-    def get_assessment_search_order(self):
+    def get_assessment_search_order(self): # pragma: no cover
         """Gets an assessment search order.
 
         The ``AssessmentSearchOrder`` is supplied to an
@@ -3623,7 +3623,7 @@ class AssessmentSearchSession:
     assessment_search_order = property(fget=get_assessment_search_order)
 
     @abc.abstractmethod
-    def get_assessments_by_search(self, assessment_query, assessment_search):
+    def get_assessments_by_search(self, assessment_query, assessment_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param assessment_query: the assessment query
@@ -3643,7 +3643,7 @@ class AssessmentSearchSession:
         return  # osid.assessment.AssessmentSearchResults
 
     @abc.abstractmethod
-    def get_assessment_query_from_inspector(self, assessment_query_inspector):
+    def get_assessment_query_from_inspector(self, assessment_query_inspector): # pragma: no cover
         """Gets an assessment query from an inspector.
 
         The inspector is available from an ``AssessmentSearchResults``.
@@ -3699,7 +3699,7 @@ class AssessmentAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3714,7 +3714,7 @@ class AssessmentAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -3730,7 +3730,7 @@ class AssessmentAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_assessments(self):
+    def can_create_assessments(self): # pragma: no cover
         """Tests if this user can create ``Assessments``.
 
         A return of true does not guarantee successful authorization. A
@@ -3749,7 +3749,7 @@ class AssessmentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_assessment_with_record_types(self, assessment_record_types):
+    def can_create_assessment_with_record_types(self, assessment_record_types): # pragma: no cover
         """Tests if this user can create a single ``Assessment`` using the desired record interface types.
 
         While ``AssessmentManager.getAssessmentRecordTypes()`` can be
@@ -3770,7 +3770,7 @@ class AssessmentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_form_for_create(self, assessment_record_types):
+    def get_assessment_form_for_create(self, assessment_record_types): # pragma: no cover
         """Gets the assessment form for creating new assessments.
 
         A new form should be requested for each create transaction.
@@ -3790,7 +3790,7 @@ class AssessmentAdminSession:
         return  # osid.assessment.AssessmentForm
 
     @abc.abstractmethod
-    def create_assessment(self, assessment_form):
+    def create_assessment(self, assessment_form): # pragma: no cover
         """Creates a new ``Assessment``.
 
         :param assessment_form: the form for this ``Assessment``
@@ -3810,7 +3810,7 @@ class AssessmentAdminSession:
         return  # osid.assessment.Assessment
 
     @abc.abstractmethod
-    def can_update_assessments(self):
+    def can_update_assessments(self): # pragma: no cover
         """Tests if this user can update ``Assessments``.
 
         A return of true does not guarantee successful authorization. A
@@ -3829,7 +3829,7 @@ class AssessmentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_form_for_update(self, assessment_id):
+    def get_assessment_form_for_update(self, assessment_id): # pragma: no cover
         """Gets the assessment form for updating an existing assessment.
 
         A new assessment form should be requested for each update
@@ -3850,7 +3850,7 @@ class AssessmentAdminSession:
         return  # osid.assessment.AssessmentForm
 
     @abc.abstractmethod
-    def update_assessment(self, assessment_form):
+    def update_assessment(self, assessment_form): # pragma: no cover
         """Updates an existing assessment.
 
         :param assessment_form: the form containing the elements to be updated
@@ -3868,7 +3868,7 @@ class AssessmentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_assessments(self):
+    def can_delete_assessments(self): # pragma: no cover
         """Tests if this user can delete ``Assessments``.
 
         A return of true does not guarantee successful authorization. A
@@ -3887,7 +3887,7 @@ class AssessmentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_assessment(self, assessment_id):
+    def delete_assessment(self, assessment_id): # pragma: no cover
         """Deletes an ``Assessment``.
 
         :param assessment_id: the ``Id`` of the ``Assessment`` to remove
@@ -3903,7 +3903,7 @@ class AssessmentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_assessment_aliases(self):
+    def can_manage_assessment_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Assessments``.
 
         A return of true does not guarantee successful authorization. A
@@ -3922,7 +3922,7 @@ class AssessmentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_assessment(self, assessment_id, alias_id):
+    def alias_assessment(self, assessment_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Assessment`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Assessment`` is determined by the
@@ -3960,7 +3960,7 @@ class AssessmentNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -3975,7 +3975,7 @@ class AssessmentNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -3991,7 +3991,7 @@ class AssessmentNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_assessment_notifications(self):
+    def can_register_for_assessment_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Assessment`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -4010,7 +4010,7 @@ class AssessmentNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for assessments in
@@ -4024,7 +4024,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for assessments to this
@@ -4038,7 +4038,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_notifications(self):
+    def reliable_assessment_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4052,7 +4052,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_notifications(self):
+    def unreliable_assessment_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4066,7 +4066,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_notification(self, notification_id):
+    def acknowledge_assessment_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4080,7 +4080,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments(self):
+    def register_for_new_assessments(self): # pragma: no cover
         """Register for notifications of new assessments.
 
         ``AssessmentReceiver.newAssessments()`` is invoked when a new
@@ -4095,7 +4095,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments(self):
+    def register_for_changed_assessments(self): # pragma: no cover
         """Registers for notification of updated assessments.
 
         ``AssessmentReceiver.changedAssessments()`` is invoked when an
@@ -4110,7 +4110,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessment(self, assessment_id):
+    def register_for_changed_assessment(self, assessment_id): # pragma: no cover
         """Registers for notification of an updated assessment.
 
         ``AssessmentReceiver.changedAssessments()`` is invoked when the
@@ -4128,7 +4128,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments(self):
+    def register_for_deleted_assessments(self): # pragma: no cover
         """Registers for notification of deleted assessments.
 
         ``AssessmentReceiver.deletedAssessments()`` is invoked when an
@@ -4143,7 +4143,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessment(self, assessment_id):
+    def register_for_deleted_assessment(self, assessment_id): # pragma: no cover
         """Registers for notification of a deleted assessment.
 
         ``AssessmentReceiver.deletedAssessments()`` is invoked when the
@@ -4161,7 +4161,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_notifications(self):
+    def reliable_assessment_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -4175,7 +4175,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_notifications(self):
+    def unreliable_assessment_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -4189,7 +4189,7 @@ class AssessmentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_notification(self, notification_id):
+    def acknowledge_assessment_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -4220,7 +4220,7 @@ class AssessmentBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_assessment_bank_mappings(self):
+    def can_lookup_assessment_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of assessment/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4239,7 +4239,7 @@ class AssessmentBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4253,7 +4253,7 @@ class AssessmentBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``Assessment`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4268,7 +4268,7 @@ class AssessmentBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_ids_by_bank(self, bank_id):
+    def get_assessment_ids_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``Assessment``  ``Ids`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -4286,7 +4286,7 @@ class AssessmentBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_by_bank(self, bank_id):
+    def get_assessments_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``Assessments`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -4304,7 +4304,7 @@ class AssessmentBankSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_assessment_ids_by_banks(self, bank_ids):
+    def get_assessment_ids_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``Assessment Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -4321,7 +4321,7 @@ class AssessmentBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_by_banks(self, bank_ids):
+    def get_assessments_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``Assessments`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -4338,7 +4338,7 @@ class AssessmentBankSession:
         return  # osid.assessment.AssessmentList
 
     @abc.abstractmethod
-    def get_bank_ids_by_assessment(self, assessment_id):
+    def get_bank_ids_by_assessment(self, assessment_id): # pragma: no cover
         """Gets the list of ``Bank``  ``Ids`` mapped to an ``Assessment``.
 
         :param assessment_id: ``Id`` of an ``Assessment``
@@ -4356,7 +4356,7 @@ class AssessmentBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_assessment(self, assessment_id):
+    def get_banks_by_assessment(self, assessment_id): # pragma: no cover
         """Gets the list of ``Banks`` mapped to an ``Assessment``.
 
         :param assessment_id: ``Id`` of an ``Assessment``
@@ -4389,7 +4389,7 @@ class AssessmentBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_assessments(self):
+    def can_assign_assessments(self): # pragma: no cover
         """Tests if this user can alter assessment/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4408,7 +4408,7 @@ class AssessmentBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_assessments_to_bank(self, bank_id):
+    def can_assign_assessments_to_bank(self, bank_id): # pragma: no cover
         """Tests if this user can alter assessment/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -4429,7 +4429,7 @@ class AssessmentBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id):
+    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
         """Gets a list of banks including and under the given banks node in which any assessment can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -4445,7 +4445,7 @@ class AssessmentBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_assessment(self, bank_id, assessment_id):
+    def get_assignable_bank_ids_for_assessment(self, bank_id, assessment_id): # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific assessment can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -4463,7 +4463,7 @@ class AssessmentBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_assessment_to_bank(self, assessment_id, bank_id):
+    def assign_assessment_to_bank(self, assessment_id, bank_id): # pragma: no cover
         """Adds an existing ``Assessment`` to a ``Bank``.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4482,7 +4482,7 @@ class AssessmentBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_assessment_from_bank(self, assessment_id, bank_id):
+    def unassign_assessment_from_bank(self, assessment_id, bank_id): # pragma: no cover
         """Removes an ``Assessment`` from a ``Bank``.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4500,7 +4500,7 @@ class AssessmentBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_assessment_to_billing(self, assessment_id, from_bank_id, to_bank_id):
+    def reassign_assessment_to_billing(self, assessment_id, from_bank_id, to_bank_id): # pragma: no cover
         """Moves an ``Assessment`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -4539,7 +4539,7 @@ class AssessmentSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -4554,7 +4554,7 @@ class AssessmentSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -4570,7 +4570,7 @@ class AssessmentSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self):
+    def can_manage_smart_banks(self): # pragma: no cover
         """Tests if this user can manage smart banks.
 
         A return of true does not guarantee successful authorization. A
@@ -4589,7 +4589,7 @@ class AssessmentSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self):
+    def get_assessment_query(self): # pragma: no cover
         """Gets an assessment query.
 
         :return: the assessment query
@@ -4604,7 +4604,7 @@ class AssessmentSmartBankSession:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def get_assessment_search_order(self):
+    def get_assessment_search_order(self): # pragma: no cover
         """Gets an assessment search order.
 
         :return: the assessment search order
@@ -4619,7 +4619,7 @@ class AssessmentSmartBankSession:
     assessment_search_order = property(fget=get_assessment_search_order)
 
     @abc.abstractmethod
-    def apply_assessment_query(self, assessment_query):
+    def apply_assessment_query(self, assessment_query): # pragma: no cover
         """Applies an assessment query to this bank.
 
         :param assessment_query: the assessment query
@@ -4635,7 +4635,7 @@ class AssessmentSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_assessment_query(self):
+    def inspect_assessment_query(self): # pragma: no cover
         """Gets an assessment query inspector for this bank.
 
         :return: the assessment query inspector
@@ -4649,7 +4649,7 @@ class AssessmentSmartBankSession:
         return  # osid.assessment.AssessmentQueryInspector
 
     @abc.abstractmethod
-    def apply_assessment_sequencing(self, assessment_search_order):
+    def apply_assessment_sequencing(self, assessment_search_order): # pragma: no cover
         """Applies an assessment search order to this bank.
 
         :param assessment_search_order: the assessment search order
@@ -4665,7 +4665,7 @@ class AssessmentSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_query_from_inspector(self, assessment_query_inspector):
+    def get_assessment_query_from_inspector(self, assessment_query_inspector): # pragma: no cover
         """Gets an assessment query from an inspector.
 
         :param assessment_query_inspector: an assessment query inspector
@@ -4692,7 +4692,7 @@ class AssessmentBasicAuthoringSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -4707,7 +4707,7 @@ class AssessmentBasicAuthoringSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -4723,7 +4723,7 @@ class AssessmentBasicAuthoringSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_author_assessments(self):
+    def can_author_assessments(self): # pragma: no cover
         """Tests if this user can author assessments.
 
         A return of true does not guarantee successful authorization. A
@@ -4742,7 +4742,7 @@ class AssessmentBasicAuthoringSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_items(self, assessment_id):
+    def get_items(self, assessment_id): # pragma: no cover
         """Gets the items in sequence from an assessment.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4760,7 +4760,7 @@ class AssessmentBasicAuthoringSession:
         return  # osid.assessment.ItemList
 
     @abc.abstractmethod
-    def add_item(self, assessment_id, item_id):
+    def add_item(self, assessment_id, item_id): # pragma: no cover
         """Adds an existing ``Item`` to an assessment.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4778,7 +4778,7 @@ class AssessmentBasicAuthoringSession:
         pass
 
     @abc.abstractmethod
-    def remove_item(self, assessment_id, item_id):
+    def remove_item(self, assessment_id, item_id): # pragma: no cover
         """Removes an ``Item`` from this assessment.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4796,7 +4796,7 @@ class AssessmentBasicAuthoringSession:
         pass
 
     @abc.abstractmethod
-    def move_item(self, assessment_id, item_id, preceeding_item_id):
+    def move_item(self, assessment_id, item_id, preceeding_item_id): # pragma: no cover
         """Moves an existing item to follow another item in an assessment.
 
         :param assessment_id: the ``Id`` of the ``Assessment``
@@ -4816,7 +4816,7 @@ class AssessmentBasicAuthoringSession:
         pass
 
     @abc.abstractmethod
-    def order_items(self, item_ids, assessment_id):
+    def order_items(self, item_ids, assessment_id): # pragma: no cover
         """Sequences existing items in an assessment.
 
         :param item_ids: the ``Id`` of the ``Items``
@@ -4839,7 +4839,7 @@ class AssessmentOfferedLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -4854,7 +4854,7 @@ class AssessmentOfferedLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -4870,7 +4870,7 @@ class AssessmentOfferedLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_assessments_offered(self):
+    def can_lookup_assessments_offered(self): # pragma: no cover
         """Tests if this user can perform ``AssessmentOffered`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -4889,7 +4889,7 @@ class AssessmentOfferedLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_assessment_offered_view(self):
+    def use_comparative_assessment_offered_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -4903,7 +4903,7 @@ class AssessmentOfferedLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_offered_view(self):
+    def use_plenary_assessment_offered_view(self): # pragma: no cover
         """A complete view of the ``AssessmentOffered`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -4918,7 +4918,7 @@ class AssessmentOfferedLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments in banks which are
@@ -4932,7 +4932,7 @@ class AssessmentOfferedLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -4945,7 +4945,7 @@ class AssessmentOfferedLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_offered(self, assessment_offered_id):
+    def get_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Gets the ``AssessmentOffered`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -4969,7 +4969,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOffered
 
     @abc.abstractmethod
-    def get_assessments_offered_by_ids(self, assessment_offered_ids):
+    def get_assessments_offered_by_ids(self, assessment_offered_ids): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -4995,7 +4995,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_genus_type(self, assessment_offered_genus_type):
+    def get_assessments_offered_by_genus_type(self, assessment_offered_genus_type): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` corresponding to the given assessment offered genus ``Type`` which does not include assessments of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -5017,7 +5017,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_parent_genus_type(self, assessment_offered_genus_type):
+    def get_assessments_offered_by_parent_genus_type(self, assessment_offered_genus_type): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` corresponding to the given assessment offered genus ``Type`` and include any additional assessments with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -5039,7 +5039,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_record_type(self, assessment_record_type):
+    def get_assessments_offered_by_record_type(self, assessment_record_type): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` corresponding to the given assessment offered record ``Type``.
 
         The set of assessments implementing the given record type is
@@ -5062,7 +5062,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_date(self, start, end):
+    def get_assessments_offered_by_date(self, start, end): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` that have designated start times where the start times fall in the given range inclusive.
 
         In plenary mode, the returned list contains all known
@@ -5086,7 +5086,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered_for_assessment(self, assessment_id):
+    def get_assessments_offered_for_assessment(self, assessment_id): # pragma: no cover
         """Gets an ``AssessmentOfferedList`` by the given assessment.
 
         In plenary mode, the returned list contains all known
@@ -5108,7 +5108,7 @@ class AssessmentOfferedLookupSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessments_offered(self):
+    def get_assessments_offered(self): # pragma: no cover
         """Gets all ``AssessmentOffered`` elements.
 
         In plenary mode, the returned list contains all known
@@ -5153,7 +5153,7 @@ class AssessmentOfferedQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5168,7 +5168,7 @@ class AssessmentOfferedQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -5184,7 +5184,7 @@ class AssessmentOfferedQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_assessments_offered(self):
+    def can_search_assessments_offered(self): # pragma: no cover
         """Tests if this user can perform ``AssessmentOffered`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -5203,7 +5203,7 @@ class AssessmentOfferedQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments offered in banks which
@@ -5217,7 +5217,7 @@ class AssessmentOfferedQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this bank only.
@@ -5230,7 +5230,7 @@ class AssessmentOfferedQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_offered_query(self):
+    def get_assessment_offered_query(self): # pragma: no cover
         """Gets an assessment offered query.
 
         :return: the assessment offered query
@@ -5245,7 +5245,7 @@ class AssessmentOfferedQuerySession:
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
     @abc.abstractmethod
-    def get_assessments_offered_by_query(self, assessment_offered_query):
+    def get_assessments_offered_by_query(self, assessment_offered_query): # pragma: no cover
         """Gets a list of ``AssessmentOffered`` elements matching the given assessment offered query.
 
         :param assessment_offered_query: the assessment offered query
@@ -5297,7 +5297,7 @@ class AssessmentOfferedSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_offered_search(self):
+    def get_assessment_offered_search(self): # pragma: no cover
         """Gets an assessment offered search.
 
         :return: the assessment offered search
@@ -5312,7 +5312,7 @@ class AssessmentOfferedSearchSession:
     assessment_offered_search = property(fget=get_assessment_offered_search)
 
     @abc.abstractmethod
-    def get_assessment_offered_search_order(self):
+    def get_assessment_offered_search_order(self): # pragma: no cover
         """Gets an assessment offered search order.
 
         The ``AssessmentOfferedSearchOrder`` is supplied to an
@@ -5330,7 +5330,7 @@ class AssessmentOfferedSearchSession:
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
     @abc.abstractmethod
-    def get_assessments_offered_by_search(self, assessment_offered_query, assessment_offered_search):
+    def get_assessments_offered_by_search(self, assessment_offered_query, assessment_offered_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param assessment_offered_query: the assessment offered query
@@ -5350,7 +5350,7 @@ class AssessmentOfferedSearchSession:
         return  # osid.assessment.AssessmentOfferedSearchResults
 
     @abc.abstractmethod
-    def get_assessment_offered_query_from_inspector(self, assessment_offered_query_inspector):
+    def get_assessment_offered_query_from_inspector(self, assessment_offered_query_inspector): # pragma: no cover
         """Gets an assessment offered query from an inspector.
 
         The inspector is available from an
@@ -5409,7 +5409,7 @@ class AssessmentOfferedAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5424,7 +5424,7 @@ class AssessmentOfferedAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -5440,7 +5440,7 @@ class AssessmentOfferedAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_assessments_offered(self):
+    def can_create_assessments_offered(self): # pragma: no cover
         """Tests if this user can create ``AssessmentOffered`` objects.
 
         A return of true does not guarantee successful authoriization. A
@@ -5459,7 +5459,7 @@ class AssessmentOfferedAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_assessment_offered_with_record_types(self, assessment_offered_record_types):
+    def can_create_assessment_offered_with_record_types(self, assessment_offered_record_types): # pragma: no cover
         """Tests if this user can create a single ``AssessmentOffered`` using the desired record types.
 
         While ``AssessmentManager.getAssessmentOfferedRecordTypes()``
@@ -5480,7 +5480,7 @@ class AssessmentOfferedAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_form_for_create(self, assessment_id, assessment_offered_record_types):
+    def get_assessment_offered_form_for_create(self, assessment_id, assessment_offered_record_types): # pragma: no cover
         """Gets the assessment offered form for creating new assessments offered.
 
         A new form should be requested for each create transaction.
@@ -5503,7 +5503,7 @@ class AssessmentOfferedAdminSession:
         return  # osid.assessment.AssessmentOfferedForm
 
     @abc.abstractmethod
-    def create_assessment_offered(self, assessment_offered_form):
+    def create_assessment_offered(self, assessment_offered_form): # pragma: no cover
         """Creates a new ``AssessmentOffered``.
 
         :param assessment_offered_form: the form for this ``AssessmentOffered``
@@ -5523,7 +5523,7 @@ class AssessmentOfferedAdminSession:
         return  # osid.assessment.AssessmentOffered
 
     @abc.abstractmethod
-    def can_update_assessments_offered(self):
+    def can_update_assessments_offered(self): # pragma: no cover
         """Tests if this user can update ``AssessmentOffered`` objects.
 
         A return of true does not guarantee successful authorization. A
@@ -5542,7 +5542,7 @@ class AssessmentOfferedAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_form_for_update(self, assessment_offered_id):
+    def get_assessment_offered_form_for_update(self, assessment_offered_id): # pragma: no cover
         """Gets the assessment offered form for updating an existing assessment offered.
 
         A new assessment offered form should be requested for each
@@ -5563,7 +5563,7 @@ class AssessmentOfferedAdminSession:
         return  # osid.assessment.AssessmentOfferedForm
 
     @abc.abstractmethod
-    def update_assessment_offered(self, assessment_offered_form):
+    def update_assessment_offered(self, assessment_offered_form): # pragma: no cover
         """Updates an existing assessment offered.
 
         :param assessment_offered_form: the form containing the elements to be updated
@@ -5581,7 +5581,7 @@ class AssessmentOfferedAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_assessments_offered(self):
+    def can_delete_assessments_offered(self): # pragma: no cover
         """Tests if this user can delete ``AssessmentsOffered``.
 
         A return of true does not guarantee successful authorization. A
@@ -5600,7 +5600,7 @@ class AssessmentOfferedAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_assessment_offered(self, assessment_offered_id):
+    def delete_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Deletes an ``AssessmentOffered``.
 
         :param assessment_offered_id: the ``Id`` of the ``AssessmentOffered`` to remove
@@ -5616,7 +5616,7 @@ class AssessmentOfferedAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_assessment_offered_aliases(self):
+    def can_manage_assessment_offered_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``AssessmentsOffered``.
 
         A return of true does not guarantee successful authorization. A
@@ -5635,7 +5635,7 @@ class AssessmentOfferedAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_assessment_offered(self, assessment_offered_id, alias_id):
+    def alias_assessment_offered(self, assessment_offered_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``AssessmentOffered`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``AssessmentOffered`` is determined by
@@ -5673,7 +5673,7 @@ class AssessmentOfferedNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -5688,7 +5688,7 @@ class AssessmentOfferedNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -5704,7 +5704,7 @@ class AssessmentOfferedNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_assessment_offered_notifications(self):
+    def can_register_for_assessment_offered_notifications(self): # pragma: no cover
         """Tests if this user can register for ``AssessmentOffered`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -5723,7 +5723,7 @@ class AssessmentOfferedNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for assessments
@@ -5738,7 +5738,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for assessments offered
@@ -5752,7 +5752,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_offered_notifications(self):
+    def reliable_assessment_offered_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5766,7 +5766,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_offered_notifications(self):
+    def unreliable_assessment_offered_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5780,7 +5780,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_offered_notification(self, notification_id):
+    def acknowledge_assessment_offered_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment offered notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5794,7 +5794,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_offered(self):
+    def register_for_new_assessments_offered(self): # pragma: no cover
         """Register for notifications of new assessments offered.
 
         ``AssessmentOfferedReceiver.newAssessmentsOffered()`` is invoked
@@ -5810,7 +5810,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_offered_for_assessment(self, assessment_id):
+    def register_for_new_assessments_offered_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of new assessments offered by assessment.
 
         ``AssessmentOfferedReceiver.newAssessmentsOffered()`` is invoked
@@ -5829,7 +5829,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_offered(self):
+    def register_for_changed_assessments_offered(self): # pragma: no cover
         """Registers for notification of updated assessments offered.
 
         ``AssessmentOfferedReceiver.changedAssessmentsOffered()`` is
@@ -5845,7 +5845,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_offered_for_assessment(self, assessment_id):
+    def register_for_changed_assessments_offered_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of updated assessments offered by assessment.
 
         ``AssessmentOfferedReceiver.changedAssessmentsOffered()`` is
@@ -5864,7 +5864,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessment_offered(self, assessment_offered_id):
+    def register_for_changed_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Registers for notification of an updated assessment offered.
 
         ``AssessmentOfferedReceiver.changedAssessmentsOffered()`` is
@@ -5883,7 +5883,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_offered(self):
+    def register_for_deleted_assessments_offered(self): # pragma: no cover
         """Registers for notification of deleted assessments offered.
 
         ``AssessmentOfferedReceiver.deletedAssessmentsOffered()`` is
@@ -5899,7 +5899,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_offered_for_assessment(self, assessment_id):
+    def register_for_deleted_assessments_offered_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of deleted assessments offered by assessment.
 
         ``AssessmentOfferedReceiver.deletedAssessmenstOffered()`` is
@@ -5918,7 +5918,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessment_offered(self, assessment_offered_id):
+    def register_for_deleted_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Registers for notification of a deleted assessment offered.
 
         ``AssessmentOfferedReceiver.deletedAssessmentsOffered()`` is
@@ -5937,7 +5937,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_offered_notifications(self):
+    def reliable_assessment_offered_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -5951,7 +5951,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_offered_notifications(self):
+    def unreliable_assessment_offered_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -5965,7 +5965,7 @@ class AssessmentOfferedNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_offered_notification(self, notification_id):
+    def acknowledge_assessment_offered_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment_offered notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -5996,7 +5996,7 @@ class AssessmentOfferedBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_assessment_offered_bank_mappings(self):
+    def can_lookup_assessment_offered_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of assessment offered/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -6015,7 +6015,7 @@ class AssessmentOfferedBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6029,7 +6029,7 @@ class AssessmentOfferedBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``AssessmentOffered`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6044,7 +6044,7 @@ class AssessmentOfferedBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_offered_ids_by_bank(self, bank_id):
+    def get_assessment_offered_ids_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``AssessmentOffered``  ``Ids`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -6062,7 +6062,7 @@ class AssessmentOfferedBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_bank(self, bank_id):
+    def get_assessments_offered_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``AssessmentOffereds`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -6080,7 +6080,7 @@ class AssessmentOfferedBankSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_assessment_offered_ids_by_banks(self, bank_ids):
+    def get_assessment_offered_ids_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``AssessmentOffered Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -6097,7 +6097,7 @@ class AssessmentOfferedBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_offered_by_banks(self, bank_ids):
+    def get_assessments_offered_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``AssessmentOffered`` objects corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -6114,7 +6114,7 @@ class AssessmentOfferedBankSession:
         return  # osid.assessment.AssessmentOfferedList
 
     @abc.abstractmethod
-    def get_bank_ids_by_assessment_offered(self, assessment_offered_id):
+    def get_bank_ids_by_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Gets the list of ``Bank``  ``Ids`` mapped to an ``AssessmentOffered``.
 
         :param assessment_offered_id: ``Id`` of an ``AssessmentOffered``
@@ -6132,7 +6132,7 @@ class AssessmentOfferedBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_assessment_offered(self, assessment_offered_id):
+    def get_banks_by_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Gets the list of ``Banks`` mapped to an ``AssessmentOffered``.
 
         :param assessment_offered_id: ``Id`` of an ``AssessmentOffered``
@@ -6165,7 +6165,7 @@ class AssessmentOfferedBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_assessments_offered(self):
+    def can_assign_assessments_offered(self): # pragma: no cover
         """Tests if this user can alter assessment offered/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -6184,7 +6184,7 @@ class AssessmentOfferedBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_assessments_offered_to_bank(self, bank_id):
+    def can_assign_assessments_offered_to_bank(self, bank_id): # pragma: no cover
         """Tests if this user can alter assessment offered/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -6205,7 +6205,7 @@ class AssessmentOfferedBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id):
+    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
         """Gets a list of banks including and under the given banks node in which any assessment offered can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -6221,7 +6221,7 @@ class AssessmentOfferedBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_assessment_offered(self, bank_id, assessment_offered_id):
+    def get_assignable_bank_ids_for_assessment_offered(self, bank_id, assessment_offered_id): # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific assessment offered can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -6239,7 +6239,7 @@ class AssessmentOfferedBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id):
+    def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id): # pragma: no cover
         """Adds an existing ``AssessmentOffered`` to a ``Bank``.
 
         :param assessment_offered_id: the ``Id`` of the ``AssessmentOffered``
@@ -6258,7 +6258,7 @@ class AssessmentOfferedBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_assessment_offered_from_bank(self, assessment_offered_id, bank_id):
+    def unassign_assessment_offered_from_bank(self, assessment_offered_id, bank_id): # pragma: no cover
         """Removes an ``AssessmentOffered`` from a ``Bank``.
 
         :param assessment_offered_id: the ``Id`` of the ``AssessmentOffered``
@@ -6276,7 +6276,7 @@ class AssessmentOfferedBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_assessment_offered_to_billing(self, assessment_offered_id, from_bank_id, to_bank_id):
+    def reassign_assessment_offered_to_billing(self, assessment_offered_id, from_bank_id, to_bank_id): # pragma: no cover
         """Moves an ``AssessmentOffered`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -6316,7 +6316,7 @@ class AssessmentOfferedSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -6331,7 +6331,7 @@ class AssessmentOfferedSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -6347,7 +6347,7 @@ class AssessmentOfferedSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self):
+    def can_manage_smart_banks(self): # pragma: no cover
         """Tests if this user can manage smart banks.
 
         A return of true does not guarantee successful authorization. A
@@ -6366,7 +6366,7 @@ class AssessmentOfferedSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_offered_query(self):
+    def get_assessment_offered_query(self): # pragma: no cover
         """Gets an assessment offered query.
 
         :return: the assessment offered query
@@ -6381,7 +6381,7 @@ class AssessmentOfferedSmartBankSession:
     assessment_offered_query = property(fget=get_assessment_offered_query)
 
     @abc.abstractmethod
-    def get_assessment_offered_search_order(self):
+    def get_assessment_offered_search_order(self): # pragma: no cover
         """Gets an assessment offered search order.
 
         :return: the assessment offered search order
@@ -6396,7 +6396,7 @@ class AssessmentOfferedSmartBankSession:
     assessment_offered_search_order = property(fget=get_assessment_offered_search_order)
 
     @abc.abstractmethod
-    def apply_assessment_offered_query(self, assessment_offered_query):
+    def apply_assessment_offered_query(self, assessment_offered_query): # pragma: no cover
         """Applies an assessment offered query to this bank.
 
         :param assessment_offered_query: the assessment offered query
@@ -6412,7 +6412,7 @@ class AssessmentOfferedSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_assessment_offered_query(self):
+    def inspect_assessment_offered_query(self): # pragma: no cover
         """Gets an assessment offered query inspector for this bank.
 
         :return: the assessment offered query inspector
@@ -6426,7 +6426,7 @@ class AssessmentOfferedSmartBankSession:
         return  # osid.assessment.AssessmentOfferedQueryInspector
 
     @abc.abstractmethod
-    def apply_assessment_offered_sequencing(self, assessment_offered_search_order):
+    def apply_assessment_offered_sequencing(self, assessment_offered_search_order): # pragma: no cover
         """Applies an assessment offered search order to this bank.
 
         :param assessment_offered_search_order: the assessment offered search order
@@ -6442,7 +6442,7 @@ class AssessmentOfferedSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_offered_query_from_inspector(self, assessment_offered_query_inspector):
+    def get_assessment_offered_query_from_inspector(self, assessment_offered_query_inspector): # pragma: no cover
         """Gets an assessment offered query from an inspector.
 
         :param assessment_offered_query_inspector: a assessment offered query inspector
@@ -6463,7 +6463,7 @@ class AssessmentTakenLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -6478,7 +6478,7 @@ class AssessmentTakenLookupSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -6494,7 +6494,7 @@ class AssessmentTakenLookupSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_lookup_assessments_taken(self):
+    def can_lookup_assessments_taken(self): # pragma: no cover
         """Tests if this user can perform ``AssessmentTaken`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -6513,7 +6513,7 @@ class AssessmentTakenLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_assessment_taken_view(self):
+    def use_comparative_assessment_taken_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -6527,7 +6527,7 @@ class AssessmentTakenLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_assessment_taken_view(self):
+    def use_plenary_assessment_taken_view(self): # pragma: no cover
         """A complete view of the ``AssessmentTaken`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -6542,7 +6542,7 @@ class AssessmentTakenLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments in banks which are
@@ -6556,7 +6556,7 @@ class AssessmentTakenLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this bank only.
@@ -6569,7 +6569,7 @@ class AssessmentTakenLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_taken(self, assessment_taken_id):
+    def get_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Gets the ``AssessmentTaken`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -6593,7 +6593,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTaken
 
     @abc.abstractmethod
-    def get_assessments_taken_by_ids(self, assessment_taken_ids):
+    def get_assessments_taken_by_ids(self, assessment_taken_ids): # pragma: no cover
         """Gets an ``AssessmentTakenList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the
@@ -6619,7 +6619,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_genus_type(self, assessment_taken_genus_type):
+    def get_assessments_taken_by_genus_type(self, assessment_taken_genus_type): # pragma: no cover
         """Gets an ``AssessmentTakenList`` corresponding to the given assessment taken genus ``Type`` which does not include assessments of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -6641,7 +6641,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_parent_genus_type(self, assessment_taken_genus_type):
+    def get_assessments_taken_by_parent_genus_type(self, assessment_taken_genus_type): # pragma: no cover
         """Gets an ``AssessmentTakenList`` corresponding to the given assessment taken genus ``Type`` and include any additional assessments with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known
@@ -6663,7 +6663,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_record_type(self, assessment_taken_record_type):
+    def get_assessments_taken_by_record_type(self, assessment_taken_record_type): # pragma: no cover
         """Gets an ``AssessmentTakenList`` corresponding to the given assessment taken record ``Type``.
 
         The set of assessments implementing the given record type is
@@ -6687,7 +6687,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date(self, from_, to):
+    def get_assessments_taken_by_date(self, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive.
 
         In plenary mode, the returned list contains all known
@@ -6713,7 +6713,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_for_taker(self, resource_id):
+    def get_assessments_taken_for_taker(self, resource_id): # pragma: no cover
         """Gets an ``AssessmentTakenList`` for the given resource.
 
         In plenary mode, the returned list contains all known
@@ -6735,7 +6735,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date_for_taker(self, resource_id, from_, to):
+    def get_assessments_taken_by_date_for_taker(self, resource_id, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive for the given resource.
 
         In plenary mode, the returned list contains all known
@@ -6762,7 +6762,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_for_assessment(self, assessment_id):
+    def get_assessments_taken_for_assessment(self, assessment_id): # pragma: no cover
         """Gets an ``AssessmentTakenList`` for the given assessment.
 
         In plenary mode, the returned list contains all known
@@ -6784,7 +6784,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date_for_assessment(self, assessment_id, from_, to):
+    def get_assessments_taken_by_date_for_assessment(self, assessment_id, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive for the given assessment.
 
         In plenary mode, the returned list contains all known
@@ -6811,7 +6811,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_for_taker_and_assessment(self, resource_id, assessment_id):
+    def get_assessments_taken_for_taker_and_assessment(self, resource_id, assessment_id): # pragma: no cover
         """Gets an ``AssessmentTakenList`` for the given resource and assessment.
 
         In plenary mode, the returned list contains all known
@@ -6835,7 +6835,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date_for_taker_and_assessment(self, resource_id, assessment_id, from_, to):
+    def get_assessments_taken_by_date_for_taker_and_assessment(self, resource_id, assessment_id, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive for the given resource and assessment.
 
         In plenary mode, the returned list contains all known
@@ -6864,7 +6864,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_for_assessment_offered(self, assessment_offered_id):
+    def get_assessments_taken_for_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Gets an ``AssessmentTakenList`` by the given assessment offered.
 
         In plenary mode, the returned list contains all known
@@ -6886,7 +6886,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date_for_assessment_offered(self, assessment_offered_id, from_, to):
+    def get_assessments_taken_by_date_for_assessment_offered(self, assessment_offered_id, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive for the given assessment offered.
 
         In plenary mode, the returned list contains all known
@@ -6913,7 +6913,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id):
+    def get_assessments_taken_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id): # pragma: no cover
         """Gets an ``AssessmentTakenList`` for the given resource and assessment offered.
 
         In plenary mode, the returned list contains all known
@@ -6937,7 +6937,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_date_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id, from_, to):
+    def get_assessments_taken_by_date_for_taker_and_assessment_offered(self, resource_id, assessment_offered_id, from_, to): # pragma: no cover
         """Gets an ``AssessmentTakenList`` started in the given date range inclusive for the given resource and assessment offered.
 
         In plenary mode, the returned list contains all known
@@ -6966,7 +6966,7 @@ class AssessmentTakenLookupSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessments_taken(self):
+    def get_assessments_taken(self): # pragma: no cover
         """Gets all ``AssessmentTaken`` elements.
 
         In plenary mode, the returned list contains all known
@@ -7009,7 +7009,7 @@ class AssessmentTakenQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -7024,7 +7024,7 @@ class AssessmentTakenQuerySession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -7040,7 +7040,7 @@ class AssessmentTakenQuerySession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_search_assessments_taken(self):
+    def can_search_assessments_taken(self): # pragma: no cover
         """Tests if this user can perform ``AssessmentTaken`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -7059,7 +7059,7 @@ class AssessmentTakenQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include assessments taken in banks which
@@ -7073,7 +7073,7 @@ class AssessmentTakenQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this bank only.
@@ -7086,7 +7086,7 @@ class AssessmentTakenQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_taken_query(self):
+    def get_assessment_taken_query(self): # pragma: no cover
         """Gets an assessment taken query.
 
         :return: the assessment taken query
@@ -7101,7 +7101,7 @@ class AssessmentTakenQuerySession:
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
     @abc.abstractmethod
-    def get_assessments_taken_by_query(self, assessment_taken_query):
+    def get_assessments_taken_by_query(self, assessment_taken_query): # pragma: no cover
         """Gets a list of ``AssessmentTaken`` elements matching the given assessment taken query.
 
         :param assessment_taken_query: the assessment taken query
@@ -7151,7 +7151,7 @@ class AssessmentTakenSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_taken_search(self):
+    def get_assessment_taken_search(self): # pragma: no cover
         """Gets an assessment taken search.
 
         :return: the assessment taken search
@@ -7166,7 +7166,7 @@ class AssessmentTakenSearchSession:
     assessment_taken_search = property(fget=get_assessment_taken_search)
 
     @abc.abstractmethod
-    def get_assessment_taken_search_order(self):
+    def get_assessment_taken_search_order(self): # pragma: no cover
         """Gets an assessment taken search order.
 
         The ``AssessmentTakenSearchOrder`` is supplied to an
@@ -7184,7 +7184,7 @@ class AssessmentTakenSearchSession:
     assessment_taken_search_order = property(fget=get_assessment_taken_search_order)
 
     @abc.abstractmethod
-    def get_assessments_taken_by_search(self, assessment_taken_query, assessment_taken_search):
+    def get_assessments_taken_by_search(self, assessment_taken_query, assessment_taken_search): # pragma: no cover
         """Gets the search results matching the given search query using the given assessment taken query.
 
         :param assessment_taken_query: the assessment taken query
@@ -7204,7 +7204,7 @@ class AssessmentTakenSearchSession:
         return  # osid.assessment.AssessmentTakenSearchResults
 
     @abc.abstractmethod
-    def get_assessment_taken_query_from_inspector(self, assessment_taken_query_inspector):
+    def get_assessment_taken_query_from_inspector(self, assessment_taken_query_inspector): # pragma: no cover
         """Gets an assessment taken query from an inspector.
 
         The inspector is available from an
@@ -7263,7 +7263,7 @@ class AssessmentTakenAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -7278,7 +7278,7 @@ class AssessmentTakenAdminSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -7294,7 +7294,7 @@ class AssessmentTakenAdminSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_create_assessments_taken(self):
+    def can_create_assessments_taken(self): # pragma: no cover
         """Tests if this user can create ``AssessmentTaken`` objects.
 
         A return of true does not guarantee successful authoriization. A
@@ -7313,7 +7313,7 @@ class AssessmentTakenAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_assessment_taken_with_record_types(self, assessment_taken_record_types):
+    def can_create_assessment_taken_with_record_types(self, assessment_taken_record_types): # pragma: no cover
         """Tests if this user can create a single ``AssessmentTaken`` using the desired record types.
 
         While ``AssessmentManager.getAssessmentTakenRecordTypes()`` can
@@ -7334,7 +7334,7 @@ class AssessmentTakenAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_form_for_create(self, assessment_offered_id, assessment_taken_record_types):
+    def get_assessment_taken_form_for_create(self, assessment_offered_id, assessment_taken_record_types): # pragma: no cover
         """Gets the assessment taken form for creating new assessments taken.
 
         A new form should be requested for each create transaction.
@@ -7357,7 +7357,7 @@ class AssessmentTakenAdminSession:
         return  # osid.assessment.AssessmentTakenForm
 
     @abc.abstractmethod
-    def create_assessment_taken(self, assessment_taken_form):
+    def create_assessment_taken(self, assessment_taken_form): # pragma: no cover
         """Creates a new ``AssessmentTaken``.
 
         :param assessment_taken_form: the form for this ``AssessmentTaken``
@@ -7377,7 +7377,7 @@ class AssessmentTakenAdminSession:
         return  # osid.assessment.AssessmentTaken
 
     @abc.abstractmethod
-    def can_update_assessments_taken(self):
+    def can_update_assessments_taken(self): # pragma: no cover
         """Tests if this user can update ``AssessmentTaken`` objects.
 
         A return of true does not guarantee successful authorization. A
@@ -7396,7 +7396,7 @@ class AssessmentTakenAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_form_for_update(self, assessment_taken_id):
+    def get_assessment_taken_form_for_update(self, assessment_taken_id): # pragma: no cover
         """Gets the assessment taken form for updating an existing assessment taken.
 
         A new assessment taken form should be requested for each update
@@ -7417,7 +7417,7 @@ class AssessmentTakenAdminSession:
         return  # osid.assessment.AssessmentTakenForm
 
     @abc.abstractmethod
-    def update_assessment_taken(self, assessment_taken_form):
+    def update_assessment_taken(self, assessment_taken_form): # pragma: no cover
         """Updates an existing assessment taken.
 
         :param assessment_taken_form: the form containing the elements to be updated
@@ -7435,7 +7435,7 @@ class AssessmentTakenAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_assessments_taken(self):
+    def can_delete_assessments_taken(self): # pragma: no cover
         """Tests if this user can delete ``AssessmentsTaken``.
 
         A return of true does not guarantee successful authorization. A
@@ -7454,7 +7454,7 @@ class AssessmentTakenAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_assessment_taken(self, assessment_taken_id):
+    def delete_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Deletes an ``AssessmentTaken``.
 
         :param assessment_taken_id: the ``Id`` of the ``AssessmentTaken`` to remove
@@ -7470,7 +7470,7 @@ class AssessmentTakenAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_assessment_taken_aliases(self):
+    def can_manage_assessment_taken_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``AssessmentsTaken``.
 
         A return of true does not guarantee successful authorization. A
@@ -7489,7 +7489,7 @@ class AssessmentTakenAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_assessment_taken(self, assessment_taken_id, alias_id):
+    def alias_assessment_taken(self, assessment_taken_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``AssessmentTaken`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``AssessmentTaken`` is determined by
@@ -7527,7 +7527,7 @@ class AssessmentTakenNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -7542,7 +7542,7 @@ class AssessmentTakenNotificationSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -7558,7 +7558,7 @@ class AssessmentTakenNotificationSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_register_for_assessment_taken_notifications(self):
+    def can_register_for_assessment_taken_notifications(self): # pragma: no cover
         """Tests if this user can register for ``AssessmentTaken`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -7577,7 +7577,7 @@ class AssessmentTakenNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_bank_view(self):
+    def use_federated_bank_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for assessments
@@ -7592,7 +7592,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_bank_view(self):
+    def use_isolated_bank_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications for assessments taken
@@ -7606,7 +7606,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_taken_notifications(self):
+    def reliable_assessment_taken_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -7620,7 +7620,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_taken_notifications(self):
+    def unreliable_assessment_taken_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -7634,7 +7634,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_taken_notification(self, notification_id):
+    def acknowledge_assessment_taken_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment taken notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -7648,7 +7648,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_taken(self):
+    def register_for_new_assessments_taken(self): # pragma: no cover
         """Register for notifications of new assessments taken in this assessment bank.
 
         ``AssessmentTakenReceiver.newAssessmentsTaken()`` is invoked
@@ -7663,7 +7663,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_taken_for_taker(self, resource_id):
+    def register_for_new_assessments_taken_for_taker(self, resource_id): # pragma: no cover
         """Register for notifications of new assessments taken for a resource.
 
         ``AssessmentTakenReceiver.newAssessmenstTaken()`` is invoked
@@ -7681,7 +7681,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_taken_for_assessment_offered(self, assessment_offered_id):
+    def register_for_new_assessments_taken_for_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Register for notifications of new assessments taken for an assessment offered.
 
         ``AssessmentTakenReceiver.newAssessmentsTaken()`` is invoked
@@ -7699,7 +7699,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_assessments_taken_for_assessment(self, assessment_id):
+    def register_for_new_assessments_taken_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of new assessments taken for an assessment.
 
         ``AssessmentTakenReceiver.newAssessmentsTaken()`` is invoked
@@ -7717,7 +7717,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_taken(self):
+    def register_for_changed_assessments_taken(self): # pragma: no cover
         """Registers for notification of updated assessments taken.
 
         ``AssessmentTakenReceiver.changedAssessmentsTaken()`` is invoked
@@ -7732,7 +7732,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_taken_for_taker(self, resource_id):
+    def register_for_changed_assessments_taken_for_taker(self, resource_id): # pragma: no cover
         """Register for notifications of changed assessments taken for a resource.
 
         ``AssessmentTakenReceiver.changedAssessmentsTaken()`` is invoked
@@ -7750,7 +7750,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_taken_for_assessment_offered(self, assessment_offered_id):
+    def register_for_changed_assessments_taken_for_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Register for notifications of changed assessments taken for an assessment offered.
 
         ``AssessmentTakenReceiver.changedAssessmentsTaken()`` is invoked
@@ -7768,7 +7768,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessments_taken_for_assessment(self, assessment_id):
+    def register_for_changed_assessments_taken_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of changed assessments taken for an assessment.
 
         ``AssessmentTakenReceiver.changedAssessmentsTaken()`` is invoked
@@ -7786,7 +7786,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_assessment_taken(self, assessment_taken_id):
+    def register_for_changed_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Registers for notification of an updated assessment taken.
 
         ``AssessmentTakenReceiver.changedAssessmentsTaken()`` is invoked
@@ -7805,7 +7805,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_taken(self):
+    def register_for_deleted_assessments_taken(self): # pragma: no cover
         """Registers for notification of deleted assessments taken.
 
         ``AssessmentTakenReceiver.deletedAssessmentsTaken()`` is invoked
@@ -7820,7 +7820,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_taken_for_taker(self, resource_id):
+    def register_for_deleted_assessments_taken_for_taker(self, resource_id): # pragma: no cover
         """Register for notifications of deleted assessments taken for a resource.
 
         ``AssessmentTakenReceiver.deletedAssessmentsTaken()`` is invoked
@@ -7839,7 +7839,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_taken_for_assessment_offered(self, assessment_offered_id):
+    def register_for_deleted_assessments_taken_for_assessment_offered(self, assessment_offered_id): # pragma: no cover
         """Register for notifications of deleted assessments taken for an assessment offered.
 
         ``AssessmentTakenReceiver.deletedAssessmentsTaken()`` is invoked
@@ -7858,7 +7858,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessments_taken_for_assessment(self, assessment_id):
+    def register_for_deleted_assessments_taken_for_assessment(self, assessment_id): # pragma: no cover
         """Register for notifications of deleted assessments taken for an assessment.
 
         ``AssessmentTakenReceiver.deletedAssessmentsTaken()`` is invoked
@@ -7877,7 +7877,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_assessment_taken(self, assessment_taken_id):
+    def register_for_deleted_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Registers for notification of a deleted assessment taken.
 
         ``AssessmentTakenReceiver.deletedAssessmentsTaken()`` is invoked
@@ -7896,7 +7896,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_assessment_taken_notifications(self):
+    def reliable_assessment_taken_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -7910,7 +7910,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_assessment_taken_notifications(self):
+    def unreliable_assessment_taken_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -7924,7 +7924,7 @@ class AssessmentTakenNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_assessment_taken_notification(self, notification_id):
+    def acknowledge_assessment_taken_notification(self, notification_id): # pragma: no cover
         """Acknowledge an assessment_taken notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -7955,7 +7955,7 @@ class AssessmentTakenBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_assessment_taken_bank_mappings(self):
+    def can_lookup_assessment_taken_bank_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of assessment taken/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -7974,7 +7974,7 @@ class AssessmentTakenBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -7988,7 +7988,7 @@ class AssessmentTakenBankSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``AssessmentTaken`` and ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -8003,7 +8003,7 @@ class AssessmentTakenBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_taken_ids_by_bank(self, bank_id):
+    def get_assessment_taken_ids_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``AssessmentTaken``  ``Ids`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -8021,7 +8021,7 @@ class AssessmentTakenBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_bank(self, bank_id):
+    def get_assessments_taken_by_bank(self, bank_id): # pragma: no cover
         """Gets the list of ``AssessmentTakens`` associated with a ``Bank``.
 
         :param bank_id: ``Id`` of the ``Bank``
@@ -8039,7 +8039,7 @@ class AssessmentTakenBankSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_assessment_taken_ids_by_banks(self, bank_ids):
+    def get_assessment_taken_ids_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``AssessmentTaken Ids`` corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -8056,7 +8056,7 @@ class AssessmentTakenBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assessments_taken_by_banks(self, bank_ids):
+    def get_assessments_taken_by_banks(self, bank_ids): # pragma: no cover
         """Gets the list of ``AssessmentTaken`` objects corresponding to a list of ``Banks``.
 
         :param bank_ids: list of bank ``Ids``
@@ -8073,7 +8073,7 @@ class AssessmentTakenBankSession:
         return  # osid.assessment.AssessmentTakenList
 
     @abc.abstractmethod
-    def get_bank_ids_by_assessment_taken(self, assessment_taken_id):
+    def get_bank_ids_by_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Gets the list of ``Bank``  ``Ids`` mapped to an ``AssessmentTaken``.
 
         :param assessment_taken_id: ``Id`` of an ``AssessmentTaken``
@@ -8091,7 +8091,7 @@ class AssessmentTakenBankSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_banks_by_assessment_taken(self, assessment_taken_id):
+    def get_banks_by_assessment_taken(self, assessment_taken_id): # pragma: no cover
         """Gets the list of ``Banks`` mapped to an ``AssessmentTaken``.
 
         :param assessment_taken_id: ``Id`` of an ``AssessmentTaken``
@@ -8124,7 +8124,7 @@ class AssessmentTakenBankAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_assessments_taken(self):
+    def can_assign_assessments_taken(self): # pragma: no cover
         """Tests if this user can alter assessment taken/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -8143,7 +8143,7 @@ class AssessmentTakenBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_assessments_taken_to_bank(self, bank_id):
+    def can_assign_assessments_taken_to_bank(self, bank_id): # pragma: no cover
         """Tests if this user can alter assessment taken/bank mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -8164,7 +8164,7 @@ class AssessmentTakenBankAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_bank_ids(self, bank_id):
+    def get_assignable_bank_ids(self, bank_id): # pragma: no cover
         """Gets a list of banks including and under the given banks node in which any assessment taken can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -8180,7 +8180,7 @@ class AssessmentTakenBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_bank_ids_for_assessment_taken(self, bank_id, assessment_taken_id):
+    def get_assignable_bank_ids_for_assessment_taken(self, bank_id, assessment_taken_id): # pragma: no cover
         """Gets a list of bank including and under the given bank node in which a specific assessment taken can be assigned.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -8198,7 +8198,7 @@ class AssessmentTakenBankAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id):
+    def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id): # pragma: no cover
         """Adds an existing ``AssessmentTaken`` to a ``Bank``.
 
         :param assessment_taken_id: the ``Id`` of the ``AssessmentTaken``
@@ -8217,7 +8217,7 @@ class AssessmentTakenBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_assessment_taken_from_bank(self, assessment_taken_id, bank_id):
+    def unassign_assessment_taken_from_bank(self, assessment_taken_id, bank_id): # pragma: no cover
         """Removes an ``AssessmentTaken`` from a ``Bank``.
 
         :param assessment_taken_id: the ``Id`` of the ``AssessmentTaken``
@@ -8235,7 +8235,7 @@ class AssessmentTakenBankAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_assessment_taken_to_billing(self, assessment_taken_id, from_bank_id, to_bank_id):
+    def reassign_assessment_taken_to_billing(self, assessment_taken_id, from_bank_id, to_bank_id): # pragma: no cover
         """Moves an ``AssessmentTaken`` from one ``Bank`` to another.
 
         Mappings to other ``Banks`` are unaffected.
@@ -8275,7 +8275,7 @@ class AssessmentTakenSmartBankSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_id(self):
+    def get_bank_id(self): # pragma: no cover
         """Gets the ``Bank``  ``Id`` associated with this session.
 
         :return: the ``Bank Id`` associated with this session
@@ -8290,7 +8290,7 @@ class AssessmentTakenSmartBankSession:
     bank_id = property(fget=get_bank_id)
 
     @abc.abstractmethod
-    def get_bank(self):
+    def get_bank(self): # pragma: no cover
         """Gets the ``Bank`` associated with this session.
 
         :return: the ``Bank`` associated with this session
@@ -8306,7 +8306,7 @@ class AssessmentTakenSmartBankSession:
     bank = property(fget=get_bank)
 
     @abc.abstractmethod
-    def can_manage_smart_banks(self):
+    def can_manage_smart_banks(self): # pragma: no cover
         """Tests if this user can manage smart banks.
 
         A return of true does not guarantee successful authorization. A
@@ -8325,7 +8325,7 @@ class AssessmentTakenSmartBankSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_taken_query(self):
+    def get_assessment_taken_query(self): # pragma: no cover
         """Gets an assessment taken query.
 
         :return: the assessment taken query
@@ -8340,7 +8340,7 @@ class AssessmentTakenSmartBankSession:
     assessment_taken_query = property(fget=get_assessment_taken_query)
 
     @abc.abstractmethod
-    def get_assessment_taken_search_order(self):
+    def get_assessment_taken_search_order(self): # pragma: no cover
         """Gets an assessment taken search order.
 
         :return: the assessment taken search order
@@ -8355,7 +8355,7 @@ class AssessmentTakenSmartBankSession:
     assessment_taken_search_order = property(fget=get_assessment_taken_search_order)
 
     @abc.abstractmethod
-    def apply_assessment_taken_query(self, assessment_taken_query):
+    def apply_assessment_taken_query(self, assessment_taken_query): # pragma: no cover
         """Applies an assessment taken query to this bank.
 
         :param assessment_taken_query: the assessment taken query
@@ -8371,7 +8371,7 @@ class AssessmentTakenSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def inspect_assessment_taken_query(self):
+    def inspect_assessment_taken_query(self): # pragma: no cover
         """Gets an assessment taken query inspector for this bank.
 
         :return: the assessment taken query inspector
@@ -8385,7 +8385,7 @@ class AssessmentTakenSmartBankSession:
         return  # osid.assessment.AssessmentTakenQueryInspector
 
     @abc.abstractmethod
-    def apply_assessment_taken_sequencing(self, assessment_taken_search_order):
+    def apply_assessment_taken_sequencing(self, assessment_taken_search_order): # pragma: no cover
         """Applies an assessment taken search order to this bank.
 
         :param assessment_taken_search_order: the assessment taken search order
@@ -8401,7 +8401,7 @@ class AssessmentTakenSmartBankSession:
         pass
 
     @abc.abstractmethod
-    def get_assessment_taken_query_from_inspector(self, assessmen_taken_query_inspector):
+    def get_assessment_taken_query_from_inspector(self, assessmen_taken_query_inspector): # pragma: no cover
         """Gets an assessment taken query from an inspector.
 
         :param assessmen_taken_query_inspector: a assessment taen query inspector
@@ -8445,7 +8445,7 @@ class BankLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_banks(self):
+    def can_lookup_banks(self): # pragma: no cover
         """Tests if this user can perform ``Bank`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -8464,7 +8464,7 @@ class BankLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -8478,7 +8478,7 @@ class BankLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``Bank`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -8493,7 +8493,7 @@ class BankLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_bank(self, bank_id):
+    def get_bank(self, bank_id): # pragma: no cover
         """Gets the ``Bank`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -8516,7 +8516,7 @@ class BankLookupSession:
         return  # osid.assessment.Bank
 
     @abc.abstractmethod
-    def get_banks_by_ids(self, bank_ids):
+    def get_banks_by_ids(self, bank_ids): # pragma: no cover
         """Gets a ``BankList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the banks
@@ -8542,7 +8542,7 @@ class BankLookupSession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def get_banks_by_genus_type(self, bank_genus_type):
+    def get_banks_by_genus_type(self, bank_genus_type): # pragma: no cover
         """Gets a ``BankList`` corresponding to the given bank genus ``Type`` which does not include banks of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known banks or
@@ -8563,7 +8563,7 @@ class BankLookupSession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def get_banks_by_parent_genus_type(self, bank_genus_type):
+    def get_banks_by_parent_genus_type(self, bank_genus_type): # pragma: no cover
         """Gets a ``BankList`` corresponding to the given bank genus ``Type`` and include any additional banks with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known banks or
@@ -8584,7 +8584,7 @@ class BankLookupSession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def get_banks_by_record_type(self, bank_record_type):
+    def get_banks_by_record_type(self, bank_record_type): # pragma: no cover
         """Gets a ``BankList`` containing the given bank record ``Type``.
 
         In plenary mode, the returned list contains all known banks or
@@ -8605,7 +8605,7 @@ class BankLookupSession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def get_banks_by_provider(self, resource_id):
+    def get_banks_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``BankList`` from the given provider ````.
 
         In plenary mode, the returned list contains all known banks or
@@ -8626,7 +8626,7 @@ class BankLookupSession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def get_banks(self):
+    def get_banks(self): # pragma: no cover
         """Gets all ``Banks``.
 
         In plenary mode, the returned list contains all known banks or
@@ -8658,7 +8658,7 @@ class BankQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_banks(self):
+    def can_search_banks(self): # pragma: no cover
         """Tests if this user can perform ``Bank`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -8677,7 +8677,7 @@ class BankQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self):
+    def get_bank_query(self): # pragma: no cover
         """Gets a bank query.
 
         :return: a bank query
@@ -8692,7 +8692,7 @@ class BankQuerySession:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def get_banks_by_query(self, bank_query):
+    def get_banks_by_query(self, bank_query): # pragma: no cover
         """Gets a list of ``Bank`` objects matching the given bank query.
 
         :param bank_query: the bank query
@@ -8731,7 +8731,7 @@ class BankSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_search(self):
+    def get_bank_search(self): # pragma: no cover
         """Gets a bank search.
 
         :return: a bank search
@@ -8746,7 +8746,7 @@ class BankSearchSession:
     bank_search = property(fget=get_bank_search)
 
     @abc.abstractmethod
-    def get_bank_search_order(self):
+    def get_bank_search_order(self): # pragma: no cover
         """Gets a bank search order.
 
         The ``BankSearchOrder`` is supplied to a ``BankSearch`` to
@@ -8764,7 +8764,7 @@ class BankSearchSession:
     bank_search_order = property(fget=get_bank_search_order)
 
     @abc.abstractmethod
-    def get_banks_by_search(self, bank_query, bank_search):
+    def get_banks_by_search(self, bank_query, bank_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param bank_query: the bank query
@@ -8784,7 +8784,7 @@ class BankSearchSession:
         return  # osid.assessment.BankSearchResults
 
     @abc.abstractmethod
-    def get_bank_query_from_inspector(self, bank_query_inspector):
+    def get_bank_query_from_inspector(self, bank_query_inspector): # pragma: no cover
         """Gets a bank query from an inspector.
 
         The inspector is available from a ``BankSearchResults``.
@@ -8836,7 +8836,7 @@ class BankAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_banks(self):
+    def can_create_banks(self): # pragma: no cover
         """Tests if this user can create ``Banks``.
 
         A return of true does not guarantee successful authorization. A
@@ -8855,7 +8855,7 @@ class BankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_bank_with_record_types(self, bank_record_types):
+    def can_create_bank_with_record_types(self, bank_record_types): # pragma: no cover
         """Tests if this user can create a single ``Bank`` using the desired record types.
 
         While ``AssessmentManager.getBankRecordTypes()`` can be used to
@@ -8876,7 +8876,7 @@ class BankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_form_for_create(self, bank_record_types):
+    def get_bank_form_for_create(self, bank_record_types): # pragma: no cover
         """Gets the bank form for creating new banks.
 
         A new form should be requested for each create transaction.
@@ -8896,7 +8896,7 @@ class BankAdminSession:
         return  # osid.assessment.BankForm
 
     @abc.abstractmethod
-    def create_bank(self, bank_form):
+    def create_bank(self, bank_form): # pragma: no cover
         """Creates a new ``Bank``.
 
         :param bank_form: the form for this ``Bank``
@@ -8916,7 +8916,7 @@ class BankAdminSession:
         return  # osid.assessment.Bank
 
     @abc.abstractmethod
-    def can_update_banks(self):
+    def can_update_banks(self): # pragma: no cover
         """Tests if this user can update ``Banks``.
 
         A return of true does not guarantee successful authorization. A
@@ -8935,7 +8935,7 @@ class BankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_form_for_update(self, bank_id):
+    def get_bank_form_for_update(self, bank_id): # pragma: no cover
         """Gets the bank form for updating an existing bank.
 
         A new bank form should be requested for each update transaction.
@@ -8955,7 +8955,7 @@ class BankAdminSession:
         return  # osid.assessment.BankForm
 
     @abc.abstractmethod
-    def update_bank(self, bank_form):
+    def update_bank(self, bank_form): # pragma: no cover
         """Updates an existing bank.
 
         :param bank_form: the form containing the elements to be updated
@@ -8973,7 +8973,7 @@ class BankAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_banks(self):
+    def can_delete_banks(self): # pragma: no cover
         """Tests if this user can delete banks.
 
         A return of true does not guarantee successful authorization. A
@@ -8992,7 +8992,7 @@ class BankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_bank(self, bank_id):
+    def delete_bank(self, bank_id): # pragma: no cover
         """Deletes a ``Bank``.
 
         :param bank_id: the ``Id`` of the ``Bank`` to remove
@@ -9008,7 +9008,7 @@ class BankAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_bank_aliases(self):
+    def can_manage_bank_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Banks``.
 
         A return of true does not guarantee successful authorization. A
@@ -9027,7 +9027,7 @@ class BankAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_bank(self, bank_id, alias_id):
+    def alias_bank(self, bank_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Bank`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Bank`` is determined by the
@@ -9062,7 +9062,7 @@ class BankNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_bank_notifications(self):
+    def can_register_for_bank_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Bank`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -9081,7 +9081,7 @@ class BankNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_bank_notifications(self):
+    def reliable_bank_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -9095,7 +9095,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_bank_notifications(self):
+    def unreliable_bank_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -9109,7 +9109,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_bank_notification(self, notification_id):
+    def acknowledge_bank_notification(self, notification_id): # pragma: no cover
         """Acknowledge a bank notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -9123,7 +9123,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_banks(self):
+    def register_for_new_banks(self): # pragma: no cover
         """Register for notifications of new banks.
 
         ``BankReceiver.newBanks()`` is invoked when a new Bank is
@@ -9138,7 +9138,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_banks(self):
+    def register_for_changed_banks(self): # pragma: no cover
         """Registers for notification of updated banks.
 
         ``BankReceiver.changedBanks()`` is invoked when a bank is
@@ -9153,7 +9153,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bank(self, bank_id):
+    def register_for_changed_bank(self, bank_id): # pragma: no cover
         """Registers for notification of an updated bank.
 
         ``BankReceiver.changedBanks()`` is invoked when the specified
@@ -9171,7 +9171,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_banks(self):
+    def register_for_deleted_banks(self): # pragma: no cover
         """Registers for notification of deleted banks.
 
         ``BankReceiver.deletedBanks()`` is invoked when a bank is
@@ -9186,7 +9186,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_bank(self, bank_id):
+    def register_for_deleted_bank(self, bank_id): # pragma: no cover
         """Registers for notification of a deleted bank.
 
         ``BankReceiver.deletedBanks()`` is invoked when the specified
@@ -9204,7 +9204,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bank_hierarchy(self):
+    def register_for_changed_bank_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated bank hierarchy structure.
 
         ``BankReceiver.changedChildOfBanks()`` is invoked when a node
@@ -9219,7 +9219,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bank_hierarchy_for_ancestors(self, bank_id):
+    def register_for_changed_bank_hierarchy_for_ancestors(self, bank_id): # pragma: no cover
         """Registers for notification of an updated bank hierarchy structure.
 
         ``BankReceiver.changedChildOfBanks()`` is invoked when the
@@ -9238,7 +9238,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_bank_hierarchy_for_descendants(self, bank_id):
+    def register_for_changed_bank_hierarchy_for_descendants(self, bank_id): # pragma: no cover
         """Registers for notification of an updated bank hierarchy structure.
 
         ``BankReceiver.changedChildOfBanks()`` is invoked when the
@@ -9257,7 +9257,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_bank_notifications(self):
+    def reliable_bank_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -9271,7 +9271,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_bank_notifications(self):
+    def unreliable_bank_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -9285,7 +9285,7 @@ class BankNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_bank_notification(self, notification_id):
+    def acknowledge_bank_notification(self, notification_id): # pragma: no cover
         """Acknowledge an bank notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -9328,7 +9328,7 @@ class BankHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_hierarchy_id(self):
+    def get_bank_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -9343,7 +9343,7 @@ class BankHierarchySession:
     bank_hierarchy_id = property(fget=get_bank_hierarchy_id)
 
     @abc.abstractmethod
-    def get_bank_hierarchy(self):
+    def get_bank_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -9359,7 +9359,7 @@ class BankHierarchySession:
     bank_hierarchy = property(fget=get_bank_hierarchy)
 
     @abc.abstractmethod
-    def can_access_bank_hierarchy(self):
+    def can_access_bank_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -9378,7 +9378,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_bank_view(self):
+    def use_comparative_bank_view(self): # pragma: no cover
         """The returns from the bank methods may omit or translate elements based on this session, such as assessment, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -9392,7 +9392,7 @@ class BankHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_bank_view(self):
+    def use_plenary_bank_view(self): # pragma: no cover
         """A complete view of the ``Hierarchy`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -9407,7 +9407,7 @@ class BankHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_bank_ids(self):
+    def get_root_bank_ids(self): # pragma: no cover
         """Gets the root bank ``Ids`` in this hierarchy.
 
         :return: the root bank ``Ids``
@@ -9423,7 +9423,7 @@ class BankHierarchySession:
     root_bank_ids = property(fget=get_root_bank_ids)
 
     @abc.abstractmethod
-    def get_root_banks(self):
+    def get_root_banks(self): # pragma: no cover
         """Gets the root banks in this bank hierarchy.
 
         :return: the root banks
@@ -9439,7 +9439,7 @@ class BankHierarchySession:
     root_banks = property(fget=get_root_banks)
 
     @abc.abstractmethod
-    def has_parent_banks(self, bank_id):
+    def has_parent_banks(self, bank_id): # pragma: no cover
         """Tests if the ``Bank`` has any parents.
 
         :param bank_id: a bank ``Id``
@@ -9457,7 +9457,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_bank(self, id_, bank_id):
+    def is_parent_of_bank(self, id_, bank_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a bank.
 
         :param id: an ``Id``
@@ -9478,7 +9478,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_bank_ids(self, bank_id):
+    def get_parent_bank_ids(self, bank_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given bank.
 
         :param bank_id: a bank ``Id``
@@ -9496,7 +9496,7 @@ class BankHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_banks(self, bank_id):
+    def get_parent_banks(self, bank_id): # pragma: no cover
         """Gets the parents of the given bank.
 
         :param bank_id: a bank ``Id``
@@ -9514,7 +9514,7 @@ class BankHierarchySession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def is_ancestor_of_bank(self, id_, bank_id):
+    def is_ancestor_of_bank(self, id_, bank_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a bank.
 
         :param id: an ``Id``
@@ -9535,7 +9535,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_banks(self, bank_id):
+    def has_child_banks(self, bank_id): # pragma: no cover
         """Tests if a bank has any children.
 
         :param bank_id: a ``bank_id``
@@ -9553,7 +9553,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_bank(self, id_, bank_id):
+    def is_child_of_bank(self, id_, bank_id): # pragma: no cover
         """Tests if a bank is a direct child of another.
 
         :param id: an ``Id``
@@ -9574,7 +9574,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_bank_ids(self, bank_id):
+    def get_child_bank_ids(self, bank_id): # pragma: no cover
         """Gets the child ``Ids`` of the given bank.
 
         :param bank_id: the ``Id`` to query
@@ -9592,7 +9592,7 @@ class BankHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_banks(self, bank_id):
+    def get_child_banks(self, bank_id): # pragma: no cover
         """Gets the children of the given bank.
 
         :param bank_id: the ``Id`` to query
@@ -9610,7 +9610,7 @@ class BankHierarchySession:
         return  # osid.assessment.BankList
 
     @abc.abstractmethod
-    def is_descendant_of_bank(self, id_, bank_id):
+    def is_descendant_of_bank(self, id_, bank_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of a bank.
 
         :param id: an ``Id``
@@ -9631,7 +9631,7 @@ class BankHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_node_ids(self, bank_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_bank_node_ids(self, bank_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given bank.
 
         :param bank_id: the ``Id`` to query
@@ -9655,7 +9655,7 @@ class BankHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_bank_nodes(self, bank_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_bank_nodes(self, bank_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given bank.
 
         :param bank_id: the ``Id`` to query
@@ -9688,7 +9688,7 @@ class BankHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bank_hierarchy_id(self):
+    def get_bank_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -9703,7 +9703,7 @@ class BankHierarchyDesignSession:
     bank_hierarchy_id = property(fget=get_bank_hierarchy_id)
 
     @abc.abstractmethod
-    def get_bank_hierarchy(self):
+    def get_bank_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -9719,7 +9719,7 @@ class BankHierarchyDesignSession:
     bank_hierarchy = property(fget=get_bank_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_bank_hierarchy(self):
+    def can_modify_bank_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -9738,7 +9738,7 @@ class BankHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_bank(self, bank_id):
+    def add_root_bank(self, bank_id): # pragma: no cover
         """Adds a root bank.
 
         :param bank_id: the ``Id`` of a bank
@@ -9755,7 +9755,7 @@ class BankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_bank(self, bank_id):
+    def remove_root_bank(self, bank_id): # pragma: no cover
         """Removes a root bank from this hierarchy.
 
         :param bank_id: the ``Id`` of a bank
@@ -9771,7 +9771,7 @@ class BankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_bank(self, bank_id, child_id):
+    def add_child_bank(self, bank_id, child_id): # pragma: no cover
         """Adds a child to a bank.
 
         :param bank_id: the ``Id`` of a bank
@@ -9790,7 +9790,7 @@ class BankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_bank(self, bank_id, child_id):
+    def remove_child_bank(self, bank_id, child_id): # pragma: no cover
         """Removes a child from a bank.
 
         :param bank_id: the ``Id`` of a bank
@@ -9808,7 +9808,7 @@ class BankHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_banks(self, bank_id):
+    def remove_child_banks(self, bank_id): # pragma: no cover
         """Removes all children from a bank.
 
         :param bank_id: the ``Id`` of a bank

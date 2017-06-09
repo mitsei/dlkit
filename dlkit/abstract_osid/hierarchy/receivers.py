@@ -21,7 +21,7 @@ class HierarchyStructureReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_nodes(self, notification_id, node_ids):
+    def new_nodes(self, notification_id, node_ids): # pragma: no cover
         """The callback for notifications of new hierarchy nodes.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class HierarchyStructureReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_nodes(self, notification_id, node_ids):
+    def deleted_nodes(self, notification_id, node_ids): # pragma: no cover
         """the callback for notification of deleted hierarchy nodes.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class HierarchyStructureReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_nodes(self, notification_id, node_ids):
+    def changed_child_of_nodes(self, notification_id, node_ids): # pragma: no cover
         """The callback for notifications of changes to children of hierarchy nodes.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class HierarchyReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_hierarchies(self, notification_id, hierarchy_ids):
+    def new_hierarchies(self, notification_id, hierarchy_ids): # pragma: no cover
         """The callback for notifications of new hierarchies.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class HierarchyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_hierarchies(self, notification_id, hierarchy_ids):
+    def changed_hierarchies(self, notification_id, hierarchy_ids): # pragma: no cover
         """The callback for notification of updated hierarchies.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class HierarchyReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_hierarchies(self, notification_id, hierarchy_ids):
+    def deleted_hierarchies(self, notification_id, hierarchy_ids): # pragma: no cover
         """the callback for notification of deleted hierarchies.
 
         :param notification_id: the notification ``Id``

@@ -21,7 +21,7 @@ class AssessmentPartSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_assessment_parts(self, bank_ids):
+    def search_among_assessment_parts(self, bank_ids): # pragma: no cover
         """Execute this search among the given list of assessment parts.
 
         :param bank_ids: list of assessment parts
@@ -34,7 +34,7 @@ class AssessmentPartSearch:
         pass
 
     @abc.abstractmethod
-    def order_assessment_part_results(self, assessment_part_search_order):
+    def order_assessment_part_results(self, assessment_part_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param assessment_part_search_order: assessment part search order
@@ -48,7 +48,7 @@ class AssessmentPartSearch:
         pass
 
     @abc.abstractmethod
-    def get_assessment_part_search_record(self, assessment_part_search_record_type):
+    def get_assessment_part_search_record(self, assessment_part_search_record_type): # pragma: no cover
         """Gets the assessment part search record corresponding to the given assessment part search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class AssessmentPartSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_parts(self):
+    def get_assessment_parts(self): # pragma: no cover
         """Gets the ``AssessmentPartList`` resulting from a search.
 
         :return: the assessment part list
@@ -88,7 +88,7 @@ class AssessmentPartSearchResults:
     assessment_parts = property(fget=get_assessment_parts)
 
     @abc.abstractmethod
-    def get_assessment_part_query_inspector(self):
+    def get_assessment_part_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the assessment part query inspector
@@ -103,7 +103,7 @@ class AssessmentPartSearchResults:
     assessment_part_query_inspector = property(fget=get_assessment_part_query_inspector)
 
     @abc.abstractmethod
-    def get_assessment_part_search_results_record(self, assessment_part_search_record_type):
+    def get_assessment_part_search_results_record(self, assessment_part_search_record_type): # pragma: no cover
         """Gets the assessment part search results record corresponding to the given assessment part search record ``Type``.
 
         This method must be used to retrieve an object implementing the
@@ -129,7 +129,7 @@ class SequenceRuleSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_sequence_rules(self, bank_ids):
+    def search_among_sequence_rules(self, bank_ids): # pragma: no cover
         """Execute this search among the given list of sequence rules.
 
         :param bank_ids: list of sequence rules
@@ -142,7 +142,7 @@ class SequenceRuleSearch:
         pass
 
     @abc.abstractmethod
-    def order_sequence_rule_results(self, sequence_rule_search_order):
+    def order_sequence_rule_results(self, sequence_rule_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param sequence_rule_search_order: sequence rule search order
@@ -156,7 +156,7 @@ class SequenceRuleSearch:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_search_record(self, sequence_rule_search_record_type):
+    def get_sequence_rule_search_record(self, sequence_rule_search_record_type): # pragma: no cover
         """Gets the sequence rule search record corresponding to the given sequence rule search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -181,7 +181,7 @@ class SequenceRuleSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rules(self):
+    def get_sequence_rules(self): # pragma: no cover
         """Gets the ``SequenceRuleList`` resulting from a search.
 
         :return: the sequence rule list
@@ -196,7 +196,7 @@ class SequenceRuleSearchResults:
     sequence_rules = property(fget=get_sequence_rules)
 
     @abc.abstractmethod
-    def get_sequence_rule_query_inspector(self):
+    def get_sequence_rule_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the sequence rule query inspector
@@ -211,7 +211,7 @@ class SequenceRuleSearchResults:
     sequence_rule_query_inspector = property(fget=get_sequence_rule_query_inspector)
 
     @abc.abstractmethod
-    def get_sequence_rule_search_results_record(self, sequence_rule_search_record_type):
+    def get_sequence_rule_search_results_record(self, sequence_rule_search_record_type): # pragma: no cover
         """Gets the sequence rule search results record corresponding to the given sequence rule search record ``Type``.
 
         This method must be used to retrieve an object implementing the
@@ -237,7 +237,7 @@ class SequenceRuleEnablerSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_sequence_rule_enablers(self, sequence_rule_enabler_ids):
+    def search_among_sequence_rule_enablers(self, sequence_rule_enabler_ids): # pragma: no cover
         """Execute this search among the given list of sequence rule enablers.
 
         :param sequence_rule_enabler_ids: list of sequence rule enablers
@@ -250,7 +250,7 @@ class SequenceRuleEnablerSearch:
         pass
 
     @abc.abstractmethod
-    def order_sequence_rule_enabler_results(self, sequence_rule_enabler_search_order):
+    def order_sequence_rule_enabler_results(self, sequence_rule_enabler_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param sequence_rule_enabler_search_order: sequence rule enabler search order
@@ -264,7 +264,7 @@ class SequenceRuleEnablerSearch:
         pass
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_record(self, sequence_rule_enabler_search_record_type):
+    def get_sequence_rule_enabler_search_record(self, sequence_rule_enabler_search_record_type): # pragma: no cover
         """Gets the sequence rule enabler search record corresponding to the given sequence rule enabler search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -289,7 +289,7 @@ class SequenceRuleEnablerSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequence_rule_enablers(self):
+    def get_sequence_rule_enablers(self): # pragma: no cover
         """Gets the ``SequenceRuleEnablerList`` resulting from a search.
 
         :return: the sequence rule enabler list
@@ -304,7 +304,7 @@ class SequenceRuleEnablerSearchResults:
     sequence_rule_enablers = property(fget=get_sequence_rule_enablers)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_inspector(self):
+    def get_sequence_rule_enabler_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the sequence rule enabler query inspector
@@ -319,7 +319,7 @@ class SequenceRuleEnablerSearchResults:
     sequence_rule_enabler_query_inspector = property(fget=get_sequence_rule_enabler_query_inspector)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_results_record(self, sequence_rule_enabler_search_record_type):
+    def get_sequence_rule_enabler_search_results_record(self, sequence_rule_enabler_search_record_type): # pragma: no cover
         """Gets the sequence rule enabler search results record corresponding to the given sequence rule enabler search record ``Type``.
 
         This method must be used to retrieve an object implementing the

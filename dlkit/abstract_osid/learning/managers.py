@@ -21,7 +21,7 @@ class LearningProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_lookup(self):
+    def supports_objective_lookup(self): # pragma: no cover
         """Tests if an objective lookup service is supported.
 
         An objective lookup service defines methods to access
@@ -50,7 +50,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_query(self):
+    def supports_objective_query(self): # pragma: no cover
         """Tests if an objective query service is supported.
 
         :return: ``true`` if objective query is supported, ``false`` otherwise
@@ -63,7 +63,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_search(self):
+    def supports_objective_search(self): # pragma: no cover
         """Tests if an objective search service is supported.
 
         :return: ``true`` if objective search is supported, ``false`` otherwise
@@ -76,7 +76,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_admin(self):
+    def supports_objective_admin(self): # pragma: no cover
         """Tests if an objective administrative service is supported.
 
         :return: ``true`` if objective admin is supported, ``false`` otherwise
@@ -89,7 +89,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_notification(self):
+    def supports_objective_notification(self): # pragma: no cover
         """Tests if objective notification is supported.
 
         Messages may be sent when objectives are created, modified, or
@@ -105,7 +105,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_hierarchy(self):
+    def supports_objective_hierarchy(self): # pragma: no cover
         """Tests if an objective hierarchy traversal is supported.
 
         :return: ``true`` if an objective hierarchy traversal is supported, ``false`` otherwise
@@ -118,7 +118,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_hierarchy_design(self):
+    def supports_objective_hierarchy_design(self): # pragma: no cover
         """Tests if an objective hierarchy design is supported.
 
         :return: ``true`` if an objective hierarchy design is supported, ``false`` otherwise
@@ -131,7 +131,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_sequencing(self):
+    def supports_objective_sequencing(self): # pragma: no cover
         """Tests if an objective sequencing design is supported.
 
         :return: ``true`` if objective sequencing is supported, ``false`` otherwise
@@ -144,7 +144,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_objective_bank(self):
+    def supports_objective_objective_bank(self): # pragma: no cover
         """Tests if an objective to objective bank lookup session is available.
 
         :return: ``true`` if objective objective bank lookup session is supported, ``false`` otherwise
@@ -157,7 +157,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_objective_bank_assignment(self):
+    def supports_objective_objective_bank_assignment(self): # pragma: no cover
         """Tests if an objective to objective bank assignment session is available.
 
         :return: ``true`` if objective objective bank assignment is supported, ``false`` otherwise
@@ -170,7 +170,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_smart_objective_bank(self):
+    def supports_objective_smart_objective_bank(self): # pragma: no cover
         """Tests if an objective smart objective bank cataloging service is supported.
 
         :return: ``true`` if objective smart objective banks are supported, ``false`` otherwise
@@ -183,7 +183,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_requisite(self):
+    def supports_objective_requisite(self): # pragma: no cover
         """Tests if an objective requisite service is supported.
 
         :return: ``true`` if objective requisite service is supported, ``false`` otherwise
@@ -196,7 +196,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_requisite_assignment(self):
+    def supports_objective_requisite_assignment(self): # pragma: no cover
         """Tests if an objective requisite assignment service is supported.
 
         :return: ``true`` if objective requisite assignment service is supported, ``false`` otherwise
@@ -209,7 +209,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_lookup(self):
+    def supports_activity_lookup(self): # pragma: no cover
         """Tests if an activity lookup service is supported.
 
         :return: ``true`` if activity lookup is supported, ``false`` otherwise
@@ -222,7 +222,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_query(self):
+    def supports_activity_query(self): # pragma: no cover
         """Tests if an activity query service is supported.
 
         :return: ``true`` if activity query is supported, ``false`` otherwise
@@ -235,7 +235,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_search(self):
+    def supports_activity_search(self): # pragma: no cover
         """Tests if an activity search service is supported.
 
         :return: ``true`` if activity search is supported, ``false`` otherwise
@@ -248,7 +248,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_admin(self):
+    def supports_activity_admin(self): # pragma: no cover
         """Tests if an activity administrative service is supported.
 
         :return: ``true`` if activity admin is supported, ``false`` otherwise
@@ -261,7 +261,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_notification(self):
+    def supports_activity_notification(self): # pragma: no cover
         """Tests if activity notification is supported.
 
         Messages may be sent when activities are created, modified, or
@@ -277,7 +277,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_objective_bank(self):
+    def supports_activity_objective_bank(self): # pragma: no cover
         """Tests if an activity to objective bank lookup session is available.
 
         :return: ``true`` if activity objective bank lookup session is supported, ``false`` otherwise
@@ -290,7 +290,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_objective_bank_assignment(self):
+    def supports_activity_objective_bank_assignment(self): # pragma: no cover
         """Tests if an activity to objective bank assignment session is available.
 
         :return: ``true`` if activity objective bank assignment is supported, ``false`` otherwise
@@ -303,7 +303,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_activity_smart_objective_bank(self):
+    def supports_activity_smart_objective_bank(self): # pragma: no cover
         """Tests if an activity smart objective bank cataloging service is supported.
 
         :return: ``true`` if activity smart objective banks are supported, ``false`` otherwise
@@ -316,7 +316,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_lookup(self):
+    def supports_proficiency_lookup(self): # pragma: no cover
         """Tests if looking up proficiencies is supported.
 
         :return: ``true`` if proficiency lookup is supported, ``false`` otherwise
@@ -329,7 +329,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_query(self):
+    def supports_proficiency_query(self): # pragma: no cover
         """Tests if querying proficiencies is supported.
 
         :return: ``true`` if proficiency query is supported, ``false`` otherwise
@@ -342,7 +342,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_search(self):
+    def supports_proficiency_search(self): # pragma: no cover
         """Tests if searching proficiencies is supported.
 
         :return: ``true`` if proficiency search is supported, ``false`` otherwise
@@ -355,7 +355,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_admin(self):
+    def supports_proficiency_admin(self): # pragma: no cover
         """Tests if proficiencyadministrative service is supported.
 
         :return: ``true`` if proficiency administration is supported, ``false`` otherwise
@@ -368,7 +368,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_notification(self):
+    def supports_proficiency_notification(self): # pragma: no cover
         """Tests if a proficiencynotification service is supported.
 
         :return: ``true`` if proficiency notification is supported, ``false`` otherwise
@@ -381,7 +381,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_objective_bank(self):
+    def supports_proficiency_objective_bank(self): # pragma: no cover
         """Tests if a proficiency objective bank mapping lookup service is supported.
 
         :return: ``true`` if a proficiency objective bank lookup service is supported, ``false`` otherwise
@@ -394,7 +394,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_objective_bank_assignment(self):
+    def supports_proficiency_objective_bank_assignment(self): # pragma: no cover
         """Tests if a proficiency objective bank mapping service is supported.
 
         :return: ``true`` if proficiency to objective bank mapping service is supported, ``false`` otherwise
@@ -407,7 +407,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_proficiency_smart_objective_bank(self):
+    def supports_proficiency_smart_objective_bank(self): # pragma: no cover
         """Tests if a proficiency smart objective bank cataloging service is supported.
 
         :return: ``true`` if proficiency smart objective banks are supported, ``false`` otherwise
@@ -420,7 +420,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_my_learning_path(self):
+    def supports_my_learning_path(self): # pragma: no cover
         """Tests if a learning path service is supported for the authenticated agent.
 
         :return: ``true`` if learning path is supported, ``false`` otherwise
@@ -433,7 +433,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_learning_path(self):
+    def supports_learning_path(self): # pragma: no cover
         """Tests if a learning path service is supported.
 
         :return: ``true`` if learning path is supported, ``false`` otherwise
@@ -446,7 +446,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_lookup(self):
+    def supports_objective_bank_lookup(self): # pragma: no cover
         """Tests if an objective bank lookup service is supported.
 
         :return: ``true`` if objective bank lookup is supported, ``false`` otherwise
@@ -459,7 +459,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_query(self):
+    def supports_objective_bank_query(self): # pragma: no cover
         """Tests if an objective bank query service is supported.
 
         :return: ``true`` if objective bank query is supported, ``false`` otherwise
@@ -472,7 +472,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_search(self):
+    def supports_objective_bank_search(self): # pragma: no cover
         """Tests if an objective bank search service is supported.
 
         :return: ``true`` if objective bank search is supported, ``false`` otherwise
@@ -485,7 +485,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_admin(self):
+    def supports_objective_bank_admin(self): # pragma: no cover
         """Tests if an objective bank administrative service is supported.
 
         :return: ``true`` if objective bank admin is supported, ``false`` otherwise
@@ -498,7 +498,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_notification(self):
+    def supports_objective_bank_notification(self): # pragma: no cover
         """Tests if objective bank notification is supported.
 
         Messages may be sent when objective banks are created, modified,
@@ -514,7 +514,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_hierarchy(self):
+    def supports_objective_bank_hierarchy(self): # pragma: no cover
         """Tests if an objective bank hierarchy traversal is supported.
 
         :return: ``true`` if an objective bank hierarchy traversal is supported, ``false`` otherwise
@@ -527,7 +527,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_objective_bank_hierarchy_design(self):
+    def supports_objective_bank_hierarchy_design(self): # pragma: no cover
         """Tests if objective bank hierarchy design is supported.
 
         :return: ``true`` if an objective bank hierarchy design is supported, ``false`` otherwise
@@ -540,7 +540,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_learning_batch(self):
+    def supports_learning_batch(self): # pragma: no cover
         """Tests if a learning batch service is supported.
 
         :return: ``true`` if a learning batch service is supported, ``false`` otherwise
@@ -553,7 +553,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_record_types(self):
+    def get_objective_record_types(self): # pragma: no cover
         """Gets the supported ``Objective`` record types.
 
         :return: a list containing the supported ``Objective`` record types
@@ -568,7 +568,7 @@ class LearningProfile:
     objective_record_types = property(fget=get_objective_record_types)
 
     @abc.abstractmethod
-    def supports_objective_record_type(self, objective_record_type):
+    def supports_objective_record_type(self, objective_record_type): # pragma: no cover
         """Tests if the given ``Objective`` record type is supported.
 
         :param objective_record_type: a ``Type`` indicating an ``Objective`` record type
@@ -583,7 +583,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_search_record_types(self):
+    def get_objective_search_record_types(self): # pragma: no cover
         """Gets the supported ``Objective`` search record types.
 
         :return: a list containing the supported ``Objective`` search record types
@@ -598,7 +598,7 @@ class LearningProfile:
     objective_search_record_types = property(fget=get_objective_search_record_types)
 
     @abc.abstractmethod
-    def supports_objective_search_record_type(self, objective_search_record_type):
+    def supports_objective_search_record_type(self, objective_search_record_type): # pragma: no cover
         """Tests if the given ``Objective`` search record type is supported.
 
         :param objective_search_record_type: a ``Type`` indicating an ``Objective`` search record type
@@ -613,7 +613,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_record_types(self):
+    def get_activity_record_types(self): # pragma: no cover
         """Gets the supported ``Activity`` record types.
 
         :return: a list containing the supported ``Activity`` record types
@@ -628,7 +628,7 @@ class LearningProfile:
     activity_record_types = property(fget=get_activity_record_types)
 
     @abc.abstractmethod
-    def supports_activity_record_type(self, activity_record_type):
+    def supports_activity_record_type(self, activity_record_type): # pragma: no cover
         """Tests if the given ``Activity`` record type is supported.
 
         :param activity_record_type: a ``Type`` indicating a ``Activity`` record type
@@ -643,7 +643,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_activity_search_record_types(self):
+    def get_activity_search_record_types(self): # pragma: no cover
         """Gets the supported ``Activity`` search record types.
 
         :return: a list containing the supported ``Activity`` search record types
@@ -658,7 +658,7 @@ class LearningProfile:
     activity_search_record_types = property(fget=get_activity_search_record_types)
 
     @abc.abstractmethod
-    def supports_activity_search_record_type(self, activity_search_record_type):
+    def supports_activity_search_record_type(self, activity_search_record_type): # pragma: no cover
         """Tests if the given ``Activity`` search record type is supported.
 
         :param activity_search_record_type: a ``Type`` indicating a ``Activity`` search record type
@@ -673,7 +673,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proficiency_record_types(self):
+    def get_proficiency_record_types(self): # pragma: no cover
         """Gets the supported ``Proficiency`` record types.
 
         :return: a list containing the supported ``Proficiency`` record types
@@ -688,7 +688,7 @@ class LearningProfile:
     proficiency_record_types = property(fget=get_proficiency_record_types)
 
     @abc.abstractmethod
-    def supports_proficiency_record_type(self, proficiency_record_type):
+    def supports_proficiency_record_type(self, proficiency_record_type): # pragma: no cover
         """Tests if the given ``Proficiency`` record type is supported.
 
         :param proficiency_record_type: a ``Type`` indicating a ``Proficiency`` record type
@@ -703,7 +703,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_proficiency_search_record_types(self):
+    def get_proficiency_search_record_types(self): # pragma: no cover
         """Gets the supported ``Proficiency`` search types.
 
         :return: a list containing the supported ``Proficiency`` search types
@@ -718,7 +718,7 @@ class LearningProfile:
     proficiency_search_record_types = property(fget=get_proficiency_search_record_types)
 
     @abc.abstractmethod
-    def supports_proficiency_search_record_type(self, proficiency_search_record_type):
+    def supports_proficiency_search_record_type(self, proficiency_search_record_type): # pragma: no cover
         """Tests if the given ``Proficiency`` search type is supported.
 
         :param proficiency_search_record_type: a ``Type`` indicating a ``Proficiency`` search type
@@ -733,7 +733,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_record_types(self):
+    def get_objective_bank_record_types(self): # pragma: no cover
         """Gets the supported ``ObjectiveBank`` record types.
 
         :return: a list containing the supported ``ObjectiveBank`` record types
@@ -748,7 +748,7 @@ class LearningProfile:
     objective_bank_record_types = property(fget=get_objective_bank_record_types)
 
     @abc.abstractmethod
-    def supports_objective_bank_record_type(self, objective_bank_record_type):
+    def supports_objective_bank_record_type(self, objective_bank_record_type): # pragma: no cover
         """Tests if the given ``ObjectiveBank`` record type is supported.
 
         :param objective_bank_record_type: a ``Type`` indicating an ``ObjectiveBank`` type
@@ -763,7 +763,7 @@ class LearningProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_objective_bank_search_record_types(self):
+    def get_objective_bank_search_record_types(self): # pragma: no cover
         """Gets the supported objective bank search record types.
 
         :return: a list containing the supported ``ObjectiveBank`` search record types
@@ -778,7 +778,7 @@ class LearningProfile:
     objective_bank_search_record_types = property(fget=get_objective_bank_search_record_types)
 
     @abc.abstractmethod
-    def supports_objective_bank_search_record_type(self, objective_bank_search_record_type):
+    def supports_objective_bank_search_record_type(self, objective_bank_search_record_type): # pragma: no cover
         """Tests if the given objective bank search record type is supported.
 
         :param objective_bank_search_record_type: a ``Type`` indicating an ``ObjectiveBank`` search record type
@@ -875,7 +875,7 @@ class LearningManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_lookup_session(self):
+    def get_objective_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective lookup service.
 
         :return: an ``ObjectiveLookupSession``
@@ -892,7 +892,7 @@ class LearningManager:
     objective_lookup_session = property(fget=get_objective_lookup_session)
 
     @abc.abstractmethod
-    def get_objective_lookup_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_lookup_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -912,7 +912,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
-    def get_objective_query_session(self):
+    def get_objective_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective query service.
 
         :return: an ``ObjectiveQuerySession``
@@ -929,7 +929,7 @@ class LearningManager:
     objective_query_session = property(fget=get_objective_query_session)
 
     @abc.abstractmethod
-    def get_objective_query_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_query_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -949,7 +949,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
-    def get_objective_search_session(self):
+    def get_objective_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective search service.
 
         :return: an ``ObjectiveSearchSession``
@@ -966,7 +966,7 @@ class LearningManager:
     objective_search_session = property(fget=get_objective_search_session)
 
     @abc.abstractmethod
-    def get_objective_search_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_search_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -986,7 +986,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
-    def get_objective_admin_session(self):
+    def get_objective_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective administration service.
 
         :return: an ``ObjectiveAdminSession``
@@ -1003,7 +1003,7 @@ class LearningManager:
     objective_admin_session = property(fget=get_objective_admin_session)
 
     @abc.abstractmethod
-    def get_objective_admin_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_admin_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective admin service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1023,7 +1023,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
-    def get_objective_notification_session(self, objective_receiver):
+    def get_objective_notification_session(self, objective_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to objective changes.
 
         :param objective_receiver: the objective receiver
@@ -1041,7 +1041,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
-    def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id):
+    def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective notification service for the given objective bank.
 
         :param objective_receiver: the objective receiver
@@ -1063,7 +1063,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_session(self):
+    def get_objective_hierarchy_session(self): # pragma: no cover
         """Gets the session for traversing objective hierarchies.
 
         :return: an ``ObjectiveHierarchySession``
@@ -1080,7 +1080,7 @@ class LearningManager:
     objective_hierarchy_session = property(fget=get_objective_hierarchy_session)
 
     @abc.abstractmethod
-    def get_objective_hierarchy_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_hierarchy_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective hierarchy traversal service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1100,7 +1100,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_design_session(self):
+    def get_objective_hierarchy_design_session(self): # pragma: no cover
         """Gets the session for designing objective hierarchies.
 
         :return: an ``ObjectiveHierarchyDesignSession``
@@ -1117,7 +1117,7 @@ class LearningManager:
     objective_hierarchy_design_session = property(fget=get_objective_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_objective_hierarchy_design_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_hierarchy_design_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective hierarchy design service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1137,7 +1137,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_objective_sequencing_session(self):
+    def get_objective_sequencing_session(self): # pragma: no cover
         """Gets the session for sequencing objectives.
 
         :return: an ``ObjectiveSequencingSession``
@@ -1154,7 +1154,7 @@ class LearningManager:
     objective_sequencing_session = property(fget=get_objective_sequencing_session)
 
     @abc.abstractmethod
-    def get_objective_sequencing_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_sequencing_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1174,7 +1174,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
-    def get_objective_objective_bank_session(self):
+    def get_objective_objective_bank_session(self): # pragma: no cover
         """Gets the session for retrieving objective to objective bank mappings.
 
         :return: an ``ObjectiveObjectiveBankSession``
@@ -1191,7 +1191,7 @@ class LearningManager:
     objective_objective_bank_session = property(fget=get_objective_objective_bank_session)
 
     @abc.abstractmethod
-    def get_objective_objective_bank_assignment_session(self):
+    def get_objective_objective_bank_assignment_session(self): # pragma: no cover
         """Gets the session for assigning objective to objective bank mappings.
 
         :return: an ``ObjectiveObjectiveBankAssignmentSession``
@@ -1208,7 +1208,7 @@ class LearningManager:
     objective_objective_bank_assignment_session = property(fget=get_objective_objective_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_objective_smart_objective_bank_session(self, objective_bank_id):
+    def get_objective_smart_objective_bank_session(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of objectives.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1227,7 +1227,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveSmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_objective_requisite_session(self):
+    def get_objective_requisite_session(self): # pragma: no cover
         """Gets the session for examining objective requisites.
 
         :return: an ``ObjectiveRequisiteSession``
@@ -1244,7 +1244,7 @@ class LearningManager:
     objective_requisite_session = property(fget=get_objective_requisite_session)
 
     @abc.abstractmethod
-    def get_objective_requisite_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_requisite_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1264,7 +1264,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
-    def get_objective_requisite_assignment_session(self):
+    def get_objective_requisite_assignment_session(self): # pragma: no cover
         """Gets the session for managing objective requisites.
 
         :return: an ``ObjectiveRequisiteAssignmentSession``
@@ -1281,7 +1281,7 @@ class LearningManager:
     objective_requisite_assignment_session = property(fget=get_objective_requisite_assignment_session)
 
     @abc.abstractmethod
-    def get_objective_requisite_assignment_session_for_objective_bank(self, objective_bank_id):
+    def get_objective_requisite_assignment_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1301,7 +1301,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
-    def get_activity_lookup_session(self):
+    def get_activity_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity lookup service.
 
         :return: an ``ActivityLookupSession``
@@ -1318,7 +1318,7 @@ class LearningManager:
     activity_lookup_session = property(fget=get_activity_lookup_session)
 
     @abc.abstractmethod
-    def get_activity_lookup_session_for_objective_bank(self, objective_bank_id):
+    def get_activity_lookup_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1338,7 +1338,7 @@ class LearningManager:
         return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
-    def get_activity_query_session(self):
+    def get_activity_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity query service.
 
         :return: a ``ActivityQuerySession``
@@ -1355,7 +1355,7 @@ class LearningManager:
     activity_query_session = property(fget=get_activity_query_session)
 
     @abc.abstractmethod
-    def get_activity_query_session_for_objective_bank(self, objective_bank_id):
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1375,7 +1375,7 @@ class LearningManager:
         return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
-    def get_activity_search_session(self):
+    def get_activity_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity search service.
 
         :return: a ``ActivitySearchSession``
@@ -1392,7 +1392,7 @@ class LearningManager:
     activity_search_session = property(fget=get_activity_search_session)
 
     @abc.abstractmethod
-    def get_activity_search_session_for_objective_bank(self, objective_bank_id):
+    def get_activity_search_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1412,7 +1412,7 @@ class LearningManager:
         return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
-    def get_activity_admin_session(self):
+    def get_activity_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity administration service.
 
         :return: a ``ActivityAdminSession``
@@ -1429,7 +1429,7 @@ class LearningManager:
     activity_admin_session = property(fget=get_activity_admin_session)
 
     @abc.abstractmethod
-    def get_activity_admin_session_for_objective_bank(self, objective_bank_id):
+    def get_activity_admin_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity admin service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -1449,7 +1449,7 @@ class LearningManager:
         return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
-    def get_activity_notification_session(self, activity_receiver):
+    def get_activity_notification_session(self, activity_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to activity changes.
 
         :param activity_receiver: the activity receiver
@@ -1467,7 +1467,7 @@ class LearningManager:
         return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
-    def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id):
+    def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity notification service for the given objective bank.
 
         :param activity_receiver: the activity receiver
@@ -1489,7 +1489,7 @@ class LearningManager:
         return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
-    def get_activity_objective_bank_session(self):
+    def get_activity_objective_bank_session(self): # pragma: no cover
         """Gets the session for retrieving activity to objective bank mappings.
 
         :return: an ``ActivityObjectiveBankSession``
@@ -1506,7 +1506,7 @@ class LearningManager:
     activity_objective_bank_session = property(fget=get_activity_objective_bank_session)
 
     @abc.abstractmethod
-    def get_activity_objective_bank_assignment_session(self):
+    def get_activity_objective_bank_assignment_session(self): # pragma: no cover
         """Gets the session for assigning activity to objective bank mappings.
 
         :return: an ``ActivityObjectiveBankAssignmentSession``
@@ -1523,7 +1523,7 @@ class LearningManager:
     activity_objective_bank_assignment_session = property(fget=get_activity_objective_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_activity_smart_objective_bank_session(self, objective_bank_id):
+    def get_activity_smart_objective_bank_session(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of activities.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1542,7 +1542,7 @@ class LearningManager:
         return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_proficiency_lookup_session(self):
+    def get_proficiency_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency lookup service.
 
         :return: a ``ProficiencyLookupSession``
@@ -1559,7 +1559,7 @@ class LearningManager:
     proficiency_lookup_session = property(fget=get_proficiency_lookup_session)
 
     @abc.abstractmethod
-    def get_proficiency_lookup_session_for_objective_bank(self, objective_bank_id):
+    def get_proficiency_lookup_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the obective bank
@@ -1579,7 +1579,7 @@ class LearningManager:
         return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
-    def get_proficiency_query_session(self):
+    def get_proficiency_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency query service.
 
         :return: a ``ProficiencyQuerySession``
@@ -1596,7 +1596,7 @@ class LearningManager:
     proficiency_query_session = property(fget=get_proficiency_query_session)
 
     @abc.abstractmethod
-    def get_proficiency_query_session_for_objective_bank(self, objective_bank_id):
+    def get_proficiency_query_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the obective bank
@@ -1616,7 +1616,7 @@ class LearningManager:
         return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
-    def get_proficiency_search_session(self):
+    def get_proficiency_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency search service.
 
         :return: a ``ProficiencySearchSession``
@@ -1633,7 +1633,7 @@ class LearningManager:
     proficiency_search_session = property(fget=get_proficiency_search_session)
 
     @abc.abstractmethod
-    def get_proficiency_search_session_for_objective_bank(self, objective_bank_id):
+    def get_proficiency_search_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1653,7 +1653,7 @@ class LearningManager:
         return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
-    def get_proficiency_admin_session(self):
+    def get_proficiency_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency administration service.
 
         :return: a ``ProficiencyAdminSession``
@@ -1670,7 +1670,7 @@ class LearningManager:
     proficiency_admin_session = property(fget=get_proficiency_admin_session)
 
     @abc.abstractmethod
-    def get_proficiency_admin_session_for_objective_bank(self, objective_bank_id):
+    def get_proficiency_admin_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency administration service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1690,7 +1690,7 @@ class LearningManager:
         return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
-    def get_proficiency_notification_session(self, proficiency_receiver):
+    def get_proficiency_notification_session(self, proficiency_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency notification service.
 
         :param proficiency_receiver: the notification callback
@@ -1708,7 +1708,7 @@ class LearningManager:
         return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
-    def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id):
+    def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency notification service for the given objective bank.
 
         :param proficiency_receiver: the notification callback
@@ -1730,7 +1730,7 @@ class LearningManager:
         return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
-    def get_proficiency_objective_bank_session(self):
+    def get_proficiency_objective_bank_session(self): # pragma: no cover
         """Gets the ``OsidSession`` to lookup proficiency/objective bank mappings.
 
         :return: a ``ProficiencyObjectiveBankSession``
@@ -1747,7 +1747,7 @@ class LearningManager:
     proficiency_objective_bank_session = property(fget=get_proficiency_objective_bank_session)
 
     @abc.abstractmethod
-    def get_proficiency_objective_bank_assignment_session(self):
+    def get_proficiency_objective_bank_assignment_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning proficiencys to objective banks.
 
         :return: a ``ProficiencyObjectiveBankAssignmentSession``
@@ -1765,7 +1765,7 @@ class LearningManager:
     proficiency_objective_bank_assignment_session = property(fget=get_proficiency_objective_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_proficiency_smart_objective_bank_session(self, objective_bank_id):
+    def get_proficiency_smart_objective_bank_session(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of objectives.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1784,7 +1784,7 @@ class LearningManager:
         return  # osid.learning.ProficiencySmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_my_learning_path_session(self):
+    def get_my_learning_path_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the my learning path service.
 
         :return: a ``MyLearningPathSession``
@@ -1801,7 +1801,7 @@ class LearningManager:
     my_learning_path_session = property(fget=get_my_learning_path_session)
 
     @abc.abstractmethod
-    def get_my_learning_path_session_for_objective_bank(self, objective_bank_id):
+    def get_my_learning_path_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the my learning path service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1821,7 +1821,7 @@ class LearningManager:
         return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
-    def get_learning_path_session(self):
+    def get_learning_path_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the learning path service.
 
         :return: a ``LearningPathSession``
@@ -1838,7 +1838,7 @@ class LearningManager:
     learning_path_session = property(fget=get_learning_path_session)
 
     @abc.abstractmethod
-    def get_learning_path_session_for_objective_bank(self, objective_bank_id):
+    def get_learning_path_session_for_objective_bank(self, objective_bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the learning path service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -1858,7 +1858,7 @@ class LearningManager:
         return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
-    def get_objective_bank_lookup_session(self):
+    def get_objective_bank_lookup_session(self): # pragma: no cover
         """Gets the OsidSession associated with the objective bank lookup service.
 
         :return: an ``ObjectiveBankLookupSession``
@@ -1875,7 +1875,7 @@ class LearningManager:
     objective_bank_lookup_session = property(fget=get_objective_bank_lookup_session)
 
     @abc.abstractmethod
-    def get_objective_bank_query_session(self):
+    def get_objective_bank_query_session(self): # pragma: no cover
         """Gets the OsidSession associated with the objective bank query service.
 
         :return: an ``ObjectiveBankQuerySession``
@@ -1892,7 +1892,7 @@ class LearningManager:
     objective_bank_query_session = property(fget=get_objective_bank_query_session)
 
     @abc.abstractmethod
-    def get_objective_bank_search_session(self):
+    def get_objective_bank_search_session(self): # pragma: no cover
         """Gets the OsidSession associated with the objective bank search service.
 
         :return: an ``ObjectiveBankSearchSession``
@@ -1909,7 +1909,7 @@ class LearningManager:
     objective_bank_search_session = property(fget=get_objective_bank_search_session)
 
     @abc.abstractmethod
-    def get_objective_bank_admin_session(self):
+    def get_objective_bank_admin_session(self): # pragma: no cover
         """Gets the OsidSession associated with the objective bank administration service.
 
         :return: an ``ObjectiveBankAdminSession``
@@ -1926,7 +1926,7 @@ class LearningManager:
     objective_bank_admin_session = property(fget=get_objective_bank_admin_session)
 
     @abc.abstractmethod
-    def get_objective_bank_notification_session(self, objective_bank_receiver):
+    def get_objective_bank_notification_session(self, objective_bank_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to objective bank service changes.
 
         :param objective_bank_receiver: the objective bank receiver
@@ -1944,7 +1944,7 @@ class LearningManager:
         return  # osid.learning.ObjectiveBankNotificationSession
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_session(self):
+    def get_objective_bank_hierarchy_session(self): # pragma: no cover
         """Gets the session traversing objective bank hierarchies.
 
         :return: an ``ObjectiveBankHierarchySession``
@@ -1961,7 +1961,7 @@ class LearningManager:
     objective_bank_hierarchy_session = property(fget=get_objective_bank_hierarchy_session)
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_design_session(self):
+    def get_objective_bank_hierarchy_design_session(self): # pragma: no cover
         """Gets the session designing objective bank hierarchies.
 
         :return: an ``ObjectiveBankHierarchyDesignSession``
@@ -1978,7 +1978,7 @@ class LearningManager:
     objective_bank_hierarchy_design_session = property(fget=get_objective_bank_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_learning_batch_manager(self):
+    def get_learning_batch_manager(self): # pragma: no cover
         """Gets a ``LearningBatchManager``.
 
         :return: a ``LearningBatchManager``
@@ -2078,7 +2078,7 @@ class LearningProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_lookup_session(self, proxy):
+    def get_objective_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective lookup service.
 
         :param proxy: a proxy
@@ -2096,7 +2096,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
-    def get_objective_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_lookup_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2118,7 +2118,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveLookupSession
 
     @abc.abstractmethod
-    def get_objective_query_session(self, proxy):
+    def get_objective_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective query service.
 
         :param proxy: a proxy
@@ -2136,7 +2136,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
-    def get_objective_query_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_query_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2158,7 +2158,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveQuerySession
 
     @abc.abstractmethod
-    def get_objective_search_session(self, proxy):
+    def get_objective_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective search service.
 
         :param proxy: a proxy
@@ -2176,7 +2176,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
-    def get_objective_search_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_search_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2198,7 +2198,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveSearchSession
 
     @abc.abstractmethod
-    def get_objective_admin_session(self, proxy):
+    def get_objective_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective administration service.
 
         :param proxy: a proxy
@@ -2216,7 +2216,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
-    def get_objective_admin_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_admin_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective admin service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2238,7 +2238,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveAdminSession
 
     @abc.abstractmethod
-    def get_objective_notification_session(self, objective_receiver, proxy):
+    def get_objective_notification_session(self, objective_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to objective changes.
 
         :param objective_receiver: the objective receiver
@@ -2258,7 +2258,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
-    def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id, proxy):
+    def get_objective_notification_session_for_objective_bank(self, objective_receiver, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective notification service for the given objective bank.
 
         :param objective_receiver: the objective receiver
@@ -2282,7 +2282,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveNotificationSession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_session(self, proxy):
+    def get_objective_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the session for traversing objective hierarchies.
 
         :param proxy: a proxy
@@ -2300,7 +2300,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_hierarchy_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective hierarchy traversal service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2322,7 +2322,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveHierarchySession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_design_session(self, proxy):
+    def get_objective_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the session for designing objective hierarchies.
 
         :param proxy: a proxy
@@ -2340,7 +2340,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_objective_hierarchy_design_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_hierarchy_design_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective hierarchy design service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2362,7 +2362,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_objective_sequencing_session(self, proxy):
+    def get_objective_sequencing_session(self, proxy): # pragma: no cover
         """Gets the session for sequencing objectives.
 
         :param proxy: a proxy
@@ -2380,7 +2380,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
-    def get_objective_sequencing_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_sequencing_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2402,7 +2402,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveSequencingSession
 
     @abc.abstractmethod
-    def get_objective_objective_bank_session(self, proxy):
+    def get_objective_objective_bank_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving objective to objective bank mappings.
 
         :param proxy: a proxy
@@ -2420,7 +2420,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveObjectiveBankSession
 
     @abc.abstractmethod
-    def get_objective_objective_bank_assignment_session(self, proxy):
+    def get_objective_objective_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning objective to objective bank mappings.
 
         :param proxy: a proxy
@@ -2438,7 +2438,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveObjectiveBankAssignmentSession
 
     @abc.abstractmethod
-    def get_objective_smart_objective_bank_session(self, objective_bank_id, proxy):
+    def get_objective_smart_objective_bank_session(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of objectives.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -2459,7 +2459,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_objective_requisite_session(self, proxy):
+    def get_objective_requisite_session(self, proxy): # pragma: no cover
         """Gets the session for examining objective requisites.
 
         :param proxy: a proxy
@@ -2477,7 +2477,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
-    def get_objective_requisite_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_requisite_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2499,7 +2499,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveRequisiteSession
 
     @abc.abstractmethod
-    def get_objective_requisite_assignment_session(self, proxy):
+    def get_objective_requisite_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for managing objective requisites.
 
         :param proxy: a proxy
@@ -2517,7 +2517,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
-    def get_objective_requisite_assignment_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_objective_requisite_assignment_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the objective sequencing service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2539,7 +2539,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveRequisiteAssignmentSession
 
     @abc.abstractmethod
-    def get_activity_lookup_session(self, proxy):
+    def get_activity_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity lookup service.
 
         :param proxy: a proxy
@@ -2557,7 +2557,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
-    def get_activity_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_activity_lookup_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2579,7 +2579,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityLookupSession
 
     @abc.abstractmethod
-    def get_activity_query_session(self, proxy):
+    def get_activity_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity query service.
 
         :param proxy: a proxy
@@ -2597,7 +2597,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
-    def get_activity_query_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2619,7 +2619,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityQuerySession
 
     @abc.abstractmethod
-    def get_activity_search_session(self, proxy):
+    def get_activity_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity search service.
 
         :param proxy: a proxy
@@ -2637,7 +2637,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
-    def get_activity_search_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_activity_search_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2659,7 +2659,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivitySearchSession
 
     @abc.abstractmethod
-    def get_activity_admin_session(self, proxy):
+    def get_activity_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity administration service.
 
         :param proxy: a proxy
@@ -2677,7 +2677,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
-    def get_activity_admin_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_activity_admin_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity admin service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the objective bank
@@ -2699,7 +2699,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityAdminSession
 
     @abc.abstractmethod
-    def get_activity_notification_session(self, activity_receiver, proxy):
+    def get_activity_notification_session(self, activity_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to activity changes.
 
         :param activity_receiver: the activity receiver
@@ -2719,7 +2719,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
-    def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id, proxy):
+    def get_activity_notification_session_for_objective_bank(self, activity_receiver, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the activity notification service for the given objective bank.
 
         :param activity_receiver: the activity receiver
@@ -2743,7 +2743,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityNotificationSession
 
     @abc.abstractmethod
-    def get_activity_objective_bank_session(self, proxy):
+    def get_activity_objective_bank_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving activity to objective bank mappings.
 
         :param proxy: a proxy
@@ -2761,7 +2761,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityObjectiveBankSession
 
     @abc.abstractmethod
-    def get_activity_objective_bank_assignment_session(self, proxy):
+    def get_activity_objective_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning activity to objective bank mappings.
 
         :param proxy: a proxy
@@ -2779,7 +2779,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivityObjectiveBankAssignmentSession
 
     @abc.abstractmethod
-    def get_activity_smart_objective_bank_session(self, objective_bank_id, proxy):
+    def get_activity_smart_objective_bank_session(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of activities.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -2800,7 +2800,7 @@ class LearningProxyManager:
         return  # osid.learning.ActivitySmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_proficiency_lookup_session(self, proxy):
+    def get_proficiency_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency lookup service.
 
         :param proxy: a proxy
@@ -2818,7 +2818,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
-    def get_proficiency_lookup_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_proficiency_lookup_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency lookup service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the obective bank
@@ -2840,7 +2840,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyLookupSession
 
     @abc.abstractmethod
-    def get_proficiency_query_session(self, proxy):
+    def get_proficiency_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency query service.
 
         :param proxy: a proxy
@@ -2858,7 +2858,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
-    def get_proficiency_query_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_proficiency_query_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency query service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the obective bank
@@ -2880,7 +2880,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyQuerySession
 
     @abc.abstractmethod
-    def get_proficiency_search_session(self, proxy):
+    def get_proficiency_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency search service.
 
         :param proxy: a proxy
@@ -2898,7 +2898,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
-    def get_proficiency_search_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_proficiency_search_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency search service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -2920,7 +2920,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencySearchSession
 
     @abc.abstractmethod
-    def get_proficiency_admin_session(self, proxy):
+    def get_proficiency_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency administration service.
 
         :param proxy: a proxy
@@ -2938,7 +2938,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
-    def get_proficiency_admin_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_proficiency_admin_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency administration service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -2960,7 +2960,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyAdminSession
 
     @abc.abstractmethod
-    def get_proficiency_notification_session(self, proficiency_receiver, proxy):
+    def get_proficiency_notification_session(self, proficiency_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency notification service.
 
         :param proficiency_receiver: the notification callback
@@ -2980,7 +2980,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
-    def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id, proxy):
+    def get_proficiency_notification_session_for_objective_bank(self, proficiency_receiver, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the proficiency notification service for the given objective bank.
 
         :param proficiency_receiver: the notification callback
@@ -3004,7 +3004,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyNotificationSession
 
     @abc.abstractmethod
-    def get_proficiency_objective_bank_session(self, proxy):
+    def get_proficiency_objective_bank_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to lookup proficiency/objective bank mappings.
 
         :param proxy: a proxy
@@ -3022,7 +3022,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyObjectiveBankSession
 
     @abc.abstractmethod
-    def get_proficiency_objective_bank_assignment_session(self, proxy):
+    def get_proficiency_objective_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning proficiencies to objective banks.
 
         :param proxy: a proxy
@@ -3041,7 +3041,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencyObjectiveBankAssignmentSession
 
     @abc.abstractmethod
-    def get_proficiency_smart_objective_bank_session(self, objective_bank_id, proxy):
+    def get_proficiency_smart_objective_bank_session(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage dynamic objective banks of proficiencies.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -3062,7 +3062,7 @@ class LearningProxyManager:
         return  # osid.learning.ProficiencySmartObjectiveBankSession
 
     @abc.abstractmethod
-    def get_my_learning_path_session(self, proxy):
+    def get_my_learning_path_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the my learning path service.
 
         :param proxy: a proxy
@@ -3080,7 +3080,7 @@ class LearningProxyManager:
         return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
-    def get_my_learning_path_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_my_learning_path_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the my learning path service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -3102,7 +3102,7 @@ class LearningProxyManager:
         return  # osid.learning.MyLearningPathSession
 
     @abc.abstractmethod
-    def get_learning_path_session(self, proxy):
+    def get_learning_path_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the learning path service.
 
         :param proxy: a proxy
@@ -3120,7 +3120,7 @@ class LearningProxyManager:
         return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
-    def get_learning_path_session_for_objective_bank(self, objective_bank_id, proxy):
+    def get_learning_path_session_for_objective_bank(self, objective_bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the learning path service for the given objective bank.
 
         :param objective_bank_id: the ``Id`` of the ``ObjectiveBank``
@@ -3142,7 +3142,7 @@ class LearningProxyManager:
         return  # osid.learning.LearningPathSession
 
     @abc.abstractmethod
-    def get_objective_bank_lookup_session(self, proxy):
+    def get_objective_bank_lookup_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the objective bank lookup service.
 
         :param proxy: a proxy
@@ -3160,7 +3160,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankLookupSession
 
     @abc.abstractmethod
-    def get_objective_bank_query_session(self, proxy):
+    def get_objective_bank_query_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the objective bank query service.
 
         :param proxy: a proxy
@@ -3178,7 +3178,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankQuerySession
 
     @abc.abstractmethod
-    def get_objective_bank_search_session(self, proxy):
+    def get_objective_bank_search_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the objective bank search service.
 
         :param proxy: a proxy
@@ -3196,7 +3196,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankSearchSession
 
     @abc.abstractmethod
-    def get_objective_bank_admin_session(self, proxy):
+    def get_objective_bank_admin_session(self, proxy): # pragma: no cover
         """Gets the OsidSession associated with the objective bank administration service.
 
         :param proxy: a proxy
@@ -3214,7 +3214,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankAdminSession
 
     @abc.abstractmethod
-    def get_objective_bank_notification_session(self, objective_bank_receiver, proxy):
+    def get_objective_bank_notification_session(self, objective_bank_receiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to objective bank service changes.
 
         :param objective_bank_receiver: the objective bank receiver
@@ -3234,7 +3234,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankNotificationSession
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_session(self, proxy):
+    def get_objective_bank_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the session traversing objective bank hierarchies.
 
         :param proxy: a proxy
@@ -3252,7 +3252,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankHierarchySession
 
     @abc.abstractmethod
-    def get_objective_bank_hierarchy_design_session(self, proxy):
+    def get_objective_bank_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the session designing objective bank hierarchies.
 
         :param proxy: a proxy
@@ -3270,7 +3270,7 @@ class LearningProxyManager:
         return  # osid.learning.ObjectiveBankHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_learning_batch_proxy_manager(self):
+    def get_learning_batch_proxy_manager(self): # pragma: no cover
         """Gets a ``LearningBatchProxyManager``.
 
         :return: a ``LearningBatchProxyManager``

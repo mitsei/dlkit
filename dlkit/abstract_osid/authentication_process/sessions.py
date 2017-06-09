@@ -28,7 +28,7 @@ class AuthenticationAcquisitionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authentication(self):
+    def get_authentication(self): # pragma: no cover
         """Gets the authentication credential for the current user.
 
         The input data may represent the identity of the remote peer or
@@ -64,7 +64,7 @@ class AuthenticationValidationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authentication_input(self):
+    def get_authentication_input(self): # pragma: no cover
         """Gets an interface for authentication input.
 
         :return: authentication input
@@ -79,7 +79,7 @@ class AuthenticationValidationSession:
     authentication_input = property(fget=get_authentication_input)
 
     @abc.abstractmethod
-    def authenticate(self, input_):
+    def authenticate(self, input_): # pragma: no cover
         """Validates and returns the authentication credential from the given data.
 
         :param input: the authentication input to be validated
@@ -97,7 +97,7 @@ class AuthenticationValidationSession:
         return  # osid.authentication.process.Authentication
 
     @abc.abstractmethod
-    def get_challenge_data(self, input_):
+    def get_challenge_data(self, input_): # pragma: no cover
         """Gets data that can be used for a challenge to the peer attempting authentication.
 
         :param input: authentication input
@@ -158,7 +158,7 @@ class TrustLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -173,7 +173,7 @@ class TrustLookupSession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -189,7 +189,7 @@ class TrustLookupSession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_lookup_trusts(self):
+    def can_lookup_trusts(self): # pragma: no cover
         """Tests if this user can perform ``Trust`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -208,7 +208,7 @@ class TrustLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_trust_view(self):
+    def use_comparative_trust_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -222,7 +222,7 @@ class TrustLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_trust_view(self):
+    def use_plenary_trust_view(self): # pragma: no cover
         """A complete view of the ``Trust`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -237,7 +237,7 @@ class TrustLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_agency_view(self):
+    def use_federated_agency_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include trusts in agencies which are
@@ -251,7 +251,7 @@ class TrustLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_agency_view(self):
+    def use_isolated_agency_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this agency only.
@@ -264,7 +264,7 @@ class TrustLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_trust(self, trust_id):
+    def get_trust(self, trust_id): # pragma: no cover
         """Gets the ``Trust`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -287,7 +287,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.Trust
 
     @abc.abstractmethod
-    def get_trusts_by_ids(self, trust_ids):
+    def get_trusts_by_ids(self, trust_ids): # pragma: no cover
         """Gets a ``TrustList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the trusts
@@ -313,7 +313,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
-    def get_trusts_by_genus_type(self, trust_genus_type):
+    def get_trusts_by_genus_type(self, trust_genus_type): # pragma: no cover
         """Gets a ``TrustList`` corresponding to the given trust genus ``Type`` which does not include trusts of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known trusts or
@@ -334,7 +334,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
-    def get_trusts_by_parent_genus_type(self, trust_genus_type):
+    def get_trusts_by_parent_genus_type(self, trust_genus_type): # pragma: no cover
         """Gets a ``TrustList`` corresponding to the given trust genus ``Type`` and include any additional trusts with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known trusts or
@@ -355,7 +355,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
-    def get_trusts_by_record_type(self, trust_record_type):
+    def get_trusts_by_record_type(self, trust_record_type): # pragma: no cover
         """Gets a ``TrustList`` containing the given trust record ``Type``.
 
         In plenary mode, the returned list contains all known trusts or
@@ -376,7 +376,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
-    def get_circle_of_trust(self, trust_id):
+    def get_circle_of_trust(self, trust_id): # pragma: no cover
         """Gets a ``TrustList`` in the same circle, or the same level of confidence, as the given trust.
 
         In plenary mode, the returned list contains all known trusts or
@@ -398,7 +398,7 @@ class TrustLookupSession:
         return  # osid.authentication.process.TrustList
 
     @abc.abstractmethod
-    def get_trusts(self):
+    def get_trusts(self): # pragma: no cover
         """Gets all ``Trusts``.
 
         In plenary mode, the returned list contains all known trusts or
@@ -423,7 +423,7 @@ class CircleOfTrustSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -438,7 +438,7 @@ class CircleOfTrustSession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -454,7 +454,7 @@ class CircleOfTrustSession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_lookup_trust_circles(self):
+    def can_lookup_trust_circles(self): # pragma: no cover
         """Tests if this user can look up trusts for agents.
 
         A return of true does not guarantee successful authorization. A
@@ -473,7 +473,7 @@ class CircleOfTrustSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_agency_view(self):
+    def use_federated_agency_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include trusts in agencies which are
@@ -487,7 +487,7 @@ class CircleOfTrustSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_agency_view(self):
+    def use_isolated_agency_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this agency only.
@@ -500,7 +500,7 @@ class CircleOfTrustSession:
         pass
 
     @abc.abstractmethod
-    def get_trust(self, agent_id):
+    def get_trust(self, agent_id): # pragma: no cover
         """Gets a trust level for the given agent.
 
         An ``Agent`` may be in one circle of trust that, in turn, is
@@ -522,7 +522,7 @@ class CircleOfTrustSession:
         return  # osid.authentication.process.Trust
 
     @abc.abstractmethod
-    def is_in_circle(self, agent_id):
+    def is_in_circle(self, agent_id): # pragma: no cover
         """Tests if the given agent is inside the given circle of trust.
 
         :param agent_id: an agent ``Id``

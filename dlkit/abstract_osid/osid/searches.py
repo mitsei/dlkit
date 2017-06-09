@@ -39,7 +39,7 @@ class OsidSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def limit_result_set(self, start, end):
+    def limit_result_set(self, start, end): # pragma: no cover
         """By default, searches return all matching results.
 
         This method restricts the number of results by setting the start
@@ -78,7 +78,7 @@ class OsidSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_result_size(self):
+    def get_result_size(self): # pragma: no cover
         """Returns the size of a result set from a search query.
 
         This number serves as an estimate to provide feedback for

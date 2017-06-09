@@ -26,7 +26,7 @@ class Relationship:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_id(self):
+    def get_source_id(self): # pragma: no cover
         """Gets the from peer ``Id`` in this relationship.
 
         :return: the peer
@@ -41,7 +41,7 @@ class Relationship:
     source_id = property(fget=get_source_id)
 
     @abc.abstractmethod
-    def get_destination_id(self):
+    def get_destination_id(self): # pragma: no cover
         """Gets the to peer ``Id`` in this relationship.
 
         :return: the related peer
@@ -56,7 +56,7 @@ class Relationship:
     destination_id = property(fget=get_destination_id)
 
     @abc.abstractmethod
-    def get_relationship_record(self, relationship_record_type):
+    def get_relationship_record(self, relationship_record_type): # pragma: no cover
         """Gets the relationshop record corresponding to the given ``Relationship`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -93,7 +93,7 @@ class RelationshipForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationship_form_record(self, relationship_record_type):
+    def get_relationship_form_record(self, relationship_record_type): # pragma: no cover
         """Gets the ``RelationshipFormRecord`` corresponding to the given relationship record ``Type``.
 
         :param relationship_record_type: a relationship record type
@@ -126,7 +126,7 @@ class RelationshipList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_relationship(self):
+    def get_next_relationship(self): # pragma: no cover
         """Gets the next ``Relationship`` in this list.
 
         :return: the next ``Relationship`` in this list. The ``has_next()`` method should be used to test that a next ``Relationship`` is available before calling this method.
@@ -142,7 +142,7 @@ class RelationshipList:
     next_relationship = property(fget=get_next_relationship)
 
     @abc.abstractmethod
-    def get_next_relationships(self, n):
+    def get_next_relationships(self, n): # pragma: no cover
         """Gets the next set of ``Relationships`` elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -171,7 +171,7 @@ class Family:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_record(self, family_record_type):
+    def get_family_record(self, family_record_type): # pragma: no cover
         """Gets the famly record corresponding to the given ``Family`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -208,7 +208,7 @@ class FamilyForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_form_record(self, family_record_type):
+    def get_family_form_record(self, family_record_type): # pragma: no cover
         """Gets the ``FamilyFormRecord`` corresponding to the given family record ``Type``.
 
         :param family_record_type: the family record type
@@ -241,7 +241,7 @@ class FamilyList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_family(self):
+    def get_next_family(self): # pragma: no cover
         """Gets the next ``Family`` in this list.
 
         :return: the next ``Family`` in this list. The ``has_next()`` method should be used to test that a next ``Family`` is available before calling this method.
@@ -257,7 +257,7 @@ class FamilyList:
     next_family = property(fget=get_next_family)
 
     @abc.abstractmethod
-    def get_next_families(self, n):
+    def get_next_families(self, n): # pragma: no cover
         """Gets the next set of ``Family elements`` in this list.
 
         The specified amount must be less than or equal to the return
@@ -287,7 +287,7 @@ class FamilyNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` at this node.
 
         :return: the family represented by this node
@@ -302,7 +302,7 @@ class FamilyNode:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def get_parent_family_nodes(self):
+    def get_parent_family_nodes(self): # pragma: no cover
         """Gets the parents of this family.
 
         :return: the parents of the ``id``
@@ -317,7 +317,7 @@ class FamilyNode:
     parent_family_nodes = property(fget=get_parent_family_nodes)
 
     @abc.abstractmethod
-    def get_child_family_nodes(self):
+    def get_child_family_nodes(self): # pragma: no cover
         """Gets the children of this family.
 
         :return: the children of this family
@@ -347,7 +347,7 @@ class FamilyNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_family_node(self):
+    def get_next_family_node(self): # pragma: no cover
         """Gets the next ``FamilyNode`` in this list.
 
         :return: the next ``FamilyNode`` in this list. The ``has_next()`` method should be used to test that a next ``FamilyNode`` is available before calling this method.
@@ -363,7 +363,7 @@ class FamilyNodeList:
     next_family_node = property(fget=get_next_family_node)
 
     @abc.abstractmethod
-    def get_next_family_nodes(self, n):
+    def get_next_family_nodes(self, n): # pragma: no cover
         """Gets the next set of ``FamilyNode elements`` in this list.
 
         The specified amount must be less than or equal to the return

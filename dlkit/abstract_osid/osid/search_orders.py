@@ -43,7 +43,7 @@ class OsidIdentifiableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_id(self, style):
+    def order_by_id(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the ``Id``.
 
         :param style: the search order style
@@ -81,7 +81,7 @@ class OsidTemporalSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_effective(self, style):
+    def order_by_effective(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the effective status.
 
         :param style: the search order style
@@ -94,7 +94,7 @@ class OsidTemporalSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_start_date(self, style):
+    def order_by_start_date(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the start date.
 
         :param style: the search order style
@@ -107,7 +107,7 @@ class OsidTemporalSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_end_date(self, style):
+    def order_by_end_date(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the end date.
 
         :param style: the search order style
@@ -135,7 +135,7 @@ class OsidContainableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_sequestered(self, style):
+    def order_by_sequestered(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the sequestered flag.
 
         :param style: the search order style
@@ -153,7 +153,7 @@ class OsidSourceableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_provider(self, style):
+    def order_by_provider(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by provider.
 
         The element of the provider to order is not specified but may be
@@ -169,7 +169,7 @@ class OsidSourceableSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_provider_search_order(self):
+    def supports_provider_search_order(self): # pragma: no cover
         """Tests if a ``ProviderSearchOrder`` interface is available.
 
         :return: ``true`` if a provider search order interface is available, ``false`` otherwise
@@ -182,7 +182,7 @@ class OsidSourceableSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_provider_search_order(self):
+    def get_provider_search_order(self): # pragma: no cover
         """Gets the search order interface for a provider.
 
         :return: the provider search order interface
@@ -208,7 +208,7 @@ class OsidOperableSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_active(self, style):
+    def order_by_active(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the active status.
 
         :param style: the search order style
@@ -221,7 +221,7 @@ class OsidOperableSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_enabled(self, style):
+    def order_by_enabled(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the administratively enabled status.
 
         :param style: the search order style
@@ -234,7 +234,7 @@ class OsidOperableSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_disabled(self, style):
+    def order_by_disabled(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the administratively disabled status.
 
         :param style: the search order style
@@ -247,7 +247,7 @@ class OsidOperableSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_operational(self, style):
+    def order_by_operational(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the operational status.
 
         :param style: search order style
@@ -277,7 +277,7 @@ class OsidObjectSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_display_name(self, style):
+    def order_by_display_name(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the display name.
 
         :param style: search order style
@@ -290,7 +290,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_description(self, style):
+    def order_by_description(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the description.
 
         :param style: search order style
@@ -303,7 +303,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_genus_type(self, style):
+    def order_by_genus_type(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the genus type.
 
         :param style: search order style
@@ -316,7 +316,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_state(self, process_id, style):
+    def order_by_state(self, process_id, style): # pragma: no cover
         """Orders by the state in a given ``Process``.
 
         :param process_id: a process ``Id``
@@ -331,7 +331,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_cumulative_rating(self, book_id, style):
+    def order_by_cumulative_rating(self, book_id, style): # pragma: no cover
         """Orders by the cumulative rating in a given ``Book``.
 
         :param book_id: a book ``Id``
@@ -346,7 +346,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_statistic(self, meter_id, style):
+    def order_by_statistic(self, meter_id, style): # pragma: no cover
         """Orders by a statistic for a given ``Meter``.
 
         :param meter_id: a meter ``Id``
@@ -361,7 +361,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_create_time(self, style):
+    def order_by_create_time(self, style): # pragma: no cover
         """Orders by the timestamp of the first journal entry.
 
         :param style: search order style
@@ -374,7 +374,7 @@ class OsidObjectSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_last_modified_time(self, style):
+    def order_by_last_modified_time(self, style): # pragma: no cover
         """Orders by the timestamp of the last journal entry.
 
         :param style: search order style
@@ -392,7 +392,7 @@ class OsidRelationshipSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_end_reason(self, style):
+    def order_by_end_reason(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the end reason state.
 
         :param style: search order style
@@ -405,7 +405,7 @@ class OsidRelationshipSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_end_reason_search_order(self):
+    def supports_end_reason_search_order(self): # pragma: no cover
         """Tests if a ``StateSearchOrder`` is available.
 
         :return: ``true`` if a state search order is available, ``false`` otherwise
@@ -418,7 +418,7 @@ class OsidRelationshipSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_end_reason_search_order(self):
+    def get_end_reason_search_order(self): # pragma: no cover
         """Gets the search order for a state.
 
         :return: the state search order
@@ -444,7 +444,7 @@ class OsidRuleSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_rule(self, style):
+    def order_by_rule(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the associated rule.
 
         The element of the rule to order is not specified but may be
@@ -460,7 +460,7 @@ class OsidRuleSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_rule_search_order(self):
+    def supports_rule_search_order(self): # pragma: no cover
         """Tests if a ``RuleSearchOrder`` is available.
 
         :return: ``true`` if a rule search order is available, ``false`` otherwise
@@ -473,7 +473,7 @@ class OsidRuleSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rule_search_order(self):
+    def get_rule_search_order(self): # pragma: no cover
         """Gets the search order for a rule.
 
         :return: the rule search order
@@ -494,7 +494,7 @@ class OsidEnablerSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_schedule(self, style):
+    def order_by_schedule(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the associated schedule.
 
         :param style: search order style
@@ -507,7 +507,7 @@ class OsidEnablerSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_schedule_search_order(self):
+    def supports_schedule_search_order(self): # pragma: no cover
         """Tests if a ``ScheduleSearchOrder`` is available.
 
         :return: ``true`` if a schedule search order is available, ``false`` otherwise
@@ -520,7 +520,7 @@ class OsidEnablerSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_schedule_search_order(self):
+    def get_schedule_search_order(self): # pragma: no cover
         """Gets the search order for a schedule.
 
         :return: the schedule search order
@@ -536,7 +536,7 @@ class OsidEnablerSearchOrder:
     schedule_search_order = property(fget=get_schedule_search_order)
 
     @abc.abstractmethod
-    def order_by_event(self, style):
+    def order_by_event(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the associated event.
 
         :param style: search order style
@@ -549,7 +549,7 @@ class OsidEnablerSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_event_search_order(self):
+    def supports_event_search_order(self): # pragma: no cover
         """Tests if an ``EventSearchOrder`` is available.
 
         :return: ``true`` if an event search order is available, ``false`` otherwise
@@ -562,7 +562,7 @@ class OsidEnablerSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_event_search_order(self):
+    def get_event_search_order(self): # pragma: no cover
         """Gets the search order for an event.
 
         :return: the event search order
@@ -578,7 +578,7 @@ class OsidEnablerSearchOrder:
     event_search_order = property(fget=get_event_search_order)
 
     @abc.abstractmethod
-    def order_by_cyclic_event(self, style):
+    def order_by_cyclic_event(self, style): # pragma: no cover
         """Orders the results by cyclic event.
 
         :param style: search order style
@@ -591,7 +591,7 @@ class OsidEnablerSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_cyclic_event_search_order(self):
+    def supports_cyclic_event_search_order(self): # pragma: no cover
         """Tests if a cyclic event search order is available.
 
         :return: ``true`` if a cyclic event search order is available, ``false`` otherwise
@@ -604,7 +604,7 @@ class OsidEnablerSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cyclic_event_search_order(self):
+    def get_cyclic_event_search_order(self): # pragma: no cover
         """Gets the cyclic event search order.
 
         :return: the cyclic event search order
@@ -619,7 +619,7 @@ class OsidEnablerSearchOrder:
     cyclic_event_search_order = property(fget=get_cyclic_event_search_order)
 
     @abc.abstractmethod
-    def order_by_demographic(self, style):
+    def order_by_demographic(self, style): # pragma: no cover
         """Specifies a preference for ordering the results by the associated demographic resource.
 
         :param style: search order style
@@ -632,7 +632,7 @@ class OsidEnablerSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_demographic_search_order(self):
+    def supports_demographic_search_order(self): # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -645,7 +645,7 @@ class OsidEnablerSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_demographic_search_order(self):
+    def get_demographic_search_order(self): # pragma: no cover
         """Gets the search order for a demographic resource.
 
         :return: the resource search order
@@ -681,7 +681,7 @@ class OsidCompendiumSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_start_date(self, style):
+    def order_by_start_date(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the start date.
 
         :param style: the search order style
@@ -694,7 +694,7 @@ class OsidCompendiumSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_end_date(self, style):
+    def order_by_end_date(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the end date.
 
         :param style: the search order style
@@ -707,7 +707,7 @@ class OsidCompendiumSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_interpolated(self, style):
+    def order_by_interpolated(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by interpolated results.
 
         :param style: the search order style
@@ -720,7 +720,7 @@ class OsidCompendiumSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_extrapolated(self, style):
+    def order_by_extrapolated(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by extrapolated results.
 
         :param style: the search order style

@@ -26,7 +26,7 @@ class TypeForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_display_name_metadata(self):
+    def get_display_name_metadata(self): # pragma: no cover
         """Gets the metadata for the display name.
 
         :return: metadata for the display name
@@ -41,7 +41,7 @@ class TypeForm:
     display_name_metadata = property(fget=get_display_name_metadata)
 
     @abc.abstractmethod
-    def set_display_name(self, display_name):
+    def set_display_name(self, display_name): # pragma: no cover
         """Sets a display name.
 
         :param display_name: the new display name
@@ -56,7 +56,7 @@ class TypeForm:
         pass
 
     @abc.abstractmethod
-    def clear_display_name(self):
+    def clear_display_name(self): # pragma: no cover
         """Clears the display name.
 
         :raise: ``NoAccess`` -- ``display_name`` cannot be modified
@@ -69,7 +69,7 @@ class TypeForm:
     display_name = property(fset=set_display_name, fdel=clear_display_name)
 
     @abc.abstractmethod
-    def get_display_label_metadata(self):
+    def get_display_label_metadata(self): # pragma: no cover
         """Gets the metadata for the display label.
 
         :return: metadata for the display label
@@ -84,7 +84,7 @@ class TypeForm:
     display_label_metadata = property(fget=get_display_label_metadata)
 
     @abc.abstractmethod
-    def set_display_label(self, display_label):
+    def set_display_label(self, display_label): # pragma: no cover
         """Seta a display label.
 
         :param display_label: the new display label
@@ -99,7 +99,7 @@ class TypeForm:
         pass
 
     @abc.abstractmethod
-    def clear_display_label(self):
+    def clear_display_label(self): # pragma: no cover
         """Clears the display label.
 
         :raise: ``NoAccess`` -- ``display_label`` cannot be modified
@@ -112,7 +112,7 @@ class TypeForm:
     display_label = property(fset=set_display_label, fdel=clear_display_label)
 
     @abc.abstractmethod
-    def get_description_metadata(self):
+    def get_description_metadata(self): # pragma: no cover
         """Gets the metadata for the description.
 
         :return: metadata for the description
@@ -127,7 +127,7 @@ class TypeForm:
     description_metadata = property(fget=get_description_metadata)
 
     @abc.abstractmethod
-    def set_description(self, description):
+    def set_description(self, description): # pragma: no cover
         """Sets a description.
 
         :param description: the new description
@@ -142,7 +142,7 @@ class TypeForm:
         pass
 
     @abc.abstractmethod
-    def clear_description(self):
+    def clear_description(self): # pragma: no cover
         """Clears the description.
 
         :raise: ``NoAccess`` -- ``description`` cannot be modified
@@ -155,7 +155,7 @@ class TypeForm:
     description = property(fset=set_description, fdel=clear_description)
 
     @abc.abstractmethod
-    def get_domain_metadata(self):
+    def get_domain_metadata(self): # pragma: no cover
         """Gets the metadata for the domain.
 
         :return: metadata for the domain
@@ -170,7 +170,7 @@ class TypeForm:
     domain_metadata = property(fget=get_domain_metadata)
 
     @abc.abstractmethod
-    def set_domain(self, domain):
+    def set_domain(self, domain): # pragma: no cover
         """Sets a domain.
 
         :param domain: the new domain
@@ -185,7 +185,7 @@ class TypeForm:
         pass
 
     @abc.abstractmethod
-    def clear_domain(self):
+    def clear_domain(self): # pragma: no cover
         """Clears the domain.
 
         :raise: ``NoAccess`` -- ``domain`` cannot be modified
@@ -212,7 +212,7 @@ class TypeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_type(self):
+    def get_next_type(self): # pragma: no cover
         """Gets the next ``Type`` in this list.
 
         :return: the next ``Type`` in this list. The ``has_next()`` method should be used to test that a next ``Type`` is available before calling this method.
@@ -228,7 +228,7 @@ class TypeList:
     next_type = property(fget=get_next_type)
 
     @abc.abstractmethod
-    def get_next_types(self, n):
+    def get_next_types(self, n): # pragma: no cover
         """Gets the next set of ``Types`` in this list.
 
         The specified amount must be less than or equal to the return

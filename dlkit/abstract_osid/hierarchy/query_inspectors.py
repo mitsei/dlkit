@@ -21,7 +21,7 @@ class HierarchyQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_node_id_terms(self):
+    def get_node_id_terms(self): # pragma: no cover
         """Gets the node ``Id`` query terms.
 
         :return: the query terms
@@ -36,7 +36,7 @@ class HierarchyQueryInspector:
     node_id_terms = property(fget=get_node_id_terms)
 
     @abc.abstractmethod
-    def get_hierarchy_query_inspector_record(self, hierarchy_record_type):
+    def get_hierarchy_query_inspector_record(self, hierarchy_record_type): # pragma: no cover
         """Gets the hierarchy query inspector record corresponding to the given ``Hierarchy`` record ``Type``.
 
         :param hierarchy_record_type: a hierarchy record type

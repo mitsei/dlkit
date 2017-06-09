@@ -21,7 +21,7 @@ class ResourceReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_resources(self, notification_id, resource_ids):
+    def new_resources(self, notification_id, resource_ids): # pragma: no cover
         """The callback for notifications of new resources.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class ResourceReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_resources(self, notification_id, resource_ids):
+    def changed_resources(self, notification_id, resource_ids): # pragma: no cover
         """The callback for notification of updated resources.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class ResourceReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_resources(self, notification_id, resource_ids):
+    def deleted_resources(self, notification_id, resource_ids): # pragma: no cover
         """the callback for notification of deleted resources.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class GroupReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_member(self, group_id, member_id):
+    def new_member(self, group_id, member_id): # pragma: no cover
         """The callback for notifications of new resource members.
 
         :param group_id: the ``Id`` of the ``Resource`` group
@@ -86,7 +86,7 @@ class GroupReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_member(self, group_id, member_id):
+    def deleted_member(self, group_id, member_id): # pragma: no cover
         """the callback for notification of deleted resource members.
 
         :param group_id: the ``Id`` of the ``Resource`` group
@@ -106,7 +106,7 @@ class ResourceRelationshipReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_resource_relationships(self, notification_id, resource_relationship_ids):
+    def new_resource_relationships(self, notification_id, resource_relationship_ids): # pragma: no cover
         """The callback for notifications of new relationships.
 
         :param notification_id: the notification ``Id``
@@ -121,7 +121,7 @@ class ResourceRelationshipReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_resource_relationships(self, notification_id, resource_relationship_ids):
+    def changed_resource_relationships(self, notification_id, resource_relationship_ids): # pragma: no cover
         """The callback for notification of updated relationships.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class ResourceRelationshipReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_resource_relationships(self, notification_id, resource_relationship_ids):
+    def deleted_resource_relationships(self, notification_id, resource_relationship_ids): # pragma: no cover
         """The callback for notification of deleted relationships.
 
         :param notification_id: the notification ``Id``
@@ -156,7 +156,7 @@ class BinReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_bins(self, notification_id, bin_ids):
+    def new_bins(self, notification_id, bin_ids): # pragma: no cover
         """The callback for notifications of new bins.
 
         :param notification_id: the notification ``Id``
@@ -171,7 +171,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def new_ancestor_bin(self, bin_id, ancestor_id):
+    def new_ancestor_bin(self, bin_id, ancestor_id): # pragma: no cover
         """The callback for notifications of new bin ancestors.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -186,7 +186,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def new_descendant_bin(self, bin_id, descendant_id):
+    def new_descendant_bin(self, bin_id, descendant_id): # pragma: no cover
         """The callback for notifications of new bin descendants.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -201,7 +201,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_bins(self, notification_id, bin_ids):
+    def changed_bins(self, notification_id, bin_ids): # pragma: no cover
         """The callback for notification of updated bins.
 
         :param notification_id: the notification ``Id``
@@ -216,7 +216,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_bins(self, notification_id, bin_ids):
+    def deleted_bins(self, notification_id, bin_ids): # pragma: no cover
         """The callback for notification of deleted bins.
 
         :param notification_id: the notification ``Id``
@@ -231,7 +231,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_ancestor_bin(self, bin_id, ancestor_id):
+    def deleted_ancestor_bin(self, bin_id, ancestor_id): # pragma: no cover
         """The callback for notifications of deleted bin ancestors.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -246,7 +246,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_descendant_bin(self, bin_id, descendant_id):
+    def deleted_descendant_bin(self, bin_id, descendant_id): # pragma: no cover
         """The callback for notifications of deleted bin descendants.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -261,7 +261,7 @@ class BinReceiver:
         pass
 
     @abc.abstractmethod
-    def restructured_bin_hierarchy(self):
+    def restructured_bin_hierarchy(self): # pragma: no cover
         """The callback for notifications of changes to a bin hierarchy where the hierarchy needs to refreshed.
 
 

@@ -27,7 +27,7 @@ class CalendarInfo:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_calendar_type(self):
+    def get_calendar_type(self): # pragma: no cover
         """Gets the calendar type.
 
         :return: the calendar type
@@ -42,7 +42,7 @@ class CalendarInfo:
     calendar_type = property(fget=get_calendar_type)
 
     @abc.abstractmethod
-    def get_display_name(self):
+    def get_display_name(self): # pragma: no cover
         """Gets the display name for this calendar.
 
         :return: the display name
@@ -57,7 +57,7 @@ class CalendarInfo:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_description(self):
+    def get_description(self): # pragma: no cover
         """Gets a description of this calendar.
 
         :return: the description
@@ -72,7 +72,7 @@ class CalendarInfo:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_common_era_name(self):
+    def get_common_era_name(self): # pragma: no cover
         """Gets the string for the common era in which years are positive.
 
         :return: the common era label
@@ -87,7 +87,7 @@ class CalendarInfo:
     common_era_name = property(fget=get_common_era_name)
 
     @abc.abstractmethod
-    def get_common_era_abbrev(self):
+    def get_common_era_abbrev(self): # pragma: no cover
         """Gets the abbreviation for the common era in which years are positive.
 
         :return: the common era label
@@ -102,7 +102,7 @@ class CalendarInfo:
     common_era_abbrev = property(fget=get_common_era_abbrev)
 
     @abc.abstractmethod
-    def get_before_common_era_name(self):
+    def get_before_common_era_name(self): # pragma: no cover
         """Gets the string for before the common era in which years are negative.
 
         :return: the before common era label
@@ -117,7 +117,7 @@ class CalendarInfo:
     before_common_era_name = property(fget=get_before_common_era_name)
 
     @abc.abstractmethod
-    def get_before_common_era_abbrev(self):
+    def get_before_common_era_abbrev(self): # pragma: no cover
         """Gets the abbreviation for before the common era in which years are negative.
 
         :return: the before common era label
@@ -132,7 +132,7 @@ class CalendarInfo:
     before_common_era_abbrev = property(fget=get_before_common_era_abbrev)
 
     @abc.abstractmethod
-    def get_first_year_in_common_era(self):
+    def get_first_year_in_common_era(self): # pragma: no cover
         """Gets the year number for the first year.
 
         :return: the first year
@@ -147,7 +147,7 @@ class CalendarInfo:
     first_year_in_common_era = property(fget=get_first_year_in_common_era)
 
     @abc.abstractmethod
-    def get_last_year_before_common_era(self):
+    def get_last_year_before_common_era(self): # pragma: no cover
         """Gets the year number for the year before the common era.
 
         :return: the last bce year
@@ -162,7 +162,7 @@ class CalendarInfo:
     last_year_before_common_era = property(fget=get_last_year_before_common_era)
 
     @abc.abstractmethod
-    def get_year_name(self):
+    def get_year_name(self): # pragma: no cover
         """Gets the display name for a calendar "year.
 
         "
@@ -179,7 +179,7 @@ class CalendarInfo:
     year_name = property(fget=get_year_name)
 
     @abc.abstractmethod
-    def get_month_name(self):
+    def get_month_name(self): # pragma: no cover
         """Gets the display name for a calendar "month.
 
         "
@@ -196,7 +196,7 @@ class CalendarInfo:
     month_name = property(fget=get_month_name)
 
     @abc.abstractmethod
-    def has_variable_months(self):
+    def has_variable_months(self): # pragma: no cover
         """Tests if this calendar has a variable number of months in a year.
 
         :return: ``true`` if the number of months varies, ``false`` if the number of months is constant
@@ -209,7 +209,7 @@ class CalendarInfo:
         return  # boolean
 
     @abc.abstractmethod
-    def get_num_months(self):
+    def get_num_months(self): # pragma: no cover
         """Gets the number of months of the year.
 
         For a variable month calendar, the number of all defined months
@@ -228,7 +228,7 @@ class CalendarInfo:
     num_months = property(fget=get_num_months)
 
     @abc.abstractmethod
-    def get_num_months_for_year(self, year):
+    def get_num_months_for_year(self, year): # pragma: no cover
         """Gets the number of months in the given year.
 
         :param year: a year
@@ -244,7 +244,7 @@ class CalendarInfo:
         return  # cardinal
 
     @abc.abstractmethod
-    def get_months(self):
+    def get_months(self): # pragma: no cover
         """Gets the months of the year in order of the calendar.
 
         For a variable month calendar, all defined months are returned.
@@ -263,7 +263,7 @@ class CalendarInfo:
     months = property(fget=get_months)
 
     @abc.abstractmethod
-    def get_months_for_year(self, year):
+    def get_months_for_year(self, year): # pragma: no cover
         """Gets the months of the year in order of the calendar.
 
         :param year: a year
@@ -279,7 +279,7 @@ class CalendarInfo:
         return  # osid.locale.CalendarUnit
 
     @abc.abstractmethod
-    def get_day_name(self):
+    def get_day_name(self): # pragma: no cover
         """Gets the display name for a calendar "day.
 
         "
@@ -296,7 +296,7 @@ class CalendarInfo:
     day_name = property(fget=get_day_name)
 
     @abc.abstractmethod
-    def has_variable_days(self):
+    def has_variable_days(self): # pragma: no cover
         """Tests if this calendar has a variable number of days in a month.
 
         :return: ``true`` if the number of days per month varies, ``false`` if the number of days is constant
@@ -309,7 +309,7 @@ class CalendarInfo:
         return  # boolean
 
     @abc.abstractmethod
-    def get_num_days(self):
+    def get_num_days(self): # pragma: no cover
         """Gets the number of days in a year.
 
         For a variable day calendar, the number of all defined days are
@@ -329,7 +329,7 @@ class CalendarInfo:
     num_days = property(fget=get_num_days)
 
     @abc.abstractmethod
-    def get_num_days_for_month(self, year, month):
+    def get_num_days_for_month(self, year, month): # pragma: no cover
         """Gets the number of days in the given month.
 
         :param year: a year
@@ -347,7 +347,7 @@ class CalendarInfo:
         return  # cardinal
 
     @abc.abstractmethod
-    def get_days(self):
+    def get_days(self): # pragma: no cover
         """Gets the days of the month in order of the calendar.
 
         For a variable day calendar, all defined days are returned. If
@@ -367,7 +367,7 @@ class CalendarInfo:
     days = property(fget=get_days)
 
     @abc.abstractmethod
-    def get_days_for_month(self, year, month):
+    def get_days_for_month(self, year, month): # pragma: no cover
         """Gets the days of the given month in order of the calendar.
 
         :param year: a year
@@ -385,7 +385,7 @@ class CalendarInfo:
         return  # osid.locale.CalendarUnit
 
     @abc.abstractmethod
-    def get_first_day_of_year(self):
+    def get_first_day_of_year(self): # pragma: no cover
         """Gets the first day of the calendar year.
 
         :return: the first day of the year
@@ -400,7 +400,7 @@ class CalendarInfo:
     first_day_of_year = property(fget=get_first_day_of_year)
 
     @abc.abstractmethod
-    def get_end_of_days_name(self):
+    def get_end_of_days_name(self): # pragma: no cover
         """Gets the display name for the end of the calendar.
 
         :return: the name
@@ -415,7 +415,7 @@ class CalendarInfo:
     end_of_days_name = property(fget=get_end_of_days_name)
 
     @abc.abstractmethod
-    def get_origin(self):
+    def get_origin(self): # pragma: no cover
         """Gets the start of the "common era" for this calendar.
 
         :return: start of the calendar
@@ -430,7 +430,7 @@ class CalendarInfo:
     origin = property(fget=get_origin)
 
     @abc.abstractmethod
-    def get_end_of_days(self):
+    def get_end_of_days(self): # pragma: no cover
         """Gets the end of the world as specified by this calendar.
 
         :return: end of days
@@ -445,7 +445,7 @@ class CalendarInfo:
     end_of_days = property(fget=get_end_of_days)
 
     @abc.abstractmethod
-    def get_weekdays(self):
+    def get_weekdays(self): # pragma: no cover
         """Gets the days of the week in order of the calendar.
 
         :return: the week days
@@ -471,7 +471,7 @@ class TimeInfo:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_time_type(self):
+    def get_time_type(self): # pragma: no cover
         """Gets the time type.
 
         :return: the time type
@@ -486,7 +486,7 @@ class TimeInfo:
     time_type = property(fget=get_time_type)
 
     @abc.abstractmethod
-    def get_display_name(self):
+    def get_display_name(self): # pragma: no cover
         """Gets the display name for this time system.
 
         :return: the display name
@@ -501,7 +501,7 @@ class TimeInfo:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_display_label(self):
+    def get_display_label(self): # pragma: no cover
         """Gets a short label for this time system.
 
         :return: the label
@@ -516,7 +516,7 @@ class TimeInfo:
     display_label = property(fget=get_display_label)
 
     @abc.abstractmethod
-    def get_description(self):
+    def get_description(self): # pragma: no cover
         """Gets a description of this time system.
 
         :return: the description
@@ -531,7 +531,7 @@ class TimeInfo:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_hour_name(self):
+    def get_hour_name(self): # pragma: no cover
         """Gets the display name for "hours.
 
         "
@@ -548,7 +548,7 @@ class TimeInfo:
     hour_name = property(fget=get_hour_name)
 
     @abc.abstractmethod
-    def get_hour_abbrev(self):
+    def get_hour_abbrev(self): # pragma: no cover
         """Gets the abbreviation for "hours.
 
         "
@@ -565,7 +565,7 @@ class TimeInfo:
     hour_abbrev = property(fget=get_hour_abbrev)
 
     @abc.abstractmethod
-    def get_hour_initial(self):
+    def get_hour_initial(self): # pragma: no cover
         """Gets the initial for "hours.
 
         "
@@ -582,7 +582,7 @@ class TimeInfo:
     hour_initial = property(fget=get_hour_initial)
 
     @abc.abstractmethod
-    def has_variable_hours(self):
+    def has_variable_hours(self): # pragma: no cover
         """Tests if this time system has a variable number of hours in a day.
 
         :return: ``true`` if the number of hours per day varies, ``false`` if the number of hours per day is constant
@@ -595,7 +595,7 @@ class TimeInfo:
         return  # boolean
 
     @abc.abstractmethod
-    def get_num_hours(self):
+    def get_num_hours(self): # pragma: no cover
         """Gets the number of hours in a day.
 
         For a variable hour time system, the number of hours defined is
@@ -614,7 +614,7 @@ class TimeInfo:
     num_hours = property(fget=get_num_hours)
 
     @abc.abstractmethod
-    def get_num_hours_for_day(self, year, month, day):
+    def get_num_hours_for_day(self, year, month, day): # pragma: no cover
         """Gets the number of hours for a given day.
 
         :param year: a year
@@ -635,7 +635,7 @@ class TimeInfo:
         return  # cardinal
 
     @abc.abstractmethod
-    def get_minute_name(self):
+    def get_minute_name(self): # pragma: no cover
         """Gets the display name for "minutes.
 
         "
@@ -652,7 +652,7 @@ class TimeInfo:
     minute_name = property(fget=get_minute_name)
 
     @abc.abstractmethod
-    def get_minute_abbrev(self):
+    def get_minute_abbrev(self): # pragma: no cover
         """Gets the abbreviation for "minutes.
 
         "
@@ -669,7 +669,7 @@ class TimeInfo:
     minute_abbrev = property(fget=get_minute_abbrev)
 
     @abc.abstractmethod
-    def get_minute_initial(self):
+    def get_minute_initial(self): # pragma: no cover
         """Gets the initial for "minutes.
 
         "
@@ -686,7 +686,7 @@ class TimeInfo:
     minute_initial = property(fget=get_minute_initial)
 
     @abc.abstractmethod
-    def has_variable_minutes(self):
+    def has_variable_minutes(self): # pragma: no cover
         """Tests if this time system has a variable number of minutes in an hour.
 
         :return: ``true`` if the number of minutes per hour varies, ``false`` if the number of minutes per hour is constant
@@ -699,7 +699,7 @@ class TimeInfo:
         return  # boolean
 
     @abc.abstractmethod
-    def get_num_minutes(self):
+    def get_num_minutes(self): # pragma: no cover
         """Gets the number of minutes in an hour.
 
         For a variable minute time system, the number of minutes defined
@@ -719,7 +719,7 @@ class TimeInfo:
     num_minutes = property(fget=get_num_minutes)
 
     @abc.abstractmethod
-    def get_num_minutes_for_hour(self, year, month, day, hour):
+    def get_num_minutes_for_hour(self, year, month, day, hour): # pragma: no cover
         """Gets the minutes for a given hour.
 
         :param year: a year
@@ -743,7 +743,7 @@ month, day)``
         return  # cardinal
 
     @abc.abstractmethod
-    def get_second_name(self):
+    def get_second_name(self): # pragma: no cover
         """Gets the display name for "seconds.
 
         "
@@ -760,7 +760,7 @@ month, day)``
     second_name = property(fget=get_second_name)
 
     @abc.abstractmethod
-    def get_second_abbrev(self):
+    def get_second_abbrev(self): # pragma: no cover
         """Gets the abbreviation for "seconds.
 
         "
@@ -777,7 +777,7 @@ month, day)``
     second_abbrev = property(fget=get_second_abbrev)
 
     @abc.abstractmethod
-    def get_second_initial(self):
+    def get_second_initial(self): # pragma: no cover
         """Gets the initial for "seconds.
 
         "
@@ -794,7 +794,7 @@ month, day)``
     second_initial = property(fget=get_second_initial)
 
     @abc.abstractmethod
-    def has_variable_seconds(self):
+    def has_variable_seconds(self): # pragma: no cover
         """Tests if this time system has a variable number of seconds in a minute.
 
         :return: ``true`` if the number of seconds per minute varies, ``false`` if the number of seconds per minute is constant
@@ -807,7 +807,7 @@ month, day)``
         return  # boolean
 
     @abc.abstractmethod
-    def get_num_seconds(self):
+    def get_num_seconds(self): # pragma: no cover
         """Gets the number of seconds in a minute.
 
         For a variable second time system, the number of seconds defined
@@ -827,7 +827,7 @@ month, day)``
     num_seconds = property(fget=get_num_seconds)
 
     @abc.abstractmethod
-    def get_num_seconds_for_minute(self, year, month, day, hour, minute):
+    def get_num_seconds_for_minute(self, year, month, day, hour, minute): # pragma: no cover
         """Gets the seconds for a given minute.
 
         :param year: a year
@@ -858,7 +858,7 @@ class CalendarUnit:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_name(self):
+    def get_name(self): # pragma: no cover
         """Gets the full name of this unit.
 
         :return: the name
@@ -873,7 +873,7 @@ class CalendarUnit:
     name = property(fget=get_name)
 
     @abc.abstractmethod
-    def get_abbrev3(self):
+    def get_abbrev3(self): # pragma: no cover
         """Gets a 3-letter abbreviation for this unit.
 
         :return: the abbreviation
@@ -888,7 +888,7 @@ class CalendarUnit:
     abbrev3 = property(fget=get_abbrev3)
 
     @abc.abstractmethod
-    def get_abbrev2(self):
+    def get_abbrev2(self): # pragma: no cover
         """Gets a 2-letter abbreviation for this unit.
 
         :return: the abbreviation
@@ -903,7 +903,7 @@ class CalendarUnit:
     abbrev2 = property(fget=get_abbrev2)
 
     @abc.abstractmethod
-    def get_initial(self):
+    def get_initial(self): # pragma: no cover
         """Gets a single letter abbreviation for this unit.
 
         :return: the initial
@@ -918,7 +918,7 @@ class CalendarUnit:
     initial = property(fget=get_initial)
 
     @abc.abstractmethod
-    def get_date_time_code(self):
+    def get_date_time_code(self): # pragma: no cover
         """Gets the number of this unit used in ``DateTime``.
 
         :return: the code
@@ -933,7 +933,7 @@ class CalendarUnit:
     date_time_code = property(fget=get_date_time_code)
 
     @abc.abstractmethod
-    def get_description(self):
+    def get_description(self): # pragma: no cover
         """Gets a description of this unit.
 
         :return: the description
@@ -959,7 +959,7 @@ class Locale:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_language_type(self):
+    def get_language_type(self): # pragma: no cover
         """Gets the language ``Type``.
 
         :return: the language type
@@ -974,7 +974,7 @@ class Locale:
     language_type = property(fget=get_language_type)
 
     @abc.abstractmethod
-    def get_script_type(self):
+    def get_script_type(self): # pragma: no cover
         """Gets the script ``Type``.
 
         :return: the script type
@@ -989,7 +989,7 @@ class Locale:
     script_type = property(fget=get_script_type)
 
     @abc.abstractmethod
-    def get_calendar_type(self):
+    def get_calendar_type(self): # pragma: no cover
         """Gets the calendar ``Type``.
 
         :return: the calendar type
@@ -1004,7 +1004,7 @@ class Locale:
     calendar_type = property(fget=get_calendar_type)
 
     @abc.abstractmethod
-    def get_time_type(self):
+    def get_time_type(self): # pragma: no cover
         """Gets the time ``Type``.
 
         :return: the time type
@@ -1019,7 +1019,7 @@ class Locale:
     time_type = property(fget=get_time_type)
 
     @abc.abstractmethod
-    def get_currency_type(self):
+    def get_currency_type(self): # pragma: no cover
         """Gets the currency ``Type``.
 
         :return: the currency type
@@ -1034,7 +1034,7 @@ class Locale:
     currency_type = property(fget=get_currency_type)
 
     @abc.abstractmethod
-    def get_unit_system_type(self):
+    def get_unit_system_type(self): # pragma: no cover
         """Gets the unit system ``Type``.
 
         :return: the unit system type
@@ -1049,7 +1049,7 @@ class Locale:
     unit_system_type = property(fget=get_unit_system_type)
 
     @abc.abstractmethod
-    def get_numeric_format_type(self):
+    def get_numeric_format_type(self): # pragma: no cover
         """Gets the numeric format ``Type``.
 
         :return: the numeric format type
@@ -1064,7 +1064,7 @@ class Locale:
     numeric_format_type = property(fget=get_numeric_format_type)
 
     @abc.abstractmethod
-    def get_calendar_format_type(self):
+    def get_calendar_format_type(self): # pragma: no cover
         """Gets the calendar format ``Type``.
 
         :return: the calendar format type
@@ -1079,7 +1079,7 @@ class Locale:
     calendar_format_type = property(fget=get_calendar_format_type)
 
     @abc.abstractmethod
-    def get_time_format_type(self):
+    def get_time_format_type(self): # pragma: no cover
         """Gets the time format ``Type``.
 
         :return: the time format type
@@ -1094,7 +1094,7 @@ class Locale:
     time_format_type = property(fget=get_time_format_type)
 
     @abc.abstractmethod
-    def get_currency_format_type(self):
+    def get_currency_format_type(self): # pragma: no cover
         """Gets the currency format ``Type``.
 
         :return: the currency format type
@@ -1109,7 +1109,7 @@ class Locale:
     currency_format_type = property(fget=get_currency_format_type)
 
     @abc.abstractmethod
-    def get_coordinate_format_type(self):
+    def get_coordinate_format_type(self): # pragma: no cover
         """Gets the coordinate format ``Type``.
 
         :return: the coordinate format type
@@ -1139,7 +1139,7 @@ class LocaleList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_locale(self):
+    def get_next_locale(self): # pragma: no cover
         """Gets the next ``Locale`` in this list.
 
         :return: the next ``Locale`` in this list. The ``has_next()`` method should be used to test that a next ``Locale`` is available before calling this method.
@@ -1155,7 +1155,7 @@ class LocaleList:
     next_locale = property(fget=get_next_locale)
 
     @abc.abstractmethod
-    def get_next_locales(self, n):
+    def get_next_locales(self, n): # pragma: no cover
         """Gets the next set of ``Locale`` elements in this list.
 
         The specified amount must be less than or equal to the return

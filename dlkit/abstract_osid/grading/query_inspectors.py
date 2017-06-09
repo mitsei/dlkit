@@ -21,7 +21,7 @@ class GradeQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_id_terms(self):
+    def get_grade_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` terms.
 
         :return: the grade system ``Id`` terms
@@ -36,7 +36,7 @@ class GradeQueryInspector:
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
     @abc.abstractmethod
-    def get_grade_system_terms(self):
+    def get_grade_system_terms(self): # pragma: no cover
         """Gets the grade system terms.
 
         :return: the grade system terms
@@ -51,7 +51,7 @@ class GradeQueryInspector:
     grade_system_terms = property(fget=get_grade_system_terms)
 
     @abc.abstractmethod
-    def get_input_score_start_range_terms(self):
+    def get_input_score_start_range_terms(self): # pragma: no cover
         """Gets the input score start range terms.
 
         :return: the input score start range terms
@@ -66,7 +66,7 @@ class GradeQueryInspector:
     input_score_start_range_terms = property(fget=get_input_score_start_range_terms)
 
     @abc.abstractmethod
-    def get_input_score_end_range_terms(self):
+    def get_input_score_end_range_terms(self): # pragma: no cover
         """Gets the input score end range terms.
 
         :return: the input score end range terms
@@ -81,7 +81,7 @@ class GradeQueryInspector:
     input_score_end_range_terms = property(fget=get_input_score_end_range_terms)
 
     @abc.abstractmethod
-    def get_input_score_terms(self):
+    def get_input_score_terms(self): # pragma: no cover
         """Gets the input score terms.
 
         :return: the input score range terms
@@ -96,7 +96,7 @@ class GradeQueryInspector:
     input_score_terms = property(fget=get_input_score_terms)
 
     @abc.abstractmethod
-    def get_output_score_terms(self):
+    def get_output_score_terms(self): # pragma: no cover
         """Gets the output score terms.
 
         :return: the output score terms
@@ -111,7 +111,7 @@ class GradeQueryInspector:
     output_score_terms = property(fget=get_output_score_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_id_terms(self):
+    def get_grade_entry_id_terms(self): # pragma: no cover
         """Gets the grade entry ``Id`` terms.
 
         :return: the grade entry ``Id`` terms
@@ -126,7 +126,7 @@ class GradeQueryInspector:
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_terms(self):
+    def get_grade_entry_terms(self): # pragma: no cover
         """Gets the grade entry terms.
 
         :return: the grade entry terms
@@ -141,7 +141,7 @@ class GradeQueryInspector:
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
     @abc.abstractmethod
-    def get_gradebook_id_terms(self):
+    def get_gradebook_id_terms(self): # pragma: no cover
         """Gets the gradebook ``Id`` terms.
 
         :return: the gradebook ``Id`` terms
@@ -156,7 +156,7 @@ class GradeQueryInspector:
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_terms(self):
+    def get_gradebook_terms(self): # pragma: no cover
         """Gets the gradebook terms.
 
         :return: the gradebook terms
@@ -171,7 +171,7 @@ class GradeQueryInspector:
     gradebook_terms = property(fget=get_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_query_inspector_record(self, grade_record_type):
+    def get_grade_query_inspector_record(self, grade_record_type): # pragma: no cover
         """Gets the grade query inspector record corresponding to the given ``Grade`` record ``Type``.
 
         :param grade_record_type: a grade record type
@@ -193,7 +193,7 @@ class GradeSystemQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_based_on_grades_terms(self):
+    def get_based_on_grades_terms(self): # pragma: no cover
         """Gets the grade-based systems terms.
 
         :return: the grade-based systems terms
@@ -208,7 +208,7 @@ class GradeSystemQueryInspector:
     based_on_grades_terms = property(fget=get_based_on_grades_terms)
 
     @abc.abstractmethod
-    def get_grade_id_terms(self):
+    def get_grade_id_terms(self): # pragma: no cover
         """Gets the grade ``Id`` terms.
 
         :return: the grade ``Id`` terms
@@ -223,7 +223,7 @@ class GradeSystemQueryInspector:
     grade_id_terms = property(fget=get_grade_id_terms)
 
     @abc.abstractmethod
-    def get_grade_terms(self):
+    def get_grade_terms(self): # pragma: no cover
         """Gets the grade terms.
 
         :return: the grade terms
@@ -238,7 +238,7 @@ class GradeSystemQueryInspector:
     grade_terms = property(fget=get_grade_terms)
 
     @abc.abstractmethod
-    def get_lowest_numeric_score_terms(self):
+    def get_lowest_numeric_score_terms(self): # pragma: no cover
         """Gets the lowest numeric score terms.
 
         :return: the lowest numeric score terms
@@ -253,7 +253,7 @@ class GradeSystemQueryInspector:
     lowest_numeric_score_terms = property(fget=get_lowest_numeric_score_terms)
 
     @abc.abstractmethod
-    def get_numeric_score_increment_terms(self):
+    def get_numeric_score_increment_terms(self): # pragma: no cover
         """Gets the numeric score increment terms.
 
         :return: the numeric score increment terms
@@ -268,7 +268,7 @@ class GradeSystemQueryInspector:
     numeric_score_increment_terms = property(fget=get_numeric_score_increment_terms)
 
     @abc.abstractmethod
-    def get_highest_numeric_score_terms(self):
+    def get_highest_numeric_score_terms(self): # pragma: no cover
         """Gets the highest numeric score terms.
 
         :return: the highest numeric score terms
@@ -283,7 +283,7 @@ class GradeSystemQueryInspector:
     highest_numeric_score_terms = property(fget=get_highest_numeric_score_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_id_terms(self):
+    def get_gradebook_column_id_terms(self): # pragma: no cover
         """Gets the gradebook column ``Id`` terms.
 
         :return: the gradebook column ``Id`` terms
@@ -298,7 +298,7 @@ class GradeSystemQueryInspector:
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_terms(self):
+    def get_gradebook_column_terms(self): # pragma: no cover
         """Gets the gradebook column terms.
 
         :return: the gradebook column terms
@@ -313,7 +313,7 @@ class GradeSystemQueryInspector:
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
     @abc.abstractmethod
-    def get_gradebook_id_terms(self):
+    def get_gradebook_id_terms(self): # pragma: no cover
         """Gets the gradebook ``Id`` terms.
 
         :return: the gradebook ``Id`` terms
@@ -328,7 +328,7 @@ class GradeSystemQueryInspector:
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_terms(self):
+    def get_gradebook_terms(self): # pragma: no cover
         """Gets the gradebook terms.
 
         :return: the gradebook terms
@@ -343,7 +343,7 @@ class GradeSystemQueryInspector:
     gradebook_terms = property(fget=get_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_system_query_inspector_record(self, grade_system_record_type):
+    def get_grade_system_query_inspector_record(self, grade_system_record_type): # pragma: no cover
         """Gets the grade system query inspector record corresponding to the given ``GradeSystem`` record ``Type``.
 
         :param grade_system_record_type: a grade system record type
@@ -365,7 +365,7 @@ class GradeEntryQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_column_id_terms(self):
+    def get_gradebook_column_id_terms(self): # pragma: no cover
         """Gets the gradebook column ``Id`` terms.
 
         :return: the gradebook column ``Id`` terms
@@ -380,7 +380,7 @@ class GradeEntryQueryInspector:
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_terms(self):
+    def get_gradebook_column_terms(self): # pragma: no cover
         """Gets the gradebook column terms.
 
         :return: the gradebook column terms
@@ -395,7 +395,7 @@ class GradeEntryQueryInspector:
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
     @abc.abstractmethod
-    def get_key_resource_id_terms(self):
+    def get_key_resource_id_terms(self): # pragma: no cover
         """Gets the key resource ``Id`` terms.
 
         :return: the key resource ``Id`` terms
@@ -410,7 +410,7 @@ class GradeEntryQueryInspector:
     key_resource_id_terms = property(fget=get_key_resource_id_terms)
 
     @abc.abstractmethod
-    def get_key_resource_terms(self):
+    def get_key_resource_terms(self): # pragma: no cover
         """Gets the key resource terms.
 
         :return: the key resource terms
@@ -425,7 +425,7 @@ class GradeEntryQueryInspector:
     key_resource_terms = property(fget=get_key_resource_terms)
 
     @abc.abstractmethod
-    def get_derived_terms(self):
+    def get_derived_terms(self): # pragma: no cover
         """Gets the derived terms.
 
         :return: the derived terms
@@ -440,7 +440,7 @@ class GradeEntryQueryInspector:
     derived_terms = property(fget=get_derived_terms)
 
     @abc.abstractmethod
-    def get_overridden_grade_entry_id_terms(self):
+    def get_overridden_grade_entry_id_terms(self): # pragma: no cover
         """Gets the overridden calculated grade entry ``Id`` terms.
 
         :return: the overridden grade entry ``Id`` terms
@@ -455,7 +455,7 @@ class GradeEntryQueryInspector:
     overridden_grade_entry_id_terms = property(fget=get_overridden_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def get_overridden_grade_entry_terms(self):
+    def get_overridden_grade_entry_terms(self): # pragma: no cover
         """Gets the overriden derived grade terms.
 
         :return: the overridden grade entry terms
@@ -470,7 +470,7 @@ class GradeEntryQueryInspector:
     overridden_grade_entry_terms = property(fget=get_overridden_grade_entry_terms)
 
     @abc.abstractmethod
-    def get_ignored_for_calculations_terms(self):
+    def get_ignored_for_calculations_terms(self): # pragma: no cover
         """Gets the ignored for caluclation entries terms.
 
         :return: the ignored for calculation terms
@@ -485,7 +485,7 @@ class GradeEntryQueryInspector:
     ignored_for_calculations_terms = property(fget=get_ignored_for_calculations_terms)
 
     @abc.abstractmethod
-    def get_grade_id_terms(self):
+    def get_grade_id_terms(self): # pragma: no cover
         """Gets the grade ``Id`` terms.
 
         :return: the grade ``Id`` terms
@@ -500,7 +500,7 @@ class GradeEntryQueryInspector:
     grade_id_terms = property(fget=get_grade_id_terms)
 
     @abc.abstractmethod
-    def get_grade_terms(self):
+    def get_grade_terms(self): # pragma: no cover
         """Gets the grade terms.
 
         :return: the grade terms
@@ -515,7 +515,7 @@ class GradeEntryQueryInspector:
     grade_terms = property(fget=get_grade_terms)
 
     @abc.abstractmethod
-    def get_score_terms(self):
+    def get_score_terms(self): # pragma: no cover
         """Gets the score terms.
 
         :return: the score terms
@@ -530,7 +530,7 @@ class GradeEntryQueryInspector:
     score_terms = property(fget=get_score_terms)
 
     @abc.abstractmethod
-    def get_time_graded_terms(self):
+    def get_time_graded_terms(self): # pragma: no cover
         """Gets the time graded terms.
 
         :return: the time graded terms
@@ -545,7 +545,7 @@ class GradeEntryQueryInspector:
     time_graded_terms = property(fget=get_time_graded_terms)
 
     @abc.abstractmethod
-    def get_grader_id_terms(self):
+    def get_grader_id_terms(self): # pragma: no cover
         """Gets the grader ``Id`` terms.
 
         :return: the grader ``Id`` terms
@@ -560,7 +560,7 @@ class GradeEntryQueryInspector:
     grader_id_terms = property(fget=get_grader_id_terms)
 
     @abc.abstractmethod
-    def get_grader_terms(self):
+    def get_grader_terms(self): # pragma: no cover
         """Gets the grader terms.
 
         :return: the grader terms
@@ -575,7 +575,7 @@ class GradeEntryQueryInspector:
     grader_terms = property(fget=get_grader_terms)
 
     @abc.abstractmethod
-    def get_grading_agent_id_terms(self):
+    def get_grading_agent_id_terms(self): # pragma: no cover
         """Gets the grading agent ``Id`` terms.
 
         :return: the grading agent ``Id`` terms
@@ -590,7 +590,7 @@ class GradeEntryQueryInspector:
     grading_agent_id_terms = property(fget=get_grading_agent_id_terms)
 
     @abc.abstractmethod
-    def get_grading_agent_terms(self):
+    def get_grading_agent_terms(self): # pragma: no cover
         """Gets the grading agent terms.
 
         :return: the grading agent terms
@@ -605,7 +605,7 @@ class GradeEntryQueryInspector:
     grading_agent_terms = property(fget=get_grading_agent_terms)
 
     @abc.abstractmethod
-    def get_gradebook_id_terms(self):
+    def get_gradebook_id_terms(self): # pragma: no cover
         """Gets the gradebook ``Id`` terms.
 
         :return: the gradebook ``Id`` terms
@@ -620,7 +620,7 @@ class GradeEntryQueryInspector:
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_terms(self):
+    def get_gradebook_terms(self): # pragma: no cover
         """Gets the gradebook terms.
 
         :return: the gradebook terms
@@ -635,7 +635,7 @@ class GradeEntryQueryInspector:
     gradebook_terms = property(fget=get_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_query_inspector_record(self, grade_entry_record_type):
+    def get_grade_entry_query_inspector_record(self, grade_entry_record_type): # pragma: no cover
         """Gets the grade entry query inspector record corresponding to the given ``GradeEntry`` record ``Type``.
 
         :param grade_entry_record_type: a grade entry record type
@@ -657,7 +657,7 @@ class GradebookColumnQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_id_terms(self):
+    def get_grade_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` terms.
 
         :return: the grade system ``Id`` terms
@@ -672,7 +672,7 @@ class GradebookColumnQueryInspector:
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
     @abc.abstractmethod
-    def get_grade_system_terms(self):
+    def get_grade_system_terms(self): # pragma: no cover
         """Gets the grade system terms.
 
         :return: the grade system terms
@@ -687,7 +687,7 @@ class GradebookColumnQueryInspector:
     grade_system_terms = property(fget=get_grade_system_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_id_terms(self):
+    def get_grade_entry_id_terms(self): # pragma: no cover
         """Gets the grade entry ``Id`` terms.
 
         :return: the grade entry ``Id`` terms
@@ -702,7 +702,7 @@ class GradebookColumnQueryInspector:
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_terms(self):
+    def get_grade_entry_terms(self): # pragma: no cover
         """Gets the grade entry terms.
 
         :return: the grade entry terms
@@ -717,7 +717,7 @@ class GradebookColumnQueryInspector:
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_terms(self):
+    def get_gradebook_column_summary_terms(self): # pragma: no cover
         """Gets the gradebook column summary terms.
 
         :return: the gradebook column summary terms
@@ -732,7 +732,7 @@ class GradebookColumnQueryInspector:
     gradebook_column_summary_terms = property(fget=get_gradebook_column_summary_terms)
 
     @abc.abstractmethod
-    def get_gradebook_id_terms(self):
+    def get_gradebook_id_terms(self): # pragma: no cover
         """Gets the gradebook ``Id`` terms.
 
         :return: the gradebook ``Id`` terms
@@ -747,7 +747,7 @@ class GradebookColumnQueryInspector:
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_terms(self):
+    def get_gradebook_terms(self): # pragma: no cover
         """Gets the gradebook terms.
 
         :return: the gradebook terms
@@ -762,7 +762,7 @@ class GradebookColumnQueryInspector:
     gradebook_terms = property(fget=get_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_query_inspector_record(self, gradebook_column_record_type):
+    def get_gradebook_column_query_inspector_record(self, gradebook_column_record_type): # pragma: no cover
         """Gets the gradebook column query inspector record corresponding to the given ``GradebookColumn`` record ``Type``.
 
         :param gradebook_column_record_type: a gradebook column record type
@@ -784,7 +784,7 @@ class GradebookColumnSummaryQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_gradebook_column_id_terms(self):
+    def get_gradebook_column_id_terms(self): # pragma: no cover
         """Gets the gradebook column ``Id`` terms.
 
         :return: the gradebook column ``Id`` terms
@@ -799,7 +799,7 @@ class GradebookColumnSummaryQueryInspector:
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_terms(self):
+    def get_gradebook_column_terms(self): # pragma: no cover
         """Gets the gradebook column terms.
 
         :return: the gradebookc column terms
@@ -814,7 +814,7 @@ class GradebookColumnSummaryQueryInspector:
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
     @abc.abstractmethod
-    def get_mean_terms(self):
+    def get_mean_terms(self): # pragma: no cover
         """Gets the mean terms.
 
         :return: the mean terms
@@ -829,7 +829,7 @@ class GradebookColumnSummaryQueryInspector:
     mean_terms = property(fget=get_mean_terms)
 
     @abc.abstractmethod
-    def get_minimum_mean_terms(self):
+    def get_minimum_mean_terms(self): # pragma: no cover
         """Gets the minimum mean terms.
 
         :return: the minimum mean terms
@@ -844,7 +844,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_mean_terms = property(fget=get_minimum_mean_terms)
 
     @abc.abstractmethod
-    def get_median_terms(self):
+    def get_median_terms(self): # pragma: no cover
         """Gets the median terms.
 
         :return: the median terms
@@ -859,7 +859,7 @@ class GradebookColumnSummaryQueryInspector:
     median_terms = property(fget=get_median_terms)
 
     @abc.abstractmethod
-    def get_minimum_median_terms(self):
+    def get_minimum_median_terms(self): # pragma: no cover
         """Gets the minimum median terms.
 
         :return: the minimum median terms
@@ -874,7 +874,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_median_terms = property(fget=get_minimum_median_terms)
 
     @abc.abstractmethod
-    def get_mode_terms(self):
+    def get_mode_terms(self): # pragma: no cover
         """Gets the mode terms.
 
         :return: the mode terms
@@ -889,7 +889,7 @@ class GradebookColumnSummaryQueryInspector:
     mode_terms = property(fget=get_mode_terms)
 
     @abc.abstractmethod
-    def get_minimum_mode_terms(self):
+    def get_minimum_mode_terms(self): # pragma: no cover
         """Gets the minimum mode terms.
 
         :return: the minimum mode terms
@@ -904,7 +904,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_mode_terms = property(fget=get_minimum_mode_terms)
 
     @abc.abstractmethod
-    def get_rms_terms(self):
+    def get_rms_terms(self): # pragma: no cover
         """Gets the rms terms.
 
         :return: the rms terms
@@ -919,7 +919,7 @@ class GradebookColumnSummaryQueryInspector:
     rms_terms = property(fget=get_rms_terms)
 
     @abc.abstractmethod
-    def get_minimum_rms_terms(self):
+    def get_minimum_rms_terms(self): # pragma: no cover
         """Gets the minimum rms terms.
 
         :return: the minimum rms terms
@@ -934,7 +934,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_rms_terms = property(fget=get_minimum_rms_terms)
 
     @abc.abstractmethod
-    def get_standard_deviation_terms(self):
+    def get_standard_deviation_terms(self): # pragma: no cover
         """Gets the standard deviation terms.
 
         :return: the standard deviation terms
@@ -949,7 +949,7 @@ class GradebookColumnSummaryQueryInspector:
     standard_deviation_terms = property(fget=get_standard_deviation_terms)
 
     @abc.abstractmethod
-    def get_minimum_standard_deviation_terms(self):
+    def get_minimum_standard_deviation_terms(self): # pragma: no cover
         """Gets the minimum standard deviation terms.
 
         :return: the minimum standard deviation terms
@@ -964,7 +964,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_standard_deviation_terms = property(fget=get_minimum_standard_deviation_terms)
 
     @abc.abstractmethod
-    def get_sum_terms(self):
+    def get_sum_terms(self): # pragma: no cover
         """Gets the sum terms.
 
         :return: the sum terms
@@ -979,7 +979,7 @@ class GradebookColumnSummaryQueryInspector:
     sum_terms = property(fget=get_sum_terms)
 
     @abc.abstractmethod
-    def get_minimum_sum_terms(self):
+    def get_minimum_sum_terms(self): # pragma: no cover
         """Gets the minimum sum terms.
 
         :return: the minimum sum terms
@@ -994,7 +994,7 @@ class GradebookColumnSummaryQueryInspector:
     minimum_sum_terms = property(fget=get_minimum_sum_terms)
 
     @abc.abstractmethod
-    def get_gradebook_id_terms(self):
+    def get_gradebook_id_terms(self): # pragma: no cover
         """Gets the gradebook ``Id`` terms.
 
         :return: the gradebook ``Id`` terms
@@ -1009,7 +1009,7 @@ class GradebookColumnSummaryQueryInspector:
     gradebook_id_terms = property(fget=get_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_terms(self):
+    def get_gradebook_terms(self): # pragma: no cover
         """Gets the gradebook terms.
 
         :return: the gradebook terms
@@ -1024,7 +1024,7 @@ class GradebookColumnSummaryQueryInspector:
     gradebook_terms = property(fget=get_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_query_inspector_record(self, gradebook_column_summary_record_type):
+    def get_gradebook_column_summary_query_inspector_record(self, gradebook_column_summary_record_type): # pragma: no cover
         """Gets the gradebook column summary query inspector record corresponding to the given ``GradebookColumnSummary`` record ``Type``.
 
         :param gradebook_column_summary_record_type: a gradebook column summry record type
@@ -1046,7 +1046,7 @@ class GradebookQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_grade_system_id_terms(self):
+    def get_grade_system_id_terms(self): # pragma: no cover
         """Gets the grade system ``Id`` terms.
 
         :return: the grade system ``Id`` terms
@@ -1061,7 +1061,7 @@ class GradebookQueryInspector:
     grade_system_id_terms = property(fget=get_grade_system_id_terms)
 
     @abc.abstractmethod
-    def get_grade_system_terms(self):
+    def get_grade_system_terms(self): # pragma: no cover
         """Gets the grade system terms.
 
         :return: the grade system terms
@@ -1076,7 +1076,7 @@ class GradebookQueryInspector:
     grade_system_terms = property(fget=get_grade_system_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_id_terms(self):
+    def get_grade_entry_id_terms(self): # pragma: no cover
         """Gets the grade entry ``Id`` terms.
 
         :return: the grade entry ``Id`` terms
@@ -1091,7 +1091,7 @@ class GradebookQueryInspector:
     grade_entry_id_terms = property(fget=get_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_terms(self):
+    def get_grade_entry_terms(self): # pragma: no cover
         """Gets the grade entry terms.
 
         :return: the grade entry terms
@@ -1106,7 +1106,7 @@ class GradebookQueryInspector:
     grade_entry_terms = property(fget=get_grade_entry_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_id_terms(self):
+    def get_gradebook_column_id_terms(self): # pragma: no cover
         """Gets the gradebook column ``Id`` terms.
 
         :return: the gradebook column ``Id`` terms
@@ -1121,7 +1121,7 @@ class GradebookQueryInspector:
     gradebook_column_id_terms = property(fget=get_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_terms(self):
+    def get_gradebook_column_terms(self): # pragma: no cover
         """Gets the gradebook column terms.
 
         :return: the gradebook column terms
@@ -1136,7 +1136,7 @@ class GradebookQueryInspector:
     gradebook_column_terms = property(fget=get_gradebook_column_terms)
 
     @abc.abstractmethod
-    def get_ancestor_gradebook_id_terms(self):
+    def get_ancestor_gradebook_id_terms(self): # pragma: no cover
         """Gets the ancestor gradebook ``Id`` terms.
 
         :return: the ancestor gradebook ``Id`` terms
@@ -1151,7 +1151,7 @@ class GradebookQueryInspector:
     ancestor_gradebook_id_terms = property(fget=get_ancestor_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_gradebook_terms(self):
+    def get_ancestor_gradebook_terms(self): # pragma: no cover
         """Gets the ancestor gradebook terms.
 
         :return: the ancestor gradebook terms
@@ -1166,7 +1166,7 @@ class GradebookQueryInspector:
     ancestor_gradebook_terms = property(fget=get_ancestor_gradebook_terms)
 
     @abc.abstractmethod
-    def get_descendant_gradebook_id_terms(self):
+    def get_descendant_gradebook_id_terms(self): # pragma: no cover
         """Gets the descendant gradebook ``Id`` terms.
 
         :return: the descendant gradebook ``Id`` terms
@@ -1181,7 +1181,7 @@ class GradebookQueryInspector:
     descendant_gradebook_id_terms = property(fget=get_descendant_gradebook_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_gradebook_terms(self):
+    def get_descendant_gradebook_terms(self): # pragma: no cover
         """Gets the descendant gradebook terms.
 
         :return: the descendant gradebook terms
@@ -1196,7 +1196,7 @@ class GradebookQueryInspector:
     descendant_gradebook_terms = property(fget=get_descendant_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_query_inspector_record(self, gradebook_record_type):
+    def get_gradebook_query_inspector_record(self, gradebook_record_type): # pragma: no cover
         """Gets the gradebook query inspector record corresponding to the given ``Gradebook`` record ``Type``.
 
         :param gradebook_record_type: a gradebook record type

@@ -21,7 +21,7 @@ class RelationshipQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_id_terms(self):
+    def get_source_id_terms(self): # pragma: no cover
         """Gets the peer ``Id`` terms.
 
         :return: the peer ``Id`` terms
@@ -36,7 +36,7 @@ class RelationshipQueryInspector:
     source_id_terms = property(fget=get_source_id_terms)
 
     @abc.abstractmethod
-    def get_destination_id_terms(self):
+    def get_destination_id_terms(self): # pragma: no cover
         """Gets the other peer ``Id`` terms.
 
         :return: the other peer ``Id`` terms
@@ -51,7 +51,7 @@ class RelationshipQueryInspector:
     destination_id_terms = property(fget=get_destination_id_terms)
 
     @abc.abstractmethod
-    def get_same_peer_id_terms(self):
+    def get_same_peer_id_terms(self): # pragma: no cover
         """Gets the same peer terms.
 
         :return: the same peer terms
@@ -66,7 +66,7 @@ class RelationshipQueryInspector:
     same_peer_id_terms = property(fget=get_same_peer_id_terms)
 
     @abc.abstractmethod
-    def get_family_id_terms(self):
+    def get_family_id_terms(self): # pragma: no cover
         """Gets the family ``Id`` terms.
 
         :return: the family ``Id`` terms
@@ -81,7 +81,7 @@ class RelationshipQueryInspector:
     family_id_terms = property(fget=get_family_id_terms)
 
     @abc.abstractmethod
-    def get_family_terms(self):
+    def get_family_terms(self): # pragma: no cover
         """Gets the family terms.
 
         :return: the family terms
@@ -96,7 +96,7 @@ class RelationshipQueryInspector:
     family_terms = property(fget=get_family_terms)
 
     @abc.abstractmethod
-    def get_relationship_query_inspector_record(self, relationship_record_type):
+    def get_relationship_query_inspector_record(self, relationship_record_type): # pragma: no cover
         """Gets the relationship query inspector record corresponding to the given ``Relationship`` record ``Type``.
 
         :param relationship_record_type: a relationship record type
@@ -119,7 +119,7 @@ class FamilyQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationship_id_terms(self):
+    def get_relationship_id_terms(self): # pragma: no cover
         """Gets the relationship ``Id`` terms.
 
         :return: the relationship ``Id`` terms
@@ -134,7 +134,7 @@ class FamilyQueryInspector:
     relationship_id_terms = property(fget=get_relationship_id_terms)
 
     @abc.abstractmethod
-    def get_relationship_terms(self):
+    def get_relationship_terms(self): # pragma: no cover
         """Gets the relationship terms.
 
         :return: the relationship terms
@@ -149,7 +149,7 @@ class FamilyQueryInspector:
     relationship_terms = property(fget=get_relationship_terms)
 
     @abc.abstractmethod
-    def get_ancestor_family_id_terms(self):
+    def get_ancestor_family_id_terms(self): # pragma: no cover
         """Gets the ancestor family ``Id`` terms.
 
         :return: the ancestor family ``Id`` terms
@@ -164,7 +164,7 @@ class FamilyQueryInspector:
     ancestor_family_id_terms = property(fget=get_ancestor_family_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_family_terms(self):
+    def get_ancestor_family_terms(self): # pragma: no cover
         """Gets the ancestor family terms.
 
         :return: the ancestor family terms
@@ -179,7 +179,7 @@ class FamilyQueryInspector:
     ancestor_family_terms = property(fget=get_ancestor_family_terms)
 
     @abc.abstractmethod
-    def get_descendant_family_id_terms(self):
+    def get_descendant_family_id_terms(self): # pragma: no cover
         """Gets the descendant family ``Id`` terms.
 
         :return: the descendant family ``Id`` terms
@@ -194,7 +194,7 @@ class FamilyQueryInspector:
     descendant_family_id_terms = property(fget=get_descendant_family_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_family_terms(self):
+    def get_descendant_family_terms(self): # pragma: no cover
         """Gets the descendant family terms.
 
         :return: the descendant family terms
@@ -209,7 +209,7 @@ class FamilyQueryInspector:
     descendant_family_terms = property(fget=get_descendant_family_terms)
 
     @abc.abstractmethod
-    def get_family_query_inspector_record(self, family_record_type):
+    def get_family_query_inspector_record(self, family_record_type): # pragma: no cover
         """Gets the family query inspector record corresponding to the given ``Family`` record ``Type``.
 
         :param family_record_type: a family record type

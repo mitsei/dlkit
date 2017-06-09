@@ -21,7 +21,7 @@ class AuthorizationCondition:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authorization_condition_record(self, authorization_condition_record_type):
+    def get_authorization_condition_record(self, authorization_condition_record_type): # pragma: no cover
         """Gets the authorization condition record corresponding to the given ``AuthorizationCondition`` record ``Type``.
 
         This method is used to retrieve an object implementing the

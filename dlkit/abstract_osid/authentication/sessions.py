@@ -55,7 +55,7 @@ class AgentLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -70,7 +70,7 @@ class AgentLookupSession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -86,7 +86,7 @@ class AgentLookupSession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_lookup_agents(self):
+    def can_lookup_agents(self): # pragma: no cover
         """Tests if this user can perform ``Agent`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -105,7 +105,7 @@ class AgentLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_agent_view(self):
+    def use_comparative_agent_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -119,7 +119,7 @@ class AgentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_agent_view(self):
+    def use_plenary_agent_view(self): # pragma: no cover
         """A complete view of the ``Agent`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -134,7 +134,7 @@ class AgentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_agency_view(self):
+    def use_federated_agency_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include agents in agencies which are
@@ -148,7 +148,7 @@ class AgentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_agency_view(self):
+    def use_isolated_agency_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts lookups to this agency only.
@@ -161,7 +161,7 @@ class AgentLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_agent(self, agent_id):
+    def get_agent(self, agent_id): # pragma: no cover
         """Gets the ``Agent`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -184,7 +184,7 @@ class AgentLookupSession:
         return  # osid.authentication.Agent
 
     @abc.abstractmethod
-    def get_agents_by_ids(self, agent_ids):
+    def get_agents_by_ids(self, agent_ids): # pragma: no cover
         """Gets an ``AgentList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the agents
@@ -210,7 +210,7 @@ class AgentLookupSession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agents_by_genus_type(self, agent_genus_type):
+    def get_agents_by_genus_type(self, agent_genus_type): # pragma: no cover
         """Gets an ``AgentList`` corresponding to the given agent genus ``Type`` which does not include agents of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known agents or
@@ -231,7 +231,7 @@ class AgentLookupSession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agents_by_parent_genus_type(self, agent_genus_type):
+    def get_agents_by_parent_genus_type(self, agent_genus_type): # pragma: no cover
         """Gets an ``AgentList`` corresponding to the given agent genus ``Type`` and include any additional agents with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known agents or
@@ -252,7 +252,7 @@ class AgentLookupSession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agents_by_record_type(self, agent_record_type):
+    def get_agents_by_record_type(self, agent_record_type): # pragma: no cover
         """Gets an ``AgentList`` containing the given agent record ``Type``.
 
         In plenary mode, the returned list contains all known agents or
@@ -273,7 +273,7 @@ class AgentLookupSession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agents(self):
+    def get_agents(self): # pragma: no cover
         """Gets all ``Agents``.
 
         In plenary mode, the returned list contains all known agents or
@@ -316,7 +316,7 @@ class AgentQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -331,7 +331,7 @@ class AgentQuerySession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -347,7 +347,7 @@ class AgentQuerySession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_search_agents(self):
+    def can_search_agents(self): # pragma: no cover
         """Tests if this user can perform ``Agent`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -366,7 +366,7 @@ class AgentQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_agency_view(self):
+    def use_federated_agency_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include agents in agencies which are
@@ -380,7 +380,7 @@ class AgentQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_agency_view(self):
+    def use_isolated_agency_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this agency only.
@@ -393,7 +393,7 @@ class AgentQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_agent_query(self):
+    def get_agent_query(self): # pragma: no cover
         """Gets an agent query.
 
         :return: the agent query
@@ -408,7 +408,7 @@ class AgentQuerySession:
     agent_query = property(fget=get_agent_query)
 
     @abc.abstractmethod
-    def get_agents_by_query(self, agent_query):
+    def get_agents_by_query(self, agent_query): # pragma: no cover
         """Gets a list of ``Agents`` matching the given agent query.
 
         :param agent_query: the agent query
@@ -458,7 +458,7 @@ class AgentSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_search(self):
+    def get_agent_search(self): # pragma: no cover
         """Gets an agent search.
 
         :return: the agent search
@@ -473,7 +473,7 @@ class AgentSearchSession:
     agent_search = property(fget=get_agent_search)
 
     @abc.abstractmethod
-    def get_agent_search_order(self):
+    def get_agent_search_order(self): # pragma: no cover
         """Gets an agent search order.
 
         The ``AgentSearchOrder`` is supplied to an ``AgentSearch`` to
@@ -491,7 +491,7 @@ class AgentSearchSession:
     agent_search_order = property(fget=get_agent_search_order)
 
     @abc.abstractmethod
-    def get_agents_by_search(self, agent_query, agent_search):
+    def get_agents_by_search(self, agent_query, agent_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param agent_query: the agent query
@@ -511,7 +511,7 @@ class AgentSearchSession:
         return  # osid.authentication.AgentSearchResults
 
     @abc.abstractmethod
-    def get_agent_query_from_inspector(self, agent_query_inspector):
+    def get_agent_query_from_inspector(self, agent_query_inspector): # pragma: no cover
         """Gets an agent query from an inspector.
 
         The inspector is available from an ``AgentSearchResults``.
@@ -566,7 +566,7 @@ class AgentAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -581,7 +581,7 @@ class AgentAdminSession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -597,7 +597,7 @@ class AgentAdminSession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_create_agents(self):
+    def can_create_agents(self): # pragma: no cover
         """Tests if this user can create ``Agents``.
 
         A return of true does not guarantee successful authorization. A
@@ -616,7 +616,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_agent_with_record_types(self, agent_record_types):
+    def can_create_agent_with_record_types(self, agent_record_types): # pragma: no cover
         """Tests if this user can create a single ``Agent`` using the desired record types.
 
         While ``AuthenticationManager.getAgentRecordTypes()`` can be
@@ -637,7 +637,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_form_for_create(self, agent_record_types):
+    def get_agent_form_for_create(self, agent_record_types): # pragma: no cover
         """Gets the agent form for creating new agents.
 
         A new form should be requested for each create transaction.
@@ -657,7 +657,7 @@ class AgentAdminSession:
         return  # osid.authentication.AgentForm
 
     @abc.abstractmethod
-    def create_agent(self, agent_form):
+    def create_agent(self, agent_form): # pragma: no cover
         """Creates a new ``Agent``.
 
         :param agent_form: the form for this ``Agent``
@@ -677,7 +677,7 @@ class AgentAdminSession:
         return  # osid.authentication.Agent
 
     @abc.abstractmethod
-    def can_update_agents(self):
+    def can_update_agents(self): # pragma: no cover
         """Tests if this user can update ``Agents``.
 
         A return of true does not guarantee successful authorization. A
@@ -696,7 +696,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_update_agent(self, agent_id):
+    def can_update_agent(self, agent_id): # pragma: no cover
         """Tests if this user can update a specified agent.
 
         A return of true does not guarantee successful authorization. A
@@ -720,7 +720,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_form_for_update(self, agent_id):
+    def get_agent_form_for_update(self, agent_id): # pragma: no cover
         """Gets the agent form for updating an existing agent.
 
         A new agent form should be requested for each update
@@ -741,7 +741,7 @@ class AgentAdminSession:
         return  # osid.authentication.AgentForm
 
     @abc.abstractmethod
-    def update_agent(self, agent_form):
+    def update_agent(self, agent_form): # pragma: no cover
         """Updates an existing agent.
 
         :param agent_form: the form containing the elements to be updated
@@ -759,7 +759,7 @@ class AgentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_agents(self):
+    def can_delete_agents(self): # pragma: no cover
         """Tests if this user can delete ``Agents``.
 
         A return of true does not guarantee successful authorization. A
@@ -778,7 +778,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_delete_agent(self, agent_id):
+    def can_delete_agent(self, agent_id): # pragma: no cover
         """Tests if this user can delete a specified ``Agent``.
 
         A return of true does not guarantee successful authorization. A
@@ -802,7 +802,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_agent(self, agent_id):
+    def delete_agent(self, agent_id): # pragma: no cover
         """Deletes the ``Agent`` identified by the given ``Id`` removing it from all other ``Agencies`` to which this ``Agent`` is associated.
 
         :param agent_id: the ``Id`` of the ``Agent`` to delete
@@ -818,7 +818,7 @@ class AgentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_agent_aliases(self):
+    def can_manage_agent_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Agents``.
 
         A return of true does not guarantee successful authorization. A
@@ -837,7 +837,7 @@ class AgentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_agent(self, agent_id, alias_id):
+    def alias_agent(self, agent_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Agent`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Agent`` is determined by the
@@ -875,7 +875,7 @@ class AgentNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -890,7 +890,7 @@ class AgentNotificationSession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -906,7 +906,7 @@ class AgentNotificationSession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_register_for_agent_notifications(self):
+    def can_register_for_agent_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Agent`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -925,7 +925,7 @@ class AgentNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_agency_view(self):
+    def use_federated_agency_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include agents in agencies which are
@@ -939,7 +939,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_agency_view(self):
+    def use_isolated_agency_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this agency only.
@@ -952,7 +952,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_agent_notifications(self):
+    def reliable_agent_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -966,7 +966,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_agent_notifications(self):
+    def unreliable_agent_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -980,7 +980,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_agent_notification(self, notification_id):
+    def acknowledge_agent_notification(self, notification_id): # pragma: no cover
         """Acknowledge an agent notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -994,7 +994,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_agents(self):
+    def register_for_new_agents(self): # pragma: no cover
         """Register for notifications of new agents.
 
         ``AgentReceiver.newAgents()`` is invoked when a new ``Agent`` is
@@ -1009,7 +1009,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agents(self):
+    def register_for_changed_agents(self): # pragma: no cover
         """Registers for notification of updated agents.
 
         ``AgentReceiver.changedAgents()`` is invoked when an agent is
@@ -1024,7 +1024,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agent(self, agent_id):
+    def register_for_changed_agent(self, agent_id): # pragma: no cover
         """Registers for notification of an updated agent.
 
         ``AgentReceiver.changedAgents()`` is invoked when the specified
@@ -1042,7 +1042,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_agents(self):
+    def register_for_deleted_agents(self): # pragma: no cover
         """Registers for notification of deleted agents.
 
         ``AgentReceiver.deletedAgents()`` is invoked when an agent is
@@ -1057,7 +1057,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_agent(self, agent_id):
+    def register_for_deleted_agent(self, agent_id): # pragma: no cover
         """Registers for notification of a deleted agent.
 
         ``AgentReceiver.deletedAgents()`` is invoked when the specified
@@ -1075,7 +1075,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_agent_notifications(self):
+    def reliable_agent_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1089,7 +1089,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_agent_notifications(self):
+    def unreliable_agent_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1103,7 +1103,7 @@ class AgentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_agent_notification(self, notification_id):
+    def acknowledge_agent_notification(self, notification_id): # pragma: no cover
         """Acknowledge an agent notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1134,7 +1134,7 @@ class AgentAgencySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_agent_agency_mappings(self):
+    def can_lookup_agent_agency_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of agent/agency mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1153,7 +1153,7 @@ class AgentAgencySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_agency_view(self):
+    def use_comparative_agency_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1167,7 +1167,7 @@ class AgentAgencySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_agency_view(self):
+    def use_plenary_agency_view(self): # pragma: no cover
         """A complete view of the ``Agent`` and ``Agency`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1182,7 +1182,7 @@ class AgentAgencySession:
         pass
 
     @abc.abstractmethod
-    def get_agent_ids_by_agency(self, agency_id):
+    def get_agent_ids_by_agency(self, agency_id): # pragma: no cover
         """Gets the list of ``Agent``  ``Ids`` associated with an ``Agency``.
 
         :param agency_id: ``Id`` of the ``Agency``
@@ -1200,7 +1200,7 @@ class AgentAgencySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_agents_by_agency(self, agency_id):
+    def get_agents_by_agency(self, agency_id): # pragma: no cover
         """Gets the list of ``Agents`` associated with an ``Agency``.
 
         :param agency_id: ``Id`` of the ``Agency``
@@ -1218,7 +1218,7 @@ class AgentAgencySession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agent_ids_by_agencies(self, agency_ids):
+    def get_agent_ids_by_agencies(self, agency_ids): # pragma: no cover
         """Gets the list of ``Agent Ids`` corresponding to a list of ``Agency`` objects.
 
         :param agency_ids: list of agency ``Ids``
@@ -1235,7 +1235,7 @@ class AgentAgencySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_agents_by_agencies(self, agency_ids):
+    def get_agents_by_agencies(self, agency_ids): # pragma: no cover
         """Gets the list of ``Agents`` corresponding to a list of ``Agency`` objects.
 
         :param agency_ids: list of agency ``Ids``
@@ -1252,7 +1252,7 @@ class AgentAgencySession:
         return  # osid.authentication.AgentList
 
     @abc.abstractmethod
-    def get_agency_ids_by_agent(self, agent_id):
+    def get_agency_ids_by_agent(self, agent_id): # pragma: no cover
         """Gets the list of ``Agency``  ``Ids`` mapped to an ``Agent``.
 
         :param agent_id: ``Id`` of an ``Agent``
@@ -1270,7 +1270,7 @@ class AgentAgencySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_agencies_by_agent(self, agent_id):
+    def get_agencies_by_agent(self, agent_id): # pragma: no cover
         """Gets the list of ``Agency`` objects mapped to an ``Agent``.
 
         :param agent_id: ``Id`` of an ``Agent``
@@ -1301,7 +1301,7 @@ class AgentAgencyAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_agents(self):
+    def can_assign_agents(self): # pragma: no cover
         """Tests if this user can alter agent/agency mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1320,7 +1320,7 @@ class AgentAgencyAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_agents_to_agency(self, agency_id):
+    def can_assign_agents_to_agency(self, agency_id): # pragma: no cover
         """Tests if this user can alter agent/agency mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1341,7 +1341,7 @@ class AgentAgencyAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_agency_ids(self, agency_id):
+    def get_assignable_agency_ids(self, agency_id): # pragma: no cover
         """Gets a list of agencies including and under the given agency node in which any agent can be assigned.
 
         :param agency_id: the ``Id`` of the ``Agency``
@@ -1357,7 +1357,7 @@ class AgentAgencyAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_agency_ids_for_agent(self, agency_id, agent_id):
+    def get_assignable_agency_ids_for_agent(self, agency_id, agent_id): # pragma: no cover
         """Gets a list of agencies including and under the given agency node in which a specific agent can be assigned.
 
         :param agency_id: the ``Id`` of the ``Agency``
@@ -1375,7 +1375,7 @@ class AgentAgencyAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_agent_to_agency(self, agent_id, agency_id):
+    def assign_agent_to_agency(self, agent_id, agency_id): # pragma: no cover
         """Adds an existing ``Agent`` to an ``Agency``.
 
         :param agent_id: the ``Id`` of the ``Agent``
@@ -1394,7 +1394,7 @@ class AgentAgencyAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_agent_from_agency(self, agent_id, agency_id):
+    def unassign_agent_from_agency(self, agent_id, agency_id): # pragma: no cover
         """Removes an ``Agent`` from an ``Agency``.
 
         :param agent_id: the ``Id`` of the ``Agent``
@@ -1412,7 +1412,7 @@ class AgentAgencyAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_agent_to_agency(self, agent_id, from_agency_id, to_agency_id):
+    def reassign_agent_to_agency(self, agent_id, from_agency_id, to_agency_id): # pragma: no cover
         """Moves an ``Agent`` from one ``Agency`` to another.
 
         Mappings to other ``Agencies`` are unaffected.
@@ -1451,7 +1451,7 @@ class AgentSmartAgencySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_id(self):
+    def get_agency_id(self): # pragma: no cover
         """Gets the ``Agency``  ``Id`` associated with this session.
 
         :return: the ``Agency Id`` associated with this session
@@ -1466,7 +1466,7 @@ class AgentSmartAgencySession:
     agency_id = property(fget=get_agency_id)
 
     @abc.abstractmethod
-    def get_agency(self):
+    def get_agency(self): # pragma: no cover
         """Gets the ``Agency`` associated with this session.
 
         :return: the ``Agency`` associated with this session
@@ -1482,7 +1482,7 @@ class AgentSmartAgencySession:
     agency = property(fget=get_agency)
 
     @abc.abstractmethod
-    def can_manage_smart_agencies(self):
+    def can_manage_smart_agencies(self): # pragma: no cover
         """Tests if this user can manage smart agencies.
 
         A return of true does not guarantee successful authorization. A
@@ -1501,7 +1501,7 @@ class AgentSmartAgencySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_query(self):
+    def get_agent_query(self): # pragma: no cover
         """Gets an agent query.
 
         :return: the agent query
@@ -1516,7 +1516,7 @@ class AgentSmartAgencySession:
     agent_query = property(fget=get_agent_query)
 
     @abc.abstractmethod
-    def get_agent_search_order(self):
+    def get_agent_search_order(self): # pragma: no cover
         """Gets an agent search order.
 
         :return: the agent search order
@@ -1531,7 +1531,7 @@ class AgentSmartAgencySession:
     agent_search_order = property(fget=get_agent_search_order)
 
     @abc.abstractmethod
-    def apply_agent_query(self, agent_query):
+    def apply_agent_query(self, agent_query): # pragma: no cover
         """Applies an agent query to this agency.
 
         :param agent_query: the agent query
@@ -1547,7 +1547,7 @@ class AgentSmartAgencySession:
         pass
 
     @abc.abstractmethod
-    def inspect_agent_query(self):
+    def inspect_agent_query(self): # pragma: no cover
         """Gets an agent query inspector for this agency.
 
         :return: the agent query inspector
@@ -1561,7 +1561,7 @@ class AgentSmartAgencySession:
         return  # osid.authentication.AgentQueryInspector
 
     @abc.abstractmethod
-    def apply_agent_sequencing(self, agent_search_order):
+    def apply_agent_sequencing(self, agent_search_order): # pragma: no cover
         """Applies an agent search order to this agency.
 
         :param agent_search_order: the agent search order
@@ -1577,7 +1577,7 @@ class AgentSmartAgencySession:
         pass
 
     @abc.abstractmethod
-    def get_agent_query_from_inspector(self, agent_query_inspector):
+    def get_agent_query_from_inspector(self, agent_query_inspector): # pragma: no cover
         """Gets an agent query from an inspector.
 
         :param agent_query_inspector: a query inspector
@@ -1620,7 +1620,7 @@ class AgencyLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_agencies(self):
+    def can_lookup_agencies(self): # pragma: no cover
         """Tests if this user can perform ``Agency`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -1639,7 +1639,7 @@ class AgencyLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_agency_view(self):
+    def use_comparative_agency_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1653,7 +1653,7 @@ class AgencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_agency_view(self):
+    def use_plenary_agency_view(self): # pragma: no cover
         """A complete view of the ``Agency`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1668,7 +1668,7 @@ class AgencyLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_agency(self, agency_id):
+    def get_agency(self, agency_id): # pragma: no cover
         """Gets the ``Agency`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -1691,7 +1691,7 @@ class AgencyLookupSession:
         return  # osid.authentication.Agency
 
     @abc.abstractmethod
-    def get_agencies_by_ids(self, agency_ids):
+    def get_agencies_by_ids(self, agency_ids): # pragma: no cover
         """Gets an ``AgencyList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the agencies
@@ -1717,7 +1717,7 @@ class AgencyLookupSession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def get_agencies_by_genus_type(self, agency_genus_type):
+    def get_agencies_by_genus_type(self, agency_genus_type): # pragma: no cover
         """Gets an ``AgencyList`` corresponding to the given agency genus ``Type`` which does not include agencies of types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known agencies
@@ -1738,7 +1738,7 @@ class AgencyLookupSession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def get_agencies_by_parent_genus_type(self, agency_genus_type):
+    def get_agencies_by_parent_genus_type(self, agency_genus_type): # pragma: no cover
         """Gets an ``AgencyList`` corresponding to the given agency genus ``Type`` and include any additional agencies with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known agencies
@@ -1759,7 +1759,7 @@ class AgencyLookupSession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def get_agencies_by_record_type(self, agency_record_type):
+    def get_agencies_by_record_type(self, agency_record_type): # pragma: no cover
         """Gets an ``AgencyList`` containing the given agency record ``Type``.
 
         In plenary mode, the returned list contains all known agencies
@@ -1780,7 +1780,7 @@ class AgencyLookupSession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def get_agencies_by_provider(self, resource_id):
+    def get_agencies_by_provider(self, resource_id): # pragma: no cover
         """Gets an ``AgencyList`` from the given provider.
 
         In plenary mode, the returned list contains all known agencies
@@ -1801,7 +1801,7 @@ class AgencyLookupSession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def get_agencies(self):
+    def get_agencies(self): # pragma: no cover
         """Gets all ``Agencies``.
 
         In plenary mode, the returned list contains all known agencies
@@ -1833,7 +1833,7 @@ class AgencyQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_agencies(self):
+    def can_search_agencies(self): # pragma: no cover
         """Tests if this user can perform ``Agency`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -1851,7 +1851,7 @@ class AgencyQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_query(self):
+    def get_agency_query(self): # pragma: no cover
         """Gets an agency query.
 
         :return: an agency query
@@ -1866,7 +1866,7 @@ class AgencyQuerySession:
     agency_query = property(fget=get_agency_query)
 
     @abc.abstractmethod
-    def get_agencies_by_query(self, agency_query):
+    def get_agencies_by_query(self, agency_query): # pragma: no cover
         """Gets a list of ``Agency`` objects matching the given agency query.
 
         :param agency_query: the agency query
@@ -1905,7 +1905,7 @@ class AgencySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_search(self):
+    def get_agency_search(self): # pragma: no cover
         """Gets an agency search.
 
         :return: an agency search
@@ -1920,7 +1920,7 @@ class AgencySearchSession:
     agency_search = property(fget=get_agency_search)
 
     @abc.abstractmethod
-    def get_agency_search_order(self):
+    def get_agency_search_order(self): # pragma: no cover
         """Gets an agency search order.
 
         The ``AgencySearchOrder`` is supplied to a ``AgencySearch`` to
@@ -1938,7 +1938,7 @@ class AgencySearchSession:
     agency_search_order = property(fget=get_agency_search_order)
 
     @abc.abstractmethod
-    def get_agencies_by_search(self, agency_query, agency_search):
+    def get_agencies_by_search(self, agency_query, agency_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param agency_query: the agency query
@@ -1958,7 +1958,7 @@ class AgencySearchSession:
         return  # osid.authentication.AgencySearchResults
 
     @abc.abstractmethod
-    def get_agency_query_from_inspector(self, agency_query_inspector):
+    def get_agency_query_from_inspector(self, agency_query_inspector): # pragma: no cover
         """Gets an agency query from an inspector.
 
         The inspector is available from an ``AgencySearchResults``.
@@ -2010,7 +2010,7 @@ class AgencyAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_agencies(self):
+    def can_create_agencies(self): # pragma: no cover
         """Tests if this user can create ``Agencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -2029,7 +2029,7 @@ class AgencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_agency_with_record_types(self, agency_record_types):
+    def can_create_agency_with_record_types(self, agency_record_types): # pragma: no cover
         """Tests if this user can create a single ``Agency`` using the desired record types.
 
         While ``AuthenticationManager.getAgencyRecordTypes()`` can be
@@ -2050,7 +2050,7 @@ class AgencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_form_for_create(self, agency_record_types):
+    def get_agency_form_for_create(self, agency_record_types): # pragma: no cover
         """Gets the agency form for creating new agencies.
 
         A new form should be requested for each create transaction.
@@ -2070,7 +2070,7 @@ class AgencyAdminSession:
         return  # osid.authentication.AgencyForm
 
     @abc.abstractmethod
-    def create_agency(self, agency_form):
+    def create_agency(self, agency_form): # pragma: no cover
         """Creates a new ``Agency``.
 
         :param agency_form: the form for this ``Agency``
@@ -2090,7 +2090,7 @@ class AgencyAdminSession:
         return  # osid.authentication.Agency
 
     @abc.abstractmethod
-    def can_update_agencies(self):
+    def can_update_agencies(self): # pragma: no cover
         """Tests if this user can update ``Agencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -2109,7 +2109,7 @@ class AgencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_form_for_update(self, agency_id):
+    def get_agency_form_for_update(self, agency_id): # pragma: no cover
         """Gets the agency form for updating an existing agency.
 
         A new agency form should be requested for each update
@@ -2130,7 +2130,7 @@ class AgencyAdminSession:
         return  # osid.authentication.AgencyForm
 
     @abc.abstractmethod
-    def update_agency(self, agency_form):
+    def update_agency(self, agency_form): # pragma: no cover
         """Updates an existing agency.
 
         :param agency_form: the form containing the elements to be updated
@@ -2148,7 +2148,7 @@ class AgencyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_agencies(self):
+    def can_delete_agencies(self): # pragma: no cover
         """Tests if this user can delete agencies.
 
         A return of true does not guarantee successful authorization. A
@@ -2167,7 +2167,7 @@ class AgencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_agency(self, agency_id):
+    def delete_agency(self, agency_id): # pragma: no cover
         """Deletes an ``Agency``.
 
         :param agency_id: the ``Id`` of the ``Agency`` to remove
@@ -2183,7 +2183,7 @@ class AgencyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_agency_aliases(self):
+    def can_manage_agency_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Agencies``.
 
         A return of true does not guarantee successful authorization. A
@@ -2202,7 +2202,7 @@ class AgencyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_agency(self, agency_id, alias_id):
+    def alias_agency(self, agency_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to an ``Agency`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Agency`` is determined by the
@@ -2237,7 +2237,7 @@ class AgencyNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_agency_notifications(self):
+    def can_register_for_agency_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Agency`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2256,7 +2256,7 @@ class AgencyNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_agency_notifications(self):
+    def reliable_agency_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2270,7 +2270,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_agency_notifications(self):
+    def unreliable_agency_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2284,7 +2284,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_agency_notification(self, notification_id):
+    def acknowledge_agency_notification(self, notification_id): # pragma: no cover
         """Acknowledge an agency notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2298,7 +2298,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_agencies(self):
+    def register_for_new_agencies(self): # pragma: no cover
         """Register for notifications of new agencies.
 
         ``AgencyReceiver.newAgencies()`` is invoked when a new
@@ -2313,7 +2313,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agencies(self):
+    def register_for_changed_agencies(self): # pragma: no cover
         """Registers for notification of updated agencies.
 
         ``AgencyReceiver.changedAgencies()`` is invoked when an agency
@@ -2328,7 +2328,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agency(self, agency_id):
+    def register_for_changed_agency(self, agency_id): # pragma: no cover
         """Registers for notification of an updated agency.
 
         ``AgencyReceiver.changedAgencies()`` is invoked when the
@@ -2346,7 +2346,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_agencies(self):
+    def register_for_deleted_agencies(self): # pragma: no cover
         """Registers for notification of deleted agencies.
 
         ``AgencyReceiver.deletedAgencies()`` is invoked when an agency
@@ -2361,7 +2361,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_agency(self, agency_id):
+    def register_for_deleted_agency(self, agency_id): # pragma: no cover
         """Registers for notification of a deleted agency.
 
         ``AgencyReceiver.deletedAgencies()`` is invoked when the
@@ -2379,7 +2379,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agency_hierarchy(self):
+    def register_for_changed_agency_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated agency hierarchy structure.
 
         ``AgencyReceiver.changedChildOfAgencies()`` is invoked when a
@@ -2394,7 +2394,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agency_hierarchy_for_ancestors(self, agency_id):
+    def register_for_changed_agency_hierarchy_for_ancestors(self, agency_id): # pragma: no cover
         """Registers for notification of an updated agency hierarchy structure.
 
         ``AgencyReceiver.changedChildOfAgencies()`` is invoked when the
@@ -2413,7 +2413,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_agency_hierarchy_for_descendants(self, agency_id):
+    def register_for_changed_agency_hierarchy_for_descendants(self, agency_id): # pragma: no cover
         """Registers for notification of an updated agency hierarchy structure.
 
         ``AgencyReceiver.changedChildOfAgencies()`` is invoked when the
@@ -2432,7 +2432,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_agency_notifications(self):
+    def reliable_agency_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2446,7 +2446,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_agency_notifications(self):
+    def unreliable_agency_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2460,7 +2460,7 @@ class AgencyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_agency_notification(self, notification_id):
+    def acknowledge_agency_notification(self, notification_id): # pragma: no cover
         """Acknowledge an agency notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2503,7 +2503,7 @@ class AgencyHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_hierarchy_id(self):
+    def get_agency_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -2518,7 +2518,7 @@ class AgencyHierarchySession:
     agency_hierarchy_id = property(fget=get_agency_hierarchy_id)
 
     @abc.abstractmethod
-    def get_agency_hierarchy(self):
+    def get_agency_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -2534,7 +2534,7 @@ class AgencyHierarchySession:
     agency_hierarchy = property(fget=get_agency_hierarchy)
 
     @abc.abstractmethod
-    def can_access_agency_hierarchy(self):
+    def can_access_agency_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -2553,7 +2553,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_agency_view(self):
+    def use_comparative_agency_view(self): # pragma: no cover
         """The returns from the agency methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2567,7 +2567,7 @@ class AgencyHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_agency_view(self):
+    def use_plenary_agency_view(self): # pragma: no cover
         """A complete view of the hierarchy returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2582,7 +2582,7 @@ class AgencyHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_agency_ids(self):
+    def get_root_agency_ids(self): # pragma: no cover
         """Gets the root agency ``Ids`` in this hierarchy.
 
         :return: the root agency ``Ids``
@@ -2598,7 +2598,7 @@ class AgencyHierarchySession:
     root_agency_ids = property(fget=get_root_agency_ids)
 
     @abc.abstractmethod
-    def get_root_agencies(self):
+    def get_root_agencies(self): # pragma: no cover
         """Gets the root agencies in this agency hierarchy.
 
         :return: the root agencies
@@ -2614,7 +2614,7 @@ class AgencyHierarchySession:
     root_agencies = property(fget=get_root_agencies)
 
     @abc.abstractmethod
-    def has_parent_agencies(self, agency_id):
+    def has_parent_agencies(self, agency_id): # pragma: no cover
         """Tests if the ``Agency`` has any parents.
 
         :param agency_id: an agency ``Id``
@@ -2632,7 +2632,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_agency(self, id_, agency_id):
+    def is_parent_of_agency(self, id_, agency_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of an agency.
 
         :param id: an ``Id``
@@ -2653,7 +2653,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_agency_ids(self, agency_id):
+    def get_parent_agency_ids(self, agency_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given agency.
 
         :param agency_id: an agency ``Id``
@@ -2671,7 +2671,7 @@ class AgencyHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_agencies(self, agency_id):
+    def get_parent_agencies(self, agency_id): # pragma: no cover
         """Gets the parents of the given agency.
 
         :param agency_id: an agency ``Id``
@@ -2689,7 +2689,7 @@ class AgencyHierarchySession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def is_ancestor_of_agency(self, id_, agency_id):
+    def is_ancestor_of_agency(self, id_, agency_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of an agency.
 
         :param id: an ``Id``
@@ -2710,7 +2710,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_agencies(self, agency_id):
+    def has_child_agencies(self, agency_id): # pragma: no cover
         """Tests if an agency has any children.
 
         :param agency_id: an ``agency_id``
@@ -2728,7 +2728,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_agency(self, id_, agency_id):
+    def is_child_of_agency(self, id_, agency_id): # pragma: no cover
         """Tests if a node is a direct child of another.
 
         :param id: an ``Id``
@@ -2749,7 +2749,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_agency_ids(self, agency_id):
+    def get_child_agency_ids(self, agency_id): # pragma: no cover
         """Gets the child ``Ids`` of the given agency.
 
         :param agency_id: the ``Id`` to query
@@ -2767,7 +2767,7 @@ class AgencyHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_agencies(self, agency_id):
+    def get_child_agencies(self, agency_id): # pragma: no cover
         """Gets the children of the given agency.
 
         :param agency_id: the ``Id`` to query
@@ -2785,7 +2785,7 @@ class AgencyHierarchySession:
         return  # osid.authentication.AgencyList
 
     @abc.abstractmethod
-    def is_descendant_of_agency(self, id_, agency_id):
+    def is_descendant_of_agency(self, id_, agency_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of an agency.
 
         :param id: an ``Id``
@@ -2806,7 +2806,7 @@ class AgencyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_node_ids(self, agency_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_agency_node_ids(self, agency_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given agency.
 
         :param agency_id: the ``Id`` to query
@@ -2830,7 +2830,7 @@ class AgencyHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_agency_nodes(self, agency_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_agency_nodes(self, agency_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given agency.
 
         :param agency_id: the ``Id`` to query
@@ -2863,7 +2863,7 @@ class AgencyHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agency_hierarchy_id(self):
+    def get_agency_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -2878,7 +2878,7 @@ class AgencyHierarchyDesignSession:
     agency_hierarchy_id = property(fget=get_agency_hierarchy_id)
 
     @abc.abstractmethod
-    def get_agency_hierarchy(self):
+    def get_agency_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -2894,7 +2894,7 @@ class AgencyHierarchyDesignSession:
     agency_hierarchy = property(fget=get_agency_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_agency_hierarchy(self):
+    def can_modify_agency_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -2913,7 +2913,7 @@ class AgencyHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_agency(self, agency_id):
+    def add_root_agency(self, agency_id): # pragma: no cover
         """Adds a root agency.
 
         :param agency_id: the ``Id`` of an agency
@@ -2930,7 +2930,7 @@ class AgencyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_agency(self, agency_id):
+    def remove_root_agency(self, agency_id): # pragma: no cover
         """Removes a root agency from this hierarchy.
 
         :param agency_id: the ``Id`` of an agency
@@ -2946,7 +2946,7 @@ class AgencyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_agency(self, agency_id, child_id):
+    def add_child_agency(self, agency_id, child_id): # pragma: no cover
         """Adds a child to an agency.
 
         :param agency_id: the ``Id`` of an agency
@@ -2965,7 +2965,7 @@ class AgencyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_agency(self, agency_id, child_id):
+    def remove_child_agency(self, agency_id, child_id): # pragma: no cover
         """Removes a child from an agency.
 
         :param agency_id: the ``Id`` of an agency
@@ -2983,7 +2983,7 @@ class AgencyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_agencies(self, agency_id):
+    def remove_child_agencies(self, agency_id): # pragma: no cover
         """Removes all children from an agency.
 
         :param agency_id: the ``Id`` of an agency

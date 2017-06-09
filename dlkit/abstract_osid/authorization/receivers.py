@@ -21,7 +21,7 @@ class AuthorizationReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_authorizations(self, notification_id, authorization_ids):
+    def new_authorizations(self, notification_id, authorization_ids): # pragma: no cover
         """The callback for notifications of new authorizations.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class AuthorizationReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_authorizations(self, notification_id, authorization_ids):
+    def changed_authorizations(self, notification_id, authorization_ids): # pragma: no cover
         """The callback for notification of updated authorization.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class AuthorizationReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_authorizations(self, notification_id, authorization_ids):
+    def deleted_authorizations(self, notification_id, authorization_ids): # pragma: no cover
         """The callback for notification of deleted authorizations.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class FunctionReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_functions(self, notification_id, function_ids):
+    def new_functions(self, notification_id, function_ids): # pragma: no cover
         """The callback for notifications of new functions.
 
         :param notification_id: the notification Id
@@ -86,7 +86,7 @@ class FunctionReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_functions(self, notification_id, function_ids):
+    def changed_functions(self, notification_id, function_ids): # pragma: no cover
         """The callback for notification of updated functions.
 
         :param notification_id: the notification Id
@@ -101,7 +101,7 @@ class FunctionReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_functions(self, notification_id, function_ids):
+    def deleted_functions(self, notification_id, function_ids): # pragma: no cover
         """The callback for notification of deleted functions.
 
         :param notification_id: the notification Id
@@ -121,7 +121,7 @@ class QualifierReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_qualifiers(self, notification_id, qualifier_ids):
+    def new_qualifiers(self, notification_id, qualifier_ids): # pragma: no cover
         """The callback for notifications of new qualifiers.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class QualifierReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_qualifiers(self, notification_id, qualifier_ids):
+    def changed_qualifiers(self, notification_id, qualifier_ids): # pragma: no cover
         """The callback for notification of updated qualifiers.
 
         :param notification_id: the notification ``Id``
@@ -151,7 +151,7 @@ class QualifierReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_qualifiers(self, notification_id, qualifier_ids):
+    def deleted_qualifiers(self, notification_id, qualifier_ids): # pragma: no cover
         """the callback for notification of deleted qualifiers.
 
         :param notification_id: the notification ``Id``
@@ -166,7 +166,7 @@ class QualifierReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_billings(self, notification_id, qualifier_ids):
+    def changed_child_of_billings(self, notification_id, qualifier_ids): # pragma: no cover
         """The callback for notifications of changes to children of qualifier hierarchy nodes.
 
         :param notification_id: the notification ``Id``
@@ -186,7 +186,7 @@ class VaultReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_vaults(self, notification_id, vault_ids):
+    def new_vaults(self, notification_id, vault_ids): # pragma: no cover
         """The callback for notifications of new vaults.
 
         :param notification_id: the notification Id
@@ -201,7 +201,7 @@ class VaultReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_vaults(self, notification_id, vault_ids):
+    def changed_vaults(self, notification_id, vault_ids): # pragma: no cover
         """The callback for notification of updated vaults.
 
         :param notification_id: the notification Id
@@ -216,7 +216,7 @@ class VaultReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_vaults(self, notification_id, vault_ids):
+    def deleted_vaults(self, notification_id, vault_ids): # pragma: no cover
         """The callback for notification of deleted vaults.
 
         :param notification_id: the notification Id
@@ -231,7 +231,7 @@ class VaultReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_vaults(self, notification_id, vault_ids):
+    def changed_child_of_vaults(self, notification_id, vault_ids): # pragma: no cover
         """The callback for notifications of changes to children of vault hierarchy nodes.
 
         :param notification_id: the notification Id

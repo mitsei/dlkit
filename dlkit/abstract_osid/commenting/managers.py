@@ -21,7 +21,7 @@ class CommentingProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if any book federation is exposed.
 
         Federation is exposed when a specific book may be identified,
@@ -39,7 +39,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_lookup(self):
+    def supports_comment_lookup(self): # pragma: no cover
         """Tests for the availability of a comment lookup service.
 
         :return: ``true`` if comment lookup is available, ``false`` otherwise
@@ -52,7 +52,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_rating_lookup(self):
+    def supports_rating_lookup(self): # pragma: no cover
         """Tests for the availability of a rating lookup service.
 
         :return: ``true`` if rating lookup is available, ``false`` otherwise
@@ -65,7 +65,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_query(self):
+    def supports_comment_query(self): # pragma: no cover
         """Tests if querying comments is available.
 
         :return: ``true`` if comment query is available, ``false`` otherwise
@@ -78,7 +78,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_search(self):
+    def supports_comment_search(self): # pragma: no cover
         """Tests if searching for comments is available.
 
         :return: ``true`` if comment search is available, ``false`` otherwise
@@ -91,7 +91,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_admin(self):
+    def supports_comment_admin(self): # pragma: no cover
         """Tests if managing comments is available.
 
         :return: ``true`` if comment admin is available, ``false`` otherwise
@@ -104,7 +104,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_notification(self):
+    def supports_comment_notification(self): # pragma: no cover
         """Tests if comment notification is available.
 
         :return: ``true`` if comment notification is available, ``false`` otherwise
@@ -117,7 +117,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_book(self):
+    def supports_comment_book(self): # pragma: no cover
         """Tests if a comment to book lookup session is available.
 
         :return: ``true`` if comment book lookup session is supported, ``false`` otherwise
@@ -130,7 +130,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_book_assignment(self):
+    def supports_comment_book_assignment(self): # pragma: no cover
         """Tests if a comment to book assignment session is available.
 
         :return: ``true`` if comment book assignment is supported, ``false`` otherwise
@@ -143,7 +143,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_comment_smart_book(self):
+    def supports_comment_smart_book(self): # pragma: no cover
         """Tests if a comment smart booking session is available.
 
         :return: ``true`` if comment smart booking is supported, ``false`` otherwise
@@ -156,7 +156,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_lookup(self):
+    def supports_book_lookup(self): # pragma: no cover
         """Tests for the availability of an book lookup service.
 
         :return: ``true`` if book lookup is available, ``false`` otherwise
@@ -169,7 +169,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_query(self):
+    def supports_book_query(self): # pragma: no cover
         """Tests if querying books is available.
 
         :return: ``true`` if book query is available, ``false`` otherwise
@@ -182,7 +182,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_search(self):
+    def supports_book_search(self): # pragma: no cover
         """Tests if searching for books is available.
 
         :return: ``true`` if book search is available, ``false`` otherwise
@@ -195,7 +195,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_admin(self):
+    def supports_book_admin(self): # pragma: no cover
         """Tests for the availability of a book administrative service for creating and deleting books.
 
         :return: ``true`` if book administration is available, ``false`` otherwise
@@ -208,7 +208,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_notification(self):
+    def supports_book_notification(self): # pragma: no cover
         """Tests for the availability of a book notification service.
 
         :return: ``true`` if book notification is available, ``false`` otherwise
@@ -222,7 +222,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_hierarchy(self):
+    def supports_book_hierarchy(self): # pragma: no cover
         """Tests for the availability of a book hierarchy traversal service.
 
         :return: ``true`` if book hierarchy traversal is available, ``false`` otherwise
@@ -235,7 +235,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_book_hierarchy_design(self):
+    def supports_book_hierarchy_design(self): # pragma: no cover
         """Tests for the availability of a book hierarchy design service.
 
         :return: ``true`` if book hierarchy design is available, ``false`` otherwise
@@ -249,7 +249,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_commenting_batch(self):
+    def supports_commenting_batch(self): # pragma: no cover
         """Tests for the availability of a commenting batch service.
 
         :return: ``true`` if commenting batch service is available, ``false`` otherwise
@@ -263,7 +263,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_record_types(self):
+    def get_comment_record_types(self): # pragma: no cover
         """Gets the supported ``Comment`` record types.
 
         :return: a list containing the supported comment record types
@@ -278,7 +278,7 @@ class CommentingProfile:
     comment_record_types = property(fget=get_comment_record_types)
 
     @abc.abstractmethod
-    def supports_comment_record_type(self, comment_record_type):
+    def supports_comment_record_type(self, comment_record_type): # pragma: no cover
         """Tests if the given ``Comment`` record type is supported.
 
         :param comment_record_type: a ``Type`` indicating a ``Comment`` record type
@@ -293,7 +293,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_search_record_types(self):
+    def get_comment_search_record_types(self): # pragma: no cover
         """Gets the supported comment search record types.
 
         :return: a list containing the supported comment search record types
@@ -308,7 +308,7 @@ class CommentingProfile:
     comment_search_record_types = property(fget=get_comment_search_record_types)
 
     @abc.abstractmethod
-    def supports_comment_search_record_type(self, comment_search_record_type):
+    def supports_comment_search_record_type(self, comment_search_record_type): # pragma: no cover
         """Tests if the given comment search record type is supported.
 
         :param comment_search_record_type: a ``Type`` indicating a comment record type
@@ -323,7 +323,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_record_types(self):
+    def get_book_record_types(self): # pragma: no cover
         """Gets the supported ``Book`` record types.
 
         :return: a list containing the supported book record types
@@ -338,7 +338,7 @@ class CommentingProfile:
     book_record_types = property(fget=get_book_record_types)
 
     @abc.abstractmethod
-    def supports_book_record_type(self, book_record_type):
+    def supports_book_record_type(self, book_record_type): # pragma: no cover
         """Tests if the given ``Book`` record type is supported.
 
         :param book_record_type: a ``Type`` indicating a ``Book`` record type
@@ -353,7 +353,7 @@ class CommentingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_search_record_types(self):
+    def get_book_search_record_types(self): # pragma: no cover
         """Gets the supported book search record types.
 
         :return: a list containing the supported book search record types
@@ -368,7 +368,7 @@ class CommentingProfile:
     book_search_record_types = property(fget=get_book_search_record_types)
 
     @abc.abstractmethod
-    def supports_book_search_record_type(self, book_search_record_type):
+    def supports_book_search_record_type(self, book_search_record_type): # pragma: no cover
         """Tests if the given book search record type is supported.
 
         :param book_search_record_type: a ``Type`` indicating a book record type
@@ -421,7 +421,7 @@ class CommentingManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_comment_lookup_session(self):
+    def get_comment_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment lookup service.
 
         :return: a ``CommentLookupSession``
@@ -438,7 +438,7 @@ class CommentingManager:
     comment_lookup_session = property(fget=get_comment_lookup_session)
 
     @abc.abstractmethod
-    def get_comment_lookup_session_for_book(self, book_id):
+    def get_comment_lookup_session_for_book(self, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment lookup service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -458,7 +458,7 @@ class CommentingManager:
         return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
-    def get_rating_lookup_session(self):
+    def get_rating_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the rating lookup service.
 
         :return: a ``RatingLookupSession``
@@ -475,7 +475,7 @@ class CommentingManager:
     rating_lookup_session = property(fget=get_rating_lookup_session)
 
     @abc.abstractmethod
-    def get_rating_lookup_session_for_book(self, book_id):
+    def get_rating_lookup_session_for_book(self, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the rating lookup service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -495,7 +495,7 @@ class CommentingManager:
         return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
-    def get_comment_query_session(self):
+    def get_comment_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment query service.
 
         :return: a ``CommentQuerySession``
@@ -512,7 +512,7 @@ class CommentingManager:
     comment_query_session = property(fget=get_comment_query_session)
 
     @abc.abstractmethod
-    def get_comment_query_session_for_book(self, book_id):
+    def get_comment_query_session_for_book(self, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment query service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -532,7 +532,7 @@ class CommentingManager:
         return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
-    def get_comment_search_session(self):
+    def get_comment_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment search service.
 
         :return: a ``CommentSearchSession``
@@ -549,7 +549,7 @@ class CommentingManager:
     comment_search_session = property(fget=get_comment_search_session)
 
     @abc.abstractmethod
-    def get_comment_search_session_for_book(self, book_id):
+    def get_comment_search_session_for_book(self, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment search service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -569,7 +569,7 @@ class CommentingManager:
         return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
-    def get_comment_admin_session(self):
+    def get_comment_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment administration service.
 
         :return: a ``CommentAdminSession``
@@ -586,7 +586,7 @@ class CommentingManager:
     comment_admin_session = property(fget=get_comment_admin_session)
 
     @abc.abstractmethod
-    def get_comment_admin_session_for_book(self, book_id):
+    def get_comment_admin_session_for_book(self, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment administration service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -606,7 +606,7 @@ class CommentingManager:
         return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
-    def get_comment_notification_session(self, comment_receiver):
+    def get_comment_notification_session(self, comment_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment notification service.
 
         :param comment_receiver: the receiver
@@ -624,7 +624,7 @@ class CommentingManager:
         return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
-    def get_comment_notification_session_for_book(self, comment_receiver, book_id):
+    def get_comment_notification_session_for_book(self, comment_receiver, book_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment notification service for the given book.
 
         :param comment_receiver: the receiver
@@ -646,7 +646,7 @@ class CommentingManager:
         return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
-    def get_comment_book_session(self):
+    def get_comment_book_session(self): # pragma: no cover
         """Gets the session for retrieving comment to book mappings.
 
         :return: a ``CommentBookSession``
@@ -663,7 +663,7 @@ class CommentingManager:
     comment_book_session = property(fget=get_comment_book_session)
 
     @abc.abstractmethod
-    def get_comment_book_assignment_session(self):
+    def get_comment_book_assignment_session(self): # pragma: no cover
         """Gets the session for assigning comment to book mappings.
 
         :return: a ``CommentBookAssignmentSession``
@@ -680,7 +680,7 @@ class CommentingManager:
     comment_book_assignment_session = property(fget=get_comment_book_assignment_session)
 
     @abc.abstractmethod
-    def get_comment_smart_book_session(self, book_id):
+    def get_comment_smart_book_session(self, book_id): # pragma: no cover
         """Gets the session associated with the comment smart book for the given book.
 
         :param book_id: the ``Id`` of the book
@@ -699,7 +699,7 @@ class CommentingManager:
         return  # osid.commenting.CommentSmartBookSession
 
     @abc.abstractmethod
-    def get_book_lookup_session(self):
+    def get_book_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book lookup service.
 
         :return: a ``BookLookupSession``
@@ -716,7 +716,7 @@ class CommentingManager:
     book_lookup_session = property(fget=get_book_lookup_session)
 
     @abc.abstractmethod
-    def get_book_query_session(self):
+    def get_book_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book query service.
 
         :return: a ``BookQuerySession``
@@ -733,7 +733,7 @@ class CommentingManager:
     book_query_session = property(fget=get_book_query_session)
 
     @abc.abstractmethod
-    def get_book_search_session(self):
+    def get_book_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book search service.
 
         :return: a ``BookSearchSession``
@@ -750,7 +750,7 @@ class CommentingManager:
     book_search_session = property(fget=get_book_search_session)
 
     @abc.abstractmethod
-    def get_book_admin_session(self):
+    def get_book_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book administrative service.
 
         :return: a ``BookAdminSession``
@@ -767,7 +767,7 @@ class CommentingManager:
     book_admin_session = property(fget=get_book_admin_session)
 
     @abc.abstractmethod
-    def get_book_notification_session(self, book_receiver):
+    def get_book_notification_session(self, book_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book notification service.
 
         :param book_receiver: the receiver
@@ -785,7 +785,7 @@ class CommentingManager:
         return  # osid.commenting.BookNotificationSession
 
     @abc.abstractmethod
-    def get_book_hierarchy_session(self):
+    def get_book_hierarchy_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book hierarchy service.
 
         :return: a ``BookHierarchySession``
@@ -802,7 +802,7 @@ class CommentingManager:
     book_hierarchy_session = property(fget=get_book_hierarchy_session)
 
     @abc.abstractmethod
-    def get_book_hierarchy_design_session(self):
+    def get_book_hierarchy_design_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book hierarchy design service.
 
         :return: a ``BookHierarchyDesignSession``
@@ -819,7 +819,7 @@ class CommentingManager:
     book_hierarchy_design_session = property(fget=get_book_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_commenting_batch_manager(self):
+    def get_commenting_batch_manager(self): # pragma: no cover
         """Gets a ``CommentingBatchManager``.
 
         :return: a ``CommentingBatchManager``
@@ -876,7 +876,7 @@ class CommentingProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_comment_lookup_session(self, proxy):
+    def get_comment_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment lookup service.
 
         :param proxy: a proxy
@@ -894,7 +894,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
-    def get_comment_lookup_session_for_book(self, book_id, proxy):
+    def get_comment_lookup_session_for_book(self, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment lookup service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -916,7 +916,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentLookupSession
 
     @abc.abstractmethod
-    def get_rating_lookup_session(self, proxy):
+    def get_rating_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the rating lookup service.
 
         :param proxy: a proxy
@@ -934,7 +934,7 @@ class CommentingProxyManager:
         return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
-    def get_rating_lookup_session_for_book(self, book_id, proxy):
+    def get_rating_lookup_session_for_book(self, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the rating lookup service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -956,7 +956,7 @@ class CommentingProxyManager:
         return  # osid.commenting.RatingLookupSession
 
     @abc.abstractmethod
-    def get_comment_query_session(self, proxy):
+    def get_comment_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment query service.
 
         :param proxy: a proxy
@@ -974,7 +974,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
-    def get_comment_query_session_for_book(self, book_id, proxy):
+    def get_comment_query_session_for_book(self, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment query service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -996,7 +996,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentQuerySession
 
     @abc.abstractmethod
-    def get_comment_search_session(self, proxy):
+    def get_comment_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment search service.
 
         :param proxy: a proxy
@@ -1014,7 +1014,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
-    def get_comment_search_session_for_book(self, book_id, proxy):
+    def get_comment_search_session_for_book(self, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment search service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -1036,7 +1036,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentSearchSession
 
     @abc.abstractmethod
-    def get_comment_admin_session(self, proxy):
+    def get_comment_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment administration service.
 
         :param proxy: a proxy
@@ -1054,7 +1054,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
-    def get_comment_admin_session_for_book(self, book_id, proxy):
+    def get_comment_admin_session_for_book(self, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment administration service for the given book.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -1076,7 +1076,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentAdminSession
 
     @abc.abstractmethod
-    def get_comment_notification_session(self, comment_receiver, proxy):
+    def get_comment_notification_session(self, comment_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment notification service.
 
         :param comment_receiver: the receiver
@@ -1096,7 +1096,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
-    def get_comment_notification_session_for_book(self, comment_receiver, book_id, proxy):
+    def get_comment_notification_session_for_book(self, comment_receiver, book_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the comment notification service for the given book.
 
         :param comment_receiver: the receiver
@@ -1120,7 +1120,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentNotificationSession
 
     @abc.abstractmethod
-    def get_comment_book_session(self, proxy):
+    def get_comment_book_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving comment to book mappings.
 
         :param proxy: a proxy
@@ -1138,7 +1138,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentBookSession
 
     @abc.abstractmethod
-    def get_comment_book_assignment_session(self, proxy):
+    def get_comment_book_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning comment to book mappings.
 
         :param proxy: a proxy
@@ -1156,7 +1156,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentBookAssignmentSession
 
     @abc.abstractmethod
-    def get_comment_smart_book_session(self, book_id, proxy):
+    def get_comment_smart_book_session(self, book_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic comment books for the given book.
 
         :param book_id: the ``Id`` of a book
@@ -1177,7 +1177,7 @@ class CommentingProxyManager:
         return  # osid.commenting.CommentSmartBookSession
 
     @abc.abstractmethod
-    def get_book_lookup_session(self, proxy):
+    def get_book_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book lookup service.
 
         :param proxy: a proxy
@@ -1195,7 +1195,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookLookupSession
 
     @abc.abstractmethod
-    def get_book_query_session(self, proxy):
+    def get_book_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book query service.
 
         :param proxy: a proxy
@@ -1213,7 +1213,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookQuerySession
 
     @abc.abstractmethod
-    def get_book_search_session(self, proxy):
+    def get_book_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book search service.
 
         :param proxy: a proxy
@@ -1231,7 +1231,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookSearchSession
 
     @abc.abstractmethod
-    def get_book_admin_session(self, proxy):
+    def get_book_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book administrative service.
 
         :param proxy: a proxy
@@ -1249,7 +1249,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookAdminSession
 
     @abc.abstractmethod
-    def get_book_notification_session(self, book_receiver, proxy):
+    def get_book_notification_session(self, book_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book notification service.
 
         :param book_receiver: the receiver
@@ -1269,7 +1269,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookNotificationSession
 
     @abc.abstractmethod
-    def get_book_hierarchy_session(self, proxy):
+    def get_book_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book hierarchy service.
 
         :param proxy: a proxy
@@ -1287,7 +1287,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookHierarchySession
 
     @abc.abstractmethod
-    def get_book_hierarchy_design_session(self, proxy):
+    def get_book_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the book hierarchy design service.
 
         :param proxy: a proxy
@@ -1305,7 +1305,7 @@ class CommentingProxyManager:
         return  # osid.commenting.BookHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_commenting_batch_proxy_manager(self):
+    def get_commenting_batch_proxy_manager(self): # pragma: no cover
         """Gets a ``CommentingBatchProxyManager``.
 
         :return: a ``CommentingBatchProxyManager``

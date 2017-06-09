@@ -21,7 +21,7 @@ class TypeProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_type_lookup(self):
+    def supports_type_lookup(self): # pragma: no cover
         """Tests if ``Type`` lookup is supported.
 
         :return: ``true`` if ``Type`` lookup is supported, ``false`` otherwise
@@ -34,7 +34,7 @@ class TypeProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_type_admin(self):
+    def supports_type_admin(self): # pragma: no cover
         """Tests if a ``Type`` administrative service is supported.
 
         :return: ``true`` if ``Type`` administration is supported, ``false`` otherwise
@@ -57,7 +57,7 @@ class TypeManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_type_lookup_session(self):
+    def get_type_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the type lookup service.
 
         :return: a ``TypeLookupSession``
@@ -74,7 +74,7 @@ class TypeManager:
     type_lookup_session = property(fget=get_type_lookup_session)
 
     @abc.abstractmethod
-    def get_type_admin_session(self):
+    def get_type_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the type admin service.
 
         :return: a ``TypeAdminSession``
@@ -103,7 +103,7 @@ class TypeProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_type_lookup_session(self, proxy):
+    def get_type_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the type lookup service.
 
         :param proxy: a proxy
@@ -121,7 +121,7 @@ class TypeProxyManager:
         return  # osid.type.TypeLookupSession
 
     @abc.abstractmethod
-    def get_type_admin_session(self, proxy):
+    def get_type_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the ``TypeAdmin`` service.
 
         :param proxy: a proxy

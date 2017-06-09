@@ -21,7 +21,7 @@ class ObjectiveSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_objectives(self, objective_ids):
+    def search_among_objectives(self, objective_ids): # pragma: no cover
         """Execute this search among the given list of objectives.
 
         :param objective_ids: list of objectives
@@ -34,7 +34,7 @@ class ObjectiveSearch:
         pass
 
     @abc.abstractmethod
-    def order_objective_results(self, objective_search_order):
+    def order_objective_results(self, objective_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param objective_search_order: objective search order
@@ -48,7 +48,7 @@ class ObjectiveSearch:
         pass
 
     @abc.abstractmethod
-    def get_objective_search_record(self, objective_search_record_type):
+    def get_objective_search_record(self, objective_search_record_type): # pragma: no cover
         """Gets the objective search record corresponding to the given objective search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class ObjectiveSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objectives(self):
+    def get_objectives(self): # pragma: no cover
         """Gets the objective list resulting from the search.
 
         :return: the objective list
@@ -88,7 +88,7 @@ class ObjectiveSearchResults:
     objectives = property(fget=get_objectives)
 
     @abc.abstractmethod
-    def get_objective_query_inspector(self):
+    def get_objective_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -103,7 +103,7 @@ class ObjectiveSearchResults:
     objective_query_inspector = property(fget=get_objective_query_inspector)
 
     @abc.abstractmethod
-    def get_objective_search_results_record(self, objective_search_record_type):
+    def get_objective_search_results_record(self, objective_search_record_type): # pragma: no cover
         """Gets the objective search results record corresponding to the given objective search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class ActivitySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_activities(self, activity_ids):
+    def search_among_activities(self, activity_ids): # pragma: no cover
         """Execute this search among the given list of activities.
 
         :param activity_ids: list of activities
@@ -141,7 +141,7 @@ class ActivitySearch:
         pass
 
     @abc.abstractmethod
-    def order_activity_results(self, activitiesearch_order):
+    def order_activity_results(self, activitiesearch_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param activitiesearch_order: activity search order
@@ -155,7 +155,7 @@ class ActivitySearch:
         pass
 
     @abc.abstractmethod
-    def get_activity_search_record(self, activitiesearch_record_type):
+    def get_activity_search_record(self, activitiesearch_record_type): # pragma: no cover
         """Gets the activity record corresponding to the given activity search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class ActivitySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_activities(self):
+    def get_activities(self): # pragma: no cover
         """Gets the activity list resulting from the search.
 
         :return: the activity list
@@ -195,7 +195,7 @@ class ActivitySearchResults:
     activities = property(fget=get_activities)
 
     @abc.abstractmethod
-    def get_activity_query_inspector(self):
+    def get_activity_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -210,7 +210,7 @@ class ActivitySearchResults:
     activity_query_inspector = property(fget=get_activity_query_inspector)
 
     @abc.abstractmethod
-    def get_activity_search_results_record(self, activitiesearch_record_type):
+    def get_activity_search_results_record(self, activitiesearch_record_type): # pragma: no cover
         """Gets the activity search results record corresponding to the given activity search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class ProficiencySearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_proficiencies(self, proficiency_ids):
+    def search_among_proficiencies(self, proficiency_ids): # pragma: no cover
         """Execute this search among the given list of proficiencies.
 
         :param proficiency_ids: list of proficiencies
@@ -248,7 +248,7 @@ class ProficiencySearch:
         pass
 
     @abc.abstractmethod
-    def order_proficiency_results(self, proficiency_search_order):
+    def order_proficiency_results(self, proficiency_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param proficiency_search_order: proficiency search order
@@ -262,7 +262,7 @@ class ProficiencySearch:
         pass
 
     @abc.abstractmethod
-    def get_proficiency_search_record(self, proficiency_search_record_type):
+    def get_proficiency_search_record(self, proficiency_search_record_type): # pragma: no cover
         """Gets the proficiency search record corresponding to the given proficiency search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class ProficiencySearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_proficiencies(self):
+    def get_proficiencies(self): # pragma: no cover
         """Gets the proficiency list resulting from a search.
 
         :return: the proficiency list
@@ -302,7 +302,7 @@ class ProficiencySearchResults:
     proficiencies = property(fget=get_proficiencies)
 
     @abc.abstractmethod
-    def get_proficiency_query_inspector(self):
+    def get_proficiency_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the proficiency query inspector
@@ -317,7 +317,7 @@ class ProficiencySearchResults:
     proficiency_query_inspector = property(fget=get_proficiency_query_inspector)
 
     @abc.abstractmethod
-    def get_proficiency_search_results_record(self, proficiency_search_record_type):
+    def get_proficiency_search_results_record(self, proficiency_search_record_type): # pragma: no cover
         """Gets the proficiency search results record corresponding to the given proficiency search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -342,7 +342,7 @@ class ObjectiveBankSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_objective_banks(self, objective_bank_ids):
+    def search_among_objective_banks(self, objective_bank_ids): # pragma: no cover
         """Execute this search among the given list of objective banks.
 
         :param objective_bank_ids: list of objective banks
@@ -355,7 +355,7 @@ class ObjectiveBankSearch:
         pass
 
     @abc.abstractmethod
-    def order_objective_bank_results(self, objective_bank_search_order):
+    def order_objective_bank_results(self, objective_bank_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param objective_bank_search_order: objective bank search order
@@ -369,7 +369,7 @@ class ObjectiveBankSearch:
         pass
 
     @abc.abstractmethod
-    def get_objective_bank_search_record(self, objective_bank_search_record_type):
+    def get_objective_bank_search_record(self, objective_bank_search_record_type): # pragma: no cover
         """Gets the objective bank search record corresponding to the given objective bank search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -394,7 +394,7 @@ class ObjectiveBankSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_banks(self):
+    def get_objective_banks(self): # pragma: no cover
         """Gets the objective bank list resulting from the search.
 
         :return: the objective bank list
@@ -409,7 +409,7 @@ class ObjectiveBankSearchResults:
     objective_banks = property(fget=get_objective_banks)
 
     @abc.abstractmethod
-    def get_objective_bank_query_inspector(self):
+    def get_objective_bank_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -424,7 +424,7 @@ class ObjectiveBankSearchResults:
     objective_bank_query_inspector = property(fget=get_objective_bank_query_inspector)
 
     @abc.abstractmethod
-    def get_objective_bank_search_results_record(self, objective_bank_search_record_type):
+    def get_objective_bank_search_results_record(self, objective_bank_search_record_type): # pragma: no cover
         """Gets the objective bank search results record corresponding to the given objective bank search record ``Type``.
 
         This method is used to retrieve an object implementing the

@@ -21,7 +21,7 @@ class Proxy:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def has_authentication(self):
+    def has_authentication(self): # pragma: no cover
         """Tests if an authentication is available.
 
         :return: ``true`` if an ``Authentication`` is available, ``false`` otherwise
@@ -34,7 +34,7 @@ class Proxy:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authentication(self):
+    def get_authentication(self): # pragma: no cover
         """Gets the ``Authentication`` for this proxy.
 
         :return: the authentication
@@ -49,7 +49,7 @@ class Proxy:
     authentication = property(fget=get_authentication)
 
     @abc.abstractmethod
-    def has_effective_agent(self):
+    def has_effective_agent(self): # pragma: no cover
         """Tests if an effective agent is available.
 
         :return: ``true`` if an effective agent is available, ``false`` otherwise
@@ -62,7 +62,7 @@ class Proxy:
         return  # boolean
 
     @abc.abstractmethod
-    def get_effective_agent_id(self):
+    def get_effective_agent_id(self): # pragma: no cover
         """Gets the effective ``Agent Id`` for this proxy.
 
         :return: the effective agent ``Id``
@@ -77,7 +77,7 @@ class Proxy:
     effective_agent_id = property(fget=get_effective_agent_id)
 
     @abc.abstractmethod
-    def get_effective_agent(self):
+    def get_effective_agent(self): # pragma: no cover
         """Gets the effective ``Agent`` for this proxy.
 
         :return: the effective agent
@@ -93,7 +93,7 @@ class Proxy:
     effective_agent = property(fget=get_effective_agent)
 
     @abc.abstractmethod
-    def has_effective_date(self):
+    def has_effective_date(self): # pragma: no cover
         """Tests if an effective date is available.
 
         :return: ``true`` if an effective date is available, ``false`` otherwise
@@ -106,7 +106,7 @@ class Proxy:
         return  # boolean
 
     @abc.abstractmethod
-    def get_effective_date(self):
+    def get_effective_date(self): # pragma: no cover
         """Gets the effective date.
 
         :return: the effective date
@@ -121,7 +121,7 @@ class Proxy:
     effective_date = property(fget=get_effective_date)
 
     @abc.abstractmethod
-    def get_effective_clock_rate(self):
+    def get_effective_clock_rate(self): # pragma: no cover
         """Gets the rate of the clock.
 
         :return: the rate
@@ -136,7 +136,7 @@ class Proxy:
     effective_clock_rate = property(fget=get_effective_clock_rate)
 
     @abc.abstractmethod
-    def get_locale(self):
+    def get_locale(self): # pragma: no cover
         """Gets the locale.
 
         :return: a locale
@@ -151,7 +151,7 @@ class Proxy:
     locale = property(fget=get_locale)
 
     @abc.abstractmethod
-    def has_format_type(self):
+    def has_format_type(self): # pragma: no cover
         """Tests if a ``DisplayText`` format ``Type`` is available.
 
         :return: ``true`` if a format type is available, ``false`` otherwise
@@ -164,7 +164,7 @@ class Proxy:
         return  # boolean
 
     @abc.abstractmethod
-    def get_format_type(self):
+    def get_format_type(self): # pragma: no cover
         """Gets the ``DisplayText`` format ``Type``.
 
         :return: the format ``Type``
@@ -179,7 +179,7 @@ class Proxy:
     format_type = property(fget=get_format_type)
 
     @abc.abstractmethod
-    def get_proxy_record(self, proxy_record_type):
+    def get_proxy_record(self, proxy_record_type): # pragma: no cover
         """Gets the proxy record corresponding to the given ``Proxy`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -207,7 +207,7 @@ class ProxyCondition:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def set_effective_agent_id(self, agent_id):
+    def set_effective_agent_id(self, agent_id): # pragma: no cover
         """Sets the effective agent ``Id`` to indicate acting on behalf of.
 
         :param agent_id: an agent ``Id``
@@ -222,7 +222,7 @@ class ProxyCondition:
     effective_agent_id = property(fset=set_effective_agent_id)
 
     @abc.abstractmethod
-    def set_effective_date(self, date, rate):
+    def set_effective_date(self, date, rate): # pragma: no cover
         """Sets the effective date.
 
         :param date: a date
@@ -237,7 +237,7 @@ class ProxyCondition:
         pass
 
     @abc.abstractmethod
-    def set_language_type(self, language_type):
+    def set_language_type(self, language_type): # pragma: no cover
         """Sets the language type.
 
         :param language_type: the language type
@@ -252,7 +252,7 @@ class ProxyCondition:
     language_type = property(fset=set_language_type)
 
     @abc.abstractmethod
-    def set_script_type(self, script_type):
+    def set_script_type(self, script_type): # pragma: no cover
         """Sets the script type.
 
         :param script_type: the script type
@@ -267,7 +267,7 @@ class ProxyCondition:
     script_type = property(fset=set_script_type)
 
     @abc.abstractmethod
-    def set_calendar_type(self, calendar_type):
+    def set_calendar_type(self, calendar_type): # pragma: no cover
         """Sets the calendar type.
 
         :param calendar_type: the calendar type
@@ -282,7 +282,7 @@ class ProxyCondition:
     calendar_type = property(fset=set_calendar_type)
 
     @abc.abstractmethod
-    def set_time_type(self, time_type):
+    def set_time_type(self, time_type): # pragma: no cover
         """Sets the time type.
 
         :param time_type: the time type
@@ -297,7 +297,7 @@ class ProxyCondition:
     time_type = property(fset=set_time_type)
 
     @abc.abstractmethod
-    def set_currency_type(self, currency_type):
+    def set_currency_type(self, currency_type): # pragma: no cover
         """Sets the currency type.
 
         :param currency_type: the currency type
@@ -312,7 +312,7 @@ class ProxyCondition:
     currency_type = property(fset=set_currency_type)
 
     @abc.abstractmethod
-    def set_unit_system_type(self, unit_system_type):
+    def set_unit_system_type(self, unit_system_type): # pragma: no cover
         """Sets the unit system type.
 
         :param unit_system_type: the unit system type
@@ -327,7 +327,7 @@ class ProxyCondition:
     unit_system_type = property(fset=set_unit_system_type)
 
     @abc.abstractmethod
-    def set_format_type(self, format_type):
+    def set_format_type(self, format_type): # pragma: no cover
         """Sets the ``DisplayText`` format type.
 
         :param format_type: the format type
@@ -342,7 +342,7 @@ class ProxyCondition:
     format_type = property(fset=set_format_type)
 
     @abc.abstractmethod
-    def get_proxy_condition_record(self, proxy_condition_type):
+    def get_proxy_condition_record(self, proxy_condition_type): # pragma: no cover
         """Gets the proxy condition record corresponding to the given ``Proxy`` record ``Type``.
 
         This method is used to retrieve an object implementing the

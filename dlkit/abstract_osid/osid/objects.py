@@ -85,7 +85,7 @@ class OsidObject:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_display_name(self):
+    def get_display_name(self): # pragma: no cover
         """Gets the preferred display name associated with this instance of this OSID object appropriate for display to the user.
 
         :return: the display name
@@ -109,7 +109,7 @@ class OsidObject:
     display_name = property(fget=get_display_name)
 
     @abc.abstractmethod
-    def get_description(self):
+    def get_description(self): # pragma: no cover
         """Gets the description associated with this instance of this OSID object.
 
         :return: the description
@@ -131,7 +131,7 @@ class OsidObject:
     description = property(fget=get_description)
 
     @abc.abstractmethod
-    def get_genus_type(self):
+    def get_genus_type(self): # pragma: no cover
         """Gets the genus type of this object.
 
         :return: the genus type of this object
@@ -146,7 +146,7 @@ class OsidObject:
     genus_type = property(fget=get_genus_type)
 
     @abc.abstractmethod
-    def is_of_genus_type(self, genus_type):
+    def is_of_genus_type(self, genus_type): # pragma: no cover
         """Tests if this object is of the given genus ``Type``.
 
         The given genus type may be supported by the object through the
@@ -209,7 +209,7 @@ class OsidRelationship:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def has_end_reason(self):
+    def has_end_reason(self): # pragma: no cover
         """Tests if a reason this relationship came to an end is known.
 
         :return: ``true`` if an end reason is available, ``false`` otherwise
@@ -222,7 +222,7 @@ class OsidRelationship:
         return  # boolean
 
     @abc.abstractmethod
-    def get_end_reason_id(self):
+    def get_end_reason_id(self): # pragma: no cover
         """Gets a state ``Id`` indicating why this relationship has ended.
 
         :return: a state ``Id``
@@ -237,7 +237,7 @@ class OsidRelationship:
     end_reason_id = property(fget=get_end_reason_id)
 
     @abc.abstractmethod
-    def get_end_reason(self):
+    def get_end_reason(self): # pragma: no cover
         """Gets a state indicating why this relationship has ended.
 
         :return: a state
@@ -319,7 +319,7 @@ class OsidRule:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def has_rule(self):
+    def has_rule(self): # pragma: no cover
         """Tests if an explicit rule is available.
 
         :return: ``true`` if an explicit rule is available, ``false`` otherwise
@@ -332,7 +332,7 @@ class OsidRule:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rule_id(self):
+    def get_rule_id(self): # pragma: no cover
         """Gets the explicit rule ``Id``.
 
         :return: the rule ``Id``
@@ -347,7 +347,7 @@ class OsidRule:
     rule_id = property(fget=get_rule_id)
 
     @abc.abstractmethod
-    def get_rule(self):
+    def get_rule(self): # pragma: no cover
         """Gets the explicit rule.
 
         :return: the rule
@@ -402,7 +402,7 @@ class OsidEnabler:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_effective_by_schedule(self):
+    def is_effective_by_schedule(self): # pragma: no cover
         """Tests if the effectiveness of the enabler is governed by a ``Schedule``.
 
         If a schedule exists, it is bounded by the effective dates of
@@ -420,7 +420,7 @@ class OsidEnabler:
         return  # boolean
 
     @abc.abstractmethod
-    def get_schedule_id(self):
+    def get_schedule_id(self): # pragma: no cover
         """Gets the schedule ``Id``.
 
         :return: the schedule ``Id``
@@ -435,7 +435,7 @@ class OsidEnabler:
     schedule_id = property(fget=get_schedule_id)
 
     @abc.abstractmethod
-    def get_schedule(self):
+    def get_schedule(self): # pragma: no cover
         """Gets the schedule.
 
         :return: the schedule
@@ -451,7 +451,7 @@ class OsidEnabler:
     schedule = property(fget=get_schedule)
 
     @abc.abstractmethod
-    def is_effective_by_event(self):
+    def is_effective_by_event(self): # pragma: no cover
         """Tests if the effectiveness of the enabler is governed by an ``Event`` such that the start and end dates of the event govern the effectiveness.
 
         The event may also be a ``RecurringEvent`` in which case the
@@ -471,7 +471,7 @@ class OsidEnabler:
         return  # boolean
 
     @abc.abstractmethod
-    def get_event_id(self):
+    def get_event_id(self): # pragma: no cover
         """Gets the event ``Id``.
 
         :return: the event ``Id``
@@ -486,7 +486,7 @@ class OsidEnabler:
     event_id = property(fget=get_event_id)
 
     @abc.abstractmethod
-    def get_event(self):
+    def get_event(self): # pragma: no cover
         """Gets the event.
 
         :return: the event
@@ -502,7 +502,7 @@ class OsidEnabler:
     event = property(fget=get_event)
 
     @abc.abstractmethod
-    def is_effective_by_cyclic_event(self):
+    def is_effective_by_cyclic_event(self): # pragma: no cover
         """Tests if the effectiveness of the enabler is governed by a ``CyclicEvent``.
 
         If a cyclic event exists, it is evaluated by the accompanying
@@ -520,7 +520,7 @@ class OsidEnabler:
         return  # boolean
 
     @abc.abstractmethod
-    def get_cyclic_event_id(self):
+    def get_cyclic_event_id(self): # pragma: no cover
         """Gets the cyclic event ``Id``.
 
         :return: the cyclic event ``Id``
@@ -535,7 +535,7 @@ class OsidEnabler:
     cyclic_event_id = property(fget=get_cyclic_event_id)
 
     @abc.abstractmethod
-    def get_cyclic_event(self):
+    def get_cyclic_event(self): # pragma: no cover
         """Gets the cyclic event.
 
         :return: the cyclic event
@@ -551,7 +551,7 @@ class OsidEnabler:
     cyclic_event = property(fget=get_cyclic_event)
 
     @abc.abstractmethod
-    def is_effective_for_demographic(self):
+    def is_effective_for_demographic(self): # pragma: no cover
         """Tests if the effectiveness of the enabler applies to a demographic resource.
 
         :return: ``true`` if the rule apples to a demographic. ``false`` otherwise
@@ -564,7 +564,7 @@ class OsidEnabler:
         return  # boolean
 
     @abc.abstractmethod
-    def get_demographic_id(self):
+    def get_demographic_id(self): # pragma: no cover
         """Gets the demographic resource ``Id``.
 
         :return: the resource ``Id``
@@ -579,7 +579,7 @@ class OsidEnabler:
     demographic_id = property(fget=get_demographic_id)
 
     @abc.abstractmethod
-    def get_demographic(self):
+    def get_demographic(self): # pragma: no cover
         """Gets the demographic resource.
 
         :return: the resource representing the demographic
@@ -690,7 +690,7 @@ class OsidCompendium:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_start_date(self):
+    def get_start_date(self): # pragma: no cover
         """Gets the start date used in the evaluation of the transactional data on which this report is based.
 
         :return: the date
@@ -705,7 +705,7 @@ class OsidCompendium:
     start_date = property(fget=get_start_date)
 
     @abc.abstractmethod
-    def get_end_date(self):
+    def get_end_date(self): # pragma: no cover
         """Gets the end date used in the evaluation of the transactional data on which this report is based.
 
         :return: the date
@@ -720,7 +720,7 @@ class OsidCompendium:
     end_date = property(fget=get_end_date)
 
     @abc.abstractmethod
-    def is_interpolated(self):
+    def is_interpolated(self): # pragma: no cover
         """Tests if this report is interpolated within measured data or known transactions.
 
         Interpolation may occur if the start or end date fall between
@@ -736,7 +736,7 @@ class OsidCompendium:
         return  # boolean
 
     @abc.abstractmethod
-    def is_extrapolated(self):
+    def is_extrapolated(self): # pragma: no cover
         """Tests if this report is extrapolated outside measured data or known transactions.
 
         Extrapolation may occur if the start or end date fall outside
@@ -805,7 +805,7 @@ class OsidForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_for_update(self):
+    def is_for_update(self): # pragma: no cover
         """Tests if this form is for an update operation.
 
         :return: ``true`` if this form is for an update operation, ``false`` if for a create operation
@@ -818,7 +818,7 @@ class OsidForm:
         return  # boolean
 
     @abc.abstractmethod
-    def get_default_locale(self):
+    def get_default_locale(self): # pragma: no cover
         """Gets a default locale for ``DisplayTexts`` when a locale is not specified.
 
         :return: the default locale
@@ -833,7 +833,7 @@ class OsidForm:
     default_locale = property(fget=get_default_locale)
 
     @abc.abstractmethod
-    def get_locales(self):
+    def get_locales(self): # pragma: no cover
         """Gets a list of locales for available ``DisplayText`` translations that can be performed using this form.
 
         :return: a list of available locales or an empty list if no translation operations are available
@@ -848,7 +848,7 @@ class OsidForm:
     locales = property(fget=get_locales)
 
     @abc.abstractmethod
-    def set_locale(self, language_type, script_type):
+    def set_locale(self, language_type, script_type): # pragma: no cover
         """Specifies a language and script type for ``DisplayText`` fields in this form.
 
         Setting a locale to something other than the default locale may
@@ -871,7 +871,7 @@ class OsidForm:
         pass
 
     @abc.abstractmethod
-    def get_journal_comment_metadata(self):
+    def get_journal_comment_metadata(self): # pragma: no cover
         """Gets the metadata for the comment corresponding to this form submission.
 
         The comment is used for describing the nature of the change to
@@ -890,7 +890,7 @@ class OsidForm:
     journal_comment_metadata = property(fget=get_journal_comment_metadata)
 
     @abc.abstractmethod
-    def set_journal_comment(self, comment):
+    def set_journal_comment(self, comment): # pragma: no cover
         """Sets a comment.
 
         :param comment: the new comment
@@ -907,7 +907,7 @@ class OsidForm:
     journal_comment = property(fset=set_journal_comment)
 
     @abc.abstractmethod
-    def is_valid(self):
+    def is_valid(self): # pragma: no cover
         """Tests if ths form is in a valid state for submission.
 
         A form is valid if all required data has been supplied compliant
@@ -923,7 +923,7 @@ class OsidForm:
         return  # boolean
 
     @abc.abstractmethod
-    def get_validation_messages(self):
+    def get_validation_messages(self): # pragma: no cover
         """Gets text messages corresponding to additional instructions to pass form validation.
 
         :return: a list of messages
@@ -938,7 +938,7 @@ class OsidForm:
     validation_messages = property(fget=get_validation_messages)
 
     @abc.abstractmethod
-    def get_invalid_metadata(self):
+    def get_invalid_metadata(self): # pragma: no cover
         """Gets a list of metadata for the elements in this form which are not valid.
 
         :return: invalid metadata
@@ -973,7 +973,7 @@ class OsidExtensibleForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_required_record_types(self):
+    def get_required_record_types(self): # pragma: no cover
         """Gets the required record types for this form.
 
         The required records may change as a result of other data in
@@ -1006,7 +1006,7 @@ class OsidTemporalForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_start_date_metadata(self):
+    def get_start_date_metadata(self): # pragma: no cover
         """Gets the metadata for a start date.
 
         :return: metadata for the date
@@ -1021,7 +1021,7 @@ class OsidTemporalForm:
     start_date_metadata = property(fget=get_start_date_metadata)
 
     @abc.abstractmethod
-    def set_start_date(self, date):
+    def set_start_date(self, date): # pragma: no cover
         """Sets the start date.
 
         :param date: the new date
@@ -1036,7 +1036,7 @@ class OsidTemporalForm:
         pass
 
     @abc.abstractmethod
-    def clear_start_date(self):
+    def clear_start_date(self): # pragma: no cover
         """Clears the start date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1049,7 +1049,7 @@ class OsidTemporalForm:
     start_date = property(fset=set_start_date, fdel=clear_start_date)
 
     @abc.abstractmethod
-    def get_end_date_metadata(self):
+    def get_end_date_metadata(self): # pragma: no cover
         """Gets the metadata for an end date.
 
         :return: metadata for the date
@@ -1064,7 +1064,7 @@ class OsidTemporalForm:
     end_date_metadata = property(fget=get_end_date_metadata)
 
     @abc.abstractmethod
-    def set_end_date(self, date):
+    def set_end_date(self, date): # pragma: no cover
         """Sets the end date.
 
         :param date: the new date
@@ -1079,7 +1079,7 @@ class OsidTemporalForm:
         pass
 
     @abc.abstractmethod
-    def clear_end_date(self):
+    def clear_end_date(self): # pragma: no cover
         """Clears the end date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1107,7 +1107,7 @@ class OsidContainableForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_sequestered_metadata(self):
+    def get_sequestered_metadata(self): # pragma: no cover
         """Gets the metadata for the sequestered flag.
 
         :return: metadata for the sequestered flag
@@ -1122,7 +1122,7 @@ class OsidContainableForm:
     sequestered_metadata = property(fget=get_sequestered_metadata)
 
     @abc.abstractmethod
-    def set_sequestered(self, sequestered):
+    def set_sequestered(self, sequestered): # pragma: no cover
         """Sets the sequestered flag.
 
         :param sequestered: the new sequestered flag
@@ -1136,7 +1136,7 @@ class OsidContainableForm:
         pass
 
     @abc.abstractmethod
-    def clear_sequestered(self):
+    def clear_sequestered(self): # pragma: no cover
         """Clears the sequestered flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1154,7 +1154,7 @@ class OsidSourceableForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_provider_metadata(self):
+    def get_provider_metadata(self): # pragma: no cover
         """Gets the metadata for a provider.
 
         :return: metadata for the provider
@@ -1169,7 +1169,7 @@ class OsidSourceableForm:
     provider_metadata = property(fget=get_provider_metadata)
 
     @abc.abstractmethod
-    def set_provider(self, provider_id):
+    def set_provider(self, provider_id): # pragma: no cover
         """Sets a provider.
 
         :param provider_id: the new provider
@@ -1184,7 +1184,7 @@ class OsidSourceableForm:
         pass
 
     @abc.abstractmethod
-    def clear_provider(self):
+    def clear_provider(self): # pragma: no cover
         """Removes the provider.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1197,7 +1197,7 @@ class OsidSourceableForm:
     provider = property(fset=set_provider, fdel=clear_provider)
 
     @abc.abstractmethod
-    def get_branding_metadata(self):
+    def get_branding_metadata(self): # pragma: no cover
         """Gets the metadata for the asset branding.
 
         :return: metadata for the asset branding.
@@ -1212,7 +1212,7 @@ class OsidSourceableForm:
     branding_metadata = property(fget=get_branding_metadata)
 
     @abc.abstractmethod
-    def set_branding(self, asset_ids):
+    def set_branding(self, asset_ids): # pragma: no cover
         """Sets the branding.
 
         :param asset_ids: the new assets
@@ -1227,7 +1227,7 @@ class OsidSourceableForm:
         pass
 
     @abc.abstractmethod
-    def clear_branding(self):
+    def clear_branding(self): # pragma: no cover
         """Removes the branding.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1240,7 +1240,7 @@ class OsidSourceableForm:
     branding = property(fset=set_branding, fdel=clear_branding)
 
     @abc.abstractmethod
-    def get_license_metadata(self):
+    def get_license_metadata(self): # pragma: no cover
         """Gets the metadata for the license.
 
         :return: metadata for the license
@@ -1255,7 +1255,7 @@ class OsidSourceableForm:
     license_metadata = property(fget=get_license_metadata)
 
     @abc.abstractmethod
-    def set_license(self, license_):
+    def set_license(self, license_): # pragma: no cover
         """Sets the license.
 
         :param license: the new license
@@ -1270,7 +1270,7 @@ class OsidSourceableForm:
         pass
 
     @abc.abstractmethod
-    def clear_license(self):
+    def clear_license(self): # pragma: no cover
         """Removes the license.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1293,7 +1293,7 @@ class OsidOperableForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_enabled_metadata(self):
+    def get_enabled_metadata(self): # pragma: no cover
         """Gets the metadata for the enabled flag.
 
         :return: metadata for the enabled flag
@@ -1308,7 +1308,7 @@ class OsidOperableForm:
     enabled_metadata = property(fget=get_enabled_metadata)
 
     @abc.abstractmethod
-    def set_enabled(self, enabled):
+    def set_enabled(self, enabled): # pragma: no cover
         """Sets the administratively enabled flag.
 
         :param enabled: the new enabled flag
@@ -1322,7 +1322,7 @@ class OsidOperableForm:
         pass
 
     @abc.abstractmethod
-    def clear_enabled(self):
+    def clear_enabled(self): # pragma: no cover
         """Removes the administratively enabled flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1335,7 +1335,7 @@ class OsidOperableForm:
     enabled = property(fset=set_enabled, fdel=clear_enabled)
 
     @abc.abstractmethod
-    def get_disabled_metadata(self):
+    def get_disabled_metadata(self): # pragma: no cover
         """Gets the metadata for the disabled flag.
 
         :return: metadata for the disabled flag
@@ -1350,7 +1350,7 @@ class OsidOperableForm:
     disabled_metadata = property(fget=get_disabled_metadata)
 
     @abc.abstractmethod
-    def set_disabled(self, disabled):
+    def set_disabled(self, disabled): # pragma: no cover
         """Sets the administratively disabled flag.
 
         :param disabled: the new disabled flag
@@ -1364,7 +1364,7 @@ class OsidOperableForm:
         pass
 
     @abc.abstractmethod
-    def clear_disabled(self):
+    def clear_disabled(self): # pragma: no cover
         """Removes the administratively disabled flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1418,7 +1418,7 @@ class OsidObjectForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_display_name_metadata(self):
+    def get_display_name_metadata(self): # pragma: no cover
         """Gets the metadata for a display name.
 
         :return: metadata for the display name
@@ -1433,7 +1433,7 @@ class OsidObjectForm:
     display_name_metadata = property(fget=get_display_name_metadata)
 
     @abc.abstractmethod
-    def set_display_name(self, display_name):
+    def set_display_name(self, display_name): # pragma: no cover
         """Sets a display name.
 
         A display name is required and if not set, will be set by the
@@ -1451,7 +1451,7 @@ class OsidObjectForm:
         pass
 
     @abc.abstractmethod
-    def clear_display_name(self):
+    def clear_display_name(self): # pragma: no cover
         """Clears the display name.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1464,7 +1464,7 @@ class OsidObjectForm:
     display_name = property(fset=set_display_name, fdel=clear_display_name)
 
     @abc.abstractmethod
-    def get_description_metadata(self):
+    def get_description_metadata(self): # pragma: no cover
         """Gets the metadata for a description.
 
         :return: metadata for the description
@@ -1479,7 +1479,7 @@ class OsidObjectForm:
     description_metadata = property(fget=get_description_metadata)
 
     @abc.abstractmethod
-    def set_description(self, description):
+    def set_description(self, description): # pragma: no cover
         """Sets a description.
 
         :param description: the new description
@@ -1494,7 +1494,7 @@ class OsidObjectForm:
         pass
 
     @abc.abstractmethod
-    def clear_description(self):
+    def clear_description(self): # pragma: no cover
         """Clears the description.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1507,7 +1507,7 @@ class OsidObjectForm:
     description = property(fset=set_description, fdel=clear_description)
 
     @abc.abstractmethod
-    def get_genus_type_metadata(self):
+    def get_genus_type_metadata(self): # pragma: no cover
         """Gets the metadata for a genus type.
 
         :return: metadata for the genus
@@ -1522,7 +1522,7 @@ class OsidObjectForm:
     genus_type_metadata = property(fget=get_genus_type_metadata)
 
     @abc.abstractmethod
-    def set_genus_type(self, genus_type):
+    def set_genus_type(self, genus_type): # pragma: no cover
         """Sets a genus.
 
         A genus cannot be cleared because all objects have at minimum a
@@ -1540,7 +1540,7 @@ class OsidObjectForm:
         pass
 
     @abc.abstractmethod
-    def clear_genus_type(self):
+    def clear_genus_type(self): # pragma: no cover
         """Clears the genus type.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1568,7 +1568,7 @@ class OsidRuleForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_rule_metadata(self):
+    def get_rule_metadata(self): # pragma: no cover
         """Gets the metadata for an associated rule.
 
         :return: metadata for the rule
@@ -1583,7 +1583,7 @@ class OsidRuleForm:
     rule_metadata = property(fget=get_rule_metadata)
 
     @abc.abstractmethod
-    def set_rule(self, rule_id):
+    def set_rule(self, rule_id): # pragma: no cover
         """Sets a rule.
 
         :param rule_id: the new rule
@@ -1598,7 +1598,7 @@ class OsidRuleForm:
         pass
 
     @abc.abstractmethod
-    def clear_rule(self):
+    def clear_rule(self): # pragma: no cover
         """Removes the rule.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1616,7 +1616,7 @@ class OsidEnablerForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_schedule_metadata(self):
+    def get_schedule_metadata(self): # pragma: no cover
         """Gets the metadata for an associated schedule.
 
         :return: metadata for the schedule
@@ -1631,7 +1631,7 @@ class OsidEnablerForm:
     schedule_metadata = property(fget=get_schedule_metadata)
 
     @abc.abstractmethod
-    def set_schedule(self, schedule_id):
+    def set_schedule(self, schedule_id): # pragma: no cover
         """Sets a schedule.
 
         :param schedule_id: the new schedule
@@ -1646,7 +1646,7 @@ class OsidEnablerForm:
         pass
 
     @abc.abstractmethod
-    def clear_schedule(self):
+    def clear_schedule(self): # pragma: no cover
         """Removes the schedule.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1659,7 +1659,7 @@ class OsidEnablerForm:
     schedule = property(fset=set_schedule, fdel=clear_schedule)
 
     @abc.abstractmethod
-    def get_event_metadata(self):
+    def get_event_metadata(self): # pragma: no cover
         """Gets the metadata for an associated event.
 
         :return: metadata for the event
@@ -1674,7 +1674,7 @@ class OsidEnablerForm:
     event_metadata = property(fget=get_event_metadata)
 
     @abc.abstractmethod
-    def set_event(self, event_id):
+    def set_event(self, event_id): # pragma: no cover
         """Sets an event.
 
         :param event_id: the new event
@@ -1689,7 +1689,7 @@ class OsidEnablerForm:
         pass
 
     @abc.abstractmethod
-    def clear_event(self):
+    def clear_event(self): # pragma: no cover
         """Removes the event.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1702,7 +1702,7 @@ class OsidEnablerForm:
     event = property(fset=set_event, fdel=clear_event)
 
     @abc.abstractmethod
-    def get_cyclic_event_metadata(self):
+    def get_cyclic_event_metadata(self): # pragma: no cover
         """Gets the metadata for the cyclic event.
 
         :return: metadata for the cyclic event
@@ -1717,7 +1717,7 @@ class OsidEnablerForm:
     cyclic_event_metadata = property(fget=get_cyclic_event_metadata)
 
     @abc.abstractmethod
-    def set_cyclic_event(self, cyclic_event_id):
+    def set_cyclic_event(self, cyclic_event_id): # pragma: no cover
         """Sets the cyclic event.
 
         :param cyclic_event_id: the new cyclic event
@@ -1732,7 +1732,7 @@ class OsidEnablerForm:
         pass
 
     @abc.abstractmethod
-    def clear_cyclic_event(self):
+    def clear_cyclic_event(self): # pragma: no cover
         """Removes the cyclic event.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1745,7 +1745,7 @@ class OsidEnablerForm:
     cyclic_event = property(fset=set_cyclic_event, fdel=clear_cyclic_event)
 
     @abc.abstractmethod
-    def get_demographic_metadata(self):
+    def get_demographic_metadata(self): # pragma: no cover
         """Gets the metadata for an associated demographic.
 
         :return: metadata for the resource.
@@ -1760,7 +1760,7 @@ class OsidEnablerForm:
     demographic_metadata = property(fget=get_demographic_metadata)
 
     @abc.abstractmethod
-    def set_demographic(self, resource_id):
+    def set_demographic(self, resource_id): # pragma: no cover
         """Sets a resource demographic.
 
         :param resource_id: the new resource
@@ -1775,7 +1775,7 @@ class OsidEnablerForm:
         pass
 
     @abc.abstractmethod
-    def clear_demographic(self):
+    def clear_demographic(self): # pragma: no cover
         """Removes the resource demographic.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1808,7 +1808,7 @@ class OsidCompendiumForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_start_date_metadata(self):
+    def get_start_date_metadata(self): # pragma: no cover
         """Gets the metadata for a start date.
 
         :return: metadata for the date
@@ -1823,7 +1823,7 @@ class OsidCompendiumForm:
     start_date_metadata = property(fget=get_start_date_metadata)
 
     @abc.abstractmethod
-    def set_start_date(self, date):
+    def set_start_date(self, date): # pragma: no cover
         """Sets the start date.
 
         :param date: the new date
@@ -1838,7 +1838,7 @@ class OsidCompendiumForm:
         pass
 
     @abc.abstractmethod
-    def clear_start_date(self):
+    def clear_start_date(self): # pragma: no cover
         """Clears the start date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1851,7 +1851,7 @@ class OsidCompendiumForm:
     start_date = property(fset=set_start_date, fdel=clear_start_date)
 
     @abc.abstractmethod
-    def get_end_date_metadata(self):
+    def get_end_date_metadata(self): # pragma: no cover
         """Gets the metadata for an end date.
 
         :return: metadata for the date
@@ -1866,7 +1866,7 @@ class OsidCompendiumForm:
     end_date_metadata = property(fget=get_end_date_metadata)
 
     @abc.abstractmethod
-    def set_end_date(self, date):
+    def set_end_date(self, date): # pragma: no cover
         """Sets the end date.
 
         :param date: the new date
@@ -1881,7 +1881,7 @@ class OsidCompendiumForm:
         pass
 
     @abc.abstractmethod
-    def clear_end_date(self):
+    def clear_end_date(self): # pragma: no cover
         """Clears the end date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1894,7 +1894,7 @@ class OsidCompendiumForm:
     end_date = property(fset=set_end_date, fdel=clear_end_date)
 
     @abc.abstractmethod
-    def get_interpolated_metadata(self):
+    def get_interpolated_metadata(self): # pragma: no cover
         """Gets the metadata for the interpolated flag.
 
         :return: metadata for the interpolated flag
@@ -1909,7 +1909,7 @@ class OsidCompendiumForm:
     interpolated_metadata = property(fget=get_interpolated_metadata)
 
     @abc.abstractmethod
-    def set_interpolated(self, interpolated):
+    def set_interpolated(self, interpolated): # pragma: no cover
         """Sets the interpolated flag.
 
         :param interpolated: the new interpolated flag
@@ -1923,7 +1923,7 @@ class OsidCompendiumForm:
         pass
 
     @abc.abstractmethod
-    def clear_interpolated(self):
+    def clear_interpolated(self): # pragma: no cover
         """Clears the interpolated flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1936,7 +1936,7 @@ class OsidCompendiumForm:
     interpolated = property(fset=set_interpolated, fdel=clear_interpolated)
 
     @abc.abstractmethod
-    def get_extrapolated_metadata(self):
+    def get_extrapolated_metadata(self): # pragma: no cover
         """Gets the metadata for the extrapolated flag.
 
         :return: metadata for the extrapolated flag
@@ -1951,7 +1951,7 @@ class OsidCompendiumForm:
     extrapolated_metadata = property(fget=get_extrapolated_metadata)
 
     @abc.abstractmethod
-    def set_extrapolated(self, extrapolated):
+    def set_extrapolated(self, extrapolated): # pragma: no cover
         """Sets the extrapolated flag.
 
         :param extrapolated: the new extrapolated flag
@@ -1965,7 +1965,7 @@ class OsidCompendiumForm:
         pass
 
     @abc.abstractmethod
-    def clear_extrapolated(self):
+    def clear_extrapolated(self): # pragma: no cover
         """Clears the extrapolated flag.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -2010,7 +2010,7 @@ class OsidList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def has_next(self):
+    def has_next(self): # pragma: no cover
         """Tests if there are more elements in this list.
 
         :return: ``true`` if more elements are available in this list, ``false`` if the end of the list has been reached
@@ -2027,7 +2027,7 @@ class OsidList:
         return  # boolean
 
     @abc.abstractmethod
-    def available(self):
+    def available(self): # pragma: no cover
         """Gets the number of elements available for retrieval.
 
         The number returned by this method may be less than or equal to
@@ -2059,7 +2059,7 @@ class OsidList:
         return  # cardinal
 
     @abc.abstractmethod
-    def skip(self, n):
+    def skip(self, n): # pragma: no cover
         """Skip the specified number of elements in the list.
 
         If the number skipped is greater than the number of elements in
@@ -2086,7 +2086,7 @@ class OsidNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def is_root(self):
+    def is_root(self): # pragma: no cover
         """Tests if this node is a root in the hierarchy (has no parents).
 
         A node may have no more parents available in this node structure
@@ -2104,7 +2104,7 @@ class OsidNode:
         return  # boolean
 
     @abc.abstractmethod
-    def has_parents(self):
+    def has_parents(self): # pragma: no cover
         """Tests if any parents are available in this node structure.
 
         There may be no more parents in this node structure however
@@ -2120,7 +2120,7 @@ class OsidNode:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_ids(self):
+    def get_parent_ids(self): # pragma: no cover
         """Gets the parents of this node.
 
         :return: the parents of this node
@@ -2135,7 +2135,7 @@ class OsidNode:
     parent_ids = property(fget=get_parent_ids)
 
     @abc.abstractmethod
-    def is_leaf(self):
+    def is_leaf(self): # pragma: no cover
         """Tests if this node is a leaf in the hierarchy (has no children).
 
         A node may have no more children available in this node
@@ -2154,7 +2154,7 @@ class OsidNode:
         return  # boolean
 
     @abc.abstractmethod
-    def has_children(self):
+    def has_children(self): # pragma: no cover
         """Tests if any children are available in this node structure.
 
         There may be no more children available in this node structure
@@ -2170,7 +2170,7 @@ class OsidNode:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_ids(self):
+    def get_child_ids(self): # pragma: no cover
         """Gets the children of this node.
 
         :return: the children of this node

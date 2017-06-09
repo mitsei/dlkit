@@ -21,7 +21,7 @@ class AssessmentPartQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -36,7 +36,7 @@ class AssessmentPartQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -51,7 +51,7 @@ class AssessmentPartQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_parent_assessment_part_id_terms(self):
+    def get_parent_assessment_part_id_terms(self): # pragma: no cover
         """Gets the assessment part ``Id`` query terms.
 
         :return: the assessment parent ``Id`` terms
@@ -66,7 +66,7 @@ class AssessmentPartQueryInspector:
     parent_assessment_part_id_terms = property(fget=get_parent_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def get_parent_assessment_part_terms(self):
+    def get_parent_assessment_part_terms(self): # pragma: no cover
         """Gets the assessment part query terms.
 
         :return: the assessment part terms
@@ -81,7 +81,7 @@ class AssessmentPartQueryInspector:
     parent_assessment_part_terms = property(fget=get_parent_assessment_part_terms)
 
     @abc.abstractmethod
-    def get_section_terms(self):
+    def get_section_terms(self): # pragma: no cover
         """Gets the section query terms.
 
         :return: the section terms
@@ -96,7 +96,7 @@ class AssessmentPartQueryInspector:
     section_terms = property(fget=get_section_terms)
 
     @abc.abstractmethod
-    def get_weight_terms(self):
+    def get_weight_terms(self): # pragma: no cover
         """Gets the weight terms.
 
         :return: the resource ``Id`` terms
@@ -111,7 +111,7 @@ class AssessmentPartQueryInspector:
     weight_terms = property(fget=get_weight_terms)
 
     @abc.abstractmethod
-    def get_allocated_time_terms(self):
+    def get_allocated_time_terms(self): # pragma: no cover
         """Gets the allocated time terms.
 
         :return: the time terms
@@ -126,7 +126,7 @@ class AssessmentPartQueryInspector:
     allocated_time_terms = property(fget=get_allocated_time_terms)
 
     @abc.abstractmethod
-    def get_child_assessment_part_id_terms(self):
+    def get_child_assessment_part_id_terms(self): # pragma: no cover
         """Gets the assessment part ``Id`` query terms.
 
         :return: the assessment parent ``Id`` terms
@@ -141,7 +141,7 @@ class AssessmentPartQueryInspector:
     child_assessment_part_id_terms = property(fget=get_child_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def get_child_assessment_part_terms(self):
+    def get_child_assessment_part_terms(self): # pragma: no cover
         """Gets the assessment part query terms.
 
         :return: the assessment part terms
@@ -156,7 +156,7 @@ class AssessmentPartQueryInspector:
     child_assessment_part_terms = property(fget=get_child_assessment_part_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the query terms
@@ -171,7 +171,7 @@ class AssessmentPartQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the query terms
@@ -186,7 +186,7 @@ class AssessmentPartQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_part_query_inspector_record(self, assessment_part_record_type):
+    def get_assessment_part_query_inspector_record(self, assessment_part_record_type): # pragma: no cover
         """Gets the assessment part query inspector record corresponding to the given ``AssessmentPart`` record ``Type``.
 
         :param assessment_part_record_type: an assessment part record type
@@ -208,7 +208,7 @@ class SequenceRuleQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_part_id_terms(self):
+    def get_assessment_part_id_terms(self): # pragma: no cover
         """Gets the assessment part ``Id`` query terms.
 
         :return: the assessment parent ``Id`` terms
@@ -223,7 +223,7 @@ class SequenceRuleQueryInspector:
     assessment_part_id_terms = property(fget=get_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_part_terms(self):
+    def get_assessment_part_terms(self): # pragma: no cover
         """Gets the assessment part query terms.
 
         :return: the assessment part terms
@@ -238,7 +238,7 @@ class SequenceRuleQueryInspector:
     assessment_part_terms = property(fget=get_assessment_part_terms)
 
     @abc.abstractmethod
-    def get_next_assessment_part_id_terms(self):
+    def get_next_assessment_part_id_terms(self): # pragma: no cover
         """Gets the assessment part ``Id`` query terms.
 
         :return: the assessment parent ``Id`` terms
@@ -253,7 +253,7 @@ class SequenceRuleQueryInspector:
     next_assessment_part_id_terms = property(fget=get_next_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def get_next_assessment_part_terms(self):
+    def get_next_assessment_part_terms(self): # pragma: no cover
         """Gets the assessment part query terms.
 
         :return: the assessment part terms
@@ -268,7 +268,7 @@ class SequenceRuleQueryInspector:
     next_assessment_part_terms = property(fget=get_next_assessment_part_terms)
 
     @abc.abstractmethod
-    def get_minimum_score_terms(self):
+    def get_minimum_score_terms(self): # pragma: no cover
         """Gets the minimum score query terms.
 
         :return: the minimum score terms
@@ -283,7 +283,7 @@ class SequenceRuleQueryInspector:
     minimum_score_terms = property(fget=get_minimum_score_terms)
 
     @abc.abstractmethod
-    def get_maximum_score_terms(self):
+    def get_maximum_score_terms(self): # pragma: no cover
         """Gets the maximum score query terms.
 
         :return: the maximum score terms
@@ -298,7 +298,7 @@ class SequenceRuleQueryInspector:
     maximum_score_terms = property(fget=get_maximum_score_terms)
 
     @abc.abstractmethod
-    def get_cumulative_terms(self):
+    def get_cumulative_terms(self): # pragma: no cover
         """Gets the minimum score query terms.
 
         :return: the cumulative terms
@@ -313,7 +313,7 @@ class SequenceRuleQueryInspector:
     cumulative_terms = property(fget=get_cumulative_terms)
 
     @abc.abstractmethod
-    def get_applied_assessment_part_id_terms(self):
+    def get_applied_assessment_part_id_terms(self): # pragma: no cover
         """Gets the assessment part ``Id`` query terms.
 
         :return: the assessment parent ``Id`` terms
@@ -328,7 +328,7 @@ class SequenceRuleQueryInspector:
     applied_assessment_part_id_terms = property(fget=get_applied_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def get_applied_assessment_part_terms(self):
+    def get_applied_assessment_part_terms(self): # pragma: no cover
         """Gets the assessment part query terms.
 
         :return: the assessment part terms
@@ -343,7 +343,7 @@ class SequenceRuleQueryInspector:
     applied_assessment_part_terms = property(fget=get_applied_assessment_part_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the query terms
@@ -358,7 +358,7 @@ class SequenceRuleQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the query terms
@@ -373,7 +373,7 @@ class SequenceRuleQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_sequence_rule_query_inspector_record(self, sequence_rule_record_type):
+    def get_sequence_rule_query_inspector_record(self, sequence_rule_record_type): # pragma: no cover
         """Gets the sequence rule query inspector record corresponding to the given ``SequenceRule`` record ``Type``.
 
         :param sequence_rule_record_type: a sequence rule record type
@@ -395,7 +395,7 @@ class SequenceRuleEnablerQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_ruled_sequence_rule_id_terms(self):
+    def get_ruled_sequence_rule_id_terms(self): # pragma: no cover
         """Gets the sequence rule ``Id`` query terms.
 
         :return: the query terms
@@ -410,7 +410,7 @@ class SequenceRuleEnablerQueryInspector:
     ruled_sequence_rule_id_terms = property(fget=get_ruled_sequence_rule_id_terms)
 
     @abc.abstractmethod
-    def get_ruled_sequence_rule_terms(self):
+    def get_ruled_sequence_rule_terms(self): # pragma: no cover
         """Gets the sequence rule query terms.
 
         :return: the query terms
@@ -425,7 +425,7 @@ class SequenceRuleEnablerQueryInspector:
     ruled_sequence_rule_terms = property(fget=get_ruled_sequence_rule_terms)
 
     @abc.abstractmethod
-    def get_bank_id_terms(self):
+    def get_bank_id_terms(self): # pragma: no cover
         """Gets the bank ``Id`` query terms.
 
         :return: the query terms
@@ -440,7 +440,7 @@ class SequenceRuleEnablerQueryInspector:
     bank_id_terms = property(fget=get_bank_id_terms)
 
     @abc.abstractmethod
-    def get_bank_terms(self):
+    def get_bank_terms(self): # pragma: no cover
         """Gets the bank query terms.
 
         :return: the query terms
@@ -455,7 +455,7 @@ class SequenceRuleEnablerQueryInspector:
     bank_terms = property(fget=get_bank_terms)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_inspector_record(self, sequence_rule_enabler_record_type):
+    def get_sequence_rule_enabler_query_inspector_record(self, sequence_rule_enabler_record_type): # pragma: no cover
         """Gets the sequence rule enabler query inspector record corresponding to the given ``SequenceRuleEnabler`` record ``Type``.
 
         :param sequence_rule_enabler_record_type: a sequence rule enabler record type

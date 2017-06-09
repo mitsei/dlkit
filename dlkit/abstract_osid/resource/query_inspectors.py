@@ -21,7 +21,7 @@ class ResourceQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_group_terms(self):
+    def get_group_terms(self): # pragma: no cover
         """Gets the group query terms.
 
         :return: the query terms
@@ -36,7 +36,7 @@ class ResourceQueryInspector:
     group_terms = property(fget=get_group_terms)
 
     @abc.abstractmethod
-    def get_demographic_terms(self):
+    def get_demographic_terms(self): # pragma: no cover
         """Gets the demographic query terms.
 
         :return: the query terms
@@ -51,7 +51,7 @@ class ResourceQueryInspector:
     demographic_terms = property(fget=get_demographic_terms)
 
     @abc.abstractmethod
-    def get_containing_group_id_terms(self):
+    def get_containing_group_id_terms(self): # pragma: no cover
         """Gets the containing group ``Id`` query terms.
 
         :return: the query terms
@@ -66,7 +66,7 @@ class ResourceQueryInspector:
     containing_group_id_terms = property(fget=get_containing_group_id_terms)
 
     @abc.abstractmethod
-    def get_containing_group_terms(self):
+    def get_containing_group_terms(self): # pragma: no cover
         """Gets the containing group query terms.
 
         :return: the query terms
@@ -81,7 +81,7 @@ class ResourceQueryInspector:
     containing_group_terms = property(fget=get_containing_group_terms)
 
     @abc.abstractmethod
-    def get_avatar_id_terms(self):
+    def get_avatar_id_terms(self): # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the query terms
@@ -96,7 +96,7 @@ class ResourceQueryInspector:
     avatar_id_terms = property(fget=get_avatar_id_terms)
 
     @abc.abstractmethod
-    def get_avatar_terms(self):
+    def get_avatar_terms(self): # pragma: no cover
         """Gets the asset query terms.
 
         :return: the query terms
@@ -111,7 +111,7 @@ class ResourceQueryInspector:
     avatar_terms = property(fget=get_avatar_terms)
 
     @abc.abstractmethod
-    def get_agent_id_terms(self):
+    def get_agent_id_terms(self): # pragma: no cover
         """Gets the agent ``Id`` query terms.
 
         :return: the query terms
@@ -126,7 +126,7 @@ class ResourceQueryInspector:
     agent_id_terms = property(fget=get_agent_id_terms)
 
     @abc.abstractmethod
-    def get_agent_terms(self):
+    def get_agent_terms(self): # pragma: no cover
         """Gets the agent query terms.
 
         :return: the query terms
@@ -141,7 +141,7 @@ class ResourceQueryInspector:
     agent_terms = property(fget=get_agent_terms)
 
     @abc.abstractmethod
-    def get_resource_relationship_id_terms(self):
+    def get_resource_relationship_id_terms(self): # pragma: no cover
         """Gets the resource relationship ``Id`` query terms.
 
         :return: the query terms
@@ -156,7 +156,7 @@ class ResourceQueryInspector:
     resource_relationship_id_terms = property(fget=get_resource_relationship_id_terms)
 
     @abc.abstractmethod
-    def get_resource_relationship_terms(self):
+    def get_resource_relationship_terms(self): # pragma: no cover
         """Gets the resource relationship query terms.
 
         :return: the query terms
@@ -171,7 +171,7 @@ class ResourceQueryInspector:
     resource_relationship_terms = property(fget=get_resource_relationship_terms)
 
     @abc.abstractmethod
-    def get_bin_id_terms(self):
+    def get_bin_id_terms(self): # pragma: no cover
         """Gets the bin ``Id`` query terms.
 
         :return: the query terms
@@ -186,7 +186,7 @@ class ResourceQueryInspector:
     bin_id_terms = property(fget=get_bin_id_terms)
 
     @abc.abstractmethod
-    def get_bin_terms(self):
+    def get_bin_terms(self): # pragma: no cover
         """Gets the bin query terms.
 
         :return: the query terms
@@ -201,7 +201,7 @@ class ResourceQueryInspector:
     bin_terms = property(fget=get_bin_terms)
 
     @abc.abstractmethod
-    def get_resource_query_inspector_record(self, resource_record_type):
+    def get_resource_query_inspector_record(self, resource_record_type): # pragma: no cover
         """Gets the record query inspector record corresponding to the given ``Resource`` record ``Type``.
 
         :param resource_record_type: a resource record type
@@ -223,7 +223,7 @@ class ResourceRelationshipQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_resource_id_terms(self):
+    def get_source_resource_id_terms(self): # pragma: no cover
         """Gets the source resource ``Id`` query terms.
 
         :return: the query terms
@@ -238,7 +238,7 @@ class ResourceRelationshipQueryInspector:
     source_resource_id_terms = property(fget=get_source_resource_id_terms)
 
     @abc.abstractmethod
-    def get_source_resource_terms(self):
+    def get_source_resource_terms(self): # pragma: no cover
         """Gets the source resource query terms.
 
         :return: the query terms
@@ -253,7 +253,7 @@ class ResourceRelationshipQueryInspector:
     source_resource_terms = property(fget=get_source_resource_terms)
 
     @abc.abstractmethod
-    def get_destination_resource_id_terms(self):
+    def get_destination_resource_id_terms(self): # pragma: no cover
         """Gets the Destination resource ``Id`` query terms.
 
         :return: the query terms
@@ -268,7 +268,7 @@ class ResourceRelationshipQueryInspector:
     destination_resource_id_terms = property(fget=get_destination_resource_id_terms)
 
     @abc.abstractmethod
-    def get_destination_resource_terms(self):
+    def get_destination_resource_terms(self): # pragma: no cover
         """Gets the Destination resource query terms.
 
         :return: the query terms
@@ -283,7 +283,7 @@ class ResourceRelationshipQueryInspector:
     destination_resource_terms = property(fget=get_destination_resource_terms)
 
     @abc.abstractmethod
-    def get_same_resource_terms(self):
+    def get_same_resource_terms(self): # pragma: no cover
         """Gets the same resource query terms.
 
         :return: the query terms
@@ -298,7 +298,7 @@ class ResourceRelationshipQueryInspector:
     same_resource_terms = property(fget=get_same_resource_terms)
 
     @abc.abstractmethod
-    def get_bin_id_terms(self):
+    def get_bin_id_terms(self): # pragma: no cover
         """Gets the bin ``Id`` query terms.
 
         :return: the query terms
@@ -313,7 +313,7 @@ class ResourceRelationshipQueryInspector:
     bin_id_terms = property(fget=get_bin_id_terms)
 
     @abc.abstractmethod
-    def get_bin_terms(self):
+    def get_bin_terms(self): # pragma: no cover
         """Gets the bin query terms.
 
         :return: the query terms
@@ -328,7 +328,7 @@ class ResourceRelationshipQueryInspector:
     bin_terms = property(fget=get_bin_terms)
 
     @abc.abstractmethod
-    def get_resource_relationship_query_inspector_record(self, resource_relationship_record_type):
+    def get_resource_relationship_query_inspector_record(self, resource_relationship_record_type): # pragma: no cover
         """Gets the resource relationship query inspector record corresponding to the given ``ResourceRelationship`` record ``Type``.
 
         :param resource_relationship_record_type: a resource relationship record type
@@ -350,7 +350,7 @@ class BinQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_id_terms(self):
+    def get_resource_id_terms(self): # pragma: no cover
         """Gets the resource ``Id`` query terms.
 
         :return: the query terms
@@ -365,7 +365,7 @@ class BinQueryInspector:
     resource_id_terms = property(fget=get_resource_id_terms)
 
     @abc.abstractmethod
-    def get_resource_terms(self):
+    def get_resource_terms(self): # pragma: no cover
         """Gets the resource query terms.
 
         :return: the query terms
@@ -380,7 +380,7 @@ class BinQueryInspector:
     resource_terms = property(fget=get_resource_terms)
 
     @abc.abstractmethod
-    def get_ancestor_bin_id_terms(self):
+    def get_ancestor_bin_id_terms(self): # pragma: no cover
         """Gets the ancestor bin ``Id`` query terms.
 
         :return: the query terms
@@ -395,7 +395,7 @@ class BinQueryInspector:
     ancestor_bin_id_terms = property(fget=get_ancestor_bin_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_bin_terms(self):
+    def get_ancestor_bin_terms(self): # pragma: no cover
         """Gets the ancestor bin query terms.
 
         :return: the query terms
@@ -410,7 +410,7 @@ class BinQueryInspector:
     ancestor_bin_terms = property(fget=get_ancestor_bin_terms)
 
     @abc.abstractmethod
-    def get_descendant_bin_id_terms(self):
+    def get_descendant_bin_id_terms(self): # pragma: no cover
         """Gets the descendant bin ``Id`` query terms.
 
         :return: the query terms
@@ -425,7 +425,7 @@ class BinQueryInspector:
     descendant_bin_id_terms = property(fget=get_descendant_bin_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_bin_terms(self):
+    def get_descendant_bin_terms(self): # pragma: no cover
         """Gets the descendant bin query terms.
 
         :return: the query terms
@@ -440,7 +440,7 @@ class BinQueryInspector:
     descendant_bin_terms = property(fget=get_descendant_bin_terms)
 
     @abc.abstractmethod
-    def get_bin_query_inspector_record(self, bin_record_type):
+    def get_bin_query_inspector_record(self, bin_record_type): # pragma: no cover
         """Gets the bin query inspector record corresponding to the given ``Bin`` record ``Type``.
 
         :param bin_record_type: a bin record type

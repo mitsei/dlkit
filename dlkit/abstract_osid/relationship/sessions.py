@@ -43,7 +43,7 @@ class RelationshipLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_id(self):
+    def get_family_id(self): # pragma: no cover
         """Gets the ``Family``  ``Id`` associated with this session.
 
         :return: the ``Family Id`` associated with this session
@@ -58,7 +58,7 @@ class RelationshipLookupSession:
     family_id = property(fget=get_family_id)
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` associated with this session.
 
         :return: the family
@@ -74,7 +74,7 @@ class RelationshipLookupSession:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def can_lookup_relationships(self):
+    def can_lookup_relationships(self): # pragma: no cover
         """Tests if this user can perform ``Relationship`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -93,7 +93,7 @@ class RelationshipLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_relationship_view(self):
+    def use_comparative_relationship_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -107,7 +107,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_relationship_view(self):
+    def use_plenary_relationship_view(self): # pragma: no cover
         """A complete view of the ``Relationship`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -122,7 +122,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_family_view(self):
+    def use_federated_family_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include relationships in families which
@@ -136,7 +136,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_family_view(self):
+    def use_isolated_family_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this family only.
@@ -149,7 +149,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_relationship_view(self):
+    def use_effective_relationship_view(self): # pragma: no cover
         """Only relationships whose effective dates are current are returned by methods in this session.
 
 
@@ -160,7 +160,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_relationship_view(self):
+    def use_any_effective_relationship_view(self): # pragma: no cover
         """All relationships of any effective dates are returned by all methods in this session.
 
 
@@ -171,7 +171,7 @@ class RelationshipLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_relationship(self, relationship_id):
+    def get_relationship(self, relationship_id): # pragma: no cover
         """Gets the ``Relationship`` specified by its ``Id``.
 
         :param relationship_id: the ``Id`` of the ``Relationship`` to retrieve
@@ -189,7 +189,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.Relationship
 
     @abc.abstractmethod
-    def get_relationships_by_ids(self, relationship_ids):
+    def get_relationships_by_ids(self, relationship_ids): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given ``IdList``.
 
         :param relationship_ids: the list of ``Ids`` to retrieve
@@ -207,7 +207,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type(self, relationship_genus_type):
+    def get_relationships_by_genus_type(self, relationship_genus_type): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given relationship genus ``Type`` which does not include relationships of types derived from the specified ``Type``.
 
         :param relationship_genus_type: a relationship genus type
@@ -224,7 +224,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_parent_genus_type(self, relationship_genus_type):
+    def get_relationships_by_parent_genus_type(self, relationship_genus_type): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given relationship genus ``Type`` and include any additional relationships with genus types derived from the specified ``Type``.
 
         :param relationship_genus_type: a relationship genus type
@@ -241,7 +241,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_record_type(self, relationship_record_type):
+    def get_relationships_by_record_type(self, relationship_record_type): # pragma: no cover
         """Gets a ``RelationshipList`` containing the given relationship record ``Type``.
 
         :param relationship_record_type: a relationship record type
@@ -258,7 +258,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_on_date(self, from_, to):
+    def get_relationships_on_date(self, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` effective during the entire given date range inclusive but not confined to the date range.
 
         :param from: starting date
@@ -278,7 +278,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_source(self, source_id):
+    def get_relationships_for_source(self, source_id): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id``.
 
         :param source_id: a peer ``Id``
@@ -295,7 +295,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_source_on_date(self, source_id, from_, to):
+    def get_relationships_for_source_on_date(self, source_id, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_id: a peer ``Id``
@@ -317,7 +317,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_source(self, source_id, relationship_genus_type):
+    def get_relationships_by_genus_type_for_source(self, source_id, relationship_genus_type): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` and relationship genus ``Type.
 
         Relationships`` of any genus derived from the given genus are
@@ -350,7 +350,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_source_on_date(self, source_id, relationship_genus_type, from_, to):
+    def get_relationships_by_genus_type_for_source_on_date(self, source_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` and relationship genus ``Type`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_id: a peer ``Id``
@@ -374,7 +374,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_destination(self, destination_id):
+    def get_relationships_for_destination(self, destination_id): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id``.
 
         :param destination_id: a peer ``Id``
@@ -391,7 +391,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_destination_on_date(self, destination_id, from_, to):
+    def get_relationships_for_destination_on_date(self, destination_id, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` with a starting effective date in the given range inclusive.
 
         :param destination_id: a peer ``Id``
@@ -413,7 +413,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_destination(self, destination_id, relationship_genus_type):
+    def get_relationships_by_genus_type_for_destination(self, destination_id, relationship_genus_type): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` and relationship genus ``Type.
 
         Relationships`` of any genus derived from the given genus are
@@ -446,7 +446,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_destination_on_date(self, destination_id, relationship_genus_type, from_, to):
+    def get_relationships_by_genus_type_for_destination_on_date(self, destination_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Id`` and relationship genus ``Type`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param destination_id: a peer ``Id``
@@ -470,7 +470,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_peers(self, source_id, destination_id):
+    def get_relationships_for_peers(self, source_id, destination_id): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Ids``.
 
         :param source_id: a peer ``Id``
@@ -489,7 +489,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_for_peers_on_date(self, source_id, destination_id, from_, to):
+    def get_relationships_for_peers_on_date(self, source_id, destination_id, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding to the given peer ``Ids`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_id: a peer ``Id``
@@ -513,7 +513,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_peers(self, source_id, destination_id, relationship_genus_type):
+    def get_relationships_by_genus_type_for_peers(self, source_id, destination_id, relationship_genus_type): # pragma: no cover
         """Gets a ``RelationshipList`` corresponding between the given peer ``Ids`` and relationship genus ``Type.
 
         Relationships`` of any genus derived from the given genus are
@@ -546,7 +546,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships_by_genus_type_for_peers_on_date(self, source_id, destination_id, relationship_genus_type, from_, to):
+    def get_relationships_by_genus_type_for_peers_on_date(self, source_id, destination_id, relationship_genus_type, from_, to): # pragma: no cover
         """Gets a ``RelationshipList`` effective during the entire given date range inclusive but not confined to the date range.
 
         :param source_id: a peer ``Id``
@@ -572,7 +572,7 @@ class RelationshipLookupSession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationships(self):
+    def get_relationships(self): # pragma: no cover
         """Gets all ``Relationships``.
 
         :return: a list of ``Relationships``
@@ -601,7 +601,7 @@ class RelationshipQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_id(self):
+    def get_family_id(self): # pragma: no cover
         """Gets the ``Family``  ``Id`` associated with this session.
 
         :return: the ``Family Id`` associated with this session
@@ -616,7 +616,7 @@ class RelationshipQuerySession:
     family_id = property(fget=get_family_id)
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` associated with this session.
 
         :return: the family
@@ -632,7 +632,7 @@ class RelationshipQuerySession:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def use_federated_family_view(self):
+    def use_federated_family_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include relationships in families which
@@ -646,7 +646,7 @@ class RelationshipQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_family_view(self):
+    def use_isolated_family_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this family only.
@@ -659,7 +659,7 @@ class RelationshipQuerySession:
         pass
 
     @abc.abstractmethod
-    def can_search_relationships(self):
+    def can_search_relationships(self): # pragma: no cover
         """Tests if this user can perform ``Relationship`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -678,7 +678,7 @@ class RelationshipQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_query(self):
+    def get_relationship_query(self): # pragma: no cover
         """Gets a relationship query.
 
         :return: the relationship query
@@ -693,7 +693,7 @@ class RelationshipQuerySession:
     relationship_query = property(fget=get_relationship_query)
 
     @abc.abstractmethod
-    def get_relationships_by_query(self, relationship_query):
+    def get_relationships_by_query(self, relationship_query): # pragma: no cover
         """Gets a list of ``Relationships`` matching the given relationship query.
 
         :param relationship_query: the relationship query
@@ -734,7 +734,7 @@ class RelationshipSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_relationship_search(self):
+    def get_relationship_search(self): # pragma: no cover
         """Gets a relationship search.
 
         :return: the relationship search
@@ -749,7 +749,7 @@ class RelationshipSearchSession:
     relationship_search = property(fget=get_relationship_search)
 
     @abc.abstractmethod
-    def get_relationship_search_order(self):
+    def get_relationship_search_order(self): # pragma: no cover
         """Gets a relationship search order.
 
         The ``RelationshipSearchOrder`` is supplied to a
@@ -767,7 +767,7 @@ class RelationshipSearchSession:
     relationship_search_order = property(fget=get_relationship_search_order)
 
     @abc.abstractmethod
-    def get_relationships_by_search(self, relationship_query, relationship_search):
+    def get_relationships_by_search(self, relationship_query, relationship_search): # pragma: no cover
         """Gets the search results matching the given search query using the given search.
 
         :param relationship_query: the relationship query
@@ -787,7 +787,7 @@ class RelationshipSearchSession:
         return  # osid.relationship.RelationshipSearchResults
 
     @abc.abstractmethod
-    def get_relationship_query_from_inspector(self, relationship_query_inspector):
+    def get_relationship_query_from_inspector(self, relationship_query_inspector): # pragma: no cover
         """Gets a relationship query from an inspector.
 
         The inspector is available from a ``RelationshipSearchResults``.
@@ -844,7 +844,7 @@ class RelationshipAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_id(self):
+    def get_family_id(self): # pragma: no cover
         """Gets the ``Familt``  ``Id`` associated with this session.
 
         :return: the ``Family Id`` associated with this session
@@ -859,7 +859,7 @@ class RelationshipAdminSession:
     family_id = property(fget=get_family_id)
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` associated with this session.
 
         :return: the family
@@ -875,7 +875,7 @@ class RelationshipAdminSession:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def can_create_relationships(self):
+    def can_create_relationships(self): # pragma: no cover
         """Tests if this user can create ``Relationships`` A return of true does not guarantee successful authorization.
 
         A return of false indicates that it is known creating a
@@ -893,7 +893,7 @@ class RelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_relationship_with_record_types(self, relationship_record_types):
+    def can_create_relationship_with_record_types(self, relationship_record_types): # pragma: no cover
         """Tests if this user can create a single ``Relationship`` using the desired record types.
 
         While ``RelationshipManager.getRelationshipRecordTypes()`` can
@@ -914,7 +914,7 @@ class RelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_form_for_create(self, source_id, destination_id, relationship_record_types):
+    def get_relationship_form_for_create(self, source_id, destination_id, relationship_record_types): # pragma: no cover
         """Gets the relationship form for creating new relationships.
 
         A new form should be requested for each create transaction.
@@ -939,7 +939,7 @@ class RelationshipAdminSession:
         return  # osid.relationship.RelationshipForm
 
     @abc.abstractmethod
-    def create_relationship(self, relationship_form):
+    def create_relationship(self, relationship_form): # pragma: no cover
         """Creates a new ``Relationship``.
 
         :param relationship_form: the form for this ``Relationship``
@@ -959,7 +959,7 @@ class RelationshipAdminSession:
         return  # osid.relationship.Relationship
 
     @abc.abstractmethod
-    def can_update_relationships(self):
+    def can_update_relationships(self): # pragma: no cover
         """Tests if this user can update ``Relationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -978,7 +978,7 @@ class RelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_form_for_update(self, relationship_id):
+    def get_relationship_form_for_update(self, relationship_id): # pragma: no cover
         """Gets the relationship form for updating an existing relationship.
 
         A new relationship form should be requested for each update
@@ -999,7 +999,7 @@ class RelationshipAdminSession:
         return  # osid.relationship.RelationshipForm
 
     @abc.abstractmethod
-    def update_relationship(self, relationship_form):
+    def update_relationship(self, relationship_form): # pragma: no cover
         """Updates an existing relationship.
 
         :param relationship_form: the form containing the elements to be updated
@@ -1017,7 +1017,7 @@ class RelationshipAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_relationships(self):
+    def can_delete_relationships(self): # pragma: no cover
         """Tests if this user can delete ``Relationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -1036,7 +1036,7 @@ class RelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_relationship(self, relationship_id):
+    def delete_relationship(self, relationship_id): # pragma: no cover
         """Deletes a ``Relationship``.
 
         :param relationship_id: the ``Id`` of the ``Relationship`` to remove
@@ -1052,7 +1052,7 @@ class RelationshipAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_relationship_aliases(self):
+    def can_manage_relationship_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Relationships``.
 
         A return of true does not guarantee successful authorization. A
@@ -1071,7 +1071,7 @@ class RelationshipAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_relationship(self, relationship_id, alias_id):
+    def alias_relationship(self, relationship_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Relationship`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Relationship`` is determined by the
@@ -1111,7 +1111,7 @@ class RelationshipNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_id(self):
+    def get_family_id(self): # pragma: no cover
         """Gets the ``Family``  ``Id`` associated with this session.
 
         :return: the ``Family Id`` associated with this session
@@ -1126,7 +1126,7 @@ class RelationshipNotificationSession:
     family_id = property(fget=get_family_id)
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` associated with this session.
 
         :return: the family
@@ -1142,7 +1142,7 @@ class RelationshipNotificationSession:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def can_register_for_relationship_notifications(self):
+    def can_register_for_relationship_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Relationship`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -1161,7 +1161,7 @@ class RelationshipNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_family_view(self):
+    def use_federated_family_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include relationships in families which
@@ -1175,7 +1175,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_family_view(self):
+    def use_isolated_family_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this family only.
@@ -1188,7 +1188,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_relationship_notifications(self):
+    def reliable_relationship_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1202,7 +1202,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_relationship_notifications(self):
+    def unreliable_relationship_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1216,7 +1216,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_relationship_notification(self, notification_id):
+    def acknowledge_relationship_notification(self, notification_id): # pragma: no cover
         """Acknowledge a relationship notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1230,7 +1230,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_relationships(self):
+    def register_for_new_relationships(self): # pragma: no cover
         """Register for notifications of new relationships.
 
         ``RelationshipReceiver.newRelationships()`` is invoked when a
@@ -1245,7 +1245,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_relationships_for_source(self, source_id):
+    def register_for_new_relationships_for_source(self, source_id): # pragma: no cover
         """Register for notifications of new relationships from the given source.
 
         ``RelationshipReceiver.newRelationships()`` is invoked when a
@@ -1263,7 +1263,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_relationships_for_destination(self, destination_id):
+    def register_for_new_relationships_for_destination(self, destination_id): # pragma: no cover
         """Register for notifications of new relationships to the given destination.
 
         ``RelationshipReceiver.newRelationships()`` is invoked when a
@@ -1281,7 +1281,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_relationships_by_genus_type(self, relationship_genus_type):
+    def register_for_new_relationships_by_genus_type(self, relationship_genus_type): # pragma: no cover
         """Register for notifications of new relationships.
 
         ``RelationshipReceiver.newRelationships()`` is invoked when a
@@ -1299,7 +1299,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_relationships(self):
+    def register_for_changed_relationships(self): # pragma: no cover
         """Registers for notification of updated relationships.
 
         ``RelationshipReceiver.changedRelationships()`` is invoked when
@@ -1314,7 +1314,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_relationships_for_source(self, source_id):
+    def register_for_changed_relationships_for_source(self, source_id): # pragma: no cover
         """Register for notifications of updated relationships from the given source node.
 
         ``RelationshipReceiver.changedRelationships()`` is invoked when
@@ -1332,7 +1332,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_relationships_for_destination(self, destination_id):
+    def register_for_changed_relationships_for_destination(self, destination_id): # pragma: no cover
         """Register for notifications of updated relationships to the given destination node.
 
         ``RelationshipReceiver.changedRelationships()`` is invoked when
@@ -1350,7 +1350,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_relationships_by_genus_type(self, relationship_genus_type):
+    def register_for_changed_relationships_by_genus_type(self, relationship_genus_type): # pragma: no cover
         """Register for notifications of updated relationships.
 
         ``RelationshipReceiver.changedRelationships()`` is invoked when
@@ -1368,7 +1368,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_relationship(self, relationship_id):
+    def register_for_changed_relationship(self, relationship_id): # pragma: no cover
         """Registers for notification of an updated relationship.
 
         ``RelationshipReceiver.changedRelationships()`` is invoked when
@@ -1386,7 +1386,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_relationships(self):
+    def register_for_deleted_relationships(self): # pragma: no cover
         """Registers for notification of deleted relationships.
 
         ``RelationshipReceiver.deletedRelationships()`` is invoked when
@@ -1401,7 +1401,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_relationships_for_source(self, source_id):
+    def register_for_deleted_relationships_for_source(self, source_id): # pragma: no cover
         """Register for notifications of deleted relationships from the given source node.
 
         ``RelationshipReceiver.deletedRelationships()`` is invoked when
@@ -1419,7 +1419,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_relationships_for_destination(self, destination_id):
+    def register_for_deleted_relationships_for_destination(self, destination_id): # pragma: no cover
         """Register for notifications of deleted relationships to the given destination node.
 
         ``RelationshipReceiver.deletedRelationships()`` is invoked when
@@ -1437,7 +1437,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_relationships_by_genus_type(self, relationship_genus_type):
+    def register_for_deleted_relationships_by_genus_type(self, relationship_genus_type): # pragma: no cover
         """Register for notifications of deleted relationships.
 
         ``RelationshipReceiver.deletedRelationships()`` is invoked when
@@ -1455,7 +1455,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_relationship(self, relationship_id):
+    def register_for_deleted_relationship(self, relationship_id): # pragma: no cover
         """Registers for notification of a deleted relationship.
 
         ``RelationshipReceiver.deletedRelationships()`` is invoked when
@@ -1474,7 +1474,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_relationship_notifications(self):
+    def reliable_relationship_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1488,7 +1488,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_relationship_notifications(self):
+    def unreliable_relationship_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1502,7 +1502,7 @@ class RelationshipNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_relationship_notification(self, notification_id):
+    def acknowledge_relationship_notification(self, notification_id): # pragma: no cover
         """Acknowledge an relationship notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1533,7 +1533,7 @@ class RelationshipFamilySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_relationship_family_mappings(self):
+    def can_lookup_relationship_family_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of relationship/family mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1552,7 +1552,7 @@ class RelationshipFamilySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_family_view(self):
+    def use_comparative_family_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1566,7 +1566,7 @@ class RelationshipFamilySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_family_view(self):
+    def use_plenary_family_view(self): # pragma: no cover
         """A complete view of the ``Relationship`` and ``Family`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1581,7 +1581,7 @@ class RelationshipFamilySession:
         pass
 
     @abc.abstractmethod
-    def get_relationship_ids_by_family(self, family_id):
+    def get_relationship_ids_by_family(self, family_id): # pragma: no cover
         """Gets the list of ``Relationship Ids`` associated with a ``Family``.
 
         :param family_id: ``Id`` of the ``Family``
@@ -1599,7 +1599,7 @@ class RelationshipFamilySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_relationships_by_family(self, family_id):
+    def get_relationships_by_family(self, family_id): # pragma: no cover
         """Gets the list of ``Relationships`` associated with a ``Family``.
 
         :param family_id: ``Id`` of the ``Family``
@@ -1617,7 +1617,7 @@ class RelationshipFamilySession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_relationship_ids_by_families(self, family_ids):
+    def get_relationship_ids_by_families(self, family_ids): # pragma: no cover
         """Gets the list of ``Relationship Ids`` corresponding to a list of ``Family`` objects.
 
         :param family_ids: list of family ``Ids``
@@ -1634,7 +1634,7 @@ class RelationshipFamilySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_relationships_by_families(self, family_ids):
+    def get_relationships_by_families(self, family_ids): # pragma: no cover
         """Gets the list of ``Relationships`` corresponding to a list of ``Family`` objects.
 
         :param family_ids: list of family ``Ids``
@@ -1651,7 +1651,7 @@ class RelationshipFamilySession:
         return  # osid.relationship.RelationshipList
 
     @abc.abstractmethod
-    def get_family_ids_by_relationship(self, relationship_id):
+    def get_family_ids_by_relationship(self, relationship_id): # pragma: no cover
         """Gets the ``Family``  ``Ids`` mapped to a ``Relationship``.
 
         :param relationship_id: ``Id`` of a ``Relationship``
@@ -1669,7 +1669,7 @@ class RelationshipFamilySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_families_by_relationship(self, relationship_id):
+    def get_families_by_relationship(self, relationship_id): # pragma: no cover
         """Gets the ``Family`` objects mapped to a ``Relationship``.
 
         :param relationship_id: ``Id`` of a ``Relationship``
@@ -1701,7 +1701,7 @@ class RelationshipFamilyAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_relationships(self):
+    def can_assign_relationships(self): # pragma: no cover
         """Tests if this user can alter relationship/family mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1720,7 +1720,7 @@ class RelationshipFamilyAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_relationships_to_family(self, family_id):
+    def can_assign_relationships_to_family(self, family_id): # pragma: no cover
         """Tests if this user can alter relationship/family mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1741,7 +1741,7 @@ class RelationshipFamilyAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_family_ids(self, family_id):
+    def get_assignable_family_ids(self, family_id): # pragma: no cover
         """Gets a list of families including and under the given family node in which any relationship can be assigned.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -1757,7 +1757,7 @@ class RelationshipFamilyAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_family_ids_for_relationship(self, family_id, relationship_id):
+    def get_assignable_family_ids_for_relationship(self, family_id, relationship_id): # pragma: no cover
         """Gets a list of families including and under the given family node in which a specific relationship can be assigned.
 
         :param family_id: the ``Id`` of the ``Family``
@@ -1775,7 +1775,7 @@ class RelationshipFamilyAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_relationship_to_family(self, relationship_id, family_id):
+    def assign_relationship_to_family(self, relationship_id, family_id): # pragma: no cover
         """Adds an existing ``Relationship`` to a ``Family``.
 
         :param relationship_id: the ``Id`` of the ``Relationship``
@@ -1794,7 +1794,7 @@ class RelationshipFamilyAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_relationship_from_family(self, relationship_id, family_id):
+    def unassign_relationship_from_family(self, relationship_id, family_id): # pragma: no cover
         """Removes a ``Relationship`` from a ``Family``.
 
         :param relationship_id: the ``Id`` of the ``Relationship``
@@ -1812,7 +1812,7 @@ class RelationshipFamilyAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_relationship_to_family(self, relationship_id, from_family_id, to_family_id):
+    def reassign_relationship_to_family(self, relationship_id, from_family_id, to_family_id): # pragma: no cover
         """Moves a ``Relationship`` from one ``Family`` to another.
 
         Mappings to other ``Families`` are unaffected.
@@ -1852,7 +1852,7 @@ class RelationshipSmartFamilySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_id(self):
+    def get_family_id(self): # pragma: no cover
         """Gets the ``Family``  ``Id`` associated with this session.
 
         :return: the ``Family Id`` associated with this session
@@ -1867,7 +1867,7 @@ class RelationshipSmartFamilySession:
     family_id = property(fget=get_family_id)
 
     @abc.abstractmethod
-    def get_family(self):
+    def get_family(self): # pragma: no cover
         """Gets the ``Family`` associated with this session.
 
         :return: the family
@@ -1883,7 +1883,7 @@ class RelationshipSmartFamilySession:
     family = property(fget=get_family)
 
     @abc.abstractmethod
-    def can_manage_smart_families(self):
+    def can_manage_smart_families(self): # pragma: no cover
         """Tests if this user can manage smart families.
 
         A return of true does not guarantee successful authorization. A
@@ -1902,7 +1902,7 @@ class RelationshipSmartFamilySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_relationship_query(self):
+    def get_relationship_query(self): # pragma: no cover
         """Gets a relationship query.
 
         :return: the relationship query
@@ -1917,7 +1917,7 @@ class RelationshipSmartFamilySession:
     relationship_query = property(fget=get_relationship_query)
 
     @abc.abstractmethod
-    def get_relationship_search_order(self):
+    def get_relationship_search_order(self): # pragma: no cover
         """Gets a relationship search order.
 
         :return: the relationship search order
@@ -1932,7 +1932,7 @@ class RelationshipSmartFamilySession:
     relationship_search_order = property(fget=get_relationship_search_order)
 
     @abc.abstractmethod
-    def apply_relationship_query(self, relationship_query):
+    def apply_relationship_query(self, relationship_query): # pragma: no cover
         """Applies a relationship query to this family.
 
         :param relationship_query: the relationship query
@@ -1948,7 +1948,7 @@ class RelationshipSmartFamilySession:
         pass
 
     @abc.abstractmethod
-    def inspect_relationship_query(self):
+    def inspect_relationship_query(self): # pragma: no cover
         """Gets a relationship query inspector for this family.
 
         :return: the relationship query inspector
@@ -1962,7 +1962,7 @@ class RelationshipSmartFamilySession:
         return  # osid.relationship.RelationshipQueryInspector
 
     @abc.abstractmethod
-    def apply_relationship_sequencing(self, relationship_search_order):
+    def apply_relationship_sequencing(self, relationship_search_order): # pragma: no cover
         """Applies a relationship search order to this family.
 
         :param relationship_search_order: the relationship search order
@@ -1978,7 +1978,7 @@ class RelationshipSmartFamilySession:
         pass
 
     @abc.abstractmethod
-    def get_relationship_query_from_inspector(self, relationship_query_inspector):
+    def get_relationship_query_from_inspector(self, relationship_query_inspector): # pragma: no cover
         """Gets a relationship query from an inspector.
 
         :param relationship_query_inspector: a relationship query inspector
@@ -2018,7 +2018,7 @@ class FamilyLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_families(self):
+    def can_lookup_families(self): # pragma: no cover
         """Tests if this user can perform ``Family`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2037,7 +2037,7 @@ class FamilyLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_family_view(self):
+    def use_comparative_family_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2051,7 +2051,7 @@ class FamilyLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_family_view(self):
+    def use_plenary_family_view(self): # pragma: no cover
         """A complete view of the ``Family`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2066,7 +2066,7 @@ class FamilyLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_family(self, family_id):
+    def get_family(self, family_id): # pragma: no cover
         """Gets the ``Family`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -2089,7 +2089,7 @@ class FamilyLookupSession:
         return  # osid.relationship.Family
 
     @abc.abstractmethod
-    def get_families_by_ids(self, family_ids):
+    def get_families_by_ids(self, family_ids): # pragma: no cover
         """Gets a ``FamilyList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the families
@@ -2115,7 +2115,7 @@ class FamilyLookupSession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def get_families_by_genus_type(self, family_genus_type):
+    def get_families_by_genus_type(self, family_genus_type): # pragma: no cover
         """Gets a ``FamilyList`` corresponding to the given family genus ``Type`` which does not include families of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known families
@@ -2136,7 +2136,7 @@ class FamilyLookupSession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def get_families_by_parent_genus_type(self, family_genus_type):
+    def get_families_by_parent_genus_type(self, family_genus_type): # pragma: no cover
         """Gets a ``FamilyList`` corresponding to the given family genus ``Type`` and include any additional families with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known families
@@ -2157,7 +2157,7 @@ class FamilyLookupSession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def get_families_by_record_type(self, family_record_type):
+    def get_families_by_record_type(self, family_record_type): # pragma: no cover
         """Gets a ``FamilyList`` containing the given family record ``Type``.
 
         In plenary mode, the returned list contains all known families
@@ -2178,7 +2178,7 @@ class FamilyLookupSession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def get_families_by_provider(self, resource_id):
+    def get_families_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``FamilyList`` from the given provider.
 
         In plenary mode, the returned list contains all known families
@@ -2199,7 +2199,7 @@ class FamilyLookupSession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def get_families(self):
+    def get_families(self): # pragma: no cover
         """Gets all families.
 
         In plenary mode, the returned list contains all known families
@@ -2235,7 +2235,7 @@ class FamilyQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_families(self):
+    def can_search_families(self): # pragma: no cover
         """Tests if this user can perform ``Family`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -2254,7 +2254,7 @@ class FamilyQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_query(self):
+    def get_family_query(self): # pragma: no cover
         """Gets a family query.
 
         :return: the family query
@@ -2269,7 +2269,7 @@ class FamilyQuerySession:
     family_query = property(fget=get_family_query)
 
     @abc.abstractmethod
-    def get_families_by_query(self, family_query):
+    def get_families_by_query(self, family_query): # pragma: no cover
         """Gets a list of ``Family`` objects matching the given family query.
 
         :param family_query: the family query
@@ -2312,7 +2312,7 @@ class FamilySearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_search(self):
+    def get_family_search(self): # pragma: no cover
         """Gets a family search.
 
         :return: the family search
@@ -2327,7 +2327,7 @@ class FamilySearchSession:
     family_search = property(fget=get_family_search)
 
     @abc.abstractmethod
-    def get_family_search_order(self):
+    def get_family_search_order(self): # pragma: no cover
         """Gets a family search order.
 
         The ``FamilySearchOrder`` is supplied to a ``FamilySearch`` to
@@ -2345,7 +2345,7 @@ class FamilySearchSession:
     family_search_order = property(fget=get_family_search_order)
 
     @abc.abstractmethod
-    def get_families_by_search(self, family_query, family_search):
+    def get_families_by_search(self, family_query, family_search): # pragma: no cover
         """Gets the search results matching the given search.
 
         :param family_query: the family query
@@ -2365,7 +2365,7 @@ class FamilySearchSession:
         return  # osid.relationship.FamilySearchResults
 
     @abc.abstractmethod
-    def get_family_query_from_inspector(self, family_query_inspector):
+    def get_family_query_from_inspector(self, family_query_inspector): # pragma: no cover
         """Gets a family query from an inspector.
 
         The inspector is available from an ``FamilySearchResults``.
@@ -2417,7 +2417,7 @@ class FamilyAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_families(self):
+    def can_create_families(self): # pragma: no cover
         """Tests if this user can create families.
 
         A return of true does not guarantee successful authorization. A
@@ -2436,7 +2436,7 @@ class FamilyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_family_with_record_types(self, family_record_types):
+    def can_create_family_with_record_types(self, family_record_types): # pragma: no cover
         """Tests if this user can create a single ``Family`` using the desired record types.
 
         While ``RelationshipManager.getFamilyRecordTypes()`` can be used
@@ -2457,7 +2457,7 @@ class FamilyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_form_for_create(self, family_record_types):
+    def get_family_form_for_create(self, family_record_types): # pragma: no cover
         """Gets the family form for creating new families.
 
         A new form should be requested for each create transaction.
@@ -2477,7 +2477,7 @@ class FamilyAdminSession:
         return  # osid.relationship.FamilyForm
 
     @abc.abstractmethod
-    def create_family(self, family_form):
+    def create_family(self, family_form): # pragma: no cover
         """Creates a new ``Family``.
 
         :param family_form: the form for this ``Family``.
@@ -2497,7 +2497,7 @@ class FamilyAdminSession:
         return  # osid.relationship.Family
 
     @abc.abstractmethod
-    def can_update_families(self):
+    def can_update_families(self): # pragma: no cover
         """Tests if this user can update families.
 
         A return of true does not guarantee successful authorization. A
@@ -2516,7 +2516,7 @@ class FamilyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_form_for_update(self, family_id):
+    def get_family_form_for_update(self, family_id): # pragma: no cover
         """Gets the family form for updating an existing family.
 
         A new family form should be requested for each update
@@ -2537,7 +2537,7 @@ class FamilyAdminSession:
         return  # osid.relationship.FamilyForm
 
     @abc.abstractmethod
-    def update_family(self, family_form):
+    def update_family(self, family_form): # pragma: no cover
         """Updates an existing family.
 
         :param family_form: the form containing the elements to be updated
@@ -2555,7 +2555,7 @@ class FamilyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_families(self):
+    def can_delete_families(self): # pragma: no cover
         """Tests if this user can delete families.
 
         A return of true does not guarantee successful authorization. A
@@ -2574,7 +2574,7 @@ class FamilyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_family(self, family_id):
+    def delete_family(self, family_id): # pragma: no cover
         """Deletes a ``Family``.
 
         :param family_id: the ``Id`` of the ``Family`` to remove
@@ -2590,7 +2590,7 @@ class FamilyAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_family_aliases(self):
+    def can_manage_family_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for families.
 
         A return of true does not guarantee successful authorization. A
@@ -2609,7 +2609,7 @@ class FamilyAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_family(self, family_id, alias_id):
+    def alias_family(self, family_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Family`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Family`` is determined by the
@@ -2648,7 +2648,7 @@ class FamilyNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_family_notifications(self):
+    def can_register_for_family_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Family`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2667,7 +2667,7 @@ class FamilyNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_family_notifications(self):
+    def reliable_family_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2681,7 +2681,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_family_notifications(self):
+    def unreliable_family_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2695,7 +2695,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_family_notification(self, notification_id):
+    def acknowledge_family_notification(self, notification_id): # pragma: no cover
         """Acknowledge a family notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2709,7 +2709,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_families(self):
+    def register_for_new_families(self): # pragma: no cover
         """Register for notifications of new families.
 
         ``FamilyReceiver.newFamilies()`` is invoked when a new
@@ -2724,7 +2724,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_families(self):
+    def register_for_changed_families(self): # pragma: no cover
         """Registers for notification of updated families.
 
         ``FamilyReceiver.changedFamilies()`` is invoked when a family is
@@ -2739,7 +2739,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_family(self, family_id):
+    def register_for_changed_family(self, family_id): # pragma: no cover
         """Registers for notification of an updated family.
 
         ``FamilyReceiver.changedFamilies()`` is invoked when the
@@ -2757,7 +2757,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_families(self):
+    def register_for_deleted_families(self): # pragma: no cover
         """Registers for notification of deleted families.
 
         ``FamilyReceiver.deletedFamilies()`` is invoked when a family is
@@ -2772,7 +2772,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_family(self, family_id):
+    def register_for_deleted_family(self, family_id): # pragma: no cover
         """Registers for notification of a deleted family.
 
         ``FamilyReceiver.deletedFamilies()`` is invoked when the
@@ -2790,7 +2790,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_family_hierarchy(self):
+    def register_for_changed_family_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated family hierarchy structure.
 
         ``FamilyReceiver.changedChildOfFamilies()`` is invoked when a
@@ -2805,7 +2805,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_family_hierarchy_for_ancestors(self, family_id):
+    def register_for_changed_family_hierarchy_for_ancestors(self, family_id): # pragma: no cover
         """Registers for notification of an updated family hierarchy structure.
 
         ``FamilyReceiver.changedChildOfFamilies()`` is invoked when the
@@ -2824,7 +2824,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_family_hierarchy_for_descendants(self, family_id):
+    def register_for_changed_family_hierarchy_for_descendants(self, family_id): # pragma: no cover
         """Registers for notification of an updated family hierarchy structure.
 
         ``FamilyReceiver.changedChildOfFamilies()`` is invoked when the
@@ -2843,7 +2843,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_family_notifications(self):
+    def reliable_family_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2857,7 +2857,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_family_notifications(self):
+    def unreliable_family_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2871,7 +2871,7 @@ class FamilyNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_family_notification(self, notification_id):
+    def acknowledge_family_notification(self, notification_id): # pragma: no cover
         """Acknowledge an family notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2914,7 +2914,7 @@ class FamilyHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_hierarchy_id(self):
+    def get_family_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -2929,7 +2929,7 @@ class FamilyHierarchySession:
     family_hierarchy_id = property(fget=get_family_hierarchy_id)
 
     @abc.abstractmethod
-    def get_family_hierarchy(self):
+    def get_family_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -2945,7 +2945,7 @@ class FamilyHierarchySession:
     family_hierarchy = property(fget=get_family_hierarchy)
 
     @abc.abstractmethod
-    def can_access_family_hierarchy(self):
+    def can_access_family_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -2964,7 +2964,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_family_view(self):
+    def use_comparative_family_view(self): # pragma: no cover
         """The returns from the family methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2978,7 +2978,7 @@ class FamilyHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_family_view(self):
+    def use_plenary_family_view(self): # pragma: no cover
         """A complete view of the ``Family`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2993,7 +2993,7 @@ class FamilyHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_family_ids(self):
+    def get_root_family_ids(self): # pragma: no cover
         """Gets the root family ``Ids`` in this hierarchy.
 
         :return: the root family ``Ids``
@@ -3009,7 +3009,7 @@ class FamilyHierarchySession:
     root_family_ids = property(fget=get_root_family_ids)
 
     @abc.abstractmethod
-    def get_root_families(self):
+    def get_root_families(self): # pragma: no cover
         """Gets the root families in the family hierarchy.
 
         A node with no parents is an orphan. While all family ``Ids``
@@ -3030,7 +3030,7 @@ class FamilyHierarchySession:
     root_families = property(fget=get_root_families)
 
     @abc.abstractmethod
-    def has_parent_families(self, family_id):
+    def has_parent_families(self, family_id): # pragma: no cover
         """Tests if the ``Family`` has any parents.
 
         :param family_id: the ``Id`` of a family
@@ -3048,7 +3048,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_family(self, id_, family_id):
+    def is_parent_of_family(self, id_, family_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of a family.
 
         :param id: an ``Id``
@@ -3069,7 +3069,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_family_ids(self, family_id):
+    def get_parent_family_ids(self, family_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given family.
 
         :param family_id: the ``Id`` of a family
@@ -3087,7 +3087,7 @@ class FamilyHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_families(self, family_id):
+    def get_parent_families(self, family_id): # pragma: no cover
         """Gets the parent families of the given ``id``.
 
         :param family_id: the ``Id`` of the ``Family`` to query
@@ -3105,7 +3105,7 @@ class FamilyHierarchySession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def is_ancestor_of_family(self, id_, family_id):
+    def is_ancestor_of_family(self, id_, family_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a family.
 
         :param id: an ``Id``
@@ -3126,7 +3126,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_families(self, family_id):
+    def has_child_families(self, family_id): # pragma: no cover
         """Tests if a family has any children.
 
         :param family_id: the ``Id`` of a family
@@ -3144,7 +3144,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_family(self, id_, family_id):
+    def is_child_of_family(self, id_, family_id): # pragma: no cover
         """Tests if a family is a direct child of another.
 
         :param id: an ``Id``
@@ -3165,7 +3165,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_family_ids(self, family_id):
+    def get_child_family_ids(self, family_id): # pragma: no cover
         """Gets the child ``Ids`` of the given family.
 
         :param family_id: the ``Id`` to query
@@ -3183,7 +3183,7 @@ class FamilyHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_families(self, family_id):
+    def get_child_families(self, family_id): # pragma: no cover
         """Gets the child families of the given ``id``.
 
         :param family_id: the ``Id`` of the ``Family`` to query
@@ -3201,7 +3201,7 @@ class FamilyHierarchySession:
         return  # osid.relationship.FamilyList
 
     @abc.abstractmethod
-    def is_descendant_of_family(self, id_, family_id):
+    def is_descendant_of_family(self, id_, family_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of a family.
 
         :param id: an ``Id``
@@ -3222,7 +3222,7 @@ class FamilyHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_family_node_ids(self, family_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_family_node_ids(self, family_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given family.
 
         :param family_id: the ``Id`` to query
@@ -3246,7 +3246,7 @@ class FamilyHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_family_nodes(self, family_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_family_nodes(self, family_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given family.
 
         :param family_id: the ``Id`` to query
@@ -3281,7 +3281,7 @@ class FamilyHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_hierarchy_id(self):
+    def get_family_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -3296,7 +3296,7 @@ class FamilyHierarchyDesignSession:
     family_hierarchy_id = property(fget=get_family_hierarchy_id)
 
     @abc.abstractmethod
-    def get_family_hierarchy(self):
+    def get_family_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -3312,7 +3312,7 @@ class FamilyHierarchyDesignSession:
     family_hierarchy = property(fget=get_family_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_family_hierarchy(self):
+    def can_modify_family_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -3331,7 +3331,7 @@ class FamilyHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_family(self, family_id):
+    def add_root_family(self, family_id): # pragma: no cover
         """Adds a root family.
 
         :param family_id: the ``Id`` of a family
@@ -3348,7 +3348,7 @@ class FamilyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_family(self, family_id):
+    def remove_root_family(self, family_id): # pragma: no cover
         """Removes a root family.
 
         :param family_id: the ``Id`` of a family
@@ -3364,7 +3364,7 @@ class FamilyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_family(self, family_id, child_id):
+    def add_child_family(self, family_id, child_id): # pragma: no cover
         """Adds a child to a family.
 
         :param family_id: the ``Id`` of a family
@@ -3383,7 +3383,7 @@ class FamilyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_family(self, family_id, child_id):
+    def remove_child_family(self, family_id, child_id): # pragma: no cover
         """Removes a child from a family.
 
         :param family_id: the ``Id`` of a family
@@ -3401,7 +3401,7 @@ class FamilyHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_families(self, family_id):
+    def remove_child_families(self, family_id): # pragma: no cover
         """Removes all children from a family.
 
         :param family_id: the ``Id`` of a family

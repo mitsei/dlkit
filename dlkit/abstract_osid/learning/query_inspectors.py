@@ -21,7 +21,7 @@ class ObjectiveQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the asset ``Id`` terms
@@ -36,7 +36,7 @@ class ObjectiveQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the asset query terms.
 
         :return: the asset terms
@@ -51,7 +51,7 @@ class ObjectiveQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_knowledge_category_id_terms(self):
+    def get_knowledge_category_id_terms(self): # pragma: no cover
         """Gets the knowledge category ``Id`` query terms.
 
         :return: the knowledge category ``Id`` terms
@@ -66,7 +66,7 @@ class ObjectiveQueryInspector:
     knowledge_category_id_terms = property(fget=get_knowledge_category_id_terms)
 
     @abc.abstractmethod
-    def get_knowledge_category_terms(self):
+    def get_knowledge_category_terms(self): # pragma: no cover
         """Gets the knowledge category query terms.
 
         :return: the knowledge category terms
@@ -81,7 +81,7 @@ class ObjectiveQueryInspector:
     knowledge_category_terms = property(fget=get_knowledge_category_terms)
 
     @abc.abstractmethod
-    def get_cognitive_process_id_terms(self):
+    def get_cognitive_process_id_terms(self): # pragma: no cover
         """Gets the cognitive process ``Id`` query terms.
 
         :return: the cognitive process ``Id`` terms
@@ -96,7 +96,7 @@ class ObjectiveQueryInspector:
     cognitive_process_id_terms = property(fget=get_cognitive_process_id_terms)
 
     @abc.abstractmethod
-    def get_cognitive_process_terms(self):
+    def get_cognitive_process_terms(self): # pragma: no cover
         """Gets the cognitive process query terms.
 
         :return: the cognitive process terms
@@ -111,7 +111,7 @@ class ObjectiveQueryInspector:
     cognitive_process_terms = property(fget=get_cognitive_process_terms)
 
     @abc.abstractmethod
-    def get_requisite_objective_id_terms(self):
+    def get_requisite_objective_id_terms(self): # pragma: no cover
         """Gets the requisite objective ``Id`` query terms.
 
         :return: the query terms
@@ -126,7 +126,7 @@ class ObjectiveQueryInspector:
     requisite_objective_id_terms = property(fget=get_requisite_objective_id_terms)
 
     @abc.abstractmethod
-    def get_requisite_objective_terms(self):
+    def get_requisite_objective_terms(self): # pragma: no cover
         """Gets the requisite objective query terms.
 
         :return: the query terms
@@ -141,7 +141,7 @@ class ObjectiveQueryInspector:
     requisite_objective_terms = property(fget=get_requisite_objective_terms)
 
     @abc.abstractmethod
-    def get_dependent_objective_id_terms(self):
+    def get_dependent_objective_id_terms(self): # pragma: no cover
         """Gets the requisite objective ``Id`` query terms.
 
         :return: the query terms
@@ -156,7 +156,7 @@ class ObjectiveQueryInspector:
     dependent_objective_id_terms = property(fget=get_dependent_objective_id_terms)
 
     @abc.abstractmethod
-    def get_dependent_objective_terms(self):
+    def get_dependent_objective_terms(self): # pragma: no cover
         """Gets the requisite objective query terms.
 
         :return: the query terms
@@ -171,7 +171,7 @@ class ObjectiveQueryInspector:
     dependent_objective_terms = property(fget=get_dependent_objective_terms)
 
     @abc.abstractmethod
-    def get_equivalent_objective_id_terms(self):
+    def get_equivalent_objective_id_terms(self): # pragma: no cover
         """Gets the equivalent objective ``Id`` query terms.
 
         :return: the query terms
@@ -186,7 +186,7 @@ class ObjectiveQueryInspector:
     equivalent_objective_id_terms = property(fget=get_equivalent_objective_id_terms)
 
     @abc.abstractmethod
-    def get_equivalent_objective_terms(self):
+    def get_equivalent_objective_terms(self): # pragma: no cover
         """Gets the equivalent objective query terms.
 
         :return: the query terms
@@ -201,7 +201,7 @@ class ObjectiveQueryInspector:
     equivalent_objective_terms = property(fget=get_equivalent_objective_terms)
 
     @abc.abstractmethod
-    def get_ancestor_objective_id_terms(self):
+    def get_ancestor_objective_id_terms(self): # pragma: no cover
         """Gets the ancestor objective ``Id`` query terms.
 
         :return: the query terms
@@ -216,7 +216,7 @@ class ObjectiveQueryInspector:
     ancestor_objective_id_terms = property(fget=get_ancestor_objective_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_objective_terms(self):
+    def get_ancestor_objective_terms(self): # pragma: no cover
         """Gets the ancestor objective query terms.
 
         :return: the query terms
@@ -231,7 +231,7 @@ class ObjectiveQueryInspector:
     ancestor_objective_terms = property(fget=get_ancestor_objective_terms)
 
     @abc.abstractmethod
-    def get_descendant_objective_id_terms(self):
+    def get_descendant_objective_id_terms(self): # pragma: no cover
         """Gets the descendant objective ``Id`` query terms.
 
         :return: the query terms
@@ -246,7 +246,7 @@ class ObjectiveQueryInspector:
     descendant_objective_id_terms = property(fget=get_descendant_objective_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_objective_terms(self):
+    def get_descendant_objective_terms(self): # pragma: no cover
         """Gets the descendant objective query terms.
 
         :return: the query terms
@@ -261,7 +261,7 @@ class ObjectiveQueryInspector:
     descendant_objective_terms = property(fget=get_descendant_objective_terms)
 
     @abc.abstractmethod
-    def get_activity_id_terms(self):
+    def get_activity_id_terms(self): # pragma: no cover
         """Gets the activity ``Id`` query terms.
 
         :return: the activity ``Id`` terms
@@ -276,7 +276,7 @@ class ObjectiveQueryInspector:
     activity_id_terms = property(fget=get_activity_id_terms)
 
     @abc.abstractmethod
-    def get_activity_terms(self):
+    def get_activity_terms(self): # pragma: no cover
         """Gets the activity query terms.
 
         :return: the activity terms
@@ -291,7 +291,7 @@ class ObjectiveQueryInspector:
     activity_terms = property(fget=get_activity_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_id_terms(self):
+    def get_objective_bank_id_terms(self): # pragma: no cover
         """Gets the objective bank ``Id`` query terms.
 
         :return: the objective bank ``Id`` terms
@@ -306,7 +306,7 @@ class ObjectiveQueryInspector:
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_terms(self):
+    def get_objective_bank_terms(self): # pragma: no cover
         """Gets the objective bank query terms.
 
         :return: the objective bank terms
@@ -321,7 +321,7 @@ class ObjectiveQueryInspector:
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_objective_query_inspector_record(self, objective_record_type):
+    def get_objective_query_inspector_record(self, objective_record_type): # pragma: no cover
         """Gets the objective query inspector record corresponding to the given ``Objective`` record ``Type``.
 
         :param objective_record_type: an objective record type
@@ -343,7 +343,7 @@ class ActivityQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_id_terms(self):
+    def get_objective_id_terms(self): # pragma: no cover
         """Gets the objective ``Id`` query terms.
 
         :return: the objective ``Id`` terms
@@ -358,7 +358,7 @@ class ActivityQueryInspector:
     objective_id_terms = property(fget=get_objective_id_terms)
 
     @abc.abstractmethod
-    def get_objective_terms(self):
+    def get_objective_terms(self): # pragma: no cover
         """Gets the objective query terms.
 
         :return: the objective terms
@@ -373,7 +373,7 @@ class ActivityQueryInspector:
     objective_terms = property(fget=get_objective_terms)
 
     @abc.abstractmethod
-    def get_asset_id_terms(self):
+    def get_asset_id_terms(self): # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the asset ``Id`` terms
@@ -388,7 +388,7 @@ class ActivityQueryInspector:
     asset_id_terms = property(fget=get_asset_id_terms)
 
     @abc.abstractmethod
-    def get_asset_terms(self):
+    def get_asset_terms(self): # pragma: no cover
         """Gets the asset query terms.
 
         :return: the asset terms
@@ -403,7 +403,7 @@ class ActivityQueryInspector:
     asset_terms = property(fget=get_asset_terms)
 
     @abc.abstractmethod
-    def get_course_id_terms(self):
+    def get_course_id_terms(self): # pragma: no cover
         """Gets the course ``Id`` query terms.
 
         :return: the course ``Id`` terms
@@ -418,7 +418,7 @@ class ActivityQueryInspector:
     course_id_terms = property(fget=get_course_id_terms)
 
     @abc.abstractmethod
-    def get_course_terms(self):
+    def get_course_terms(self): # pragma: no cover
         """Gets the course query terms.
 
         :return: the course terms
@@ -433,7 +433,7 @@ class ActivityQueryInspector:
     course_terms = property(fget=get_course_terms)
 
     @abc.abstractmethod
-    def get_assessment_id_terms(self):
+    def get_assessment_id_terms(self): # pragma: no cover
         """Gets the assessment ``Id`` query terms.
 
         :return: the assessment ``Id`` terms
@@ -448,7 +448,7 @@ class ActivityQueryInspector:
     assessment_id_terms = property(fget=get_assessment_id_terms)
 
     @abc.abstractmethod
-    def get_assessment_terms(self):
+    def get_assessment_terms(self): # pragma: no cover
         """Gets the assessment query terms.
 
         :return: the assessment terms
@@ -463,7 +463,7 @@ class ActivityQueryInspector:
     assessment_terms = property(fget=get_assessment_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_id_terms(self):
+    def get_objective_bank_id_terms(self): # pragma: no cover
         """Gets the objective bank ``Id`` query terms.
 
         :return: the objective bank ``Id`` terms
@@ -478,7 +478,7 @@ class ActivityQueryInspector:
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_terms(self):
+    def get_objective_bank_terms(self): # pragma: no cover
         """Gets the objective bank query terms.
 
         :return: the objective bank terms
@@ -493,7 +493,7 @@ class ActivityQueryInspector:
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_activity_query_inspector_record(self, activity_record_type):
+    def get_activity_query_inspector_record(self, activity_record_type): # pragma: no cover
         """Gets the activity query inspector record corresponding to the given ``Activity`` record ``Type``.
 
         :param activity_record_type: an activity record type
@@ -515,7 +515,7 @@ class ProficiencyQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_id_terms(self):
+    def get_resource_id_terms(self): # pragma: no cover
         """Gets the resource ``Id`` terms.
 
         :return: the resource ``Id`` terms
@@ -530,7 +530,7 @@ class ProficiencyQueryInspector:
     resource_id_terms = property(fget=get_resource_id_terms)
 
     @abc.abstractmethod
-    def get_resource_terms(self):
+    def get_resource_terms(self): # pragma: no cover
         """Gets the resource terms.
 
         :return: the resource terms
@@ -545,7 +545,7 @@ class ProficiencyQueryInspector:
     resource_terms = property(fget=get_resource_terms)
 
     @abc.abstractmethod
-    def get_objective_id_terms(self):
+    def get_objective_id_terms(self): # pragma: no cover
         """Gets the objective ``Id`` terms.
 
         :return: the objective ``Id`` terms
@@ -560,7 +560,7 @@ class ProficiencyQueryInspector:
     objective_id_terms = property(fget=get_objective_id_terms)
 
     @abc.abstractmethod
-    def get_objective_terms(self):
+    def get_objective_terms(self): # pragma: no cover
         """Gets the objective terms.
 
         :return: the objective terms
@@ -575,7 +575,7 @@ class ProficiencyQueryInspector:
     objective_terms = property(fget=get_objective_terms)
 
     @abc.abstractmethod
-    def get_completion_terms(self):
+    def get_completion_terms(self): # pragma: no cover
         """Gets the completion terms.
 
         :return: the completion terms
@@ -590,7 +590,7 @@ class ProficiencyQueryInspector:
     completion_terms = property(fget=get_completion_terms)
 
     @abc.abstractmethod
-    def get_minimum_completion_terms(self):
+    def get_minimum_completion_terms(self): # pragma: no cover
         """Gets the minimum completion terms.
 
         :return: the minimum completion terms
@@ -605,7 +605,7 @@ class ProficiencyQueryInspector:
     minimum_completion_terms = property(fget=get_minimum_completion_terms)
 
     @abc.abstractmethod
-    def get_level_id_terms(self):
+    def get_level_id_terms(self): # pragma: no cover
         """Gets the level ``Id`` query terms.
 
         :return: the level ``Id`` terms
@@ -620,7 +620,7 @@ class ProficiencyQueryInspector:
     level_id_terms = property(fget=get_level_id_terms)
 
     @abc.abstractmethod
-    def get_level_terms(self):
+    def get_level_terms(self): # pragma: no cover
         """Gets the level query terms.
 
         :return: the level terms
@@ -635,7 +635,7 @@ class ProficiencyQueryInspector:
     level_terms = property(fget=get_level_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_id_terms(self):
+    def get_objective_bank_id_terms(self): # pragma: no cover
         """Gets the objective bank ``Id`` query terms.
 
         :return: the objective bank ``Id`` terms
@@ -650,7 +650,7 @@ class ProficiencyQueryInspector:
     objective_bank_id_terms = property(fget=get_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_terms(self):
+    def get_objective_bank_terms(self): # pragma: no cover
         """Gets the objective bank query terms.
 
         :return: the objective bank terms
@@ -665,7 +665,7 @@ class ProficiencyQueryInspector:
     objective_bank_terms = property(fget=get_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_proficiency_query_inspector_record(self, proficiency_record_type):
+    def get_proficiency_query_inspector_record(self, proficiency_record_type): # pragma: no cover
         """Gets the proficiency query inspector record corresponding to the given ``Proficiency`` record ``Type``.
 
         :param proficiency_record_type: a proficiency record type
@@ -687,7 +687,7 @@ class ObjectiveBankQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_objective_id_terms(self):
+    def get_objective_id_terms(self): # pragma: no cover
         """Gets the objective ``Id`` query terms.
 
         :return: the objective ``Id`` terms
@@ -702,7 +702,7 @@ class ObjectiveBankQueryInspector:
     objective_id_terms = property(fget=get_objective_id_terms)
 
     @abc.abstractmethod
-    def get_objective_terms(self):
+    def get_objective_terms(self): # pragma: no cover
         """Gets the objective query terms.
 
         :return: the objective terms
@@ -717,7 +717,7 @@ class ObjectiveBankQueryInspector:
     objective_terms = property(fget=get_objective_terms)
 
     @abc.abstractmethod
-    def get_activity_id_terms(self):
+    def get_activity_id_terms(self): # pragma: no cover
         """Gets the activity ``Id`` query terms.
 
         :return: the activity ``Id`` terms
@@ -732,7 +732,7 @@ class ObjectiveBankQueryInspector:
     activity_id_terms = property(fget=get_activity_id_terms)
 
     @abc.abstractmethod
-    def get_activity_terms(self):
+    def get_activity_terms(self): # pragma: no cover
         """Gets the activity query terms.
 
         :return: the activity terms
@@ -747,7 +747,7 @@ class ObjectiveBankQueryInspector:
     activity_terms = property(fget=get_activity_terms)
 
     @abc.abstractmethod
-    def get_ancestor_objective_bank_id_terms(self):
+    def get_ancestor_objective_bank_id_terms(self): # pragma: no cover
         """Gets the ancestor objective bank ``Id`` query terms.
 
         :return: the ancestor objective bank ``Id`` terms
@@ -762,7 +762,7 @@ class ObjectiveBankQueryInspector:
     ancestor_objective_bank_id_terms = property(fget=get_ancestor_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_objective_bank_terms(self):
+    def get_ancestor_objective_bank_terms(self): # pragma: no cover
         """Gets the ancestor objective bank query terms.
 
         :return: the ancestor objective bank terms
@@ -777,7 +777,7 @@ class ObjectiveBankQueryInspector:
     ancestor_objective_bank_terms = property(fget=get_ancestor_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_descendant_objective_bank_id_terms(self):
+    def get_descendant_objective_bank_id_terms(self): # pragma: no cover
         """Gets the descendant objective bank ``Id`` query terms.
 
         :return: the descendant objective bank ``Id`` terms
@@ -792,7 +792,7 @@ class ObjectiveBankQueryInspector:
     descendant_objective_bank_id_terms = property(fget=get_descendant_objective_bank_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_objective_bank_terms(self):
+    def get_descendant_objective_bank_terms(self): # pragma: no cover
         """Gets the descendant objective bank query terms.
 
         :return: the descendant objective bank terms
@@ -807,7 +807,7 @@ class ObjectiveBankQueryInspector:
     descendant_objective_bank_terms = property(fget=get_descendant_objective_bank_terms)
 
     @abc.abstractmethod
-    def get_objective_bank_query_inspector_record(self, objective_bank_record_type):
+    def get_objective_bank_query_inspector_record(self, objective_bank_record_type): # pragma: no cover
         """Gets the objective bank query inspector record corresponding to the given ``ObjectiveBank`` record ``Type``.
 
         :param objective_bank_record_type: an objective bank record type

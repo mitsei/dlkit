@@ -26,7 +26,7 @@ class GradeQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_grade_system_id(self, grade_system_id, match):
+    def match_grade_system_id(self, grade_system_id, match): # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -41,7 +41,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_id_terms(self):
+    def clear_grade_system_id_terms(self): # pragma: no cover
         """Clears the grade system ``Id`` terms.
 
 
@@ -54,7 +54,7 @@ class GradeQuery:
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_system_query(self):
+    def supports_grade_system_query(self): # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available for querying grade systems.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -67,7 +67,7 @@ class GradeQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_query(self):
+    def get_grade_system_query(self): # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -85,7 +85,7 @@ class GradeQuery:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def clear_grade_system_terms(self):
+    def clear_grade_system_terms(self): # pragma: no cover
         """Clears the grade system terms.
 
 
@@ -98,7 +98,7 @@ class GradeQuery:
     grade_system_terms = property(fdel=clear_grade_system_terms)
 
     @abc.abstractmethod
-    def match_input_score_start_range(self, start, end, match):
+    def match_input_score_start_range(self, start, end, match): # pragma: no cover
         """Matches grades with the start input score inclusive.
 
         :param start: start of range
@@ -115,7 +115,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_input_score_start_range_terms(self):
+    def clear_input_score_start_range_terms(self): # pragma: no cover
         """Clears the nput score start range terms.
 
 
@@ -128,7 +128,7 @@ class GradeQuery:
     input_score_start_range_terms = property(fdel=clear_input_score_start_range_terms)
 
     @abc.abstractmethod
-    def match_input_score_end_range(self, start, end, match):
+    def match_input_score_end_range(self, start, end, match): # pragma: no cover
         """Matches grades with the end input score inclusive.
 
         :param start: start of range
@@ -145,7 +145,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_input_score_end_range_terms(self):
+    def clear_input_score_end_range_terms(self): # pragma: no cover
         """Clears the nput score start range terms.
 
 
@@ -158,7 +158,7 @@ class GradeQuery:
     input_score_end_range_terms = property(fdel=clear_input_score_end_range_terms)
 
     @abc.abstractmethod
-    def match_input_score(self, start, end, match):
+    def match_input_score(self, start, end, match): # pragma: no cover
         """Matches grades with the input score range contained within the given range inclusive.
 
         :param start: start of range
@@ -175,7 +175,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_input_score_terms(self):
+    def clear_input_score_terms(self): # pragma: no cover
         """Clears the input score start range terms.
 
 
@@ -188,7 +188,7 @@ class GradeQuery:
     input_score_terms = property(fdel=clear_input_score_terms)
 
     @abc.abstractmethod
-    def match_output_score(self, start, end, match):
+    def match_output_score(self, start, end, match): # pragma: no cover
         """Matches grades with the output score contained within the given range inclusive.
 
         :param start: start of range
@@ -205,7 +205,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_output_score_terms(self):
+    def clear_output_score_terms(self): # pragma: no cover
         """Clears the output score terms.
 
 
@@ -218,7 +218,7 @@ class GradeQuery:
     output_score_terms = property(fdel=clear_output_score_terms)
 
     @abc.abstractmethod
-    def match_grade_entry_id(self, grade_entry_id, match):
+    def match_grade_entry_id(self, grade_entry_id, match): # pragma: no cover
         """Sets the grade entry ``Id`` for this query.
 
         :param grade_entry_id: a grade entry ``Id``
@@ -233,7 +233,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_id_terms(self):
+    def clear_grade_entry_id_terms(self): # pragma: no cover
         """Clears the grade entry ``Id`` terms.
 
 
@@ -246,7 +246,7 @@ class GradeQuery:
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_entry_query(self):
+    def supports_grade_entry_query(self): # pragma: no cover
         """Tests if a ``GradeEntryQuery`` is available for querying grade entries.
 
         :return: ``true`` if a grade entry query is available, ``false`` otherwise
@@ -259,7 +259,7 @@ class GradeQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_query(self):
+    def get_grade_entry_query(self): # pragma: no cover
         """Gets the query for a grade entry.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -277,7 +277,7 @@ class GradeQuery:
     grade_entry_query = property(fget=get_grade_entry_query)
 
     @abc.abstractmethod
-    def match_any_grade_entry(self, match):
+    def match_any_grade_entry(self, match): # pragma: no cover
         """Matches grades that are assigned to any grade entry.
 
         :param match: ``true`` to match grades used in any grade entry, ``false`` to match grades that are not used in any grade entries
@@ -290,7 +290,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_terms(self):
+    def clear_grade_entry_terms(self): # pragma: no cover
         """Clears the grade entry terms.
 
 
@@ -303,7 +303,7 @@ class GradeQuery:
     grade_entry_terms = property(fdel=clear_grade_entry_terms)
 
     @abc.abstractmethod
-    def match_gradebook_id(self, gradebook_id, match):
+    def match_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query.
 
         :param gradebook_id: a gradebook ``Id``
@@ -318,7 +318,7 @@ class GradeQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_id_terms(self):
+    def clear_gradebook_id_terms(self): # pragma: no cover
         """Clears the gradebook ``Id`` terms.
 
 
@@ -331,7 +331,7 @@ class GradeQuery:
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_query(self):
+    def supports_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -344,7 +344,7 @@ class GradeQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -362,7 +362,7 @@ class GradeQuery:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def clear_gradebook_terms(self):
+    def clear_gradebook_terms(self): # pragma: no cover
         """Clears the gradebook terms.
 
 
@@ -375,7 +375,7 @@ class GradeQuery:
     gradebook_terms = property(fdel=clear_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_query_record(self, grade_record_type):
+    def get_grade_query_record(self, grade_record_type): # pragma: no cover
         """Gets the grade query record corresponding to the given ``Grade`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -404,7 +404,7 @@ class GradeSystemQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_based_on_grades(self, match):
+    def match_based_on_grades(self, match): # pragma: no cover
         """Matches grade systems based on grades.
 
         :param match: ``true`` for a positive match, ``false`` for negative match
@@ -417,7 +417,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_based_on_grades_terms(self):
+    def clear_based_on_grades_terms(self): # pragma: no cover
         """Clears the grade ``based`` terms.
 
 
@@ -430,7 +430,7 @@ class GradeSystemQuery:
     based_on_grades_terms = property(fdel=clear_based_on_grades_terms)
 
     @abc.abstractmethod
-    def match_grade_id(self, grade_id, match):
+    def match_grade_id(self, grade_id, match): # pragma: no cover
         """Sets the grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -445,7 +445,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_id_terms(self):
+    def clear_grade_id_terms(self): # pragma: no cover
         """Clears the grade ``Id`` terms.
 
 
@@ -458,7 +458,7 @@ class GradeSystemQuery:
     grade_id_terms = property(fdel=clear_grade_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_query(self):
+    def supports_grade_query(self): # pragma: no cover
         """Tests if a ``GradeQuery`` is available for querying grades.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -471,7 +471,7 @@ class GradeSystemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_query(self):
+    def get_grade_query(self): # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -489,7 +489,7 @@ class GradeSystemQuery:
     grade_query = property(fget=get_grade_query)
 
     @abc.abstractmethod
-    def match_any_grade(self, match):
+    def match_any_grade(self, match): # pragma: no cover
         """Matches grade systems with any grade.
 
         :param match: ``true`` to match grade systems with any grade, ``false`` to match systems with no grade
@@ -502,7 +502,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_terms(self):
+    def clear_grade_terms(self): # pragma: no cover
         """Clears the grade terms.
 
 
@@ -515,7 +515,7 @@ class GradeSystemQuery:
     grade_terms = property(fdel=clear_grade_terms)
 
     @abc.abstractmethod
-    def match_lowest_numeric_score(self, start, end, match):
+    def match_lowest_numeric_score(self, start, end, match): # pragma: no cover
         """Matches grade systems whose low end score falls in the specified range inclusive.
 
         :param start: low end of range
@@ -533,7 +533,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_lowest_numeric_score_terms(self):
+    def clear_lowest_numeric_score_terms(self): # pragma: no cover
         """Clears the lowest numeric score terms.
 
 
@@ -546,7 +546,7 @@ class GradeSystemQuery:
     lowest_numeric_score_terms = property(fdel=clear_lowest_numeric_score_terms)
 
     @abc.abstractmethod
-    def match_numeric_score_increment(self, start, end, match):
+    def match_numeric_score_increment(self, start, end, match): # pragma: no cover
         """Matches grade systems numeric score increment is between the specified range inclusive.
 
         :param start: low end of range
@@ -564,7 +564,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_numeric_score_increment_terms(self):
+    def clear_numeric_score_increment_terms(self): # pragma: no cover
         """Clears the numeric score increment terms.
 
 
@@ -577,7 +577,7 @@ class GradeSystemQuery:
     numeric_score_increment_terms = property(fdel=clear_numeric_score_increment_terms)
 
     @abc.abstractmethod
-    def match_highest_numeric_score(self, start, end, match):
+    def match_highest_numeric_score(self, start, end, match): # pragma: no cover
         """Matches grade systems whose high end score falls in the specified range inclusive.
 
         :param start: low end of range
@@ -595,7 +595,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_highest_numeric_score_terms(self):
+    def clear_highest_numeric_score_terms(self): # pragma: no cover
         """Clears the highest numeric score terms.
 
 
@@ -608,7 +608,7 @@ class GradeSystemQuery:
     highest_numeric_score_terms = property(fdel=clear_highest_numeric_score_terms)
 
     @abc.abstractmethod
-    def match_gradebook_column_id(self, gradebook_column_id, match):
+    def match_gradebook_column_id(self, gradebook_column_id, match): # pragma: no cover
         """Sets the gradebook column ``Id`` for this query.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -623,7 +623,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_id_terms(self):
+    def clear_gradebook_column_id_terms(self): # pragma: no cover
         """Clears the gradebook column ``Id`` terms.
 
 
@@ -636,7 +636,7 @@ class GradeSystemQuery:
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_column_query(self):
+    def supports_gradebook_column_query(self): # pragma: no cover
         """Tests if a ``GradebookColumnQuery`` is available.
 
         :return: ``true`` if a gradebook column query is available, ``false`` otherwise
@@ -649,7 +649,7 @@ class GradeSystemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets the query for a gradebook column.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -667,7 +667,7 @@ class GradeSystemQuery:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def match_any_gradebook_column(self, match):
+    def match_any_gradebook_column(self, match): # pragma: no cover
         """Matches grade systems assigned to any gradebook column.
 
         :param match: ``true`` to match grade systems mapped to any column, ``false`` to match systems mapped to no columns
@@ -680,7 +680,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_terms(self):
+    def clear_gradebook_column_terms(self): # pragma: no cover
         """Clears the gradebook column terms.
 
 
@@ -693,7 +693,7 @@ class GradeSystemQuery:
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
 
     @abc.abstractmethod
-    def match_gradebook_id(self, gradebook_id, match):
+    def match_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query.
 
         :param gradebook_id: a gradebook ``Id``
@@ -708,7 +708,7 @@ class GradeSystemQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_id_terms(self):
+    def clear_gradebook_id_terms(self): # pragma: no cover
         """Clears the gradebook ``Id`` terms.
 
 
@@ -721,7 +721,7 @@ class GradeSystemQuery:
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_query(self):
+    def supports_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -734,7 +734,7 @@ class GradeSystemQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -752,7 +752,7 @@ class GradeSystemQuery:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def clear_gradebook_terms(self):
+    def clear_gradebook_terms(self): # pragma: no cover
         """Clears the gradebook terms.
 
 
@@ -765,7 +765,7 @@ class GradeSystemQuery:
     gradebook_terms = property(fdel=clear_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_system_query_record(self, grade_system_record_type):
+    def get_grade_system_query_record(self, grade_system_record_type): # pragma: no cover
         """Gets the grade system query record corresponding to the given ``GradeSystem`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -794,7 +794,7 @@ class GradeEntryQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_gradebook_column_id(self, gradebook_column_id, match):
+    def match_gradebook_column_id(self, gradebook_column_id, match): # pragma: no cover
         """Sets the gradebook column ``Id`` for this query.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -809,7 +809,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_id_terms(self):
+    def clear_gradebook_column_id_terms(self): # pragma: no cover
         """Clears the gradebook column ``Id`` terms.
 
 
@@ -822,7 +822,7 @@ class GradeEntryQuery:
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_column_query(self):
+    def supports_gradebook_column_query(self): # pragma: no cover
         """Tests if a ``GradebookColumnQuery`` is available for querying creators.
 
         :return: ``true`` if a gradebook column query is available, ``false`` otherwise
@@ -835,7 +835,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets the query for a gradebook column.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -853,7 +853,7 @@ class GradeEntryQuery:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def clear_gradebook_column_terms(self):
+    def clear_gradebook_column_terms(self): # pragma: no cover
         """Clears the gradebook column terms.
 
 
@@ -866,7 +866,7 @@ class GradeEntryQuery:
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
 
     @abc.abstractmethod
-    def match_key_resource_id(self, resource_id, match):
+    def match_key_resource_id(self, resource_id, match): # pragma: no cover
         """Sets the key resource ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -881,7 +881,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_key_resource_id_terms(self):
+    def clear_key_resource_id_terms(self): # pragma: no cover
         """Clears the key resource ``Id`` terms.
 
 
@@ -894,7 +894,7 @@ class GradeEntryQuery:
     key_resource_id_terms = property(fdel=clear_key_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_key_resource_query(self):
+    def supports_key_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQUery`` is available for querying key resources.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -907,7 +907,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_key_resource_query(self):
+    def get_key_resource_query(self): # pragma: no cover
         """Gets the query for a key resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -925,7 +925,7 @@ class GradeEntryQuery:
     key_resource_query = property(fget=get_key_resource_query)
 
     @abc.abstractmethod
-    def match_any_key_resource(self, match):
+    def match_any_key_resource(self, match): # pragma: no cover
         """Matches grade entries with any key resource.
 
         :param match: ``true`` to match grade entries with any key resource, ``false`` to match entries with no key resource
@@ -938,7 +938,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_key_resource_terms(self):
+    def clear_key_resource_terms(self): # pragma: no cover
         """Clears the key resource terms.
 
 
@@ -951,7 +951,7 @@ class GradeEntryQuery:
     key_resource_terms = property(fdel=clear_key_resource_terms)
 
     @abc.abstractmethod
-    def match_derived(self, match):
+    def match_derived(self, match): # pragma: no cover
         """Matches derived grade entries.
 
         :param match: ``true`` to match derived grade entries , ``false`` to match manual entries
@@ -964,7 +964,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_derived_terms(self):
+    def clear_derived_terms(self): # pragma: no cover
         """Clears the derived terms.
 
 
@@ -977,7 +977,7 @@ class GradeEntryQuery:
     derived_terms = property(fdel=clear_derived_terms)
 
     @abc.abstractmethod
-    def match_overridden_grade_entry_id(self, grade_entry_id, match):
+    def match_overridden_grade_entry_id(self, grade_entry_id, match): # pragma: no cover
         """Sets the grade entry ``Id`` for an overridden calculated grade entry.
 
         :param grade_entry_id: a grade entry ``Id``
@@ -992,7 +992,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_overridden_grade_entry_id_terms(self):
+    def clear_overridden_grade_entry_id_terms(self): # pragma: no cover
         """Clears the overridden grade entry ``Id`` terms.
 
 
@@ -1005,7 +1005,7 @@ class GradeEntryQuery:
     overridden_grade_entry_id_terms = property(fdel=clear_overridden_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_overridden_grade_entry_query(self):
+    def supports_overridden_grade_entry_query(self): # pragma: no cover
         """Tests if a ``GradeEntry`` is available for querying overridden calculated grade entries.
 
         :return: ``true`` if a grade entry query is available, ``false`` otherwise
@@ -1018,7 +1018,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_overridden_grade_entry_query(self):
+    def get_overridden_grade_entry_query(self): # pragma: no cover
         """Gets the query for an overridden derived grade entry.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1036,7 +1036,7 @@ class GradeEntryQuery:
     overridden_grade_entry_query = property(fget=get_overridden_grade_entry_query)
 
     @abc.abstractmethod
-    def match_any_overridden_grade_entry(self, match):
+    def match_any_overridden_grade_entry(self, match): # pragma: no cover
         """Matches grade entries overriding any calculated grade entry.
 
         :param match: ``true`` to match grade entries overriding any grade entry, ``false`` to match entries not overriding any entry
@@ -1049,7 +1049,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_overridden_grade_entry_terms(self):
+    def clear_overridden_grade_entry_terms(self): # pragma: no cover
         """Clears the overridden grade entry terms.
 
 
@@ -1062,7 +1062,7 @@ class GradeEntryQuery:
     overridden_grade_entry_terms = property(fdel=clear_overridden_grade_entry_terms)
 
     @abc.abstractmethod
-    def match_ignored_for_calculations(self, match):
+    def match_ignored_for_calculations(self, match): # pragma: no cover
         """Matches grade entries ignored for calculations.
 
         :param match: ``true`` to match grade entries ignored for calculations, ``false`` to match entries used in calculations
@@ -1075,7 +1075,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ignored_for_calculations_terms(self):
+    def clear_ignored_for_calculations_terms(self): # pragma: no cover
         """Clears the ignored for calculation entries terms.
 
 
@@ -1088,7 +1088,7 @@ class GradeEntryQuery:
     ignored_for_calculations_terms = property(fdel=clear_ignored_for_calculations_terms)
 
     @abc.abstractmethod
-    def match_grade_id(self, grade_id, match):
+    def match_grade_id(self, grade_id, match): # pragma: no cover
         """Sets the grade ``Id`` for this query.
 
         :param grade_id: a grade ``Id``
@@ -1103,7 +1103,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_id_terms(self):
+    def clear_grade_id_terms(self): # pragma: no cover
         """Clears the grade ``Id`` terms.
 
 
@@ -1116,7 +1116,7 @@ class GradeEntryQuery:
     grade_id_terms = property(fdel=clear_grade_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_query(self):
+    def supports_grade_query(self): # pragma: no cover
         """Tests if a ``GradeQuery`` is available for querying grades.
 
         :return: ``true`` if a grade query is available, ``false`` otherwise
@@ -1129,7 +1129,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_query(self):
+    def get_grade_query(self): # pragma: no cover
         """Gets the query for a grade.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1147,7 +1147,7 @@ class GradeEntryQuery:
     grade_query = property(fget=get_grade_query)
 
     @abc.abstractmethod
-    def match_any_grade(self, match):
+    def match_any_grade(self, match): # pragma: no cover
         """Matches grade entries with any grade.
 
         :param match: ``true`` to match grade entries with any grade, ``false`` to match entries with no grade
@@ -1160,7 +1160,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_terms(self):
+    def clear_grade_terms(self): # pragma: no cover
         """Clears the grade terms.
 
 
@@ -1173,7 +1173,7 @@ class GradeEntryQuery:
     grade_terms = property(fdel=clear_grade_terms)
 
     @abc.abstractmethod
-    def match_score(self, start, end, match):
+    def match_score(self, start, end, match): # pragma: no cover
         """Matches grade entries which score is between the specified score inclusive.
 
         :param start: start of range
@@ -1190,7 +1190,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_score(self, match):
+    def match_any_score(self, match): # pragma: no cover
         """Matches grade entries with any score.
 
         :param match: ``true`` to match grade entries with any score, ``false`` to match entries with no score
@@ -1203,7 +1203,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_score_terms(self):
+    def clear_score_terms(self): # pragma: no cover
         """Clears the score terms.
 
 
@@ -1216,7 +1216,7 @@ class GradeEntryQuery:
     score_terms = property(fdel=clear_score_terms)
 
     @abc.abstractmethod
-    def match_time_graded(self, start, end, match):
+    def match_time_graded(self, start, end, match): # pragma: no cover
         """Matches grade entries which graded time is between the specified times inclusive.
 
         :param start: start of range
@@ -1233,7 +1233,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_time_graded_terms(self):
+    def clear_time_graded_terms(self): # pragma: no cover
         """Clears the time graded terms.
 
 
@@ -1246,7 +1246,7 @@ class GradeEntryQuery:
     time_graded_terms = property(fdel=clear_time_graded_terms)
 
     @abc.abstractmethod
-    def match_grader_id(self, resource_id, match):
+    def match_grader_id(self, resource_id, match): # pragma: no cover
         """Sets the agent ``Id`` for this query.
 
         :param resource_id: a resource ``Id``
@@ -1261,7 +1261,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grader_id_terms(self):
+    def clear_grader_id_terms(self): # pragma: no cover
         """Clears the grader ``Id`` terms.
 
 
@@ -1274,7 +1274,7 @@ class GradeEntryQuery:
     grader_id_terms = property(fdel=clear_grader_id_terms)
 
     @abc.abstractmethod
-    def supports_grader_query(self):
+    def supports_grader_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for querying graders.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -1287,7 +1287,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grader_query(self):
+    def get_grader_query(self): # pragma: no cover
         """Gets the query for an agent.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1305,7 +1305,7 @@ class GradeEntryQuery:
     grader_query = property(fget=get_grader_query)
 
     @abc.abstractmethod
-    def match_any_grader(self, match):
+    def match_any_grader(self, match): # pragma: no cover
         """Matches grade entries with any grader.
 
         :param match: ``true`` to match grade entries with any grader, ``false`` to match entries with no grader
@@ -1318,7 +1318,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grader_terms(self):
+    def clear_grader_terms(self): # pragma: no cover
         """Clears the grader terms.
 
 
@@ -1331,7 +1331,7 @@ class GradeEntryQuery:
     grader_terms = property(fdel=clear_grader_terms)
 
     @abc.abstractmethod
-    def match_grading_agent_id(self, agent_id, match):
+    def match_grading_agent_id(self, agent_id, match): # pragma: no cover
         """Sets the grading agent ``Id`` for this query.
 
         :param agent_id: an agent ``Id``
@@ -1346,7 +1346,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grading_agent_id_terms(self):
+    def clear_grading_agent_id_terms(self): # pragma: no cover
         """Clears the grader ``Id`` terms.
 
 
@@ -1359,7 +1359,7 @@ class GradeEntryQuery:
     grading_agent_id_terms = property(fdel=clear_grading_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_grading_agent_query(self):
+    def supports_grading_agent_query(self): # pragma: no cover
         """Tests if an ``AgentQuery`` is available for querying grading agents.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -1372,7 +1372,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grading_agent_query(self):
+    def get_grading_agent_query(self): # pragma: no cover
         """Gets the query for an agent.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1390,7 +1390,7 @@ class GradeEntryQuery:
     grading_agent_query = property(fget=get_grading_agent_query)
 
     @abc.abstractmethod
-    def match_any_grading_agent(self, match):
+    def match_any_grading_agent(self, match): # pragma: no cover
         """Matches grade entries with any grading agent.
 
         :param match: ``true`` to match grade entries with any grading agent, ``false`` to match entries with no grading agent
@@ -1403,7 +1403,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grading_agent_terms(self):
+    def clear_grading_agent_terms(self): # pragma: no cover
         """Clears the grading agent terms.
 
 
@@ -1416,7 +1416,7 @@ class GradeEntryQuery:
     grading_agent_terms = property(fdel=clear_grading_agent_terms)
 
     @abc.abstractmethod
-    def match_gradebook_id(self, gradebook_id, match):
+    def match_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query.
 
         :param gradebook_id: a gradebook ``Id``
@@ -1431,7 +1431,7 @@ class GradeEntryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_id_terms(self):
+    def clear_gradebook_id_terms(self): # pragma: no cover
         """Clears the gradebook ``Id`` terms.
 
 
@@ -1444,7 +1444,7 @@ class GradeEntryQuery:
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_query(self):
+    def supports_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available for querying resources.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -1457,7 +1457,7 @@ class GradeEntryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1475,7 +1475,7 @@ class GradeEntryQuery:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def clear_gradebook_terms(self):
+    def clear_gradebook_terms(self): # pragma: no cover
         """Clears the gradebook terms.
 
 
@@ -1488,7 +1488,7 @@ class GradeEntryQuery:
     gradebook_terms = property(fdel=clear_gradebook_terms)
 
     @abc.abstractmethod
-    def get_grade_entry_query_record(self, grade_entry_record_type):
+    def get_grade_entry_query_record(self, grade_entry_record_type): # pragma: no cover
         """Gets the grade entry query record corresponding to the given ``GradeEntry`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1517,7 +1517,7 @@ class GradebookColumnQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_grade_system_id(self, grade_system_id, match):
+    def match_grade_system_id(self, grade_system_id, match): # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -1532,7 +1532,7 @@ class GradebookColumnQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_id_terms(self):
+    def clear_grade_system_id_terms(self): # pragma: no cover
         """Clears the grade system ``Id`` terms.
 
 
@@ -1545,7 +1545,7 @@ class GradebookColumnQuery:
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_system_query(self):
+    def supports_grade_system_query(self): # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available for querying grade systems.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -1558,7 +1558,7 @@ class GradebookColumnQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_query(self):
+    def get_grade_system_query(self): # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1576,7 +1576,7 @@ class GradebookColumnQuery:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def match_any_grade_system(self, match):
+    def match_any_grade_system(self, match): # pragma: no cover
         """Matches gradebook columns with any grade system assigned.
 
         :param match: ``true`` to match columns with any grade system, ``false`` to match columns with no grade system
@@ -1589,7 +1589,7 @@ class GradebookColumnQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_terms(self):
+    def clear_grade_system_terms(self): # pragma: no cover
         """Clears the grade system terms.
 
 
@@ -1602,7 +1602,7 @@ class GradebookColumnQuery:
     grade_system_terms = property(fdel=clear_grade_system_terms)
 
     @abc.abstractmethod
-    def match_grade_entry_id(self, grade_entry_id, match):
+    def match_grade_entry_id(self, grade_entry_id, match): # pragma: no cover
         """Sets the grade entry ``Id`` for this query.
 
         :param grade_entry_id: a grade entry ``Id``
@@ -1617,7 +1617,7 @@ class GradebookColumnQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_id_terms(self):
+    def clear_grade_entry_id_terms(self): # pragma: no cover
         """Clears the grade entry ``Id`` terms.
 
 
@@ -1630,7 +1630,7 @@ class GradebookColumnQuery:
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_entry_query(self):
+    def supports_grade_entry_query(self): # pragma: no cover
         """Tests if a ``GradeEntryQuery`` is available for querying grade entries.
 
         :return: ``true`` if a grade entry query is available, ``false`` otherwise
@@ -1643,7 +1643,7 @@ class GradebookColumnQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_query(self):
+    def get_grade_entry_query(self): # pragma: no cover
         """Gets the query for a grade entry.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1661,7 +1661,7 @@ class GradebookColumnQuery:
     grade_entry_query = property(fget=get_grade_entry_query)
 
     @abc.abstractmethod
-    def match_any_grade_entry(self, match):
+    def match_any_grade_entry(self, match): # pragma: no cover
         """Matches gradebook columns with any grade entry assigned.
 
         :param match: ``true`` to match columns with any grade entry, ``false`` to match columns with no grade entries
@@ -1674,7 +1674,7 @@ class GradebookColumnQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_terms(self):
+    def clear_grade_entry_terms(self): # pragma: no cover
         """Clears the grade entry terms.
 
 
@@ -1687,7 +1687,7 @@ class GradebookColumnQuery:
     grade_entry_terms = property(fdel=clear_grade_entry_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_column_summary_query(self):
+    def supports_gradebook_column_summary_query(self): # pragma: no cover
         """Tests if a ``GradebookColumnSummaryQuery`` is available for querying grade systems.
 
         :return: ``true`` if a gradebook column summary query interface is available, ``false`` otherwise
@@ -1700,7 +1700,7 @@ class GradebookColumnQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_query(self):
+    def get_gradebook_column_summary_query(self): # pragma: no cover
         """Gets the query interface for a gradebook column summary.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1718,7 +1718,7 @@ class GradebookColumnQuery:
     gradebook_column_summary_query = property(fget=get_gradebook_column_summary_query)
 
     @abc.abstractmethod
-    def clear_gradebook_column_summary_terms(self):
+    def clear_gradebook_column_summary_terms(self): # pragma: no cover
         """Clears the gradebook column summary terms.
 
 
@@ -1731,7 +1731,7 @@ class GradebookColumnQuery:
     gradebook_column_summary_terms = property(fdel=clear_gradebook_column_summary_terms)
 
     @abc.abstractmethod
-    def match_gradebook_id(self, gradebook_id, match):
+    def match_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query.
 
         :param gradebook_id: a gradebook ``Id``
@@ -1746,7 +1746,7 @@ class GradebookColumnQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_id_terms(self):
+    def clear_gradebook_id_terms(self): # pragma: no cover
         """Clears the gradebook ``Id`` terms.
 
 
@@ -1759,7 +1759,7 @@ class GradebookColumnQuery:
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_query(self):
+    def supports_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available for querying grade systems.
 
         :return: ``true`` if a gradebook query interface is available, ``false`` otherwise
@@ -1772,7 +1772,7 @@ class GradebookColumnQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets the query interface for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1790,7 +1790,7 @@ class GradebookColumnQuery:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def clear_gradebook_terms(self):
+    def clear_gradebook_terms(self): # pragma: no cover
         """Clears the gradebook terms.
 
 
@@ -1803,7 +1803,7 @@ class GradebookColumnQuery:
     gradebook_terms = property(fdel=clear_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_query_record(self, gradebook_column_record_type):
+    def get_gradebook_column_query_record(self, gradebook_column_record_type): # pragma: no cover
         """Gets the gradebook column query record corresponding to the given ``GradebookColumn`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1832,7 +1832,7 @@ class GradebookColumnSummaryQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_gradebook_column_id(self, gradebook_column_id, match):
+    def match_gradebook_column_id(self, gradebook_column_id, match): # pragma: no cover
         """Sets the gradebook column ``Id`` for this query.
 
         :param gradebook_column_id: a gradeboo column ``Id``
@@ -1847,7 +1847,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_id_terms(self):
+    def clear_gradebook_column_id_terms(self): # pragma: no cover
         """Clears the gradebook column ``Id`` terms.
 
 
@@ -1860,7 +1860,7 @@ class GradebookColumnSummaryQuery:
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_column_query(self):
+    def supports_gradebook_column_query(self): # pragma: no cover
         """Tests if a ``GradebookColumnQuery`` is available for querying gradebook column.
 
         :return: ``true`` if a gradebook column query is available, ``false`` otherwise
@@ -1873,7 +1873,7 @@ class GradebookColumnSummaryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets the query for a gradebook column.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1891,7 +1891,7 @@ class GradebookColumnSummaryQuery:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def match_any_gradebook_column(self, match):
+    def match_any_gradebook_column(self, match): # pragma: no cover
         """Matches gradebook column derivations with any gradebookc olumn.
 
         :param match: ``true`` to match gradebook column derivations with any gradebook column, ``false`` to match gradebook column derivations with no gradebook columns
@@ -1904,7 +1904,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_terms(self):
+    def clear_gradebook_column_terms(self): # pragma: no cover
         """Clears the source grade system terms.
 
 
@@ -1917,7 +1917,7 @@ class GradebookColumnSummaryQuery:
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
 
     @abc.abstractmethod
-    def match_mean(self, low, high, match):
+    def match_mean(self, low, high, match): # pragma: no cover
         """Matches a mean between the given values inclusive.
 
         :param low: low end of range
@@ -1934,7 +1934,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_mean_terms(self):
+    def clear_mean_terms(self): # pragma: no cover
         """Clears the mean terms.
 
 
@@ -1947,7 +1947,7 @@ class GradebookColumnSummaryQuery:
     mean_terms = property(fdel=clear_mean_terms)
 
     @abc.abstractmethod
-    def match_minimum_mean(self, value, match):
+    def match_minimum_mean(self, value, match): # pragma: no cover
         """Matches a mean greater than or equal to the given value.
 
         :param value: minimum value
@@ -1962,7 +1962,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_mean_terms(self):
+    def clear_minimum_mean_terms(self): # pragma: no cover
         """Clears the minimum mean terms.
 
 
@@ -1975,7 +1975,7 @@ class GradebookColumnSummaryQuery:
     minimum_mean_terms = property(fdel=clear_minimum_mean_terms)
 
     @abc.abstractmethod
-    def match_median(self, low, high, match):
+    def match_median(self, low, high, match): # pragma: no cover
         """Matches a median between the given values inclusive.
 
         :param low: low end of range
@@ -1992,7 +1992,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_median_terms(self):
+    def clear_median_terms(self): # pragma: no cover
         """Clears the median terms.
 
 
@@ -2005,7 +2005,7 @@ class GradebookColumnSummaryQuery:
     median_terms = property(fdel=clear_median_terms)
 
     @abc.abstractmethod
-    def match_minimum_median(self, value, match):
+    def match_minimum_median(self, value, match): # pragma: no cover
         """Matches a median greater than or equal to the given value.
 
         :param value: minimum value
@@ -2020,7 +2020,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_median_terms(self):
+    def clear_minimum_median_terms(self): # pragma: no cover
         """Clears the minimum median terms.
 
 
@@ -2033,7 +2033,7 @@ class GradebookColumnSummaryQuery:
     minimum_median_terms = property(fdel=clear_minimum_median_terms)
 
     @abc.abstractmethod
-    def match_mode(self, low, high, match):
+    def match_mode(self, low, high, match): # pragma: no cover
         """Matches a mode between the given values inclusive.
 
         :param low: low end of range
@@ -2050,7 +2050,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_mode_terms(self):
+    def clear_mode_terms(self): # pragma: no cover
         """Clears the mode terms.
 
 
@@ -2063,7 +2063,7 @@ class GradebookColumnSummaryQuery:
     mode_terms = property(fdel=clear_mode_terms)
 
     @abc.abstractmethod
-    def match_minimum_mode(self, value, match):
+    def match_minimum_mode(self, value, match): # pragma: no cover
         """Matches a mode greater than or equal to the given value.
 
         :param value: minimum value
@@ -2078,7 +2078,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_mode_terms(self):
+    def clear_minimum_mode_terms(self): # pragma: no cover
         """Clears the minimum mode terms.
 
 
@@ -2091,7 +2091,7 @@ class GradebookColumnSummaryQuery:
     minimum_mode_terms = property(fdel=clear_minimum_mode_terms)
 
     @abc.abstractmethod
-    def match_rms(self, low, high, match):
+    def match_rms(self, low, high, match): # pragma: no cover
         """Matches a root mean square between the given values inclusive.
 
         :param low: low end of range
@@ -2108,7 +2108,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_rms_terms(self):
+    def clear_rms_terms(self): # pragma: no cover
         """Clears the root mean square terms.
 
 
@@ -2121,7 +2121,7 @@ class GradebookColumnSummaryQuery:
     rms_terms = property(fdel=clear_rms_terms)
 
     @abc.abstractmethod
-    def match_minimum_rms(self, value, match):
+    def match_minimum_rms(self, value, match): # pragma: no cover
         """Matches a root mean square greater than or equal to the given value.
 
         :param value: minimum value
@@ -2136,7 +2136,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_rms_terms(self):
+    def clear_minimum_rms_terms(self): # pragma: no cover
         """Clears the minimum RMS terms.
 
 
@@ -2149,7 +2149,7 @@ class GradebookColumnSummaryQuery:
     minimum_rms_terms = property(fdel=clear_minimum_rms_terms)
 
     @abc.abstractmethod
-    def match_standard_deviation(self, low, high, match):
+    def match_standard_deviation(self, low, high, match): # pragma: no cover
         """Matches a standard deviation mean square between the given values inclusive.
 
         :param low: low end of range
@@ -2166,7 +2166,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_standard_deviation_terms(self):
+    def clear_standard_deviation_terms(self): # pragma: no cover
         """Clears the standard deviation terms.
 
 
@@ -2179,7 +2179,7 @@ class GradebookColumnSummaryQuery:
     standard_deviation_terms = property(fdel=clear_standard_deviation_terms)
 
     @abc.abstractmethod
-    def match_minimum_standard_deviation(self, value, match):
+    def match_minimum_standard_deviation(self, value, match): # pragma: no cover
         """Matches a standard deviation greater than or equal to the given value.
 
         :param value: minimum value
@@ -2194,7 +2194,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_standard_deviation_terms(self):
+    def clear_minimum_standard_deviation_terms(self): # pragma: no cover
         """Clears the minimum standard deviation terms.
 
 
@@ -2207,7 +2207,7 @@ class GradebookColumnSummaryQuery:
     minimum_standard_deviation_terms = property(fdel=clear_minimum_standard_deviation_terms)
 
     @abc.abstractmethod
-    def match_sum(self, low, high, match):
+    def match_sum(self, low, high, match): # pragma: no cover
         """Matches a sum mean square between the given values inclusive.
 
         :param low: low end of range
@@ -2224,7 +2224,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_sum_terms(self):
+    def clear_sum_terms(self): # pragma: no cover
         """Clears the sum terms.
 
 
@@ -2237,7 +2237,7 @@ class GradebookColumnSummaryQuery:
     sum_terms = property(fdel=clear_sum_terms)
 
     @abc.abstractmethod
-    def match_minimum_sum(self, value, match):
+    def match_minimum_sum(self, value, match): # pragma: no cover
         """Matches a sum greater than or equal to the given value.
 
         :param value: minimum value
@@ -2252,7 +2252,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_sum_terms(self):
+    def clear_minimum_sum_terms(self): # pragma: no cover
         """Clears the minimum sum terms.
 
 
@@ -2265,7 +2265,7 @@ class GradebookColumnSummaryQuery:
     minimum_sum_terms = property(fdel=clear_minimum_sum_terms)
 
     @abc.abstractmethod
-    def match_gradebook_id(self, gradebook_id, match):
+    def match_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query.
 
         :param gradebook_id: a gradebook ``Id``
@@ -2280,7 +2280,7 @@ class GradebookColumnSummaryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_id_terms(self):
+    def clear_gradebook_id_terms(self): # pragma: no cover
         """Clears the gradebook ``Id`` terms.
 
 
@@ -2293,7 +2293,7 @@ class GradebookColumnSummaryQuery:
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_query(self):
+    def supports_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -2306,7 +2306,7 @@ class GradebookColumnSummaryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_query(self):
+    def get_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2324,7 +2324,7 @@ class GradebookColumnSummaryQuery:
     gradebook_query = property(fget=get_gradebook_query)
 
     @abc.abstractmethod
-    def clear_gradebook_terms(self):
+    def clear_gradebook_terms(self): # pragma: no cover
         """Clears the gradebook terms.
 
 
@@ -2337,7 +2337,7 @@ class GradebookColumnSummaryQuery:
     gradebook_terms = property(fdel=clear_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_column_summary_query_record(self, gradebook_column_summary_record_type):
+    def get_gradebook_column_summary_query_record(self, gradebook_column_summary_record_type): # pragma: no cover
         """Gets the gradebook column summary query record corresponding to the given ``GradebookColumnSummary`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2366,7 +2366,7 @@ class GradebookQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_grade_system_id(self, grade_system_id, match):
+    def match_grade_system_id(self, grade_system_id, match): # pragma: no cover
         """Sets the grade system ``Id`` for this query.
 
         :param grade_system_id: a grade system ``Id``
@@ -2381,7 +2381,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_id_terms(self):
+    def clear_grade_system_id_terms(self): # pragma: no cover
         """Clears the grade system ``Id`` terms.
 
 
@@ -2394,7 +2394,7 @@ class GradebookQuery:
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_system_query(self):
+    def supports_grade_system_query(self): # pragma: no cover
         """Tests if a ``GradeSystemQuery`` is available.
 
         :return: ``true`` if a grade system query is available, ``false`` otherwise
@@ -2407,7 +2407,7 @@ class GradebookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_system_query(self):
+    def get_grade_system_query(self): # pragma: no cover
         """Gets the query for a grade system.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2425,7 +2425,7 @@ class GradebookQuery:
     grade_system_query = property(fget=get_grade_system_query)
 
     @abc.abstractmethod
-    def match_any_grade_system(self, match):
+    def match_any_grade_system(self, match): # pragma: no cover
         """Matches gradebooks that have any grade system.
 
         :param match: ``true`` to match gradebooks with any grade system, ``false`` to match gradebooks with no grade system
@@ -2438,7 +2438,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_system_terms(self):
+    def clear_grade_system_terms(self): # pragma: no cover
         """Clears the grade system terms.
 
 
@@ -2451,7 +2451,7 @@ class GradebookQuery:
     grade_system_terms = property(fdel=clear_grade_system_terms)
 
     @abc.abstractmethod
-    def match_grade_entry_id(self, grade_entry_id, match):
+    def match_grade_entry_id(self, grade_entry_id, match): # pragma: no cover
         """Sets the grade entry ``Id`` for this query.
 
         :param grade_entry_id: a grade entry ``Id``
@@ -2466,7 +2466,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_id_terms(self):
+    def clear_grade_entry_id_terms(self): # pragma: no cover
         """Clears the grade entry ``Id`` terms.
 
 
@@ -2479,7 +2479,7 @@ class GradebookQuery:
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
 
     @abc.abstractmethod
-    def supports_grade_entry_query(self):
+    def supports_grade_entry_query(self): # pragma: no cover
         """Tests if a ``GradeEntryQuery`` is available.
 
         :return: ``true`` if a grade entry query is available, ``false`` otherwise
@@ -2492,7 +2492,7 @@ class GradebookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_grade_entry_query(self):
+    def get_grade_entry_query(self): # pragma: no cover
         """Gets the query for a grade entry.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2510,7 +2510,7 @@ class GradebookQuery:
     grade_entry_query = property(fget=get_grade_entry_query)
 
     @abc.abstractmethod
-    def match_any_grade_entry(self, match):
+    def match_any_grade_entry(self, match): # pragma: no cover
         """Matches gradebooks that have any grade entry.
 
         :param match: ``true`` to match gradebooks with any grade entry, ``false`` to match gradebooks with no grade entry
@@ -2523,7 +2523,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_grade_entry_terms(self):
+    def clear_grade_entry_terms(self): # pragma: no cover
         """Clears the grade entry terms.
 
 
@@ -2536,7 +2536,7 @@ class GradebookQuery:
     grade_entry_terms = property(fdel=clear_grade_entry_terms)
 
     @abc.abstractmethod
-    def match_gradebook_column_id(self, gradebook_column_id, match):
+    def match_gradebook_column_id(self, gradebook_column_id, match): # pragma: no cover
         """Sets the gradebook column ``Id`` for this query.
 
         :param gradebook_column_id: a gradebook column ``Id``
@@ -2551,7 +2551,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_id_terms(self):
+    def clear_gradebook_column_id_terms(self): # pragma: no cover
         """Clears the gradebook column ``Id`` terms.
 
 
@@ -2564,7 +2564,7 @@ class GradebookQuery:
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
 
     @abc.abstractmethod
-    def supports_gradebook_column_query(self):
+    def supports_gradebook_column_query(self): # pragma: no cover
         """Tests if a ``GradebookColumnQuery`` is available.
 
         :return: ``true`` if a gradebook column query is available, ``false`` otherwise
@@ -2577,7 +2577,7 @@ class GradebookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_gradebook_column_query(self):
+    def get_gradebook_column_query(self): # pragma: no cover
         """Gets the query for a gradebook column.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2595,7 +2595,7 @@ class GradebookQuery:
     gradebook_column_query = property(fget=get_gradebook_column_query)
 
     @abc.abstractmethod
-    def match_any_gradebook_column(self, match):
+    def match_any_gradebook_column(self, match): # pragma: no cover
         """Matches gradebooks that have any column.
 
         :param match: ``true`` to match gradebooks with any column, ``false`` to match gradebooks with no column
@@ -2608,7 +2608,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_gradebook_column_terms(self):
+    def clear_gradebook_column_terms(self): # pragma: no cover
         """Clears the gradebook column terms.
 
 
@@ -2621,7 +2621,7 @@ class GradebookQuery:
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
 
     @abc.abstractmethod
-    def match_ancestor_gradebook_id(self, gradebook_id, match):
+    def match_ancestor_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query to match gradebooks that have the specified gradebook as an ancestor.
 
         :param gradebook_id: a gradebook ``Id``
@@ -2636,7 +2636,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_gradebook_id_terms(self):
+    def clear_ancestor_gradebook_id_terms(self): # pragma: no cover
         """Clears the ancestor gradebook ``Id`` terms.
 
 
@@ -2649,7 +2649,7 @@ class GradebookQuery:
     ancestor_gradebook_id_terms = property(fdel=clear_ancestor_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_gradebook_query(self):
+    def supports_ancestor_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -2662,7 +2662,7 @@ class GradebookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_gradebook_query(self):
+    def get_ancestor_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2680,7 +2680,7 @@ class GradebookQuery:
     ancestor_gradebook_query = property(fget=get_ancestor_gradebook_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_gradebook(self, match):
+    def match_any_ancestor_gradebook(self, match): # pragma: no cover
         """Matches gradebook with any ancestor.
 
         :param match: ``true`` to match gradebooks with any ancestor, ``false`` to match root gradebooks
@@ -2693,7 +2693,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_gradebook_terms(self):
+    def clear_ancestor_gradebook_terms(self): # pragma: no cover
         """Clears the ancestor gradebook terms.
 
 
@@ -2706,7 +2706,7 @@ class GradebookQuery:
     ancestor_gradebook_terms = property(fdel=clear_ancestor_gradebook_terms)
 
     @abc.abstractmethod
-    def match_descendant_gradebook_id(self, gradebook_id, match):
+    def match_descendant_gradebook_id(self, gradebook_id, match): # pragma: no cover
         """Sets the gradebook ``Id`` for this query to match gradebooks that have the specified gradebook as a descendant.
 
         :param gradebook_id: a gradebook ``Id``
@@ -2721,7 +2721,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_gradebook_id_terms(self):
+    def clear_descendant_gradebook_id_terms(self): # pragma: no cover
         """Clears the descendant gradebook ``Id`` terms.
 
 
@@ -2734,7 +2734,7 @@ class GradebookQuery:
     descendant_gradebook_id_terms = property(fdel=clear_descendant_gradebook_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_gradebook_query(self):
+    def supports_descendant_gradebook_query(self): # pragma: no cover
         """Tests if a ``GradebookQuery`` is available.
 
         :return: ``true`` if a gradebook query is available, ``false`` otherwise
@@ -2747,7 +2747,7 @@ class GradebookQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_gradebook_query(self):
+    def get_descendant_gradebook_query(self): # pragma: no cover
         """Gets the query for a gradebook.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -2765,7 +2765,7 @@ class GradebookQuery:
     descendant_gradebook_query = property(fget=get_descendant_gradebook_query)
 
     @abc.abstractmethod
-    def match_any_descendant_gradebook(self, match):
+    def match_any_descendant_gradebook(self, match): # pragma: no cover
         """Matches gradebook with any descendant.
 
         :param match: ``true`` to match gradebooks with any descendant, ``false`` to match leaf gradebooks
@@ -2778,7 +2778,7 @@ class GradebookQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_gradebook_terms(self):
+    def clear_descendant_gradebook_terms(self): # pragma: no cover
         """Clears the descendant gradebook terms.
 
 
@@ -2791,7 +2791,7 @@ class GradebookQuery:
     descendant_gradebook_terms = property(fdel=clear_descendant_gradebook_terms)
 
     @abc.abstractmethod
-    def get_gradebook_query_record(self, gradebook_record_type):
+    def get_gradebook_query_record(self, gradebook_record_type): # pragma: no cover
         """Gets the gradebook query record corresponding to the given ``Gradebook`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

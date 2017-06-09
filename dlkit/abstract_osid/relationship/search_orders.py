@@ -21,7 +21,7 @@ class RelationshipSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_source(self, style):
+    def order_by_source(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the source peer.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class RelationshipSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_destination(self, style):
+    def order_by_destination(self, style): # pragma: no cover
         """Specifies a preference for ordering the result set by the destination peer.
 
         :param style: search order style
@@ -47,7 +47,7 @@ class RelationshipSearchOrder:
         pass
 
     @abc.abstractmethod
-    def get_relationship_search_order_record(self, relationship_record_type):
+    def get_relationship_search_order_record(self, relationship_record_type): # pragma: no cover
         """Gets the relationship search order record corresponding to the given relationship record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -72,7 +72,7 @@ class FamilySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_family_search_order_record(self, family_record_type):
+    def get_family_search_order_record(self, family_record_type): # pragma: no cover
         """Gets the family search record order corresponding to the given family record Type.
 
         Multiple retrievals return the same underlying object.

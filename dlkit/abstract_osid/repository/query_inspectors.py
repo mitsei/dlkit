@@ -21,7 +21,7 @@ class AssetQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_title_terms(self):
+    def get_title_terms(self): # pragma: no cover
         """Gets the title query terms.
 
         :return: the title terms
@@ -36,7 +36,7 @@ class AssetQueryInspector:
     title_terms = property(fget=get_title_terms)
 
     @abc.abstractmethod
-    def get_public_domain_terms(self):
+    def get_public_domain_terms(self): # pragma: no cover
         """Gets the public domain query terms.
 
         :return: the query terms
@@ -51,7 +51,7 @@ class AssetQueryInspector:
     public_domain_terms = property(fget=get_public_domain_terms)
 
     @abc.abstractmethod
-    def get_copyright_terms(self):
+    def get_copyright_terms(self): # pragma: no cover
         """Gets the copyright query terms.
 
         :return: the query terms
@@ -66,7 +66,7 @@ class AssetQueryInspector:
     copyright_terms = property(fget=get_copyright_terms)
 
     @abc.abstractmethod
-    def get_copyright_registration_terms(self):
+    def get_copyright_registration_terms(self): # pragma: no cover
         """Gets the copyright registration query terms.
 
         :return: the query terms
@@ -81,7 +81,7 @@ class AssetQueryInspector:
     copyright_registration_terms = property(fget=get_copyright_registration_terms)
 
     @abc.abstractmethod
-    def get_distribute_verbatim_terms(self):
+    def get_distribute_verbatim_terms(self): # pragma: no cover
         """Gets the verbatim distribution query terms.
 
         :return: the query terms
@@ -96,7 +96,7 @@ class AssetQueryInspector:
     distribute_verbatim_terms = property(fget=get_distribute_verbatim_terms)
 
     @abc.abstractmethod
-    def get_distribute_alterations_terms(self):
+    def get_distribute_alterations_terms(self): # pragma: no cover
         """Gets the alteration distribution query terms.
 
         :return: the query terms
@@ -111,7 +111,7 @@ class AssetQueryInspector:
     distribute_alterations_terms = property(fget=get_distribute_alterations_terms)
 
     @abc.abstractmethod
-    def get_distribute_compositions_terms(self):
+    def get_distribute_compositions_terms(self): # pragma: no cover
         """Gets the composition distribution query terms.
 
         :return: the query terms
@@ -126,7 +126,7 @@ class AssetQueryInspector:
     distribute_compositions_terms = property(fget=get_distribute_compositions_terms)
 
     @abc.abstractmethod
-    def get_source_id_terms(self):
+    def get_source_id_terms(self): # pragma: no cover
         """Gets the source ``Id`` query terms.
 
         :return: the query terms
@@ -141,7 +141,7 @@ class AssetQueryInspector:
     source_id_terms = property(fget=get_source_id_terms)
 
     @abc.abstractmethod
-    def get_source_terms(self):
+    def get_source_terms(self): # pragma: no cover
         """Gets the source query terms.
 
         :return: the query terms
@@ -156,7 +156,7 @@ class AssetQueryInspector:
     source_terms = property(fget=get_source_terms)
 
     @abc.abstractmethod
-    def get_created_date_terms(self):
+    def get_created_date_terms(self): # pragma: no cover
         """Gets the created time query terms.
 
         :return: the query terms
@@ -171,7 +171,7 @@ class AssetQueryInspector:
     created_date_terms = property(fget=get_created_date_terms)
 
     @abc.abstractmethod
-    def get_published_terms(self):
+    def get_published_terms(self): # pragma: no cover
         """Gets the published query terms.
 
         :return: the query terms
@@ -186,7 +186,7 @@ class AssetQueryInspector:
     published_terms = property(fget=get_published_terms)
 
     @abc.abstractmethod
-    def get_published_date_terms(self):
+    def get_published_date_terms(self): # pragma: no cover
         """Gets the published time query terms.
 
         :return: the query terms
@@ -201,7 +201,7 @@ class AssetQueryInspector:
     published_date_terms = property(fget=get_published_date_terms)
 
     @abc.abstractmethod
-    def get_principal_credit_string_terms(self):
+    def get_principal_credit_string_terms(self): # pragma: no cover
         """Gets the principal credit string query terms.
 
         :return: the principal credit string terms
@@ -216,7 +216,7 @@ class AssetQueryInspector:
     principal_credit_string_terms = property(fget=get_principal_credit_string_terms)
 
     @abc.abstractmethod
-    def get_temporal_coverage_terms(self):
+    def get_temporal_coverage_terms(self): # pragma: no cover
         """Gets the temporal coverage query terms.
 
         :return: the query terms
@@ -231,7 +231,7 @@ class AssetQueryInspector:
     temporal_coverage_terms = property(fget=get_temporal_coverage_terms)
 
     @abc.abstractmethod
-    def get_location_id_terms(self):
+    def get_location_id_terms(self): # pragma: no cover
         """Gets the location ``Id`` query terms.
 
         :return: the query terms
@@ -246,7 +246,7 @@ class AssetQueryInspector:
     location_id_terms = property(fget=get_location_id_terms)
 
     @abc.abstractmethod
-    def get_location_terms(self):
+    def get_location_terms(self): # pragma: no cover
         """Gets the location query terms.
 
         :return: the query terms
@@ -261,7 +261,7 @@ class AssetQueryInspector:
     location_terms = property(fget=get_location_terms)
 
     @abc.abstractmethod
-    def get_spatial_coverage_terms(self):
+    def get_spatial_coverage_terms(self): # pragma: no cover
         """Gets the spatial coverage query terms.
 
         :return: the query terms
@@ -276,7 +276,7 @@ class AssetQueryInspector:
     spatial_coverage_terms = property(fget=get_spatial_coverage_terms)
 
     @abc.abstractmethod
-    def get_spatial_coverage_overlap_terms(self):
+    def get_spatial_coverage_overlap_terms(self): # pragma: no cover
         """Gets the spatial coverage overlap query terms.
 
         :return: the query terms
@@ -291,7 +291,7 @@ class AssetQueryInspector:
     spatial_coverage_overlap_terms = property(fget=get_spatial_coverage_overlap_terms)
 
     @abc.abstractmethod
-    def get_asset_content_id_terms(self):
+    def get_asset_content_id_terms(self): # pragma: no cover
         """Gets the asset content ``Id`` query terms.
 
         :return: the query terms
@@ -306,7 +306,7 @@ class AssetQueryInspector:
     asset_content_id_terms = property(fget=get_asset_content_id_terms)
 
     @abc.abstractmethod
-    def get_asset_content_terms(self):
+    def get_asset_content_terms(self): # pragma: no cover
         """Gets the asset content query terms.
 
         :return: the query terms
@@ -321,7 +321,7 @@ class AssetQueryInspector:
     asset_content_terms = property(fget=get_asset_content_terms)
 
     @abc.abstractmethod
-    def get_composition_id_terms(self):
+    def get_composition_id_terms(self): # pragma: no cover
         """Gets the composition ``Id`` query terms.
 
         :return: the query terms
@@ -336,7 +336,7 @@ class AssetQueryInspector:
     composition_id_terms = property(fget=get_composition_id_terms)
 
     @abc.abstractmethod
-    def get_composition_terms(self):
+    def get_composition_terms(self): # pragma: no cover
         """Gets the composition query terms.
 
         :return: the query terms
@@ -351,7 +351,7 @@ class AssetQueryInspector:
     composition_terms = property(fget=get_composition_terms)
 
     @abc.abstractmethod
-    def get_repository_id_terms(self):
+    def get_repository_id_terms(self): # pragma: no cover
         """Gets the repository ``Id`` query terms.
 
         :return: the query terms
@@ -366,7 +366,7 @@ class AssetQueryInspector:
     repository_id_terms = property(fget=get_repository_id_terms)
 
     @abc.abstractmethod
-    def get_repository_terms(self):
+    def get_repository_terms(self): # pragma: no cover
         """Gets the repository query terms.
 
         :return: the query terms
@@ -381,7 +381,7 @@ class AssetQueryInspector:
     repository_terms = property(fget=get_repository_terms)
 
     @abc.abstractmethod
-    def get_asset_query_inspector_record(self, asset_record_type):
+    def get_asset_query_inspector_record(self, asset_record_type): # pragma: no cover
         """Gets the asset query inspector record corresponding to the given ``Asset`` record ``Type``.
 
         :param asset_record_type: an asset record type
@@ -403,7 +403,7 @@ class AssetContentQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_accessibility_type_terms(self):
+    def get_accessibility_type_terms(self): # pragma: no cover
         """Gets the accesibility type query terms.
 
         :return: the query terms
@@ -418,7 +418,7 @@ class AssetContentQueryInspector:
     accessibility_type_terms = property(fget=get_accessibility_type_terms)
 
     @abc.abstractmethod
-    def get_data_length_terms(self):
+    def get_data_length_terms(self): # pragma: no cover
         """Gets the data length query terms.
 
         :return: the query terms
@@ -433,7 +433,7 @@ class AssetContentQueryInspector:
     data_length_terms = property(fget=get_data_length_terms)
 
     @abc.abstractmethod
-    def get_data_terms(self):
+    def get_data_terms(self): # pragma: no cover
         """Gets the data query terms.
 
         :return: the query terms
@@ -448,7 +448,7 @@ class AssetContentQueryInspector:
     data_terms = property(fget=get_data_terms)
 
     @abc.abstractmethod
-    def get_url_terms(self):
+    def get_url_terms(self): # pragma: no cover
         """Gets the url query terms.
 
         :return: the query terms
@@ -463,7 +463,7 @@ class AssetContentQueryInspector:
     url_terms = property(fget=get_url_terms)
 
     @abc.abstractmethod
-    def get_asset_content_query_inspector_record(self, asset_content_record_type):
+    def get_asset_content_query_inspector_record(self, asset_content_record_type): # pragma: no cover
         """Gets the asset content query inspector corresponding to the given ``AssetContent`` record ``Type``.
 
         :param asset_content_record_type: an asset content record type
@@ -485,7 +485,7 @@ class CompositionQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_asset_id_terms(self):
+    def get_asset_id_terms(self): # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the query terms
@@ -500,7 +500,7 @@ class CompositionQueryInspector:
     asset_id_terms = property(fget=get_asset_id_terms)
 
     @abc.abstractmethod
-    def get_asset_terms(self):
+    def get_asset_terms(self): # pragma: no cover
         """Gets the asset query terms.
 
         :return: the query terms
@@ -515,7 +515,7 @@ class CompositionQueryInspector:
     asset_terms = property(fget=get_asset_terms)
 
     @abc.abstractmethod
-    def get_containing_composition_id_terms(self):
+    def get_containing_composition_id_terms(self): # pragma: no cover
         """Gets the containing composition ``Id`` query terms.
 
         :return: the query terms
@@ -530,7 +530,7 @@ class CompositionQueryInspector:
     containing_composition_id_terms = property(fget=get_containing_composition_id_terms)
 
     @abc.abstractmethod
-    def get_containing_composition_terms(self):
+    def get_containing_composition_terms(self): # pragma: no cover
         """Gets the containing composition query terms.
 
         :return: the query terms
@@ -545,7 +545,7 @@ class CompositionQueryInspector:
     containing_composition_terms = property(fget=get_containing_composition_terms)
 
     @abc.abstractmethod
-    def get_contained_composition_id_terms(self):
+    def get_contained_composition_id_terms(self): # pragma: no cover
         """Gets the contained composition ``Id`` query terms.
 
         :return: the query terms
@@ -560,7 +560,7 @@ class CompositionQueryInspector:
     contained_composition_id_terms = property(fget=get_contained_composition_id_terms)
 
     @abc.abstractmethod
-    def get_contained_composition_terms(self):
+    def get_contained_composition_terms(self): # pragma: no cover
         """Gets the contained composition query terms.
 
         :return: the query terms
@@ -575,7 +575,7 @@ class CompositionQueryInspector:
     contained_composition_terms = property(fget=get_contained_composition_terms)
 
     @abc.abstractmethod
-    def get_repository_id_terms(self):
+    def get_repository_id_terms(self): # pragma: no cover
         """Gets the repository ``Id`` query terms.
 
         :return: the query terms
@@ -590,7 +590,7 @@ class CompositionQueryInspector:
     repository_id_terms = property(fget=get_repository_id_terms)
 
     @abc.abstractmethod
-    def get_repository_terms(self):
+    def get_repository_terms(self): # pragma: no cover
         """Gets the repository query terms.
 
         :return: the query terms
@@ -605,7 +605,7 @@ class CompositionQueryInspector:
     repository_terms = property(fget=get_repository_terms)
 
     @abc.abstractmethod
-    def get_composition_query_inspector_record(self, composition_record_type):
+    def get_composition_query_inspector_record(self, composition_record_type): # pragma: no cover
         """Gets the composition query inspector record corresponding to the given ``Composition`` record ``Type``.
 
         :param composition_record_type: a composition record type
@@ -627,7 +627,7 @@ class RepositoryQueryInspector:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_asset_id_terms(self):
+    def get_asset_id_terms(self): # pragma: no cover
         """Gets the asset ``Id`` query terms.
 
         :return: the query terms
@@ -642,7 +642,7 @@ class RepositoryQueryInspector:
     asset_id_terms = property(fget=get_asset_id_terms)
 
     @abc.abstractmethod
-    def get_asset_terms(self):
+    def get_asset_terms(self): # pragma: no cover
         """Gets the asset query terms.
 
         :return: the query terms
@@ -657,7 +657,7 @@ class RepositoryQueryInspector:
     asset_terms = property(fget=get_asset_terms)
 
     @abc.abstractmethod
-    def get_composition_id_terms(self):
+    def get_composition_id_terms(self): # pragma: no cover
         """Gets the composition ``Id`` query terms.
 
         :return: the query terms
@@ -672,7 +672,7 @@ class RepositoryQueryInspector:
     composition_id_terms = property(fget=get_composition_id_terms)
 
     @abc.abstractmethod
-    def get_composition_terms(self):
+    def get_composition_terms(self): # pragma: no cover
         """Gets the composition query terms.
 
         :return: the query terms
@@ -687,7 +687,7 @@ class RepositoryQueryInspector:
     composition_terms = property(fget=get_composition_terms)
 
     @abc.abstractmethod
-    def get_ancestor_repository_id_terms(self):
+    def get_ancestor_repository_id_terms(self): # pragma: no cover
         """Gets the ancestor repository ``Id`` query terms.
 
         :return: the query terms
@@ -702,7 +702,7 @@ class RepositoryQueryInspector:
     ancestor_repository_id_terms = property(fget=get_ancestor_repository_id_terms)
 
     @abc.abstractmethod
-    def get_ancestor_repository_terms(self):
+    def get_ancestor_repository_terms(self): # pragma: no cover
         """Gets the ancestor repository query terms.
 
         :return: the query terms
@@ -717,7 +717,7 @@ class RepositoryQueryInspector:
     ancestor_repository_terms = property(fget=get_ancestor_repository_terms)
 
     @abc.abstractmethod
-    def get_descendant_repository_id_terms(self):
+    def get_descendant_repository_id_terms(self): # pragma: no cover
         """Gets the descendant repository ``Id`` query terms.
 
         :return: the query terms
@@ -732,7 +732,7 @@ class RepositoryQueryInspector:
     descendant_repository_id_terms = property(fget=get_descendant_repository_id_terms)
 
     @abc.abstractmethod
-    def get_descendant_repository_terms(self):
+    def get_descendant_repository_terms(self): # pragma: no cover
         """Gets the descendant repository query terms.
 
         :return: the query terms
@@ -747,7 +747,7 @@ class RepositoryQueryInspector:
     descendant_repository_terms = property(fget=get_descendant_repository_terms)
 
     @abc.abstractmethod
-    def get_repository_query_inspector_record(self, repository_record_type):
+    def get_repository_query_inspector_record(self, repository_record_type): # pragma: no cover
         """Gets the repository query inspector record corresponding to the given ``Repository`` record ``Type``.
 
         :param repository_record_type: a repository record type

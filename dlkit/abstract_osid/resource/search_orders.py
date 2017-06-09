@@ -21,7 +21,7 @@ class ResourceSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_group(self, style):
+    def order_by_group(self, style): # pragma: no cover
         """Groups the search results by resources that are groups.
 
         :param style: search order style
@@ -34,7 +34,7 @@ class ResourceSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_demographic(self, style):
+    def order_by_demographic(self, style): # pragma: no cover
         """Groups the search results by resources that are demographics.
 
         :param style: search order style
@@ -47,7 +47,7 @@ class ResourceSearchOrder:
         pass
 
     @abc.abstractmethod
-    def order_by_avatar(self, style):
+    def order_by_avatar(self, style): # pragma: no cover
         """Orders the result set by avatar.
 
         :param style: search order style
@@ -60,7 +60,7 @@ class ResourceSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_avatar_search_order(self):
+    def supports_avatar_search_order(self): # pragma: no cover
         """Tests if an ``AssetSearchOrder`` is available.
 
         :return: ``true`` if an asset search order is available, ``false`` otherwise
@@ -73,7 +73,7 @@ class ResourceSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_avatar_search_order(self):
+    def get_avatar_search_order(self): # pragma: no cover
         """Gets the search order for an asset.
 
         :return: the asset search order
@@ -89,7 +89,7 @@ class ResourceSearchOrder:
     avatar_search_order = property(fget=get_avatar_search_order)
 
     @abc.abstractmethod
-    def get_resource_search_order_record(self, resource_record_type):
+    def get_resource_search_order_record(self, resource_record_type): # pragma: no cover
         """Gets the resource search record corresponding to the given resource record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -113,7 +113,7 @@ class ResourceRelationshipSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def order_by_source_resource(self, style):
+    def order_by_source_resource(self, style): # pragma: no cover
         """Specified a preference for ordering results by the resource.
 
         :param style: search order style
@@ -126,7 +126,7 @@ class ResourceRelationshipSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_source_resource_search_order(self):
+    def supports_source_resource_search_order(self): # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -139,7 +139,7 @@ class ResourceRelationshipSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_source_resource_search_order(self):
+    def get_source_resource_search_order(self): # pragma: no cover
         """Gets the search order for a resource.
 
         :return: the resource search order
@@ -155,7 +155,7 @@ class ResourceRelationshipSearchOrder:
     source_resource_search_order = property(fget=get_source_resource_search_order)
 
     @abc.abstractmethod
-    def order_by_destination_resource(self, style):
+    def order_by_destination_resource(self, style): # pragma: no cover
         """Specified a preference for ordering results by the resource.
 
         :param style: search order style
@@ -168,7 +168,7 @@ class ResourceRelationshipSearchOrder:
         pass
 
     @abc.abstractmethod
-    def supports_destination_resource_search_order(self):
+    def supports_destination_resource_search_order(self): # pragma: no cover
         """Tests if a ``ResourceSearchOrder`` is available.
 
         :return: ``true`` if a resource search order is available, ``false`` otherwise
@@ -181,7 +181,7 @@ class ResourceRelationshipSearchOrder:
         return  # boolean
 
     @abc.abstractmethod
-    def get_destination_resource_search_order(self):
+    def get_destination_resource_search_order(self): # pragma: no cover
         """Gets the search order for a peer resource.
 
         :return: the resource search order
@@ -197,7 +197,7 @@ class ResourceRelationshipSearchOrder:
     destination_resource_search_order = property(fget=get_destination_resource_search_order)
 
     @abc.abstractmethod
-    def get_resource_relationship_search_order_record(self, resource_relationship_record_type):
+    def get_resource_relationship_search_order_record(self, resource_relationship_record_type): # pragma: no cover
         """Gets the resource relationship search order record corresponding to the given resource relationship record ``Type``.
 
         Multiple retrievals return the same underlying object.
@@ -221,7 +221,7 @@ class BinSearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_bin_search_order_record(self, bin_record_type):
+    def get_bin_search_order_record(self, bin_record_type): # pragma: no cover
         """Gets the bin search record corresponding to the given bin record ``Type``.
 
         Multiple retrievals return the same underlying object.

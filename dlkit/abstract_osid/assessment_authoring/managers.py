@@ -21,7 +21,7 @@ class AssessmentAuthoringProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_lookup(self):
+    def supports_assessment_part_lookup(self): # pragma: no cover
         """Tests if looking up assessment part is supported.
 
         :return: ``true`` if assessment part lookup is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_query(self):
+    def supports_assessment_part_query(self): # pragma: no cover
         """Tests if querying assessment part is supported.
 
         :return: ``true`` if assessment part query is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_search(self):
+    def supports_assessment_part_search(self): # pragma: no cover
         """Tests if searching assessment part is supported.
 
         :return: ``true`` if assessment part search is supported, ``false`` otherwise
@@ -73,7 +73,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_admin(self):
+    def supports_assessment_part_admin(self): # pragma: no cover
         """Tests if an assessment part administrative service is supported.
 
         :return: ``true`` if assessment part administration is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_notification(self):
+    def supports_assessment_part_notification(self): # pragma: no cover
         """Tests if an assessment part notification service is supported.
 
         :return: ``true`` if assessment part notification is supported, ``false`` otherwise
@@ -99,7 +99,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_bank(self):
+    def supports_assessment_part_bank(self): # pragma: no cover
         """Tests if an assessment part bank lookup service is supported.
 
         :return: ``true`` if an assessment part bank lookup service is supported, ``false`` otherwise
@@ -112,7 +112,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_bank_assignment(self):
+    def supports_assessment_part_bank_assignment(self): # pragma: no cover
         """Tests if an assessment part bank service is supported.
 
         :return: ``true`` if assessment part bank assignment service is supported, ``false`` otherwise
@@ -125,7 +125,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_smart_bank(self):
+    def supports_assessment_part_smart_bank(self): # pragma: no cover
         """Tests if an assessment part bank lookup service is supported.
 
         :return: ``true`` if an assessment part bank service is supported, ``false`` otherwise
@@ -138,7 +138,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_item(self):
+    def supports_assessment_part_item(self): # pragma: no cover
         """Tests if an assessment part item service is supported for looking up assessment part and item mappings.
 
         :return: ``true`` if assessment part item service is supported, ``false`` otherwise
@@ -151,7 +151,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_assessment_part_item_design(self):
+    def supports_assessment_part_item_design(self): # pragma: no cover
         """Tests if an assessment part item design session is supported.
 
         :return: ``true`` if an assessment part item design service is supported, ``false`` otherwise
@@ -164,7 +164,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_lookup(self):
+    def supports_sequence_rule_lookup(self): # pragma: no cover
         """Tests if looking up sequence rule is supported.
 
         :return: ``true`` if sequence rule lookup is supported, ``false`` otherwise
@@ -177,7 +177,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_query(self):
+    def supports_sequence_rule_query(self): # pragma: no cover
         """Tests if querying sequence rule is supported.
 
         :return: ``true`` if sequence rule query is supported, ``false`` otherwise
@@ -190,7 +190,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_search(self):
+    def supports_sequence_rule_search(self): # pragma: no cover
         """Tests if searching sequence rule is supported.
 
         :return: ``true`` if sequence rule search is supported, ``false`` otherwise
@@ -203,7 +203,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_admin(self):
+    def supports_sequence_rule_admin(self): # pragma: no cover
         """Tests if a sequence rule administrative service is supported.
 
         :return: ``true`` if sequence rule administration is supported, ``false`` otherwise
@@ -216,7 +216,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_notification(self):
+    def supports_sequence_rule_notification(self): # pragma: no cover
         """Tests if a sequence rule notification service is supported.
 
         :return: ``true`` if sequence rule notification is supported, ``false`` otherwise
@@ -229,7 +229,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_bank(self):
+    def supports_sequence_rule_bank(self): # pragma: no cover
         """Tests if a sequence rule bank lookup service is supported.
 
         :return: ``true`` if a sequence rule bank lookup service is supported, ``false`` otherwise
@@ -242,7 +242,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_bank_assignment(self):
+    def supports_sequence_rule_bank_assignment(self): # pragma: no cover
         """Tests if a sequence rule bank service is supported.
 
         :return: ``true`` if sequence rule bank assignment service is supported, ``false`` otherwise
@@ -255,7 +255,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_smart_bank(self):
+    def supports_sequence_rule_smart_bank(self): # pragma: no cover
         """Tests if a sequence rule bank lookup service is supported.
 
         :return: ``true`` if a sequence rule bank service is supported, ``false`` otherwise
@@ -268,7 +268,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_lookup(self):
+    def supports_sequence_rule_enabler_lookup(self): # pragma: no cover
         """Tests if looking up sequence rule enablers is supported.
 
         :return: ``true`` if sequence rule enabler lookup is supported, ``false`` otherwise
@@ -281,7 +281,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_query(self):
+    def supports_sequence_rule_enabler_query(self): # pragma: no cover
         """Tests if querying sequence rule enablers is supported.
 
         :return: ``true`` if sequence rule enabler query is supported, ``false`` otherwise
@@ -294,7 +294,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_search(self):
+    def supports_sequence_rule_enabler_search(self): # pragma: no cover
         """Tests if searching sequence rule enablers is supported.
 
         :return: ``true`` if sequence rule enabler search is supported, ``false`` otherwise
@@ -307,7 +307,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_admin(self):
+    def supports_sequence_rule_enabler_admin(self): # pragma: no cover
         """Tests if a sequence rule enabler administrative service is supported.
 
         :return: ``true`` if sequence rule enabler administration is supported, ``false`` otherwise
@@ -320,7 +320,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_notification(self):
+    def supports_sequence_rule_enabler_notification(self): # pragma: no cover
         """Tests if a sequence rule enabler notification service is supported.
 
         :return: ``true`` if sequence rule enabler notification is supported, ``false`` otherwise
@@ -333,7 +333,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_bank(self):
+    def supports_sequence_rule_enabler_bank(self): # pragma: no cover
         """Tests if a sequence rule enabler bank lookup service is supported.
 
         :return: ``true`` if a sequence rule enabler bank lookup service is supported, ``false`` otherwise
@@ -346,7 +346,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_bank_assignment(self):
+    def supports_sequence_rule_enabler_bank_assignment(self): # pragma: no cover
         """Tests if a sequence rule enabler bank service is supported.
 
         :return: ``true`` if sequence rule enabler bank assignment service is supported, ``false`` otherwise
@@ -359,7 +359,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_smart_bank(self):
+    def supports_sequence_rule_enabler_smart_bank(self): # pragma: no cover
         """Tests if a sequence rule enabler bank lookup service is supported.
 
         :return: ``true`` if a sequence rule enabler bank service is supported, ``false`` otherwise
@@ -372,7 +372,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_rule_lookup(self):
+    def supports_sequence_rule_enabler_rule_lookup(self): # pragma: no cover
         """Tests if a sequence rule enabler rule lookup service is supported.
 
         :return: ``true`` if a sequence rule enabler rule lookup service is supported, ``false`` otherwise
@@ -385,7 +385,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_rule_application(self):
+    def supports_sequence_rule_enabler_rule_application(self): # pragma: no cover
         """Tests if a sequence rule enabler rule application service is supported.
 
         :return: ``true`` if sequence rule enabler rule application service is supported, ``false`` otherwise
@@ -398,7 +398,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_record_types(self):
+    def get_assessment_part_record_types(self): # pragma: no cover
         """Gets the supported ``AssessmentPart`` record types.
 
         :return: a list containing the supported ``AssessmentPart`` record types
@@ -413,7 +413,7 @@ class AssessmentAuthoringProfile:
     assessment_part_record_types = property(fget=get_assessment_part_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_part_record_type(self, assessment_part_record_type):
+    def supports_assessment_part_record_type(self, assessment_part_record_type): # pragma: no cover
         """Tests if the given ``AssessmentPart`` record type is supported.
 
         :param assessment_part_record_type: a ``Type`` indicating an ``AssessmentPart`` record type
@@ -428,7 +428,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_search_record_types(self):
+    def get_assessment_part_search_record_types(self): # pragma: no cover
         """Gets the supported ``AssessmentPart`` search record types.
 
         :return: a list containing the supported ``AssessmentPart`` search record types
@@ -443,7 +443,7 @@ class AssessmentAuthoringProfile:
     assessment_part_search_record_types = property(fget=get_assessment_part_search_record_types)
 
     @abc.abstractmethod
-    def supports_assessment_part_search_record_type(self, assessment_part_search_record_type):
+    def supports_assessment_part_search_record_type(self, assessment_part_search_record_type): # pragma: no cover
         """Tests if the given ``AssessmentPart`` search record type is supported.
 
         :param assessment_part_search_record_type: a ``Type`` indicating an ``AssessmentPart`` search record type
@@ -458,7 +458,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_record_types(self):
+    def get_sequence_rule_record_types(self): # pragma: no cover
         """Gets the supported ``SequenceRule`` record types.
 
         :return: a list containing the supported ``SequenceRule`` record types
@@ -473,7 +473,7 @@ class AssessmentAuthoringProfile:
     sequence_rule_record_types = property(fget=get_sequence_rule_record_types)
 
     @abc.abstractmethod
-    def supports_sequence_rule_record_type(self, sequence_rule_record_type):
+    def supports_sequence_rule_record_type(self, sequence_rule_record_type): # pragma: no cover
         """Tests if the given ``SequenceRule`` record type is supported.
 
         :param sequence_rule_record_type: a ``Type`` indicating a ``SequenceRule`` record type
@@ -488,7 +488,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_search_record_types(self):
+    def get_sequence_rule_search_record_types(self): # pragma: no cover
         """Gets the supported ``SequenceRule`` search record types.
 
         :return: a list containing the supported ``SequenceRule`` search record types
@@ -503,7 +503,7 @@ class AssessmentAuthoringProfile:
     sequence_rule_search_record_types = property(fget=get_sequence_rule_search_record_types)
 
     @abc.abstractmethod
-    def supports_sequence_rule_search_record_type(self, sequence_rule_search_record_type):
+    def supports_sequence_rule_search_record_type(self, sequence_rule_search_record_type): # pragma: no cover
         """Tests if the given ``SequenceRule`` search record type is supported.
 
         :param sequence_rule_search_record_type: a ``Type`` indicating a ``SequenceRule`` search record type
@@ -518,7 +518,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_record_types(self):
+    def get_sequence_rule_enabler_record_types(self): # pragma: no cover
         """Gets the supported ``SequenceRuleEnabler`` record types.
 
         :return: a list containing the supported ``SequenceRuleEnabler`` record types
@@ -533,7 +533,7 @@ class AssessmentAuthoringProfile:
     sequence_rule_enabler_record_types = property(fget=get_sequence_rule_enabler_record_types)
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_record_type(self, sequence_rule_enabler_record_type):
+    def supports_sequence_rule_enabler_record_type(self, sequence_rule_enabler_record_type): # pragma: no cover
         """Tests if the given ``SequenceRuleEnabler`` record type is supported.
 
         :param sequence_rule_enabler_record_type: a ``Type`` indicating a ``SequenceRuleEnabler`` record type
@@ -548,7 +548,7 @@ class AssessmentAuthoringProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_record_types(self):
+    def get_sequence_rule_enabler_search_record_types(self): # pragma: no cover
         """Gets the supported ``SequenceRuleEnabler`` search record types.
 
         :return: a list containing the supported ``SequenceRuleEnabler`` search record types
@@ -563,7 +563,7 @@ class AssessmentAuthoringProfile:
     sequence_rule_enabler_search_record_types = property(fget=get_sequence_rule_enabler_search_record_types)
 
     @abc.abstractmethod
-    def supports_sequence_rule_enabler_search_record_type(self, sequence_rule_enabler_search_record_type):
+    def supports_sequence_rule_enabler_search_record_type(self, sequence_rule_enabler_search_record_type): # pragma: no cover
         """Tests if the given ``SequenceRuleEnabler`` search record type is supported.
 
         :param sequence_rule_enabler_search_record_type: a ``Type`` indicating a ``SequenceRuleEnabler`` search record type
@@ -646,7 +646,7 @@ class AssessmentAuthoringManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_part_lookup_session(self):
+    def get_assessment_part_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part lookup service.
 
         :return: an ``AssessmentPartLookupSession``
@@ -663,7 +663,7 @@ class AssessmentAuthoringManager:
     assessment_part_lookup_session = property(fget=get_assessment_part_lookup_session)
 
     @abc.abstractmethod
-    def get_assessment_part_lookup_session_for_bank(self, bank_id):
+    def get_assessment_part_lookup_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -683,7 +683,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
-    def get_assessment_part_query_session(self):
+    def get_assessment_part_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part query service.
 
         :return: an ``AssessmentPartQuerySession``
@@ -700,7 +700,7 @@ class AssessmentAuthoringManager:
     assessment_part_query_session = property(fget=get_assessment_part_query_session)
 
     @abc.abstractmethod
-    def get_assessment_part_query_session_for_bank(self, bank_id):
+    def get_assessment_part_query_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -720,7 +720,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
-    def get_assessment_part_search_session(self):
+    def get_assessment_part_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part search service.
 
         :return: an ``AssessmentPartSearchSession``
@@ -737,7 +737,7 @@ class AssessmentAuthoringManager:
     assessment_part_search_session = property(fget=get_assessment_part_search_session)
 
     @abc.abstractmethod
-    def get_assessment_part_search_session_for_bank(self, bank_id):
+    def get_assessment_part_search_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -757,7 +757,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
-    def get_assessment_part_admin_session(self):
+    def get_assessment_part_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part administration service.
 
         :return: an ``AssessmentPartAdminSession``
@@ -774,7 +774,7 @@ class AssessmentAuthoringManager:
     assessment_part_admin_session = property(fget=get_assessment_part_admin_session)
 
     @abc.abstractmethod
-    def get_assessment_part_admin_session_for_bank(self, bank_id):
+    def get_assessment_part_admin_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -794,7 +794,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
-    def get_assessment_part_notification_session(self, assessment_part_receiver):
+    def get_assessment_part_notification_session(self, assessment_part_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part notification service.
 
         :param assessment_part_receiver: the notification callback
@@ -812,7 +812,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id):
+    def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part notification service for the given bank.
 
         :param assessment_part_receiver: the notification callback
@@ -834,7 +834,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_part_bank_session(self):
+    def get_assessment_part_bank_session(self): # pragma: no cover
         """Gets the ``OsidSession`` to lookup assessment part/bank mappings for assessment parts.
 
         :return: an ``AssessmentPartBankSession``
@@ -851,7 +851,7 @@ class AssessmentAuthoringManager:
     assessment_part_bank_session = property(fget=get_assessment_part_bank_session)
 
     @abc.abstractmethod
-    def get_assessment_part_bank_assignment_session(self):
+    def get_assessment_part_bank_assignment_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning assessment part to bank.
 
         :return: an ``AssessmentPartBankAssignmentSession``
@@ -868,7 +868,7 @@ class AssessmentAuthoringManager:
     assessment_part_bank_assignment_session = property(fget=get_assessment_part_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_assessment_part_smart_bank_session(self, bank_id):
+    def get_assessment_part_smart_bank_session(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage assessment part smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -887,7 +887,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.AssessmentPartSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_lookup_session(self):
+    def get_sequence_rule_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule lookup service.
 
         :return: a ``SequenceRuleLookupSession``
@@ -904,7 +904,7 @@ class AssessmentAuthoringManager:
     sequence_rule_lookup_session = property(fget=get_sequence_rule_lookup_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_lookup_session_for_bank(self, bank_id):
+    def get_sequence_rule_lookup_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -924,7 +924,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_query_session(self):
+    def get_sequence_rule_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule query service.
 
         :return: a ``SequenceRuleQuerySession``
@@ -941,7 +941,7 @@ class AssessmentAuthoringManager:
     sequence_rule_query_session = property(fget=get_sequence_rule_query_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_query_session_for_bank(self, bank_id):
+    def get_sequence_rule_query_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -961,7 +961,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_search_session(self):
+    def get_sequence_rule_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule search service.
 
         :return: a ``SequenceRuleSearchSession``
@@ -978,7 +978,7 @@ class AssessmentAuthoringManager:
     sequence_rule_search_session = property(fget=get_sequence_rule_search_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_search_session_for_bank(self, bank_id):
+    def get_sequence_rule_search_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -998,7 +998,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_admin_session(self):
+    def get_sequence_rule_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule administration service.
 
         :return: a ``SequenceRuleAdminSession``
@@ -1015,7 +1015,7 @@ class AssessmentAuthoringManager:
     sequence_rule_admin_session = property(fget=get_sequence_rule_admin_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_admin_session_for_bank(self, bank_id):
+    def get_sequence_rule_admin_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1035,7 +1035,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_notification_session(self, sequence_rule_receiver):
+    def get_sequence_rule_notification_session(self, sequence_rule_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule notification service.
 
         :param sequence_rule_receiver: the notification callback
@@ -1053,7 +1053,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id):
+    def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule notification service for the given bank.
 
         :param sequence_rule_receiver: the notification callback
@@ -1075,7 +1075,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_bank_session(self):
+    def get_sequence_rule_bank_session(self): # pragma: no cover
         """Gets the ``OsidSession`` to lookup sequence rule/bank mappings for sequence rules.
 
         :return: a ``SequenceRuleBankSession``
@@ -1092,7 +1092,7 @@ class AssessmentAuthoringManager:
     sequence_rule_bank_session = property(fget=get_sequence_rule_bank_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_bank_assignment_session(self):
+    def get_sequence_rule_bank_assignment_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning sequence rule to bank.
 
         :return: a ``SequenceRuleBankAssignmentSession``
@@ -1109,7 +1109,7 @@ class AssessmentAuthoringManager:
     sequence_rule_bank_assignment_session = property(fget=get_sequence_rule_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_smart_bank_session(self, bank_id):
+    def get_sequence_rule_smart_bank_session(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage sequence rule smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1128,7 +1128,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_lookup_session(self):
+    def get_sequence_rule_enabler_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler lookup service.
 
         :return: a ``SequenceRuleEnablerLookupSession``
@@ -1145,7 +1145,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_lookup_session = property(fget=get_sequence_rule_enabler_lookup_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_lookup_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_lookup_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1165,7 +1165,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_session(self):
+    def get_sequence_rule_enabler_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler query service.
 
         :return: a ``SequenceRuleEnablerQuerySession``
@@ -1182,7 +1182,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_query_session = property(fget=get_sequence_rule_enabler_query_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_query_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1202,7 +1202,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_session(self):
+    def get_sequence_rule_enabler_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler search service.
 
         :return: a ``SequenceRuleEnablerSearchSession``
@@ -1219,7 +1219,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_search_session = property(fget=get_sequence_rule_enabler_search_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_search_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enablers earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1239,7 +1239,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_admin_session(self):
+    def get_sequence_rule_enabler_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler administration service.
 
         :return: a ``SequenceRuleEnablerAdminSession``
@@ -1256,7 +1256,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_admin_session = property(fget=get_sequence_rule_enabler_admin_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_admin_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_admin_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1276,7 +1276,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver):
+    def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler notification service.
 
         :param sequence_rule_enabler_receiver: the notification callback
@@ -1294,7 +1294,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id):
+    def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler notification service for the given bank.
 
         :param sequence_rule_enabler_receiver: the notification callback
@@ -1316,7 +1316,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_bank_session(self):
+    def get_sequence_rule_enabler_bank_session(self): # pragma: no cover
         """Gets the ``OsidSession`` to lookup sequence rule enabler/bank mappings for sequence rule enablers.
 
         :return: a ``SequenceRuleEnablerBankSession``
@@ -1333,7 +1333,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_bank_session = property(fget=get_sequence_rule_enabler_bank_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_bank_assignment_session(self):
+    def get_sequence_rule_enabler_bank_assignment_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning sequence rule enablers to bank.
 
         :return: a ``SequenceRuleEnablerBankAssignmentSession``
@@ -1351,7 +1351,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_bank_assignment_session = property(fget=get_sequence_rule_enabler_bank_assignment_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_smart_bank_session(self, bank_id):
+    def get_sequence_rule_enabler_smart_bank_session(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` to manage sequence rule enabler smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1370,7 +1370,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_lookup_session(self):
+    def get_sequence_rule_enabler_rule_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler mapping lookup service.
 
         :return: a ``SequenceRuleEnablerRuleLookupSession``
@@ -1387,7 +1387,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_rule_lookup_session = property(fget=get_sequence_rule_enabler_rule_lookup_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_lookup_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_rule_lookup_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler mapping lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1407,7 +1407,7 @@ class AssessmentAuthoringManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_application_session(self):
+    def get_sequence_rule_enabler_rule_application_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler assignment service.
 
         :return: a ``SequenceRuleEnablerRuleApplicationSession``
@@ -1425,7 +1425,7 @@ class AssessmentAuthoringManager:
     sequence_rule_enabler_rule_application_session = property(fget=get_sequence_rule_enabler_rule_application_session)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_application_session_for_bank(self, bank_id):
+    def get_sequence_rule_enabler_rule_application_session_for_bank(self, bank_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler assignment service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1514,7 +1514,7 @@ class AssessmentAuthoringProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessment_part_lookup_session(self, proxy):
+    def get_assessment_part_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part lookup service.
 
         :param proxy: a proxy
@@ -1532,7 +1532,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
-    def get_assessment_part_lookup_session_for_bank(self, bank_id, proxy):
+    def get_assessment_part_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1554,7 +1554,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartLookupSession
 
     @abc.abstractmethod
-    def get_assessment_part_query_session(self, proxy):
+    def get_assessment_part_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part query service.
 
         :param proxy: a proxy
@@ -1572,7 +1572,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
-    def get_assessment_part_query_session_for_bank(self, bank_id, proxy):
+    def get_assessment_part_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1594,7 +1594,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartQuerySession
 
     @abc.abstractmethod
-    def get_assessment_part_search_session(self, proxy):
+    def get_assessment_part_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part search service.
 
         :param proxy: a proxy
@@ -1612,7 +1612,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
-    def get_assessment_part_search_session_for_bank(self, bank_id, proxy):
+    def get_assessment_part_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1634,7 +1634,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartSearchSession
 
     @abc.abstractmethod
-    def get_assessment_part_admin_session(self, proxy):
+    def get_assessment_part_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part administration service.
 
         :param proxy: a proxy
@@ -1652,7 +1652,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
-    def get_assessment_part_admin_session_for_bank(self, bank_id, proxy):
+    def get_assessment_part_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1674,7 +1674,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartAdminSession
 
     @abc.abstractmethod
-    def get_assessment_part_notification_session(self, assessment_part_receiver, proxy):
+    def get_assessment_part_notification_session(self, assessment_part_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part notification service.
 
         :param assessment_part_receiver: the notification callback
@@ -1694,7 +1694,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id, proxy):
+    def get_assessment_part_notification_session_for_bank(self, assessment_part_receiver, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the assessment part notification service for the given bank.
 
         :param assessment_part_receiver: the notification callback
@@ -1718,7 +1718,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartNotificationSession
 
     @abc.abstractmethod
-    def get_assessment_part_bank_session(self, proxy):
+    def get_assessment_part_bank_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to lookup assessment part/bank mappings for assessment parts.
 
         :param proxy: a proxy
@@ -1736,7 +1736,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartBankSession
 
     @abc.abstractmethod
-    def get_assessment_part_bank_assignment_session(self, proxy):
+    def get_assessment_part_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning assessment part to bank.
 
         :param proxy: a proxy
@@ -1754,7 +1754,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartBankAssignmentSession
 
     @abc.abstractmethod
-    def get_assessment_part_smart_bank_session(self, bank_id, proxy):
+    def get_assessment_part_smart_bank_session(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage assessment part smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1775,7 +1775,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.AssessmentPartSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_lookup_session(self, proxy):
+    def get_sequence_rule_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule lookup service.
 
         :param proxy: a proxy
@@ -1793,7 +1793,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_lookup_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1815,7 +1815,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_query_session(self, proxy):
+    def get_sequence_rule_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule query service.
 
         :param proxy: a proxy
@@ -1833,7 +1833,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_query_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1855,7 +1855,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_search_session(self, proxy):
+    def get_sequence_rule_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule search service.
 
         :param proxy: a proxy
@@ -1873,7 +1873,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_search_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1895,7 +1895,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_admin_session(self, proxy):
+    def get_sequence_rule_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule administration service.
 
         :param proxy: a proxy
@@ -1913,7 +1913,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_admin_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -1935,7 +1935,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_notification_session(self, sequence_rule_receiver, proxy):
+    def get_sequence_rule_notification_session(self, sequence_rule_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule notification service.
 
         :param sequence_rule_receiver: the notification callback
@@ -1955,7 +1955,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id, proxy):
+    def get_sequence_rule_notification_session_for_bank(self, sequence_rule_receiver, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule notification service for the given bank.
 
         :param sequence_rule_receiver: the notification callback
@@ -1979,7 +1979,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_bank_session(self, proxy):
+    def get_sequence_rule_bank_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to lookup sequence rule/bank mappings for sequence rules.
 
         :param proxy: a proxy
@@ -1997,7 +1997,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_bank_assignment_session(self, proxy):
+    def get_sequence_rule_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning sequence rule to bank.
 
         :param proxy: a proxy
@@ -2015,7 +2015,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleBankAssignmentSession
 
     @abc.abstractmethod
-    def get_sequence_rule_smart_bank_session(self, bank_id, proxy):
+    def get_sequence_rule_smart_bank_session(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage sequence rule smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2036,7 +2036,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_lookup_session(self, proxy):
+    def get_sequence_rule_enabler_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler lookup service.
 
         :param proxy: a proxy
@@ -2054,7 +2054,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_lookup_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2076,7 +2076,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_session(self, proxy):
+    def get_sequence_rule_enabler_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler query service.
 
         :param proxy: a proxy
@@ -2094,7 +2094,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_query_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler query service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2116,7 +2116,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerQuerySession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_session(self, proxy):
+    def get_sequence_rule_enabler_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler search service.
 
         :param proxy: a proxy
@@ -2134,7 +2134,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_search_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_search_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enablers earch service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2156,7 +2156,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerSearchSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_admin_session(self, proxy):
+    def get_sequence_rule_enabler_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler administration service.
 
         :param proxy: a proxy
@@ -2174,7 +2174,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_admin_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_admin_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler administration service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2196,7 +2196,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerAdminSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver, proxy):
+    def get_sequence_rule_enabler_notification_session(self, sequence_rule_enabler_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler notification service.
 
         :param sequence_rule_enabler_receiver: the notification callback
@@ -2216,7 +2216,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id, proxy):
+    def get_sequence_rule_enabler_notification_session_for_bank(self, sequence_rule_enabler_receiver, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler notification service for the given bank.
 
         :param sequence_rule_enabler_receiver: the notification callback
@@ -2240,7 +2240,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerNotificationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_bank_session(self, proxy):
+    def get_sequence_rule_enabler_bank_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to lookup sequence rule enabler/bank mappings for sequence rule enablers.
 
         :param proxy: a proxy
@@ -2258,7 +2258,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_bank_assignment_session(self, proxy):
+    def get_sequence_rule_enabler_bank_assignment_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with assigning sequence rule enablers to bank.
 
         :param proxy: a proxy
@@ -2277,7 +2277,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerBankAssignmentSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_smart_bank_session(self, bank_id, proxy):
+    def get_sequence_rule_enabler_smart_bank_session(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` to manage sequence rule enabler smart bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2298,7 +2298,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerSmartBankSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_lookup_session(self, proxy):
+    def get_sequence_rule_enabler_rule_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler mapping lookup service.
 
         :param proxy: a proxy
@@ -2316,7 +2316,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_lookup_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_rule_lookup_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler mapping lookup service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``
@@ -2338,7 +2338,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerRuleLookupSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_application_session(self, proxy):
+    def get_sequence_rule_enabler_rule_application_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler assignment service.
 
         :param proxy: a proxy
@@ -2357,7 +2357,7 @@ class AssessmentAuthoringProxyManager:
         return  # osid.assessment.authoring.SequenceRuleEnablerRuleApplicationSession
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_rule_application_session_for_bank(self, bank_id, proxy):
+    def get_sequence_rule_enabler_rule_application_session_for_bank(self, bank_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the sequence rule enabler assignment service for the given bank.
 
         :param bank_id: the ``Id`` of the ``Bank``

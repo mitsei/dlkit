@@ -21,7 +21,7 @@ class CommentLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -36,7 +36,7 @@ class CommentLookupSession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the book
@@ -52,7 +52,7 @@ class CommentLookupSession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_lookup_comments(self):
+    def can_lookup_comments(self): # pragma: no cover
         """Tests if this user can examine this book.
 
         A return of true does not guarantee successful authorization. A
@@ -71,7 +71,7 @@ class CommentLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_comment_view(self):
+    def use_comparative_comment_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -85,7 +85,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_comment_view(self):
+    def use_plenary_comment_view(self): # pragma: no cover
         """A complete view of the ``Comment`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -100,7 +100,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_book_view(self):
+    def use_federated_book_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include comments in books which are
@@ -114,7 +114,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_book_view(self):
+    def use_isolated_book_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this book only.
@@ -127,7 +127,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_effective_comment_view(self):
+    def use_effective_comment_view(self): # pragma: no cover
         """Only comments whose effective dates are current are returned by methods in this session.
 
 
@@ -138,7 +138,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_any_effective_comment_view(self):
+    def use_any_effective_comment_view(self): # pragma: no cover
         """All comments of any effective dates are returned by all methods in this session.
 
 
@@ -149,7 +149,7 @@ class CommentLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_comment(self, comment_id):
+    def get_comment(self, comment_id): # pragma: no cover
         """Gets the ``Comment`` specified by its ``Id``.
 
         :param comment_id: the ``Id`` of the ``Comment`` to retrieve
@@ -167,7 +167,7 @@ class CommentLookupSession:
         return  # osid.commenting.Comment
 
     @abc.abstractmethod
-    def get_comments_by_ids(self, comment_ids):
+    def get_comments_by_ids(self, comment_ids): # pragma: no cover
         """Gets a ``CommentList`` corresponding to the given ``IdList``.
 
         :param comment_ids: the list of ``Ids`` to retrieve
@@ -185,7 +185,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type(self, comment_genus_type):
+    def get_comments_by_genus_type(self, comment_genus_type): # pragma: no cover
         """Gets a ``CommentList`` corresponding to the given comment genus ``Type`` which does not include comments of genus types derived from the specified ``Type``.
 
         :param comment_genus_type: a comment genus type
@@ -202,7 +202,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_parent_genus_type(self, comment_genus_type):
+    def get_comments_by_parent_genus_type(self, comment_genus_type): # pragma: no cover
         """Gets a ``CommentList`` corresponding to the given comment genus ``Type`` and include any additional comments with genus types derived from the specified ``Type``.
 
         :param comment_genus_type: a comment genus type
@@ -219,7 +219,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_record_type(self, comment_record_type):
+    def get_comments_by_record_type(self, comment_record_type): # pragma: no cover
         """Gets a ``CommentList`` containing the given comment record ``Type``.
 
         :param comment_record_type: a comment record type
@@ -236,7 +236,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_on_date(self, from_, to):
+    def get_comments_on_date(self, from_, to): # pragma: no cover
         """Gets a ``CommentList`` effective during the entire given date range inclusive but not confined to the date range.
 
         :param from: starting date
@@ -256,7 +256,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_on_date(self, comment_genus_type, from_, to):
+    def get_comments_by_genus_type_on_date(self, comment_genus_type, from_, to): # pragma: no cover
         """Gets a ``CommentList`` of a given genus type and effective during the entire given date range inclusive but not confined to the date range.
 
         :param comment_genus_type: a comment genus type
@@ -278,7 +278,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_commentor(self, resource_id):
+    def get_comments_for_commentor(self, resource_id): # pragma: no cover
         """Gets a list of comments corresponding to a resource ``Id``.
 
         :param resource_id: the ``Id`` of the resource
@@ -295,7 +295,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_commentor_on_date(self, resource_id, from_, to):
+    def get_comments_for_commentor_on_date(self, resource_id, from_, to): # pragma: no cover
         """Gets a list of all comments corresponding to a resource ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: the ``Id`` of the resource
@@ -317,7 +317,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_commentor(self, resource_id, comment_genus_type):
+    def get_comments_by_genus_type_for_commentor(self, resource_id, comment_genus_type): # pragma: no cover
         """Gets a list of comments of the given genus type corresponding to a resource ``Id``.
 
         :param resource_id: the ``Id`` of the resource
@@ -336,7 +336,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_commentor_on_date(self, resource_id, comment_genus_type, from_, to):
+    def get_comments_by_genus_type_for_commentor_on_date(self, resource_id, comment_genus_type, from_, to): # pragma: no cover
         """Gets a list of all comments of the given genus type corresponding to a resource ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: the ``Id`` of the resource
@@ -360,7 +360,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_reference(self, reference_id):
+    def get_comments_for_reference(self, reference_id): # pragma: no cover
         """Gets a list of comments corresponding to a reference ``Id``.
 
         :param reference_id: the ``Id`` of the reference
@@ -377,7 +377,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_reference_on_date(self, reference_id, from_, to):
+    def get_comments_for_reference_on_date(self, reference_id, from_, to): # pragma: no cover
         """Gets a list of all comments corresponding to a reference ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param reference_id: a reference ``Id``
@@ -399,7 +399,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_reference(self, reference_id, comment_genus_type):
+    def get_comments_by_genus_type_for_reference(self, reference_id, comment_genus_type): # pragma: no cover
         """Gets a list of comments of the given genus type corresponding to a reference ``Id``.
 
         :param reference_id: the ``Id`` of the reference
@@ -418,7 +418,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_reference_on_date(self, reference_id, comment_genus_type, from_, to):
+    def get_comments_by_genus_type_for_reference_on_date(self, reference_id, comment_genus_type, from_, to): # pragma: no cover
         """Gets a list of all comments of the given genus type corresponding to a reference ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param reference_id: a reference ``Id``
@@ -442,7 +442,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_commentor_and_reference(self, resource_id, reference_id):
+    def get_comments_for_commentor_and_reference(self, resource_id, reference_id): # pragma: no cover
         """Gets a list of comments corresponding to a resource and reference ``Id``.
 
         :param resource_id: the ``Id`` of the resource
@@ -461,7 +461,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_for_commentor_and_reference_on_date(self, resource_id, reference_id, from_, to):
+    def get_comments_for_commentor_and_reference_on_date(self, resource_id, reference_id, from_, to): # pragma: no cover
         """Gets a list of all comments corresponding to a resource and reference ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: the ``Id`` of the resource
@@ -485,7 +485,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_commentor_and_reference(self, resource_id, reference_id, comment_genus_type):
+    def get_comments_by_genus_type_for_commentor_and_reference(self, resource_id, reference_id, comment_genus_type): # pragma: no cover
         """Gets a list of comments of the given genus type corresponding to a resource and reference ``Id``.
 
         :param resource_id: the ``Id`` of the resource
@@ -506,7 +506,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments_by_genus_type_for_commentor_and_reference_on_date(self, resource_id, reference_id, comment_genus_type, from_, to):
+    def get_comments_by_genus_type_for_commentor_and_reference_on_date(self, resource_id, reference_id, comment_genus_type, from_, to): # pragma: no cover
         """Gets a list of all comments corresponding to a resource and reference ``Id`` and effective during the entire given date range inclusive but not confined to the date range.
 
         :param resource_id: the ``Id`` of the resource
@@ -532,7 +532,7 @@ class CommentLookupSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comments(self):
+    def get_comments(self): # pragma: no cover
         """Gets all comments.
 
         :return: a list of comments
@@ -553,7 +553,7 @@ class RatingLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -568,7 +568,7 @@ class RatingLookupSession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the book
@@ -584,7 +584,7 @@ class RatingLookupSession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_lookup_ratings(self):
+    def can_lookup_ratings(self): # pragma: no cover
         """Tests if this user can examine this book.
 
         A return of true does not guarantee successful authorization. A
@@ -603,7 +603,7 @@ class RatingLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_comment_view(self):
+    def use_comparative_comment_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -617,7 +617,7 @@ class RatingLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_comment_view(self):
+    def use_plenary_comment_view(self): # pragma: no cover
         """A complete view of the ``Comment`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -632,7 +632,7 @@ class RatingLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_federated_book_view(self):
+    def use_federated_book_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include ratings in books which are
@@ -646,7 +646,7 @@ class RatingLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_book_view(self):
+    def use_isolated_book_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts retrievals to this book only.
@@ -659,7 +659,7 @@ class RatingLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_cumulative_rating(self):
+    def get_cumulative_rating(self): # pragma: no cover
         """Gets the cumulative rating for all the references in this book.
 
         :return: the cumulative rating
@@ -675,7 +675,7 @@ class RatingLookupSession:
     cumulative_rating = property(fget=get_cumulative_rating)
 
     @abc.abstractmethod
-    def get_cumulative_rating_for_reference(self, reference_id):
+    def get_cumulative_rating_for_reference(self, reference_id): # pragma: no cover
         """Gets the cumulative rating for a reference.
 
         :param reference_id: the ``Id`` of the reference
@@ -693,7 +693,7 @@ class RatingLookupSession:
         return  # osid.grading.Grade
 
     @abc.abstractmethod
-    def get_cumulative_rating_for_commentor(self, resource_id):
+    def get_cumulative_rating_for_commentor(self, resource_id): # pragma: no cover
         """Gets the cumulative rating for a commentor.
 
         :param resource_id: the ``Id`` of the resource
@@ -711,7 +711,7 @@ class RatingLookupSession:
         return  # osid.grading.Grade
 
     @abc.abstractmethod
-    def get_top_references(self, max_):
+    def get_top_references(self, max_): # pragma: no cover
         """Gets the top rated references in this book.
 
         :param max: the maximum number to return
@@ -727,7 +727,7 @@ class RatingLookupSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_references(self, grade_id):
+    def get_references(self, grade_id): # pragma: no cover
         """Gets the references with ratings equal to or higher than the given grade.
 
         :param grade_id: the ``Id`` of the grade
@@ -760,7 +760,7 @@ class CommentQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -775,7 +775,7 @@ class CommentQuerySession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the book
@@ -791,7 +791,7 @@ class CommentQuerySession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_search_comments(self):
+    def can_search_comments(self): # pragma: no cover
         """Tests if this user can perform comment searches.
 
         A return of true does not guarantee successful authorization. A
@@ -810,7 +810,7 @@ class CommentQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_book_view(self):
+    def use_federated_book_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include comments in books which are
@@ -824,7 +824,7 @@ class CommentQuerySession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_book_view(self):
+    def use_isolated_book_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts searches to this book only.
@@ -837,7 +837,7 @@ class CommentQuerySession:
         pass
 
     @abc.abstractmethod
-    def get_comment_query(self):
+    def get_comment_query(self): # pragma: no cover
         """Gets a comment query.
 
         :return: the comment query
@@ -852,7 +852,7 @@ class CommentQuerySession:
     comment_query = property(fget=get_comment_query)
 
     @abc.abstractmethod
-    def get_comments_by_query(self, comment_query):
+    def get_comments_by_query(self, comment_query): # pragma: no cover
         """Gets a list of comments matching the given search.
 
         :param comment_query: the search query array
@@ -896,7 +896,7 @@ class CommentSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_comment_search(self):
+    def get_comment_search(self): # pragma: no cover
         """Gets a comment search.
 
         :return: the comment search
@@ -911,7 +911,7 @@ class CommentSearchSession:
     comment_search = property(fget=get_comment_search)
 
     @abc.abstractmethod
-    def get_comment_search_order(self):
+    def get_comment_search_order(self): # pragma: no cover
         """Gets a comment search order.
 
         The ``CommentSearchOrder`` is supplied to a ``CommentSearch`` to
@@ -929,7 +929,7 @@ class CommentSearchSession:
     comment_search_order = property(fget=get_comment_search_order)
 
     @abc.abstractmethod
-    def get_comments_by_search(self, comment_query, comment_search):
+    def get_comments_by_search(self, comment_query, comment_search): # pragma: no cover
         """Gets the search results matching the given search.
 
         :param comment_query: the comment query
@@ -949,7 +949,7 @@ class CommentSearchSession:
         return  # osid.commenting.CommentSearchResults
 
     @abc.abstractmethod
-    def get_comment_query_from_inspector(self, comment_query_inspector):
+    def get_comment_query_from_inspector(self, comment_query_inspector): # pragma: no cover
         """Gets an entry query from an inspector.
 
         The inspector is available from an ``CommentSearchResults``.
@@ -1006,7 +1006,7 @@ class CommentAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -1021,7 +1021,7 @@ class CommentAdminSession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the book
@@ -1037,7 +1037,7 @@ class CommentAdminSession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_create_comments(self):
+    def can_create_comments(self): # pragma: no cover
         """Tests if this user can create comments.
 
         A return of true does not guarantee successful authorization. A
@@ -1056,7 +1056,7 @@ class CommentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_comment_with_record_types(self, comment_record_types):
+    def can_create_comment_with_record_types(self, comment_record_types): # pragma: no cover
         """Tests if this user can create a single ``Comment`` using the desired record types.
 
         While ``CommentingManager.getCommentRecordTypes()`` can be used
@@ -1077,7 +1077,7 @@ class CommentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_form_for_create(self, reference_id, comment_record_types):
+    def get_comment_form_for_create(self, reference_id, comment_record_types): # pragma: no cover
         """Gets the comment form for creating new comments.
 
         A new form should be requested for each create transaction.
@@ -1099,7 +1099,7 @@ class CommentAdminSession:
         return  # osid.commenting.CommentForm
 
     @abc.abstractmethod
-    def create_comment(self, comment_form):
+    def create_comment(self, comment_form): # pragma: no cover
         """Creates a new ``Comment``.
 
         :param comment_form: the form for this ``Comment``
@@ -1119,7 +1119,7 @@ class CommentAdminSession:
         return  # osid.commenting.Comment
 
     @abc.abstractmethod
-    def can_update_comments(self):
+    def can_update_comments(self): # pragma: no cover
         """Tests if this user can update comments.
 
         A return of true does not guarantee successful authorization. A
@@ -1138,7 +1138,7 @@ class CommentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_form_for_update(self, comment_id):
+    def get_comment_form_for_update(self, comment_id): # pragma: no cover
         """Gets the comment form for updating an existing comment.
 
         A new comment form should be requested for each update
@@ -1159,7 +1159,7 @@ class CommentAdminSession:
         return  # osid.commenting.CommentForm
 
     @abc.abstractmethod
-    def update_comment(self, comment_form):
+    def update_comment(self, comment_form): # pragma: no cover
         """Updates an existing comment.
 
         :param comment_form: the form containing the elements to be updated
@@ -1177,7 +1177,7 @@ class CommentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_comments(self):
+    def can_delete_comments(self): # pragma: no cover
         """Tests if this user can delete comments.
 
         A return of true does not guarantee successful authorization. A
@@ -1196,7 +1196,7 @@ class CommentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_comment(self, comment_id):
+    def delete_comment(self, comment_id): # pragma: no cover
         """Deletes a ``Comment``.
 
         :param comment_id: the ``Id`` of the ``Comment`` to remove
@@ -1212,7 +1212,7 @@ class CommentAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_comment_aliases(self):
+    def can_manage_comment_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Comnents``.
 
         A return of true does not guarantee successful authorization. A
@@ -1231,7 +1231,7 @@ class CommentAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_comment(self, comment_id, alias_id):
+    def alias_comment(self, comment_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Comment`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Comment`` is determined by the
@@ -1266,7 +1266,7 @@ class CommentNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -1281,7 +1281,7 @@ class CommentNotificationSession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the book
@@ -1297,7 +1297,7 @@ class CommentNotificationSession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_register_for_comment_notifications(self):
+    def can_register_for_comment_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Comment`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -1316,7 +1316,7 @@ class CommentNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_federated_book_view(self):
+    def use_federated_book_view(self): # pragma: no cover
         """Federates the view for methods in this session.
 
         A federated view will include notifications for commentss in
@@ -1330,7 +1330,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def use_isolated_book_view(self):
+    def use_isolated_book_view(self): # pragma: no cover
         """Isolates the view for methods in this session.
 
         An isolated view restricts notifications to this book only.
@@ -1343,7 +1343,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_comment_notifications(self):
+    def reliable_comment_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1357,7 +1357,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_comment_notifications(self):
+    def unreliable_comment_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1371,7 +1371,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_comment_notification(self, notification_id):
+    def acknowledge_comment_notification(self, notification_id): # pragma: no cover
         """Acknowledge a comment notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1385,7 +1385,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_comments(self):
+    def register_for_new_comments(self): # pragma: no cover
         """Register for notifications of new comments.
 
         ``CommentReceiver.newComments()`` is invoked when a new
@@ -1400,7 +1400,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_comments_for_commentor(self, resource_id):
+    def register_for_new_comments_for_commentor(self, resource_id): # pragma: no cover
         """Register for notifications of new comments by the given resource ``Id``.
 
         ``CommentReceiver.newComments()`` is invoked when a new
@@ -1418,7 +1418,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_comments_for_reference(self, reference_id):
+    def register_for_new_comments_for_reference(self, reference_id): # pragma: no cover
         """Register for notifications of new comments for the given reference ``Id``.
 
         ``CommentReceiver.newComments()`` is invoked when a new
@@ -1436,7 +1436,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_comments(self):
+    def register_for_changed_comments(self): # pragma: no cover
         """Registers for notification of updated comments.
 
         ``CommentReceiver.changedComments()`` is invoked when a comment
@@ -1451,7 +1451,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_comments_for_commentor(self, resource_id):
+    def register_for_changed_comments_for_commentor(self, resource_id): # pragma: no cover
         """Register for notifications of changed comments by the given resource ``Id``.
 
         ``CommentReceiver.changedComments()`` is invoked when a
@@ -1469,7 +1469,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_comments_for_reference(self, reference_id):
+    def register_for_changed_comments_for_reference(self, reference_id): # pragma: no cover
         """Register for notifications of changed comments for the given reference ``Id``.
 
         ``CommentReceiver.changedComments()`` is invoked when a
@@ -1487,7 +1487,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_comment(self, comment_id):
+    def register_for_changed_comment(self, comment_id): # pragma: no cover
         """Registers for notification of an updated comment.
 
         ``CommentReceiver.changedComments()`` is invoked when the
@@ -1506,7 +1506,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_comments(self):
+    def register_for_deleted_comments(self): # pragma: no cover
         """Registers for notification of deleted comments.
 
         ``CommentReceiver.deletedComments()`` is invoked when a comment
@@ -1521,7 +1521,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_comments_for_commentor(self, resource_id):
+    def register_for_deleted_comments_for_commentor(self, resource_id): # pragma: no cover
         """Register for notifications of deleted comments by the given resource ``Id``.
 
         ``CommentReceiver.deletedComments()`` is invoked when a
@@ -1539,7 +1539,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_comments_for_reference(self, reference_id):
+    def register_for_deleted_comments_for_reference(self, reference_id): # pragma: no cover
         """Register for notifications of deleted comments for the given reference ``Id``.
 
         ``CommentReceiver.deletedComments()`` is invoked when a
@@ -1557,7 +1557,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_comment(self, comment_id):
+    def register_for_deleted_comment(self, comment_id): # pragma: no cover
         """Registers for notification of a deleted comment.
 
         ``CommentReceiver.deletedComments()`` is invoked when the
@@ -1576,7 +1576,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_comment_notifications(self):
+    def reliable_comment_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -1590,7 +1590,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_comment_notifications(self):
+    def unreliable_comment_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -1604,7 +1604,7 @@ class CommentNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_comment_notification(self, notification_id):
+    def acknowledge_comment_notification(self, notification_id): # pragma: no cover
         """Acknowledge an comment notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -1634,7 +1634,7 @@ class CommentBookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_comment_book_mappings(self):
+    def can_lookup_comment_book_mappings(self): # pragma: no cover
         """Tests if this user can perform lookups of comment/book mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1653,7 +1653,7 @@ class CommentBookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_book_view(self):
+    def use_comparative_book_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -1667,7 +1667,7 @@ class CommentBookSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_book_view(self):
+    def use_plenary_book_view(self): # pragma: no cover
         """A complete view of the ``Comment`` and ``Book`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -1682,7 +1682,7 @@ class CommentBookSession:
         pass
 
     @abc.abstractmethod
-    def get_comment_ids_by_book(self, book_id):
+    def get_comment_ids_by_book(self, book_id): # pragma: no cover
         """Gets the list of Comment Ids associated with a ``Book``.
 
         :param book_id: ``Id`` of a ``Book``.
@@ -1700,7 +1700,7 @@ class CommentBookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_comments_by_book(self, book_id):
+    def get_comments_by_book(self, book_id): # pragma: no cover
         """Gets the list of ``Comments`` associated with a ``Book``.
 
         :param book_id: ``Id`` of a ``Book``
@@ -1718,7 +1718,7 @@ class CommentBookSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_comment_ids_by_books(self, book_ids):
+    def get_comment_ids_by_books(self, book_ids): # pragma: no cover
         """Gets the list of ``Comment Ids`` corresponding to a list of ``Book`` objects.
 
         :param book_ids: list of book ``Ids``
@@ -1735,7 +1735,7 @@ class CommentBookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_comments_by_books(self, book_ids):
+    def get_comments_by_books(self, book_ids): # pragma: no cover
         """Gets the list of ``Comments`` corresponding to a list of ``Books``.
 
         :param book_ids: list of book ``Ids``
@@ -1752,7 +1752,7 @@ class CommentBookSession:
         return  # osid.commenting.CommentList
 
     @abc.abstractmethod
-    def get_book_ids_by_comment(self, comment_id):
+    def get_book_ids_by_comment(self, comment_id): # pragma: no cover
         """Gets the list of ``Book``  ``Ids`` mapped to a ``Comment``.
 
         :param comment_id: ``Id`` of a ``Comment``
@@ -1770,7 +1770,7 @@ class CommentBookSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_books_by_comment(self, comment_id):
+    def get_books_by_comment(self, comment_id): # pragma: no cover
         """Gets the list of ``Book`` objects mapped to a ``Comment``.
 
         :param comment_id: ``Id`` of a ``Comment``
@@ -1803,7 +1803,7 @@ class CommentBookAssignmentSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_assign_comments(self):
+    def can_assign_comments(self): # pragma: no cover
         """Tests if this user can alter comment/book mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1822,7 +1822,7 @@ class CommentBookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_assign_comments_to_book(self, book_id):
+    def can_assign_comments_to_book(self, book_id): # pragma: no cover
         """Tests if this user can alter comment/book mappings.
 
         A return of true does not guarantee successful authorization. A
@@ -1843,7 +1843,7 @@ class CommentBookAssignmentSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assignable_book_ids(self, book_id):
+    def get_assignable_book_ids(self, book_id): # pragma: no cover
         """Gets a list of books including and under the given book node in which any comment can be assigned.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -1859,7 +1859,7 @@ class CommentBookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_assignable_book_ids_for_comment(self, book_id, comment_id):
+    def get_assignable_book_ids_for_comment(self, book_id, comment_id): # pragma: no cover
         """Gets a list of books including and under the given book node in which a specific comment can be assigned.
 
         :param book_id: the ``Id`` of the ``Book``
@@ -1877,7 +1877,7 @@ class CommentBookAssignmentSession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def assign_comment_to_book(self, comment_id, book_id):
+    def assign_comment_to_book(self, comment_id, book_id): # pragma: no cover
         """Adds an existing ``Comment`` to a ``Book``.
 
         :param comment_id: the ``Id`` of the ``Comment``
@@ -1896,7 +1896,7 @@ class CommentBookAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def unassign_comment_from_book(self, comment_id, book_id):
+    def unassign_comment_from_book(self, comment_id, book_id): # pragma: no cover
         """Removes a ``Comment`` from a ``Book``.
 
         :param comment_id: the ``Id`` of the ``Comment``
@@ -1914,7 +1914,7 @@ class CommentBookAssignmentSession:
         pass
 
     @abc.abstractmethod
-    def reassign_comment_to_book(self, comment_id, from_book_id, to_book_id):
+    def reassign_comment_to_book(self, comment_id, from_book_id, to_book_id): # pragma: no cover
         """Moves a ``Credit`` from one ``Book`` to another.
 
         Mappings to other ``Books`` are unaffected.
@@ -1953,7 +1953,7 @@ class CommentSmartBookSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_id(self):
+    def get_book_id(self): # pragma: no cover
         """Gets the ``Book``  ``Id`` associated with this session.
 
         :return: the ``Book Id`` associated with this session
@@ -1968,7 +1968,7 @@ class CommentSmartBookSession:
     book_id = property(fget=get_book_id)
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` associated with this session.
 
         :return: the ``Book`` associated with this session
@@ -1984,7 +1984,7 @@ class CommentSmartBookSession:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def can_manage_smart_books(self):
+    def can_manage_smart_books(self): # pragma: no cover
         """Tests if this user can manage smart books.
 
         A return of true does not guarantee successful authorization. A
@@ -2003,7 +2003,7 @@ class CommentSmartBookSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_comment_query(self):
+    def get_comment_query(self): # pragma: no cover
         """Gets a comment query.
 
         :return: the comment query
@@ -2018,7 +2018,7 @@ class CommentSmartBookSession:
     comment_query = property(fget=get_comment_query)
 
     @abc.abstractmethod
-    def get_comment_search_order(self):
+    def get_comment_search_order(self): # pragma: no cover
         """Gets a comment search order.
 
         :return: the comment search order
@@ -2033,7 +2033,7 @@ class CommentSmartBookSession:
     comment_search_order = property(fget=get_comment_search_order)
 
     @abc.abstractmethod
-    def apply_comment_query(self, comment_query):
+    def apply_comment_query(self, comment_query): # pragma: no cover
         """Applies a comment query to this book.
 
         :param comment_query: the comment query
@@ -2049,7 +2049,7 @@ class CommentSmartBookSession:
         pass
 
     @abc.abstractmethod
-    def inspect_comment_query(self):
+    def inspect_comment_query(self): # pragma: no cover
         """Gets a comment query inspector for this book.
 
         :return: the comment query inspector
@@ -2063,7 +2063,7 @@ class CommentSmartBookSession:
         return  # osid.commenting.CommentQueryInspector
 
     @abc.abstractmethod
-    def apply_comment_sequencing(self, comment_search_order):
+    def apply_comment_sequencing(self, comment_search_order): # pragma: no cover
         """Applies a comment search order to this book.
 
         :param comment_search_order: the comment search order
@@ -2079,7 +2079,7 @@ class CommentSmartBookSession:
         pass
 
     @abc.abstractmethod
-    def get_comment_query_from_inspector(self, comment_query_inspector):
+    def get_comment_query_from_inspector(self, comment_query_inspector): # pragma: no cover
         """Gets a comment query from an inspector.
 
         :param comment_query_inspector: a query inspector
@@ -2110,7 +2110,7 @@ class BookLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_books(self):
+    def can_lookup_books(self): # pragma: no cover
         """Tests if this user can perform ``Book`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -2129,7 +2129,7 @@ class BookLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_book_view(self):
+    def use_comparative_book_view(self): # pragma: no cover
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -2143,7 +2143,7 @@ class BookLookupSession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_book_view(self):
+    def use_plenary_book_view(self): # pragma: no cover
         """A complete view of the ``Book`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -2158,7 +2158,7 @@ class BookLookupSession:
         pass
 
     @abc.abstractmethod
-    def get_book(self, book_id):
+    def get_book(self, book_id): # pragma: no cover
         """Gets the ``Book`` specified by its ``Id``.
 
         In plenary mode, the exact ``Id`` is found or a ``NotFound``
@@ -2181,7 +2181,7 @@ class BookLookupSession:
         return  # osid.commenting.Book
 
     @abc.abstractmethod
-    def get_books_by_ids(self, book_ids):
+    def get_books_by_ids(self, book_ids): # pragma: no cover
         """Gets a ``BookList`` corresponding to the given ``IdList``.
 
         In plenary mode, the returned list contains all of the books
@@ -2207,7 +2207,7 @@ class BookLookupSession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def get_books_by_genus_type(self, book_genus_type):
+    def get_books_by_genus_type(self, book_genus_type): # pragma: no cover
         """Gets a ``BookList`` corresponding to the given book genus ``Type`` which does not include books of genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known books or
@@ -2228,7 +2228,7 @@ class BookLookupSession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def get_books_by_parent_genus_type(self, book_genus_type):
+    def get_books_by_parent_genus_type(self, book_genus_type): # pragma: no cover
         """Gets a ``BookList`` corresponding to the given book genus ``Type`` and include any additional books with genus types derived from the specified ``Type``.
 
         In plenary mode, the returned list contains all known books or
@@ -2249,7 +2249,7 @@ class BookLookupSession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def get_books_by_record_type(self, book_record_type):
+    def get_books_by_record_type(self, book_record_type): # pragma: no cover
         """Gets a ``BookList`` containing the given book record ``Type``.
 
         In plenary mode, the returned list contains all known books or
@@ -2270,7 +2270,7 @@ class BookLookupSession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def get_books_by_provider(self, resource_id):
+    def get_books_by_provider(self, resource_id): # pragma: no cover
         """Gets a ``BookList`` from the given provider ````.
 
         In plenary mode, the returned list contains all known books or
@@ -2291,7 +2291,7 @@ class BookLookupSession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def get_books(self):
+    def get_books(self): # pragma: no cover
         """Gets all ``Books``.
 
         In plenary mode, the returned list contains all known books or
@@ -2326,7 +2326,7 @@ class BookQuerySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_search_books(self):
+    def can_search_books(self): # pragma: no cover
         """Tests if this user can perform ``Book`` searches.
 
         A return of true does not guarantee successful authorization. A
@@ -2345,7 +2345,7 @@ class BookQuerySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_query(self):
+    def get_book_query(self): # pragma: no cover
         """Gets a book query.
 
         :return: the book query
@@ -2360,7 +2360,7 @@ class BookQuerySession:
     book_query = property(fget=get_book_query)
 
     @abc.abstractmethod
-    def get_books_by_query(self, book_query):
+    def get_books_by_query(self, book_query): # pragma: no cover
         """Gets a list of ``Books`` matching the given search.
 
         :param book_query: the book query
@@ -2402,7 +2402,7 @@ class BookSearchSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_search(self):
+    def get_book_search(self): # pragma: no cover
         """Gets a book search.
 
         :return: the book search
@@ -2417,7 +2417,7 @@ class BookSearchSession:
     book_search = property(fget=get_book_search)
 
     @abc.abstractmethod
-    def get_book_search_order(self):
+    def get_book_search_order(self): # pragma: no cover
         """Gets a book search order.
 
         The ``BookSearchOrder`` is supplied to a ``BookSearch`` to
@@ -2435,7 +2435,7 @@ class BookSearchSession:
     book_search_order = property(fget=get_book_search_order)
 
     @abc.abstractmethod
-    def get_books_by_search(self, book_query, book_search):
+    def get_books_by_search(self, book_query, book_search): # pragma: no cover
         """Gets the search results matching the given search.
 
         :param book_query: the book query
@@ -2455,7 +2455,7 @@ class BookSearchSession:
         return  # osid.commenting.BookSearchResults
 
     @abc.abstractmethod
-    def get_book_query_from_inspector(self, book_query_inspector):
+    def get_book_query_from_inspector(self, book_query_inspector): # pragma: no cover
         """Gets an entry query from an inspector.
 
         The inspector is available from an ``BookSearchResults``.
@@ -2507,7 +2507,7 @@ class BookAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_books(self):
+    def can_create_books(self): # pragma: no cover
         """Tests if this user can create ``Books``.
 
         A return of true does not guarantee successful authorization. A
@@ -2526,7 +2526,7 @@ class BookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_create_book_with_record_types(self, book_record_types):
+    def can_create_book_with_record_types(self, book_record_types): # pragma: no cover
         """Tests if this user can create a single ``Book`` using the desired record types.
 
         While ``CommentingManager.getBookRecordTypes()`` can be used to
@@ -2547,7 +2547,7 @@ class BookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_form_for_create(self, book_record_types):
+    def get_book_form_for_create(self, book_record_types): # pragma: no cover
         """Gets the book form for creating new books.
 
         A new form should be requested for each create transaction.
@@ -2567,7 +2567,7 @@ class BookAdminSession:
         return  # osid.commenting.BookForm
 
     @abc.abstractmethod
-    def create_book(self, book_form):
+    def create_book(self, book_form): # pragma: no cover
         """Creates a new ``Book``.
 
         :param book_form: the form for this ``Book``
@@ -2587,7 +2587,7 @@ class BookAdminSession:
         return  # osid.commenting.Book
 
     @abc.abstractmethod
-    def can_update_books(self):
+    def can_update_books(self): # pragma: no cover
         """Tests if this user can update ``Books``.
 
         A return of true does not guarantee successful authorization. A
@@ -2606,7 +2606,7 @@ class BookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_form_for_update(self, book_id):
+    def get_book_form_for_update(self, book_id): # pragma: no cover
         """Gets the book form for updating an existing book.
 
         A new book form should be requested for each update transaction.
@@ -2626,7 +2626,7 @@ class BookAdminSession:
         return  # osid.commenting.BookForm
 
     @abc.abstractmethod
-    def update_book(self, book_form):
+    def update_book(self, book_form): # pragma: no cover
         """Updates an existing book.
 
         :param book_form: the form containing the elements to be updated
@@ -2644,7 +2644,7 @@ class BookAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_books(self):
+    def can_delete_books(self): # pragma: no cover
         """Tests if this user can delete ``Books`` A return of true does not guarantee successful authorization.
 
         A return of false indicates that it is known deleting a ``Book``
@@ -2662,7 +2662,7 @@ class BookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_book(self, book_id):
+    def delete_book(self, book_id): # pragma: no cover
         """Deletes a ``Book``.
 
         :param book_id: the ``Id`` of the ``Book`` to remove
@@ -2678,7 +2678,7 @@ class BookAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_manage_book_aliases(self):
+    def can_manage_book_aliases(self): # pragma: no cover
         """Tests if this user can manage ``Id`` aliases for ``Books``.
 
         A return of true does not guarantee successful authorization. A
@@ -2697,7 +2697,7 @@ class BookAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def alias_book(self, book_id, alias_id):
+    def alias_book(self, book_id, alias_id): # pragma: no cover
         """Adds an ``Id`` to a ``Book`` for the purpose of creating compatibility.
 
         The primary ``Id`` of the ``Book`` is determined by the
@@ -2736,7 +2736,7 @@ class BookNotificationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_register_for_book_notifications(self):
+    def can_register_for_book_notifications(self): # pragma: no cover
         """Tests if this user can register for ``Book`` notifications.
 
         A return of true does not guarantee successful authorization. A
@@ -2755,7 +2755,7 @@ class BookNotificationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def reliable_book_notifications(self):
+    def reliable_book_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2769,7 +2769,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_book_notifications(self):
+    def unreliable_book_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2783,7 +2783,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_book_notification(self, notification_id):
+    def acknowledge_book_notification(self, notification_id): # pragma: no cover
         """Acknowledge a book notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -2797,7 +2797,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_new_books(self):
+    def register_for_new_books(self): # pragma: no cover
         """Register for notifications of new books.
 
         ``BookReceiver.newBooks()`` is invoked when a new ``Book`` is
@@ -2812,7 +2812,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_books(self):
+    def register_for_changed_books(self): # pragma: no cover
         """Registers for notification of updated books.
 
         ``BookReceiver.changedBooks()`` is invoked when a book is
@@ -2827,7 +2827,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_book(self, book_id):
+    def register_for_changed_book(self, book_id): # pragma: no cover
         """Registers for notification of an updated book.
 
         ``BookReceiver.changedBooks()`` is invoked when the specified
@@ -2845,7 +2845,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_books(self):
+    def register_for_deleted_books(self): # pragma: no cover
         """Registers for notification of deleted books.
 
         ``BookReceiver.deletedBooks()`` is invoked when a book is
@@ -2860,7 +2860,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_deleted_book(self, book_id):
+    def register_for_deleted_book(self, book_id): # pragma: no cover
         """Registers for notification of a deleted book.
 
         ``BookReceiver.deletedBooks()`` is invoked when the specified
@@ -2878,7 +2878,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_book_hierarchy(self):
+    def register_for_changed_book_hierarchy(self): # pragma: no cover
         """Registers for notification of an updated book hierarchy structure.
 
         ``BookReceiver.changedChildOfBookss()`` is invoked when a node
@@ -2893,7 +2893,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_book_hierarchy_for_ancestors(self, book_id):
+    def register_for_changed_book_hierarchy_for_ancestors(self, book_id): # pragma: no cover
         """Registers for notification of an updated book hierarchy structure.
 
         ``BookReceiver.changedChildOfBooks()`` is invoked when the
@@ -2912,7 +2912,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def register_for_changed_book_hierarchy_for_descendants(self, book_id):
+    def register_for_changed_book_hierarchy_for_descendants(self, book_id): # pragma: no cover
         """Registers for notification of an updated book hierarchy structure.
 
         ``BookReceiver.changedChildOfBooks()`` is invoked when the
@@ -2931,7 +2931,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def reliable_book_notifications(self):
+    def reliable_book_notifications(self): # pragma: no cover
         """Reliable notifications are desired.
 
         In reliable mode, notifications are to be acknowledged using
@@ -2945,7 +2945,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def unreliable_book_notifications(self):
+    def unreliable_book_notifications(self): # pragma: no cover
         """Unreliable notifications are desired.
 
         In unreliable mode, notifications do not need to be
@@ -2959,7 +2959,7 @@ class BookNotificationSession:
         pass
 
     @abc.abstractmethod
-    def acknowledge_book_notification(self, notification_id):
+    def acknowledge_book_notification(self, notification_id): # pragma: no cover
         """Acknowledge an book notification.
 
         :param notification_id: the ``Id`` of the notification
@@ -3002,7 +3002,7 @@ class BookHierarchySession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_hierarchy_id(self):
+    def get_book_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -3017,7 +3017,7 @@ class BookHierarchySession:
     book_hierarchy_id = property(fget=get_book_hierarchy_id)
 
     @abc.abstractmethod
-    def get_book_hierarchy(self):
+    def get_book_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -3033,7 +3033,7 @@ class BookHierarchySession:
     book_hierarchy = property(fget=get_book_hierarchy)
 
     @abc.abstractmethod
-    def can_access_book_hierarchy(self):
+    def can_access_book_hierarchy(self): # pragma: no cover
         """Tests if this user can perform hierarchy queries.
 
         A return of true does not guarantee successful authorization. A
@@ -3052,7 +3052,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def use_comparative_book_view(self):
+    def use_comparative_book_view(self): # pragma: no cover
         """The returns from the book methods may omit or translate elements based on this session, such as authorization, and not result in an error.
 
         This view is used when greater interoperability is desired at
@@ -3066,7 +3066,7 @@ class BookHierarchySession:
         pass
 
     @abc.abstractmethod
-    def use_plenary_book_view(self):
+    def use_plenary_book_view(self): # pragma: no cover
         """A complete view of the ``Book`` returns is desired.
 
         Methods will return what is requested or result in an error.
@@ -3081,7 +3081,7 @@ class BookHierarchySession:
         pass
 
     @abc.abstractmethod
-    def get_root_book_ids(self):
+    def get_root_book_ids(self): # pragma: no cover
         """Gets the root book ``Ids`` in this hierarchy.
 
         :return: the root book ``Ids``
@@ -3097,7 +3097,7 @@ class BookHierarchySession:
     root_book_ids = property(fget=get_root_book_ids)
 
     @abc.abstractmethod
-    def get_root_books(self):
+    def get_root_books(self): # pragma: no cover
         """Gets the root books in the book hierarchy.
 
         A node with no parents is an orphan. While all book ``Ids`` are
@@ -3118,7 +3118,7 @@ class BookHierarchySession:
     root_books = property(fget=get_root_books)
 
     @abc.abstractmethod
-    def has_parent_books(self, book_id):
+    def has_parent_books(self, book_id): # pragma: no cover
         """Tests if the ``Book`` has any parents.
 
         :param book_id: a book ``Id``
@@ -3136,7 +3136,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_parent_of_book(self, id_, book_id):
+    def is_parent_of_book(self, id_, book_id): # pragma: no cover
         """Tests if an ``Id`` is a direct parent of book.
 
         :param id: an ``Id``
@@ -3157,7 +3157,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_book_ids(self, book_id):
+    def get_parent_book_ids(self, book_id): # pragma: no cover
         """Gets the parent ``Ids`` of the given book.
 
         :param book_id: a book ``Id``
@@ -3175,7 +3175,7 @@ class BookHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_parent_books(self, book_id):
+    def get_parent_books(self, book_id): # pragma: no cover
         """Gets the parent books of the given ``id``.
 
         :param book_id: the ``Id`` of the ``Book`` to query
@@ -3193,7 +3193,7 @@ class BookHierarchySession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def is_ancestor_of_book(self, id_, book_id):
+    def is_ancestor_of_book(self, id_, book_id): # pragma: no cover
         """Tests if an ``Id`` is an ancestor of a book.
 
         :param id: an ``Id``
@@ -3214,7 +3214,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_child_books(self, book_id):
+    def has_child_books(self, book_id): # pragma: no cover
         """Tests if a book has any children.
 
         :param book_id: a book ``Id``
@@ -3232,7 +3232,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def is_child_of_book(self, id_, book_id):
+    def is_child_of_book(self, id_, book_id): # pragma: no cover
         """Tests if a book is a direct child of another.
 
         :param id: an ``Id``
@@ -3253,7 +3253,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_book_ids(self, book_id):
+    def get_child_book_ids(self, book_id): # pragma: no cover
         """Gets the child ``Ids`` of the given book.
 
         :param book_id: the ``Id`` to query
@@ -3271,7 +3271,7 @@ class BookHierarchySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_child_books(self, book_id):
+    def get_child_books(self, book_id): # pragma: no cover
         """Gets the child books of the given ``id``.
 
         :param book_id: the ``Id`` of the ``Book`` to query
@@ -3289,7 +3289,7 @@ class BookHierarchySession:
         return  # osid.commenting.BookList
 
     @abc.abstractmethod
-    def is_descendant_of_book(self, id_, book_id):
+    def is_descendant_of_book(self, id_, book_id): # pragma: no cover
         """Tests if an ``Id`` is a descendant of a book.
 
         :param id: an ``Id``
@@ -3310,7 +3310,7 @@ class BookHierarchySession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_book_node_ids(self, book_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_book_node_ids(self, book_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given book.
 
         :param book_id: the ``Id`` to query
@@ -3334,7 +3334,7 @@ class BookHierarchySession:
         return  # osid.hierarchy.Node
 
     @abc.abstractmethod
-    def get_book_nodes(self, book_id, ancestor_levels, descendant_levels, include_siblings):
+    def get_book_nodes(self, book_id, ancestor_levels, descendant_levels, include_siblings): # pragma: no cover
         """Gets a portion of the hierarchy for the given book.
 
         :param book_id: the ``Id`` to query
@@ -3370,7 +3370,7 @@ class BookHierarchyDesignSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_hierarchy_id(self):
+    def get_book_hierarchy_id(self): # pragma: no cover
         """Gets the hierarchy ``Id`` associated with this session.
 
         :return: the hierarchy ``Id`` associated with this session
@@ -3385,7 +3385,7 @@ class BookHierarchyDesignSession:
     book_hierarchy_id = property(fget=get_book_hierarchy_id)
 
     @abc.abstractmethod
-    def get_book_hierarchy(self):
+    def get_book_hierarchy(self): # pragma: no cover
         """Gets the hierarchy associated with this session.
 
         :return: the hierarchy associated with this session
@@ -3401,7 +3401,7 @@ class BookHierarchyDesignSession:
     book_hierarchy = property(fget=get_book_hierarchy)
 
     @abc.abstractmethod
-    def can_modify_book_hierarchy(self):
+    def can_modify_book_hierarchy(self): # pragma: no cover
         """Tests if this user can change the hierarchy.
 
         A return of true does not guarantee successful authorization. A
@@ -3420,7 +3420,7 @@ class BookHierarchyDesignSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_root_book(self, book_id):
+    def add_root_book(self, book_id): # pragma: no cover
         """Adds a root book.
 
         :param book_id: the ``Id`` of a book
@@ -3437,7 +3437,7 @@ class BookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_root_book(self, book_id):
+    def remove_root_book(self, book_id): # pragma: no cover
         """Removes a root book.
 
         :param book_id: the ``Id`` of a book
@@ -3453,7 +3453,7 @@ class BookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def add_child_book(self, book_id, child_id):
+    def add_child_book(self, book_id, child_id): # pragma: no cover
         """Adds a child to a book.
 
         :param book_id: the ``Id`` of a book
@@ -3472,7 +3472,7 @@ class BookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_book(self, book_id, child_id):
+    def remove_child_book(self, book_id, child_id): # pragma: no cover
         """Removes a child from a book.
 
         :param book_id: the ``Id`` of a book
@@ -3490,7 +3490,7 @@ class BookHierarchyDesignSession:
         pass
 
     @abc.abstractmethod
-    def remove_child_books(self, book_id):
+    def remove_child_books(self, book_id): # pragma: no cover
         """Removes all children from a book.
 
         :param book_id: the ``Id`` of a book

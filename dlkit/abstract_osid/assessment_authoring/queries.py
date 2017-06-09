@@ -26,7 +26,7 @@ class AssessmentPartQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_assessment_id(self, assessment_id, match):
+    def match_assessment_id(self, assessment_id, match): # pragma: no cover
         """Sets the assessment ``Id`` for this query.
 
         :param assessment_id: an assessment ``Id``
@@ -41,7 +41,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_id_terms(self):
+    def clear_assessment_id_terms(self): # pragma: no cover
         """Clears all assessment ``Id`` terms.
 
 
@@ -54,7 +54,7 @@ class AssessmentPartQuery:
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_query(self):
+    def supports_assessment_query(self): # pragma: no cover
         """Tests if an ``AssessmentQuery`` is available.
 
         :return: ``true`` if an assessment query is available, ``false`` otherwise
@@ -67,7 +67,7 @@ class AssessmentPartQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_query(self):
+    def get_assessment_query(self): # pragma: no cover
         """Gets the query for an assessment.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -85,7 +85,7 @@ class AssessmentPartQuery:
     assessment_query = property(fget=get_assessment_query)
 
     @abc.abstractmethod
-    def clear_assessment_terms(self):
+    def clear_assessment_terms(self): # pragma: no cover
         """Clears all assessment terms.
 
 
@@ -98,7 +98,7 @@ class AssessmentPartQuery:
     assessment_terms = property(fdel=clear_assessment_terms)
 
     @abc.abstractmethod
-    def match_parent_assessment_part_id(self, assessment_part_id, match):
+    def match_parent_assessment_part_id(self, assessment_part_id, match): # pragma: no cover
         """Sets the assessment part ``Id`` for this query.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -113,7 +113,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_parent_assessment_part_id_terms(self):
+    def clear_parent_assessment_part_id_terms(self): # pragma: no cover
         """Clears all assessment part ``Id`` terms.
 
 
@@ -126,7 +126,7 @@ class AssessmentPartQuery:
     parent_assessment_part_id_terms = property(fdel=clear_parent_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def supports_parent_assessment_part_query(self):
+    def supports_parent_assessment_part_query(self): # pragma: no cover
         """Tests if an ``AssessmentPartQuery`` is available.
 
         :return: ``true`` if an assessment part query is available, ``false`` otherwise
@@ -139,7 +139,7 @@ class AssessmentPartQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_parent_assessment_part_query(self):
+    def get_parent_assessment_part_query(self): # pragma: no cover
         """Gets the query for an assessment part.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -157,7 +157,7 @@ class AssessmentPartQuery:
     parent_assessment_part_query = property(fget=get_parent_assessment_part_query)
 
     @abc.abstractmethod
-    def match_any_parent_assessment_part(self, match):
+    def match_any_parent_assessment_part(self, match): # pragma: no cover
         """Matches assessment parts with any parent assessment part.
 
         :param match: ``true`` to match assessment parts with any parent, ``false`` to match assessment parts with no parents
@@ -170,7 +170,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_parent_assessment_part_terms(self):
+    def clear_parent_assessment_part_terms(self): # pragma: no cover
         """Clears all assessment part terms.
 
 
@@ -183,7 +183,7 @@ class AssessmentPartQuery:
     parent_assessment_part_terms = property(fdel=clear_parent_assessment_part_terms)
 
     @abc.abstractmethod
-    def match_section(self, match):
+    def match_section(self, match): # pragma: no cover
         """Matches assessment parts that are also used as sections.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -196,7 +196,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_section_terms(self):
+    def clear_section_terms(self): # pragma: no cover
         """Clears all section terms.
 
 
@@ -209,7 +209,7 @@ class AssessmentPartQuery:
     section_terms = property(fdel=clear_section_terms)
 
     @abc.abstractmethod
-    def match_weight(self, low, high, match):
+    def match_weight(self, low, high, match): # pragma: no cover
         """Matches assessment parts that fall in between the given weights inclusive.
 
         :param low: low end of range
@@ -226,7 +226,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_weight(self, match):
+    def match_any_weight(self, match): # pragma: no cover
         """Matches assessment parts with any weight assigned.
 
         :param match: ``true`` to match assessment parts with any wieght, ``false`` to match assessment parts with no weight
@@ -239,7 +239,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_weight_terms(self):
+    def clear_weight_terms(self): # pragma: no cover
         """Clears all weight terms.
 
 
@@ -252,7 +252,7 @@ class AssessmentPartQuery:
     weight_terms = property(fdel=clear_weight_terms)
 
     @abc.abstractmethod
-    def match_allocated_time(self, low, high, match):
+    def match_allocated_time(self, low, high, match): # pragma: no cover
         """Matches assessment parts hose allocated time falls in between the given times inclusive.
 
         :param low: low end of range
@@ -269,7 +269,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_allocated_time(self, match):
+    def match_any_allocated_time(self, match): # pragma: no cover
         """Matches assessment parts with any time assigned.
 
         :param match: ``true`` to match assessment parts with any alloocated time, ``false`` to match assessment parts with no allocated time
@@ -282,7 +282,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_allocated_time_terms(self):
+    def clear_allocated_time_terms(self): # pragma: no cover
         """Clears all allocated time terms.
 
 
@@ -295,7 +295,7 @@ class AssessmentPartQuery:
     allocated_time_terms = property(fdel=clear_allocated_time_terms)
 
     @abc.abstractmethod
-    def match_child_assessment_part_id(self, assessment_part_id, match):
+    def match_child_assessment_part_id(self, assessment_part_id, match): # pragma: no cover
         """Sets the assessment part ``Id`` for this query.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -310,7 +310,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_child_assessment_part_id_terms(self):
+    def clear_child_assessment_part_id_terms(self): # pragma: no cover
         """Clears all assessment part ``Id`` terms.
 
 
@@ -323,7 +323,7 @@ class AssessmentPartQuery:
     child_assessment_part_id_terms = property(fdel=clear_child_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def supports_child_assessment_part_query(self):
+    def supports_child_assessment_part_query(self): # pragma: no cover
         """Tests if an ``AssessmentPartQuery`` is available.
 
         :return: ``true`` if an assessment part query is available, ``false`` otherwise
@@ -336,7 +336,7 @@ class AssessmentPartQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_child_assessment_part_query(self):
+    def get_child_assessment_part_query(self): # pragma: no cover
         """Gets the query for an assessment part.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -354,7 +354,7 @@ class AssessmentPartQuery:
     child_assessment_part_query = property(fget=get_child_assessment_part_query)
 
     @abc.abstractmethod
-    def match_any_child_assessment_part(self, match):
+    def match_any_child_assessment_part(self, match): # pragma: no cover
         """Matches assessment parts with any child assessment part.
 
         :param match: ``true`` to match assessment parts with any children, ``false`` to match assessment parts with no children
@@ -367,7 +367,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_child_assessment_part_terms(self):
+    def clear_child_assessment_part_terms(self): # pragma: no cover
         """Clears all assessment part terms.
 
 
@@ -380,7 +380,7 @@ class AssessmentPartQuery:
     child_assessment_part_terms = property(fdel=clear_child_assessment_part_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match):
+    def match_bank_id(self, bank_id, match): # pragma: no cover
         """Matches constrainers mapped to the bank.
 
         :param bank_id: the bank ``Id``
@@ -395,7 +395,7 @@ class AssessmentPartQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self):
+    def clear_bank_id_terms(self): # pragma: no cover
         """Clears the bank ``Id`` query terms.
 
 
@@ -408,7 +408,7 @@ class AssessmentPartQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self):
+    def supports_bank_query(self): # pragma: no cover
         """Tests if an ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -421,7 +421,7 @@ class AssessmentPartQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self):
+    def get_bank_query(self): # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -439,7 +439,7 @@ class AssessmentPartQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self):
+    def clear_bank_terms(self): # pragma: no cover
         """Clears the bank query terms.
 
 
@@ -452,7 +452,7 @@ class AssessmentPartQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_assessment_part_query_record(self, assessment_part_record_type):
+    def get_assessment_part_query_record(self, assessment_part_record_type): # pragma: no cover
         """Gets the assessment part query record corresponding to the given ``AssessmentPart`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -481,7 +481,7 @@ class SequenceRuleQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_assessment_part_id(self, assessment_part_id, match):
+    def match_assessment_part_id(self, assessment_part_id, match): # pragma: no cover
         """Sets the assessment part ``Id`` for this query.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -496,7 +496,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_assessment_part_id_terms(self):
+    def clear_assessment_part_id_terms(self): # pragma: no cover
         """Clears all assessment part ``Id`` terms.
 
 
@@ -509,7 +509,7 @@ class SequenceRuleQuery:
     assessment_part_id_terms = property(fdel=clear_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def supports_assessment_part_query(self):
+    def supports_assessment_part_query(self): # pragma: no cover
         """Tests if an ``AssessmentPartQuery`` is available.
 
         :return: ``true`` if an assessment part query is available, ``false`` otherwise
@@ -522,7 +522,7 @@ class SequenceRuleQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_assessment_part_query(self):
+    def get_assessment_part_query(self): # pragma: no cover
         """Gets the query for an assessment part.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -540,7 +540,7 @@ class SequenceRuleQuery:
     assessment_part_query = property(fget=get_assessment_part_query)
 
     @abc.abstractmethod
-    def clear_assessment_part_terms(self):
+    def clear_assessment_part_terms(self): # pragma: no cover
         """Clears all assessment part terms.
 
 
@@ -553,7 +553,7 @@ class SequenceRuleQuery:
     assessment_part_terms = property(fdel=clear_assessment_part_terms)
 
     @abc.abstractmethod
-    def match_next_assessment_part_id(self, assessment_part_id, match):
+    def match_next_assessment_part_id(self, assessment_part_id, match): # pragma: no cover
         """Sets the assessment part ``Id`` for this query.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -568,7 +568,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_next_assessment_part_id_terms(self):
+    def clear_next_assessment_part_id_terms(self): # pragma: no cover
         """Clears all assessment part ``Id`` terms.
 
 
@@ -581,7 +581,7 @@ class SequenceRuleQuery:
     next_assessment_part_id_terms = property(fdel=clear_next_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def supports_next_assessment_part_query(self):
+    def supports_next_assessment_part_query(self): # pragma: no cover
         """Tests if an ``AssessmentPartQuery`` is available.
 
         :return: ``true`` if an assessment part query is available, ``false`` otherwise
@@ -594,7 +594,7 @@ class SequenceRuleQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_next_assessment_part_query(self):
+    def get_next_assessment_part_query(self): # pragma: no cover
         """Gets the query for an assessment part.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -612,7 +612,7 @@ class SequenceRuleQuery:
     next_assessment_part_query = property(fget=get_next_assessment_part_query)
 
     @abc.abstractmethod
-    def clear_next_assessment_part_terms(self):
+    def clear_next_assessment_part_terms(self): # pragma: no cover
         """Clears all assessment part terms.
 
 
@@ -625,7 +625,7 @@ class SequenceRuleQuery:
     next_assessment_part_terms = property(fdel=clear_next_assessment_part_terms)
 
     @abc.abstractmethod
-    def match_minimum_score(self, low, high, match):
+    def match_minimum_score(self, low, high, match): # pragma: no cover
         """Matches minimum scores that fall in between the given scores inclusive.
 
         :param low: low end of range
@@ -642,7 +642,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_minimum_score(self, match):
+    def match_any_minimum_score(self, match): # pragma: no cover
         """Matches assessment parts with any minimum score assigned.
 
         :param match: ``true`` to match assessment parts with any minimum score, ``false`` to match assessment parts with no minimum score
@@ -655,7 +655,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_minimum_score_terms(self):
+    def clear_minimum_score_terms(self): # pragma: no cover
         """Clears all minimum score terms.
 
 
@@ -668,7 +668,7 @@ class SequenceRuleQuery:
     minimum_score_terms = property(fdel=clear_minimum_score_terms)
 
     @abc.abstractmethod
-    def match_maximum_score(self, low, high, match):
+    def match_maximum_score(self, low, high, match): # pragma: no cover
         """Matches maximum scores that fall in between the given scores inclusive.
 
         :param low: low end of range
@@ -685,7 +685,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_maximum_score(self, match):
+    def match_any_maximum_score(self, match): # pragma: no cover
         """Matches assessment parts with any maximum score assigned.
 
         :param match: ``true`` to match assessment parts with any maximum score, ``false`` to match assessment parts with no maximum score
@@ -698,7 +698,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_maximum_score_terms(self):
+    def clear_maximum_score_terms(self): # pragma: no cover
         """Clears all maximum score terms.
 
 
@@ -711,7 +711,7 @@ class SequenceRuleQuery:
     maximum_score_terms = property(fdel=clear_maximum_score_terms)
 
     @abc.abstractmethod
-    def match_cumulative(self, match):
+    def match_cumulative(self, match): # pragma: no cover
         """Matches cumulative rules.
 
         :param match: ``true`` for a positive match, ``false`` for a negative match
@@ -724,7 +724,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_cumulative_terms(self):
+    def clear_cumulative_terms(self): # pragma: no cover
         """Clears all cumulative terms.
 
 
@@ -737,7 +737,7 @@ class SequenceRuleQuery:
     cumulative_terms = property(fdel=clear_cumulative_terms)
 
     @abc.abstractmethod
-    def match_applied_assessment_part_id(self, assessment_part_id, match):
+    def match_applied_assessment_part_id(self, assessment_part_id, match): # pragma: no cover
         """Sets the assessment part ``Id`` for this query.
 
         :param assessment_part_id: an assessment part ``Id``
@@ -752,7 +752,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_applied_assessment_part_id_terms(self):
+    def clear_applied_assessment_part_id_terms(self): # pragma: no cover
         """Clears all assessment part ``Id`` terms.
 
 
@@ -765,7 +765,7 @@ class SequenceRuleQuery:
     applied_assessment_part_id_terms = property(fdel=clear_applied_assessment_part_id_terms)
 
     @abc.abstractmethod
-    def supports_applied_assessment_part_query(self):
+    def supports_applied_assessment_part_query(self): # pragma: no cover
         """Tests if an ``AssessmentPartQuery`` is available.
 
         :return: ``true`` if an assessment part query is available, ``false`` otherwise
@@ -778,7 +778,7 @@ class SequenceRuleQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_applied_assessment_part_query(self):
+    def get_applied_assessment_part_query(self): # pragma: no cover
         """Gets the query for an assessment part.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -796,7 +796,7 @@ class SequenceRuleQuery:
     applied_assessment_part_query = property(fget=get_applied_assessment_part_query)
 
     @abc.abstractmethod
-    def match_any_applied_assessment_part(self, match):
+    def match_any_applied_assessment_part(self, match): # pragma: no cover
         """Matches assessment parts with any applied assessment part.
 
         :param match: ``true`` to match assessment parts with any applied assessment part, ``false`` to match assessment parts with no applied assessment parts
@@ -809,7 +809,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_applied_assessment_part_terms(self):
+    def clear_applied_assessment_part_terms(self): # pragma: no cover
         """Clears all assessment part terms.
 
 
@@ -822,7 +822,7 @@ class SequenceRuleQuery:
     applied_assessment_part_terms = property(fdel=clear_applied_assessment_part_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match):
+    def match_bank_id(self, bank_id, match): # pragma: no cover
         """Matches constrainers mapped to the bank.
 
         :param bank_id: the bank ``Id``
@@ -837,7 +837,7 @@ class SequenceRuleQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self):
+    def clear_bank_id_terms(self): # pragma: no cover
         """Clears the bank ``Id`` query terms.
 
 
@@ -850,7 +850,7 @@ class SequenceRuleQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self):
+    def supports_bank_query(self): # pragma: no cover
         """Tests if an ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -863,7 +863,7 @@ class SequenceRuleQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self):
+    def get_bank_query(self): # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -881,7 +881,7 @@ class SequenceRuleQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self):
+    def clear_bank_terms(self): # pragma: no cover
         """Clears the bank query terms.
 
 
@@ -894,7 +894,7 @@ class SequenceRuleQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_sequence_rule_query_record(self, sequence_rule_record_type):
+    def get_sequence_rule_query_record(self, sequence_rule_record_type): # pragma: no cover
         """Gets the sequence rule query record corresponding to the given ``SequenceRule`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.
@@ -923,7 +923,7 @@ class SequenceRuleEnablerQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_ruled_sequence_rule_id(self, sequence_rule_id, match):
+    def match_ruled_sequence_rule_id(self, sequence_rule_id, match): # pragma: no cover
         """Matches enablers mapped to the sequence rule.
 
         :param sequence_rule_id: the sequence rule ``Id``
@@ -938,7 +938,7 @@ class SequenceRuleEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ruled_sequence_rule_id_terms(self):
+    def clear_ruled_sequence_rule_id_terms(self): # pragma: no cover
         """Clears the sequence rule ``Id`` query terms.
 
 
@@ -951,7 +951,7 @@ class SequenceRuleEnablerQuery:
     ruled_sequence_rule_id_terms = property(fdel=clear_ruled_sequence_rule_id_terms)
 
     @abc.abstractmethod
-    def supports_ruled_sequence_rule_query(self):
+    def supports_ruled_sequence_rule_query(self): # pragma: no cover
         """Tests if a ``SequenceRuleQuery`` is available.
 
         :return: ``true`` if a sequence rule query is available, ``false`` otherwise
@@ -964,7 +964,7 @@ class SequenceRuleEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ruled_sequence_rule_query(self):
+    def get_ruled_sequence_rule_query(self): # pragma: no cover
         """Gets the query for a sequence rule.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -982,7 +982,7 @@ class SequenceRuleEnablerQuery:
     ruled_sequence_rule_query = property(fget=get_ruled_sequence_rule_query)
 
     @abc.abstractmethod
-    def match_any_ruled_sequence_rule(self, match):
+    def match_any_ruled_sequence_rule(self, match): # pragma: no cover
         """Matches enablers mapped to any sequence rule.
 
         :param match: ``true`` for enablers mapped to any sequence rule, ``false`` to match enablers mapped to no sequence rules
@@ -995,7 +995,7 @@ class SequenceRuleEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ruled_sequence_rule_terms(self):
+    def clear_ruled_sequence_rule_terms(self): # pragma: no cover
         """Clears the sequence rule query terms.
 
 
@@ -1008,7 +1008,7 @@ class SequenceRuleEnablerQuery:
     ruled_sequence_rule_terms = property(fdel=clear_ruled_sequence_rule_terms)
 
     @abc.abstractmethod
-    def match_bank_id(self, bank_id, match):
+    def match_bank_id(self, bank_id, match): # pragma: no cover
         """Matches enablers mapped to the bank.
 
         :param bank_id: the bank ``Id``
@@ -1023,7 +1023,7 @@ class SequenceRuleEnablerQuery:
         pass
 
     @abc.abstractmethod
-    def clear_bank_id_terms(self):
+    def clear_bank_id_terms(self): # pragma: no cover
         """Clears the bank ``Id`` query terms.
 
 
@@ -1036,7 +1036,7 @@ class SequenceRuleEnablerQuery:
     bank_id_terms = property(fdel=clear_bank_id_terms)
 
     @abc.abstractmethod
-    def supports_bank_query(self):
+    def supports_bank_query(self): # pragma: no cover
         """Tests if an ``BankQuery`` is available.
 
         :return: ``true`` if a bank query is available, ``false`` otherwise
@@ -1049,7 +1049,7 @@ class SequenceRuleEnablerQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bank_query(self):
+    def get_bank_query(self): # pragma: no cover
         """Gets the query for a bank.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1067,7 +1067,7 @@ class SequenceRuleEnablerQuery:
     bank_query = property(fget=get_bank_query)
 
     @abc.abstractmethod
-    def clear_bank_terms(self):
+    def clear_bank_terms(self): # pragma: no cover
         """Clears the bank query terms.
 
 
@@ -1080,7 +1080,7 @@ class SequenceRuleEnablerQuery:
     bank_terms = property(fdel=clear_bank_terms)
 
     @abc.abstractmethod
-    def get_sequence_rule_enabler_query_record(self, sequence_rule_enabler_record_type):
+    def get_sequence_rule_enabler_query_record(self, sequence_rule_enabler_record_type): # pragma: no cover
         """Gets the sequence rule enabler query record corresponding to the given ``SequenceRuleEnabler`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

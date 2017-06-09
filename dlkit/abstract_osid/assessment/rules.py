@@ -27,7 +27,7 @@ class Response:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_item_id(self):
+    def get_item_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Item``.
 
         :return: the assessment item ``Id``
@@ -42,7 +42,7 @@ class Response:
     item_id = property(fget=get_item_id)
 
     @abc.abstractmethod
-    def get_item(self):
+    def get_item(self): # pragma: no cover
         """Gets the ``Item``.
 
         :return: the assessment item
@@ -57,7 +57,7 @@ class Response:
     item = property(fget=get_item)
 
     @abc.abstractmethod
-    def get_response_record(self, item_record_type):
+    def get_response_record(self, item_record_type): # pragma: no cover
         """Gets the response record corresponding to the given ``Item`` record ``Type``.
 
         This method is used to retrieve an object implementing the

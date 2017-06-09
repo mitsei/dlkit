@@ -21,7 +21,7 @@ class LogEntryReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_log_entries(self, notification_id, entry_ids):
+    def new_log_entries(self, notification_id, entry_ids): # pragma: no cover
         """The callback for notifications of new log entries.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class LogEntryReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_log_entries(self, notification_id, entry_ids):
+    def changed_log_entries(self, notification_id, entry_ids): # pragma: no cover
         """The callback for notifications of changed log entries.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class LogEntryReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_log_entries(self, notification_id, entry_ids):
+    def deleted_log_entries(self, notification_id, entry_ids): # pragma: no cover
         """the callback for notification of deleted log entries.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class LogReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_logs(self, notification_id, log_ids):
+    def new_logs(self, notification_id, log_ids): # pragma: no cover
         """The callback for notifications of new logs.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class LogReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_logs(self, notification_id, log_ids):
+    def changed_logs(self, notification_id, log_ids): # pragma: no cover
         """The callback for notification of updated logs.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class LogReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_logs(self, notification_id, log_ids):
+    def deleted_logs(self, notification_id, log_ids): # pragma: no cover
         """the callback for notification of deleted logs.
 
         :param notification_id: the notification ``Id``
@@ -116,7 +116,7 @@ class LogReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_logs(self, notification_id, log_ids):
+    def changed_child_of_logs(self, notification_id, log_ids): # pragma: no cover
         """The callback for notifications of changes to children of log hierarchy nodes.
 
         :param notification_id: the notification ``Id``

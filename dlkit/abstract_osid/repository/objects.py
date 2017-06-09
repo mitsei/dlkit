@@ -91,7 +91,7 @@ class Asset:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_title(self):
+    def get_title(self): # pragma: no cover
         """Gets the proper title of this asset.
 
         This may be the same as the display name or the display name may
@@ -109,7 +109,7 @@ class Asset:
     title = property(fget=get_title)
 
     @abc.abstractmethod
-    def is_copyright_status_known(self):
+    def is_copyright_status_known(self): # pragma: no cover
         """Tests if the copyright status is known.
 
         :return: ``true`` if the copyright status of this asset is known, ``false`` otherwise. If ``false, is_public_domain(),``  ``can_distribute_verbatim(), can_distribute_alterations() and
@@ -123,7 +123,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def is_public_domain(self):
+    def is_public_domain(self): # pragma: no cover
         """Tests if this asset is in the public domain.
 
         An asset is in the public domain if copyright is not applicable,
@@ -140,7 +140,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def get_copyright(self):
+    def get_copyright(self): # pragma: no cover
         """Gets the copyright statement and of this asset which identifies the current copyright holder.
 
         For an asset in the public domain, this method may return the
@@ -158,7 +158,7 @@ can_distribute_compositions()`` may also be ``false``.
     copyright_ = property(fget=get_copyright)
 
     @abc.abstractmethod
-    def get_copyright_registration(self):
+    def get_copyright_registration(self): # pragma: no cover
         """Gets the copyright registration information for this asset.
 
         :return: the copyright registration. An empty string means the registration status isn't known.
@@ -173,7 +173,7 @@ can_distribute_compositions()`` may also be ``false``.
     copyright_registration = property(fget=get_copyright_registration)
 
     @abc.abstractmethod
-    def can_distribute_verbatim(self):
+    def can_distribute_verbatim(self): # pragma: no cover
         """Tests if there are any license restrictions on this asset that restrict the distribution, re-publication or public display of this asset, commercial or otherwise, without modification, alteration, or inclusion in other works.
 
         This method is intended to offer consumers a means of filtering
@@ -194,7 +194,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def can_distribute_alterations(self):
+    def can_distribute_alterations(self): # pragma: no cover
         """Tests if there are any license restrictions on this asset that restrict the distribution, re-publication or public display of any alterations or modifications to this asset, commercial or otherwise, for any purpose.
 
         This method is intended to offer consumers a means of filtering
@@ -218,7 +218,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def can_distribute_compositions(self):
+    def can_distribute_compositions(self): # pragma: no cover
         """Tests if there are any license restrictions on this asset that restrict the distribution, re-publication or public display of this asset as an inclusion within other content or composition, commercial or otherwise, for any purpose, including restrictions upon the distribution or license of the resulting composition.
 
         This method is intended to offer consumers a means of filtering
@@ -240,7 +240,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def get_source_id(self):
+    def get_source_id(self): # pragma: no cover
         """Gets the ``Resource Id`` of the source of this asset.
 
         The source is the original owner of the copyright of this asset
@@ -270,7 +270,7 @@ can_distribute_compositions()`` may also be ``false``.
     source_id = property(fget=get_source_id)
 
     @abc.abstractmethod
-    def get_source(self):
+    def get_source(self): # pragma: no cover
         """Gets the ``Resource`` of the source of this asset.
 
         The source is the original owner of the copyright of this asset
@@ -291,7 +291,7 @@ can_distribute_compositions()`` may also be ``false``.
     source = property(fget=get_source)
 
     @abc.abstractmethod
-    def get_provider_link_ids(self):
+    def get_provider_link_ids(self): # pragma: no cover
         """Gets the resource ``Ids`` representing the source of this asset in order from the most recent provider to the originating source.
 
         :return: the provider ``Ids``
@@ -306,7 +306,7 @@ can_distribute_compositions()`` may also be ``false``.
     provider_link_ids = property(fget=get_provider_link_ids)
 
     @abc.abstractmethod
-    def get_provider_links(self):
+    def get_provider_links(self): # pragma: no cover
         """Gets the ``Resources`` representing the source of this asset in order from the most recent provider to the originating source.
 
         :return: the provider chain
@@ -321,7 +321,7 @@ can_distribute_compositions()`` may also be ``false``.
     provider_links = property(fget=get_provider_links)
 
     @abc.abstractmethod
-    def get_created_date(self):
+    def get_created_date(self): # pragma: no cover
         """Gets the created date of this asset, which is generally not related to when the object representing the asset was created.
 
         The date returned may indicate that not much is known.
@@ -338,7 +338,7 @@ can_distribute_compositions()`` may also be ``false``.
     created_date = property(fget=get_created_date)
 
     @abc.abstractmethod
-    def is_published(self):
+    def is_published(self): # pragma: no cover
         """Tests if this asset has been published.
 
         Not all assets viewable in this repository may have been
@@ -355,7 +355,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def get_published_date(self):
+    def get_published_date(self): # pragma: no cover
         """Gets the published date of this asset.
 
         Unpublished assets have no published date. A published asset has
@@ -374,7 +374,7 @@ can_distribute_compositions()`` may also be ``false``.
     published_date = property(fget=get_published_date)
 
     @abc.abstractmethod
-    def get_principal_credit_string(self):
+    def get_principal_credit_string(self): # pragma: no cover
         """Gets the credits of the principal people involved in the production of this asset as a display string.
 
         :return: the principal credits
@@ -389,7 +389,7 @@ can_distribute_compositions()`` may also be ``false``.
     principal_credit_string = property(fget=get_principal_credit_string)
 
     @abc.abstractmethod
-    def get_asset_content_ids(self):
+    def get_asset_content_ids(self): # pragma: no cover
         """Gets the content ``Ids`` of this asset.
 
         :return: the asset content ``Ids``
@@ -404,7 +404,7 @@ can_distribute_compositions()`` may also be ``false``.
     asset_content_ids = property(fget=get_asset_content_ids)
 
     @abc.abstractmethod
-    def get_asset_contents(self):
+    def get_asset_contents(self): # pragma: no cover
         """Gets the content of this asset.
 
         :return: the asset contents
@@ -419,7 +419,7 @@ can_distribute_compositions()`` may also be ``false``.
     asset_contents = property(fget=get_asset_contents)
 
     @abc.abstractmethod
-    def is_composition(self):
+    def is_composition(self): # pragma: no cover
         """Tetss if this asset is a representation of a composition of assets.
 
         :return: true if this asset is a composition, ``false`` otherwise
@@ -432,7 +432,7 @@ can_distribute_compositions()`` may also be ``false``.
         return  # boolean
 
     @abc.abstractmethod
-    def get_composition_id(self):
+    def get_composition_id(self): # pragma: no cover
         """Gets the ``Composition``  ``Id`` corresponding to this asset.
 
         :return: the composiiton ``Id``
@@ -447,7 +447,7 @@ can_distribute_compositions()`` may also be ``false``.
     composition_id = property(fget=get_composition_id)
 
     @abc.abstractmethod
-    def get_composition(self):
+    def get_composition(self): # pragma: no cover
         """Gets the Composition corresponding to this asset.
 
         :return: the composiiton
@@ -463,7 +463,7 @@ can_distribute_compositions()`` may also be ``false``.
     composition = property(fget=get_composition)
 
     @abc.abstractmethod
-    def get_asset_record(self, asset_record_type):
+    def get_asset_record(self, asset_record_type): # pragma: no cover
         """Gets the asset record corresponding to the given ``Asset`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -499,7 +499,7 @@ class AssetForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_title_metadata(self):
+    def get_title_metadata(self): # pragma: no cover
         """Gets the metadata for an asset title.
 
         :return: metadata for the title
@@ -514,7 +514,7 @@ class AssetForm:
     title_metadata = property(fget=get_title_metadata)
 
     @abc.abstractmethod
-    def set_title(self, title):
+    def set_title(self, title): # pragma: no cover
         """Sets the title.
 
         :param title: the new title
@@ -529,7 +529,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_title(self):
+    def clear_title(self): # pragma: no cover
         """Removes the title.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -542,7 +542,7 @@ class AssetForm:
     title = property(fset=set_title, fdel=clear_title)
 
     @abc.abstractmethod
-    def get_public_domain_metadata(self):
+    def get_public_domain_metadata(self): # pragma: no cover
         """Gets the metadata for the public domain flag.
 
         :return: metadata for the public domain
@@ -557,7 +557,7 @@ class AssetForm:
     public_domain_metadata = property(fget=get_public_domain_metadata)
 
     @abc.abstractmethod
-    def set_public_domain(self, public_domain):
+    def set_public_domain(self, public_domain): # pragma: no cover
         """Sets the public domain flag.
 
         :param public_domain: the public domain status
@@ -570,7 +570,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_public_domain(self):
+    def clear_public_domain(self): # pragma: no cover
         """Removes the public domain status.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -583,7 +583,7 @@ class AssetForm:
     public_domain = property(fset=set_public_domain, fdel=clear_public_domain)
 
     @abc.abstractmethod
-    def get_copyright_metadata(self):
+    def get_copyright_metadata(self): # pragma: no cover
         """Gets the metadata for the copyright.
 
         :return: metadata for the copyright
@@ -598,7 +598,7 @@ class AssetForm:
     copyright_metadata = property(fget=get_copyright_metadata)
 
     @abc.abstractmethod
-    def set_copyright(self, copyright_):
+    def set_copyright(self, copyright_): # pragma: no cover
         """Sets the copyright.
 
         :param copyright: the new copyright
@@ -613,7 +613,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_copyright(self):
+    def clear_copyright(self): # pragma: no cover
         """Removes the copyright.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -626,7 +626,7 @@ class AssetForm:
     copyright_ = property(fset=set_copyright, fdel=clear_copyright)
 
     @abc.abstractmethod
-    def get_copyright_registration_metadata(self):
+    def get_copyright_registration_metadata(self): # pragma: no cover
         """Gets the metadata for the copyright registration.
 
         :return: metadata for the copyright registration
@@ -641,7 +641,7 @@ class AssetForm:
     copyright_registration_metadata = property(fget=get_copyright_registration_metadata)
 
     @abc.abstractmethod
-    def set_copyright_registration(self, registration):
+    def set_copyright_registration(self, registration): # pragma: no cover
         """Sets the copyright registration.
 
         :param registration: the new copyright registration
@@ -656,7 +656,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_copyright_registration(self):
+    def clear_copyright_registration(self): # pragma: no cover
         """Removes the copyright registration.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -669,7 +669,7 @@ class AssetForm:
     copyright_registration = property(fset=set_copyright_registration, fdel=clear_copyright_registration)
 
     @abc.abstractmethod
-    def get_distribute_verbatim_metadata(self):
+    def get_distribute_verbatim_metadata(self): # pragma: no cover
         """Gets the metadata for the distribute verbatim rights flag.
 
         :return: metadata for the distribution rights fields
@@ -684,7 +684,7 @@ class AssetForm:
     distribute_verbatim_metadata = property(fget=get_distribute_verbatim_metadata)
 
     @abc.abstractmethod
-    def set_distribute_verbatim(self, distribute_verbatim):
+    def set_distribute_verbatim(self, distribute_verbatim): # pragma: no cover
         """Sets the distribution rights.
 
         :param distribute_verbatim: right to distribute verbatim copies
@@ -698,7 +698,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_verbatim(self):
+    def clear_distribute_verbatim(self): # pragma: no cover
         """Removes the distribution rights.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -711,7 +711,7 @@ class AssetForm:
     distribute_verbatim = property(fset=set_distribute_verbatim, fdel=clear_distribute_verbatim)
 
     @abc.abstractmethod
-    def get_distribute_alterations_metadata(self):
+    def get_distribute_alterations_metadata(self): # pragma: no cover
         """Gets the metadata for the distribute alterations rights flag.
 
         :return: metadata for the distribution rights fields
@@ -726,7 +726,7 @@ class AssetForm:
     distribute_alterations_metadata = property(fget=get_distribute_alterations_metadata)
 
     @abc.abstractmethod
-    def set_distribute_alterations(self, distribute_mods):
+    def set_distribute_alterations(self, distribute_mods): # pragma: no cover
         """Sets the distribute alterations flag.
 
         This also sets distribute verbatim to ``true``.
@@ -742,7 +742,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_alterations(self):
+    def clear_distribute_alterations(self): # pragma: no cover
         """Removes the distribution rights.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -755,7 +755,7 @@ class AssetForm:
     distribute_alterations = property(fset=set_distribute_alterations, fdel=clear_distribute_alterations)
 
     @abc.abstractmethod
-    def get_distribute_compositions_metadata(self):
+    def get_distribute_compositions_metadata(self): # pragma: no cover
         """Gets the metadata for the distribute compositions rights flag.
 
         :return: metadata for the distribution rights fields
@@ -770,7 +770,7 @@ class AssetForm:
     distribute_compositions_metadata = property(fget=get_distribute_compositions_metadata)
 
     @abc.abstractmethod
-    def set_distribute_compositions(self, distribute_comps):
+    def set_distribute_compositions(self, distribute_comps): # pragma: no cover
         """Sets the distribution rights.
 
         This sets distribute verbatim to ``true``.
@@ -786,7 +786,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_compositions(self):
+    def clear_distribute_compositions(self): # pragma: no cover
         """Removes the distribution rights.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -799,7 +799,7 @@ class AssetForm:
     distribute_compositions = property(fset=set_distribute_compositions, fdel=clear_distribute_compositions)
 
     @abc.abstractmethod
-    def get_source_metadata(self):
+    def get_source_metadata(self): # pragma: no cover
         """Gets the metadata for the source.
 
         :return: metadata for the source
@@ -814,7 +814,7 @@ class AssetForm:
     source_metadata = property(fget=get_source_metadata)
 
     @abc.abstractmethod
-    def set_source(self, source_id):
+    def set_source(self, source_id): # pragma: no cover
         """Sets the source.
 
         :param source_id: the new publisher
@@ -829,7 +829,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_source(self):
+    def clear_source(self): # pragma: no cover
         """Removes the source.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -842,7 +842,7 @@ class AssetForm:
     source = property(fset=set_source, fdel=clear_source)
 
     @abc.abstractmethod
-    def get_provider_links_metadata(self):
+    def get_provider_links_metadata(self): # pragma: no cover
         """Gets the metadata for the provider chain.
 
         :return: metadata for the provider chain
@@ -857,7 +857,7 @@ class AssetForm:
     provider_links_metadata = property(fget=get_provider_links_metadata)
 
     @abc.abstractmethod
-    def set_provider_links(self, resource_ids):
+    def set_provider_links(self, resource_ids): # pragma: no cover
         """Sets a provider chain in order from the most recent source to the originating source.
 
         :param resource_ids: the new source
@@ -872,7 +872,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_provider_links(self):
+    def clear_provider_links(self): # pragma: no cover
         """Removes the provider chain.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -885,7 +885,7 @@ class AssetForm:
     provider_links = property(fset=set_provider_links, fdel=clear_provider_links)
 
     @abc.abstractmethod
-    def get_created_date_metadata(self):
+    def get_created_date_metadata(self): # pragma: no cover
         """Gets the metadata for the asset creation date.
 
         :return: metadata for the created date
@@ -900,7 +900,7 @@ class AssetForm:
     created_date_metadata = property(fget=get_created_date_metadata)
 
     @abc.abstractmethod
-    def set_created_date(self, created_date):
+    def set_created_date(self, created_date): # pragma: no cover
         """Sets the created date.
 
         :param created_date: the new created date
@@ -915,7 +915,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_created_date(self):
+    def clear_created_date(self): # pragma: no cover
         """Removes the created date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -928,7 +928,7 @@ class AssetForm:
     created_date = property(fset=set_created_date, fdel=clear_created_date)
 
     @abc.abstractmethod
-    def get_published_metadata(self):
+    def get_published_metadata(self): # pragma: no cover
         """Gets the metadata for the published status.
 
         :return: metadata for the published field
@@ -943,7 +943,7 @@ class AssetForm:
     published_metadata = property(fget=get_published_metadata)
 
     @abc.abstractmethod
-    def set_published(self, published):
+    def set_published(self, published): # pragma: no cover
         """Sets the published status.
 
         :param published: the published status
@@ -956,7 +956,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_published(self):
+    def clear_published(self): # pragma: no cover
         """Removes the published status.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -969,7 +969,7 @@ class AssetForm:
     published = property(fset=set_published, fdel=clear_published)
 
     @abc.abstractmethod
-    def get_published_date_metadata(self):
+    def get_published_date_metadata(self): # pragma: no cover
         """Gets the metadata for the published date.
 
         :return: metadata for the published date
@@ -984,7 +984,7 @@ class AssetForm:
     published_date_metadata = property(fget=get_published_date_metadata)
 
     @abc.abstractmethod
-    def set_published_date(self, published_date):
+    def set_published_date(self, published_date): # pragma: no cover
         """Sets the published date.
 
         :param published_date: the new published date
@@ -999,7 +999,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_published_date(self):
+    def clear_published_date(self): # pragma: no cover
         """Removes the puiblished date.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1012,7 +1012,7 @@ class AssetForm:
     published_date = property(fset=set_published_date, fdel=clear_published_date)
 
     @abc.abstractmethod
-    def get_principal_credit_string_metadata(self):
+    def get_principal_credit_string_metadata(self): # pragma: no cover
         """Gets the metadata for the principal credit string.
 
         :return: metadata for the credit string
@@ -1027,7 +1027,7 @@ class AssetForm:
     principal_credit_string_metadata = property(fget=get_principal_credit_string_metadata)
 
     @abc.abstractmethod
-    def set_principal_credit_string(self, credit_string):
+    def set_principal_credit_string(self, credit_string): # pragma: no cover
         """Sets the principal credit string.
 
         :param credit_string: the new credit string
@@ -1042,7 +1042,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_principal_credit_string(self):
+    def clear_principal_credit_string(self): # pragma: no cover
         """Removes the principal credit string.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1055,7 +1055,7 @@ class AssetForm:
     principal_credit_string = property(fset=set_principal_credit_string, fdel=clear_principal_credit_string)
 
     @abc.abstractmethod
-    def get_composition_metadata(self):
+    def get_composition_metadata(self): # pragma: no cover
         """Gets the metadata for linking this asset to a composition.
 
         :return: metadata for the composition
@@ -1070,7 +1070,7 @@ class AssetForm:
     composition_metadata = property(fget=get_composition_metadata)
 
     @abc.abstractmethod
-    def set_composition(self, composition_id):
+    def set_composition(self, composition_id): # pragma: no cover
         """Sets the composition.
 
         :param composition_id: a composition
@@ -1085,7 +1085,7 @@ class AssetForm:
         pass
 
     @abc.abstractmethod
-    def clear_composition(self):
+    def clear_composition(self): # pragma: no cover
         """Removes the composition link.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1098,7 +1098,7 @@ class AssetForm:
     composition = property(fset=set_composition, fdel=clear_composition)
 
     @abc.abstractmethod
-    def get_asset_form_record(self, asset_record_type):
+    def get_asset_form_record(self, asset_record_type): # pragma: no cover
         """Gets the ``AssetFormRecord`` corresponding to the given ``Asset`` record ``Type``.
 
         :param asset_record_type: an asset record type
@@ -1129,7 +1129,7 @@ class AssetList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_asset(self):
+    def get_next_asset(self): # pragma: no cover
         """Gets the next ``Asset`` in this list.
 
         :return: the next ``Asset`` in this list. The ``has_next()`` method should be used to test that a next ``Asset`` is available before calling this method.
@@ -1145,7 +1145,7 @@ class AssetList:
     next_asset = property(fget=get_next_asset)
 
     @abc.abstractmethod
-    def get_next_assets(self, n):
+    def get_next_assets(self, n): # pragma: no cover
         """Gets the next set of ``Assets`` in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Asset`` elements requested which must be less than or equal to ``available()``
@@ -1176,7 +1176,7 @@ class AssetContent:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_asset_id(self):
+    def get_asset_id(self): # pragma: no cover
         """Gets the ``Asset Id`` corresponding to this content.
 
         :return: the asset ``Id``
@@ -1191,7 +1191,7 @@ class AssetContent:
     asset_id = property(fget=get_asset_id)
 
     @abc.abstractmethod
-    def get_asset(self):
+    def get_asset(self): # pragma: no cover
         """Gets the ``Asset`` corresponding to this content.
 
         :return: the asset
@@ -1206,7 +1206,7 @@ class AssetContent:
     asset = property(fget=get_asset)
 
     @abc.abstractmethod
-    def get_accessibility_types(self):
+    def get_accessibility_types(self): # pragma: no cover
         """Gets the accessibility types associated with this content.
 
         :return: list of content accessibility types
@@ -1221,7 +1221,7 @@ class AssetContent:
     accessibility_types = property(fget=get_accessibility_types)
 
     @abc.abstractmethod
-    def has_data_length(self):
+    def has_data_length(self): # pragma: no cover
         """Tests if a data length is available.
 
         :return: ``true`` if a length is available for this content, ``false`` otherwise.
@@ -1234,7 +1234,7 @@ class AssetContent:
         return  # boolean
 
     @abc.abstractmethod
-    def get_data_length(self):
+    def get_data_length(self): # pragma: no cover
         """Gets the length of the data represented by this content in bytes.
 
         :return: the length of the data stream
@@ -1249,7 +1249,7 @@ class AssetContent:
     data_length = property(fget=get_data_length)
 
     @abc.abstractmethod
-    def get_data(self):
+    def get_data(self): # pragma: no cover
         """Gets the asset content data.
 
         :return: the length of the content data
@@ -1264,7 +1264,7 @@ class AssetContent:
     data = property(fget=get_data)
 
     @abc.abstractmethod
-    def has_url(self):
+    def has_url(self): # pragma: no cover
         """Tests if a URL is associated with this content.
 
         :return: ``true`` if a URL is available, ``false`` otherwise
@@ -1277,7 +1277,7 @@ class AssetContent:
         return  # boolean
 
     @abc.abstractmethod
-    def get_url(self):
+    def get_url(self): # pragma: no cover
         """Gets the URL associated with this content for web-based retrieval.
 
         :return: the url for this data
@@ -1292,7 +1292,7 @@ class AssetContent:
     url = property(fget=get_url)
 
     @abc.abstractmethod
-    def get_asset_content_record(self, asset_content_content_record_type):
+    def get_asset_content_record(self, asset_content_content_record_type): # pragma: no cover
         """Gets the asset content record corresponding to the given ``AssetContent`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1328,7 +1328,7 @@ class AssetContentForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_accessibility_type_metadata(self):
+    def get_accessibility_type_metadata(self): # pragma: no cover
         """Gets the metadata for an accessibility type.
 
         :return: metadata for the accessibility types
@@ -1343,7 +1343,7 @@ class AssetContentForm:
     accessibility_type_metadata = property(fget=get_accessibility_type_metadata)
 
     @abc.abstractmethod
-    def add_accessibility_type(self, accessibility_type):
+    def add_accessibility_type(self, accessibility_type): # pragma: no cover
         """Adds an accessibility type.
 
         Multiple types can be added.
@@ -1360,7 +1360,7 @@ class AssetContentForm:
         pass
 
     @abc.abstractmethod
-    def remove_accessibility_type(self, accessibility_type):
+    def remove_accessibility_type(self, accessibility_type): # pragma: no cover
         """Removes an accessibility type.
 
         :param accessibility_type: accessibility type to remove
@@ -1375,7 +1375,7 @@ class AssetContentForm:
         pass
 
     @abc.abstractmethod
-    def clear_accessibility_types(self):
+    def clear_accessibility_types(self): # pragma: no cover
         """Removes all accessibility types.
 
         :raise: ``NoAccess`` -- ``Metadata.isReadOnly()`` is ``true``
@@ -1388,7 +1388,7 @@ class AssetContentForm:
     accessibility_types = property(fdel=clear_accessibility_types)
 
     @abc.abstractmethod
-    def get_data_metadata(self):
+    def get_data_metadata(self): # pragma: no cover
         """Gets the metadata for the content data.
 
         :return: metadata for the content data
@@ -1403,7 +1403,7 @@ class AssetContentForm:
     data_metadata = property(fget=get_data_metadata)
 
     @abc.abstractmethod
-    def set_data(self, data):
+    def set_data(self, data): # pragma: no cover
         """Sets the content data.
 
         :param data: the content data
@@ -1418,7 +1418,7 @@ class AssetContentForm:
         pass
 
     @abc.abstractmethod
-    def clear_data(self):
+    def clear_data(self): # pragma: no cover
         """Removes the content data.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1431,7 +1431,7 @@ class AssetContentForm:
     data = property(fset=set_data, fdel=clear_data)
 
     @abc.abstractmethod
-    def get_url_metadata(self):
+    def get_url_metadata(self): # pragma: no cover
         """Gets the metadata for the url.
 
         :return: metadata for the url
@@ -1446,7 +1446,7 @@ class AssetContentForm:
     url_metadata = property(fget=get_url_metadata)
 
     @abc.abstractmethod
-    def set_url(self, url):
+    def set_url(self, url): # pragma: no cover
         """Sets the url.
 
         :param url: the new copyright
@@ -1461,7 +1461,7 @@ class AssetContentForm:
         pass
 
     @abc.abstractmethod
-    def clear_url(self):
+    def clear_url(self): # pragma: no cover
         """Removes the url.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -1474,7 +1474,7 @@ class AssetContentForm:
     url = property(fset=set_url, fdel=clear_url)
 
     @abc.abstractmethod
-    def get_asset_content_form_record(self, asset_content_record_type):
+    def get_asset_content_form_record(self, asset_content_record_type): # pragma: no cover
         """Gets the ``AssetContentFormRecord`` corresponding to the given asset content record ``Type``.
 
         :param asset_content_record_type: an asset content record type
@@ -1506,7 +1506,7 @@ class AssetContentList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_asset_content(self):
+    def get_next_asset_content(self): # pragma: no cover
         """Gets the next ``AssetContent`` in this list.
 
         :return: the next ``AssetContent`` in this list. The ``has_next()`` method should be used to test that a next ``AssetContent`` is available before calling this method.
@@ -1522,7 +1522,7 @@ class AssetContentList:
     next_asset_content = property(fget=get_next_asset_content)
 
     @abc.abstractmethod
-    def get_next_asset_contents(self, n):
+    def get_next_asset_contents(self, n): # pragma: no cover
         """Gets the next set of ``AssetContents`` in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``AssetContent`` elements requested which must be less than or equal to ``available()``
@@ -1548,7 +1548,7 @@ class Composition:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_children_ids(self):
+    def get_children_ids(self): # pragma: no cover
         """Gets the child ``Ids`` of this composition.
 
         :return: the composition child ``Ids``
@@ -1563,7 +1563,7 @@ class Composition:
     children_ids = property(fget=get_children_ids)
 
     @abc.abstractmethod
-    def get_children(self):
+    def get_children(self): # pragma: no cover
         """Gets the children of this composition.
 
         :return: the composition children
@@ -1578,7 +1578,7 @@ class Composition:
     children = property(fget=get_children)
 
     @abc.abstractmethod
-    def get_composition_record(self, composition_record_type):
+    def get_composition_record(self, composition_record_type): # pragma: no cover
         """Gets the composition record corresponding to the given ``Composition`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1614,7 +1614,7 @@ class CompositionForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_composition_form_record(self, composition_record_type):
+    def get_composition_form_record(self, composition_record_type): # pragma: no cover
         """Gets the ``CompositionFormRecord`` corresponding to the given repository record ``Type``.
 
         :param composition_record_type: a composition record type
@@ -1646,7 +1646,7 @@ class CompositionList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_composition(self):
+    def get_next_composition(self): # pragma: no cover
         """Gets the next ``Composition`` in this list.
 
         :return: the next ``Composition`` in this list. The ``has_next()`` method should be used to test that a next ``Composition`` is available before calling this method.
@@ -1662,7 +1662,7 @@ class CompositionList:
     next_composition = property(fget=get_next_composition)
 
     @abc.abstractmethod
-    def get_next_compositions(self, n):
+    def get_next_compositions(self, n): # pragma: no cover
         """Gets the next set of ``Composition`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Composition`` elements requested which must be less than or equal to ``available()``
@@ -1683,7 +1683,7 @@ class Repository:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_repository_record(self, repository_record_type):
+    def get_repository_record(self, repository_record_type): # pragma: no cover
         """Gets the record corresponding to the given ``Repository`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -1719,7 +1719,7 @@ class RepositoryForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_repository_form_record(self, repository_record_type):
+    def get_repository_form_record(self, repository_record_type): # pragma: no cover
         """Gets the ``RepositoryFormRecord`` corresponding to the given repository record ``Type``.
 
         :param repository_record_type: a repository record type
@@ -1751,7 +1751,7 @@ class RepositoryList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_repository(self):
+    def get_next_repository(self): # pragma: no cover
         """Gets the next ``Repository`` in this list.
 
         :return: the next ``Repository`` in this list. The ``has_next()`` method should be used to test that a next ``Repository`` is available before calling this method.
@@ -1767,7 +1767,7 @@ class RepositoryList:
     next_repository = property(fget=get_next_repository)
 
     @abc.abstractmethod
-    def get_next_repositories(self, n):
+    def get_next_repositories(self, n): # pragma: no cover
         """Gets the next set of ``Repository`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Repository`` elements requested which must be less than or equal to ``available()``
@@ -1794,7 +1794,7 @@ class RepositoryNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_repository(self):
+    def get_repository(self): # pragma: no cover
         """Gets the ``Repository`` at this node.
 
         :return: the repository represented by this node
@@ -1809,7 +1809,7 @@ class RepositoryNode:
     repository = property(fget=get_repository)
 
     @abc.abstractmethod
-    def get_parent_repository_nodes(self):
+    def get_parent_repository_nodes(self): # pragma: no cover
         """Gets the parents of this repository.
 
         :return: the parents of the ``id``
@@ -1824,7 +1824,7 @@ class RepositoryNode:
     parent_repository_nodes = property(fget=get_parent_repository_nodes)
 
     @abc.abstractmethod
-    def get_child_repository_nodes(self):
+    def get_child_repository_nodes(self): # pragma: no cover
         """Gets the children of this repository.
 
         :return: the children of this repository
@@ -1854,7 +1854,7 @@ class RepositoryNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_repository_node(self):
+    def get_next_repository_node(self): # pragma: no cover
         """Gets the next ``RepositoryNode`` in this list.
 
         :return: the next ``RepositoryNode`` in this list. The ``has_next()`` method should be used to test that a next ``RepositoryNode`` is available before calling this method.
@@ -1870,7 +1870,7 @@ class RepositoryNodeList:
     next_repository_node = property(fget=get_next_repository_node)
 
     @abc.abstractmethod
-    def get_next_repository_nodes(self, n):
+    def get_next_repository_nodes(self, n): # pragma: no cover
         """Gets the next set of ``RepositoryNode`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``RepositoryNode`` elements requested which must be less than or equal to ``available()``

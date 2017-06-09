@@ -21,7 +21,7 @@ class ResourceProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if federation is visible.
 
         :return: ``true`` if visible federation is supported ``,``  ``false`` otherwise
@@ -34,7 +34,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_lookup(self):
+    def supports_resource_lookup(self): # pragma: no cover
         """Tests if resource lookup is supported.
 
         :return: ``true`` if resource lookup is supported ``,``  ``false`` otherwise
@@ -47,7 +47,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_query(self):
+    def supports_resource_query(self): # pragma: no cover
         """Tests if resource query is supported.
 
         :return: ``true`` if resource query is supported ``,``  ``false`` otherwise
@@ -60,7 +60,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_search(self):
+    def supports_resource_search(self): # pragma: no cover
         """Tests if resource search is supported.
 
         :return: ``true`` if resource search is supported ``,``  ``false`` otherwise
@@ -73,7 +73,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_admin(self):
+    def supports_resource_admin(self): # pragma: no cover
         """Tests if resource administration is supported.
 
         :return: ``true`` if resource administration is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_notification(self):
+    def supports_resource_notification(self): # pragma: no cover
         """Tests if resource notification is supported.
 
         Messages may be sent when resources are created, modified, or
@@ -102,7 +102,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_bin(self):
+    def supports_resource_bin(self): # pragma: no cover
         """Tests if retrieving mappings of resource and bins is supported.
 
         :return: ``true`` if resource bin mapping retrieval is supported ``,``  ``false`` otherwise
@@ -115,7 +115,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_bin_assignment(self):
+    def supports_resource_bin_assignment(self): # pragma: no cover
         """Tests if managing mappings of resource and bins is supported.
 
         :return: ``true`` if resource bin assignment is supported ``,``  ``false`` otherwise
@@ -128,7 +128,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_smart_bin(self):
+    def supports_resource_smart_bin(self): # pragma: no cover
         """Tests if resource smart bins are available.
 
         :return: ``true`` if resource smart bins are supported ``,``  ``false`` otherwise
@@ -141,7 +141,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_membership(self):
+    def supports_membership(self): # pragma: no cover
         """Tests if membership queries are supported.
 
         :return: ``true`` if membership queries are supported ``,``  ``false`` otherwise
@@ -154,7 +154,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_group(self):
+    def supports_group(self): # pragma: no cover
         """Tests if group resources are supported.
 
         :return: ``true`` if group resources are supported, ``false`` otherwise
@@ -167,7 +167,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_group_assignment(self):
+    def supports_group_assignment(self): # pragma: no cover
         """Tests if group resource assignment is supported.
 
         :return: ``true`` if group resource assignment is supported, ``false`` otherwise
@@ -180,7 +180,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_group_notification(self):
+    def supports_group_notification(self): # pragma: no cover
         """Tests if group resource notification is supported.
 
         :return: ``true`` if group resource notification is supported, ``false`` otherwise
@@ -193,7 +193,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_group_hierarchy(self):
+    def supports_group_hierarchy(self): # pragma: no cover
         """Tests if a group resource hierarchy service is supported.
 
         :return: ``true`` if group resource hierarchy is supported, ``false`` otherwise
@@ -206,7 +206,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_agent(self):
+    def supports_resource_agent(self): # pragma: no cover
         """Tests if retrieving mappings of resource and agents is supported.
 
         :return: ``true`` if resource agent mapping retrieval is supported ``,``  ``false`` otherwise
@@ -219,7 +219,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_agent_assignment(self):
+    def supports_resource_agent_assignment(self): # pragma: no cover
         """Tests if managing mappings of resources and agents is supported.
 
         :return: ``true`` if resource agent assignment is supported ``,``  ``false`` otherwise
@@ -232,7 +232,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_lookup(self):
+    def supports_resource_relationship_lookup(self): # pragma: no cover
         """Tests if looking up resource relationships is supported.
 
         :return: ``true`` if resource relationships lookup is supported, ``false`` otherwise
@@ -245,7 +245,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_query(self):
+    def supports_resource_relationship_query(self): # pragma: no cover
         """Tests if querying resource relationships is supported.
 
         :return: ``true`` if resource relationships query is supported, ``false`` otherwise
@@ -258,7 +258,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_search(self):
+    def supports_resource_relationship_search(self): # pragma: no cover
         """Tests if searching resource relationships is supported.
 
         :return: ``true`` if resource relationships search is supported, ``false`` otherwise
@@ -271,7 +271,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_admin(self):
+    def supports_resource_relationship_admin(self): # pragma: no cover
         """Tests if a resource relationshipsadministrative service is supported.
 
         :return: ``true`` if resource relationships administration is supported, ``false`` otherwise
@@ -284,7 +284,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_notification(self):
+    def supports_resource_relationship_notification(self): # pragma: no cover
         """Tests if a resource relationshipsnotification service is supported.
 
         :return: ``true`` if resource relationships notification is supported, ``false`` otherwise
@@ -297,7 +297,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_bin(self):
+    def supports_resource_relationship_bin(self): # pragma: no cover
         """Tests if retrieving mappings of resource relationships and bins is supported.
 
         :return: ``true`` if resource relationship bin mapping retrieval is supported ``,``  ``false`` otherwise
@@ -310,7 +310,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_bin_assignment(self):
+    def supports_resource_relationship_bin_assignment(self): # pragma: no cover
         """Tests if managing mappings of resource relationships and bins is supported.
 
         :return: ``true`` if resource relationship bin assignment is supported ``,``  ``false`` otherwise
@@ -323,7 +323,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_relationship_smart_bin(self):
+    def supports_resource_relationship_smart_bin(self): # pragma: no cover
         """Tests if resource relationship smart bins are available.
 
         :return: ``true`` if resource relationship smart bins are supported ``,``  ``false`` otherwise
@@ -336,7 +336,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_lookup(self):
+    def supports_bin_lookup(self): # pragma: no cover
         """Tests if bin lookup is supported.
 
         :return: ``true`` if bin lookup is supported ``,``  ``false`` otherwise
@@ -349,7 +349,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_query(self):
+    def supports_bin_query(self): # pragma: no cover
         """Tests if bin query is supported.
 
         :return: ``true`` if bin query is supported ``,``  ``false`` otherwise
@@ -362,7 +362,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_search(self):
+    def supports_bin_search(self): # pragma: no cover
         """Tests if bin search is supported.
 
         :return: ``true`` if bin search is supported ``,``  ``false`` otherwise
@@ -375,7 +375,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_admin(self):
+    def supports_bin_admin(self): # pragma: no cover
         """Tests if bin administration is supported.
 
         :return: ``true`` if bin administration is supported, ``false`` otherwise
@@ -388,7 +388,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_notification(self):
+    def supports_bin_notification(self): # pragma: no cover
         """Tests if bin notification is supported.
 
         Messages may be sent when ``Bin`` objects are created, deleted
@@ -405,7 +405,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_hierarchy(self):
+    def supports_bin_hierarchy(self): # pragma: no cover
         """Tests if a bin hierarchy traversal is supported.
 
         :return: ``true`` if a bin hierarchy traversal is supported, ``false`` otherwise
@@ -418,7 +418,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_bin_hierarchy_design(self):
+    def supports_bin_hierarchy_design(self): # pragma: no cover
         """Tests if a bin hierarchy design is supported.
 
         :return: ``true`` if a bin hierarchy design is supported, ``false`` otherwise
@@ -431,7 +431,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_batch(self):
+    def supports_resource_batch(self): # pragma: no cover
         """Tests if a resource batch service is available.
 
         :return: ``true`` if a resource batch service is available, ``false`` otherwise
@@ -444,7 +444,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_resource_demographic(self):
+    def supports_resource_demographic(self): # pragma: no cover
         """Tests if a resource demographic service is available.
 
         :return: ``true`` if a resource demographic service is available, ``false`` otherwise
@@ -457,7 +457,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_record_types(self):
+    def get_resource_record_types(self): # pragma: no cover
         """Gets all the resource record types supported.
 
         :return: the list of supported resource record types
@@ -472,7 +472,7 @@ class ResourceProfile:
     resource_record_types = property(fget=get_resource_record_types)
 
     @abc.abstractmethod
-    def supports_resource_record_type(self, resource_record_type):
+    def supports_resource_record_type(self, resource_record_type): # pragma: no cover
         """Tests if a given resource record type is supported.
 
         :param resource_record_type: the resource type
@@ -487,7 +487,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_search_record_types(self):
+    def get_resource_search_record_types(self): # pragma: no cover
         """Gets all the resource search record types supported.
 
         :return: the list of supported resource search record types
@@ -502,7 +502,7 @@ class ResourceProfile:
     resource_search_record_types = property(fget=get_resource_search_record_types)
 
     @abc.abstractmethod
-    def supports_resource_search_record_type(self, resource_search_record_type):
+    def supports_resource_search_record_type(self, resource_search_record_type): # pragma: no cover
         """Tests if a given resource search type is supported.
 
         :param resource_search_record_type: the resource search type
@@ -517,7 +517,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_record_types(self):
+    def get_resource_relationship_record_types(self): # pragma: no cover
         """Gets the supported ``ResourceRelationship`` record types.
 
         :return: a list containing the supported ``ResourceRelationship`` record types
@@ -532,7 +532,7 @@ class ResourceProfile:
     resource_relationship_record_types = property(fget=get_resource_relationship_record_types)
 
     @abc.abstractmethod
-    def supports_resource_relationship_record_type(self, resource_relationship_record_type):
+    def supports_resource_relationship_record_type(self, resource_relationship_record_type): # pragma: no cover
         """Tests if the given ``ResourceRelationship`` record type is supported.
 
         :param resource_relationship_record_type: a ``Type`` indicating a ``ResourceRelationship`` record type
@@ -547,7 +547,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_relationship_search_record_types(self):
+    def get_resource_relationship_search_record_types(self): # pragma: no cover
         """Gets the supported ``ResourceRelationship`` search record types.
 
         :return: a list containing the supported ``ResourceRelationship`` search record types
@@ -562,7 +562,7 @@ class ResourceProfile:
     resource_relationship_search_record_types = property(fget=get_resource_relationship_search_record_types)
 
     @abc.abstractmethod
-    def supports_resource_relationship_search_record_type(self, resource_relationship_search_record_type):
+    def supports_resource_relationship_search_record_type(self, resource_relationship_search_record_type): # pragma: no cover
         """Tests if the given ``ResourceRelationship`` search record type is supported.
 
         :param resource_relationship_search_record_type: a ``Type`` indicating a ``ResourceRelationship`` search record type
@@ -577,7 +577,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_record_types(self):
+    def get_bin_record_types(self): # pragma: no cover
         """Gets all the bin record types supported.
 
         :return: the list of supported bin record types
@@ -592,7 +592,7 @@ class ResourceProfile:
     bin_record_types = property(fget=get_bin_record_types)
 
     @abc.abstractmethod
-    def supports_bin_record_type(self, bin_record_type):
+    def supports_bin_record_type(self, bin_record_type): # pragma: no cover
         """Tests if a given bin record type is supported.
 
         :param bin_record_type: the bin record type
@@ -607,7 +607,7 @@ class ResourceProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_bin_search_record_types(self):
+    def get_bin_search_record_types(self): # pragma: no cover
         """Gets all the bin search record types supported.
 
         :return: the list of supported bin search record types
@@ -622,7 +622,7 @@ class ResourceProfile:
     bin_search_record_types = property(fget=get_bin_search_record_types)
 
     @abc.abstractmethod
-    def supports_bin_search_record_type(self, bin_search_record_type):
+    def supports_bin_search_record_type(self, bin_search_record_type): # pragma: no cover
         """Tests if a given bin search record type is supported.
 
         :param bin_search_record_type: the bin search record type
@@ -697,7 +697,7 @@ class ResourceManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_lookup_session(self):
+    def get_resource_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource lookup service.
 
         :return: ``a ResourceLookupSession``
@@ -714,7 +714,7 @@ class ResourceManager:
     resource_lookup_session = property(fget=get_resource_lookup_session)
 
     @abc.abstractmethod
-    def get_resource_lookup_session_for_bin(self, bin_id):
+    def get_resource_lookup_session_for_bin(self, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource lookup service for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -734,7 +734,7 @@ class ResourceManager:
         return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
-    def get_resource_query_session(self):
+    def get_resource_query_session(self): # pragma: no cover
         """Gets a resource query session.
 
         :return: ``a ResourceQuerySession``
@@ -751,7 +751,7 @@ class ResourceManager:
     resource_query_session = property(fget=get_resource_query_session)
 
     @abc.abstractmethod
-    def get_resource_query_session_for_bin(self, bin_id):
+    def get_resource_query_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource query session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -771,7 +771,7 @@ class ResourceManager:
         return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
-    def get_resource_search_session(self):
+    def get_resource_search_session(self): # pragma: no cover
         """Gets a resource search session.
 
         :return: ``a ResourceSearchSession``
@@ -788,7 +788,7 @@ class ResourceManager:
     resource_search_session = property(fget=get_resource_search_session)
 
     @abc.abstractmethod
-    def get_resource_search_session_for_bin(self, bin_id):
+    def get_resource_search_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource search session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -808,7 +808,7 @@ class ResourceManager:
         return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
-    def get_resource_admin_session(self):
+    def get_resource_admin_session(self): # pragma: no cover
         """Gets a resource administration session for creating, updating and deleting resources.
 
         :return: ``a ResourceAdminSession``
@@ -825,7 +825,7 @@ class ResourceManager:
     resource_admin_session = property(fget=get_resource_admin_session)
 
     @abc.abstractmethod
-    def get_resource_admin_session_for_bin(self, bin_id):
+    def get_resource_admin_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource administration session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -845,7 +845,7 @@ class ResourceManager:
         return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
-    def get_resource_notification_session(self, resource_receiver):
+    def get_resource_notification_session(self, resource_receiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to resource changes.
 
         :param resource_receiver: the notification callback
@@ -863,7 +863,7 @@ class ResourceManager:
         return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
-    def get_resource_notification_session_for_bin(self, resource_receiver, bin_id):
+    def get_resource_notification_session_for_bin(self, resource_receiver, bin_id): # pragma: no cover
         """Gets the resource notification session for the given bin.
 
         :param resource_receiver: the notification callback
@@ -885,7 +885,7 @@ class ResourceManager:
         return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
-    def get_resource_bin_session(self):
+    def get_resource_bin_session(self): # pragma: no cover
         """Gets the session for retrieving resource to bin mappings.
 
         :return: a ``ResourceBinSession``
@@ -902,7 +902,7 @@ class ResourceManager:
     resource_bin_session = property(fget=get_resource_bin_session)
 
     @abc.abstractmethod
-    def get_resource_bin_assignment_session(self):
+    def get_resource_bin_assignment_session(self): # pragma: no cover
         """Gets the session for assigning resource to bin mappings.
 
         :return: a ``ResourceBinAssignmentSession``
@@ -919,7 +919,7 @@ class ResourceManager:
     resource_bin_assignment_session = property(fget=get_resource_bin_assignment_session)
 
     @abc.abstractmethod
-    def get_resource_smart_bin_session(self, bin_id):
+    def get_resource_smart_bin_session(self, bin_id): # pragma: no cover
         """Gets the session for managing dynamic resource bins.
 
         :param bin_id: the ``Id`` of the bin
@@ -938,7 +938,7 @@ class ResourceManager:
         return  # osid.resource.ResourceSmartBinSession
 
     @abc.abstractmethod
-    def get_membership_session(self):
+    def get_membership_session(self): # pragma: no cover
         """Gets the session for querying memberships.
 
         :return: a ``MembershipSession``
@@ -955,7 +955,7 @@ class ResourceManager:
     membership_session = property(fget=get_membership_session)
 
     @abc.abstractmethod
-    def get_membership_session_for_bin(self, bin_id):
+    def get_membership_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource membership session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -975,7 +975,7 @@ class ResourceManager:
         return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
-    def get_group_session(self):
+    def get_group_session(self): # pragma: no cover
         """Gets the session for retrieving gropup memberships.
 
         :return: a ``GroupSession``
@@ -992,7 +992,7 @@ class ResourceManager:
     group_session = property(fget=get_group_session)
 
     @abc.abstractmethod
-    def get_group_session_for_bin(self, bin_id):
+    def get_group_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a group session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1012,7 +1012,7 @@ class ResourceManager:
         return  # osid.resource.GroupSession
 
     @abc.abstractmethod
-    def get_group_assignment_session(self):
+    def get_group_assignment_session(self): # pragma: no cover
         """Gets the session for assigning resources to groups.
 
         :return: a ``GroupAssignmentSession``
@@ -1029,7 +1029,7 @@ class ResourceManager:
     group_assignment_session = property(fget=get_group_assignment_session)
 
     @abc.abstractmethod
-    def get_group_assignment_session_for_bin(self, bin_id):
+    def get_group_assignment_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a group assignment session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1049,7 +1049,7 @@ class ResourceManager:
         return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
-    def get_group_notification_session(self, group_rceeiver):
+    def get_group_notification_session(self, group_rceeiver): # pragma: no cover
         """Gets the notification session for notifications pertaining to resource changes.
 
         :param group_rceeiver: the notification callback
@@ -1067,7 +1067,7 @@ class ResourceManager:
         return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
-    def get_group_notification_session_for_bin(self, group_rceeiver, bin_id):
+    def get_group_notification_session_for_bin(self, group_rceeiver, bin_id): # pragma: no cover
         """Gets the group notification session for the given bin.
 
         :param group_rceeiver: the notification callback
@@ -1089,7 +1089,7 @@ class ResourceManager:
         return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
-    def get_group_hierarchy_session(self):
+    def get_group_hierarchy_session(self): # pragma: no cover
         """Gets a session for retrieving gropup hierarchies.
 
         :return: ``a GroupHierarchySession``
@@ -1106,7 +1106,7 @@ class ResourceManager:
     group_hierarchy_session = property(fget=get_group_hierarchy_session)
 
     @abc.abstractmethod
-    def get_group_hierarchy_session_for_bin(self, bin_id):
+    def get_group_hierarchy_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a group hierarchy session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1126,7 +1126,7 @@ class ResourceManager:
         return  # osid.resource.GroupHierarchySession
 
     @abc.abstractmethod
-    def get_resource_agent_session(self):
+    def get_resource_agent_session(self): # pragma: no cover
         """Gets the session for retrieving resource agent mappings.
 
         :return: a ``ResourceAgentSession``
@@ -1143,7 +1143,7 @@ class ResourceManager:
     resource_agent_session = property(fget=get_resource_agent_session)
 
     @abc.abstractmethod
-    def get_resource_agent_session_for_bin(self, bin_id):
+    def get_resource_agent_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource agent session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1163,7 +1163,7 @@ class ResourceManager:
         return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
-    def get_resource_agent_assignment_session(self):
+    def get_resource_agent_assignment_session(self): # pragma: no cover
         """Gets the session for assigning agents to resources.
 
         :return: a ``ResourceAgentAssignmentSession``
@@ -1180,7 +1180,7 @@ class ResourceManager:
     resource_agent_assignment_session = property(fget=get_resource_agent_assignment_session)
 
     @abc.abstractmethod
-    def get_resource_agent_assignment_session_for_bin(self, bin_id):
+    def get_resource_agent_assignment_session_for_bin(self, bin_id): # pragma: no cover
         """Gets a resource agent session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1200,7 +1200,7 @@ class ResourceManager:
         return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
-    def get_resource_relationship_lookup_session(self):
+    def get_resource_relationship_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship lookup service.
 
         :return: a ``ResourceRelationshipLookupSession``
@@ -1217,7 +1217,7 @@ class ResourceManager:
     resource_relationship_lookup_session = property(fget=get_resource_relationship_lookup_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_lookup_session_for_bin(self, bin_id):
+    def get_resource_relationship_lookup_session_for_bin(self, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship lookup service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1237,7 +1237,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
-    def get_resource_relationship_query_session(self):
+    def get_resource_relationship_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship query service.
 
         :return: a ``ResourceRelationshipQuerySession``
@@ -1254,7 +1254,7 @@ class ResourceManager:
     resource_relationship_query_session = property(fget=get_resource_relationship_query_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_query_session_for_bin(self, bin_id):
+    def get_resource_relationship_query_session_for_bin(self, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship query service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1274,7 +1274,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
-    def get_resource_relationship_search_session(self):
+    def get_resource_relationship_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship search service.
 
         :return: a ``ResourceRelationshipSearchSession``
@@ -1291,7 +1291,7 @@ class ResourceManager:
     resource_relationship_search_session = property(fget=get_resource_relationship_search_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_search_session_for_bin(self, bin_id):
+    def get_resource_relationship_search_session_for_bin(self, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship search service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1311,7 +1311,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
-    def get_resource_relationship_admin_session(self):
+    def get_resource_relationship_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship administration service.
 
         :return: a ``ResourceRelationshipAdminSession``
@@ -1328,7 +1328,7 @@ class ResourceManager:
     resource_relationship_admin_session = property(fget=get_resource_relationship_admin_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_admin_session_for_bin(self, bin_id):
+    def get_resource_relationship_admin_session_for_bin(self, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship administration service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -1348,7 +1348,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
-    def get_resource_relationship_notification_session(self, resource_relationship_receiver):
+    def get_resource_relationship_notification_session(self, resource_relationship_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship notification service.
 
         :param resource_relationship_receiver: the notification callback
@@ -1366,7 +1366,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id):
+    def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship notification service for the given bin.
 
         :param resource_relationship_receiver: the notification callback
@@ -1388,7 +1388,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_resource_relationship_bin_session(self):
+    def get_resource_relationship_bin_session(self): # pragma: no cover
         """Gets the session for retrieving resource relationship to bin mappings.
 
         :return: a ``ResourceRelationshipBinSession``
@@ -1405,7 +1405,7 @@ class ResourceManager:
     resource_relationship_bin_session = property(fget=get_resource_relationship_bin_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_bin_assignment_session(self):
+    def get_resource_relationship_bin_assignment_session(self): # pragma: no cover
         """Gets the session for assigning resource relationships to bin mappings.
 
         :return: a ``ResourceRelationshipBinAssignmentSession``
@@ -1423,7 +1423,7 @@ class ResourceManager:
     resource_relationship_bin_assignment_session = property(fget=get_resource_relationship_bin_assignment_session)
 
     @abc.abstractmethod
-    def get_resource_relationship_smart_bin_session(self, bin_id):
+    def get_resource_relationship_smart_bin_session(self, bin_id): # pragma: no cover
         """Gets the session for managing dynamic resource relationship bins.
 
         :param bin_id: the ``Id`` of the bin
@@ -1442,7 +1442,7 @@ class ResourceManager:
         return  # osid.resource.ResourceRelationshipSmartBinSession
 
     @abc.abstractmethod
-    def get_bin_lookup_session(self):
+    def get_bin_lookup_session(self): # pragma: no cover
         """Gets the bin lookup session.
 
         :return: a ``BinLookupSession``
@@ -1459,7 +1459,7 @@ class ResourceManager:
     bin_lookup_session = property(fget=get_bin_lookup_session)
 
     @abc.abstractmethod
-    def get_bin_query_session(self):
+    def get_bin_query_session(self): # pragma: no cover
         """Gets the bin query session.
 
         :return: a ``BinQuerySession``
@@ -1476,7 +1476,7 @@ class ResourceManager:
     bin_query_session = property(fget=get_bin_query_session)
 
     @abc.abstractmethod
-    def get_bin_search_session(self):
+    def get_bin_search_session(self): # pragma: no cover
         """Gets the bin search session.
 
         :return: a ``BinSearchSession``
@@ -1493,7 +1493,7 @@ class ResourceManager:
     bin_search_session = property(fget=get_bin_search_session)
 
     @abc.abstractmethod
-    def get_bin_admin_session(self):
+    def get_bin_admin_session(self): # pragma: no cover
         """Gets the bin administrative session for creating, updating and deleteing bins.
 
         :return: a ``BinAdminSession``
@@ -1510,7 +1510,7 @@ class ResourceManager:
     bin_admin_session = property(fget=get_bin_admin_session)
 
     @abc.abstractmethod
-    def get_bin_notification_session(self, bin_receiver):
+    def get_bin_notification_session(self, bin_receiver): # pragma: no cover
         """Gets the notification session for subscribing to changes to a bin.
 
         :param bin_receiver: the notification callback
@@ -1528,7 +1528,7 @@ class ResourceManager:
         return  # osid.resource.BinNotificationSession
 
     @abc.abstractmethod
-    def get_bin_hierarchy_session(self):
+    def get_bin_hierarchy_session(self): # pragma: no cover
         """Gets the bin hierarchy traversal session.
 
         :return: ``a BinHierarchySession``
@@ -1545,7 +1545,7 @@ class ResourceManager:
     bin_hierarchy_session = property(fget=get_bin_hierarchy_session)
 
     @abc.abstractmethod
-    def get_bin_hierarchy_design_session(self):
+    def get_bin_hierarchy_design_session(self): # pragma: no cover
         """Gets the bin hierarchy design session.
 
         :return: a ``BinHierarchyDesignSession``
@@ -1562,7 +1562,7 @@ class ResourceManager:
     bin_hierarchy_design_session = property(fget=get_bin_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_resource_batch_manager(self):
+    def get_resource_batch_manager(self): # pragma: no cover
         """Gets the ``ResourceBatchManager``.
 
         :return: a ``ResourceBatchManager``
@@ -1579,7 +1579,7 @@ class ResourceManager:
     resource_batch_manager = property(fget=get_resource_batch_manager)
 
     @abc.abstractmethod
-    def get_resource_demographic_manager(self):
+    def get_resource_demographic_manager(self): # pragma: no cover
         """Gets the ``ResourceDemographicManager``.
 
         :return: a ``ResourceDemographicManager``
@@ -1657,7 +1657,7 @@ class ResourceProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_resource_lookup_session(self, proxy):
+    def get_resource_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource lookup service.
 
         :param proxy: a proxy
@@ -1675,7 +1675,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
-    def get_resource_lookup_session_for_bin(self, bin_id, proxy):
+    def get_resource_lookup_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource lookup service for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1697,7 +1697,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceLookupSession
 
     @abc.abstractmethod
-    def get_resource_query_session(self, proxy):
+    def get_resource_query_session(self, proxy): # pragma: no cover
         """Gets a resource query session.
 
         :param proxy: a proxy
@@ -1715,7 +1715,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
-    def get_resource_query_session_for_bin(self, bin_id, proxy):
+    def get_resource_query_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource query session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1737,7 +1737,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceQuerySession
 
     @abc.abstractmethod
-    def get_resource_search_session(self, proxy):
+    def get_resource_search_session(self, proxy): # pragma: no cover
         """Gets a resource search session.
 
         :param proxy: a proxy
@@ -1755,7 +1755,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
-    def get_resource_search_session_for_bin(self, bin_id, proxy):
+    def get_resource_search_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource search session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1777,7 +1777,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceSearchSession
 
     @abc.abstractmethod
-    def get_resource_admin_session(self, proxy):
+    def get_resource_admin_session(self, proxy): # pragma: no cover
         """Gets a resource administration session for creating, updating and deleting resources.
 
         :param proxy: a proxy
@@ -1795,7 +1795,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
-    def get_resource_admin_session_for_bin(self, bin_id, proxy):
+    def get_resource_admin_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource administration session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1817,7 +1817,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAdminSession
 
     @abc.abstractmethod
-    def get_resource_notification_session(self, resource_receiver, proxy):
+    def get_resource_notification_session(self, resource_receiver, proxy): # pragma: no cover
         """Gets the resource notification session for the given bin.
 
         :param resource_receiver: notification callback
@@ -1837,7 +1837,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
-    def get_resource_notification_session_for_bin(self, resource_receiver, bin_id, proxy):
+    def get_resource_notification_session_for_bin(self, resource_receiver, bin_id, proxy): # pragma: no cover
         """Gets the resource notification session for the given bin.
 
         :param resource_receiver: notification callback
@@ -1861,7 +1861,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceNotificationSession
 
     @abc.abstractmethod
-    def get_resource_bin_session(self, proxy):
+    def get_resource_bin_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving resource to bin mappings.
 
         :param proxy: a proxy
@@ -1879,7 +1879,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceBinSession
 
     @abc.abstractmethod
-    def get_resource_bin_assignment_session(self, proxy):
+    def get_resource_bin_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning resource to bin mappings.
 
         :param proxy: a proxy
@@ -1897,7 +1897,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceBinAssignmentSession
 
     @abc.abstractmethod
-    def get_resource_smart_bin_session(self, bin_id, proxy):
+    def get_resource_smart_bin_session(self, bin_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic resource bins.
 
         :param bin_id: the ``Id`` of the bin
@@ -1918,7 +1918,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceSmartBinSession
 
     @abc.abstractmethod
-    def get_membership_session(self, proxy):
+    def get_membership_session(self, proxy): # pragma: no cover
         """Gets the session for querying memberships.
 
         :param proxy: a proxy
@@ -1936,7 +1936,7 @@ class ResourceProxyManager:
         return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
-    def get_membership_session_for_bin(self, bin_id, proxy):
+    def get_membership_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource membership session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1958,7 +1958,7 @@ class ResourceProxyManager:
         return  # osid.resource.MembershipSession
 
     @abc.abstractmethod
-    def get_group_session(self, proxy):
+    def get_group_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving gropup memberships.
 
         :param proxy: a proxy
@@ -1976,7 +1976,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupSession
 
     @abc.abstractmethod
-    def get_group_session_for_bin(self, bin_id, proxy):
+    def get_group_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a group session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -1998,7 +1998,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupSession
 
     @abc.abstractmethod
-    def get_group_assignment_session(self, proxy):
+    def get_group_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning resources to groups.
 
         :param proxy: a proxy
@@ -2016,7 +2016,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
-    def get_group_assignment_session_for_bin(self, bin_id, proxy):
+    def get_group_assignment_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a group assignment session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -2038,7 +2038,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupAssignmentSession
 
     @abc.abstractmethod
-    def get_group_notification_session(self, group_rceeiver, proxy):
+    def get_group_notification_session(self, group_rceeiver, proxy): # pragma: no cover
         """Gets the notification session for notifications pertaining to resource changes.
 
         :param group_rceeiver: the notification callback
@@ -2058,7 +2058,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
-    def get_group_notification_session_for_bin(self, group_rceeiver, bin_id, proxy):
+    def get_group_notification_session_for_bin(self, group_rceeiver, bin_id, proxy): # pragma: no cover
         """Gets the group notification session for the given bin.
 
         :param group_rceeiver: the notification callback
@@ -2082,7 +2082,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupNotificationSession
 
     @abc.abstractmethod
-    def get_group_hierarchy_session(self, proxy):
+    def get_group_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the group hierarchy traversal session for the given resource group.
 
         :param proxy: a proxy
@@ -2100,7 +2100,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinHierarchySession
 
     @abc.abstractmethod
-    def get_group_hierarchy_session_for_bin(self, bin_id, proxy):
+    def get_group_hierarchy_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a group hierarchy session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -2122,7 +2122,7 @@ class ResourceProxyManager:
         return  # osid.resource.GroupHierarchySession
 
     @abc.abstractmethod
-    def get_resource_agent_session(self, proxy):
+    def get_resource_agent_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving resource agent mappings.
 
         :param proxy: a proxy
@@ -2140,7 +2140,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
-    def get_resource_agent_session_for_bin(self, bin_id, proxy):
+    def get_resource_agent_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource agent session for the given bin.
 
         :param bin_id: the ``Id`` of the bin
@@ -2162,7 +2162,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAgentSession
 
     @abc.abstractmethod
-    def get_resource_agent_assignment_session(self, proxy):
+    def get_resource_agent_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning agents to resources.
 
         :param proxy: a proxy
@@ -2180,7 +2180,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
-    def get_resource_agent_assignment_session_for_bin(self, bin_id, proxy):
+    def get_resource_agent_assignment_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets a resource agent session for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -2202,7 +2202,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceAgentAssignmentSession
 
     @abc.abstractmethod
-    def get_resource_relationship_lookup_session(self, proxy):
+    def get_resource_relationship_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship lookup service.
 
         :param proxy: a proxy
@@ -2220,7 +2220,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
-    def get_resource_relationship_lookup_session_for_bin(self, bin_id, proxy):
+    def get_resource_relationship_lookup_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship lookup service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -2242,7 +2242,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipLookupSession
 
     @abc.abstractmethod
-    def get_resource_relationship_query_session(self, proxy):
+    def get_resource_relationship_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship query service.
 
         :param proxy: a proxy
@@ -2260,7 +2260,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
-    def get_resource_relationship_query_session_for_bin(self, bin_id, proxy):
+    def get_resource_relationship_query_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship query service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -2282,7 +2282,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipQuerySession
 
     @abc.abstractmethod
-    def get_resource_relationship_search_session(self, proxy):
+    def get_resource_relationship_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship search service.
 
         :param proxy: a proxy
@@ -2300,7 +2300,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
-    def get_resource_relationship_search_session_for_bin(self, bin_id, proxy):
+    def get_resource_relationship_search_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship search service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -2322,7 +2322,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipSearchSession
 
     @abc.abstractmethod
-    def get_resource_relationship_admin_session(self, proxy):
+    def get_resource_relationship_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship administration service.
 
         :param proxy: a proxy
@@ -2340,7 +2340,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
-    def get_resource_relationship_admin_session_for_bin(self, bin_id, proxy):
+    def get_resource_relationship_admin_session_for_bin(self, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship administration service for the given bin.
 
         :param bin_id: the ``Id`` of the ``Bin``
@@ -2362,7 +2362,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipAdminSession
 
     @abc.abstractmethod
-    def get_resource_relationship_notification_session(self, resource_relationship_receiver, proxy):
+    def get_resource_relationship_notification_session(self, resource_relationship_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship notification service.
 
         :param resource_relationship_receiver: the notification callback
@@ -2382,7 +2382,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id, proxy):
+    def get_resource_relationship_notification_session_for_bin(self, resource_relationship_receiver, bin_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the resource relationship notification service for the given bin.
 
         :param resource_relationship_receiver: the notification callback
@@ -2406,7 +2406,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipNotificationSession
 
     @abc.abstractmethod
-    def get_resource_relationship_bin_session(self, proxy):
+    def get_resource_relationship_bin_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving resource relationship to bin mappings.
 
         :param proxy: a proxy
@@ -2424,7 +2424,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipBinSession
 
     @abc.abstractmethod
-    def get_resource_relationship_bin_assignment_session(self, proxy):
+    def get_resource_relationship_bin_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning resource relationship to bin mappings.
 
         :param proxy: a proxy
@@ -2443,7 +2443,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipBinAssignmentSession
 
     @abc.abstractmethod
-    def get_resource_relationship_smart_bin_session(self, bin_id, proxy):
+    def get_resource_relationship_smart_bin_session(self, bin_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic resource relationship bins.
 
         :param bin_id: the ``Id`` of the bin
@@ -2464,7 +2464,7 @@ class ResourceProxyManager:
         return  # osid.resource.ResourceRelationshipSmartBinSession
 
     @abc.abstractmethod
-    def get_bin_lookup_session(self, proxy):
+    def get_bin_lookup_session(self, proxy): # pragma: no cover
         """Gets the bin lookup session.
 
         :param proxy: a proxy
@@ -2482,7 +2482,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinLookupSession
 
     @abc.abstractmethod
-    def get_bin_query_session(self, proxy):
+    def get_bin_query_session(self, proxy): # pragma: no cover
         """Gets the bin query session.
 
         :param proxy: a proxy
@@ -2500,7 +2500,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinQuerySession
 
     @abc.abstractmethod
-    def get_bin_search_session(self, proxy):
+    def get_bin_search_session(self, proxy): # pragma: no cover
         """Gets the bin search session.
 
         :param proxy: a proxy
@@ -2518,7 +2518,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinSearchSession
 
     @abc.abstractmethod
-    def get_bin_admin_session(self, proxy):
+    def get_bin_admin_session(self, proxy): # pragma: no cover
         """Gets the bin administrative session for creating, updating and deleteing bins.
 
         :param proxy: a proxy
@@ -2536,7 +2536,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinAdminSession
 
     @abc.abstractmethod
-    def get_bin_notification_session(self, bin_receiver, proxy):
+    def get_bin_notification_session(self, bin_receiver, proxy): # pragma: no cover
         """Gets the notification session for subscribing to changes to a bin.
 
         :param bin_receiver: notification callback
@@ -2556,7 +2556,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinNotificationSession
 
     @abc.abstractmethod
-    def get_bin_hierarchy_session(self, proxy):
+    def get_bin_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the bin hierarchy traversal session.
 
         :param proxy: a proxy
@@ -2575,7 +2575,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinHierarchySession
 
     @abc.abstractmethod
-    def get_bin_hierarchy_design_session(self, proxy):
+    def get_bin_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the bin hierarchy design session.
 
         :param proxy: a proxy
@@ -2594,7 +2594,7 @@ class ResourceProxyManager:
         return  # osid.resource.BinHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_resource_batch_proxy_manager(self):
+    def get_resource_batch_proxy_manager(self): # pragma: no cover
         """Gets the ``ResourceBatchProxyManager``.
 
         :return: a ``ResourceBatchProxyManager``
@@ -2611,7 +2611,7 @@ class ResourceProxyManager:
     resource_batch_proxy_manager = property(fget=get_resource_batch_proxy_manager)
 
     @abc.abstractmethod
-    def get_resource_demographic_proxy_manager(self):
+    def get_resource_demographic_proxy_manager(self): # pragma: no cover
         """Gets the ``ResourceDemographicProxyManager``.
 
         :return: a ``ResourceDemographicProxyManager``

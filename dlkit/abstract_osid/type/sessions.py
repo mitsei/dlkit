@@ -26,7 +26,7 @@ class TypeLookupSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_lookup_types(self):
+    def can_lookup_types(self): # pragma: no cover
         """Tests if this user can perform ``Type`` lookups.
 
         A return of true does not guarantee successful authorization. A
@@ -45,7 +45,7 @@ class TypeLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_type(self, namespace, identifier, authority):
+    def get_type(self, namespace, identifier, authority): # pragma: no cover
         """Gets a ``Type`` by its string representation which is a combination of the authority and identifier.
 
         This method only returns the ``Type`` if it is known by the
@@ -70,7 +70,7 @@ class TypeLookupSession:
         return  # osid.type.Type
 
     @abc.abstractmethod
-    def has_type(self, type_):
+    def has_type(self, type_): # pragma: no cover
         """Tests if the given ``Type`` is known.
 
         :param type: the ``Type`` to look for
@@ -87,7 +87,7 @@ class TypeLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_types_by_domain(self, domain):
+    def get_types_by_domain(self, domain): # pragma: no cover
         """Gets all the known Types by domain.
 
         :param domain: the domain
@@ -104,7 +104,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_types_by_authority(self, authority):
+    def get_types_by_authority(self, authority): # pragma: no cover
         """Gets all the known Types by authority.
 
         :param authority: the authority
@@ -121,7 +121,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_types_by_domain_and_authority(self, domain, authority):
+    def get_types_by_domain_and_authority(self, domain, authority): # pragma: no cover
         """Gets all the known Types by domain and authority.
 
         :param domain: the domain
@@ -140,7 +140,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_types(self):
+    def get_types(self): # pragma: no cover
         """Gets all the known Types.
 
         :return: the list of all known ``Types``
@@ -156,7 +156,7 @@ class TypeLookupSession:
     types = property(fget=get_types)
 
     @abc.abstractmethod
-    def is_equivalent(self, type_, equivalent_type):
+    def is_equivalent(self, type_, equivalent_type): # pragma: no cover
         """Tests if the given types are equivalent.
 
         :param type: a type
@@ -175,7 +175,7 @@ class TypeLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def implies_support(self, type_, base_type):
+    def implies_support(self, type_, base_type): # pragma: no cover
         """Tests if the given type is implies support of a base type.
 
         :param type: a type
@@ -194,7 +194,7 @@ class TypeLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def has_base_type(self, type_):
+    def has_base_type(self, type_): # pragma: no cover
         """Tests if the given type is derived from a base type.
 
         :param type: a type
@@ -211,7 +211,7 @@ class TypeLookupSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_base_types(self, type_):
+    def get_base_types(self, type_): # pragma: no cover
         """Gets the immediate base types of this type.
 
         :param type: a type
@@ -228,7 +228,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_relation_types(self):
+    def get_relation_types(self): # pragma: no cover
         """Gets all known relation ``Types``.
 
         A relation Types relates two ``Types``.
@@ -246,7 +246,7 @@ class TypeLookupSession:
     relation_types = property(fget=get_relation_types)
 
     @abc.abstractmethod
-    def get_source_types_by_relation_type(self, relation_type):
+    def get_source_types_by_relation_type(self, relation_type): # pragma: no cover
         """Gets all source ``Types`` related by the given type.
 
         :param relation_type: a relation type
@@ -263,7 +263,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_destination_types_by_source(self, source_type):
+    def get_destination_types_by_source(self, source_type): # pragma: no cover
         """Gets all destination Types related to the given source ``Type``.
 
         :param source_type: a source type
@@ -280,7 +280,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_destination_types_by_source_and_relation_type(self, source_type, relation_type):
+    def get_destination_types_by_source_and_relation_type(self, source_type, relation_type): # pragma: no cover
         """Gets all destination Types related to the given source ``Type`` and relation ``Type``.
 
         :param source_type: a source type
@@ -299,7 +299,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_destination_types_by_relation_type(self, relation_type):
+    def get_destination_types_by_relation_type(self, relation_type): # pragma: no cover
         """Gets all destination ``Types`` related by the given type.
 
         :param relation_type: a relation type
@@ -316,7 +316,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_types_by_destination(self, destination_type):
+    def get_source_types_by_destination(self, destination_type): # pragma: no cover
         """Gets all source Types related to the given destination ``Type``.
 
         :param destination_type: a destination type
@@ -333,7 +333,7 @@ class TypeLookupSession:
         return  # osid.type.TypeList
 
     @abc.abstractmethod
-    def get_source_types_by_destination_and_relation_type(self, destination_type, relation_type):
+    def get_source_types_by_destination_and_relation_type(self, destination_type, relation_type): # pragma: no cover
         """Gets all source Types related to the given destination ``Type`` and relation ``Type``.
 
         :param destination_type: a destination type
@@ -357,7 +357,7 @@ class TypeAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_create_types(self):
+    def can_create_types(self): # pragma: no cover
         """Tests if this user can create ``Types``.
 
         A return of true does not guarantee successful authorization. A
@@ -376,7 +376,7 @@ class TypeAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_type_form_for_create(self, type_):
+    def get_type_form_for_create(self, type_): # pragma: no cover
         """Gets the type form for creating new types.
 
         A new form should be requested for each create transaction.
@@ -395,7 +395,7 @@ class TypeAdminSession:
         return  # osid.type.TypeForm
 
     @abc.abstractmethod
-    def create_type(self, type_form):
+    def create_type(self, type_form): # pragma: no cover
         """Creates a new ``Type``.
 
         :param type_form: the type form
@@ -415,7 +415,7 @@ class TypeAdminSession:
         return  # osid.type.Type
 
     @abc.abstractmethod
-    def can_update_types(self):
+    def can_update_types(self): # pragma: no cover
         """Tests if this user can update types.
 
         A return of true does not guarantee successful authorization. A
@@ -434,7 +434,7 @@ class TypeAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_type_form_for_update(self, type_):
+    def get_type_form_for_update(self, type_): # pragma: no cover
         """Gets the type form for creating new types.
 
         A new form should be requested for each create transaction.
@@ -454,7 +454,7 @@ class TypeAdminSession:
         return  # osid.type.TypeForm
 
     @abc.abstractmethod
-    def update_type(self, type_form):
+    def update_type(self, type_form): # pragma: no cover
         """Updates a type.
 
         :param type_form: the type form
@@ -472,7 +472,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def can_delete_types(self):
+    def can_delete_types(self): # pragma: no cover
         """Tests if this user can delete ``Types`` from this ``ItemBank``.
 
         A return of true does not guarantee successful authorization. A
@@ -491,7 +491,7 @@ class TypeAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def can_delete_type(self, type_):
+    def can_delete_type(self, type_): # pragma: no cover
         """Tests if this user can delete the specified type.
 
         A return of true does not guarantee successful authorization. A
@@ -512,7 +512,7 @@ class TypeAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def delete_type(self, type_):
+    def delete_type(self, type_): # pragma: no cover
         """Removes a ``Type``.
 
         :param type: the ``Type`` to remove
@@ -528,7 +528,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def make_equivalent(self, primary_type, equivalent_type):
+    def make_equivalent(self, primary_type, equivalent_type): # pragma: no cover
         """Makes two ``Types`` equivalent.
 
         Calls to ``TypeLookupSession.getType(equivalentType)`` return
@@ -549,7 +549,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def add_base_type(self, type_, base_type):
+    def add_base_type(self, type_, base_type): # pragma: no cover
         """Adds a base type to a type.
 
         A base type is a parent of the type where the type implies
@@ -570,7 +570,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def remove_base_type(self, type_, base_type):
+    def remove_base_type(self, type_, base_type): # pragma: no cover
         """Removes a base type from a type.
 
         :param type: a ``Type``
@@ -588,7 +588,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def add_type_relation(self, source_type, destination_type, relation_type):
+    def add_type_relation(self, source_type, destination_type, relation_type): # pragma: no cover
         """Adds a relation between two types.
 
         The relationship is a ``Type`` in itself.
@@ -610,7 +610,7 @@ class TypeAdminSession:
         pass
 
     @abc.abstractmethod
-    def remove_type_relation(self, source_type, destination_type, relation_type):
+    def remove_type_relation(self, source_type, destination_type, relation_type): # pragma: no cover
         """Renoves a relation between two types.
 
         :param source_type: the source type

@@ -21,7 +21,7 @@ class TranslationSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_language_type(self):
+    def get_source_language_type(self): # pragma: no cover
         """Gets the source language used in this session.
 
         :return: the source language
@@ -36,7 +36,7 @@ class TranslationSession:
     source_language_type = property(fget=get_source_language_type)
 
     @abc.abstractmethod
-    def get_source_script_type(self):
+    def get_source_script_type(self): # pragma: no cover
         """Gets the source script used in this session.
 
         :return: the source script
@@ -51,7 +51,7 @@ class TranslationSession:
     source_script_type = property(fget=get_source_script_type)
 
     @abc.abstractmethod
-    def get_target_language_type(self):
+    def get_target_language_type(self): # pragma: no cover
         """Gets the target language used in this session.
 
         :return: the target language
@@ -66,7 +66,7 @@ class TranslationSession:
     target_language_type = property(fget=get_target_language_type)
 
     @abc.abstractmethod
-    def get_target_script_type(self):
+    def get_target_script_type(self): # pragma: no cover
         """Gets the target script used in this session.
 
         :return: the target script
@@ -81,7 +81,7 @@ class TranslationSession:
     target_script_type = property(fget=get_target_script_type)
 
     @abc.abstractmethod
-    def can_translate(self):
+    def can_translate(self): # pragma: no cover
         """Tests if this user can perform language translations.
 
         A return of true does not guarantee successful authorization. A
@@ -100,7 +100,7 @@ class TranslationSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_translation(self, string):
+    def get_translation(self, string): # pragma: no cover
         """Translates the given string into the target language.
 
         :param string: the ``string`` to translate
@@ -118,7 +118,7 @@ class TranslationSession:
         return  # string
 
     @abc.abstractmethod
-    def translate_string(self, string, default_string):
+    def translate_string(self, string, default_string): # pragma: no cover
         """Translates the given string into the target language.
 
         :param string: the ``string`` to translate
@@ -137,7 +137,7 @@ class TranslationSession:
         return  # string
 
     @abc.abstractmethod
-    def translate_strings(self, strings, default_strings):
+    def translate_strings(self, strings, default_strings): # pragma: no cover
         """Translates the given strings into the target language.
 
         :param strings: the ``string`` to translate
@@ -161,7 +161,7 @@ class TranslationAdminSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_language_type(self):
+    def get_source_language_type(self): # pragma: no cover
         """Gets the source language used in this session.
 
         :return: the source language
@@ -176,7 +176,7 @@ class TranslationAdminSession:
     source_language_type = property(fget=get_source_language_type)
 
     @abc.abstractmethod
-    def get_source_script_type(self):
+    def get_source_script_type(self): # pragma: no cover
         """Gets the source script used in this session.
 
         :return: the source script
@@ -191,7 +191,7 @@ class TranslationAdminSession:
     source_script_type = property(fget=get_source_script_type)
 
     @abc.abstractmethod
-    def get_target_language_type(self):
+    def get_target_language_type(self): # pragma: no cover
         """Gets the target language used in this session.
 
         :return: the target language
@@ -206,7 +206,7 @@ class TranslationAdminSession:
     target_language_type = property(fget=get_target_language_type)
 
     @abc.abstractmethod
-    def get_target_script_type(self):
+    def get_target_script_type(self): # pragma: no cover
         """Gets the target script used in this session.
 
         :return: the target script
@@ -221,7 +221,7 @@ class TranslationAdminSession:
     target_script_type = property(fget=get_target_script_type)
 
     @abc.abstractmethod
-    def can_update_translation(self):
+    def can_update_translation(self): # pragma: no cover
         """Tests if this user can update localization strings.
 
         A return of true does not guarantee successful authorization. A
@@ -240,7 +240,7 @@ class TranslationAdminSession:
         return  # boolean
 
     @abc.abstractmethod
-    def add_translation(self, source_text, target_text):
+    def add_translation(self, source_text, target_text): # pragma: no cover
         """Adds or updates a string translation.
 
         :param source_text: the source ``string``
@@ -257,7 +257,7 @@ class TranslationAdminSession:
         pass
 
     @abc.abstractmethod
-    def remove_translation(self, source_text):
+    def remove_translation(self, source_text): # pragma: no cover
         """Removes a translation.
 
         :param source_text: the source ``string``
@@ -277,7 +277,7 @@ class NumericFormattingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_numeric_format_type(self):
+    def get_numeric_format_type(self): # pragma: no cover
         """Gets the numeric format type used in this session.
 
         The numeric format type indicates the format of a number used in
@@ -295,7 +295,7 @@ class NumericFormattingSession:
     numeric_format_type = property(fget=get_numeric_format_type)
 
     @abc.abstractmethod
-    def can_format_numbers(self):
+    def can_format_numbers(self): # pragma: no cover
         """Tests if this user can format and parse numbers.
 
         A return of true does not guarantee successful authorization. A
@@ -314,7 +314,7 @@ class NumericFormattingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def cardinal_to_string(self, c):
+    def cardinal_to_string(self, c): # pragma: no cover
         """Gets a string representation of a cardinal.
 
         :param c: a cardinal value
@@ -330,7 +330,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def cardinals_to_strings(self, c):
+    def cardinals_to_strings(self, c): # pragma: no cover
         """Gets a string representation of an array of cardinals.
 
         :param c: a cardinal value array
@@ -347,7 +347,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_cardinal(self, str_):
+    def string_to_cardinal(self, str_): # pragma: no cover
         """Parses a cardinal string.
 
         :param str: a cardinal string
@@ -365,7 +365,7 @@ class NumericFormattingSession:
         return  # cardinal
 
     @abc.abstractmethod
-    def decimal_to_string(self, d):
+    def decimal_to_string(self, d): # pragma: no cover
         """Gets a string representation of a decimal.
 
         :param d: a decimal value
@@ -381,7 +381,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def decimals_to_strings(self, d):
+    def decimals_to_strings(self, d): # pragma: no cover
         """Gets a string representation of an array of decimals.
 
         :param d: a decimals value array
@@ -398,7 +398,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def decimal_to_string(self, str_):
+    def decimal_to_string(self, str_): # pragma: no cover
         """Parses a decimal string.
 
         :param str: a decimal string
@@ -416,7 +416,7 @@ class NumericFormattingSession:
         return  # decimal
 
     @abc.abstractmethod
-    def integer_to_string(self, i):
+    def integer_to_string(self, i): # pragma: no cover
         """Gets a string representation of a integer.
 
         :param i: an integer value
@@ -432,7 +432,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def integers_to_strings(self, i):
+    def integers_to_strings(self, i): # pragma: no cover
         """Gets a string representation of an array of integers.
 
         :param i: an integer value array
@@ -449,7 +449,7 @@ class NumericFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def integer_to_string(self, str_):
+    def integer_to_string(self, str_): # pragma: no cover
         """Parses an integer string.
 
         :param str: an integer string
@@ -472,7 +472,7 @@ class CalendarFormattingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_calendar_type(self):
+    def get_calendar_type(self): # pragma: no cover
         """Gets the calendar type for the datetimes used in this session.
 
         :return: the calendar type
@@ -487,7 +487,7 @@ class CalendarFormattingSession:
     calendar_type = property(fget=get_calendar_type)
 
     @abc.abstractmethod
-    def get_time_type(self):
+    def get_time_type(self): # pragma: no cover
         """Gets the time type for the times used in this session.
 
         :return: the time type
@@ -502,7 +502,7 @@ class CalendarFormattingSession:
     time_type = property(fget=get_time_type)
 
     @abc.abstractmethod
-    def get_date_format_type(self):
+    def get_date_format_type(self): # pragma: no cover
         """Gets the date format type used in this session.
 
         :return: the target language
@@ -517,7 +517,7 @@ class CalendarFormattingSession:
     date_format_type = property(fget=get_date_format_type)
 
     @abc.abstractmethod
-    def get_time_format_type(self):
+    def get_time_format_type(self): # pragma: no cover
         """Gets the time format type used in this session.
 
         :return: the target script
@@ -532,7 +532,7 @@ class CalendarFormattingSession:
     time_format_type = property(fget=get_time_format_type)
 
     @abc.abstractmethod
-    def can_display_primitives(self):
+    def can_display_primitives(self): # pragma: no cover
         """Tests if this user can format and parse date times.
 
         A return of true does not guarantee successful authorization. A
@@ -551,7 +551,7 @@ class CalendarFormattingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def datetime_to_string(self, datetime):
+    def datetime_to_string(self, datetime): # pragma: no cover
         """Gets a string representation of a datetime.
 
         :param datetime: a datetime value
@@ -569,7 +569,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def datetimes_to_strings(self, datetimes):
+    def datetimes_to_strings(self, datetimes): # pragma: no cover
         """Gets a string representation of a list of datetimes.
 
         :param datetimes: a datetime value list
@@ -587,7 +587,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_date_time(self, s):
+    def string_to_date_time(self, s): # pragma: no cover
         """Parses a date time string.
 
         :param s: a datetime string
@@ -605,7 +605,7 @@ class CalendarFormattingSession:
         return  # osid.calendaring.DateTime
 
     @abc.abstractmethod
-    def time_to_string(self, time):
+    def time_to_string(self, time): # pragma: no cover
         """Gets a string representation of a time.
 
         :param time: a time value
@@ -623,7 +623,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def times_to_strings(self, times):
+    def times_to_strings(self, times): # pragma: no cover
         """Gets a string representation of a list of times.
 
         :param times: a time value list
@@ -641,7 +641,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_time(self, s):
+    def string_to_time(self, s): # pragma: no cover
         """Parses a time string.
 
         :param s: a time string
@@ -659,7 +659,7 @@ class CalendarFormattingSession:
         return  # osid.calendaring.Time
 
     @abc.abstractmethod
-    def duration_to_string(self, duration):
+    def duration_to_string(self, duration): # pragma: no cover
         """Gets a string representation of a duration.
 
         :param duration: a duration value
@@ -677,7 +677,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def durations_to_strings(self, durations):
+    def durations_to_strings(self, durations): # pragma: no cover
         """Gets a string representation of a list of durations.
 
         :param durations: a duration value list
@@ -695,7 +695,7 @@ class CalendarFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_duration(self, s):
+    def string_to_duration(self, s): # pragma: no cover
         """Parses a duration string.
 
         :param s: a duration string
@@ -718,7 +718,7 @@ class CurrencyFormattingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_currency_type(self):
+    def get_currency_type(self): # pragma: no cover
         """Gets the currency type for amounts used in this session.
 
         :return: the currency type
@@ -733,7 +733,7 @@ class CurrencyFormattingSession:
     currency_type = property(fget=get_currency_type)
 
     @abc.abstractmethod
-    def get_numeric_format_type(self):
+    def get_numeric_format_type(self): # pragma: no cover
         """Gets the numeric format type for the amounts used in this session.
 
         :return: the numeric format type
@@ -748,7 +748,7 @@ class CurrencyFormattingSession:
     numeric_format_type = property(fget=get_numeric_format_type)
 
     @abc.abstractmethod
-    def can_format_currencies(self):
+    def can_format_currencies(self): # pragma: no cover
         """Tests if this user can format and parse currencies.
 
         A return of true does not guarantee successful authorization. A
@@ -767,7 +767,7 @@ class CurrencyFormattingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def currency_to_string(self, amount):
+    def currency_to_string(self, amount): # pragma: no cover
         """Gets a string representation of a currency including the currency symbol indicated by the currency type.
 
         :param amount: a currency value
@@ -784,7 +784,7 @@ class CurrencyFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def currencies_to_strings(self, amounts):
+    def currencies_to_strings(self, amounts): # pragma: no cover
         """Gets a string representation of a list of currency amounts including the currency symbols indicated by the currency type.
 
         :param amounts: an array of amounts
@@ -802,7 +802,7 @@ class CurrencyFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_currency(self, s):
+    def string_to_currency(self, s): # pragma: no cover
         """Parses a currency amount.
 
         :param s: a currency string
@@ -825,7 +825,7 @@ class CoordinateFormattingSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_coordinate_type(self):
+    def get_coordinate_type(self): # pragma: no cover
         """Gets the coordinate type used in this session.
 
         :return: the coordinate type
@@ -840,7 +840,7 @@ class CoordinateFormattingSession:
     coordinate_type = property(fget=get_coordinate_type)
 
     @abc.abstractmethod
-    def get_coordinate_format_type(self):
+    def get_coordinate_format_type(self): # pragma: no cover
         """Gets the coordinate format type used in this session.
 
         :return: the coordinate format type
@@ -855,7 +855,7 @@ class CoordinateFormattingSession:
     coordinate_format_type = property(fget=get_coordinate_format_type)
 
     @abc.abstractmethod
-    def can_format_coordinates(self):
+    def can_format_coordinates(self): # pragma: no cover
         """Tests if this user can format and parse coordinates.
 
         A return of true does not guarantee successful authorization. A
@@ -874,7 +874,7 @@ class CoordinateFormattingSession:
         return  # boolean
 
     @abc.abstractmethod
-    def coordinate_to_string(self, coordinate):
+    def coordinate_to_string(self, coordinate): # pragma: no cover
         """Gets a string representation of a coordinate.
 
         :param coordinate: a coordinate value
@@ -892,7 +892,7 @@ class CoordinateFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def ccoordinates_to_strings(self, coordinates):
+    def ccoordinates_to_strings(self, coordinates): # pragma: no cover
         """Gets a string representation of a list of coordinates.
 
         :param coordinates: a list of coordinates
@@ -910,7 +910,7 @@ class CoordinateFormattingSession:
         return  # string
 
     @abc.abstractmethod
-    def string_to_coordinate(self, s):
+    def string_to_coordinate(self, s): # pragma: no cover
         """Parses a coordinate.
 
         :param s: a coordinate string
@@ -933,7 +933,7 @@ class UnitConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def can_convert_units(self):
+    def can_convert_units(self): # pragma: no cover
         """Tests if this user can perform unit conversions.
 
         A return of true does not guarantee successful authorization. A
@@ -952,7 +952,7 @@ class UnitConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_unit(self, source_unit, source_unit_type, target_unit_type):
+    def convert_unit(self, source_unit, source_unit_type, target_unit_type): # pragma: no cover
         """Convert a unit of measurement.
 
         :param source_unit: the measure to convert
@@ -974,7 +974,7 @@ class UnitConversionSession:
         return  # decimal
 
     @abc.abstractmethod
-    def convert_units(self, source_units, source_unit_type, target_unit_type):
+    def convert_units(self, source_units, source_unit_type, target_unit_type): # pragma: no cover
         """Convert units of measurement.
 
         :param source_units: the measures to convert
@@ -1001,7 +1001,7 @@ class CurrencyConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_currency_type(self):
+    def get_source_currency_type(self): # pragma: no cover
         """Gets the source currency type used in this session.
 
         :return: the source currency
@@ -1016,7 +1016,7 @@ class CurrencyConversionSession:
     source_currency_type = property(fget=get_source_currency_type)
 
     @abc.abstractmethod
-    def get_target_currency_type(self):
+    def get_target_currency_type(self): # pragma: no cover
         """Gets the target currency type used in this session.
 
         :return: the target currency
@@ -1031,7 +1031,7 @@ class CurrencyConversionSession:
     target_currency_type = property(fget=get_target_currency_type)
 
     @abc.abstractmethod
-    def can_convert_currency(self):
+    def can_convert_currency(self): # pragma: no cover
         """Tests if this user can perform currency conversions.
 
         A return of true does not guarantee successful authorization. A
@@ -1050,7 +1050,7 @@ class CurrencyConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_currency(self, source_currency_amount):
+    def convert_currency(self, source_currency_amount): # pragma: no cover
         """Converts currency.
 
         :param source_currency_amount: the currency amount to convert
@@ -1067,7 +1067,7 @@ class CurrencyConversionSession:
         return  # osid.financials.Currency
 
     @abc.abstractmethod
-    def convert_currencies(self, source_currency_amounts):
+    def convert_currencies(self, source_currency_amounts): # pragma: no cover
         """Converts currencies.
 
         :param source_currency_amounts: the currency amounts to convert
@@ -1090,7 +1090,7 @@ class CalendarConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_calendar_type(self):
+    def get_source_calendar_type(self): # pragma: no cover
         """Gets the source calendar type used in this session.
 
         :return: the source calendar type
@@ -1105,7 +1105,7 @@ class CalendarConversionSession:
     source_calendar_type = property(fget=get_source_calendar_type)
 
     @abc.abstractmethod
-    def get_source_time_type(self):
+    def get_source_time_type(self): # pragma: no cover
         """Gets the source time type used in this session.
 
         :return: the source time type
@@ -1120,7 +1120,7 @@ class CalendarConversionSession:
     source_time_type = property(fget=get_source_time_type)
 
     @abc.abstractmethod
-    def get_target_calendar_type(self):
+    def get_target_calendar_type(self): # pragma: no cover
         """Gets the target calendar type used in this session.
 
         :return: the target calendar
@@ -1135,7 +1135,7 @@ class CalendarConversionSession:
     target_calendar_type = property(fget=get_target_calendar_type)
 
     @abc.abstractmethod
-    def get_target_time_type(self):
+    def get_target_time_type(self): # pragma: no cover
         """Gets the target time type used in this session.
 
         :return: the target time type
@@ -1150,7 +1150,7 @@ class CalendarConversionSession:
     target_time_type = property(fget=get_target_time_type)
 
     @abc.abstractmethod
-    def can_convert_calendars(self):
+    def can_convert_calendars(self): # pragma: no cover
         """Tests if this user can perform calendar conversions.
 
         A return of true does not guarantee successful authorization. A
@@ -1169,7 +1169,7 @@ class CalendarConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_calendar(self, source_date):
+    def convert_calendar(self, source_date): # pragma: no cover
         """Converts a date.
 
         :param source_date: the date to convert
@@ -1187,7 +1187,7 @@ class CalendarConversionSession:
         return  # osid.calendaring.DateTime
 
     @abc.abstractmethod
-    def convert_calendars(self, source_date_list):
+    def convert_calendars(self, source_date_list): # pragma: no cover
         """Converts dates.
 
         :param source_date_list: the dates to convert
@@ -1210,7 +1210,7 @@ class CoordinateConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_coordinate_type(self):
+    def get_source_coordinate_type(self): # pragma: no cover
         """Gets the source coordinate type used in this session.
 
         :return: the source coordinate type
@@ -1225,7 +1225,7 @@ class CoordinateConversionSession:
     source_coordinate_type = property(fget=get_source_coordinate_type)
 
     @abc.abstractmethod
-    def get_target_coordinate_type(self):
+    def get_target_coordinate_type(self): # pragma: no cover
         """Gets the target coordinate type used in this session.
 
         :return: the target coordinate type
@@ -1240,7 +1240,7 @@ class CoordinateConversionSession:
     target_coordinate_type = property(fget=get_target_coordinate_type)
 
     @abc.abstractmethod
-    def can_convert_coordinates(self):
+    def can_convert_coordinates(self): # pragma: no cover
         """Tests if this user can perform coordinate conversions.
 
         A return of true does not guarantee successful authorization. A
@@ -1259,7 +1259,7 @@ class CoordinateConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_coordinate(self, source_coordinate):
+    def convert_coordinate(self, source_coordinate): # pragma: no cover
         """Converts a coordinate.
 
         :param source_coordinate: the coordinate to convert
@@ -1277,7 +1277,7 @@ class CoordinateConversionSession:
         return  # osid.mapping.Coordinate
 
     @abc.abstractmethod
-    def convert_coordinates(self, source_coordinate_list):
+    def convert_coordinates(self, source_coordinate_list): # pragma: no cover
         """Converts coordinates.
 
         :param source_coordinate_list: the coordinates to convert
@@ -1300,7 +1300,7 @@ class SpatialUnitConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_spatial_unit_record_type(self):
+    def get_source_spatial_unit_record_type(self): # pragma: no cover
         """Gets the source spatial unit record type used in this session.
 
         :return: the source spatial unit record type
@@ -1315,7 +1315,7 @@ class SpatialUnitConversionSession:
     source_spatial_unit_record_type = property(fget=get_source_spatial_unit_record_type)
 
     @abc.abstractmethod
-    def get_target_spatial_unit_record_type(self):
+    def get_target_spatial_unit_record_type(self): # pragma: no cover
         """Gets the target spatial unit record type used in this session.
 
         :return: the target spatial unit record type
@@ -1330,7 +1330,7 @@ class SpatialUnitConversionSession:
     target_spatial_unit_record_type = property(fget=get_target_spatial_unit_record_type)
 
     @abc.abstractmethod
-    def can_convert_spatial_units(self):
+    def can_convert_spatial_units(self): # pragma: no cover
         """Tests if this user can perform spatial unit conversions.
 
         A return of true does not guarantee successful authorization. A
@@ -1349,7 +1349,7 @@ class SpatialUnitConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_spatial_unit(self, source_spatial_unit):
+    def convert_spatial_unit(self, source_spatial_unit): # pragma: no cover
         """Converts a spatial unit.
 
         :param source_spatial_unit: the spatial unit to convert
@@ -1367,7 +1367,7 @@ class SpatialUnitConversionSession:
         return  # osid.mapping.SpatialUnit
 
     @abc.abstractmethod
-    def convert_spatial_units(self, source_spatial_unit_list):
+    def convert_spatial_units(self, source_spatial_unit_list): # pragma: no cover
         """Converts spatial units.
 
         :param source_spatial_unit_list: the spatial units to convert
@@ -1390,7 +1390,7 @@ class FormatConversionSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_source_format_type(self):
+    def get_source_format_type(self): # pragma: no cover
         """Gets the source format type used in this session.
 
         :return: the source text format type
@@ -1405,7 +1405,7 @@ class FormatConversionSession:
     source_format_type = property(fget=get_source_format_type)
 
     @abc.abstractmethod
-    def get_target_format_type(self):
+    def get_target_format_type(self): # pragma: no cover
         """Gets the target format type used in this session.
 
         :return: the target text formattype
@@ -1420,7 +1420,7 @@ class FormatConversionSession:
     target_format_type = property(fget=get_target_format_type)
 
     @abc.abstractmethod
-    def can_convert_formats(self):
+    def can_convert_formats(self): # pragma: no cover
         """Tests if this user can perform text format.
 
         A return of true does not guarantee successful authorization. A
@@ -1439,7 +1439,7 @@ class FormatConversionSession:
         return  # boolean
 
     @abc.abstractmethod
-    def convert_format(self, source_text):
+    def convert_format(self, source_text): # pragma: no cover
         """Converts a format.
 
         :param source_text: the string to convert
@@ -1457,7 +1457,7 @@ class FormatConversionSession:
         return  # string
 
     @abc.abstractmethod
-    def convert_formats(self, source_texts):
+    def convert_formats(self, source_texts): # pragma: no cover
         """Converts formats.
 
         :param source_texts: the strings to convert
@@ -1480,7 +1480,7 @@ class CalendarInfoSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_calendar_type(self):
+    def get_calendar_type(self): # pragma: no cover
         """Gets the calendar type for the calendar system informational methods in this session.
 
         :return: the calendar type
@@ -1495,7 +1495,7 @@ class CalendarInfoSession:
     calendar_type = property(fget=get_calendar_type)
 
     @abc.abstractmethod
-    def get_time_type(self):
+    def get_time_type(self): # pragma: no cover
         """Gets the time system type for the time system informational methods in this session.
 
         :return: the time type
@@ -1510,7 +1510,7 @@ class CalendarInfoSession:
     time_type = property(fget=get_time_type)
 
     @abc.abstractmethod
-    def can_examine_calendars(self):
+    def can_examine_calendars(self): # pragma: no cover
         """Tests if this user can perform calendar inspections.
 
         A return of true does not guarantee successful authorization. A
@@ -1529,7 +1529,7 @@ class CalendarInfoSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_calendar_info(self):
+    def get_calendar_info(self): # pragma: no cover
         """Gets information about the calendar.
 
         :return: calendar information
@@ -1545,7 +1545,7 @@ class CalendarInfoSession:
     calendar_info = property(fget=get_calendar_info)
 
     @abc.abstractmethod
-    def get_time_info(self):
+    def get_time_info(self): # pragma: no cover
         """Gets information about the time system.
 
         :return: time information

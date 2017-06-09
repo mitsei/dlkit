@@ -21,7 +21,7 @@ class ItemSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_items(self, item_ids):
+    def search_among_items(self, item_ids): # pragma: no cover
         """Execute this search among the given list of items.
 
         :param item_ids: list of items
@@ -34,7 +34,7 @@ class ItemSearch:
         pass
 
     @abc.abstractmethod
-    def order_item_results(self, item_search_order):
+    def order_item_results(self, item_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param item_search_order: item search order
@@ -48,7 +48,7 @@ class ItemSearch:
         pass
 
     @abc.abstractmethod
-    def get_item_search_record(self, item_search_record_type):
+    def get_item_search_record(self, item_search_record_type): # pragma: no cover
         """Gets the item search record corresponding to the given item search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class ItemSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_items(self):
+    def get_items(self): # pragma: no cover
         """Gets the item list resulting from the search.
 
         :return: the item list
@@ -88,7 +88,7 @@ class ItemSearchResults:
     items = property(fget=get_items)
 
     @abc.abstractmethod
-    def get_item_query_inspector(self):
+    def get_item_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -103,7 +103,7 @@ class ItemSearchResults:
     item_query_inspector = property(fget=get_item_query_inspector)
 
     @abc.abstractmethod
-    def get_item_search_results_record(self, item_search_record_type):
+    def get_item_search_results_record(self, item_search_record_type): # pragma: no cover
         """Gets the record corresponding to the given item search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class AssessmentSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_assessments(self, assessment_ids):
+    def search_among_assessments(self, assessment_ids): # pragma: no cover
         """Execute this search among the given list of assessments.
 
         :param assessment_ids: list of assessments
@@ -141,7 +141,7 @@ class AssessmentSearch:
         pass
 
     @abc.abstractmethod
-    def order_assessment_results(self, assessment_search_order):
+    def order_assessment_results(self, assessment_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param assessment_search_order: assessment search order
@@ -155,7 +155,7 @@ class AssessmentSearch:
         pass
 
     @abc.abstractmethod
-    def get_assessment_search_record(self, assessment_search_record_type):
+    def get_assessment_search_record(self, assessment_search_record_type): # pragma: no cover
         """Gets the assessment search record corresponding to the given assessment search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class AssessmentSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessments(self):
+    def get_assessments(self): # pragma: no cover
         """Gets the assessment list resulting from the search.
 
         :return: the assessment list
@@ -195,7 +195,7 @@ class AssessmentSearchResults:
     assessments = property(fget=get_assessments)
 
     @abc.abstractmethod
-    def get_assessment_query_inspector(self):
+    def get_assessment_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -210,7 +210,7 @@ class AssessmentSearchResults:
     assessment_query_inspector = property(fget=get_assessment_query_inspector)
 
     @abc.abstractmethod
-    def get_assessment_search_results_record(self, assessment_search_record_type):
+    def get_assessment_search_results_record(self, assessment_search_record_type): # pragma: no cover
         """Gets the assessment search order record corresponding to the given assessment search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -235,7 +235,7 @@ class AssessmentOfferedSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_assessments_offered(self, assessment_offrered_ids):
+    def search_among_assessments_offered(self, assessment_offrered_ids): # pragma: no cover
         """Execute this search among the given list of assessments.
 
         :param assessment_offrered_ids: list of assessments offered
@@ -248,7 +248,7 @@ class AssessmentOfferedSearch:
         pass
 
     @abc.abstractmethod
-    def order_assessment_offered_results(self, assessment_offered_search_order):
+    def order_assessment_offered_results(self, assessment_offered_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param assessment_offered_search_order: assessment offered search order
@@ -262,7 +262,7 @@ class AssessmentOfferedSearch:
         pass
 
     @abc.abstractmethod
-    def get_assessment_offered_search_record(self, assessment_offered_search_record_type):
+    def get_assessment_offered_search_record(self, assessment_offered_search_record_type): # pragma: no cover
         """Gets the assessment search record corresponding to the given assessment offered search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -287,7 +287,7 @@ class AssessmentOfferedSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessments_offered(self):
+    def get_assessments_offered(self): # pragma: no cover
         """Gets the assessment offered list resulting from the search.
 
         :return: the assessment offered list
@@ -302,7 +302,7 @@ class AssessmentOfferedSearchResults:
     assessments_offered = property(fget=get_assessments_offered)
 
     @abc.abstractmethod
-    def get_assessment_offered_query_inspector(self):
+    def get_assessment_offered_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -317,7 +317,7 @@ class AssessmentOfferedSearchResults:
     assessment_offered_query_inspector = property(fget=get_assessment_offered_query_inspector)
 
     @abc.abstractmethod
-    def get_assessment_offered_search_results_record(self, assessment_offered_search_record_type):
+    def get_assessment_offered_search_results_record(self, assessment_offered_search_record_type): # pragma: no cover
         """Gets the assessment offered search results record corresponding to the given assessment offered search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -342,7 +342,7 @@ class AssessmentTakenSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_assessments_taken(self, assessment_taken_ids):
+    def search_among_assessments_taken(self, assessment_taken_ids): # pragma: no cover
         """Execute this search among the given list of assessments.
 
         :param assessment_taken_ids: list of assessments taken
@@ -355,7 +355,7 @@ class AssessmentTakenSearch:
         pass
 
     @abc.abstractmethod
-    def order_assessment_taken_results(self, assessment_taken_search_order):
+    def order_assessment_taken_results(self, assessment_taken_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param assessment_taken_search_order: assessment offered search order
@@ -369,7 +369,7 @@ class AssessmentTakenSearch:
         pass
 
     @abc.abstractmethod
-    def get_assessment_taken_search_record(self, assessment_taken_search_record_type):
+    def get_assessment_taken_search_record(self, assessment_taken_search_record_type): # pragma: no cover
         """Gets the assessment taken search record corresponding to the given assessment taken search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -394,7 +394,7 @@ class AssessmentTakenSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_assessments_taken(self):
+    def get_assessments_taken(self): # pragma: no cover
         """Gets the assessment taken list resulting from the search.
 
         :return: the assessment taken list
@@ -409,7 +409,7 @@ class AssessmentTakenSearchResults:
     assessments_taken = property(fget=get_assessments_taken)
 
     @abc.abstractmethod
-    def get_assessment_taken_query_inspector(self):
+    def get_assessment_taken_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -424,7 +424,7 @@ class AssessmentTakenSearchResults:
     assessment_taken_query_inspector = property(fget=get_assessment_taken_query_inspector)
 
     @abc.abstractmethod
-    def get_assessment_taken_search_results_record(self, assessment_taken_search_record_type):
+    def get_assessment_taken_search_results_record(self, assessment_taken_search_record_type): # pragma: no cover
         """Gets the assessment taken record corresponding to the given assessment taken search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -449,7 +449,7 @@ class BankSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_banks(self, bank_ids):
+    def search_among_banks(self, bank_ids): # pragma: no cover
         """Execute this search among the given list of banks.
 
         :param bank_ids: list of banks
@@ -462,7 +462,7 @@ class BankSearch:
         pass
 
     @abc.abstractmethod
-    def order_bank_results(self, bank_search_order):
+    def order_bank_results(self, bank_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param bank_search_order: bank search order
@@ -476,7 +476,7 @@ class BankSearch:
         pass
 
     @abc.abstractmethod
-    def get_bank_search_record(self, bank_search_record_type):
+    def get_bank_search_record(self, bank_search_record_type): # pragma: no cover
         """Gets the bank search record corresponding to the given bank search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -501,7 +501,7 @@ class BankSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_banks(self):
+    def get_banks(self): # pragma: no cover
         """Gets the bank list resulting from a search.
 
         :return: the bank list
@@ -516,7 +516,7 @@ class BankSearchResults:
     banks = property(fget=get_banks)
 
     @abc.abstractmethod
-    def get_bank_query_inspector(self):
+    def get_bank_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terms used in the search.
 
         :return: the query inspector
@@ -531,7 +531,7 @@ class BankSearchResults:
     bank_query_inspector = property(fget=get_bank_query_inspector)
 
     @abc.abstractmethod
-    def get_bank_search_results_record(self, bank_search_record_type):
+    def get_bank_search_results_record(self, bank_search_record_type): # pragma: no cover
         """Gets the bank search results record corresponding to the given bank search record ``Type``.
 
         This method is used to retrieve an object implementing the

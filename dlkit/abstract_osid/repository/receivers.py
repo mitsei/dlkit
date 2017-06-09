@@ -21,7 +21,7 @@ class AssetReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_assets(self, notification_id, asset_ids):
+    def new_assets(self, notification_id, asset_ids): # pragma: no cover
         """The callback for notifications of new assets.
 
         :param notification_id: the notification ``Id``
@@ -36,7 +36,7 @@ class AssetReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_assets(self, notification_id, asset_ids):
+    def changed_assets(self, notification_id, asset_ids): # pragma: no cover
         """The callback for notification of updated assets.
 
         :param notification_id: the notification ``Id``
@@ -51,7 +51,7 @@ class AssetReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_assets(self, notification_id, asset_ids):
+    def deleted_assets(self, notification_id, asset_ids): # pragma: no cover
         """the callback for notification of deleted assets.
 
         :param notification_id: the notification ``Id``
@@ -71,7 +71,7 @@ class CompositionReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_compositions(self, notification_id, composition_ids):
+    def new_compositions(self, notification_id, composition_ids): # pragma: no cover
         """The callback for notifications of new compositions.
 
         :param notification_id: the notification ``Id``
@@ -86,7 +86,7 @@ class CompositionReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_compositions(self, notification_id, composition_ids):
+    def changed_compositions(self, notification_id, composition_ids): # pragma: no cover
         """The callback for notification of updated compositions.
 
         :param notification_id: the notification ``Id``
@@ -101,7 +101,7 @@ class CompositionReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_compositions(self, notification_id, composition_ids):
+    def deleted_compositions(self, notification_id, composition_ids): # pragma: no cover
         """the callback for notification of deleted compositions.
 
         :param notification_id: the notification ``Id``
@@ -121,7 +121,7 @@ class RepositoryReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_repositories(self, notification_id, repository_ids):
+    def new_repositories(self, notification_id, repository_ids): # pragma: no cover
         """The callback for notifications of new repositories.
 
         :param notification_id: the notification ``Id``
@@ -136,7 +136,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def new_ancestor_repository(self, repository_id, ancestor_id):
+    def new_ancestor_repository(self, repository_id, ancestor_id): # pragma: no cover
         """The callback for notifications of new repository ancestors.
 
         :param repository_id: the ``Id`` of the ``Repository``
@@ -151,7 +151,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def new_descendant_repository(self, repository_id, descendant_id):
+    def new_descendant_repository(self, repository_id, descendant_id): # pragma: no cover
         """The callback for notifications of new repository descendants.
 
         :param repository_id: the ``Id`` of the ``Repository``
@@ -166,7 +166,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_repositories(self, notification_id, repository_ids):
+    def changed_repositories(self, notification_id, repository_ids): # pragma: no cover
         """The callback for notification of updated repositories.
 
         :param notification_id: the notification ``Id``
@@ -181,7 +181,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_repositories(self, notification_id, repository_ids):
+    def deleted_repositories(self, notification_id, repository_ids): # pragma: no cover
         """The callback for notification of deleted repositories.
 
         :param notification_id: the notification ``Id``
@@ -196,7 +196,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_ancestor_repository(self, repository_id, ancestor_id):
+    def deleted_ancestor_repository(self, repository_id, ancestor_id): # pragma: no cover
         """The callback for notifications of deleted repository ancestors.
 
         :param repository_id: the ``Id`` of the ``Repository``
@@ -211,7 +211,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_descendant_repository(self, repository_id, descendant_id):
+    def deleted_descendant_repository(self, repository_id, descendant_id): # pragma: no cover
         """The callback for notifications of deleted repository descendants.
 
         :param repository_id: the ``Id`` of the ``Repository``
@@ -226,7 +226,7 @@ class RepositoryReceiver:
         pass
 
     @abc.abstractmethod
-    def restructured_repository_hierarchy(self):
+    def restructured_repository_hierarchy(self): # pragma: no cover
         """The callback for notifications of changes to a respository hierarchy where the hierarchy needs to refreshed.
 
 

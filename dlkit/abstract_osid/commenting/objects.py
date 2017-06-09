@@ -21,7 +21,7 @@ class Comment:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_reference_id(self):
+    def get_reference_id(self): # pragma: no cover
         """Gets the ``Id`` of the referenced object to which this comment pertains.
 
         :return: the reference ``Id``
@@ -36,7 +36,7 @@ class Comment:
     reference_id = property(fget=get_reference_id)
 
     @abc.abstractmethod
-    def get_commentor_id(self):
+    def get_commentor_id(self): # pragma: no cover
         """Gets the ``Id`` of the resource who created this comment.
 
         :return: the ``Resource``  ``Id``
@@ -51,7 +51,7 @@ class Comment:
     commentor_id = property(fget=get_commentor_id)
 
     @abc.abstractmethod
-    def get_commentor(self):
+    def get_commentor(self): # pragma: no cover
         """Gets the resource who created this comment.
 
         :return: the ``Resource``
@@ -66,7 +66,7 @@ class Comment:
     commentor = property(fget=get_commentor)
 
     @abc.abstractmethod
-    def get_commenting_agent_id(self):
+    def get_commenting_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the agent who created this comment.
 
         :return: the ``Agent``  ``Id``
@@ -81,7 +81,7 @@ class Comment:
     commenting_agent_id = property(fget=get_commenting_agent_id)
 
     @abc.abstractmethod
-    def get_commenting_agent(self):
+    def get_commenting_agent(self): # pragma: no cover
         """Gets the agent who created this comment.
 
         :return: the ``Agent``
@@ -96,7 +96,7 @@ class Comment:
     commenting_agent = property(fget=get_commenting_agent)
 
     @abc.abstractmethod
-    def get_text(self):
+    def get_text(self): # pragma: no cover
         """Gets the comment text.
 
         :return: the comment text
@@ -111,7 +111,7 @@ class Comment:
     text = property(fget=get_text)
 
     @abc.abstractmethod
-    def has_rating(self):
+    def has_rating(self): # pragma: no cover
         """Tests if this comment includes a rating.
 
         :return: ``true`` if this comment includes a rating, ``false`` otherwise
@@ -124,7 +124,7 @@ class Comment:
         return  # boolean
 
     @abc.abstractmethod
-    def get_rating_id(self):
+    def get_rating_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Grade``.
 
         :return: the ``Agent``  ``Id``
@@ -139,7 +139,7 @@ class Comment:
     rating_id = property(fget=get_rating_id)
 
     @abc.abstractmethod
-    def get_rating(self):
+    def get_rating(self): # pragma: no cover
         """Gets the ``Grade``.
 
         :return: the ``Grade``
@@ -155,7 +155,7 @@ class Comment:
     rating = property(fget=get_rating)
 
     @abc.abstractmethod
-    def get_comment_record(self, comment_record_type):
+    def get_comment_record(self, comment_record_type): # pragma: no cover
         """Gets the comment record corresponding to the given ``Comment`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -191,7 +191,7 @@ class CommentForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_text_metadata(self):
+    def get_text_metadata(self): # pragma: no cover
         """Gets the metadata for the text.
 
         :return: metadata for the text
@@ -206,7 +206,7 @@ class CommentForm:
     text_metadata = property(fget=get_text_metadata)
 
     @abc.abstractmethod
-    def set_text(self, text):
+    def set_text(self, text): # pragma: no cover
         """Sets the text.
 
         :param text: the new text
@@ -221,7 +221,7 @@ class CommentForm:
         pass
 
     @abc.abstractmethod
-    def clear_text(self):
+    def clear_text(self): # pragma: no cover
         """Clears the text.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -234,7 +234,7 @@ class CommentForm:
     text = property(fset=set_text, fdel=clear_text)
 
     @abc.abstractmethod
-    def get_rating_metadata(self):
+    def get_rating_metadata(self): # pragma: no cover
         """Gets the metadata for a rating.
 
         :return: metadata for the rating
@@ -249,7 +249,7 @@ class CommentForm:
     rating_metadata = property(fget=get_rating_metadata)
 
     @abc.abstractmethod
-    def set_rating(self, grade_id):
+    def set_rating(self, grade_id): # pragma: no cover
         """Sets the rating.
 
         :param grade_id: the new rating
@@ -264,7 +264,7 @@ class CommentForm:
         pass
 
     @abc.abstractmethod
-    def clear_rating(self):
+    def clear_rating(self): # pragma: no cover
         """Clears the rating.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` or ``Metadata.isReadOnly()`` is ``true``
@@ -277,7 +277,7 @@ class CommentForm:
     rating = property(fset=set_rating, fdel=clear_rating)
 
     @abc.abstractmethod
-    def get_comment_form_record(self, comment_record_type):
+    def get_comment_form_record(self, comment_record_type): # pragma: no cover
         """Gets the ``CommentFormRecord`` corresponding to the given comment record ``Type``.
 
         :param comment_record_type: the comment record type
@@ -309,7 +309,7 @@ class CommentList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_comment(self):
+    def get_next_comment(self): # pragma: no cover
         """Gets the next ``Comment`` in this list.
 
         :return: the next ``Comment`` in this list. The ``has_next()`` method should be used to test that a next ``Comment`` is available before calling this method.
@@ -325,7 +325,7 @@ class CommentList:
     next_comment = property(fget=get_next_comment)
 
     @abc.abstractmethod
-    def get_next_comments(self, n):
+    def get_next_comments(self, n): # pragma: no cover
         """Gets the next set of ``Comment`` elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -354,7 +354,7 @@ class Book:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_record(self, book_record_type):
+    def get_book_record(self, book_record_type): # pragma: no cover
         """Gets the book record corresponding to the given ``Book`` record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -390,7 +390,7 @@ class BookForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book_form_record(self, book_record_type):
+    def get_book_form_record(self, book_record_type): # pragma: no cover
         """Gets the ``BookFormRecord`` corresponding to the given book record ``Type``.
 
         :param book_record_type: the book record type
@@ -421,7 +421,7 @@ class BookList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_book(self):
+    def get_next_book(self): # pragma: no cover
         """Gets the next ``Book`` in this list.
 
         :return: the next ``Book`` in this list. The ``has_next()`` method should be used to test that a next ``Book`` is available before calling this method.
@@ -437,7 +437,7 @@ class BookList:
     next_book = property(fget=get_next_book)
 
     @abc.abstractmethod
-    def get_next_books(self, n):
+    def get_next_books(self, n): # pragma: no cover
         """Gets the next set of ``Book`` elements in this list.
 
         The specified amount must be less than or equal to the return
@@ -467,7 +467,7 @@ class BookNode:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_book(self):
+    def get_book(self): # pragma: no cover
         """Gets the ``Book`` at this node.
 
         :return: the book represented by this node
@@ -482,7 +482,7 @@ class BookNode:
     book = property(fget=get_book)
 
     @abc.abstractmethod
-    def get_parent_book_nodes(self):
+    def get_parent_book_nodes(self): # pragma: no cover
         """Gets the parents of this book.
 
         :return: the parents of this book
@@ -497,7 +497,7 @@ class BookNode:
     parent_book_nodes = property(fget=get_parent_book_nodes)
 
     @abc.abstractmethod
-    def get_child_book_nodes(self):
+    def get_child_book_nodes(self): # pragma: no cover
         """Gets the children of this book.
 
         :return: the children of this book
@@ -527,7 +527,7 @@ class BookNodeList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_book_node(self):
+    def get_next_book_node(self): # pragma: no cover
         """Gets the next ``BookNode`` in this list.
 
         :return: the next ``BookNode`` in this list. The ``has_next()`` method should be used to test that a next ``BookNode`` is available before calling this method.
@@ -543,7 +543,7 @@ class BookNodeList:
     next_book_node = property(fget=get_next_book_node)
 
     @abc.abstractmethod
-    def get_next_book_nodes(self, n):
+    def get_next_book_nodes(self, n): # pragma: no cover
         """Gets the next set of ``BookNode`` elements in this list.
 
         The specified amount must be less than or equal to the return

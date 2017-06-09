@@ -21,7 +21,7 @@ class HierarchySearchOrder:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_hierarchy_search_order_record(self, hierarchy_record_type):
+    def get_hierarchy_search_order_record(self, hierarchy_record_type): # pragma: no cover
         """Gets the hierarchy search order record corresponding to the given hierarchy record ``Type``.
 
         Multiple retrievals return the same underlying object.

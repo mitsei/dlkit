@@ -21,7 +21,7 @@ class IdForm:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_authority_metadata(self):
+    def get_authority_metadata(self): # pragma: no cover
         """Gets the metadata for the authority.
 
         :return: metadata for the authority
@@ -36,7 +36,7 @@ class IdForm:
     authority_metadata = property(fget=get_authority_metadata)
 
     @abc.abstractmethod
-    def set_authority(self, authority):
+    def set_authority(self, authority): # pragma: no cover
         """Sets the authority.
 
         :param authority: the authority
@@ -51,7 +51,7 @@ class IdForm:
         pass
 
     @abc.abstractmethod
-    def clear_authority(self):
+    def clear_authority(self): # pragma: no cover
         """Clears the authority.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -64,7 +64,7 @@ class IdForm:
     authority = property(fset=set_authority, fdel=clear_authority)
 
     @abc.abstractmethod
-    def get_identifier_namespace_metadata(self):
+    def get_identifier_namespace_metadata(self): # pragma: no cover
         """Gets the metadata for the identifier namespace.
 
         :return: metadata for the namespace
@@ -79,7 +79,7 @@ class IdForm:
     identifier_namespace_metadata = property(fget=get_identifier_namespace_metadata)
 
     @abc.abstractmethod
-    def set_identifier_namespace(self, namespace):
+    def set_identifier_namespace(self, namespace): # pragma: no cover
         """Seta the identifier namespace.
 
         :param namespace: the namespace
@@ -94,7 +94,7 @@ class IdForm:
         pass
 
     @abc.abstractmethod
-    def clear_identifier_namespace(self):
+    def clear_identifier_namespace(self): # pragma: no cover
         """Clears the identifier namespace.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -107,7 +107,7 @@ class IdForm:
     identifier_namespace = property(fset=set_identifier_namespace, fdel=clear_identifier_namespace)
 
     @abc.abstractmethod
-    def get_identifier_prefix_metadata(self):
+    def get_identifier_prefix_metadata(self): # pragma: no cover
         """Gets the metadata for the identifier prefix.
 
         :return: metadata for the prefix
@@ -122,7 +122,7 @@ class IdForm:
     identifier_prefix_metadata = property(fget=get_identifier_prefix_metadata)
 
     @abc.abstractmethod
-    def set_identifier_prefix(self, prefix):
+    def set_identifier_prefix(self, prefix): # pragma: no cover
         """Seta the identifier prefix.
 
         An identifier will be generated with this prefix.
@@ -139,7 +139,7 @@ class IdForm:
         pass
 
     @abc.abstractmethod
-    def clear_identifier_prefix(self):
+    def clear_identifier_prefix(self): # pragma: no cover
         """Clears the identifier prefix.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -152,7 +152,7 @@ class IdForm:
     identifier_prefix = property(fset=set_identifier_prefix, fdel=clear_identifier_prefix)
 
     @abc.abstractmethod
-    def get_identifier_suffix_metadata(self):
+    def get_identifier_suffix_metadata(self): # pragma: no cover
         """Gets the metadata for the identifier suffix.
 
         :return: metadata for the suffix
@@ -167,7 +167,7 @@ class IdForm:
     identifier_suffix_metadata = property(fget=get_identifier_suffix_metadata)
 
     @abc.abstractmethod
-    def set_identifier_suffix(self, suffix):
+    def set_identifier_suffix(self, suffix): # pragma: no cover
         """Seta the identifier prefix.
 
         An identifier will be generated with this suffix.
@@ -184,7 +184,7 @@ class IdForm:
         pass
 
     @abc.abstractmethod
-    def clear_identifier_suffix(self):
+    def clear_identifier_suffix(self): # pragma: no cover
         """Clears the identifier suffix.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -197,7 +197,7 @@ class IdForm:
     identifier_suffix = property(fset=set_identifier_suffix, fdel=clear_identifier_suffix)
 
     @abc.abstractmethod
-    def get_identifier_metadata(self):
+    def get_identifier_metadata(self): # pragma: no cover
         """Gets the metadata for the identifier.
 
         :return: metadata for the identifier
@@ -212,7 +212,7 @@ class IdForm:
     identifier_metadata = property(fget=get_identifier_metadata)
 
     @abc.abstractmethod
-    def set_identifier(self, identifier):
+    def set_identifier(self, identifier): # pragma: no cover
         """Seta the identifier.
 
         :param identifier: the identifier
@@ -227,7 +227,7 @@ class IdForm:
         pass
 
     @abc.abstractmethod
-    def clear_identifier(self):
+    def clear_identifier(self): # pragma: no cover
         """Clears the identifier.
 
         :raise: ``NoAccess`` -- ``Metadata.isRequired()`` is ``true`` or ``Metadata.isReadOnly()`` is ``true``
@@ -254,7 +254,7 @@ class IdList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_id(self):
+    def get_next_id(self): # pragma: no cover
         """Gets the next ``Id`` in this list.
 
         :return: the next ``Id`` in this list. The ``has_next()`` method should be used to test that a next ``Id`` is available before calling this method.
@@ -270,7 +270,7 @@ class IdList:
     next_id = property(fget=get_next_id)
 
     @abc.abstractmethod
-    def get_next_ids(self, n):
+    def get_next_ids(self, n): # pragma: no cover
         """Gets the next set of ``Ids`` in this list.
 
         The specified amount must be less than or equal to the return

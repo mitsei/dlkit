@@ -36,7 +36,7 @@ class OsidSession:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_locale(self):
+    def get_locale(self): # pragma: no cover
         """Gets the locale indicating the localization preferences in effect for this session.
 
         :return: the locale
@@ -51,7 +51,7 @@ class OsidSession:
     locale = property(fget=get_locale)
 
     @abc.abstractmethod
-    def is_authenticated(self):
+    def is_authenticated(self): # pragma: no cover
         """Tests if an agent is authenticated to this session.
 
         :return: ``true`` if valid authentication credentials exist, ``false`` otherwise
@@ -64,7 +64,7 @@ class OsidSession:
         return  # boolean
 
     @abc.abstractmethod
-    def get_authenticated_agent_id(self):
+    def get_authenticated_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the agent authenticated to this session.
 
         This is the agent for which credentials are used either acquired
@@ -82,7 +82,7 @@ class OsidSession:
     authenticated_agent_id = property(fget=get_authenticated_agent_id)
 
     @abc.abstractmethod
-    def get_authenticated_agent(self):
+    def get_authenticated_agent(self): # pragma: no cover
         """Gets the agent authenticated to this session.
 
         This is the agent for which credentials are used either acquired
@@ -101,7 +101,7 @@ class OsidSession:
     authenticated_agent = property(fget=get_authenticated_agent)
 
     @abc.abstractmethod
-    def get_effective_agent_id(self):
+    def get_effective_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the effective agent in use by this session.
 
         If ``is_authenticated()`` is true, then the effective agent may
@@ -122,7 +122,7 @@ class OsidSession:
     effective_agent_id = property(fget=get_effective_agent_id)
 
     @abc.abstractmethod
-    def get_effective_agent(self):
+    def get_effective_agent(self): # pragma: no cover
         """Gets the effective agent in use by this session.
 
         If ``is_authenticated()`` is true, then the effective agent may
@@ -143,7 +143,7 @@ class OsidSession:
     effective_agent = property(fget=get_effective_agent)
 
     @abc.abstractmethod
-    def get_date(self):
+    def get_date(self): # pragma: no cover
         """Gets the service date which may be the current date or the effective date in which this session exists.
 
         :return: the service date
@@ -158,7 +158,7 @@ class OsidSession:
     date = property(fget=get_date)
 
     @abc.abstractmethod
-    def get_clock_rate(self):
+    def get_clock_rate(self): # pragma: no cover
         """Gets the rate of the service clock.
 
         :return: the clock rate
@@ -173,7 +173,7 @@ class OsidSession:
     clock_rate = property(fget=get_clock_rate)
 
     @abc.abstractmethod
-    def get_format_type(self):
+    def get_format_type(self): # pragma: no cover
         """Gets the ``DisplayText`` format ``Type`` preference in effect for this session.
 
         :return: the effective ``DisplayText`` format ``Type``
@@ -188,7 +188,7 @@ class OsidSession:
     format_type = property(fget=get_format_type)
 
     @abc.abstractmethod
-    def supports_transactions(self):
+    def supports_transactions(self): # pragma: no cover
         """Tests for the availability of transactions.
 
         :return: ``true`` if transaction methods are available, ``false`` otherwise
@@ -201,7 +201,7 @@ class OsidSession:
         return  # boolean
 
     @abc.abstractmethod
-    def start_transaction(self):
+    def start_transaction(self): # pragma: no cover
         """Starts a new transaction for this sesson.
 
         Transactions are a means for an OSID to provide an all-or-

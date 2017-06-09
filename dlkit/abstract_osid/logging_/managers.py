@@ -21,7 +21,7 @@ class LoggingProfile:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def supports_visible_federation(self):
+    def supports_visible_federation(self): # pragma: no cover
         """Tests if visible federation is supported.
 
         :return: ``true`` if visible federation is supported, ``false`` otherwise
@@ -34,7 +34,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_logging(self):
+    def supports_logging(self): # pragma: no cover
         """Tests if logging is supported.
 
         :return: ``true`` if logging is supported, ``false`` otherwise
@@ -47,7 +47,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_lookup(self):
+    def supports_log_entry_lookup(self): # pragma: no cover
         """Tests if reading logs is supported.
 
         :return: ``true`` if reading logs is supported, ``false`` otherwise
@@ -60,7 +60,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_query(self):
+    def supports_log_entry_query(self): # pragma: no cover
         """Tests if querying log entries is supported.
 
         :return: ``true`` if querying log entries is supported, ``false`` otherwise
@@ -73,7 +73,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_search(self):
+    def supports_log_entry_search(self): # pragma: no cover
         """Tests if searching log entries is supported.
 
         :return: ``true`` if searching log entries is supported, ``false`` otherwise
@@ -86,7 +86,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_notification(self):
+    def supports_log_entry_notification(self): # pragma: no cover
         """Tests if log entry notification is supported,.
 
         :return: ``true`` if log entry notification is available, ``false`` otherwise
@@ -99,7 +99,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_log(self):
+    def supports_log_entry_log(self): # pragma: no cover
         """Tests if looking up log entry log mappings is supported.
 
         :return: ``true`` if log entry logs is supported, ``false`` otherwise
@@ -112,7 +112,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_log_assignment(self):
+    def supports_log_entry_log_assignment(self): # pragma: no cover
         """Tests if managing log entry log mappings is supported.
 
         :return: ``true`` if log entry logs mapping assignment is supported, ``false`` otherwise
@@ -125,7 +125,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_smart_log(self):
+    def supports_log_entry_smart_log(self): # pragma: no cover
         """Tests if smart logs is supported.
 
         :return: ``true`` if smart logs is supported, ``false`` otherwise
@@ -138,7 +138,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_lookup(self):
+    def supports_log_lookup(self): # pragma: no cover
         """Tests for the availability of a log lookup service.
 
         :return: ``true`` if log lookup is available, ``false`` otherwise
@@ -151,7 +151,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_query(self):
+    def supports_log_query(self): # pragma: no cover
         """Tests if querying logs is available.
 
         :return: ``true`` if log query is available, ``false`` otherwise
@@ -164,7 +164,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_search(self):
+    def supports_log_search(self): # pragma: no cover
         """Tests if searching for logs is available.
 
         :return: ``true`` if log search is available, ``false`` otherwise
@@ -177,7 +177,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_admin(self):
+    def supports_log_admin(self): # pragma: no cover
         """Tests for the availability of a log administrative service for creating and deleting logs.
 
         :return: ``true`` if log administration is available, ``false`` otherwise
@@ -190,7 +190,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_notification(self):
+    def supports_log_notification(self): # pragma: no cover
         """Tests for the availability of a log notification service.
 
         :return: ``true`` if log notification is available, ``false`` otherwise
@@ -204,7 +204,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_hierarchy(self):
+    def supports_log_hierarchy(self): # pragma: no cover
         """Tests for the availability of a log hierarchy traversal service.
 
         :return: ``true`` if log hierarchy traversal is available, ``false`` otherwise
@@ -217,7 +217,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_hierarchy_design(self):
+    def supports_log_hierarchy_design(self): # pragma: no cover
         """Tests for the availability of a log hierarchy design service.
 
         :return: ``true`` if log hierarchy design is available, ``false`` otherwise
@@ -231,7 +231,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_logging_batch(self):
+    def supports_logging_batch(self): # pragma: no cover
         """Tests for the availability of a logging batch service.
 
         :return: ``true`` if loggin batch service is available, ``false`` otherwise
@@ -245,7 +245,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_record_types(self):
+    def get_log_entry_record_types(self): # pragma: no cover
         """Gets the supported ``Log`` record types.
 
         :return: a list containing the supported log record types
@@ -260,7 +260,7 @@ class LoggingProfile:
     log_entry_record_types = property(fget=get_log_entry_record_types)
 
     @abc.abstractmethod
-    def supports_log_entry_record_type(self, log_entry_record_type):
+    def supports_log_entry_record_type(self, log_entry_record_type): # pragma: no cover
         """Tests if the given ``LogEntry`` record type is supported.
 
         :param log_entry_record_type: a ``Type`` indicating a ``LogEntry`` record type
@@ -275,7 +275,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_entry_search_record_types(self):
+    def get_log_entry_search_record_types(self): # pragma: no cover
         """Gets the supported log entry search record types.
 
         :return: a list containing the supported log entry search record types
@@ -290,7 +290,7 @@ class LoggingProfile:
     log_entry_search_record_types = property(fget=get_log_entry_search_record_types)
 
     @abc.abstractmethod
-    def supports_log_entry_search_record_type(self, log_entry_search_record_type):
+    def supports_log_entry_search_record_type(self, log_entry_search_record_type): # pragma: no cover
         """Tests if the given log entry search record type is supported.
 
         :param log_entry_search_record_type: a ``Type`` indicating a log entry record type
@@ -305,7 +305,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_record_types(self):
+    def get_log_record_types(self): # pragma: no cover
         """Gets the supported ``Log`` record types.
 
         :return: a list containing the supported log record types
@@ -320,7 +320,7 @@ class LoggingProfile:
     log_record_types = property(fget=get_log_record_types)
 
     @abc.abstractmethod
-    def supports_log_record_type(self, log_record_type):
+    def supports_log_record_type(self, log_record_type): # pragma: no cover
         """Tests if the given ``Log`` record type is supported.
 
         :param log_record_type: a ``Type`` indicating a ``Log`` record type
@@ -335,7 +335,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_log_search_record_types(self):
+    def get_log_search_record_types(self): # pragma: no cover
         """Gets the supported log search record types.
 
         :return: a list containing the supported log search record types
@@ -350,7 +350,7 @@ class LoggingProfile:
     log_search_record_types = property(fget=get_log_search_record_types)
 
     @abc.abstractmethod
-    def supports_log_search_record_type(self, log_search_record_type):
+    def supports_log_search_record_type(self, log_search_record_type): # pragma: no cover
         """Tests if the given log search record type is supported.
 
         :param log_search_record_type: a ``Type`` indicating a log record type
@@ -365,7 +365,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_priority_types(self):
+    def get_priority_types(self): # pragma: no cover
         """Gets the priority types supported, in ascending order of the priority level.
 
         :return: a list containing the supported priority types
@@ -380,7 +380,7 @@ class LoggingProfile:
     priority_types = property(fget=get_priority_types)
 
     @abc.abstractmethod
-    def supports_priority_type(self, priority_type):
+    def supports_priority_type(self, priority_type): # pragma: no cover
         """Tests if the priority type is supported.
 
         :param priority_type: a ``Type`` indicating a priority type
@@ -395,7 +395,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def get_content_types(self):
+    def get_content_types(self): # pragma: no cover
         """Gets the content types supported.
 
         :return: a list containing the supported content types
@@ -410,7 +410,7 @@ class LoggingProfile:
     content_types = property(fget=get_content_types)
 
     @abc.abstractmethod
-    def supports_content_type(self, content_type):
+    def supports_content_type(self, content_type): # pragma: no cover
         """Tests if the content type is supported.
 
         :param content_type: a ``Type`` indicating a content type
@@ -425,7 +425,7 @@ class LoggingProfile:
         return  # boolean
 
     @abc.abstractmethod
-    def supports_log_entry_admin(self):
+    def supports_log_entry_admin(self): # pragma: no cover
         """Tests if log entry admin is supported.
 
         :return: ``true`` if log entry admin is supported, ``false`` otherwise
@@ -475,7 +475,7 @@ class LoggingManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_logging_session(self):
+    def get_logging_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging service.
 
         :return: a ``LoggingSession``
@@ -492,7 +492,7 @@ class LoggingManager:
     logging_session = property(fget=get_logging_session)
 
     @abc.abstractmethod
-    def get_logging_session_for_log(self, log_id):
+    def get_logging_session_for_log(self, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -512,7 +512,7 @@ class LoggingManager:
         return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
-    def get_log_entry_lookup_session(self):
+    def get_log_entry_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log reading service.
 
         :return: a ``LogEntryLookupSession``
@@ -529,7 +529,7 @@ class LoggingManager:
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
     @abc.abstractmethod
-    def get_log_entry_lookup_session_for_log(self, log_id):
+    def get_log_entry_lookup_session_for_log(self, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log reading service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -549,7 +549,7 @@ class LoggingManager:
         return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
-    def get_log_entry_query_session(self):
+    def get_log_entry_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry query service.
 
         :return: a ``LogEntryQuerySession``
@@ -566,7 +566,7 @@ class LoggingManager:
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
     @abc.abstractmethod
-    def get_log_entry_query_session_for_log(self, log_id):
+    def get_log_entry_query_session_for_log(self, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry query service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -586,7 +586,7 @@ class LoggingManager:
         return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
-    def get_log_entry_search_session(self):
+    def get_log_entry_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry search service.
 
         :return: a ``LogEntrySearchSession``
@@ -603,7 +603,7 @@ class LoggingManager:
     log_entry_search_session = property(fget=get_log_entry_search_session)
 
     @abc.abstractmethod
-    def get_log_entry_search_session_for_log(self, log_id):
+    def get_log_entry_search_session_for_log(self, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry search service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -623,7 +623,7 @@ class LoggingManager:
         return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
-    def get_log_entry_admin_session(self):
+    def get_log_entry_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry administrative service.
 
         :return: a ``LogEntryAdminSession``
@@ -640,7 +640,7 @@ class LoggingManager:
     log_entry_admin_session = property(fget=get_log_entry_admin_session)
 
     @abc.abstractmethod
-    def get_log_entry_admin_session_for_log(self, log_id):
+    def get_log_entry_admin_session_for_log(self, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry administrative service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -660,7 +660,7 @@ class LoggingManager:
         return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
-    def get_log_entry_notification_session(self, log_entry_receiver):
+    def get_log_entry_notification_session(self, log_entry_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry notification service.
 
         :param log_entry_receiver: the receiver
@@ -678,7 +678,7 @@ class LoggingManager:
         return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id):
+    def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry notification service for the given log.
 
         :param log_entry_receiver: the receiver
@@ -700,7 +700,7 @@ class LoggingManager:
         return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_log_entry_log_session(self):
+    def get_log_entry_log_session(self): # pragma: no cover
         """Gets the session for retrieving log entry to log mappings.
 
         :return: a ``LogEntryLogSession``
@@ -717,7 +717,7 @@ class LoggingManager:
     log_entry_log_session = property(fget=get_log_entry_log_session)
 
     @abc.abstractmethod
-    def get_log_entry_log_assignment_session(self):
+    def get_log_entry_log_assignment_session(self): # pragma: no cover
         """Gets the session for assigning log entry to logs mappings.
 
         :return: a ``LogEntryLogAssignmentSession``
@@ -734,7 +734,7 @@ class LoggingManager:
     log_entry_log_assignment_session = property(fget=get_log_entry_log_assignment_session)
 
     @abc.abstractmethod
-    def get_log_entry_smart_log_session(self, log_id):
+    def get_log_entry_smart_log_session(self, log_id): # pragma: no cover
         """Gets the session for managing dynamic logEntry log.
 
         :param log_id: the ``Id`` of the log
@@ -753,7 +753,7 @@ class LoggingManager:
         return  # osid.logging.LogEntrySmartLogSession
 
     @abc.abstractmethod
-    def get_log_lookup_session(self):
+    def get_log_lookup_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log lookup service.
 
         :return: a ``LogLookupSession``
@@ -770,7 +770,7 @@ class LoggingManager:
     log_lookup_session = property(fget=get_log_lookup_session)
 
     @abc.abstractmethod
-    def get_log_query_session(self):
+    def get_log_query_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log query service.
 
         :return: a ``LogQuerySession``
@@ -787,7 +787,7 @@ class LoggingManager:
     log_query_session = property(fget=get_log_query_session)
 
     @abc.abstractmethod
-    def get_log_search_session(self):
+    def get_log_search_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log search service.
 
         :return: a ``LogSearchSession``
@@ -804,7 +804,7 @@ class LoggingManager:
     log_search_session = property(fget=get_log_search_session)
 
     @abc.abstractmethod
-    def get_log_admin_session(self):
+    def get_log_admin_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log administrative service.
 
         :return: a ``LogAdminSession``
@@ -821,7 +821,7 @@ class LoggingManager:
     log_admin_session = property(fget=get_log_admin_session)
 
     @abc.abstractmethod
-    def get_log_notification_session(self, log_receiver):
+    def get_log_notification_session(self, log_receiver): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log notification service.
 
         :param log_receiver: the receiver
@@ -839,7 +839,7 @@ class LoggingManager:
         return  # osid.logging.LogNotificationSession
 
     @abc.abstractmethod
-    def get_log_hierarchy_session(self):
+    def get_log_hierarchy_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log hierarchy service.
 
         :return: a ``LogHierarchySession`` for logs
@@ -856,7 +856,7 @@ class LoggingManager:
     log_hierarchy_session = property(fget=get_log_hierarchy_session)
 
     @abc.abstractmethod
-    def get_log_hierarchy_design_session(self):
+    def get_log_hierarchy_design_session(self): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log hierarchy design service.
 
         :return: a ``HierarchyDesignSession`` for logs
@@ -873,7 +873,7 @@ class LoggingManager:
     log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
 
     @abc.abstractmethod
-    def get_logging_batch_manager(self):
+    def get_logging_batch_manager(self): # pragma: no cover
         """Gets a ``LoggingBatchManager``.
 
         :return: a ``LoggingBatchManager``
@@ -929,7 +929,7 @@ class LoggingProxyManager:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_logging_session(self, proxy):
+    def get_logging_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging service.
 
         :param proxy: a proxy
@@ -947,7 +947,7 @@ class LoggingProxyManager:
         return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
-    def get_logging_session_for_log(self, log_id, proxy):
+    def get_logging_session_for_log(self, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -969,7 +969,7 @@ class LoggingProxyManager:
         return  # osid.logging.LoggingSession
 
     @abc.abstractmethod
-    def get_log_entry_lookup_session(self, proxy):
+    def get_log_entry_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging reading service.
 
         :param proxy: a proxy
@@ -987,7 +987,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
-    def get_log_entry_lookup_session_for_log(self, log_id, proxy):
+    def get_log_entry_lookup_session_for_log(self, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log reading service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1009,7 +1009,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryLookupSession
 
     @abc.abstractmethod
-    def get_log_entry_query_session(self, proxy):
+    def get_log_entry_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry query service.
 
         :param proxy: a proxy
@@ -1027,7 +1027,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
-    def get_log_entry_query_session_for_log(self, log_id, proxy):
+    def get_log_entry_query_session_for_log(self, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry query service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1049,7 +1049,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryQuerySession
 
     @abc.abstractmethod
-    def get_log_entry_search_session(self, proxy):
+    def get_log_entry_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry search service.
 
         :param proxy: a proxy
@@ -1067,7 +1067,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
-    def get_log_entry_search_session_for_log(self, log_id, proxy):
+    def get_log_entry_search_session_for_log(self, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry search service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1089,7 +1089,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntrySearchSession
 
     @abc.abstractmethod
-    def get_log_entry_admin_session(self, proxy):
+    def get_log_entry_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry administrative service.
 
         :param proxy: a proxy
@@ -1107,7 +1107,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
-    def get_log_entry_admin_session_for_log(self, log_id, proxy):
+    def get_log_entry_admin_session_for_log(self, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry administrative service for the given log.
 
         :param log_id: the ``Id`` of the ``Log``
@@ -1129,7 +1129,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryAdminSession
 
     @abc.abstractmethod
-    def get_log_entry_notification_session(self, log_entry_receiver, proxy):
+    def get_log_entry_notification_session(self, log_entry_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the logging entry notification service.
 
         :param log_entry_receiver: the receiver
@@ -1149,7 +1149,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id, proxy):
+    def get_log_entry_notification_session_for_log(self, log_entry_receiver, log_id, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log entry notification service for the given log.
 
         :param log_entry_receiver: the receiver
@@ -1173,7 +1173,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryNotificationSession
 
     @abc.abstractmethod
-    def get_log_entry_log_session(self, proxy):
+    def get_log_entry_log_session(self, proxy): # pragma: no cover
         """Gets the session for retrieving log entry to log mappings.
 
         :param proxy: a proxy
@@ -1191,7 +1191,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryLogSession
 
     @abc.abstractmethod
-    def get_log_entry_log_assignment_session(self, proxy):
+    def get_log_entry_log_assignment_session(self, proxy): # pragma: no cover
         """Gets the session for assigning log entry to log mappings.
 
         :param proxy: a proxy
@@ -1209,7 +1209,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntryLogAssignmentSession
 
     @abc.abstractmethod
-    def get_log_entry_smart_log_session(self, log_id, proxy):
+    def get_log_entry_smart_log_session(self, log_id, proxy): # pragma: no cover
         """Gets the session for managing dynamic log entry logs.
 
         :param log_id: the ``Id`` of the log
@@ -1230,7 +1230,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogEntrySmartLogSession
 
     @abc.abstractmethod
-    def get_log_lookup_session(self, proxy):
+    def get_log_lookup_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log lookup service.
 
         :param proxy: a proxy
@@ -1248,7 +1248,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogLookupSession
 
     @abc.abstractmethod
-    def get_log_query_session(self, proxy):
+    def get_log_query_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log query service.
 
         :param proxy: a proxy
@@ -1266,7 +1266,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogQuerySession
 
     @abc.abstractmethod
-    def get_log_search_session(self, proxy):
+    def get_log_search_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log search service.
 
         :param proxy: a proxy
@@ -1284,7 +1284,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogSearchSession
 
     @abc.abstractmethod
-    def get_log_admin_session(self, proxy):
+    def get_log_admin_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log administrative service.
 
         :param proxy: a proxy
@@ -1302,7 +1302,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogAdminSession
 
     @abc.abstractmethod
-    def get_log_notification_session(self, log_receiver, proxy):
+    def get_log_notification_session(self, log_receiver, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log notification service.
 
         :param log_receiver: the receiver
@@ -1322,7 +1322,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogNotificationSession
 
     @abc.abstractmethod
-    def get_log_hierarchy_session(self, proxy):
+    def get_log_hierarchy_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log hierarchy service.
 
         :param proxy: a proxy
@@ -1340,7 +1340,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogHierarchySession
 
     @abc.abstractmethod
-    def get_log_hierarchy_design_session(self, proxy):
+    def get_log_hierarchy_design_session(self, proxy): # pragma: no cover
         """Gets the ``OsidSession`` associated with the log hierarchy design service.
 
         :param proxy: a proxy
@@ -1358,7 +1358,7 @@ class LoggingProxyManager:
         return  # osid.logging.LogHierarchyDesignSession
 
     @abc.abstractmethod
-    def get_logging_batch_proxy_manager(self):
+    def get_logging_batch_proxy_manager(self): # pragma: no cover
         """Gets a ``LoggingBatchProxyManager``.
 
         :return: a ``LoggingBatchProxyManager``

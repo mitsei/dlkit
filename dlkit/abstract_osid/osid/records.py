@@ -28,7 +28,7 @@ class OsidRecord:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def implements_record_type(self, record_type):
+    def implements_record_type(self, record_type): # pragma: no cover
         """Tests if the given type is implemented by this record.
 
         Other types than that directly indicated by ``get_type()`` may

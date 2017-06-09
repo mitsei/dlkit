@@ -27,7 +27,7 @@ class AssetQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_title(self, title, string_match_type, match):
+    def match_title(self, title, string_match_type, match): # pragma: no cover
         """Adds a title for this query.
 
         :param title: title string to match
@@ -46,7 +46,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_title(self, match):
+    def match_any_title(self, match): # pragma: no cover
         """Matches a title that has any value.
 
         :param match: ``true`` to match assets with any title, ``false`` to match assets with no title
@@ -59,7 +59,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_title_terms(self):
+    def clear_title_terms(self): # pragma: no cover
         """Clears the title terms.
 
 
@@ -72,7 +72,7 @@ class AssetQuery:
     title_terms = property(fdel=clear_title_terms)
 
     @abc.abstractmethod
-    def match_public_domain(self, public_domain):
+    def match_public_domain(self, public_domain): # pragma: no cover
         """Matches assets marked as public domain.
 
         :param public_domain: public domain flag
@@ -85,7 +85,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_public_domain(self, match):
+    def match_any_public_domain(self, match): # pragma: no cover
         """Matches assets with any public domain value.
 
         :param match: ``true`` to match assets with any public domain value, ``false`` to match assets with no public domain value
@@ -98,7 +98,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_public_domain_terms(self):
+    def clear_public_domain_terms(self): # pragma: no cover
         """Clears the public domain terms.
 
 
@@ -111,7 +111,7 @@ class AssetQuery:
     public_domain_terms = property(fdel=clear_public_domain_terms)
 
     @abc.abstractmethod
-    def match_copyright(self, copyright_, string_match_type, match):
+    def match_copyright(self, copyright_, string_match_type, match): # pragma: no cover
         """Adds a copyright for this query.
 
         :param copyright: copyright string to match
@@ -130,7 +130,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_copyright(self, match):
+    def match_any_copyright(self, match): # pragma: no cover
         """Matches assets with any copyright statement.
 
         :param match: ``true`` to match assets with any copyright value, ``false`` to match assets with no copyright value
@@ -143,7 +143,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_copyright_terms(self):
+    def clear_copyright_terms(self): # pragma: no cover
         """Clears the copyright terms.
 
 
@@ -156,7 +156,7 @@ class AssetQuery:
     copyright_terms = property(fdel=clear_copyright_terms)
 
     @abc.abstractmethod
-    def match_copyright_registration(self, registration, string_match_type, match):
+    def match_copyright_registration(self, registration, string_match_type, match): # pragma: no cover
         """Adds a copyright registration for this query.
 
         :param registration: copyright registration string to match
@@ -175,7 +175,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_copyright_registration(self, match):
+    def match_any_copyright_registration(self, match): # pragma: no cover
         """Matches assets with any copyright registration.
 
         :param match: ``true`` to match assets with any copyright registration value, ``false`` to match assets with no copyright registration value
@@ -188,7 +188,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_copyright_registration_terms(self):
+    def clear_copyright_registration_terms(self): # pragma: no cover
         """Clears the copyright registration terms.
 
 
@@ -201,7 +201,7 @@ class AssetQuery:
     copyright_registration_terms = property(fdel=clear_copyright_registration_terms)
 
     @abc.abstractmethod
-    def match_distribute_verbatim(self, distributable):
+    def match_distribute_verbatim(self, distributable): # pragma: no cover
         """Matches assets marked as distributable.
 
         :param distributable: distribute verbatim rights flag
@@ -214,7 +214,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_verbatim_terms(self):
+    def clear_distribute_verbatim_terms(self): # pragma: no cover
         """Clears the distribute verbatim terms.
 
 
@@ -227,7 +227,7 @@ class AssetQuery:
     distribute_verbatim_terms = property(fdel=clear_distribute_verbatim_terms)
 
     @abc.abstractmethod
-    def match_distribute_alterations(self, alterable):
+    def match_distribute_alterations(self, alterable): # pragma: no cover
         """Matches assets that whose alterations can be distributed.
 
         :param alterable: distribute alterations rights flag
@@ -240,7 +240,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_alterations_terms(self):
+    def clear_distribute_alterations_terms(self): # pragma: no cover
         """Clears the distribute alterations terms.
 
 
@@ -253,7 +253,7 @@ class AssetQuery:
     distribute_alterations_terms = property(fdel=clear_distribute_alterations_terms)
 
     @abc.abstractmethod
-    def match_distribute_compositions(self, composable):
+    def match_distribute_compositions(self, composable): # pragma: no cover
         """Matches assets that can be distributed as part of other compositions.
 
         :param composable: distribute compositions rights flag
@@ -266,7 +266,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_distribute_compositions_terms(self):
+    def clear_distribute_compositions_terms(self): # pragma: no cover
         """Clears the distribute compositions terms.
 
 
@@ -279,7 +279,7 @@ class AssetQuery:
     distribute_compositions_terms = property(fdel=clear_distribute_compositions_terms)
 
     @abc.abstractmethod
-    def match_source_id(self, source_id, match):
+    def match_source_id(self, source_id, match): # pragma: no cover
         """Sets the source ``Id`` for this query.
 
         :param source_id: the source ``Id``
@@ -294,7 +294,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_source_id_terms(self):
+    def clear_source_id_terms(self): # pragma: no cover
         """Clears the source ``Id`` terms.
 
 
@@ -307,7 +307,7 @@ class AssetQuery:
     source_id_terms = property(fdel=clear_source_id_terms)
 
     @abc.abstractmethod
-    def supports_source_query(self):
+    def supports_source_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available for the source.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -320,7 +320,7 @@ class AssetQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_source_query(self):
+    def get_source_query(self): # pragma: no cover
         """Gets the query for the source.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -338,7 +338,7 @@ class AssetQuery:
     source_query = property(fget=get_source_query)
 
     @abc.abstractmethod
-    def match_any_source(self, match):
+    def match_any_source(self, match): # pragma: no cover
         """Matches assets with any source.
 
         :param match: ``true`` to match assets with any source, ``false`` to match assets with no sources
@@ -351,7 +351,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_source_terms(self):
+    def clear_source_terms(self): # pragma: no cover
         """Clears the source terms.
 
 
@@ -364,7 +364,7 @@ class AssetQuery:
     source_terms = property(fdel=clear_source_terms)
 
     @abc.abstractmethod
-    def match_created_date(self, start, end, match):
+    def match_created_date(self, start, end, match): # pragma: no cover
         """Match assets that are created between the specified time period.
 
         :param start: start time of the query
@@ -382,7 +382,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_created_date(self, match):
+    def match_any_created_date(self, match): # pragma: no cover
         """Matches assets with any creation time.
 
         :param match: ``true`` to match assets with any created time, ``false`` to match assets with no cerated time
@@ -395,7 +395,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_created_date_terms(self):
+    def clear_created_date_terms(self): # pragma: no cover
         """Clears the created time terms.
 
 
@@ -408,7 +408,7 @@ class AssetQuery:
     created_date_terms = property(fdel=clear_created_date_terms)
 
     @abc.abstractmethod
-    def match_published(self, published):
+    def match_published(self, published): # pragma: no cover
         """Marks assets that are marked as published.
 
         :param published: published flag
@@ -421,7 +421,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_published_terms(self):
+    def clear_published_terms(self): # pragma: no cover
         """Clears the published terms.
 
 
@@ -434,7 +434,7 @@ class AssetQuery:
     published_terms = property(fdel=clear_published_terms)
 
     @abc.abstractmethod
-    def match_published_date(self, start, end, match):
+    def match_published_date(self, start, end, match): # pragma: no cover
         """Match assets that are published between the specified time period.
 
         :param start: start time of the query
@@ -452,7 +452,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_published_date(self, match):
+    def match_any_published_date(self, match): # pragma: no cover
         """Matches assets with any published time.
 
         :param match: ``true`` to match assets with any published time, ``false`` to match assets with no published time
@@ -465,7 +465,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_published_date_terms(self):
+    def clear_published_date_terms(self): # pragma: no cover
         """Clears the published time terms.
 
 
@@ -478,7 +478,7 @@ class AssetQuery:
     published_date_terms = property(fdel=clear_published_date_terms)
 
     @abc.abstractmethod
-    def match_principal_credit_string(self, credit, string_match_type, match):
+    def match_principal_credit_string(self, credit, string_match_type, match): # pragma: no cover
         """Adds a principal credit string for this query.
 
         :param credit: credit string to match
@@ -497,7 +497,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_principal_credit_string(self, match):
+    def match_any_principal_credit_string(self, match): # pragma: no cover
         """Matches a principal credit string that has any value.
 
         :param match: ``true`` to match assets with any principal credit string, ``false`` to match assets with no principal credit string
@@ -510,7 +510,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_principal_credit_string_terms(self):
+    def clear_principal_credit_string_terms(self): # pragma: no cover
         """Clears the principal credit string terms.
 
 
@@ -523,7 +523,7 @@ class AssetQuery:
     principal_credit_string_terms = property(fdel=clear_principal_credit_string_terms)
 
     @abc.abstractmethod
-    def match_temporal_coverage(self, start, end, match):
+    def match_temporal_coverage(self, start, end, match): # pragma: no cover
         """Match assets that whose coverage falls between the specified time period inclusive.
 
         :param start: start time of the query
@@ -541,7 +541,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_temporal_coverage(self, match):
+    def match_any_temporal_coverage(self, match): # pragma: no cover
         """Matches assets with any temporal coverage.
 
         :param match: ``true`` to match assets with any temporal coverage, ``false`` to match assets with no temporal coverage
@@ -554,7 +554,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_temporal_coverage_terms(self):
+    def clear_temporal_coverage_terms(self): # pragma: no cover
         """Clears the temporal coverage terms.
 
 
@@ -567,7 +567,7 @@ class AssetQuery:
     temporal_coverage_terms = property(fdel=clear_temporal_coverage_terms)
 
     @abc.abstractmethod
-    def match_location_id(self, location_id, match):
+    def match_location_id(self, location_id, match): # pragma: no cover
         """Sets the location ``Id`` for this query of spatial coverage.
 
         :param location_id: the location ``Id``
@@ -582,7 +582,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_location_id_terms(self):
+    def clear_location_id_terms(self): # pragma: no cover
         """Clears the location ``Id`` terms.
 
 
@@ -595,7 +595,7 @@ class AssetQuery:
     location_id_terms = property(fdel=clear_location_id_terms)
 
     @abc.abstractmethod
-    def supports_location_query(self):
+    def supports_location_query(self): # pragma: no cover
         """Tests if a ``LocationQuery`` is available for the provider.
 
         :return: ``true`` if a location query is available, ``false`` otherwise
@@ -608,7 +608,7 @@ class AssetQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_location_query(self):
+    def get_location_query(self): # pragma: no cover
         """Gets the query for a location.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -626,7 +626,7 @@ class AssetQuery:
     location_query = property(fget=get_location_query)
 
     @abc.abstractmethod
-    def match_any_location(self, match):
+    def match_any_location(self, match): # pragma: no cover
         """Matches assets with any provider.
 
         :param match: ``true`` to match assets with any location, ``false`` to match assets with no locations
@@ -639,7 +639,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_location_terms(self):
+    def clear_location_terms(self): # pragma: no cover
         """Clears the location terms.
 
 
@@ -652,7 +652,7 @@ class AssetQuery:
     location_terms = property(fdel=clear_location_terms)
 
     @abc.abstractmethod
-    def match_spatial_coverage(self, spatial_unit, match):
+    def match_spatial_coverage(self, spatial_unit, match): # pragma: no cover
         """Matches assets that are contained within the given spatial unit.
 
         :param spatial_unit: the spatial unit
@@ -668,7 +668,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_spatial_coverage_terms(self):
+    def clear_spatial_coverage_terms(self): # pragma: no cover
         """Clears the spatial coverage terms.
 
 
@@ -681,7 +681,7 @@ class AssetQuery:
     spatial_coverage_terms = property(fdel=clear_spatial_coverage_terms)
 
     @abc.abstractmethod
-    def match_spatial_coverage_overlap(self, spatial_unit, match):
+    def match_spatial_coverage_overlap(self, spatial_unit, match): # pragma: no cover
         """Matches assets that overlap or touch the given spatial unit.
 
         :param spatial_unit: the spatial unit
@@ -697,7 +697,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_spatial_coverage(self, match):
+    def match_any_spatial_coverage(self, match): # pragma: no cover
         """Matches assets with no spatial coverage.
 
         :param match: ``true`` to match assets with any spatial coverage, ``false`` to match assets with no spatial coverage
@@ -710,7 +710,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_spatial_coverage_overlap_terms(self):
+    def clear_spatial_coverage_overlap_terms(self): # pragma: no cover
         """Clears the spatial coverage overlap terms.
 
 
@@ -723,7 +723,7 @@ class AssetQuery:
     spatial_coverage_overlap_terms = property(fdel=clear_spatial_coverage_overlap_terms)
 
     @abc.abstractmethod
-    def match_asset_content_id(self, asset_content_id, match):
+    def match_asset_content_id(self, asset_content_id, match): # pragma: no cover
         """Sets the asset content ``Id`` for this query.
 
         :param asset_content_id: the asset content ``Id``
@@ -738,7 +738,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_content_id_terms(self):
+    def clear_asset_content_id_terms(self): # pragma: no cover
         """Clears the asset content ``Id`` terms.
 
 
@@ -751,7 +751,7 @@ class AssetQuery:
     asset_content_id_terms = property(fdel=clear_asset_content_id_terms)
 
     @abc.abstractmethod
-    def supports_asset_content_query(self):
+    def supports_asset_content_query(self): # pragma: no cover
         """Tests if an ``AssetContentQuery`` is available.
 
         :return: ``true`` if an asset content query is available, ``false`` otherwise
@@ -764,7 +764,7 @@ class AssetQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_content_query(self):
+    def get_asset_content_query(self): # pragma: no cover
         """Gets the query for the asset content.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -782,7 +782,7 @@ class AssetQuery:
     asset_content_query = property(fget=get_asset_content_query)
 
     @abc.abstractmethod
-    def match_any_asset_content(self, match):
+    def match_any_asset_content(self, match): # pragma: no cover
         """Matches assets with any content.
 
         :param match: ``true`` to match assets with any content, ``false`` to match assets with no content
@@ -795,7 +795,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_content_terms(self):
+    def clear_asset_content_terms(self): # pragma: no cover
         """Clears the asset content terms.
 
 
@@ -808,7 +808,7 @@ class AssetQuery:
     asset_content_terms = property(fdel=clear_asset_content_terms)
 
     @abc.abstractmethod
-    def match_composition_id(self, composition_id, match):
+    def match_composition_id(self, composition_id, match): # pragma: no cover
         """Sets the composition ``Id`` for this query to match assets that are a part of the composition.
 
         :param composition_id: the composition ``Id``
@@ -823,7 +823,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_composition_id_terms(self):
+    def clear_composition_id_terms(self): # pragma: no cover
         """Clears the composition ``Id`` terms.
 
 
@@ -836,7 +836,7 @@ class AssetQuery:
     composition_id_terms = property(fdel=clear_composition_id_terms)
 
     @abc.abstractmethod
-    def supports_composition_query(self):
+    def supports_composition_query(self): # pragma: no cover
         """Tests if a ``CompositionQuery`` is available.
 
         :return: ``true`` if a composition query is available, ``false`` otherwise
@@ -849,7 +849,7 @@ class AssetQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_composition_query(self):
+    def get_composition_query(self): # pragma: no cover
         """Gets the query for a composition.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -867,7 +867,7 @@ class AssetQuery:
     composition_query = property(fget=get_composition_query)
 
     @abc.abstractmethod
-    def match_any_composition(self, match):
+    def match_any_composition(self, match): # pragma: no cover
         """Matches assets with any composition mappings.
 
         :param match: ``true`` to match assets with any composition, ``false`` to match assets with no composition mappings
@@ -880,7 +880,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_composition_terms(self):
+    def clear_composition_terms(self): # pragma: no cover
         """Clears the composition terms.
 
 
@@ -893,7 +893,7 @@ class AssetQuery:
     composition_terms = property(fdel=clear_composition_terms)
 
     @abc.abstractmethod
-    def match_repository_id(self, repository_id, match):
+    def match_repository_id(self, repository_id, match): # pragma: no cover
         """Sets the repository ``Id`` for this query.
 
         :param repository_id: the repository ``Id``
@@ -908,7 +908,7 @@ class AssetQuery:
         pass
 
     @abc.abstractmethod
-    def clear_repository_id_terms(self):
+    def clear_repository_id_terms(self): # pragma: no cover
         """Clears the repository ``Id`` terms.
 
 
@@ -921,7 +921,7 @@ class AssetQuery:
     repository_id_terms = property(fdel=clear_repository_id_terms)
 
     @abc.abstractmethod
-    def supports_repository_query(self):
+    def supports_repository_query(self): # pragma: no cover
         """Tests if a ``RepositoryQuery`` is available.
 
         :return: ``true`` if a repository query is available, ``false`` otherwise
@@ -934,7 +934,7 @@ class AssetQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_repository_query(self):
+    def get_repository_query(self): # pragma: no cover
         """Gets the query for a repository.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -952,7 +952,7 @@ class AssetQuery:
     repository_query = property(fget=get_repository_query)
 
     @abc.abstractmethod
-    def clear_repository_terms(self):
+    def clear_repository_terms(self): # pragma: no cover
         """Clears the repository terms.
 
 
@@ -965,7 +965,7 @@ class AssetQuery:
     repository_terms = property(fdel=clear_repository_terms)
 
     @abc.abstractmethod
-    def get_asset_query_record(self, asset_record_type):
+    def get_asset_query_record(self, asset_record_type): # pragma: no cover
         """Gets the asset query record corresponding to the given ``Asset`` record ``Type``.
 
         Multiuple retrievals produce a nested ``OR`` term.
@@ -994,7 +994,7 @@ class AssetContentQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_accessibility_type(self, accessibility_type, match):
+    def match_accessibility_type(self, accessibility_type, match): # pragma: no cover
         """Sets the accessibility types for this query.
 
         Supplying multiple types behaves like a boolean OR among the
@@ -1012,7 +1012,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_accessibility_type(self, match):
+    def match_any_accessibility_type(self, match): # pragma: no cover
         """Matches asset content that has any accessibility type.
 
         :param match: ``true`` to match content with any accessibility type, ``false`` to match content with no accessibility type
@@ -1025,7 +1025,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_accessibility_type_terms(self):
+    def clear_accessibility_type_terms(self): # pragma: no cover
         """Clears the accessibility terms.
 
 
@@ -1038,7 +1038,7 @@ class AssetContentQuery:
     accessibility_type_terms = property(fdel=clear_accessibility_type_terms)
 
     @abc.abstractmethod
-    def match_data_length(self, low, high, match):
+    def match_data_length(self, low, high, match): # pragma: no cover
         """Matches content whose length of the data in bytes are inclusive of the given range.
 
         :param low: low range
@@ -1055,7 +1055,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_data_length(self, match):
+    def match_any_data_length(self, match): # pragma: no cover
         """Matches content that has any data length.
 
         :param match: ``true`` to match content with any data length, ``false`` to match content with no data length
@@ -1068,7 +1068,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_data_length_terms(self):
+    def clear_data_length_terms(self): # pragma: no cover
         """Clears the data length terms.
 
 
@@ -1081,7 +1081,7 @@ class AssetContentQuery:
     data_length_terms = property(fdel=clear_data_length_terms)
 
     @abc.abstractmethod
-    def match_data(self, data, match, partial):
+    def match_data(self, data, match, partial): # pragma: no cover
         """Matches data in this content.
 
         :param data: list of matching strings
@@ -1098,7 +1098,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_data(self, match):
+    def match_any_data(self, match): # pragma: no cover
         """Matches content that has any data.
 
         :param match: ``true`` to match content with any data, ``false`` to match content with no data
@@ -1111,7 +1111,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_data_terms(self):
+    def clear_data_terms(self): # pragma: no cover
         """Clears the data terms.
 
 
@@ -1124,7 +1124,7 @@ class AssetContentQuery:
     data_terms = property(fdel=clear_data_terms)
 
     @abc.abstractmethod
-    def match_url(self, url, string_match_type, match):
+    def match_url(self, url, string_match_type, match): # pragma: no cover
         """Sets the url for this query.
 
         Supplying multiple strings behaves like a boolean ``OR`` among
@@ -1147,7 +1147,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def match_any_url(self, match):
+    def match_any_url(self, match): # pragma: no cover
         """Matches content that has any url.
 
         :param match: ``true`` to match content with any url, ``false`` to match content with no url
@@ -1160,7 +1160,7 @@ class AssetContentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_url_terms(self):
+    def clear_url_terms(self): # pragma: no cover
         """Clears the url terms.
 
 
@@ -1173,7 +1173,7 @@ class AssetContentQuery:
     url_terms = property(fdel=clear_url_terms)
 
     @abc.abstractmethod
-    def get_asset_content_query_record(self, asset_content_record_type):
+    def get_asset_content_query_record(self, asset_content_record_type): # pragma: no cover
         """Gets the asset content query record corresponding to the given ``AssetContent`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.
@@ -1202,7 +1202,7 @@ class CompositionQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_asset_id(self, asset_id, match):
+    def match_asset_id(self, asset_id, match): # pragma: no cover
         """Sets the asset ``Id`` for this query.
 
         :param asset_id: the asset ``Id``
@@ -1217,7 +1217,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_id_terms(self):
+    def clear_asset_id_terms(self): # pragma: no cover
         """Clears the asset ``Id`` terms.
 
 
@@ -1230,7 +1230,7 @@ class CompositionQuery:
     asset_id_terms = property(fdel=clear_asset_id_terms)
 
     @abc.abstractmethod
-    def supports_asset_query(self):
+    def supports_asset_query(self): # pragma: no cover
         """Tests if an ``AssetQuery`` is available.
 
         :return: ``true`` if an asset query is available, ``false`` otherwise
@@ -1243,7 +1243,7 @@ class CompositionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_query(self):
+    def get_asset_query(self): # pragma: no cover
         """Gets the query for an asset.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1261,7 +1261,7 @@ class CompositionQuery:
     asset_query = property(fget=get_asset_query)
 
     @abc.abstractmethod
-    def match_any_asset(self, match):
+    def match_any_asset(self, match): # pragma: no cover
         """Matches compositions that has any asset mapping.
 
         :param match: ``true`` to match compositions with any asset, ``false`` to match compositions with no asset
@@ -1274,7 +1274,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_terms(self):
+    def clear_asset_terms(self): # pragma: no cover
         """Clears the asset terms.
 
 
@@ -1287,7 +1287,7 @@ class CompositionQuery:
     asset_terms = property(fdel=clear_asset_terms)
 
     @abc.abstractmethod
-    def match_containing_composition_id(self, composition_id, match):
+    def match_containing_composition_id(self, composition_id, match): # pragma: no cover
         """Sets the composition ``Id`` for this query to match compositions that have the specified composition as an ancestor.
 
         :param composition_id: a composition ``Id``
@@ -1302,7 +1302,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_containing_composition_id_terms(self):
+    def clear_containing_composition_id_terms(self): # pragma: no cover
         """Clears the containing composition ``Id`` terms.
 
 
@@ -1315,7 +1315,7 @@ class CompositionQuery:
     containing_composition_id_terms = property(fdel=clear_containing_composition_id_terms)
 
     @abc.abstractmethod
-    def supports_containing_composition_query(self):
+    def supports_containing_composition_query(self): # pragma: no cover
         """Tests if an ``CompositionQuery`` is available.
 
         :return: ``true`` if a composition query is available, ``false`` otherwise
@@ -1328,7 +1328,7 @@ class CompositionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_containing_composition_query(self):
+    def get_containing_composition_query(self): # pragma: no cover
         """Gets the query for a composition.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1346,7 +1346,7 @@ class CompositionQuery:
     containing_composition_query = property(fget=get_containing_composition_query)
 
     @abc.abstractmethod
-    def match_any_containing_composition(self, match):
+    def match_any_containing_composition(self, match): # pragma: no cover
         """Matches compositions with any ancestor.
 
         :param match: ``true`` to match composition with any ancestor, ``false`` to match root compositions
@@ -1359,7 +1359,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_containing_composition_terms(self):
+    def clear_containing_composition_terms(self): # pragma: no cover
         """Clears the containing composition terms.
 
 
@@ -1372,7 +1372,7 @@ class CompositionQuery:
     containing_composition_terms = property(fdel=clear_containing_composition_terms)
 
     @abc.abstractmethod
-    def match_contained_composition_id(self, composition_id, match):
+    def match_contained_composition_id(self, composition_id, match): # pragma: no cover
         """Sets the composition ``Id`` for this query to match compositions that contain the specified composition.
 
         :param composition_id: a composition ``Id``
@@ -1387,7 +1387,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_contained_composition_id_terms(self):
+    def clear_contained_composition_id_terms(self): # pragma: no cover
         """Clears the contained composition ``Id`` terms.
 
 
@@ -1400,7 +1400,7 @@ class CompositionQuery:
     contained_composition_id_terms = property(fdel=clear_contained_composition_id_terms)
 
     @abc.abstractmethod
-    def supports_contained_composition_query(self):
+    def supports_contained_composition_query(self): # pragma: no cover
         """Tests if an ``CompositionQuery`` is available.
 
         :return: ``true`` if a composition query is available, ``false`` otherwise
@@ -1413,7 +1413,7 @@ class CompositionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_contained_composition_query(self):
+    def get_contained_composition_query(self): # pragma: no cover
         """Gets the query for a composition.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1431,7 +1431,7 @@ class CompositionQuery:
     contained_composition_query = property(fget=get_contained_composition_query)
 
     @abc.abstractmethod
-    def match_any_contained_composition(self, match):
+    def match_any_contained_composition(self, match): # pragma: no cover
         """Matches compositions that contain any other compositions.
 
         :param match: ``true`` to match composition with any descendant, ``false`` to match leaf compositions
@@ -1444,7 +1444,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_contained_composition_terms(self):
+    def clear_contained_composition_terms(self): # pragma: no cover
         """Clears the contained composition terms.
 
 
@@ -1457,7 +1457,7 @@ class CompositionQuery:
     contained_composition_terms = property(fdel=clear_contained_composition_terms)
 
     @abc.abstractmethod
-    def match_repository_id(self, repository_id, match):
+    def match_repository_id(self, repository_id, match): # pragma: no cover
         """Sets the repository ``Id`` for this query.
 
         :param repository_id: the repository ``Id``
@@ -1472,7 +1472,7 @@ class CompositionQuery:
         pass
 
     @abc.abstractmethod
-    def clear_repository_id_terms(self):
+    def clear_repository_id_terms(self): # pragma: no cover
         """Clears the repository ``Id`` terms.
 
 
@@ -1485,7 +1485,7 @@ class CompositionQuery:
     repository_id_terms = property(fdel=clear_repository_id_terms)
 
     @abc.abstractmethod
-    def supports_repository_query(self):
+    def supports_repository_query(self): # pragma: no cover
         """Tests if a ``RepositoryQuery`` is available.
 
         :return: ``true`` if a repository query is available, ``false`` otherwise
@@ -1498,7 +1498,7 @@ class CompositionQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_repository_query(self):
+    def get_repository_query(self): # pragma: no cover
         """Gets the query for a repository.
 
         Multiple queries can be retrieved for a nested ``OR`` term.
@@ -1516,7 +1516,7 @@ class CompositionQuery:
     repository_query = property(fget=get_repository_query)
 
     @abc.abstractmethod
-    def clear_repository_terms(self):
+    def clear_repository_terms(self): # pragma: no cover
         """Clears the repository terms.
 
 
@@ -1529,7 +1529,7 @@ class CompositionQuery:
     repository_terms = property(fdel=clear_repository_terms)
 
     @abc.abstractmethod
-    def get_composition_query_record(self, composition_record_type):
+    def get_composition_query_record(self, composition_record_type): # pragma: no cover
         """Gets the composition query record corresponding to the given ``Composition`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1558,7 +1558,7 @@ class RepositoryQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_asset_id(self, asset_id, match):
+    def match_asset_id(self, asset_id, match): # pragma: no cover
         """Sets the asset ``Id`` for this query.
 
         :param asset_id: an asset ``Id``
@@ -1573,7 +1573,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_id_terms(self):
+    def clear_asset_id_terms(self): # pragma: no cover
         """Clears the asset ``Id`` terms.
 
 
@@ -1586,7 +1586,7 @@ class RepositoryQuery:
     asset_id_terms = property(fdel=clear_asset_id_terms)
 
     @abc.abstractmethod
-    def supports_asset_query(self):
+    def supports_asset_query(self): # pragma: no cover
         """Tests if an ``AssetQuery`` is available.
 
         :return: ``true`` if an asset query is available, ``false`` otherwise
@@ -1599,7 +1599,7 @@ class RepositoryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_asset_query(self):
+    def get_asset_query(self): # pragma: no cover
         """Gets the query for an asset.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1617,7 +1617,7 @@ class RepositoryQuery:
     asset_query = property(fget=get_asset_query)
 
     @abc.abstractmethod
-    def match_any_asset(self, match):
+    def match_any_asset(self, match): # pragma: no cover
         """Matches repositories that has any asset mapping.
 
         :param match: ``true`` to match repositories with any asset, ``false`` to match repositories with no asset
@@ -1630,7 +1630,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_asset_terms(self):
+    def clear_asset_terms(self): # pragma: no cover
         """Clears the asset terms.
 
 
@@ -1643,7 +1643,7 @@ class RepositoryQuery:
     asset_terms = property(fdel=clear_asset_terms)
 
     @abc.abstractmethod
-    def match_composition_id(self, composition_id, match):
+    def match_composition_id(self, composition_id, match): # pragma: no cover
         """Sets the composition ``Id`` for this query.
 
         :param composition_id: a composition ``Id``
@@ -1658,7 +1658,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_composition_id_terms(self):
+    def clear_composition_id_terms(self): # pragma: no cover
         """Clears the composition ``Id`` terms.
 
 
@@ -1671,7 +1671,7 @@ class RepositoryQuery:
     composition_id_terms = property(fdel=clear_composition_id_terms)
 
     @abc.abstractmethod
-    def supports_composition_query(self):
+    def supports_composition_query(self): # pragma: no cover
         """Tests if a ``CompositionQuery`` is available.
 
         :return: ``true`` if a composition query is available, ``false`` otherwise
@@ -1684,7 +1684,7 @@ class RepositoryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_composition_query(self):
+    def get_composition_query(self): # pragma: no cover
         """Gets the query for a composition.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1702,7 +1702,7 @@ class RepositoryQuery:
     composition_query = property(fget=get_composition_query)
 
     @abc.abstractmethod
-    def match_any_composition(self, match):
+    def match_any_composition(self, match): # pragma: no cover
         """Matches repositories that has any composition mapping.
 
         :param match: ``true`` to match repositories with any composition, ``false`` to match repositories with no composition
@@ -1715,7 +1715,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_composition_terms(self):
+    def clear_composition_terms(self): # pragma: no cover
         """Clears the composition terms.
 
 
@@ -1728,7 +1728,7 @@ class RepositoryQuery:
     composition_terms = property(fdel=clear_composition_terms)
 
     @abc.abstractmethod
-    def match_ancestor_repository_id(self, repository_id, match):
+    def match_ancestor_repository_id(self, repository_id, match): # pragma: no cover
         """Sets the repository ``Id`` for this query to match repositories that have the specified repository as an ancestor.
 
         :param repository_id: a repository ``Id``
@@ -1743,7 +1743,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_repository_id_terms(self):
+    def clear_ancestor_repository_id_terms(self): # pragma: no cover
         """Clears the ancestor repository ``Id`` terms.
 
 
@@ -1756,7 +1756,7 @@ class RepositoryQuery:
     ancestor_repository_id_terms = property(fdel=clear_ancestor_repository_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_repository_query(self):
+    def supports_ancestor_repository_query(self): # pragma: no cover
         """Tests if a ``RepositoryQuery`` is available.
 
         :return: ``true`` if a repository query is available, ``false`` otherwise
@@ -1769,7 +1769,7 @@ class RepositoryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_repository_query(self):
+    def get_ancestor_repository_query(self): # pragma: no cover
         """Gets the query for a repository.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1787,7 +1787,7 @@ class RepositoryQuery:
     ancestor_repository_query = property(fget=get_ancestor_repository_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_repository(self, match):
+    def match_any_ancestor_repository(self, match): # pragma: no cover
         """Matches repositories with any ancestor.
 
         :param match: ``true`` to match repositories with any ancestor, ``false`` to match root repositories
@@ -1800,7 +1800,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_repository_terms(self):
+    def clear_ancestor_repository_terms(self): # pragma: no cover
         """Clears the ancestor repository terms.
 
 
@@ -1813,7 +1813,7 @@ class RepositoryQuery:
     ancestor_repository_terms = property(fdel=clear_ancestor_repository_terms)
 
     @abc.abstractmethod
-    def match_descendant_repository_id(self, repository_id, match):
+    def match_descendant_repository_id(self, repository_id, match): # pragma: no cover
         """Sets the repository ``Id`` for this query to match repositories that have the specified repository as a descendant.
 
         :param repository_id: a repository ``Id``
@@ -1828,7 +1828,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_repository_id_terms(self):
+    def clear_descendant_repository_id_terms(self): # pragma: no cover
         """Clears the descendant repository ``Id`` terms.
 
 
@@ -1841,7 +1841,7 @@ class RepositoryQuery:
     descendant_repository_id_terms = property(fdel=clear_descendant_repository_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_repository_query(self):
+    def supports_descendant_repository_query(self): # pragma: no cover
         """Tests if a ``RepositoryQuery`` is available.
 
         :return: ``true`` if a repository query is available, ``false`` otherwise
@@ -1854,7 +1854,7 @@ class RepositoryQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_repository_query(self):
+    def get_descendant_repository_query(self): # pragma: no cover
         """Gets the query for a repository.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -1872,7 +1872,7 @@ class RepositoryQuery:
     descendant_repository_query = property(fget=get_descendant_repository_query)
 
     @abc.abstractmethod
-    def match_any_descendant_repository(self, match):
+    def match_any_descendant_repository(self, match): # pragma: no cover
         """Matches repositories with any descendant.
 
         :param match: ``true`` to match repositories with any descendant, ``false`` to match leaf repositories
@@ -1885,7 +1885,7 @@ class RepositoryQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_repository_terms(self):
+    def clear_descendant_repository_terms(self): # pragma: no cover
         """Clears the descendant repository terms.
 
 
@@ -1898,7 +1898,7 @@ class RepositoryQuery:
     descendant_repository_terms = property(fdel=clear_descendant_repository_terms)
 
     @abc.abstractmethod
-    def get_repository_query_record(self, repository_record_type):
+    def get_repository_query_record(self, repository_record_type): # pragma: no cover
         """Gets the repository query record corresponding to the given ``Repository`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

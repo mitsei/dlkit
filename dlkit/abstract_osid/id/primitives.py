@@ -68,7 +68,7 @@ class Id:
         return string.replace("%40", "@").replace("%3A", ":").replace("%25", "%")
 
     @abc.abstractmethod
-    def get_authority(self):
+    def get_authority(self): # pragma: no cover
         """Gets the authority of this ``Id``.
 
         The authority is a string used to ensure the uniqueness of this
@@ -88,7 +88,7 @@ class Id:
     authority = property(fget=get_authority)
 
     @abc.abstractmethod
-    def get_identifier_namespace(self):
+    def get_identifier_namespace(self): # pragma: no cover
         """Gets the namespace of the identifier.
 
         The namespace reflects the domain in which the identifier is
@@ -114,7 +114,7 @@ class Id:
     namespace = property(fget=get_identifier_namespace)
 
     @abc.abstractmethod
-    def get_identifier(self):
+    def get_identifier(self): # pragma: no cover
         """Gets the identifier of this ``Id``.
 
         This method is used to compare one ``Id`` to another.

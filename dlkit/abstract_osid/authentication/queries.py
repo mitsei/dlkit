@@ -40,7 +40,7 @@ class AgentQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_resource_id(self, agency_id, match):
+    def match_resource_id(self, agency_id, match): # pragma: no cover
         """Sets the resource ``Id`` for this query.
 
         :param agency_id: a resource ``Id``
@@ -55,7 +55,7 @@ class AgentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_id_terms(self):
+    def clear_resource_id_terms(self): # pragma: no cover
         """Clears the resource ``Id`` terms.
 
 
@@ -68,7 +68,7 @@ class AgentQuery:
     resource_id_terms = property(fdel=clear_resource_id_terms)
 
     @abc.abstractmethod
-    def supports_resource_query(self):
+    def supports_resource_query(self): # pragma: no cover
         """Tests if a ``ResourceQuery`` is available.
 
         :return: ``true`` if a resource query is available, ``false`` otherwise
@@ -81,7 +81,7 @@ class AgentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_resource_query(self):
+    def get_resource_query(self): # pragma: no cover
         """Gets the query for a resource.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -99,7 +99,7 @@ class AgentQuery:
     resource_query = property(fget=get_resource_query)
 
     @abc.abstractmethod
-    def match_any_resource(self, match):
+    def match_any_resource(self, match): # pragma: no cover
         """Matches agents with any resource.
 
         :param match: ``true`` if to match agents with a resource, ``false`` to match agents with no resource
@@ -112,7 +112,7 @@ class AgentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_resource_terms(self):
+    def clear_resource_terms(self): # pragma: no cover
         """Clears the resource terms.
 
 
@@ -125,7 +125,7 @@ class AgentQuery:
     resource_terms = property(fdel=clear_resource_terms)
 
     @abc.abstractmethod
-    def match_agency_id(self, agency_id, match):
+    def match_agency_id(self, agency_id, match): # pragma: no cover
         """Sets the agency ``Id`` for this query.
 
         :param agency_id: an agency ``Id``
@@ -140,7 +140,7 @@ class AgentQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agency_id_terms(self):
+    def clear_agency_id_terms(self): # pragma: no cover
         """Clears the agency ``Id`` terms.
 
 
@@ -153,7 +153,7 @@ class AgentQuery:
     agency_id_terms = property(fdel=clear_agency_id_terms)
 
     @abc.abstractmethod
-    def supports_agency_query(self):
+    def supports_agency_query(self): # pragma: no cover
         """Tests if an ``AgencyQuery`` is available.
 
         :return: ``true`` if an agency query is available, ``false`` otherwise
@@ -166,7 +166,7 @@ class AgentQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agency_query(self):
+    def get_agency_query(self): # pragma: no cover
         """Gets the query for an agency.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -184,7 +184,7 @@ class AgentQuery:
     agency_query = property(fget=get_agency_query)
 
     @abc.abstractmethod
-    def clear_agency_terms(self):
+    def clear_agency_terms(self): # pragma: no cover
         """Clears the agency terms.
 
 
@@ -197,7 +197,7 @@ class AgentQuery:
     agency_terms = property(fdel=clear_agency_terms)
 
     @abc.abstractmethod
-    def get_agent_query_record(self, agent_record_type):
+    def get_agent_query_record(self, agent_record_type): # pragma: no cover
         """Gets the agent query record corresponding to the given ``Agent`` record ``Type``.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -226,7 +226,7 @@ class AgencyQuery:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def match_agent_id(self, agent_id, match):
+    def match_agent_id(self, agent_id, match): # pragma: no cover
         """Sets the agent ``Id`` for this query.
 
         :param agent_id: an agent ``Id``
@@ -241,7 +241,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_id_terms(self):
+    def clear_agent_id_terms(self): # pragma: no cover
         """Clears the agent ``Id`` terms.
 
 
@@ -254,7 +254,7 @@ class AgencyQuery:
     agent_id_terms = property(fdel=clear_agent_id_terms)
 
     @abc.abstractmethod
-    def supports_agent_query(self):
+    def supports_agent_query(self): # pragma: no cover
         """Tests if an ``AgentQuery`` is available.
 
         :return: ``true`` if an agent query is available, ``false`` otherwise
@@ -267,7 +267,7 @@ class AgencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_agent_query(self):
+    def get_agent_query(self): # pragma: no cover
         """Gets the query for an agent.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -285,7 +285,7 @@ class AgencyQuery:
     agent_query = property(fget=get_agent_query)
 
     @abc.abstractmethod
-    def match_any_agent(self, match):
+    def match_any_agent(self, match): # pragma: no cover
         """Matches agencies with any agent.
 
         :param match: ``true`` to match agencies with any agent. ``false`` to match agencies with no agents
@@ -298,7 +298,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_agent_terms(self):
+    def clear_agent_terms(self): # pragma: no cover
         """Clears the agent terms.
 
 
@@ -311,7 +311,7 @@ class AgencyQuery:
     agent_terms = property(fdel=clear_agent_terms)
 
     @abc.abstractmethod
-    def match_ancestor_agency_id(self, agency_id, match):
+    def match_ancestor_agency_id(self, agency_id, match): # pragma: no cover
         """Sets the agency ``Id`` for this query to match agencies that have the specified agency as an ancestor.
 
         :param agency_id: an agency ``Id``
@@ -326,7 +326,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_agency_id_terms(self):
+    def clear_ancestor_agency_id_terms(self): # pragma: no cover
         """Clears the ancestor agency ``Id`` terms.
 
 
@@ -339,7 +339,7 @@ class AgencyQuery:
     ancestor_agency_id_terms = property(fdel=clear_ancestor_agency_id_terms)
 
     @abc.abstractmethod
-    def supports_ancestor_agency_query(self):
+    def supports_ancestor_agency_query(self): # pragma: no cover
         """Tests if an ``AgencyQuery`` is available.
 
         :return: ``true`` if an agency query is available, ``false`` otherwise
@@ -352,7 +352,7 @@ class AgencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_ancestor_agency_query(self):
+    def get_ancestor_agency_query(self): # pragma: no cover
         """Gets the query for an agency.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -370,7 +370,7 @@ class AgencyQuery:
     ancestor_agency_query = property(fget=get_ancestor_agency_query)
 
     @abc.abstractmethod
-    def match_any_ancestor_agency(self, match):
+    def match_any_ancestor_agency(self, match): # pragma: no cover
         """Matches agencies with any ancestor.
 
         :param match: ``true`` to match agencies with any ancestor, ``false`` to match root agencies
@@ -383,7 +383,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_ancestor_agency_terms(self):
+    def clear_ancestor_agency_terms(self): # pragma: no cover
         """Clears the ancestor agency terms.
 
 
@@ -396,7 +396,7 @@ class AgencyQuery:
     ancestor_agency_terms = property(fdel=clear_ancestor_agency_terms)
 
     @abc.abstractmethod
-    def match_descendant_agency_id(self, agency_id, match):
+    def match_descendant_agency_id(self, agency_id, match): # pragma: no cover
         """Sets the agency ``Id`` for this query to match agencies that have the specified agency as an descendant.
 
         :param agency_id: an agency ``Id``
@@ -411,7 +411,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_agency_id_terms(self):
+    def clear_descendant_agency_id_terms(self): # pragma: no cover
         """Clears the descendant agency ``Id`` terms.
 
 
@@ -424,7 +424,7 @@ class AgencyQuery:
     descendant_agency_id_terms = property(fdel=clear_descendant_agency_id_terms)
 
     @abc.abstractmethod
-    def supports_descendant_agency_query(self):
+    def supports_descendant_agency_query(self): # pragma: no cover
         """Tests if an ``AgencyQuery`` is available.
 
         :return: ``true`` if an agency query is available, ``false`` otherwise
@@ -437,7 +437,7 @@ class AgencyQuery:
         return  # boolean
 
     @abc.abstractmethod
-    def get_descendant_agency_query(self):
+    def get_descendant_agency_query(self): # pragma: no cover
         """Gets the query for an agency.
 
         Multiple retrievals produce a nested ``OR`` term.
@@ -455,7 +455,7 @@ class AgencyQuery:
     descendant_agency_query = property(fget=get_descendant_agency_query)
 
     @abc.abstractmethod
-    def match_any_descendant_agency(self, match):
+    def match_any_descendant_agency(self, match): # pragma: no cover
         """Matches agencies with any descendant.
 
         :param match: ``true`` to match agencies with any descendant, ``false`` to match leaf agencies
@@ -468,7 +468,7 @@ class AgencyQuery:
         pass
 
     @abc.abstractmethod
-    def clear_descendant_agency_terms(self):
+    def clear_descendant_agency_terms(self): # pragma: no cover
         """Clears the descendant agency terms.
 
 
@@ -481,7 +481,7 @@ class AgencyQuery:
     descendant_agency_terms = property(fdel=clear_descendant_agency_terms)
 
     @abc.abstractmethod
-    def get_agency_query_record(self, agency_record_type):
+    def get_agency_query_record(self, agency_record_type): # pragma: no cover
         """Gets the agency query record corresponding to the given ``Agency`` record ``Type``.
 
         Multiple record retrievals produce a nested ``OR`` term.

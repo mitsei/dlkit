@@ -25,7 +25,7 @@ class AgentReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_agents(self, notification_id, agent_ids):
+    def new_agents(self, notification_id, agent_ids): # pragma: no cover
         """The callback for notifications of new agents.
 
         :param notification_id: the notification ``Id``
@@ -40,7 +40,7 @@ class AgentReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_agents(self, notification_id, agent_ids):
+    def changed_agents(self, notification_id, agent_ids): # pragma: no cover
         """The callback for notification of updated agents.
 
         :param notification_id: the notification ``Id``
@@ -55,7 +55,7 @@ class AgentReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_agents(self, notification_id, agent_ids):
+    def deleted_agents(self, notification_id, agent_ids): # pragma: no cover
         """the callback for notification of deleted agents.
 
         :param notification_id: the notification ``Id``
@@ -75,7 +75,7 @@ class AgencyReceiver:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def new_agencies(self, notification_id, agency_ids):
+    def new_agencies(self, notification_id, agency_ids): # pragma: no cover
         """The callback for notifications of new agencies.
 
         :param notification_id: the notification ``Id``
@@ -90,7 +90,7 @@ class AgencyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_agencies(self, notification_id, agency_ids):
+    def changed_agencies(self, notification_id, agency_ids): # pragma: no cover
         """The callback for notification of updated agencies.
 
         :param notification_id: the notification ``Id``
@@ -105,7 +105,7 @@ class AgencyReceiver:
         pass
 
     @abc.abstractmethod
-    def deleted_agencies(self, notification_id, agency_ids):
+    def deleted_agencies(self, notification_id, agency_ids): # pragma: no cover
         """The callback for notification of deleted agencies.
 
         :param notification_id: the notification ``Id``
@@ -120,7 +120,7 @@ class AgencyReceiver:
         pass
 
     @abc.abstractmethod
-    def changed_child_of_agencies(self, notification_id, agency_ids):
+    def changed_child_of_agencies(self, notification_id, agency_ids): # pragma: no cover
         """The callback for notifications of changes to children of agency hierarchy nodes.
 
         :param notification_id: the notification ``Id``

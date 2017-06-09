@@ -21,7 +21,7 @@ class CommentSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_comments(self, comment_ids):
+    def search_among_comments(self, comment_ids): # pragma: no cover
         """Execute this search among the given list of comments.
 
         :param comment_ids: list of comments
@@ -34,7 +34,7 @@ class CommentSearch:
         pass
 
     @abc.abstractmethod
-    def order_comment_results(self, comment_search_order):
+    def order_comment_results(self, comment_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param comment_search_order: comment search order
@@ -48,7 +48,7 @@ class CommentSearch:
         pass
 
     @abc.abstractmethod
-    def get_comment_search_record(self, comment_search_record_type):
+    def get_comment_search_record(self, comment_search_record_type): # pragma: no cover
         """Gets the comment search record corresponding to the given comment search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -73,7 +73,7 @@ class CommentSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_comments(self):
+    def get_comments(self): # pragma: no cover
         """Gets the comment list resulting from a search.
 
         :return: the comment list
@@ -88,7 +88,7 @@ class CommentSearchResults:
     comments = property(fget=get_comments)
 
     @abc.abstractmethod
-    def get_comment_query_inspector(self):
+    def get_comment_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terns used in the search.
 
         :return: the query inspector
@@ -103,7 +103,7 @@ class CommentSearchResults:
     comment_query_inspector = property(fget=get_comment_query_inspector)
 
     @abc.abstractmethod
-    def get_comment_search_results_record(self, comment_search_record_type):
+    def get_comment_search_results_record(self, comment_search_record_type): # pragma: no cover
         """Gets the comment search results record corresponding to the given comment search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -128,7 +128,7 @@ class BookSearch:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def search_among_books(self, book_ids):
+    def search_among_books(self, book_ids): # pragma: no cover
         """Execute this search among the given list of books.
 
         :param book_ids: list of books
@@ -141,7 +141,7 @@ class BookSearch:
         pass
 
     @abc.abstractmethod
-    def order_book_results(self, book_search_order):
+    def order_book_results(self, book_search_order): # pragma: no cover
         """Specify an ordering to the search results.
 
         :param book_search_order: book search order
@@ -155,7 +155,7 @@ class BookSearch:
         pass
 
     @abc.abstractmethod
-    def get_book_search_record(self, book_search_record_type):
+    def get_book_search_record(self, book_search_record_type): # pragma: no cover
         """Gets the book search record corresponding to the given book search record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -180,7 +180,7 @@ class BookSearchResults:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_books(self):
+    def get_books(self): # pragma: no cover
         """Gets the book list resulting from a search.
 
         :return: the book list
@@ -195,7 +195,7 @@ class BookSearchResults:
     books = property(fget=get_books)
 
     @abc.abstractmethod
-    def get_book_query_inspector(self):
+    def get_book_query_inspector(self): # pragma: no cover
         """Gets the inspector for the query to examine the terns used in the search.
 
         :return: the query inspector
@@ -210,7 +210,7 @@ class BookSearchResults:
     book_query_inspector = property(fget=get_book_query_inspector)
 
     @abc.abstractmethod
-    def get_book_search_results_record(self, book_search_record_type):
+    def get_book_search_results_record(self, book_search_record_type): # pragma: no cover
         """Gets the book search results record corresponding to the given book search record Type.
 
         This method is used to retrieve an object implementing the

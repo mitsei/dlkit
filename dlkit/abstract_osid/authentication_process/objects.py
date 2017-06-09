@@ -33,7 +33,7 @@ class Authentication:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_agent_id(self):
+    def get_agent_id(self): # pragma: no cover
         """Gets the ``Id`` of the ``Agent`` identified in this authentication credential.
 
         :return: the ``Agent Id``
@@ -50,7 +50,7 @@ class Authentication:
     agent_id = property(fget=get_agent_id)
 
     @abc.abstractmethod
-    def get_agent(self):
+    def get_agent(self): # pragma: no cover
         """Gets the ``Agent`` identified in this authentication credential.
 
         :return: the ``Agent``
@@ -65,7 +65,7 @@ class Authentication:
     agent = property(fget=get_agent)
 
     @abc.abstractmethod
-    def is_valid(self):
+    def is_valid(self): # pragma: no cover
         """Tests whether or not the credential represented by this ``Authentication`` is currently valid.
 
         A credential may be invalid because it has been destroyed,
@@ -83,7 +83,7 @@ class Authentication:
         return  # boolean
 
     @abc.abstractmethod
-    def has_expiration(self):
+    def has_expiration(self): # pragma: no cover
         """Tests if this authentication has an expiration.
 
         :return: ``true`` if this authentication has an expiration, ``false`` otherwise
@@ -96,7 +96,7 @@ class Authentication:
         return  # boolean
 
     @abc.abstractmethod
-    def get_expiration(self):
+    def get_expiration(self): # pragma: no cover
         """Gets the expiration date associated with this authentication credential.
 
         Consumers should check for the existence of a an expiration
@@ -114,7 +114,7 @@ class Authentication:
     expiration = property(fget=get_expiration)
 
     @abc.abstractmethod
-    def has_credential(self):
+    def has_credential(self): # pragma: no cover
         """Tests if this authentication has a credential for export.
 
         :return: ``true`` if this authentication has a credential, ``false`` otherwise
@@ -127,7 +127,7 @@ class Authentication:
         return  # boolean
 
     @abc.abstractmethod
-    def get_credential(self, credential_type):
+    def get_credential(self, credential_type): # pragma: no cover
         """Gets the credential represented by the given ``Type`` for transport to a remote service.
 
         :param credential_type: the credential format ``Type``
@@ -146,7 +146,7 @@ class Authentication:
         return  # object
 
     @abc.abstractmethod
-    def get_authentication_record(self, authentication_record_type):
+    def get_authentication_record(self, authentication_record_type): # pragma: no cover
         """Gets the authentication record corresponding to the given authentication record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -175,7 +175,7 @@ class Challenge:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_challenge_record(self, challenge_record_type):
+    def get_challenge_record(self, challenge_record_type): # pragma: no cover
         """Gets the challenge record corresponding to the given challenge record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -215,7 +215,7 @@ class Trust:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_trust_record(self, trust_record_type):
+    def get_trust_record(self, trust_record_type): # pragma: no cover
         """Gets the trust record corresponding to the given trust record ``Type``.
 
         This method is used to retrieve an object implementing the
@@ -253,7 +253,7 @@ class TrustList:
     __metaclass__ = abc.ABCMeta
 
     @abc.abstractmethod
-    def get_next_trust(self):
+    def get_next_trust(self): # pragma: no cover
         """Gets the next ``Trust`` in this list.
 
         :return: the next ``Trust`` in this list. The ``has_next()`` method should be used to test that a next ``Trust`` is available before calling this method.
@@ -269,7 +269,7 @@ class TrustList:
     next_trust = property(fget=get_next_trust)
 
     @abc.abstractmethod
-    def get_next_trusts(self, n):
+    def get_next_trusts(self, n): # pragma: no cover
         """Gets the next set of ``Trust`` elements in this list which must be less than or equal to the return from ``available()``.
 
         :param n: the number of ``Trust`` elements requested which must be less than or equal to ``available()``
