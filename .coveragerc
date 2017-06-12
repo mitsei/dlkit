@@ -1,0 +1,3 @@
+[report]
+omit =
+    dlkit/abtract_osid/*
