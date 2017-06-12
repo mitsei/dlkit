@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.5.2] - 2017-06-12
+### Fixed
+- Compatibility with `pymongo` 2 and 3.
+
 ## [0.5.1] - 2017-06-06
 ### Changed
 - Unlock Previous changed to simple string, instead of DisplayText.
@@ -111,6 +115,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.2]: https://github.com/mitsei/dlkit/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/mitsei/dlkit/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/mitsei/dlkit/compare/0.4.2...0.5.0
 [0.4.2]: https://github.com/mitsei/dlkit/compare/0.4.1...0.4.2
