@@ -648,7 +648,12 @@ class JSONClientValidated(object):
             return inserted_obj
 
         # Mongo impl as default
-        result = self._mc.replace_one({'_id': doc['_id']}, doc, upsert=True)
+        try:
+            # pymongo 3
+            result = self._mc.replace_one({'_id': doc['_id']}, doc, upsert=True)
+        except TypeError:
+            # pymongo 2
+            result = self._mc.save(doc)
         self._validate_write(result)
         return result
 
