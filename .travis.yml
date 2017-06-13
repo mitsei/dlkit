@@ -7,6 +7,7 @@ python:
 services:
 - mongodb
 - memcached
+cache: pip
 sudo: false
 before_install:
 - openssl aes-256-cbc -K $encrypted_e1503200bd19_key -iv $encrypted_e1503200bd19_iv
