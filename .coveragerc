@@ -1,3 +1,4 @@
 [report]
 omit =
-    dlkit/abtract_osid/*
+    dlkit/abstract_osid/*
+    dlkit/app_configs/*
