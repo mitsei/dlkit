@@ -1,0 +1,4 @@
+[report]
+omit =
+    dlkit/abstract_osid/*
+    dlkit/app_configs/*
