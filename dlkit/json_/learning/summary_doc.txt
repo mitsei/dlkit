@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Learning Open Service Interface Definitions
+Learning Open Service Interface Definitions
 learning version 3.0.0
 
 The Learning OSID manages learning objectives. A learning ``Objective``
@@ -70,5 +70,3 @@ Sub Packages
 
 The Learning OSID contains a Learning Batch OSID for bulk management of
 ``Objectives,``  ``Activities,`` and ``Proficiencies`` .
-
-"""

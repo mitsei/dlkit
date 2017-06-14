@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Id Open Service Interface Definitions
+Id Open Service Interface Definitions
 id version 3.0.0
 
 The Id OSID provides the means for creating and mapping identifiers. All
@@ -28,5 +28,3 @@ Id Mapping Example
       Id id = idSession.getId(assetId);
       return (other_impl.getAsset(assetId));
   }
-
-"""

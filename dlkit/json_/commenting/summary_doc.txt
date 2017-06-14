@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Commenting Open Service Interface Definitions
+Commenting Open Service Interface Definitions
 commenting version 3.0.0
 
 The Commenting OSID provides a means of relating user comments and
@@ -37,5 +37,3 @@ Sub Packages
 
 The Commenting OSID includes a Commenting Batch OSID for managing
 ``Comments`` and ``Books`` in bulk.
-
-"""

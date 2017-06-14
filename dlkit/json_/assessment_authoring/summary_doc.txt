@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Assessment Authoring Open Service Interface Definitions
+Assessment Authoring Open Service Interface Definitions
 assessment.authoring version 3.0.0
 
 The Assessment OSID provides the means to create, access, and take
@@ -51,5 +51,3 @@ identifier representing this relationship.
 On the authoring side, Items map to ``Assessments``. An ``Item`` may
 appear in more than one ``Assessment``. Item banks may be used to
 catalog sets of Items and/or sets of ``Assessments``.
-
-"""

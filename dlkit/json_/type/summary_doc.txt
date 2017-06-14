@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Type Open Service Interface Definitions
+Type Open Service Interface Definitions
 type version 3.0.0
 
 The Type OSID defines a set of interfaces for managing ``Type``
@@ -103,5 +103,3 @@ objects from provider to consumer. ``Type`` is an ``OsidPrimitive`` and
 as such cannot be used to encapsulate implementation-specific data other
 than what is defined explicitly in the ``Type``. An OSID Provider must
 respect any ``Type`` constructed by an OSID Consumer.
-
-"""

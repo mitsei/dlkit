@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Relationship Open Service Interface Definitions
+Relationship Open Service Interface Definitions
 relationship version 3.0.0
 
 The Relationship OSID provides the ability to relate and manage data
@@ -38,5 +38,3 @@ Sub Packages
 
 The Relationship OSID includes a Relationship Rules OSID for controlling
 the enable status of ``Relationships``.
-
-"""
