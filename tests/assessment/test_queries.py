@@ -1326,15 +1326,37 @@ class TestAssessmentTakenQuery(unittest.TestCase):
 class TestBankQuery(unittest.TestCase):
     """Tests for BankQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuery::init_template
+        self.query = self.svc_mgr.get_bank_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_item_id(self):
         """Tests match_item_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_item_id_terms(self):
         """Tests clear_item_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['itemId'] = 'foo'
+        self.query.clear_item_id_terms()
+        self.assertNotIn('itemId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_item_query(self):
@@ -1351,20 +1373,26 @@ class TestBankQuery(unittest.TestCase):
         """Tests match_any_item"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_item_terms(self):
         """Tests clear_item_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['item'] = 'foo'
+        self.query.clear_item_terms()
+        self.assertNotIn('item',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_id(self):
         """Tests match_assessment_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_id_terms(self):
         """Tests clear_assessment_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['assessmentId'] = 'foo'
+        self.query.clear_assessment_id_terms()
+        self.assertNotIn('assessmentId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_assessment_query(self):
@@ -1381,20 +1409,26 @@ class TestBankQuery(unittest.TestCase):
         """Tests match_any_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_terms(self):
         """Tests clear_assessment_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['assessment'] = 'foo'
+        self.query.clear_assessment_terms()
+        self.assertNotIn('assessment',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_assessment_offered_id(self):
         """Tests match_assessment_offered_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_offered_id_terms(self):
         """Tests clear_assessment_offered_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['assessmentOfferedId'] = 'foo'
+        self.query.clear_assessment_offered_id_terms()
+        self.assertNotIn('assessmentOfferedId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_assessment_offered_query(self):
@@ -1411,20 +1445,26 @@ class TestBankQuery(unittest.TestCase):
         """Tests match_any_assessment_offered"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_assessment_offered_terms(self):
         """Tests clear_assessment_offered_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['assessmentOffered'] = 'foo'
+        self.query.clear_assessment_offered_terms()
+        self.assertNotIn('assessmentOffered',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_ancestor_bank_id(self):
         """Tests match_ancestor_bank_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_bank_id_terms(self):
         """Tests clear_ancestor_bank_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorBankId'] = 'foo'
+        self.query.clear_ancestor_bank_id_terms()
+        self.assertNotIn('ancestorBankId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_ancestor_bank_query(self):
@@ -1441,20 +1481,26 @@ class TestBankQuery(unittest.TestCase):
         """Tests match_any_ancestor_bank"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_bank_terms(self):
         """Tests clear_ancestor_bank_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorBank'] = 'foo'
+        self.query.clear_ancestor_bank_terms()
+        self.assertNotIn('ancestorBank',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_descendant_bank_id(self):
         """Tests match_descendant_bank_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_bank_id_terms(self):
         """Tests clear_descendant_bank_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantBankId'] = 'foo'
+        self.query.clear_descendant_bank_id_terms()
+        self.assertNotIn('descendantBankId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_descendant_bank_query(self):
@@ -1471,10 +1517,13 @@ class TestBankQuery(unittest.TestCase):
         """Tests match_any_descendant_bank"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_bank_terms(self):
         """Tests clear_descendant_bank_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantBank'] = 'foo'
+        self.query.clear_descendant_bank_terms()
+        self.assertNotIn('descendantBank',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_bank_query_record(self):

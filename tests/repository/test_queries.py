@@ -746,15 +746,37 @@ class TestCompositionQuery(unittest.TestCase):
 class TestRepositoryQuery(unittest.TestCase):
     """Tests for RepositoryQuery"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuery::init_template
+        self.query = self.svc_mgr.get_repository_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     @unittest.skip('unimplemented test')
     def test_match_asset_id(self):
         """Tests match_asset_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_asset_id_terms(self):
         """Tests clear_asset_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['assetId'] = 'foo'
+        self.query.clear_asset_id_terms()
+        self.assertNotIn('assetId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_asset_query(self):
@@ -771,20 +793,26 @@ class TestRepositoryQuery(unittest.TestCase):
         """Tests match_any_asset"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_asset_terms(self):
         """Tests clear_asset_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['asset'] = 'foo'
+        self.query.clear_asset_terms()
+        self.assertNotIn('asset',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_composition_id(self):
         """Tests match_composition_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_composition_id_terms(self):
         """Tests clear_composition_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['compositionId'] = 'foo'
+        self.query.clear_composition_id_terms()
+        self.assertNotIn('compositionId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_composition_query(self):
@@ -801,20 +829,26 @@ class TestRepositoryQuery(unittest.TestCase):
         """Tests match_any_composition"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_composition_terms(self):
         """Tests clear_composition_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['composition'] = 'foo'
+        self.query.clear_composition_terms()
+        self.assertNotIn('composition',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_ancestor_repository_id(self):
         """Tests match_ancestor_repository_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_repository_id_terms(self):
         """Tests clear_ancestor_repository_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorRepositoryId'] = 'foo'
+        self.query.clear_ancestor_repository_id_terms()
+        self.assertNotIn('ancestorRepositoryId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_ancestor_repository_query(self):
@@ -831,20 +865,26 @@ class TestRepositoryQuery(unittest.TestCase):
         """Tests match_any_ancestor_repository"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_repository_terms(self):
         """Tests clear_ancestor_repository_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorRepository'] = 'foo'
+        self.query.clear_ancestor_repository_terms()
+        self.assertNotIn('ancestorRepository',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_match_descendant_repository_id(self):
         """Tests match_descendant_repository_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_repository_id_terms(self):
         """Tests clear_descendant_repository_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantRepositoryId'] = 'foo'
+        self.query.clear_descendant_repository_id_terms()
+        self.assertNotIn('descendantRepositoryId',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_supports_descendant_repository_query(self):
@@ -861,10 +901,13 @@ class TestRepositoryQuery(unittest.TestCase):
         """Tests match_any_descendant_repository"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_repository_terms(self):
         """Tests clear_descendant_repository_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantRepository'] = 'foo'
+        self.query.clear_descendant_repository_terms()
+        self.assertNotIn('descendantRepository',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_repository_query_record(self):
