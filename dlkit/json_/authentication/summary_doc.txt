@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Authentication Open Service Interface Definitions
+Authentication Open Service Interface Definitions
 authentication version 3.0.0
 
 The Authentication OSID manages authenticated entities.
@@ -68,5 +68,3 @@ private keys associated with an ``Agent`` and an Authentication Process
 OSID for acquiring and validating authentication credentials. It slaos
 includes an Authentication Batch OSID for managing ``Agents`` and
 ``Agencies`` in bulk.
-
-"""

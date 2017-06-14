@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Proxy Open Service Interface Definitions
+Proxy Open Service Interface Definitions
 proxy version 3.0.0
 
 The Proxy OSID helps a consumer map external data, such as that received
@@ -35,5 +35,3 @@ An example using a specifier record for an http request:
   record.setHttpRequest(servletRequest);
 
   Proxy proxy = proxySession.getProxy(condition);
-
-"""

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Hierarchy Open Service Interface Definitions
+Hierarchy Open Service Interface Definitions
 hierarchy version 3.0.0
 
 The Hierarchy OSID is an auxiliary service providing a means for
@@ -19,5 +19,3 @@ methods to get parents and children of the node directly.
 
 Hierarchies are federateable by combining nodes. There is no hierarchy
 service for the hierarchy catalog.
-
-"""

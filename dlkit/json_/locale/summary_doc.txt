@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Locale Open Service Interface Definitions
+Locale Open Service Interface Definitions
 locale version 3.0.0
 
 The Locale OSID provides the service of localizing applications defining
@@ -87,5 +87,3 @@ The ``Locale`` interface defines a set of types that together define the
 formatting, language, calendaring, and currency for a locale or culture.
 Locale is referenced in OsidSessions to convey the localization of the
 service.
-
-"""

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Authentication Process Open Service Interface Definitions
+Authentication Process Open Service Interface Definitions
 authentication.process version 3.0.0
 
 The Authentication Process OSID conducts an authentication process.
@@ -98,5 +98,3 @@ Server side authentication:
           Agent agent = auth.getAgent(); // identity established
       }
   }
-
-"""

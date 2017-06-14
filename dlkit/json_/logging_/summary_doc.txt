@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Logging Open Service Interface Definitions
+Logging Open Service Interface Definitions
 logging version 3.0.0
 
 The Logging OSID provides a means to read and wite to logs. A Log
@@ -20,5 +20,3 @@ Example
       LogEntry entry = entries.getNextLogEntry();
       printEntry(entry);
   }
-
-"""

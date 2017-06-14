@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Repository Open Service Interface Definitions
+Repository Open Service Interface Definitions
 repository version 3.0.0
 
 The Repository OSID provides the service of finding and managing digital
@@ -110,5 +110,3 @@ Sub Packages
 
 The Repository OSID includes a rules subpackage for managing dynamic
 compositions.
-
-"""

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Authorization Open Service Interface Definitions
+Authorization Open Service Interface Definitions
 authorization version 3.0.0
 
 The Authorization OSID manages and queries authorizations.
@@ -102,5 +102,3 @@ Sub Packages
 
 The Authorization OSID includes an Authorization Rules OSID for managing
 the effectiveness of ``Authorizations``.
-
-"""

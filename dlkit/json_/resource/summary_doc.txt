@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Resource Open Service Interface Definitions
+Resource Open Service Interface Definitions
 resource version 3.0.0
 
 The Resource OSID defines a service to access and manage a directory of
@@ -71,5 +71,3 @@ Sub Packages
 The Resource OSID includes a Resource Demographic OSID for managing
 dynamically generated populations of ``Resources`` and a Resource Batch
 OSID for managing ``Resources`` in bulk.
-
-"""

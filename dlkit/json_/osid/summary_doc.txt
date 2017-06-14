@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Core Service Interface Definitions
+Core Service Interface Definitions
 osid version 3.0.0
 
 The Open Service Interface Definitions (OSIDs) is a service-based
@@ -372,5 +372,3 @@ Knowledge Initiative (O.K.I) project 2001-2004.
   * University of Michigan, O.K.I. Core Collaborator
   * University of Pennsylvania, O.K.I. Core Collaborator
   * University of Wisconsin, Madison, O.K.I. Core Collaborator
-
-"""

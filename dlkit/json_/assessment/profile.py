@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo assessment'
 
 DESCRIPTION = 'MongoDB based assessment implementation'
 
-VERSIONCOMPONENTS = [0, 1, 306]
+VERSIONCOMPONENTS = [0, 1, 307]
 
 RELEASEDATE = "2017-06-14"
 

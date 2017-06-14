@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Grading Open Service Interface Definitions
+Grading Open Service Interface Definitions
 grading version 3.0.0
 
 The Grading OSID defines a service to apply grades or ratings.
@@ -54,5 +54,3 @@ OSID provides a means of translating one ``GradeSystem`` to another. The
 Grading Calculation OSID defines derived ``GradebookColumns``. The
 Grading Batch OSID manages ``GradeSystems,``  ``GradeEntries,``
 ``Gradebooks,`` and ``GradebookColumns`` in bulk.
-
-"""
