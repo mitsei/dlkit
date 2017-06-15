@@ -5,6 +5,8 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.logging_.queries import LogQuery
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -40,15 +42,15 @@ class TestLogEntryQuery(unittest.TestCase):
         # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_log(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_priority(self):
         """Tests match_priority"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_priority('foo', match=True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_priority(self):
         """Tests match_any_priority"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_priority(match=True)
 
     def test_clear_priority_terms(self):
         """Tests clear_priority_terms"""
@@ -58,20 +60,26 @@ class TestLogEntryQuery(unittest.TestCase):
         self.assertNotIn('priority',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_minimum_priority(self):
         """Tests match_minimum_priority"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_minimum_priority('foo', match=True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_minimum_priority_terms(self):
         """Tests clear_minimum_priority_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_minimum_priority_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_timestamp(self):
         """Tests match_timestamp"""
-        pass
+        start_date = DateTime.utcnow()
+        end_date = DateTime.utcnow()
+        self.assertNotIn('timestamp', self.query._query_terms)
+        self.query.match_timestamp(start_date, end_date, True)
+        self.assertEqual(self.query._query_terms['timestamp'], {
+            '$gte': start_date,
+            '$lte': end_date
+        })
 
     def test_clear_timestamp_terms(self):
         """Tests clear_timestamp_terms"""
@@ -101,20 +109,20 @@ class TestLogEntryQuery(unittest.TestCase):
         self.assertNotIn('resourceId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_resource_query(self):
         """Tests supports_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_resource_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query(self):
         """Tests get_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_resource_query()
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_terms(self):
         """Tests clear_resource_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_resource_terms()
 
     def test_match_agent_id(self):
         """Tests match_agent_id"""
@@ -136,15 +144,15 @@ class TestLogEntryQuery(unittest.TestCase):
         self.assertNotIn('agentId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_agent_query(self):
         """Tests supports_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_agent_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_query(self):
         """Tests get_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_agent_query()
 
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
@@ -174,15 +182,15 @@ class TestLogEntryQuery(unittest.TestCase):
         self.assertNotIn('assignedLogIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_log_query(self):
         """Tests supports_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_log_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_query(self):
         """Tests get_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_log_query()
 
     def test_clear_log_terms(self):
         """Tests clear_log_terms"""
@@ -201,95 +209,129 @@ class TestLogEntryQuery(unittest.TestCase):
 class TestLogQuery(unittest.TestCase):
     """Tests for LogQuery"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_log(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        self.query = LogQuery(runtime=self.catalog._runtime)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_log(cls.catalog.ident)
+
     def test_match_log_entry_id(self):
         """Tests match_log_entry_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_log_entry_id(self.fake_id, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_log_entry_id_terms(self):
         """Tests clear_log_entry_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['logEntryId'] = 'foo'
+        self.query.clear_log_entry_id_terms()
+        self.assertNotIn('logEntryId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_log_entry_query(self):
         """Tests supports_log_entry_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_log_entry_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query(self):
         """Tests get_log_entry_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_log_entry_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_log_entry(self):
         """Tests match_any_log_entry"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_log_entry(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_log_entry_terms(self):
         """Tests clear_log_entry_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['logEntry'] = 'foo'
+        self.query.clear_log_entry_terms()
+        self.assertNotIn('logEntry',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_ancestor_log_id(self):
         """Tests match_ancestor_log_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_ancestor_log_id(self.fake_id, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_log_id_terms(self):
         """Tests clear_ancestor_log_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorLogId'] = 'foo'
+        self.query.clear_ancestor_log_id_terms()
+        self.assertNotIn('ancestorLogId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_ancestor_log_query(self):
         """Tests supports_ancestor_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_log_entry_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_ancestor_log_query(self):
         """Tests get_ancestor_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_ancestor_log_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_ancestor_log(self):
         """Tests match_any_ancestor_log"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_ancestor_log(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_log_terms(self):
         """Tests clear_ancestor_log_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorLog'] = 'foo'
+        self.query.clear_ancestor_log_terms()
+        self.assertNotIn('ancestorLog',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_descendant_log_id(self):
         """Tests match_descendant_log_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_descendant_log_id(self.fake_id, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_log_id_terms(self):
         """Tests clear_descendant_log_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantLogId'] = 'foo'
+        self.query.clear_descendant_log_id_terms()
+        self.assertNotIn('descendantLogId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_descendant_log_query(self):
         """Tests supports_descendant_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_descendant_log_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_descendant_log_query(self):
         """Tests get_descendant_log_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_descendant_log_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_descendant_log(self):
         """Tests match_any_descendant_log"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_descendant_log(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_log_terms(self):
         """Tests clear_descendant_log_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantLog'] = 'foo'
+        self.query.clear_descendant_log_terms()
+        self.assertNotIn('descendantLog',
+                         self.query._query_terms)
 
     @unittest.skip('unimplemented test')
     def test_get_log_query_record(self):
