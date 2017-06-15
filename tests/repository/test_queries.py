@@ -5,18 +5,22 @@ import unittest
 
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.types.string import get_type_data as get_string_type_data
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
 
 
+DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_TYPE = Type("generic.Type%3Afoo%40ODL.MIT.EDU")
 
 
 class TestAssetQuery(unittest.TestCase):
@@ -24,7 +28,6 @@ class TestAssetQuery(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -32,23 +35,23 @@ class TestAssetQuery(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
     def setUp(self):
-        # From test_templates/resource.py::ResourceQuery::init_template
         self.query = self.catalog.get_asset_query()
+        self.start_date = DateTime.utcnow()
+        self.end_date = DateTime.utcnow()
 
     @classmethod
     def tearDownClass(cls):
-        # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_title(self):
         """Tests match_title"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_title('foo', DEFAULT_STRING_MATCH_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_title(self):
         """Tests match_any_title"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_title(True)
 
     def test_clear_title_terms(self):
         """Tests clear_title_terms"""
@@ -58,15 +61,15 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('title',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_public_domain(self):
         """Tests match_public_domain"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_public_domain(True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_public_domain(self):
         """Tests match_any_public_domain"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_public_domain(True)
 
     def test_clear_public_domain_terms(self):
         """Tests clear_public_domain_terms"""
@@ -76,15 +79,15 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('publicDomain',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_copyright(self):
         """Tests match_copyright"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_copyright('foo', DEFAULT_STRING_MATCH_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_copyright(self):
         """Tests match_any_copyright"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_copyright(True)
 
     def test_clear_copyright_terms(self):
         """Tests clear_copyright_terms"""
@@ -94,15 +97,15 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('copyright',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_copyright_registration(self):
         """Tests match_copyright_registration"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_copyright_registration('foo', DEFAULT_STRING_MATCH_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_copyright_registration(self):
         """Tests match_any_copyright_registration"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_copyright_registration(True)
 
     def test_clear_copyright_registration_terms(self):
         """Tests clear_copyright_registration_terms"""
@@ -112,10 +115,10 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('copyrightRegistration',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_distribute_verbatim(self):
         """Tests match_distribute_verbatim"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_distribute_verbatim(True)
 
     def test_clear_distribute_verbatim_terms(self):
         """Tests clear_distribute_verbatim_terms"""
@@ -125,10 +128,10 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('distributeVerbatim',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_distribute_alterations(self):
         """Tests match_distribute_alterations"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_distribute_alterations(True)
 
     def test_clear_distribute_alterations_terms(self):
         """Tests clear_distribute_alterations_terms"""
@@ -138,10 +141,10 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('distributeAlterations',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_distribute_compositions(self):
         """Tests match_distribute_compositions"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_distribute_compositions(True)
 
     def test_clear_distribute_compositions_terms(self):
         """Tests clear_distribute_compositions_terms"""
@@ -171,20 +174,20 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('sourceId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_source_query(self):
         """Tests supports_source_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_source_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_source_query(self):
         """Tests get_source_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_source_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_source(self):
         """Tests match_any_source"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_source(True)
 
     def test_clear_source_terms(self):
         """Tests clear_source_terms"""
@@ -194,15 +197,19 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('source',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_created_date(self):
         """Tests match_created_date"""
-        pass
+        self.assertNotIn('createdDate', self.query._query_terms)
+        self.query.match_created_date(self.start_date, self.end_date, True)
+        self.assertEqual(self.query._query_terms['createdDate'], {
+            '$gte': self.start_date,
+            '$lte': self.end_date
+        })
 
-    @unittest.skip('unimplemented test')
     def test_match_any_created_date(self):
         """Tests match_any_created_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_created_date(True)
 
     def test_clear_created_date_terms(self):
         """Tests clear_created_date_terms"""
@@ -212,10 +219,10 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('createdDate',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_published(self):
         """Tests match_published"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_published(True)
 
     def test_clear_published_terms(self):
         """Tests clear_published_terms"""
@@ -225,15 +232,19 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('published',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_published_date(self):
         """Tests match_published_date"""
-        pass
+        self.assertNotIn('publishedDate', self.query._query_terms)
+        self.query.match_published_date(self.start_date, self.end_date, True)
+        self.assertEqual(self.query._query_terms['publishedDate'], {
+            '$gte': self.start_date,
+            '$lte': self.end_date
+        })
 
-    @unittest.skip('unimplemented test')
     def test_match_any_published_date(self):
         """Tests match_any_published_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_published_date(True)
 
     def test_clear_published_date_terms(self):
         """Tests clear_published_date_terms"""
@@ -243,15 +254,15 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('publishedDate',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_principal_credit_string(self):
         """Tests match_principal_credit_string"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_principal_credit_string('foo', DEFAULT_STRING_MATCH_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_principal_credit_string(self):
         """Tests match_any_principal_credit_string"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_principal_credit_string(True)
 
     def test_clear_principal_credit_string_terms(self):
         """Tests clear_principal_credit_string_terms"""
@@ -261,20 +272,20 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('principalCreditString',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_temporal_coverage(self):
         """Tests match_temporal_coverage"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_temporal_coverage(self.start_date, self.end_date, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_temporal_coverage(self):
         """Tests match_any_temporal_coverage"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_temporal_coverage(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_temporal_coverage_terms(self):
         """Tests clear_temporal_coverage_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_temporal_coverage_terms()
 
     def test_match_location_id(self):
         """Tests match_location_id"""
@@ -296,50 +307,50 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('locationId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_location_query(self):
         """Tests supports_location_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_location_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_location_query(self):
         """Tests get_location_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_location_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_location(self):
         """Tests match_any_location"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_location(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_location_terms(self):
         """Tests clear_location_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_location_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_spatial_coverage(self):
         """Tests match_spatial_coverage"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_spatial_coverage(self.start_date, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_spatial_coverage_terms(self):
         """Tests clear_spatial_coverage_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_spatial_coverage_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_spatial_coverage_overlap(self):
         """Tests match_spatial_coverage_overlap"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_spatial_coverage_overlap(self.start_date, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_spatial_coverage(self):
         """Tests match_any_spatial_coverage"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_spatial_coverage(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_spatial_coverage_overlap_terms(self):
         """Tests clear_spatial_coverage_overlap_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_spatial_coverage_overlap_terms()
 
     def test_match_asset_content_id(self):
         """Tests match_asset_content_id"""
@@ -361,25 +372,25 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('assetContentId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_asset_content_query(self):
         """Tests supports_asset_content_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_asset_content_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_query(self):
         """Tests get_asset_content_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_asset_content_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_asset_content(self):
         """Tests match_any_asset_content"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_asset_content(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_asset_content_terms(self):
         """Tests clear_asset_content_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_asset_content_terms()
 
     def test_match_composition_id(self):
         """Tests match_composition_id"""
@@ -401,20 +412,20 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('compositionId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_composition_query(self):
         """Tests supports_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_query(self):
         """Tests get_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_composition(self):
         """Tests match_any_composition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_composition(True)
 
     def test_clear_composition_terms(self):
         """Tests clear_composition_terms"""
@@ -444,15 +455,15 @@ class TestAssetQuery(unittest.TestCase):
         self.assertNotIn('assignedRepositoryIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_repository_query(self):
         """Tests supports_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_repository_query(self):
         """Tests get_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_repository_query()
 
     def test_clear_repository_terms(self):
         """Tests clear_repository_terms"""
@@ -489,15 +500,15 @@ class TestAssetContentQuery(unittest.TestCase):
         # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_accessibility_type(self):
         """Tests match_accessibility_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_accessibility_type(DEFAULT_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_accessibility_type(self):
         """Tests match_any_accessibility_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_accessibility_type(True)
 
     def test_clear_accessibility_type_terms(self):
         """Tests clear_accessibility_type_terms"""
@@ -507,30 +518,30 @@ class TestAssetContentQuery(unittest.TestCase):
         self.assertNotIn('accessibilityType',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_data_length(self):
         """Tests match_data_length"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_data_length(1, 2, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_data_length(self):
         """Tests match_any_data_length"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_data_length(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_data_length_terms(self):
         """Tests clear_data_length_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_data_length_terms()
 
-    @unittest.skip('unimplemented test')
     def test_match_data(self):
         """Tests match_data"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_data(1, True, False)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_data(self):
         """Tests match_any_data"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_data(True)
 
     def test_clear_data_terms(self):
         """Tests clear_data_terms"""
@@ -540,15 +551,15 @@ class TestAssetContentQuery(unittest.TestCase):
         self.assertNotIn('data',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_url(self):
         """Tests match_url"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_url('foo', DEFAULT_STRING_MATCH_TYPE, True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_url(self):
         """Tests match_any_url"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_url(True)
 
     def test_clear_url_terms(self):
         """Tests clear_url_terms"""
@@ -603,25 +614,25 @@ class TestCompositionQuery(unittest.TestCase):
         self.assertNotIn('assetIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_asset_query(self):
         """Tests supports_asset_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_asset_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_query(self):
         """Tests get_asset_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_asset_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_asset(self):
         """Tests match_any_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_asset(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_asset_terms(self):
         """Tests clear_asset_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_asset_terms()
 
     def test_match_containing_composition_id(self):
         """Tests match_containing_composition_id"""
@@ -641,25 +652,25 @@ class TestCompositionQuery(unittest.TestCase):
         self.assertNotIn('_id',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_containing_composition_query(self):
         """Tests supports_containing_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_containing_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_containing_composition_query(self):
         """Tests get_containing_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_containing_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_containing_composition(self):
         """Tests match_any_containing_composition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_containing_composition(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_containing_composition_terms(self):
         """Tests clear_containing_composition_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_containing_composition_terms()
 
     def test_match_contained_composition_id(self):
         """Tests match_contained_composition_id"""
@@ -679,25 +690,25 @@ class TestCompositionQuery(unittest.TestCase):
         self.assertNotIn('childIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_contained_composition_query(self):
         """Tests supports_contained_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_contained_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_contained_composition_query(self):
         """Tests get_contained_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_contained_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_contained_composition(self):
         """Tests match_any_contained_composition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_contained_composition(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_contained_composition_terms(self):
         """Tests clear_contained_composition_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_contained_composition_terms()
 
     def test_match_repository_id(self):
         """Tests match_repository_id"""
@@ -719,15 +730,15 @@ class TestCompositionQuery(unittest.TestCase):
         self.assertNotIn('assignedRepositoryIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_repository_query(self):
         """Tests supports_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_repository_query(self):
         """Tests get_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_repository_query()
 
     def test_clear_repository_terms(self):
         """Tests clear_repository_terms"""
@@ -765,10 +776,10 @@ class TestRepositoryQuery(unittest.TestCase):
         # From test_templates/resource.py::BinQuery::init_template
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_asset_id(self):
         """Tests match_asset_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_asset_id(Id('fake.Package%3Afoo%40ODL.MIT.EDU'), True)
 
     def test_clear_asset_id_terms(self):
         """Tests clear_asset_id_terms"""
@@ -778,20 +789,20 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('assetId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_asset_query(self):
         """Tests supports_asset_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_asset_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_query(self):
         """Tests get_asset_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_asset_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_asset(self):
         """Tests match_any_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_asset(True)
 
     def test_clear_asset_terms(self):
         """Tests clear_asset_terms"""
@@ -801,10 +812,10 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('asset',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_composition_id(self):
         """Tests match_composition_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_composition_id(Id('fake.Package%3Afoo%40ODL.MIT.EDU'), True)
 
     def test_clear_composition_id_terms(self):
         """Tests clear_composition_id_terms"""
@@ -814,20 +825,20 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('compositionId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_composition_query(self):
         """Tests supports_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_query(self):
         """Tests get_composition_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_composition_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_composition(self):
         """Tests match_any_composition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_composition(True)
 
     def test_clear_composition_terms(self):
         """Tests clear_composition_terms"""
@@ -837,10 +848,11 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('composition',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_ancestor_repository_id(self):
         """Tests match_ancestor_repository_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_ancestor_repository_id(Id('fake.Package%3Afoo%40ODL.MIT.EDU'),
+                                                    True)
 
     def test_clear_ancestor_repository_id_terms(self):
         """Tests clear_ancestor_repository_id_terms"""
@@ -850,20 +862,20 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('ancestorRepositoryId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_ancestor_repository_query(self):
         """Tests supports_ancestor_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_ancestor_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_ancestor_repository_query(self):
         """Tests get_ancestor_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_ancestor_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_ancestor_repository(self):
         """Tests match_any_ancestor_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_ancestor_repository(True)
 
     def test_clear_ancestor_repository_terms(self):
         """Tests clear_ancestor_repository_terms"""
@@ -873,10 +885,11 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('ancestorRepository',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_descendant_repository_id(self):
         """Tests match_descendant_repository_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_descendant_repository_id(Id('fake.Package%3Afoo%40ODL.MIT.EDU'),
+                                                      True)
 
     def test_clear_descendant_repository_id_terms(self):
         """Tests clear_descendant_repository_id_terms"""
@@ -886,20 +899,20 @@ class TestRepositoryQuery(unittest.TestCase):
         self.assertNotIn('descendantRepositoryId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_descendant_repository_query(self):
         """Tests supports_descendant_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_descendant_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_descendant_repository_query(self):
         """Tests get_descendant_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_descendant_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_descendant_repository(self):
         """Tests match_any_descendant_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_descendant_repository(True)
 
     def test_clear_descendant_repository_terms(self):
         """Tests clear_descendant_repository_terms"""
