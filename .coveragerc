@@ -2,3 +2,4 @@
 omit =
     dlkit/abstract_osid/*
     dlkit/app_configs/*
+    dlkit/manager_impls/*
