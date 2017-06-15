@@ -54,6 +54,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_related_authorization_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('relatedAuthorizationId', self.query._query_terms)
         self.query.match_related_authorization_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['relatedAuthorizationId'], {
             '$in': [str(test_id)]
@@ -89,6 +90,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_resource_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('resourceId', self.query._query_terms)
         self.query.match_resource_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['resourceId'], {
             '$in': [str(test_id)]
@@ -129,6 +131,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_trust_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('trustId', self.query._query_terms)
         self.query.match_trust_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['trustId'], {
             '$in': [str(test_id)]
@@ -154,6 +157,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_agent_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('agentId', self.query._query_terms)
         self.query.match_agent_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['agentId'], {
             '$in': [str(test_id)]
@@ -194,6 +198,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_function_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('functionId', self.query._query_terms)
         self.query.match_function_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['functionId'], {
             '$in': [str(test_id)]
@@ -232,6 +237,7 @@ class TestAuthorizationQuery(unittest.TestCase):
         """Tests match_qualifier_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('qualifierId', self.query._query_terms)
         self.query.match_qualifier_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['qualifierId'], {
             '$in': [str(test_id)]

@@ -158,6 +158,7 @@ class TestAssetQuery(unittest.TestCase):
         """Tests match_source_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('sourceId', self.query._query_terms)
         self.query.match_source_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['sourceId'], {
             '$in': [str(test_id)]
@@ -291,6 +292,7 @@ class TestAssetQuery(unittest.TestCase):
         """Tests match_location_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('locationId', self.query._query_terms)
         self.query.match_location_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['locationId'], {
             '$in': [str(test_id)]
@@ -356,6 +358,7 @@ class TestAssetQuery(unittest.TestCase):
         """Tests match_asset_content_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('assetContentId', self.query._query_terms)
         self.query.match_asset_content_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['assetContentId'], {
             '$in': [str(test_id)]
@@ -396,6 +399,7 @@ class TestAssetQuery(unittest.TestCase):
         """Tests match_composition_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('compositionId', self.query._query_terms)
         self.query.match_composition_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['compositionId'], {
             '$in': [str(test_id)]

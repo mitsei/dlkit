@@ -44,6 +44,7 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_reference_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('referenceId', self.query._query_terms)
         self.query.match_reference_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['referenceId'], {
             '$in': [str(test_id)]
@@ -64,6 +65,7 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_commentor_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('commentorId', self.query._query_terms)
         self.query.match_commentor_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['commentorId'], {
             '$in': [str(test_id)]
@@ -102,6 +104,7 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_commenting_agent_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('commentingAgentId', self.query._query_terms)
         self.query.match_commenting_agent_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['commentingAgentId'], {
             '$in': [str(test_id)]
@@ -155,6 +158,7 @@ class TestCommentQuery(unittest.TestCase):
         """Tests match_rating_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('ratingId', self.query._query_terms)
         self.query.match_rating_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['ratingId'], {
             '$in': [str(test_id)]

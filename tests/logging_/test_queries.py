@@ -93,6 +93,7 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_resource_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('resourceId', self.query._query_terms)
         self.query.match_resource_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['resourceId'], {
             '$in': [str(test_id)]
@@ -128,6 +129,7 @@ class TestLogEntryQuery(unittest.TestCase):
         """Tests match_agent_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('agentId', self.query._query_terms)
         self.query.match_agent_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['agentId'], {
             '$in': [str(test_id)]
@@ -219,6 +221,7 @@ class TestLogQuery(unittest.TestCase):
         cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
 
     def setUp(self):
+        # Since the session isn't implemented, we just construct a LogQuery directly
         self.query = LogQuery(runtime=self.catalog._runtime)
 
     @classmethod

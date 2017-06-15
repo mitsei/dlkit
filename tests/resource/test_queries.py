@@ -67,6 +67,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_containing_group_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('containingGroupId', self.query._query_terms)
         self.query.match_containing_group_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['containingGroupId'], {
             '$in': [str(test_id)]
@@ -107,6 +108,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_avatar_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('avatarId', self.query._query_terms)
         self.query.match_avatar_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['avatarId'], {
             '$in': [str(test_id)]
@@ -150,6 +152,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_agent_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('agentId', self.query._query_terms)
         self.query.match_agent_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['agentId'], {
             '$in': [str(test_id)]
@@ -190,6 +193,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_resource_relationship_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('resourceRelationshipId', self.query._query_terms)
         self.query.match_resource_relationship_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['resourceRelationshipId'], {
             '$in': [str(test_id)]

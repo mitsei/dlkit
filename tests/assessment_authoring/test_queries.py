@@ -50,6 +50,7 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_assessment_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('assessmentId', self.query._query_terms)
         self.query.match_assessment_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['assessmentId'], {
             '$in': [str(test_id)]
@@ -88,6 +89,7 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_parent_assessment_part_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('parentAssessmentPartId', self.query._query_terms)
         self.query.match_parent_assessment_part_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['parentAssessmentPartId'], {
             '$in': [str(test_id)]
@@ -174,6 +176,7 @@ class TestAssessmentPartQuery(unittest.TestCase):
         """Tests match_child_assessment_part_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('childAssessmentPartId', self.query._query_terms)
         self.query.match_child_assessment_part_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['childAssessmentPartId'], {
             '$in': [str(test_id)]
