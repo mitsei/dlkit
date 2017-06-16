@@ -2725,30 +2725,14 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.AssetAdminSession.delete_asset_content_template
-        from dlkit.abstract_osid.id.primitives import Id as ABCId
-        from .objects import Question
         collection = JSONClientValidated('assessment',
                                          collection='Item',
                                          runtime=self._runtime)
         if not isinstance(question_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        item = collection.find_one({'questions._id': ObjectId(question_id.get_identifier())})
+        item = collection.find_one({'question._id': ObjectId(question_id.get_identifier())})
 
-        index = 0
-        found = False
-        for i in item['questions']:
-            if i['_id'] == ObjectId(question_id.get_identifier()):
-                question_map = item['questions'].pop(index)
-            index += 1
-            found = True
-        if not found:
-            raise errors.OperationFailed()
-        Question(
-            osid_object_map=question_map,
-            runtime=self._runtime,
-            proxy=self._proxy)._delete()
+        item['question'] = None
         collection.save(item)
 
     def can_create_answers(self):

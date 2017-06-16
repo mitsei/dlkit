@@ -859,9 +859,17 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
         else:
             session_class = getattr(self._provider_manager, 'get_' + session_name + '_for_gradebook')
             if self._proxy is None:
-                session = session_class(self._catalog.get_id())
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id())
+                else:
+                    session = session_class(self._catalog.get_id())
             else:
-                session = session_class(self._catalog.get_id(), self._proxy)
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id(), self._proxy)
+                else:
+                    session = session_class(self._catalog.get_id(), self._proxy)
             self._set_gradebook_view(session)
             self._set_object_view(session)
             self._set_operable_view(session)
